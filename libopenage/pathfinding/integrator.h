@@ -6,7 +6,12 @@
 #include <memory>
 
 
-namespace openage::path {
+namespace openage {
+namespace coord {
+struct tile;
+} // namespace coord
+
+namespace path {
 class CostField;
 class FlowField;
 
@@ -28,12 +33,11 @@ public:
 	/**
 	 * Build the flow field for a target cell.
 	 *
-	 * @param target_x X coordinate of the target cell.
-	 * @param target_y Y coordinate of the target cell.
+	 * @param target Coordinates of the target cell.
 	 *
 	 * @return Flow field.
 	 */
-	std::shared_ptr<FlowField> build(size_t target_x, size_t target_y);
+	std::shared_ptr<FlowField> build(const coord::tile &target);
 
 private:
 	/**
@@ -42,4 +46,5 @@ private:
 	std::shared_ptr<CostField> cost_field;
 };
 
-} // namespace openage::path
+} // namespace path
+} // namespace openage

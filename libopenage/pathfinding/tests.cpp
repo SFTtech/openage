@@ -3,12 +3,14 @@
 #include "log/log.h"
 #include "testing/testing.h"
 
+#include "coord/tile.h"
 #include "pathfinding/cost_field.h"
 #include "pathfinding/definitions.h"
 #include "pathfinding/flow_field.h"
 #include "pathfinding/integration_field.h"
 #include "pathfinding/integrator.h"
 #include "pathfinding/types.h"
+
 
 namespace openage {
 namespace path {
@@ -26,7 +28,7 @@ void flow_field() {
 	// Test the different field types
 	{
 		auto integration_field = std::make_shared<IntegrationField>(3);
-		integration_field->integrate_cost(cost_field, 2, 2);
+		integration_field->integrate_cost(cost_field, coord::tile{2, 2});
 		auto int_cells = integration_field->get_cells();
 
 		// The integration field should look like:
@@ -84,7 +86,7 @@ void flow_field() {
 		integrator->set_cost_field(cost_field);
 
 		// Build the flow field
-		auto flow_field = integrator->build(2, 2);
+		auto flow_field = integrator->build(coord::tile{2, 2});
 		auto ff_cells = flow_field->get_cells();
 
 		// The flow field for targeting (2, 2) hould look like this:

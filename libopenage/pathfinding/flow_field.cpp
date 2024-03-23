@@ -5,6 +5,8 @@
 #include "error/error.h"
 #include "log/log.h"
 
+#include "coord/tile.h"
+#include "pathfinding/definitions.h"
 #include "pathfinding/integration_field.h"
 
 
@@ -26,12 +28,12 @@ size_t FlowField::get_size() const {
 	return this->size;
 }
 
-flow_t FlowField::get_cell(size_t x, size_t y) const {
-	return this->cells.at(x + y * this->size);
+flow_t FlowField::get_cell(const coord::tile &pos) const {
+	return this->cells.at(pos.ne + pos.se * this->size);
 }
 
-flow_dir_t FlowField::get_dir(size_t x, size_t y) const {
-	return static_cast<flow_dir_t>(this->get_cell(x, y) & FLOW_DIR_MASK);
+flow_dir_t FlowField::get_dir(const coord::tile &pos) const {
+	return static_cast<flow_dir_t>(this->get_cell(pos) & FLOW_DIR_MASK);
 }
 
 void FlowField::build(const std::shared_ptr<IntegrationField> &integrate_field) {

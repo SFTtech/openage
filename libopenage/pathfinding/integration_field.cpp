@@ -7,6 +7,7 @@
 #include "error/error.h"
 #include "log/log.h"
 
+#include "coord/tile.h"
 #include "pathfinding/cost_field.h"
 #include "pathfinding/definitions.h"
 
@@ -23,8 +24,8 @@ size_t IntegrationField::get_size() const {
 	return this->size;
 }
 
-const integrate_t &IntegrationField::get_cell(size_t x, size_t y) const {
-	return this->cells.at(x + y * this->size);
+const integrate_t &IntegrationField::get_cell(const coord::tile &pos) const {
+	return this->cells.at(pos.ne + pos.se * this->size);
 }
 
 const integrate_t &IntegrationField::get_cell(size_t idx) const {
@@ -32,8 +33,7 @@ const integrate_t &IntegrationField::get_cell(size_t idx) const {
 }
 
 std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostField> &cost_field,
-                                                    size_t target_x,
-                                                    size_t target_y) {
+                                                    const coord::tile &target) {
 	ENSURE(cost_field->get_size() == this->get_size(),
 	       "cost field size "
 	           << cost_field->get_size() << "x" << cost_field->get_size()
@@ -44,7 +44,7 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 	std::vector<size_t> wavefront_blocked;
 
 	// Target cell index
-	auto target_idx = target_x + target_y * this->size;
+	auto target_idx = target.ne + target.se * this->size;
 
 	// Lookup table for cells that have been found
 	std::unordered_set<size_t> found;
@@ -97,11 +97,11 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 				}
 
 				// check each neighbor for a corner
-				auto corners = this->get_los_corners(cost_field, target_x, target_y, x, y);
+				auto corners = this->get_los_corners(cost_field, target, coord::tile{x, y});
 				for (auto &corner : corners) {
 					// draw a line from the corner to the edge of the field
 					// to get the cells blocked by the corner
-					auto blocked_cells = this->bresenhams_line(target_x, target_y, corner.first, corner.second);
+					auto blocked_cells = this->bresenhams_line(target, corner.first, corner.second);
 					for (auto &blocked_idx : blocked_cells) {
 						if (cost_field->get_cost(blocked_idx) > COST_MIN) {
 							// stop if blocked_idx is impassable
@@ -148,8 +148,7 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 }
 
 void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_field,
-                                      size_t target_x,
-                                      size_t target_y) {
+                                      const coord::tile &target) {
 	ENSURE(cost_field->get_size() == this->get_size(),
 	       "cost field size "
 	           << cost_field->get_size() << "x" << cost_field->get_size()
@@ -157,7 +156,7 @@ void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_fie
 	           << this->get_size() << "x" << this->get_size());
 
 	// Target cell index
-	auto target_idx = target_x + target_y * this->size;
+	auto target_idx = target.ne + target.se * this->size;
 
 	// Move outwards from the target cell, updating the integration field
 	this->cells[target_idx].cost = INTEGRATED_COST_START;
@@ -258,12 +257,10 @@ void IntegrationField::update_neighbor(size_t idx,
 	}
 }
 
-std::vector<std::pair<size_t, size_t>> IntegrationField::get_los_corners(const std::shared_ptr<CostField> &cost_field,
-                                                                         size_t target_x,
-                                                                         size_t target_y,
-                                                                         size_t blocker_x,
-                                                                         size_t blocker_y) {
-	std::vector<std::pair<size_t, size_t>> corners;
+std::vector<std::pair<int, int>> IntegrationField::get_los_corners(const std::shared_ptr<CostField> &cost_field,
+                                                                   const coord::tile &target,
+                                                                   const coord::tile &blocker) {
+	std::vector<std::pair<int, int>> corners;
 
 	// Get the cost of the blocking cell's neighbors
 
@@ -273,30 +270,30 @@ std::vector<std::pair<size_t, size_t>> IntegrationField::get_los_corners(const s
 	auto bottom_cost = COST_IMPASSABLE;
 	auto right_cost = COST_IMPASSABLE;
 
-	std::pair<size_t, size_t> top_left{blocker_x, blocker_y};
-	std::pair<size_t, size_t> top_right{blocker_x + 1, blocker_y};
-	std::pair<size_t, size_t> bottom_left{blocker_x, blocker_y + 1};
-	std::pair<size_t, size_t> bottom_right{blocker_x + 1, blocker_y + 1};
+	std::pair<int, int> top_left{blocker.ne, blocker.se};
+	std::pair<int, int> top_right{blocker.ne + 1, blocker.se};
+	std::pair<int, int> bottom_left{blocker.ne, blocker.se + 1};
+	std::pair<int, int> bottom_right{blocker.ne + 1, blocker.se + 1};
 
 	// Get neighbor costs (if they exist)
-	if (blocker_y > 0) {
-		top_cost = cost_field->get_cost(blocker_x, blocker_y - 1);
+	if (blocker.se > 0) {
+		top_cost = cost_field->get_cost(coord::tile{blocker.ne, blocker.se - 1});
 	}
-	if (blocker_x > 0) {
-		left_cost = cost_field->get_cost(blocker_x - 1, blocker_y);
+	if (blocker.ne > 0) {
+		left_cost = cost_field->get_cost(coord::tile{blocker.ne - 1, blocker.se});
 	}
-	if (blocker_y < this->size - 1) {
-		bottom_cost = cost_field->get_cost(blocker_x, blocker_y + 1);
+	if (blocker.se < this->size - 1) {
+		bottom_cost = cost_field->get_cost(coord::tile{blocker.ne, blocker.se + 1});
 	}
-	if (blocker_x < this->size - 1) {
-		right_cost = cost_field->get_cost(blocker_x + 1, blocker_y);
+	if (blocker.ne < this->size - 1) {
+		right_cost = cost_field->get_cost(coord::tile{blocker.ne + 1, blocker.se});
 	}
 
 	// Check which corners are blocking LOS
 	// TODO: Currently super complicated and could likely be optimized
-	if (blocker_x == target_x) {
+	if (blocker.ne == target.ne) {
 		// blocking cell is parallel to target on y-axis
-		if (blocker_y < target_y) {
+		if (blocker.se < target.se) {
 			if (left_cost == COST_MIN) {
 				// top
 				corners.push_back(bottom_left);
@@ -317,9 +314,9 @@ std::vector<std::pair<size_t, size_t>> IntegrationField::get_los_corners(const s
 			}
 		}
 	}
-	else if (blocker_y == target_y) {
+	else if (blocker.se == target.se) {
 		// blocking cell is parallel to target on x-axis
-		if (blocker_x < target_x) {
+		if (blocker.ne < target.ne) {
 			if (top_cost == COST_MIN) {
 				// right
 				corners.push_back(top_right);
@@ -342,8 +339,8 @@ std::vector<std::pair<size_t, size_t>> IntegrationField::get_los_corners(const s
 	}
 	else {
 		// blocking cell is diagonal to target on
-		if (blocker_x < target_x) {
-			if (blocker_y < target_y) {
+		if (blocker.ne < target.ne) {
+			if (blocker.se < target.se) {
 				// top and right
 				if (top_cost == COST_MIN and right_cost == COST_MIN) {
 					// right
@@ -367,7 +364,7 @@ std::vector<std::pair<size_t, size_t>> IntegrationField::get_los_corners(const s
 			}
 		}
 		else {
-			if (blocker_y < target_y) {
+			if (blocker.se < target.se) {
 				// top and left
 				if (top_cost == COST_MIN and left_cost == COST_MIN) {
 					// left
@@ -395,8 +392,7 @@ std::vector<std::pair<size_t, size_t>> IntegrationField::get_los_corners(const s
 	return corners;
 }
 
-std::vector<size_t> IntegrationField::bresenhams_line(int target_x,
-                                                      int target_y,
+std::vector<size_t> IntegrationField::bresenhams_line(const coord::tile &target,
                                                       int corner_x,
                                                       int corner_y) {
 	std::vector<size_t> cells;
@@ -411,8 +407,8 @@ std::vector<size_t> IntegrationField::bresenhams_line(int target_x,
 
 	// target coordinates
 	// offset by 0.5 to get the center of the cell
-	double tx = target_x + 0.5;
-	double ty = target_y + 0.5;
+	double tx = target.ne + 0.5;
+	double ty = target.se + 0.5;
 
 	// slope of the line
 	double dx = std::abs(tx - corner_x);

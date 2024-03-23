@@ -9,9 +9,6 @@
 #include "declarations.h"
 
 namespace openage {
-
-class Terrain;
-
 namespace coord {
 
 /*

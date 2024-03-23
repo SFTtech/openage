@@ -11,7 +11,12 @@
 #include "pathfinding/types.h"
 
 
-namespace openage::path {
+namespace openage {
+namespace coord {
+struct tile;
+} // namespace coord
+
+namespace path {
 class CostField;
 
 /**
@@ -36,11 +41,10 @@ public:
 	/**
 	 * Get the integration value at a specified position.
 	 *
-	 * @param x X coordinate.
-	 * @param y Y coordinate.
+	 * @param pos Coordinates of the cell.
 	 * @return Integration value at the specified position.
 	 */
-	const integrate_t &get_cell(size_t x, size_t y) const;
+	const integrate_t &get_cell(const coord::tile &pos) const;
 
 	/**
 	 * Get the integration value at a specified position.
@@ -57,26 +61,22 @@ public:
 	 * can be used as a starting point for the cost integration.
 	 *
 	 * @param cost_field Cost field to integrate.
-	 * @param target_x X coordinate of the target cell.
-	 * @param target_y Y coordinate of the target cell.
+	 * @param target Coordinates of the target cell.
 	 *
 	 * @return Cells flagged as "wavefront blocked".
 	 */
 	std::vector<size_t> integrate_los(const std::shared_ptr<CostField> &cost_field,
-	                                  size_t target_x,
-	                                  size_t target_y);
+	                                  const coord::tile &target);
 
 	/**
 	 * Calculate the cost integration field starting from a target cell.
 	 *
 	 * @param cost_field Cost field to integrate.
-	 * @param target_x X coordinate of the target cell.
-	 * @param target_y Y coordinate of the target cell.
+	 * @param target Coordinates of the target cell.
 	 * @param start_cells Cells flagged as "wavefront blocked" from a LOS pass.
 	 */
 	void integrate_cost(const std::shared_ptr<CostField> &cost_field,
-	                    size_t target_x,
-	                    size_t target_y);
+	                    const coord::tile &target);
 
 	/**
 	 * Calculate the cost integration field starting from a wavefront.
@@ -121,18 +121,14 @@ private:
 	 * Get the LOS corners around a cell.
 	 *
 	 * @param cost_field Cost field to integrate.
-	 * @param target_x X cell coordinate of the target.
-	 * @param target_y Y cell coordinate of the target.
-	 * @param blocker_x X cell coordinate of the cell blocking LOS.
-	 * @param blocker_y Y cell coordinate of the cell blocking LOS.
+	 * @param target Cell coordinates of the target.
+	 * @param blocker Cell coordinates of the cell blocking LOS.
 	 *
 	 * @return Field coordinates of the LOS corners.
 	 */
-	std::vector<std::pair<size_t, size_t>> get_los_corners(const std::shared_ptr<CostField> &cost_field,
-	                                                       size_t target_x,
-	                                                       size_t target_y,
-	                                                       size_t blocker_x,
-	                                                       size_t blocker_y);
+	std::vector<std::pair<int, int>> get_los_corners(const std::shared_ptr<CostField> &cost_field,
+	                                                 const coord::tile &target,
+	                                                 const coord::tile &blocker);
 
 	/**
 	 * Get the cells in a bresenham's line between the corner cell and the field edge.
@@ -142,13 +138,13 @@ private:
 	 * the cells between two arbitrary points. We do this because the intersection
 	 * point with the field edge is unknown.
 	 *
-	 * @param target_x X cell coordinate of the target.
-	 * @param target_y Y cell coordinate of the target.
+	 * @param target Cell coordinates of the target.
 	 * @param corner_x X field coordinate edge of the LOS corner.
 	 * @param corner_y Y field coordinate edge of the LOS corner.
+	 *
+	 * @return Cell indices of the LOS line.
 	 */
-	std::vector<size_t> bresenhams_line(int target_x,
-	                                    int target_y,
+	std::vector<size_t> bresenhams_line(const coord::tile &target,
 	                                    int corner_x,
 	                                    int corner_y);
 
@@ -163,4 +159,5 @@ private:
 	std::vector<integrate_t> cells;
 };
 
-} // namespace openage::path
+} // namespace path
+} // namespace openage
