@@ -7,13 +7,15 @@
 
 namespace openage::path {
 
-Portal::Portal(sector_id_t sector0,
+Portal::Portal(portal_id_t id,
+               sector_id_t sector0,
                sector_id_t sector1,
                PortalDirection direction,
                size_t cell_start_x,
                size_t cell_start_y,
                size_t cell_end_x,
                size_t cell_end_y) :
+	id{id},
 	sector0{sector0},
 	sector1{sector1},
 	sector0_exits{},
@@ -23,6 +25,10 @@ Portal::Portal(sector_id_t sector0,
 	cell_start_y{cell_start_y},
 	cell_end_x{cell_end_x},
 	cell_end_y{cell_end_y} {
+}
+
+portal_id_t Portal::get_id() const {
+	return this->id;
 }
 
 const std::vector<std::shared_ptr<Portal>> &Portal::get_exits(sector_id_t entry_sector) const {
@@ -92,6 +98,10 @@ std::pair<size_t, size_t> Portal::get_exit_end(sector_id_t entry_sector) const {
 	}
 
 	return this->get_sector0_end();
+}
+
+PortalDirection Portal::get_direction() const {
+	return this->direction;
 }
 
 std::pair<size_t, size_t> Portal::get_sector0_start() const {

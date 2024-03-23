@@ -42,6 +42,7 @@ public:
 	 * As a convention, sector 0 must be the either the north or east sector
 	 * on the grid in relation to sector 1.
 	 *
+	 * @param id ID of the portal. Should be unique per grid.
 	 * @param sector0 First sector connected by the portal.
 	 *                Must be north or east on the grid in relation to sector 1.
 	 * @param sector1 Second sector connected by the portal.
@@ -52,7 +53,8 @@ public:
 	 * @param cell_end_x End cell x coordinate in sector 0.
 	 * @param cell_end_y End cell y coordinate in sector 0.
 	 */
-	Portal(sector_id_t sector0,
+	Portal(portal_id_t id,
+	       sector_id_t sector0,
 	       sector_id_t sector1,
 	       PortalDirection direction,
 	       size_t cell_start_x,
@@ -61,6 +63,15 @@ public:
 	       size_t cell_end_y);
 
 	~Portal() = default;
+
+	/**
+	 * Get the ID of the portal.
+	 *
+	 * IDs are unique per grid.
+	 *
+	 * @return ID of the portal.
+	 */
+	portal_id_t get_id() const;
 
 	/**
 	 * Get the exit portals reachable via the portal when entering from a specified sector.
@@ -124,6 +135,13 @@ public:
 	 */
 	std::pair<size_t, size_t> get_exit_end(sector_id_t entry_sector) const;
 
+	/**
+	 * Get the direction of the portal from sector 0 to sector 1.
+	 *
+	 * @return Direction of the portal.
+	 */
+	PortalDirection get_direction() const;
+
 private:
 	/**
 	 * Get the start cell coordinates of the portal.
@@ -152,6 +170,11 @@ private:
 	 * @return End cell coordinates of the portal.
 	 */
 	std::pair<size_t, size_t> get_sector1_end() const;
+
+	/**
+	 * ID of the portal.
+	 */
+	portal_id_t id;
 
 	/**
 	 * First sector connected by the portal.
