@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "pathfinding/types.h"
+#include "util/vector.h"
 
 
 namespace openage::path {
@@ -22,26 +23,22 @@ public:
 	 * Create a new empty grid of width x height sectors with a specified size.
 	 *
 	 * @param id ID of the grid.
-	 * @param width Width of the grid.
-	 * @param height Height of the grid.
+	 * @param size Size of the grid (width x height).
 	 * @param sector_size Side length of each sector.
 	 */
 	Grid(grid_id_t id,
-	     size_t width,
-	     size_t height,
+	     const util::Vector2s &size,
 	     size_t sector_size);
 
 	/**
 	 * Create a grid of width x height sectors from a list of existing sectors.
 	 *
 	 * @param id ID of the grid.
-	 * @param width Width of the grid.
-	 * @param height Height of the grid.
+	 * @param size Size of the grid (width x height).
 	 * @param sectors Existing sectors.
 	 */
 	Grid(grid_id_t id,
-	     size_t width,
-	     size_t height,
+	     const util::Vector2s &size,
 	     std::vector<std::shared_ptr<Sector>> &&sectors);
 
 	/**
@@ -56,7 +53,7 @@ public:
 	 *
 	 * @return Size of the grid (width x height).
 	 */
-	std::pair<size_t, size_t> get_size() const;
+	const util::Vector2s &get_size() const;
 
 	/**
 	 * Get the sector at a specified position.
@@ -84,14 +81,9 @@ private:
 	grid_id_t id;
 
 	/**
-	 * Width of the grid.
+	 * Size of the grid (width x height).
 	 */
-	size_t width;
-
-	/**
-	 * Height of the grid.
-	 */
-	size_t height;
+	util::Vector2s size;
 
 	/**
 	 * Sectors of the grid.
