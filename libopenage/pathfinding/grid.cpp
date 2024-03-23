@@ -48,4 +48,8 @@ const std::shared_ptr<Sector> &Grid::get_sector(sector_id_t id) const {
 	return this->sectors.at(id);
 }
 
+const std::vector<std::shared_ptr<Sector>> &Grid::get_sectors() const {
+	return this->sectors;
+}
+
 } // namespace openage::path

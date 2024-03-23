@@ -74,6 +74,13 @@ public:
 	 */
 	const std::shared_ptr<Sector> &get_sector(sector_id_t id) const;
 
+	/**
+	 * Get the sectors of the grid.
+	 *
+	 * @return Sectors of the grid.
+	 */
+	const std::vector<std::shared_ptr<Sector>> &get_sectors() const;
+
 private:
 	/**
 	 * ID of the grid.
