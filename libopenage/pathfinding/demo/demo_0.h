@@ -35,7 +35,7 @@ class FlowField;
 namespace tests {
 
 /**
- * Show the pathfinding functionality of the path module:
+ * Show the functionality of the different flowfield types:
  *     - Cost field
  *     - Integration field
  *     - Flow field
