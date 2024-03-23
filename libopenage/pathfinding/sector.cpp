@@ -48,61 +48,80 @@ std::vector<std::shared_ptr<Portal>> Sector::find_portals(const std::shared_ptr<
 	auto other_cost = other->get_cost_field();
 
 	// compare the edges of the sectors
-	if (direction == PortalDirection::NORTH_SOUTH) {
-		// search from left to right
-		size_t start = 0;
-		bool passable_edge = false;
-		for (size_t x = 0; x < this->cost_field->get_size(); x++) {
-			if (this->cost_field->get_cost(coord::tile{x, this->cost_field->get_size() - 1}) != COST_IMPASSABLE
-			    and other_cost->get_cost(coord::tile{x, 0}) != COST_IMPASSABLE) {
-				if (not passable_edge) {
-					start = x;
-					passable_edge = true;
-				}
+	size_t start;
+	bool passable_edge;
+	for (size_t i = 0; i < this->cost_field->get_size(); ++i) {
+		auto coord_this = coord::tile{0, 0};
+		auto coord_other = coord::tile{0, 0};
+		if (direction == PortalDirection::NORTH_SOUTH) {
+			// right edge; top to bottom
+			coord_this = coord::tile{i, this->cost_field->get_size() - 1};
+			coord_other = coord::tile{i, 0};
+		}
+		else if (direction == PortalDirection::EAST_WEST) {
+			// bottom edge; east to west
+			coord_this = coord::tile{this->cost_field->get_size() - 1, i};
+			coord_other = coord::tile{0, i};
+		}
+
+		if (this->cost_field->get_cost(coord_this) != COST_IMPASSABLE
+		    and other_cost->get_cost(coord_other) != COST_IMPASSABLE) {
+			if (not passable_edge) {
+				start = i;
+				passable_edge = true;
 			}
-			else {
-				if (passable_edge) {
-					result.push_back(
-						std::make_shared<Portal>(
-							next_id,
-							this->id,
-							other->get_id(),
-							direction,
-							coord::tile{start, this->cost_field->get_size() - 1},
-							coord::tile{x - 1, 0}));
-					passable_edge = false;
-					next_id += 1;
+		}
+		else {
+			if (passable_edge) {
+				auto coord_start = coord::tile{0, 0};
+				auto coord_end = coord::tile{0, 0};
+				if (direction == PortalDirection::NORTH_SOUTH) {
+					// right edge; top to bottom
+					coord_start = coord::tile{start, this->cost_field->get_size() - 1};
+					coord_end = coord::tile{i - 1, this->cost_field->get_size() - 1};
 				}
+				else if (direction == PortalDirection::EAST_WEST) {
+					// bottom edge; east to west
+					coord_start = coord::tile{this->cost_field->get_size() - 1, start};
+					coord_end = coord::tile{this->cost_field->get_size() - 1, i - 1};
+				}
+
+				result.push_back(
+					std::make_shared<Portal>(
+						next_id,
+						this->id,
+						other->get_id(),
+						direction,
+						coord_start,
+						coord_end));
+				passable_edge = false;
+				next_id += 1;
 			}
 		}
 	}
-	else if (direction == PortalDirection::EAST_WEST) {
-		// search from top to bottom
-		size_t start = 0;
-		bool passable_edge = false;
-		for (size_t y = 0; y < this->cost_field->get_size(); y++) {
-			if (this->cost_field->get_cost(coord::tile{this->cost_field->get_size() - 1, y}) != COST_IMPASSABLE
-			    and other_cost->get_cost(coord::tile{0, y}) != COST_IMPASSABLE) {
-				if (not passable_edge) {
-					start = y;
-					passable_edge = true;
-				}
-			}
-			else {
-				if (passable_edge) {
-					result.push_back(
-						std::make_shared<Portal>(
-							next_id,
-							this->id,
-							other->get_id(),
-							direction,
-							coord::tile{this->cost_field->get_size() - 1, start},
-							coord::tile{0, y - 1}));
-					passable_edge = false;
-					next_id += 1;
-				}
-			}
+
+	// recheck for the last tile on the edge
+	// because it may be the end of a portal
+	if (passable_edge) {
+		auto coord_start = coord::tile{0, 0};
+		auto coord_end = coord::tile{0, 0};
+		if (direction == PortalDirection::NORTH_SOUTH) {
+			coord_start = coord::tile{start, this->cost_field->get_size() - 1};
+			coord_end = coord::tile{this->cost_field->get_size() - 1, this->cost_field->get_size() - 1};
 		}
+		else if (direction == PortalDirection::EAST_WEST) {
+			coord_start = coord::tile{this->cost_field->get_size() - 1, start};
+			coord_end = coord::tile{this->cost_field->get_size() - 1, this->cost_field->get_size() - 1};
+		}
+
+		result.push_back(
+			std::make_shared<Portal>(
+				next_id,
+				this->id,
+				other->get_id(),
+				direction,
+				coord_start,
+				coord_end));
 	}
 
 	return result;
