@@ -4,6 +4,7 @@
 
 #include "error/error.h"
 
+#include "coord/tile.h"
 #include "pathfinding/cost_field.h"
 #include "pathfinding/definitions.h"
 
@@ -52,8 +53,8 @@ std::vector<std::shared_ptr<Portal>> Sector::find_portals(const std::shared_ptr<
 		size_t start = 0;
 		bool passable_edge = false;
 		for (size_t x = 0; x < this->cost_field->get_size(); x++) {
-			if (this->cost_field->get_cost(x, this->cost_field->get_size() - 1) != COST_IMPASSABLE
-			    and other_cost->get_cost(x, 0) != COST_IMPASSABLE) {
+			if (this->cost_field->get_cost(coord::tile{x, this->cost_field->get_size() - 1}) != COST_IMPASSABLE
+			    and other_cost->get_cost(coord::tile{x, 0}) != COST_IMPASSABLE) {
 				if (not passable_edge) {
 					start = x;
 					passable_edge = true;
@@ -67,10 +68,8 @@ std::vector<std::shared_ptr<Portal>> Sector::find_portals(const std::shared_ptr<
 							this->id,
 							other->get_id(),
 							direction,
-							start,
-							this->cost_field->get_size() - 1,
-							x - 1,
-							0));
+							coord::tile{start, this->cost_field->get_size() - 1},
+							coord::tile{x - 1, 0}));
 					passable_edge = false;
 					next_id += 1;
 				}
@@ -82,8 +81,8 @@ std::vector<std::shared_ptr<Portal>> Sector::find_portals(const std::shared_ptr<
 		size_t start = 0;
 		bool passable_edge = false;
 		for (size_t y = 0; y < this->cost_field->get_size(); y++) {
-			if (this->cost_field->get_cost(this->cost_field->get_size() - 1, y) != COST_IMPASSABLE
-			    and other_cost->get_cost(0, y) != COST_IMPASSABLE) {
+			if (this->cost_field->get_cost(coord::tile{this->cost_field->get_size() - 1, y}) != COST_IMPASSABLE
+			    and other_cost->get_cost(coord::tile{0, y}) != COST_IMPASSABLE) {
 				if (not passable_edge) {
 					start = y;
 					passable_edge = true;
@@ -97,10 +96,8 @@ std::vector<std::shared_ptr<Portal>> Sector::find_portals(const std::shared_ptr<
 							this->id,
 							other->get_id(),
 							direction,
-							this->cost_field->get_size() - 1,
-							start,
-							0,
-							y - 1));
+							coord::tile{this->cost_field->get_size() - 1, start},
+							coord::tile{0, y - 1}));
 					passable_edge = false;
 					next_id += 1;
 				}

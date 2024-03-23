@@ -10,7 +10,12 @@
 #include "pathfinding/types.h"
 
 
-namespace openage::path {
+namespace openage {
+namespace coord {
+struct tile;
+} // namespace coord
+
+namespace path {
 class IntegrationField;
 
 class FlowField {
@@ -39,22 +44,20 @@ public:
 	/**
 	 * Get the flow field value at a specified position.
 	 *
-	 * @param x X coordinate.
-	 * @param y Y coordinate.
+	 * @param pos Coordinates of the cell.
 	 *
 	 * @return Flowfield value at the specified position.
 	 */
-	flow_t get_cell(size_t x, size_t y) const;
+	flow_t get_cell(const coord::tile &pos) const;
 
 	/**
 	 * Get the flow field direction at a specified position.
 	 *
-	 * @param x X coordinate.
-	 * @param y Y coordinate.
+	 * @param pos Coordinates of the cell.
 	 *
 	 * @return Flowfield direction at the specified position.
 	 */
-	flow_dir_t get_dir(size_t x, size_t y) const;
+	flow_dir_t get_dir(const coord::tile &pos) const;
 
 	/**
 	 * Build the flow field.
@@ -87,4 +90,5 @@ private:
 	std::vector<flow_t> cells;
 };
 
-} // namespace openage::path
+} // namespace path
+} // namespace openage

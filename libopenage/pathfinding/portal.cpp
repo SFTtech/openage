@@ -11,20 +11,16 @@ Portal::Portal(portal_id_t id,
                sector_id_t sector0,
                sector_id_t sector1,
                PortalDirection direction,
-               size_t cell_start_x,
-               size_t cell_start_y,
-               size_t cell_end_x,
-               size_t cell_end_y) :
+               const coord::tile &cell_start,
+               const coord::tile &cell_end) :
 	id{id},
 	sector0{sector0},
 	sector1{sector1},
 	sector0_exits{},
 	sector1_exits{},
 	direction{direction},
-	cell_start_x{cell_start_x},
-	cell_start_y{cell_start_y},
-	cell_end_x{cell_end_x},
-	cell_end_y{cell_end_y} {
+	cell_start{cell_start},
+	cell_end{cell_end} {
 }
 
 portal_id_t Portal::get_id() const {
@@ -60,7 +56,7 @@ sector_id_t Portal::get_exit_sector(sector_id_t entry_sector) const {
 	return this->sector0;
 }
 
-std::pair<size_t, size_t> Portal::get_entry_start(sector_id_t entry_sector) const {
+const coord::tile Portal::get_entry_start(sector_id_t entry_sector) const {
 	ENSURE(entry_sector == this->sector0 || entry_sector == this->sector1, "Invalid entry sector");
 
 	if (entry_sector == this->sector0) {
@@ -70,7 +66,7 @@ std::pair<size_t, size_t> Portal::get_entry_start(sector_id_t entry_sector) cons
 	return this->get_sector1_start();
 }
 
-std::pair<size_t, size_t> Portal::get_entry_end(sector_id_t entry_sector) const {
+const coord::tile Portal::get_entry_end(sector_id_t entry_sector) const {
 	ENSURE(entry_sector == this->sector0 || entry_sector == this->sector1, "Invalid entry sector");
 
 	if (entry_sector == this->sector0) {
@@ -80,7 +76,7 @@ std::pair<size_t, size_t> Portal::get_entry_end(sector_id_t entry_sector) const 
 	return this->get_sector1_end();
 }
 
-std::pair<size_t, size_t> Portal::get_exit_start(sector_id_t entry_sector) const {
+const coord::tile Portal::get_exit_start(sector_id_t entry_sector) const {
 	ENSURE(entry_sector == this->sector0 || entry_sector == this->sector1, "Invalid entry sector");
 
 	if (entry_sector == this->sector0) {
@@ -90,7 +86,7 @@ std::pair<size_t, size_t> Portal::get_exit_start(sector_id_t entry_sector) const
 	return this->get_sector0_start();
 }
 
-std::pair<size_t, size_t> Portal::get_exit_end(sector_id_t entry_sector) const {
+const coord::tile Portal::get_exit_end(sector_id_t entry_sector) const {
 	ENSURE(entry_sector == this->sector0 || entry_sector == this->sector1, "Invalid entry sector");
 
 	if (entry_sector == this->sector0) {
@@ -104,20 +100,26 @@ PortalDirection Portal::get_direction() const {
 	return this->direction;
 }
 
-std::pair<size_t, size_t> Portal::get_sector0_start() const {
-	return {this->cell_start_x, this->cell_start_y};
+const coord::tile &Portal::get_sector0_start() const {
+	return this->cell_start;
 }
 
-std::pair<size_t, size_t> Portal::get_sector0_end() const {
-	return {this->cell_end_x, this->cell_end_y};
+const coord::tile &Portal::get_sector0_end() const {
+	return this->cell_end;
 }
 
-std::pair<size_t, size_t> Portal::get_sector1_start() const {
-	return {this->cell_end_x, this->cell_end_y};
+const coord::tile Portal::get_sector1_start() const {
+	if (this->direction == PortalDirection::NORTH_SOUTH) {
+		return {this->cell_start.ne, 0};
+	}
+	return {0, this->cell_start.se};
 }
 
-std::pair<size_t, size_t> Portal::get_sector1_end() const {
-	return {this->cell_start_x, this->cell_start_y};
+const coord::tile Portal::get_sector1_end() const {
+	if (this->direction == PortalDirection::NORTH_SOUTH) {
+		return {this->cell_end.ne, 0};
+	}
+	return {0, this->cell_end.se};
 }
 
 } // namespace openage::path

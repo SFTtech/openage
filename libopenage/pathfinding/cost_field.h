@@ -8,7 +8,12 @@
 #include "pathfinding/types.h"
 
 
-namespace openage::path {
+namespace openage {
+namespace coord {
+struct tile;
+} // namespace coord
+
+namespace path {
 
 /**
  * Cost field in the flow-field pathfinding algorithm.
@@ -32,11 +37,10 @@ public:
 	/**
 	 * Get the cost at a specified position.
 	 *
-	 * @param x X coordinate.
-	 * @param y Y coordinate.
+	 * @param pos Coordinates of the cell.
 	 * @return Cost at the specified position.
 	 */
-	cost_t get_cost(size_t x, size_t y) const;
+	cost_t get_cost(const coord::tile &pos) const;
 
 	/**
 	 * Get the cost at a specified position.
@@ -49,11 +53,18 @@ public:
 	/**
 	 * Set the cost at a specified position.
 	 *
-	 * @param x X coordinate.
-	 * @param y Y coordinate.
+	 * @param pos Coordinates of the cell.
 	 * @param cost Cost to set.
 	 */
-	void set_cost(size_t x, size_t y, cost_t cost);
+	void set_cost(const coord::tile &pos, cost_t cost);
+
+	/**
+	 * Set the cost at a specified position.
+	 *
+	 * @param idx Index of the cell.
+	 * @param cost Cost to set.
+	 */
+	void set_cost(size_t idx, cost_t cost);
 
 	/**
 	 * Get the cost field values.
@@ -81,4 +92,5 @@ private:
 	std::vector<cost_t> cells;
 };
 
-} // namespace openage::path
+} // namespace path
+} // namespace openage

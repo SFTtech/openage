@@ -5,6 +5,7 @@
 #include <QKeyEvent>
 #include <QMouseEvent>
 
+#include "coord/tile.h"
 #include "pathfinding/cost_field.h"
 #include "pathfinding/flow_field.h"
 #include "pathfinding/integration_field.h"
@@ -29,15 +30,15 @@ void path_demo_0(const util::Path &path) {
 
 	// Cost field with some obstacles
 	auto cost_field = std::make_shared<CostField>(field_length);
-	cost_field->set_cost(0, 0, COST_IMPASSABLE);
-	cost_field->set_cost(1, 0, 254);
-	cost_field->set_cost(4, 3, 128);
-	cost_field->set_cost(5, 3, 128);
-	cost_field->set_cost(6, 3, 128);
-	cost_field->set_cost(4, 4, 128);
-	cost_field->set_cost(5, 4, 128);
-	cost_field->set_cost(6, 4, 128);
-	cost_field->set_cost(1, 7, COST_IMPASSABLE);
+	cost_field->set_cost(coord::tile{0, 0}, COST_IMPASSABLE);
+	cost_field->set_cost(coord::tile{1, 0}, 254);
+	cost_field->set_cost(coord::tile{4, 3}, 128);
+	cost_field->set_cost(coord::tile{5, 3}, 128);
+	cost_field->set_cost(coord::tile{6, 3}, 128);
+	cost_field->set_cost(coord::tile{4, 4}, 128);
+	cost_field->set_cost(coord::tile{5, 4}, 128);
+	cost_field->set_cost(coord::tile{6, 4}, 128);
+	cost_field->set_cost(coord::tile{1, 7}, COST_IMPASSABLE);
 	log::log(INFO << "Created cost field");
 
 	// Create an integration field from the cost field
@@ -45,7 +46,7 @@ void path_demo_0(const util::Path &path) {
 	log::log(INFO << "Created integration field");
 
 	// Set cell (7, 7) to be the initial target cell
-	auto wavefront_blocked = integration_field->integrate_los(cost_field, 7, 7);
+	auto wavefront_blocked = integration_field->integrate_los(cost_field, coord::tile{7, 7});
 	integration_field->integrate_cost(cost_field, std::move(wavefront_blocked));
 	log::log(INFO << "Calculated integration field for target cell (7, 7)");
 
@@ -83,7 +84,7 @@ void path_demo_0(const util::Path &path) {
 
 					// Recalculate the integration field and the flow field
 					integration_field->reset();
-					auto wavefront_blocked = integration_field->integrate_los(cost_field, grid_x, grid_y);
+					auto wavefront_blocked = integration_field->integrate_los(cost_field, coord::tile{grid_x, grid_y});
 					integration_field->integrate_cost(cost_field, std::move(wavefront_blocked));
 					log::log(INFO << "Calculated integration field for target cell ("
 					              << grid_x << ", " << grid_y << ")");
@@ -266,7 +267,7 @@ void RenderManager::show_vectors(const std::shared_ptr<path::FlowField> &field) 
 	this->vector_pass->clear_renderables();
 	for (size_t y = 0; y < field->get_size(); ++y) {
 		for (size_t x = 0; x < field->get_size(); ++x) {
-			auto cell = field->get_cell(x, y);
+			auto cell = field->get_cell(coord::tile{x, y});
 			if (cell & FLOW_PATHABLE_MASK and not(cell & FLOW_LOS_MASK)) {
 				Eigen::Affine3f arrow_model = Eigen::Affine3f::Identity();
 				arrow_model.translate(Eigen::Vector3f(y + 0.5, 0, -1.0f * x - 0.5));
@@ -557,19 +558,19 @@ renderer::resources::MeshData RenderManager::get_cost_field_mesh(const std::shar
 			// for each vertex, compare the surrounding tiles
 			std::vector<float> surround{};
 			if (j - 1 >= 0 and i - 1 >= 0) {
-				auto cost = field->get_cost((i - 1) / resolution, (j - 1) / resolution);
+				auto cost = field->get_cost(coord::tile{(i - 1) / resolution, (j - 1) / resolution});
 				surround.push_back(cost);
 			}
 			if (j < static_cast<int>(field->get_size()) and i - 1 >= 0) {
-				auto cost = field->get_cost((i - 1) / resolution, j / resolution);
+				auto cost = field->get_cost(coord::tile{(i - 1) / resolution, j / resolution});
 				surround.push_back(cost);
 			}
 			if (j < static_cast<int>(field->get_size()) and i < static_cast<int>(field->get_size())) {
-				auto cost = field->get_cost(i / resolution, j / resolution);
+				auto cost = field->get_cost(coord::tile{i / resolution, j / resolution});
 				surround.push_back(cost);
 			}
 			if (j - 1 >= 0 and i < static_cast<int>(field->get_size())) {
-				auto cost = field->get_cost(i / resolution, (j - 1) / resolution);
+				auto cost = field->get_cost(coord::tile{i / resolution, (j - 1) / resolution});
 				surround.push_back(cost);
 			}
 			// use the cost of the most expensive surrounding tile
@@ -643,19 +644,19 @@ renderer::resources::MeshData RenderManager::get_integration_field_mesh(const st
 			// for each vertex, compare the surrounding tiles
 			std::vector<float> surround{};
 			if (j - 1 >= 0 and i - 1 >= 0) {
-				auto cost = field->get_cell((i - 1) / resolution, (j - 1) / resolution).cost;
+				auto cost = field->get_cell(coord::tile{(i - 1) / resolution, (j - 1) / resolution}).cost;
 				surround.push_back(cost);
 			}
 			if (j < static_cast<int>(field->get_size()) and i - 1 >= 0) {
-				auto cost = field->get_cell((i - 1) / resolution, j / resolution).cost;
+				auto cost = field->get_cell(coord::tile{(i - 1) / resolution, j / resolution}).cost;
 				surround.push_back(cost);
 			}
 			if (j < static_cast<int>(field->get_size()) and i < static_cast<int>(field->get_size())) {
-				auto cost = field->get_cell(i / resolution, j / resolution).cost;
+				auto cost = field->get_cell(coord::tile{i / resolution, j / resolution}).cost;
 				surround.push_back(cost);
 			}
 			if (j - 1 >= 0 and i < static_cast<int>(field->get_size())) {
-				auto cost = field->get_cell(i / resolution, (j - 1) / resolution).cost;
+				auto cost = field->get_cell(coord::tile{i / resolution, (j - 1) / resolution}).cost;
 				surround.push_back(cost);
 			}
 			// use the cost of the most expensive surrounding tile
@@ -729,19 +730,19 @@ renderer::resources::MeshData RenderManager::get_flow_field_mesh(const std::shar
 			// for each vertex, compare the surrounding tiles
 			std::vector<float> surround{};
 			if (j - 1 >= 0 and i - 1 >= 0) {
-				auto cost = field->get_cell((i - 1) / resolution, (j - 1) / resolution);
+				auto cost = field->get_cell(coord::tile{(i - 1) / resolution, (j - 1) / resolution});
 				surround.push_back(cost);
 			}
 			if (j < static_cast<int>(field->get_size()) and i - 1 >= 0) {
-				auto cost = field->get_cell((i - 1) / resolution, j / resolution);
+				auto cost = field->get_cell(coord::tile{(i - 1) / resolution, j / resolution});
 				surround.push_back(cost);
 			}
 			if (j < static_cast<int>(field->get_size()) and i < static_cast<int>(field->get_size())) {
-				auto cost = field->get_cell(i / resolution, j / resolution);
+				auto cost = field->get_cell(coord::tile{i / resolution, j / resolution});
 				surround.push_back(cost);
 			}
 			if (j - 1 >= 0 and i < static_cast<int>(field->get_size())) {
-				auto cost = field->get_cell(i / resolution, (j - 1) / resolution);
+				auto cost = field->get_cell(coord::tile{i / resolution, (j - 1) / resolution});
 				surround.push_back(cost);
 			}
 			// use the cost of the most expensive surrounding tile
