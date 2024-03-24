@@ -89,7 +89,7 @@ public:
 	 * This method should be called after all sectors and portals have
 	 * been created and initialized.
 	 */
-	void connect_portals();
+	void connect_exits();
 
 private:
 	/**

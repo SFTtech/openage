@@ -27,6 +27,15 @@ portal_id_t Portal::get_id() const {
 	return this->id;
 }
 
+const std::vector<std::shared_ptr<Portal>> &Portal::get_connected(sector_id_t sector) const {
+	ENSURE(sector == this->sector0 || sector == this->sector1, "Portal does not connect to sector");
+
+	if (sector == this->sector0) {
+		return this->sector0_exits;
+	}
+	return this->sector1_exits;
+}
+
 const std::vector<std::shared_ptr<Portal>> &Portal::get_exits(sector_id_t entry_sector) const {
 	ENSURE(entry_sector == this->sector0 || entry_sector == this->sector1, "Invalid entry sector");
 
