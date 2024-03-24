@@ -2,6 +2,9 @@
 
 #include "sector.h"
 
+#include <deque>
+#include <unordered_set>
+
 #include "error/error.h"
 
 #include "coord/tile.h"
@@ -127,8 +130,129 @@ std::vector<std::shared_ptr<Portal>> Sector::find_portals(const std::shared_ptr<
 	return result;
 }
 
-void Sector::connect_portals() {
-	// TODO: Flood fill to find connected sectors
+void Sector::connect_exits() {
+	if (this->portals.empty()) {
+		return;
+	}
+
+	std::unordered_set<portal_id_t> portal_ids;
+	for (const auto &portal : this->portals) {
+		portal_ids.insert(portal->get_id());
+	}
+
+	// check all portals in the sector
+	std::vector<std::shared_ptr<Portal>> search_portals = this->portals;
+	while (not portal_ids.empty()) {
+		auto portal = search_portals.back();
+		search_portals.pop_back();
+		portal_ids.erase(portal->get_id());
+
+		auto start = portal->get_entry_start(this->id);
+		auto end = portal->get_entry_end(this->id);
+
+		std::unordered_set<size_t> visited;
+		std::deque<size_t> open_list;
+		std::vector<size_t> neighbors;
+		neighbors.reserve(4);
+
+		if (portal->get_direction() == PortalDirection::NORTH_SOUTH) {
+			// right edge; top to bottom
+			for (size_t i = start.se; i <= end.se; ++i) {
+				open_list.push_back(start.ne + i * this->cost_field->get_size());
+			}
+		}
+		else if (portal->get_direction() == PortalDirection::EAST_WEST) {
+			// bottom edge; east to west
+			for (size_t i = start.ne; i <= end.ne; ++i) {
+				open_list.push_back(i + start.se * this->cost_field->get_size());
+			}
+		}
+
+		// flood fill the grid to find connected portals
+		while (not open_list.empty()) {
+			auto current = open_list.front();
+			open_list.pop_front();
+
+			if (visited.contains(current)) {
+				continue;
+			}
+
+			// Get the x and y coordinates of the current cell
+			auto x = current % this->cost_field->get_size();
+			auto y = current / this->cost_field->get_size();
+
+			// check the neighbors
+			if (y > 0) {
+				neighbors.push_back(current - this->cost_field->get_size());
+			}
+			if (x > 0) {
+				neighbors.push_back(current - 1);
+			}
+			if (y < this->cost_field->get_size() - 1) {
+				neighbors.push_back(current + this->cost_field->get_size());
+			}
+			if (x < this->cost_field->get_size() - 1) {
+				neighbors.push_back(current + 1);
+			}
+
+			// add the neighbors to the open list
+			for (const auto &neighbor : neighbors) {
+				if (this->cost_field->get_cost(neighbor) != COST_IMPASSABLE) {
+					open_list.push_back(neighbor);
+				}
+			}
+			neighbors.clear();
+
+			// mark the current cell as visited
+			visited.insert(current);
+		}
+
+		// check if the visited cells are connected to another portal
+		std::vector<std::shared_ptr<Portal>> connected_portals;
+		for (auto &exit : this->portals) {
+			if (exit->get_id() == portal->get_id()) {
+				// skip the current portal
+				continue;
+			}
+
+			// get the start cell of the exit portal
+			// we only have to check one cell since the flood fill
+			// should reach any exit cell
+			auto exit_start = exit->get_entry_start(this->id);
+			auto exit_cell = exit_start.ne + exit_start.se * this->cost_field->get_size();
+
+			// check if the exit cell is connected to the visited cells
+			if (visited.contains(exit_cell)) {
+				connected_portals.push_back(exit);
+			}
+		}
+
+		// set the exits for the current portal
+		portal->set_exits(this->id, connected_portals);
+
+		// All connected portals share the same exits
+		// so we can connect them here
+		for (auto &connected : connected_portals) {
+			// make a new vector with all connected portals except the current one
+			std::vector<std::shared_ptr<Portal>> other_connected;
+			for (auto &other : connected_portals) {
+				if (other->get_id() != connected->get_id()) {
+					other_connected.push_back(other);
+				}
+			}
+
+			// add the original portal as it is not in the connected portals vector
+			other_connected.push_back(portal);
+
+			// set the exits for the connected portal
+			connected->set_exits(this->id, other_connected);
+
+			// we don't need to food fill for this portal since we have
+			// found all exits, so we can remove it from the portals that
+			// should be searched
+			portal_ids.erase(connected->get_id());
+		}
+	}
 }
 
 } // namespace openage::path

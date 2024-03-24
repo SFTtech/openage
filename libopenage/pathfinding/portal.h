@@ -71,6 +71,15 @@ public:
 	portal_id_t get_id() const;
 
 	/**
+	 * Get the connected portals in the specified sector.
+	 *
+	 * @param sector Sector ID.
+	 *
+	 * @return Connected portals in the sector.
+	 */
+	const std::vector<std::shared_ptr<Portal>> &get_connected(sector_id_t sector) const;
+
+	/**
 	 * Get the exit portals reachable via the portal when entering from a specified sector.
 	 *
 	 * @param entry_sector Sector from which the portal is entered.

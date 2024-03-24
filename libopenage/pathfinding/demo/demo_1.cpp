@@ -49,13 +49,18 @@ void path_demo_1(const util::Path &path) {
 	}
 
 	for (auto sector : grid->get_sectors()) {
+		sector->connect_exits();
+	}
+
+	for (auto sector : grid->get_sectors()) {
 		log::log(MSG(info) << "Sector " << sector->get_id() << " has " << sector->get_portals().size() << " portals.");
 		for (auto portal : sector->get_portals()) {
-			log::log(MSG(info) << "\tPortal " << portal->get_id() << " connects sectors "
-			                   << sector->get_id() << " and "
-			                   << portal->get_exit_sector(sector->get_id()) << " at tiles "
-			                   << portal->get_entry_start(sector->get_id()) << " and "
-			                   << portal->get_entry_end(sector->get_id()));
+			log::log(MSG(info) << "  Portal " << portal->get_id() << ":");
+			log::log(MSG(info) << "    Connects sectors:  " << sector->get_id() << " to "
+			                   << portal->get_exit_sector(sector->get_id()));
+			log::log(MSG(info) << "    Entry start:       " << portal->get_entry_start(sector->get_id()));
+			log::log(MSG(info) << "    Entry end:         " << portal->get_entry_end(sector->get_id()));
+			log::log(MSG(info) << "    Connected portals: " << portal->get_connected(sector->get_id()).size());
 		}
 	}
 }
