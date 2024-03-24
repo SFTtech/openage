@@ -48,11 +48,10 @@ void path_demo_1(const util::Path &path) {
 		}
 	}
 
+	// Connect portals inside sectors.
 	for (auto sector : grid->get_sectors()) {
 		sector->connect_exits();
-	}
 
-	for (auto sector : grid->get_sectors()) {
 		log::log(MSG(info) << "Sector " << sector->get_id() << " has " << sector->get_portals().size() << " portals.");
 		for (auto portal : sector->get_portals()) {
 			log::log(MSG(info) << "  Portal " << portal->get_id() << ":");
