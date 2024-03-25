@@ -50,7 +50,7 @@ void path_demo_0(const util::Path &path);
 /**
  * Manages the graphical display of the pathfinding demo.
  */
-class RenderManager {
+class RenderManager0 {
 public:
 	enum class field_t {
 		COST,
@@ -65,10 +65,10 @@ public:
 	 * @param window Window to render to.
 	 * @param path Path to the project rootdir.
 	 */
-	RenderManager(const std::shared_ptr<renderer::gui::GuiApplicationWithLogger> &app,
-	              const std::shared_ptr<renderer::Window> &window,
-	              const util::Path &path);
-	~RenderManager() = default;
+	RenderManager0(const std::shared_ptr<renderer::gui::GuiApplicationWithLogger> &app,
+	               const std::shared_ptr<renderer::Window> &window,
+	               const util::Path &path);
+	~RenderManager0() = default;
 
 	/**
 	 * Run the render loop.
@@ -126,6 +126,7 @@ private:
 	 * Create the following render passes for the demo:
 	 *   - Background pass: Mono-colored background object.
 	 *   - Field pass; Renders the cost, integration and flow fields.
+	 *   - Vector pass: Renders the steering vectors of a flow field.
 	 *   - Grid pass: Renders a grid on top of the fields.
 	 *   - Display pass: Draws the results of previous passes to the screen.
 	 */

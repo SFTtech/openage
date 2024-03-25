@@ -60,12 +60,12 @@ void path_demo_0(const util::Path &path) {
 	// Render the grid and the pathfinding results
 	auto qtapp = std::make_shared<renderer::gui::GuiApplicationWithLogger>();
 	auto window = std::make_shared<renderer::opengl::GlWindow>("openage pathfinding test", 1440, 720);
-	auto render_manager = std::make_shared<RenderManager>(qtapp, window, path);
-	log::log(INFO << "Created RenderManager for pathfinding demo");
+	auto render_manager = std::make_shared<RenderManager0>(qtapp, window, path);
+	log::log(INFO << "Created render manager for pathfinding demo");
 
 	// Show the cost field on startup
 	render_manager->show_cost_field(cost_field);
-	auto current_field = RenderManager::field_t::COST;
+	auto current_field = RenderManager0::field_t::COST;
 	log::log(INFO << "Showing cost field");
 
 	// Make steering vector visibility toggleable
@@ -95,13 +95,13 @@ void path_demo_0(const util::Path &path) {
 
 					// Show the new field values and vectors
 					switch (current_field) {
-					case RenderManager::field_t::COST:
+					case RenderManager0::field_t::COST:
 						render_manager->show_cost_field(cost_field);
 						break;
-					case RenderManager::field_t::INTEGRATION:
+					case RenderManager0::field_t::INTEGRATION:
 						render_manager->show_integration_field(integration_field);
 						break;
-					case RenderManager::field_t::FLOW:
+					case RenderManager0::field_t::FLOW:
 						render_manager->show_flow_field(flow_field);
 						break;
 					}
@@ -119,17 +119,17 @@ void path_demo_0(const util::Path &path) {
 		if (ev.type() == QEvent::KeyRelease) {
 			if (ev.key() == Qt::Key_F1) { // Show cost field
 				render_manager->show_cost_field(cost_field);
-				current_field = RenderManager::field_t::COST;
+				current_field = RenderManager0::field_t::COST;
 				log::log(INFO << "Showing cost field");
 			}
 			else if (ev.key() == Qt::Key_F2) { // Show integration field
 				render_manager->show_integration_field(integration_field);
-				current_field = RenderManager::field_t::INTEGRATION;
+				current_field = RenderManager0::field_t::INTEGRATION;
 				log::log(INFO << "Showing integration field");
 			}
 			else if (ev.key() == Qt::Key_F3) { // Show flow field
 				render_manager->show_flow_field(flow_field);
-				current_field = RenderManager::field_t::FLOW;
+				current_field = RenderManager0::field_t::FLOW;
 				log::log(INFO << "Showing flow field");
 			}
 			else if (ev.key() == Qt::Key_F4) { // Show steering vectors
@@ -156,9 +156,9 @@ void path_demo_0(const util::Path &path) {
 }
 
 
-RenderManager::RenderManager(const std::shared_ptr<renderer::gui::GuiApplicationWithLogger> &app,
-                             const std::shared_ptr<renderer::Window> &window,
-                             const util::Path &path) :
+RenderManager0::RenderManager0(const std::shared_ptr<renderer::gui::GuiApplicationWithLogger> &app,
+                               const std::shared_ptr<renderer::Window> &window,
+                               const util::Path &path) :
 	path{path},
 	app{app},
 	window{window},
@@ -175,7 +175,7 @@ RenderManager::RenderManager(const std::shared_ptr<renderer::gui::GuiApplication
 }
 
 
-void RenderManager::run() {
+void RenderManager0::run() {
 	while (not this->window->should_close()) {
 		this->app->process_events();
 
@@ -192,7 +192,7 @@ void RenderManager::run() {
 	this->window->close();
 }
 
-void RenderManager::show_cost_field(const std::shared_ptr<path::CostField> &field) {
+void RenderManager0::show_cost_field(const std::shared_ptr<path::CostField> &field) {
 	Eigen::Matrix4f model = Eigen::Matrix4f::Identity();
 	auto unifs = this->cost_shader->new_uniform_input(
 		"model",
@@ -201,7 +201,7 @@ void RenderManager::show_cost_field(const std::shared_ptr<path::CostField> &fiel
 		this->camera->get_view_matrix(),
 		"proj",
 		this->camera->get_projection_matrix());
-	auto mesh = RenderManager::get_cost_field_mesh(field);
+	auto mesh = RenderManager0::get_cost_field_mesh(field);
 	auto geometry = this->renderer->add_mesh_geometry(mesh);
 	renderer::Renderable renderable{
 		unifs,
@@ -212,7 +212,7 @@ void RenderManager::show_cost_field(const std::shared_ptr<path::CostField> &fiel
 	this->field_pass->set_renderables({renderable});
 }
 
-void RenderManager::show_integration_field(const std::shared_ptr<path::IntegrationField> &field) {
+void RenderManager0::show_integration_field(const std::shared_ptr<path::IntegrationField> &field) {
 	Eigen::Matrix4f model = Eigen::Matrix4f::Identity();
 	auto unifs = this->integration_shader->new_uniform_input(
 		"model",
@@ -232,7 +232,7 @@ void RenderManager::show_integration_field(const std::shared_ptr<path::Integrati
 	this->field_pass->set_renderables({renderable});
 }
 
-void RenderManager::show_flow_field(const std::shared_ptr<path::FlowField> &field) {
+void RenderManager0::show_flow_field(const std::shared_ptr<path::FlowField> &field) {
 	Eigen::Matrix4f model = Eigen::Matrix4f::Identity();
 	auto unifs = this->flow_shader->new_uniform_input(
 		"model",
@@ -252,7 +252,7 @@ void RenderManager::show_flow_field(const std::shared_ptr<path::FlowField> &fiel
 	this->field_pass->set_renderables({renderable});
 }
 
-void RenderManager::show_vectors(const std::shared_ptr<path::FlowField> &field) {
+void RenderManager0::show_vectors(const std::shared_ptr<path::FlowField> &field) {
 	static const std::unordered_map<flow_dir_t, Eigen::Vector3f> offset_dir{
 		{flow_dir_t::NORTH, {-0.25f, 0.0f, 0.0f}},
 		{flow_dir_t::NORTH_EAST, {-0.25f, 0.0f, -0.25f}},
@@ -299,11 +299,11 @@ void RenderManager::show_vectors(const std::shared_ptr<path::FlowField> &field) 
 	}
 }
 
-void RenderManager::hide_vectors() {
+void RenderManager0::hide_vectors() {
 	this->vector_pass->clear_renderables();
 }
 
-std::pair<int, int> RenderManager::select_tile(double x, double y) {
+std::pair<int, int> RenderManager0::select_tile(double x, double y) {
 	auto grid_plane_normal = Eigen::Vector3f{0, 1, 0};
 	auto grid_plane_point = Eigen::Vector3f{0, 0, 0};
 	auto camera_direction = renderer::camera::cam_direction;
@@ -317,7 +317,7 @@ std::pair<int, int> RenderManager::select_tile(double x, double y) {
 	return {grid_x, grid_y};
 }
 
-void RenderManager::init_shaders() {
+void RenderManager0::init_shaders() {
 	// Shader sources
 	auto shaderdir = this->path / "assets" / "test" / "shaders" / "pathfinding";
 
@@ -422,7 +422,7 @@ void RenderManager::init_shaders() {
 	this->display_shader = renderer->add_shader({display_vshader_src, display_fshader_src});
 }
 
-void RenderManager::init_passes() {
+void RenderManager0::init_passes() {
 	auto size = this->window->get_size();
 
 	// Make a framebuffer for the background render pass to draw into
@@ -539,8 +539,8 @@ void RenderManager::init_passes() {
 		renderer->get_display_target());
 }
 
-renderer::resources::MeshData RenderManager::get_cost_field_mesh(const std::shared_ptr<CostField> &field,
-                                                                 size_t resolution) {
+renderer::resources::MeshData RenderManager0::get_cost_field_mesh(const std::shared_ptr<CostField> &field,
+                                                                  size_t resolution) {
 	// increase by 1 in every dimension because to get the vertex length
 	// of each dimension
 	util::Vector2s size{
@@ -625,8 +625,8 @@ renderer::resources::MeshData RenderManager::get_cost_field_mesh(const std::shar
 	return {std::move(vert_data), std::move(idx_data), info};
 }
 
-renderer::resources::MeshData RenderManager::get_integration_field_mesh(const std::shared_ptr<IntegrationField> &field,
-                                                                        size_t resolution) {
+renderer::resources::MeshData RenderManager0::get_integration_field_mesh(const std::shared_ptr<IntegrationField> &field,
+                                                                         size_t resolution) {
 	// increase by 1 in every dimension because to get the vertex length
 	// of each dimension
 	util::Vector2s size{
@@ -711,8 +711,8 @@ renderer::resources::MeshData RenderManager::get_integration_field_mesh(const st
 	return {std::move(vert_data), std::move(idx_data), info};
 }
 
-renderer::resources::MeshData RenderManager::get_flow_field_mesh(const std::shared_ptr<FlowField> &field,
-                                                                 size_t resolution) {
+renderer::resources::MeshData RenderManager0::get_flow_field_mesh(const std::shared_ptr<FlowField> &field,
+                                                                  size_t resolution) {
 	// increase by 1 in every dimension because to get the vertex length
 	// of each dimension
 	util::Vector2s size{
@@ -797,7 +797,7 @@ renderer::resources::MeshData RenderManager::get_flow_field_mesh(const std::shar
 	return {std::move(vert_data), std::move(idx_data), info};
 }
 
-renderer::resources::MeshData RenderManager::get_arrow_mesh() {
+renderer::resources::MeshData RenderManager0::get_arrow_mesh() {
 	// vertices for the arrow
 	// x, y, z
 	std::vector<float> verts{
@@ -821,7 +821,7 @@ renderer::resources::MeshData RenderManager::get_arrow_mesh() {
 	return {std::move(vert_data), info};
 }
 
-renderer::resources::MeshData RenderManager::get_grid_mesh(size_t side_length) {
+renderer::resources::MeshData RenderManager0::get_grid_mesh(size_t side_length) {
 	// increase by 1 in every dimension because to get the vertex length
 	// of each dimension
 	util::Vector2s size{side_length + 1, side_length + 1};
