@@ -493,7 +493,7 @@ void RenderManager0::init_passes() {
 		camera->get_view_matrix(),
 		"proj",
 		camera->get_projection_matrix());
-	auto grid_mesh = get_grid_mesh(10);
+	auto grid_mesh = this->get_grid_mesh(10);
 	auto grid_geometry = renderer->add_mesh_geometry(grid_mesh);
 	renderer::Renderable grid_obj{
 		grid_unifs,
