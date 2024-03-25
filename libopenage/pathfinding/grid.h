@@ -56,6 +56,13 @@ public:
 	const util::Vector2s &get_size() const;
 
 	/**
+	 * Get the side length of the sectors on the grid.
+	 *
+	 * @return Sector side length.
+	 */
+	size_t get_sector_size() const;
+
+	/**
 	 * Get the sector at a specified position.
 	 *
 	 * @param x X coordinate.
@@ -91,6 +98,11 @@ private:
 	 * Size of the grid (width x height).
 	 */
 	util::Vector2s size;
+
+	/**
+	 * Side length of the grid sectors.
+	 */
+	size_t sector_size;
 
 	/**
 	 * Sectors of the grid.
