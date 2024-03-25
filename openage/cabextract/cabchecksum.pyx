@@ -74,7 +74,7 @@ def mscab_csum(bytes data):
         for i in range(count):
             result ^= data_ptr[i]
 
-    # we have so far ignored endianess issues.
+    # we have so far ignored endianness issues.
     # on a non-little endian system, the interpretation is wrong.
     # thus, interpret it as binary data and decode it as little endian.
     result = (
