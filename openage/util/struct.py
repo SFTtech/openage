@@ -1,4 +1,4 @@
-# Copyright 2015-2023 the openage authors. See copying.md for legal info.
+# Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 """
 Provides some classes designed to expand the functionality of struct.struct
@@ -48,7 +48,7 @@ class NamedStructMeta(type):
                     raise SyntaxError("endianness has been given multiple times")
 
                 if value not in "@=<>!":
-                    raise SyntaxError("endianess: expected one of @=<>!")
+                    raise SyntaxError("endianness: expected one of @=<>!")
 
                 specstr = value
                 continue
@@ -95,7 +95,7 @@ class NamedStruct(metaclass=NamedStructMeta):
     Alternatively, attributes may be set to None; those are ignored,
     and may be set manually at some later point.
 
-    The first member must be 'endianess'.
+    The first member must be 'endianness'.
 
     Example:
 
