@@ -155,6 +155,7 @@ void RenderManager1::init_passes() {
 	auto field_fbo = renderer->create_texture_target({field_texture, depth_texture_2});
 	this->field_pass = renderer->add_render_pass({}, field_fbo);
 	this->create_impassible_tiles(this->grid);
+	this->create_portal_tiles(this->grid);
 
 	// Make a framebuffer for the grid render passes to draw into
 	auto grid_texture = renderer->add_texture(
@@ -381,6 +382,83 @@ void RenderManager1::create_impassible_tiles(const std::shared_ptr<path::Grid> &
 						};
 						this->field_pass->add_renderables({tile_obj});
 					}
+				}
+			}
+		}
+	}
+}
+
+void RenderManager1::create_portal_tiles(const std::shared_ptr<path::Grid> &grid) {
+	auto width = grid->get_size()[0];
+	auto height = grid->get_size()[1];
+	auto sector_size = grid->get_sector_size();
+
+	float tile_offset_width = 2.0f / (width * sector_size);
+	float tile_offset_height = 2.0f / (height * sector_size);
+
+	for (size_t sector_x = 0; sector_x < width; sector_x++) {
+		for (size_t sector_y = 0; sector_y < height; sector_y++) {
+			auto sector = grid->get_sector(sector_x, sector_y);
+
+			for (auto &portal : sector->get_portals()) {
+				auto start = portal->get_entry_start(sector->get_id());
+				auto end = portal->get_entry_end(sector->get_id());
+				auto direction = portal->get_direction();
+
+				std::vector<coord::tile> tiles;
+				if (direction == PortalDirection::NORTH_SOUTH) {
+					auto y = start.se;
+					for (size_t x = start.ne; x <= end.ne; ++x) {
+						tiles.push_back(coord::tile{x, y});
+					}
+				}
+				else {
+					auto x = start.ne;
+					for (size_t y = start.se; y <= end.se; ++y) {
+						tiles.push_back(coord::tile{x, y});
+					}
+				}
+
+				for (auto tile : tiles) {
+					std::array<float, 8> tile_data{
+						-1.0f + tile.ne * tile_offset_width + sector_size * sector_x * tile_offset_width,
+						1.0f - tile.se * tile_offset_height - sector_size * sector_y * tile_offset_height,
+						-1.0f + tile.ne * tile_offset_width + sector_size * sector_x * tile_offset_width,
+						1.0f - (tile.se + 1) * tile_offset_height - sector_size * sector_y * tile_offset_height,
+						-1.0f + (tile.ne + 1) * tile_offset_width + sector_size * sector_x * tile_offset_width,
+						1.0f - tile.se * tile_offset_height - sector_size * sector_y * tile_offset_height,
+						-1.0f + (tile.ne + 1) * tile_offset_width + sector_size * sector_x * tile_offset_width,
+						1.0f - (tile.se + 1) * tile_offset_height - sector_size * sector_y * tile_offset_height,
+					};
+					renderer::resources::VertexInputInfo info{
+						{renderer::resources::vertex_input_t::V2F32},
+						renderer::resources::vertex_layout_t::AOS,
+						renderer::resources::vertex_primitive_t::TRIANGLE_STRIP};
+
+					auto const data_size = tile_data.size() * sizeof(float);
+					std::vector<uint8_t> verts(data_size);
+					std::memcpy(verts.data(), tile_data.data(), data_size);
+
+					auto tile_mesh = renderer::resources::MeshData(std::move(verts), info);
+					auto tile_geometry = renderer->add_mesh_geometry(tile_mesh);
+
+					Eigen::Matrix4f id_matrix = Eigen::Matrix4f::Identity();
+					auto tile_unifs = obj_shader->new_uniform_input(
+						"color",
+						Eigen::Vector4f{0.0, 0.0, 0.0, 0.3},
+						"model",
+						id_matrix,
+						"view",
+						id_matrix,
+						"proj",
+						id_matrix);
+					auto tile_obj = renderer::Renderable{
+						tile_unifs,
+						tile_geometry,
+						true,
+						true,
+					};
+					this->field_pass->add_renderables({tile_obj});
 				}
 			}
 		}
