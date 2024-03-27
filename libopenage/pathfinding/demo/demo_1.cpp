@@ -99,6 +99,7 @@ void RenderManager1::run() {
 
 		this->renderer->render(this->background_pass);
 		this->renderer->render(this->field_pass);
+		this->renderer->render(this->grid_pass);
 		this->renderer->render(this->display_pass);
 
 		this->window->update();
@@ -169,9 +170,10 @@ void RenderManager1::init_passes() {
 	// Create object for the grid
 	auto model = Eigen::Affine3f::Identity();
 	model.prescale(Eigen::Vector3f{
-		1.0f / (this->grid->get_size()[0] * this->grid->get_sector_size()),
-		1.0f / (this->grid->get_size()[1] * this->grid->get_sector_size()),
+		2.0f / (this->grid->get_size()[0] * this->grid->get_sector_size()),
+		2.0f / (this->grid->get_size()[1] * this->grid->get_sector_size()),
 		1.0f});
+	model.pretranslate(Eigen::Vector3f{-1.0f, -1.0f, 0.0f});
 	auto grid_unifs = grid_shader->new_uniform_input(
 		"model",
 		model.matrix(),
