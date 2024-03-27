@@ -87,13 +87,18 @@ private:
 	static renderer::resources::MeshData get_grid_mesh(const std::shared_ptr<path::Grid> &grid);
 
 	/**
-	 * Create objects for the impassible tiles in the grid.
+	 * Create renderables for the impassible tiles in the grid.
 	 *
 	 * @param grid Pathing grid.
-	 *
-	 * @return Mesh data for the grid.
 	 */
 	void create_impassible_tiles(const std::shared_ptr<path::Grid> &grid);
+
+	/**
+	 * Create renderables for the portal tiles in the grid.
+	 *
+	 * @param grid Pathing grid.
+	 */
+	void create_portal_tiles(const std::shared_ptr<path::Grid> &grid);
 
 	/**
 	 * Path to the project rootdir.
