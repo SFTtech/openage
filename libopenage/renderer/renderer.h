@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -95,10 +95,20 @@ struct ShaderUpdate : Renderable {
 /// A render pass is a series of draw calls represented by renderables that output into the given render target.
 class RenderPass {
 protected:
-	/// Create a new RenderPass. This is called from Renderer::add_render_pass,
-	/// which then creates the proper subclass of RenderPass, depending on the backend.
+	/**
+	 * Create a new RenderPass.
+	 *
+	 * This is called from Renderer::add_render_pass, which then creates the proper
+	 * subclass of RenderPass, depending on the backend.
+	 *
+	 * @param renderables The renderables to parse and possibly execute.
+	 * @param target The render target to write into.
+	 */
 	RenderPass(std::vector<Renderable>, const std::shared_ptr<RenderTarget> &);
-	/// The renderables to parse and possibly execute.
+
+	/**
+	 * Renderables to parse and possibly execute.
+	 */
 	std::vector<Renderable> renderables;
 
 public:
@@ -106,17 +116,36 @@ public:
 	void set_target(const std::shared_ptr<RenderTarget> &);
 	const std::shared_ptr<RenderTarget> &get_target() const;
 
-	// Replace the current renderables
-	void set_renderables(std::vector<Renderable>);
-	// Append renderables to the end of the list of renderables
-	void add_renderables(std::vector<Renderable>);
-	// Append a single renderable to the end of the list of renderables
-	void add_renderables(Renderable);
-	// Clear the list of renderables
+	/**
+	 * Replace the current renderables with a new list of objects to render.
+	 *
+	 * @param renderables New renderables.
+	 */
+	void set_renderables(std::vector<Renderable> &&renderables);
+
+	/**
+	 * Append a list of renderables to the objects rendered in this pass.
+	 *
+	 * @param renderables New renderables.
+	 */
+	void add_renderables(std::vector<Renderable> renderables);
+
+	/**
+	 * Append a single renderable to the objects rendered in this pass.
+	 *
+	 * @param renderable New renderable.
+	 */
+	void add_renderables(Renderable renderable);
+
+	/**
+	 * Remove all renderables from this pass.
+	 */
 	void clear_renderables();
 
 private:
-	/// The render target to write into.
+	/**
+	 * The render target to write into.
+	 */
 	std::shared_ptr<RenderTarget> target;
 };
 
