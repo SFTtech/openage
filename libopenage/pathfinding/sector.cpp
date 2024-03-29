@@ -144,13 +144,13 @@ void Sector::connect_exits() {
 
 		if (portal->get_direction() == PortalDirection::NORTH_SOUTH) {
 			// right edge; top to bottom
-			for (size_t i = start.se; i <= end.se; ++i) {
+			for (auto i = start.se; i <= end.se; ++i) {
 				open_list.push_back(start.ne + i * this->cost_field->get_size());
 			}
 		}
 		else if (portal->get_direction() == PortalDirection::EAST_WEST) {
 			// bottom edge; east to west
-			for (size_t i = start.ne; i <= end.ne; ++i) {
+			for (auto i = start.ne; i <= end.ne; ++i) {
 				open_list.push_back(i + start.se * this->cost_field->get_size());
 			}
 		}
