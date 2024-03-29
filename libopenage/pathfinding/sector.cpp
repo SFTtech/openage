@@ -52,6 +52,7 @@ std::vector<std::shared_ptr<Portal>> Sector::find_portals(const std::shared_ptr<
 
 	// compare the edges of the sectors
 	size_t start;
+	size_t end;
 	bool passable_edge;
 	for (size_t i = 0; i < this->cost_field->get_size(); ++i) {
 		auto coord_this = coord::tile{0, 0};
@@ -69,62 +70,48 @@ std::vector<std::shared_ptr<Portal>> Sector::find_portals(const std::shared_ptr<
 
 		if (this->cost_field->get_cost(coord_this) != COST_IMPASSABLE
 		    and other_cost->get_cost(coord_other) != COST_IMPASSABLE) {
+			// both sides of the edge are passable
 			if (not passable_edge) {
+				// start a new portal
 				start = i;
 				passable_edge = true;
 			}
-		}
-		else {
-			if (passable_edge) {
-				auto coord_start = coord::tile{0, 0};
-				auto coord_end = coord::tile{0, 0};
-				if (direction == PortalDirection::NORTH_SOUTH) {
-					// right edge; top to bottom
-					coord_start = coord::tile{start, this->cost_field->get_size() - 1};
-					coord_end = coord::tile{i - 1, this->cost_field->get_size() - 1};
-				}
-				else if (direction == PortalDirection::EAST_WEST) {
-					// bottom edge; east to west
-					coord_start = coord::tile{this->cost_field->get_size() - 1, start};
-					coord_end = coord::tile{this->cost_field->get_size() - 1, i - 1};
-				}
+			// else: we already started a portal
 
-				result.push_back(
-					std::make_shared<Portal>(
-						next_id,
-						this->id,
-						other->get_id(),
-						direction,
-						coord_start,
-						coord_end));
-				passable_edge = false;
-				next_id += 1;
+			end = i;
+			if (i != this->cost_field->get_size() - 1) {
+				// continue to next tile unless we are at the last tile
+				// then we have to end the current portal
+				continue;
 			}
 		}
-	}
 
-	// recheck for the last tile on the edge
-	// because it may be the end of a portal
-	if (passable_edge) {
-		auto coord_start = coord::tile{0, 0};
-		auto coord_end = coord::tile{0, 0};
-		if (direction == PortalDirection::NORTH_SOUTH) {
-			coord_start = coord::tile{start, this->cost_field->get_size() - 1};
-			coord_end = coord::tile{this->cost_field->get_size() - 1, this->cost_field->get_size() - 1};
-		}
-		else if (direction == PortalDirection::EAST_WEST) {
-			coord_start = coord::tile{this->cost_field->get_size() - 1, start};
-			coord_end = coord::tile{this->cost_field->get_size() - 1, this->cost_field->get_size() - 1};
-		}
+		if (passable_edge) {
+			// create a new portal
+			auto coord_start = coord::tile{0, 0};
+			auto coord_end = coord::tile{0, 0};
+			if (direction == PortalDirection::NORTH_SOUTH) {
+				// right edge; top to bottom
+				coord_start = coord::tile{start, this->cost_field->get_size() - 1};
+				coord_end = coord::tile{end, this->cost_field->get_size() - 1};
+			}
+			else if (direction == PortalDirection::EAST_WEST) {
+				// bottom edge; east to west
+				coord_start = coord::tile{this->cost_field->get_size() - 1, start};
+				coord_end = coord::tile{this->cost_field->get_size() - 1, end};
+			}
 
-		result.push_back(
-			std::make_shared<Portal>(
-				next_id,
-				this->id,
-				other->get_id(),
-				direction,
-				coord_start,
-				coord_end));
+			result.push_back(
+				std::make_shared<Portal>(
+					next_id,
+					this->id,
+					other->get_id(),
+					direction,
+					coord_start,
+					coord_end));
+			passable_edge = false;
+			next_id += 1;
+		}
 	}
 
 	return result;
