@@ -75,6 +75,20 @@ const coord::tile Portal::get_entry_start(sector_id_t entry_sector) const {
 	return this->get_sector1_start();
 }
 
+const coord::tile Portal::get_entry_center(sector_id_t entry_sector) const {
+	ENSURE(entry_sector == this->sector0 || entry_sector == this->sector1, "Invalid entry sector");
+
+	if (entry_sector == this->sector0) {
+		auto start = this->get_sector0_start();
+		auto end = this->get_sector0_end();
+		return {(start.ne + end.ne) / 2, (start.se + end.se) / 2};
+	}
+
+	auto start = this->get_sector1_start();
+	auto end = this->get_sector1_end();
+	return {(start.ne + end.ne) / 2, (start.se + end.se) / 2};
+}
+
 const coord::tile Portal::get_entry_end(sector_id_t entry_sector) const {
 	ENSURE(entry_sector == this->sector0 || entry_sector == this->sector1, "Invalid entry sector");
 
@@ -93,6 +107,20 @@ const coord::tile Portal::get_exit_start(sector_id_t entry_sector) const {
 	}
 
 	return this->get_sector0_start();
+}
+
+const coord::tile Portal::get_exit_center(sector_id_t entry_sector) const {
+	ENSURE(entry_sector == this->sector0 || entry_sector == this->sector1, "Invalid entry sector");
+
+	if (entry_sector == this->sector0) {
+		auto start = this->get_sector1_start();
+		auto end = this->get_sector1_end();
+		return {(start.ne + end.ne) / 2, (start.se + end.se) / 2};
+	}
+
+	auto start = this->get_sector0_start();
+	auto end = this->get_sector0_end();
+	return {(start.ne + end.ne) / 2, (start.se + end.se) / 2};
 }
 
 const coord::tile Portal::get_exit_end(sector_id_t entry_sector) const {

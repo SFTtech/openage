@@ -6,6 +6,7 @@
 #include <memory>
 #include <vector>
 
+#include "coord/chunk.h"
 #include "pathfinding/portal.h"
 #include "pathfinding/types.h"
 
@@ -26,18 +27,22 @@ public:
 	 * Create a new sector with a specified ID and an uninitialized cost field.
 	 *
 	 * @param id ID of the sector. Should be unique per grid.
+	 * @param position Position of the sector in the grid.
 	 * @param field_size Size of the cost field.
 	 */
 	Sector(sector_id_t id,
+	       const coord::chunk &position,
 	       size_t field_size);
 
 	/**
 	 * Create a new sector with a specified ID and an existing cost field.
 	 *
 	 * @param id ID of the sector. Should be unique per grid.
+	 * @param position Position of the sector in the grid.
 	 * @param cost_field Cost field of the sector.
 	 */
 	Sector(sector_id_t id,
+	       const coord::chunk &position,
 	       const std::shared_ptr<CostField> &cost_field);
 
 	/**
@@ -48,6 +53,13 @@ public:
 	 * @return ID of the sector.
 	 */
 	const sector_id_t &get_id() const;
+
+	/**
+	 * Get the position of this sector in the grid.
+	 *
+	 * @return Position of the sector.
+	 */
+	const coord::chunk &get_position() const;
 
 	/**
 	 * Get the cost field of this sector.
@@ -96,6 +108,11 @@ private:
 	 * ID of the sector.
 	 */
 	sector_id_t id;
+
+	/**
+	 * Position of the sector in the grid.
+	 */
+	coord::chunk position;
 
 	/**
 	 * Cost field of the sector.

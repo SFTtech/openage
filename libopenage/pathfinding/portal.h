@@ -106,13 +106,22 @@ public:
 	sector_id_t get_exit_sector(sector_id_t entry_sector) const;
 
 	/**
-	 * Get the cost field of the sector from which the portal is entered.
+	 * Get the cell coordinates of the start of the portal in the entry sector.
 	 *
 	 * @param entry_sector Sector from which the portal is entered.
 	 *
-	 * @return Cost field of the sector from which the portal is entered.
+	 * @return Cell coordinates of the start of the portal in the entry sector.
 	 */
 	const coord::tile get_entry_start(sector_id_t entry_sector) const;
+
+	/**
+	 * Get the cell coordinates of the center of the portal in the entry sector.
+	 *
+	 * @param entry_sector Sector from which the portal is entered.
+	 *
+	 * @return Cell coordinates of the center of the portal in the entry sector.
+	 */
+	const coord::tile get_entry_center(sector_id_t entry_sector) const;
 
 	/**
 	 * Get the cell coordinates of the start of the portal in the entry sector.
@@ -131,6 +140,15 @@ public:
 	 * @return Cell coordinates of the start of the portal in the exit sector.
 	 */
 	const coord::tile get_exit_start(sector_id_t entry_sector) const;
+
+	/**
+	 * Get the cell coordinates of the center of the portal in the exit sector.
+	 *
+	 * @param entry_sector Sector from which the portal is entered.
+	 *
+	 * @return Cell coordinates of the center of the portal in the exit sector.
+	 */
+	const coord::tile get_exit_center(sector_id_t entry_sector) const;
 
 	/**
 	 * Get the cell coordinates of the end of the portal in the exit sector.
