@@ -4,6 +4,8 @@
 
 #include "pathfinding/cost_field.h"
 #include "pathfinding/grid.h"
+#include "pathfinding/path.h"
+#include "pathfinding/pathfinder.h"
 #include "pathfinding/portal.h"
 #include "pathfinding/sector.h"
 
@@ -69,6 +71,16 @@ void path_demo_1(const util::Path &path) {
 			log::log(MSG(info) << "    Connected portals: " << portal->get_connected(sector->get_id()).size());
 		}
 	}
+
+	auto pathfinder = std::make_shared<path::Pathfinder>();
+	pathfinder->add_grid(grid);
+
+	auto path_request = path::PathRequest{
+		0,
+		coord::tile{2, 26},
+		coord::tile{36, 2},
+	};
+	auto path_result = pathfinder->get_path(path_request);
 
 	// Render the grid
 	auto qtapp = std::make_shared<renderer::gui::GuiApplicationWithLogger>();
