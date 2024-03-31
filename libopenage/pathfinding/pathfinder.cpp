@@ -190,7 +190,6 @@ std::vector<node_t> PortalNode::generate_backtrace() {
 
 	node_t current = this->shared_from_this();
 	do {
-		node_t other = current;
 		waypoints.push_back(current);
 		current = current->prev_portal;
 	}
