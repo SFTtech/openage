@@ -84,8 +84,8 @@ described below for some of the most common ones:
 - [Arch Linux](build_instructions/arch_linux.md)
 - [FreeBSD](build_instructions/freebsd.md)
 - [Gentoo](build_instructions/gentoo.md)
+- [Nix/NixOS](build_instructions/nix.md)
 - [Microsoft Windows](build_instructions/windows_msvc.md)
-
 
 ### nyan installation
 
