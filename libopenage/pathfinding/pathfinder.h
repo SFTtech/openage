@@ -45,6 +45,13 @@ public:
 	const std::shared_ptr<Grid> &get_grid(grid_id_t id) const;
 
 	/**
+	 * Add a grid to the pathfinder.
+	 *
+	 * @param grid Grid to add.
+	 */
+	void add_grid(const std::shared_ptr<Grid> &grid);
+
+	/**
 	 * Get the path for a pathfinding request.
 	 *
 	 * @param request Pathfinding request.
@@ -80,15 +87,29 @@ private:
 };
 
 
+class PortalNode;
+
+using node_t = std::shared_ptr<PortalNode>;
+
+/**
+ * Cost comparison for node_t on the pairing heap.
+ *
+ * Extracts the nodes from the shared_ptr and compares them. We have
+ * to use a custom comparison function because otherwise the shared_ptr
+ * would be compared instead of the actual node.
+ */
+struct compare_node_cost {
+	bool operator()(const node_t &lhs, const node_t &rhs) const;
+};
+
+using heap_t = datastructure::PairingHeap<node_t, compare_node_cost>;
+using nodemap_t = std::unordered_map<portal_id_t, node_t>;
+
 /**
  * One navigation waypoint in a path.
  */
 class PortalNode : public std::enable_shared_from_this<PortalNode> {
 public:
-	using node_t = std::shared_ptr<PortalNode>;
-	using heap_t = datastructure::PairingHeap<node_t>;
-	using nodemap_t = std::unordered_map<portal_id_t, node_t>;
-
 	PortalNode(const std::shared_ptr<Portal> &portal,
 	           sector_id_t entry_sector,
 	           const node_t &prev_portal);

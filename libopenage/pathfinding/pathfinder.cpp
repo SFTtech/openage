@@ -20,10 +20,15 @@ const Path Pathfinder::get_path(PathRequest &request) {
 	auto portal_path = this->portal_a_star(request);
 
 	// TODO: Implement the rest of the pathfinding process
+	return Path{};
 }
 
-const std::shared_ptr<Grid> &Pathfinder::get_grid(size_t id) const {
+const std::shared_ptr<Grid> &Pathfinder::get_grid(grid_id_t id) const {
 	return this->grids.at(id);
+}
+
+void Pathfinder::add_grid(const std::shared_ptr<Grid> &grid) {
+	this->grids[grid->get_id()] = grid;
 }
 
 const std::vector<std::shared_ptr<Portal>> Pathfinder::portal_a_star(PathRequest &request) const {
@@ -41,10 +46,10 @@ const std::vector<std::shared_ptr<Portal>> Pathfinder::portal_a_star(PathRequest
 	auto target_sector = grid->get_sector(target_sector_x, target_sector_y);
 
 	// path node storage, always provides cheapest next node.
-	PortalNode::heap_t node_candidates;
+	heap_t node_candidates;
 
 	// list of known portals and corresponding node.
-	PortalNode::nodemap_t visited_portals;
+	nodemap_t visited_portals;
 
 	// Cost to travel from one portal to another
 	// TODO: Determine this cost for each portal
@@ -106,7 +111,9 @@ const std::vector<std::shared_ptr<Portal>> Pathfinder::portal_a_star(PathRequest
 			if (not_visited or tentative_cost < exit->current_cost) {
 				if (not_visited) {
 					// calculate the heuristic cost
-					exit->heuristic_cost = Pathfinder::heuristic_cost(exit->portal->get_exit_center(exit->entry_sector), request.target);
+					exit->heuristic_cost = Pathfinder::heuristic_cost(
+						exit->portal->get_exit_center(exit->entry_sector),
+						request.target);
 				}
 
 				// update the cost knowledge
@@ -148,6 +155,9 @@ PortalNode::PortalNode(const std::shared_ptr<Portal> &portal,
                        const node_t &prev_portal) :
 	portal{portal},
 	entry_sector{entry_sector},
+	future_cost{std::numeric_limits<int>::max()},
+	current_cost{std::numeric_limits<int>::max()},
+	heuristic_cost{std::numeric_limits<int>::max()},
 	was_best{false},
 	prev_portal{prev_portal},
 	heap_node{nullptr} {}
@@ -175,7 +185,7 @@ bool PortalNode::operator==(const PortalNode &other) const {
 	return this->portal->get_id() == other.portal->get_id();
 }
 
-std::vector<PortalNode::node_t> PortalNode::generate_backtrace() {
+std::vector<node_t> PortalNode::generate_backtrace() {
 	std::vector<node_t> waypoints;
 
 	node_t current = this->shared_from_this();
@@ -185,14 +195,15 @@ std::vector<PortalNode::node_t> PortalNode::generate_backtrace() {
 		current = current->prev_portal;
 	}
 	while (current != nullptr);
-	waypoints.pop_back(); // remove start
 
 	return waypoints;
 }
 
-std::vector<PortalNode::node_t> PortalNode::get_exits(const nodemap_t &nodes,
-                                                      sector_id_t entry_sector) {
+std::vector<node_t> PortalNode::get_exits(const nodemap_t &nodes,
+                                          sector_id_t entry_sector) {
 	std::vector<node_t> exits;
+
+	auto exit_sector = this->portal->get_exit_sector(entry_sector);
 	for (auto &exit : this->portal->get_exits(entry_sector)) {
 		auto exit_id = exit->get_id();
 
@@ -200,11 +211,17 @@ std::vector<PortalNode::node_t> PortalNode::get_exits(const nodemap_t &nodes,
 			exits.push_back(nodes.at(exit_id));
 		}
 		else {
-			exits.push_back(std::make_shared<PortalNode>(exit, entry_sector, this->shared_from_this()));
+			exits.push_back(std::make_shared<PortalNode>(exit,
+			                                             exit_sector,
+			                                             this->shared_from_this()));
 		}
 	}
 	return exits;
 }
 
+
+bool compare_node_cost::operator()(const node_t &lhs, const node_t &rhs) const {
+	return *lhs < *rhs;
+}
 
 } // namespace openage::path
