@@ -24,26 +24,18 @@ public:
 	~Integrator() = default;
 
 	/**
-	 * Set the cost field.
+	 * Build the flow field for a target.
 	 *
 	 * @param cost_field Cost field.
-	 */
-	void set_cost_field(const std::shared_ptr<CostField> &cost_field);
-
-	/**
-	 * Build the flow field for a target cell.
-	 *
 	 * @param target Coordinates of the target cell.
 	 *
 	 * @return Flow field.
 	 */
-	std::shared_ptr<FlowField> build(const coord::tile &target);
+	std::shared_ptr<FlowField> build(const std::shared_ptr<CostField> &cost_field,
+	                                 const coord::tile &target);
 
 private:
-	/**
-	 * Cost field.
-	 */
-	std::shared_ptr<CostField> cost_field;
+	// TODO: Cache field results.
 };
 
 } // namespace path

@@ -83,10 +83,9 @@ void flow_field() {
 	{
 		// Integrator for managing the flow field
 		auto integrator = std::make_shared<Integrator>();
-		integrator->set_cost_field(cost_field);
 
 		// Build the flow field
-		auto flow_field = integrator->build(coord::tile{2, 2});
+		auto flow_field = integrator->build(cost_field, coord::tile{2, 2});
 		auto ff_cells = flow_field->get_cells();
 
 		// The flow field for targeting (2, 2) hould look like this:
