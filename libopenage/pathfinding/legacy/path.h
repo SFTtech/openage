@@ -16,7 +16,7 @@
 
 namespace openage {
 
-namespace path {
+namespace path::legacy {
 
 class Node;
 class Path;
@@ -185,7 +185,7 @@ public:
 	std::vector<Node> waypoints;
 };
 
-} // namespace path
+} // namespace path::legacy
 } // namespace openage
 
 
@@ -196,10 +196,10 @@ namespace std {
  * Just uses their position.
  */
 template <>
-struct hash<openage::path::Node &> {
-	size_t operator()(const openage::path::Node &x) const {
+struct hash<openage::path::legacy::Node &> {
+	size_t operator()(const openage::path::legacy::Node &x) const {
 		openage::coord::phys3 node_pos = x.position;
-		size_t hash = openage::util::type_hash<openage::path::Node>();
+		size_t hash = openage::util::type_hash<openage::path::legacy::Node>();
 		hash = openage::util::hash_combine(hash, std::hash<openage::coord::phys_t>{}(node_pos.ne));
 		hash = openage::util::hash_combine(hash, std::hash<openage::coord::phys_t>{}(node_pos.se));
 		return hash;

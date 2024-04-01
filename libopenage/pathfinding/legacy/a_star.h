@@ -9,7 +9,7 @@
 
 namespace openage {
 
-namespace path {
+namespace path::legacy {
 
 /**
  * path between two static points
@@ -38,5 +38,5 @@ Path a_star(coord::phys3 start,
             std::function<cost_old_t(const coord::phys3 &)> heuristic,
             std::function<bool(const coord::phys3 &)> passable);
 
-} // namespace path
+} // namespace path::legacy
 } // namespace openage

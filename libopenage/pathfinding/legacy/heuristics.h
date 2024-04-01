@@ -5,7 +5,7 @@
 #include "pathfinding/legacy/path.h"
 
 namespace openage {
-namespace path {
+namespace path::legacy {
 
 /**
  * function pointer type for distance estimation functions.
@@ -41,5 +41,5 @@ cost_old_t euclidean_squared_cost(const coord::phys3 &start, const coord::phys3 
  */
 cost_old_t euclidean_squared_to_euclidean_cost(const cost_old_t euclidean_squared_value);
 
-} // namespace path
+} // namespace path::legacy
 } // namespace openage

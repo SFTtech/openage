@@ -4,7 +4,7 @@
 
 #include "pathfinding/legacy/path.h"
 
-namespace openage::path {
+namespace openage::path::legacy {
 
 
 bool compare_node_cost::operator()(const node_pt &lhs, const node_pt &rhs) const {
@@ -112,4 +112,4 @@ Path::Path(const std::vector<Node> &nodes) :
 	waypoints{nodes} {}
 
 
-} // namespace openage::path
+} // namespace openage::path::legacy

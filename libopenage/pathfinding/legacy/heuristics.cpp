@@ -7,7 +7,7 @@
 
 
 namespace openage {
-namespace path {
+namespace path::legacy {
 
 cost_old_t manhattan_cost(const coord::phys3 &start, const coord::phys3 &end) {
 	cost_old_t dx = std::abs(start.ne - end.ne).to_float();
@@ -31,4 +31,5 @@ cost_old_t euclidean_squared_cost(const coord::phys3 &start, const coord::phys3 
 	return dx * dx + dy * dy;
 }
 
-}} // openage::path
+} // namespace path::legacy
+} // namespace openage

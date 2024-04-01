@@ -22,7 +22,7 @@
 
 
 namespace openage {
-namespace path {
+namespace path::legacy {
 
 
 Path to_point(coord::phys3 start,
@@ -128,5 +128,5 @@ Path a_star(coord::phys3 start,
 }
 
 
-} // namespace path
+} // namespace path::legacy
 } // namespace openage

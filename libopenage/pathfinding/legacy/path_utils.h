@@ -3,7 +3,7 @@
 #pragma once
 
 namespace openage {
-namespace path {
+namespace path::legacy {
 
 } // namespace path
 } // namespace openage
