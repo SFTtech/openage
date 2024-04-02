@@ -17,7 +17,24 @@ Pathfinder::Pathfinder() :
 }
 
 const Path Pathfinder::get_path(PathRequest &request) {
+	// High-level pathfinding
+	// Find the portals to use to get from the start to the target
 	auto portal_path = this->portal_a_star(request);
+
+	// Low-level pathfinding
+	// Find the path within the sectors
+	auto grid = this->grids.at(request.grid_id);
+	auto sector_size = grid->get_sector_size();
+
+	auto target_sector_x = request.target.ne / sector_size;
+	auto target_sector_y = request.target.se / sector_size;
+	auto target_sector = grid->get_sector(target_sector_x, target_sector_y);
+
+	auto target_x = request.target.ne % sector_size;
+	auto target_y = request.target.se % sector_size;
+	auto target = coord::tile{target_x, target_y};
+
+	auto flow_field = this->integrator->build(target_sector->get_cost_field(), target);
 
 	// TODO: Implement the rest of the pathfinding process
 	return Path{};

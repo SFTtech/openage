@@ -18,6 +18,7 @@ struct tile;
 
 namespace path {
 class CostField;
+class Portal;
 
 /**
  * Integration field in the flow-field pathfinding algorithm.
@@ -73,10 +74,25 @@ public:
 	 *
 	 * @param cost_field Cost field to integrate.
 	 * @param target Coordinates of the target cell.
-	 * @param start_cells Cells flagged as "wavefront blocked" from a LOS pass.
 	 */
 	void integrate_cost(const std::shared_ptr<CostField> &cost_field,
 	                    const coord::tile &target);
+
+	/**
+	 * Calculate the cost integration field starting from a portal to another
+	 * integration field.
+	 *
+	 * The other integration field must already be integrated.
+	 *
+	 * @param cost_field Cost field to integrate.
+	 * @param other Other integration field.
+	 * @param other_sector_id Sector ID of the other integration field.
+	 * @param portal Portal connecting the two fields.
+	 */
+	void integrate_cost(const std::shared_ptr<CostField> &cost_field,
+	                    const std::shared_ptr<IntegrationField> &other,
+	                    sector_id_t other_sector_id,
+	                    const std::shared_ptr<Portal> &portal);
 
 	/**
 	 * Calculate the cost integration field starting from a wavefront.
@@ -85,7 +101,7 @@ public:
 	 * @param start_cells Cells flagged as "wavefront blocked" from a LOS pass.
 	 */
 	void integrate_cost(const std::shared_ptr<CostField> &cost_field,
-	                    std::vector<size_t> &&start_cells = {});
+	                    std::vector<size_t> &&start_cells);
 
 	/**
 	 * Get the integration field values.
