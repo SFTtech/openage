@@ -17,6 +17,7 @@ struct tile;
 
 namespace path {
 class IntegrationField;
+class Portal;
 
 class FlowField {
 public:
@@ -65,6 +66,19 @@ public:
 	 * @param integrate_field Integration field.
 	 */
 	void build(const std::shared_ptr<IntegrationField> &integrate_field);
+
+	/**
+	 * Build the flow field for a portal.
+	 *
+	 * @param integrate_field Integration field.
+	 * @param other Other integration field.
+	 * @param other_sector_id Sector ID of the other field.
+	 * @param portal Portal connecting the two fields.
+	 */
+	void build(const std::shared_ptr<IntegrationField> &integrate_field,
+	           const std::shared_ptr<IntegrationField> &other,
+	           sector_id_t other_sector_id,
+	           const std::shared_ptr<Portal> &portal);
 
 	/**
 	 * Get the flow field values.

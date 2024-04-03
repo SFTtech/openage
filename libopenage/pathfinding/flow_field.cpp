@@ -8,6 +8,7 @@
 #include "coord/tile.h"
 #include "pathfinding/definitions.h"
 #include "pathfinding/integration_field.h"
+#include "pathfinding/portal.h"
 
 
 namespace openage::path {
@@ -18,10 +19,10 @@ FlowField::FlowField(size_t size) :
 	log::log(DBG << "Created flow field with size " << this->size << "x" << this->size);
 }
 
-FlowField::FlowField(const std::shared_ptr<IntegrationField> &integrate_field) :
-	size{integrate_field->get_size()},
+FlowField::FlowField(const std::shared_ptr<IntegrationField> &integration_field) :
+	size{integration_field->get_size()},
 	cells(this->size * this->size, FLOW_INIT) {
-	this->build(integrate_field);
+	this->build(integration_field);
 }
 
 size_t FlowField::get_size() const {
@@ -36,14 +37,14 @@ flow_dir_t FlowField::get_dir(const coord::tile &pos) const {
 	return static_cast<flow_dir_t>(this->get_cell(pos) & FLOW_DIR_MASK);
 }
 
-void FlowField::build(const std::shared_ptr<IntegrationField> &integrate_field) {
-	ENSURE(integrate_field->get_size() == this->get_size(),
+void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field) {
+	ENSURE(integration_field->get_size() == this->get_size(),
 	       "integration field size "
-	           << integrate_field->get_size() << "x" << integrate_field->get_size()
+	           << integration_field->get_size() << "x" << integration_field->get_size()
 	           << " does not match flow field size "
 	           << this->get_size() << "x" << this->get_size());
 
-	auto &integrate_cells = integrate_field->get_cells();
+	auto &integrate_cells = integration_field->get_cells();
 	auto &flow_cells = this->cells;
 
 	for (size_t y = 0; y < this->size; ++y) {
@@ -136,6 +137,29 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integrate_field) 
 			// Set the flow field cell to the direction of the smallest cost.
 			flow_cells[idx] = flow_cells[idx] | static_cast<uint8_t>(direction);
 		}
+	}
+}
+
+void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field,
+                      const std::shared_ptr<IntegrationField> &other,
+                      sector_id_t other_sector_id,
+                      const std::shared_ptr<Portal> &portal) {
+	ENSURE(integration_field->get_size() == this->get_size(),
+	       "integration field size "
+	           << integration_field->get_size() << "x" << integration_field->get_size()
+	           << " does not match flow field size "
+	           << this->get_size() << "x" << this->get_size());
+
+	auto &integrate_cells = integration_field->get_cells();
+	auto &flow_cells = this->cells;
+	auto direction = portal->get_direction();
+
+	if (direction == PortalDirection::NORTH_SOUTH) {
+	}
+	else if (direction == PortalDirection::EAST_WEST) {
+	}
+	else {
+		throw Error(ERR << "Invalid portal direction");
 	}
 }
 
