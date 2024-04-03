@@ -177,6 +177,11 @@ def main(argv=None):
 
 
 if __name__ == '__main__':
+    # Required for Windows executables (and apparently macOS too)
+    # https://docs.python.org/3/library/multiprocessing.html#multiprocessing.freeze_support
+    # https://pyinstaller.org/en/latest/common-issues-and-pitfalls.html#multi-processing
+    multiprocessing.freeze_support()
+
     # openage is complicated and multithreaded; better not use fork.
     multiprocessing.set_start_method('spawn')
 
