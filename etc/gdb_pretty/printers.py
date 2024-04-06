@@ -4,8 +4,8 @@
 Pretty printers for GDB.
 """
 
-import gdb  # type: ignore
 import re
+import gdb  # type: ignore
 
 
 class PrinterControl(gdb.printing.PrettyPrinter):
@@ -53,12 +53,14 @@ class PrinterControl(gdb.printing.PrettyPrinter):
             if regex.match(type_name):
                 return printer(val)
 
+        return None
+
 
 pp = PrinterControl('openage')
 gdb.printing.register_pretty_printer(None, pp)
 
 
-def printer(type_name: str, regex: str = None):
+def printer_typedef(type_name: str):
     """
     Decorator for pretty printers.
 
@@ -90,7 +92,7 @@ def printer_regex(regex: str):
     return _register_printer
 
 
-@printer('openage::time::time_t')
+@printer_typedef('openage::time::time_t')
 class TimePrinter:
     """
     Pretty printer for openage::time::time_t.
@@ -100,12 +102,20 @@ class TimePrinter:
         self.__val = val
 
     def to_string(self):
+        """
+        Get the time as a string.
+
+        Format: SS.sss (e.g. 12.345s)
+        """
         # convert the fixed point value to double
         seconds = float(self.__val['raw_value']) * float(self.__val['to_double_factor'])
         # show as seconds with millisecond precision
         return f'{seconds:.3f}s'
 
     def children(self):
+        """
+        Get the displayed children of the time value.
+        """
         yield ('raw_value', self.__val['raw_value'])
         # calculate the precision of the fixed point value
         # 16 * log10(2) = 16 * 0.30103 = 4.81648
@@ -124,9 +134,17 @@ class FixedPointPrinter:
         self.__val = val
 
     def to_string(self):
+        """
+        Get the fixed point value as a string.
+
+        Format: 0.12345
+        """
         # convert the fixed point value to double
         num = float(self.__val['raw_value']) * float(self.__val['to_double_factor'])
         return f'{num:.5f}'
 
     def children(self):
+        """
+        Get the displayed children of the fixed point value.
+        """
         yield ('raw_value', self.__val['raw_value'])
