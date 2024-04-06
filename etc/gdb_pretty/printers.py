@@ -5,23 +5,60 @@ Pretty printers for GDB.
 """
 
 import gdb
+import re
 
 
 class PrinterControl(gdb.printing.PrettyPrinter):
     """
-    Exposes a pretty printer for a specific type name.
+    Exposes a pretty printer for a specific type.
+
+    Printer are searched in the following order:
+        1. Exact type name _with_ typedefs
+        2. Regex of type name _without_ typedefs
     """
 
-    def __init__(self, type_name: str, printer):
-        super().__init__(type_name)
-        self.printer = printer
+    def __init__(self, name: str):
+        super().__init__(name)
 
-    def __call__(self, val):
-        if val.type.name == self.name:
-            return self.printer(val)
+        self.name_printers = {}
+        self.regex_printers = {}
+
+    def add_printer(self, type_name: str, printer):
+        """
+        Adds a printer for a specific type name.
+        """
+        self.name_printers[type_name] = printer
+
+    def add_printer_regex(self, regex: str, printer):
+        """
+        Adds a printer for a specific type name.
+
+        :param regex: The regex to match the type name.
+        :type regex: str
+        """
+        self.regex_printers[re.compile(regex)] = printer
+
+    def __call__(self, val: gdb.Value):
+        # Check the exact type name with typedefa
+        type_name = val.type.name
+        if type_name in self.name_printers:
+            return self.name_printers[val.type.name](val)
+
+        # Check the type name without typedefs and regex
+        type_name = val.type.unqualified().strip_typedefs().tag
+        if type_name is None:
+            return None
+
+        for regex, printer in self.regex_printers.items():
+            if regex.match(type_name):
+                return printer(val)
 
 
-def printer(type_name: str):
+pp = PrinterControl('openage')
+gdb.printing.register_pretty_printer(None, pp)
+
+
+def printer(type_name: str, regex: str = None):
     """
     Decorator for pretty printers.
 
@@ -32,10 +69,23 @@ def printer(type_name: str):
         """
         Registers the printer with GDB.
         """
-        gdb.printing.register_pretty_printer(
-            None,
-            PrinterControl(type_name, printer)
-        )
+        pp.add_printer(type_name, printer)
+
+    return _register_printer
+
+
+def printer_regex(regex: str):
+    """
+    Decorator for pretty printers.
+
+    :param regex: The regex to match the type name.
+    :type regex: str
+    """
+    def _register_printer(printer):
+        """
+        Registers the printer with GDB.
+        """
+        pp.add_printer_regex(regex, printer)
 
     return _register_printer
 
@@ -52,7 +102,8 @@ class TimePrinter:
     def to_string(self):
         # convert the fixed point value to double
         seconds = float(self.__val['raw_value']) * float(self.__val['to_double_factor'])
-        return f'{seconds:.5f}s'
+        # show as seconds with millisecond precision
+        return f'{seconds:.3f}s'
 
     def children(self):
         yield ('raw_value', self.__val['raw_value'])
@@ -61,17 +112,3 @@ class TimePrinter:
         # do this manualy because it's usually optimized out by the compiler
         precision = int(16 * 0.30103 + 1)
         yield ('approx_precision', precision)
-
-
-# def add_pretty_printer(val):
-#     if str(val.type) == 'openage::time::time_t':
-#         return TimePrinter(val)
-
-#     return None
-
-
-# def register_openage_printers(objfile):
-#     """
-#     Register the openage pretty printers with GDB.
-#     """
-#     gdb.pretty_printers.append(add_pretty_printer)
