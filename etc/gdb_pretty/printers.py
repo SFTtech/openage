@@ -4,7 +4,7 @@
 Pretty printers for GDB.
 """
 
-import gdb
+import gdb  # type: ignore
 import re
 
 
