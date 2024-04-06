@@ -112,3 +112,21 @@ class TimePrinter:
         # do this manualy because it's usually optimized out by the compiler
         precision = int(16 * 0.30103 + 1)
         yield ('approx_precision', precision)
+
+
+@printer_regex('^openage::util::FixedPoint<.*>')
+class FixedPointPrinter:
+    """
+    Pretty printer for openage::util::FixedPoint.
+    """
+
+    def __init__(self, val: gdb.Value):
+        self.__val = val
+
+    def to_string(self):
+        # convert the fixed point value to double
+        num = float(self.__val['raw_value']) * float(self.__val['to_double_factor'])
+        return f'{num:.5f}'
+
+    def children(self):
+        yield ('raw_value', self.__val['raw_value'])
