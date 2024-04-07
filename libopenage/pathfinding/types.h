@@ -30,7 +30,7 @@ using integrated_flags_t = uint8_t;
 /**
  * Integration field cell value.
  */
-struct integrate_t {
+struct integrated_t {
 	/**
 	 * Total integrated cost.
 	 */

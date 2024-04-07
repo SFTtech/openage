@@ -25,11 +25,11 @@ size_t IntegrationField::get_size() const {
 	return this->size;
 }
 
-const integrate_t &IntegrationField::get_cell(const coord::tile &pos) const {
+const integrated_t &IntegrationField::get_cell(const coord::tile &pos) const {
 	return this->cells.at(pos.ne + pos.se * this->size);
 }
 
-const integrate_t &IntegrationField::get_cell(size_t idx) const {
+const integrated_t &IntegrationField::get_cell(size_t idx) const {
 	return this->cells.at(idx);
 }
 
@@ -266,7 +266,7 @@ void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_fie
 	}
 }
 
-const std::vector<integrate_t> &IntegrationField::get_cells() const {
+const std::vector<integrated_t> &IntegrationField::get_cells() const {
 	return this->cells;
 }
 

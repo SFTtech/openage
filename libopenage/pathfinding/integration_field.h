@@ -45,7 +45,7 @@ public:
 	 * @param pos Coordinates of the cell.
 	 * @return Integration value at the specified position.
 	 */
-	const integrate_t &get_cell(const coord::tile &pos) const;
+	const integrated_t &get_cell(const coord::tile &pos) const;
 
 	/**
 	 * Get the integration value at a specified position.
@@ -53,7 +53,7 @@ public:
 	 * @param idx Index of the cell.
 	 * @return Integration value at the specified position.
 	 */
-	const integrate_t &get_cell(size_t idx) const;
+	const integrated_t &get_cell(size_t idx) const;
 
 	/**
 	 * Calculate the line-of-sight integration flags for a target cell.
@@ -108,7 +108,7 @@ public:
 	 *
 	 * @return Integration field values.
 	 */
-	const std::vector<integrate_t> &get_cells() const;
+	const std::vector<integrated_t> &get_cells() const;
 
 	/**
 	 * Reset the integration field for a new integration.
@@ -172,7 +172,7 @@ private:
 	/**
 	 * Integration field values.
 	 */
-	std::vector<integrate_t> cells;
+	std::vector<integrated_t> cells;
 };
 
 } // namespace path

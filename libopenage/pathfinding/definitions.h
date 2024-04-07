@@ -55,7 +55,7 @@ constexpr integrated_flags_t INTEGRATE_WAVEFRONT_BLOCKED_MASK = 0x02;
 /**
  * Initial value for a cell in the integration grid.
  */
-constexpr integrate_t INTEGRATE_INIT = {INTEGRATED_COST_UNREACHABLE, 0};
+constexpr integrated_t INTEGRATE_INIT = {INTEGRATED_COST_UNREACHABLE, 0};
 
 
 /**
