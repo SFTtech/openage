@@ -288,14 +288,14 @@ class PathFlowTypePrinter:
     TODO: Inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
     """
 
-    FLOW_FLAGS = {
+    FLOW_FLAGS: dict = {
         0x10: 'PATHABLE',
         0x20: 'LOS',
         0x40: 'WAVEFRONT_BLOCKED',
         0x80: 'UNUSED',
     }
 
-    FLOW_DIRECTION = {
+    FLOW_DIRECTION: dict = {
         0x00: 'NORTH',
         0x01: 'NORTHEAST',
         0x02: 'EAST',
@@ -316,7 +316,7 @@ class PathFlowTypePrinter:
         flow = int(self.__val)
         flags = flow & 0xF0
         direction = flow & 0x0F
-        return (f"{self.FLOW_DIRECTION.get(direction, 'INVALID')} | ("
+        return (f"{self.FLOW_DIRECTION.get(direction, 'INVALID')} ("
                 f"{', '.join([self.FLOW_FLAGS[f] for f in self.FLOW_FLAGS if f & flags])})")
 
     def children(self):
@@ -331,6 +331,28 @@ class PathFlowTypePrinter:
             yield (flag, bool(flags & mask))
 
 
+# Integrated flags
+INTEGRATED_FLAGS: dict = {
+    0x01: 'LOS',
+    0x02: 'WAVEFRONT_BLOCKED',
+}
+
+
+def get_integrated_flags_list(value: int) -> str:
+    """
+    Get the list of flags as a string.
+
+    :param value: The value to get the flags for.
+    :type value: int
+    """
+    flags = []
+    for mask, flag in INTEGRATED_FLAGS.items():
+        if value & mask:
+            flags.append(flag)
+
+    return ' | '.join(flags)
+
+
 @printer_typedef('openage::path::integrated_flags_t')
 class PathIntegratedFlagsTypePrinter:
     """
@@ -338,11 +360,6 @@ class PathIntegratedFlagsTypePrinter:
 
     TODO: Inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
     """
-
-    INTEGRATED_FLAGS = {
-        0x01: 'LOS',
-        0x02: 'WAVEFRONT_BLOCKED',
-    }
 
     def __init__(self, val: gdb.Value):
         self.__val = val
@@ -352,7 +369,7 @@ class PathIntegratedFlagsTypePrinter:
         Get the integrate type as a string.
         """
         integrate = int(self.__val)
-        return f"{', '.join([self.INTEGRATED_FLAGS[f] for f in self.INTEGRATED_FLAGS if f & integrate])}"
+        return get_integrated_flags_list(integrate)
 
     def children(self):
         """
@@ -361,6 +378,35 @@ class PathIntegratedFlagsTypePrinter:
         integrate = int(self.__val)
         for mask, flag in self.INTEGRATED_FLAGS.items():
             yield (flag, bool(integrate & mask))
+
+
+@printer_typedef('openage::path::integrated_t')
+class PathIntegratedTypePrinter:
+    """
+    Pretty printer for openage::path::integrated_t.
+
+    TODO: Inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
+    """
+
+    def __init__(self, val: gdb.Value):
+        self.__val = val
+
+    def to_string(self):
+        """
+        Get the integrate type as a string.
+        """
+        output_str = f'cost = {self.__val["cost"]}'
+        flags = get_integrated_flags_list(int(self.__val['flags']))
+        if len(flags) > 0:
+            output_str += f' ({flags})'
+        return output_str
+
+    def children(self):
+        """
+        Get the displayed children of the integrate type.
+        """
+        yield ('cost', self.__val['cost'])
+        yield ('flags', self.__val['flags'])
 
 
 # TODO: curve types
