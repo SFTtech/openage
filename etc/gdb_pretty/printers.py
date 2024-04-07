@@ -208,3 +208,28 @@ class VectorPrinter:
         Get the display hint for the vector.
         """
         return 'array'
+
+
+@printer_regex('^openage::curve::Keyframe<.*>')
+class KeyframePrinter:
+    """
+    Pretty printer for openage::curve::Keyframe.
+
+    TODO: Inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
+    """
+
+    def __init__(self, val: gdb.Value):
+        self.__val = val
+
+    def to_string(self):
+        """
+        Get the keyframe as a string.
+        """
+        return f'openage::curve::Keyframe<{self.__val.type.template_argument(0)}>'
+
+    def children(self):
+        """
+        Get the displayed children of the keyframe.
+        """
+        yield ('time', self.__val['time'])
+        yield ('value', self.__val['value'])
