@@ -157,3 +157,48 @@ class FixedPointPrinter:
 
         precision = int(fractional_bits * 0.30103 + 1)
         yield ('approx_precision', precision)
+
+
+@printer_regex('^openage::util::Vector<.*>')
+class VectorPrinter:
+    """
+    Pretty printer for openage::util::Vector.
+    """
+
+    def __init__(self, val: gdb.Value):
+        self.__val = val
+
+    def to_string(self):
+        """
+        Get the vector as a string.
+        """
+        size = self.__val.type.template_argument(0)
+        int_type = self.__val.type.template_argument(1)
+        return f'openage::util::Vector<{size}, {int_type}>'
+
+    def children(self):
+        """
+        Get the displayed children of the vector.
+        """
+        size = self.__val.type.template_argument(0)
+        for i in range(size):
+            yield (str(i), self.__val['_M_elems'][i])
+
+    def child(self, index):
+        """
+        Get the child at the given index.
+        """
+        return self.__val['_M_elems'][index]
+
+    def num_children(self):
+        """
+        Get the number of children of the vector.
+        """
+        return self.__val.type.template_argument(0)
+
+    @staticmethod
+    def display_hint():
+        """
+        Get the display hint for the vector.
+        """
+        return 'array'
