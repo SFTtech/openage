@@ -6,7 +6,6 @@
 #include "log/log.h"
 
 #include "coord/tile.h"
-#include "pathfinding/definitions.h"
 #include "pathfinding/integration_field.h"
 #include "pathfinding/portal.h"
 

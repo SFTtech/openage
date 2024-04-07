@@ -279,6 +279,90 @@ class KeyframePrinter:
         yield ('time', self.__val['time'])
         yield ('value', self.__val['value'])
 
+
+@printer_typedef('openage::path::flow_t')
+class PathFlowTypePrinter:
+    """
+    Pretty printer for openage::path::flow_t.
+
+    TODO: Inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
+    """
+
+    FLOW_FLAGS = {
+        0x10: 'PATHABLE',
+        0x20: 'LOS',
+        0x40: 'WAVEFRONT_BLOCKED',
+        0x80: 'UNUSED',
+    }
+
+    FLOW_DIRECTION = {
+        0x00: 'NORTH',
+        0x01: 'NORTHEAST',
+        0x02: 'EAST',
+        0x03: 'SOUTHEAST',
+        0x04: 'SOUTH',
+        0x05: 'SOUTHWEST',
+        0x06: 'WEST',
+        0x07: 'NORTHWEST',
+    }
+
+    def __init__(self, val: gdb.Value):
+        self.__val = val
+
+    def to_string(self):
+        """
+        Get the flow type as a string.
+        """
+        flow = int(self.__val)
+        flags = flow & 0xF0
+        direction = flow & 0x0F
+        return (f"{self.FLOW_DIRECTION.get(direction, 'INVALID')} | ("
+                f"{', '.join([self.FLOW_FLAGS[f] for f in self.FLOW_FLAGS if f & flags])})")
+
+    def children(self):
+        """
+        Get the displayed children of the flow type.
+        """
+        flow = int(self.__val)
+        flags = flow & 0xF0
+        direction = flow & 0x0F
+        yield ('direction', self.FLOW_DIRECTION[direction])
+        for mask, flag in self.FLOW_FLAGS.items():
+            yield (flag, bool(flags & mask))
+
+
+@printer_typedef('openage::path::integrated_flags_t')
+class PathIntegratedFlagsTypePrinter:
+    """
+    Pretty printer for openage::path::integrated_flags_t.
+
+    TODO: Inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
+    """
+
+    INTEGRATED_FLAGS = {
+        0x01: 'LOS',
+        0x02: 'WAVEFRONT_BLOCKED',
+    }
+
+    def __init__(self, val: gdb.Value):
+        self.__val = val
+
+    def to_string(self):
+        """
+        Get the integrate type as a string.
+        """
+        integrate = int(self.__val)
+        return f"{', '.join([self.INTEGRATED_FLAGS[f] for f in self.INTEGRATED_FLAGS if f & integrate])}"
+
+    def children(self):
+        """
+        Get the displayed children of the integrate type.
+        """
+        integrate = int(self.__val)
+        for mask, flag in self.INTEGRATED_FLAGS.items():
+            yield (flag, bool(integrate & mask))
+
+
 # TODO: curve types
 # TODO: pathfinding types
 # TODO: input event codes

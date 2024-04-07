@@ -48,10 +48,10 @@ struct integrate_t {
 /**
  * Flow field cell value.
  *
- * Bit 0: Line of sight flag.
- * Bit 1: Pathable flag.
- * Bit 2: Wavefront blocked flag.
- * Bit 3: Unused.
+ * Bit 0: Unused.
+ * Bit 1: Wave front blocked flag.
+ * Bit 2: Line of sight flag.
+ * Bit 3: Pathable flag.
  * Bits 4-7: flow direction.
  */
 using flow_t = uint8_t;
