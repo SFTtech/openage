@@ -233,3 +233,9 @@ class KeyframePrinter:
         """
         yield ('time', self.__val['time'])
         yield ('value', self.__val['value'])
+
+# TODO: curve types
+# TODO: coord types
+# TODO: pathfinding types
+# TODO: input event codes
+# TODO: eigen types https://github.com/dmillard/eigengdb
