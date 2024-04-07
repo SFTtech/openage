@@ -107,8 +107,11 @@ class TimePrinter:
 
         Format: SS.sss (e.g. 12.345s)
         """
+        fractional_bits = int(self.__val.type.template_argument(1))
+
         # convert the fixed point value to double
-        seconds = float(self.__val['raw_value']) * float(self.__val['to_double_factor'])
+        to_double_factor = 1 / pow(2, fractional_bits)
+        seconds = float(self.__val['raw_value']) * to_double_factor
         # show as seconds with millisecond precision
         return f'{seconds:.3f}s'
 
@@ -117,11 +120,6 @@ class TimePrinter:
         Get the displayed children of the time value.
         """
         yield ('raw_value', self.__val['raw_value'])
-        # calculate the precision of the fixed point value
-        # 16 * log10(2) = 16 * 0.30103 = 4.81648
-        # do this manualy because it's usually optimized out by the compiler
-        precision = int(16 * 0.30103 + 1)
-        yield ('approx_precision', precision)
 
 
 @printer_regex('^openage::util::FixedPoint<.*>')
@@ -139,8 +137,11 @@ class FixedPointPrinter:
 
         Format: 0.12345
         """
+        fractional_bits = int(self.__val.type.template_argument(1))
+
         # convert the fixed point value to double
-        num = float(self.__val['raw_value']) * float(self.__val['to_double_factor'])
+        to_double_factor = 1 / pow(2, fractional_bits)
+        num = float(self.__val['raw_value']) * to_double_factor
         return f'{num:.5f}'
 
     def children(self):
@@ -148,3 +149,11 @@ class FixedPointPrinter:
         Get the displayed children of the fixed point value.
         """
         yield ('raw_value', self.__val['raw_value'])
+
+        # calculate the precision of the fixed point value
+        # 16 * log10(2) = 16 * 0.30103 = 4.81648
+        # do this manualy because it's usually optimized out by the compiler
+        fractional_bits = int(self.__val.type.template_argument(1))
+
+        precision = int(fractional_bits * 0.30103 + 1)
+        yield ('approx_precision', precision)
