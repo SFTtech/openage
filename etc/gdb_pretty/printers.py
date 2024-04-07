@@ -96,6 +96,8 @@ def printer_regex(regex: str):
 class TimePrinter:
     """
     Pretty printer for openage::time::time_t.
+
+    TODO: Inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
     """
 
     def __init__(self, val: gdb.Value):
@@ -126,6 +128,8 @@ class TimePrinter:
 class FixedPointPrinter:
     """
     Pretty printer for openage::util::FixedPoint.
+
+    TODO: Inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
     """
 
     def __init__(self, val: gdb.Value):
@@ -163,6 +167,8 @@ class FixedPointPrinter:
 class VectorPrinter:
     """
     Pretty printer for openage::util::Vector.
+
+    TODO: Inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
     """
 
     def __init__(self, val: gdb.Value):
