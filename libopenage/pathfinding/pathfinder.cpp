@@ -62,6 +62,11 @@ const std::vector<std::shared_ptr<Portal>> Pathfinder::portal_a_star(PathRequest
 	auto target_sector_y = request.target.se / sector_size;
 	auto target_sector = grid->get_sector(target_sector_x, target_sector_y);
 
+	if (start_sector == target_sector) {
+		// exit early if the start and target are in the same sector
+		return result;
+	}
+
 	// path node storage, always provides cheapest next node.
 	heap_t node_candidates;
 
