@@ -317,7 +317,7 @@ class PathFlowTypePrinter:
         flags = flow & 0xF0
         direction = flow & 0x0F
         return (f"{self.FLOW_DIRECTION.get(direction, 'INVALID')} ("
-                f"{', '.join([self.FLOW_FLAGS[f] for f in self.FLOW_FLAGS if f & flags])})")
+                f"{', '.join([flag for mask, flag in self.FLOW_FLAGS.items() if mask & flags])})")
 
     def children(self):
         """
@@ -376,7 +376,7 @@ class PathIntegratedFlagsTypePrinter:
         Get the displayed children of the integrate type.
         """
         integrate = int(self.__val)
-        for mask, flag in self.INTEGRATED_FLAGS.items():
+        for mask, flag in INTEGRATED_FLAGS.items():
             yield (flag, bool(integrate & mask))
 
 
