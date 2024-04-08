@@ -165,7 +165,6 @@ void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_fie
 }
 
 void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_field,
-                                      const std::shared_ptr<IntegrationField> &other,
                                       sector_id_t other_sector_id,
                                       const std::shared_ptr<Portal> &portal) {
 	ENSURE(cost_field->get_size() == this->get_size(),
@@ -173,21 +172,6 @@ void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_fie
 	           << cost_field->get_size() << "x" << cost_field->get_size()
 	           << " does not match integration field size "
 	           << this->get_size() << "x" << this->get_size());
-	ENSURE(other->get_size() == this->get_size(),
-	       "other integration field size "
-	           << other->get_size() << "x" << other->get_size()
-	           << " does not match integration field size "
-	           << this->get_size() << "x" << this->get_size());
-
-	// Get the cost of the cells on the entry side (other) of the portal
-	std::vector<size_t> other_cells;
-	auto other_start = portal->get_entry_start(other_sector_id);
-	auto other_end = portal->get_entry_end(other_sector_id);
-	for (auto y = other_start.se; y <= other_end.se; ++y) {
-		for (auto x = other_start.ne; x <= other_end.ne; ++x) {
-			other_cells.push_back(x + y * this->size);
-		}
-	}
 
 	// Integrate the cost of the cells on the exit side (this) of the portal
 	std::vector<size_t> start_cells;
@@ -195,13 +179,7 @@ void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_fie
 	auto exit_end = portal->get_exit_end(other_sector_id);
 	for (auto y = exit_start.se; y <= exit_end.se; ++y) {
 		for (auto x = exit_start.ne; x <= exit_end.ne; ++x) {
-			auto idx = x + y * this->size;
-			start_cells.push_back(idx);
-
-			// Integrate the cells on this side of the portal
-			this->cells[idx].cost = other->get_cell(x + y * this->size).cost + cost_field->get_cost(idx);
-
-			// TODO: Transfer flags from other to this
+			start_cells.push_back(x + y * this->size);
 		}
 	}
 

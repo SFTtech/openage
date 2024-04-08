@@ -20,11 +20,10 @@ std::shared_ptr<IntegrationField> Integrator::integrate(const std::shared_ptr<Co
 }
 
 std::shared_ptr<IntegrationField> Integrator::integrate(const std::shared_ptr<CostField> &cost_field,
-                                                        const std::shared_ptr<IntegrationField> &other,
                                                         sector_id_t other_sector_id,
                                                         const std::shared_ptr<Portal> &portal) {
 	auto integration_field = std::make_shared<IntegrationField>(cost_field->get_size());
-	integration_field->integrate_cost(cost_field, other, other_sector_id, portal);
+	integration_field->integrate_cost(cost_field, other_sector_id, portal);
 
 	return integration_field;
 }

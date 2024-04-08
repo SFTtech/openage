@@ -30,8 +30,8 @@ const Path Pathfinder::get_path(PathRequest &request) {
 	auto target_sector_y = request.target.se / sector_size;
 	auto target_sector = grid->get_sector(target_sector_x, target_sector_y);
 
-	auto target_x = request.target.ne % sector_size;
-	auto target_y = request.target.se % sector_size;
+	coord::tile_t target_x = request.target.ne % sector_size;
+	coord::tile_t target_y = request.target.se % sector_size;
 	auto target = coord::tile{target_x, target_y};
 
 	auto flow_field = this->integrator->build(target_sector->get_cost_field(), target);

@@ -42,14 +42,12 @@ public:
 	 * Integrate the cost field from a portal.
 	 *
 	 * @param cost_field Cost field.
-	 * @param other Integration field from the other side of the portal.
 	 * @param other_sector_id Sector ID of the other side of the portal.
 	 * @param portal Portal.
 	 *
 	 * @return Integration field.
 	 */
 	std::shared_ptr<IntegrationField> integrate(const std::shared_ptr<CostField> &cost_field,
-	                                            const std::shared_ptr<IntegrationField> &other,
 	                                            sector_id_t other_sector_id,
 	                                            const std::shared_ptr<Portal> &portal);
 
