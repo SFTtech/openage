@@ -60,10 +60,25 @@ public:
 	 */
 	std::shared_ptr<FlowField> build(const std::shared_ptr<IntegrationField> &integration_field);
 
+	/**
+	 * Build the flow field from a portal.
+	 *
+	 * @param integration_field Integration field.
+	 * @param other Integration field of the other side of the portal.
+	 * @param other_sector_id Sector ID of the other side of the portal.
+	 * @param portal Portal.
+	 *
+	 * @return Flow field.
+	 */
+	std::shared_ptr<FlowField> build(const std::shared_ptr<IntegrationField> &integration_field,
+	                                 const std::shared_ptr<IntegrationField> &other,
+	                                 sector_id_t other_sector_id,
+	                                 const std::shared_ptr<Portal> &portal);
+
 	using build_return_t = std::pair<std::shared_ptr<IntegrationField>, std::shared_ptr<FlowField>>;
 
 	/**
-	 * Build the flow field for a target.
+	 * Build the integration field and flow field for a target.
 	 *
 	 * @param cost_field Cost field.
 	 * @param target Coordinates of the target cell.
@@ -72,6 +87,19 @@ public:
 	 */
 	build_return_t build(const std::shared_ptr<CostField> &cost_field,
 	                     const coord::tile &target);
+
+	/**
+	 * Build the integration field and flow field from a portal.
+	 *
+	 * @param cost_field Cost field.
+	 * @param other_integration_field Integration field of the other side of the portal.
+	 * @param other_sector_id Sector ID of the other side of the portal.
+	 * @param portal Portal.
+	 */
+	build_return_t build(const std::shared_ptr<CostField> &cost_field,
+	                     const std::shared_ptr<IntegrationField> &other_integration_field,
+	                     sector_id_t other_sector_id,
+	                     const std::shared_ptr<Portal> &portal);
 };
 
 } // namespace path

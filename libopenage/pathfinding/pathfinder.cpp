@@ -34,10 +34,33 @@ const Path Pathfinder::get_path(PathRequest &request) {
 	coord::tile_t target_y = request.target.se % sector_size;
 	auto target = coord::tile{target_x, target_y};
 
-	auto flow_field = this->integrator->build(target_sector->get_cost_field(), target);
+	auto sector_fields = this->integrator->build(target_sector->get_cost_field(), target);
+	auto prev_integration_field = sector_fields.first;
+	auto prev_sector_id = target_sector->get_id();
+
+	if (not portal_path.empty()) {
+		std::vector<Integrator::build_return_t> flow_fields;
+		flow_fields.reserve(portal_path.size() + 1);
+
+		flow_fields.push_back(sector_fields);
+		for (auto &portal : portal_path) {
+			auto prev_sector = grid->get_sector(prev_sector_id);
+			auto next_sector_id = portal->get_exit_sector(prev_sector_id);
+			auto next_sector = grid->get_sector(next_sector_id);
+
+			sector_fields = this->integrator->build(next_sector->get_cost_field(),
+			                                        prev_integration_field,
+			                                        prev_sector_id,
+			                                        portal);
+			flow_fields.push_back(sector_fields);
+
+			prev_integration_field = sector_fields.first;
+			prev_sector_id = next_sector_id;
+		}
+	}
 
 	// TODO: Implement the rest of the pathfinding process
-	return Path{};
+	return Path{request.grid_id, {}};
 }
 
 const std::shared_ptr<Grid> &Pathfinder::get_grid(grid_id_t id) const {

@@ -71,7 +71,7 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 			}
 
 			// Find the neighbor with the smallest cost.
-			flow_dir_t direction;
+			flow_dir_t direction = static_cast<flow_dir_t>(this->cells[idx] & FLOW_DIR_MASK);
 			auto smallest_cost = INTEGRATED_COST_UNREACHABLE;
 			if (y > 0) {
 				auto cost = integrate_cells[idx - this->size].cost;
@@ -140,7 +140,7 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 }
 
 void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field,
-                      const std::shared_ptr<IntegrationField> &other,
+                      const std::shared_ptr<IntegrationField> & /* other */,
                       sector_id_t other_sector_id,
                       const std::shared_ptr<Portal> &portal) {
 	ENSURE(integration_field->get_size() == this->get_size(),
@@ -149,17 +149,61 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 	           << " does not match flow field size "
 	           << this->get_size() << "x" << this->get_size());
 
-	auto &integrate_cells = integration_field->get_cells();
 	auto &flow_cells = this->cells;
 	auto direction = portal->get_direction();
 
+	// portal entry and exit cell coordinates
+	auto entry_start = portal->get_entry_start(other_sector_id);
+	auto entry_end = portal->get_entry_end(other_sector_id);
+	auto exit_start = portal->get_exit_start(other_sector_id);
+
+	// TODO: Compare integration values from other side of portal
+	// auto &integrate_cells = integration_field->get_cells();
+
+	// set the direction for the flow field cells that are part of the portal
 	if (direction == PortalDirection::NORTH_SOUTH) {
+		bool other_is_north = entry_start.se > exit_start.se;
+		if (other_is_north) {
+			auto y = entry_start.se;
+			for (auto x = entry_start.ne; x <= entry_end.ne; ++x) {
+				auto idx = y * this->size + x;
+				flow_cells[idx] = flow_cells[idx] | FLOW_PATHABLE_MASK;
+				flow_cells[idx] = flow_cells[idx] | static_cast<uint8_t>(flow_dir_t::NORTH);
+			}
+		}
+		else {
+			auto y = entry_start.se;
+			for (auto x = entry_start.ne; x <= entry_end.ne; ++x) {
+				auto idx = y * this->size + x;
+				flow_cells[idx] = flow_cells[idx] | FLOW_PATHABLE_MASK;
+				flow_cells[idx] = flow_cells[idx] | static_cast<uint8_t>(flow_dir_t::SOUTH);
+			}
+		}
 	}
 	else if (direction == PortalDirection::EAST_WEST) {
+		bool other_is_east = entry_start.ne > exit_start.ne;
+		if (other_is_east) {
+			auto x = entry_start.ne;
+			for (auto y = entry_start.se; y <= entry_end.se; ++y) {
+				auto idx = y * this->size + x;
+				flow_cells[idx] = flow_cells[idx] | FLOW_PATHABLE_MASK;
+				flow_cells[idx] = flow_cells[idx] | static_cast<uint8_t>(flow_dir_t::EAST);
+			}
+		}
+		else {
+			auto x = entry_start.ne;
+			for (auto y = entry_start.se; y <= entry_end.se; ++y) {
+				auto idx = y * this->size + x;
+				flow_cells[idx] = flow_cells[idx] | FLOW_PATHABLE_MASK;
+				flow_cells[idx] = flow_cells[idx] | static_cast<uint8_t>(flow_dir_t::WEST);
+			}
+		}
 	}
 	else {
-		throw Error(ERR << "Invalid portal direction");
+		throw Error(ERR << "Invalid portal direction: " << static_cast<int>(direction));
 	}
+
+	this->build(integration_field);
 }
 
 const std::vector<flow_t> &FlowField::get_cells() const {

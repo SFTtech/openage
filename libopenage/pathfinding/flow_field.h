@@ -31,9 +31,9 @@ public:
 	/**
 	 * Create a flow field from an existing integration field.
 	 *
-	 * @param integrate_field Integration field.
+	 * @param integration_field Integration field.
 	 */
-	FlowField(const std::shared_ptr<IntegrationField> &integrate_field);
+	FlowField(const std::shared_ptr<IntegrationField> &integration_field);
 
 	/**
 	 * Get the size of the flow field.
@@ -63,19 +63,19 @@ public:
 	/**
 	 * Build the flow field.
 	 *
-	 * @param integrate_field Integration field.
+	 * @param integration_field Integration field.
 	 */
-	void build(const std::shared_ptr<IntegrationField> &integrate_field);
+	void build(const std::shared_ptr<IntegrationField> &integration_field);
 
 	/**
 	 * Build the flow field for a portal.
 	 *
-	 * @param integrate_field Integration field.
-	 * @param other Other integration field.
+	 * @param integration_field Integration field.
+	 * @param other Integration field of the other sector.
 	 * @param other_sector_id Sector ID of the other field.
 	 * @param portal Portal connecting the two fields.
 	 */
-	void build(const std::shared_ptr<IntegrationField> &integrate_field,
+	void build(const std::shared_ptr<IntegrationField> &integration_field,
 	           const std::shared_ptr<IntegrationField> &other,
 	           sector_id_t other_sector_id,
 	           const std::shared_ptr<Portal> &portal);
