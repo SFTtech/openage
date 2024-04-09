@@ -179,7 +179,12 @@ void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_fie
 	auto exit_end = portal->get_exit_end(other_sector_id);
 	for (auto y = exit_start.se; y <= exit_end.se; ++y) {
 		for (auto x = exit_start.ne; x <= exit_end.ne; ++x) {
-			start_cells.push_back(x + y * this->size);
+			// every portal cell is a target cell
+			auto target_idx = x + y * this->size;
+
+			// Set the cost of all target cells to the start value
+			this->cells[target_idx].cost = INTEGRATED_COST_START;
+			start_cells.push_back(target_idx);
 		}
 	}
 
