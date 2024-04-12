@@ -59,22 +59,6 @@ constexpr integrated_t INTEGRATE_INIT = {INTEGRATED_COST_UNREACHABLE, 0};
 
 
 /**
- * Flow field direction types.
- *
- * Encoded into the flow_t values.
- */
-enum class flow_dir_t : uint8_t {
-	NORTH = 0x00,
-	NORTH_EAST = 0x01,
-	EAST = 0x02,
-	SOUTH_EAST = 0x03,
-	SOUTH = 0x04,
-	SOUTH_WEST = 0x05,
-	WEST = 0x06,
-	NORTH_WEST = 0x07,
-};
-
-/**
  * Initial value for a flow field cell.
  */
 constexpr flow_t FLOW_INIT = 0;
