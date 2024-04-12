@@ -75,6 +75,12 @@ void path_demo_1(const util::Path &path) {
 	auto pathfinder = std::make_shared<path::Pathfinder>();
 	pathfinder->add_grid(grid);
 
+	// Render the grid
+	auto qtapp = std::make_shared<renderer::gui::GuiApplicationWithLogger>();
+	auto window = std::make_shared<renderer::opengl::GlWindow>("openage pathfinding test", 1024, 768);
+	auto render_manager = std::make_shared<RenderManager1>(qtapp, window, path, grid);
+	log::log(INFO << "Created render manager for pathfinding demo");
+
 	auto path_request = path::PathRequest{
 		0,
 		coord::tile{2, 26},
@@ -82,11 +88,7 @@ void path_demo_1(const util::Path &path) {
 	};
 	auto path_result = pathfinder->get_path(path_request);
 
-	// Render the grid
-	auto qtapp = std::make_shared<renderer::gui::GuiApplicationWithLogger>();
-	auto window = std::make_shared<renderer::opengl::GlWindow>("openage pathfinding test", 1024, 768);
-	auto render_manager = std::make_shared<RenderManager1>(qtapp, window, path, grid);
-	log::log(INFO << "Created render manager for pathfinding demo");
+	render_manager->create_waypoint_tiles(path_result);
 
 	render_manager->run();
 }
@@ -474,6 +476,58 @@ void RenderManager1::create_portal_tiles(const std::shared_ptr<path::Grid> &grid
 				}
 			}
 		}
+	}
+}
+
+void RenderManager1::create_waypoint_tiles(const Path &path) {
+	auto width = grid->get_size()[0];
+	auto height = grid->get_size()[1];
+	auto sector_size = grid->get_sector_size();
+
+	float tile_offset_width = 2.0f / (width * sector_size);
+	float tile_offset_height = 2.0f / (height * sector_size);
+
+	for (auto &tile : path.waypoints) {
+		std::array<float, 8> tile_data{
+			-1.0f + tile.ne * tile_offset_width,
+			1.0f - tile.se * tile_offset_height,
+			-1.0f + tile.ne * tile_offset_width,
+			1.0f - (tile.se + 1) * tile_offset_height,
+			-1.0f + (tile.ne + 1) * tile_offset_width,
+			1.0f - tile.se * tile_offset_height,
+			-1.0f + (tile.ne + 1) * tile_offset_width,
+			1.0f - (tile.se + 1) * tile_offset_height,
+		};
+
+		renderer::resources::VertexInputInfo info{
+			{renderer::resources::vertex_input_t::V2F32},
+			renderer::resources::vertex_layout_t::AOS,
+			renderer::resources::vertex_primitive_t::TRIANGLE_STRIP};
+
+		auto const data_size = tile_data.size() * sizeof(float);
+		std::vector<uint8_t> verts(data_size);
+		std::memcpy(verts.data(), tile_data.data(), data_size);
+
+		auto tile_mesh = renderer::resources::MeshData(std::move(verts), info);
+		auto tile_geometry = renderer->add_mesh_geometry(tile_mesh);
+
+		Eigen::Matrix4f id_matrix = Eigen::Matrix4f::Identity();
+		auto tile_unifs = obj_shader->new_uniform_input(
+			"color",
+			Eigen::Vector4f{1.0, 0.0, 0.0, 1.0},
+			"model",
+			id_matrix,
+			"view",
+			id_matrix,
+			"proj",
+			id_matrix);
+		auto tile_obj = renderer::Renderable{
+			tile_unifs,
+			tile_geometry,
+			true,
+			true,
+		};
+		this->field_pass->add_renderables({tile_obj});
 	}
 }
 

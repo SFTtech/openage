@@ -3,6 +3,7 @@
 #pragma once
 
 #include "pathfinding/definitions.h"
+#include "pathfinding/path.h"
 #include "renderer/resources/mesh_data.h"
 #include "util/path.h"
 
@@ -61,6 +62,13 @@ public:
 	 * Run the render loop.
 	 */
 	void run();
+
+	/**
+	 * Create renderables for the waypoint tiles of a path.
+	 *
+	 * @param path Path object.
+	 */
+	void create_waypoint_tiles(const Path &path);
 
 private:
 	/**
