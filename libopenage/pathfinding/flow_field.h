@@ -4,6 +4,7 @@
 
 #include <cstddef>
 #include <memory>
+#include <unordered_set>
 #include <vector>
 
 #include "pathfinding/definitions.h"
@@ -64,8 +65,11 @@ public:
 	 * Build the flow field.
 	 *
 	 * @param integration_field Integration field.
+	 * @param target_cells Target cells of the flow field. These cells are ignored
+	 *                     when building the field.
 	 */
-	void build(const std::shared_ptr<IntegrationField> &integration_field);
+	void build(const std::shared_ptr<IntegrationField> &integration_field,
+	           const std::unordered_set<size_t> &target_cells = {});
 
 	/**
 	 * Build the flow field for a portal.
