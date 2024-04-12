@@ -72,15 +72,11 @@ void path_demo_1(const util::Path &path) {
 		}
 	}
 
+	// Create a pathfinder for searching paths on the grid
 	auto pathfinder = std::make_shared<path::Pathfinder>();
 	pathfinder->add_grid(grid);
 
-	// Render the grid
-	auto qtapp = std::make_shared<renderer::gui::GuiApplicationWithLogger>();
-	auto window = std::make_shared<renderer::opengl::GlWindow>("openage pathfinding test", 1024, 768);
-	auto render_manager = std::make_shared<RenderManager1>(qtapp, window, path, grid);
-	log::log(INFO << "Created render manager for pathfinding demo");
-
+	// Create a path request and get the path
 	// TODO: Make the path request interactive with window callbacks
 	PathRequest path_request{
 		0,
@@ -89,8 +85,17 @@ void path_demo_1(const util::Path &path) {
 	};
 	Path path_result = pathfinder->get_path(path_request);
 
+	// Create a renderer to display the grid and path
+	auto qtapp = std::make_shared<renderer::gui::GuiApplicationWithLogger>();
+	auto window = std::make_shared<renderer::opengl::GlWindow>("openage pathfinding test", 1024, 768);
+	auto render_manager = std::make_shared<RenderManager1>(qtapp, window, path, grid);
+	log::log(INFO << "Created render manager for pathfinding demo");
+
+	// Create renderables for the waypoints of the path
 	render_manager->create_waypoint_tiles(path_result);
 
+	// Run the renderer pss to draw the grid and path into a window
+	// TODO: Make this a while (not window.should_close()) loop
 	render_manager->run();
 }
 
@@ -423,13 +428,13 @@ void RenderManager1::create_portal_tiles(const std::shared_ptr<path::Grid> &grid
 				std::vector<coord::tile> tiles;
 				if (direction == PortalDirection::NORTH_SOUTH) {
 					auto y = start.se;
-					for (size_t x = start.ne; x <= end.ne; ++x) {
+					for (auto x = start.ne; x <= end.ne; ++x) {
 						tiles.push_back(coord::tile{x, y});
 					}
 				}
 				else {
 					auto x = start.ne;
-					for (size_t y = start.se; y <= end.se; ++y) {
+					for (auto y = start.se; y <= end.se; ++y) {
 						tiles.push_back(coord::tile{x, y});
 					}
 				}

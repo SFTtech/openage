@@ -311,10 +311,10 @@ std::vector<std::pair<int, int>> IntegrationField::get_los_corners(const std::sh
 	if (blocker.ne > 0) {
 		left_cost = cost_field->get_cost(coord::tile{blocker.ne - 1, blocker.se});
 	}
-	if (blocker.se < this->size - 1) {
+	if (static_cast<size_t>(blocker.se) < this->size - 1) {
 		bottom_cost = cost_field->get_cost(coord::tile{blocker.ne, blocker.se + 1});
 	}
-	if (blocker.ne < this->size - 1) {
+	if (static_cast<size_t>(blocker.ne) < this->size - 1) {
 		right_cost = cost_field->get_cost(coord::tile{blocker.ne + 1, blocker.se});
 	}
 

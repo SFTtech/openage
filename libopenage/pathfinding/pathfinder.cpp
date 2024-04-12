@@ -211,11 +211,12 @@ const std::vector<coord::tile> Pathfinder::get_waypoints(const std::vector<std::
 	for (size_t i = 0; i < flow_fields.size(); ++i) {
 		auto sector = grid->get_sector(flow_fields.at(i).first);
 		auto flow_field = flow_fields.at(i).second;
-		bool target_field = i == flow_fields.size() - 1;
 
 		// navigate the flow field vectors until we reach its edge (or the target)
-		while (current_x < sector_size and current_y < sector_size
-		       and current_x >= 0 and current_y >= 0) {
+		while (current_x < static_cast<coord::tile_t>(sector_size)
+		       and current_y < static_cast<coord::tile_t>(sector_size)
+		       and current_x >= 0
+		       and current_y >= 0) {
 			auto cell = flow_field->get_cell(coord::tile{current_x, current_y});
 			if (cell & FLOW_LOS_MASK) {
 				// check if we reached an LOS cell
