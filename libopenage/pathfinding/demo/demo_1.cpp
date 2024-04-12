@@ -23,15 +23,15 @@ void path_demo_1(const util::Path &path) {
 	auto grid = std::make_shared<Grid>(0, util::Vector2s{4, 3}, 10);
 
 	// Initialize the cost field for each sector.
-	for (auto sector : grid->get_sectors()) {
+	for (auto &sector : grid->get_sectors()) {
 		auto cost_field = sector->get_cost_field();
-		auto sector_cost = sectors_cost.at(sector->get_id());
+		std::vector<cost_t> sector_cost = sectors_cost.at(sector->get_id());
 		cost_field->set_costs(std::move(sector_cost));
 	}
 
 	// Initialize portals between sectors.
-	auto grid_size = grid->get_size();
-	auto portal_id = 0;
+	util::Vector2s grid_size = grid->get_size();
+	portal_id_t portal_id = 0;
 	for (size_t y = 0; y < grid_size[1]; y++) {
 		for (size_t x = 0; x < grid_size[0]; x++) {
 			auto sector = grid->get_sector(x, y);
@@ -39,7 +39,7 @@ void path_demo_1(const util::Path &path) {
 			if (x < grid_size[0] - 1) {
 				auto neighbor = grid->get_sector(x + 1, y);
 				auto portals = sector->find_portals(neighbor, PortalDirection::EAST_WEST, portal_id);
-				for (auto portal : portals) {
+				for (auto &portal : portals) {
 					sector->add_portal(portal);
 					neighbor->add_portal(portal);
 				}
@@ -48,7 +48,7 @@ void path_demo_1(const util::Path &path) {
 			if (y < grid_size[1] - 1) {
 				auto neighbor = grid->get_sector(x, y + 1);
 				auto portals = sector->find_portals(neighbor, PortalDirection::NORTH_SOUTH, portal_id);
-				for (auto portal : portals) {
+				for (auto &portal : portals) {
 					sector->add_portal(portal);
 					neighbor->add_portal(portal);
 				}
@@ -81,12 +81,13 @@ void path_demo_1(const util::Path &path) {
 	auto render_manager = std::make_shared<RenderManager1>(qtapp, window, path, grid);
 	log::log(INFO << "Created render manager for pathfinding demo");
 
-	auto path_request = path::PathRequest{
+	// TODO: Make the path request interactive with window callbacks
+	PathRequest path_request{
 		0,
 		coord::tile{2, 26},
 		coord::tile{36, 2},
 	};
-	auto path_result = pathfinder->get_path(path_request);
+	Path path_result = pathfinder->get_path(path_request);
 
 	render_manager->create_waypoint_tiles(path_result);
 
