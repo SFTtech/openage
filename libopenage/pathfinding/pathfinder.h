@@ -15,6 +15,7 @@ namespace openage::path {
 class Grid;
 class Integrator;
 class Portal;
+class FlowField;
 
 /**
  * Pathfinder for flow field pathfinding.
@@ -58,10 +59,13 @@ public:
 	 *
 	 * @return Path found by the pathfinder.
 	 */
-	const Path get_path(PathRequest &request);
+	const Path get_path(const PathRequest &request);
 
 private:
-	const std::vector<std::shared_ptr<Portal>> portal_a_star(PathRequest &request) const;
+	const std::vector<std::shared_ptr<Portal>> portal_a_star(const PathRequest &request) const;
+
+	const std::vector<coord::tile> get_waypoints(const std::vector<std::pair<sector_id_t, std::shared_ptr<FlowField>>> &flow_fields,
+	                                             const PathRequest &request) const;
 
 	/**
 	 * Calculate the heuristic cost between a portal and a target cell.

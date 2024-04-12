@@ -3,6 +3,7 @@
 #include "pathfinder.h"
 
 #include "coord/phys.h"
+#include "pathfinding/flow_field.h"
 #include "pathfinding/grid.h"
 #include "pathfinding/integrator.h"
 #include "pathfinding/portal.h"
@@ -16,7 +17,7 @@ Pathfinder::Pathfinder() :
 	integrator{std::make_shared<Integrator>()} {
 }
 
-const Path Pathfinder::get_path(PathRequest &request) {
+const Path Pathfinder::get_path(const PathRequest &request) {
 	// High-level pathfinding
 	// Find the portals to use to get from the start to the target
 	auto portal_path = this->portal_a_star(request);
@@ -38,29 +39,33 @@ const Path Pathfinder::get_path(PathRequest &request) {
 	auto prev_integration_field = sector_fields.first;
 	auto prev_sector_id = target_sector->get_id();
 
-	if (not portal_path.empty()) {
-		std::vector<Integrator::build_return_t> flow_fields;
-		flow_fields.reserve(portal_path.size() + 1);
+	std::vector<coord::tile> waypoints;
+	std::vector<std::pair<sector_id_t, std::shared_ptr<FlowField>>> flow_fields;
+	flow_fields.reserve(portal_path.size() + 1);
 
-		flow_fields.push_back(sector_fields);
-		for (auto &portal : portal_path) {
-			auto prev_sector = grid->get_sector(prev_sector_id);
-			auto next_sector_id = portal->get_exit_sector(prev_sector_id);
-			auto next_sector = grid->get_sector(next_sector_id);
+	flow_fields.push_back(std::make_pair(target_sector->get_id(), sector_fields.second));
+	for (auto &portal : portal_path) {
+		auto prev_sector = grid->get_sector(prev_sector_id);
+		auto next_sector_id = portal->get_exit_sector(prev_sector_id);
+		auto next_sector = grid->get_sector(next_sector_id);
 
-			sector_fields = this->integrator->build(next_sector->get_cost_field(),
-			                                        prev_integration_field,
-			                                        prev_sector_id,
-			                                        portal);
-			flow_fields.push_back(sector_fields);
+		sector_fields = this->integrator->build(next_sector->get_cost_field(),
+		                                        prev_integration_field,
+		                                        prev_sector_id,
+		                                        portal);
+		flow_fields.push_back(std::make_pair(next_sector_id, sector_fields.second));
 
-			prev_integration_field = sector_fields.first;
-			prev_sector_id = next_sector_id;
-		}
+		prev_integration_field = sector_fields.first;
+		prev_sector_id = next_sector_id;
 	}
 
+	// reverse the flow fields so they are ordered from start to target
+	std::reverse(flow_fields.begin(), flow_fields.end());
+
+	waypoints = this->get_waypoints(flow_fields, request);
+
 	// TODO: Implement the rest of the pathfinding process
-	return Path{request.grid_id, {}};
+	return Path{request.grid_id, waypoints};
 }
 
 const std::shared_ptr<Grid> &Pathfinder::get_grid(grid_id_t id) const {
@@ -71,7 +76,7 @@ void Pathfinder::add_grid(const std::shared_ptr<Grid> &grid) {
 	this->grids[grid->get_id()] = grid;
 }
 
-const std::vector<std::shared_ptr<Portal>> Pathfinder::portal_a_star(PathRequest &request) const {
+const std::vector<std::shared_ptr<Portal>> Pathfinder::portal_a_star(const PathRequest &request) const {
 	std::vector<std::shared_ptr<Portal>> result;
 
 	auto grid = this->grids.at(request.grid_id);
@@ -184,6 +189,132 @@ const std::vector<std::shared_ptr<Portal>> Pathfinder::portal_a_star(PathRequest
 	}
 
 	return result;
+}
+
+const std::vector<coord::tile> Pathfinder::get_waypoints(const std::vector<std::pair<sector_id_t, std::shared_ptr<FlowField>>> &flow_fields,
+                                                         const PathRequest &request) const {
+	ENSURE(flow_fields.size() > 1, "At least 1 flow field is required for finding waypoints.");
+
+	std::vector<coord::tile> waypoints;
+
+	auto grid = this->get_grid(request.grid_id);
+	auto sector_size = grid->get_sector_size();
+	coord::tile_t start_x = request.start.ne % sector_size;
+	coord::tile_t start_y = request.start.se % sector_size;
+	coord::tile_t target_x = request.target.ne % sector_size;
+	coord::tile_t target_y = request.target.se % sector_size;
+
+	coord::tile_t current_x = start_x;
+	coord::tile_t current_y = start_y;
+	flow_dir_t current_direction = flow_fields.at(0).second->get_dir(coord::tile{current_x, current_y});
+	for (size_t i = 0; i < flow_fields.size(); ++i) {
+		auto sector = grid->get_sector(flow_fields.at(i).first);
+		auto flow_field = flow_fields.at(i).second;
+		bool target_field = i == flow_fields.size() - 1;
+
+		// navigate the flow field vectors until we reach its edge (or the target)
+		while (current_x < sector_size and current_y < sector_size
+		       and current_x >= 0 and current_y >= 0) {
+			auto cell = flow_field->get_cell(coord::tile{current_x, current_y});
+			if (cell & FLOW_LOS_MASK) {
+				// check if we reached an LOS cell
+				auto sector_pos = sector->get_position();
+				auto cell_pos = coord::tile{sector_pos.ne * sector_size,
+				                            sector_pos.se * sector_size}
+				                + coord::tile_delta{current_x, current_y};
+				waypoints.push_back(cell_pos);
+				break;
+			}
+
+			// check if we need to change direction
+			auto cell_direction = flow_field->get_dir(coord::tile{current_x, current_y});
+			if (cell_direction != current_direction) {
+				// add the current cell as a waypoint
+				auto sector_pos = sector->get_position();
+				auto cell_pos = coord::tile{sector_pos.ne * sector_size,
+				                            sector_pos.se * sector_size}
+				                + coord::tile_delta{current_x, current_y};
+				waypoints.push_back(cell_pos);
+				current_direction = cell_direction;
+			}
+
+			// move to the next cell
+			switch (current_direction) {
+			case flow_dir_t::NORTH:
+				current_y -= 1;
+				break;
+			case flow_dir_t::NORTH_EAST:
+				current_x += 1;
+				current_y -= 1;
+				break;
+			case flow_dir_t::EAST:
+				current_x += 1;
+				break;
+			case flow_dir_t::SOUTH_EAST:
+				current_x += 1;
+				current_y += 1;
+				break;
+			case flow_dir_t::SOUTH:
+				current_y += 1;
+				break;
+			case flow_dir_t::SOUTH_WEST:
+				current_x -= 1;
+				current_y += 1;
+				break;
+			case flow_dir_t::WEST:
+				current_x -= 1;
+				break;
+			case flow_dir_t::NORTH_WEST:
+				current_x -= 1;
+				current_y -= 1;
+				break;
+			default:
+				throw Error{ERR << "Invalid flow direction: " << static_cast<int>(current_direction)};
+			}
+		}
+
+		// reset the current position for the next flow field
+		switch (current_direction) {
+		case flow_dir_t::NORTH:
+			current_y = sector_size - 1;
+			break;
+		case flow_dir_t::NORTH_EAST:
+			current_x = current_x + 1;
+			current_y = sector_size - 1;
+			break;
+		case flow_dir_t::EAST:
+			current_x = 0;
+			break;
+		case flow_dir_t::SOUTH_EAST:
+			current_x = 0;
+			current_y = current_y + 1;
+			break;
+		case flow_dir_t::SOUTH:
+			current_y = 0;
+			break;
+		case flow_dir_t::SOUTH_WEST:
+			current_x = current_x - 1;
+			current_y = 0;
+			break;
+		case flow_dir_t::WEST:
+			current_x = sector_size - 1;
+			break;
+		case flow_dir_t::NORTH_WEST:
+			current_x = sector_size - 1;
+			current_y = current_y - 1;
+			break;
+		default:
+			throw Error{ERR << "Invalid flow direction: " << static_cast<int>(current_direction)};
+		}
+	}
+
+	// add the target position as the last waypoint
+	auto sector_pos = grid->get_sector(flow_fields.back().first)->get_position();
+	auto target_pos = coord::tile{sector_pos.ne * sector_size, sector_pos.se * sector_size}
+	                  + coord::tile_delta{target_x, target_y};
+	waypoints.push_back(target_pos);
+
+	return waypoints;
 }
 
 int Pathfinder::heuristic_cost(const coord::tile &portal_pos,
