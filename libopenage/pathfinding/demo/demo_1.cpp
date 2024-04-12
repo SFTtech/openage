@@ -487,7 +487,11 @@ void RenderManager1::create_waypoint_tiles(const Path &path) {
 	float tile_offset_width = 2.0f / (width * sector_size);
 	float tile_offset_height = 2.0f / (height * sector_size);
 
-	for (auto &tile : path.waypoints) {
+	Eigen::Matrix4f id_matrix = Eigen::Matrix4f::Identity();
+
+	// Draw in-between waypoints
+	for (size_t i = 1; i < path.waypoints.size() - 1; i++) {
+		auto tile = path.waypoints[i];
 		std::array<float, 8> tile_data{
 			-1.0f + tile.ne * tile_offset_width,
 			1.0f - tile.se * tile_offset_height,
@@ -511,10 +515,9 @@ void RenderManager1::create_waypoint_tiles(const Path &path) {
 		auto tile_mesh = renderer::resources::MeshData(std::move(verts), info);
 		auto tile_geometry = renderer->add_mesh_geometry(tile_mesh);
 
-		Eigen::Matrix4f id_matrix = Eigen::Matrix4f::Identity();
 		auto tile_unifs = obj_shader->new_uniform_input(
 			"color",
-			Eigen::Vector4f{1.0, 0.0, 0.0, 1.0},
+			Eigen::Vector4f{0.0, 0.25, 1.0, 1.0},
 			"model",
 			id_matrix,
 			"view",
@@ -529,6 +532,88 @@ void RenderManager1::create_waypoint_tiles(const Path &path) {
 		};
 		this->field_pass->add_renderables({tile_obj});
 	}
+
+	// Draw start and end waypoints with different colors
+	auto start_tile = path.waypoints.front();
+	std::array<float, 8> start_tile_data{
+		-1.0f + start_tile.ne * tile_offset_width,
+		1.0f - start_tile.se * tile_offset_height,
+		-1.0f + start_tile.ne * tile_offset_width,
+		1.0f - (start_tile.se + 1) * tile_offset_height,
+		-1.0f + (start_tile.ne + 1) * tile_offset_width,
+		1.0f - start_tile.se * tile_offset_height,
+		-1.0f + (start_tile.ne + 1) * tile_offset_width,
+		1.0f - (start_tile.se + 1) * tile_offset_height,
+	};
+
+	renderer::resources::VertexInputInfo start_info{
+		{renderer::resources::vertex_input_t::V2F32},
+		renderer::resources::vertex_layout_t::AOS,
+		renderer::resources::vertex_primitive_t::TRIANGLE_STRIP};
+
+	auto const start_data_size = start_tile_data.size() * sizeof(float);
+	std::vector<uint8_t> start_verts(start_data_size);
+	std::memcpy(start_verts.data(), start_tile_data.data(), start_data_size);
+
+	auto start_tile_mesh = renderer::resources::MeshData(std::move(start_verts), start_info);
+	auto start_tile_geometry = renderer->add_mesh_geometry(start_tile_mesh);
+	auto start_tile_unifs = obj_shader->new_uniform_input(
+		"color",
+		Eigen::Vector4f{0.0, 0.5, 0.0, 1.0},
+		"model",
+		id_matrix,
+		"view",
+		id_matrix,
+		"proj",
+		id_matrix);
+	auto start_tile_obj = renderer::Renderable{
+		start_tile_unifs,
+		start_tile_geometry,
+		true,
+		true,
+	};
+
+	auto end_tile = path.waypoints.back();
+	std::array<float, 8> end_tile_data{
+		-1.0f + end_tile.ne * tile_offset_width,
+		1.0f - end_tile.se * tile_offset_height,
+		-1.0f + end_tile.ne * tile_offset_width,
+		1.0f - (end_tile.se + 1) * tile_offset_height,
+		-1.0f + (end_tile.ne + 1) * tile_offset_width,
+		1.0f - end_tile.se * tile_offset_height,
+		-1.0f + (end_tile.ne + 1) * tile_offset_width,
+		1.0f - (end_tile.se + 1) * tile_offset_height,
+	};
+
+	renderer::resources::VertexInputInfo end_info{
+		{renderer::resources::vertex_input_t::V2F32},
+		renderer::resources::vertex_layout_t::AOS,
+		renderer::resources::vertex_primitive_t::TRIANGLE_STRIP};
+
+	auto const end_data_size = end_tile_data.size() * sizeof(float);
+	std::vector<uint8_t> end_verts(end_data_size);
+	std::memcpy(end_verts.data(), end_tile_data.data(), end_data_size);
+
+	auto end_tile_mesh = renderer::resources::MeshData(std::move(end_verts), end_info);
+	auto end_tile_geometry = renderer->add_mesh_geometry(end_tile_mesh);
+	auto end_tile_unifs = obj_shader->new_uniform_input(
+		"color",
+		Eigen::Vector4f{1.0, 0.5, 0.0, 1.0},
+		"model",
+		id_matrix,
+		"view",
+		id_matrix,
+		"proj",
+		id_matrix);
+
+	auto end_tile_obj = renderer::Renderable{
+		end_tile_unifs,
+		end_tile_geometry,
+		true,
+		true,
+	};
+
+	this->field_pass->add_renderables({start_tile_obj, end_tile_obj});
 }
 
 } // namespace openage::path::tests
