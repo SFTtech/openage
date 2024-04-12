@@ -39,7 +39,6 @@ const Path Pathfinder::get_path(const PathRequest &request) {
 	auto prev_integration_field = sector_fields.first;
 	auto prev_sector_id = target_sector->get_id();
 
-	std::vector<coord::tile> waypoints;
 	std::vector<std::pair<sector_id_t, std::shared_ptr<FlowField>>> flow_fields;
 	flow_fields.reserve(portal_path.size() + 1);
 
@@ -62,9 +61,11 @@ const Path Pathfinder::get_path(const PathRequest &request) {
 	// reverse the flow fields so they are ordered from start to target
 	std::reverse(flow_fields.begin(), flow_fields.end());
 
-	waypoints = this->get_waypoints(flow_fields, request);
+	// traverse the flow fields to get the waypoints
+	std::vector<coord::tile> waypoints{request.start};
+	auto flow_field_waypoints = this->get_waypoints(flow_fields, request);
+	waypoints.insert(waypoints.end(), flow_field_waypoints.begin(), flow_field_waypoints.end());
 
-	// TODO: Implement the rest of the pathfinding process
 	return Path{request.grid_id, waypoints};
 }
 

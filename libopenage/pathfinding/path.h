@@ -28,6 +28,8 @@ struct Path {
 	// ID of the grid to used for pathfinding.
 	size_t grid_id;
 	// Waypoints of the path.
+	// First waypoint is the start position of the path request.
+	// Last waypoint is the target position of the path request.
 	std::vector<coord::tile> waypoints;
 };
 
