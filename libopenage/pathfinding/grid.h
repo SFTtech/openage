@@ -88,6 +88,13 @@ public:
 	 */
 	const std::vector<std::shared_ptr<Sector>> &get_sectors() const;
 
+	/**
+	 * Initialize the portals of the sectors on the grid.
+	 *
+	 * This should be called after all sectors' cost fields have been initialized.
+	 */
+	void init_portals();
+
 private:
 	/**
 	 * ID of the grid.

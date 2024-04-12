@@ -65,4 +65,38 @@ const std::vector<std::shared_ptr<Sector>> &Grid::get_sectors() const {
 	return this->sectors;
 }
 
+void Grid::init_portals() {
+	// Create portals between neighboring sectors.
+	portal_id_t portal_id = 0;
+	for (size_t y = 0; y < this->size[1]; y++) {
+		for (size_t x = 0; x < this->size[0]; x++) {
+			auto sector = this->get_sector(x, y);
+
+			if (x < this->size[0] - 1) {
+				auto neighbor = this->get_sector(x + 1, y);
+				auto portals = sector->find_portals(neighbor, PortalDirection::EAST_WEST, portal_id);
+				for (auto &portal : portals) {
+					sector->add_portal(portal);
+					neighbor->add_portal(portal);
+				}
+				portal_id += portals.size();
+			}
+			if (y < this->size[1] - 1) {
+				auto neighbor = this->get_sector(x, y + 1);
+				auto portals = sector->find_portals(neighbor, PortalDirection::NORTH_SOUTH, portal_id);
+				for (auto &portal : portals) {
+					sector->add_portal(portal);
+					neighbor->add_portal(portal);
+				}
+				portal_id += portals.size();
+			}
+		}
+	}
+
+	// Connect mutually reachable exits of sectors.
+	for (auto &sector : this->sectors) {
+		sector->connect_exits();
+	}
+}
+
 } // namespace openage::path
