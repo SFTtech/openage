@@ -57,9 +57,9 @@ std::vector<std::shared_ptr<Portal>> Sector::find_portals(const std::shared_ptr<
 	auto other_cost = other->get_cost_field();
 
 	// compare the edges of the sectors
-	size_t start;
-	size_t end;
-	bool passable_edge;
+	size_t start = 0;
+	size_t end = 0;
+	bool passable_edge = false;
 	for (size_t i = 0; i < this->cost_field->get_size(); ++i) {
 		auto coord_this = coord::tile{0, 0};
 		auto coord_other = coord::tile{0, 0};
