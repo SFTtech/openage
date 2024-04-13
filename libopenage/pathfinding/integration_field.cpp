@@ -185,6 +185,8 @@ void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_fie
 			// Set the cost of all target cells to the start value
 			this->cells[target_idx].cost = INTEGRATED_COST_START;
 			start_cells.push_back(target_idx);
+
+			// TODO: Transfer flags and cost from the other integration field
 		}
 	}
 

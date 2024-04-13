@@ -100,6 +100,9 @@ public:
 	                     const std::shared_ptr<IntegrationField> &other_integration_field,
 	                     sector_id_t other_sector_id,
 	                     const std::shared_ptr<Portal> &portal);
+
+private:
+	// TODO: Cache created flow fields.
 };
 
 } // namespace path

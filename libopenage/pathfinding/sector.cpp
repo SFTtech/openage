@@ -197,6 +197,7 @@ void Sector::connect_exits() {
 			neighbors.clear();
 
 			// mark the current cell as visited
+			// TODO: Record the cost of reaching this cell
 			visited.insert(current);
 		}
 

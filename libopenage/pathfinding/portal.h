@@ -212,11 +212,15 @@ private:
 
 	/**
 	 * Exits in sector 0 reachable from the portal.
+	 *
+	 * TODO: Also store avarage cost to reach each exit.
 	 */
 	std::vector<std::shared_ptr<Portal>> sector0_exits;
 
 	/**
 	 * Exits in sector 1 reachable from the portal.
+	 *
+	 * TODO: Also store avarage cost to reach each exit.
 	 */
 	std::vector<std::shared_ptr<Portal>> sector1_exits;
 
