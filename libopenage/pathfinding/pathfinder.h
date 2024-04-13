@@ -62,8 +62,23 @@ public:
 	const Path get_path(const PathRequest &request);
 
 private:
+	/**
+	 * High-level pathfinder. Uses A* to find the path through the portals of sectors.
+	 *
+	 * @param request Pathfinding request.
+	 *
+	 * @return Portals to traverse in order to reach the target.
+	 */
 	const std::vector<std::shared_ptr<Portal>> portal_a_star(const PathRequest &request) const;
 
+	/**
+	 * Low-level pathfinder. Uses flow fields to find the path through the sectors.
+	 *
+	 * @param flow_fields Flow fields for the sectors.
+	 * @param request Pathfinding request.
+	 *
+	 * @return Waypoint coordinates to traverse in order to reach the target.
+	 */
 	const std::vector<coord::tile> get_waypoints(const std::vector<std::pair<sector_id_t, std::shared_ptr<FlowField>>> &flow_fields,
 	                                             const PathRequest &request) const;
 
