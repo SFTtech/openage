@@ -8,6 +8,7 @@
 #include "pathfinding/pathfinder.h"
 #include "pathfinding/portal.h"
 #include "pathfinding/sector.h"
+#include "util/timer.h"
 
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/opengl/window.h"
@@ -76,6 +77,8 @@ void path_demo_1(const util::Path &path) {
 	auto pathfinder = std::make_shared<path::Pathfinder>();
 	pathfinder->add_grid(grid);
 
+	util::Timer timer;
+
 	// Create a path request and get the path
 	// TODO: Make the path request interactive with window callbacks
 	PathRequest path_request{
@@ -83,7 +86,11 @@ void path_demo_1(const util::Path &path) {
 		coord::tile{2, 26},
 		coord::tile{36, 2},
 	};
+	timer.start();
 	Path path_result = pathfinder->get_path(path_request);
+	timer.stop();
+
+	log::log(INFO << "Pathfinding took " << timer.getval() / 1000 << " ps");
 
 	// Create a renderer to display the grid and path
 	auto qtapp = std::make_shared<renderer::gui::GuiApplicationWithLogger>();
