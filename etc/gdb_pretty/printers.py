@@ -92,6 +92,57 @@ def printer_regex(regex: str):
     return _register_printer
 
 
+@printer_regex('^openage::coord::((phys|scene)2|(chunk|tile))(_delta)?')
+class CoordNeSePrinter:
+    """
+    Pretty printer for openage::coord::CoordNeSe.
+
+    TODO: Inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
+    """
+
+    def __init__(self, val: gdb.Value):
+        self.__val = val
+
+    def to_string(self):
+        """
+        Get the coord as a string.
+        """
+        return self.__val.type.name
+
+    def children(self):
+        """
+        Get the displayed children of the coord.
+        """
+        yield ('ne', self.__val['ne'])
+        yield ('se', self.__val['se'])
+
+
+@printer_regex('^openage::coord::(chunk|phys|scene|tile)3(_delta)?')
+class CoordNeSeUpPrinter:
+    """
+    Pretty printer for openage::coord::CoordNeSeUp.
+
+    TODO: Inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
+    """
+
+    def __init__(self, val: gdb.Value):
+        self.__val = val
+
+    def to_string(self):
+        """
+        Get the coord as a string.
+        """
+        return self.__val.type.name
+
+    def children(self):
+        """
+        Get the displayed children of the coord.
+        """
+        yield ('ne', self.__val['ne'])
+        yield ('se', self.__val['se'])
+        yield ('up', self.__val['up'])
+
+
 @printer_typedef('openage::time::time_t')
 class TimePrinter:
     """
