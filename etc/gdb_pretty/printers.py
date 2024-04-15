@@ -92,8 +92,8 @@ def printer_regex(regex: str):
     return _register_printer
 
 
-@printer_regex('^openage::coord::((phys|scene)2|(chunk|tile))(_delta)?')
-class CoordNeSePrinter:
+@printer_regex('^openage::coord::(camhud|chunk|input|phys|scene|term|tile|viewport)(2|3)?(_delta)?')
+class CoordPrinter:
     """
     Pretty printer for openage::coord::CoordNeSe.
 
@@ -113,85 +113,12 @@ class CoordNeSePrinter:
         """
         Get the displayed children of the coord.
         """
-        yield ('ne', self.__val['ne'])
-        yield ('se', self.__val['se'])
-
-
-@printer_regex('^openage::coord::(chunk|phys|scene|tile)3(_delta)?')
-class CoordNeSeUpPrinter:
-    """
-    Pretty printer for openage::coord::CoordNeSeUp.
-
-    TODO: Inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
-    """
-
-    def __init__(self, val: gdb.Value):
-        self.__val = val
-
-    def to_string(self):
-        """
-        Get the coord as a string.
-        """
-        return self.__val.type.name
-
-    def children(self):
-        """
-        Get the displayed children of the coord.
-        """
-        yield ('ne', self.__val['ne'])
-        yield ('se', self.__val['se'])
-        yield ('up', self.__val['up'])
-
-
-@printer_regex('^openage::coord::(camhud|viewport|input|term)(_delta)?')
-class CoordXYPrinter:
-    """
-    Pretty printer for openage::coord::CoordXY.
-
-    TODO: Inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
-    """
-
-    def __init__(self, val: gdb.Value):
-        self.__val = val
-
-    def to_string(self):
-        """
-        Get the coord as a string.
-        """
-        return self.__val.type.name
-
-    def children(self):
-        """
-        Get the displayed children of the coord.
-        """
-        yield ('x', self.__val['x'])
-        yield ('y', self.__val['y'])
-
-
-@printer_regex('^openage::coord::(camhud|viewport|input|term)3(_delta)?')
-class CoordXYZPrinter:
-    """
-    Pretty printer for openage::coord::CoordXYZ.
-
-    TODO: Inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
-    """
-
-    def __init__(self, val: gdb.Value):
-        self.__val = val
-
-    def to_string(self):
-        """
-        Get the coord as a string.
-        """
-        return self.__val.type.name
-
-    def children(self):
-        """
-        Get the displayed children of the coord.
-        """
-        yield ('x', self.__val['x'])
-        yield ('y', self.__val['y'])
-        yield ('z', self.__val['z'])
+        # Each coord type has one parent which is either
+        # of CoordNeSe, CoordNeSeUp, CoordXY, CoordXYZ
+        # From this parent we can get the fields
+        parent_type = self.__val.type.fields()[0].type
+        for child in parent_type.fields():
+            yield (child.name, self.__val[child.name])
 
 
 @printer_typedef('openage::time::time_t')
