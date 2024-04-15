@@ -143,6 +143,57 @@ class CoordNeSeUpPrinter:
         yield ('up', self.__val['up'])
 
 
+@printer_regex('^openage::coord::(camhud|viewport|input|term)(_delta)?')
+class CoordXYPrinter:
+    """
+    Pretty printer for openage::coord::CoordXY.
+
+    TODO: Inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
+    """
+
+    def __init__(self, val: gdb.Value):
+        self.__val = val
+
+    def to_string(self):
+        """
+        Get the coord as a string.
+        """
+        return self.__val.type.name
+
+    def children(self):
+        """
+        Get the displayed children of the coord.
+        """
+        yield ('x', self.__val['x'])
+        yield ('y', self.__val['y'])
+
+
+@printer_regex('^openage::coord::(camhud|viewport|input|term)3(_delta)?')
+class CoordXYZPrinter:
+    """
+    Pretty printer for openage::coord::CoordXYZ.
+
+    TODO: Inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
+    """
+
+    def __init__(self, val: gdb.Value):
+        self.__val = val
+
+    def to_string(self):
+        """
+        Get the coord as a string.
+        """
+        return self.__val.type.name
+
+    def children(self):
+        """
+        Get the displayed children of the coord.
+        """
+        yield ('x', self.__val['x'])
+        yield ('y', self.__val['y'])
+        yield ('z', self.__val['z'])
+
+
 @printer_typedef('openage::time::time_t')
 class TimePrinter:
     """
@@ -286,7 +337,6 @@ class KeyframePrinter:
         yield ('value', self.__val['value'])
 
 # TODO: curve types
-# TODO: coord types
 # TODO: pathfinding types
 # TODO: input event codes
 # TODO: eigen types https://github.com/dmillard/eigengdb
