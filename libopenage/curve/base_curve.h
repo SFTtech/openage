@@ -204,7 +204,7 @@ void BaseCurve<T>::set_last(const time::time_t &at, const T &value) {
 	auto hint = this->container.last(at, this->last_element);
 
 	// erase max one same-time value
-	if (hint->time == at) {
+	if (hint->time() == at) {
 		hint--;
 	}
 
@@ -221,7 +221,7 @@ template <typename T>
 void BaseCurve<T>::set_insert(const time::time_t &at, const T &value) {
 	auto hint = this->container.insert_after(at, value, this->last_element);
 	// check if this is now the final keyframe
-	if (hint->time > this->last_element->time) {
+	if (hint->time() > this->last_element->time()) {
 		this->last_element = hint;
 	}
 	this->changes(at);
@@ -245,7 +245,7 @@ void BaseCurve<T>::erase(const time::time_t &at) {
 template <typename T>
 std::pair<time::time_t, const T> BaseCurve<T>::frame(const time::time_t &time) const {
 	auto e = this->container.last(time, this->container.end());
-	return std::make_pair(e->time, e->value);
+	return std::make_pair(e->time(), e->value());
 }
 
 
@@ -253,7 +253,7 @@ template <typename T>
 std::pair<time::time_t, const T> BaseCurve<T>::next_frame(const time::time_t &time) const {
 	auto e = this->container.last(time, this->container.end());
 	e++;
-	return std::make_pair(e->time, e->value);
+	return std::make_pair(e->time(), e->value());
 }
 
 template <typename T>
@@ -261,7 +261,7 @@ std::string BaseCurve<T>::str() const {
 	std::stringstream ss;
 	ss << "Curve[" << this->idstr() << "]{" << std::endl;
 	for (const auto &keyframe : this->container) {
-		ss << "    " << keyframe.time << ": " << keyframe.value << "," << std::endl;
+		ss << "    " << keyframe.time() << ": " << keyframe.value() << "," << std::endl;
 	}
 	ss << "}";
 
@@ -272,10 +272,10 @@ template <typename T>
 void BaseCurve<T>::check_integrity() const {
 	time::time_t last_time = time::TIME_MIN;
 	for (const auto &keyframe : this->container) {
-		if (keyframe.time < last_time) {
+		if (keyframe.time() < last_time) {
 			throw Error{MSG(err) << "curve is broken after t=" << last_time << ": " << this->str()};
 		}
-		last_time = keyframe.time;
+		last_time = keyframe.time();
 	}
 }
 

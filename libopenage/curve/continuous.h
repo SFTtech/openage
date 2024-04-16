@@ -1,4 +1,4 @@
-// Copyright 2017-2023 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -48,7 +48,7 @@ void Continuous<T>::set_last(const time::time_t &at, const T &value) {
 	auto hint = this->container.last(at, this->last_element);
 
 	// erase all same-time entries
-	while (hint->time == at) {
+	while (hint->time() == at) {
 		hint--;
 	}
 

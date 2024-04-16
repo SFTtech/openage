@@ -1,4 +1,4 @@
-// Copyright 2019-2023 the openage authors. See copying.md for legal info.
+// Copyright 2019-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -24,17 +24,44 @@ public:
 	 * New, default-constructed element at the given time
 	 */
 	Keyframe(const time::time_t &time) :
-		time{time} {}
+		timestamp{time} {}
 
 	/**
 	 * New element fron time and value
 	 */
 	Keyframe(const time::time_t &time, const T &value) :
-		time{time},
-		value{value} {}
+		timestamp{time},
+		val{value} {}
 
-	const time::time_t time = time::TIME_MIN;
-	T value = T{};
+
+	/**
+	 * Get the time of this keyframe.
+	 *
+	 * @return Keyframe time.
+	 */
+	const time::time_t &time() const {
+		return this->timestamp;
+	}
+
+	/**
+	 * Get the value of this keyframe.
+	 *
+	 * @return Keyframe value.
+	 */
+	const T &value() const {
+		return this->val;
+	}
+
+private:
+	/**
+	 * The time of this keyframe.
+	 */
+	time::time_t timestamp = time::TIME_MIN;
+
+	/**
+	 * The value of this keyframe.
+	 */
+	T val = T{};
 };
 
 } // namespace openage::curve

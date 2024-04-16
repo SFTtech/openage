@@ -48,10 +48,10 @@ T Interpolated<T>::get(const time::time_t &time) const {
 
 	time::time_t interval = 0;
 
-	auto offset = time - e->time;
+	auto offset = time - e->time();
 
 	if (nxt != this->container.end()) {
-		interval = nxt->time - e->time;
+		interval = nxt->time() - e->time();
 	}
 
 	// here, offset > interval will never hold.
@@ -62,7 +62,7 @@ T Interpolated<T>::get(const time::time_t &time) const {
 	    || offset == 0               // values equal -> don't need to interpolate
 	    || interval == 0) {          // values at the same time -> division-by-zero-error
 
-		return e->value;
+		return e->value();
 	}
 	else {
 		// Interpolation between time(now) and time(next) that has elapsed
@@ -72,7 +72,7 @@ T Interpolated<T>::get(const time::time_t &time) const {
 		// TODO: nxt->value - e->value will produce wrong results if
 		//       the nxt->value < e->value and curve element type is unsigned
 		//       Example: nxt = 2, e = 4; type = uint8_t ==> 2 - 4 = 254
-		return e->value + (nxt->value - e->value) * elapsed_frac;
+		return e->value() + (nxt->value() - e->value()) * elapsed_frac;
 	}
 }
 

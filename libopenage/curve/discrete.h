@@ -1,4 +1,4 @@
-// Copyright 2017-2023 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -55,7 +55,7 @@ template <typename T>
 T Discrete<T>::get(const time::time_t &time) const {
 	auto e = this->container.last(time, this->last_element);
 	this->last_element = e; // TODO if Caching?
-	return e->value;
+	return e->value();
 }
 
 
@@ -78,7 +78,7 @@ template <typename T>
 std::pair<time::time_t, T> Discrete<T>::get_time(const time::time_t &time) const {
 	auto e = this->container.last(time, this->last_element);
 	this->last_element = e;
-	return std::make_pair(e->time, e->value);
+	return std::make_pair(e->time(), e->value());
 }
 
 
@@ -94,7 +94,7 @@ std::optional<std::pair<time::time_t, T>> Discrete<T>::get_previous(const time::
 	}
 
 	e--;
-	return std::make_pair(e->time, e->value);
+	return std::make_pair(e->time(), e->value());
 }
 
 } // namespace openage::curve

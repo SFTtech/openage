@@ -93,7 +93,7 @@ void DiscreteMod<T>::erase(const time::time_t &at) {
 	BaseCurve<T>::erase(at);
 
 	if (this->time_length == at) {
-		this->time_length = this->last_element->time;
+		this->time_length = this->container.get(this->container.size() - 1).time();
 	}
 }
 

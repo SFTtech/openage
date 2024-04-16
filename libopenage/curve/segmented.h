@@ -1,4 +1,4 @@
-// Copyright 2019-2023 the openage authors. See copying.md for legal info.
+// Copyright 2019-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -62,7 +62,7 @@ void Segmented<T>::set_last_jump(const time::time_t &at, const T &leftval, const
 	auto hint = this->container.last(at, this->last_element);
 
 	// erase all one same-time values
-	while (hint->time == at) {
+	while (hint->time() == at) {
 		hint--;
 	}
 

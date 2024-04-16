@@ -3,8 +3,8 @@
 #pragma once
 
 #include <cstddef>
+#include <deque>
 #include <iostream>
-#include <list>
 #include <memory>
 #include <string>
 
@@ -60,7 +60,7 @@ class Queue : public event::EventEntity {
 	};
 
 public:
-	using container_t = typename std::list<queue_wrapper>;
+	using container_t = typename std::deque<queue_wrapper>;
 	using const_iterator = typename container_t::const_iterator;
 	using iterator = typename container_t::iterator;
 
