@@ -357,6 +357,10 @@ QueueFilterIterator<T, Queue<T>> Queue<T>::between(const time::time_t &begin,
 template <typename T>
 void Queue<T>::erase(const CurveIterator<T, Queue<T>> &it) {
 	container.erase(it.get_base());
+
+	// erasing invalidate the front_start cache
+	// change it to begin()
+	this->front_start = this->container.begin();
 }
 
 

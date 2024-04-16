@@ -504,10 +504,9 @@ KeyframeContainer<T>::erase_after(KeyframeContainer<T>::iterator last_valid) {
 	}
 
 	// Delete everything to the end.
-	while (last_valid != this->container.end()) {
-		last_valid = this->container.erase(last_valid);
-	}
-	return last_valid;
+	auto new_end = this->container.erase(last_valid, this->container.end());
+	--new_end; // return the last valid element that was not deleted
+	return new_end;
 }
 
 
