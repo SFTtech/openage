@@ -86,11 +86,11 @@ the resulting GUI event.
 
 In any case, the resulting `QEvent` representing the raw input is converted to a generalized
 `input::Event` object containing the following information:
-    - **event class**: Basic event categorization, usually type of input device (e.g. keyboard, mouse, GUI)
-    - **code**: Unique identifier of the specific key/button that was pressed
-    - **modifiers**: Keyboard modifiers pressed alongside the key/button (e.g. CTRL, SHIFT, ALT)
-    - **state**: State of the button/key (e.g. pressed, released, double click)
-    - **raw event**: Reference to the original `QEvent`
+- **event class**: Basic event categorization, usually type of input device (e.g. keyboard, mouse, GUI)
+- **code**: Unique identifier of the specific key/button that was pressed
+- **modifiers**: Keyboard modifiers pressed alongside the key/button (e.g. CTRL, SHIFT, ALT)
+- **state**: State of the button/key (e.g. pressed, released, double click)
+- **raw event**: Reference to the original `QEvent`
 
 The unique combination of *class*, *code*, *modifiers*, and *state* represents a specific key press
 and provides the **signature** of an input event. (Key) bindings are created by mapping signatures
@@ -121,27 +121,27 @@ the actions taken by the input manager mainly consists of forwarding event data 
 high-level interfaces. Therefore, these actions should not have any effect on the game simulation.
 
 `input_action` contains the following information:
-    - **action type**: One of the pre-defined types (see below). Used for determining a default action.
-    - **custom action function**: Executed instead of the default action if set (optional).
-    - **execution flags**: Key-value pairs for configuration settings (optional).
+- **action type**: One of the pre-defined types (see below). Used for determining a default action.
+- **custom action function**: Executed instead of the default action if set (optional).
+- **execution flags**: Key-value pairs for configuration settings (optional).
 
 Most types have a default action that is executed unless a custom function is defined in `input_action`.
 These default actions are:
-    - **push context**: push a context on top of the stack
-    - **pop context**: remove the current top context
-    - **remove context**: remove a context from the stack
-    - **Controller**: forward event arguments in direction of gamestate (i.e. to high-level interface)
-    - **GUI**: forward event arguments to the GUI
+- **push context**: push a context on top of the stack
+- **pop context**: remove the current top context
+- **remove context**: remove a context from the stack
+- **Controller**: forward event arguments in direction of gamestate (i.e. to high-level interface)
+- **GUI**: forward event arguments to the GUI
 
 In most cases, it should be sufficient to bind one of these options to an input event. Custom
 functions should only be used for edge cases which cannot be handled otherwise.
 
 For forwarding actions, additional arguments may be passed to the high-level interface. In the
 case of the controller, the input manager passes the `event_arguments` struct which contains:
-    - **input event** (i.e. the generalized `input::Event`)
-    - **mouse position**
-    - **mouse motion** (e.g. for calculating mouse movement direction)
-    - **flags**: Key-value pairs for configuration settings (optional)
+- **input event** (i.e. the generalized `input::Event`)
+- **mouse position**
+- **mouse motion** (e.g. for calculating mouse movement direction)
+- **flags**: Key-value pairs for configuration settings (optional)
 
 
 ### High-Level Interface (Controller)
@@ -158,9 +158,9 @@ in binding context using the input event signature or class (similiar to how its
 interface).
 
 `binding_action` contains the following information:
-    - **transform function**: Transformation from event arguments to game event.
-    - **queue type**: Determines whether the created event is queued or passed to the gamestate immediately .
-    - **execution flags**: Key-value pairs for configuration settings (optional).
+- **transform function**: Transformation from event arguments to game event.
+- **queue type**: Determines whether the created event is queued or passed to the gamestate immediately .
+- **execution flags**: Key-value pairs for configuration settings (optional).
 
 Game events can be queued before they are forwarded to the gamestate to allow chained commands,
 e.g. setting a bunch of waypoints before giving the final move command.
