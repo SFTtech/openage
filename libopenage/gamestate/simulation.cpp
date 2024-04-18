@@ -1,4 +1,4 @@
-// Copyright 2013-2023 the openage authors. See copying.md for legal info.
+// Copyright 2013-2024 the openage authors. See copying.md for legal info.
 
 #include "simulation.h"
 
@@ -45,7 +45,7 @@ GameSimulation::GameSimulation(const util::Path &root_dir,
 void GameSimulation::run() {
 	this->start();
 	while (this->running) {
-		auto current_time = this->time_loop->get_clock()->get_time();
+		time::time_t current_time = this->time_loop->get_clock()->get_time();
 		this->event_loop->reach_time(current_time, this->game->get_state());
 	}
 	log::log(MSG(info) << "Game simulation loop exited");
