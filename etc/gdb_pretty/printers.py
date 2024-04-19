@@ -7,6 +7,8 @@ Pretty printers for GDB.
 import re
 import gdb  # type: ignore
 
+# TODO: Printers should inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
+
 
 class PrinterControl(gdb.printing.PrettyPrinter):
     """
@@ -109,8 +111,6 @@ def format_fixed_point(value: int, fractional_bits: int) -> float:
 class CoordPrinter:
     """
     Pretty printer for openage::coord types (CoordNeSe, CoordNeSeUp, CoordXY, CoordXYZ).
-
-    TODO: Inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
     """
 
     def __init__(self, val: gdb.Value):
@@ -150,8 +150,6 @@ class CoordPrinter:
 class TimePrinter:
     """
     Pretty printer for openage::time::time_t.
-
-    TODO: Inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
     """
 
     def __init__(self, val: gdb.Value):
@@ -182,8 +180,6 @@ class TimePrinter:
 class FixedPointPrinter:
     """
     Pretty printer for openage::util::FixedPoint.
-
-    TODO: Inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
     """
 
     def __init__(self, val: gdb.Value):
@@ -220,8 +216,6 @@ class FixedPointPrinter:
 class VectorPrinter:
     """
     Pretty printer for openage::util::Vector.
-
-    TODO: Inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
     """
 
     def __init__(self, val: gdb.Value):
@@ -267,8 +261,6 @@ class VectorPrinter:
 class KeyframePrinter:
     """
     Pretty printer for openage::curve::Keyframe.
-
-    TODO: Inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
     """
 
     def __init__(self, val: gdb.Value):
