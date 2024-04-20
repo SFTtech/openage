@@ -1,4 +1,4 @@
-// Copyright 2019-2023 the openage authors. See copying.md for legal info.
+// Copyright 2019-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -11,6 +11,9 @@ namespace openage::curve {
 /**
  * A element of the curvecontainer. This is especially used to keep track of
  * the value-timing.
+ *
+ * If you change this class, remember to update the gdb pretty printers
+ * in etc/gdb_pretty/printers.py.
  */
 template <typename T>
 class Keyframe {

@@ -20,6 +20,9 @@ namespace openage::util {
  *
  * N = dimensions
  * T = underlying single value type (double, float, ...)
+ *
+ * If you change this class, remember to update the gdb pretty printers
+ * in etc/gdb_pretty/printers.py.
  */
 template <size_t N, typename T>
 class Vector : public std::array<T, N> {

@@ -7,6 +7,8 @@ Pretty printers for GDB.
 import re
 import gdb  # type: ignore
 
+# TODO: Printers should inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
+
 
 class PrinterControl(gdb.printing.PrettyPrinter):
     """
@@ -92,12 +94,62 @@ def printer_regex(regex: str):
     return _register_printer
 
 
+def format_fixed_point(value: int, fractional_bits: int) -> float:
+    """
+    Formats a fixed point value to a double.
+
+    :param value: The fixed point value.
+    :type value: int
+    :param fractional_bits: The number of fractional bits.
+    :type fractional_bits: int
+    """
+    to_double_factor = 1 / pow(2, fractional_bits)
+    return float(value) * to_double_factor
+
+
+@printer_regex('^openage::coord::(camhud|chunk|input|phys|scene|term|tile|viewport)(2|3)?(_delta)?')
+class CoordPrinter:
+    """
+    Pretty printer for openage::coord types (CoordNeSe, CoordNeSeUp, CoordXY, CoordXYZ).
+    """
+
+    def __init__(self, val: gdb.Value):
+        self.__val = val
+
+        # Each coord type has one parent which is either
+        # of CoordNeSe, CoordNeSeUp, CoordXY, CoordXYZ
+        # From this parent we can get the fields
+        self._parent_type = self.__val.type.fields()[0].type
+
+    def to_string(self):
+        """
+        Get the coord as a string.
+        """
+        field_vals = []
+        for child in self._parent_type.fields():
+            # Include the fixed point coordinates in the summary
+            val = self.__val[child.name]
+            num = format_fixed_point(
+                int(val['raw_value']),
+                int(val.type.template_argument(1))
+            )
+            field_vals.append(f"{num:.5f}")
+
+        # Example: phys3[1.00000, 2.00000, 3.00000]
+        return f"{self.__val.type.tag.split('::')[-1]}[{', '.join(field_vals)}]"
+
+    def children(self):
+        """
+        Get the displayed children of the coord.
+        """
+        for child in self._parent_type.fields():
+            yield (child.name, self.__val[child.name])
+
+
 @printer_typedef('openage::time::time_t')
 class TimePrinter:
     """
     Pretty printer for openage::time::time_t.
-
-    TODO: Inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
     """
 
     def __init__(self, val: gdb.Value):
@@ -109,11 +161,11 @@ class TimePrinter:
 
         Format: SS.sss (e.g. 12.345s)
         """
-        fractional_bits = int(self.__val.type.template_argument(1))
+        seconds = format_fixed_point(
+            int(self.__val['raw_value']),
+            int(self.__val.type.template_argument(1))
+        )
 
-        # convert the fixed point value to double
-        to_double_factor = 1 / pow(2, fractional_bits)
-        seconds = float(self.__val['raw_value']) * to_double_factor
         # show as seconds with millisecond precision
         return f'{seconds:.3f}s'
 
@@ -128,8 +180,6 @@ class TimePrinter:
 class FixedPointPrinter:
     """
     Pretty printer for openage::util::FixedPoint.
-
-    TODO: Inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
     """
 
     def __init__(self, val: gdb.Value):
@@ -141,11 +191,10 @@ class FixedPointPrinter:
 
         Format: 0.12345
         """
-        fractional_bits = int(self.__val.type.template_argument(1))
-
-        # convert the fixed point value to double
-        to_double_factor = 1 / pow(2, fractional_bits)
-        num = float(self.__val['raw_value']) * to_double_factor
+        num = format_fixed_point(
+            int(self.__val['raw_value']),
+            int(self.__val.type.template_argument(1))
+        )
         return f'{num:.5f}'
 
     def children(self):
@@ -167,8 +216,6 @@ class FixedPointPrinter:
 class VectorPrinter:
     """
     Pretty printer for openage::util::Vector.
-
-    TODO: Inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
     """
 
     def __init__(self, val: gdb.Value):
@@ -214,8 +261,6 @@ class VectorPrinter:
 class KeyframePrinter:
     """
     Pretty printer for openage::curve::Keyframe.
-
-    TODO: Inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
     """
 
     def __init__(self, val: gdb.Value):
@@ -235,7 +280,6 @@ class KeyframePrinter:
         yield ('value', self.__val['value'])
 
 # TODO: curve types
-# TODO: coord types
 # TODO: pathfinding types
 # TODO: input event codes
 # TODO: eigen types https://github.com/dmillard/eigengdb
