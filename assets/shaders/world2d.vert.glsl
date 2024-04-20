@@ -36,21 +36,37 @@ uniform bool flip_y;
 
 // offset from the subtex anchor
 // moves the subtex relative to the subtex center
-uniform vec2 anchor_offset;
+// uniform vec2 anchor_offset;
 
 // scales the vertex positions so that they
 // match the subtex dimensions
-uniform vec2 scale;
+// uniform vec2 scale;
+
+uniform float scalefactor;
+uniform float zoom;
+uniform vec2 screen_size;
+uniform vec2 subtex_size;
+uniform vec2 anchor;
 
 void main() {
     // translate the position of the object from world space to clip space
     // this is the position where we want to draw the subtex in 2D
 	vec4 obj_clip_pos = proj * view * model * vec4(obj_world_position, 1.0);
 
+    float obj_scale = scalefactor * inv_zoom;
+    vec2 obj_scale_vec = vec2(
+        obj_scale * (subtex_size.x / screen_size.x),
+        obj_scale * (subtex_size.y / screen_size.y)
+    );
+    vec2 obj_anchor_vec = vec2(
+        obj_scale * (anchor.x / screen_size.x),
+        obj_scale * (anchor.y / screen_size.y)
+    );
+
     // if the subtex is flipped, we also need to flip the anchor offset
     // essentially, we invert the coordinates for the flipped axis
-    float anchor_x = float(flip_x) * -1.0 * anchor_offset.x + float(!flip_x) * anchor_offset.x;
-    float anchor_y = float(flip_y) * -1.0 * anchor_offset.y + float(!flip_y) * anchor_offset.y;
+    float anchor_x = float(flip_x) * -1.0 * obj_anchor_vec.x + float(!flip_x) * obj_anchor_vec.x;
+    float anchor_y = float(flip_y) * -1.0 * obj_anchor_vec.y + float(!flip_y) * obj_anchor_vec.y;
 
     // offset the clip position by the offset of the subtex anchor
     // imagine this as pinning the subtex to the object position at the subtex anchor point
@@ -58,8 +74,8 @@ void main() {
 
     // create a move matrix for positioning the vertices
     // uses the scale and the transformed object position in clip space
-    mat4 move = mat4(scale.x,        0.0,            0.0,            0.0,
-                     0.0,            scale.y,        0.0,            0.0,
+    mat4 move = mat4(obj_scale_vec.x,        0.0,            0.0,            0.0,
+                     0.0,            obj_scale_vec.y,        0.0,            0.0,
                      0.0,            0.0,            1.0,            0.0,
                      obj_clip_pos.x, obj_clip_pos.y, obj_clip_pos.z, 1.0);
 

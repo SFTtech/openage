@@ -148,14 +148,29 @@ void WorldObject::update_uniforms(const time::time_t &time) {
 	auto scale_vec = Eigen::Vector2f{
 		scale * (static_cast<float>(subtex_size[0]) / screen_size[0]),
 		scale * (static_cast<float>(subtex_size[1]) / screen_size[1])};
-	this->uniforms->update(this->scale, scale_vec);
+	// this->uniforms->update(this->scale, scale_vec);
 
 	// Move subtexture in scene so that its anchor point is at the object's position
 	auto anchor = tex_info->get_subtex_info(subtex_idx).get_anchor_params();
 	auto anchor_offset = Eigen::Vector2f{
 		scale * (static_cast<float>(anchor[0]) / screen_size[0]),
 		scale * (static_cast<float>(anchor[1]) / screen_size[1])};
-	this->uniforms->update(this->anchor_offset, anchor_offset);
+	// this->uniforms->update(this->anchor_offset, anchor_offset);
+
+	this->uniforms->update("scalefactor", animation_info->get_scalefactor());
+	// this->uniforms->update("zoom", this->camera->get_zoom());
+	Eigen::Vector2f screen_size_vec{
+		static_cast<float>(screen_size[0]),
+		static_cast<float>(screen_size[1])};
+	this->uniforms->update("screen_size", screen_size_vec);
+	Eigen::Vector2f subtex_size_vec{
+		static_cast<float>(subtex_size[0]),
+		static_cast<float>(subtex_size[1])};
+	this->uniforms->update("subtex_size", subtex_size_vec);
+	Eigen::Vector2f anchor_vec{
+		static_cast<float>(anchor[0]),
+		static_cast<float>(anchor[1])};
+	this->uniforms->update("anchor", anchor_vec);
 }
 
 uint32_t WorldObject::get_id() {

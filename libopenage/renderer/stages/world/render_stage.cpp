@@ -135,8 +135,8 @@ void WorldRenderStage::init_uniform_ids() {
 	WorldObject::flip_y = this->display_shader->get_uniform_id("flip_y");
 	WorldObject::tex = this->display_shader->get_uniform_id("tex");
 	WorldObject::tile_params = this->display_shader->get_uniform_id("tile_params");
-	WorldObject::scale = this->display_shader->get_uniform_id("scale");
-	WorldObject::anchor_offset = this->display_shader->get_uniform_id("anchor_offset");
+	// WorldObject::scale = this->display_shader->get_uniform_id("scale");
+	// WorldObject::anchor_offset = this->display_shader->get_uniform_id("anchor_offset");
 }
 
 } // namespace openage::renderer::world
