@@ -43,6 +43,7 @@ public:
 	 * The camera uses default values. Its centered on the origin of the scene (0.0f, 0.0f, 0.0f)
 	 * and has a zoom level of 1.0f.
 	 *
+	 * @param renderer openage renderer instance.
 	 * @param viewport_size Initial viewport size of the camera (width x height).
 	 */
 	Camera(const std::shared_ptr<Renderer> &renderer,
@@ -51,6 +52,7 @@ public:
 	/**
 	 * Create a new camera for the renderer.
 	 *
+	 * @param renderer openage renderer instance.
 	 * @param viewport_size Viewport size of the camera (width x height).
 	 * @param scene_pos Position of the camera in the scene.
 	 * @param zoom Zoom level of the camera (defaults to 1.0f).
@@ -187,6 +189,13 @@ public:
 	const std::shared_ptr<renderer::UniformBuffer> &get_uniform_buffer() const;
 
 private:
+	/**
+	 * Create the uniform buffer for the camera.
+	 *
+	 * @param renderer openage renderer instance.
+	 */
+	void init_uniform_buffer(const std::shared_ptr<Renderer> &renderer);
+
 	/**
 	 * Position in the 3D scene.
 	 */

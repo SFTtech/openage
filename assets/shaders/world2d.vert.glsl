@@ -5,10 +5,17 @@ layout(location=1) in vec2 uv;
 
 out vec2 vert_uv;
 
-// transformation for object (not vertex!) position to clip space
+// camera parameters for transforming the object position
+// and scaling the subtex to the correct size
 layout (std140) uniform camera {
-    mat4 view;
-    mat4 proj;
+    // view matrix (world to view space)
+    mat4  view;
+    // projection matrix (view to clip space)
+    mat4  proj;
+    // inverse zoom factor (1.0 / zoom)
+    float inv_zoom;
+    // inverse viewport size (1.0 / viewport size)
+    vec2  inv_viewport_size;
 };
 
 // can be used to move the object position in world space _before_
@@ -51,9 +58,9 @@ void main() {
 
     // create a move matrix for positioning the vertices
     // uses the scale and the transformed object position in clip space
-    mat4 move = mat4(scale.x, 0.0, 0.0, 0.0,
-                     0.0, scale.y, 0.0, 0.0,
-                     0.0, 0.0, 1.0, 0.0,
+    mat4 move = mat4(scale.x,        0.0,            0.0,            0.0,
+                     0.0,            scale.y,        0.0,            0.0,
+                     0.0,            0.0,            1.0,            0.0,
                      obj_clip_pos.x, obj_clip_pos.y, obj_clip_pos.z, 1.0);
 
     // calculate the final vertex position

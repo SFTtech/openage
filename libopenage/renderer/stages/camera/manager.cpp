@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #include "manager.h"
 
@@ -97,11 +97,25 @@ void CameraManager::update_motion() {
 }
 
 void CameraManager::update_uniforms() {
+	// transformation matrices
 	this->uniforms->update(
 		"view",
-		camera->get_view_matrix(),
+		this->camera->get_view_matrix(),
 		"proj",
-		camera->get_projection_matrix());
+		this->camera->get_projection_matrix());
+
+	// zoom scaling
+	this->uniforms->update(
+		"inv_zoom",
+		1.0f / this->camera->get_zoom());
+
+	auto viewport_size = this->camera->get_viewport_size();
+	Eigen::Vector2f viewport_size_vec{
+		1.0f / static_cast<float>(viewport_size[0]),
+		1.0f / static_cast<float>(viewport_size[1])};
+	this->uniforms->update("inv_viewport_size", viewport_size_vec);
+
+	// update the uniform buffer
 	this->camera->get_uniform_buffer()->update_uniforms(this->uniforms);
 }
 

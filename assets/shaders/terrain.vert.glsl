@@ -7,9 +7,17 @@ out vec2 tex_pos;
 
 uniform mat4 model;
 
+// camera parameters for transforming the object position
+// and scaling the subtex to the correct size
 layout (std140) uniform camera {
-    mat4 view;
-    mat4 proj;
+    // view matrix (world to view space)
+    mat4  view;
+    // projection matrix (view to clip space)
+    mat4  proj;
+    // inverse zoom factor (1.0 / zoom)
+    float inv_zoom;
+    // inverse viewport size (1.0 / viewport size)
+    vec2  inv_viewport_size;
 };
 
 void main() {
