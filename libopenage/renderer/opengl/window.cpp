@@ -1,4 +1,4 @@
-// Copyright 2018-2023 the openage authors. See copying.md for legal info.
+// Copyright 2018-2024 the openage authors. See copying.md for legal info.
 
 #include "window.h"
 
@@ -20,7 +20,7 @@ namespace openage::renderer::opengl {
 GlWindow::GlWindow(const std::string &title,
                    size_t width,
                    size_t height,
-                   bool debug) :
+                   window_settings settings) :
 	Window{width, height} {
 	if (QGuiApplication::instance() == nullptr) {
 		// Qt windows need to attach to a QtGuiApplication
@@ -40,6 +40,10 @@ GlWindow::GlWindow(const std::string &title,
 	format.setProfile(QSurfaceFormat::OpenGLContextProfile::CoreProfile);
 	format.setSwapBehavior(QSurfaceFormat::SwapBehavior::DoubleBuffer);
 
+	if (not settings.vsync) {
+		format.setSwapInterval(0);
+	}
+
 	format.setMajorVersion(gl_specs.major_version);
 	format.setMinorVersion(gl_specs.minor_version);
 
@@ -47,7 +51,7 @@ GlWindow::GlWindow(const std::string &title,
 	format.setDepthBufferSize(24);
 	format.setStencilBufferSize(8);
 
-	if (debug) {
+	if (settings.debug) {
 		format.setOption(QSurfaceFormat::DebugContext);
 	}
 
@@ -55,7 +59,7 @@ GlWindow::GlWindow(const std::string &title,
 	this->window->setFormat(format);
 	this->window->create();
 
-	this->context = std::make_shared<GlContext>(this->window, debug);
+	this->context = std::make_shared<GlContext>(this->window, settings.debug);
 	if (not this->context->get_raw_context()->isValid()) {
 		throw Error{MSG(err) << "Failed to create Qt OpenGL context."};
 	}

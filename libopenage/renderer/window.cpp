@@ -17,7 +17,7 @@ std::shared_ptr<Window> Window::create(const std::string &title,
 	// currently we only have a functional GL window
 	// TODO: support other renderer windows
 	//       and add some selection mechanism.
-	return std::make_shared<opengl::GlWindow>(title, width, height, settings.debug);
+	return std::make_shared<opengl::GlWindow>(title, width, height, settings);
 }
 
 

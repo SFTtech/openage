@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #include "demo_3.h"
 
@@ -28,7 +28,9 @@ namespace openage::renderer::tests {
 void renderer_demo_3(const util::Path &path) {
 	auto qtapp = std::make_shared<gui::GuiApplicationWithLogger>();
 
-	auto window = std::make_shared<opengl::GlWindow>("openage renderer test", 800, 600, true);
+	window_settings settings;
+	settings.debug = true;
+	auto window = std::make_shared<opengl::GlWindow>("openage renderer test", 800, 600, settings);
 	auto renderer = window->make_renderer();
 
 	// Clock required by world renderer for timing animation frames

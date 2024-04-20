@@ -1,4 +1,4 @@
-// Copyright 2018-2023 the openage authors. See copying.md for legal info.
+// Copyright 2018-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -27,12 +27,12 @@ public:
 	 * @param title The window title.
 	 * @param width Width (in pixels).
 	 * @param height Height (in pixels).
-	 * @param debug If true, enable OpenGL debug logging.
+	 * @param settings Settings for creating the window.
 	 */
 	GlWindow(const std::string &title,
 	         size_t width,
 	         size_t height,
-	         bool debug = false);
+	         window_settings settings = {});
 	~GlWindow();
 
 	void set_size(size_t width, size_t height) override;
