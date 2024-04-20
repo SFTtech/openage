@@ -86,7 +86,7 @@ public:
 	 * Activate or deactivate VSync for this context.
 	 *
 	 * TODO: This currently does not work at runtime. vsync must be set before
-	 * the QApplication is created.
+	 * the QWindow is created.
 	 *
 	 * @param on \p true to activate VSync, \p false to deactivate.
 	 */
