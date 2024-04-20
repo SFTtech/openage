@@ -81,6 +81,9 @@ constexpr static
  * For example,
  * FixedPoint<int64_t, 32>
  * can store values from -2**32 to +2**32 with a constant precision of 2**-32.
+ *
+ * If you change this class, remember to update the gdb pretty printers
+ * in etc/gdb_pretty/printers.py.
  */
 template <typename int_type, unsigned int fractional_bits>
 class FixedPoint {

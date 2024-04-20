@@ -1,4 +1,4 @@
-// Copyright 2016-2023 the openage authors. See copying.md for legal info.
+// Copyright 2016-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -24,6 +24,9 @@ namespace coord {
  *
  * 'Absolute' and 'Relative' are the absolute and relative types of the
  * derived class (CRTP).
+ *
+ * If you change this class, remember to update the gdb pretty printers
+ * in etc/gdb_pretty/printers.py.
  */
 template<typename CoordType, typename Absolute, typename Relative>
 struct Coord${camelcase}Absolute {
@@ -87,6 +90,9 @@ struct Coord${camelcase}Absolute {
  *
  * 'Absolute' and 'Relative' are the absolute and relative types of the
  * derived class (CRTP).
+ *
+ * If you change this class, remember to update the gdb pretty printers
+ * in etc/gdb_pretty/printers.py.
  */
 template<typename CoordType, typename Absolute, typename Relative>
 struct Coord${camelcase}Relative {
