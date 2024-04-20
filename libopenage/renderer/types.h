@@ -12,4 +12,14 @@ namespace openage::renderer {
  */
 using uniform_id_t = uint32_t;
 
+/**
+ * Graphics API types.
+ */
+enum class graphics_api_t {
+	DEFAULT,
+	OPENGL,
+	VULKAN,
+};
+
+
 } // namespace openage::renderer
