@@ -1,4 +1,4 @@
-// Copyright 2013-2023 the openage authors. See copying.md for legal info.
+// Copyright 2013-2024 the openage authors. See copying.md for legal info.
 
 #include "shader_program.h"
 
@@ -445,7 +445,12 @@ void GlShaderProgram::bind_uniform_buffer(const char *block_name, std::shared_pt
 	auto gl_buffer = std::dynamic_pointer_cast<GlUniformBuffer>(buffer);
 	auto &block = this->uniform_blocks[block_name];
 
-	// TODO: Check if the uniform buffer matches the block definition
+	// Check if the uniform buffer matches the block definition
+	for (auto const &pair : block.uniforms) {
+		auto const &unif = pair.second;
+		ENSURE(gl_buffer->has_uniform(pair.first.c_str()),
+		       "Uniform buffer does not contain uniform '" << pair.first << "' required by block " << block_name);
+	}
 
 	block.binding_point = gl_buffer->get_binding_point();
 	glUniformBlockBinding(*this->handle, block.index, block.binding_point);
