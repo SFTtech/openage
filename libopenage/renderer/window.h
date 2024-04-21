@@ -25,6 +25,10 @@ class WindowEventHandler;
  * Settings for creating a window.
  */
 struct window_settings {
+	// Width of the window in pixels.
+	size_t width = 1024;
+	// Height of the window in pixels.
+	size_t height = 768;
 	// Graphics API to use in the window's renderer.
 	graphics_api_t backend = graphics_api_t::DEFAULT;
 	// If true, enable vsync.
@@ -43,15 +47,11 @@ public:
 	 * Create a new Window instance for displaying stuff.
 	 *
 	 * @param title Window title shown in the Desktop Environment.
-	 * @param width Width in pixels.
-	 * @param height Height in pixels.
 	 * @param settings Settings for creating the window.
 	 *
 	 * @return The created Window instance.
 	 */
 	static std::shared_ptr<Window> create(const std::string &title,
-	                                      size_t width,
-	                                      size_t height,
 	                                      window_settings settings = {});
 
 	virtual ~Window() = default;

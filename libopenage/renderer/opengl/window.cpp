@@ -18,10 +18,8 @@
 namespace openage::renderer::opengl {
 
 GlWindow::GlWindow(const std::string &title,
-                   size_t width,
-                   size_t height,
                    window_settings settings) :
-	Window{width, height} {
+	Window{settings.width, settings.height} {
 	if (QGuiApplication::instance() == nullptr) {
 		// Qt windows need to attach to a QtGuiApplication
 		throw Error{MSG(err) << "Failed to create Qt window: QGuiApplication has not been created yet."};
@@ -31,7 +29,7 @@ GlWindow::GlWindow(const std::string &title,
 	this->window = std::make_shared<QWindow>();
 
 	this->window->setTitle(QString::fromStdString(title));
-	this->window->resize(width, height);
+	this->window->resize(settings.width, settings.height);
 
 	this->window->setSurfaceType(QSurface::OpenGLSurface);
 

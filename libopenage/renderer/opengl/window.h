@@ -25,13 +25,9 @@ public:
 	 * Create a shiny window with the given title.
 	 *
 	 * @param title The window title.
-	 * @param width Width (in pixels).
-	 * @param height Height (in pixels).
 	 * @param settings Settings for creating the window.
 	 */
 	GlWindow(const std::string &title,
-	         size_t width,
-	         size_t height,
 	         window_settings settings = {});
 	~GlWindow();
 

@@ -1,4 +1,4 @@
-// Copyright 2019-2023 the openage authors. See copying.md for legal info.
+// Copyright 2019-2024 the openage authors. See copying.md for legal info.
 
 #include "gui.h"
 
@@ -6,8 +6,8 @@
 #include <eigen3/Eigen/Dense>
 #include <vector>
 
-#include "main/demo/pong/gamestate.h"
 #include "log/log.h"
+#include "main/demo/pong/gamestate.h"
 #include "renderer/geometry.h"
 #include "renderer/opengl/context.h"
 #include "renderer/opengl/shader.h"
@@ -34,7 +34,7 @@ const std::vector<PongEvent> &Gui::get_inputs(const std::shared_ptr<PongPlayer> 
 
 	/*
 	for (all inputs from window) {
-		add key to inputs vector;
+	    add key to inputs vector;
 	}
 	*/
 
@@ -78,7 +78,7 @@ constexpr const int max_log_msgs = 10;
 
 
 Gui::Gui() :
-	window{"openage engine test", 800, 600},
+	window{"openage engine test", {800, 600}},
 	renderer{window.make_renderer()} {
 	auto vshader_src = renderer::resources::ShaderSource(
 		renderer::resources::shader_lang_t::glsl,
@@ -199,7 +199,7 @@ void Gui::draw(const std::shared_ptr<PongState> &state, const time::time_t &now)
 	auto ball_pos = state->ball->position->get(now);
 	auto ball_pos_matrix = Eigen::Affine3f::Identity();
 	ball_pos_matrix.prescale(Eigen::Vector3f(ball_size, ball_size, 1.0f));
-	//ball_pos_matrix.prerotate(Eigen::AngleAxisf(45.0f * math::PI / 180.0f, Eigen::Vector3f::UnitZ()));
+	// ball_pos_matrix.prerotate(Eigen::AngleAxisf(45.0f * math::PI / 180.0f, Eigen::Vector3f::UnitZ()));
 	ball_pos_matrix.pretranslate(Eigen::Vector3f(ball_pos[0], ball_pos[1], 0.0f));
 	this->ball.uniform->update("pos", ball_pos_matrix.matrix());
 

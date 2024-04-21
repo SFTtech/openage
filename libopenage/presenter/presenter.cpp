@@ -98,8 +98,10 @@ void Presenter::init_graphics(bool debug) {
 
 	// Window and renderer
 	renderer::window_settings settings;
+	settings.width = 1024;
+	settings.height = 768;
 	settings.debug = debug;
-	this->window = renderer::Window::create("openage presenter test", 1024, 768, settings);
+	this->window = renderer::Window::create("openage presenter test", settings);
 	this->renderer = this->window->make_renderer();
 
 	// Asset mangement

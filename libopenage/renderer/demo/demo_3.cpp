@@ -29,8 +29,10 @@ void renderer_demo_3(const util::Path &path) {
 	auto qtapp = std::make_shared<gui::GuiApplicationWithLogger>();
 
 	window_settings settings;
+	settings.width = 800;
+	settings.height = 600;
 	settings.debug = true;
-	auto window = std::make_shared<opengl::GlWindow>("openage renderer test", 800, 600, settings);
+	auto window = std::make_shared<opengl::GlWindow>("openage renderer test", settings);
 	auto renderer = window->make_renderer();
 
 	// Clock required by world renderer for timing animation frames

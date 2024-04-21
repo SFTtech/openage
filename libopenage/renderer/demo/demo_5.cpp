@@ -23,8 +23,10 @@ void renderer_demo_5(const util::Path &path) {
 	auto qtapp = std::make_shared<gui::GuiApplicationWithLogger>();
 
 	window_settings settings;
+	settings.width = 800;
+	settings.height = 600;
 	settings.debug = true;
-	opengl::GlWindow window("openage renderer test", 800, 600, settings);
+	opengl::GlWindow window("openage renderer test", settings);
 	auto renderer = window.make_renderer();
 	auto size = window.get_size();
 
