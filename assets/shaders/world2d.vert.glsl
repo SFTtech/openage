@@ -65,17 +65,11 @@ void main() {
     // Scale the subtex vertices
     // we have to account for the viewport size to get the correct dimensions
     // and then scale the subtex to the zoom factor to get the correct size
-    vec2 vert_scale = vec2(
-        zoom_scale * subtex_size.x * inv_viewport_size.x,
-        zoom_scale * subtex_size.y * inv_viewport_size.y
-    );
+    vec2 vert_scale = zoom_scale * subtex_size * inv_viewport_size;
 
     // Scale the anchor offset with the same method as above
     // to get the correct anchor position in the viewport
-    vec2 anchor_scale = vec2(
-        zoom_scale * anchor_offset.x * inv_viewport_size.x,
-        zoom_scale * anchor_offset.y * inv_viewport_size.y
-    );
+    vec2 anchor_scale = zoom_scale * anchor_offset * inv_viewport_size;
 
     // if the subtex is flipped, we also need to flip the anchor offset
     // essentially, we invert the coordinates for the flipped axis
