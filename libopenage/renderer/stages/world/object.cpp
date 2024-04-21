@@ -157,7 +157,7 @@ void WorldObject::update_uniforms(const time::time_t &time) {
 		scale * (static_cast<float>(anchor[1]) / screen_size[1])};
 	// this->uniforms->update(this->anchor_offset, anchor_offset);
 
-	this->uniforms->update("scalefactor", animation_info->get_scalefactor());
+	this->uniforms->update(this->scale, animation_info->get_scalefactor());
 	// this->uniforms->update("zoom", this->camera->get_zoom());
 	Eigen::Vector2f screen_size_vec{
 		static_cast<float>(screen_size[0]),
@@ -166,11 +166,11 @@ void WorldObject::update_uniforms(const time::time_t &time) {
 	Eigen::Vector2f subtex_size_vec{
 		static_cast<float>(subtex_size[0]),
 		static_cast<float>(subtex_size[1])};
-	this->uniforms->update("subtex_size", subtex_size_vec);
+	this->uniforms->update(this->subtex_size, subtex_size_vec);
 	Eigen::Vector2f anchor_vec{
 		static_cast<float>(anchor[0]),
 		static_cast<float>(anchor[1])};
-	this->uniforms->update("anchor", anchor_vec);
+	this->uniforms->update(this->anchor_offset, anchor_vec);
 }
 
 uint32_t WorldObject::get_id() {

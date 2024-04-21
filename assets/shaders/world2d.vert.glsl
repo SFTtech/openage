@@ -42,25 +42,25 @@ uniform bool flip_y;
 // match the subtex dimensions
 // uniform vec2 scale;
 
-uniform float scalefactor;
+uniform float scale;
 uniform float zoom;
 uniform vec2 screen_size;
 uniform vec2 subtex_size;
-uniform vec2 anchor;
+uniform vec2 anchor_offset;
 
 void main() {
     // translate the position of the object from world space to clip space
     // this is the position where we want to draw the subtex in 2D
 	vec4 obj_clip_pos = proj * view * model * vec4(obj_world_position, 1.0);
 
-    float obj_scale = scalefactor * inv_zoom;
+    float obj_scale = scale * inv_zoom;
     vec2 obj_scale_vec = vec2(
-        obj_scale * (subtex_size.x * inv_viewport_size.x),
-        obj_scale * (subtex_size.y * inv_viewport_size.y)
+        obj_scale * subtex_size.x * inv_viewport_size.x,
+        obj_scale * subtex_size.y * inv_viewport_size.y
     );
     vec2 obj_anchor_vec = vec2(
-        obj_scale * (anchor.x * inv_viewport_size.x),
-        obj_scale * (anchor.y * inv_viewport_size.y)
+        obj_scale * anchor_offset.x * inv_viewport_size.x,
+        obj_scale * anchor_offset.y * inv_viewport_size.y
     );
 
     // if the subtex is flipped, we also need to flip the anchor offset
