@@ -122,10 +122,15 @@ void GlWindow::update() {
 		} break;
 		case QEvent::MouseButtonPress:
 		case QEvent::MouseButtonRelease:
-		case QEvent::MouseMove:
 		case QEvent::MouseButtonDblClick: {
 			auto const ev = std::dynamic_pointer_cast<QMouseEvent>(event);
 			for (auto &cb : this->on_mouse_button) {
+				cb(*ev);
+			}
+		} break;
+		case QEvent::MouseMove: {
+			auto const ev = std::dynamic_pointer_cast<QMouseEvent>(event);
+			for (auto &cb : this->on_mouse_move) {
 				cb(*ev);
 			}
 		} break;

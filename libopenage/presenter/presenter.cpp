@@ -217,6 +217,9 @@ void Presenter::init_input() {
 		this->input_manager->process(ev);
 	});
 	this->window->add_mouse_button_callback([&](const QMouseEvent &ev) {
+		this->input_manager->process(ev);
+	});
+	this->window->add_mouse_move_callback([&](const QMouseEvent &ev) {
 		this->input_manager->set_mouse(ev.position().x(), ev.position().y());
 		this->input_manager->process(ev);
 	});

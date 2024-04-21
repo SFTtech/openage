@@ -39,6 +39,10 @@ void Window::add_mouse_button_callback(const mouse_button_cb_t &cb) {
 	this->on_mouse_button.push_back(cb);
 }
 
+void Window::add_mouse_move_callback(const mouse_move_cb_t &cb) {
+	this->on_mouse_move.push_back(cb);
+}
+
 void Window::add_mouse_wheel_callback(const mouse_wheel_cb_t &cb) {
 	this->on_mouse_wheel.push_back(cb);
 }
