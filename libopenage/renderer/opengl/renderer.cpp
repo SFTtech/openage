@@ -1,4 +1,4 @@
-// Copyright 2017-2023 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #include "renderer.h"
 
@@ -33,10 +33,10 @@ GlRenderer::GlRenderer(const std::shared_ptr<GlContext> &ctx,
 	// global GL alpha blending settings
 	// glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glBlendFuncSeparate(
-		GL_SRC_ALPHA, // source (overlaying) RGB factor
+		GL_SRC_ALPHA,           // source (overlaying) RGB factor
 		GL_ONE_MINUS_SRC_ALPHA, // destination (underlying) RGB factor
-		GL_ONE, // source (overlaying) alpha factor
-		GL_ONE_MINUS_SRC_ALPHA // destination (underlying) alpha factor
+		GL_ONE,                 // source (overlaying) alpha factor
+		GL_ONE_MINUS_SRC_ALPHA  // destination (underlying) alpha factor
 	);
 
 	// global GL depth testing settings
@@ -90,6 +90,11 @@ std::shared_ptr<UniformBuffer> GlRenderer::add_uniform_buffer(resources::Uniform
 	size_t offset = 0;
 	for (auto const &input : inputs) {
 		auto type = GL_UBO_INPUT_TYPE.get(input.type);
+		auto size = resources::UniformBufferInfo::get_size(input, info.get_layout());
+
+		// align offset to the size of the type
+		offset += offset % size;
+
 		uniforms.emplace(
 			std::make_pair(input.name,
 		                   GlInBlockUniform{type,
@@ -97,7 +102,8 @@ std::shared_ptr<UniformBuffer> GlRenderer::add_uniform_buffer(resources::Uniform
 		                                    resources::UniformBufferInfo::get_size(input, info.get_layout()),
 		                                    resources::UniformBufferInfo::get_stride_size(input.type, info.get_layout()),
 		                                    input.count}));
-		offset += resources::UniformBufferInfo::get_size(input, info.get_layout());
+
+		offset += size;
 	}
 
 	return std::make_shared<GlUniformBuffer>(this->gl_context,
