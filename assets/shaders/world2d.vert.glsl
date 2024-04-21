@@ -55,12 +55,12 @@ void main() {
 
     float obj_scale = scalefactor * inv_zoom;
     vec2 obj_scale_vec = vec2(
-        obj_scale * (subtex_size.x / screen_size.x),
-        obj_scale * (subtex_size.y / screen_size.y)
+        obj_scale * (subtex_size.x * inv_viewport_size.x),
+        obj_scale * (subtex_size.y * inv_viewport_size.y)
     );
     vec2 obj_anchor_vec = vec2(
-        obj_scale * (anchor.x / screen_size.x),
-        obj_scale * (anchor.y / screen_size.y)
+        obj_scale * (anchor.x * inv_viewport_size.x),
+        obj_scale * (anchor.y * inv_viewport_size.y)
     );
 
     // if the subtex is flipped, we also need to flip the anchor offset

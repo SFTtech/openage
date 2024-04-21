@@ -1,4 +1,4 @@
-// Copyright 2022-2023 the openage authors. See copying.md for legal info.
+// Copyright 2022-2024 the openage authors. See copying.md for legal info.
 
 #include "object.h"
 
@@ -162,7 +162,7 @@ void WorldObject::update_uniforms(const time::time_t &time) {
 	Eigen::Vector2f screen_size_vec{
 		static_cast<float>(screen_size[0]),
 		static_cast<float>(screen_size[1])};
-	this->uniforms->update("screen_size", screen_size_vec);
+	// this->uniforms->update("screen_size", screen_size_vec);
 	Eigen::Vector2f subtex_size_vec{
 		static_cast<float>(subtex_size[0]),
 		static_cast<float>(subtex_size[1])};
