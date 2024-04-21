@@ -1,4 +1,4 @@
-// Copyright 2019-2023 the openage authors. See copying.md for legal info.
+// Copyright 2019-2024 the openage authors. See copying.md for legal info.
 
 #include "presenter.h"
 
@@ -93,8 +93,15 @@ std::shared_ptr<qtgui::GuiApplication> Presenter::init_window_system() {
 void Presenter::init_graphics(bool debug) {
 	log::log(INFO << "Presenter: Initializing graphics subsystems...");
 
+	// Start up rendering framework
 	this->gui_app = this->init_window_system();
-	this->window = renderer::Window::create("openage presenter test", 1024, 768, debug);
+
+	// Window and renderer
+	renderer::window_settings settings;
+	settings.width = 1024;
+	settings.height = 768;
+	settings.debug = debug;
+	this->window = renderer::Window::create("openage presenter test", settings);
 	this->renderer = this->window->make_renderer();
 
 	// Asset mangement
@@ -190,10 +197,10 @@ void Presenter::init_gui() {
 
 	this->gui = std::make_shared<renderer::gui::GUI>(
 		this->gui_app, // Qt application wrapper
-		this->window, // window for the gui
+		this->window,  // window for the gui
 		qml_root_file, // entry qml file, absolute path.
-		qml_root, // directory to watch for qml file changes
-		qml_assets, // qml data: Engine *, the data directory, ...
+		qml_root,      // directory to watch for qml file changes
+		qml_assets,    // qml data: Engine *, the data directory, ...
 		this->renderer // openage renderer
 	);
 

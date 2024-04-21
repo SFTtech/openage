@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -6,10 +6,11 @@
 #include <memory>
 #include <vector>
 
-#include "../util/vector.h"
-#include "renderer.h"
-
 #include <QObject>
+
+#include "renderer/renderer.h"
+#include "renderer/types.h"
+#include "util/vector.h"
 
 QT_FORWARD_DECLARE_CLASS(QWindow)
 QT_FORWARD_DECLARE_CLASS(QKeyEvent)
@@ -20,22 +21,38 @@ namespace openage::renderer {
 
 class WindowEventHandler;
 
+/**
+ * Settings for creating a window.
+ */
+struct window_settings {
+	// Width of the window in pixels.
+	size_t width = 1024;
+	// Height of the window in pixels.
+	size_t height = 768;
+	// Graphics API to use in the window's renderer.
+	graphics_api_t backend = graphics_api_t::DEFAULT;
+	// If true, enable vsync.
+	bool vsync = true;
+	// If true, enable debug logging for the selected backend.
+	bool debug = false;
+};
+
+
+/**
+ * Represents a window that can be used to display graphics.
+ */
 class Window {
 public:
 	/**
 	 * Create a new Window instance for displaying stuff.
 	 *
 	 * @param title Window title shown in the Desktop Environment.
-	 * @param width Width in pixels.
-	 * @param height Height in pixels.
-	 * @param debug If true, enable OpenGL debug logging.
+	 * @param settings Settings for creating the window.
 	 *
 	 * @return The created Window instance.
 	 */
 	static std::shared_ptr<Window> create(const std::string &title,
-	                                      size_t width,
-	                                      size_t height,
-	                                      bool debug = false);
+	                                      window_settings settings = {});
 
 	virtual ~Window() = default;
 

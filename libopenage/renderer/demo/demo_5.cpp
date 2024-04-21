@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #include "demo_5.h"
 
@@ -22,7 +22,11 @@ namespace openage::renderer::tests {
 void renderer_demo_5(const util::Path &path) {
 	auto qtapp = std::make_shared<gui::GuiApplicationWithLogger>();
 
-	opengl::GlWindow window("openage renderer test", 800, 600, true);
+	window_settings settings;
+	settings.width = 800;
+	settings.height = 600;
+	settings.debug = true;
+	opengl::GlWindow window("openage renderer test", settings);
 	auto renderer = window.make_renderer();
 	auto size = window.get_size();
 

@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #include "stresstest_0.h"
 
@@ -28,7 +28,12 @@ namespace openage::renderer::tests {
 void renderer_stresstest_0(const util::Path &path) {
 	auto qtapp = std::make_shared<gui::GuiApplicationWithLogger>();
 
-	auto window = std::make_shared<opengl::GlWindow>("openage renderer test", 1024, 768, true);
+	window_settings settings;
+	settings.width = 1024;
+	settings.height = 768;
+	settings.vsync = false;
+	settings.debug = true;
+	auto window = std::make_shared<opengl::GlWindow>("openage renderer test", settings);
 	auto renderer = window->make_renderer();
 
 	// Clock required by world renderer for timing animation frames
