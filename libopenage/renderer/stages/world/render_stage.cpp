@@ -1,4 +1,4 @@
-// Copyright 2022-2023 the openage authors. See copying.md for legal info.
+// Copyright 2022-2024 the openage authors. See copying.md for legal info.
 
 #include "render_stage.h"
 
@@ -136,6 +136,7 @@ void WorldRenderStage::init_uniform_ids() {
 	WorldObject::tex = this->display_shader->get_uniform_id("tex");
 	WorldObject::tile_params = this->display_shader->get_uniform_id("tile_params");
 	WorldObject::scale = this->display_shader->get_uniform_id("scale");
+	WorldObject::subtex_size = this->display_shader->get_uniform_id("subtex_size");
 	WorldObject::anchor_offset = this->display_shader->get_uniform_id("anchor_offset");
 }
 

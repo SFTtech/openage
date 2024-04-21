@@ -1,4 +1,4 @@
-// Copyright 2022-2023 the openage authors. See copying.md for legal info.
+// Copyright 2022-2024 the openage authors. See copying.md for legal info.
 
 #include "camera.h"
 
@@ -28,10 +28,7 @@ Camera::Camera(const std::shared_ptr<Renderer> &renderer,
 	proj{Eigen::Matrix4f::Identity()} {
 	this->look_at_scene(Eigen::Vector3f(0.0f, 0.0f, 0.0f));
 
-	resources::UBOInput view_input{"view", resources::ubo_input_t::M4F32};
-	resources::UBOInput proj_input{"proj", resources::ubo_input_t::M4F32};
-	auto ubo_info = resources::UniformBufferInfo{resources::ubo_layout_t::STD140, {view_input, proj_input}};
-	this->uniform_buffer = renderer->add_uniform_buffer(ubo_info);
+	this->init_uniform_buffer(renderer);
 
 	log::log(INFO << "Created new camera at position "
 	              << "(" << this->scene_pos[0]
@@ -55,10 +52,7 @@ Camera::Camera(const std::shared_ptr<Renderer> &renderer,
 	viewport_changed{true},
 	view{Eigen::Matrix4f::Identity()},
 	proj{Eigen::Matrix4f::Identity()} {
-	resources::UBOInput view_input{"view", resources::ubo_input_t::M4F32};
-	resources::UBOInput proj_input{"proj", resources::ubo_input_t::M4F32};
-	auto ubo_info = resources::UniformBufferInfo{resources::ubo_layout_t::STD140, {view_input, proj_input}};
-	this->uniform_buffer = renderer->add_uniform_buffer(ubo_info);
+	this->init_uniform_buffer(renderer);
 
 	log::log(INFO << "Created new camera at position "
 	              << "(" << this->scene_pos[0]
@@ -267,6 +261,17 @@ Eigen::Vector3f Camera::get_input_pos(const coord::input &coord) const {
 
 const std::shared_ptr<renderer::UniformBuffer> &Camera::get_uniform_buffer() const {
 	return this->uniform_buffer;
+}
+
+void Camera::init_uniform_buffer(const std::shared_ptr<Renderer> &renderer) {
+	resources::UBOInput view_input{"view", resources::ubo_input_t::M4F32};
+	resources::UBOInput proj_input{"proj", resources::ubo_input_t::M4F32};
+	resources::UBOInput inv_zoom_input{"inv_zoom", resources::ubo_input_t::F32};
+	resources::UBOInput inv_viewport_size{"inv_viewport_size", resources::ubo_input_t::V2F32};
+	auto ubo_info = resources::UniformBufferInfo{
+		resources::ubo_layout_t::STD140,
+		{view_input, proj_input, inv_zoom_input, inv_viewport_size}};
+	this->uniform_buffer = renderer->add_uniform_buffer(ubo_info);
 }
 
 } // namespace openage::renderer::camera

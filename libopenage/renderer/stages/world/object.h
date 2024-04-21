@@ -132,6 +132,7 @@ public:
 	inline static uniform_id_t tex;
 	inline static uniform_id_t tile_params;
 	inline static uniform_id_t scale;
+	inline static uniform_id_t subtex_size;
 	inline static uniform_id_t anchor_offset;
 
 private:

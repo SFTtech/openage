@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #include "buffer_info.h"
 
@@ -27,7 +27,13 @@ const std::vector<UBOInput> &UniformBufferInfo::get_inputs() const {
 size_t UniformBufferInfo::get_size() const {
 	size_t size = 0;
 	for (const auto &input : this->inputs) {
-		size += this->get_size(input, this->layout);
+		// size of the input type
+		size_t input_size = this->get_size(input, this->layout);
+
+		// inputs must additionally be aligned to a multiple of their size
+		size_t align_size = size % input_size;
+
+		size += input_size + align_size;
 	}
 	return size;
 }
