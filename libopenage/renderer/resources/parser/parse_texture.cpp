@@ -56,6 +56,11 @@ std::string parse_imagefile(const std::vector<std::string> &args) {
 	// it should result in an error if wrongly used here.
 
 	// Call substr() to get rid of the quotes
+	// If the line ends in a carriage return, remove it as well
+	if (args[1][args[1].size() - 1] == '\r') {
+		return args[1].substr(1, args[1].size() - 3);
+	}
+
 	return args[1].substr(1, args[1].size() - 2);
 }
 
@@ -179,8 +184,8 @@ Texture2dInfo parse_texture_file(const util::Path &file) {
 		})};
 
 	for (auto line : lines) {
-		// Skip empty lines and comments
-		if (line.empty() || line.substr(0, 1) == "#") {
+		// Skip empty lines, lines with carriage returns, and comments
+		if (line.empty() || line.substr(0, 1) == "#" || line[0] == '\r') {
 			continue;
 		}
 		std::vector<std::string> args{util::split(line, ' ')};

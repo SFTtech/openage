@@ -195,8 +195,8 @@ Animation2dInfo parse_sprite_file(const util::Path &file,
 		})};
 
 	for (auto line : lines) {
-		// Skip empty lines and comments
-		if (line.empty() || line.substr(0, 1) == "#") {
+		// Skip empty lines, lines with carriage returns, and comments
+		if (line.empty() || line.substr(0, 1) == "#" || line[0] == '\r') {
 			continue;
 		}
 		std::vector<std::string> args{util::split(line, ' ')};

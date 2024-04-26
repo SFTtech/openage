@@ -20,7 +20,13 @@ TextureData parse_texture(const std::vector<std::string> &args) {
 	texture.texture_id = std::stoul(args[1]);
 
 	// Call substr() to get rid of the quotes
-	texture.path = args[2].substr(1, args[2].size() - 2);
+	// If the line ends in a carriage return, remove it as well
+	if (args[2][args[2].size() - 1] == '\r') {
+		texture.path = args[2].substr(1, args[2].size() - 3);
+	}
+	else {
+		texture.path = args[2].substr(1, args[2].size() - 2);
+	}
 
 	return texture;
 }
