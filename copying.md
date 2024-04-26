@@ -153,6 +153,7 @@ _the openage authors_ are:
 | Astitva Kamble              | askastitva                  | astitvakamble5 à gmail dawt com                   |
 | Haoyang Bi                  | AyiStar                     | ayistar à outlook dawt com                        |
 | Michael Seibt               | RoboSchmied                 | github à roboschmie dawt de                       |
+| Nikhil Ghosh                | NikhilGhosh75               | nghosh606 à gmail dawt com
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
