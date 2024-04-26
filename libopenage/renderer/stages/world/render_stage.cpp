@@ -100,8 +100,6 @@ void WorldRenderStage::update() {
 		}
 		obj->update_uniforms(current_time);
 	}
-
-	std::cout << this->render_pass->renderables.size() << std::flush;
 }
 
 void WorldRenderStage::resize(size_t width, size_t height) {
