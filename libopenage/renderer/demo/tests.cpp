@@ -12,7 +12,7 @@
 #include "renderer/demo/demo_4.h"
 #include "renderer/demo/demo_5.h"
 #include "renderer/demo/stresstest_0.h"
-
+#include "renderer/demo/stresstest_1.h"
 
 namespace openage::renderer::tests {
 
@@ -53,7 +53,9 @@ OAAPI void renderer_stresstest(int demo_id, const util::Path &path) {
 	case 0:
 		renderer_stresstest_0(path);
 		break;
-
+	case 1:
+		renderer_stresstest_1(path);
+		break;
 	default:
 		log::log(MSG(err) << "Unknown renderer stresstest requested: " << demo_id << ".");
 		break;
