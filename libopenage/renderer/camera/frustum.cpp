@@ -14,26 +14,6 @@
 
 namespace openage::renderer::camera {
 
-/*
-    Eigen::Vector3f top_face_normal;
-    float top_face_distance;
-
-    Eigen::Vector3f bottom_face_normal;
-    float bottom_face_distance;
-
-    Eigen::Vector3f right_face_normal;
-    float right_face_distance;
-
-    Eigen::Vector3f left_face_normal;
-    float left_face_distance;
-
-    Eigen::Vector3f far_face_normal;
-    float far_face_distance;
-
-    Eigen::Vector3f near_face_normal;
-    float near_face_distance;
-*/
-
 Frustum::Frustum() : 
     top_face_normal{Eigen::Vector3f(0.0f, 0.0f, 0.0f)},
     top_face_distance{0.0f},
@@ -75,6 +55,7 @@ void Frustum::Recalculate(util::Vector2s &viewport_size, float near_distance, fl
     Eigen::Vector3f near_position = scene_pos - direction * near_distance;
     Eigen::Vector3f far_position = scene_pos + direction * far_distance;
 
+    // The frustum is a box with 8 points defining it (4 on the near plane, 4 on the far plane)
     Eigen::Vector3f near_top_left = near_position - s * halfwidth + u * halfheight;
     Eigen::Vector3f near_top_right = near_position + s * halfwidth + u * halfheight;
     Eigen::Vector3f near_bottom_left = near_position - s * halfwidth - u * halfheight;
@@ -85,48 +66,32 @@ void Frustum::Recalculate(util::Vector2s &viewport_size, float near_distance, fl
     Eigen::Vector3f far_bottom_left = far_position - s * halfwidth - u * halfheight;
     Eigen::Vector3f far_bottom_right = far_position + s * halfwidth - u * halfheight;
 
+    // The near and far planes are easiest to compute, as they should be in the direction of the camera
     this->near_face_normal = -1.0f * cam_direction.normalized();
     this->far_face_normal = cam_direction.normalized();
 
     this->near_face_distance = this->near_face_normal.dot(near_position) * -1.0f;
     this->far_face_distance = this->far_face_normal.dot(far_position) * -1.0f;
 
+    // Each left, right, top, and bottom plane are defined by three points on the plane
     this->left_face_normal = (near_bottom_left - near_top_left).cross(far_bottom_left - near_bottom_left);
     this->right_face_normal = (far_bottom_right - near_bottom_right).cross(near_bottom_right - near_top_right);
     this->top_face_normal = (near_top_right - near_top_left).cross(near_top_left - far_top_left);
     this->bottom_face_normal = (near_bottom_left - far_bottom_left).cross(near_bottom_right - near_bottom_left);
-
-    log::log(INFO << "Compute near and far points");
-    log::log(INFO << "Near Top Left: " << near_top_left[0] << ", " << near_top_left[1] << ", " << near_top_left[2]);
-    log::log(INFO << "Near Top Right: " << near_top_right[0] << ", " << near_top_right[1] << ", " << near_top_right[2]);
-    log::log(INFO << "Near Bottom Left: " << near_bottom_left[0] << ", " << near_bottom_left[1] << ", " << near_bottom_left[2]);
-    log::log(INFO << "Near Bottom Right: " << near_bottom_right[0] << ", " << near_bottom_right[1] << ", " << near_bottom_right[2]);
-    log::log(INFO << "Far Top Left: " << far_top_left[0] << ", " << far_top_left[1] << ", " << far_top_left[2]);
-    log::log(INFO << "Far Top Right: " << far_top_right[0] << ", " << far_top_right[1] << ", " << far_top_right[2]);
-    log::log(INFO << "Far Bottom Left: " << far_bottom_left[0] << ", " << far_bottom_left[1] << ", " << far_bottom_left[2]);
-    log::log(INFO << "Far Bottom Right: " << far_bottom_right[0] << ", " << far_bottom_right[1] << ", " << far_bottom_right[2]);
 
     this->left_face_normal.normalize();
     this->right_face_normal.normalize();
     this->top_face_normal.normalize();
     this->bottom_face_normal.normalize();
 
-    this->left_face_distance = 1.f * this->left_face_normal.dot(near_bottom_left);
-    this->right_face_distance = 1.f * this->right_face_normal.dot(far_bottom_right);
-    this->top_face_distance = 1.f * this->top_face_normal.dot(near_top_right);
-    this->bottom_face_distance = 1.f * this->bottom_face_normal.dot(near_bottom_left);
-
-    log::log(INFO << "Computed Frustum with planes \n"
-	              << "Top: <" << this->top_face_normal[0] << ", " << this->top_face_normal[1] << ", " << this->top_face_normal[2] << ">, " << this->top_face_distance << "\n"
-	              << "Bottom: <" << this->bottom_face_normal[0] << ", " << this->bottom_face_normal[1] << ", " << this->bottom_face_normal[2] << ">, " << this->bottom_face_distance << "\n"
-	              << "Left: <" << this->left_face_normal[0] << ", " << this->left_face_normal[1] << ", " << this->left_face_normal[2] << ">, " << this->left_face_distance << "\n"
-	              << "Right: <" << this->right_face_normal[0] << ", " << this->right_face_normal[1] << ", " << this->right_face_normal[2] << ">, " << this->right_face_distance << "\n"
-	              << "Far: <" << this->far_face_normal[0] << ", " << this->far_face_normal[1] << ", " << this->far_face_normal[2] << ">, " << this->far_face_distance << "\n"
-	              << "Near: <" << this->near_face_normal[0] << ", " << this->near_face_normal[1] << ", " << this->near_face_normal[2] << ">, " << this->near_face_distance << "\n"
-    );
+    this->left_face_distance = this->left_face_normal.dot(near_bottom_left);
+    this->right_face_distance = this->right_face_normal.dot(far_bottom_right);
+    this->top_face_distance = this->top_face_normal.dot(near_top_right);
+    this->bottom_face_distance = this->bottom_face_normal.dot(near_bottom_left);
 }
 
 bool Frustum::is_in_frustum(Eigen::Vector3f& pos) const {
+    // For each plane, if a point is behind one of the frustum planes, it is not within the frustum
     float distance;
 
     distance = this->top_face_normal.dot(pos) - this->top_face_distance;

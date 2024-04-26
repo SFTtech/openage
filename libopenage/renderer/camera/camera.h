@@ -294,7 +294,8 @@ private:
 	std::shared_ptr<renderer::UniformBuffer> uniform_buffer;
 
 	/**
-	 * Is frustum culling enabled? If true, 
+	 * Is frustum culling enabled? If true, perform frustum culling.
+	 * If false, all frustum checks will return true
 	 */
 	bool frustum_culling;
 
