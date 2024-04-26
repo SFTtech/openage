@@ -14,7 +14,7 @@
 
 namespace openage::renderer::camera {
 
-Frustum::Frustum() : 
+Frustum::Frustum() :
     top_face_normal{Eigen::Vector3f(0.0f, 0.0f, 0.0f)},
     top_face_distance{0.0f},
     bottom_face_normal{Eigen::Vector3f(0.0f, 0.0f, 0.0f)},
