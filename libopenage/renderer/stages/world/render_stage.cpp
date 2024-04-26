@@ -59,6 +59,10 @@ void WorldRenderStage::update() {
 	std::unique_lock lock{this->mutex};
 	auto current_time = this->clock->get_real_time();
 	for (auto &obj : this->render_objects) {
+		if (!obj->within_camera_frustum(this->camera)) {
+			continue;
+		}
+
 		obj->fetch_updates(current_time);
 		if (obj->is_changed()) {
 			if (obj->requires_renderable()) {
@@ -96,6 +100,8 @@ void WorldRenderStage::update() {
 		}
 		obj->update_uniforms(current_time);
 	}
+
+	std::cout << this->render_pass->renderables.size() << std::flush;
 }
 
 void WorldRenderStage::resize(size_t width, size_t height) {

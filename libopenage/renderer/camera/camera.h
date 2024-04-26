@@ -12,6 +12,8 @@
 #include "coord/scene.h"
 #include "util/vector.h"
 
+#include "frustum.h"
+
 namespace openage::renderer {
 class Renderer;
 class UniformBuffer;
@@ -29,6 +31,9 @@ static const Eigen::Vector3f cam_direction{
 	-0.5f,
 	-1 * (std::sqrt(6.f) / 4),
 };
+
+static const float near_distance = 0.01f;
+static const float far_distance = 100.0f;
 
 /**
  * Camera for selecting what part of the ingame world is displayed.
@@ -58,13 +63,15 @@ public:
 	 * @param zoom Zoom level of the camera (defaults to 1.0f).
 	 * @param max_zoom_out Maximum zoom out level (defaults to 64.0f).
 	 * @param default_zoom_ratio Default zoom level calibration (defaults to (1.0f / 49)).
+	 * @param frustum_culling Is frustum culling enables (defaults to false).
 	 */
 	Camera(const std::shared_ptr<Renderer> &renderer,
 	       util::Vector2s viewport_size,
 	       Eigen::Vector3f scene_pos,
 	       float zoom = 1.0f,
 	       float max_zoom_out = 64.0f,
-	       float default_zoom_ratio = 1.0f / 49);
+	       float default_zoom_ratio = 1.0f / 49,
+		   bool frustum_culling = false);
 	~Camera() = default;
 
 	/**
@@ -188,6 +195,10 @@ public:
 	 */
 	const std::shared_ptr<renderer::UniformBuffer> &get_uniform_buffer() const;
 
+	bool using_frustum_culling() const;
+
+	bool is_in_frustum(Eigen::Vector3f pos) const;
+
 private:
 	/**
 	 * Create the uniform buffer for the camera.
@@ -281,6 +292,17 @@ private:
 	 * Uniform buffer for the camera matrices.
 	 */
 	std::shared_ptr<renderer::UniformBuffer> uniform_buffer;
+
+	/**
+	 * Is frustum culling enabled? If true, 
+	 */
+	bool frustum_culling;
+
+	/**
+	 * The frustum used to cull objects
+	 * Will be recalculated regardless of whether frustum culling is enabled
+	 */
+	Frustum frustum;
 };
 
 } // namespace camera
