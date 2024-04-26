@@ -186,4 +186,13 @@ void WorldObject::set_uniforms(const std::shared_ptr<renderer::UniformInput> &un
 	this->uniforms = uniforms;
 }
 
+bool WorldObject::within_camera_frustum(const std::shared_ptr<camera::Camera> &camera) {
+	if (!camera->using_frustum_culling()) {
+		return true;
+	}
+
+	Eigen::Vector3f current_pos = this->position.get(this->last_update).to_world_space();
+	return camera->is_in_frustum(current_pos);
+}
+
 } // namespace openage::renderer::world

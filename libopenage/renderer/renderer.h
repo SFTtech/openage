@@ -98,6 +98,7 @@ protected:
 	/// Create a new RenderPass. This is called from Renderer::add_render_pass,
 	/// which then creates the proper subclass of RenderPass, depending on the backend.
 	RenderPass(std::vector<Renderable>, const std::shared_ptr<RenderTarget> &);
+public:
 	/// The renderables to parse and possibly execute.
 	std::vector<Renderable> renderables;
 

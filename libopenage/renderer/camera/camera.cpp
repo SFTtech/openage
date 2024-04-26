@@ -25,13 +25,17 @@ Camera::Camera(const std::shared_ptr<Renderer> &renderer,
 	moved{true},
 	zoom_changed{true},
 	view{Eigen::Matrix4f::Identity()},
-	proj{Eigen::Matrix4f::Identity()} {
+	proj{Eigen::Matrix4f::Identity()},
+	frustum_culling{false} {
 	this->look_at_scene(Eigen::Vector3f(0.0f, 0.0f, 0.0f));
 
 	resources::UBOInput view_input{"view", resources::ubo_input_t::M4F32};
 	resources::UBOInput proj_input{"proj", resources::ubo_input_t::M4F32};
 	auto ubo_info = resources::UniformBufferInfo{resources::ubo_layout_t::STD140, {view_input, proj_input}};
 	this->uniform_buffer = renderer->add_uniform_buffer(ubo_info);
+
+	float real_zoom = 0.7f * this->default_zoom_ratio * this->zoom;
+	frustum.Recalculate(this->viewport_size, near_distance, far_distance, this->scene_pos, cam_direction, Eigen::Vector3f(0.0f, 1.0f, 0.0f), real_zoom);
 
 	log::log(INFO << "Created new camera at position "
 	              << "(" << this->scene_pos[0]
@@ -44,7 +48,8 @@ Camera::Camera(const std::shared_ptr<Renderer> &renderer,
                Eigen::Vector3f scene_pos,
                float zoom,
                float max_zoom_out,
-               float default_zoom_ratio) :
+               float default_zoom_ratio,
+			   bool frustum_culling) :
 	scene_pos{scene_pos},
 	viewport_size{viewport_size},
 	zoom{zoom},
@@ -54,11 +59,15 @@ Camera::Camera(const std::shared_ptr<Renderer> &renderer,
 	zoom_changed{true},
 	viewport_changed{true},
 	view{Eigen::Matrix4f::Identity()},
-	proj{Eigen::Matrix4f::Identity()} {
+	proj{Eigen::Matrix4f::Identity()},
+	frustum_culling{frustum_culling} {
 	resources::UBOInput view_input{"view", resources::ubo_input_t::M4F32};
 	resources::UBOInput proj_input{"proj", resources::ubo_input_t::M4F32};
 	auto ubo_info = resources::UniformBufferInfo{resources::ubo_layout_t::STD140, {view_input, proj_input}};
 	this->uniform_buffer = renderer->add_uniform_buffer(ubo_info);
+
+	float real_zoom = 0.7f * this->default_zoom_ratio * this->zoom;
+	frustum.Recalculate(this->viewport_size, near_distance, far_distance, this->scene_pos, cam_direction, Eigen::Vector3f(0.0f, 1.0f, 0.0f), real_zoom);
 
 	log::log(INFO << "Created new camera at position "
 	              << "(" << this->scene_pos[0]
@@ -113,6 +122,9 @@ void Camera::move_to(Eigen::Vector3f scene_pos) {
 
 	this->scene_pos = scene_pos;
 	this->moved = true;
+
+	float real_zoom = 0.7f * this->default_zoom_ratio * this->zoom;
+	frustum.Recalculate(viewport_size, near_distance, far_distance, scene_pos, cam_direction, Eigen::Vector3f(0.0f, 1.0f, 0.0f), real_zoom);
 }
 
 void Camera::move_rel(Eigen::Vector3f direction, float delta) {
@@ -267,6 +279,18 @@ Eigen::Vector3f Camera::get_input_pos(const coord::input &coord) const {
 
 const std::shared_ptr<renderer::UniformBuffer> &Camera::get_uniform_buffer() const {
 	return this->uniform_buffer;
+}
+
+bool Camera::using_frustum_culling() const {
+	return this->frustum_culling;
+}
+
+bool Camera::is_in_frustum(Eigen::Vector3f pos) const{
+	if (!this->frustum_culling) {
+		return true;
+	}
+
+	return frustum.is_in_frustum(pos);
 }
 
 } // namespace openage::renderer::camera
