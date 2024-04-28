@@ -87,7 +87,7 @@ private:
 	 *
 	 * @return New terrain mesh.
 	 */
-	std::shared_ptr<TerrainRenderMesh> create_mesh();
+	std::shared_ptr<TerrainRenderMesh> create_mesh(const std::string &texture_path);
 
 	/**
 	 * Size of the chunk in tiles (width x height).

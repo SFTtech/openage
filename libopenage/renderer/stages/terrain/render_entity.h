@@ -5,6 +5,7 @@
 #include <memory>
 #include <shared_mutex>
 #include <string>
+#include <unordered_set>
 #include <vector>
 
 #include "coord/scene.h"
@@ -69,7 +70,21 @@ public:
 	 *
 	 * @return Texture mapping of textures to vertex area.
 	 */
-	const curve::Discrete<std::string> &get_terrain_path();
+	// const curve::Discrete<std::string> &get_terrain_path();
+
+	/**
+	 * Get the tiles of the terrain.
+	 *
+	 * @return Terrain tiles.
+	 */
+	const tiles_t &get_tiles();
+
+	/**
+	 * Get the terrain paths used in the terrain.
+	 *
+	 * @return Terrain paths.
+	 */
+	const std::unordered_set<std::string> &get_terrain_paths();
 
 	/**
 	 * Get the number of vertices on each side of the terrain.
@@ -105,6 +120,21 @@ private:
 	util::Vector2s size;
 
 	/**
+	 * Terrain tile information (elevation, terrain path).
+	 */
+	tiles_t tiles;
+
+	/**
+	 * Time of the last update call.
+	 */
+	time::time_t last_update;
+
+	/**
+	 * Terrain texture paths used in \p tiles .
+	 */
+	std::unordered_set<std::string> terrain_paths;
+
+	/**
 	 * Terrain vertices (ingame coordinates).
 	 */
 	std::vector<coord::scene3> vertices;
@@ -112,9 +142,7 @@ private:
 	/**
 	 * Path to the terrain definition file.
 	 */
-	curve::Discrete<std::string> terrain_path;
-
-	// std::unordered_map<Texture2d, size_t> texture_map; // texture -> vertex indices
+	// curve::Discrete<std::string> terrain_path;
 
 	/**
 	 * Mutex for protecting threaded access.

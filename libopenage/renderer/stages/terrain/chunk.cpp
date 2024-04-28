@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #include "chunk.h"
 
@@ -33,10 +33,17 @@ void TerrainChunk::fetch_updates(const time::time_t & /* time */) {
 	}
 	// TODO: Change mesh instead of recreating it
 	// TODO: Multiple meshes
-	auto new_mesh = this->create_mesh();
-	new_mesh->create_model_matrix(this->offset);
 	this->meshes.clear();
-	this->meshes.push_back(new_mesh);
+	for (const auto &terrain_path : this->render_entity->get_terrain_paths()) {
+		auto new_mesh = this->create_mesh(terrain_path);
+		new_mesh->create_model_matrix(this->offset);
+		this->meshes.push_back(new_mesh);
+	}
+
+	// auto new_mesh = this->create_mesh();
+	// new_mesh->create_model_matrix(this->offset);
+	// this->meshes.clear();
+	// this->meshes.push_back(new_mesh);
 
 	// Indicate to the render entity that its updates have been processed.
 	this->render_entity->clear_changed_flag();
@@ -52,10 +59,24 @@ const std::vector<std::shared_ptr<TerrainRenderMesh>> &TerrainChunk::get_meshes(
 	return this->meshes;
 }
 
-std::shared_ptr<TerrainRenderMesh> TerrainChunk::create_mesh() {
-	// Update mesh
+std::shared_ptr<TerrainRenderMesh> TerrainChunk::create_mesh(const std::string &texture_path) {
 	auto size = this->render_entity->get_size();
+	auto tiles = this->render_entity->get_tiles();
 	auto src_verts = this->render_entity->get_vertices();
+
+	// Filter tiles by texture path
+	std::vector<std::pair<size_t, size_t>> tile_coords;
+	for (size_t i = 0; i < tiles.size(); ++i) {
+		auto tile = tiles.at(i);
+		if (tile.second != texture_path) {
+			continue;
+		}
+
+		// Convert tile index to 2D coordinates
+		auto x = i % size[0];
+		auto y = i / size[0];
+		tile_coords.push_back({x, y});
+	}
 
 	// dst_verts places vertices in order
 	// (left to right, bottom to top)
@@ -82,12 +103,12 @@ std::shared_ptr<TerrainRenderMesh> TerrainChunk::create_mesh() {
 		for (size_t j = 0; j < size[1] - 1; ++j) {
 			// since we are working on tiles, we split each tile into two triangles
 			// with counter-clockwise vertex order
-			idxs.push_back(j + i * size[1]); // bottom left
-			idxs.push_back(j + 1 + i * size[1]); // bottom right
-			idxs.push_back(j + size[1] + i * size[1]); // top left
-			idxs.push_back(j + 1 + i * size[1]); // bottom right
+			idxs.push_back(j + i * size[1]);               // bottom left
+			idxs.push_back(j + 1 + i * size[1]);           // bottom right
+			idxs.push_back(j + size[1] + i * size[1]);     // top left
+			idxs.push_back(j + 1 + i * size[1]);           // bottom right
 			idxs.push_back(j + size[1] + 1 + i * size[1]); // top right
-			idxs.push_back(j + size[1] + i * size[1]); // top left
+			idxs.push_back(j + size[1] + i * size[1]);     // top left
 		}
 	}
 

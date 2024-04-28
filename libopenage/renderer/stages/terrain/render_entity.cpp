@@ -1,4 +1,4 @@
-// Copyright 2022-2023 the openage authors. See copying.md for legal info.
+// Copyright 2022-2024 the openage authors. See copying.md for legal info.
 
 #include "render_entity.h"
 
@@ -12,8 +12,12 @@ namespace openage::renderer::terrain {
 TerrainRenderEntity::TerrainRenderEntity() :
 	changed{false},
 	size{0, 0},
-	vertices{},
-	terrain_path{nullptr, 0} {
+	tiles{},
+	last_update{0.0},
+	terrain_paths{},
+	vertices{}
+// terrain_path{nullptr, 0},
+{
 }
 
 void TerrainRenderEntity::update_tile(const util::Vector2s size,
@@ -31,13 +35,22 @@ void TerrainRenderEntity::update_tile(const util::Vector2s size,
 	auto left_corner = pos.ne * size[0] + pos.se;
 
 	// update the 4 vertices of the tile
-	this->vertices[left_corner].up = elevation.to_float();
-	this->vertices[left_corner + 1].up = elevation.to_float(); // bottom corner
+	this->vertices[left_corner].up = elevation.to_float();                 // left corner
+	this->vertices[left_corner + 1].up = elevation.to_float();             // bottom corner
 	this->vertices[left_corner + (size[0] + 1)].up = elevation.to_float(); // top corner
 	this->vertices[left_corner + (size[0] + 2)].up = elevation.to_float(); // right corner
 
+	// update tile
+	this->tiles[left_corner] = {elevation, terrain_path};
+
+	// update the last update time
+	this->last_update = time;
+
+	// update the terrain paths
+	this->terrain_paths.insert(terrain_path);
+
 	// set texture path
-	this->terrain_path.set_last(time, terrain_path);
+	// this->terrain_path.set_last(time, terrain_path);
 
 	this->changed = true;
 }
@@ -83,8 +96,20 @@ void TerrainRenderEntity::update(const util::Vector2s size,
 		}
 	}
 
+	// update tiles
+	this->tiles = tiles;
+
+	// update the last update time
+	this->last_update = time;
+
+	// update the terrain paths
+	this->terrain_paths.clear();
+	for (const auto &tile : this->tiles) {
+		this->terrain_paths.insert(tile.second);
+	}
+
 	// set texture path
-	this->terrain_path.set_last(time, tiles[0].second);
+	// this->terrain_path.set_last(time, tiles[0].second);
 
 	this->changed = true;
 }
@@ -95,10 +120,16 @@ const std::vector<coord::scene3> &TerrainRenderEntity::get_vertices() {
 	return this->vertices;
 }
 
-const curve::Discrete<std::string> &TerrainRenderEntity::get_terrain_path() {
+// const curve::Discrete<std::string> &TerrainRenderEntity::get_terrain_path() {
+// 	std::shared_lock lock{this->mutex};
+
+// 	return this->terrain_path;
+// }
+
+const TerrainRenderEntity::tiles_t &TerrainRenderEntity::get_tiles() {
 	std::shared_lock lock{this->mutex};
 
-	return this->terrain_path;
+	return this->tiles;
 }
 
 const util::Vector2s &TerrainRenderEntity::get_size() {
