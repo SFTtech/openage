@@ -66,8 +66,8 @@ void TerrainRenderEntity::update(const util::Vector2s size,
 	auto vert_count = this->size[0] * this->size[1];
 	this->vertices.clear();
 	this->vertices.reserve(vert_count);
-	for (int i = 0; i < (int)this->size[0]; ++i) {
-		for (int j = 0; j < (int)this->size[1]; ++j) {
+	for (int j = 0; j < (int)this->size[1]; ++j) {
+		for (int i = 0; i < (int)this->size[0]; ++i) {
 			// for each vertex, compare the surrounding tiles
 			std::vector<float> surround{};
 			if (j - 1 >= 0 and i - 1 >= 0) {
