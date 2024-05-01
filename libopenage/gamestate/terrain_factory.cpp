@@ -20,32 +20,32 @@
 
 namespace openage::gamestate {
 
+// TODO: Remove test terrain references
+static const std::string test_terrain_path = "../test/textures/test_terrain.terrain";
+static const std::string test_terrain_path2 = "../test/textures/test_terrain2.terrain";
+
 static const std::vector<nyan::fqon_t> aoe1_test_terrain = {};
 static const std::vector<nyan::fqon_t> de1_test_terrain = {};
 static const std::vector<nyan::fqon_t> aoe2_test_terrain = {
 	"aoe2_base.data.terrain.foundation.foundation.Foundation",
 	"aoe2_base.data.terrain.grass.grass.Grass",
 	"aoe2_base.data.terrain.dirt.dirt.Dirt",
+	"aoe2_base.data.terrain.water.water.Water",
 };
 static const std::vector<nyan::fqon_t> de2_test_terrain = {};
 static const std::vector<nyan::fqon_t> hd_test_terrain = {
 	"hd_base.data.terrain.foundation.foundation.Foundation",
 	"hd_base.data.terrain.grass.grass.Grass",
 	"hd_base.data.terrain.dirt.dirt.Dirt",
+	"hd_base.data.terrain.water.water.Water",
 };
 static const std::vector<nyan::fqon_t> swgb_test_terrain = {
-	"swgb_base.data.terrain.desert0.desert0.Desert0",
-	"swgb_base.data.terrain.grass2.grass2.Grass2",
 	"swgb_base.data.terrain.foundation.foundation.Foundation",
+	"swgb_base.data.terrain.grass2.grass2.Grass2",
+	"swgb_base.data.terrain.desert0.desert0.Desert0",
+	"swgb_base.data.terrain.water1.water1.Water1",
 };
 static const std::vector<nyan::fqon_t> trial_test_terrain = {};
-
-std::shared_ptr<Terrain> TerrainFactory::add_terrain() {
-	// TODO: Replace this with a proper terrain generator.
-	auto terrain = std::make_shared<Terrain>();
-
-	return terrain;
-}
 
 // TODO: Remove hardcoded test texture references
 static std::vector<nyan::fqon_t> test_terrains; // declare static so we only have to do this once
@@ -91,12 +91,17 @@ void build_test_terrains(const std::shared_ptr<GameState> &gstate) {
 	}
 }
 
+std::shared_ptr<Terrain> TerrainFactory::add_terrain() {
+	// TODO: Replace this with a proper terrain generator.
+	auto terrain = std::make_shared<Terrain>();
+
+	return terrain;
+}
 
 std::shared_ptr<TerrainChunk> TerrainFactory::add_chunk(const std::shared_ptr<GameState> &gstate,
                                                         const util::Vector2s size,
                                                         const coord::tile_delta offset) {
-	// TODO: Remove test texture references
-	std::string test_texture_path = "../test/textures/test_terrain.terrain";
+	std::string terrain_info_path;
 
 	// TODO: Remove test texture references
 	// ==========
@@ -112,7 +117,16 @@ std::shared_ptr<TerrainChunk> TerrainFactory::add_chunk(const std::shared_ptr<Ga
 			test_terrain_index = 0;
 		}
 		terrain_obj = gstate->get_db_view()->get_object(test_terrains[test_terrain_index]);
-		test_texture_path = api::APITerrain::get_terrain_path(terrain_obj.value());
+		terrain_info_path = api::APITerrain::get_terrain_path(terrain_obj.value());
+
+		test_terrain_index += 1;
+	}
+	else {
+		// use a test texture
+		if (test_terrain_index >= test_terrains.size()) {
+			test_terrain_index = 0;
+		}
+		terrain_info_path = test_terrain_path;
 
 		test_terrain_index += 1;
 	}
@@ -122,7 +136,7 @@ std::shared_ptr<TerrainChunk> TerrainFactory::add_chunk(const std::shared_ptr<Ga
 	std::vector<TerrainTile> tiles{};
 	tiles.reserve(size[0] * size[1]);
 	for (size_t i = 0; i < size[0] * size[1]; ++i) {
-		tiles.push_back({terrain_obj, test_texture_path, terrain_elevation_t::zero()});
+		tiles.push_back({terrain_obj, terrain_info_path, terrain_elevation_t::zero()});
 	}
 
 	auto chunk = std::make_shared<TerrainChunk>(size, offset, std::move(tiles));
