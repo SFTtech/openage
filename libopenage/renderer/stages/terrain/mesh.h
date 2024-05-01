@@ -8,7 +8,6 @@
 #include <eigen3/Eigen/Dense>
 
 #include "coord/scene.h"
-#include "curve/discrete.h"
 #include "renderer/resources/mesh_data.h"
 #include "time/time.h"
 #include "util/vector.h"
@@ -46,7 +45,7 @@ public:
 	 * @param mesh Vertex data of the mesh.
 	 */
 	TerrainRenderMesh(const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
-	                  const curve::Discrete<std::string> &terrain_path,
+	                  const std::shared_ptr<renderer::resources::TerrainInfo> &info,
 	                  renderer::resources::MeshData &&mesh);
 
 	~TerrainRenderMesh() = default;
@@ -86,7 +85,7 @@ public:
 	 *
 	 * @param texture Terrain info.
 	 */
-	void set_terrain_path(const curve::Discrete<std::string> &info);
+	void set_terrain_info(const std::shared_ptr<renderer::resources::TerrainInfo> &info);
 
 	/**
 	 * Update the uniforms of the renderable associated with this object.
@@ -150,7 +149,7 @@ private:
 	/**
 	 * Terrain information for the renderables.
 	 */
-	curve::Discrete<std::shared_ptr<renderer::resources::TerrainInfo>> terrain_info;
+	std::shared_ptr<renderer::resources::TerrainInfo> terrain_info;
 
 	/**
 	 * Shader uniforms for the renderable in the terrain render pass.

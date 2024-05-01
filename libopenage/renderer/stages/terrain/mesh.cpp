@@ -1,4 +1,4 @@
-// Copyright 2022-2023 the openage authors. See copying.md for legal info.
+// Copyright 2022-2024 the openage authors. See copying.md for legal info.
 
 #include "mesh.h"
 
@@ -20,21 +20,21 @@ TerrainRenderMesh::TerrainRenderMesh(const std::shared_ptr<renderer::resources::
 	require_renderable{false},
 	changed{false},
 	asset_manager{asset_manager},
-	terrain_info{nullptr, 0},
+	terrain_info{nullptr},
 	uniforms{nullptr},
 	mesh{renderer::resources::MeshData::make_quad()} {
 }
 
 TerrainRenderMesh::TerrainRenderMesh(const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
-                                     const curve::Discrete<std::string> &terrain_path,
+                                     const std::shared_ptr<renderer::resources::TerrainInfo> &info,
                                      renderer::resources::MeshData &&mesh) :
 	require_renderable{true},
 	changed{true},
 	asset_manager{asset_manager},
-	terrain_info{nullptr, 0},
+	terrain_info{nullptr},
 	uniforms{nullptr},
 	mesh{std::move(mesh)} {
-	this->set_terrain_path(terrain_path);
+	this->set_terrain_info(info);
 }
 
 void TerrainRenderMesh::set_mesh(renderer::resources::MeshData &&mesh) {
@@ -47,19 +47,12 @@ const renderer::resources::MeshData &TerrainRenderMesh::get_mesh() {
 	return this->mesh;
 }
 
-void TerrainRenderMesh::set_terrain_path(const curve::Discrete<std::string> &terrain_path) {
+void TerrainRenderMesh::set_terrain_info(const std::shared_ptr<renderer::resources::TerrainInfo> &info) {
 	this->changed = true;
-	this->terrain_info.sync(terrain_path,
-	                        std::function<std::shared_ptr<renderer::resources::TerrainInfo>(const std::string &)>(
-								[&](const std::string &path) {
-									if (path.empty()) {
-										return std::shared_ptr<renderer::resources::TerrainInfo>{nullptr};
-									}
-									return this->asset_manager->request_terrain(path);
-								}));
+	this->terrain_info = info;
 }
 
-void TerrainRenderMesh::update_uniforms(const time::time_t &time) {
+void TerrainRenderMesh::update_uniforms(const time::time_t & /* time */) {
 	// TODO: Only update uniforms that changed since last update
 	if (this->uniforms == nullptr) [[unlikely]] {
 		return;
@@ -72,7 +65,7 @@ void TerrainRenderMesh::update_uniforms(const time::time_t &time) {
 	// local space -> world space
 	this->uniforms->update("model", this->model_matrix);
 
-	auto tex_info = this->terrain_info.get(time)->get_texture(0);
+	auto tex_info = this->terrain_info->get_texture(0);
 	auto tex_manager = this->asset_manager->get_texture_manager();
 	auto texture = tex_manager->request(tex_info->get_image_path().value());
 
