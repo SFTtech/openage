@@ -132,6 +132,12 @@ const TerrainRenderEntity::tiles_t &TerrainRenderEntity::get_tiles() {
 	return this->tiles;
 }
 
+const std::unordered_set<std::string> &TerrainRenderEntity::get_terrain_paths() {
+	std::shared_lock lock{this->mutex};
+
+	return this->terrain_paths;
+}
+
 const util::Vector2s &TerrainRenderEntity::get_size() {
 	std::shared_lock lock{this->mutex};
 
