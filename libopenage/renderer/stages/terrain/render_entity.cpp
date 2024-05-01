@@ -49,9 +49,6 @@ void TerrainRenderEntity::update_tile(const util::Vector2s size,
 	// update the terrain paths
 	this->terrain_paths.insert(terrain_path);
 
-	// set texture path
-	// this->terrain_path.set_last(time, terrain_path);
-
 	this->changed = true;
 }
 
@@ -108,9 +105,6 @@ void TerrainRenderEntity::update(const util::Vector2s size,
 		this->terrain_paths.insert(tile.second);
 	}
 
-	// set texture path
-	// this->terrain_path.set_last(time, tiles[0].second);
-
 	this->changed = true;
 }
 
@@ -119,12 +113,6 @@ const std::vector<coord::scene3> &TerrainRenderEntity::get_vertices() {
 
 	return this->vertices;
 }
-
-// const curve::Discrete<std::string> &TerrainRenderEntity::get_terrain_path() {
-// 	std::shared_lock lock{this->mutex};
-
-// 	return this->terrain_path;
-// }
 
 const TerrainRenderEntity::tiles_t &TerrainRenderEntity::get_tiles() {
 	std::shared_lock lock{this->mutex};

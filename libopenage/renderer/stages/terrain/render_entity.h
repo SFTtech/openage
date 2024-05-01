@@ -64,15 +64,6 @@ public:
 	const std::vector<coord::scene3> &get_vertices();
 
 	/**
-	 * Get the texture mapping for the terrain.
-	 *
-	 * TODO: Return the actual mapping.
-	 *
-	 * @return Texture mapping of textures to vertex area.
-	 */
-	// const curve::Discrete<std::string> &get_terrain_path();
-
-	/**
 	 * Get the tiles of the terrain.
 	 *
 	 * @return Terrain tiles.
@@ -138,11 +129,6 @@ private:
 	 * Terrain vertices (ingame coordinates).
 	 */
 	std::vector<coord::scene3> vertices;
-
-	/**
-	 * Path to the terrain definition file.
-	 */
-	// curve::Discrete<std::string> terrain_path;
 
 	/**
 	 * Mutex for protecting threaded access.
