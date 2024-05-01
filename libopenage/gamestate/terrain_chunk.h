@@ -35,15 +35,6 @@ public:
 	void set_render_entity(const std::shared_ptr<renderer::terrain::TerrainRenderEntity> &entity);
 
 	/**
-	 * Update the render entity.
-	 *
-	 * @param time Simulation time of the update.
-	 * @param terrain_path Path to the terrain definition used at \p time.
-	 */
-	void render_update(const time::time_t &time,
-	                   const std::string &terrain_path);
-
-	/**
 	 * Get the size of this terrain chunk.
 	 *
 	 * @return Size of the terrain chunk (in tiles).
@@ -57,14 +48,11 @@ public:
 	 */
 	const coord::tile_delta &get_offset() const;
 
-	// TODO: Remove test texture references
-
-	// Set the terrain path of this terrain chunk.
-	// TODO: Remove later
-	void set_terrain_path(const std::string &terrain_path);
-
-	// Send the current texture to the renderer.
-	// TODO: Replace later with render_update(time, terrain_path)
+	/**
+	 * Update the render entity.
+	 *
+	 * @param time Simulation time of the update.
+	 */
 	void render_update(const time::time_t &time);
 
 private:
@@ -81,7 +69,9 @@ private:
 	coord::tile_delta offset;
 
 	/**
-	 * Height map of the terrain chunk.
+	 * Terrain tile info of the terrain chunk.
+	 *
+	 * Layout is row-major.
 	 */
 	std::vector<TerrainTile> tiles;
 
@@ -89,9 +79,6 @@ private:
 	 * Render entity for pushing updates to the renderer. Can be \p nullptr.
 	 */
 	std::shared_ptr<renderer::terrain::TerrainRenderEntity> render_entity;
-
-	// TODO: Remove test texture references
-	std::string terrain_path;
 };
 
 } // namespace openage::gamestate

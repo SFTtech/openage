@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #include "terrain_factory.h"
 
@@ -131,11 +131,8 @@ std::shared_ptr<TerrainChunk> TerrainFactory::add_chunk(const std::shared_ptr<Ga
 		auto render_entity = this->render_factory->add_terrain_render_entity(size, offset);
 		chunk->set_render_entity(render_entity);
 
-		chunk->render_update(time::TIME_ZERO,
-		                     test_texture_path);
+		chunk->render_update(time::TIME_ZERO);
 	}
-
-	chunk->set_terrain_path(test_texture_path);
 
 	return chunk;
 }
