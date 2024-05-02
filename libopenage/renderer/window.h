@@ -79,6 +79,7 @@ public:
 
 	using key_cb_t = std::function<void(const QKeyEvent &)>;
 	using mouse_button_cb_t = std::function<void(const QMouseEvent &)>;
+	using mouse_move_cb_t = std::function<void(const QMouseEvent &)>;
 	using mouse_wheel_cb_t = std::function<void(const QWheelEvent &)>;
 	using resize_cb_t = std::function<void(size_t, size_t, double)>;
 
@@ -95,6 +96,13 @@ public:
 	 * @param cb Callback function.
 	 */
 	void add_mouse_button_callback(const mouse_button_cb_t &cb);
+
+	/**
+	 * Register a function that executes when the mouse is moved.
+	 *
+	 * @param cb Callback function.
+	 */
+	void add_mouse_move_callback(const mouse_move_cb_t &cb);
 
 	/**
 	 * Register a function that executes when a mouse wheel action is used.
@@ -172,6 +180,11 @@ protected:
 	 * Callbacks for mouse button presses.
 	 */
 	std::vector<mouse_button_cb_t> on_mouse_button;
+
+	/**
+	 * Callbacks for mouse move actions.
+	 */
+	std::vector<mouse_move_cb_t> on_mouse_move;
 
 	/**
 	 * Callbacks for mouse wheel actions.

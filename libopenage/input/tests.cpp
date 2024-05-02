@@ -87,16 +87,40 @@ void action_demo() {
 	input_action catch_all{input_action_t::CUSTOM, nop};
 
 	// events that map to specific keys/buttons
-	Event ev_up{event_class::KEYBOARD, Qt::Key_Up, Qt::NoModifier, QEvent::KeyRelease};
-	Event ev_down{event_class::KEYBOARD, Qt::Key_Down, Qt::NoModifier, QEvent::KeyRelease};
+	Event ev_up{event_class::KEYBOARD,
+	            Qt::Key::Key_Up,
+	            Qt::KeyboardModifier::NoModifier,
+	            QEvent::KeyRelease};
+	Event ev_down{event_class::KEYBOARD,
+	              Qt::Key::Key_Down,
+	              Qt::KeyboardModifier::NoModifier,
+	              QEvent::KeyRelease};
 
-	Event ev_w{event_class::KEYBOARD, Qt::Key_W, Qt::NoModifier, QEvent::KeyRelease};
-	Event ev_a{event_class::KEYBOARD, Qt::Key_A, Qt::NoModifier, QEvent::KeyRelease};
-	Event ev_s{event_class::KEYBOARD, Qt::Key_S, Qt::NoModifier, QEvent::KeyRelease};
-	Event ev_d{event_class::KEYBOARD, Qt::Key_D, Qt::NoModifier, QEvent::KeyRelease};
+	Event ev_w{event_class::KEYBOARD,
+	           Qt::Key::Key_W,
+	           Qt::KeyboardModifier::NoModifier,
+	           QEvent::KeyRelease};
+	Event ev_a{event_class::KEYBOARD,
+	           Qt::Key::Key_A,
+	           Qt::KeyboardModifier::NoModifier,
+	           QEvent::KeyRelease};
+	Event ev_s{event_class::KEYBOARD,
+	           Qt::Key::Key_S,
+	           Qt::KeyboardModifier::NoModifier,
+	           QEvent::KeyRelease};
+	Event ev_d{event_class::KEYBOARD,
+	           Qt::Key::Key_D,
+	           Qt::KeyboardModifier::NoModifier,
+	           QEvent::KeyRelease};
 
-	Event ev_lmb{event_class::MOUSE, Qt::LeftButton, Qt::NoModifier, QEvent::MouseButtonRelease};
-	Event ev_rmb{event_class::MOUSE, Qt::RightButton, Qt::NoModifier, QEvent::MouseButtonRelease};
+	Event ev_lmb{event_class::MOUSE_BUTTON,
+	             Qt::MouseButton::LeftButton,
+	             Qt::KeyboardModifier::NoModifier,
+	             QEvent::MouseButtonRelease};
+	Event ev_rmb{event_class::MOUSE_BUTTON,
+	             Qt::MouseButton::RightButton,
+	             Qt::KeyboardModifier::NoModifier,
+	             QEvent::MouseButtonRelease};
 
 	// bind events to actions in the contexts
 	mgr.get_global_context()->bind(ev_up, push_a);

@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #include "input_manager.h"
 
@@ -8,6 +8,7 @@
 #include "input/event.h"
 #include "input/input_context.h"
 #include "renderer/gui/guisys/public/gui_input.h"
+
 
 namespace openage::input {
 
@@ -131,7 +132,8 @@ bool InputManager::process(const QEvent &ev) {
 	input::Event input_ev{ev};
 
 	// Check context list on top of the stack (most recent bound first)
-	for (auto const &ctx : this->active_contexts) {
+	for (size_t i = this->active_contexts.size(); i > 0; --i) {
+		auto &ctx = this->active_contexts.at(i - 1);
 		if (ctx->is_bound(input_ev)) {
 			auto &actions = ctx->lookup(input_ev);
 			for (auto const &action : actions) {
