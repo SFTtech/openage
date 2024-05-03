@@ -146,7 +146,8 @@ private:
 	std::shared_ptr<renderer::resources::AssetManager> asset_manager;
 
 	/**
-	 * Source for positional and texture data.
+	 * Entity that gets updates from the gamestate, e.g. the position and
+	 * requested animation data.
 	 */
 	std::shared_ptr<WorldRenderEntity> render_entity;
 
@@ -167,14 +168,19 @@ private:
 	curve::Segmented<coord::phys_angle_t> angle;
 
 	/**
-	 * Animation information for the renderables.
+	 * Animation information for the layers.
 	 */
 	curve::Discrete<std::shared_ptr<renderer::resources::Animation2dInfo>> animation_info;
 
 	/**
-	 * Shader uniforms for the renderable in the terrain render pass.
+	 * Shader uniforms for the layers of the object. Each layer corresponds to a
+	 * renderable in the render pass.
+	 *
+	 * Since all layers are sprites and share the same geometry, we can reuse the layer uniforms and
+	 * their renderables even if the animation changes. Therefore, we only need to add/remove
+	 * layers when the _number_ of layers in the animation changes.
 	 */
-	std::shared_ptr<renderer::UniformInput> uniforms;
+	std::vector<std::shared_ptr<renderer::UniformInput>> layer_uniforms;
 
 	/**
 	 * Time of the last update call.

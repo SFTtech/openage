@@ -39,7 +39,7 @@ WorldObject::WorldObject(const std::shared_ptr<renderer::resources::AssetManager
 	position{nullptr, 0, "", nullptr, SCENE_ORIGIN},
 	angle{nullptr, 0, "", nullptr, 0},
 	animation_info{nullptr, 0},
-	uniforms{nullptr},
+	layer_uniforms{},
 	last_update{0.0} {
 }
 
@@ -79,79 +79,85 @@ void WorldObject::fetch_updates(const time::time_t &time) {
 
 void WorldObject::update_uniforms(const time::time_t &time) {
 	// TODO: Only update uniforms that changed since last update
-	if (this->uniforms == nullptr) [[unlikely]] {
+	if (this->layer_uniforms.empty()) [[unlikely]] {
 		return;
 	}
 
 	// Object world position
 	auto current_pos = this->position.get(time);
-	this->uniforms->update(this->obj_world_position, current_pos.to_world_space());
 
 	// Direction angle the object is facing towards currently
 	auto angle_degrees = this->angle.get(time).to_float();
 
-	// Frame subtexture
+	// Animation information
 	auto animation_info = this->animation_info.get(time);
-	auto &layer = animation_info->get_layer(0); // TODO: Support multiple layers
-	auto &angle = layer.get_direction_angle(angle_degrees);
 
-	// Flip subtexture horizontally if angle is mirrored
-	if (angle->is_mirrored()) {
-		this->uniforms->update(this->flip_x, true);
+	for (size_t layer_idx = 0; layer_idx < this->layer_uniforms.size(); ++layer_idx) {
+		auto &layer_unifs = this->layer_uniforms.at(layer_idx);
+		layer_unifs->update(this->obj_world_position, current_pos.to_world_space());
+
+		// Frame subtexture
+		auto &layer = animation_info->get_layer(layer_idx);
+		auto &angle = layer.get_direction_angle(angle_degrees);
+
+		// Flip subtexture horizontally if angle is mirrored
+		if (angle->is_mirrored()) {
+			layer_unifs->update(this->flip_x, true);
+		}
+		else {
+			layer_unifs->update(this->flip_x, false);
+		}
+
+		// Current frame index considering current time
+		size_t frame_idx;
+		switch (layer.get_display_mode()) {
+		case renderer::resources::display_mode::ONCE:
+		case renderer::resources::display_mode::LOOP: {
+			// ONCE and LOOP are animated based on time
+			auto &timing = layer.get_frame_timing();
+			frame_idx = timing->get_frame(time, this->render_entity->get_update_time());
+		} break;
+		case renderer::resources::display_mode::OFF:
+		default:
+			// OFF only shows the first frame
+			frame_idx = 0;
+			break;
+		}
+
+		// Index of texture and subtexture where the frame's pixels are located
+		auto &frame_info = angle->get_frame(frame_idx);
+		auto tex_idx = frame_info->get_texture_idx();
+		auto subtex_idx = frame_info->get_subtexture_idx();
+
+		auto &tex_info = animation_info->get_texture(tex_idx);
+		auto &tex_manager = this->asset_manager->get_texture_manager();
+		auto &texture = tex_manager->request(tex_info->get_image_path().value());
+		layer_unifs->update(this->tex, texture);
+
+		// Subtexture coordinates.inside texture
+		auto coords = tex_info->get_subtex_info(subtex_idx).get_tile_params();
+		layer_unifs->update(this->tile_params, coords);
+
+		// Animation scale factor
+		// Scales the subtex up or down in the shader
+		auto scale = animation_info->get_scalefactor();
+		layer_unifs->update(this->scale, scale);
+
+		// Subtexture size in pixels
+		auto subtex_size = tex_info->get_subtex_info(subtex_idx).get_size();
+		Eigen::Vector2f subtex_size_vec{
+			static_cast<float>(subtex_size[0]),
+			static_cast<float>(subtex_size[1])};
+		layer_unifs->update(this->subtex_size, subtex_size_vec);
+
+		// Anchor point offset (in pixels)
+		// moves the subtex in the shader so that the anchor point is at the object's position
+		auto anchor = tex_info->get_subtex_info(subtex_idx).get_anchor_params();
+		Eigen::Vector2f anchor_offset{
+			static_cast<float>(anchor[0]),
+			static_cast<float>(anchor[1])};
+		layer_unifs->update(this->anchor_offset, anchor_offset);
 	}
-	else {
-		this->uniforms->update(this->flip_x, false);
-	}
-
-	// Current frame index considering current time
-	size_t frame_idx;
-	switch (layer.get_display_mode()) {
-	case renderer::resources::display_mode::ONCE:
-	case renderer::resources::display_mode::LOOP: {
-		// ONCE and LOOP are animated based on time
-		auto &timing = layer.get_frame_timing();
-		frame_idx = timing->get_frame(time, this->render_entity->get_update_time());
-	} break;
-	case renderer::resources::display_mode::OFF:
-	default:
-		// OFF only shows the first frame
-		frame_idx = 0;
-		break;
-	}
-
-	// Index of texture and subtexture where the frame's pixels are located
-	auto &frame_info = angle->get_frame(frame_idx);
-	auto tex_idx = frame_info->get_texture_idx();
-	auto subtex_idx = frame_info->get_subtexture_idx();
-
-	auto &tex_info = animation_info->get_texture(tex_idx);
-	auto &tex_manager = this->asset_manager->get_texture_manager();
-	auto &texture = tex_manager->request(tex_info->get_image_path().value());
-	this->uniforms->update(this->tex, texture);
-
-	// Subtexture coordinates.inside texture
-	auto coords = tex_info->get_subtex_info(subtex_idx).get_tile_params();
-	this->uniforms->update(this->tile_params, coords);
-
-	// Animation scale factor
-	// Scales the subtex up or down in the shader
-	auto scale = animation_info->get_scalefactor();
-	this->uniforms->update(this->scale, scale);
-
-	// Subtexture size in pixels
-	auto subtex_size = tex_info->get_subtex_info(subtex_idx).get_size();
-	Eigen::Vector2f subtex_size_vec{
-		static_cast<float>(subtex_size[0]),
-		static_cast<float>(subtex_size[1])};
-	this->uniforms->update(this->subtex_size, subtex_size_vec);
-
-	// Anchor point offset (in pixels)
-	// moves the subtex in the shader so that the anchor point is at the object's position
-	auto anchor = tex_info->get_subtex_info(subtex_idx).get_anchor_params();
-	Eigen::Vector2f anchor_offset{
-		static_cast<float>(anchor[0]),
-		static_cast<float>(anchor[1])};
-	this->uniforms->update(this->anchor_offset, anchor_offset);
 }
 
 uint32_t WorldObject::get_id() {
@@ -179,7 +185,8 @@ void WorldObject::clear_changed_flag() {
 }
 
 void WorldObject::set_uniforms(const std::shared_ptr<renderer::UniformInput> &uniforms) {
-	this->uniforms = uniforms;
+	this->layer_uniforms.clear(); // ASDF: Update instead of clear
+	this->layer_uniforms.push_back(uniforms);
 }
 
 } // namespace openage::renderer::world
