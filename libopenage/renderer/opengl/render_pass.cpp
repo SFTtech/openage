@@ -19,7 +19,7 @@ const std::vector<Renderable> &GlRenderPass::get_renderables() const {
 }
 
 void GlRenderPass::set_renderables(std::vector<Renderable> renderables) {
-	this->renderables = renderables;
+	RenderPass::set_renderables(renderables);
 	this->is_optimised = false;
 }
 

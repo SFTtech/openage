@@ -111,6 +111,8 @@ public:
 	 */
 	size_t get_required_layer_count(const time::time_t &time) const;
 
+	std::vector<size_t> get_layer_positions(const time::time_t &time) const;
+
 	/**
 	 * Check whether the object was changed by \p update().
 	 *

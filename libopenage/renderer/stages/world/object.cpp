@@ -197,6 +197,20 @@ size_t WorldObject::get_required_layer_count(const time::time_t &time) const {
 	return animation_info->get_layer_count();
 }
 
+std::vector<size_t> WorldObject::get_layer_positions(const time::time_t &time) const {
+	auto animation_info = this->animation_info.get(time);
+	if (not animation_info) {
+		return {};
+	}
+
+	std::vector<size_t> positions;
+	for (size_t i = 0; i < animation_info->get_layer_count(); ++i) {
+		positions.push_back(i);
+	}
+
+	return positions;
+}
+
 bool WorldObject::is_changed() {
 	return this->changed;
 }
