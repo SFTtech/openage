@@ -33,7 +33,6 @@ namespace openage::renderer::world {
 WorldObject::WorldObject(const std::shared_ptr<renderer::resources::AssetManager> &asset_manager) :
 	require_renderable{true},
 	changed{false},
-	camera{nullptr},
 	asset_manager{asset_manager},
 	render_entity{nullptr},
 	ref_id{0},
@@ -47,10 +46,6 @@ WorldObject::WorldObject(const std::shared_ptr<renderer::resources::AssetManager
 void WorldObject::set_render_entity(const std::shared_ptr<WorldRenderEntity> &entity) {
 	this->render_entity = entity;
 	this->fetch_updates();
-}
-
-void WorldObject::set_camera(const std::shared_ptr<renderer::camera::Camera> &camera) {
-	this->camera = camera;
 }
 
 void WorldObject::fetch_updates(const time::time_t &time) {

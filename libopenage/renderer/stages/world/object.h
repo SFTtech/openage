@@ -52,13 +52,6 @@ public:
 	void set_render_entity(const std::shared_ptr<WorldRenderEntity> &entity);
 
 	/**
-	 * Set the current camera of the scene.
-	 *
-	 * @param camera Camera object viewing the scene.
-	 */
-	void set_camera(const std::shared_ptr<renderer::camera::Camera> &camera);
-
-	/**
 	 * Fetch updates from the render entity.
 	 *
 	 * @param time Current simulation time.
@@ -146,11 +139,6 @@ private:
 	 * Stores whether the \p update() call changed the object.
 	 */
 	bool changed;
-
-	/**
-	 * Camera for model uniforms.
-	 */
-	std::shared_ptr<renderer::camera::Camera> camera;
 
 	/**
 	 * Asset manager for central accessing and loading asset resources.

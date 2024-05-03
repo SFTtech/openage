@@ -50,7 +50,6 @@ void WorldRenderStage::add_render_entity(const std::shared_ptr<WorldRenderEntity
 
 	auto world_object = std::make_shared<WorldObject>(this->asset_manager);
 	world_object->set_render_entity(entity);
-	world_object->set_camera(this->camera);
 	this->render_objects.push_back(world_object);
 }
 
