@@ -49,10 +49,18 @@ void WorldObject::set_render_entity(const std::shared_ptr<WorldRenderEntity> &en
 }
 
 void WorldObject::fetch_updates(const time::time_t &time) {
+	// TODO: Calling this once per frame is very expensive
+	auto layer_count = this->get_required_layer_count(time);
+	if (this->layer_uniforms.size() != layer_count) {
+		// The number of layers changed, so we need to update the renderables
+		this->require_renderable = true;
+	}
+
 	if (not this->render_entity->is_changed()) {
-		// exit early because there is nothing to do
+		// exit early because there is nothing to update
 		return;
 	}
+
 	// Get data from render entity
 	this->ref_id = this->render_entity->get_id();
 	this->position.sync(this->render_entity->get_position());
@@ -168,12 +176,25 @@ const renderer::resources::MeshData WorldObject::get_mesh() {
 	return resources::MeshData::make_quad();
 }
 
-bool WorldObject::requires_renderable() {
+const Eigen::Matrix4f WorldObject::get_model_matrix() {
+	return Eigen::Matrix4f::Identity();
+}
+
+bool WorldObject::requires_renderable() const {
 	return this->require_renderable;
 }
 
 void WorldObject::clear_requires_renderable() {
 	this->require_renderable = false;
+}
+
+size_t WorldObject::get_required_layer_count(const time::time_t &time) const {
+	auto animation_info = this->animation_info.get(time);
+	if (not animation_info) {
+		return 0;
+	}
+
+	return animation_info->get_layer_count();
 }
 
 bool WorldObject::is_changed() {
@@ -184,9 +205,8 @@ void WorldObject::clear_changed_flag() {
 	this->changed = false;
 }
 
-void WorldObject::set_uniforms(const std::shared_ptr<renderer::UniformInput> &uniforms) {
-	this->layer_uniforms.clear(); // ASDF: Update instead of clear
-	this->layer_uniforms.push_back(uniforms);
+void WorldObject::set_uniforms(std::vector<std::shared_ptr<renderer::UniformInput>> &&uniforms) {
+	this->layer_uniforms = std::move(uniforms);
 }
 
 } // namespace openage::renderer::world

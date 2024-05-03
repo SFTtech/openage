@@ -75,9 +75,18 @@ public:
 	/**
 	 * Get the quad for creating the geometry.
 	 *
+	 * Since the object is a bunch of sprite layers, the mesh is always a quad.
+	 *
 	 * @return Mesh for creating a renderer geometry object.
 	 */
 	static const renderer::resources::MeshData get_mesh();
+
+	/**
+	 * Get the model matrix for the uniform input of a layer.
+	 *
+	 * @return Model matrix.
+	 */
+	static const Eigen::Matrix4f get_model_matrix();
 
 	/**
 	 * Check whether a new renderable needs to be created for this mesh.
@@ -88,12 +97,19 @@ public:
 	 *
 	 * @return true if a new renderable is required, else false.
 	 */
-	bool requires_renderable();
+	bool requires_renderable() const;
 
 	/**
 	 * Indicate to this mesh that a new renderable has been created.
 	 */
 	void clear_requires_renderable();
+
+	/**
+	 * Get the number of layers required by this object.
+	 *
+	 * @return Number of layers.
+	 */
+	size_t get_required_layer_count(const time::time_t &time) const;
 
 	/**
 	 * Check whether the object was changed by \p update().
@@ -108,13 +124,12 @@ public:
 	void clear_changed_flag();
 
 	/**
-	 * Set the reference to the uniform inputs of the renderable
-	 * associated with this object. Relevant uniforms are updated
-	 * when calling \p update().
+	 * Set the uniform inputs for the layers of this object.
+	 * Layer uniforms are updated on every update call.
 	 *
-	 * @param uniforms Uniform inputs of this object's renderable.
+	 * @param uniforms Uniform inputs of this object's layers.
 	 */
-	void set_uniforms(const std::shared_ptr<renderer::UniformInput> &uniforms);
+	void set_uniforms(std::vector<std::shared_ptr<renderer::UniformInput>> &&uniforms);
 
 	/**
 	 * Shader uniform IDs for setting uniform values.
@@ -175,10 +190,6 @@ private:
 	/**
 	 * Shader uniforms for the layers of the object. Each layer corresponds to a
 	 * renderable in the render pass.
-	 *
-	 * Since all layers are sprites and share the same geometry, we can reuse the layer uniforms and
-	 * their renderables even if the animation changes. Therefore, we only need to add/remove
-	 * layers when the _number_ of layers in the animation changes.
 	 */
 	std::vector<std::shared_ptr<renderer::UniformInput>> layer_uniforms;
 

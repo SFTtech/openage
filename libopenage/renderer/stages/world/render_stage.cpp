@@ -60,31 +60,36 @@ void WorldRenderStage::update() {
 		obj->fetch_updates(current_time);
 		if (obj->is_changed()) {
 			if (obj->requires_renderable()) {
-				Eigen::Matrix4f model_m = Eigen::Matrix4f::Identity();
+				auto layer_count = obj->get_required_layer_count(current_time);
+				Eigen::Matrix4f model_m = obj->get_model_matrix();
 
-				// Set uniforms that don't change or are not changed often
-				auto transform_unifs = this->display_shader->new_uniform_input(
-					"model",
-					model_m,
-					"flip_x",
-					false,
-					"flip_y",
-					false,
-					"u_id",
-					obj->get_id());
+				std::vector<std::shared_ptr<renderer::UniformInput>> transform_unifs;
+				for (size_t i = 0; i < layer_count; i++) {
+					// Set uniforms that don't change or are not changed often
+					auto layer_unifs = this->display_shader->new_uniform_input(
+						"model",
+						model_m,
+						"flip_x",
+						false,
+						"flip_y",
+						false,
+						"u_id",
+						obj->get_id());
 
-				Renderable display_obj{
-					transform_unifs,
-					this->default_geometry,
-					true,
-					true,
-				};
+					Renderable display_obj{
+						layer_unifs,
+						this->default_geometry,
+						true,
+						true,
+					};
+					this->render_pass->add_renderables(display_obj);
+					transform_unifs.push_back(layer_unifs);
+				}
 
-				this->render_pass->add_renderables(display_obj);
 				obj->clear_requires_renderable();
 
 				// update remaining uniforms for the object
-				obj->set_uniforms(transform_unifs);
+				obj->set_uniforms(std::move(transform_unifs));
 			}
 		}
 		obj->update_uniforms(current_time);
