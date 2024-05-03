@@ -1,8 +1,10 @@
-// Copyright 2019-2023 the openage authors. See copying.md for legal info.
+// Copyright 2019-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include "../renderer.h"
+#include "renderer/render_pass.h"
+#include "renderer/renderable.h"
+
 
 namespace openage::renderer::opengl {
 

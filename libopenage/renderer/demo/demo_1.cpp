@@ -8,11 +8,14 @@
 
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/opengl/window.h"
+#include "renderer/render_pass.h"
+#include "renderer/render_target.h"
 #include "renderer/resources/shader_source.h"
 #include "renderer/resources/texture_data.h"
 #include "renderer/shader_program.h"
 #include "renderer/texture.h"
 #include "util/math_constants.h"
+
 
 namespace openage::renderer::tests {
 

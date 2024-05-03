@@ -41,6 +41,10 @@ resources::Texture2dData GlRenderTarget::into_data() {
 	return resources::Texture2dData{info, std::move(pxdata)};
 }
 
+gl_render_target_t GlRenderTarget::get_type() const {
+	return this->type;
+}
+
 std::vector<std::shared_ptr<Texture2d>> GlRenderTarget::get_texture_targets() {
 	std::vector<std::shared_ptr<Texture2d>> textures{};
 	if (this->framebuffer->get_type() == gl_framebuffer_t::display) {

@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -6,6 +6,8 @@
 #include <string>
 #include <utility>
 #include <vector>
+
+#include "renderer/renderable.h"
 
 
 namespace openage {
@@ -21,104 +23,11 @@ class UniformBufferInfo;
 
 class ShaderProgram;
 class Geometry;
+class RenderPass;
+class RenderTarget;
 class Texture2d;
 class UniformBuffer;
 class UniformInput;
-
-
-/// The abstract base for a render target.
-class RenderTarget : public std::enable_shared_from_this<RenderTarget> {
-protected:
-	RenderTarget() = default;
-
-public:
-	virtual ~RenderTarget() = default;
-
-	/**
-	 * Get an image from the pixels in the render target's framebuffer.
-	 *
-	 * This should only be called _after_ rendering to the framebuffer has finished.
-	 *
-	 * @return RGBA texture data.
-	 */
-	virtual resources::Texture2dData into_data() = 0;
-
-	virtual std::vector<std::shared_ptr<Texture2d>> get_texture_targets() = 0;
-};
-
-/// A renderable is a set of a shader UniformInput and a possible draw call.
-/// Usually it is one "step" in a RenderPass.
-///
-/// The UniformInput only stores the values the CPU at first. When the renderer
-/// "executes" the Renderable in a pass, the UniformInput values are uploaded to
-/// the shader on the GPU they were created with.
-///
-/// If the geometry is nullptr, the uniform values are uploaded to the shader,
-/// but no draw call is performed. This can be used to, for example, first set
-/// the values of uniforms that many objects have in common, and then only
-/// upload the uniforms that vary between them in each draw call. This works
-/// because uniform values in any given shader are preserved across a render
-/// pass.
-///
-/// If geometry is set (i.e. it is not nullptr), the renderer draws the geometry
-/// with the shader and other settings in the renderable. The result is written
-/// into the render target, defined in the RenderPass.
-struct Renderable {
-	/// Uniform values to be set in the appropriate shader. Contains a reference
-	/// to the correct shader, and this is the shader that will be used for
-	/// drawing if geometry is present.
-	std::shared_ptr<UniformInput> uniform;
-	/// The geometry. It can be a simple primitive or a complex mesh.
-	/// Can be nullptr to only set uniforms but do not perform draw call.
-	std::shared_ptr<Geometry> geometry;
-	/// Whether to perform alpha-based color blending with whatever was in the
-	/// render target before.
-	bool alpha_blending = true;
-	/// Whether to perform depth testing and discard occluded fragments.
-	bool depth_test = true;
-};
-
-
-/// Simplified form of Renderable, which is just an update for a shader.
-/// When the ShaderUpdate is processed in a RenderPass,
-/// the new uniform values (set on the CPU first with unif_in.update(...))
-/// are uploaded to the GPU.
-struct ShaderUpdate : Renderable {
-	ShaderUpdate(std::shared_ptr<UniformInput> const &uniform) :
-		Renderable{uniform, nullptr} {}
-
-	ShaderUpdate(std::shared_ptr<UniformInput> &&uniform) :
-		Renderable{std::move(uniform), nullptr} {}
-};
-
-
-/// A render pass is a series of draw calls represented by renderables that output into the given render target.
-class RenderPass {
-protected:
-	/// Create a new RenderPass. This is called from Renderer::add_render_pass,
-	/// which then creates the proper subclass of RenderPass, depending on the backend.
-	RenderPass(std::vector<Renderable>, const std::shared_ptr<RenderTarget> &);
-	/// The renderables to parse and possibly execute.
-	std::vector<Renderable> renderables;
-
-public:
-	virtual ~RenderPass() = default;
-	void set_target(const std::shared_ptr<RenderTarget> &);
-	const std::shared_ptr<RenderTarget> &get_target() const;
-
-	// Replace the current renderables
-	void set_renderables(std::vector<Renderable>);
-	// Append renderables to the end of the list of renderables
-	void add_renderables(std::vector<Renderable>);
-	// Append a single renderable to the end of the list of renderables
-	void add_renderables(Renderable);
-	// Clear the list of renderables
-	void clear_renderables();
-
-private:
-	/// The render target to write into.
-	std::shared_ptr<RenderTarget> target;
-};
 
 
 /// The renderer. This class is used for performing all graphics operations. It is abstract and has implementations

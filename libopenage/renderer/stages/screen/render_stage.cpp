@@ -1,8 +1,10 @@
-// Copyright 2022-2023 the openage authors. See copying.md for legal info.
+// Copyright 2022-2024 the openage authors. See copying.md for legal info.
 
 #include "render_stage.h"
 
 #include "renderer/opengl/context.h"
+#include "renderer/render_pass.h"
+#include "renderer/render_target.h"
 #include "renderer/renderer.h"
 #include "renderer/resources/mesh_data.h"
 #include "renderer/resources/shader_source.h"

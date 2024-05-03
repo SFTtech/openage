@@ -7,6 +7,8 @@
 
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/opengl/window.h"
+#include "renderer/render_pass.h"
+#include "renderer/render_target.h"
 #include "renderer/resources/animation/angle_info.h"
 #include "renderer/resources/animation/frame_info.h"
 #include "renderer/resources/frame_timing.h"
@@ -15,6 +17,7 @@
 #include "renderer/resources/texture_data.h"
 #include "renderer/shader_program.h"
 #include "time/clock.h"
+
 
 namespace openage::renderer::tests {
 void renderer_demo_4(const util::Path &path) {
