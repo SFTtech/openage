@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #include "parse_terrain.h"
 
@@ -193,7 +193,7 @@ TerrainInfo parse_terrain_file(const util::Path &file,
 			frames.at(frame.layer_id).push_back(frame);
 
 			// check for the largest index, so we can use it to
-			// interpolate the total animation length
+		    // interpolate the total animation length
 			if (frame.index > largest_frame_idx) {
 				largest_frame_idx = frame.index;
 			}
@@ -225,6 +225,13 @@ TerrainInfo parse_terrain_file(const util::Path &file,
 					  return f1.index < f2.index;
 				  });
 	}
+
+	// Order layers by position
+	std::sort(layers.begin(),
+	          layers.end(),
+	          [](TerrainLayerData &l1, TerrainLayerData &l2) {
+				  return l1.position < l2.position;
+			  });
 
 	// Create ID map. Resolves IDs used in the file to array indices
 	std::unordered_map<size_t, size_t> texture_id_map;
