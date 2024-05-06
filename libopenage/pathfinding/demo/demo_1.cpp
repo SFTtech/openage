@@ -179,6 +179,7 @@ void RenderManager1::run() {
 
 		this->renderer->render(this->background_pass);
 		this->renderer->render(this->field_pass);
+		this->renderer->render(this->waypoint_pass);
 		this->renderer->render(this->grid_pass);
 		this->renderer->render(this->display_pass);
 
@@ -248,6 +249,18 @@ void RenderManager1::init_passes() {
 	                                       renderer::resources::pixel_format::depth24));
 	auto grid_fbo = renderer->create_texture_target({grid_texture, depth_texture_3});
 
+	// Make a framebuffer for the waypoint render pass to draw into
+	auto waypoint_texture = renderer->add_texture(
+		renderer::resources::Texture2dInfo(size[0],
+	                                       size[1],
+	                                       renderer::resources::pixel_format::rgba8));
+	auto depth_texture_4 = renderer->add_texture(
+		renderer::resources::Texture2dInfo(size[0],
+	                                       size[1],
+	                                       renderer::resources::pixel_format::depth24));
+	auto waypoint_fbo = renderer->create_texture_target({waypoint_texture, depth_texture_4});
+	this->waypoint_pass = renderer->add_render_pass({}, waypoint_fbo);
+
 	// Create object for the grid
 	auto model = Eigen::Affine3f::Identity();
 	model.prescale(Eigen::Vector3f{
@@ -289,6 +302,13 @@ void RenderManager1::init_passes() {
 		true,
 		true,
 	};
+	auto waypoint_texture_unif = display_shader->new_uniform_input("color_texture", waypoint_texture);
+	renderer::Renderable waypoint_pass_obj{
+		waypoint_texture_unif,
+		quad,
+		true,
+		true,
+	};
 	auto grid_texture_unif = display_shader->new_uniform_input("color_texture", grid_texture);
 	renderer::Renderable grid_pass_obj{
 		grid_texture_unif,
@@ -296,8 +316,9 @@ void RenderManager1::init_passes() {
 		true,
 		true,
 	};
+
 	this->display_pass = renderer->add_render_pass(
-		{bg_pass_obj, field_pass_obj, grid_pass_obj},
+		{bg_pass_obj, field_pass_obj, waypoint_pass_obj, grid_pass_obj},
 		renderer->get_display_target());
 }
 
@@ -555,6 +576,8 @@ void RenderManager1::create_waypoint_tiles(const Path &path) {
 
 	Eigen::Matrix4f id_matrix = Eigen::Matrix4f::Identity();
 
+	this->waypoint_pass->clear_renderables();
+
 	// Draw in-between waypoints
 	for (size_t i = 1; i < path.waypoints.size() - 1; i++) {
 		auto tile = path.waypoints[i];
@@ -596,7 +619,7 @@ void RenderManager1::create_waypoint_tiles(const Path &path) {
 			true,
 			true,
 		};
-		this->field_pass->add_renderables({tile_obj});
+		this->waypoint_pass->add_renderables({tile_obj});
 	}
 
 	// Draw start and end waypoints with different colors
@@ -679,7 +702,7 @@ void RenderManager1::create_waypoint_tiles(const Path &path) {
 		true,
 	};
 
-	this->field_pass->add_renderables({start_tile_obj, end_tile_obj});
+	this->waypoint_pass->add_renderables({start_tile_obj, end_tile_obj});
 }
 
 } // namespace openage::path::tests

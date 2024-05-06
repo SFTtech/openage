@@ -170,6 +170,11 @@ private:
 	std::shared_ptr<renderer::RenderPass> grid_pass;
 
 	/**
+	 * Waypoint pass: Renders the path and its waypoints.
+	 */
+	std::shared_ptr<renderer::RenderPass> waypoint_pass;
+
+	/**
 	 * Display pass: Draws the results of previous passes to the screen.
 	 */
 	std::shared_ptr<renderer::RenderPass> display_pass;
