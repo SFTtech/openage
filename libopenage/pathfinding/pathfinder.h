@@ -93,6 +93,16 @@ private:
 	static int heuristic_cost(const coord::tile &portal_pos, const coord::tile &target_pos);
 
 	/**
+	 * Calculate the distance cost between two portals.
+	 *
+	 * @param portal1_pos Center of the first portal.
+	 * @param portal2_pos Center of the second portal.
+	 *
+	 * @return Distance cost between the portal centers.
+	 */
+	static int distance_cost(const coord::tile &portal1_pos, const coord::tile &portal2_pos);
+
+	/**
 	 * Grids managed by this pathfinder.
 	 *
 	 * Each grid can have separate pathing.

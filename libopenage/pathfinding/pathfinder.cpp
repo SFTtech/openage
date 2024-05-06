@@ -104,7 +104,7 @@ const std::vector<std::shared_ptr<Portal>> Pathfinder::portal_a_star(const PathR
 
 	// Cost to travel from one portal to another
 	// TODO: Determine this cost for each portal
-	const int distance_cost = 1;
+	// const int distance_cost = 1;
 
 	// start nodes: all portals in the start sector
 	for (auto &portal : start_sector->get_portals()) {
@@ -155,6 +155,11 @@ const std::vector<std::shared_ptr<Portal>> Pathfinder::portal_a_star(const PathR
 			if (exit->was_best) {
 				continue;
 			}
+
+			// Get distance cost from current node to exit
+			auto distance_cost = Pathfinder::distance_cost(
+				current_node->portal->get_exit_center(current_node->entry_sector),
+				exit->portal->get_entry_center(exit->entry_sector));
 
 			bool not_visited = !visited_portals.contains(exit->portal->get_id());
 			auto tentative_cost = current_node->current_cost + distance_cost;
@@ -327,6 +332,14 @@ int Pathfinder::heuristic_cost(const coord::tile &portal_pos,
 
 	return delta.length();
 }
+
+int Pathfinder::distance_cost(const coord::tile &portal1_pos,
+                              const coord::tile &portal2_pos) {
+	auto delta = portal2_pos.to_phys2() - portal1_pos.to_phys2();
+
+	return delta.length();
+}
+
 
 PortalNode::PortalNode(const std::shared_ptr<Portal> &portal,
                        sector_id_t entry_sector,
