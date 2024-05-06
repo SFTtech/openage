@@ -194,7 +194,7 @@ const std::vector<std::shared_ptr<Portal>> Pathfinder::portal_a_star(const PathR
 
 const std::vector<coord::tile> Pathfinder::get_waypoints(const std::vector<std::pair<sector_id_t, std::shared_ptr<FlowField>>> &flow_fields,
                                                          const PathRequest &request) const {
-	ENSURE(flow_fields.size() > 1, "At least 1 flow field is required for finding waypoints.");
+	ENSURE(flow_fields.size() > 0, "At least 1 flow field is required for finding waypoints.");
 
 	std::vector<coord::tile> waypoints;
 
