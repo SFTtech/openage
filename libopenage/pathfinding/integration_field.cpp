@@ -98,7 +98,7 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 				}
 
 				// check each neighbor for a corner
-				auto corners = this->get_los_corners(cost_field, target, coord::tile{x, y});
+				auto corners = this->get_los_corners(cost_field, target, coord::tile(x, y));
 				for (auto &corner : corners) {
 					// draw a line from the corner to the edge of the field
 					// to get the cells blocked by the corner

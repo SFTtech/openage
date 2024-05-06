@@ -65,13 +65,13 @@ std::vector<std::shared_ptr<Portal>> Sector::find_portals(const std::shared_ptr<
 		auto coord_other = coord::tile{0, 0};
 		if (direction == PortalDirection::NORTH_SOUTH) {
 			// right edge; top to bottom
-			coord_this = coord::tile{i, this->cost_field->get_size() - 1};
-			coord_other = coord::tile{i, 0};
+			coord_this = coord::tile(i, this->cost_field->get_size() - 1);
+			coord_other = coord::tile(i, 0);
 		}
 		else if (direction == PortalDirection::EAST_WEST) {
 			// bottom edge; east to west
-			coord_this = coord::tile{this->cost_field->get_size() - 1, i};
-			coord_other = coord::tile{0, i};
+			coord_this = coord::tile(this->cost_field->get_size() - 1, i);
+			coord_other = coord::tile(0, i);
 		}
 
 		if (this->cost_field->get_cost(coord_this) != COST_IMPASSABLE
@@ -98,13 +98,13 @@ std::vector<std::shared_ptr<Portal>> Sector::find_portals(const std::shared_ptr<
 			auto coord_end = coord::tile{0, 0};
 			if (direction == PortalDirection::NORTH_SOUTH) {
 				// right edge; top to bottom
-				coord_start = coord::tile{start, this->cost_field->get_size() - 1};
-				coord_end = coord::tile{end, this->cost_field->get_size() - 1};
+				coord_start = coord::tile(start, this->cost_field->get_size() - 1);
+				coord_end = coord::tile(end, this->cost_field->get_size() - 1);
 			}
 			else if (direction == PortalDirection::EAST_WEST) {
 				// bottom edge; east to west
-				coord_start = coord::tile{this->cost_field->get_size() - 1, start};
-				coord_end = coord::tile{this->cost_field->get_size() - 1, end};
+				coord_start = coord::tile(this->cost_field->get_size() - 1, start);
+				coord_end = coord::tile(this->cost_field->get_size() - 1, end);
 			}
 
 			result.push_back(

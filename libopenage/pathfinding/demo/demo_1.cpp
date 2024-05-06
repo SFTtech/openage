@@ -445,7 +445,7 @@ void RenderManager1::create_impassible_tiles(const std::shared_ptr<path::Grid> &
 			auto cost_field = sector->get_cost_field();
 			for (size_t y = 0; y < sector_size; y++) {
 				for (size_t x = 0; x < sector_size; x++) {
-					auto cost = cost_field->get_cost(coord::tile{x, y});
+					auto cost = cost_field->get_cost(coord::tile(x, y));
 					if (cost == COST_IMPASSABLE) {
 						std::array<float, 8> tile_data{
 							-1.0f + x * tile_offset_width + sector_size * sector_x * tile_offset_width,
@@ -514,13 +514,13 @@ void RenderManager1::create_portal_tiles(const std::shared_ptr<path::Grid> &grid
 				if (direction == PortalDirection::NORTH_SOUTH) {
 					auto y = start.se;
 					for (auto x = start.ne; x <= end.ne; ++x) {
-						tiles.push_back(coord::tile{x, y});
+						tiles.push_back(coord::tile(x, y));
 					}
 				}
 				else {
 					auto x = start.ne;
 					for (auto y = start.se; y <= end.se; ++y) {
-						tiles.push_back(coord::tile{x, y});
+						tiles.push_back(coord::tile(x, y));
 					}
 				}
 
