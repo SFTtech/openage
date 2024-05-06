@@ -194,7 +194,7 @@ protected:
 	/**
 	 * Cache the index of the last accessed element (usually the end).
 	 */
-	mutable typename KeyframeContainer<T>::index_t last_element;
+	mutable typename KeyframeContainer<T>::elem_ptr last_element;
 };
 
 

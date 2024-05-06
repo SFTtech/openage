@@ -69,7 +69,7 @@ public:
 	/**
 	 * The index type to access elements in the container
 	 */
-	using index_t = typename container_t::size_type;
+	using elem_ptr = typename container_t::size_type;
 
 	/**
 	 * The iterator type to access elements in the container
@@ -229,7 +229,7 @@ private:
 	 * @param time The time to kill at.
 	 * @param at The index of the element to kill.
 	 */
-	void kill(const time::time_t &time, index_t at);
+	void kill(const time::time_t &time, elem_ptr at);
 
 	/**
 	 * Get the first alive element inserted at t <= time.
@@ -238,7 +238,7 @@ private:
 	 *
 	 * @return Index of the first alive element or end() if no such element exists.
 	 */
-	index_t first_alive(const time::time_t &time) const;
+	elem_ptr first_alive(const time::time_t &time) const;
 
 	/**
 	 * Identifier for the container
@@ -265,13 +265,13 @@ private:
 	 *
 	 * All positions before the index are guaranteed to be dead at t >= last_change.
 	 */
-	index_t front_start;
+	elem_ptr front_start;
 };
 
 
 template <class T>
-typename Queue<T>::index_t Queue<T>::first_alive(const time::time_t &time) const {
-	index_t hint = 0;
+typename Queue<T>::elem_ptr Queue<T>::first_alive(const time::time_t &time) const {
+	elem_ptr hint = 0;
 
 	// check if the access is later than the last change
 	if (this->last_change <= time) {
@@ -295,7 +295,7 @@ typename Queue<T>::index_t Queue<T>::first_alive(const time::time_t &time) const
 
 template <typename T>
 const T &Queue<T>::front(const time::time_t &time) const {
-	index_t at = this->first_alive(time);
+	elem_ptr at = this->first_alive(time);
 	ENSURE(at < this->container.size(),
 	       "Tried accessing front at " << time << " but index " << at << " is invalid. "
 	                                   << "The queue may be empty."
@@ -310,7 +310,7 @@ const T &Queue<T>::front(const time::time_t &time) const {
 
 template <class T>
 const T &Queue<T>::pop_front(const time::time_t &time) {
-	index_t at = this->first_alive(time);
+	elem_ptr at = this->first_alive(time);
 	ENSURE(at < this->container.size(),
 	       "Tried accessing front at " << time << " but index " << at << " is invalid. "
 	                                   << "The queue may be empty."
@@ -393,7 +393,7 @@ void Queue<T>::erase(const CurveIterator<T, Queue<T>> &it) {
 
 template <class T>
 void Queue<T>::kill(const time::time_t &time,
-                    index_t at) {
+                    elem_ptr at) {
 	this->container[at].set_dead(time);
 }
 
@@ -401,7 +401,7 @@ void Queue<T>::kill(const time::time_t &time,
 template <typename T>
 QueueFilterIterator<T, Queue<T>> Queue<T>::insert(const time::time_t &time,
                                                   const T &e) {
-	index_t at = this->container.size();
+	elem_ptr at = this->container.size();
 	while (at > 0) {
 		--at;
 		if (this->container.at(at).alive() <= time) {
@@ -444,7 +444,7 @@ QueueFilterIterator<T, Queue<T>> Queue<T>::insert(const time::time_t &time,
 
 template <typename T>
 void Queue<T>::clear(const time::time_t &time) {
-	index_t at = this->first_alive(time);
+	elem_ptr at = this->first_alive(time);
 
 	// no elements alive at t <= time
 	// so we don't have any changes

@@ -40,7 +40,7 @@ public:
 	/**
 	 * The index type to access elements in the container
 	 */
-	using index_t = typename container_t::size_type;
+	using elem_ptr = typename container_t::size_type;
 
 	/**
 	 * The iterator type to access elements in the container
@@ -76,7 +76,7 @@ public:
 	 */
 	size_t size() const;
 
-	const keyframe_t &get(const index_t &idx) const {
+	const keyframe_t &get(const elem_ptr &idx) const {
 		return this->container.at(idx);
 	}
 
@@ -84,8 +84,8 @@ public:
 	 * Get the last element in the curve which is at or before the given time.
 	 * (i.e. elem->time <= time). Given a hint where to start the search.
 	 */
-	index_t last(const time::time_t &time,
-	             const index_t &hint) const;
+	elem_ptr last(const time::time_t &time,
+	              const elem_ptr &hint) const;
 
 	/**
 	 * Get the last element with elem->time <= time, without a hint where to start
@@ -95,7 +95,7 @@ public:
 	 * no chance for you to have a hint (or the container is known to be nearly
 	 * empty)
 	 */
-	index_t last(const time::time_t &time) const {
+	elem_ptr last(const time::time_t &time) const {
 		return this->last(time, this->container.size());
 	}
 
@@ -103,14 +103,14 @@ public:
 	 * Get the last element in the curve which is before the given time.
 	 * (i.e. elem->time < time). Given a hint where to start the search.
 	 */
-	index_t last_before(const time::time_t &time,
-	                    const index_t &hint) const;
+	elem_ptr last_before(const time::time_t &time,
+	                     const elem_ptr &hint) const;
 
 	/**
 	 * Get the last element with elem->time < time, without a hint where to start
 	 * searching.
 	 */
-	index_t last_before(const time::time_t &time) const {
+	elem_ptr last_before(const time::time_t &time) const {
 		return this->last_before(time, this->container.size());
 	}
 
@@ -121,7 +121,7 @@ public:
 	 * This function is not recommended for use, whenever possible, keep a hint
 	 * to insert the data.
 	 */
-	index_t insert_before(const keyframe_t &value) {
+	elem_ptr insert_before(const keyframe_t &value) {
 		return this->insert_before(value, this->container.size());
 	}
 
@@ -132,7 +132,7 @@ public:
 	 * history size. If there is a keyframe with identical time, this will
 	 * insert the new keyframe before the old one.
 	 */
-	index_t insert_before(const keyframe_t &value, const index_t &hint);
+	elem_ptr insert_before(const keyframe_t &value, const elem_ptr &hint);
 
 	/**
 	 * Create and insert a new element without submitting a hint. The search is
@@ -140,7 +140,7 @@ public:
 	 * discouraged, use it only, if your really do not have the possibility to
 	 * get a hint.
 	 */
-	index_t insert_before(const time::time_t &time, const T &value) {
+	elem_ptr insert_before(const time::time_t &time, const T &value) {
 		return this->insert_before(keyframe_t(time, value), this->container.size());
 	}
 
@@ -149,7 +149,7 @@ public:
 	 * If there is a value with identical time, this will insert the new value
 	 * before the old one.
 	 */
-	index_t insert_before(const time::time_t &time, const T &value, const index_t &hint) {
+	elem_ptr insert_before(const time::time_t &time, const T &value, const elem_ptr &hint) {
 		return this->insert_before(keyframe_t(time, value), hint);
 	}
 
@@ -160,9 +160,9 @@ public:
 	 * `overwrite_all` == true -> overwrite all same-time elements.
 	 * `overwrite_all` == false -> overwrite the last of the time-conflict elements.
 	 */
-	index_t insert_overwrite(const keyframe_t &value,
-	                         const index_t &hint,
-	                         bool overwrite_all = false);
+	elem_ptr insert_overwrite(const keyframe_t &value,
+	                          const elem_ptr &hint,
+	                          bool overwrite_all = false);
 
 	/**
 	 * Insert a new value at given time which will overwrite the last of the
@@ -170,7 +170,7 @@ public:
 	 * from the end of the data. The use of this function is discouraged, use it
 	 * only, if your really do not have the possibility to get a hint.
 	 */
-	index_t insert_overwrite(const time::time_t &time, const T &value) {
+	elem_ptr insert_overwrite(const time::time_t &time, const T &value) {
 		return this->insert_overwrite(keyframe_t(time, value),
 		                              this->container.size());
 	}
@@ -182,10 +182,10 @@ public:
 	 * Provide a insertion hint to abbreviate the search for the
 	 * insertion point.
 	 */
-	index_t insert_overwrite(const time::time_t &time,
-	                         const T &value,
-	                         const index_t &hint,
-	                         bool overwrite_all = false) {
+	elem_ptr insert_overwrite(const time::time_t &time,
+	                          const T &value,
+	                          const elem_ptr &hint,
+	                          bool overwrite_all = false) {
 		return this->insert_overwrite(keyframe_t(time, value), hint, overwrite_all);
 	}
 
@@ -194,7 +194,7 @@ public:
 	 * conflict. Give an approximate insertion location to minimize runtime on
 	 * big-history curves.
 	 */
-	index_t insert_after(const keyframe_t &value, const index_t &hint);
+	elem_ptr insert_after(const keyframe_t &value, const elem_ptr &hint);
 
 	/**
 	 * Insert a new value at given time which will be prepended to the block of
@@ -202,7 +202,7 @@ public:
 	 * time from the end of the data. The use of this function is discouraged,
 	 * use it only, if your really do not have the possibility to get a hint.
 	 */
-	index_t insert_after(const time::time_t &time, const T &value) {
+	elem_ptr insert_after(const time::time_t &time, const T &value) {
 		return this->insert_after(keyframe_t(time, value),
 		                          this->container.size());
 	}
@@ -211,27 +211,27 @@ public:
 	 * Create and insert a new element, which is added after a previous element with
 	 * identical time. Provide a insertion hint to abbreviate the search for the insertion point.
 	 */
-	index_t insert_after(const time::time_t &time, const T &value, const index_t &hint) {
+	elem_ptr insert_after(const time::time_t &time, const T &value, const elem_ptr &hint) {
 		return this->insert_after(keyframe_t(time, value), hint);
 	}
 
 	/**
 	 * Erase all elements that come after this last valid element.
 	 */
-	index_t erase_after(index_t last_valid);
+	elem_ptr erase_after(elem_ptr last_valid);
 
 	/**
 	 * Erase a single element from the curve.
 	 * Returns the element after the deleted one.
 	 */
-	index_t erase(index_t it);
+	elem_ptr erase(elem_ptr it);
 
 	/**
 	 * Erase all elements with given time.
 	 * Variant without hint, starts the search at the end of the container.
 	 * Returns the iterator after the deleted elements.
 	 */
-	index_t erase(const time::time_t &time) {
+	elem_ptr erase(const time::time_t &time) {
 		return this->erase(time, this->container.size());
 	}
 
@@ -244,8 +244,8 @@ public:
 	 * Or, if no elements with this time exist,
 	 * the iterator to the first element after the requested time is returned
 	 */
-	index_t erase(const time::time_t &time,
-	              const index_t &hint) {
+	elem_ptr erase(const time::time_t &time,
+	               const elem_ptr &hint) {
 		return this->erase_group(time, this->last(time, hint));
 	}
 
@@ -285,8 +285,8 @@ public:
 	 *              Using the default value replaces ALL keyframes of \p this with
 	 *              the keyframes of \p other.
 	 */
-	index_t sync(const KeyframeContainer<T> &other,
-	             const time::time_t &start = time::TIME_MIN);
+	elem_ptr sync(const KeyframeContainer<T> &other,
+	              const time::time_t &start = time::TIME_MIN);
 
 	/**
 	 * Copy keyframes from another container (with a different element type) to this container.
@@ -301,9 +301,9 @@ public:
 	 *              the keyframes of \p other.
 	 */
 	template <typename O>
-	index_t sync(const KeyframeContainer<O> &other,
-	             const std::function<T(const O &)> &converter,
-	             const time::time_t &start = time::TIME_MIN);
+	elem_ptr sync(const KeyframeContainer<O> &other,
+	              const std::function<T(const O &)> &converter,
+	              const time::time_t &start = time::TIME_MIN);
 
 	/**
 	 * Debugging method to be used from gdb to understand bugs better.
@@ -319,8 +319,8 @@ private:
 	 * Erase elements with this time.
 	 * The iterator has to point to the last element of the same-time group.
 	 */
-	index_t erase_group(const time::time_t &time,
-	                    const index_t &last_elem);
+	elem_ptr erase_group(const time::time_t &time,
+	                     const elem_ptr &last_elem);
 
 	/**
 	 * The data store.
@@ -360,11 +360,11 @@ size_t KeyframeContainer<T>::size() const {
  * that determines the curve value for a searched time.
  */
 template <typename T>
-typename KeyframeContainer<T>::index_t
+typename KeyframeContainer<T>::elem_ptr
 KeyframeContainer<T>::last(const time::time_t &time,
-                           const KeyframeContainer<T>::index_t &hint) const {
-	index_t at = hint;
-	const index_t end = this->container.size();
+                           const KeyframeContainer<T>::elem_ptr &hint) const {
+	elem_ptr at = hint;
+	const elem_ptr end = this->container.size();
 
 	if (at != end and this->container.at(at).time() <= time) {
 		// walk to the right until the time is larget than the searched
@@ -394,11 +394,11 @@ KeyframeContainer<T>::last(const time::time_t &time,
  * first element that matches the search time.
  */
 template <typename T>
-typename KeyframeContainer<T>::index_t
+typename KeyframeContainer<T>::elem_ptr
 KeyframeContainer<T>::last_before(const time::time_t &time,
-                                  const KeyframeContainer<T>::index_t &hint) const {
-	index_t at = hint;
-	const index_t end = this->container.size();
+                                  const KeyframeContainer<T>::elem_ptr &hint) const {
+	elem_ptr at = hint;
+	const elem_ptr end = this->container.size();
 
 	if (at != end and this->container.at(at).time() < time) {
 		// walk to the right until the time is larget than the searched
@@ -423,10 +423,10 @@ KeyframeContainer<T>::last_before(const time::time_t &time,
  * Determine where to insert based on time, and insert.
  */
 template <typename T>
-typename KeyframeContainer<T>::index_t
+typename KeyframeContainer<T>::elem_ptr
 KeyframeContainer<T>::insert_before(const KeyframeContainer<T>::keyframe_t &e,
-                                    const KeyframeContainer<T>::index_t &hint) {
-	index_t at = this->last(e.time(), hint);
+                                    const KeyframeContainer<T>::elem_ptr &hint) {
+	elem_ptr at = this->last(e.time(), hint);
 
 	if (at == this->container.size()) {
 		this->container.push_back(e);
@@ -449,12 +449,12 @@ KeyframeContainer<T>::insert_before(const KeyframeContainer<T>::keyframe_t &e,
  * Determine where to insert based on time, and insert, overwriting value(s) with same time.
  */
 template <typename T>
-typename KeyframeContainer<T>::index_t
+typename KeyframeContainer<T>::elem_ptr
 KeyframeContainer<T>::insert_overwrite(const KeyframeContainer<T>::keyframe_t &e,
-                                       const KeyframeContainer<T>::index_t &hint,
+                                       const KeyframeContainer<T>::elem_ptr &hint,
                                        bool overwrite_all) {
-	index_t at = this->last(e.time(), hint);
-	const index_t end = this->container.size();
+	elem_ptr at = this->last(e.time(), hint);
+	const elem_ptr end = this->container.size();
 
 	if (overwrite_all) {
 		at = this->erase_group(e.time(), at);
@@ -479,11 +479,11 @@ KeyframeContainer<T>::insert_overwrite(const KeyframeContainer<T>::keyframe_t &e
  * If there is a time conflict, insert after the existing element.
  */
 template <typename T>
-typename KeyframeContainer<T>::index_t
+typename KeyframeContainer<T>::elem_ptr
 KeyframeContainer<T>::insert_after(const KeyframeContainer<T>::keyframe_t &e,
-                                   const KeyframeContainer<T>::index_t &hint) {
-	index_t at = this->last(e.time(), hint);
-	const index_t end = this->container.size();
+                                   const KeyframeContainer<T>::elem_ptr &hint) {
+	elem_ptr at = this->last(e.time(), hint);
+	const elem_ptr end = this->container.size();
 
 	if (at != end) {
 		++at;
@@ -498,12 +498,12 @@ KeyframeContainer<T>::insert_after(const KeyframeContainer<T>::keyframe_t &e,
  * Go from the end to the last_valid element, and call erase on all of them
  */
 template <typename T>
-typename KeyframeContainer<T>::index_t
-KeyframeContainer<T>::erase_after(KeyframeContainer<T>::index_t last_valid) {
+typename KeyframeContainer<T>::elem_ptr
+KeyframeContainer<T>::erase_after(KeyframeContainer<T>::elem_ptr last_valid) {
 	// exclude the last_valid element from deletion
 	if (last_valid != this->container.size()) {
 		// Delete everything to the end.
-		const index_t delete_start = last_valid + 1;
+		const elem_ptr delete_start = last_valid + 1;
 		this->container.erase(this->begin() + delete_start, this->end());
 	}
 
@@ -515,19 +515,19 @@ KeyframeContainer<T>::erase_after(KeyframeContainer<T>::index_t last_valid) {
  * Delete the element from the list and call delete on it.
  */
 template <typename T>
-typename KeyframeContainer<T>::index_t
-KeyframeContainer<T>::erase(KeyframeContainer<T>::index_t e) {
+typename KeyframeContainer<T>::elem_ptr
+KeyframeContainer<T>::erase(KeyframeContainer<T>::elem_ptr e) {
 	this->container.erase(this->begin() + e);
 	return e;
 }
 
 
 template <typename T>
-typename KeyframeContainer<T>::index_t
+typename KeyframeContainer<T>::elem_ptr
 KeyframeContainer<T>::sync(const KeyframeContainer<T> &other,
                            const time::time_t &start) {
 	// Delete elements after start time
-	index_t at = this->last_before(start, this->container.size());
+	elem_ptr at = this->last_before(start, this->container.size());
 	at = this->erase_after(at);
 
 	auto at_other = 1; // always skip the first element (because it's the default value)
@@ -545,12 +545,12 @@ KeyframeContainer<T>::sync(const KeyframeContainer<T> &other,
 
 template <typename T>
 template <typename O>
-typename KeyframeContainer<T>::index_t
+typename KeyframeContainer<T>::elem_ptr
 KeyframeContainer<T>::sync(const KeyframeContainer<O> &other,
                            const std::function<T(const O &)> &converter,
                            const time::time_t &start) {
 	// Delete elements after start time
-	index_t at = this->last_before(start, this->container.size());
+	elem_ptr at = this->last_before(start, this->container.size());
 	at = this->erase_after(at);
 
 	auto at_other = 1; // always skip the first element (because it's the default value)
@@ -567,9 +567,9 @@ KeyframeContainer<T>::sync(const KeyframeContainer<O> &other,
 
 
 template <typename T>
-typename KeyframeContainer<T>::index_t
+typename KeyframeContainer<T>::elem_ptr
 KeyframeContainer<T>::erase_group(const time::time_t &time,
-                                  const KeyframeContainer<T>::index_t &last_elem) {
+                                  const KeyframeContainer<T>::elem_ptr &last_elem) {
 	size_t at = last_elem;
 
 	// if the time what we're looking for
