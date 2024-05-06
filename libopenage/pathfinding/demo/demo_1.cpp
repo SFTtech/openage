@@ -2,6 +2,8 @@
 
 #include "demo_1.h"
 
+#include <QMouseEvent>
+
 #include "pathfinding/cost_field.h"
 #include "pathfinding/grid.h"
 #include "pathfinding/path.h"
@@ -80,11 +82,13 @@ void path_demo_1(const util::Path &path) {
 	util::Timer timer;
 
 	// Create a path request and get the path
-	// TODO: Make the path request interactive with window callbacks
+	coord::tile start{2, 26};
+	coord::tile target{36, 2};
+
 	PathRequest path_request{
-		0,
-		coord::tile{2, 26},
-		coord::tile{36, 2},
+		grid->get_id(),
+		start,
+		target,
 	};
 	timer.start();
 	Path path_result = pathfinder->get_path(path_request);
@@ -97,6 +101,55 @@ void path_demo_1(const util::Path &path) {
 	auto window = std::make_shared<renderer::opengl::GlWindow>("openage pathfinding test", 1024, 768);
 	auto render_manager = std::make_shared<RenderManager1>(qtapp, window, path, grid);
 	log::log(INFO << "Created render manager for pathfinding demo");
+
+	window->add_mouse_button_callback([&](const QMouseEvent &ev) {
+		if (ev.type() == QEvent::MouseButtonRelease) {
+			auto cell_count_x = grid->get_size()[0] * grid->get_sector_size();
+			auto cell_count_y = grid->get_size()[1] * grid->get_sector_size();
+			auto window_size = window->get_size();
+
+			auto cell_size_x = window_size[0] / cell_count_x;
+			auto cell_size_y = window_size[1] / cell_count_y;
+
+			coord::tile_t grid_x = ev.position().x() / cell_size_x;
+			coord::tile_t grid_y = ev.position().y() / cell_size_y;
+
+			if (ev.button() == Qt::RightButton) { // Set target cell
+				target = coord::tile{grid_x, grid_y};
+				PathRequest new_path_request{
+					grid->get_id(),
+					start,
+					target,
+				};
+
+				timer.start();
+				path_result = pathfinder->get_path(new_path_request);
+				timer.stop();
+
+				log::log(INFO << "Pathfinding took " << timer.getval() / 1000 << " ps");
+
+				// Create renderables for the waypoints of the path
+				render_manager->create_waypoint_tiles(path_result);
+			}
+			else if (ev.button() == Qt::LeftButton) { // Set start cell
+				start = coord::tile{grid_x, grid_y};
+				PathRequest new_path_request{
+					grid->get_id(),
+					start,
+					target,
+				};
+
+				timer.start();
+				path_result = pathfinder->get_path(new_path_request);
+				timer.stop();
+
+				log::log(INFO << "Pathfinding took " << timer.getval() / 1000 << " ps");
+
+				// Create renderables for the waypoints of the path
+				render_manager->create_waypoint_tiles(path_result);
+			}
+		}
+	});
 
 	// Create renderables for the waypoints of the path
 	render_manager->create_waypoint_tiles(path_result);
