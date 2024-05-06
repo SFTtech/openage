@@ -36,7 +36,7 @@ The most relevant similarity between terrain and pathfinding code is that they u
 [coordinate systems](/doc/code/coordinate-systems.md#tiletile3). To make the distinction between
 pathfinding and terrain more clear, we use the term *cells* for tiles in the pathfinder.
 
-![UML pathfinding classes]()
+![UML pathfinding classes](/doc/code/images/pathfinder_architecture.svg)
 
 The relationship between classes in the pathfinder can be seen above. `Grid` is the top-level structure
 for storage of movement cost. There may be multiple grids defined, one for each movement type
