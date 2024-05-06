@@ -108,8 +108,8 @@ void path_demo_1(const util::Path &path) {
 			auto cell_count_y = grid->get_size()[1] * grid->get_sector_size();
 			auto window_size = window->get_size();
 
-			auto cell_size_x = window_size[0] / cell_count_x;
-			auto cell_size_y = window_size[1] / cell_count_y;
+			double cell_size_x = static_cast<double>(window_size[0]) / cell_count_x;
+			double cell_size_y = static_cast<double>(window_size[1]) / cell_count_y;
 
 			coord::tile_t grid_x = ev.position().x() / cell_size_x;
 			coord::tile_t grid_y = ev.position().y() / cell_size_y;
