@@ -205,7 +205,8 @@ std::vector<size_t> WorldObject::get_layer_positions(const time::time_t &time) c
 
 	std::vector<size_t> positions;
 	for (size_t i = 0; i < animation_info->get_layer_count(); ++i) {
-		positions.push_back(i);
+		auto layer = animation_info->get_layer(i);
+		positions.push_back(layer.get_position());
 	}
 
 	return positions;
