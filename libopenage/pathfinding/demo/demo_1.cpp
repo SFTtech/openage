@@ -126,6 +126,7 @@ void path_demo_1(const util::Path &path) {
 					target,
 				};
 
+				timer.reset();
 				timer.start();
 				path_result = pathfinder->get_path(new_path_request);
 				timer.stop();
@@ -143,6 +144,7 @@ void path_demo_1(const util::Path &path) {
 					target,
 				};
 
+				timer.reset();
 				timer.start();
 				path_result = pathfinder->get_path(new_path_request);
 				timer.stop();
