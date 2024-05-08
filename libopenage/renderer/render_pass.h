@@ -99,6 +99,17 @@ public:
 	 */
 	void clear_renderables();
 
+	using compare_func = std::function<bool(const Renderable &, const Renderable &)>;
+
+	/**
+	 * Sort the renderables using the given comparison function.
+	 *
+	 * Layers are sorted individually, so the order of layers is not changed.
+	 *
+	 * @param compare Comparison function.
+	 */
+	void sort(const compare_func &compare);
+
 protected:
 	/**
 	 * Create a new RenderPass. This is called from Renderer::add_render_pass,

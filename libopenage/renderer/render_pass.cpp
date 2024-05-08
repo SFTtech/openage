@@ -2,6 +2,8 @@
 
 #include "render_pass.h"
 
+#include "log/log.h"
+
 
 namespace openage::renderer {
 
@@ -15,6 +17,8 @@ RenderPass::RenderPass(std::vector<Renderable> renderables,
 
 	// Add the renderables to the pass
 	this->add_renderables(renderables);
+
+	log::log(MSG(dbg) << "Created render pass");
 }
 
 const std::shared_ptr<RenderTarget> &RenderPass::get_target() const {
@@ -89,6 +93,16 @@ void RenderPass::clear_renderables() {
 	// Keep layers, but reset the length of each layer
 	for (auto &layer : this->layers) {
 		layer.length = 0;
+	}
+}
+
+void RenderPass::sort(const compare_func &compare) {
+	size_t offset = 0;
+	for (auto &layer : this->layers) {
+		std::stable_sort(this->renderables.begin() + offset,
+		                 this->renderables.begin() + offset + layer.length,
+		                 compare);
+		offset += layer.length;
 	}
 }
 

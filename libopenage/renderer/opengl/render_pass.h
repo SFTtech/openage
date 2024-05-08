@@ -14,12 +14,12 @@ public:
 	             const std::shared_ptr<RenderTarget> &);
 
 	void set_renderables(std::vector<Renderable>);
-	void set_is_optimised(bool);
-	bool get_is_optimised() const;
+	void set_is_optimized(bool);
+	bool get_is_optimized() const;
 
 private:
 	/// Whether the renderables order is optimised
-	bool is_optimised;
+	bool is_optimized;
 };
 
 } // namespace openage::renderer::opengl

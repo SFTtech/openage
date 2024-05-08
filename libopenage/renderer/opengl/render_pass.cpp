@@ -10,20 +10,19 @@ namespace openage::renderer::opengl {
 GlRenderPass::GlRenderPass(std::vector<Renderable> renderables,
                            const std::shared_ptr<RenderTarget> &target) :
 	RenderPass(renderables, target),
-	is_optimised(false) {
-	log::log(MSG(dbg) << "Created OpenGL render pass");
+	is_optimized(false) {
 }
 
 void GlRenderPass::set_renderables(std::vector<Renderable> renderables) {
 	RenderPass::set_renderables(renderables);
-	this->is_optimised = false;
+	this->is_optimized = false;
 }
 
-bool GlRenderPass::get_is_optimised() const {
-	return this->is_optimised;
+bool GlRenderPass::get_is_optimized() const {
+	return this->is_optimized;
 }
 
-void GlRenderPass::set_is_optimised(bool flag) {
-	this->is_optimised = flag;
+void GlRenderPass::set_is_optimized(bool flag) {
+	this->is_optimized = flag;
 }
 } // namespace openage::renderer::opengl

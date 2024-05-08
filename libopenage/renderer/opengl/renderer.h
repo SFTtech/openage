@@ -60,7 +60,7 @@ public:
 
 private:
 	/// Optimize the render pass by reordering stuff
-	static void optimise(const std::shared_ptr<GlRenderPass> &);
+	static void optimize(const std::shared_ptr<GlRenderPass> &pass);
 
 	/// The GL context.
 	std::shared_ptr<GlContext> gl_context;

@@ -145,10 +145,9 @@ void GlRenderer::resize_display_target(size_t width, size_t height) {
 	this->display->resize(width, height);
 }
 
-void GlRenderer::optimise(const std::shared_ptr<GlRenderPass> &pass) {
-	if (!pass->get_is_optimised()) {
-		auto renderables = pass->get_renderables();
-		std::stable_sort(renderables.begin(), renderables.end(), [](const Renderable &a, const Renderable &b) {
+void GlRenderer::optimize(const std::shared_ptr<GlRenderPass> &pass) {
+	if (!pass->get_is_optimized()) {
+		pass->sort([](const Renderable &a, const Renderable &b) {
 			GLuint shader_a = std::dynamic_pointer_cast<GlShaderProgram>(
 								  std::dynamic_pointer_cast<GlUniformInput>(a.uniform)->get_program())
 			                      ->get_handle();
@@ -158,8 +157,7 @@ void GlRenderer::optimise(const std::shared_ptr<GlRenderPass> &pass) {
 			return shader_a < shader_b;
 		});
 
-		pass->set_renderables(renderables);
-		pass->set_is_optimised(true);
+		pass->set_is_optimized(true);
 	}
 }
 
@@ -178,7 +176,7 @@ void GlRenderer::render(const std::shared_ptr<RenderPass> &pass) {
 	// glEnable(GL_CULL_FACE);
 
 	auto gl_pass = std::dynamic_pointer_cast<GlRenderPass>(pass);
-	// GlRenderer::optimise(gl_pass);
+	GlRenderer::optimize(gl_pass);
 
 	for (auto const &obj : gl_pass->get_renderables()) {
 		if (obj.alpha_blending) {
