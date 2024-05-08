@@ -6,7 +6,7 @@ Low-level renderer for communicating with the OpenGL and Vulkan APIs.
 
 1. [Overview](#overview)
 2. [Architecture](#architecture)
-3. [Basic  Usage](#basic--usage)
+3. [Basic Usage](#basic-usage)
    1. [Window/Renderer Creation](#windowrenderer-creation)
    2. [Adding a Shader Program](#adding-a-shader-program)
    3. [Creating a Renderable](#creating-a-renderable)
@@ -14,8 +14,9 @@ Low-level renderer for communicating with the OpenGL and Vulkan APIs.
 4. [Advanced Usage](#advanced-usage)
    1. [Addressing Uniforms via numeric IDs](#addressing-uniforms-via-numeric-ids)
    2. [Framebuffers / Multiple Render Passes](#framebuffers--multiple-render-passes)
-   3. [Complex Geometry](#complex-geometry)
-   4. [Uniform Buffers](#uniform-buffers)
+   3. [Defining Layers in a Render Pass](#defining-layers-in-a-render-pass)
+   4. [Complex Geometry](#complex-geometry)
+   5. [Uniform Buffers](#uniform-buffers)
 5. [Thread-safety](#thread-safety)
 
 
@@ -44,7 +45,7 @@ The `resources` namespace provides classes for initializing and loading meshes, 
 These classes are independent from the specific OpenGL/Vulkan backends and can thus be passed to the
 abstract interface of the renderer renderer to make them usable with graphics hardware.
 
-## Basic  Usage
+## Basic Usage
 
 Code examples can be found in the [renderer demos](/libopenage/renderer/demo/).
 See the [testing docs](/doc/code/testing.md#python-demos) on how to try them out.
@@ -200,9 +201,11 @@ Finally, we can execute the rendering pipeline for all objects in the render pas
 renderer->render(pass);
 ```
 
+<!-- TODO: We have deactivated this behaviour for now
 Before rendering, the render pass optimizes the order in which renderables are rendered to
 minimize state changes on the GPU and save computation time. For example, the render pass
 sorts the renderables by shader program, since changing them is an expensive operation.
+-->
 
 After rendering is finished, the window has to be updated to display the rendered result.
 
@@ -311,6 +314,69 @@ Renderable obj {
 };
 obj.depth_test = true;
 ```
+
+
+### Defining Layers in a Render Pass
+
+Layers give more fine-grained control over the draw order of renderables in a render pass. Every
+layer has a priority that determines when associated renderables are drawn. Lower priority
+renderables are drawn earlier, higher priority renderables are drawn later.
+
+In comparison to using multiple render passes, layers do not require the (expensive) switching
+of framebuffers between passes. The tradeoff is a slight overhead when inserting new renderables
+into the render pass.
+
+To assign renderables to a layer, we have to specify the priority in the `RenderPass::add_renderables(..)`
+function call.
+
+```c++
+Renderable obj {
+  input,
+  geom
+};
+pass->add_renderables({ obj }, 42);
+```
+
+For existing layers, new renderables are always appended to the end of the layer. Renderables
+are sorted into the correct position automatically when they are added:
+
+```c++
+pass->add_renderables({ obj1, obj2, obj3 }, 42);
+pass->add_renderables({ obj4 }, 0);
+pass->add_renderables({ obj5, obj6 }, 1337);
+pass->add_renderables({ obj7 }, 0);
+// draw order: obj4, obj7, obj1, obj2, obj3, obj5, obj6
+// layers:     prio 0    | prio 42         | prio 1337
+```
+
+When no priority is specified when calling `RenderPass::add_renderables(..)`, the highest
+priority is assumed (which is `std::numeric_limits<int64_t>::max()`). Therefore,
+objects added like this are always drawn last. It also means that these two calls are equal:
+
+```c++
+pass->add_renderables({ obj });
+pass->add_renderables({ obj }, std::numeric_limits<int64_t>::max());
+```
+
+
+Layers are created lazily during insertion if no layer with the specified priority exists yet.
+We can also create layers explicitly for a specific priority:
+
+```c++
+pass->add_layer(42);
+```
+
+When executing the rendering pipeline for a specific pass, renderables are drawn layer by layer.
+By default, the renderer clears the depth buffer when switching to a new layer. This is done
+under the assumption that layers with higher priority should always draw over layers with lower
+priority, even when depth tests are active. This behavior can be deactivated when explicitly
+creating a layer:
+
+```c++
+// keep depth testing
+pass->add_layer(42, false);
+```
+
 
 ### Complex Geometry
 

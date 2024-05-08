@@ -17,6 +17,10 @@ class RenderTarget;
 /**
  * Defines a layer in the render pass. A layer is a slice of the renderables
  * that have the same priority. Each layer can have its own settings.
+ *
+ * // TODO: We could also move these settings to the render pass itself and use
+ * //       multiple render passes to achieve the same effect. Then we might
+ * //       not need layers at all.
  */
 struct Layer {
 	/// Priority of the renderables in this slice.
