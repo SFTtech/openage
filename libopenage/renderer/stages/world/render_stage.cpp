@@ -84,7 +84,7 @@ void WorldRenderStage::update() {
 						true,
 						true,
 					};
-					this->render_pass->add_renderables(display_obj, layer_pos);
+					this->render_pass->add_renderables(std::move(display_obj), layer_pos);
 					transform_unifs.push_back(layer_unifs);
 				}
 

@@ -89,7 +89,7 @@ void ScreenRenderStage::update_render_pass() {
 		output_layers.push_back(display_obj);
 	}
 	this->render_pass->clear_renderables();
-	this->render_pass->add_renderables(output_layers);
+	this->render_pass->add_renderables(std::move(output_layers));
 }
 
 } // namespace openage::renderer::screen

@@ -80,7 +80,7 @@ void HudRenderStage::update() {
 				true,
 			};
 
-			this->render_pass->add_renderables(display_obj);
+			this->render_pass->add_renderables(std::move(display_obj));
 			this->drag_object->clear_requires_renderable();
 
 			this->drag_object->set_uniforms(transform_unifs);

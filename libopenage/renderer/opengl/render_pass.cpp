@@ -7,24 +7,24 @@
 
 namespace openage::renderer::opengl {
 
-GlRenderPass::GlRenderPass(std::vector<Renderable> renderables,
+GlRenderPass::GlRenderPass(std::vector<Renderable> &&renderables,
                            const std::shared_ptr<RenderTarget> &target) :
-	RenderPass(renderables, target),
+	RenderPass(std::move(renderables), target),
 	is_optimized(false) {
 }
 
-void GlRenderPass::set_renderables(std::vector<Renderable> renderables) {
-	RenderPass::set_renderables(renderables);
+void GlRenderPass::set_renderables(std::vector<Renderable> &&renderables) {
+	RenderPass::set_renderables(std::move(renderables));
 	this->is_optimized = false;
 }
 
-void GlRenderPass::add_renderables(std::vector<Renderable> renderables, int64_t priority) {
-	RenderPass::add_renderables(renderables, priority);
+void GlRenderPass::add_renderables(std::vector<Renderable> &&renderables, int64_t priority) {
+	RenderPass::add_renderables(std::move(renderables), priority);
 	this->is_optimized = false;
 }
 
-void GlRenderPass::add_renderables(Renderable renderable, int64_t priority) {
-	RenderPass::add_renderables(renderable, priority);
+void GlRenderPass::add_renderables(Renderable &&renderable, int64_t priority) {
+	RenderPass::add_renderables(std::move(renderable), priority);
 	this->is_optimized = false;
 }
 

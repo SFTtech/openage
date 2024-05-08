@@ -7,7 +7,7 @@
 
 namespace openage::renderer {
 
-RenderPass::RenderPass(std::vector<Renderable> renderables,
+RenderPass::RenderPass(std::vector<Renderable> &&renderables,
                        const std::shared_ptr<RenderTarget> &target) :
 	renderables{},
 	target{target},
@@ -16,7 +16,7 @@ RenderPass::RenderPass(std::vector<Renderable> renderables,
 	this->add_layer(0, std::numeric_limits<int64_t>::max());
 
 	// Add the renderables to the pass
-	this->add_renderables(renderables);
+	this->add_renderables(std::move(renderables));
 
 	log::log(MSG(dbg) << "Created render pass");
 }
@@ -29,12 +29,12 @@ void RenderPass::set_target(const std::shared_ptr<RenderTarget> &target) {
 	this->target = target;
 }
 
-void RenderPass::set_renderables(std::vector<Renderable> renderables) {
+void RenderPass::set_renderables(std::vector<Renderable> &&renderables) {
 	this->clear_renderables();
-	this->add_renderables(renderables);
+	this->add_renderables(std::move(renderables));
 }
 
-void RenderPass::add_renderables(std::vector<Renderable> renderables, int64_t priority) {
+void RenderPass::add_renderables(std::vector<Renderable> &&renderables, int64_t priority) {
 	size_t renderables_index = 0;
 	size_t layer_index = 0;
 	int64_t current_priority = std::numeric_limits<int64_t>::min();
@@ -48,7 +48,9 @@ void RenderPass::add_renderables(std::vector<Renderable> renderables, int64_t pr
 		layer_index = i;
 	}
 
-	this->renderables.insert(this->renderables.begin() + renderables_index, renderables.begin(), renderables.end());
+	this->renderables.insert(this->renderables.begin() + renderables_index,
+	                         std::make_move_iterator(renderables.begin()),
+	                         std::make_move_iterator(renderables.end()));
 
 	if (current_priority != priority) {
 		layer_index += 1;
@@ -58,7 +60,7 @@ void RenderPass::add_renderables(std::vector<Renderable> renderables, int64_t pr
 	this->layers.at(layer_index).length += renderables.size();
 }
 
-void RenderPass::add_renderables(Renderable renderable, int64_t priority) {
+void RenderPass::add_renderables(Renderable &&renderable, int64_t priority) {
 	this->add_renderables(std::vector<Renderable>{std::move(renderable)}, priority);
 }
 

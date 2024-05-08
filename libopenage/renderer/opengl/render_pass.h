@@ -10,12 +10,12 @@ namespace openage::renderer::opengl {
 
 class GlRenderPass final : public RenderPass {
 public:
-	GlRenderPass(std::vector<Renderable>,
-	             const std::shared_ptr<RenderTarget> &);
+	GlRenderPass(std::vector<Renderable> &&renderables,
+	             const std::shared_ptr<RenderTarget> &target);
 
-	void set_renderables(std::vector<Renderable> renderables);
-	void add_renderables(std::vector<Renderable> renderables, int64_t priority = LAYER_PRIORITY_MAX);
-	void add_renderables(Renderable renderable, int64_t priority = LAYER_PRIORITY_MAX);
+	void set_renderables(std::vector<Renderable> &&renderables);
+	void add_renderables(std::vector<Renderable> &&renderables, int64_t priority = LAYER_PRIORITY_MAX);
+	void add_renderables(Renderable &&renderable, int64_t priority = LAYER_PRIORITY_MAX);
 
 	void set_is_optimized(bool);
 	bool get_is_optimized() const;
