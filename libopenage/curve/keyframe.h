@@ -27,17 +27,46 @@ public:
 	 * New, default-constructed element at the given time
 	 */
 	Keyframe(const time::time_t &time) :
-		time{time} {}
+		timestamp{time} {}
 
 	/**
 	 * New element fron time and value
 	 */
 	Keyframe(const time::time_t &time, const T &value) :
-		time{time},
-		value{value} {}
+		value{value},
+		timestamp{time} {}
 
-	const time::time_t time = time::TIME_MIN;
+	/**
+	 * Get the time of this keyframe.
+	 *
+	 * @return Keyframe time.
+	 */
+	const time::time_t &time() const {
+		return this->timestamp;
+	}
+
+	/**
+	 * Get the value of this keyframe.
+	 *
+	 * @return Keyframe value.
+	 */
+	const T &val() const {
+		return this->value;
+	}
+
+public:
+	/**
+	 * Value of the keyframe.
+	 *
+	 * Can be modified by the curve if necessary.
+	 */
 	T value = T{};
+
+private:
+	/**
+	 * Time of the keyframe.
+	 */
+	time::time_t timestamp = time::TIME_MIN;
 };
 
 } // namespace openage::curve
