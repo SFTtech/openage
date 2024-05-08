@@ -2,18 +2,19 @@
 
 #include "render_pass.h"
 
-#include <limits>
-
 
 namespace openage::renderer {
 
 RenderPass::RenderPass(std::vector<Renderable> renderables,
                        const std::shared_ptr<RenderTarget> &target) :
-	renderables(std::move(renderables)),
+	renderables{},
 	target{target},
 	layers{} {
 	// Add a default layer with the lowest priority
 	this->add_layer(0, std::numeric_limits<int64_t>::max());
+
+	// Add the renderables to the pass
+	this->add_renderables(renderables);
 }
 
 const std::shared_ptr<RenderTarget> &RenderPass::get_target() const {
@@ -25,17 +26,8 @@ void RenderPass::set_target(const std::shared_ptr<RenderTarget> &target) {
 }
 
 void RenderPass::set_renderables(std::vector<Renderable> renderables) {
-	this->renderables = std::move(renderables);
-}
-
-void RenderPass::add_renderables(std::vector<Renderable> renderables) {
-	this->renderables.insert(this->renderables.end(), renderables.begin(), renderables.end());
-
-	this->layers.front().length += renderables.size();
-}
-
-void RenderPass::add_renderables(Renderable renderable) {
-	this->add_renderables(std::vector<Renderable>{std::move(renderable)});
+	this->clear_renderables();
+	this->add_renderables(renderables);
 }
 
 void RenderPass::add_renderables(std::vector<Renderable> renderables, int64_t priority) {
@@ -91,7 +83,13 @@ void RenderPass::add_layer(size_t index, int64_t priority) {
 }
 
 void RenderPass::clear_renderables() {
+	// Erase the renderables
 	this->renderables.clear();
+
+	// Keep layers, but reset the length of each layer
+	for (auto &layer : this->layers) {
+		layer.length = 0;
+	}
 }
 
 } // namespace openage::renderer

@@ -6,6 +6,7 @@
 #include <memory>
 #include <vector>
 
+#include "renderer/definitions.h"
 #include "renderer/renderable.h"
 
 
@@ -24,7 +25,6 @@ struct Layer {
 	size_t length;
 };
 
-
 /**
  * A render pass is a series of draw calls represented by renderables that output
  * into the given render target.
@@ -35,48 +35,56 @@ public:
 
 	/**
 	 * Get the renderables of the render pass.
+	 *
+	 * @return Renderables of the render pass.
 	 */
 	const std::vector<Renderable> &get_renderables() const;
 
 	/**
 	 * Get the layers of the render pass.
+	 *
+	 * @return Layers of the render pass.
 	 */
 	const std::vector<Layer> &get_layers() const;
 
 	/**
 	 * Set the render target to write to.
+	 *
+	 * @param target Render target.
 	 */
-	void set_target(const std::shared_ptr<RenderTarget> &);
+	void set_target(const std::shared_ptr<RenderTarget> &target);
 
 	/**
 	 * Get the render target of the render pass.
+	 *
+	 * @return Render target.
 	 */
 	const std::shared_ptr<RenderTarget> &get_target() const;
 
 	/**
 	 * Replace the current renderables with the given list of renderables.
+	 *
+	 * @param renderables New renderables.
 	 */
-	void set_renderables(std::vector<Renderable>);
-
-	/**
-	 * Append renderables to the render pass.
-	 */
-	void add_renderables(std::vector<Renderable>);
-
-	/**
-	 * Append a single renderable to the render pass.
-	 */
-	void add_renderables(Renderable);
+	void set_renderables(std::vector<Renderable> renderables);
 
 	/**
 	 * Append renderables to the render pass with a given priority.
+	 *
+	 * @param renderables New renderables.
+	 * @param priority Priority of the renderables. Layers with higher priority are drawn first.
 	 */
-	void add_renderables(std::vector<Renderable>, int64_t priority);
+	void add_renderables(std::vector<Renderable> renderables,
+	                     int64_t priority = LAYER_PRIORITY_MAX);
 
 	/**
 	 * Append a single renderable to the render pass with a given priority.
+	 *
+	 * @param renderable New renderable.
+	 * @param priority Priority of the renderable. Layers with higher priority are drawn first.
 	 */
-	void add_renderables(Renderable, int64_t priority);
+	void add_renderables(Renderable renderable,
+	                     int64_t priority = LAYER_PRIORITY_MAX);
 
 	/**
 	 * Add a new layer to the render pass.
@@ -95,11 +103,16 @@ protected:
 	/**
 	 * Create a new RenderPass. This is called from Renderer::add_render_pass,
 	 * which then creates the proper subclass of RenderPass, depending on the backend.
+	 *
+	 * @param renderables The renderables to draw.
+	 * @param target Render target to write to.
 	 */
-	RenderPass(std::vector<Renderable>, const std::shared_ptr<RenderTarget> &);
+	RenderPass(std::vector<Renderable> renderables, const std::shared_ptr<RenderTarget> &target);
 
 	/**
-	 * The renderables to parse and possibly execute.
+	 * The renderables to draw.
+	 *
+	 * Kept sorted by layer priorities (highest to lowest priority).
 	 */
 	std::vector<Renderable> renderables;
 
@@ -123,7 +136,7 @@ private:
 	 * Layers are slices of the renderables that have the same priority.
 	 * They can assign different settings to the renderables in the slice.
 	 *
-	 * Sorted from lowest to highest priority.
+	 * Sorted from highest to lowest priority.
 	 */
 	std::vector<Layer> layers;
 };

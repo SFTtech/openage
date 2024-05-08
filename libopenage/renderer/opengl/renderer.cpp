@@ -178,7 +178,7 @@ void GlRenderer::render(const std::shared_ptr<RenderPass> &pass) {
 	// glEnable(GL_CULL_FACE);
 
 	auto gl_pass = std::dynamic_pointer_cast<GlRenderPass>(pass);
-	GlRenderer::optimise(gl_pass);
+	// GlRenderer::optimise(gl_pass);
 
 	for (auto const &obj : gl_pass->get_renderables()) {
 		if (obj.alpha_blending) {
