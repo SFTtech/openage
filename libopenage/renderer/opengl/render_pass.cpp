@@ -14,10 +14,6 @@ GlRenderPass::GlRenderPass(std::vector<Renderable> renderables,
 	log::log(MSG(dbg) << "Created OpenGL render pass");
 }
 
-const std::vector<Renderable> &GlRenderPass::get_renderables() const {
-	return this->renderables;
-}
-
 void GlRenderPass::set_renderables(std::vector<Renderable> renderables) {
 	RenderPass::set_renderables(renderables);
 	this->is_optimised = false;

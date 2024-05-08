@@ -14,7 +14,6 @@ public:
 	             const std::shared_ptr<RenderTarget> &);
 
 	void set_renderables(std::vector<Renderable>);
-	const std::vector<Renderable> &get_renderables() const;
 	void set_is_optimised(bool);
 	bool get_is_optimised() const;
 

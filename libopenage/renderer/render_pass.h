@@ -14,12 +14,13 @@ namespace renderer {
 class RenderTarget;
 
 /**
- * A slice of renderables with the same priority.
+ * Defines a layer in the render pass. A layer is a slice of the renderables
+ * that have the same priority. Each layer can have its own settings.
  */
-struct priority_slice {
-	/// The priority of the renderables in this slice.
+struct Layer {
+	/// Priority of the renderables in this slice.
 	int64_t priority;
-	/// The number of renderables in this slice.
+	/// Number of renderables in this slice.
 	size_t length;
 };
 
@@ -31,6 +32,16 @@ struct priority_slice {
 class RenderPass {
 public:
 	virtual ~RenderPass() = default;
+
+	/**
+	 * Get the renderables of the render pass.
+	 */
+	const std::vector<Renderable> &get_renderables() const;
+
+	/**
+	 * Get the layers of the render pass.
+	 */
+	const std::vector<Layer> &get_layers() const;
 
 	/**
 	 * Set the render target to write to.
@@ -68,6 +79,14 @@ public:
 	void add_renderables(Renderable, int64_t priority);
 
 	/**
+	 * Add a new layer to the render pass.
+	 *
+	 * @param priority Priority of the layer. Layers with higher priority are drawn first.
+	 * @param clear_depth Whether to clear the depth buffer before rendering this layer.
+	 */
+	void add_layer(int64_t priority);
+
+	/**
 	 * Clear the list of renderables
 	 */
 	void clear_renderables();
@@ -86,19 +105,27 @@ protected:
 
 private:
 	/**
+	 * Add a new layer to the render pass at the given index.
+	 *
+	 * @param index Index in \p layers member to insert the new layer.
+	 * @param priority Priority of the layer. Layers with higher priority are drawn first.
+	 */
+	void add_layer(size_t index, int64_t priority);
+
+	/**
 	 * Render target to write to.
 	 */
 	std::shared_ptr<RenderTarget> target;
 
 	/**
-	 * Stores the number of renderables in the \p renderables member that
-	 * have the same priority.
+	 * Stores the layers of the render pass.
 	 *
-	 * The vector is sorted by priority, so the index of the first renderable
-	 * with a given priority can be retrieved by adding up the lengths of all
-	 * priority slices with a lower priority.
+	 * Layers are slices of the renderables that have the same priority.
+	 * They can assign different settings to the renderables in the slice.
+	 *
+	 * Sorted from lowest to highest priority.
 	 */
-	std::vector<priority_slice> priority_slices;
+	std::vector<Layer> layers;
 };
 
 } // namespace renderer
