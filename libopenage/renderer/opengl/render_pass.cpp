@@ -18,6 +18,16 @@ void GlRenderPass::set_renderables(std::vector<Renderable> renderables) {
 	this->is_optimized = false;
 }
 
+void GlRenderPass::add_renderables(std::vector<Renderable> renderables, int64_t priority) {
+	RenderPass::add_renderables(renderables, priority);
+	this->is_optimized = false;
+}
+
+void GlRenderPass::add_renderables(Renderable renderable, int64_t priority) {
+	RenderPass::add_renderables(renderable, priority);
+	this->is_optimized = false;
+}
+
 bool GlRenderPass::get_is_optimized() const {
 	return this->is_optimized;
 }
