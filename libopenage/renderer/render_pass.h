@@ -23,6 +23,8 @@ struct Layer {
 	int64_t priority;
 	/// Number of renderables in this slice.
 	size_t length;
+	/// Whether to clear the depth buffer before rendering this layer.
+	bool clear_depth = true;
 };
 
 /**
@@ -72,7 +74,7 @@ public:
 	 * Append renderables to the render pass with a given priority.
 	 *
 	 * @param renderables New renderables.
-	 * @param priority Priority of the renderables. Layers with higher priority are drawn first.
+	 * @param priority Priority of the renderables. Layers with higher priority are drawn later.
 	 */
 	void add_renderables(std::vector<Renderable> &&renderables,
 	                     int64_t priority = LAYER_PRIORITY_MAX);
@@ -81,7 +83,7 @@ public:
 	 * Append a single renderable to the render pass with a given priority.
 	 *
 	 * @param renderable New renderable.
-	 * @param priority Priority of the renderable. Layers with higher priority are drawn first.
+	 * @param priority Priority of the renderable. Layers with higher priority are drawn later.
 	 */
 	void add_renderables(Renderable &&renderable,
 	                     int64_t priority = LAYER_PRIORITY_MAX);
@@ -123,7 +125,7 @@ protected:
 	/**
 	 * The renderables to draw.
 	 *
-	 * Kept sorted by layer priorities (highest to lowest priority).
+	 * Kept sorted by layer priorities (lowest to highest priority).
 	 */
 	std::vector<Renderable> renderables;
 
@@ -147,7 +149,7 @@ private:
 	 * Layers are slices of the renderables that have the same priority.
 	 * They can assign different settings to the renderables in the slice.
 	 *
-	 * Sorted from highest to lowest priority.
+	 * Sorted from lowest to highest priority.
 	 */
 	std::vector<Layer> layers;
 };

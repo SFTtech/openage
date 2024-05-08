@@ -13,7 +13,7 @@ RenderPass::RenderPass(std::vector<Renderable> &&renderables,
 	target{target},
 	layers{} {
 	// Add a default layer with the lowest priority
-	this->add_layer(0, std::numeric_limits<int64_t>::max());
+	this->add_layer(0, LAYER_PRIORITY_MAX);
 
 	// Add the renderables to the pass
 	this->add_renderables(std::move(renderables));
@@ -42,12 +42,21 @@ void RenderPass::add_renderables(std::vector<Renderable> &&renderables, int64_t 
 	size_t layer_index = 0;
 
 	// Priority of the last observed layer
-	int64_t current_priority = std::numeric_limits<int64_t>::min();
+	int64_t current_priority = LAYER_PRIORITY_MAX;
+
+	if (priority == LAYER_PRIORITY_MAX) {
+		// Add the renderables to the last (default) layer
+		this->renderables.insert(this->renderables.end(),
+		                         std::make_move_iterator(renderables.begin()),
+		                         std::make_move_iterator(renderables.end()));
+		this->layers.back().length += renderables.size();
+		return;
+	}
 
 	// Find the index in renderables to insert the renderables
 	for (size_t i = 0; i < this->layers.size(); i++) {
 		auto &layer = this->layers.at(i);
-		if (layer.priority < priority) {
+		if (layer.priority > priority) {
 			// Priority of the next layer is lower than the desired priority
 			// Insert the renderables directly before this layer
 			break;
@@ -63,7 +72,6 @@ void RenderPass::add_renderables(std::vector<Renderable> &&renderables, int64_t 
 
 	if (current_priority != priority) {
 		// Lazily add a new layer with the desired priority
-		layer_index += 1;
 		this->add_layer(layer_index, priority);
 	}
 
@@ -78,7 +86,7 @@ void RenderPass::add_renderables(Renderable &&renderable, int64_t priority) {
 void RenderPass::add_layer(int64_t priority) {
 	size_t layer_index = 0;
 	for (const auto &layer : this->layers) {
-		if (layer.priority < priority) {
+		if (layer.priority > priority) {
 			break;
 		}
 		layer_index++;

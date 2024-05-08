@@ -33,9 +33,9 @@ GlRenderer::GlRenderer(const std::shared_ptr<GlContext> &ctx,
 	// global GL alpha blending settings
 	// glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glBlendFuncSeparate(
-		GL_SRC_ALPHA,           // source (overlaying) RGB factor
+		GL_SRC_ALPHA,           // source (incoming) RGB factor
 		GL_ONE_MINUS_SRC_ALPHA, // destination (underlying) RGB factor
-		GL_ONE,                 // source (overlaying) alpha factor
+		GL_ONE,                 // source (incoming) alpha factor
 		GL_ONE_MINUS_SRC_ALPHA  // destination (underlying) alpha factor
 	);
 
@@ -179,34 +179,80 @@ void GlRenderer::render(const std::shared_ptr<RenderPass> &pass) {
 	// TODO: Optimization is disabled for now. Figure out how to do this without calling it every frame
 	// GlRenderer::optimize(gl_pass);
 
-	for (auto const &obj : gl_pass->get_renderables()) {
-		if (obj.alpha_blending) {
-			glEnable(GL_BLEND);
-		}
-		else {
-			glDisable(GL_BLEND);
+	// render all objects in the pass
+	auto &layers = gl_pass->get_layers();
+	auto &renderables = gl_pass->get_renderables();
+
+	// Draw by layers
+	size_t offset = 0;
+	size_t next_offset = 0;
+	for (auto const &layer : layers) {
+		if (layer.clear_depth) {
+			glClear(GL_DEPTH_BUFFER_BIT);
 		}
 
-		if (obj.depth_test) {
-			glEnable(GL_DEPTH_TEST);
-		}
-		else {
-			glDisable(GL_DEPTH_TEST);
+		next_offset = offset + layer.length;
+		for (size_t i = offset; i < next_offset; i++) {
+			const auto &obj = renderables[i];
+			if (obj.alpha_blending) {
+				glEnable(GL_BLEND);
+			}
+			else {
+				glDisable(GL_BLEND);
+			}
+
+			if (obj.depth_test) {
+				glEnable(GL_DEPTH_TEST);
+			}
+			else {
+				glDisable(GL_DEPTH_TEST);
+			}
+
+			auto in = std::dynamic_pointer_cast<GlUniformInput>(obj.uniform);
+			auto program = std::static_pointer_cast<GlShaderProgram>(in->get_program());
+
+			// this also calls program->use()
+			program->update_uniforms(in);
+
+			// draw the geometry
+			if (obj.geometry != nullptr) {
+				auto geom = std::dynamic_pointer_cast<GlGeometry>(obj.geometry);
+				// TODO read obj.blend + family
+				geom->draw();
+			}
 		}
 
-		auto in = std::dynamic_pointer_cast<GlUniformInput>(obj.uniform);
-		auto program = std::static_pointer_cast<GlShaderProgram>(in->get_program());
-
-		// this also calls program->use()
-		program->update_uniforms(in);
-
-		// draw the geometry
-		if (obj.geometry != nullptr) {
-			auto geom = std::dynamic_pointer_cast<GlGeometry>(obj.geometry);
-			// TODO read obj.blend + family
-			geom->draw();
-		}
+		offset = next_offset;
 	}
+
+	// for (auto const &obj : gl_pass->get_renderables()) {
+	// 	if (obj.alpha_blending) {
+	// 		glEnable(GL_BLEND);
+	// 	}
+	// 	else {
+	// 		glDisable(GL_BLEND);
+	// 	}
+
+	// 	if (obj.depth_test) {
+	// 		glEnable(GL_DEPTH_TEST);
+	// 	}
+	// 	else {
+	// 		glDisable(GL_DEPTH_TEST);
+	// 	}
+
+	// 	auto in = std::dynamic_pointer_cast<GlUniformInput>(obj.uniform);
+	// 	auto program = std::static_pointer_cast<GlShaderProgram>(in->get_program());
+
+	// 	// this also calls program->use()
+	// 	program->update_uniforms(in);
+
+	// 	// draw the geometry
+	// 	if (obj.geometry != nullptr) {
+	// 		auto geom = std::dynamic_pointer_cast<GlGeometry>(obj.geometry);
+	// 		// TODO read obj.blend + family
+	// 		geom->draw();
+	// 	}
+	// }
 }
 
 } // namespace openage::renderer::opengl
