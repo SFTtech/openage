@@ -23,10 +23,8 @@ class RenderTarget;
  * //       not need layers at all.
  */
 struct Layer {
-	/// Priority of the renderables in this slice.
+	/// Priority of the renderables.
 	int64_t priority;
-	/// Number of renderables in this slice.
-	size_t length;
 	/// Whether to clear the depth buffer before rendering this layer.
 	bool clear_depth = true;
 };
@@ -44,7 +42,7 @@ public:
 	 *
 	 * @return Renderables of the render pass.
 	 */
-	const std::vector<Renderable> &get_renderables() const;
+	const std::vector<std::vector<Renderable>> &get_renderables() const;
 
 	/**
 	 * Get the layers of the render pass.
@@ -131,7 +129,7 @@ protected:
 	 *
 	 * Kept sorted by layer priorities (lowest to highest priority).
 	 */
-	std::vector<Renderable> renderables;
+	std::vector<std::vector<Renderable>> renderables;
 
 private:
 	/**

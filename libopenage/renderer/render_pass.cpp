@@ -21,7 +21,7 @@ RenderPass::RenderPass(std::vector<Renderable> &&renderables,
 	log::log(MSG(dbg) << "Created render pass");
 }
 
-const std::vector<Renderable> &RenderPass::get_renderables() const {
+const std::vector<std::vector<Renderable>> &RenderPass::get_renderables() const {
 	return this->renderables;
 }
 
@@ -43,23 +43,19 @@ void RenderPass::set_renderables(std::vector<Renderable> &&renderables) {
 }
 
 void RenderPass::add_renderables(std::vector<Renderable> &&renderables, int64_t priority) {
-	// Insertion index for the renderables
-	size_t renderables_index = 0;
+	if (priority == LAYER_PRIORITY_MAX) {
+		// Add the renderables to the last (default) layer
+		this->renderables.back().insert(this->renderables.back().end(),
+		                                std::make_move_iterator(renderables.begin()),
+		                                std::make_move_iterator(renderables.end()));
+		return;
+	}
 
 	// Index of the layer where the renderables will be inserted
 	size_t layer_index = 0;
 
 	// Priority of the last observed layer
 	int64_t current_priority = LAYER_PRIORITY_MAX;
-
-	if (priority == LAYER_PRIORITY_MAX) {
-		// Add the renderables to the last (default) layer
-		this->renderables.insert(this->renderables.end(),
-		                         std::make_move_iterator(renderables.begin()),
-		                         std::make_move_iterator(renderables.end()));
-		this->layers.back().length += renderables.size();
-		return;
-	}
 
 	// Find the index in renderables to insert the renderables
 	for (size_t i = 0; i < this->layers.size(); i++) {
@@ -69,22 +65,18 @@ void RenderPass::add_renderables(std::vector<Renderable> &&renderables, int64_t 
 			// Insert the renderables directly before this layer
 			break;
 		}
-		renderables_index += layer.length;
 		current_priority = layer.priority;
 		layer_index = i;
 	}
-
-	this->renderables.insert(this->renderables.begin() + renderables_index,
-	                         std::make_move_iterator(renderables.begin()),
-	                         std::make_move_iterator(renderables.end()));
 
 	if (current_priority != priority) {
 		// Lazily add a new layer with the desired priority
 		this->add_layer(layer_index, priority);
 	}
 
-	// Update the length of the layer with the number of added renderables
-	this->layers.at(layer_index).length += renderables.size();
+	this->renderables[layer_index].insert(this->renderables[layer_index].end(),
+	                                      std::make_move_iterator(renderables.begin()),
+	                                      std::make_move_iterator(renderables.end()));
 }
 
 void RenderPass::add_renderables(Renderable &&renderable, int64_t priority) {
@@ -104,26 +96,22 @@ void RenderPass::add_layer(int64_t priority, bool clear_depth) {
 }
 
 void RenderPass::add_layer(size_t index, int64_t priority, bool clear_depth) {
-	this->layers.insert(this->layers.begin() + index, Layer{priority, 0, clear_depth});
+	this->layers.insert(this->layers.begin() + index, Layer{priority, clear_depth});
+	this->renderables.insert(this->renderables.begin() + index, std::vector<Renderable>{});
 }
 
 void RenderPass::clear_renderables() {
-	// Erase all renderables
-	this->renderables.clear();
-
 	// Keep layer definitions, but reset the length of each layer to 0
-	for (auto &layer : this->layers) {
-		layer.length = 0;
+	for (size_t i = 0; i < this->layers.size(); i++) {
+		this->renderables[i].clear();
 	}
 }
 
 void RenderPass::sort(const compare_func &compare) {
-	size_t offset = 0;
-	for (auto &layer : this->layers) {
-		std::stable_sort(this->renderables.begin() + offset,
-		                 this->renderables.begin() + offset + layer.length,
+	for (size_t i = 0; i < this->layers.size(); i++) {
+		std::stable_sort(this->renderables[i].begin(),
+		                 this->renderables[i].end(),
 		                 compare);
-		offset += layer.length;
 	}
 }
 
