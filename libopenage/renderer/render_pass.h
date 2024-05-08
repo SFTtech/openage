@@ -92,9 +92,9 @@ public:
 	 * Add a new layer to the render pass.
 	 *
 	 * @param priority Priority of the layer. Layers with higher priority are drawn first.
-	 * @param clear_depth Whether to clear the depth buffer before rendering this layer.
+	 * @param clear_depth If true clears the depth buffer before rendering this layer.
 	 */
-	void add_layer(int64_t priority);
+	void add_layer(int64_t priority, bool clear_depth = true);
 
 	/**
 	 * Clear the list of renderables
@@ -135,8 +135,9 @@ private:
 	 *
 	 * @param index Index in \p layers member to insert the new layer.
 	 * @param priority Priority of the layer. Layers with higher priority are drawn first.
+	 * @param clear_depth If true clears the depth buffer before rendering this layer.
 	 */
-	void add_layer(size_t index, int64_t priority);
+	void add_layer(size_t index, int64_t priority, bool clear_depth = true);
 
 	/**
 	 * Render target to write to.

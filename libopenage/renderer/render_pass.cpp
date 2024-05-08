@@ -21,6 +21,14 @@ RenderPass::RenderPass(std::vector<Renderable> &&renderables,
 	log::log(MSG(dbg) << "Created render pass");
 }
 
+const std::vector<Renderable> &RenderPass::get_renderables() const {
+	return this->renderables;
+}
+
+const std::vector<Layer> &RenderPass::get_layers() const {
+	return this->layers;
+}
+
 const std::shared_ptr<RenderTarget> &RenderPass::get_target() const {
 	return this->target;
 }
@@ -83,7 +91,7 @@ void RenderPass::add_renderables(Renderable &&renderable, int64_t priority) {
 	this->add_renderables(std::vector<Renderable>{std::move(renderable)}, priority);
 }
 
-void RenderPass::add_layer(int64_t priority) {
+void RenderPass::add_layer(int64_t priority, bool clear_depth) {
 	size_t layer_index = 0;
 	for (const auto &layer : this->layers) {
 		if (layer.priority > priority) {
@@ -92,19 +100,11 @@ void RenderPass::add_layer(int64_t priority) {
 		layer_index++;
 	}
 
-	this->add_layer(layer_index, priority);
+	this->add_layer(layer_index, priority, clear_depth);
 }
 
-const std::vector<Renderable> &RenderPass::get_renderables() const {
-	return this->renderables;
-}
-
-const std::vector<Layer> &RenderPass::get_layers() const {
-	return this->layers;
-}
-
-void RenderPass::add_layer(size_t index, int64_t priority) {
-	this->layers.insert(this->layers.begin() + index, Layer{priority, 0});
+void RenderPass::add_layer(size_t index, int64_t priority, bool clear_depth) {
+	this->layers.insert(this->layers.begin() + index, Layer{priority, 0, clear_depth});
 }
 
 void RenderPass::clear_renderables() {
