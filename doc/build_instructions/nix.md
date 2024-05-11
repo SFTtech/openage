@@ -1,13 +1,13 @@
 # Building and developing on Nix based systems
 
-The openage repository is a [nix flake](https://nixos.wiki/wiki/Flakes) that
+The openage repository is a [nix flake](https://wiki.nixos.org/wiki/Flakes) that
 allow Nix users to easily build, install and develop openage.
 
 To build openage using nix
 
 1. make sure you have nix with flakes enabled, either by permanent system
    configuration or by using command line flags, as described on
-   [the wiki](https://nixos.wiki/wiki/Flakes);
+   [the wiki](https://wiki.nixos.org/wiki/Flakes);
 2. clone this repository and `cd` into it;
 3. run `nix build .#openage` to start the build process;
 4. the built artifact will be in `./result`.
