@@ -1,4 +1,4 @@
-// Copyright 2018-2023 the openage authors. See copying.md for legal info.
+// Copyright 2018-2024 the openage authors. See copying.md for legal info.
 
 #include "game.h"
 
@@ -13,6 +13,7 @@
 #include "assets/modpack.h"
 #include "gamestate/entity_factory.h"
 #include "gamestate/game_state.h"
+#include "gamestate/map.h"
 #include "gamestate/terrain.h"
 #include "gamestate/terrain_factory.h"
 #include "gamestate/universe.h"
@@ -53,7 +54,7 @@ const std::shared_ptr<GameState> &Game::get_state() const {
 
 void Game::attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory) {
 	this->universe->attach_renderer(render_factory);
-	this->state->get_terrain()->attach_renderer(render_factory);
+	this->state->get_map()->get_terrain()->attach_renderer(render_factory);
 }
 
 void Game::load_data(const std::shared_ptr<assets::ModManager> &mod_manager) {
@@ -127,8 +128,6 @@ void Game::load_path(const util::Path &base_dir,
 }
 
 void Game::generate_terrain(const std::shared_ptr<TerrainFactory> &terrain_factory) {
-	auto terrain = terrain_factory->add_terrain();
-
 	auto chunk0 = terrain_factory->add_chunk(this->state,
 	                                         util::Vector2s{10, 10},
 	                                         coord::tile_delta{0, 0});
@@ -141,12 +140,11 @@ void Game::generate_terrain(const std::shared_ptr<TerrainFactory> &terrain_facto
 	auto chunk3 = terrain_factory->add_chunk(this->state,
 	                                         util::Vector2s{10, 10},
 	                                         coord::tile_delta{10, 10});
-	terrain->add_chunk(chunk0);
-	terrain->add_chunk(chunk1);
-	terrain->add_chunk(chunk2);
-	terrain->add_chunk(chunk3);
 
-	this->state->set_terrain(terrain);
+	auto terrain = terrain_factory->add_terrain({20, 20}, {chunk0, chunk1, chunk2, chunk3});
+
+	auto map = std::make_shared<Map>(terrain);
+	this->state->set_map(map);
 }
 
 } // namespace openage::gamestate
