@@ -1,4 +1,4 @@
-# Copyright 2019-2023 the openage authors. See copying.md for legal info.
+# Copyright 2019-2024 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-instance-attributes,too-few-public-methods
 
@@ -28,7 +28,7 @@ if typing.TYPE_CHECKING:
         AgeUpgrade, BuildingLineUpgrade, BuildingUnlock, CivBonus, GenieTechEffectBundleGroup, \
         InitiatedTech, StatUpgrade, UnitLineUpgrade, UnitUnlock
     from openage.convert.entity_object.conversion.aoc.genie_terrain import GenieTerrainObject, \
-        GenieTerrainGroup
+        GenieTerrainGroup, GenieTerrainRestriction
     from openage.convert.entity_object.conversion.aoc.genie_unit import GenieUnitObject, \
         GenieAmbientGroup, GenieBuildingLineGroup, GenieMonkGroup, GenieUnitLineGroup, \
         GenieUnitTaskGroup, GenieUnitTransformGroup, GenieVariantGroup, GenieVillagerGroup, \
@@ -75,6 +75,7 @@ class GenieObjectContainer(ConverterObjectContainer):
         self.genie_graphics: dict[int, GenieGraphic]  = {}
         self.genie_sounds: dict[int, GenieSound]  = {}
         self.genie_terrains: dict[int, GenieTerrainObject]  = {}
+        self.genie_terrain_restrictions: dict[int, GenieTerrainRestriction]  = {}
 
         # Phase 2: API-like objects
         # ConverterObjectGroup types (things that will become

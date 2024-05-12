@@ -1,4 +1,4 @@
-# Copyright 2020-2023 the openage authors. See copying.md for legal info.
+# Copyright 2020-2024 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-branches,too-many-statements,too-many-locals
 #
@@ -126,6 +126,7 @@ class SWGBCCProcessor:
         AoCProcessor.extract_genie_graphics(gamespec, dataset)
         AoCProcessor.extract_genie_sounds(gamespec, dataset)
         AoCProcessor.extract_genie_terrains(gamespec, dataset)
+        AoCProcessor.extract_genie_restrictions(gamespec, dataset)
 
         return dataset
 

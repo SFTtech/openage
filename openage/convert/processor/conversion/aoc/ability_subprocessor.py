@@ -4807,8 +4807,8 @@ class AoCAbilitySubprocessor:
 
         # Costs
         path_costs = {
-            dataset.pregen_nyan_objects["util.path.types.Land"]: 255,  # impassable
-            dataset.pregen_nyan_objects["util.path.types.Water"]: 255,  # impassable
+            dataset.pregen_nyan_objects["util.path.types.Land"].get_nyan_object(): 255,  # impassable
+            dataset.pregen_nyan_objects["util.path.types.Water"].get_nyan_object(): 255,  # impassable
         }
         ability_raw_api_object.add_raw_member("path_costs",
                                               path_costs,

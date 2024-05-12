@@ -1,4 +1,4 @@
-# Copyright 2019-2023 the openage authors. See copying.md for legal info.
+# Copyright 2019-2024 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-branches,too-many-statements
 # pylint: disable=too-many-locals,too-many-public-methods
@@ -25,8 +25,8 @@ from ....entity_object.conversion.aoc.genie_tech import BuildingLineUpgrade
 from ....entity_object.conversion.aoc.genie_tech import GenieTechObject
 from ....entity_object.conversion.aoc.genie_tech import StatUpgrade, InitiatedTech, \
     BuildingUnlock
-from ....entity_object.conversion.aoc.genie_terrain import GenieTerrainGroup
-from ....entity_object.conversion.aoc.genie_terrain import GenieTerrainObject
+from ....entity_object.conversion.aoc.genie_terrain import GenieTerrainGroup, \
+    GenieTerrainObject, GenieTerrainRestriction
 from ....entity_object.conversion.aoc.genie_unit import GenieAmbientGroup, \
     GenieGarrisonMode
 from ....entity_object.conversion.aoc.genie_unit import GenieStackBuildingGroup, \
@@ -134,6 +134,7 @@ class AoCProcessor:
         cls.extract_genie_graphics(gamespec, dataset)
         cls.extract_genie_sounds(gamespec, dataset)
         cls.extract_genie_terrains(gamespec, dataset)
+        cls.extract_genie_restrictions(gamespec, dataset)
 
         return dataset
 
@@ -478,15 +479,35 @@ class AoCProcessor:
         # call hierarchy: wrapper[0]->terrains
         raw_terrains = gamespec[0]["terrains"].value
 
-        index = 0
-        for raw_terrain in raw_terrains:
+        for index, raw_terrain in enumerate(raw_terrains):
             terrain_index = index
             terrain_members = raw_terrain.value
 
             terrain = GenieTerrainObject(terrain_index, full_data_set, members=terrain_members)
             full_data_set.genie_terrains.update({terrain.get_id(): terrain})
 
-            index += 1
+    @staticmethod
+    def extract_genie_restrictions(
+        gamespec: ArrayMember,
+        full_data_set: GenieObjectContainer
+    ) -> None:
+        """
+        Extract terrain restrictions from the game data.
+
+        :param gamespec: Gamedata from empires.dat file.
+        :type gamespec: class: ...dataformat.value_members.ArrayMember
+        """
+        # call hierarchy: wrapper[0]->terrains
+        raw_restrictions = gamespec[0]["terrain_restrictions"].value
+
+        for index, raw_restriction in enumerate(raw_restrictions):
+            restriction_index = index
+            restriction_members = raw_restriction.value
+
+            restriction = GenieTerrainRestriction(restriction_index,
+                                                  full_data_set,
+                                                  members=restriction_members)
+            full_data_set.genie_terrain_restrictions.update({restriction.get_id(): restriction})
 
     @staticmethod
     def create_unit_lines(full_data_set: GenieObjectContainer) -> None:
