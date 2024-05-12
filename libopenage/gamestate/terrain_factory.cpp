@@ -170,9 +170,10 @@ static const std::vector<std::array<size_t, 100>> layout_chunks{
 };
 
 
-std::shared_ptr<Terrain> TerrainFactory::add_terrain() {
+std::shared_ptr<Terrain> TerrainFactory::add_terrain(const util::Vector2s &size,
+                                                     std::vector<std::shared_ptr<TerrainChunk>> &&chunks) {
 	// TODO: Replace this with a proper terrain generator.
-	auto terrain = std::make_shared<Terrain>();
+	auto terrain = std::make_shared<Terrain>(size, std::move(chunks));
 
 	return terrain;
 }
