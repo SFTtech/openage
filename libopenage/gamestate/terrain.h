@@ -30,6 +30,21 @@ public:
 	~Terrain() = default;
 
 	/**
+	 * Create a new terrain.
+	 *
+	 * Chunks must conform to these constraints:
+	 *  - All chunks that are not last in a row OR columns must have the same size (width x height).
+	 *  - All chunks that are not last in a row OR columns must be square (width == height).
+	 *  - The last chunk in a row may have a different width.
+	 *  - The last chunk in a column may have a different height.
+	 *
+	 * @param size Total size of the terrain in tiles (width x height).
+	 * @param chunks Terrain chunks.
+	 */
+	Terrain(const util::Vector2s &size,
+	        std::vector<std::shared_ptr<TerrainChunk>> &&chunks);
+
+	/**
 	 * Get the size of the terrain (in tiles).
 	 *
 	 * @return Terrain tile size (width x height).
@@ -94,22 +109,6 @@ public:
 	 *                       communication.
 	 */
 	void attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory);
-
-protected:
-	/**
-	 * Create a new terrain.
-	 *
-	 * Chunks must conform to these constraints:
-	 *  - All chunks that are not last in a row OR columns must have the same size (width x height).
-	 *  - All chunks that are not last in a row OR columns must be square (width == height).
-	 *  - The last chunk in a row may have a different width.
-	 *  - The last chunk in a column may have a different height.
-	 *
-	 * @param size Total size of the terrain in tiles (width x height).
-	 * @param chunks Terrain chunks.
-	 */
-	Terrain(const util::Vector2s &size,
-	        const std::vector<std::shared_ptr<TerrainChunk>> &&chunks);
 
 private:
 	/**
