@@ -21,7 +21,7 @@ Terrain::Terrain() :
 }
 
 Terrain::Terrain(const util::Vector2s &size,
-                 const std::vector<std::shared_ptr<TerrainChunk>> &&chunks) :
+                 std::vector<std::shared_ptr<TerrainChunk>> &&chunks) :
 	size{size},
 	chunks{std::move(chunks)} {
 	// Check if chunk is correct
@@ -33,6 +33,15 @@ Terrain::Terrain(const util::Vector2s &size,
 
 	for (const auto &chunk : this->chunks) {
 		auto chunk_size = chunk->get_size();
+
+		// Check chunk delta
+		auto chunk_offset = chunk->get_offset();
+		if (current_offset != chunk_offset) [[unlikely]] {
+			throw error::Error{ERR << "Chunk offset of chunk " << chunk->get_offset()
+			                       << " does not match position in vector: " << chunk_offset
+			                       << " (expected: " << current_offset << ")"};
+		}
+
 		current_offset.ne += chunk_size[0];
 
 		// Wrap around to the next row
@@ -61,14 +70,6 @@ Terrain::Terrain(const util::Vector2s &size,
 			throw error::Error{ERR << "Height of chunk " << chunk->get_offset()
 			                       << " exceeds terrain height: " << chunk_size[1]
 			                       << " (max height: " << size[1] << ")"};
-		}
-
-		// Check chunk delta
-		auto chunk_offset = chunk->get_offset();
-		if (current_offset != chunk_offset) [[unlikely]] {
-			throw error::Error{ERR << "Chunk offset of chunk " << chunk->get_offset()
-			                       << " does not match position in vector: " << chunk_offset
-			                       << " (expected: " << current_offset << ")"};
 		}
 	}
 }
