@@ -324,6 +324,10 @@ class AoCModpackSubprocessor:
             "empty_garrison_condition"
         )
         import_tree.add_alias(
+            (modpack.name, "data", "util", "path_type", "types"),
+            prefix + "path_type"
+        )
+        import_tree.add_alias(
             (modpack.name, "data", "util", "resource", "market_trading"),
             prefix + "market_trading"
         )
