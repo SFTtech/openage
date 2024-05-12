@@ -26,7 +26,7 @@ const std::unordered_map<nyan::fqon_t, int> APITerrain::get_path_costs(const nya
 
 	nyan::dict_t path_costs = terrain.get_dict("Terrain.path_costs");
 	for (const auto &pair : path_costs) {
-		auto key = std::dynamic_pointer_cast<nyan::Object>(pair.first.get_ptr());
+		auto key = std::dynamic_pointer_cast<nyan::ObjectValue>(pair.first.get_ptr());
 		auto value = std::dynamic_pointer_cast<nyan::Int>(pair.second.get_ptr());
 
 		result.emplace(key->get_name(), value->get());
