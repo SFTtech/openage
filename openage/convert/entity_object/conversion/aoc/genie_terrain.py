@@ -1,4 +1,4 @@
-# Copyright 2019-2022 the openage authors. See copying.md for legal info.
+# Copyright 2019-2024 the openage authors. See copying.md for legal info.
 
 """
 Contains structures and API-like objects for terrain from AoC.
@@ -94,3 +94,42 @@ class GenieTerrainGroup(ConverterObjectGroup):
 
     def __repr__(self):
         return f"GenieTerrainGroup<{self.get_id()}>"
+
+
+class GenieTerrainRestriction(ConverterObject):
+    """
+    Terrain restriction definition from a .dat file.
+    """
+
+    __slots__ = ('data',)
+
+    def __init__(
+        self,
+        restriction_id: int,
+        full_data_set: GenieObjectContainer,
+        members: dict[str, ValueMember] = None
+    ):
+        """
+        Creates a new Genie terrain restriction object.
+
+        :param restriction_id: The index of the terrain restriction in the .dat file.
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        """
+        super().__init__(restriction_id, members=members)
+
+        self.data = full_data_set
+
+    def is_accessible(self, terrain_index: int) -> bool:
+        """
+        Checks if a terrain is accessible by this restriction.
+
+        :param terrain_index: Index of the terrain.
+        """
+        multiplier = self.members["accessible_dmgmultiplier"][terrain_index].value
+
+        return multiplier > 0
+
+    def __repr__(self):
+        return f"GenieTerrainRestriction<{self.get_id()}>"
