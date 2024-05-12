@@ -5,6 +5,7 @@ add_sources(libopenage
     game_state.cpp
 	game.cpp
 	manager.cpp
+    map.cpp
 	player.cpp
     simulation.cpp
 	terrain_chunk.cpp
