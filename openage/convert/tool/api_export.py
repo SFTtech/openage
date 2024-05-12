@@ -75,7 +75,7 @@ def create_modpack() -> Modpack:
 
     mod_def = modpack.get_info()
 
-    mod_def.set_info("engine", modpack_version="0.4.1", versionstr="0.4.1", repo="openage")
+    mod_def.set_info("engine", modpack_version="0.5.0", versionstr="0.5.0", repo="openage")
 
     mod_def.add_include("**")
 
