@@ -784,6 +784,36 @@ class DE2NyanSubprocessor:
         raw_api_object.add_raw_member("ambience", ambience, "engine.util.terrain.Terrain")
 
         # =======================================================================
+        # Path Costs
+        # =======================================================================
+        path_costs = {}
+        restrictions = dataset.genie_terrain_restrictions
+
+        # Land grid
+        path_type = dataset.pregen_nyan_objects["util.path.types.Land"].get_nyan_object()
+        land_restrictions = restrictions[0x07]
+        if land_restrictions.is_accessible(terrain_index):
+            path_costs[path_type] = 1
+
+        else:
+            path_costs[path_type] = 255
+
+        # Water grid
+        path_type = dataset.pregen_nyan_objects["util.path.types.Water"].get_nyan_object()
+        water_restrictions = restrictions[0x03]
+        if water_restrictions.is_accessible(terrain_index):
+            path_costs[path_type] = 1
+
+        else:
+            path_costs[path_type] = 255
+
+        # Air grid (default accessible)
+        path_type = dataset.pregen_nyan_objects["util.path.types.Air"].get_nyan_object()
+        path_costs[path_type] = 1
+
+        raw_api_object.add_raw_member("path_costs", path_costs, "engine.util.terrain.Terrain")
+
+        # =======================================================================
         # Graphic
         # =======================================================================
         texture_id = terrain.get_id()
