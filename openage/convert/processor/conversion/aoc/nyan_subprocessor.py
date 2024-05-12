@@ -1,4 +1,4 @@
-# Copyright 2019-2023 the openage authors. See copying.md for legal info.
+# Copyright 2019-2024 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-locals,too-many-statements,too-many-branches
 #
@@ -14,7 +14,7 @@ import typing
 
 from ....entity_object.conversion.aoc.genie_tech import UnitLineUpgrade
 from ....entity_object.conversion.aoc.genie_unit import GenieGarrisonMode, \
-    GenieMonkGroup, GenieStackBuildingGroup
+    GenieMonkGroup
 from ....entity_object.conversion.aoc.genie_unit import GenieVillagerGroup
 from ....entity_object.conversion.combined_terrain import CombinedTerrain
 from ....entity_object.conversion.converter_object import RawAPIObject
@@ -224,7 +224,7 @@ class AoCNyanSubprocessor:
         abilities_set.append(AoCAbilitySubprocessor.delete_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.despawn_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.idle_ability(unit_line))
-        abilities_set.append(AoCAbilitySubprocessor.hitbox_ability(unit_line))
+        abilities_set.append(AoCAbilitySubprocessor.collision_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.live_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.los_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.move_ability(unit_line))
@@ -436,7 +436,7 @@ class AoCNyanSubprocessor:
         abilities_set.append(AoCAbilitySubprocessor.delete_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.despawn_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.idle_ability(building_line))
-        abilities_set.append(AoCAbilitySubprocessor.hitbox_ability(building_line))
+        abilities_set.append(AoCAbilitySubprocessor.collision_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.live_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.los_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.named_ability(building_line))
@@ -450,9 +450,8 @@ class AoCNyanSubprocessor:
         if building_line.is_creatable():
             abilities_set.append(AoCAbilitySubprocessor.constructable_ability(building_line))
 
-        if building_line.is_passable() or\
-                (isinstance(building_line, GenieStackBuildingGroup) and building_line.is_gate()):
-            abilities_set.append(AoCAbilitySubprocessor.passable_ability(building_line))
+        if not building_line.is_passable():
+            abilities_set.append(AoCAbilitySubprocessor.pathable_ability(building_line))
 
         if building_line.has_foundation():
             if building_line.get_class_id() == 49:
@@ -586,7 +585,7 @@ class AoCNyanSubprocessor:
 
         if interaction_mode >= 0:
             abilities_set.append(AoCAbilitySubprocessor.death_ability(ambient_group))
-            abilities_set.append(AoCAbilitySubprocessor.hitbox_ability(ambient_group))
+            abilities_set.append(AoCAbilitySubprocessor.collision_ability(ambient_group))
             abilities_set.append(AoCAbilitySubprocessor.idle_ability(ambient_group))
             abilities_set.append(AoCAbilitySubprocessor.live_ability(ambient_group))
             abilities_set.append(AoCAbilitySubprocessor.named_ability(ambient_group))
@@ -597,8 +596,8 @@ class AoCNyanSubprocessor:
         if interaction_mode >= 2:
             abilities_set.extend(AoCAbilitySubprocessor.selectable_ability(ambient_group))
 
-            if ambient_group.is_passable():
-                abilities_set.append(AoCAbilitySubprocessor.passable_ability(ambient_group))
+            if not ambient_group.is_passable():
+                abilities_set.append(AoCAbilitySubprocessor.pathable_ability(ambient_group))
 
         if ambient_group.is_harvestable():
             abilities_set.append(AoCAbilitySubprocessor.harvestable_ability(ambient_group))
