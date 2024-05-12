@@ -1,4 +1,4 @@
-# Copyright 2023-2023 the openage authors. See copying.md for legal info.
+# Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 """
 Test whether the openage nyan API modpack is present.
@@ -16,7 +16,7 @@ if typing.TYPE_CHECKING:
     from openage.util.fslike.union import UnionPath
 
 
-CURRENT_API_VERSION = "0.4.1"
+CURRENT_API_VERSION = "0.5.0"
 
 
 def api_export_required(asset_dir: UnionPath) -> bool:
