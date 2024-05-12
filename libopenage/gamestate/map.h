@@ -26,15 +26,6 @@ public:
 	 */
 	Map(const std::shared_ptr<Terrain> &terrain);
 
-	/**
-	 * Create a new map from existing terrain and pathfinder.
-	 *
-	 * @param terrain Terrain.
-	 * @param pathfinder Pathfinder.
-	 */
-	Map(const std::shared_ptr<Terrain> &terrain,
-	    const std::shared_ptr<path::Pathfinder> &pathfinder);
-
 	~Map() = default;
 
 	/**

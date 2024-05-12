@@ -40,6 +40,16 @@ Terrain::Terrain(const util::Vector2s &size,
 			current_offset.ne = 0;
 			current_offset.se += chunk_size[1];
 		}
+		// Check if chunk size is correct
+		else if (chunk_size != chunk_size) [[unlikely]] {
+			throw error::Error{ERR << "Chunk size of chunk " << chunk->get_offset()
+			                       << " is not equal to the first chunk size: " << chunk_size
+			                       << " (expected: " << all_chunks_size << ")"};
+		}
+		else if (chunk_size[0] != chunk_size[1]) {
+			throw error::Error{ERR << "Chunk size of chunk " << chunk->get_offset()
+			                       << " is not square: " << chunk_size};
+		}
 
 		// Check terrain boundaries
 		if (current_offset.ne > size[0]) {
@@ -51,12 +61,6 @@ Terrain::Terrain(const util::Vector2s &size,
 			throw error::Error{ERR << "Height of chunk " << chunk->get_offset()
 			                       << " exceeds terrain height: " << chunk_size[1]
 			                       << " (max height: " << size[1] << ")"};
-		}
-		// Check if chunk size is correct
-		else if (chunk_size != chunk_size) [[unlikely]] {
-			throw error::Error{ERR << "Chunk size of chunk " << chunk->get_offset()
-			                       << " is not equal to the first chunk size: " << chunk_size
-			                       << " (expected: " << all_chunks_size << ")"};
 		}
 
 		// Check chunk delta
@@ -71,6 +75,16 @@ Terrain::Terrain(const util::Vector2s &size,
 
 const util::Vector2s &Terrain::get_size() const {
 	return this->size;
+}
+
+size_t Terrain::get_row_size() const {
+	auto chunk_size = this->chunks[0]->get_size();
+	return this->size[0] / chunk_size[0];
+}
+
+size_t Terrain::get_column_size() const {
+	auto chunk_size = this->chunks[0]->get_size();
+	return this->size[1] / chunk_size[1];
 }
 
 void Terrain::add_chunk(const std::shared_ptr<TerrainChunk> &chunk) {
