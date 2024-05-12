@@ -1,4 +1,4 @@
-# Copyright 2021-2023 the openage authors. See copying.md for legal info.
+# Copyright 2021-2024 the openage authors. See copying.md for legal info.
 
 """
 Lookup dicts for the EnumLookupMember instances.
@@ -592,28 +592,28 @@ FOG_VISIBILITY = {
 
 TERRAIN_RESTRICTIONS = {
     -0x01: "NONE",
-    0x00: "ANY",
-    0x01: "SHORELINE",
-    0x02: "WATER",
-    0x03: "WATER_SHIP_0x03",
-    0x04: "FOUNDATION",
+    0x00: "ANY",                  # projectiles
+    0x01: "SHORELINE",            # boar, deer, wolf
+    0x02: "WATER",                # unused in AoC
+    0x03: "WATER_SHIP_0x03",      # warships
+    0x04: "FOUNDATION",           # buildings
     0x05: "NOWHERE",              # can't place anywhere
     0x06: "WATER_DOCK",           # shallow water for dock placement
-    0x07: "SOLID",
-    0x08: "NO_ICE_0x08",
+    0x07: "SOLID",                # moving land units
+    0x08: "NO_ICE_0x08",          # resource piles (gold, stone, berries)
     0x09: "SWGB_ONLY_WATER0",
-    0x0A: "NO_ICE_0x0A",
-    0x0B: "FOREST",
-    0x0C: "UNKNOWN_0x0C",
-    0x0D: "WATER_0x0D",           # great fish
-    0x0E: "UNKNOWN_0x0E",
-    0x0F: "WATER_SHIP_0x0F",      # transport ship
+    0x0A: "NO_ICE_0x0A",          # gate, palisades, walls
+    0x0B: "FOREST",               # trees
+    0x0C: "UNKNOWN_0x0C",         # projectile explosions on bridge?
+    0x0D: "WATER_0x0D",           # great fish, fishtrap, fishing ship
+    0x0E: "UNKNOWN_0x0E",         # projectile decay on bridge?
+    0x0F: "WATER_SHIP_0x0F",      # transport ship, longboat
     0x10: "GRASS_SHORELINE",      # for gates and walls
     0x11: "WATER_ANY_0x11",
-    0x12: "UNKNOWN_0x12",
-    0x13: "FISH_NO_ICE",
-    0x14: "WATER_ANY_0x14",
-    0x15: "WATER_SHALLOW",
+    0x12: "UNKNOWN_0x12",         # projectile decay on bridge?
+    0x13: "WATER_ICE",            # small fish
+    0x14: "NO_WATER",             # siege units, trade cart
+    0x15: "WATER_SHALLOW",        # sea walls
     0x16: "SWGB_GRASS_SHORE",
     0x17: "SWGB_ANY",
     0x18: "SWGB_ONLY_WATER1",
