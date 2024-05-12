@@ -1,4 +1,4 @@
-# Copyright 2020-2023 the openage authors. See copying.md for legal info.
+# Copyright 2020-2024 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-public-methods,too-many-lines,too-many-locals
 # pylint: disable=too-many-branches,too-many-statements,too-many-arguments
@@ -815,6 +815,65 @@ class AoCAbilitySubprocessor:
         ability_raw_api_object.add_raw_member("storage_elements",
                                               elements,
                                               "engine.ability.type.CollectStorage")
+
+        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
+
+        return ability_forward_ref
+
+    @ staticmethod
+    def collision_ability(line: GenieGameEntityGroup) -> ForwardRef:
+        """
+        Adds the Collision ability to a line.
+
+        :param line: Unit/Building line that gets the ability.
+        :type line: ...dataformat.converter_object.ConverterObjectGroup
+        :returns: The forward reference for the ability.
+        :rtype: ...dataformat.forward_ref.ForwardRef
+        """
+        current_unit = line.get_head_unit()
+        current_unit_id = line.get_head_unit_id()
+        dataset = line.data
+
+        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
+
+        game_entity_name = name_lookup_dict[current_unit_id][0]
+
+        ability_ref = f"{game_entity_name}.Collision"
+        ability_raw_api_object = RawAPIObject(ability_ref, "Collision", dataset.nyan_api_objects)
+        ability_raw_api_object.add_raw_parent("engine.ability.type.Collision")
+        ability_location = ForwardRef(line, game_entity_name)
+        ability_raw_api_object.set_location(ability_location)
+
+        # Hitbox object
+        hitbox_name = f"{game_entity_name}.Collision.{game_entity_name}Hitbox"
+        hitbox_raw_api_object = RawAPIObject(hitbox_name,
+                                             f"{game_entity_name}Hitbox",
+                                             dataset.nyan_api_objects)
+        hitbox_raw_api_object.add_raw_parent("engine.util.hitbox.Hitbox")
+        hitbox_location = ForwardRef(line, ability_ref)
+        hitbox_raw_api_object.set_location(hitbox_location)
+
+        radius_x = current_unit["radius_x"].value
+        radius_y = current_unit["radius_y"].value
+        radius_z = current_unit["radius_z"].value
+
+        hitbox_raw_api_object.add_raw_member("radius_x",
+                                             radius_x,
+                                             "engine.util.hitbox.Hitbox")
+        hitbox_raw_api_object.add_raw_member("radius_y",
+                                             radius_y,
+                                             "engine.util.hitbox.Hitbox")
+        hitbox_raw_api_object.add_raw_member("radius_z",
+                                             radius_z,
+                                             "engine.util.hitbox.Hitbox")
+
+        hitbox_forward_ref = ForwardRef(line, hitbox_name)
+        ability_raw_api_object.add_raw_member("hitbox",
+                                              hitbox_forward_ref,
+                                              "engine.ability.type.Collision")
+
+        line.add_raw_api_object(hitbox_raw_api_object)
+        line.add_raw_api_object(ability_raw_api_object)
 
         ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
@@ -4016,65 +4075,6 @@ class AoCAbilitySubprocessor:
         return ability_forward_ref
 
     @ staticmethod
-    def hitbox_ability(line: GenieGameEntityGroup) -> ForwardRef:
-        """
-        Adds the Hitbox ability to a line.
-
-        :param line: Unit/Building line that gets the ability.
-        :type line: ...dataformat.converter_object.ConverterObjectGroup
-        :returns: The forward reference for the ability.
-        :rtype: ...dataformat.forward_ref.ForwardRef
-        """
-        current_unit = line.get_head_unit()
-        current_unit_id = line.get_head_unit_id()
-        dataset = line.data
-
-        name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
-
-        game_entity_name = name_lookup_dict[current_unit_id][0]
-
-        ability_ref = f"{game_entity_name}.Hitbox"
-        ability_raw_api_object = RawAPIObject(ability_ref, "Hitbox", dataset.nyan_api_objects)
-        ability_raw_api_object.add_raw_parent("engine.ability.type.Hitbox")
-        ability_location = ForwardRef(line, game_entity_name)
-        ability_raw_api_object.set_location(ability_location)
-
-        # Hitbox object
-        hitbox_name = f"{game_entity_name}.Hitbox.{game_entity_name}Hitbox"
-        hitbox_raw_api_object = RawAPIObject(hitbox_name,
-                                             f"{game_entity_name}Hitbox",
-                                             dataset.nyan_api_objects)
-        hitbox_raw_api_object.add_raw_parent("engine.util.hitbox.Hitbox")
-        hitbox_location = ForwardRef(line, ability_ref)
-        hitbox_raw_api_object.set_location(hitbox_location)
-
-        radius_x = current_unit["radius_x"].value
-        radius_y = current_unit["radius_y"].value
-        radius_z = current_unit["radius_z"].value
-
-        hitbox_raw_api_object.add_raw_member("radius_x",
-                                             radius_x,
-                                             "engine.util.hitbox.Hitbox")
-        hitbox_raw_api_object.add_raw_member("radius_y",
-                                             radius_y,
-                                             "engine.util.hitbox.Hitbox")
-        hitbox_raw_api_object.add_raw_member("radius_z",
-                                             radius_z,
-                                             "engine.util.hitbox.Hitbox")
-
-        hitbox_forward_ref = ForwardRef(line, hitbox_name)
-        ability_raw_api_object.add_raw_member("hitbox",
-                                              hitbox_forward_ref,
-                                              "engine.ability.type.Hitbox")
-
-        line.add_raw_api_object(hitbox_raw_api_object)
-        line.add_raw_api_object(ability_raw_api_object)
-
-        ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
-
-        return ability_forward_ref
-
-    @ staticmethod
     def idle_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
         Adds the Idle ability to a line.
@@ -4526,6 +4526,19 @@ class AoCAbilitySubprocessor:
 
         ability_raw_api_object.add_raw_member("modes", move_modes, "engine.ability.type.Move")
 
+        # Path type
+        path_type = dataset.pregen_nyan_objects["util.path.types.Land"].get_nyan_object()
+        restrictions = current_unit["terrain_restriction"].value
+        if restrictions in (0x00, 0x0C, 0x0E, 0x17):
+            # air units
+            path_type = dataset.pregen_nyan_objects["util.path.types.Air"].get_nyan_object()
+
+        elif restrictions in (0x03, 0x0D, 0x0F):
+            # ships
+            path_type = dataset.pregen_nyan_objects["util.path.types.Water"].get_nyan_object()
+
+        ability_raw_api_object.add_raw_member("path_type", path_type, "engine.ability.type.Move")
+
         ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
         return ability_forward_ref
@@ -4618,6 +4631,10 @@ class AoCAbilitySubprocessor:
             dataset.nyan_api_objects["engine.util.move_mode.type.Normal"],
         ]
         ability_raw_api_object.add_raw_member("modes", move_modes, "engine.ability.type.Move")
+
+        # Path type
+        path_type = dataset.pregen_nyan_objects["util.path.types.Air"].get_nyan_object()
+        ability_raw_api_object.add_raw_member("path_type", path_type, "engine.ability.type.Move")
 
         ability_forward_ref = ForwardRef(line, ability_raw_api_object.get_id())
 
@@ -4757,9 +4774,9 @@ class AoCAbilitySubprocessor:
         return ability_forward_ref
 
     @ staticmethod
-    def passable_ability(line: GenieGameEntityGroup) -> ForwardRef:
+    def pathable_ability(line: GenieGameEntityGroup) -> ForwardRef:
         """
-        Adds the Passable ability to a line.
+        Adds the Pathable ability to a line.
 
         :param line: Unit/Building line that gets the ability.
         :type line: ...dataformat.converter_object.ConverterObjectGroup
@@ -4773,67 +4790,29 @@ class AoCAbilitySubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        ability_ref = f"{game_entity_name}.Passable"
+        ability_ref = f"{game_entity_name}.Pathable"
         ability_raw_api_object = RawAPIObject(ability_ref,
-                                              "Passable",
+                                              "Pathable",
                                               dataset.nyan_api_objects)
-        ability_raw_api_object.add_raw_parent("engine.ability.type.Passable")
+        ability_raw_api_object.add_raw_parent("engine.ability.type.Pathable")
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
 
         # Hitbox
-        hitbox_ref = f"{game_entity_name}.Hitbox.{game_entity_name}Hitbox"
+        hitbox_ref = f"{game_entity_name}.Collision.{game_entity_name}Hitbox"
         hitbox_forward_ref = ForwardRef(line, hitbox_ref)
         ability_raw_api_object.add_raw_member("hitbox",
                                               hitbox_forward_ref,
-                                              "engine.ability.type.Passable")
+                                              "engine.ability.type.Pathable")
 
-        # Passable mode
-        # =====================================================================================
-        mode_name = f"{game_entity_name}.Passable.PassableMode"
-        mode_raw_api_object = RawAPIObject(mode_name, "PassableMode", dataset.nyan_api_objects)
-        mode_parent = "engine.util.passable_mode.type.Normal"
-        if isinstance(line, GenieStackBuildingGroup):
-            if line.is_gate():
-                mode_parent = "engine.util.passable_mode.type.Gate"
-
-        mode_raw_api_object.add_raw_parent(mode_parent)
-        mode_location = ForwardRef(line, ability_ref)
-        mode_raw_api_object.set_location(mode_location)
-
-        # Allowed types
-        allowed_types = [
-            dataset.pregen_nyan_objects["util.game_entity_type.types.Unit"].get_nyan_object(),
-            dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object(),
-            dataset.pregen_nyan_objects["util.game_entity_type.types.Projectile"].get_nyan_object()
-        ]
-        mode_raw_api_object.add_raw_member("allowed_types",
-                                           allowed_types,
-                                           "engine.util.passable_mode.PassableMode")
-
-        # Blacklisted entities
-        mode_raw_api_object.add_raw_member("blacklisted_entities",
-                                           [],
-                                           "engine.util.passable_mode.PassableMode")
-
-        if isinstance(line, GenieStackBuildingGroup):
-            if line.is_gate():
-                # Let friendly and own units pass through gate
-                stances = [
-                    dataset.pregen_nyan_objects["util.diplomatic_stance.types.Friendly"].get_nyan_object(
-                    ),
-                    dataset.nyan_api_objects["engine.util.diplomatic_stance.type.Self"]
-                ]
-                mode_raw_api_object.add_raw_member("stances",
-                                                   stances,
-                                                   mode_parent)
-
-        line.add_raw_api_object(mode_raw_api_object)
-        # =====================================================================================
-        mode_forward_ref = ForwardRef(line, mode_name)
-        ability_raw_api_object.add_raw_member("mode",
-                                              mode_forward_ref,
-                                              "engine.ability.type.Passable")
+        # Costs
+        path_costs = {
+            dataset.pregen_nyan_objects["util.path.types.Land"]: 255,  # impassable
+            dataset.pregen_nyan_objects["util.path.types.Water"]: 255,  # impassable
+        }
+        ability_raw_api_object.add_raw_member("path_costs",
+                                              path_costs,
+                                              "engine.ability.type.Pathable")
 
         line.add_raw_api_object(ability_raw_api_object)
 

@@ -1,4 +1,4 @@
-# Copyright 2020-2023 the openage authors. See copying.md for legal info.
+# Copyright 2020-2024 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-locals,too-many-statements
 #
@@ -47,6 +47,7 @@ class AoCPregenSubprocessor:
         cls.generate_misc_effect_objects(full_data_set, pregen_converter_group)
         cls.generate_modifiers(full_data_set, pregen_converter_group)
         cls.generate_terrain_types(full_data_set, pregen_converter_group)
+        cls.generate_path_types(full_data_set, pregen_converter_group)
         cls.generate_resources(full_data_set, pregen_converter_group)
         cls.generate_death_condition(full_data_set, pregen_converter_group)
 
@@ -1918,6 +1919,71 @@ class AoCPregenSubprocessor:
 
             pregen_converter_group.add_raw_api_object(type_raw_api_object)
             pregen_nyan_objects.update({type_ref_in_modpack: type_raw_api_object})
+
+    @staticmethod
+    def generate_path_types(
+        full_data_set: GenieObjectContainer,
+        pregen_converter_group: ConverterObjectGroup
+    ) -> None:
+        """
+        Generate PathType objects.
+
+        :param full_data_set: GenieObjectContainer instance that
+                              contains all relevant data for the conversion
+                              process.
+        :type full_data_set: ...dataformat.aoc.genie_object_container.GenieObjectContainer
+        :param pregen_converter_group: GenieObjectGroup instance that stores
+                                       pregenerated API objects for referencing with
+                                       ForwardRef
+        :type pregen_converter_group: ...dataformat.aoc.genie_object_container.GenieObjectGroup
+        """
+        pregen_nyan_objects = full_data_set.pregen_nyan_objects
+        api_objects = full_data_set.nyan_api_objects
+
+        path_type_parent = "engine.util.path_type.PathType"
+        path_types_location = "data/util/path_type/"
+
+        # =======================================================================
+        # Land
+        # =======================================================================
+        path_type_ref_in_modpack = "util.path.types.Land"
+        path_type_raw_api_object = RawAPIObject(path_type_ref_in_modpack,
+                                                "Land",
+                                                api_objects,
+                                                path_types_location)
+        path_type_raw_api_object.set_filename("types")
+        path_type_raw_api_object.add_raw_parent(path_type_parent)
+
+        pregen_converter_group.add_raw_api_object(path_type_raw_api_object)
+        pregen_nyan_objects.update({path_type_ref_in_modpack: path_type_raw_api_object})
+
+        # =======================================================================
+        # Water
+        # =======================================================================
+        path_type_ref_in_modpack = "util.path.types.Water"
+        path_type_raw_api_object = RawAPIObject(path_type_ref_in_modpack,
+                                                "Water",
+                                                api_objects,
+                                                path_types_location)
+        path_type_raw_api_object.set_filename("types")
+        path_type_raw_api_object.add_raw_parent(path_type_parent)
+
+        pregen_converter_group.add_raw_api_object(path_type_raw_api_object)
+        pregen_nyan_objects.update({path_type_ref_in_modpack: path_type_raw_api_object})
+
+        # =======================================================================
+        # Air
+        # =======================================================================
+        path_type_ref_in_modpack = "util.path.types.Air"
+        path_type_raw_api_object = RawAPIObject(path_type_ref_in_modpack,
+                                                "Air",
+                                                api_objects,
+                                                path_types_location)
+        path_type_raw_api_object.set_filename("types")
+        path_type_raw_api_object.add_raw_parent(path_type_parent)
+
+        pregen_converter_group.add_raw_api_object(path_type_raw_api_object)
+        pregen_nyan_objects.update({path_type_ref_in_modpack: path_type_raw_api_object})
 
     @staticmethod
     def generate_resources(
