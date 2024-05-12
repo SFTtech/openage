@@ -49,6 +49,31 @@ public:
 	const coord::tile_delta &get_offset() const;
 
 	/**
+	 * Get the tiles of this terrain chunk.
+	 *
+	 * @return Terrain tiles.
+	 */
+	const std::vector<TerrainTile> &get_tiles() const;
+
+	/**
+	 * Get the tile at the given index.
+	 *
+	 * @param idx Index of the tile.
+	 *
+	 * @return Terrain tile.
+	 */
+	const TerrainTile &get_tile(size_t idx) const;
+
+	/**
+	 * Get the tile at the given position.
+	 *
+	 * @param pos Position of the tile.
+	 *
+	 * @return Terrain tile.
+	 */
+	const TerrainTile &get_tile(const coord::tile &pos) const;
+
+	/**
 	 * Update the render entity.
 	 *
 	 * @param time Simulation time of the update.

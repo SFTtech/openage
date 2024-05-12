@@ -30,6 +30,18 @@ const coord::tile_delta &TerrainChunk::get_offset() const {
 	return this->offset;
 }
 
+const std::vector<TerrainTile> &TerrainChunk::get_tiles() const {
+	return this->tiles;
+}
+
+const TerrainTile &TerrainChunk::get_tile(size_t idx) const {
+	return this->tiles.at(idx);
+}
+
+const TerrainTile &TerrainChunk::get_tile(const coord::tile &pos) const {
+	return this->tiles.at(pos.ne + pos.se * this->size[0]);
+}
+
 void TerrainChunk::render_update(const time::time_t &time) {
 	if (this->render_entity != nullptr) {
 		// TODO: Update individual tiles instead of the whole chunk
