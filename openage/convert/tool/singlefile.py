@@ -1,10 +1,11 @@
-# Copyright 2015-2023 the openage authors. See copying.md for legal info.
+# Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 """
 Convert a single slp/wav file from some drs archive to a png/opus file.
 """
 from __future__ import annotations
 
+import sys
 
 from pathlib import Path
 
@@ -58,6 +59,11 @@ def main(args, error):
 
     file_path = Path(args.filename)
     file_extension = file_path.suffix[1:].lower()
+
+    if sys.platform == "win32":
+        from openage.util.dll import DllDirectoryManager, default_paths
+        dll_manager = DllDirectoryManager(default_paths())
+        dll_manager.add_directories()
 
     if not (args.mode in ("sld", "drs-wav", "wav") or file_extension in ("sld", "wav")):
         if not args.palettes_path:
