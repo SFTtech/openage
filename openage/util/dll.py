@@ -67,10 +67,24 @@ class DllDirectoryManager:
         self.remove_directories()
 
     def __enter__(self):
+        """
+        Enter a context guard.
+        """
         self.add_directories()
 
     def __exit__(self, exc_type, exc_value, traceback):
+        """
+        Exit a context guard.
+        """
         self.remove_directories()
+
+    def __getstate__(self):
+        """
+        Change pickling behavior so that directory handles are not serialized.
+        """
+        content = self.__dict__
+        content["handles"] = []
+        return content
 
 
 def default_paths() -> list[str]:
