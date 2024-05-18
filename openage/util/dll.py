@@ -99,11 +99,15 @@ def default_paths() -> list[str]:
     file_dir = os.path.dirname(os.path.abspath(inspect.getsourcefile(lambda: 0)))
 
     # Add openage DLL search paths
-    for path in DEFAULT_OPENAGE_DLL_DIRs:
-        directory_paths.append(os.path.join(file_dir, path))
+    for candidate in DEFAULT_OPENAGE_DLL_DIRs:
+        path = os.path.join(file_dir, candidate)
+        if os.path.exists(path):
+            directory_paths.append(path)
 
     # Add nyan DLL search paths
-    for path in DEFAULT_NYAN_DLL_DIRS:
-        directory_paths.append(os.path.join(file_dir, path))
+    for candidate in DEFAULT_NYAN_DLL_DIRS:
+        path = os.path.join(file_dir, candidate)
+        if os.path.exists(path):
+            directory_paths.append(path)
 
     return directory_paths
