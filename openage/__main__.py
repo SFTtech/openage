@@ -129,12 +129,10 @@ def main(argv=None):
 
     args = cli.parse_args(argv)
 
+    dll_manager = None
     if sys.platform == 'win32':
-        args.dll_manager = add_dll_search_paths(args.dll_paths)
-        args.dll_manager.add_directories()
-
-    else:
-        args.dll_manager = None
+        dll_manager = add_dll_search_paths(args.dll_paths)
+        dll_manager.add_directories()
 
     if args.print_version:
         print_version()
@@ -142,6 +140,8 @@ def main(argv=None):
     if not args.subcommand:
         # the user didn't specify a subcommand. default to 'main'.
         args = main_cli.parse_args(argv)
+
+    args.dll_manager = dll_manager
 
     # process the shared args
     set_loglevel(verbosity_to_level(args.verbose - args.quiet))
