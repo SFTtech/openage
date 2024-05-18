@@ -13,13 +13,22 @@ DEFAULT_PYTHON_DLL_DIR = os.path.dirname(sys.executable)
 
 # openage.dll locations (relative to this file)
 DEFAULT_OPENAGE_DLL_DIRs = [
+    "../../libopenage/Debug",
+    "../../libopenage/Release",
     "../../libopenage/RelWithDebInfo",
+    "../../libopenage/MinSizeRel",
 ]
 
 # nyan.dll locations (relative to this file)
 DEFAULT_NYAN_DLL_DIRS = [
+    "../../../../nyan/build/nyan/Debug",
+    "../../../../nyan/build/nyan/Release",
     "../../../../nyan/build/nyan/RelWithDebInfo",
+    "../../../../nyan/build/nyan/MinSizeRel",
+    "../../nyan-external/bin/nyan/Debug",
+    "../../nyan-external/bin/nyan/Release",
     "../../nyan-external/bin/nyan/RelWithDebInfo",
+    "../../nyan-external/bin/nyan/MinSizeRel",
 ]
 
 
