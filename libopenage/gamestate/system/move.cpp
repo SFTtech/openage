@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #include "move.h"
 
@@ -24,11 +24,52 @@
 #include "gamestate/component/internal/position.h"
 #include "gamestate/component/types.h"
 #include "gamestate/game_entity.h"
+#include "gamestate/game_state.h"
+#include "gamestate/map.h"
+#include "pathfinding/path.h"
+#include "pathfinding/pathfinder.h"
 #include "util/fixed_point.h"
 
 
 namespace openage::gamestate::system {
+
+
+std::vector<coord::phys3> find_path(const std::shared_ptr<path::Pathfinder> &pathfinder,
+                                    path::grid_id_t grid_id,
+                                    const coord::phys3 &start,
+                                    const coord::phys3 &end) {
+	auto start_tile = start.to_tile();
+	auto end_tile = end.to_tile();
+
+	// Search for a path between the start and end tiles
+	path::PathRequest request{
+		grid_id,
+		start_tile,
+		end_tile,
+	};
+	auto tile_path = pathfinder->get_path(request);
+
+	// Get the waypoints of the path
+	std::vector<coord::phys3> path;
+	path.reserve(tile_path.waypoints.size());
+
+	// Start poition is first waypoint
+	path.push_back(start);
+
+	// Pathfinder waypoints contain start and end tile; we can ignore them
+	for (size_t i = 1; i < tile_path.waypoints.size() - 1; ++i) {
+		auto tile = tile_path.waypoints.at(i);
+		path.push_back(tile.to_phys3());
+	}
+
+	// End position is last waypoint
+	path.push_back(end);
+
+	return path;
+}
+
 const time::time_t Move::move_command(const std::shared_ptr<gamestate::GameEntity> &entity,
+                                      const std::shared_ptr<openage::gamestate::GameState> &state,
                                       const time::time_t &start_time) {
 	auto command_queue = std::dynamic_pointer_cast<component::CommandQueue>(
 		entity->get_component(component::component_t::COMMANDQUEUE));
@@ -40,11 +81,12 @@ const time::time_t Move::move_command(const std::shared_ptr<gamestate::GameEntit
 		return time::time_t::from_int(0);
 	}
 
-	return Move::move_default(entity, command->get_target(), start_time);
+	return Move::move_default(entity, state, command->get_target(), start_time);
 }
 
 
 const time::time_t Move::move_default(const std::shared_ptr<gamestate::GameEntity> &entity,
+                                      const std::shared_ptr<openage::gamestate::GameState> &state,
                                       const coord::phys3 &destination,
                                       const time::time_t &start_time) {
 	if (not entity->has_component(component::component_t::MOVE)) [[unlikely]] {
@@ -61,6 +103,7 @@ const time::time_t Move::move_default(const std::shared_ptr<gamestate::GameEntit
 		entity->get_component(component::component_t::MOVE));
 	auto move_ability = move_component->get_ability();
 	auto move_speed = move_ability.get<nyan::Float>("Move.speed");
+	auto move_path_grid = move_ability.get<nyan::ObjectValue>("Move.path_type");
 
 	auto pos_component = std::dynamic_pointer_cast<component::Position>(
 		entity->get_component(component::component_t::POSITION));
@@ -70,38 +113,56 @@ const time::time_t Move::move_default(const std::shared_ptr<gamestate::GameEntit
 	auto current_pos = positions.get(start_time);
 	auto current_angle = angles.get(start_time);
 
-	// TODO: pathfinder
-	auto path = destination.to_phys2() - current_pos.to_phys2();
-	auto new_angle = path.to_angle();
+	// Find path
+	auto map = state->get_map();
+	auto pathfinder = map->get_pathfinder();
+	auto grid_id = map->get_grid_id(move_path_grid->get_name());
+	auto waypoints = find_path(pathfinder, grid_id, current_pos, destination);
 
-	// rotation
-	double turn_time = 0;
-	if (not turn_speed->is_infinite_positive()) {
-		auto angle_diff = new_angle - current_angle;
-		if (angle_diff < 0) {
-			// get the positive difference
-			angle_diff = angle_diff * -1;
-		}
-		if (angle_diff > 180) {
-			// always use the smaller angle
-			angle_diff = angle_diff - 360;
-			angle_diff = angle_diff * -1;
-		}
-
-		turn_time = angle_diff.to_double() / turn_speed->get();
-	}
-	pos_component->set_angle(start_time + turn_time, new_angle);
-
-	// movement
-	double move_time = 0;
-	if (not move_speed->is_infinite_positive()) {
-		auto distance = path.length();
-		move_time = distance / move_speed->get();
-	}
-
+	// use waypoints for movement
+	double total_time = 0;
 	pos_component->set_position(start_time, current_pos);
-	pos_component->set_position(start_time + turn_time + move_time, destination);
+	auto prev_angle = current_angle;
+	for (size_t i = 1; i < waypoints.size(); ++i) {
+		auto prev_waypoint = waypoints[i - 1];
+		auto cur_waypoint = waypoints[i];
 
+		auto path_vector = cur_waypoint - prev_waypoint;
+		auto path_angle = path_vector.to_angle();
+
+		// rotation
+		if (not turn_speed->is_infinite_positive()) {
+			auto angle_diff = path_angle - current_angle;
+			if (angle_diff < 0) {
+				// get the positive difference
+				angle_diff = angle_diff * -1;
+			}
+			if (angle_diff > 180) {
+				// always use the smaller angle
+				angle_diff = angle_diff - 360;
+				angle_diff = angle_diff * -1;
+			}
+
+			// Set an intermediate position keyframe to halt the game entity
+			// until the rotation is done
+			double turn_time = angle_diff.to_double() / turn_speed->get();
+			total_time += turn_time;
+			pos_component->set_position(start_time + total_time, prev_waypoint);
+		}
+		pos_component->set_angle(start_time + total_time, path_angle);
+
+		// movement
+		double move_time = 0;
+		if (not move_speed->is_infinite_positive()) {
+			auto distance = path_vector.length();
+			move_time = distance / move_speed->get();
+		}
+		total_time += move_time;
+
+		pos_component->set_position(start_time + total_time, cur_waypoint);
+	}
+
+	// properties
 	auto ability = move_component->get_ability();
 	if (api::APIAbility::check_property(ability, api::ability_property_t::ANIMATED)) {
 		auto property = api::APIAbility::get_property(ability, api::ability_property_t::ANIMATED);
@@ -113,7 +174,7 @@ const time::time_t Move::move_default(const std::shared_ptr<gamestate::GameEntit
 		}
 	}
 
-	return turn_time + move_time;
+	return total_time;
 }
 
 } // namespace openage::gamestate::system
