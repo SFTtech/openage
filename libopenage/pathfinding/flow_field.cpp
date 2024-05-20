@@ -2,6 +2,8 @@
 
 #include "flow_field.h"
 
+#include <bitset>
+
 #include "error/error.h"
 #include "log/log.h"
 
@@ -76,61 +78,77 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 				this->cells[idx] = this->cells[idx] | FLOW_WAVEFRONT_BLOCKED_MASK;
 			}
 
+			// Store which of the non-diagonal directions are unreachable.
+			std::bitset<4> directions_unreachable;
+
 			// Find the neighbor with the smallest cost.
 			flow_dir_t direction = static_cast<flow_dir_t>(this->cells[idx] & FLOW_DIR_MASK);
 			auto smallest_cost = INTEGRATED_COST_UNREACHABLE;
 			if (y > 0) {
 				auto cost = integrate_cells[idx - this->size].cost;
-				if (cost < smallest_cost) {
+				if (cost == INTEGRATED_COST_UNREACHABLE) {
+					directions_unreachable[0] = true;
+				}
+				else if (cost < smallest_cost) {
 					smallest_cost = cost;
 					direction = flow_dir_t::NORTH;
 				}
 			}
-			if (x < this->size - 1 && y > 0) {
-				auto cost = integrate_cells[idx - this->size + 1].cost;
-				if (cost < smallest_cost) {
-					smallest_cost = cost;
-					direction = flow_dir_t::NORTH_EAST;
-				}
-			}
 			if (x < this->size - 1) {
 				auto cost = integrate_cells[idx + 1].cost;
-				if (cost < smallest_cost) {
+				if (cost == INTEGRATED_COST_UNREACHABLE) {
+					directions_unreachable[1] = true;
+				}
+				else if (cost < smallest_cost) {
 					smallest_cost = cost;
 					direction = flow_dir_t::EAST;
 				}
 			}
-			if (x < this->size - 1 && y < this->size - 1) {
-				auto cost = integrate_cells[idx + this->size + 1].cost;
-				if (cost < smallest_cost) {
-					smallest_cost = cost;
-					direction = flow_dir_t::SOUTH_EAST;
-				}
-			}
 			if (y < this->size - 1) {
 				auto cost = integrate_cells[idx + this->size].cost;
-				if (cost < smallest_cost) {
+				if (cost == INTEGRATED_COST_UNREACHABLE) {
+					directions_unreachable[2] = true;
+				}
+				else if (cost < smallest_cost) {
 					smallest_cost = cost;
 					direction = flow_dir_t::SOUTH;
 				}
 			}
-			if (x > 0 && y < this->size - 1) {
-				auto cost = integrate_cells[idx + this->size - 1].cost;
-				if (cost < smallest_cost) {
-					smallest_cost = cost;
-					direction = flow_dir_t::SOUTH_WEST;
-				}
-			}
 			if (x > 0) {
 				auto cost = integrate_cells[idx - 1].cost;
-				if (cost < smallest_cost) {
+				if (cost == INTEGRATED_COST_UNREACHABLE) {
+					directions_unreachable[3] = true;
+				}
+				else if (cost < smallest_cost) {
 					smallest_cost = cost;
 					direction = flow_dir_t::WEST;
 				}
 			}
+
+			if (x < this->size - 1 && y > 0) {
+				auto cost = integrate_cells[idx - this->size + 1].cost;
+				if (cost < smallest_cost and not(directions_unreachable[0] and directions_unreachable[1])) {
+					smallest_cost = cost;
+					direction = flow_dir_t::NORTH_EAST;
+				}
+			}
+			if (x < this->size - 1 && y < this->size - 1) {
+				auto cost = integrate_cells[idx + this->size + 1].cost;
+				if (cost < smallest_cost and not(directions_unreachable[1] and directions_unreachable[2])) {
+					smallest_cost = cost;
+					direction = flow_dir_t::SOUTH_EAST;
+				}
+			}
+			if (x > 0 && y < this->size - 1) {
+				auto cost = integrate_cells[idx + this->size - 1].cost;
+				if (cost < smallest_cost and not(directions_unreachable[2] and directions_unreachable[3])) {
+					smallest_cost = cost;
+					direction = flow_dir_t::SOUTH_WEST;
+				}
+			}
 			if (x > 0 && y > 0) {
 				auto cost = integrate_cells[idx - this->size - 1].cost;
-				if (cost < smallest_cost) {
+				if (cost < smallest_cost and not(directions_unreachable[3] and directions_unreachable[0])) {
 					smallest_cost = cost;
 					direction = flow_dir_t::NORTH_WEST;
 				}
