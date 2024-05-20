@@ -48,7 +48,10 @@ const Path Pathfinder::get_path(const PathRequest &request) {
 
 			std::vector<coord::tile> waypoints{request.start};
 			waypoints.insert(waypoints.end(), flow_field_waypoints.begin(), flow_field_waypoints.end());
-			return Path{request.grid_id, waypoints};
+
+			log::log(INFO << "Path found (start = " << request.start << "; target = " << request.target << ")");
+			log::log(DBG << "Path is within the same sector.");
+			return Path{request.grid_id, PathResult::FOUND, waypoints};
 		}
 	}
 
@@ -77,11 +80,18 @@ const Path Pathfinder::get_path(const PathRequest &request) {
 		}
 	}
 
-	// ASDF
+	if (target_portal_ids.empty() or start_portal_ids.empty()) {
+		// Exit early if no portals are reachable from the start or target
+		log::log(INFO << "Path not found (start = " << request.start << "; target = " << request.target << ")");
+		log::log(DBG << "No portals are reachable from the start or target.");
+		return Path{request.grid_id, PathResult::NOT_FOUND, {}};
+	}
 
 	// High-level pathfinding
 	// Find the portals to use to get from the start to the target
-	auto portal_path = this->portal_a_star(request, target_portal_ids, start_portal_ids);
+	auto portal_result = this->portal_a_star(request, target_portal_ids, start_portal_ids);
+	auto portal_status = portal_result.first;
+	auto portal_path = portal_result.second;
 
 	// Low-level pathfinding
 	// Find the path within the sectors
@@ -120,7 +130,13 @@ const Path Pathfinder::get_path(const PathRequest &request) {
 	auto flow_field_waypoints = this->get_waypoints(flow_fields, request);
 	waypoints.insert(waypoints.end(), flow_field_waypoints.begin(), flow_field_waypoints.end());
 
-	return Path{request.grid_id, waypoints};
+	if (portal_status == PathResult::NOT_FOUND) {
+		log::log(INFO << "Path not found (start = " << request.start << "; target = " << request.target << ")");
+	}
+	else {
+		log::log(INFO << "Path found (start = " << request.start << "; target = " << request.target << ")");
+	}
+	return Path{request.grid_id, portal_status, waypoints};
 }
 
 const std::shared_ptr<Grid> &Pathfinder::get_grid(grid_id_t id) const {
@@ -131,9 +147,9 @@ void Pathfinder::add_grid(const std::shared_ptr<Grid> &grid) {
 	this->grids[grid->get_id()] = grid;
 }
 
-const std::vector<std::shared_ptr<Portal>> Pathfinder::portal_a_star(const PathRequest &request,
-                                                                     const std::unordered_set<portal_id_t> &target_portal_ids,
-                                                                     const std::unordered_set<portal_id_t> &start_portal_ids) const {
+const Pathfinder::portal_star_t Pathfinder::portal_a_star(const PathRequest &request,
+                                                          const std::unordered_set<portal_id_t> &target_portal_ids,
+                                                          const std::unordered_set<portal_id_t> &start_portal_ids) const {
 	std::vector<std::shared_ptr<Portal>> result;
 
 	auto grid = this->grids.at(request.grid_id);
@@ -193,7 +209,8 @@ const std::vector<std::shared_ptr<Portal>> Pathfinder::portal_a_star(const PathR
 			for (auto &node : backtrace) {
 				result.push_back(node->portal);
 			}
-			return result;
+			log::log(INFO << "Portal path found with " << result.size() << " portal traversals.");
+			return std::make_pair(PathResult::FOUND, result);
 		}
 
 		// check if the current node is the closest to the target
@@ -248,7 +265,9 @@ const std::vector<std::shared_ptr<Portal>> Pathfinder::portal_a_star(const PathR
 		result.push_back(node->portal);
 	}
 
-	return result;
+	log::log(INFO << "Portal path not found.");
+	log::log(DBG << "Closest portal: " << closest_node->portal->get_id());
+	return std::make_pair(PathResult::NOT_FOUND, result);
 }
 
 const std::vector<coord::tile> Pathfinder::get_waypoints(const std::vector<std::pair<sector_id_t, std::shared_ptr<FlowField>>> &flow_fields,

@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "coord/tile.h"
+#include "pathfinding/types.h"
 
 
 namespace openage::path {
@@ -13,11 +14,11 @@ namespace openage::path {
  * Path request for the pathfinder.
  */
 struct PathRequest {
-	// ID of the grid to use for pathfinding.
+	/// ID of the grid to use for pathfinding.
 	size_t grid_id;
-	// Start position of the path.
+	/// Start position of the path.
 	coord::tile start;
-	// Target position of the path.
+	/// Target position of the path.
 	coord::tile target;
 };
 
@@ -25,11 +26,13 @@ struct PathRequest {
  * Path found by the pathfinder.
  */
 struct Path {
-	// ID of the grid to used for pathfinding.
+	/// ID of the grid to used for pathfinding.
 	size_t grid_id;
-	// Waypoints of the path.
-	// First waypoint is the start position of the path request.
-	// Last waypoint is the target position of the path request.
+	/// Status
+	PathResult status;
+	/// Waypoints of the path.
+	/// First waypoint is the start position of the path request.
+	/// Last waypoint is the target position of the path request.
 	std::vector<coord::tile> waypoints;
 };
 

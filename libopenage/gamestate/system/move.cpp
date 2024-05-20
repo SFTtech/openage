@@ -49,6 +49,11 @@ std::vector<coord::phys3> find_path(const std::shared_ptr<path::Pathfinder> &pat
 	};
 	auto tile_path = pathfinder->get_path(request);
 
+	if (tile_path.status != path::PathResult::FOUND) {
+		// No path found
+		return {};
+	}
+
 	// Get the waypoints of the path
 	std::vector<coord::phys3> path;
 	path.reserve(tile_path.waypoints.size());

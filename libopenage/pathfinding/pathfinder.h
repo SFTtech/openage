@@ -63,6 +63,8 @@ public:
 	const Path get_path(const PathRequest &request);
 
 private:
+	using portal_star_t = std::pair<PathResult, std::vector<std::shared_ptr<Portal>>>;
+
 	/**
 	 * High-level pathfinder. Uses A* to find the path through the portals of sectors.
 	 *
@@ -72,9 +74,9 @@ private:
 	 *
 	 * @return Portals to traverse in order to reach the target.
 	 */
-	const std::vector<std::shared_ptr<Portal>> portal_a_star(const PathRequest &request,
-	                                                         const std::unordered_set<portal_id_t> &target_portal_ids,
-	                                                         const std::unordered_set<portal_id_t> &start_portal_ids) const;
+	const portal_star_t portal_a_star(const PathRequest &request,
+	                                  const std::unordered_set<portal_id_t> &target_portal_ids,
+	                                  const std::unordered_set<portal_id_t> &start_portal_ids) const;
 
 	/**
 	 * Low-level pathfinder. Uses flow fields to find the path through the sectors.

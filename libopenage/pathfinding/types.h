@@ -9,6 +9,16 @@
 namespace openage::path {
 
 /**
+ * Path result type.
+ */
+enum class PathResult {
+	/// Path was found.
+	FOUND,
+	/// Path was not found.
+	NOT_FOUND,
+};
+
+/**
  * Movement cost in the cost field.
  *
  * TODO: Cost stamps
