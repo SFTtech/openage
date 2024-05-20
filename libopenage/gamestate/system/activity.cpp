@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #include "activity.h"
 
@@ -79,7 +79,7 @@ void Activity::advance(const time::time_t &start_time,
 		case activity::node_t::TASK_SYSTEM: {
 			auto node = std::static_pointer_cast<activity::TaskSystemNode>(current_node);
 			auto task = node->get_system_id();
-			event_wait_time = Activity::handle_subsystem(entity, start_time, task);
+			event_wait_time = Activity::handle_subsystem(start_time, entity, state, task);
 			auto next_id = node->get_next();
 			current_node = node->next(next_id);
 		} break;
@@ -120,18 +120,20 @@ void Activity::advance(const time::time_t &start_time,
 	activity_component->set_node(start_time, current_node);
 }
 
-const time::time_t Activity::handle_subsystem(const std::shared_ptr<gamestate::GameEntity> &entity,
-                                              const time::time_t &start_time,
+const time::time_t Activity::handle_subsystem(const time::time_t &start_time,
+                                              const std::shared_ptr<gamestate::GameEntity> &entity,
+                                              const std::shared_ptr<openage::gamestate::GameState> &state,
                                               system_id_t system_id) {
 	switch (system_id) {
 	case system_id_t::IDLE:
 		return Idle::idle(entity, start_time);
 		break;
 	case system_id_t::MOVE_COMMAND:
-		return Move::move_command(entity, start_time);
+		return Move::move_command(entity, state, start_time);
 		break;
 	case system_id_t::MOVE_DEFAULT:
-		return Move::move_default(entity, {1, 1, 1}, start_time);
+		// TODO: replace destination value with a parameter
+		return Move::move_default(entity, state, {1, 1, 1}, start_time);
 		break;
 	default:
 		throw Error{ERR << "Unhandled subsystem " << static_cast<int>(system_id)};
