@@ -3,7 +3,11 @@
 #pragma once
 
 #include <memory>
+#include <unordered_map>
 
+#include <nyan/nyan.h>
+
+#include "pathfinding/types.h"
 #include "util/vector.h"
 
 
@@ -49,6 +53,15 @@ public:
 	 */
 	const std::shared_ptr<path::Pathfinder> &get_pathfinder() const;
 
+	/**
+	 * Get the grid ID associated with a nyan path grid object.
+	 *
+	 * @param path_grid Path grid object.
+	 *
+	 * @return Grid ID.
+	 */
+	path::grid_id_t get_grid_id(const nyan::Object &path_grid) const;
+
 private:
 	/**
 	 * Terrain.
@@ -59,6 +72,11 @@ private:
 	 * Pathfinder.
 	 */
 	std::shared_ptr<path::Pathfinder> pathfinder;
+
+	/**
+	 * Lookup table for mapping path grid objects in nyan to grid indices.
+	 */
+	std::unordered_map<nyan::fqon_t, path::grid_id_t> grid_lookup;
 };
 
 } // namespace gamestate
