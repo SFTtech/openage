@@ -2,7 +2,7 @@
 
 #include "map.h"
 
-#include <set>
+#include <nyan/nyan.h>
 
 #include "gamestate/api/terrain.h"
 #include "gamestate/terrain.h"
@@ -16,11 +16,11 @@
 namespace openage::gamestate {
 Map::Map(const std::shared_ptr<Terrain> &terrain) :
 	terrain{terrain},
-	pathfinder{std::make_shared<path::Pathfinder>()} {
+	pathfinder{std::make_shared<path::Pathfinder>()},
+	grid_lookup{} {
 	// Get grid types
 	// TODO: This should probably not be dependent on the existing tiles, but
 	//       on all defined nyan PathType objects
-	std::unordered_map<nyan::fqon_t, size_t> path_types;
 	size_t grid_idx = 0;
 	auto chunk_size = this->terrain->get_chunk(0)->get_size();
 	auto side_length = std::max(chunk_size[0], chunk_size[0]);
@@ -31,11 +31,11 @@ Map::Map(const std::shared_ptr<Terrain> &terrain) :
 				auto path_costs = api::APITerrain::get_path_costs(*tile.terrain);
 
 				for (const auto &path_cost : path_costs) {
-					if (not path_types.contains(path_cost.first)) {
+					if (not this->grid_lookup.contains(path_cost.first)) {
 						auto grid = std::make_shared<path::Grid>(grid_idx, grid_size, side_length);
 						this->pathfinder->add_grid(grid);
 
-						path_types.emplace(path_cost.first, grid_idx);
+						this->grid_lookup.emplace(path_cost.first, grid_idx);
 						grid_idx += 1;
 					}
 				}
@@ -52,7 +52,7 @@ Map::Map(const std::shared_ptr<Terrain> &terrain) :
 				auto path_costs = api::APITerrain::get_path_costs(*tile.terrain);
 
 				for (const auto &path_cost : path_costs) {
-					auto grid_id = path_types.at(path_cost.first);
+					auto grid_id = this->grid_lookup.at(path_cost.first);
 					auto grid = this->pathfinder->get_grid(grid_id);
 
 					auto sector = grid->get_sector(chunk_idx);
@@ -64,7 +64,7 @@ Map::Map(const std::shared_ptr<Terrain> &terrain) :
 	}
 
 	// Connect sectors with portals
-	for (const auto &path_type : path_types) {
+	for (const auto &path_type : this->grid_lookup) {
 		auto grid = this->pathfinder->get_grid(path_type.second);
 		grid->init_portals();
 	}
@@ -80,6 +80,10 @@ const std::shared_ptr<Terrain> &Map::get_terrain() const {
 
 const std::shared_ptr<path::Pathfinder> &Map::get_pathfinder() const {
 	return this->pathfinder;
+}
+
+path::grid_id_t Map::get_grid_id(const nyan::Object &path_grid) const {
+	return this->grid_lookup.at(path_grid.get_name());
 }
 
 } // namespace openage::gamestate
