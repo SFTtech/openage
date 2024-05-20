@@ -62,6 +62,12 @@ Map::Map(const std::shared_ptr<Terrain> &terrain) :
 			}
 		}
 	}
+
+	// Connect sectors with portals
+	for (const auto &path_type : path_types) {
+		auto grid = this->pathfinder->get_grid(path_type.second);
+		grid->init_portals();
+	}
 }
 
 const util::Vector2s &Map::get_size() const {
