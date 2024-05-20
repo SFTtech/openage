@@ -125,30 +125,34 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 				}
 			}
 
-			if (x < this->size - 1 && y > 0) {
+			if (x < this->size - 1 and y > 0
+			    and not(directions_unreachable[0] and directions_unreachable[1])) {
 				auto cost = integrate_cells[idx - this->size + 1].cost;
-				if (cost < smallest_cost and not(directions_unreachable[0] and directions_unreachable[1])) {
+				if (cost < smallest_cost) {
 					smallest_cost = cost;
 					direction = flow_dir_t::NORTH_EAST;
 				}
 			}
-			if (x < this->size - 1 && y < this->size - 1) {
+			if (x < this->size - 1 and y < this->size - 1
+			    and not(directions_unreachable[1] and directions_unreachable[2])) {
 				auto cost = integrate_cells[idx + this->size + 1].cost;
-				if (cost < smallest_cost and not(directions_unreachable[1] and directions_unreachable[2])) {
+				if (cost < smallest_cost) {
 					smallest_cost = cost;
 					direction = flow_dir_t::SOUTH_EAST;
 				}
 			}
-			if (x > 0 && y < this->size - 1) {
+			if (x > 0 and y < this->size - 1
+			    and not(directions_unreachable[2] and directions_unreachable[3])) {
 				auto cost = integrate_cells[idx + this->size - 1].cost;
-				if (cost < smallest_cost and not(directions_unreachable[2] and directions_unreachable[3])) {
+				if (cost < smallest_cost) {
 					smallest_cost = cost;
 					direction = flow_dir_t::SOUTH_WEST;
 				}
 			}
-			if (x > 0 && y > 0) {
+			if (x > 0 and y > 0
+			    and not(directions_unreachable[3] and directions_unreachable[0])) {
 				auto cost = integrate_cells[idx - this->size - 1].cost;
-				if (cost < smallest_cost and not(directions_unreachable[3] and directions_unreachable[0])) {
+				if (cost < smallest_cost) {
 					smallest_cost = cost;
 					direction = flow_dir_t::NORTH_WEST;
 				}

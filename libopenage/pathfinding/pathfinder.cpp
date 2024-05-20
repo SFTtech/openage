@@ -5,6 +5,7 @@
 #include "coord/phys.h"
 #include "pathfinding/flow_field.h"
 #include "pathfinding/grid.h"
+#include "pathfinding/integration_field.h"
 #include "pathfinding/integrator.h"
 #include "pathfinding/portal.h"
 #include "pathfinding/sector.h"
@@ -18,31 +19,84 @@ Pathfinder::Pathfinder() :
 }
 
 const Path Pathfinder::get_path(const PathRequest &request) {
-	// High-level pathfinding
-	// Find the portals to use to get from the start to the target
-	auto portal_path = this->portal_a_star(request);
-
-	// Low-level pathfinding
-	// Find the path within the sectors
 	auto grid = this->grids.at(request.grid_id);
 	auto sector_size = grid->get_sector_size();
+
+	auto start_sector_x = request.start.ne / sector_size;
+	auto start_sector_y = request.start.se / sector_size;
+	auto start_sector = grid->get_sector(start_sector_x, start_sector_y);
 
 	auto target_sector_x = request.target.ne / sector_size;
 	auto target_sector_y = request.target.se / sector_size;
 	auto target_sector = grid->get_sector(target_sector_x, target_sector_y);
 
+	// Integrate the target field
 	coord::tile_t target_x = request.target.ne % sector_size;
 	coord::tile_t target_y = request.target.se % sector_size;
 	auto target = coord::tile{target_x, target_y};
+	auto target_integration_field = this->integrator->integrate(target_sector->get_cost_field(), target);
 
-	auto sector_fields = this->integrator->build(target_sector->get_cost_field(), target);
-	auto prev_integration_field = sector_fields.first;
+	if (target_sector == start_sector) {
+		auto start_x = request.start.ne % sector_size;
+		auto start_y = request.start.se % sector_size;
+
+		if (target_integration_field->get_cell(coord::tile{start_x, start_y}).cost != INTEGRATED_COST_UNREACHABLE) {
+			// Exit early if the start and target are in the same sector
+			// and are reachable from within the same sector
+			auto flow_field = this->integrator->build(target_integration_field);
+			auto flow_field_waypoints = this->get_waypoints({std::make_pair(target_sector->get_id(), flow_field)}, request);
+
+			std::vector<coord::tile> waypoints{request.start};
+			waypoints.insert(waypoints.end(), flow_field_waypoints.begin(), flow_field_waypoints.end());
+			return Path{request.grid_id, waypoints};
+		}
+	}
+
+	// Check which portals are reachable from the target field
+	std::unordered_set<portal_id_t> target_portal_ids;
+	for (auto &portal : target_sector->get_portals()) {
+		auto center_cell = portal->get_entry_center(target_sector->get_id());
+
+		if (target_integration_field->get_cell(center_cell).cost != INTEGRATED_COST_UNREACHABLE) {
+			target_portal_ids.insert(portal->get_id());
+		}
+	}
+
+	// Check which portals are reachable from the start field
+	coord::tile_t start_x = request.start.ne % sector_size;
+	coord::tile_t start_y = request.start.se % sector_size;
+	auto start = coord::tile{start_x, start_y};
+	auto start_integration_field = this->integrator->integrate(start_sector->get_cost_field(), start);
+
+	std::unordered_set<portal_id_t> start_portal_ids;
+	for (auto &portal : start_sector->get_portals()) {
+		auto center_cell = portal->get_entry_center(start_sector->get_id());
+
+		if (start_integration_field->get_cell(center_cell).cost != INTEGRATED_COST_UNREACHABLE) {
+			start_portal_ids.insert(portal->get_id());
+		}
+	}
+
+	// ASDF
+
+	// High-level pathfinding
+	// Find the portals to use to get from the start to the target
+	auto portal_path = this->portal_a_star(request, target_portal_ids, start_portal_ids);
+
+	// Low-level pathfinding
+	// Find the path within the sectors
+
+	// Build flow field for the target sector
+	auto prev_integration_field = target_integration_field;
+	auto prev_flow_field = this->integrator->build(prev_integration_field);
 	auto prev_sector_id = target_sector->get_id();
+
+	Integrator::build_return_t sector_fields{prev_integration_field, prev_flow_field};
 
 	std::vector<std::pair<sector_id_t, std::shared_ptr<FlowField>>> flow_fields;
 	flow_fields.reserve(portal_path.size() + 1);
-
 	flow_fields.push_back(std::make_pair(target_sector->get_id(), sector_fields.second));
+
 	for (auto &portal : portal_path) {
 		auto prev_sector = grid->get_sector(prev_sector_id);
 		auto next_sector_id = portal->get_exit_sector(prev_sector_id);
@@ -77,7 +131,9 @@ void Pathfinder::add_grid(const std::shared_ptr<Grid> &grid) {
 	this->grids[grid->get_id()] = grid;
 }
 
-const std::vector<std::shared_ptr<Portal>> Pathfinder::portal_a_star(const PathRequest &request) const {
+const std::vector<std::shared_ptr<Portal>> Pathfinder::portal_a_star(const PathRequest &request,
+                                                                     const std::unordered_set<portal_id_t> &target_portal_ids,
+                                                                     const std::unordered_set<portal_id_t> &start_portal_ids) const {
 	std::vector<std::shared_ptr<Portal>> result;
 
 	auto grid = this->grids.at(request.grid_id);
@@ -86,15 +142,6 @@ const std::vector<std::shared_ptr<Portal>> Pathfinder::portal_a_star(const PathR
 	auto start_sector_x = request.start.ne / sector_size;
 	auto start_sector_y = request.start.se / sector_size;
 	auto start_sector = grid->get_sector(start_sector_x, start_sector_y);
-
-	auto target_sector_x = request.target.ne / sector_size;
-	auto target_sector_y = request.target.se / sector_size;
-	auto target_sector = grid->get_sector(target_sector_x, target_sector_y);
-
-	if (start_sector == target_sector) {
-		// exit early if the start and target are in the same sector
-		return result;
-	}
 
 	// path node storage, always provides cheapest next node.
 	heap_t node_candidates;
@@ -106,8 +153,13 @@ const std::vector<std::shared_ptr<Portal>> Pathfinder::portal_a_star(const PathR
 	// TODO: Determine this cost for each portal
 	// const int distance_cost = 1;
 
-	// start nodes: all portals in the start sector
+	// create start nodes
 	for (auto &portal : start_sector->get_portals()) {
+		if (not start_portal_ids.contains(portal->get_id())) {
+			// only consider portals that are reachable from the start cell
+			continue;
+		}
+
 		auto portal_node = std::make_shared<PortalNode>(portal, start_sector->get_id(), nullptr);
 
 		auto sector_pos = grid->get_sector(portal->get_exit_sector(start_sector->get_id()))->get_position();
@@ -133,8 +185,10 @@ const std::vector<std::shared_ptr<Portal>> Pathfinder::portal_a_star(const PathR
 
 		current_node->was_best = true;
 
-		// check if the current node is the target
-		if (current_node->portal->get_exit_sector(current_node->entry_sector) == target_sector->get_id()) {
+		// check if the current node is a portal in the target sector that can
+		// be reached from the target cell
+		auto exit_portal_id = current_node->portal->get_id();
+		if (target_portal_ids.contains(exit_portal_id)) {
 			auto backtrace = current_node->generate_backtrace();
 			for (auto &node : backtrace) {
 				result.push_back(node->portal);

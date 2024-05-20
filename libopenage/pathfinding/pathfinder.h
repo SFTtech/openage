@@ -4,6 +4,7 @@
 
 #include <memory>
 #include <unordered_map>
+#include <unordered_set>
 
 #include "coord/tile.h"
 #include "datastructure/pairing_heap.h"
@@ -66,10 +67,14 @@ private:
 	 * High-level pathfinder. Uses A* to find the path through the portals of sectors.
 	 *
 	 * @param request Pathfinding request.
+	 * @param target_portal_ids IDs of portals that can be reached from the target cell.
+	 * @param start_portal_ids IDs of portals that can be reached from the start cell.
 	 *
 	 * @return Portals to traverse in order to reach the target.
 	 */
-	const std::vector<std::shared_ptr<Portal>> portal_a_star(const PathRequest &request) const;
+	const std::vector<std::shared_ptr<Portal>> portal_a_star(const PathRequest &request,
+	                                                         const std::unordered_set<portal_id_t> &target_portal_ids,
+	                                                         const std::unordered_set<portal_id_t> &start_portal_ids) const;
 
 	/**
 	 * Low-level pathfinder. Uses flow fields to find the path through the sectors.
