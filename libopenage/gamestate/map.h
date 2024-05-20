@@ -56,11 +56,11 @@ public:
 	/**
 	 * Get the grid ID associated with a nyan path grid object.
 	 *
-	 * @param path_grid Path grid object.
+	 * @param path_grid Path grid object fqon.
 	 *
 	 * @return Grid ID.
 	 */
-	path::grid_id_t get_grid_id(const nyan::Object &path_grid) const;
+	path::grid_id_t get_grid_id(const nyan::fqon_t &path_grid) const;
 
 private:
 	/**

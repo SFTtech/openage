@@ -82,8 +82,8 @@ const std::shared_ptr<path::Pathfinder> &Map::get_pathfinder() const {
 	return this->pathfinder;
 }
 
-path::grid_id_t Map::get_grid_id(const nyan::Object &path_grid) const {
-	return this->grid_lookup.at(path_grid.get_name());
+path::grid_id_t Map::get_grid_id(const nyan::fqon_t &path_grid) const {
+	return this->grid_lookup.at(path_grid);
 }
 
 } // namespace openage::gamestate
