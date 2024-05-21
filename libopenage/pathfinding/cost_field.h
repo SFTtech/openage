@@ -45,6 +45,15 @@ public:
 	/**
 	 * Get the cost at a specified position.
 	 *
+	 * @param x X-coordinate of the cell.
+	 * @param y Y-coordinate of the cell.
+	 * @return Cost at the specified position.
+	 */
+	cost_t get_cost(size_t x, size_t y) const;
+
+	/**
+	 * Get the cost at a specified position.
+	 *
 	 * @param idx Index of the cell.
 	 * @return Cost at the specified position.
 	 */
@@ -57,6 +66,15 @@ public:
 	 * @param cost Cost to set.
 	 */
 	void set_cost(const coord::tile_delta &pos, cost_t cost);
+
+	/**
+	 * Set the cost at a specified position.
+	 *
+	 * @param x X-coordinate of the cell.
+	 * @param y Y-coordinate of the cell.
+	 * @param cost Cost to set.
+	 */
+	void set_cost(size_t x, size_t y, cost_t cost);
 
 	/**
 	 * Set the cost at a specified position.
