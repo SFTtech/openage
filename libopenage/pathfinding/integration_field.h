@@ -13,7 +13,7 @@
 
 namespace openage {
 namespace coord {
-struct tile;
+struct tile_delta;
 } // namespace coord
 
 namespace path {
@@ -42,10 +42,10 @@ public:
 	/**
 	 * Get the integration value at a specified position.
 	 *
-	 * @param pos Coordinates of the cell.
+	 * @param pos Coordinates of the cell (relative to field origin).
 	 * @return Integration value at the specified position.
 	 */
-	const integrated_t &get_cell(const coord::tile &pos) const;
+	const integrated_t &get_cell(const coord::tile_delta &pos) const;
 
 	/**
 	 * Get the integration value at a specified position.
@@ -62,12 +62,12 @@ public:
 	 * can be used as a starting point for the cost integration.
 	 *
 	 * @param cost_field Cost field to integrate.
-	 * @param target Coordinates of the target cell.
+	 * @param target Coordinates of the target cell (relative to field origin).
 	 *
 	 * @return Cells flagged as "wavefront blocked".
 	 */
 	std::vector<size_t> integrate_los(const std::shared_ptr<CostField> &cost_field,
-	                                  const coord::tile &target);
+	                                  const coord::tile_delta &target);
 
 	/**
 	 * Calculate the line-of-sight integration flags starting from a portal to another
@@ -93,7 +93,7 @@ public:
 	 * @param target Coordinates of the target cell.
 	 */
 	void integrate_cost(const std::shared_ptr<CostField> &cost_field,
-	                    const coord::tile &target);
+	                    const coord::tile_delta &target);
 
 	/**
 	 * Calculate the cost integration field starting from a portal to another
@@ -150,14 +150,14 @@ private:
 	 * Get the LOS corners around a cell.
 	 *
 	 * @param cost_field Cost field to integrate.
-	 * @param target Cell coordinates of the target.
-	 * @param blocker Cell coordinates of the cell blocking LOS.
+	 * @param target Cell coordinates of the target (relative to field origin).
+	 * @param blocker Cell coordinates of the cell blocking LOS (relative to field origin).
 	 *
 	 * @return Field coordinates of the LOS corners.
 	 */
 	std::vector<std::pair<int, int>> get_los_corners(const std::shared_ptr<CostField> &cost_field,
-	                                                 const coord::tile &target,
-	                                                 const coord::tile &blocker);
+	                                                 const coord::tile_delta &target,
+	                                                 const coord::tile_delta &blocker);
 
 	/**
 	 * Get the cells in a bresenham's line between the corner cell and the field edge.
@@ -167,13 +167,13 @@ private:
 	 * the cells between two arbitrary points. We do this because the intersection
 	 * point with the field edge is unknown.
 	 *
-	 * @param target Cell coordinates of the target.
+	 * @param target Cell coordinates of the target (relative to field origin).
 	 * @param corner_x X field coordinate edge of the LOS corner.
 	 * @param corner_y Y field coordinate edge of the LOS corner.
 	 *
 	 * @return Cell indices of the LOS line.
 	 */
-	std::vector<size_t> bresenhams_line(const coord::tile &target,
+	std::vector<size_t> bresenhams_line(const coord::tile_delta &target,
 	                                    int corner_x,
 	                                    int corner_y);
 

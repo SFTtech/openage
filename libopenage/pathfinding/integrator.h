@@ -10,7 +10,7 @@
 
 namespace openage {
 namespace coord {
-struct tile;
+struct tile_delta;
 } // namespace coord
 
 namespace path {
@@ -36,7 +36,7 @@ public:
 	 * @return Integration field.
 	 */
 	std::shared_ptr<IntegrationField> integrate(const std::shared_ptr<CostField> &cost_field,
-	                                            const coord::tile &target);
+	                                            const coord::tile_delta &target);
 
 	/**
 	 * Integrate the cost field from a portal.
@@ -86,7 +86,7 @@ public:
 	 * @return Flow field.
 	 */
 	build_return_t build(const std::shared_ptr<CostField> &cost_field,
-	                     const coord::tile &target);
+	                     const coord::tile_delta &target);
 
 	/**
 	 * Build the integration field and flow field from a portal.
