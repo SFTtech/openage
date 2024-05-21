@@ -53,6 +53,11 @@ constexpr integrated_flags_t INTEGRATE_LOS_MASK = 0x01;
 constexpr integrated_flags_t INTEGRATE_WAVEFRONT_BLOCKED_MASK = 0x02;
 
 /**
+ * Target flag in an integrated_flags_t value.
+ */
+constexpr integrated_flags_t INTEGRATE_TARGET_MASK = 0x40;
+
+/**
  * Initial value for a cell in the integration grid.
  */
 constexpr integrated_t INTEGRATE_INIT = {INTEGRATED_COST_UNREACHABLE, 0};
@@ -80,6 +85,8 @@ constexpr flow_t FLOW_LOS_MASK = 0x20;
 
 /**
  * Wavefront blocked flag in a flow_t value.
+ *
+ * TODO: This flag is only used in demo 0 and can be removed.
  */
 constexpr flow_t FLOW_WAVEFRONT_BLOCKED_MASK = 0x40;
 
