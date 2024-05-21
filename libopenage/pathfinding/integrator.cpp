@@ -10,7 +10,7 @@
 namespace openage::path {
 
 std::shared_ptr<IntegrationField> Integrator::integrate(const std::shared_ptr<CostField> &cost_field,
-                                                        const coord::tile &target) {
+                                                        const coord::tile_delta &target) {
 	auto integration_field = std::make_shared<IntegrationField>(cost_field->get_size());
 
 	auto wavefront_blocked = integration_field->integrate_los(cost_field, target);
@@ -46,7 +46,7 @@ std::shared_ptr<FlowField> Integrator::build(const std::shared_ptr<IntegrationFi
 }
 
 Integrator::build_return_t Integrator::build(const std::shared_ptr<CostField> &cost_field,
-                                             const coord::tile &target) {
+                                             const coord::tile_delta &target) {
 	auto integration_field = this->integrate(cost_field, target);
 	auto flow_field = this->build(integration_field);
 

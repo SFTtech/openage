@@ -13,7 +13,7 @@
 
 namespace openage {
 namespace coord {
-struct tile;
+struct tile_delta;
 } // namespace coord
 
 namespace path {
@@ -46,20 +46,20 @@ public:
 	/**
 	 * Get the flow field value at a specified position.
 	 *
-	 * @param pos Coordinates of the cell.
+	 * @param pos Coordinates of the cell (relative to field origin).
 	 *
 	 * @return Flowfield value at the specified position.
 	 */
-	flow_t get_cell(const coord::tile &pos) const;
+	flow_t get_cell(const coord::tile_delta &pos) const;
 
 	/**
 	 * Get the flow field direction at a specified position.
 	 *
-	 * @param pos Coordinates of the cell.
+	 * @param pos Coordinates of the cell (relative to field origin).
 	 *
 	 * @return Flowfield direction at the specified position.
 	 */
-	flow_dir_t get_dir(const coord::tile &pos) const;
+	flow_dir_t get_dir(const coord::tile_delta &pos) const;
 
 	/**
 	 * Build the flow field.

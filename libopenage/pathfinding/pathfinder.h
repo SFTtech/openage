@@ -92,8 +92,9 @@ private:
 	/**
 	 * Calculate the heuristic cost between a portal and a target cell.
 	 *
-	 * @param portal_pos Position of the portal. This should be the center of the portal exit.
-	 * @param target_pos Position of the target cell.
+	 * @param portal_pos Position of the portal (absolute on the grid).
+	 *                   This should be the center of the portal exit.
+	 * @param target_pos Position of the target cell (absolute on the grid).
 	 *
 	 * @return Heuristic cost between the cells.
 	 */
@@ -102,12 +103,12 @@ private:
 	/**
 	 * Calculate the distance cost between two portals.
 	 *
-	 * @param portal1_pos Center of the first portal.
-	 * @param portal2_pos Center of the second portal.
+	 * @param portal1_pos Center of the first portal (relative to sector origin).
+	 * @param portal2_pos Center of the second portal (relative to sector origin).
 	 *
 	 * @return Distance cost between the portal centers.
 	 */
-	static int distance_cost(const coord::tile &portal1_pos, const coord::tile &portal2_pos);
+	static int distance_cost(const coord::tile_delta &portal1_pos, const coord::tile_delta &portal2_pos);
 
 	/**
 	 * Grids managed by this pathfinder.

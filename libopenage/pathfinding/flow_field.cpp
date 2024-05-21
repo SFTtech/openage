@@ -30,11 +30,11 @@ size_t FlowField::get_size() const {
 	return this->size;
 }
 
-flow_t FlowField::get_cell(const coord::tile &pos) const {
+flow_t FlowField::get_cell(const coord::tile_delta &pos) const {
 	return this->cells.at(pos.ne + pos.se * this->size);
 }
 
-flow_dir_t FlowField::get_dir(const coord::tile &pos) const {
+flow_dir_t FlowField::get_dir(const coord::tile_delta &pos) const {
 	return static_cast<flow_dir_t>(this->get_cell(pos) & FLOW_DIR_MASK);
 }
 

@@ -21,7 +21,7 @@ size_t CostField::get_size() const {
 	return this->size;
 }
 
-cost_t CostField::get_cost(const coord::tile &pos) const {
+cost_t CostField::get_cost(const coord::tile_delta &pos) const {
 	return this->cells.at(pos.ne + pos.se * this->size);
 }
 
@@ -29,7 +29,7 @@ cost_t CostField::get_cost(size_t idx) const {
 	return this->cells.at(idx);
 }
 
-void CostField::set_cost(const coord::tile &pos, cost_t cost) {
+void CostField::set_cost(const coord::tile_delta &pos, cost_t cost) {
 	this->cells[pos.ne + pos.se * this->size] = cost;
 }
 

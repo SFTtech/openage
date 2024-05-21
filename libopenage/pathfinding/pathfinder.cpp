@@ -2,6 +2,7 @@
 
 #include "pathfinder.h"
 
+#include "coord/chunk.h"
 #include "coord/phys.h"
 #include "pathfinding/flow_field.h"
 #include "pathfinding/grid.h"
@@ -33,14 +34,14 @@ const Path Pathfinder::get_path(const PathRequest &request) {
 	// Integrate the target field
 	coord::tile_t target_x = request.target.ne % sector_size;
 	coord::tile_t target_y = request.target.se % sector_size;
-	auto target = coord::tile{target_x, target_y};
+	auto target = coord::tile_delta{target_x, target_y};
 	auto target_integration_field = this->integrator->integrate(target_sector->get_cost_field(), target);
 
 	if (target_sector == start_sector) {
 		auto start_x = request.start.ne % sector_size;
 		auto start_y = request.start.se % sector_size;
 
-		if (target_integration_field->get_cell(coord::tile{start_x, start_y}).cost != INTEGRATED_COST_UNREACHABLE) {
+		if (target_integration_field->get_cell(coord::tile_delta{start_x, start_y}).cost != INTEGRATED_COST_UNREACHABLE) {
 			// Exit early if the start and target are in the same sector
 			// and are reachable from within the same sector
 			auto flow_field = this->integrator->build(target_integration_field);
@@ -71,7 +72,7 @@ const Path Pathfinder::get_path(const PathRequest &request) {
 	// Check which portals are reachable from the start field
 	coord::tile_t start_x = request.start.ne % sector_size;
 	coord::tile_t start_y = request.start.se % sector_size;
-	auto start = coord::tile{start_x, start_y};
+	auto start = coord::tile_delta{start_x, start_y};
 	auto start_integration_field = this->integrator->integrate(start_sector->get_cost_field(), start);
 
 	std::unordered_set<portal_id_t> start_portal_ids;
@@ -184,9 +185,9 @@ const Pathfinder::portal_star_t Pathfinder::portal_a_star(const PathRequest &req
 
 		auto portal_node = std::make_shared<PortalNode>(portal, start_sector->get_id(), nullptr);
 
-		auto sector_pos = grid->get_sector(portal->get_exit_sector(start_sector->get_id()))->get_position();
+		auto sector_pos = grid->get_sector(portal->get_exit_sector(start_sector->get_id()))->get_position().to_tile(sector_size);
 		auto portal_pos = portal->get_exit_center(start_sector->get_id());
-		auto portal_abs_pos = portal_pos + coord::tile_delta(sector_pos.ne * sector_size, sector_pos.se * sector_size);
+		auto portal_abs_pos = sector_pos + portal_pos;
 		auto heuristic_cost = Pathfinder::heuristic_cost(portal_abs_pos, request.target);
 
 		portal_node->current_cost = 0;
@@ -233,7 +234,7 @@ const Pathfinder::portal_star_t Pathfinder::portal_a_star(const PathRequest &req
 				continue;
 			}
 
-			// Get distance cost from current node to exit
+			// Get distance cost (from current node to exit node)
 			auto distance_cost = Pathfinder::distance_cost(
 				current_node->portal->get_exit_center(current_node->entry_sector),
 				exit->portal->get_entry_center(exit->entry_sector));
@@ -243,9 +244,12 @@ const Pathfinder::portal_star_t Pathfinder::portal_a_star(const PathRequest &req
 
 			if (not_visited or tentative_cost < exit->current_cost) {
 				if (not_visited) {
-					// calculate the heuristic cost
+					// Get heuristic cost (from exit node to target cell)
+					auto exit_sector = grid->get_sector(exit->portal->get_exit_sector(exit->entry_sector));
+					auto exit_sector_pos = exit_sector->get_position().to_tile(sector_size);
+					auto exit_portal_pos = exit->portal->get_exit_center(exit->entry_sector);
 					exit->heuristic_cost = Pathfinder::heuristic_cost(
-						exit->portal->get_exit_center(exit->entry_sector),
+						exit_sector_pos + exit_portal_pos,
 						request.target);
 				}
 
@@ -291,7 +295,7 @@ const std::vector<coord::tile> Pathfinder::get_waypoints(const std::vector<std::
 
 	coord::tile_t current_x = start_x;
 	coord::tile_t current_y = start_y;
-	flow_dir_t current_direction = flow_fields.at(0).second->get_dir(coord::tile{current_x, current_y});
+	flow_dir_t current_direction = flow_fields.at(0).second->get_dir(coord::tile_delta{current_x, current_y});
 	for (size_t i = 0; i < flow_fields.size(); ++i) {
 		auto sector = grid->get_sector(flow_fields.at(i).first);
 		auto flow_field = flow_fields.at(i).second;
@@ -301,7 +305,7 @@ const std::vector<coord::tile> Pathfinder::get_waypoints(const std::vector<std::
 		       and current_y < static_cast<coord::tile_t>(sector_size)
 		       and current_x >= 0
 		       and current_y >= 0) {
-			auto cell = flow_field->get_cell(coord::tile{current_x, current_y});
+			auto cell = flow_field->get_cell(coord::tile_delta{current_x, current_y});
 			if (cell & FLOW_LOS_MASK) {
 				// check if we reached an LOS cell
 				auto sector_pos = sector->get_position();
@@ -313,7 +317,7 @@ const std::vector<coord::tile> Pathfinder::get_waypoints(const std::vector<std::
 			}
 
 			// check if we need to change direction
-			auto cell_direction = flow_field->get_dir(coord::tile(current_x, current_y));
+			auto cell_direction = flow_field->get_dir(coord::tile_delta(current_x, current_y));
 			if (cell_direction != current_direction) {
 				// add the current cell as a waypoint
 				auto sector_pos = sector->get_position();
@@ -412,8 +416,8 @@ int Pathfinder::heuristic_cost(const coord::tile &portal_pos,
 	return delta.length();
 }
 
-int Pathfinder::distance_cost(const coord::tile &portal1_pos,
-                              const coord::tile &portal2_pos) {
+int Pathfinder::distance_cost(const coord::tile_delta &portal1_pos,
+                              const coord::tile_delta &portal2_pos) {
 	auto delta = portal2_pos.to_phys2() - portal1_pos.to_phys2();
 
 	return delta.length();
