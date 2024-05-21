@@ -449,7 +449,7 @@ void RenderManager1::create_impassible_tiles(const std::shared_ptr<path::Grid> &
 			auto cost_field = sector->get_cost_field();
 			for (size_t y = 0; y < sector_size; y++) {
 				for (size_t x = 0; x < sector_size; x++) {
-					auto cost = cost_field->get_cost(coord::tile(x, y));
+					auto cost = cost_field->get_cost(coord::tile_delta(x, y));
 					if (cost == COST_IMPASSABLE) {
 						std::array<float, 8> tile_data{
 							-1.0f + x * tile_offset_width + sector_size * sector_x * tile_offset_width,
