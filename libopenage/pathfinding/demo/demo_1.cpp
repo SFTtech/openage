@@ -135,8 +135,10 @@ void path_demo_1(const util::Path &path) {
 
 				log::log(INFO << "Pathfinding took " << timer.getval() / 1000 << " ps");
 
-				// Create renderables for the waypoints of the path
-				render_manager->create_waypoint_tiles(path_result);
+				if (path_result.status == PathResult::FOUND) {
+					// Create renderables for the waypoints of the path
+					render_manager->create_waypoint_tiles(path_result);
+				}
 			}
 			else if (ev.button() == Qt::LeftButton) { // Set start cell
 				start = coord::tile{grid_x, grid_y};
@@ -153,8 +155,10 @@ void path_demo_1(const util::Path &path) {
 
 				log::log(INFO << "Pathfinding took " << timer.getval() / 1000 << " ps");
 
-				// Create renderables for the waypoints of the path
-				render_manager->create_waypoint_tiles(path_result);
+				if (path_result.status == PathResult::FOUND) {
+					// Create renderables for the waypoints of the path
+					render_manager->create_waypoint_tiles(path_result);
+				}
 			}
 		}
 	});
