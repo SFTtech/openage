@@ -202,6 +202,7 @@ void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_fie
 
 	// Move outwards from the target cell, updating the integration field
 	this->cells[target_idx].cost = INTEGRATED_COST_START;
+	this->cells[target_idx].flags |= INTEGRATE_TARGET_MASK;
 	this->integrate_cost(cost_field, {target_idx});
 }
 
@@ -225,6 +226,7 @@ void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_fie
 
 			// Set the cost of all target cells to the start value
 			this->cells[target_idx].cost = INTEGRATED_COST_START;
+			this->cells[target_idx].flags |= INTEGRATE_TARGET_MASK;
 			start_cells.push_back(target_idx);
 
 			// TODO: Transfer flags and cost from the other integration field

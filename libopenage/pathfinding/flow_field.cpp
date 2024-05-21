@@ -54,8 +54,7 @@ flow_dir_t FlowField::get_dir(size_t idx) const {
 	return static_cast<flow_dir_t>(this->get_cell(idx) & FLOW_DIR_MASK);
 }
 
-void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field,
-                      const std::unordered_set<size_t> &target_cells) {
+void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field) {
 	ENSURE(integration_field->get_size() == this->get_size(),
 	       "integration field size "
 	           << integration_field->get_size() << "x" << integration_field->get_size()
@@ -69,7 +68,7 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 		for (size_t x = 0; x < this->size; ++x) {
 			size_t idx = y * this->size + x;
 
-			if (target_cells.contains(idx)) {
+			if (integrate_cells[idx].flags & INTEGRATE_TARGET_MASK) {
 				// Ignore target cells
 				continue;
 			}
@@ -204,9 +203,6 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 	// TODO: Compare integration values from other side of portal
 	// auto &integrate_cells = integration_field->get_cells();
 
-	// cells that are part of the portal
-	std::unordered_set<size_t> portal_cells;
-
 	// set the direction for the flow field cells that are part of the portal
 	if (direction == PortalDirection::NORTH_SOUTH) {
 		bool other_is_north = entry_start.se > exit_start.se;
@@ -216,7 +212,6 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 				auto idx = y * this->size + x;
 				flow_cells[idx] = flow_cells[idx] | FLOW_PATHABLE_MASK;
 				flow_cells[idx] = flow_cells[idx] | static_cast<uint8_t>(flow_dir_t::NORTH);
-				portal_cells.insert(idx);
 			}
 		}
 		else {
@@ -225,7 +220,6 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 				auto idx = y * this->size + x;
 				flow_cells[idx] = flow_cells[idx] | FLOW_PATHABLE_MASK;
 				flow_cells[idx] = flow_cells[idx] | static_cast<uint8_t>(flow_dir_t::SOUTH);
-				portal_cells.insert(idx);
 			}
 		}
 	}
@@ -237,7 +231,6 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 				auto idx = y * this->size + x;
 				flow_cells[idx] = flow_cells[idx] | FLOW_PATHABLE_MASK;
 				flow_cells[idx] = flow_cells[idx] | static_cast<uint8_t>(flow_dir_t::EAST);
-				portal_cells.insert(idx);
 			}
 		}
 		else {
@@ -246,7 +239,6 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 				auto idx = y * this->size + x;
 				flow_cells[idx] = flow_cells[idx] | FLOW_PATHABLE_MASK;
 				flow_cells[idx] = flow_cells[idx] | static_cast<uint8_t>(flow_dir_t::WEST);
-				portal_cells.insert(idx);
 			}
 		}
 	}
@@ -254,7 +246,7 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 		throw Error(ERR << "Invalid portal direction: " << static_cast<int>(direction));
 	}
 
-	this->build(integration_field, portal_cells);
+	this->build(integration_field);
 }
 
 const std::vector<flow_t> &FlowField::get_cells() const {
