@@ -50,6 +50,15 @@ public:
 	/**
 	 * Get the integration value at a specified position.
 	 *
+	 * @param x X-coordinate of the cell.
+	 * @param y Y-coordinate of the cell.
+	 * @return Integration value at the specified position.
+	 */
+	const integrated_t &get_cell(size_t x, size_t y) const;
+
+	/**
+	 * Get the integration value at a specified position.
+	 *
 	 * @param idx Index of the cell.
 	 * @return Integration value at the specified position.
 	 */
