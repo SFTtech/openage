@@ -41,7 +41,7 @@ const Path Pathfinder::get_path(const PathRequest &request) {
 		auto start_x = request.start.ne % sector_size;
 		auto start_y = request.start.se % sector_size;
 
-		if (target_integration_field->get_cell(coord::tile_delta{start_x, start_y}).cost != INTEGRATED_COST_UNREACHABLE) {
+		if (target_integration_field->get_cell(start_x, start_y).cost != INTEGRATED_COST_UNREACHABLE) {
 			// Exit early if the start and target are in the same sector
 			// and are reachable from within the same sector
 			auto flow_field = this->integrator->build(target_integration_field);
@@ -295,7 +295,7 @@ const std::vector<coord::tile> Pathfinder::get_waypoints(const std::vector<std::
 
 	coord::tile_t current_x = start_x;
 	coord::tile_t current_y = start_y;
-	flow_dir_t current_direction = flow_fields.at(0).second->get_dir(coord::tile_delta{current_x, current_y});
+	flow_dir_t current_direction = flow_fields.at(0).second->get_dir(current_x, current_y);
 	for (size_t i = 0; i < flow_fields.size(); ++i) {
 		auto sector = grid->get_sector(flow_fields.at(i).first);
 		auto flow_field = flow_fields.at(i).second;
@@ -305,7 +305,7 @@ const std::vector<coord::tile> Pathfinder::get_waypoints(const std::vector<std::
 		       and current_y < static_cast<coord::tile_t>(sector_size)
 		       and current_x >= 0
 		       and current_y >= 0) {
-			auto cell = flow_field->get_cell(coord::tile_delta{current_x, current_y});
+			auto cell = flow_field->get_cell(current_x, current_y);
 			if (cell & FLOW_LOS_MASK) {
 				// check if we reached an LOS cell
 				auto sector_pos = sector->get_position();

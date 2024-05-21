@@ -53,6 +53,25 @@ public:
 	flow_t get_cell(const coord::tile_delta &pos) const;
 
 	/**
+	 * Get the flow field value at a specified position.
+	 *
+	 * @param x X-coordinate of the cell.
+	 * @param y Y-coordinate of the cell.
+	 *
+	 * @return Flowfield value at the specified position.
+	 */
+	flow_t get_cell(size_t x, size_t y) const;
+
+	/**
+	 * Get the flow field direction at a specified position.
+	 *
+	 * @param idx Index of the cell.
+	 *
+	 * @return Flowfield value at the specified position.
+	 */
+	flow_t get_cell(size_t idx) const;
+
+	/**
 	 * Get the flow field direction at a specified position.
 	 *
 	 * @param pos Coordinates of the cell (relative to field origin).
@@ -60,6 +79,25 @@ public:
 	 * @return Flowfield direction at the specified position.
 	 */
 	flow_dir_t get_dir(const coord::tile_delta &pos) const;
+
+	/**
+	 * Get the flow field direction at a specified position.
+	 *
+	 * @param x X-coordinate of the cell.
+	 * @param y Y-coordinate of the cell.
+	 *
+	 * @return Flowfield direction at the specified position.
+	 */
+	flow_dir_t get_dir(size_t x, size_t y) const;
+
+	/**
+	 * Get the flow field direction at a specified position.
+	 *
+	 * @param idx Index of the cell.
+	 *
+	 * @return Flowfield direction at the specified position.
+	 */
+	flow_dir_t get_dir(size_t idx) const;
 
 	/**
 	 * Build the flow field.
