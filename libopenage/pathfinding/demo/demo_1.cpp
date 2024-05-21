@@ -133,7 +133,7 @@ void path_demo_1(const util::Path &path) {
 				path_result = pathfinder->get_path(new_path_request);
 				timer.stop();
 
-				log::log(INFO << "Pathfinding took " << timer.getval() / 1000 << " ps");
+				log::log(INFO << "Pathfinding took " << timer.getval() / 1000 << " us");
 
 				if (path_result.status == PathResult::FOUND) {
 					// Create renderables for the waypoints of the path
@@ -153,7 +153,7 @@ void path_demo_1(const util::Path &path) {
 				path_result = pathfinder->get_path(new_path_request);
 				timer.stop();
 
-				log::log(INFO << "Pathfinding took " << timer.getval() / 1000 << " ps");
+				log::log(INFO << "Pathfinding took " << timer.getval() / 1000 << " us");
 
 				if (path_result.status == PathResult::FOUND) {
 					// Create renderables for the waypoints of the path
