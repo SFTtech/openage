@@ -103,11 +103,8 @@ public:
 	 * Build the flow field.
 	 *
 	 * @param integration_field Integration field.
-	 * @param target_cells Target cells of the flow field. These cells are ignored
-	 *                     when building the field.
 	 */
-	void build(const std::shared_ptr<IntegrationField> &integration_field,
-	           const std::unordered_set<size_t> &target_cells = {});
+	void build(const std::shared_ptr<IntegrationField> &integration_field);
 
 	/**
 	 * Build the flow field for a portal.
