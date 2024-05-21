@@ -70,6 +70,23 @@ public:
 	                                  const coord::tile &target);
 
 	/**
+	 * Calculate the line-of-sight integration flags starting from a portal to another
+	 * integration field.
+	 *
+	 * Returns a list of cells that are flagged as "wavefront blocked". These cells
+	 * can be used as a starting point for the cost integration.
+	 *
+	 * @param cost_field Cost field to integrate.
+	 * @param other_sector_id Sector ID of the other integration field.
+	 * @param portal Portal connecting the two fields.
+	 *
+	 * @return Cells flagged as "wavefront blocked".
+	 */
+	std::vector<size_t> integrate_los(const std::shared_ptr<CostField> &cost_field,
+	                                  sector_id_t other_sector_id,
+	                                  const std::shared_ptr<Portal> &portal);
+
+	/**
 	 * Calculate the cost integration field starting from a target cell.
 	 *
 	 * @param cost_field Cost field to integrate.
