@@ -34,6 +34,43 @@ const integrated_t &IntegrationField::get_cell(size_t idx) const {
 }
 
 std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostField> &cost_field,
+                                                    sector_id_t other_sector_id,
+                                                    const std::shared_ptr<Portal> &portal) {
+	ENSURE(cost_field->get_size() == this->get_size(),
+	       "cost field size "
+	           << cost_field->get_size() << "x" << cost_field->get_size()
+	           << " does not match integration field size "
+	           << this->get_size() << "x" << this->get_size());
+
+	// Integrate the cost of the cells on the exit side (this) of the portal
+	std::vector<size_t> start_cells;
+	auto exit_start = portal->get_exit_start(other_sector_id);
+	auto exit_end = portal->get_exit_end(other_sector_id);
+	auto entry_start = portal->get_entry_start(other_sector_id);
+	auto entry_end = portal->get_entry_end(other_sector_id);
+
+	auto x_diff = exit_start.ne - entry_start.ne;
+	auto y_diff = exit_start.se - entry_start.se;
+
+	for (auto y = exit_start.se; y <= exit_end.se; ++y) {
+		for (auto x = exit_start.ne; x <= exit_end.ne; ++x) {
+			// every portal cell is a target cell
+			auto target_idx = x + y * this->size;
+
+			auto source_idx = x - x_diff + (y - y_diff) * this->size;
+
+			// Set the cost of all target cells to the start value
+			this->cells[target_idx].cost = INTEGRATED_COST_START;
+			this->cells[target_idx].flags = this->cells[source_idx].flags;
+
+			start_cells.push_back(target_idx);
+		}
+	}
+
+	// TODO: Call main LOS integration function
+}
+
+std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostField> &cost_field,
                                                     const coord::tile &target) {
 	ENSURE(cost_field->get_size() == this->get_size(),
 	       "cost field size "
