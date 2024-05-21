@@ -46,7 +46,10 @@ const Path Pathfinder::get_path(const PathRequest &request) {
 			auto flow_field = this->integrator->build(target_integration_field);
 			auto flow_field_waypoints = this->get_waypoints({std::make_pair(target_sector->get_id(), flow_field)}, request);
 
-			std::vector<coord::tile> waypoints{request.start};
+			std::vector<coord::tile> waypoints{};
+			if (flow_field_waypoints.at(0) != request.start) {
+				waypoints.push_back(request.start);
+			}
 			waypoints.insert(waypoints.end(), flow_field_waypoints.begin(), flow_field_waypoints.end());
 
 			log::log(INFO << "Path found (start = " << request.start << "; target = " << request.target << ")");
@@ -126,8 +129,11 @@ const Path Pathfinder::get_path(const PathRequest &request) {
 	std::reverse(flow_fields.begin(), flow_fields.end());
 
 	// traverse the flow fields to get the waypoints
-	std::vector<coord::tile> waypoints{request.start};
 	auto flow_field_waypoints = this->get_waypoints(flow_fields, request);
+	std::vector<coord::tile> waypoints{};
+	if (flow_field_waypoints.at(0) != request.start) {
+		waypoints.push_back(request.start);
+	}
 	waypoints.insert(waypoints.end(), flow_field_waypoints.begin(), flow_field_waypoints.end());
 
 	if (portal_status == PathResult::NOT_FOUND) {
