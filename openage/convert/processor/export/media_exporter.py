@@ -11,6 +11,7 @@ import logging
 import os
 import multiprocessing
 import queue
+import sys
 
 from openage.convert.entity_object.export.texture import Texture
 from openage.convert.service import debug_info
@@ -27,6 +28,7 @@ if typing.TYPE_CHECKING:
     from openage.convert.value_object.read.media.colortable import ColorTable
     from openage.convert.value_object.init.game_version import GameVersion
     from openage.util.fslike.path import Path
+    from openage.util.dll import DllDirectoryManager
 
 
 class MediaExporter:
@@ -126,7 +128,8 @@ class MediaExporter:
                     handle_outqueue_func,
                     itargs,
                     kwargs,
-                    args.jobs
+                    args.jobs,
+                    args.dll_manager,
                 )
 
         if args.debug_info > 5:
@@ -198,6 +201,7 @@ class MediaExporter:
                 idx,
                 source_data,
                 single_queue,
+                None,
                 request.source_filename,
                 target_path,
                 *itargs,
@@ -225,7 +229,8 @@ class MediaExporter:
         handle_outqueue_func: typing.Callable | None,
         itargs: tuple,
         kwargs: dict,
-        job_count: int = None
+        job_count: int = None,
+        dll_manager: DllDirectoryManager = None,
     ):
         """
         Export media files in multiple threads.
@@ -241,15 +246,7 @@ class MediaExporter:
         :param itargs: Arguments for the export function.
         :param kwargs: Keyword arguments for the export function.
         :param job_count: Number of worker processes to use.
-        :type requests: list[MediaExportRequest]
-        :type sourcedir: Path
-        :type exportdir: Path
-        :type read_data_func: typing.Callable
-        :type export_func: typing.Callable
-        :type handle_outqueue_func: typing.Callable
-        :type itargs: tuple
-        :type kwargs: dict
-        :type job_count: int
+        :param dll_manager: Adds DLL search paths for the subrocesses (Windows-only).
         """
         worker_count = job_count
         if worker_count is None:
@@ -297,6 +294,7 @@ class MediaExporter:
                             idx,
                             source_data,
                             outqueue,
+                            dll_manager,
                             request.source_filename,
                             target_path,
                             *itargs
@@ -625,6 +623,7 @@ def _export_blend(
     request_id: int,
     blendfile_data: bytes,
     outqueue: multiprocessing.Queue,
+    dll_manager: DllDirectoryManager,
     source_filename: str,  # pylint: disable=unused-argument
     targetdir: Path,
     target_filename: str,
@@ -633,15 +632,16 @@ def _export_blend(
     """
     Convert and export a blending mode.
 
+    :param request_id: ID of the export request.
     :param blendfile_data: Raw file data of the blending mask.
     :param outqueue: Queue for passing metadata to the main process.
+    :param dll_manager: Adds DLL search paths for the subrocesses (Windows-only).
     :param target_path: Path to the resulting image file.
     :param blend_mode_count: Number of blending modes extracted from the source file.
-    :type blendfile_data: bytes
-    :type outqueue: multiprocessing.Queue
-    :type target_path: openage.util.fslike.path.Path
-    :type blend_mode_count: int
     """
+    if sys.platform == "win32" and dll_manager is not None:
+        dll_manager.add_directories()
+
     blend_data = Blendomatic(blendfile_data, blend_mode_count)
 
     from .texture_merge import merge_frames
@@ -661,6 +661,7 @@ def _export_sound(
     request_id: int,
     sound_data: bytes,
     outqueue: multiprocessing.Queue,
+    dll_manager: DllDirectoryManager,
     source_filename: str,  # pylint: disable=unused-argument
     target_path: Path,
     **kwargs  # pylint: disable=unused-argument
@@ -668,13 +669,15 @@ def _export_sound(
     """
     Convert and export a sound file.
 
+    :param request_id: ID of the export request.
     :param sound_data: Raw file data of the sound file.
     :param outqueue: Queue for passing metadata to the main process.
+    :param dll_manager: Adds DLL search paths for the subrocesses (Windows-only).
     :param target_path: Path to the resulting sound file.
-    :type sound_data: bytes
-    :type outqueue: multiprocessing.Queue
-    :type target_path: openage.util.fslike.path.Path
     """
+    if sys.platform == "win32" and dll_manager is not None:
+        dll_manager.add_directories()
+
     from ...service.export.opus.opusenc import encode
     encoded = encode(sound_data)
 
@@ -691,6 +694,7 @@ def _export_terrain(
     request_id: int,
     graphics_data: bytes,
     outqueue: multiprocessing.Queue,
+    dll_manager: DllDirectoryManager,
     source_filename: str,
     target_path: Path,
     palettes: dict[int, ColorTable],
@@ -700,21 +704,19 @@ def _export_terrain(
     """
     Convert and export a terrain graphics file.
 
+    :param request_id: ID of the export request.
     :param graphics_data: Raw file data of the graphics file.
     :param outqueue: Queue for passing the image metadata to the main process.
+    :param dll_manager: Adds DLL search paths for the subrocesses (Windows-only).
     :param source_filename: Filename of the source file.
     :param target_path: Path to the resulting image file.
     :param palettes: Palettes used by the game.
     :param compression_level: PNG compression level for the resulting image file.
     :param game_version: Game edition and expansion info.
-    :type graphics_data: bytes
-    :type outqueue: multiprocessing.Queue
-    :type source_filename: str
-    :type target_path: openage.util.fslike.path.Path
-    :type palettes: dict
-    :type compression_level: int
-    :type game_version: GameVersion
     """
+    if sys.platform == "win32" and dll_manager is not None:
+        dll_manager.add_directories()
+
     file_ext = source_filename.split('.')[-1].lower()
     if file_ext == "slp":
         from ...value_object.read.media.slp import SLP
@@ -758,6 +760,7 @@ def _export_texture(
     request_id: int,
     graphics_data: bytes,
     outqueue: multiprocessing.Queue,
+    dll_manager: DllDirectoryManager,
     source_filename: str,
     target_path: Path,
     palettes: dict[int, ColorTable],
@@ -770,20 +773,16 @@ def _export_texture(
     :param request_id: ID of the export request.
     :param graphics_data: Raw file data of the graphics file.
     :param outqueue: Queue for passing the image metadata to the main process.
+    :param dll_manager: Adds DLL search paths for the subrocesses (Windows-only).
     :param source_filename: Filename of the source file.
     :param target_path: Path to the resulting image file.
     :param palettes: Palettes used by the game.
     :param compression_level: PNG compression level for the resulting image file.
     :param cache_info: Media cache information with compression parameters from a previous run.
-    :type request_id: int
-    :type graphics_data: bytes
-    :type outqueue: multiprocessing.Queue
-    :type source_filename: str
-    :type target_path: openage.util.fslike.path.Path
-    :type palettes: dict
-    :type compression_level: int
-    :type cache_info: tuple
     """
+    if sys.platform == "win32" and dll_manager is not None:
+        dll_manager.add_directories()
+
     file_ext = source_filename.split('.')[-1].lower()
     if file_ext == "slp":
         from ...value_object.read.media.slp import SLP
@@ -844,10 +843,6 @@ def _save_png(
     :param target_path: Path to the resulting image file.
     :param compression_level: PNG compression level used for the resulting image file.
     :param dry_run: If True, create the PNG but don't save it as a file.
-    :type texture: Texture
-    :type target_path: openage.util.fslike.path.Path
-    :type compression_level: int
-    :type dry_run: bool
     """
     from ...service.export.png import png_create
 

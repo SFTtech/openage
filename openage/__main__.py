@@ -31,27 +31,15 @@ def print_version():
     sys.exit(0)
 
 
-def add_dll_search_paths(dll_paths):
+def add_dll_search_paths(dll_paths: list[str]):
     """
     This function adds DLL search paths.
-    This function does nothing if current OS is not Windows.
     """
+    from .util.dll import DllDirectoryManager
 
-    def close_windows_dll_path_handles(dll_path_handles):
-        """
-        This function calls close() method on each of the handles.
-        """
-        for handle in dll_path_handles:
-            handle.close()
+    manager = DllDirectoryManager(dll_paths)
 
-    if sys.platform != 'win32' or dll_paths is None:
-        return
-
-    import atexit
-    win_dll_path_handles = []
-    for addtional_path in dll_paths:
-        win_dll_path_handles.append(os.add_dll_directory(addtional_path))
-    atexit.register(close_windows_dll_path_handles, win_dll_path_handles)
+    return manager
 
 
 def main(argv=None):
@@ -62,11 +50,11 @@ def main(argv=None):
     )
 
     if sys.platform == 'win32':
-        import inspect
+        from .util.dll import default_paths
         cli.add_argument(
             "--add-dll-search-path", action='append', dest='dll_paths',
             # use path of current openage executable as default
-            default=[os.path.dirname(os.path.abspath(inspect.getsourcefile(lambda: 0)))],
+            default=default_paths(),
             help="(Windows only) provide additional DLL search path")
 
     cli.add_argument("--version", "-V", action='store_true', dest='print_version',
@@ -141,8 +129,10 @@ def main(argv=None):
 
     args = cli.parse_args(argv)
 
+    dll_manager = None
     if sys.platform == 'win32':
-        add_dll_search_paths(args.dll_paths)
+        dll_manager = add_dll_search_paths(args.dll_paths)
+        dll_manager.add_directories()
 
     if args.print_version:
         print_version()
@@ -150,6 +140,8 @@ def main(argv=None):
     if not args.subcommand:
         # the user didn't specify a subcommand. default to 'main'.
         args = main_cli.parse_args(argv)
+
+    args.dll_manager = dll_manager
 
     # process the shared args
     set_loglevel(verbosity_to_level(args.verbose - args.quiet))
