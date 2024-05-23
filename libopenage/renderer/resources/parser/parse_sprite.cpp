@@ -1,4 +1,4 @@
-// Copyright 2021-2023 the openage authors. See copying.md for legal info.
+// Copyright 2021-2024 the openage authors. See copying.md for legal info.
 
 #include "parse_sprite.h"
 
@@ -188,7 +188,7 @@ Animation2dInfo parse_sprite_file(const util::Path &file,
 			frames.at(frame.angle).push_back(frame);
 
 			// check for the largest index, so we can use it to
-			// interpolate the total animation length
+		    // interpolate the total animation length
 			if (frame.index > largest_frame_idx) {
 				largest_frame_idx = frame.index;
 			}
@@ -226,6 +226,13 @@ Animation2dInfo parse_sprite_file(const util::Path &file,
 	          angles.end(),
 	          [](AngleData &a1, AngleData &a2) {
 				  return a1.degree < a2.degree;
+			  });
+
+	// Order layers by position
+	std::sort(layers.begin(),
+	          layers.end(),
+	          [](LayerData &l1, LayerData &l2) {
+				  return l1.position < l2.position;
 			  });
 
 	// Create ID map. Resolves IDs used in the file to array indices

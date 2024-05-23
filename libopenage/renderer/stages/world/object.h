@@ -52,13 +52,6 @@ public:
 	void set_render_entity(const std::shared_ptr<WorldRenderEntity> &entity);
 
 	/**
-	 * Set the current camera of the scene.
-	 *
-	 * @param camera Camera object viewing the scene.
-	 */
-	void set_camera(const std::shared_ptr<renderer::camera::Camera> &camera);
-
-	/**
 	 * Fetch updates from the render entity.
 	 *
 	 * @param time Current simulation time.
@@ -82,9 +75,18 @@ public:
 	/**
 	 * Get the quad for creating the geometry.
 	 *
+	 * Since the object is a bunch of sprite layers, the mesh is always a quad.
+	 *
 	 * @return Mesh for creating a renderer geometry object.
 	 */
 	static const renderer::resources::MeshData get_mesh();
+
+	/**
+	 * Get the model matrix for the uniform input of a layer.
+	 *
+	 * @return Model matrix.
+	 */
+	static const Eigen::Matrix4f get_model_matrix();
 
 	/**
 	 * Check whether a new renderable needs to be created for this mesh.
@@ -95,12 +97,21 @@ public:
 	 *
 	 * @return true if a new renderable is required, else false.
 	 */
-	bool requires_renderable();
+	bool requires_renderable() const;
 
 	/**
 	 * Indicate to this mesh that a new renderable has been created.
 	 */
 	void clear_requires_renderable();
+
+	/**
+	 * Get the number of layers required by this object.
+	 *
+	 * @return Number of layers.
+	 */
+	size_t get_required_layer_count(const time::time_t &time) const;
+
+	std::vector<size_t> get_layer_positions(const time::time_t &time) const;
 
 	/**
 	 * Check whether the object was changed by \p update().
@@ -115,13 +126,12 @@ public:
 	void clear_changed_flag();
 
 	/**
-	 * Set the reference to the uniform inputs of the renderable
-	 * associated with this object. Relevant uniforms are updated
-	 * when calling \p update().
+	 * Set the uniform inputs for the layers of this object.
+	 * Layer uniforms are updated on every update call.
 	 *
-	 * @param uniforms Uniform inputs of this object's renderable.
+	 * @param uniforms Uniform inputs of this object's layers.
 	 */
-	void set_uniforms(const std::shared_ptr<renderer::UniformInput> &uniforms);
+	void set_uniforms(std::vector<std::shared_ptr<renderer::UniformInput>> &&uniforms);
 
 	/**
 	 * Shader uniform IDs for setting uniform values.
@@ -148,17 +158,13 @@ private:
 	bool changed;
 
 	/**
-	 * Camera for model uniforms.
-	 */
-	std::shared_ptr<renderer::camera::Camera> camera;
-
-	/**
 	 * Asset manager for central accessing and loading asset resources.
 	 */
 	std::shared_ptr<renderer::resources::AssetManager> asset_manager;
 
 	/**
-	 * Source for positional and texture data.
+	 * Entity that gets updates from the gamestate, e.g. the position and
+	 * requested animation data.
 	 */
 	std::shared_ptr<WorldRenderEntity> render_entity;
 
@@ -179,14 +185,15 @@ private:
 	curve::Segmented<coord::phys_angle_t> angle;
 
 	/**
-	 * Animation information for the renderables.
+	 * Animation information for the layers.
 	 */
 	curve::Discrete<std::shared_ptr<renderer::resources::Animation2dInfo>> animation_info;
 
 	/**
-	 * Shader uniforms for the renderable in the terrain render pass.
+	 * Shader uniforms for the layers of the object. Each layer corresponds to a
+	 * renderable in the render pass.
 	 */
-	std::shared_ptr<renderer::UniformInput> uniforms;
+	std::vector<std::shared_ptr<renderer::UniformInput>> layer_uniforms;
 
 	/**
 	 * Time of the last update call.

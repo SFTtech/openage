@@ -5,6 +5,7 @@
 #include <optional>
 
 #include "renderer/opengl/framebuffer.h"
+#include "renderer/render_target.h"
 #include "renderer/renderer.h"
 
 
@@ -62,6 +63,13 @@ public:
 	 * @return Texture data with the image contents of the buffer.
 	 */
 	resources::Texture2dData into_data() override;
+
+	/**
+	 * Get the type of this render target.
+	 *
+	 * @return Render target type.
+	 */
+	gl_render_target_t get_type() const;
 
 	/**
 	 * Get the targeted textures.

@@ -3,6 +3,9 @@ add_sources(libopenage
     definitions.cpp
 	geometry.cpp
 	render_factory.cpp
+    render_pass.cpp
+    render_target.cpp
+    renderable.cpp
 	renderer.cpp
 	shader_program.cpp
 	texture.cpp

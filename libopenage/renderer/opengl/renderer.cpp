@@ -33,9 +33,9 @@ GlRenderer::GlRenderer(const std::shared_ptr<GlContext> &ctx,
 	// global GL alpha blending settings
 	// glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glBlendFuncSeparate(
-		GL_SRC_ALPHA,           // source (overlaying) RGB factor
+		GL_SRC_ALPHA,           // source (incoming) RGB factor
 		GL_ONE_MINUS_SRC_ALPHA, // destination (underlying) RGB factor
-		GL_ONE,                 // source (overlaying) alpha factor
+		GL_ONE,                 // source (incoming) alpha factor
 		GL_ONE_MINUS_SRC_ALPHA  // destination (underlying) alpha factor
 	);
 
@@ -145,10 +145,9 @@ void GlRenderer::resize_display_target(size_t width, size_t height) {
 	this->display->resize(width, height);
 }
 
-void GlRenderer::optimise(const std::shared_ptr<GlRenderPass> &pass) {
-	if (!pass->get_is_optimised()) {
-		auto renderables = pass->get_renderables();
-		std::stable_sort(renderables.begin(), renderables.end(), [](const Renderable &a, const Renderable &b) {
+void GlRenderer::optimize(const std::shared_ptr<GlRenderPass> &pass) {
+	if (!pass->get_is_optimized()) {
+		pass->sort([](const Renderable &a, const Renderable &b) {
 			GLuint shader_a = std::dynamic_pointer_cast<GlShaderProgram>(
 								  std::dynamic_pointer_cast<GlUniformInput>(a.uniform)->get_program())
 			                      ->get_handle();
@@ -158,8 +157,7 @@ void GlRenderer::optimise(const std::shared_ptr<GlRenderPass> &pass) {
 			return shader_a < shader_b;
 		});
 
-		pass->set_renderables(renderables);
-		pass->set_is_optimised(true);
+		pass->set_is_optimized(true);
 	}
 }
 
@@ -178,34 +176,49 @@ void GlRenderer::render(const std::shared_ptr<RenderPass> &pass) {
 	// glEnable(GL_CULL_FACE);
 
 	auto gl_pass = std::dynamic_pointer_cast<GlRenderPass>(pass);
-	GlRenderer::optimise(gl_pass);
+	// TODO: Optimization is disabled for now. Figure out how to do this without calling it every frame
+	// GlRenderer::optimize(gl_pass);
 
-	for (auto const &obj : gl_pass->get_renderables()) {
-		if (obj.alpha_blending) {
-			glEnable(GL_BLEND);
+	// render all objects in the pass
+	const auto &layers = gl_pass->get_layers();
+	const auto &renderables = gl_pass->get_renderables();
+
+	// Draw by layers
+	for (size_t i = 0; i < layers.size(); i++) {
+		const auto &layer = layers[i];
+		const auto &objects = renderables[i];
+
+		if (layer.clear_depth) {
+			glClear(GL_DEPTH_BUFFER_BIT);
 		}
-		else {
-			glDisable(GL_BLEND);
-		}
 
-		if (obj.depth_test) {
-			glEnable(GL_DEPTH_TEST);
-		}
-		else {
-			glDisable(GL_DEPTH_TEST);
-		}
+		for (auto const &obj : objects) {
+			if (obj.alpha_blending) {
+				glEnable(GL_BLEND);
+			}
+			else {
+				glDisable(GL_BLEND);
+			}
 
-		auto in = std::dynamic_pointer_cast<GlUniformInput>(obj.uniform);
-		auto program = std::static_pointer_cast<GlShaderProgram>(in->get_program());
+			if (obj.depth_test) {
+				glEnable(GL_DEPTH_TEST);
+			}
+			else {
+				glDisable(GL_DEPTH_TEST);
+			}
 
-		// this also calls program->use()
-		program->update_uniforms(in);
+			auto in = std::dynamic_pointer_cast<GlUniformInput>(obj.uniform);
+			auto program = std::static_pointer_cast<GlShaderProgram>(in->get_program());
 
-		// draw the geometry
-		if (obj.geometry != nullptr) {
-			auto geom = std::dynamic_pointer_cast<GlGeometry>(obj.geometry);
-			// TODO read obj.blend + family
-			geom->draw();
+			// this also calls program->use()
+			program->update_uniforms(in);
+
+			// draw the geometry
+			if (obj.geometry != nullptr) {
+				auto geom = std::dynamic_pointer_cast<GlGeometry>(obj.geometry);
+				// TODO read obj.blend + family
+				geom->draw();
+			}
 		}
 	}
 }

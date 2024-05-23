@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #include "chunk.h"
 
@@ -33,10 +33,17 @@ void TerrainChunk::fetch_updates(const time::time_t & /* time */) {
 	}
 	// TODO: Change mesh instead of recreating it
 	// TODO: Multiple meshes
-	auto new_mesh = this->create_mesh();
-	new_mesh->create_model_matrix(this->offset);
 	this->meshes.clear();
-	this->meshes.push_back(new_mesh);
+	for (const auto &terrain_path : this->render_entity->get_terrain_paths()) {
+		auto new_mesh = this->create_mesh(terrain_path);
+		new_mesh->create_model_matrix(this->offset);
+		this->meshes.push_back(new_mesh);
+	}
+
+	// auto new_mesh = this->create_mesh();
+	// new_mesh->create_model_matrix(this->offset);
+	// this->meshes.clear();
+	// this->meshes.push_back(new_mesh);
 
 	// Indicate to the render entity that its updates have been processed.
 	this->render_entity->clear_changed_flag();
@@ -52,42 +59,68 @@ const std::vector<std::shared_ptr<TerrainRenderMesh>> &TerrainChunk::get_meshes(
 	return this->meshes;
 }
 
-std::shared_ptr<TerrainRenderMesh> TerrainChunk::create_mesh() {
-	// Update mesh
+std::shared_ptr<TerrainRenderMesh> TerrainChunk::create_mesh(const std::string &texture_path) {
 	auto size = this->render_entity->get_size();
-	auto src_verts = this->render_entity->get_vertices();
+	auto v_width = size[0];
+	auto v_height = size[1];
 
-	// dst_verts places vertices in order
-	// (left to right, bottom to top)
-	std::vector<float> dst_verts{};
-	dst_verts.reserve(src_verts.size() * 5);
-	for (auto v : src_verts) {
-		// Transform to scene coords
-		auto v_vec = v.to_world_space();
-		dst_verts.push_back(v_vec[0]);
-		dst_verts.push_back(v_vec[1]);
-		dst_verts.push_back(v_vec[2]);
-		// TODO: Texture scaling
-		dst_verts.push_back((v.ne / 10).to_float());
-		dst_verts.push_back((v.se / 10).to_float());
-	}
+	auto tiles = this->render_entity->get_tiles();
+	auto heightmap_verts = this->render_entity->get_vertices();
 
-	// split the grid into triangles using an index array
-	std::vector<uint16_t> idxs;
-	idxs.reserve((size[0] - 1) * (size[1] - 1) * 6);
-	// iterate over all tiles in the grid by columns, i.e. starting
-	// from the left corner to the bottom corner if you imagine it from
-	// the camera's point of view
-	for (size_t i = 0; i < size[0] - 1; ++i) {
-		for (size_t j = 0; j < size[1] - 1; ++j) {
-			// since we are working on tiles, we split each tile into two triangles
-			// with counter-clockwise vertex order
-			idxs.push_back(j + i * size[1]); // bottom left
-			idxs.push_back(j + 1 + i * size[1]); // bottom right
-			idxs.push_back(j + size[1] + i * size[1]); // top left
-			idxs.push_back(j + 1 + i * size[1]); // bottom right
-			idxs.push_back(j + size[1] + 1 + i * size[1]); // top right
-			idxs.push_back(j + size[1] + i * size[1]); // top left
+	// vertex data for the mesh
+	std::vector<float> mesh_verts{};
+
+	// vertex indices for the mesh
+	std::vector<uint16_t> idxs{};
+
+	// maps indices of verts in the heightmap to indices in the vertex data vector
+	std::unordered_map<size_t, size_t> index_map;
+
+	for (size_t i = 0; i < v_width - 1; ++i) {
+		for (size_t j = 0; j < v_height - 1; ++j) {
+			auto tile = tiles.at(j + i * (v_height - 1));
+			if (tile.second != texture_path) {
+				// Skip tiles with different textures
+				continue;
+			}
+
+			// indices of the vertices of the current tile
+			// in the hightmap
+			std::array<size_t, 4> tile_verts{
+				j + i * v_height,           // top left
+				j + (i + 1) * v_height,     // bottom left
+				j + 1 + (i + 1) * v_height, // bottom right
+				j + 1 + i * v_height,       // top right
+			};
+
+			// add the vertices of the current tile to the vertex data vector
+			for (size_t v_idx : tile_verts) {
+				// skip if the vertex is already in the vertex data vector
+				if (not index_map.contains(v_idx)) {
+					auto v = heightmap_verts[v_idx];
+					auto v_vec = v.to_world_space();
+					mesh_verts.push_back(v_vec[0]);
+					mesh_verts.push_back(v_vec[1]);
+					mesh_verts.push_back(v_vec[2]);
+					mesh_verts.push_back((v.ne / 10).to_float());
+					mesh_verts.push_back((v.se / 10).to_float());
+
+					// update the index map
+					// since new verts are added to the end of the vertex data vector
+					// the mapped index is the current size of the index map
+					index_map[v_idx] = index_map.size();
+				}
+			}
+
+			// first triangle
+			idxs.push_back(index_map[tile_verts[0]]); // top left
+			idxs.push_back(index_map[tile_verts[1]]); // bottom left
+			idxs.push_back(index_map[tile_verts[2]]); // bottom right
+
+			// second triangle
+			idxs.push_back(index_map[tile_verts[0]]); // top left
+			idxs.push_back(index_map[tile_verts[2]]); // bottom right
+			idxs.push_back(index_map[tile_verts[3]]); // top right
 		}
 	}
 
@@ -97,24 +130,21 @@ std::shared_ptr<TerrainRenderMesh> TerrainChunk::create_mesh() {
 		resources::vertex_primitive_t::TRIANGLES,
 		resources::index_t::U16};
 
-	auto const vert_data_size = dst_verts.size() * sizeof(float);
-	std::vector<uint8_t> vert_data(vert_data_size);
-	std::memcpy(vert_data.data(), dst_verts.data(), vert_data_size);
+	auto const vert_data_size_new = mesh_verts.size() * sizeof(float);
+	std::vector<uint8_t> vert_data_new(vert_data_size_new);
+	std::memcpy(vert_data_new.data(), mesh_verts.data(), vert_data_size_new);
 
 	auto const idx_data_size = idxs.size() * sizeof(uint16_t);
 	std::vector<uint8_t> idx_data(idx_data_size);
 	std::memcpy(idx_data.data(), idxs.data(), idx_data_size);
 
-	resources::MeshData meshdata{std::move(vert_data), std::move(idx_data), info};
+	resources::MeshData meshdata{std::move(vert_data_new), std::move(idx_data), info};
 
-	// Update textures
-	auto tex_manager = this->asset_manager->get_texture_manager();
-
-	// TODO: Support multiple textures per chunk
-
+	// Create the terrain mesh
+	auto terrain_info = this->asset_manager->request_terrain(texture_path);
 	auto terrain_mesh = std::make_shared<TerrainRenderMesh>(
 		this->asset_manager,
-		this->render_entity->get_terrain_path(),
+		terrain_info,
 		std::move(meshdata));
 
 	return terrain_mesh;

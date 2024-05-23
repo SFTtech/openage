@@ -33,14 +33,13 @@ namespace openage::renderer::world {
 WorldObject::WorldObject(const std::shared_ptr<renderer::resources::AssetManager> &asset_manager) :
 	require_renderable{true},
 	changed{false},
-	camera{nullptr},
 	asset_manager{asset_manager},
 	render_entity{nullptr},
 	ref_id{0},
 	position{nullptr, 0, "", nullptr, SCENE_ORIGIN},
 	angle{nullptr, 0, "", nullptr, 0},
 	animation_info{nullptr, 0},
-	uniforms{nullptr},
+	layer_uniforms{},
 	last_update{0.0} {
 }
 
@@ -49,15 +48,19 @@ void WorldObject::set_render_entity(const std::shared_ptr<WorldRenderEntity> &en
 	this->fetch_updates();
 }
 
-void WorldObject::set_camera(const std::shared_ptr<renderer::camera::Camera> &camera) {
-	this->camera = camera;
-}
-
 void WorldObject::fetch_updates(const time::time_t &time) {
+	// TODO: Calling this once per frame is very expensive
+	auto layer_count = this->get_required_layer_count(time);
+	if (this->layer_uniforms.size() != layer_count) {
+		// The number of layers changed, so we need to update the renderables
+		this->require_renderable = true;
+	}
+
 	if (not this->render_entity->is_changed()) {
-		// exit early because there is nothing to do
+		// exit early because there is nothing to update
 		return;
 	}
+
 	// Get data from render entity
 	this->ref_id = this->render_entity->get_id();
 	this->position.sync(this->render_entity->get_position());
@@ -84,79 +87,85 @@ void WorldObject::fetch_updates(const time::time_t &time) {
 
 void WorldObject::update_uniforms(const time::time_t &time) {
 	// TODO: Only update uniforms that changed since last update
-	if (this->uniforms == nullptr) [[unlikely]] {
+	if (this->layer_uniforms.empty()) [[unlikely]] {
 		return;
 	}
 
 	// Object world position
 	auto current_pos = this->position.get(time);
-	this->uniforms->update(this->obj_world_position, current_pos.to_world_space());
 
 	// Direction angle the object is facing towards currently
 	auto angle_degrees = this->angle.get(time).to_float();
 
-	// Frame subtexture
+	// Animation information
 	auto animation_info = this->animation_info.get(time);
-	auto &layer = animation_info->get_layer(0); // TODO: Support multiple layers
-	auto &angle = layer.get_direction_angle(angle_degrees);
 
-	// Flip subtexture horizontally if angle is mirrored
-	if (angle->is_mirrored()) {
-		this->uniforms->update(this->flip_x, true);
+	for (size_t layer_idx = 0; layer_idx < this->layer_uniforms.size(); ++layer_idx) {
+		auto &layer_unifs = this->layer_uniforms.at(layer_idx);
+		layer_unifs->update(this->obj_world_position, current_pos.to_world_space());
+
+		// Frame subtexture
+		auto &layer = animation_info->get_layer(layer_idx);
+		auto &angle = layer.get_direction_angle(angle_degrees);
+
+		// Flip subtexture horizontally if angle is mirrored
+		if (angle->is_mirrored()) {
+			layer_unifs->update(this->flip_x, true);
+		}
+		else {
+			layer_unifs->update(this->flip_x, false);
+		}
+
+		// Current frame index considering current time
+		size_t frame_idx;
+		switch (layer.get_display_mode()) {
+		case renderer::resources::display_mode::ONCE:
+		case renderer::resources::display_mode::LOOP: {
+			// ONCE and LOOP are animated based on time
+			auto &timing = layer.get_frame_timing();
+			frame_idx = timing->get_frame(time, this->render_entity->get_update_time());
+		} break;
+		case renderer::resources::display_mode::OFF:
+		default:
+			// OFF only shows the first frame
+			frame_idx = 0;
+			break;
+		}
+
+		// Index of texture and subtexture where the frame's pixels are located
+		auto &frame_info = angle->get_frame(frame_idx);
+		auto tex_idx = frame_info->get_texture_idx();
+		auto subtex_idx = frame_info->get_subtexture_idx();
+
+		auto &tex_info = animation_info->get_texture(tex_idx);
+		auto &tex_manager = this->asset_manager->get_texture_manager();
+		auto &texture = tex_manager->request(tex_info->get_image_path().value());
+		layer_unifs->update(this->tex, texture);
+
+		// Subtexture coordinates.inside texture
+		auto coords = tex_info->get_subtex_info(subtex_idx).get_tile_params();
+		layer_unifs->update(this->tile_params, coords);
+
+		// Animation scale factor
+		// Scales the subtex up or down in the shader
+		auto scale = animation_info->get_scalefactor();
+		layer_unifs->update(this->scale, scale);
+
+		// Subtexture size in pixels
+		auto subtex_size = tex_info->get_subtex_info(subtex_idx).get_size();
+		Eigen::Vector2f subtex_size_vec{
+			static_cast<float>(subtex_size[0]),
+			static_cast<float>(subtex_size[1])};
+		layer_unifs->update(this->subtex_size, subtex_size_vec);
+
+		// Anchor point offset (in pixels)
+		// moves the subtex in the shader so that the anchor point is at the object's position
+		auto anchor = tex_info->get_subtex_info(subtex_idx).get_anchor_params();
+		Eigen::Vector2f anchor_offset{
+			static_cast<float>(anchor[0]),
+			static_cast<float>(anchor[1])};
+		layer_unifs->update(this->anchor_offset, anchor_offset);
 	}
-	else {
-		this->uniforms->update(this->flip_x, false);
-	}
-
-	// Current frame index considering current time
-	size_t frame_idx;
-	switch (layer.get_display_mode()) {
-	case renderer::resources::display_mode::ONCE:
-	case renderer::resources::display_mode::LOOP: {
-		// ONCE and LOOP are animated based on time
-		auto &timing = layer.get_frame_timing();
-		frame_idx = timing->get_frame(time, this->render_entity->get_update_time());
-	} break;
-	case renderer::resources::display_mode::OFF:
-	default:
-		// OFF only shows the first frame
-		frame_idx = 0;
-		break;
-	}
-
-	// Index of texture and subtexture where the frame's pixels are located
-	auto &frame_info = angle->get_frame(frame_idx);
-	auto tex_idx = frame_info->get_texture_idx();
-	auto subtex_idx = frame_info->get_subtexture_idx();
-
-	auto &tex_info = animation_info->get_texture(tex_idx);
-	auto &tex_manager = this->asset_manager->get_texture_manager();
-	auto &texture = tex_manager->request(tex_info->get_image_path().value());
-	this->uniforms->update(this->tex, texture);
-
-	// Subtexture coordinates.inside texture
-	auto coords = tex_info->get_subtex_info(subtex_idx).get_tile_params();
-	this->uniforms->update(this->tile_params, coords);
-
-	// Animation scale factor
-	// Scales the subtex up or down in the shader
-	auto scale = animation_info->get_scalefactor();
-	this->uniforms->update(this->scale, scale);
-
-	// Subtexture size in pixels
-	auto subtex_size = tex_info->get_subtex_info(subtex_idx).get_size();
-	Eigen::Vector2f subtex_size_vec{
-		static_cast<float>(subtex_size[0]),
-		static_cast<float>(subtex_size[1])};
-	this->uniforms->update(this->subtex_size, subtex_size_vec);
-
-	// Anchor point offset (in pixels)
-	// moves the subtex in the shader so that the anchor point is at the object's position
-	auto anchor = tex_info->get_subtex_info(subtex_idx).get_anchor_params();
-	Eigen::Vector2f anchor_offset{
-		static_cast<float>(anchor[0]),
-		static_cast<float>(anchor[1])};
-	this->uniforms->update(this->anchor_offset, anchor_offset);
 }
 
 uint32_t WorldObject::get_id() {
@@ -167,12 +176,40 @@ const renderer::resources::MeshData WorldObject::get_mesh() {
 	return resources::MeshData::make_quad();
 }
 
-bool WorldObject::requires_renderable() {
+const Eigen::Matrix4f WorldObject::get_model_matrix() {
+	return Eigen::Matrix4f::Identity();
+}
+
+bool WorldObject::requires_renderable() const {
 	return this->require_renderable;
 }
 
 void WorldObject::clear_requires_renderable() {
 	this->require_renderable = false;
+}
+
+size_t WorldObject::get_required_layer_count(const time::time_t &time) const {
+	auto animation_info = this->animation_info.get(time);
+	if (not animation_info) {
+		return 0;
+	}
+
+	return animation_info->get_layer_count();
+}
+
+std::vector<size_t> WorldObject::get_layer_positions(const time::time_t &time) const {
+	auto animation_info = this->animation_info.get(time);
+	if (not animation_info) {
+		return {};
+	}
+
+	std::vector<size_t> positions;
+	for (size_t i = 0; i < animation_info->get_layer_count(); ++i) {
+		auto layer = animation_info->get_layer(i);
+		positions.push_back(layer.get_position());
+	}
+
+	return positions;
 }
 
 bool WorldObject::is_changed() {
@@ -183,8 +220,8 @@ void WorldObject::clear_changed_flag() {
 	this->changed = false;
 }
 
-void WorldObject::set_uniforms(const std::shared_ptr<renderer::UniformInput> &uniforms) {
-	this->uniforms = uniforms;
+void WorldObject::set_uniforms(std::vector<std::shared_ptr<renderer::UniformInput>> &&uniforms) {
+	this->layer_uniforms = std::move(uniforms);
 }
 
 } // namespace openage::renderer::world

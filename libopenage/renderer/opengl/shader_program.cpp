@@ -447,7 +447,6 @@ void GlShaderProgram::bind_uniform_buffer(const char *block_name, std::shared_pt
 
 	// Check if the uniform buffer matches the block definition
 	for (auto const &pair : block.uniforms) {
-		auto const &unif = pair.second;
 		ENSURE(gl_buffer->has_uniform(pair.first.c_str()),
 		       "Uniform buffer does not contain uniform '" << pair.first << "' required by block " << block_name);
 	}

@@ -1,9 +1,11 @@
-// Copyright 2022-2023 the openage authors. See copying.md for legal info.
+// Copyright 2022-2024 the openage authors. See copying.md for legal info.
 
 #include "render_stage.h"
 
 #include "renderer/camera/camera.h"
 #include "renderer/opengl/context.h"
+#include "renderer/render_pass.h"
+#include "renderer/render_target.h"
 #include "renderer/renderer.h"
 #include "renderer/resources/shader_source.h"
 #include "renderer/resources/texture_info.h"
@@ -75,7 +77,7 @@ void TerrainRenderStage::update() {
 				};
 
 				// TODO: Remove old renderable instead of clearing everything
-				this->render_pass->add_renderables(display_obj);
+				this->render_pass->add_renderables(std::move(display_obj));
 				mesh->clear_requires_renderable();
 
 				mesh->set_uniforms(transform_unifs);

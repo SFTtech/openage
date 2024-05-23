@@ -1,0 +1,12 @@
+# Copyright 2023-2023 the openage authors.
+# openage texture definition file
+
+version 1
+
+imagefile "test_terrain2.png"
+
+size 500 500
+
+pxformat rgba8 cbits=True
+
+subtex 0 0 500 500 0 0

@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #include "terrain_factory.h"
 
@@ -20,32 +20,34 @@
 
 namespace openage::gamestate {
 
+// TODO: Remove test terrain references
+static const std::vector<std::string> test_terrain_paths = {
+	"../test/textures/test_terrain.terrain",
+	"../test/textures/test_terrain2.terrain",
+};
+
 static const std::vector<nyan::fqon_t> aoe1_test_terrain = {};
 static const std::vector<nyan::fqon_t> de1_test_terrain = {};
 static const std::vector<nyan::fqon_t> aoe2_test_terrain = {
 	"aoe2_base.data.terrain.foundation.foundation.Foundation",
 	"aoe2_base.data.terrain.grass.grass.Grass",
 	"aoe2_base.data.terrain.dirt.dirt.Dirt",
+	"aoe2_base.data.terrain.water.water.Water",
 };
 static const std::vector<nyan::fqon_t> de2_test_terrain = {};
 static const std::vector<nyan::fqon_t> hd_test_terrain = {
 	"hd_base.data.terrain.foundation.foundation.Foundation",
 	"hd_base.data.terrain.grass.grass.Grass",
 	"hd_base.data.terrain.dirt.dirt.Dirt",
+	"hd_base.data.terrain.water.water.Water",
 };
 static const std::vector<nyan::fqon_t> swgb_test_terrain = {
-	"swgb_base.data.terrain.desert0.desert0.Desert0",
-	"swgb_base.data.terrain.grass2.grass2.Grass2",
 	"swgb_base.data.terrain.foundation.foundation.Foundation",
+	"swgb_base.data.terrain.grass2.grass2.Grass2",
+	"swgb_base.data.terrain.desert0.desert0.Desert0",
+	"swgb_base.data.terrain.water1.water1.Water1",
 };
 static const std::vector<nyan::fqon_t> trial_test_terrain = {};
-
-std::shared_ptr<Terrain> TerrainFactory::add_terrain() {
-	// TODO: Replace this with a proper terrain generator.
-	auto terrain = std::make_shared<Terrain>();
-
-	return terrain;
-}
 
 // TODO: Remove hardcoded test texture references
 static std::vector<nyan::fqon_t> test_terrains; // declare static so we only have to do this once
@@ -91,12 +93,94 @@ void build_test_terrains(const std::shared_ptr<GameState> &gstate) {
 	}
 }
 
+// Layout of terrain tiles on chunk 0
+// values are the terrain index
+static const std::array<size_t, 100> layout_chunk0{
+	// clang-format off
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+    0, 0, 1, 1, 1, 1, 1, 1, 0, 0,
+    0, 0, 0, 1, 1, 1, 1, 0, 0, 0,
+    0, 0, 0, 0, 1, 1, 0, 0, 0, 2,
+    0, 0, 0, 0, 1, 1, 0, 0, 0, 2,
+    0, 0, 0, 1, 3, 3, 1, 0, 0, 0,
+    0, 0, 1, 1, 3, 3, 1, 1, 0, 0,
+    0, 1, 1, 1, 3, 3, 1, 1, 1, 0,
+    0, 0, 1, 1, 3, 3, 1, 0, 0, 0,
+	// clang-format on
+};
+
+// Layout of terrain tiles on chunk 1
+// values are the terrain index
+static const std::array<size_t, 100> layout_chunk1{
+	// clang-format off
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    2, 2, 2, 2, 0, 0, 0, 0, 0, 0,
+    2, 2, 2, 2, 2, 0, 0, 0, 0, 0,
+    0, 0, 0, 2, 2, 2, 0, 0, 0, 0,
+    0, 0, 0, 0, 2, 2, 0, 0, 0, 0,
+    0, 0, 0, 0, 2, 2, 0, 0, 0, 0,
+    0, 0, 0, 0, 2, 2, 0, 0, 0, 0,
+	// clang-format on
+};
+
+// Layout of terrain tiles on chunk 2
+// values are the terrain index
+static const std::array<size_t, 100> layout_chunk2{
+	// clang-format off
+    1, 1, 1, 1, 3, 3, 1, 0, 0, 0,
+    1, 1, 1, 1, 3, 3, 1, 1, 0, 0,
+    1, 1, 1, 1, 3, 3, 1, 1, 0, 0,
+    1, 1, 1, 3, 3, 3, 3, 1, 0, 0,
+    1, 3, 3, 3, 3, 3, 3, 3, 1, 2,
+    1, 3, 3, 3, 2, 2, 2, 3, 1, 2,
+    3, 3, 3, 3, 2, 2, 2, 3, 1, 2,
+    1, 3, 3, 3, 2, 2, 2, 3, 1, 1,
+    1, 3, 3, 3, 3, 3, 3, 3, 3, 1,
+    1, 3, 3, 3, 3, 3, 3, 3, 1, 0,
+	// clang-format on
+};
+
+// Layout of terrain tiles on chunk 3
+// values are the terrain index
+static const std::array<size_t, 100> layout_chunk3{
+	// clang-format off
+    0, 0, 0, 0, 2, 2, 0, 0, 0, 0,
+    0, 0, 0, 2, 2, 2, 0, 0, 0, 0,
+    0, 0, 2, 2, 2, 2, 1, 1, 2, 0,
+    0, 2, 2, 2, 2, 2, 1, 2, 0, 0,
+    2, 2, 2, 2, 2, 2, 2, 0, 0, 0,
+    2, 2, 2, 2, 2, 2, 2, 0, 0, 0,
+    0, 0, 2, 2, 2, 2, 2, 0, 0, 0,
+    0, 0, 0, 2, 2, 2, 0, 0, 0, 0,
+    0, 0, 0, 2, 2, 2, 0, 0, 0, 0,
+    0, 0, 0, 2, 2, 2, 0, 0, 0, 0,
+	// clang-format on
+};
+
+
+static const std::vector<std::array<size_t, 100>> layout_chunks{
+	layout_chunk0,
+	layout_chunk1,
+	layout_chunk2,
+	layout_chunk3,
+};
+
+
+std::shared_ptr<Terrain> TerrainFactory::add_terrain() {
+	// TODO: Replace this with a proper terrain generator.
+	auto terrain = std::make_shared<Terrain>();
+
+	return terrain;
+}
 
 std::shared_ptr<TerrainChunk> TerrainFactory::add_chunk(const std::shared_ptr<GameState> &gstate,
                                                         const util::Vector2s size,
                                                         const coord::tile_delta offset) {
-	// TODO: Remove test texture references
-	std::string test_texture_path = "../test/textures/test_terrain.terrain";
+	std::string terrain_info_path;
 
 	// TODO: Remove test texture references
 	// ==========
@@ -105,25 +189,40 @@ std::shared_ptr<TerrainChunk> TerrainFactory::add_chunk(const std::shared_ptr<Ga
 		build_test_terrains(gstate);
 	}
 
-	static size_t test_terrain_index = 0;
-	if (not test_terrains.empty()) {
-		// use one of the modpack terrain textures
-		if (test_terrain_index >= test_terrains.size()) {
-			test_terrain_index = 0;
-		}
-		terrain_obj = gstate->get_db_view()->get_object(test_terrains[test_terrain_index]);
-		test_texture_path = api::APITerrain::get_terrain_path(terrain_obj.value());
-
-		test_terrain_index += 1;
-	}
-	// ==========
-
 	// fill the chunk with tiles
 	std::vector<TerrainTile> tiles{};
 	tiles.reserve(size[0] * size[1]);
-	for (size_t i = 0; i < size[0] * size[1]; ++i) {
-		tiles.push_back({terrain_obj, test_texture_path, terrain_elevation_t::zero()});
+
+	static size_t test_chunk_index = 0;
+	if (not test_terrains.empty()) {
+		// use one of the modpack terrain textures
+		if (test_chunk_index >= layout_chunks.size()) {
+			test_chunk_index = 0;
+		}
+
+		for (size_t i = 0; i < size[0] * size[1]; ++i) {
+			size_t terrain_index = layout_chunks.at(test_chunk_index).at(i);
+			terrain_obj = gstate->get_db_view()->get_object(test_terrains.at(terrain_index));
+			terrain_info_path = api::APITerrain::get_terrain_path(terrain_obj.value());
+			tiles.push_back({terrain_obj, terrain_info_path, terrain_elevation_t::zero()});
+		}
+
+		test_chunk_index += 1;
 	}
+	else {
+		// use a test texture
+		if (test_chunk_index >= test_terrain_paths.size()) {
+			test_chunk_index = 0;
+		}
+		terrain_info_path = test_terrain_paths.at(test_chunk_index);
+
+		for (size_t i = 0; i < size[0] * size[1]; ++i) {
+			tiles.push_back({terrain_obj, terrain_info_path, terrain_elevation_t::zero()});
+		}
+
+		test_chunk_index += 1;
+	}
+	// ==========
 
 	auto chunk = std::make_shared<TerrainChunk>(size, offset, std::move(tiles));
 
@@ -131,11 +230,8 @@ std::shared_ptr<TerrainChunk> TerrainFactory::add_chunk(const std::shared_ptr<Ga
 		auto render_entity = this->render_factory->add_terrain_render_entity(size, offset);
 		chunk->set_render_entity(render_entity);
 
-		chunk->render_update(time::TIME_ZERO,
-		                     test_texture_path);
+		chunk->render_update(time::TIME_ZERO);
 	}
-
-	chunk->set_terrain_path(test_texture_path);
 
 	return chunk;
 }

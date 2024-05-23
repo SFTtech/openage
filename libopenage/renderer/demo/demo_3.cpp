@@ -10,6 +10,8 @@
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/opengl/window.h"
 #include "renderer/render_factory.h"
+#include "renderer/render_pass.h"
+#include "renderer/render_target.h"
 #include "renderer/resources/assets/asset_manager.h"
 #include "renderer/resources/shader_source.h"
 #include "renderer/stages/camera/manager.h"

@@ -4,6 +4,8 @@
 
 #include "renderer/camera/camera.h"
 #include "renderer/opengl/context.h"
+#include "renderer/render_pass.h"
+#include "renderer/render_target.h"
 #include "renderer/resources/assets/asset_manager.h"
 #include "renderer/resources/shader_source.h"
 #include "renderer/resources/texture_info.h"
@@ -50,7 +52,6 @@ void WorldRenderStage::add_render_entity(const std::shared_ptr<WorldRenderEntity
 
 	auto world_object = std::make_shared<WorldObject>(this->asset_manager);
 	world_object->set_render_entity(entity);
-	world_object->set_camera(this->camera);
 	this->render_objects.push_back(world_object);
 }
 
@@ -61,31 +62,36 @@ void WorldRenderStage::update() {
 		obj->fetch_updates(current_time);
 		if (obj->is_changed()) {
 			if (obj->requires_renderable()) {
-				Eigen::Matrix4f model_m = Eigen::Matrix4f::Identity();
+				auto layer_positions = obj->get_layer_positions(current_time);
+				Eigen::Matrix4f model_m = obj->get_model_matrix();
 
-				// Set uniforms that don't change or are not changed often
-				auto transform_unifs = this->display_shader->new_uniform_input(
-					"model",
-					model_m,
-					"flip_x",
-					false,
-					"flip_y",
-					false,
-					"u_id",
-					obj->get_id());
+				std::vector<std::shared_ptr<renderer::UniformInput>> transform_unifs;
+				for (auto layer_pos : layer_positions) {
+					// Set uniforms that don't change or are not changed often
+					auto layer_unifs = this->display_shader->new_uniform_input(
+						"model",
+						model_m,
+						"flip_x",
+						false,
+						"flip_y",
+						false,
+						"u_id",
+						obj->get_id());
 
-				Renderable display_obj{
-					transform_unifs,
-					this->default_geometry,
-					true,
-					true,
-				};
+					Renderable display_obj{
+						layer_unifs,
+						this->default_geometry,
+						true,
+						true,
+					};
+					this->render_pass->add_renderables(std::move(display_obj), layer_pos);
+					transform_unifs.push_back(layer_unifs);
+				}
 
-				this->render_pass->add_renderables(display_obj);
 				obj->clear_requires_renderable();
 
 				// update remaining uniforms for the object
-				obj->set_uniforms(transform_unifs);
+				obj->set_uniforms(std::move(transform_unifs));
 			}
 		}
 		obj->update_uniforms(current_time);

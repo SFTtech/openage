@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #include "gui.h"
 
@@ -7,12 +7,15 @@
 #include "renderer/gui/guisys/public/gui_renderer.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/opengl/context.h"
+#include "renderer/render_pass.h"
+#include "renderer/render_target.h"
 #include "renderer/renderer.h"
 #include "renderer/resources/shader_source.h"
 #include "renderer/resources/texture_info.h"
 #include "renderer/shader_program.h"
 #include "renderer/window.h"
 #include "util/path.h"
+
 
 namespace openage::renderer::gui {
 
@@ -31,10 +34,10 @@ GUI::GUI(std::shared_ptr<qtgui::GuiApplication> app,
 		engine,
 		source.resolve_native_path(),
 		rootdir.resolve_native_path()},
-	//input{&gui_renderer, &game_logic_updater}
-	//image_provider_by_filename{
-	//	&render_updater,
-	//	openage::gui::GuiGameSpecImageProvider::Type::ByFilename},
+	// input{&gui_renderer, &game_logic_updater}
+    // image_provider_by_filename{
+    //	&render_updater,
+    //	openage::gui::GuiGameSpecImageProvider::Type::ByFilename},
 	renderer{renderer} {
 	// everything alright before we create the gui stuff?
 	renderer::opengl::GlContext::check_error();

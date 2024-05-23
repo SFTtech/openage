@@ -1,8 +1,10 @@
-// Copyright 2022-2023 the openage authors. See copying.md for legal info.
+// Copyright 2022-2024 the openage authors. See copying.md for legal info.
 
 #include "render_stage.h"
 
 #include "renderer/opengl/context.h"
+#include "renderer/render_pass.h"
+#include "renderer/render_target.h"
 #include "renderer/renderer.h"
 #include "renderer/resources/mesh_data.h"
 #include "renderer/resources/shader_source.h"
@@ -87,7 +89,7 @@ void ScreenRenderStage::update_render_pass() {
 		output_layers.push_back(display_obj);
 	}
 	this->render_pass->clear_renderables();
-	this->render_pass->add_renderables(output_layers);
+	this->render_pass->add_renderables(std::move(output_layers));
 }
 
 } // namespace openage::renderer::screen
