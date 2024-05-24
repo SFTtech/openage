@@ -12,6 +12,8 @@
 #include "renderer/camera/camera.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/opengl/window.h"
+#include "renderer/render_pass.h"
+#include "renderer/renderable.h"
 #include "renderer/renderer.h"
 #include "renderer/resources/mesh_data.h"
 #include "renderer/resources/shader_source.h"
@@ -298,7 +300,7 @@ void RenderManager0::show_vectors(const std::shared_ptr<path::FlowField> &field)
 					true,
 					true,
 				};
-				this->vector_pass->add_renderables(arrow_renderable);
+				this->vector_pass->add_renderables(std::move(arrow_renderable));
 			}
 		}
 	}
