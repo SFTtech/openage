@@ -2,6 +2,8 @@
 
 #include "interactive.h"
 
+#include <algorithm>
+
 #include "log/log.h"
 
 #include "assets/mod_manager.h"
