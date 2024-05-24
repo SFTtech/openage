@@ -2,6 +2,7 @@
 
 #include "graphics_device.h"
 
+#include <algorithm>
 #include <cstring>
 
 #include "../../error/error.h"
@@ -21,7 +22,7 @@ std::optional<SurfaceSupportDetails> VlkGraphicsDevice::find_device_surface_supp
 
 	// Figure out if any of the families supports graphics
 	for (size_t i = 0; i < q_fams.size(); i++) {
-		auto const& q_fam = q_fams[i];
+		auto const &q_fam = q_fams[i];
 
 		if (q_fam.queueCount > 0) {
 			if ((q_fam.queueFlags & VK_QUEUE_GRAPHICS_BIT) != 0u) {
@@ -52,10 +53,11 @@ std::optional<SurfaceSupportDetails> VlkGraphicsDevice::find_device_surface_supp
 	if (maybe_present_fam) {
 		details.graphics_fam = *maybe_graphics_fam;
 		details.maybe_present_fam = {};
-	} else {
+	}
+	else {
 		// Otherwise look for a present-only queue
 		for (size_t i = 0; i < q_fams.size(); i++) {
-			auto const& q_fam = q_fams[i];
+			auto const &q_fam = q_fams[i];
 			if (q_fam.queueCount > 0) {
 				VkBool32 support = VK_FALSE;
 				vkGetPhysicalDeviceSurfaceSupportKHR(dev, i, surf, &support);
@@ -88,9 +90,8 @@ std::optional<SurfaceSupportDetails> VlkGraphicsDevice::find_device_surface_supp
 	return details;
 }
 
-VlkGraphicsDevice::VlkGraphicsDevice(VkPhysicalDevice dev, std::vector<uint32_t> const& q_fams)
-	: phys_device(dev)
-{
+VlkGraphicsDevice::VlkGraphicsDevice(VkPhysicalDevice dev, std::vector<uint32_t> const &q_fams) :
+	phys_device(dev) {
 	// Prepare queue creation info for each family requested
 	std::vector<VkDeviceQueueCreateInfo> q_infos(q_fams.size());
 	const float p = 1.0f;
@@ -103,15 +104,15 @@ VlkGraphicsDevice::VlkGraphicsDevice(VkPhysicalDevice dev, std::vector<uint32_t>
 	}
 
 	// Request these extensions
-	std::vector<const char*> ext_names = { VK_KHR_SWAPCHAIN_EXTENSION_NAME };
+	std::vector<const char *> ext_names = {VK_KHR_SWAPCHAIN_EXTENSION_NAME};
 
 	// Check if extensions are available
 	auto exts = vk_do_ritual(vkEnumerateDeviceExtensionProperties, dev, nullptr);
 	for (auto ext : ext_names) {
-		if (std::count_if(exts.begin(), exts.end(), [=] (VkExtensionProperties const& p) {
-			                                            return std::strcmp(p.extensionName, ext) == 0;
-		                                            } ) == 0
-		) {
+		if (std::count_if(exts.begin(), exts.end(), [=](VkExtensionProperties const &p) {
+				return std::strcmp(p.extensionName, ext) == 0;
+			})
+		    == 0) {
 			throw Error(MSG(err) << "Tried to instantiate device, but it's missing this extension: " << ext);
 		}
 	}
@@ -122,21 +123,21 @@ VlkGraphicsDevice::VlkGraphicsDevice(VkPhysicalDevice dev, std::vector<uint32_t>
 		vkGetPhysicalDeviceProperties(this->phys_device, &dev_props);
 		log::log(MSG(dbg) << "Chosen Vulkan graphics device: " << dev_props.deviceName);
 		log::log(MSG(dbg) << "Device extensions:");
-		for (auto const& ext : exts) {
+		for (auto const &ext : exts) {
 			log::log(MSG(dbg) << "\t" << ext.extensionName);
 		}
 	}
 #endif
 
 	// Prepare device creation
-	VkDeviceCreateInfo create_dev {};
+	VkDeviceCreateInfo create_dev{};
 	create_dev.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
 	create_dev.queueCreateInfoCount = q_infos.size();
 	create_dev.pQueueCreateInfos = q_infos.data();
 	create_dev.enabledExtensionCount = ext_names.size();
 	create_dev.ppEnabledExtensionNames = ext_names.data();
 
-	VkPhysicalDeviceFeatures features {};
+	VkPhysicalDeviceFeatures features{};
 	// TODO request features
 	create_dev.pEnabledFeatures = &features;
 
@@ -165,4 +166,4 @@ VlkGraphicsDevice::~VlkGraphicsDevice() {
 	vkDestroyDevice(this->device, nullptr);
 }
 
-} // openage::renderer::vulkan
+} // namespace openage::renderer::vulkan
