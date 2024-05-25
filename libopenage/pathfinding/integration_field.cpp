@@ -136,6 +136,7 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 					// Add the current cell to the blocked wavefront if it's not a wall
 					wavefront_blocked.push_back(idx);
 					this->cells[idx].cost = cost - 1 + cost_field->get_cost(idx);
+					// TODO: this->cells[idx].flags |= INTEGRATE_WAVEFRONT_BLOCKED_MASK;
 				}
 
 				// check each neighbor for a corner
@@ -154,8 +155,9 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 
 						// clear los flag if it was set
 						this->cells[blocked_idx].flags &= ~INTEGRATE_LOS_MASK;
+
+						wavefront_blocked.push_back(blocked_idx);
 					}
-					wavefront_blocked.insert(wavefront_blocked.end(), blocked_cells.begin(), blocked_cells.end());
 				}
 				continue;
 			}
