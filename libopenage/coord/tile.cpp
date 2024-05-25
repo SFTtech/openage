@@ -1,4 +1,4 @@
-// Copyright 2016-2023 the openage authors. See copying.md for legal info.
+// Copyright 2016-2024 the openage authors. See copying.md for legal info.
 
 #include "tile.h"
 
@@ -30,6 +30,17 @@ phys2 tile::to_phys2() const {
 
 phys3 tile::to_phys3(tile_t up) const {
 	return this->to_tile3(up).to_phys3();
+}
+
+phys2 tile::to_phys2_center() const {
+	return phys2{phys3::elem_t::from_int(this->ne) + 0.5,
+	             phys3::elem_t::from_int(this->se) + 0.5};
+}
+
+phys3 tile::to_phys3_center(tile_t up) const {
+	return phys3{phys3::elem_t::from_int(this->ne) + 0.5,
+	             phys3::elem_t::from_int(this->se) + 0.5,
+	             phys3::elem_t::from_int(up)};
 }
 
 chunk tile::to_chunk() const {
@@ -65,6 +76,17 @@ phys2 tile3::to_phys2() const {
 phys3 tile3::to_phys3() const {
 	return phys3{phys3::elem_t::from_int(this->ne),
 	             phys3::elem_t::from_int(this->se),
+	             phys3::elem_t::from_int(this->up)};
+}
+
+phys2 tile3::to_phys2_center() const {
+	return phys2{phys3::elem_t::from_int(this->ne) + 0.5,
+	             phys3::elem_t::from_int(this->se) + 0.5};
+}
+
+phys3 tile3::to_phys3_center() const {
+	return phys3{phys3::elem_t::from_int(this->ne) + 0.5,
+	             phys3::elem_t::from_int(this->se) + 0.5,
 	             phys3::elem_t::from_int(this->up)};
 }
 
