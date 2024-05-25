@@ -20,6 +20,7 @@ namespace coord {
 struct tile_delta : CoordNeSeRelative<tile_t, tile, tile_delta> {
 	using CoordNeSeRelative<tile_t, tile, tile_delta>::CoordNeSeRelative;
 
+	// coordinate conversions
 	phys2_delta to_phys2() const;
 	phys3_delta to_phys3(tile_t up = 0) const;
 };
@@ -45,9 +46,7 @@ struct tile3_delta : CoordNeSeUpRelative<tile_t, tile3, tile3_delta> {
 
 	// coordinate conversions
 	// simply discards the UP component of the coordinate delta.
-	constexpr tile_delta to_tile() const {
-		return tile_delta{this->ne, this->se};
-	}
+	tile_delta to_tile() const;
 	phys3_delta to_phys3() const;
 };
 
@@ -56,9 +55,7 @@ struct tile3 : CoordNeSeUpAbsolute<tile_t, tile3, tile3_delta> {
 
 	// coordinate conversions
 	// simply discards the UP component of the coordinate.
-	constexpr tile to_tile() const {
-		return tile{this->ne, this->se};
-	}
+	tile to_tile() const;
 	phys2 to_phys2() const;
 	phys3 to_phys3() const;
 };
