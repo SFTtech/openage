@@ -8,11 +8,11 @@
 namespace openage {
 namespace coord {
 
-tile_delta chunk_delta::to_tile(size_t tiles_per_chunk) const {
+tile_delta chunk_delta::to_tile(tile_t tiles_per_chunk) const {
 	return tile_delta{this->ne * tiles_per_chunk, this->se * tiles_per_chunk};
 }
 
-tile chunk::to_tile(size_t tiles_per_chunk) const {
+tile chunk::to_tile(tile_t tiles_per_chunk) const {
 	return tile{this->ne * tiles_per_chunk, this->se * tiles_per_chunk};
 }
 
