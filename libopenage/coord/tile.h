@@ -35,8 +35,12 @@ struct tile : CoordNeSeAbsolute<tile_t, tile, tile_delta> {
 	 * elevation.
 	 */
 	tile3 to_tile3(tile_t up = 0) const;
+
 	phys2 to_phys2() const;
 	phys3 to_phys3(tile_t up = 0) const;
+	phys2 to_phys2_center() const;
+	phys3 to_phys3_center(tile_t up = 0) const;
+
 	chunk to_chunk() const;
 	tile_delta get_pos_on_chunk() const;
 };
@@ -56,8 +60,11 @@ struct tile3 : CoordNeSeUpAbsolute<tile_t, tile3, tile3_delta> {
 	// coordinate conversions
 	// simply discards the UP component of the coordinate.
 	tile to_tile() const;
+
 	phys2 to_phys2() const;
 	phys3 to_phys3() const;
+	phys2 to_phys2_center() const;
+	phys3 to_phys3_center() const;
 };
 
 
