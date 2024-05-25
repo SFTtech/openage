@@ -137,6 +137,17 @@ public:
 	 */
 	void reset();
 
+	/**
+	 * Reset all flags that are dependent on the path target location. These
+	 * flags should be removed when the field is cached and reused for
+	 * other targets.
+	 *
+	 * Relevant flags are:
+	 * - INTEGRATE_LOS_MASK
+	 * - INTEGRATE_WAVEFRONT_BLOCKED_MASK
+	 */
+	void reset_dynamic_flags();
+
 private:
 	/**
 	 * Update a neigbor cell during the cost integration process.
