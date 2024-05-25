@@ -4,8 +4,10 @@
 
 #include <cstddef>
 #include <memory>
+#include <unordered_map>
 
 #include "pathfinding/types.h"
+#include "util/hash.h"
 
 
 namespace openage {
@@ -102,7 +104,28 @@ public:
 	                     const std::shared_ptr<Portal> &portal);
 
 private:
-	// TODO: Cache created flow fields.
+	/**
+	 * Hash function for the field cache.
+	 */
+	struct pair_hash {
+		template <class T1, class T2>
+		std::size_t operator()(const std::pair<T1, T2> &pair) const {
+			return util::hash_combine(std::hash<T1>{}(pair.first), std::hash<T2>{}(pair.second));
+		}
+	};
+
+	/**
+	 * Cache for already computed fields.
+	 *
+	 * Key is the portal ID and the sector ID from which the field was entered. Fields that are cached are
+	 * cleared of dynamic flags, i.e. wavefront or LOS flags. These have to be recalculated
+	 * when the field is reused.
+	 */
+	std::unordered_map<std::pair<portal_id_t, sector_id_t>,
+	                   std::pair<std::shared_ptr<IntegrationField>,
+	                             std::shared_ptr<FlowField>>,
+	                   pair_hash>
+		field_cache;
 };
 
 } // namespace path
