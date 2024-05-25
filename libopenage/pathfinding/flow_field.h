@@ -131,6 +131,17 @@ public:
 	 */
 	void reset();
 
+	/**
+	 * Reset all flags that are dependent on the path target location. These
+	 * flags should be removed when the field is cached and reused for
+	 * other targets.
+	 *
+	 * Relevant flags are:
+	 * - FLOW_LOS_MASK
+	 * - FLOW_WAVEFRONT_BLOCKED_MASK
+	 */
+	void reset_dynamic_flags();
+
 private:
 	/**
 	 * Side length of the field.

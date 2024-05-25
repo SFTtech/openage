@@ -254,11 +254,18 @@ const std::vector<flow_t> &FlowField::get_cells() const {
 }
 
 void FlowField::reset() {
-	for (auto &cell : this->cells) {
-		cell = FLOW_INIT;
-	}
+	std::fill(this->cells.begin(), this->cells.end(), FLOW_INIT);
 
 	log::log(DBG << "Flow field has been reset");
+}
+
+void FlowField::reset_dynamic_flags() {
+	flow_t mask = 0xFF & ~(FLOW_LOS_MASK | FLOW_WAVEFRONT_BLOCKED_MASK);
+	for (flow_t &cell : this->cells) {
+		cell = cell & mask;
+	}
+
+	log::log(DBG << "Flow field dynamic flags have been reset");
 }
 
 } // namespace openage::path

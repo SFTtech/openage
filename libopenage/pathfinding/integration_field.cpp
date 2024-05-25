@@ -299,10 +299,18 @@ const std::vector<integrated_t> &IntegrationField::get_cells() const {
 }
 
 void IntegrationField::reset() {
-	for (auto &cell : this->cells) {
-		cell = INTEGRATE_INIT;
-	}
+	std::fill(this->cells.begin(), this->cells.end(), INTEGRATE_INIT);
+
 	log::log(DBG << "Integration field has been reset");
+}
+
+void IntegrationField::reset_dynamic_flags() {
+	integrated_flags_t mask = 0xFF & ~(INTEGRATE_LOS_MASK | INTEGRATE_WAVEFRONT_BLOCKED_MASK);
+	for (integrated_t &cell : this->cells) {
+		cell.flags = cell.flags & mask;
+	}
+
+	log::log(DBG << "Integration field dynamic flags have been reset");
 }
 
 void IntegrationField::update_neighbor(size_t idx,
