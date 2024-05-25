@@ -64,7 +64,7 @@ std::vector<coord::phys3> find_path(const std::shared_ptr<path::Pathfinder> &pat
 	// Pathfinder waypoints contain start and end tile; we can ignore them
 	for (size_t i = 1; i < tile_path.waypoints.size() - 1; ++i) {
 		auto tile = tile_path.waypoints.at(i);
-		path.push_back(tile.to_phys3());
+		path.push_back(tile.to_phys3_center());
 	}
 
 	// End position is last waypoint
