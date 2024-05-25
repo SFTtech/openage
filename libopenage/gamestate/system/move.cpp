@@ -127,7 +127,6 @@ const time::time_t Move::move_default(const std::shared_ptr<gamestate::GameEntit
 	// use waypoints for movement
 	double total_time = 0;
 	pos_component->set_position(start_time, current_pos);
-	auto prev_angle = current_angle;
 	for (size_t i = 1; i < waypoints.size(); ++i) {
 		auto prev_waypoint = waypoints[i - 1];
 		auto cur_waypoint = waypoints[i];
@@ -153,6 +152,9 @@ const time::time_t Move::move_default(const std::shared_ptr<gamestate::GameEntit
 			double turn_time = angle_diff.to_double() / turn_speed->get();
 			total_time += turn_time;
 			pos_component->set_position(start_time + total_time, prev_waypoint);
+
+			// update current angle for next waypoint
+			current_angle = path_angle;
 		}
 		pos_component->set_angle(start_time + total_time, path_angle);
 

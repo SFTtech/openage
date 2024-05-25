@@ -1,4 +1,4 @@
-// Copyright 2021-2023 the openage authors. See copying.md for legal info.
+// Copyright 2021-2024 the openage authors. See copying.md for legal info.
 
 #include "position.h"
 
@@ -60,7 +60,7 @@ const curve::Segmented<coord::phys_angle_t> &Position::get_angles() const {
 
 void Position::set_angle(const time::time_t &time, const coord::phys_angle_t &angle) {
 	auto old_angle = this->angle.get(time);
-	this->angle.set_insert_jump(time, old_angle, angle);
+	this->angle.set_last_jump(time, old_angle, angle);
 }
 
 } // namespace openage::gamestate::component
