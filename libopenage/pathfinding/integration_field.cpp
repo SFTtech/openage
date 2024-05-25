@@ -183,6 +183,7 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 		// increment the cost and advance the wavefront outwards
 		cost += 1;
 		current_wave.swap(next_wave);
+		next_wave.clear();
 	}
 	while (!current_wave.empty());
 
