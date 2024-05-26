@@ -238,10 +238,6 @@ void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_fie
 
 void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_field,
                                       std::vector<size_t> &&start_cells) {
-	// Lookup table for cells that are in the open list
-	std::unordered_set<size_t> in_list;
-	in_list.reserve(this->size * this->size);
-
 	// Cells that still have to be visited
 	// they may be visited multiple times
 	std::deque<size_t> open_list;
@@ -281,15 +277,11 @@ void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_fie
 			this->update_neighbor(neighbor_idx,
 			                      cost_field->get_cost(neighbor_idx),
 			                      integrated_current,
-			                      open_list,
-			                      in_list);
+			                      open_list);
 		}
 
 		// Clear the neighbors vector
 		neighbors.clear();
-
-		// Remove the current cell from the open list lookup table
-		in_list.erase(idx);
 	}
 }
 
@@ -315,8 +307,7 @@ void IntegrationField::reset_dynamic_flags() {
 void IntegrationField::update_neighbor(size_t idx,
                                        cost_t cell_cost,
                                        integrated_cost_t integrated_cost,
-                                       std::deque<size_t> &open_list,
-                                       std::unordered_set<size_t> &in_list) {
+                                       std::deque<size_t> &open_list) {
 	ENSURE(cell_cost > COST_INIT, "cost field cell value must be non-zero");
 
 	// Check if the cell is impassable
@@ -326,15 +317,12 @@ void IntegrationField::update_neighbor(size_t idx,
 	}
 
 	auto cost = integrated_cost + cell_cost;
-	if (cost < this->cells.at(idx).cost) {
+	if (cost < this->cells[idx].cost) {
 		// If the new integration value is smaller than the current one,
 		// update the cell and add it to the open list
 		this->cells[idx].cost = cost;
 
-		if (not in_list.contains(idx)) {
-			in_list.insert(idx);
-			open_list.push_back(idx);
-		}
+		open_list.push_back(idx);
 	}
 }
 
