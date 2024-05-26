@@ -51,6 +51,8 @@ struct integrated_t {
 	/**
 	 * Flags.
 	 *
+	 * Bit 0: Found flag.
+	 * Bit 5: Target flag.
 	 * Bit 6: Wave front blocked flag.
 	 * Bit 7: Line of sight flag.
 	 */

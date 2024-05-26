@@ -88,10 +88,6 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 	// Target cell index
 	auto target_idx = target.ne + target.se * this->size;
 
-	// Lookup table for cells that have been found
-	std::unordered_set<size_t> found;
-	found.reserve(this->size * this->size);
-
 	// Cells that still have to be visited by the current wave
 	std::deque<size_t> current_wave;
 
@@ -108,19 +104,19 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 			auto idx = current_wave.front();
 			current_wave.pop_front();
 
-			if (found.contains(idx)) {
-				// Skip cells that have already been found
+			if (this->cells[idx].flags & INTEGRATE_FOUND_MASK) {
+				// Skip cells that are already in the line of sight
 				continue;
 			}
 			else if (this->cells[idx].flags & INTEGRATE_WAVEFRONT_BLOCKED_MASK) {
 				// Stop at cells that are blocked by a LOS corner
 				this->cells[idx].cost = cost - 1 + cost_field->get_cost(idx);
-				found.insert(idx);
+				this->cells[idx].flags |= INTEGRATE_FOUND_MASK;
 				continue;
 			}
 
 			// Add the current cell to the found cells
-			found.insert(idx);
+			this->cells[idx].flags |= INTEGRATE_FOUND_MASK;
 
 			// Get the x and y coordinates of the current cell
 			auto x = idx % this->size;
