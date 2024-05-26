@@ -53,7 +53,7 @@ jobs:
           mv clang+llvm-15.0.0-x86_64-apple-darwin clang-15.0.0
           ~/clang-15.0.0/bin/clang++ --version
       - name: Brew install DeJaVu fonts
-        run: brew tap homebrew/cask-fonts && brew install --force font-dejavu
+        run: brew install --cask font-dejavu
       - name: Remove python's 2to3 link so that 'brew link' does not fail
         run: rm /usr/local/bin/2to3* && rm /usr/local/bin/idle3*
       - name: Install environment helpers with homebrew
