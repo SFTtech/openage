@@ -55,7 +55,12 @@ constexpr integrated_flags_t INTEGRATE_WAVEFRONT_BLOCKED_MASK = 0x02;
 /**
  * Target flag in an integrated_flags_t value.
  */
-constexpr integrated_flags_t INTEGRATE_TARGET_MASK = 0x40;
+constexpr integrated_flags_t INTEGRATE_TARGET_MASK = 0x04;
+
+/**
+ * Found flag in an integrated_flags_t value.
+ */
+constexpr integrated_flags_t INTEGRATE_FOUND_MASK = 0x80;
 
 /**
  * Initial value for a cell in the integration grid.
