@@ -23,6 +23,19 @@ const Path Pathfinder::get_path(const PathRequest &request) {
 	auto grid = this->grids.at(request.grid_id);
 	auto sector_size = grid->get_sector_size();
 
+	// Check if the target is within the grid
+	auto grid_size = grid->get_size();
+	auto grid_width = grid_size[0] * sector_size;
+	auto grid_height = grid_size[1] * sector_size;
+	if (request.target.ne < 0
+	    or request.target.se < 0
+	    or request.target.ne >= grid_width
+	    or request.target.se >= grid_height) {
+		log::log(INFO << "Path not found (start = " << request.start << "; target = " << request.target << ")");
+		log::log(DBG << "Target is out of bounds.");
+		return Path{request.grid_id, PathResult::OUT_OF_BOUNDS, {}};
+	}
+
 	auto start_sector_x = request.start.ne / sector_size;
 	auto start_sector_y = request.start.se / sector_size;
 	auto start_sector = grid->get_sector(start_sector_x, start_sector_y);
