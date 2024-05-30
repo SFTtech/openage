@@ -16,6 +16,8 @@ enum class PathResult {
 	FOUND,
 	/// Path was not found.
 	NOT_FOUND,
+	/// Target is not on grid.
+	OUT_OF_BOUNDS,
 };
 
 /**

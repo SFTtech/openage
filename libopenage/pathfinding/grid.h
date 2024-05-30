@@ -49,16 +49,16 @@ public:
 	grid_id_t get_id() const;
 
 	/**
-	 * Get the size of the grid.
+	 * Get the size of the grid (in number of sectors).
 	 *
-	 * @return Size of the grid (width x height).
+	 * @return Size of the grid (in number of sectors) (width x height).
 	 */
 	const util::Vector2s &get_size() const;
 
 	/**
-	 * Get the side length of the sectors on the grid.
+	 * Get the side length of the sectors on the grid (in number of cells).
 	 *
-	 * @return Sector side length.
+	 * @return Sector side length (in number of cells).
 	 */
 	size_t get_sector_size() const;
 
