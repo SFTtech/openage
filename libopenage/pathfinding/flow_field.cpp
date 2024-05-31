@@ -68,11 +68,6 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 		for (size_t x = 0; x < this->size; ++x) {
 			size_t idx = y * this->size + x;
 
-			if (integrate_cells[idx].flags & INTEGRATE_TARGET_MASK) {
-				// Ignore target cells
-				continue;
-			}
-
 			if (integrate_cells[idx].cost == INTEGRATED_COST_UNREACHABLE) {
 				// Cell cannot be used as path
 				continue;
@@ -80,24 +75,32 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 
 			if (integrate_cells[idx].flags & INTEGRATE_LOS_MASK) {
 				// Cell is in line of sight
-				this->cells[idx] = this->cells[idx] | FLOW_LOS_MASK;
+				flow_cells[idx] |= FLOW_LOS_MASK;
 
 				// we can skip calculating the flow direction as we can
 				// move straight to the target from this cell
-				this->cells[idx] = this->cells[idx] | FLOW_PATHABLE_MASK;
+				flow_cells[idx] |= FLOW_PATHABLE_MASK;
 				continue;
 			}
 
 			if (integrate_cells[idx].flags & INTEGRATE_WAVEFRONT_BLOCKED_MASK) {
 				// Cell is blocked by a line-of-sight corner
-				this->cells[idx] = this->cells[idx] | FLOW_WAVEFRONT_BLOCKED_MASK;
+				flow_cells[idx] |= FLOW_WAVEFRONT_BLOCKED_MASK;
+			}
+
+			if (integrate_cells[idx].flags & INTEGRATE_TARGET_MASK) {
+				// target cells are pathable
+				flow_cells[idx] |= FLOW_PATHABLE_MASK;
+
+				// they also have a preset flow direction so we can skip here
+				continue;
 			}
 
 			// Store which of the non-diagonal directions are unreachable.
 			std::bitset<4> directions_unreachable;
 
 			// Find the neighbor with the smallest cost.
-			flow_dir_t direction = static_cast<flow_dir_t>(this->cells[idx] & FLOW_DIR_MASK);
+			flow_dir_t direction = static_cast<flow_dir_t>(flow_cells[idx] & FLOW_DIR_MASK);
 			auto smallest_cost = INTEGRATED_COST_UNREACHABLE;
 			if (y > 0) {
 				auto cost = integrate_cells[idx - this->size].cost;
@@ -174,10 +177,10 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 			}
 
 			// Set the flow field cell to pathable.
-			flow_cells[idx] = flow_cells[idx] | FLOW_PATHABLE_MASK;
+			flow_cells[idx] |= FLOW_PATHABLE_MASK;
 
 			// Set the flow field cell to the direction of the smallest cost.
-			flow_cells[idx] = flow_cells[idx] | static_cast<uint8_t>(direction);
+			flow_cells[idx] |= static_cast<uint8_t>(direction);
 		}
 	}
 }
