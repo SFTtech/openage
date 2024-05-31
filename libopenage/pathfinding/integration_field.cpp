@@ -97,10 +97,44 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 	// Cost of the current wave
 	integrated_cost_t cost = INTEGRATED_COST_START;
 
-	// Move outwards from the target cell, updating the integration field
-	current_wave.push_back(target_idx);
+	if (cost_field->get_cost(target_idx) > COST_MIN) {
+		// Do a preliminary LOS integration wave for targets that have cost > min cost
+		// This avoids the bresenham's line algorithm calculations
+		// (which wouldn't return accurate results for blocker == target)
+		// and makes sure that sorrounding cells that are min cost are considered
+		// in line-of-sight.
+
+		this->cells[target_idx].cost = cost;
+		this->cells[target_idx].flags |= INTEGRATE_FOUND_MASK;
+		// ASDF: Fix display in demo 0
+		// this->cells[target_idx].flags |= INTEGRATE_LOS_MASK;
+
+		// Add neighbors to current wave
+		if (target.se > 0) {
+			current_wave.push_back(target_idx - this->size);
+		}
+		if (target.ne > 0) {
+			current_wave.push_back(target_idx - 1);
+		}
+		if (target.se < static_cast<coord::tile_t>(this->size - 1)) {
+			current_wave.push_back(target_idx + this->size);
+		}
+		if (target.ne < static_cast<coord::tile_t>(this->size - 1)) {
+			current_wave.push_back(target_idx + 1);
+		}
+
+		// Increment wave cost as we technically handled the first wave in this block
+		cost += 1;
+	}
+	else {
+		// Move outwards from the target cell, updating the integration field
+		current_wave.push_back(target_idx);
+	}
+
 	do {
-		while (!current_wave.empty()) {
+		while (not current_wave.empty()) {
+			// inner loop: handle a wave
+
 			auto idx = current_wave.front();
 			current_wave.pop_front();
 
@@ -183,7 +217,7 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 		current_wave.swap(next_wave);
 		next_wave.clear();
 	}
-	while (!current_wave.empty());
+	while (not current_wave.empty());
 
 	return wavefront_blocked;
 }
