@@ -99,6 +99,7 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 }
 
 std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostField> &cost_field,
+                                                    const std::shared_ptr<IntegrationField> &other,
                                                     sector_id_t other_sector_id,
                                                     const std::shared_ptr<Portal> &portal,
                                                     const coord::tile_delta &target) {
@@ -119,6 +120,8 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 	auto x_diff = exit_start.ne - entry_start.ne;
 	auto y_diff = exit_start.se - entry_start.se;
 
+	auto &other_cells = other->get_cells();
+
 	// transfer masks for flags from the other side of the portal
 	// only LOS and wavefront blocked flags are relevant
 	integrated_flags_t transfer_mask = INTEGRATE_LOS_MASK | INTEGRATE_WAVEFRONT_BLOCKED_MASK;
@@ -134,7 +137,7 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 
 			// Set the cost of all target cells to the start value
 			this->cells[target_idx].cost = INTEGRATED_COST_START;
-			this->cells[target_idx].flags = this->cells[entry_idx].flags & transfer_mask;
+			this->cells[target_idx].flags = other_cells[entry_idx].flags & transfer_mask;
 
 			this->cells[target_idx].flags |= INTEGRATE_TARGET_MASK;
 
@@ -429,7 +432,7 @@ void IntegrationField::reset() {
 }
 
 void IntegrationField::reset_dynamic_flags() {
-	integrated_flags_t mask = 0xFF & ~(INTEGRATE_LOS_MASK | INTEGRATE_WAVEFRONT_BLOCKED_MASK);
+	integrated_flags_t mask = 0xFF & ~(INTEGRATE_LOS_MASK | INTEGRATE_WAVEFRONT_BLOCKED_MASK | INTEGRATE_FOUND_MASK);
 	for (integrated_t &cell : this->cells) {
 		cell.flags = cell.flags & mask;
 	}

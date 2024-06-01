@@ -37,7 +37,7 @@ public:
 	 *
 	 * @param cost_field Cost field.
 	 * @param target Coordinates of the target cell.
-	 * @param with_los true if an LOS pass should be performed, else false.
+	 * @param with_los If true an LOS pass is performed before cost integration.
 	 *
 	 * @return Integration field.
 	 */
@@ -52,14 +52,16 @@ public:
 	 * The target coordinates must be relative to the origin of the sector the cost field belongs to.
 	 *
 	 * @param cost_field Cost field.
+	 * @param other Integration field of the other side of the portal.
 	 * @param other_sector_id Sector ID of the other side of the portal.
 	 * @param portal Portal.
 	 * @param target Coordinates of the target cell, relative to the integration field origin.
-	 * @param with_los true if an LOS pass should be performed, else false.
+	 * @param with_los If true an LOS pass is performed before cost integration.
 	 *
 	 * @return Integration field.
 	 */
 	std::shared_ptr<IntegrationField> integrate(const std::shared_ptr<CostField> &cost_field,
+	                                            const std::shared_ptr<IntegrationField> &other,
 	                                            sector_id_t other_sector_id,
 	                                            const std::shared_ptr<Portal> &portal,
 	                                            const coord::tile_delta &target,
@@ -81,45 +83,47 @@ public:
 	 * @param other Integration field of the other side of the portal.
 	 * @param other_sector_id Sector ID of the other side of the portal.
 	 * @param portal Portal.
+	 * @param with_los If true LOS flags are calculated if the flow field is in cache.
 	 *
 	 * @return Flow field.
 	 */
 	std::shared_ptr<FlowField> build(const std::shared_ptr<IntegrationField> &integration_field,
 	                                 const std::shared_ptr<IntegrationField> &other,
 	                                 sector_id_t other_sector_id,
-	                                 const std::shared_ptr<Portal> &portal);
+	                                 const std::shared_ptr<Portal> &portal,
+	                                 bool with_los = true);
 
-	using build_return_t = std::pair<std::shared_ptr<IntegrationField>, std::shared_ptr<FlowField>>;
+	using get_return_t = std::pair<std::shared_ptr<IntegrationField>, std::shared_ptr<FlowField>>;
 
 	/**
-	 * Build the integration field and flow field for a target.
+	 * Get the integration field and flow field for a target.
 	 *
 	 * @param cost_field Cost field.
 	 * @param target Coordinates of the target cell.
 	 *
 	 * @return Integration field and flow field.
 	 */
-	build_return_t build(const std::shared_ptr<CostField> &cost_field,
-	                     const coord::tile_delta &target);
+	get_return_t get(const std::shared_ptr<CostField> &cost_field,
+	                 const coord::tile_delta &target);
 
 	/**
-	 * Build the integration field and flow field from a portal.
+	 * Get the integration field and flow field from a portal.
 	 *
 	 * @param cost_field Cost field.
-	 * @param other_integration_field Integration field of the other side of the portal.
+	 * @param other Integration field of the other side of the portal.
 	 * @param other_sector_id Sector ID of the other side of the portal.
 	 * @param portal Portal.
 	 * @param target Coordinates of the target cell, relative to the integration field origin.
-	 * @param with_los true if an LOS pass should be performed, else false.
+	 * @param with_los If true an LOS pass is performed before cost integration.
 	 *
 	 * @return Integration field and flow field.
 	 */
-	build_return_t build(const std::shared_ptr<CostField> &cost_field,
-	                     const std::shared_ptr<IntegrationField> &other_integration_field,
-	                     sector_id_t other_sector_id,
-	                     const std::shared_ptr<Portal> &portal,
-	                     const coord::tile_delta &target,
-	                     bool with_los = false);
+	get_return_t get(const std::shared_ptr<CostField> &cost_field,
+	                 const std::shared_ptr<IntegrationField> &other,
+	                 sector_id_t other_sector_id,
+	                 const std::shared_ptr<Portal> &portal,
+	                 const coord::tile_delta &target,
+	                 bool with_los = true);
 
 private:
 	/**
@@ -140,7 +144,7 @@ private:
 	 * when the field is reused.
 	 */
 	std::unordered_map<std::pair<portal_id_t, sector_id_t>,
-	                   build_return_t,
+	                   get_return_t,
 	                   pair_hash>
 		field_cache;
 };
