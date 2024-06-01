@@ -8,7 +8,7 @@ in float int_val;
 
 out vec4 outcol;
 
-int WAVEFRONT_BLOCKED = 0x40;
+int WAVEFRONT_BLOCKED = 0x04;
 int LINE_OF_SIGHT = 0x20;
 int PATHABLE = 0x10;
 
@@ -21,7 +21,7 @@ void main() {
         return;
     }
 
-    if (bool(flow_flags & LINE_OF_SIGHT)) {
+    if (bool(int_flags & LINE_OF_SIGHT)) {
         // line of sight
         outcol = vec4(1.0, 1.0, 1.0, 1.0);
         return;
