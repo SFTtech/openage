@@ -116,7 +116,7 @@ const Path Pathfinder::get_path(const PathRequest &request) {
 	auto prev_flow_field = this->integrator->build(prev_integration_field);
 	auto prev_sector_id = target_sector->get_id();
 
-	Integrator::build_return_t sector_fields{prev_integration_field, prev_flow_field};
+	Integrator::get_return_t sector_fields{prev_integration_field, prev_flow_field};
 
 	std::vector<std::pair<sector_id_t, std::shared_ptr<FlowField>>> flow_fields;
 	flow_fields.reserve(portal_path.size() + 1);
@@ -129,11 +129,11 @@ const Path Pathfinder::get_path(const PathRequest &request) {
 
 		target_delta = request.target - next_sector->get_position().to_tile(sector_size);
 
-		sector_fields = this->integrator->build(next_sector->get_cost_field(),
-		                                        prev_integration_field,
-		                                        prev_sector_id,
-		                                        portal,
-		                                        target_delta);
+		sector_fields = this->integrator->get(next_sector->get_cost_field(),
+		                                      prev_integration_field,
+		                                      prev_sector_id,
+		                                      portal,
+		                                      target_delta);
 		flow_fields.push_back(std::make_pair(next_sector_id, sector_fields.second));
 
 		prev_integration_field = sector_fields.first;

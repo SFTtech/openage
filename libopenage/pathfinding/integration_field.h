@@ -88,6 +88,7 @@ public:
 	 * can be used as a starting point for the cost integration.
 	 *
 	 * @param cost_field Cost field to integrate.
+	 * @param other Integration field of the other sector.
 	 * @param other_sector_id Sector ID of the other integration field.
 	 * @param portal Portal connecting the two fields.
 	 * @param target Coordinates of the target cell (relative to field origin).
@@ -95,6 +96,7 @@ public:
 	 * @return Cells flagged as "wavefront blocked".
 	 */
 	std::vector<size_t> integrate_los(const std::shared_ptr<CostField> &cost_field,
+	                                  const std::shared_ptr<IntegrationField> &other,
 	                                  sector_id_t other_sector_id,
 	                                  const std::shared_ptr<Portal> &portal,
 	                                  const coord::tile_delta &target);
@@ -168,6 +170,7 @@ public:
 	 * Relevant flags are:
 	 * - INTEGRATE_LOS_MASK
 	 * - INTEGRATE_WAVEFRONT_BLOCKED_MASK
+	 * - INTEGRATE_FOUND_MASK
 	 */
 	void reset_dynamic_flags();
 
