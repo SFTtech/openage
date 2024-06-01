@@ -735,12 +735,12 @@ renderer::resources::MeshData RenderManager0::get_flow_field_mesh(const std::sha
 	// add vertices for the cells of the grid
 	std::vector<float> verts{};
 	auto vert_count = size[0] * size[1];
-	verts.reserve(vert_count * 4);
+	verts.reserve(vert_count * 5);
 	for (int i = 0; i < static_cast<int>(size[0]); ++i) {
 		for (int j = 0; j < static_cast<int>(size[1]); ++j) {
 			// for each vertex, compare the surrounding tiles
-			std::vector<float> ff_surround{};
-			std::vector<float> int_surround{};
+			std::vector<flow_t> ff_surround{};
+			std::vector<integrated_flags_t> int_surround{};
 			if (j - 1 >= 0 and i - 1 >= 0) {
 				auto ff_cost = flow_field->get_cell((i - 1) / resolution, (j - 1) / resolution);
 				ff_surround.push_back(ff_cost);
@@ -769,9 +769,15 @@ renderer::resources::MeshData RenderManager0::get_flow_field_mesh(const std::sha
 				auto int_flags = int_field->get_cell(i / resolution, (j - 1) / resolution).flags;
 				int_surround.push_back(int_flags);
 			}
-			// use the cost of the most expensive surrounding tile
-			auto ff_max_cost = *std::max_element(ff_surround.begin(), ff_surround.end());
-			auto int_max_flags = *std::max_element(int_surround.begin(), int_surround.end());
+			// combine the flags of the sorrounding tiles
+			auto ff_max_flags = 0;
+			for (auto &val : ff_surround) {
+				ff_max_flags |= val & 0xF0;
+			}
+			auto int_max_flags = 0;
+			for (auto &val : int_surround) {
+				int_max_flags |= val;
+			}
 
 			coord::scene3 v{
 				static_cast<float>(i * vert_distance),
@@ -782,7 +788,7 @@ renderer::resources::MeshData RenderManager0::get_flow_field_mesh(const std::sha
 			verts.push_back(world_v[0]);
 			verts.push_back(world_v[1]);
 			verts.push_back(world_v[2]);
-			verts.push_back(ff_max_cost);
+			verts.push_back(ff_max_flags);
 			verts.push_back(int_max_flags);
 		}
 	}

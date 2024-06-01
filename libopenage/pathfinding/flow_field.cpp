@@ -78,11 +78,6 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 				flow_cells[idx] |= FLOW_LOS_MASK;
 			}
 
-			if (integrate_cells[idx].flags & INTEGRATE_WAVEFRONT_BLOCKED_MASK) {
-				// Cell is blocked by a line-of-sight corner
-				flow_cells[idx] |= FLOW_WAVEFRONT_BLOCKED_MASK;
-			}
-
 			if (integrate_cells[idx].flags & INTEGRATE_TARGET_MASK) {
 				// target cells are pathable
 				flow_cells[idx] |= FLOW_PATHABLE_MASK;
@@ -258,7 +253,7 @@ void FlowField::reset() {
 }
 
 void FlowField::reset_dynamic_flags() {
-	flow_t mask = 0xFF & ~(FLOW_LOS_MASK | FLOW_WAVEFRONT_BLOCKED_MASK);
+	flow_t mask = 0xFF & ~(FLOW_LOS_MASK);
 	for (flow_t &cell : this->cells) {
 		cell = cell & mask;
 	}
@@ -274,11 +269,6 @@ void FlowField::transfer_dynamic_flags(const std::shared_ptr<IntegrationField> &
 		if (integrate_cells[idx].flags & INTEGRATE_LOS_MASK) {
 			// Cell is in line of sight
 			flow_cells[idx] |= FLOW_LOS_MASK;
-		}
-
-		if (integrate_cells[idx].flags & INTEGRATE_WAVEFRONT_BLOCKED_MASK) {
-			// Cell is blocked by a line-of-sight corner
-			flow_cells[idx] |= FLOW_WAVEFRONT_BLOCKED_MASK;
 		}
 	}
 
