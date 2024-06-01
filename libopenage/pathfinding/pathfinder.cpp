@@ -83,7 +83,8 @@ const Path Pathfinder::get_path(const PathRequest &request) {
 	// Check which portals are reachable from the start field
 	coord::tile_delta start = request.start - start_sector->get_position().to_tile(sector_size);
 	auto start_integration_field = this->integrator->integrate(start_sector->get_cost_field(),
-	                                                           start);
+	                                                           start,
+	                                                           false);
 
 	std::unordered_set<portal_id_t> start_portal_ids;
 	for (auto &portal : start_sector->get_portals()) {
