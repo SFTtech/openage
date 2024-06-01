@@ -132,8 +132,9 @@ public:
 	void reset();
 
 	/**
-	 * Reset all flags that are dependent on the path target location. These
-	 * flags should be removed when the field is cached and reused for
+	 * Reset all flags that are dependent on the path target location.
+	 *
+	 * These flags should be removed when the field is cached and reused for
 	 * other targets.
 	 *
 	 * Relevant flags are:
@@ -141,6 +142,20 @@ public:
 	 * - FLOW_WAVEFRONT_BLOCKED_MASK
 	 */
 	void reset_dynamic_flags();
+
+	/**
+	 * Transfer dynamic flags from an integration field.
+	 *
+	 * These flags should be transferred when the field is copied from cache.
+	 * Flow field directions are not altered.
+	 *
+	 * Relevant flags are:
+	 * - FLOW_LOS_MASK
+	 * - FLOW_WAVEFRONT_BLOCKED_MASK
+	 *
+	 * @param integration_field Integration field.
+	 */
+	void transfer_dynamic_flags(const std::shared_ptr<IntegrationField> &integration_field);
 
 private:
 	/**
