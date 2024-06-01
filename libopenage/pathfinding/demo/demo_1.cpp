@@ -96,7 +96,7 @@ void path_demo_1(const util::Path &path) {
 	Path path_result = pathfinder->get_path(path_request);
 	timer.stop();
 
-	log::log(INFO << "Pathfinding took " << timer.getval() / 1000 << " ps");
+	log::log(INFO << "Pathfinding took " << timer.getval() / 1000 << " us");
 
 	// Create a renderer to display the grid and path
 	auto qtapp = std::make_shared<renderer::gui::GuiApplicationWithLogger>();
