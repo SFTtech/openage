@@ -38,44 +38,177 @@ const integrated_t &IntegrationField::get_cell(size_t idx) const {
 }
 
 std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostField> &cost_field,
-                                                    sector_id_t other_sector_id,
-                                                    const std::shared_ptr<Portal> &portal) {
+                                                    const coord::tile_delta &target) {
 	ENSURE(cost_field->get_size() == this->get_size(),
 	       "cost field size "
 	           << cost_field->get_size() << "x" << cost_field->get_size()
 	           << " does not match integration field size "
 	           << this->get_size() << "x" << this->get_size());
 
-	// Integrate the cost of the cells on the exit side (this) of the portal
+	ENSURE(target.ne >= 0
+	           and target.se >= 0
+	           and target.ne < static_cast<coord::tile_t>(this->size)
+	           and target.se < static_cast<coord::tile_t>(this->size),
+	       "target cell (" << target.ne << ", " << target.se << ") "
+	                       << "is out of bounds for integration field of size "
+	                       << this->size << "x" << this->size);
+
 	std::vector<size_t> start_cells;
+	integrated_cost_t start_cost = INTEGRATED_COST_START;
+
+	// Target cell index
+	auto target_idx = target.ne + target.se * this->size;
+
+	this->cells[target_idx].cost = start_cost;
+	this->cells[target_idx].flags |= INTEGRATE_TARGET_MASK;
+
+	if (cost_field->get_cost(target_idx) > COST_MIN) {
+		// Do a preliminary LOS integration wave for targets that have cost > min cost
+		// This avoids the bresenham's line algorithm calculations
+		// (which wouldn't return accurate results for blocker == target)
+		// and makes sure that sorrounding cells that are min cost are considered
+		// in line-of-sight.
+
+		this->cells[target_idx].flags |= INTEGRATE_FOUND_MASK;
+		// ASDF: Fix display in demo 0
+		// this->cells[target_idx].flags |= INTEGRATE_LOS_MASK;
+
+		// Add neighbors to current wave
+		if (target.se > 0) {
+			start_cells.push_back(target_idx - this->size);
+		}
+		if (target.ne > 0) {
+			start_cells.push_back(target_idx - 1);
+		}
+		if (target.se < static_cast<coord::tile_t>(this->size - 1)) {
+			start_cells.push_back(target_idx + this->size);
+		}
+		if (target.ne < static_cast<coord::tile_t>(this->size - 1)) {
+			start_cells.push_back(target_idx + 1);
+		}
+
+		// Increment wave cost as we technically handled the first wave in this block
+		start_cost += 1;
+	}
+	else {
+		// Move outwards from the target cell, updating the integration field
+		start_cells.push_back(target_idx);
+	}
+
+	return this->integrate_los(cost_field, target, start_cost, std::move(start_cells));
+}
+
+std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostField> &cost_field,
+                                                    sector_id_t other_sector_id,
+                                                    const std::shared_ptr<Portal> &portal,
+                                                    const coord::tile_delta &target) {
+	ENSURE(cost_field->get_size() == this->get_size(),
+	       "cost field size "
+	           << cost_field->get_size() << "x" << cost_field->get_size()
+	           << " does not match integration field size "
+	           << this->get_size() << "x" << this->get_size());
+
+	std::vector<size_t> wavefront_blocked_portal;
+
+	std::vector<size_t> start_cells;
+
 	auto exit_start = portal->get_exit_start(other_sector_id);
 	auto exit_end = portal->get_exit_end(other_sector_id);
 	auto entry_start = portal->get_entry_start(other_sector_id);
-	auto entry_end = portal->get_entry_end(other_sector_id);
 
 	auto x_diff = exit_start.ne - entry_start.ne;
 	auto y_diff = exit_start.se - entry_start.se;
 
+	// transfer masks for flags from the other side of the portal
+	// only LOS and wavefront blocked flags are relevant
+	integrated_flags_t transfer_mask = INTEGRATE_LOS_MASK | INTEGRATE_WAVEFRONT_BLOCKED_MASK;
+
+	// every portal cell is a target cell
 	for (auto y = exit_start.se; y <= exit_end.se; ++y) {
 		for (auto x = exit_start.ne; x <= exit_end.ne; ++x) {
-			// every portal cell is a target cell
+			// cell index on the exit side of the portal
 			auto target_idx = x + y * this->size;
 
-			auto source_idx = x - x_diff + (y - y_diff) * this->size;
+			// cell index on the entry side of the portal
+			auto entry_idx = x - x_diff + (y - y_diff) * this->size;
 
 			// Set the cost of all target cells to the start value
 			this->cells[target_idx].cost = INTEGRATED_COST_START;
-			this->cells[target_idx].flags = this->cells[source_idx].flags;
+			this->cells[target_idx].flags = this->cells[entry_idx].flags & transfer_mask;
 
+			this->cells[target_idx].flags |= INTEGRATE_TARGET_MASK;
+
+			if (not(this->cells[target_idx].flags & transfer_mask)) {
+				// If neither LOS nor wavefront blocked flags are set for the portal entry,
+				// the portal exit cell doesn't affect the LOS and we can skip further checks
+				continue;
+			}
+
+			// Get the cost of the current cell
+			auto cell_cost = cost_field->get_cost(target_idx);
+
+			if (cell_cost > COST_MIN or this->cells[target_idx].flags & INTEGRATE_WAVEFRONT_BLOCKED_MASK) {
+				// cell blocks line of sight
+
+				// set the blocked flag for the cell if it wasn't set already
+				this->cells[target_idx].flags |= INTEGRATE_WAVEFRONT_BLOCKED_MASK;
+				wavefront_blocked_portal.push_back(target_idx);
+
+				// set the found flag for the cell, so that the start costs
+				// are not changed in the main LOS integration
+				this->cells[target_idx].flags |= INTEGRATE_FOUND_MASK;
+
+				// check each neighbor for a corner
+				auto corners = this->get_los_corners(cost_field, target, coord::tile_delta(x, y));
+				for (auto &corner : corners) {
+					// draw a line from the corner to the edge of the field
+					// to get the cells blocked by the corner
+					auto blocked_cells = this->bresenhams_line(target, corner.first, corner.second);
+					for (auto &blocked_idx : blocked_cells) {
+						if (cost_field->get_cost(blocked_idx) > COST_MIN) {
+							// stop if blocked_idx is not min cost
+							// because this idx may create a new corner
+							break;
+						}
+						// set the blocked flag for the cell
+						this->cells[blocked_idx].flags |= INTEGRATE_WAVEFRONT_BLOCKED_MASK;
+
+						// clear los flag if it was set
+						this->cells[blocked_idx].flags &= ~INTEGRATE_LOS_MASK;
+
+						wavefront_blocked_portal.push_back(blocked_idx);
+					}
+				}
+				continue;
+			}
+
+			// the cell has the LOS flag and is added to the start cells
 			start_cells.push_back(target_idx);
 		}
 	}
 
-	// TODO: Call main LOS integration function
+	if (start_cells.empty()) {
+		// Main LOS integration will not enter its loop
+		// so we can take a shortcut and just return the
+		// wavefront blocked cells we already found
+		return wavefront_blocked_portal;
+	}
+
+	// Call main LOS integration function
+	auto wavefront_blocked_main = this->integrate_los(cost_field,
+	                                                  target,
+	                                                  INTEGRATED_COST_START,
+	                                                  std::move(start_cells));
+	wavefront_blocked_main.insert(wavefront_blocked_main.end(),
+	                              wavefront_blocked_portal.begin(),
+	                              wavefront_blocked_portal.end());
+	return wavefront_blocked_main;
 }
 
 std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostField> &cost_field,
-                                                    const coord::tile_delta &target) {
+                                                    const coord::tile_delta &target,
+                                                    integrated_cost_t start_cost,
+                                                    std::vector<size_t> &&start_wave) {
 	ENSURE(cost_field->get_size() == this->get_size(),
 	       "cost field size "
 	           << cost_field->get_size() << "x" << cost_field->get_size()
@@ -85,9 +218,6 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 	// Store the wavefront_blocked cells
 	std::vector<size_t> wavefront_blocked;
 
-	// Target cell index
-	auto target_idx = target.ne + target.se * this->size;
-
 	// Cells that still have to be visited by the current wave
 	std::deque<size_t> current_wave;
 
@@ -95,42 +225,10 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 	std::deque<size_t> next_wave;
 
 	// Cost of the current wave
-	integrated_cost_t cost = INTEGRATED_COST_START;
+	integrated_cost_t wave_cost = start_cost;
 
-	if (cost_field->get_cost(target_idx) > COST_MIN) {
-		// Do a preliminary LOS integration wave for targets that have cost > min cost
-		// This avoids the bresenham's line algorithm calculations
-		// (which wouldn't return accurate results for blocker == target)
-		// and makes sure that sorrounding cells that are min cost are considered
-		// in line-of-sight.
-
-		this->cells[target_idx].cost = cost;
-		this->cells[target_idx].flags |= INTEGRATE_FOUND_MASK;
-		// ASDF: Fix display in demo 0
-		// this->cells[target_idx].flags |= INTEGRATE_LOS_MASK;
-
-		// Add neighbors to current wave
-		if (target.se > 0) {
-			current_wave.push_back(target_idx - this->size);
-		}
-		if (target.ne > 0) {
-			current_wave.push_back(target_idx - 1);
-		}
-		if (target.se < static_cast<coord::tile_t>(this->size - 1)) {
-			current_wave.push_back(target_idx + this->size);
-		}
-		if (target.ne < static_cast<coord::tile_t>(this->size - 1)) {
-			current_wave.push_back(target_idx + 1);
-		}
-
-		// Increment wave cost as we technically handled the first wave in this block
-		cost += 1;
-	}
-	else {
-		// Move outwards from the target cell, updating the integration field
-		current_wave.push_back(target_idx);
-	}
-
+	// Add the start wave to the current wave
+	current_wave.insert(current_wave.end(), start_wave.begin(), start_wave.end());
 	do {
 		while (not current_wave.empty()) {
 			// inner loop: handle a wave
@@ -144,7 +242,7 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 			}
 			else if (this->cells[idx].flags & INTEGRATE_WAVEFRONT_BLOCKED_MASK) {
 				// Stop at cells that are blocked by a LOS corner
-				this->cells[idx].cost = cost - 1 + cost_field->get_cost(idx);
+				this->cells[idx].cost = wave_cost - 1 + cost_field->get_cost(idx);
 				this->cells[idx].flags |= INTEGRATE_FOUND_MASK;
 				continue;
 			}
@@ -165,8 +263,9 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 				if (cell_cost != COST_IMPASSABLE) {
 					// Add the current cell to the blocked wavefront if it's not a wall
 					wavefront_blocked.push_back(idx);
-					this->cells[idx].cost = cost - 1 + cost_field->get_cost(idx);
-					// TODO: this->cells[idx].flags |= INTEGRATE_WAVEFRONT_BLOCKED_MASK;
+					this->cells[idx].cost = wave_cost - 1 + cost_field->get_cost(idx);
+					// ASDF: Fix display in demo 0
+					// this->cells[idx].flags |= INTEGRATE_WAVEFRONT_BLOCKED_MASK;
 				}
 
 				// check each neighbor for a corner
@@ -194,7 +293,7 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 
 			// The cell is in the line of sight at min cost
 			// Set the LOS flag and cost
-			this->cells[idx].cost = cost;
+			this->cells[idx].cost = wave_cost;
 			this->cells[idx].flags |= INTEGRATE_LOS_MASK;
 
 			// Search the neighbors of the current cell
@@ -213,7 +312,7 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 		}
 
 		// increment the cost and advance the wavefront outwards
-		cost += 1;
+		wave_cost += 1;
 		current_wave.swap(next_wave);
 		next_wave.clear();
 	}

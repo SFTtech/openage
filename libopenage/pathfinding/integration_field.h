@@ -67,6 +67,8 @@ public:
 	/**
 	 * Calculate the line-of-sight integration flags for a target cell.
 	 *
+	 * The target cell coordinates must lie within the field.
+	 *
 	 * Returns a list of cells that are flagged as "wavefront blocked". These cells
 	 * can be used as a starting point for the cost integration.
 	 *
@@ -88,12 +90,33 @@ public:
 	 * @param cost_field Cost field to integrate.
 	 * @param other_sector_id Sector ID of the other integration field.
 	 * @param portal Portal connecting the two fields.
+	 * @param target Coordinates of the target cell (relative to field origin).
 	 *
 	 * @return Cells flagged as "wavefront blocked".
 	 */
 	std::vector<size_t> integrate_los(const std::shared_ptr<CostField> &cost_field,
 	                                  sector_id_t other_sector_id,
-	                                  const std::shared_ptr<Portal> &portal);
+	                                  const std::shared_ptr<Portal> &portal,
+	                                  const coord::tile_delta &target);
+
+	/**
+	 * Calculate the line-of-sight integration flags for a target cell.
+	 *
+	 * Returns a list of cells that are flagged as "wavefront blocked". These cells
+	 * can be used as a starting point for the cost integration.
+	 *
+	 * @param cost_field Cost field to integrate.
+	 * @param target Coordinates of the target cell (relative to field origin).
+	 * @param start_cost Integration cost for the start wave.
+	 * @param start_wave Cells used for the first LOS integration wave. The wavefront
+	 * 					 expands outwards from these cells.
+	 *
+	 * @return Cells flagged as "wavefront blocked".
+	 */
+	std::vector<size_t> integrate_los(const std::shared_ptr<CostField> &cost_field,
+	                                  const coord::tile_delta &target,
+	                                  integrated_cost_t start_cost,
+	                                  std::vector<size_t> &&start_wave);
 
 	/**
 	 * Calculate the cost integration field starting from a target cell.
