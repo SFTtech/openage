@@ -45,22 +45,22 @@ constexpr integrated_cost_t INTEGRATED_COST_UNREACHABLE = std::numeric_limits<in
 /**
  * Line of sight flag in an integrated_flags_t value.
  */
-constexpr integrated_flags_t INTEGRATE_LOS_MASK = 0x01;
+constexpr integrated_flags_t INTEGRATE_LOS_MASK = 0x20;
 
 /**
  * Wavefront blocked flag in an integrated_flags_t value.
  */
-constexpr integrated_flags_t INTEGRATE_WAVEFRONT_BLOCKED_MASK = 0x02;
+constexpr integrated_flags_t INTEGRATE_WAVEFRONT_BLOCKED_MASK = 0x40;
 
 /**
  * Target flag in an integrated_flags_t value.
  */
-constexpr integrated_flags_t INTEGRATE_TARGET_MASK = 0x04;
+constexpr integrated_flags_t INTEGRATE_TARGET_MASK = 0x01;
 
 /**
  * Found flag in an integrated_flags_t value.
  */
-constexpr integrated_flags_t INTEGRATE_FOUND_MASK = 0x80;
+constexpr integrated_flags_t INTEGRATE_FOUND_MASK = 0x02;
 
 /**
  * Initial value for a cell in the integration grid.
