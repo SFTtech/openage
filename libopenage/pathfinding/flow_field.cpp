@@ -266,4 +266,23 @@ void FlowField::reset_dynamic_flags() {
 	log::log(DBG << "Flow field dynamic flags have been reset");
 }
 
+void FlowField::transfer_dynamic_flags(const std::shared_ptr<IntegrationField> &integration_field) {
+	auto &integrate_cells = integration_field->get_cells();
+	auto &flow_cells = this->cells;
+
+	for (size_t idx = 0; idx < integrate_cells.size(); ++idx) {
+		if (integrate_cells[idx].flags & INTEGRATE_LOS_MASK) {
+			// Cell is in line of sight
+			flow_cells[idx] |= FLOW_LOS_MASK;
+		}
+
+		if (integrate_cells[idx].flags & INTEGRATE_WAVEFRONT_BLOCKED_MASK) {
+			// Cell is blocked by a line-of-sight corner
+			flow_cells[idx] |= FLOW_WAVEFRONT_BLOCKED_MASK;
+		}
+	}
+
+	log::log(DBG << "Flow field dynamic flags have been transferred");
+}
+
 } // namespace openage::path
