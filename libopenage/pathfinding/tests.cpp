@@ -94,9 +94,9 @@ void flow_field() {
 		// | E  | E  | N |
 		auto ff_expected = std::vector<flow_t>{
 			FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::EAST),
-			FLOW_WAVEFRONT_BLOCKED_MASK | FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::SOUTH_EAST),
+			FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::SOUTH_EAST),
 			FLOW_LOS_MASK | FLOW_PATHABLE_MASK,
-			FLOW_WAVEFRONT_BLOCKED_MASK | FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::SOUTH_EAST),
+			FLOW_PATHABLE_MASK | static_cast<uint8_t>(flow_dir_t::SOUTH_EAST),
 			0,
 			FLOW_LOS_MASK | FLOW_PATHABLE_MASK,
 			FLOW_LOS_MASK | FLOW_PATHABLE_MASK,
