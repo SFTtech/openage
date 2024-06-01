@@ -129,10 +129,13 @@ const Path Pathfinder::get_path(const PathRequest &request) {
 		auto next_sector_id = portal->get_exit_sector(prev_sector_id);
 		auto next_sector = grid->get_sector(next_sector_id);
 
+		coord::tile_delta target_delta = request.target - next_sector->get_position().to_tile(sector_size);
+
 		sector_fields = this->integrator->build(next_sector->get_cost_field(),
 		                                        prev_integration_field,
 		                                        prev_sector_id,
-		                                        portal);
+		                                        portal,
+		                                        target_delta);
 		flow_fields.push_back(std::make_pair(next_sector_id, sector_fields.second));
 
 		prev_integration_field = sector_fields.first;
