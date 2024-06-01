@@ -307,6 +307,8 @@ const std::vector<coord::tile> Pathfinder::get_waypoints(const std::vector<std::
 	coord::tile_t target_x = request.target.ne % sector_size;
 	coord::tile_t target_y = request.target.se % sector_size;
 
+	bool reached_target = false;
+
 	coord::tile_t current_x = start_x;
 	coord::tile_t current_y = start_y;
 	flow_dir_t current_direction = flow_fields.at(0).second->get_dir(current_x, current_y);
@@ -323,20 +325,21 @@ const std::vector<coord::tile> Pathfinder::get_waypoints(const std::vector<std::
 			if (cell & FLOW_LOS_MASK) {
 				// check if we reached an LOS cell
 				auto sector_pos = sector->get_position();
-				auto cell_pos = coord::tile(sector_pos.ne * sector_size,
-				                            sector_pos.se * sector_size)
+				auto cell_pos = sector_pos.to_tile(sector_size)
 				                + coord::tile_delta(current_x, current_y);
 				waypoints.push_back(cell_pos);
+				reached_target = true;
 				break;
 			}
+
+			// ASDF: break if target cell is reached
 
 			// check if we need to change direction
 			auto cell_direction = flow_field->get_dir(coord::tile_delta(current_x, current_y));
 			if (cell_direction != current_direction) {
 				// add the current cell as a waypoint
 				auto sector_pos = sector->get_position();
-				auto cell_pos = coord::tile(sector_pos.ne * sector_size,
-				                            sector_pos.se * sector_size)
+				auto cell_pos = sector_pos.to_tile(sector_size)
 				                + coord::tile_delta(current_x, current_y);
 				waypoints.push_back(cell_pos);
 				current_direction = cell_direction;
@@ -377,6 +380,10 @@ const std::vector<coord::tile> Pathfinder::get_waypoints(const std::vector<std::
 			}
 		}
 
+		if (reached_target) {
+			break;
+		}
+
 		// reset the current position for the next flow field
 		switch (current_direction) {
 		case flow_dir_t::NORTH:
@@ -414,7 +421,7 @@ const std::vector<coord::tile> Pathfinder::get_waypoints(const std::vector<std::
 
 	// add the target position as the last waypoint
 	auto sector_pos = grid->get_sector(flow_fields.back().first)->get_position();
-	auto target_pos = coord::tile(sector_pos.ne * sector_size, sector_pos.se * sector_size)
+	auto target_pos = sector_pos.to_tile(sector_size)
 	                  + coord::tile_delta{target_x, target_y};
 	waypoints.push_back(target_pos);
 
