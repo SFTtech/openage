@@ -45,16 +45,14 @@ const Path Pathfinder::get_path(const PathRequest &request) {
 	auto target_sector = grid->get_sector(target_sector_x, target_sector_y);
 
 	// Integrate the target field
-	coord::tile_t target_x = request.target.ne % sector_size;
-	coord::tile_t target_y = request.target.se % sector_size;
-	auto target = coord::tile_delta{target_x, target_y};
-	auto target_integration_field = this->integrator->integrate(target_sector->get_cost_field(), target);
+	coord::tile_delta target_delta = request.target - target_sector->get_position().to_tile(sector_size);
+	auto target_integration_field = this->integrator->integrate(target_sector->get_cost_field(),
+	                                                            target_delta);
 
 	if (target_sector == start_sector) {
-		auto start_x = request.start.ne % sector_size;
-		auto start_y = request.start.se % sector_size;
+		auto start = request.start - start_sector->get_position().to_tile(sector_size);
 
-		if (target_integration_field->get_cell(start_x, start_y).cost != INTEGRATED_COST_UNREACHABLE) {
+		if (target_integration_field->get_cell(start.ne, start.se).cost != INTEGRATED_COST_UNREACHABLE) {
 			// Exit early if the start and target are in the same sector
 			// and are reachable from within the same sector
 			auto flow_field = this->integrator->build(target_integration_field);
@@ -83,10 +81,9 @@ const Path Pathfinder::get_path(const PathRequest &request) {
 	}
 
 	// Check which portals are reachable from the start field
-	coord::tile_t start_x = request.start.ne % sector_size;
-	coord::tile_t start_y = request.start.se % sector_size;
-	auto start = coord::tile_delta{start_x, start_y};
-	auto start_integration_field = this->integrator->integrate(start_sector->get_cost_field(), start);
+	coord::tile_delta start = request.start - start_sector->get_position().to_tile(sector_size);
+	auto start_integration_field = this->integrator->integrate(start_sector->get_cost_field(),
+	                                                           start);
 
 	std::unordered_set<portal_id_t> start_portal_ids;
 	for (auto &portal : start_sector->get_portals()) {
@@ -129,7 +126,7 @@ const Path Pathfinder::get_path(const PathRequest &request) {
 		auto next_sector_id = portal->get_exit_sector(prev_sector_id);
 		auto next_sector = grid->get_sector(next_sector_id);
 
-		coord::tile_delta target_delta = request.target - next_sector->get_position().to_tile(sector_size);
+		target_delta = request.target - next_sector->get_position().to_tile(sector_size);
 
 		sector_fields = this->integrator->build(next_sector->get_cost_field(),
 		                                        prev_integration_field,
