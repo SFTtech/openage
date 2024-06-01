@@ -122,22 +122,27 @@ const Path Pathfinder::get_path(const PathRequest &request) {
 	flow_fields.reserve(portal_path.size() + 1);
 	flow_fields.push_back(std::make_pair(target_sector->get_id(), sector_fields.second));
 
+	int los_depth = 1;
+
 	for (auto &portal : portal_path) {
 		auto prev_sector = grid->get_sector(prev_sector_id);
 		auto next_sector_id = portal->get_exit_sector(prev_sector_id);
 		auto next_sector = grid->get_sector(next_sector_id);
 
 		target_delta = request.target - next_sector->get_position().to_tile(sector_size);
+		bool with_los = los_depth > 0;
 
 		sector_fields = this->integrator->get(next_sector->get_cost_field(),
 		                                      prev_integration_field,
 		                                      prev_sector_id,
 		                                      portal,
-		                                      target_delta);
+		                                      target_delta,
+		                                      with_los);
 		flow_fields.push_back(std::make_pair(next_sector_id, sector_fields.second));
 
 		prev_integration_field = sector_fields.first;
 		prev_sector_id = next_sector_id;
+		los_depth -= 1;
 	}
 
 	// reverse the flow fields so they are ordered from start to target
