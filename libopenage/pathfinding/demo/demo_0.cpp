@@ -111,7 +111,7 @@ void path_demo_0(const util::Path &path) {
 						render_manager->show_integration_field(integration_field);
 						break;
 					case RenderManager0::field_t::FLOW:
-						render_manager->show_flow_field(flow_field);
+						render_manager->show_flow_field(flow_field, integration_field);
 						break;
 					}
 
@@ -137,7 +137,7 @@ void path_demo_0(const util::Path &path) {
 				log::log(INFO << "Showing integration field");
 			}
 			else if (ev.key() == Qt::Key_F3) { // Show flow field
-				render_manager->show_flow_field(flow_field);
+				render_manager->show_flow_field(flow_field, integration_field);
 				current_field = RenderManager0::field_t::FLOW;
 				log::log(INFO << "Showing flow field");
 			}
@@ -241,7 +241,8 @@ void RenderManager0::show_integration_field(const std::shared_ptr<path::Integrat
 	this->field_pass->set_renderables({renderable});
 }
 
-void RenderManager0::show_flow_field(const std::shared_ptr<path::FlowField> &field) {
+void RenderManager0::show_flow_field(const std::shared_ptr<path::FlowField> &flow_field,
+                                     const std::shared_ptr<path::IntegrationField> &int_field) {
 	Eigen::Matrix4f model = Eigen::Matrix4f::Identity();
 	auto unifs = this->flow_shader->new_uniform_input(
 		"model",
@@ -250,7 +251,7 @@ void RenderManager0::show_flow_field(const std::shared_ptr<path::FlowField> &fie
 		this->camera->get_view_matrix(),
 		"proj",
 		this->camera->get_projection_matrix());
-	auto mesh = get_flow_field_mesh(field, 4);
+	auto mesh = get_flow_field_mesh(flow_field, int_field, 4);
 	auto geometry = this->renderer->add_mesh_geometry(mesh);
 	renderer::Renderable renderable{
 		unifs,
@@ -720,13 +721,14 @@ renderer::resources::MeshData RenderManager0::get_integration_field_mesh(const s
 	return {std::move(vert_data), std::move(idx_data), info};
 }
 
-renderer::resources::MeshData RenderManager0::get_flow_field_mesh(const std::shared_ptr<FlowField> &field,
+renderer::resources::MeshData RenderManager0::get_flow_field_mesh(const std::shared_ptr<FlowField> &flow_field,
+                                                                  const std::shared_ptr<path::IntegrationField> &int_field,
                                                                   size_t resolution) {
 	// increase by 1 in every dimension because to get the vertex length
 	// of each dimension
 	util::Vector2s size{
-		field->get_size() * resolution + 1,
-		field->get_size() * resolution + 1,
+		flow_field->get_size() * resolution + 1,
+		flow_field->get_size() * resolution + 1,
 	};
 	auto vert_distance = 1.0f / resolution;
 
@@ -737,25 +739,39 @@ renderer::resources::MeshData RenderManager0::get_flow_field_mesh(const std::sha
 	for (int i = 0; i < static_cast<int>(size[0]); ++i) {
 		for (int j = 0; j < static_cast<int>(size[1]); ++j) {
 			// for each vertex, compare the surrounding tiles
-			std::vector<float> surround{};
+			std::vector<float> ff_surround{};
+			std::vector<float> int_surround{};
 			if (j - 1 >= 0 and i - 1 >= 0) {
-				auto cost = field->get_cell(coord::tile_delta((i - 1) / resolution, (j - 1) / resolution));
-				surround.push_back(cost);
+				auto ff_cost = flow_field->get_cell((i - 1) / resolution, (j - 1) / resolution);
+				ff_surround.push_back(ff_cost);
+
+				auto int_flags = int_field->get_cell((i - 1) / resolution, (j - 1) / resolution).flags;
+				int_surround.push_back(int_flags);
 			}
-			if (j < static_cast<int>(field->get_size()) and i - 1 >= 0) {
-				auto cost = field->get_cell(coord::tile_delta((i - 1) / resolution, j / resolution));
-				surround.push_back(cost);
+			if (j < static_cast<int>(flow_field->get_size()) and i - 1 >= 0) {
+				auto ff_cost = flow_field->get_cell((i - 1) / resolution, j / resolution);
+				ff_surround.push_back(ff_cost);
+
+				auto int_flags = int_field->get_cell((i - 1) / resolution, j / resolution).flags;
+				int_surround.push_back(int_flags);
 			}
-			if (j < static_cast<int>(field->get_size()) and i < static_cast<int>(field->get_size())) {
-				auto cost = field->get_cell(coord::tile_delta(i / resolution, j / resolution));
-				surround.push_back(cost);
+			if (j < static_cast<int>(flow_field->get_size()) and i < static_cast<int>(flow_field->get_size())) {
+				auto ff_cost = flow_field->get_cell(i / resolution, j / resolution);
+				ff_surround.push_back(ff_cost);
+
+				auto int_flags = int_field->get_cell(i / resolution, j / resolution).flags;
+				int_surround.push_back(int_flags);
 			}
-			if (j - 1 >= 0 and i < static_cast<int>(field->get_size())) {
-				auto cost = field->get_cell(coord::tile_delta(i / resolution, (j - 1) / resolution));
-				surround.push_back(cost);
+			if (j - 1 >= 0 and i < static_cast<int>(flow_field->get_size())) {
+				auto ff_cost = flow_field->get_cell(i / resolution, (j - 1) / resolution);
+				ff_surround.push_back(ff_cost);
+
+				auto int_flags = int_field->get_cell(i / resolution, (j - 1) / resolution).flags;
+				int_surround.push_back(int_flags);
 			}
 			// use the cost of the most expensive surrounding tile
-			auto max_cost = *std::max_element(surround.begin(), surround.end());
+			auto ff_max_cost = *std::max_element(ff_surround.begin(), ff_surround.end());
+			auto int_max_flags = *std::max_element(int_surround.begin(), int_surround.end());
 
 			coord::scene3 v{
 				static_cast<float>(i * vert_distance),
@@ -766,7 +782,8 @@ renderer::resources::MeshData RenderManager0::get_flow_field_mesh(const std::sha
 			verts.push_back(world_v[0]);
 			verts.push_back(world_v[1]);
 			verts.push_back(world_v[2]);
-			verts.push_back(max_cost);
+			verts.push_back(ff_max_cost);
+			verts.push_back(int_max_flags);
 		}
 	}
 
@@ -790,7 +807,9 @@ renderer::resources::MeshData RenderManager0::get_flow_field_mesh(const std::sha
 	}
 
 	renderer::resources::VertexInputInfo info{
-		{renderer::resources::vertex_input_t::V3F32, renderer::resources::vertex_input_t::F32},
+		{renderer::resources::vertex_input_t::V3F32,
+	     renderer::resources::vertex_input_t::F32,
+	     renderer::resources::vertex_input_t::F32},
 		renderer::resources::vertex_layout_t::AOS,
 		renderer::resources::vertex_primitive_t::TRIANGLES,
 		renderer::resources::index_t::U16};

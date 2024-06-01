@@ -338,6 +338,7 @@ const std::vector<coord::tile> Pathfinder::get_waypoints(const std::vector<std::
 			}
 
 			// ASDF: break if target cell is reached
+			// idea: target flag for flow field cells
 
 			// check if we need to change direction
 			auto cell_direction = flow_field->get_dir(coord::tile_delta(current_x, current_y));
