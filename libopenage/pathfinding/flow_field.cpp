@@ -68,32 +68,36 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 		for (size_t x = 0; x < this->size; ++x) {
 			size_t idx = y * this->size + x;
 
-			if (integrate_cells[idx].cost == INTEGRATED_COST_UNREACHABLE) {
+			const auto &integrate_cell = integrate_cells[idx];
+			auto &flow_cell = flow_cells[idx];
+
+			if (integrate_cell.cost == INTEGRATED_COST_UNREACHABLE) {
 				// Cell cannot be used as path
 				continue;
 			}
 
-			flow_t transfer_flags = integrate_cells[idx].flags & FLOW_FLAGS_MASK;
-			flow_cells[idx] |= transfer_flags;
+			flow_t transfer_flags = integrate_cell.flags & FLOW_FLAGS_MASK;
+			flow_cell |= transfer_flags;
 
-			if (flow_cells[idx] & FLOW_TARGET_MASK) {
+			if (flow_cell & FLOW_TARGET_MASK) {
 				// target cells are pathable
-				flow_cells[idx] |= FLOW_PATHABLE_MASK;
+				flow_cell |= FLOW_PATHABLE_MASK;
 
 				// they also have a preset flow direction so we can skip here
 				continue;
 			}
 
 			// Store which of the non-diagonal directions are unreachable.
-			std::bitset<4> directions_unreachable;
+			// north == 0x01, east == 0x02, south == 0x04, west == 0x08
+			uint8_t directions_unreachable = 0x00;
 
 			// Find the neighbor with the smallest cost.
-			flow_dir_t direction = static_cast<flow_dir_t>(flow_cells[idx] & FLOW_DIR_MASK);
+			flow_dir_t direction = static_cast<flow_dir_t>(flow_cell & FLOW_DIR_MASK);
 			auto smallest_cost = INTEGRATED_COST_UNREACHABLE;
 			if (y > 0) {
 				auto cost = integrate_cells[idx - this->size].cost;
 				if (cost == INTEGRATED_COST_UNREACHABLE) {
-					directions_unreachable[0] = true;
+					directions_unreachable |= 0x01;
 				}
 				else if (cost < smallest_cost) {
 					smallest_cost = cost;
@@ -103,7 +107,7 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 			if (x < this->size - 1) {
 				auto cost = integrate_cells[idx + 1].cost;
 				if (cost == INTEGRATED_COST_UNREACHABLE) {
-					directions_unreachable[1] = true;
+					directions_unreachable |= 0x02;
 				}
 				else if (cost < smallest_cost) {
 					smallest_cost = cost;
@@ -113,7 +117,7 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 			if (y < this->size - 1) {
 				auto cost = integrate_cells[idx + this->size].cost;
 				if (cost == INTEGRATED_COST_UNREACHABLE) {
-					directions_unreachable[2] = true;
+					directions_unreachable |= 0x04;
 				}
 				else if (cost < smallest_cost) {
 					smallest_cost = cost;
@@ -123,7 +127,7 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 			if (x > 0) {
 				auto cost = integrate_cells[idx - 1].cost;
 				if (cost == INTEGRATED_COST_UNREACHABLE) {
-					directions_unreachable[3] = true;
+					directions_unreachable |= 0x08;
 				}
 				else if (cost < smallest_cost) {
 					smallest_cost = cost;
@@ -132,7 +136,7 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 			}
 
 			if (x < this->size - 1 and y > 0
-			    and not(directions_unreachable[0] and directions_unreachable[1])) {
+			    and not(directions_unreachable & 0x01 and directions_unreachable & 0x02)) {
 				auto cost = integrate_cells[idx - this->size + 1].cost;
 				if (cost < smallest_cost) {
 					smallest_cost = cost;
@@ -140,7 +144,7 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 				}
 			}
 			if (x < this->size - 1 and y < this->size - 1
-			    and not(directions_unreachable[1] and directions_unreachable[2])) {
+			    and not(directions_unreachable & 0x02 and directions_unreachable & 0x04)) {
 				auto cost = integrate_cells[idx + this->size + 1].cost;
 				if (cost < smallest_cost) {
 					smallest_cost = cost;
@@ -148,7 +152,7 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 				}
 			}
 			if (x > 0 and y < this->size - 1
-			    and not(directions_unreachable[2] and directions_unreachable[3])) {
+			    and not(directions_unreachable & 0x04 and directions_unreachable & 0x08)) {
 				auto cost = integrate_cells[idx + this->size - 1].cost;
 				if (cost < smallest_cost) {
 					smallest_cost = cost;
@@ -156,7 +160,7 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 				}
 			}
 			if (x > 0 and y > 0
-			    and not(directions_unreachable[3] and directions_unreachable[0])) {
+			    and not(directions_unreachable & 0x01 and directions_unreachable & 0x08)) {
 				auto cost = integrate_cells[idx - this->size - 1].cost;
 				if (cost < smallest_cost) {
 					smallest_cost = cost;
@@ -165,10 +169,10 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 			}
 
 			// Set the flow field cell to pathable.
-			flow_cells[idx] |= FLOW_PATHABLE_MASK;
+			flow_cell |= FLOW_PATHABLE_MASK;
 
 			// Set the flow field cell to the direction of the smallest cost.
-			flow_cells[idx] |= static_cast<uint8_t>(direction);
+			flow_cell |= static_cast<uint8_t>(direction);
 		}
 	}
 }

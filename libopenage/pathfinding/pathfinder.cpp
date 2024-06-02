@@ -315,9 +315,9 @@ const std::vector<coord::tile> Pathfinder::get_waypoints(const std::vector<std::
 	coord::tile_t current_y = start_y;
 	flow_dir_t current_direction = flow_fields.at(0).second->get_dir(current_x, current_y);
 	for (size_t i = 0; i < flow_fields.size(); ++i) {
-		auto sector = grid->get_sector(flow_fields[i].first);
+		auto &sector = grid->get_sector(flow_fields[i].first);
 		auto sector_pos = sector->get_position().to_tile(sector_size);
-		auto flow_field = flow_fields[i].second;
+		auto &flow_field = flow_fields[i].second;
 
 		// navigate the flow field vectors until we reach its edge (or the target)
 		flow_t cell;
@@ -333,7 +333,7 @@ const std::vector<coord::tile> Pathfinder::get_waypoints(const std::vector<std::
 			}
 
 			// check if we need to change direction
-			auto cell_direction = flow_field->get_dir(current_x, current_y);
+			auto cell_direction = static_cast<flow_dir_t>(cell & FLOW_DIR_MASK);
 			if (cell_direction != current_direction) {
 				// add the current cell as a waypoint
 				auto cell_pos = sector_pos + coord::tile_delta(current_x, current_y);
