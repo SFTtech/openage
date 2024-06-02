@@ -167,7 +167,6 @@ void path_demo_1(const util::Path &path) {
 	render_manager->create_waypoint_tiles(path_result);
 
 	// Run the renderer pss to draw the grid and path into a window
-	// TODO: Make this a while (not window.should_close()) loop
 	render_manager->run();
 }
 

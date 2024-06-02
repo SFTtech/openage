@@ -191,8 +191,7 @@ const Pathfinder::portal_star_t Pathfinder::portal_a_star(const PathRequest &req
 	// list of known portals and corresponding node.
 	nodemap_t visited_portals;
 
-	// Cost to travel from one portal to another
-	// TODO: Determine this cost for each portal
+	// TODO: Compute cost to travel from one portal to another when creating portals
 	// const int distance_cost = 1;
 
 	// create start nodes
