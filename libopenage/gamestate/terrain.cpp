@@ -45,7 +45,7 @@ Terrain::Terrain(const util::Vector2s &size,
 		current_offset.ne += chunk_size[0];
 
 		// Wrap around to the next row
-		if (current_offset.ne == size[0]) {
+		if (current_offset.ne == static_cast<coord::tile_t>(size[0])) {
 			current_offset.ne = 0;
 			current_offset.se += chunk_size[1];
 		}
@@ -61,12 +61,12 @@ Terrain::Terrain(const util::Vector2s &size,
 		}
 
 		// Check terrain boundaries
-		if (current_offset.ne > size[0]) {
+		if (current_offset.ne > static_cast<coord::tile_t>(size[0])) {
 			throw error::Error{ERR << "Width of chunk " << chunk->get_offset()
 			                       << " exceeds terrain width: " << chunk_size[0]
 			                       << " (max width: " << size[0] << ")"};
 		}
-		else if (current_offset.se > size[1]) {
+		else if (current_offset.se > static_cast<coord::tile_t>(size[1])) {
 			throw error::Error{ERR << "Height of chunk " << chunk->get_offset()
 			                       << " exceeds terrain height: " << chunk_size[1]
 			                       << " (max height: " << size[1] << ")"};
