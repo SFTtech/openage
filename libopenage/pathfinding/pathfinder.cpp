@@ -312,7 +312,7 @@ const std::vector<coord::tile> Pathfinder::get_waypoints(const std::vector<std::
 	coord::tile_t target_x = request.target.ne % sector_size;
 	coord::tile_t target_y = request.target.se % sector_size;
 
-	bool reached_target = false;
+	bool los_reached = false;
 
 	coord::tile_t current_x = start_x;
 	coord::tile_t current_y = start_y;
@@ -321,24 +321,18 @@ const std::vector<coord::tile> Pathfinder::get_waypoints(const std::vector<std::
 		auto sector = grid->get_sector(flow_fields.at(i).first);
 		auto flow_field = flow_fields.at(i).second;
 
+		auto cell = flow_field->get_cell(current_x, current_y);
 		// navigate the flow field vectors until we reach its edge (or the target)
-		while (current_x < static_cast<coord::tile_t>(sector_size)
-		       and current_y < static_cast<coord::tile_t>(sector_size)
-		       and current_x >= 0
-		       and current_y >= 0) {
-			auto cell = flow_field->get_cell(current_x, current_y);
+		while (not(cell & FLOW_TARGET_MASK)) {
 			if (cell & FLOW_LOS_MASK) {
 				// check if we reached an LOS cell
 				auto sector_pos = sector->get_position();
 				auto cell_pos = sector_pos.to_tile(sector_size)
 				                + coord::tile_delta(current_x, current_y);
 				waypoints.push_back(cell_pos);
-				reached_target = true;
+				los_reached = true;
 				break;
 			}
-
-			// ASDF: break if target cell is reached
-			// idea: target flag for flow field cells
 
 			// check if we need to change direction
 			auto cell_direction = flow_field->get_dir(coord::tile_delta(current_x, current_y));
@@ -384,9 +378,14 @@ const std::vector<coord::tile> Pathfinder::get_waypoints(const std::vector<std::
 			default:
 				throw Error{ERR << "Invalid flow direction: " << static_cast<int>(current_direction)};
 			}
+
+			// get the next cell
+			cell = flow_field->get_cell(current_x, current_y);
 		}
 
-		if (reached_target) {
+		if (los_reached or i == flow_fields.size() - 1) {
+			// exit the loop if we found an LOS cell or reached
+			// the target cell in the last flow field
 			break;
 		}
 
