@@ -119,6 +119,7 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 	auto x_diff = exit_start.ne - entry_start.ne;
 	auto y_diff = exit_start.se - entry_start.se;
 
+	auto &cost_cells = cost_field->get_costs();
 	auto &other_cells = other->get_cells();
 
 	// transfer masks for flags from the other side of the portal
@@ -147,7 +148,7 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 			}
 
 			// Get the cost of the current cell
-			auto cell_cost = cost_field->get_cost(target_idx);
+			auto cell_cost = cost_cells[target_idx];
 
 			if (cell_cost > COST_MIN or this->cells[target_idx].flags & INTEGRATE_WAVEFRONT_BLOCKED_MASK) {
 				// cell blocks line of sight
@@ -166,8 +167,8 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 					// draw a line from the corner to the edge of the field
 					// to get the cells blocked by the corner
 					auto blocked_cells = this->bresenhams_line(target, corner.first, corner.second);
-					for (auto &blocked_idx : blocked_cells) {
-						if (cost_field->get_cost(blocked_idx) > COST_MIN) {
+					for (auto blocked_idx : blocked_cells) {
+						if (cost_cells[blocked_idx] > COST_MIN) {
 							// stop if blocked_idx is not min cost
 							// because this idx may create a new corner
 							break;
@@ -229,6 +230,9 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 	// Cost of the current wave
 	integrated_cost_t wave_cost = start_cost;
 
+	// Get the cost field values
+	auto &cost_cells = cost_field->get_costs();
+
 	// Add the start wave to the current wave
 	current_wave.insert(current_wave.end(), start_wave.begin(), start_wave.end());
 	do {
@@ -244,7 +248,7 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 			}
 			else if (this->cells[idx].flags & INTEGRATE_WAVEFRONT_BLOCKED_MASK) {
 				// Stop at cells that are blocked by a LOS corner
-				this->cells[idx].cost = wave_cost - 1 + cost_field->get_cost(idx);
+				this->cells[idx].cost = wave_cost - 1 + cost_cells[idx];
 				this->cells[idx].flags |= INTEGRATE_FOUND_MASK;
 				continue;
 			}
@@ -257,7 +261,7 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 			auto y = idx / this->size;
 
 			// Get the cost of the current cell
-			auto cell_cost = cost_field->get_cost(idx);
+			auto cell_cost = cost_cells[idx];
 
 			if (cell_cost > COST_MIN) {
 				// cell blocks line of sight
@@ -265,7 +269,7 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 				if (cell_cost != COST_IMPASSABLE) {
 					// Add the current cell to the blocked wavefront if it's not a wall
 					wavefront_blocked.push_back(idx);
-					this->cells[idx].cost = wave_cost - 1 + cost_field->get_cost(idx);
+					this->cells[idx].cost = wave_cost - 1 + cell_cost;
 					this->cells[idx].flags |= INTEGRATE_WAVEFRONT_BLOCKED_MASK;
 				}
 
@@ -275,8 +279,8 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 					// draw a line from the corner to the edge of the field
 					// to get the cells blocked by the corner
 					auto blocked_cells = this->bresenhams_line(target, corner.first, corner.second);
-					for (auto &blocked_idx : blocked_cells) {
-						if (cost_field->get_cost(blocked_idx) > COST_MIN) {
+					for (auto blocked_idx : blocked_cells) {
+						if (cost_cells[blocked_idx] > COST_MIN) {
 							// stop if blocked_idx is impassable
 							break;
 						}
@@ -380,6 +384,8 @@ void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_fie
 	std::vector<size_t> neighbors;
 	neighbors.reserve(4);
 
+	auto &cost_cells = cost_field->get_costs();
+
 	// Move outwards from the wavefront, updating the integration field
 	open_list.insert(open_list.end(), start_cells.begin(), start_cells.end());
 	while (!open_list.empty()) {
@@ -407,9 +413,9 @@ void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_fie
 		}
 
 		// Update the integration field of the neighboring cells
-		for (auto &neighbor_idx : neighbors) {
+		for (auto neighbor_idx : neighbors) {
 			this->update_neighbor(neighbor_idx,
-			                      cost_field->get_cost(neighbor_idx),
+			                      cost_cells[neighbor_idx],
 			                      integrated_current,
 			                      open_list);
 		}

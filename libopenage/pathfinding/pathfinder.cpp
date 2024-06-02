@@ -309,8 +309,6 @@ const std::vector<coord::tile> Pathfinder::get_waypoints(const std::vector<std::
 	auto sector_size = grid->get_sector_size();
 	coord::tile_t start_x = request.start.ne % sector_size;
 	coord::tile_t start_y = request.start.se % sector_size;
-	coord::tile_t target_x = request.target.ne % sector_size;
-	coord::tile_t target_y = request.target.se % sector_size;
 
 	bool los_reached = false;
 
@@ -318,29 +316,26 @@ const std::vector<coord::tile> Pathfinder::get_waypoints(const std::vector<std::
 	coord::tile_t current_y = start_y;
 	flow_dir_t current_direction = flow_fields.at(0).second->get_dir(current_x, current_y);
 	for (size_t i = 0; i < flow_fields.size(); ++i) {
-		auto sector = grid->get_sector(flow_fields.at(i).first);
-		auto flow_field = flow_fields.at(i).second;
+		auto sector = grid->get_sector(flow_fields[i].first);
+		auto sector_pos = sector->get_position().to_tile(sector_size);
+		auto flow_field = flow_fields[i].second;
 
 		auto cell = flow_field->get_cell(current_x, current_y);
 		// navigate the flow field vectors until we reach its edge (or the target)
 		while (not(cell & FLOW_TARGET_MASK)) {
 			if (cell & FLOW_LOS_MASK) {
 				// check if we reached an LOS cell
-				auto sector_pos = sector->get_position();
-				auto cell_pos = sector_pos.to_tile(sector_size)
-				                + coord::tile_delta(current_x, current_y);
+				auto cell_pos = sector_pos + coord::tile_delta(current_x, current_y);
 				waypoints.push_back(cell_pos);
 				los_reached = true;
 				break;
 			}
 
 			// check if we need to change direction
-			auto cell_direction = flow_field->get_dir(coord::tile_delta(current_x, current_y));
+			auto cell_direction = flow_field->get_dir(current_x, current_y);
 			if (cell_direction != current_direction) {
 				// add the current cell as a waypoint
-				auto sector_pos = sector->get_position();
-				auto cell_pos = sector_pos.to_tile(sector_size)
-				                + coord::tile_delta(current_x, current_y);
+				auto cell_pos = sector_pos + coord::tile_delta(current_x, current_y);
 				waypoints.push_back(cell_pos);
 				current_direction = cell_direction;
 			}
@@ -425,10 +420,7 @@ const std::vector<coord::tile> Pathfinder::get_waypoints(const std::vector<std::
 	}
 
 	// add the target position as the last waypoint
-	auto sector_pos = grid->get_sector(flow_fields.back().first)->get_position();
-	auto target_pos = sector_pos.to_tile(sector_size)
-	                  + coord::tile_delta{target_x, target_y};
-	waypoints.push_back(target_pos);
+	waypoints.push_back(request.target);
 
 	return waypoints;
 }
