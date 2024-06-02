@@ -31,7 +31,7 @@ const Path Pathfinder::get_path(const PathRequest &request) {
 	    or request.target.se < 0
 	    or request.target.ne >= grid_width
 	    or request.target.se >= grid_height) {
-		log::log(INFO << "Path not found (start = " << request.start << "; target = " << request.target << ")");
+		log::log(DBG << "Path not found (start = " << request.start << "; target = " << request.target << ")");
 		log::log(DBG << "Target is out of bounds.");
 		return Path{request.grid_id, PathResult::OUT_OF_BOUNDS, {}};
 	}
@@ -64,7 +64,7 @@ const Path Pathfinder::get_path(const PathRequest &request) {
 			}
 			waypoints.insert(waypoints.end(), flow_field_waypoints.begin(), flow_field_waypoints.end());
 
-			log::log(INFO << "Path found (start = " << request.start << "; target = " << request.target << ")");
+			log::log(DBG << "Path found (start = " << request.start << "; target = " << request.target << ")");
 			log::log(DBG << "Path is within the same sector.");
 			return Path{request.grid_id, PathResult::FOUND, waypoints};
 		}
@@ -97,7 +97,7 @@ const Path Pathfinder::get_path(const PathRequest &request) {
 
 	if (target_portal_ids.empty() or start_portal_ids.empty()) {
 		// Exit early if no portals are reachable from the start or target
-		log::log(INFO << "Path not found (start = " << request.start << "; target = " << request.target << ")");
+		log::log(DBG << "Path not found (start = " << request.start << "; target = " << request.target << ")");
 		log::log(DBG << "No portals are reachable from the start or target.");
 		return Path{request.grid_id, PathResult::NOT_FOUND, {}};
 	}
@@ -157,10 +157,10 @@ const Path Pathfinder::get_path(const PathRequest &request) {
 	waypoints.insert(waypoints.end(), flow_field_waypoints.begin(), flow_field_waypoints.end());
 
 	if (portal_status == PathResult::NOT_FOUND) {
-		log::log(INFO << "Path not found (start = " << request.start << "; target = " << request.target << ")");
+		log::log(DBG << "Path not found (start = " << request.start << "; target = " << request.target << ")");
 	}
 	else {
-		log::log(INFO << "Path found (start = " << request.start << "; target = " << request.target << ")");
+		log::log(DBG << "Path found (start = " << request.start << "; target = " << request.target << ")");
 	}
 	return Path{request.grid_id, portal_status, waypoints};
 }
@@ -234,7 +234,7 @@ const Pathfinder::portal_star_t Pathfinder::portal_a_star(const PathRequest &req
 			for (auto &node : backtrace) {
 				result.push_back(node->portal);
 			}
-			log::log(INFO << "Portal path found with " << result.size() << " portal traversals.");
+			log::log(DBG << "Portal path found with " << result.size() << " portal traversals.");
 			return std::make_pair(PathResult::FOUND, result);
 		}
 
@@ -293,7 +293,7 @@ const Pathfinder::portal_star_t Pathfinder::portal_a_star(const PathRequest &req
 		result.push_back(node->portal);
 	}
 
-	log::log(INFO << "Portal path not found.");
+	log::log(DBG << "Portal path not found.");
 	log::log(DBG << "Closest portal: " << closest_node->portal->get_id());
 	return std::make_pair(PathResult::NOT_FOUND, result);
 }
