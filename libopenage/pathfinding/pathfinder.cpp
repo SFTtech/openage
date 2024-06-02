@@ -319,9 +319,11 @@ const std::vector<coord::tile> Pathfinder::get_waypoints(const std::vector<std::
 		auto sector_pos = sector->get_position().to_tile(sector_size);
 		auto flow_field = flow_fields[i].second;
 
-		auto cell = flow_field->get_cell(current_x, current_y);
 		// navigate the flow field vectors until we reach its edge (or the target)
-		while (not(cell & FLOW_TARGET_MASK)) {
+		flow_t cell;
+		do {
+			cell = flow_field->get_cell(current_x, current_y);
+
 			if (cell & FLOW_LOS_MASK) {
 				// check if we reached an LOS cell
 				auto cell_pos = sector_pos + coord::tile_delta(current_x, current_y);
@@ -372,10 +374,8 @@ const std::vector<coord::tile> Pathfinder::get_waypoints(const std::vector<std::
 			default:
 				throw Error{ERR << "Invalid flow direction: " << static_cast<int>(current_direction)};
 			}
-
-			// get the next cell
-			cell = flow_field->get_cell(current_x, current_y);
 		}
+		while (not(cell & FLOW_TARGET_MASK));
 
 		if (los_reached or i == flow_fields.size() - 1) {
 			// exit the loop if we found an LOS cell or reached
