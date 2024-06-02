@@ -181,14 +181,14 @@ private:
 	 * @param idx Index of the neighbor cell that is updated.
 	 * @param cell_cost Cost of the neighbor cell from the cost field.
 	 * @param integrated_cost Current integrated cost of the updating cell in the integration field.
-	 * @param open_list List of cells to be updated.
+	 * @param wave List of cells that are part of the next wavefront.
 	 *
 	 * @return New integration value of the cell.
 	 */
 	void update_neighbor(size_t idx,
 	                     cost_t cell_cost,
 	                     integrated_cost_t integrated_cost,
-	                     std::deque<size_t> &open_list);
+	                     std::vector<size_t> &wave);
 
 	/**
 	 * Get the LOS corners around a cell.
