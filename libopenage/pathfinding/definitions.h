@@ -50,7 +50,7 @@ constexpr integrated_flags_t INTEGRATE_LOS_MASK = 0x20;
 /**
  * Target flag in an integrated_flags_t value.
  */
-constexpr integrated_flags_t INTEGRATE_TARGET_MASK = 0x01;
+constexpr integrated_flags_t INTEGRATE_TARGET_MASK = 0x40;
 
 /**
  * Found flag in an integrated_flags_t value.
@@ -79,6 +79,11 @@ constexpr flow_t FLOW_INIT = 0;
 constexpr flow_t FLOW_DIR_MASK = 0x0F;
 
 /**
+ * Mask for the flow flag bits in a flow_t value.
+ */
+constexpr flow_t FLOW_FLAGS_MASK = 0xF0;
+
+/**
  * Pathable flag in a flow_t value.
  */
 constexpr flow_t FLOW_PATHABLE_MASK = 0x10;
@@ -87,5 +92,10 @@ constexpr flow_t FLOW_PATHABLE_MASK = 0x10;
  * Line of sight flag in a flow_t value.
  */
 constexpr flow_t FLOW_LOS_MASK = 0x20;
+
+/**
+ * Target flag in a flow_t value.
+ */
+constexpr flow_t FLOW_TARGET_MASK = 0x40;
 
 } // namespace openage::path

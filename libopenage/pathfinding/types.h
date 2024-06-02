@@ -55,14 +55,14 @@ struct integrated_t {
 	 *
 	 * Bit 0-3: Shared flags with the flow field.
 	 *  - 0: Unused.
-	 *  - 1: Unused.
+	 *  - 1: Target flag.
 	 *  - 2: Line of sight flag.
 	 *  - 3: Unused.
 	 * Bit 4-7: Integration field specific flags.
 	 *  - 4: Unused.
 	 *  - 5: Wave front blocked flag.
 	 *  - 6: LOS found flag.
-	 *  - 7: Target flag.
+	 *  - 7: Unused.
 	 */
 	integrated_flags_t flags;
 };
@@ -87,7 +87,7 @@ enum class flow_dir_t : uint8_t {
  * Flow field cell value.
  *
  * Bit 0: Unused.
- * Bit 1: Unused.
+ * Bit 1: Target flag.
  * Bit 2: Line of sight flag.
  * Bit 3: Pathable flag.
  * Bits 4-7: flow direction.

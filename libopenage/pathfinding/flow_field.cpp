@@ -73,12 +73,10 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 				continue;
 			}
 
-			if (integrate_cells[idx].flags & INTEGRATE_LOS_MASK) {
-				// Cell is in line of sight
-				flow_cells[idx] |= FLOW_LOS_MASK;
-			}
+			flow_t transfer_flags = integrate_cells[idx].flags & FLOW_FLAGS_MASK;
+			flow_cells[idx] |= transfer_flags;
 
-			if (integrate_cells[idx].flags & INTEGRATE_TARGET_MASK) {
+			if (flow_cells[idx] & FLOW_TARGET_MASK) {
 				// target cells are pathable
 				flow_cells[idx] |= FLOW_PATHABLE_MASK;
 
