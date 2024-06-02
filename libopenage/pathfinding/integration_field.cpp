@@ -222,10 +222,16 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 	std::vector<size_t> wavefront_blocked;
 
 	// Cells that still have to be visited by the current wave
-	std::deque<size_t> current_wave;
+	std::vector<size_t> current_wave = std::move(start_wave);
 
 	// Cells that have to be visited in the next wave
-	std::deque<size_t> next_wave;
+	std::vector<size_t> next_wave;
+
+	// Preallocate ~30% of the field size for the wavefront
+	// This reduces the number of reallocations on push_back operations
+	// TODO: Find "optimal" value for reserve
+	current_wave.reserve(this->size * 3);
+	next_wave.reserve(this->size * 3);
 
 	// Cost of the current wave
 	integrated_cost_t wave_cost = start_cost;
@@ -233,14 +239,10 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 	// Get the cost field values
 	auto &cost_cells = cost_field->get_costs();
 
-	// Add the start wave to the current wave
-	current_wave.insert(current_wave.end(), start_wave.begin(), start_wave.end());
 	do {
-		while (not current_wave.empty()) {
+		for (size_t i = 0; i < current_wave.size(); ++i) {
 			// inner loop: handle a wave
-
-			auto idx = current_wave.front();
-			current_wave.pop_front();
+			auto idx = current_wave[i];
 
 			if (this->cells[idx].flags & INTEGRATE_FOUND_MASK) {
 				// Skip cells that are already in the line of sight
@@ -376,52 +378,65 @@ void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_fie
 
 void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_field,
                                       std::vector<size_t> &&start_cells) {
-	// Cells that still have to be visited
-	// they may be visited multiple times
-	std::deque<size_t> open_list;
+	// Cells that still have to be visited by the current wave
+	std::vector<size_t> current_wave = std::move(start_cells);
 
-	// Stores neighbors of the current cell
-	std::vector<size_t> neighbors;
-	neighbors.reserve(4);
+	// Cells that have to be visited in the next wave
+	std::vector<size_t> next_wave;
 
+	// Preallocate ~30% of the field size for the wavefront
+	// This reduces the number of reallocations on push_back operations
+	// TODO: Find "optimal" value for reserve
+	current_wave.reserve(this->size * 3);
+	next_wave.reserve(this->size * 3);
+
+	// Get the cost field values
 	auto &cost_cells = cost_field->get_costs();
 
 	// Move outwards from the wavefront, updating the integration field
-	open_list.insert(open_list.end(), start_cells.begin(), start_cells.end());
-	while (!open_list.empty()) {
-		auto idx = open_list.front();
-		open_list.pop_front();
+	while (not current_wave.empty()) {
+		for (size_t i = 0; i < current_wave.size(); ++i) {
+			auto idx = current_wave[i];
 
-		// Get the x and y coordinates of the current cell
-		auto x = idx % this->size;
-		auto y = idx / this->size;
+			// Get the x and y coordinates of the current cell
+			auto x = idx % this->size;
+			auto y = idx / this->size;
 
-		auto integrated_current = this->cells.at(idx).cost;
+			auto integrated_current = this->cells[idx].cost;
 
-		// Get the neighbors of the current cell
-		if (y > 0) {
-			neighbors.push_back(idx - this->size);
-		}
-		if (x > 0) {
-			neighbors.push_back(idx - 1);
-		}
-		if (y < this->size - 1) {
-			neighbors.push_back(idx + this->size);
-		}
-		if (x < this->size - 1) {
-			neighbors.push_back(idx + 1);
+			// Get the neighbors of the current cell
+			if (y > 0) {
+				auto neighbor_idx = idx - this->size;
+				this->update_neighbor(neighbor_idx,
+				                      cost_cells[neighbor_idx],
+				                      integrated_current,
+				                      next_wave);
+			}
+			if (x > 0) {
+				auto neighbor_idx = idx - 1;
+				this->update_neighbor(neighbor_idx,
+				                      cost_cells[neighbor_idx],
+				                      integrated_current,
+				                      next_wave);
+			}
+			if (y < this->size - 1) {
+				auto neighbor_idx = idx + this->size;
+				this->update_neighbor(neighbor_idx,
+				                      cost_cells[neighbor_idx],
+				                      integrated_current,
+				                      next_wave);
+			}
+			if (x < this->size - 1) {
+				auto neighbor_idx = idx + 1;
+				this->update_neighbor(neighbor_idx,
+				                      cost_cells[neighbor_idx],
+				                      integrated_current,
+				                      next_wave);
+			}
 		}
 
-		// Update the integration field of the neighboring cells
-		for (auto neighbor_idx : neighbors) {
-			this->update_neighbor(neighbor_idx,
-			                      cost_cells[neighbor_idx],
-			                      integrated_current,
-			                      open_list);
-		}
-
-		// Clear the neighbors vector
-		neighbors.clear();
+		current_wave.swap(next_wave);
+		next_wave.clear();
 	}
 }
 
@@ -447,7 +462,7 @@ void IntegrationField::reset_dynamic_flags() {
 void IntegrationField::update_neighbor(size_t idx,
                                        cost_t cell_cost,
                                        integrated_cost_t integrated_cost,
-                                       std::deque<size_t> &open_list) {
+                                       std::vector<size_t> &wave) {
 	ENSURE(cell_cost > COST_INIT, "cost field cell value must be non-zero");
 
 	// Check if the cell is impassable
@@ -462,7 +477,7 @@ void IntegrationField::update_neighbor(size_t idx,
 		// update the cell and add it to the open list
 		this->cells[idx].cost = cost;
 
-		open_list.push_back(idx);
+		wave.push_back(idx);
 	}
 }
 
