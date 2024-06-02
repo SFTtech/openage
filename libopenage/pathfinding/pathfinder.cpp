@@ -491,22 +491,25 @@ std::vector<node_t> PortalNode::generate_backtrace() {
 
 std::vector<node_t> PortalNode::get_exits(const nodemap_t &nodes,
                                           sector_id_t entry_sector) {
-	std::vector<node_t> exits;
+	auto &exits = this->portal->get_exits(entry_sector);
+	std::vector<node_t> exit_nodes;
+	exit_nodes.reserve(exits.size());
 
 	auto exit_sector = this->portal->get_exit_sector(entry_sector);
-	for (auto &exit : this->portal->get_exits(entry_sector)) {
+	for (auto &exit : exits) {
 		auto exit_id = exit->get_id();
 
-		if (nodes.contains(exit_id)) {
-			exits.push_back(nodes.at(exit_id));
+		auto exit_node = nodes.find(exit_id);
+		if (exit_node != nodes.end()) {
+			exit_nodes.push_back(exit_node->second);
 		}
 		else {
-			exits.push_back(std::make_shared<PortalNode>(exit,
-			                                             exit_sector,
-			                                             this->shared_from_this()));
+			exit_nodes.push_back(std::make_shared<PortalNode>(exit,
+			                                                  exit_sector,
+			                                                  this->shared_from_this()));
 		}
 	}
-	return exits;
+	return exit_nodes;
 }
 
 
