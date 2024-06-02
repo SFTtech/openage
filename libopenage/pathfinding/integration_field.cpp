@@ -238,25 +238,27 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 
 	// Get the cost field values
 	auto &cost_cells = cost_field->get_costs();
+	auto &integrate_cells = this->cells;
 
 	do {
 		for (size_t i = 0; i < current_wave.size(); ++i) {
 			// inner loop: handle a wave
 			auto idx = current_wave[i];
+			auto &cell = integrate_cells[idx];
 
-			if (this->cells[idx].flags & INTEGRATE_FOUND_MASK) {
+			if (cell.flags & INTEGRATE_FOUND_MASK) {
 				// Skip cells that are already in the line of sight
 				continue;
 			}
-			else if (this->cells[idx].flags & INTEGRATE_WAVEFRONT_BLOCKED_MASK) {
+			else if (cell.flags & INTEGRATE_WAVEFRONT_BLOCKED_MASK) {
 				// Stop at cells that are blocked by a LOS corner
-				this->cells[idx].cost = wave_cost - 1 + cost_cells[idx];
-				this->cells[idx].flags |= INTEGRATE_FOUND_MASK;
+				cell.cost = wave_cost - 1 + cost_cells[idx];
+				cell.flags |= INTEGRATE_FOUND_MASK;
 				continue;
 			}
 
 			// Add the current cell to the found cells
-			this->cells[idx].flags |= INTEGRATE_FOUND_MASK;
+			cell.flags |= INTEGRATE_FOUND_MASK;
 
 			// Get the x and y coordinates of the current cell
 			auto x = idx % this->size;
@@ -271,8 +273,8 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 				if (cell_cost != COST_IMPASSABLE) {
 					// Add the current cell to the blocked wavefront if it's not a wall
 					wavefront_blocked.push_back(idx);
-					this->cells[idx].cost = wave_cost - 1 + cell_cost;
-					this->cells[idx].flags |= INTEGRATE_WAVEFRONT_BLOCKED_MASK;
+					cell.cost = wave_cost - 1 + cell_cost;
+					cell.flags |= INTEGRATE_WAVEFRONT_BLOCKED_MASK;
 				}
 
 				// check each neighbor for a corner
@@ -287,10 +289,10 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 							break;
 						}
 						// set the blocked flag for the cell
-						this->cells[blocked_idx].flags |= INTEGRATE_WAVEFRONT_BLOCKED_MASK;
+						integrate_cells[blocked_idx].flags |= INTEGRATE_WAVEFRONT_BLOCKED_MASK;
 
 						// clear los flag if it was set
-						this->cells[blocked_idx].flags &= ~INTEGRATE_LOS_MASK;
+						integrate_cells[blocked_idx].flags &= ~INTEGRATE_LOS_MASK;
 
 						wavefront_blocked.push_back(blocked_idx);
 					}
@@ -300,21 +302,25 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 
 			// The cell is in the line of sight at min cost
 			// Set the LOS flag and cost
-			this->cells[idx].cost = wave_cost;
-			this->cells[idx].flags |= INTEGRATE_LOS_MASK;
+			cell.cost = wave_cost;
+			cell.flags |= INTEGRATE_LOS_MASK;
 
 			// Search the neighbors of the current cell
 			if (y > 0) {
-				next_wave.push_back(idx - this->size);
+				auto neighbor_idx = idx - this->size;
+				next_wave.push_back(neighbor_idx);
 			}
 			if (x > 0) {
-				next_wave.push_back(idx - 1);
+				auto neighbor_idx = idx - 1;
+				next_wave.push_back(neighbor_idx);
 			}
 			if (y < this->size - 1) {
-				next_wave.push_back(idx + this->size);
+				auto neighbor_idx = idx + this->size;
+				next_wave.push_back(neighbor_idx);
 			}
 			if (x < this->size - 1) {
-				next_wave.push_back(idx + 1);
+				auto neighbor_idx = idx + 1;
+				next_wave.push_back(neighbor_idx);
 			}
 		}
 
