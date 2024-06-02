@@ -291,7 +291,7 @@ class PathFlowTypePrinter:
     FLOW_FLAGS: dict = {
         0x10: 'PATHABLE',
         0x20: 'LOS',
-        0x40: 'UNUSED',
+        0x40: 'TARGET',
         0x80: 'UNUSED',
     }
 
@@ -333,10 +333,10 @@ class PathFlowTypePrinter:
 
 # Integrated flags
 INTEGRATED_FLAGS: dict = {
-    0x01: 'TARGET',
     0x02: 'FOUND',
     0x04: 'WAVEFRONT_BLOCKED',
     0x20: 'LOS',
+    0x40: 'TARGET',
 }
 
 
