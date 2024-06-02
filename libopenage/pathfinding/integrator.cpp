@@ -2,6 +2,8 @@
 
 #include "integrator.h"
 
+#include "log/log.h"
+
 #include "pathfinding/cost_field.h"
 #include "pathfinding/flow_field.h"
 #include "pathfinding/integration_field.h"
@@ -15,11 +17,14 @@ std::shared_ptr<IntegrationField> Integrator::integrate(const std::shared_ptr<Co
                                                         bool with_los) {
 	auto integration_field = std::make_shared<IntegrationField>(cost_field->get_size());
 
+	log::log(DBG << "Integrating cost field for target coord " << target);
 	if (with_los) {
+		log::log(SPAM << "Performing LOS pass");
 		auto wavefront_blocked = integration_field->integrate_los(cost_field, target);
 		integration_field->integrate_cost(cost_field, std::move(wavefront_blocked));
 	}
 	else {
+		log::log(SPAM << "Skipping LOS pass");
 		integration_field->integrate_cost(cost_field, target);
 	}
 
@@ -35,7 +40,11 @@ std::shared_ptr<IntegrationField> Integrator::integrate(const std::shared_ptr<Co
 	auto cache_key = std::make_pair(portal->get_id(), other_sector_id);
 	auto cached = this->field_cache.find(cache_key);
 	if (cached != this->field_cache.end()) {
+		log::log(DBG << "Using cached integration field for portal " << portal->get_id()
+		             << " from sector " << other_sector_id);
 		if (with_los) {
+			log::log(SPAM << "Performing LOS pass on cached field");
+
 			// Make a copy of the cached field to avoid modifying the cached field
 			auto integration_field = std::make_shared<IntegrationField>(*cached->second.first);
 
@@ -47,12 +56,16 @@ std::shared_ptr<IntegrationField> Integrator::integrate(const std::shared_ptr<Co
 		return cached->second.first;
 	}
 
+	log::log(DBG << "Integrating cost field for portal " << portal->get_id()
+	             << " from sector " << other_sector_id);
+
 	// Create a new integration field
 	auto integration_field = std::make_shared<IntegrationField>(cost_field->get_size());
 
 	// LOS pass
 	std::vector<size_t> wavefront_blocked;
 	if (with_los) {
+		log::log(SPAM << "Performing LOS pass");
 		wavefront_blocked = integration_field->integrate_los(cost_field, other, other_sector_id, portal, target);
 	}
 
@@ -73,6 +86,8 @@ std::shared_ptr<IntegrationField> Integrator::integrate(const std::shared_ptr<Co
 
 std::shared_ptr<FlowField> Integrator::build(const std::shared_ptr<IntegrationField> &integration_field) {
 	auto flow_field = std::make_shared<FlowField>(integration_field->get_size());
+
+	log::log(DBG << "Building flow field from integration field");
 	flow_field->build(integration_field);
 
 	return flow_field;
@@ -86,7 +101,11 @@ std::shared_ptr<FlowField> Integrator::build(const std::shared_ptr<IntegrationFi
 	auto cache_key = std::make_pair(portal->get_id(), other_sector_id);
 	auto cached = this->field_cache.find(cache_key);
 	if (cached != this->field_cache.end()) {
+		log::log(DBG << "Using cached flow field for portal " << portal->get_id()
+		             << " from sector " << other_sector_id);
 		if (with_los) {
+			log::log(SPAM << "Transferring LOS flags to cached flow field");
+
 			// Make a copy of the cached flow field
 			auto flow_field = std::make_shared<FlowField>(*cached->second.second);
 
@@ -98,6 +117,9 @@ std::shared_ptr<FlowField> Integrator::build(const std::shared_ptr<IntegrationFi
 
 		return cached->second.second;
 	}
+
+	log::log(DBG << "Building flow field for portal " << portal->get_id()
+	             << " from sector " << other_sector_id);
 
 	auto flow_field = std::make_shared<FlowField>(integration_field->get_size());
 	flow_field->build(integration_field, other, other_sector_id, portal);
@@ -122,12 +144,18 @@ Integrator::get_return_t Integrator::get(const std::shared_ptr<CostField> &cost_
 	auto cache_key = std::make_pair(portal->get_id(), other_sector_id);
 	auto cached = this->field_cache.find(cache_key);
 	if (cached != this->field_cache.end()) {
+		log::log(DBG << "Using cached integration and flow fields for portal " << portal->get_id()
+		             << " from sector " << other_sector_id);
 		if (with_los) {
+			log::log(SPAM << "Performing LOS pass on cached field");
+
 			// Make a copy of the cached integration field
 			auto integration_field = std::make_shared<IntegrationField>(*cached->second.first);
 
 			// Only integrate LOS; leave the rest of the field as is
 			integration_field->integrate_los(cost_field, other, other_sector_id, portal, target);
+
+			log::log(SPAM << "Transferring LOS flags to cached flow field");
 
 			// Make a copy of the cached flow field
 			auto flow_field = std::make_shared<FlowField>(*cached->second.second);
@@ -143,6 +171,9 @@ Integrator::get_return_t Integrator::get(const std::shared_ptr<CostField> &cost_
 
 	auto integration_field = this->integrate(cost_field, other, other_sector_id, portal, target, with_los);
 	auto flow_field = this->build(integration_field, other, other_sector_id, portal);
+
+	log::log(DBG << "Caching integration and flow fields for portal ID: " << portal->get_id()
+	             << ", sector ID: " << other_sector_id);
 
 	// Copy the fields to the cache.
 	std::shared_ptr<IntegrationField> cached_integration_field = std::make_shared<IntegrationField>(*integration_field);
