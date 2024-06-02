@@ -333,10 +333,14 @@ class PathFlowTypePrinter:
 
 # Integrated flags
 INTEGRATED_FLAGS: dict = {
+    0x01: 'UNUSED',
     0x02: 'FOUND',
     0x04: 'WAVEFRONT_BLOCKED',
+    0x08: 'UNUSED',
+    0x10: 'UNUSED',
     0x20: 'LOS',
     0x40: 'TARGET',
+    0x80: 'UNUSED',
 }
 
 
