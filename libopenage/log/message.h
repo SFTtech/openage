@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -11,7 +11,7 @@
 #include <string>
 
 #include "../util/compiler.h"
-#include "../util/constexpr.h"
+#include "../util/consteval.h"
 #include "../util/stringformatter.h"
 #include "config.h"
 #include "logsink.h"
@@ -165,7 +165,7 @@ private:
 // for use with existing log::level objects
 #define MSG_LVLOBJ(LVLOBJ) \
 	::openage::log::MessageBuilder( \
-		::openage::util::constexpr_::strip_prefix( \
+		::openage::util::consteval_::strip_prefix( \
 			__FILE__, \
 			::openage::config::buildsystem_sourcefile_dir), \
 		__LINE__, \
