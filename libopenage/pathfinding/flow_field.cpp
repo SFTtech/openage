@@ -94,6 +94,8 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 			// Find the neighbor with the smallest cost.
 			flow_dir_t direction = static_cast<flow_dir_t>(flow_cell & FLOW_DIR_MASK);
 			auto smallest_cost = INTEGRATED_COST_UNREACHABLE;
+
+			// Cardinal directions
 			if (y > 0) {
 				auto cost = integrate_cells[idx - this->size].cost;
 				if (cost == INTEGRATED_COST_UNREACHABLE) {
@@ -135,6 +137,7 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 				}
 			}
 
+			// Diagonal directions
 			if (x < this->size - 1 and y > 0
 			    and not(directions_unreachable & 0x01 and directions_unreachable & 0x02)) {
 				auto cost = integrate_cells[idx - this->size + 1].cost;
