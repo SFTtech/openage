@@ -47,8 +47,7 @@ void renderer_stresstest_1(const util::Path &path) {
 	                                                         Eigen::Vector3f{17.0f, 10.0f, 7.0f},
 	                                                         1.f,
 	                                                         64.f,
-	                                                         1.f / 49.f,
-	                                                         true);
+	                                                         1.f / 49.f);
 	auto cam_unifs = camera->get_uniform_buffer()->create_empty_input();
 	cam_unifs->update(
 		"view",

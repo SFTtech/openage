@@ -11,6 +11,7 @@
 #include <eigen3/Eigen/Dense>
 
 #include "renderer/camera/camera.h"
+#include "renderer/camera/frustum.h"
 #include "renderer/definitions.h"
 #include "renderer/resources/animation/angle_info.h"
 #include "renderer/resources/animation/animation_info.h"
@@ -225,12 +226,9 @@ void WorldObject::set_uniforms(std::vector<std::shared_ptr<renderer::UniformInpu
 }
 
 bool WorldObject::within_camera_frustum(const std::shared_ptr<camera::Camera> &camera) {
-	if (!camera->using_frustum_culling()) {
-		return true;
-	}
-
 	Eigen::Vector3f current_pos = this->position.get(this->last_update).to_world_space();
-	return camera->is_in_frustum(current_pos);
+	auto frustum = camera->get_frustum();
+	return frustum.is_in_frustum(current_pos);
 }
 
 } // namespace openage::renderer::world

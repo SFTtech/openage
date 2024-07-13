@@ -14,33 +14,33 @@
 
 namespace openage::renderer::camera {
 
-class Frustum
-{
+class Frustum {
 public:
-    Frustum();
+	Frustum();
 
-    void Recalculate(util::Vector2s& viewport_size, float near_distance, float far_distance, Eigen::Vector3f& scene_pos, Eigen::Vector3f cam_direction, Eigen::Vector3f up_direction, float real_zoom);
+	void Recalculate(util::Vector2s &viewport_size,
+	                 float near_distance,
+	                 float far_distance,
+	                 Eigen::Vector3f &scene_pos,
+	                 Eigen::Vector3f cam_direction,
+	                 Eigen::Vector3f up_direction,
+	                 float real_zoom);
 
-    bool is_in_frustum(Eigen::Vector3f& pos) const;
+	bool is_in_frustum(Eigen::Vector3f &pos) const;
 
 private:
-    Eigen::Vector3f top_face_normal;
-    float top_face_distance;
+	Eigen::Vector3f top_face_normal;
+	Eigen::Vector3f bottom_face_normal;
+	Eigen::Vector3f right_face_normal;
+	Eigen::Vector3f left_face_normal;
+	Eigen::Vector3f far_face_normal;
+	Eigen::Vector3f near_face_normal;
 
-    Eigen::Vector3f bottom_face_normal;
-    float bottom_face_distance;
-
-    Eigen::Vector3f right_face_normal;
-    float right_face_distance;
-
-    Eigen::Vector3f left_face_normal;
-    float left_face_distance;
-
-    Eigen::Vector3f far_face_normal;
-    float far_face_distance;
-
-    Eigen::Vector3f near_face_normal;
-    float near_face_distance;
-
+	float top_face_distance;
+	float bottom_face_distance;
+	float right_face_distance;
+	float left_face_distance;
+	float far_face_distance;
+	float near_face_distance;
 };
 } // namespace openage::renderer::camera
