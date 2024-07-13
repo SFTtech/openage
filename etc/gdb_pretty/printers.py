@@ -416,6 +416,5 @@ class PathIntegratedTypePrinter:
 
 
 # TODO: curve types
-# TODO: pathfinding types
 # TODO: input event codes
 # TODO: eigen types https://github.com/dmillard/eigengdb
