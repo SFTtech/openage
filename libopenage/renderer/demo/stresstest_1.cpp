@@ -54,7 +54,14 @@ void renderer_stresstest_1(const util::Path &path) {
 		"view",
 		camera->get_view_matrix(),
 		"proj",
-		camera->get_projection_matrix());
+		camera->get_projection_matrix(),
+		"inv_zoom",
+		1.0f / camera->get_zoom());
+	auto viewport_size = camera->get_viewport_size();
+	Eigen::Vector2f viewport_size_vec{
+		1.0f / static_cast<float>(viewport_size[0]),
+		1.0f / static_cast<float>(viewport_size[1])};
+	cam_unifs->update("inv_viewport_size", viewport_size_vec);
 	camera->get_uniform_buffer()->update_uniforms(cam_unifs);
 
 	// Render stages
