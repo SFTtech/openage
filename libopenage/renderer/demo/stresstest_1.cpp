@@ -9,6 +9,7 @@
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/opengl/window.h"
 #include "renderer/render_factory.h"
+#include "renderer/render_pass.h"
 #include "renderer/resources/assets/asset_manager.h"
 #include "renderer/resources/shader_source.h"
 #include "renderer/stages/camera/manager.h"
@@ -24,9 +25,15 @@
 
 namespace openage::renderer::tests {
 void renderer_stresstest_1(const util::Path &path) {
-    auto qtapp = std::make_shared<gui::GuiApplicationWithLogger>();
+	auto qtapp = std::make_shared<gui::GuiApplicationWithLogger>();
 
-	auto window = std::make_shared<opengl::GlWindow>("openage renderer test", 1024, 768, true);
+	// Create the window and renderer
+	window_settings settings;
+	settings.width = 1024;
+	settings.height = 768;
+	settings.vsync = false;
+	settings.debug = true;
+	auto window = std::make_shared<opengl::GlWindow>("openage renderer test", settings);
 	auto renderer = window->make_renderer();
 
 	// Clock required by world renderer for timing animation frames
@@ -38,10 +45,10 @@ void renderer_stresstest_1(const util::Path &path) {
 	auto camera = std::make_shared<renderer::camera::Camera>(renderer,
 	                                                         window->get_size(),
 	                                                         Eigen::Vector3f{17.0f, 10.0f, 7.0f},
-															 1.f,
-															 64.f,
-															 1.f / 49.f,
-															 true);
+	                                                         1.f,
+	                                                         64.f,
+	                                                         1.f / 49.f,
+	                                                         true);
 	auto cam_unifs = camera->get_uniform_buffer()->create_empty_input();
 	cam_unifs->update(
 		"view",
@@ -50,7 +57,7 @@ void renderer_stresstest_1(const util::Path &path) {
 		camera->get_projection_matrix());
 	camera->get_uniform_buffer()->update_uniforms(cam_unifs);
 
-    // Render stages
+	// Render stages
 	// every stage use a different subrenderer that manages renderables,
 	// shaders, textures & more.
 	std::vector<std::shared_ptr<RenderPass>>
@@ -135,7 +142,7 @@ void renderer_stresstest_1(const util::Path &path) {
 	// send the terrain data to the terrain renderer
 	terrain0->update(terrain_size, tiles);
 
-    std::vector<std::shared_ptr<renderer::world::WorldRenderEntity>> render_entities{};
+	std::vector<std::shared_ptr<renderer::world::WorldRenderEntity>> render_entities{};
 	auto add_world_entity = [&](const coord::phys3 initial_pos,
 	                            const time::time_t time) {
 		const auto animation_path = "./textures/test_tank_mirrored.sprite";
@@ -195,7 +202,7 @@ void renderer_stresstest_1(const util::Path &path) {
 		auto current_time = clock->get_real_time();
 		if (current_time > next_entity) {
 			add_world_entity(coord::phys3(0.0f, 10.0f, 0.0f), clock->get_time());
-            add_world_entity(coord::phys3(-1.f, 9.0f, 0.0f), clock->get_time());
+			add_world_entity(coord::phys3(-1.f, 9.0f, 0.0f), clock->get_time());
 			next_entity = current_time + 0.1;
 		}
 
@@ -219,4 +226,4 @@ void renderer_stresstest_1(const util::Path &path) {
 
 	window->close();
 }
-}
+} // namespace openage::renderer::tests
