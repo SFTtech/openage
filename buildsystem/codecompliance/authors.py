@@ -1,4 +1,4 @@
-# Copyright 2014-2023 the openage authors. See copying.md for legal info.
+# Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 """
 Checks whether all authors are properly listed in copying.md.
@@ -39,7 +39,7 @@ def get_author_emails_copying_md():
     """
     with open("copying.md", encoding='utf8') as fobj:
         for line in fobj:
-            match = re.match("^.*\\|[^|]*\\|[^|]*\\|([^|]+)\\|.*$", line)
+            match = re.match(r"^.*\|[^|]*\|[^|]*\|([^|]+)\|.*$", line)
             if not match:
                 continue
 
