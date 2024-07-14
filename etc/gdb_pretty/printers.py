@@ -276,7 +276,7 @@ class KeyframePrinter:
         """
         Get the displayed children of the keyframe.
         """
-        yield ('time', self.__val['time'])
+        yield ('time', self.__val['timestamp'])
         yield ('value', self.__val['value'])
 
 
