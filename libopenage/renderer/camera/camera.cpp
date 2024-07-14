@@ -65,7 +65,7 @@ Camera::Camera(const std::shared_ptr<Renderer> &renderer,
 	this->init_uniform_buffer(renderer);
 
 	// Make the frustum slightly bigger than the camera's view to ensure objects on the boundary get rendered
-	float real_zoom = 0.7f * this->default_zoom_ratio * this->zoom;
+	float real_zoom = 0.5f * this->default_zoom_ratio * this->zoom;
 	frustum.update(this->viewport_size,
 	               near_distance,
 	               far_distance,
