@@ -1,9 +1,11 @@
-// Copyright 2016-2023 the openage authors. See copying.md for legal info.
+// Copyright 2016-2024 the openage authors. See copying.md for legal info.
 
 #include "pixel.h"
 
 #include "coord/phys.h"
 #include "renderer/camera/camera.h"
+#include "renderer/camera/definitions.h"
+
 
 namespace openage {
 namespace coord {
@@ -54,7 +56,7 @@ phys3 input::to_phys3(const std::shared_ptr<renderer::camera::Camera> &camera) c
 scene3 input::to_scene3(const std::shared_ptr<renderer::camera::Camera> &camera) const {
 	// Use raycasting to find the position
 	// Direction and origin point are fetched from the camera
-	auto cam_dir = renderer::camera::cam_direction;
+	auto cam_dir = renderer::camera::CAM_DIRECTION;
 	auto ray_origin = camera->get_input_pos(*this);
 
 	// xz plane that we want to intersect with

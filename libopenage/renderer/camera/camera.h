@@ -12,6 +12,7 @@
 #include "coord/scene.h"
 #include "util/vector.h"
 
+#include "renderer/camera/definitions.h"
 #include "renderer/camera/frustum.h"
 
 namespace openage::renderer {
@@ -19,21 +20,6 @@ class Renderer;
 class UniformBuffer;
 
 namespace camera {
-
-/**
- * Camera direction (= where it looks at).
- * Uses a dimetric perspective like in AoE with the (fixed) angles
- *    yaw   = -135 degrees
- *    pitch = -30 degrees
- */
-static const Eigen::Vector3f cam_direction{
-	-1 * (std::sqrt(6.f) / 4),
-	-0.5f,
-	-1 * (std::sqrt(6.f) / 4),
-};
-
-static const float near_distance = 0.01f;
-static const float far_distance = 100.0f;
 
 /**
  * Camera for selecting what part of the ingame world is displayed.
@@ -67,9 +53,9 @@ public:
 	Camera(const std::shared_ptr<Renderer> &renderer,
 	       util::Vector2s viewport_size,
 	       Eigen::Vector3f scene_pos,
-	       float zoom = 1.0f,
-	       float max_zoom_out = 64.0f,
-	       float default_zoom_ratio = 1.0f / 49);
+	       float zoom = DEFAULT_ZOOM,
+	       float max_zoom_out = DEFAULT_MAX_ZOOM_OUT,
+	       float default_zoom_ratio = DEFAULT_ZOOM_RATIO);
 	~Camera() = default;
 
 	/**
@@ -207,6 +193,17 @@ private:
 	 * @param renderer openage renderer instance.
 	 */
 	void init_uniform_buffer(const std::shared_ptr<Renderer> &renderer);
+
+	/**
+	 * Get the zoom factor applied to the camera projection.
+	 *
+	 * The zoom factor is calculated as
+	 *
+	 *     zoom * zoom_ratio * 0.5f
+	 *
+	 * @return Zoom factor for projection.
+	 */
+	inline float get_zoom_factor() const;
 
 	/**
 	 * Position in the 3D scene.

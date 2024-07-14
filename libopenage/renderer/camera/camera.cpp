@@ -19,9 +19,9 @@ Camera::Camera(const std::shared_ptr<Renderer> &renderer,
                util::Vector2s viewport_size) :
 	scene_pos{Eigen::Vector3f(0.0f, 10.0f, 0.0f)},
 	viewport_size{viewport_size},
-	zoom{1.0f},
-	max_zoom_out{64.0f},
-	default_zoom_ratio{1.0f / 49},
+	zoom{DEFAULT_ZOOM},
+	max_zoom_out{DEFAULT_MAX_ZOOM_OUT},
+	default_zoom_ratio{DEFAULT_ZOOM_RATIO},
 	moved{true},
 	zoom_changed{true},
 	view{Eigen::Matrix4f::Identity()},
@@ -31,12 +31,12 @@ Camera::Camera(const std::shared_ptr<Renderer> &renderer,
 	this->init_uniform_buffer(renderer);
 
 	// Make the frustum slightly bigger than the camera's view to ensure objects on the boundary get rendered
-	float real_zoom = 0.7f * this->default_zoom_ratio * this->zoom;
+	float real_zoom = get_zoom_factor();
 	frustum.update(this->viewport_size,
-	               near_distance,
-	               far_distance,
+	               DEFAULT_NEAR_DISTANCE,
+	               DEFAULT_FAR_DISTANCE,
 	               this->scene_pos,
-	               cam_direction,
+	               CAM_DIRECTION,
 	               Eigen::Vector3f(0.0f, 1.0f, 0.0f),
 	               real_zoom);
 
@@ -65,12 +65,12 @@ Camera::Camera(const std::shared_ptr<Renderer> &renderer,
 	this->init_uniform_buffer(renderer);
 
 	// Make the frustum slightly bigger than the camera's view to ensure objects on the boundary get rendered
-	float real_zoom = 0.5f * this->default_zoom_ratio * this->zoom;
+	float real_zoom = this->get_zoom_factor();
 	frustum.update(this->viewport_size,
-	               near_distance,
-	               far_distance,
+	               DEFAULT_NEAR_DISTANCE,
+	               DEFAULT_FAR_DISTANCE,
 	               this->scene_pos,
-	               cam_direction,
+	               CAM_DIRECTION,
 	               Eigen::Vector3f(0.0f, 1.0f, 0.0f),
 	               real_zoom);
 
@@ -129,12 +129,12 @@ void Camera::move_to(Eigen::Vector3f scene_pos) {
 	this->moved = true;
 
 	// Make the frustum slightly bigger than the camera's view to ensure objects on the boundary get rendered
-	float real_zoom = 0.5f * this->default_zoom_ratio * this->zoom;
+	float real_zoom = this->get_zoom_factor();
 	frustum.update(viewport_size,
-	               near_distance,
-	               far_distance,
+	               DEFAULT_NEAR_DISTANCE,
+	               DEFAULT_FAR_DISTANCE,
 	               scene_pos,
-	               cam_direction,
+	               CAM_DIRECTION,
 	               Eigen::Vector3f(0.0f, 1.0f, 0.0f),
 	               real_zoom);
 }
@@ -179,7 +179,7 @@ const Eigen::Matrix4f &Camera::get_view_matrix() {
 		return this->view;
 	}
 
-	auto direction = cam_direction.normalized();
+	auto direction = CAM_DIRECTION.normalized();
 
 	Eigen::Vector3f eye = this->scene_pos;
 	Eigen::Vector3f center = this->scene_pos + direction; // look in the direction of the camera
@@ -227,7 +227,7 @@ const Eigen::Matrix4f &Camera::get_projection_matrix() {
 	float halfheight = this->viewport_size[1] / 2;
 
 	// get zoom level
-	float real_zoom = 0.5f * this->default_zoom_ratio * this->zoom;
+	float real_zoom = this->get_zoom_factor();
 
 	// zoom by narrowing or widening viewport around focus point.
 	// narrow viewport => zoom in (projected area gets *smaller* while screen size stays the same)
@@ -240,10 +240,11 @@ const Eigen::Matrix4f &Camera::get_projection_matrix() {
 	Eigen::Matrix4f mat = Eigen::Matrix4f::Identity();
 	mat(0, 0) = 2.0f / (right - left);
 	mat(1, 1) = 2.0f / (top - bottom);
-	mat(2, 2) = -2.0f / (1000.0f - (-1.0f)); // clip near and far planes (TODO: necessary?)
+	mat(2, 2) = -2.0f / (DEFAULT_FAR_DISTANCE - DEFAULT_NEAR_DISTANCE); // clip near and far planes (TODO: necessary?)
 	mat(0, 3) = -(right + left) / (right - left);
 	mat(1, 3) = -(top + bottom) / (top - bottom);
-	mat(2, 3) = -(1000.0f + (-1.0f)) / (1000.0f - (-1.0f)); // clip near and far planes (TODO: necessary?)
+	mat(2, 3) = -(DEFAULT_FAR_DISTANCE + DEFAULT_NEAR_DISTANCE)
+	            / (DEFAULT_FAR_DISTANCE - DEFAULT_NEAR_DISTANCE); // clip near and far planes (TODO: necessary?)
 
 	// Cache matrix for subsequent calls
 	this->proj = mat;
@@ -261,7 +262,7 @@ Eigen::Vector3f Camera::get_input_pos(const coord::input &coord) const {
 	// calculate up (u) and right (s) vectors for camera
 	// these define the camera plane in 3D space that the input
 	// coord exists on
-	auto direction = cam_direction.normalized();
+	auto direction = CAM_DIRECTION.normalized();
 	Eigen::Vector3f eye = this->scene_pos;
 	Eigen::Vector3f center = this->scene_pos + direction;
 	Eigen::Vector3f up = Eigen::Vector3f(0.0f, 1.0f, 0.0f);
@@ -277,7 +278,7 @@ Eigen::Vector3f Camera::get_input_pos(const coord::input &coord) const {
 	// this is the same calculation as for the projection matrix
 	float halfwidth = this->viewport_size[0] / 2;
 	float halfheight = this->viewport_size[1] / 2;
-	float real_zoom = 0.5f * this->default_zoom_ratio * this->zoom;
+	float real_zoom = this->get_zoom_factor();
 
 	// calculate x and y offset on the camera plane relative to the camera position
 	float x = +(2.0f * coord.x / this->viewport_size[0] - 1) * (halfwidth * real_zoom);
@@ -293,6 +294,10 @@ const std::shared_ptr<renderer::UniformBuffer> &Camera::get_uniform_buffer() con
 	return this->uniform_buffer;
 }
 
+Frustum Camera::get_frustum() const {
+	return this->frustum;
+}
+
 void Camera::init_uniform_buffer(const std::shared_ptr<Renderer> &renderer) {
 	resources::UBOInput view_input{"view", resources::ubo_input_t::M4F32};
 	resources::UBOInput proj_input{"proj", resources::ubo_input_t::M4F32};
@@ -304,8 +309,8 @@ void Camera::init_uniform_buffer(const std::shared_ptr<Renderer> &renderer) {
 	this->uniform_buffer = renderer->add_uniform_buffer(ubo_info);
 }
 
-Frustum Camera::get_frustum() const {
-	return this->frustum;
+inline float Camera::get_zoom_factor() const {
+	return 0.5f * this->default_zoom_ratio * this->zoom;
 }
 
 } // namespace openage::renderer::camera
