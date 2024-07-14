@@ -133,7 +133,8 @@ public:
 	 */
 	void set_uniforms(std::vector<std::shared_ptr<renderer::UniformInput>> &&uniforms);
 
-	bool within_camera_frustum(const std::shared_ptr<camera::Camera> &camera);
+	bool within_camera_frustum(const std::shared_ptr<camera::Camera> &camera,
+	                           const time::time_t &time);
 
 	/**
 	 * Shader uniform IDs for setting uniform values.

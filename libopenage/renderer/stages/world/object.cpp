@@ -225,10 +225,11 @@ void WorldObject::set_uniforms(std::vector<std::shared_ptr<renderer::UniformInpu
 	this->layer_uniforms = std::move(uniforms);
 }
 
-bool WorldObject::within_camera_frustum(const std::shared_ptr<camera::Camera> &camera) {
-	Eigen::Vector3f current_pos = this->position.get(this->last_update).to_world_space();
+bool WorldObject::within_camera_frustum(const std::shared_ptr<camera::Camera> &camera,
+                                        const time::time_t &time) {
+	Eigen::Vector3f current_pos = this->position.get(time).to_world_space();
 	auto frustum = camera->get_frustum();
-	return frustum.is_in_frustum(current_pos);
+	return frustum.in_frustum(current_pos);
 }
 
 } // namespace openage::renderer::world

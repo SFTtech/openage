@@ -29,13 +29,13 @@ Frustum::Frustum() :
 	near_face_normal{Eigen::Vector3f(0.0f, 0.0f, 0.0f)} {
 }
 
-void Frustum::Recalculate(util::Vector2s &viewport_size,
-                          float near_distance,
-                          float far_distance,
-                          Eigen::Vector3f &scene_pos,
-                          Eigen::Vector3f cam_direction,
-                          Eigen::Vector3f up_direction,
-                          float real_zoom) {
+void Frustum::update(util::Vector2s &viewport_size,
+                     float near_distance,
+                     float far_distance,
+                     Eigen::Vector3f &scene_pos,
+                     Eigen::Vector3f cam_direction,
+                     Eigen::Vector3f up_direction,
+                     float real_zoom) {
 	// offsets are adjusted by zoom
 	// this is the same calculation as for the projection matrix
 	float halfscreenwidth = viewport_size[0] / 2;
@@ -57,10 +57,10 @@ void Frustum::Recalculate(util::Vector2s &viewport_size,
 	Eigen::Vector3f u = s.cross(f);
 	u.normalize();
 
-	Eigen::Vector3f near_position = scene_pos - direction * near_distance;
+	Eigen::Vector3f near_position = scene_pos + direction * near_distance;
 	Eigen::Vector3f far_position = scene_pos + direction * far_distance;
 
-	// The frustum is a box with 8 points defining it (4 on the near plane, 4 on the far plane)
+	// The frustum is a cuboid box with 8 points defining it (4 on the near plane, 4 on the far plane)
 	Eigen::Vector3f near_top_left = near_position - s * halfwidth + u * halfheight;
 	Eigen::Vector3f near_top_right = near_position + s * halfwidth + u * halfheight;
 	Eigen::Vector3f near_bottom_left = near_position - s * halfwidth - u * halfheight;
@@ -72,11 +72,11 @@ void Frustum::Recalculate(util::Vector2s &viewport_size,
 	Eigen::Vector3f far_bottom_right = far_position + s * halfwidth - u * halfheight;
 
 	// The near and far planes are easiest to compute, as they should be in the direction of the camera
-	this->near_face_normal = -1.0f * cam_direction.normalized();
-	this->far_face_normal = cam_direction.normalized();
+	this->near_face_normal = cam_direction.normalized();
+	this->far_face_normal = -1.0f * cam_direction.normalized();
 
-	this->near_face_distance = this->near_face_normal.dot(near_position) * -1.0f;
-	this->far_face_distance = this->far_face_normal.dot(far_position) * -1.0f;
+	this->near_face_distance = this->near_face_normal.dot(near_position);
+	this->far_face_distance = this->far_face_normal.dot(far_position);
 
 	// Each left, right, top, and bottom plane are defined by three points on the plane
 	this->left_face_normal = (near_bottom_left - near_top_left).cross(far_bottom_left - near_bottom_left);
@@ -95,7 +95,7 @@ void Frustum::Recalculate(util::Vector2s &viewport_size,
 	this->bottom_face_distance = this->bottom_face_normal.dot(near_bottom_left);
 }
 
-bool Frustum::is_in_frustum(Eigen::Vector3f &pos) const {
+bool Frustum::in_frustum(Eigen::Vector3f &pos) const {
 	// For each plane, if a point is behind one of the frustum planes, it is not within the frustum
 	float distance;
 

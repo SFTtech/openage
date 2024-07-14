@@ -32,13 +32,13 @@ Camera::Camera(const std::shared_ptr<Renderer> &renderer,
 
 	// Make the frustum slightly bigger than the camera's view to ensure objects on the boundary get rendered
 	float real_zoom = 0.7f * this->default_zoom_ratio * this->zoom;
-	frustum.Recalculate(this->viewport_size,
-	                    near_distance,
-	                    far_distance,
-	                    this->scene_pos,
-	                    cam_direction,
-	                    Eigen::Vector3f(0.0f, 1.0f, 0.0f),
-	                    real_zoom);
+	frustum.update(this->viewport_size,
+	               near_distance,
+	               far_distance,
+	               this->scene_pos,
+	               cam_direction,
+	               Eigen::Vector3f(0.0f, 1.0f, 0.0f),
+	               real_zoom);
 
 	log::log(INFO << "Created new camera at position "
 	              << "(" << this->scene_pos[0]
@@ -66,13 +66,13 @@ Camera::Camera(const std::shared_ptr<Renderer> &renderer,
 
 	// Make the frustum slightly bigger than the camera's view to ensure objects on the boundary get rendered
 	float real_zoom = 0.7f * this->default_zoom_ratio * this->zoom;
-	frustum.Recalculate(this->viewport_size,
-	                    near_distance,
-	                    far_distance,
-	                    this->scene_pos,
-	                    cam_direction,
-	                    Eigen::Vector3f(0.0f, 1.0f, 0.0f),
-	                    real_zoom);
+	frustum.update(this->viewport_size,
+	               near_distance,
+	               far_distance,
+	               this->scene_pos,
+	               cam_direction,
+	               Eigen::Vector3f(0.0f, 1.0f, 0.0f),
+	               real_zoom);
 
 	log::log(INFO << "Created new camera at position "
 	              << "(" << this->scene_pos[0]
@@ -129,14 +129,14 @@ void Camera::move_to(Eigen::Vector3f scene_pos) {
 	this->moved = true;
 
 	// Make the frustum slightly bigger than the camera's view to ensure objects on the boundary get rendered
-	float real_zoom = 0.7f * this->default_zoom_ratio * this->zoom;
-	frustum.Recalculate(viewport_size,
-	                    near_distance,
-	                    far_distance,
-	                    scene_pos,
-	                    cam_direction,
-	                    Eigen::Vector3f(0.0f, 1.0f, 0.0f),
-	                    real_zoom);
+	float real_zoom = 0.5f * this->default_zoom_ratio * this->zoom;
+	frustum.update(viewport_size,
+	               near_distance,
+	               far_distance,
+	               scene_pos,
+	               cam_direction,
+	               Eigen::Vector3f(0.0f, 1.0f, 0.0f),
+	               real_zoom);
 }
 
 void Camera::move_rel(Eigen::Vector3f direction, float delta) {

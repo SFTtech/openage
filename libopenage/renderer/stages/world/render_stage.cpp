@@ -59,7 +59,7 @@ void WorldRenderStage::update() {
 	std::unique_lock lock{this->mutex};
 	auto current_time = this->clock->get_real_time();
 	for (auto &obj : this->render_objects) {
-		if (not obj->within_camera_frustum(this->camera)) {
+		if (not obj->within_camera_frustum(this->camera, current_time)) {
 			continue;
 		}
 
