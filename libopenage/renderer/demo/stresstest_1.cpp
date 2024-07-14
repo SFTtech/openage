@@ -160,7 +160,7 @@ void renderer_stresstest_1(const util::Path &path) {
 		position.set_insert(time + 3, initial_pos + coord::phys3_delta{8, 8, 0});
 		position.set_insert(time + 4, initial_pos + coord::phys3_delta{12, 4, 0});
 		position.set_insert(time + 5, initial_pos + coord::phys3_delta{12, 0, 0});
-		position.set_insert(time + 6, initial_pos + coord::phys3_delta{12, -4, 0});
+		position.set_insert(time + 6, initial_pos + coord::phys3_delta{8, -4, 0});
 		position.set_insert(time + 7, initial_pos + coord::phys3_delta{4, -4, 0});
 		position.set_insert(time + 8, initial_pos);
 
