@@ -24,6 +24,9 @@ namespace camera {
 /**
  * Camera for selecting what part of the ingame world is displayed.
  *
+ * The camera uses orthographic projection as it is primarily used for
+ * 2D rendering.
+ *
  * TODO: Vulkan version.
  */
 class Camera {
@@ -184,7 +187,7 @@ public:
 	 *
 	 * @return Frustum object.
 	 */
-	Frustum get_frustum() const;
+	const Frustum &get_frustum() const;
 
 private:
 	/**
@@ -292,8 +295,7 @@ private:
 	std::shared_ptr<renderer::UniformBuffer> uniform_buffer;
 
 	/**
-	 * The frustum used to cull objects
-	 * Will be recalculated regardless of whether frustum culling is enabled
+	 * Frustum (viewing volume) for culling rendering objects.
 	 */
 	Frustum frustum;
 };

@@ -20,7 +20,7 @@ namespace openage::renderer {
 class UniformInput;
 
 namespace camera {
-class Camera;
+class Frustum;
 }
 
 namespace resources {
@@ -133,8 +133,16 @@ public:
 	 */
 	void set_uniforms(std::vector<std::shared_ptr<renderer::UniformInput>> &&uniforms);
 
-	bool within_camera_frustum(const std::shared_ptr<camera::Camera> &camera,
-	                           const time::time_t &time);
+	/**
+	 * Check whether the object is visible in the camera view.
+	 *
+	 * @param frustum Camera frustum for culling.
+	 * @param time Current simulation time.
+	 *
+	 * @return true if the object is visible, else false.
+	 */
+	bool is_visible(const camera::Frustum &frustum,
+	                const time::time_t &time);
 
 	/**
 	 * Shader uniform IDs for setting uniform values.

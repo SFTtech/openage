@@ -25,20 +25,17 @@ Camera::Camera(const std::shared_ptr<Renderer> &renderer,
 	moved{true},
 	zoom_changed{true},
 	view{Eigen::Matrix4f::Identity()},
-	proj{Eigen::Matrix4f::Identity()} {
+	proj{Eigen::Matrix4f::Identity()},
+	frustum{this->viewport_size,
+            DEFAULT_NEAR_DISTANCE,
+            DEFAULT_FAR_DISTANCE,
+            this->scene_pos,
+            CAM_DIRECTION,
+            Eigen::Vector3f(0.0f, 1.0f, 0.0f),
+            this->get_zoom_factor()} {
 	this->look_at_scene(Eigen::Vector3f(0.0f, 0.0f, 0.0f));
 
 	this->init_uniform_buffer(renderer);
-
-	// Make the frustum slightly bigger than the camera's view to ensure objects on the boundary get rendered
-	float real_zoom = get_zoom_factor();
-	frustum.update(this->viewport_size,
-	               DEFAULT_NEAR_DISTANCE,
-	               DEFAULT_FAR_DISTANCE,
-	               this->scene_pos,
-	               CAM_DIRECTION,
-	               Eigen::Vector3f(0.0f, 1.0f, 0.0f),
-	               real_zoom);
 
 	log::log(INFO << "Created new camera at position "
 	              << "(" << this->scene_pos[0]
@@ -61,18 +58,15 @@ Camera::Camera(const std::shared_ptr<Renderer> &renderer,
 	zoom_changed{true},
 	viewport_changed{true},
 	view{Eigen::Matrix4f::Identity()},
-	proj{Eigen::Matrix4f::Identity()} {
+	proj{Eigen::Matrix4f::Identity()},
+	frustum{this->viewport_size,
+            DEFAULT_NEAR_DISTANCE,
+            DEFAULT_FAR_DISTANCE,
+            this->scene_pos,
+            CAM_DIRECTION,
+            Eigen::Vector3f(0.0f, 1.0f, 0.0f),
+            this->get_zoom_factor()} {
 	this->init_uniform_buffer(renderer);
-
-	// Make the frustum slightly bigger than the camera's view to ensure objects on the boundary get rendered
-	float real_zoom = this->get_zoom_factor();
-	frustum.update(this->viewport_size,
-	               DEFAULT_NEAR_DISTANCE,
-	               DEFAULT_FAR_DISTANCE,
-	               this->scene_pos,
-	               CAM_DIRECTION,
-	               Eigen::Vector3f(0.0f, 1.0f, 0.0f),
-	               real_zoom);
 
 	log::log(INFO << "Created new camera at position "
 	              << "(" << this->scene_pos[0]
@@ -128,15 +122,14 @@ void Camera::move_to(Eigen::Vector3f scene_pos) {
 	this->scene_pos = scene_pos;
 	this->moved = true;
 
-	// Make the frustum slightly bigger than the camera's view to ensure objects on the boundary get rendered
-	float real_zoom = this->get_zoom_factor();
+	// Update frustum
 	frustum.update(viewport_size,
 	               DEFAULT_NEAR_DISTANCE,
 	               DEFAULT_FAR_DISTANCE,
 	               scene_pos,
 	               CAM_DIRECTION,
 	               Eigen::Vector3f(0.0f, 1.0f, 0.0f),
-	               real_zoom);
+	               this->get_zoom_factor());
 }
 
 void Camera::move_rel(Eigen::Vector3f direction, float delta) {
@@ -183,7 +176,7 @@ const Eigen::Matrix4f &Camera::get_view_matrix() {
 
 	Eigen::Vector3f eye = this->scene_pos;
 	Eigen::Vector3f center = this->scene_pos + direction; // look in the direction of the camera
-	Eigen::Vector3f up = Eigen::Vector3f(0.0f, 1.0f, 0.0f);
+	Eigen::Vector3f up = CAM_UP;
 
 	Eigen::Vector3f f = center - eye;
 	f.normalize();
@@ -265,7 +258,7 @@ Eigen::Vector3f Camera::get_input_pos(const coord::input &coord) const {
 	auto direction = CAM_DIRECTION.normalized();
 	Eigen::Vector3f eye = this->scene_pos;
 	Eigen::Vector3f center = this->scene_pos + direction;
-	Eigen::Vector3f up = Eigen::Vector3f(0.0f, 1.0f, 0.0f);
+	Eigen::Vector3f up = CAM_UP;
 
 	Eigen::Vector3f f = center - eye;
 	f.normalize();
@@ -294,7 +287,7 @@ const std::shared_ptr<renderer::UniformBuffer> &Camera::get_uniform_buffer() con
 	return this->uniform_buffer;
 }
 
-Frustum Camera::get_frustum() const {
+const Frustum &Camera::get_frustum() const {
 	return this->frustum;
 }
 

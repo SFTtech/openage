@@ -20,6 +20,11 @@ static const Eigen::Vector3f CAM_DIRECTION{
 };
 
 /**
+ * Camera up vector.
+ */
+static const Eigen::Vector3f CAM_UP{0.0f, 1.0f, 0.0f};
+
+/**
  * Default near distance of the camera.
  *
  * Determines how close objects can be to the camera before they are not rendered anymore.
