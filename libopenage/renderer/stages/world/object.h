@@ -20,7 +20,7 @@ namespace openage::renderer {
 class UniformInput;
 
 namespace camera {
-class Frustum;
+class Frustum3d;
 }
 
 namespace resources {
@@ -141,7 +141,7 @@ public:
 	 *
 	 * @return true if the object is visible, else false.
 	 */
-	bool is_visible(const camera::Frustum &frustum,
+	bool is_visible(const camera::Frustum3d &frustum,
 	                const time::time_t &time);
 
 	/**

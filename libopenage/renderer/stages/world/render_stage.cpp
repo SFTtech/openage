@@ -3,7 +3,7 @@
 #include "render_stage.h"
 
 #include "renderer/camera/camera.h"
-#include "renderer/camera/frustum.h"
+#include "renderer/camera/frustum_3d.h"
 #include "renderer/opengl/context.h"
 #include "renderer/render_pass.h"
 #include "renderer/render_target.h"
@@ -59,7 +59,7 @@ void WorldRenderStage::add_render_entity(const std::shared_ptr<WorldRenderEntity
 void WorldRenderStage::update() {
 	std::unique_lock lock{this->mutex};
 	auto current_time = this->clock->get_real_time();
-	auto &camera_frustum = this->camera->get_frustum();
+	auto &camera_frustum = this->camera->get_frustum_3d();
 	for (auto &obj : this->render_objects) {
 		obj->fetch_updates(current_time);
 

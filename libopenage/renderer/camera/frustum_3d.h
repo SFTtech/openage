@@ -15,8 +15,9 @@
 namespace openage::renderer::camera {
 
 /**
- * Frustum for a camera. The frustum is defined by 6 planes (top, bottom, right, left, far, near) that
- * define the viewing volume of the camera.
+ * Frustum for culling objects outside of a camera viewcone in 3D space. The frustum
+ * is defined by 6 planes (top, bottom, right, left, far, near) that define the boundaries
+ * of the viewing volume of the camera.
  *
  * Used for frustum culling (https://learnopengl.com/Guest-Articles/2021/Scene/Frustum-Culling)
  * in the renderer.
@@ -24,7 +25,7 @@ namespace openage::renderer::camera {
  * As the openage camera uses orthographic projection, the frustum is a box, i.e. plane opposite
  * to each other are parallel.
  */
-class Frustum {
+class Frustum3d {
 public:
 	/**
 	 * Create a new frustum.
@@ -37,13 +38,13 @@ public:
 	 * @param up_direction Up direction of the camera.
 	 * @param zoom_factor Zoom factor of the camera.
 	 */
-	Frustum(const util::Vector2s &viewport_size,
-	        const float near_distance,
-	        const float far_distance,
-	        const Eigen::Vector3f &camera_pos,
-	        const Eigen::Vector3f &cam_direction,
-	        const Eigen::Vector3f &up_direction,
-	        const float zoom_factor);
+	Frustum3d(const util::Vector2s &viewport_size,
+	          const float near_distance,
+	          const float far_distance,
+	          const Eigen::Vector3f &camera_pos,
+	          const Eigen::Vector3f &cam_direction,
+	          const Eigen::Vector3f &up_direction,
+	          const float zoom_factor);
 
 	/**
 	 * Update this frustum with the new camera parameters.

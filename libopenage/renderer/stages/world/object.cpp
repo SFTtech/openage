@@ -10,7 +10,7 @@
 
 #include <eigen3/Eigen/Dense>
 
-#include "renderer/camera/frustum.h"
+#include "renderer/camera/frustum_3d.h"
 #include "renderer/definitions.h"
 #include "renderer/resources/animation/angle_info.h"
 #include "renderer/resources/animation/animation_info.h"
@@ -224,7 +224,7 @@ void WorldObject::set_uniforms(std::vector<std::shared_ptr<renderer::UniformInpu
 	this->layer_uniforms = std::move(uniforms);
 }
 
-bool WorldObject::is_visible(const camera::Frustum &frustum,
+bool WorldObject::is_visible(const camera::Frustum3d &frustum,
                              const time::time_t &time) {
 	Eigen::Vector3f current_pos = this->position.get(time).to_world_space();
 	return frustum.in_frustum(current_pos);

@@ -287,7 +287,7 @@ const std::shared_ptr<renderer::UniformBuffer> &Camera::get_uniform_buffer() con
 	return this->uniform_buffer;
 }
 
-const Frustum &Camera::get_frustum() const {
+const Frustum3d &Camera::get_frustum_3d() const {
 	return this->frustum;
 }
 

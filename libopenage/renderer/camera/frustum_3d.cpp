@@ -1,6 +1,6 @@
 // Copyright 2024-2024 the openage authors. See copying.md for legal info.
 
-#include "frustum.h"
+#include "frustum_3d.h"
 
 #include <array>
 #include <numbers>
@@ -14,13 +14,13 @@
 
 namespace openage::renderer::camera {
 
-Frustum::Frustum(const util::Vector2s &viewport_size,
-                 const float near_distance,
-                 const float far_distance,
-                 const Eigen::Vector3f &camera_pos,
-                 const Eigen::Vector3f &cam_direction,
-                 const Eigen::Vector3f &up_direction,
-                 const float zoom_factor) {
+Frustum3d::Frustum3d(const util::Vector2s &viewport_size,
+                     const float near_distance,
+                     const float far_distance,
+                     const Eigen::Vector3f &camera_pos,
+                     const Eigen::Vector3f &cam_direction,
+                     const Eigen::Vector3f &up_direction,
+                     const float zoom_factor) {
 	this->update(viewport_size,
 	             near_distance,
 	             far_distance,
@@ -30,13 +30,13 @@ Frustum::Frustum(const util::Vector2s &viewport_size,
 	             zoom_factor);
 }
 
-void Frustum::update(const util::Vector2s &viewport_size,
-                     const float near_distance,
-                     const float far_distance,
-                     const Eigen::Vector3f &camera_pos,
-                     const Eigen::Vector3f &cam_direction,
-                     const Eigen::Vector3f &up_direction,
-                     const float zoom_factor) {
+void Frustum3d::update(const util::Vector2s &viewport_size,
+                       const float near_distance,
+                       const float far_distance,
+                       const Eigen::Vector3f &camera_pos,
+                       const Eigen::Vector3f &cam_direction,
+                       const Eigen::Vector3f &up_direction,
+                       const float zoom_factor) {
 	// offsets are adjusted by zoom
 	// this is the same calculation as for the projection matrix
 	float halfscreenwidth = viewport_size[0] / 2;
@@ -101,7 +101,7 @@ void Frustum::update(const util::Vector2s &viewport_size,
 	this->bottom_face_distance = this->bottom_face_normal.dot(near_bottom_left);
 }
 
-bool Frustum::in_frustum(const Eigen::Vector3f &pos) const {
+bool Frustum3d::in_frustum(const Eigen::Vector3f &pos) const {
 	// For each plane, if a point is behind one of the frustum planes, it is not within the frustum
 	float distance;
 
