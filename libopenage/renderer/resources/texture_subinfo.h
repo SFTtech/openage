@@ -71,7 +71,7 @@ public:
 	const Eigen::Vector4f &get_tile_params() const;
 
 	/**
-	 * Get the anchor parameters of the subtexture center. Used in the model matrix
+	 * Get the anchor parameters of the subtexture center. Used in the shader
 	 * to calculate the offset position for displaying the subtexture inside
 	 * the OpenGL viewport.
 	 *

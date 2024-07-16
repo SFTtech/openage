@@ -2,15 +2,10 @@
 
 #pragma once
 
-#include <cmath>
-#include <cstddef>
-#include <memory>
-
 #include <eigen3/Eigen/Dense>
 
-#include "coord/pixel.h"
-#include "coord/scene.h"
 #include "util/vector.h"
+
 
 namespace openage::renderer::camera {
 
