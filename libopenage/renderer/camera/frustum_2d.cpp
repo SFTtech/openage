@@ -33,15 +33,11 @@ bool Frustum2d::in_frustum(const Eigen::Vector3f &scene_pos,
 
 	float zoom_scale = scalefactor * this->inv_zoom_factor;
 
-	// Scale the boundaries by the zoom factor
-	Eigen::Vector4f scaled_boundaries{boundaries[0] * zoom_scale * this->inv_viewport_size[0],
-	                                  boundaries[1] * zoom_scale * this->inv_viewport_size[0],
-	                                  boundaries[2] * zoom_scale * this->inv_viewport_size[1],
-	                                  boundaries[3] * zoom_scale * this->inv_viewport_size[1]};
-	float left_bound = scaled_boundaries[0];
-	float right_bound = scaled_boundaries[1];
-	float top_bound = scaled_boundaries[2];
-	float bottom_bound = scaled_boundaries[3];
+	// Scale the boundaries by the zoom factor and the viewport size
+	float left_bound = boundaries[0] * zoom_scale * this->inv_viewport_size[0];
+	float right_bound = boundaries[1] * zoom_scale * this->inv_viewport_size[0];
+	float top_bound = boundaries[2] * zoom_scale * this->inv_viewport_size[1];
+	float bottom_bound = boundaries[3] * zoom_scale * this->inv_viewport_size[1];
 
 	// check if the object boundaries are inside the frustum
 	if (x_ndc - left_bound >= 1.0f) {
