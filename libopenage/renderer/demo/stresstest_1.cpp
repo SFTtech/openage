@@ -155,25 +155,25 @@ void renderer_stresstest_1(const util::Path &path) {
 
 		auto position = curve::Continuous<coord::phys3>{nullptr, 0, "", nullptr, coord::phys3(0, 0, 0)};
 		position.set_insert(time, initial_pos);
-		position.set_insert(time + 1, initial_pos + coord::phys3_delta{0, 4, 0});
-		position.set_insert(time + 2, initial_pos + coord::phys3_delta{4, 8, 0});
-		position.set_insert(time + 3, initial_pos + coord::phys3_delta{8, 8, 0});
-		position.set_insert(time + 4, initial_pos + coord::phys3_delta{12, 4, 0});
-		position.set_insert(time + 5, initial_pos + coord::phys3_delta{12, 0, 0});
-		position.set_insert(time + 6, initial_pos + coord::phys3_delta{8, -4, 0});
-		position.set_insert(time + 7, initial_pos + coord::phys3_delta{4, -4, 0});
+		position.set_insert(time + 1, initial_pos + coord::phys3_delta{5, 0, 0});
+		position.set_insert(time + 2, initial_pos + coord::phys3_delta{12, -2, 0});
+		position.set_insert(time + 3, initial_pos + coord::phys3_delta{5, 5, 0});
+		position.set_insert(time + 4, initial_pos + coord::phys3_delta{12, 12, 0});
+		position.set_insert(time + 5, initial_pos + coord::phys3_delta{5, 9, 0});
+		position.set_insert(time + 6, initial_pos + coord::phys3_delta{-2, 12, 0});
+		position.set_insert(time + 7, initial_pos + coord::phys3_delta{0, 5, 0});
 		position.set_insert(time + 8, initial_pos);
 
 		auto angle = curve::Segmented<coord::phys_angle_t>{nullptr, 0};
-		angle.set_insert(time, coord::phys_angle_t::from_int(315));
-		angle.set_insert_jump(time + 1, coord::phys_angle_t::from_int(315), coord::phys_angle_t::from_int(270));
-		angle.set_insert_jump(time + 2, coord::phys_angle_t::from_int(270), coord::phys_angle_t::from_int(225));
-		angle.set_insert_jump(time + 3, coord::phys_angle_t::from_int(225), coord::phys_angle_t::from_int(180));
-		angle.set_insert_jump(time + 4, coord::phys_angle_t::from_int(180), coord::phys_angle_t::from_int(135));
-		angle.set_insert_jump(time + 5, coord::phys_angle_t::from_int(135), coord::phys_angle_t::from_int(90));
-		angle.set_insert_jump(time + 6, coord::phys_angle_t::from_int(90), coord::phys_angle_t::from_int(45));
-		angle.set_insert_jump(time + 7, coord::phys_angle_t::from_int(45), coord::phys_angle_t::from_int(0));
-		angle.set_insert_jump(time + 8, coord::phys_angle_t::from_int(0), coord::phys_angle_t::from_int(315));
+		angle.set_insert(time, coord::phys_angle_t::from_int(225));
+		angle.set_insert_jump(time + 1, coord::phys_angle_t::from_int(225), coord::phys_angle_t::from_int(210));
+		angle.set_insert_jump(time + 2, coord::phys_angle_t::from_int(210), coord::phys_angle_t::from_int(0));
+		angle.set_insert_jump(time + 3, coord::phys_angle_t::from_int(0), coord::phys_angle_t::from_int(270));
+		angle.set_insert_jump(time + 4, coord::phys_angle_t::from_int(270), coord::phys_angle_t::from_int(60));
+		angle.set_insert_jump(time + 5, coord::phys_angle_t::from_int(60), coord::phys_angle_t::from_int(45));
+		angle.set_insert_jump(time + 6, coord::phys_angle_t::from_int(45), coord::phys_angle_t::from_int(120));
+		angle.set_insert_jump(time + 7, coord::phys_angle_t::from_int(120), coord::phys_angle_t::from_int(135));
+		angle.set_insert_jump(time + 8, coord::phys_angle_t::from_int(135), coord::phys_angle_t::from_int(225));
 
 		auto entity = render_factory->add_world_render_entity();
 		entity->update(render_entities.size(),
@@ -184,15 +184,14 @@ void renderer_stresstest_1(const util::Path &path) {
 		render_entities.push_back(entity);
 	};
 
-	// Stop after 8000 entities
-	size_t entity_limit = 8000;
+	// Stop after 1000 entities
+	size_t entity_limit = 1000;
 
 	clock->start();
 
 	util::FrameCounter timer;
 
-	add_world_entity(coord::phys3(0.0f, 10.0f, 0.0f), clock->get_time());
-	time::time_t next_entity = clock->get_real_time() + 0.1;
+	time::time_t next_entity = clock->get_real_time();
 	while (render_entities.size() <= entity_limit) {
 		// Print FPS
 		timer.frame();
@@ -207,9 +206,8 @@ void renderer_stresstest_1(const util::Path &path) {
 		clock->update_time();
 		auto current_time = clock->get_real_time();
 		if (current_time > next_entity) {
-			add_world_entity(coord::phys3(0.0f, 10.0f, 0.0f), clock->get_time());
-			add_world_entity(coord::phys3(-1.f, 9.0f, 0.0f), clock->get_time());
-			next_entity = current_time + 0.1;
+			add_world_entity(coord::phys3(0.5, 0.5, 0.0f), clock->get_time());
+			next_entity = current_time + 0.05;
 		}
 
 		// Update the renderables of the subrenderers
