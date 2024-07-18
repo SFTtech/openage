@@ -59,7 +59,7 @@ void WorldRenderStage::add_render_entity(const std::shared_ptr<WorldRenderEntity
 void WorldRenderStage::update() {
 	std::unique_lock lock{this->mutex};
 	auto current_time = this->clock->get_real_time();
-	auto &camera_frustum = this->camera->get_frustum_3d();
+	auto &camera_frustum = this->camera->get_frustum_2d();
 	for (auto &obj : this->render_objects) {
 		obj->fetch_updates(current_time);
 
