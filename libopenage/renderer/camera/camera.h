@@ -139,6 +139,8 @@ public:
 	/**
 	 * Get the current zoom level of the camera.
 	 *
+	 * Determines the scale of rendered objects.
+	 *
 	 * @return Zoom level.
 	 */
 	float get_zoom() const;
@@ -213,9 +215,13 @@ private:
 	 *
 	 *     zoom * zoom_ratio * 0.5f
 	 *
+	 * Note that this zoom factor should NOT be used for sprite scaling, but
+	 * only for 3D projection matrix calculations. For sprite scaling, use
+	 * \p get_zoom() .
+	 *
 	 * @return Zoom factor for projection.
 	 */
-	inline float get_zoom_factor() const;
+	inline float get_real_zoom_factor() const;
 
 	/**
 	 * Position in the 3D scene.

@@ -24,12 +24,12 @@ public:
 	 * @param viewport_size Size of the camera viewport (width x height).
 	 * @param view_matrix View matrix of the camera.
 	 * @param projection_matrix Projection matrix of the camera.
-	 * @param zoom_factor Zoom factor of the camera.
+	 * @param zoom Zoom of the camera.
 	 */
 	Frustum2d(const util::Vector2s &viewport_size,
 	          const Eigen::Matrix4f &view_matrix,
 	          const Eigen::Matrix4f &projection_matrix,
-	          const float zoom_factor);
+	          const float zoom);
 
 	/**
 	 * Update the frustum with new camera parameters.
@@ -37,12 +37,12 @@ public:
 	 * @param viewport_size Size of the camera viewport (width x height).
 	 * @param view_matrix View matrix of the camera.
 	 * @param projection_matrix Projection matrix of the camera.
-	 * @param zoom_factor Zoom factor of the camera.
+	 * @param zoom Zoom of the camera.
 	 */
 	void update(const util::Vector2s &viewport_size,
 	            const Eigen::Matrix4f &view_matrix,
 	            const Eigen::Matrix4f &projection_matrix,
-	            const float zoom_factor);
+	            const float zoom);
 
 	/**
 	 * Check if a scene object is inside the frustum.

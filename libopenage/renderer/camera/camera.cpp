@@ -29,14 +29,14 @@ Camera::Camera(const std::shared_ptr<Renderer> &renderer,
 	frustum_2d{this->viewport_size,
                this->get_view_matrix(),
                this->get_projection_matrix(),
-               this->get_zoom_factor()},
+               this->get_zoom()},
 	frustum_3d{this->viewport_size,
                DEFAULT_NEAR_DISTANCE,
                DEFAULT_FAR_DISTANCE,
                this->scene_pos,
                CAM_DIRECTION,
                Eigen::Vector3f(0.0f, 1.0f, 0.0f),
-               this->get_zoom_factor()} {
+               this->get_real_zoom_factor()} {
 	this->look_at_scene(Eigen::Vector3f(0.0f, 0.0f, 0.0f));
 
 	this->init_uniform_buffer(renderer);
@@ -66,14 +66,14 @@ Camera::Camera(const std::shared_ptr<Renderer> &renderer,
 	frustum_2d{this->viewport_size,
                this->get_view_matrix(),
                this->get_projection_matrix(),
-               this->get_zoom_factor()},
+               this->get_zoom()},
 	frustum_3d{this->viewport_size,
                DEFAULT_NEAR_DISTANCE,
                DEFAULT_FAR_DISTANCE,
                this->scene_pos,
                CAM_DIRECTION,
                Eigen::Vector3f(0.0f, 1.0f, 0.0f),
-               this->get_zoom_factor()} {
+               this->get_real_zoom_factor()} {
 	this->init_uniform_buffer(renderer);
 
 	log::log(INFO << "Created new camera at position "
@@ -132,16 +132,16 @@ void Camera::move_to(Eigen::Vector3f scene_pos) {
 
 	// Update frustums
 	this->frustum_2d.update(viewport_size,
-	                        view,
-	                        proj,
-	                        this->get_zoom_factor());
+	                        this->get_view_matrix(),
+	                        this->get_projection_matrix(),
+	                        this->get_zoom());
 	this->frustum_3d.update(viewport_size,
 	                        DEFAULT_NEAR_DISTANCE,
 	                        DEFAULT_FAR_DISTANCE,
 	                        scene_pos,
 	                        CAM_DIRECTION,
 	                        Eigen::Vector3f(0.0f, 1.0f, 0.0f),
-	                        this->get_zoom_factor());
+	                        this->get_real_zoom_factor());
 }
 
 void Camera::move_rel(Eigen::Vector3f direction, float delta) {
@@ -232,7 +232,7 @@ const Eigen::Matrix4f &Camera::get_projection_matrix() {
 	float halfheight = this->viewport_size[1] / 2;
 
 	// get zoom level
-	float real_zoom = this->get_zoom_factor();
+	float real_zoom = this->get_real_zoom_factor();
 
 	// zoom by narrowing or widening viewport around focus point.
 	// narrow viewport => zoom in (projected area gets *smaller* while screen size stays the same)
@@ -283,7 +283,7 @@ Eigen::Vector3f Camera::get_input_pos(const coord::input &coord) const {
 	// this is the same calculation as for the projection matrix
 	float halfwidth = this->viewport_size[0] / 2;
 	float halfheight = this->viewport_size[1] / 2;
-	float real_zoom = this->get_zoom_factor();
+	float real_zoom = this->get_real_zoom_factor();
 
 	// calculate x and y offset on the camera plane relative to the camera position
 	float x = +(2.0f * coord.x / this->viewport_size[0] - 1) * (halfwidth * real_zoom);
@@ -318,7 +318,7 @@ void Camera::init_uniform_buffer(const std::shared_ptr<Renderer> &renderer) {
 	this->uniform_buffer = renderer->add_uniform_buffer(ubo_info);
 }
 
-inline float Camera::get_zoom_factor() const {
+inline float Camera::get_real_zoom_factor() const {
 	return 0.5f * this->default_zoom_ratio * this->zoom;
 }
 
