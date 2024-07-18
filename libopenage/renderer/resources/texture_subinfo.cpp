@@ -1,4 +1,4 @@
-// Copyright 2013-2023 the openage authors. See copying.md for legal info.
+// Copyright 2013-2024 the openage authors. See copying.md for legal info.
 
 #include "texture_subinfo.h"
 
@@ -38,7 +38,7 @@ const Eigen::Vector2i &Texture2dSubInfo::get_anchor_pos() const {
 	return this->anchor_pos;
 }
 
-const Eigen::Vector4f &Texture2dSubInfo::get_tile_params() const {
+const Eigen::Vector4f &Texture2dSubInfo::get_subtex_coords() const {
 	return this->tile_params;
 }
 

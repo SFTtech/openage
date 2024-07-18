@@ -25,7 +25,7 @@ void Frustum2d::update(const util::Vector2s &viewport_size,
 
 bool Frustum2d::in_frustum(const Eigen::Vector3f &scene_pos,
                            const float scalefactor,
-                           const Eigen::Vector4i &boundaries) const {
+                           const util::Vector4i &boundaries) const {
 	// calculate the position of the scene object in screen space
 	Eigen::Vector4f screen_pos = this->transform_matrix * Eigen::Vector4f(scene_pos[0], scene_pos[1], scene_pos[2], 1.0f);
 	float x_ndc = screen_pos[0];

@@ -55,7 +55,7 @@ public:
 	 */
 	bool in_frustum(const Eigen::Vector3f &scene_pos,
 	                const float scalefactor,
-	                const Eigen::Vector4i &boundaries) const;
+	                const util::Vector4i &boundaries) const;
 
 private:
 	/**

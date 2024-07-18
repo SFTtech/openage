@@ -1,4 +1,4 @@
-// Copyright 2021-2023 the openage authors. See copying.md for legal info.
+// Copyright 2021-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "renderer/resources/animation/layer_info.h"
+#include "util/vector.h"
 
 
 namespace openage::renderer::resources {
@@ -79,6 +80,25 @@ public:
 	 */
 	const LayerInfo &get_layer(size_t idx) const;
 
+	/**
+	 * Get the maximum boundaries for all frames in the animation.
+	 *
+	 * This represents the maximum distance from the anchor point to the
+	 * left, right, top, bottom edges of the frames (in pixels).
+	 *
+	 * @return Boundaries of the animation (in pixels): [left, right, top, bottom]
+	 */
+	const util::Vector4i &get_max_bounds() const;
+
+	/**
+	 * Get the maximum size for all frames in the animation.
+	 *
+	 * This represents the maximum width and height of the frames (in pixels).
+	 *
+	 * @return Size of the animation (in pixels): [width, height]
+	 */
+	const util::Vector2s get_max_size() const;
+
 private:
 	/**
 	 * Scaling factor of the animation across all layers at default zoom level.
@@ -94,6 +114,14 @@ private:
 	 * Layer information.
 	 */
 	std::vector<LayerInfo> layers;
+
+	/**
+	 * Maximum boundaries for all frames in the animation.
+	 *
+	 * This represents the maximum distance from the anchor point to the
+	 * left, right, top, bottom edges of the frames (in pixels).
+	 */
+	util::Vector4i max_bounds;
 };
 
 } // namespace openage::renderer::resources

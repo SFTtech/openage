@@ -143,7 +143,7 @@ void WorldObject::update_uniforms(const time::time_t &time) {
 		layer_unifs->update(this->tex, texture);
 
 		// Subtexture coordinates.inside texture
-		auto coords = tex_info->get_subtex_info(subtex_idx).get_tile_params();
+		auto coords = tex_info->get_subtex_info(subtex_idx).get_subtex_coords();
 		layer_unifs->update(this->tile_params, coords);
 
 		// Animation scale factor
