@@ -191,14 +191,14 @@ public:
 	 *
 	 * @return Frustum object.
 	 */
-	const Frustum2d &get_frustum_2d() const;
+	const Frustum2d get_frustum_2d();
 
 	/**
 	 * Get a 3D frustum object for this camera.
 	 *
 	 * @return Frustum object.
 	 */
-	const Frustum3d &get_frustum_3d() const;
+	const Frustum3d get_frustum_3d() const;
 
 private:
 	/**
@@ -308,16 +308,6 @@ private:
 	 * Uniform buffer for the camera matrices.
 	 */
 	std::shared_ptr<renderer::UniformBuffer> uniform_buffer;
-
-	/**
-	 * 2D frustum (viewbox) for culling rendering objects.
-	 */
-	Frustum2d frustum_2d;
-
-	/**
-	 * 3D frustum (viewing volume) for culling rendering objects.
-	 */
-	Frustum3d frustum_3d;
 };
 
 } // namespace camera
