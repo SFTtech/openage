@@ -13,7 +13,9 @@
 #include "util/vector.h"
 
 #include "renderer/camera/definitions.h"
+#include "renderer/camera/frustum_2d.h"
 #include "renderer/camera/frustum_3d.h"
+
 
 namespace openage::renderer {
 class Renderer;
@@ -183,6 +185,13 @@ public:
 	const std::shared_ptr<renderer::UniformBuffer> &get_uniform_buffer() const;
 
 	/**
+	 * Get a 2D frustum object for this camera.
+	 *
+	 * @return Frustum object.
+	 */
+	const Frustum2d &get_frustum_2d() const;
+
+	/**
 	 * Get a 3D frustum object for this camera.
 	 *
 	 * @return Frustum object.
@@ -295,9 +304,14 @@ private:
 	std::shared_ptr<renderer::UniformBuffer> uniform_buffer;
 
 	/**
-	 * Frustum (viewing volume) for culling rendering objects.
+	 * 2D frustum (viewbox) for culling rendering objects.
 	 */
-	Frustum3d frustum;
+	Frustum2d frustum_2d;
+
+	/**
+	 * 3D frustum (viewing volume) for culling rendering objects.
+	 */
+	Frustum3d frustum_3d;
 };
 
 } // namespace camera
