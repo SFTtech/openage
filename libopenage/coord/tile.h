@@ -1,4 +1,4 @@
-// Copyright 2016-2023 the openage authors. See copying.md for legal info.
+// Copyright 2016-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -9,9 +9,6 @@
 #include "declarations.h"
 
 namespace openage {
-
-class Terrain;
-
 namespace coord {
 
 /*

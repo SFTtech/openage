@@ -1,4 +1,4 @@
-# Copyright 2015-2023 the openage authors. See copying.md for legal info.
+# Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 """ Lists of all possible tests; enter your tests here. """
 
@@ -52,6 +52,8 @@ def demos_py():
            "play pong on steroids through future prediction")
     yield ("openage.gamestate.tests.simulation_demo",
            "showcases the game simulation")
+    yield ("openage.pathfinding.tests.path_demo",
+           "showcases the pathfinding system")
     yield ("openage.renderer.tests.renderer_demo",
            "showcases the renderer")
     yield ("openage.renderer.tests.renderer_stresstest",
@@ -85,6 +87,7 @@ def tests_cpp():
     yield "openage::datastructure::tests::pairing_heap"
     yield "openage::job::tests::test_job_manager"
     yield "openage::path::tests::path_node", "pathfinding"
+    yield "openage::path::tests::flow_field", "pathfinding"
     yield "openage::pyinterface::tests::pyobject"
     yield "openage::pyinterface::tests::err_py_to_cpp"
     yield "openage::renderer::tests::font"

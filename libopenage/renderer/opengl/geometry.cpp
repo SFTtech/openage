@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #include "geometry.h"
 
@@ -68,7 +68,7 @@ void GlGeometry::draw() const {
 			glDrawElements(mesh.primitive, mesh.vert_count, *mesh.index_type, nullptr);
 		}
 		else {
-			glDrawArrays(GL_TRIANGLE_STRIP, 0, mesh.vert_count);
+			glDrawArrays(mesh.primitive, 0, mesh.vert_count);
 		}
 
 		break;

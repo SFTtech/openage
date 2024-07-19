@@ -279,6 +279,136 @@ class KeyframePrinter:
         yield ('time', self.__val['time'])
         yield ('value', self.__val['value'])
 
+
+@printer_typedef('openage::path::flow_t')
+class PathFlowTypePrinter:
+    """
+    Pretty printer for openage::path::flow_t.
+
+    TODO: Inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
+    """
+
+    FLOW_FLAGS: dict = {
+        0x10: 'PATHABLE',
+        0x20: 'LOS',
+        0x40: 'WAVEFRONT_BLOCKED',
+        0x80: 'UNUSED',
+    }
+
+    FLOW_DIRECTION: dict = {
+        0x00: 'NORTH',
+        0x01: 'NORTHEAST',
+        0x02: 'EAST',
+        0x03: 'SOUTHEAST',
+        0x04: 'SOUTH',
+        0x05: 'SOUTHWEST',
+        0x06: 'WEST',
+        0x07: 'NORTHWEST',
+    }
+
+    def __init__(self, val: gdb.Value):
+        self.__val = val
+
+    def to_string(self):
+        """
+        Get the flow type as a string.
+        """
+        flow = int(self.__val)
+        flags = flow & 0xF0
+        direction = flow & 0x0F
+        return (f"{self.FLOW_DIRECTION.get(direction, 'INVALID')} ("
+                f"{', '.join([flag for mask, flag in self.FLOW_FLAGS.items() if mask & flags])})")
+
+    def children(self):
+        """
+        Get the displayed children of the flow type.
+        """
+        flow = int(self.__val)
+        flags = flow & 0xF0
+        direction = flow & 0x0F
+        yield ('direction', self.FLOW_DIRECTION[direction])
+        for mask, flag in self.FLOW_FLAGS.items():
+            yield (flag, bool(flags & mask))
+
+
+# Integrated flags
+INTEGRATED_FLAGS: dict = {
+    0x01: 'LOS',
+    0x02: 'WAVEFRONT_BLOCKED',
+}
+
+
+def get_integrated_flags_list(value: int) -> str:
+    """
+    Get the list of flags as a string.
+
+    :param value: The value to get the flags for.
+    :type value: int
+    """
+    flags = []
+    for mask, flag in INTEGRATED_FLAGS.items():
+        if value & mask:
+            flags.append(flag)
+
+    return ' | '.join(flags)
+
+
+@printer_typedef('openage::path::integrated_flags_t')
+class PathIntegratedFlagsTypePrinter:
+    """
+    Pretty printer for openage::path::integrated_flags_t.
+
+    TODO: Inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
+    """
+
+    def __init__(self, val: gdb.Value):
+        self.__val = val
+
+    def to_string(self):
+        """
+        Get the integrate type as a string.
+        """
+        integrate = int(self.__val)
+        return get_integrated_flags_list(integrate)
+
+    def children(self):
+        """
+        Get the displayed children of the integrate type.
+        """
+        integrate = int(self.__val)
+        for mask, flag in INTEGRATED_FLAGS.items():
+            yield (flag, bool(integrate & mask))
+
+
+@printer_typedef('openage::path::integrated_t')
+class PathIntegratedTypePrinter:
+    """
+    Pretty printer for openage::path::integrated_t.
+
+    TODO: Inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
+    """
+
+    def __init__(self, val: gdb.Value):
+        self.__val = val
+
+    def to_string(self):
+        """
+        Get the integrate type as a string.
+        """
+        output_str = f'cost = {self.__val["cost"]}'
+        flags = get_integrated_flags_list(int(self.__val['flags']))
+        if len(flags) > 0:
+            output_str += f' ({flags})'
+        return output_str
+
+    def children(self):
+        """
+        Get the displayed children of the integrate type.
+        """
+        yield ('cost', self.__val['cost'])
+        yield ('flags', self.__val['flags'])
+
+
 # TODO: curve types
 # TODO: pathfinding types
 # TODO: input event codes

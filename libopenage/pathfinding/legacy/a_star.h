@@ -1,4 +1,4 @@
-// Copyright 2014-2023 the openage authors. See copying.md for legal info.
+// Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -9,7 +9,7 @@
 
 namespace openage {
 
-namespace path {
+namespace path::legacy {
 
 /**
  * path between two static points
@@ -35,8 +35,8 @@ Path find_nearest(coord::phys3 start,
  */
 Path a_star(coord::phys3 start,
             std::function<bool(const coord::phys3 &)> valid_end,
-            std::function<cost_t(const coord::phys3 &)> heuristic,
+            std::function<cost_old_t(const coord::phys3 &)> heuristic,
             std::function<bool(const coord::phys3 &)> passable);
 
-} // namespace path
+} // namespace path::legacy
 } // namespace openage
