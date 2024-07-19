@@ -19,6 +19,8 @@
 
 namespace openage::renderer::world {
 
+bool WorldRenderStage::ENABLE_FRUSTUM_CULLING = false;
+
 WorldRenderStage::WorldRenderStage(const std::shared_ptr<Window> &window,
                                    const std::shared_ptr<renderer::Renderer> &renderer,
                                    const std::shared_ptr<renderer::camera::Camera> &camera,
@@ -63,7 +65,8 @@ void WorldRenderStage::update() {
 	for (auto &obj : this->render_objects) {
 		obj->fetch_updates(current_time);
 
-		if (not obj->is_visible(camera_frustum, current_time)) {
+		if (WorldRenderStage::ENABLE_FRUSTUM_CULLING
+		    and not obj->is_visible(camera_frustum, current_time)) {
 			continue;
 		}
 

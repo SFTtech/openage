@@ -99,6 +99,9 @@ void renderer_stresstest_1(const util::Path &path) {
 		asset_manager,
 		clock);
 
+	// Enable frustum culling
+	renderer::world::WorldRenderStage::ENABLE_FRUSTUM_CULLING = true;
+
 	// Store the render passes of the renderers
 	// The order is important as its also the order in which they
 	// are rendered and drawn onto the screen.
