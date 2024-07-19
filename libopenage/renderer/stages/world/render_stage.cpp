@@ -70,14 +70,14 @@ void WorldRenderStage::update() {
 		if (obj->is_changed()) {
 			if (obj->requires_renderable()) {
 				auto layer_positions = obj->get_layer_positions(current_time);
-				Eigen::Matrix4f model_m = obj->get_model_matrix();
+				static const Eigen::Matrix4f model_matrix = obj->get_model_matrix();
 
 				std::vector<std::shared_ptr<renderer::UniformInput>> transform_unifs;
 				for (auto layer_pos : layer_positions) {
 					// Set uniforms that don't change or are not changed often
 					auto layer_unifs = this->display_shader->new_uniform_input(
 						"model",
-						model_m,
+						model_matrix,
 						"flip_x",
 						false,
 						"flip_y",

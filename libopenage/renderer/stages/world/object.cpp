@@ -226,9 +226,11 @@ void WorldObject::set_uniforms(std::vector<std::shared_ptr<renderer::UniformInpu
 
 bool WorldObject::is_visible(const camera::Frustum2d &frustum,
                              const time::time_t &time) {
+	static const Eigen::Matrix4f model_matrix = this->get_model_matrix();
 	Eigen::Vector3f current_pos = this->position.get(time).to_world_space();
 	auto animation_info = this->animation_info.get(time);
 	return frustum.in_frustum(current_pos,
+	                          model_matrix,
 	                          animation_info->get_scalefactor(),
 	                          animation_info->get_max_bounds());
 }

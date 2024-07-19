@@ -48,12 +48,14 @@ public:
 	 * Check if a scene object is inside the frustum.
 	 *
 	 * @param scene_pos 3D scene coordinates.
+	 * @param model_matrix Model matrix of the object.
 	 * @param scalefactor Scale factor of the animation.
 	 * @param boundaries Boundaries of the animation (in pixels): left, right, top, bottom.
 	 *
 	 * @return true if the object is inside the frustum, false otherwise.
 	 */
 	bool in_frustum(const Eigen::Vector3f &scene_pos,
+	                const Eigen::Matrix4f &model_matrix,
 	                const float scalefactor,
 	                const util::Vector4i &boundaries) const;
 
