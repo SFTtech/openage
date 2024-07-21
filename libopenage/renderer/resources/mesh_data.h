@@ -1,4 +1,4 @@
-// Copyright 2017-2023 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -29,6 +29,7 @@ enum class vertex_primitive_t {
 	POINTS,
 	LINES,
 	LINE_STRIP,
+	LINE_LOOP,
 	TRIANGLES,
 	TRIANGLE_STRIP,
 	TRIANGLE_FAN,
