@@ -1,4 +1,4 @@
-// Copyright 2018-2023 the openage authors. See copying.md for legal info.
+// Copyright 2018-2024 the openage authors. See copying.md for legal info.
 
 // Lookup tables for translating between OpenGL-specific values and generic renderer values,
 // as well as mapping things like type sizes within OpenGL.
@@ -137,6 +137,7 @@ static constexpr auto GL_PRIMITIVE = datastructure::create_const_map<resources::
 	std::pair(resources::vertex_primitive_t::POINTS, GL_POINTS),
 	std::pair(resources::vertex_primitive_t::LINES, GL_LINES),
 	std::pair(resources::vertex_primitive_t::LINE_STRIP, GL_LINE_STRIP),
+    std::pair(resources::vertex_primitive_t::LINE_LOOP, GL_LINE_LOOP),
 	std::pair(resources::vertex_primitive_t::TRIANGLES, GL_TRIANGLES),
 	std::pair(resources::vertex_primitive_t::TRIANGLE_STRIP, GL_TRIANGLE_STRIP),
 	std::pair(resources::vertex_primitive_t::TRIANGLE_FAN, GL_TRIANGLE_FAN));

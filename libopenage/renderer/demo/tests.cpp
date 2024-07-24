@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #include "tests.h"
 
@@ -11,8 +11,9 @@
 #include "renderer/demo/demo_3.h"
 #include "renderer/demo/demo_4.h"
 #include "renderer/demo/demo_5.h"
+#include "renderer/demo/demo_6.h"
 #include "renderer/demo/stresstest_0.h"
-
+#include "renderer/demo/stresstest_1.h"
 
 namespace openage::renderer::tests {
 
@@ -42,6 +43,10 @@ void renderer_demo(int demo_id, const util::Path &path) {
 		renderer_demo_5(path);
 		break;
 
+	case 6:
+		renderer_demo_6(path);
+		break;
+
 	default:
 		log::log(MSG(err) << "Unknown renderer demo requested: " << demo_id << ".");
 		break;
@@ -53,7 +58,9 @@ OAAPI void renderer_stresstest(int demo_id, const util::Path &path) {
 	case 0:
 		renderer_stresstest_0(path);
 		break;
-
+	case 1:
+		renderer_stresstest_1(path);
+		break;
 	default:
 		log::log(MSG(err) << "Unknown renderer stresstest requested: " << demo_id << ".");
 		break;

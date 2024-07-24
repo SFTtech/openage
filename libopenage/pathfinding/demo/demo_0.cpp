@@ -10,6 +10,7 @@
 #include "pathfinding/flow_field.h"
 #include "pathfinding/integration_field.h"
 #include "renderer/camera/camera.h"
+#include "renderer/camera/definitions.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/opengl/window.h"
 #include "renderer/render_pass.h"
@@ -313,7 +314,7 @@ void RenderManager0::hide_vectors() {
 std::pair<int, int> RenderManager0::select_tile(double x, double y) {
 	auto grid_plane_normal = Eigen::Vector3f{0, 1, 0};
 	auto grid_plane_point = Eigen::Vector3f{0, 0, 0};
-	auto camera_direction = renderer::camera::cam_direction;
+	auto camera_direction = renderer::camera::CAM_DIRECTION;
 	auto camera_position = camera->get_input_pos(
 		coord::input(x, y));
 

@@ -12,6 +12,11 @@
 #include "coord/scene.h"
 #include "util/vector.h"
 
+#include "renderer/camera/definitions.h"
+#include "renderer/camera/frustum_2d.h"
+#include "renderer/camera/frustum_3d.h"
+
+
 namespace openage::renderer {
 class Renderer;
 class UniformBuffer;
@@ -19,19 +24,10 @@ class UniformBuffer;
 namespace camera {
 
 /**
- * Camera direction (= where it looks at).
- * Uses a dimetric perspective like in AoE with the (fixed) angles
- *    yaw   = -135 degrees
- *    pitch = -30 degrees
- */
-static const Eigen::Vector3f cam_direction{
-	-1 * (std::sqrt(6.f) / 4),
-	-0.5f,
-	-1 * (std::sqrt(6.f) / 4),
-};
-
-/**
  * Camera for selecting what part of the ingame world is displayed.
+ *
+ * The camera uses orthographic projection as it is primarily used for
+ * 2D rendering.
  *
  * TODO: Vulkan version.
  */
@@ -62,9 +58,9 @@ public:
 	Camera(const std::shared_ptr<Renderer> &renderer,
 	       util::Vector2s viewport_size,
 	       Eigen::Vector3f scene_pos,
-	       float zoom = 1.0f,
-	       float max_zoom_out = 64.0f,
-	       float default_zoom_ratio = 1.0f / 49);
+	       float zoom = DEFAULT_ZOOM,
+	       float max_zoom_out = DEFAULT_MAX_ZOOM_OUT,
+	       float default_zoom_ratio = DEFAULT_ZOOM_RATIO);
 	~Camera() = default;
 
 	/**
@@ -143,6 +139,8 @@ public:
 	/**
 	 * Get the current zoom level of the camera.
 	 *
+	 * Determines the scale of rendered objects.
+	 *
 	 * @return Zoom level.
 	 */
 	float get_zoom() const;
@@ -188,6 +186,20 @@ public:
 	 */
 	const std::shared_ptr<renderer::UniformBuffer> &get_uniform_buffer() const;
 
+	/**
+	 * Get a 2D frustum object for this camera.
+	 *
+	 * @return Frustum object.
+	 */
+	const Frustum2d get_frustum_2d();
+
+	/**
+	 * Get a 3D frustum object for this camera.
+	 *
+	 * @return Frustum object.
+	 */
+	const Frustum3d get_frustum_3d() const;
+
 private:
 	/**
 	 * Create the uniform buffer for the camera.
@@ -195,6 +207,21 @@ private:
 	 * @param renderer openage renderer instance.
 	 */
 	void init_uniform_buffer(const std::shared_ptr<Renderer> &renderer);
+
+	/**
+	 * Get the zoom factor applied to the camera projection.
+	 *
+	 * The zoom factor is calculated as
+	 *
+	 *     zoom * zoom_ratio * 0.5f
+	 *
+	 * Note that this zoom factor should NOT be used for sprite scaling, but
+	 * only for 3D projection matrix calculations. For sprite scaling, use
+	 * \p get_zoom() .
+	 *
+	 * @return Zoom factor for projection.
+	 */
+	inline float get_real_zoom_factor() const;
 
 	/**
 	 * Position in the 3D scene.

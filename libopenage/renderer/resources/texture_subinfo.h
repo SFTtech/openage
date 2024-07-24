@@ -53,7 +53,7 @@ public:
 	const Eigen::Vector2<uint32_t> &get_size() const;
 
 	/**
-	 * Get the position of the subtexture anchor.
+	 * Get the position of the subtexture anchor (origin == top left).
 	 *
 	 * @return Anchor coordinates as 2-dimensional Eigen vector: (x, y)
 	 */
@@ -68,10 +68,10 @@ public:
 	 *
 	 * @return Tile parameters as 4-dimensional Eigen vector: (x, y, width, height)
 	 */
-	const Eigen::Vector4f &get_tile_params() const;
+	const Eigen::Vector4f &get_subtex_coords() const;
 
 	/**
-	 * Get the anchor parameters of the subtexture center. Used in the model matrix
+	 * Get the anchor parameters of the subtexture center. Used in the shader
 	 * to calculate the offset position for displaying the subtexture inside
 	 * the OpenGL viewport.
 	 *

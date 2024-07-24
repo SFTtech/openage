@@ -10,7 +10,7 @@
 
 #include <eigen3/Eigen/Dense>
 
-#include "renderer/camera/camera.h"
+#include "renderer/camera/frustum_2d.h"
 #include "renderer/definitions.h"
 #include "renderer/resources/animation/angle_info.h"
 #include "renderer/resources/animation/animation_info.h"
@@ -143,7 +143,7 @@ void WorldObject::update_uniforms(const time::time_t &time) {
 		layer_unifs->update(this->tex, texture);
 
 		// Subtexture coordinates.inside texture
-		auto coords = tex_info->get_subtex_info(subtex_idx).get_tile_params();
+		auto coords = tex_info->get_subtex_info(subtex_idx).get_subtex_coords();
 		layer_unifs->update(this->tile_params, coords);
 
 		// Animation scale factor
@@ -222,6 +222,17 @@ void WorldObject::clear_changed_flag() {
 
 void WorldObject::set_uniforms(std::vector<std::shared_ptr<renderer::UniformInput>> &&uniforms) {
 	this->layer_uniforms = std::move(uniforms);
+}
+
+bool WorldObject::is_visible(const camera::Frustum2d &frustum,
+                             const time::time_t &time) {
+	static const Eigen::Matrix4f model_matrix = this->get_model_matrix();
+	Eigen::Vector3f current_pos = this->position.get(time).to_world_space();
+	auto animation_info = this->animation_info.get(time);
+	return frustum.in_frustum(current_pos,
+	                          model_matrix,
+	                          animation_info->get_scalefactor(),
+	                          animation_info->get_max_bounds());
 }
 
 } // namespace openage::renderer::world

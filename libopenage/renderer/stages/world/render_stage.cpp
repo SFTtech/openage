@@ -3,6 +3,7 @@
 #include "render_stage.h"
 
 #include "renderer/camera/camera.h"
+#include "renderer/camera/frustum_3d.h"
 #include "renderer/opengl/context.h"
 #include "renderer/render_pass.h"
 #include "renderer/render_target.h"
@@ -17,6 +18,8 @@
 
 
 namespace openage::renderer::world {
+
+bool WorldRenderStage::ENABLE_FRUSTUM_CULLING = false;
 
 WorldRenderStage::WorldRenderStage(const std::shared_ptr<Window> &window,
                                    const std::shared_ptr<renderer::Renderer> &renderer,
@@ -58,19 +61,26 @@ void WorldRenderStage::add_render_entity(const std::shared_ptr<WorldRenderEntity
 void WorldRenderStage::update() {
 	std::unique_lock lock{this->mutex};
 	auto current_time = this->clock->get_real_time();
+	auto &camera_frustum = this->camera->get_frustum_2d();
 	for (auto &obj : this->render_objects) {
 		obj->fetch_updates(current_time);
+
+		if (WorldRenderStage::ENABLE_FRUSTUM_CULLING
+		    and not obj->is_visible(camera_frustum, current_time)) {
+			continue;
+		}
+
 		if (obj->is_changed()) {
 			if (obj->requires_renderable()) {
 				auto layer_positions = obj->get_layer_positions(current_time);
-				Eigen::Matrix4f model_m = obj->get_model_matrix();
+				static const Eigen::Matrix4f model_matrix = obj->get_model_matrix();
 
 				std::vector<std::shared_ptr<renderer::UniformInput>> transform_unifs;
 				for (auto layer_pos : layer_positions) {
 					// Set uniforms that don't change or are not changed often
 					auto layer_unifs = this->display_shader->new_uniform_input(
 						"model",
-						model_m,
+						model_matrix,
 						"flip_x",
 						false,
 						"flip_y",

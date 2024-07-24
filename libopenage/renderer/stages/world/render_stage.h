@@ -40,6 +40,11 @@ class WorldObject;
 class WorldRenderStage {
 public:
 	/**
+	 * Enable or disable frustum culling (default = false).
+	 */
+	static bool ENABLE_FRUSTUM_CULLING;
+
+	/**
 	 * Create a new render stage for the game world.
 	 *
 	 * @param window openage window targeted for rendering.
@@ -95,9 +100,7 @@ private:
 	 * @param height Height of the FBO.
 	 * @param shaderdir Directory containg the shader source files.
 	 */
-	void initialize_render_pass(size_t width,
-	                            size_t height,
-	                            const util::Path &shaderdir);
+	void initialize_render_pass(size_t width, size_t height, const util::Path &shaderdir);
 
 	/**
 	 * Fetch the uniform IDs for the uniforms of the world shader from OpenGL

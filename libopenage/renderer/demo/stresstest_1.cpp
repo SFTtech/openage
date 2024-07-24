@@ -1,9 +1,8 @@
-// Copyright 2023-2024 the openage authors. See copying.md for legal info.
+// Copyright 2024-2024 the openage authors. See copying.md for legal info.
 
-#include "demo_3.h"
+#include "stresstest_1.h"
 
 #include <eigen3/Eigen/Dense>
-#include <QKeyEvent>
 
 #include "coord/tile.h"
 #include "renderer/camera/camera.h"
@@ -11,7 +10,6 @@
 #include "renderer/opengl/window.h"
 #include "renderer/render_factory.h"
 #include "renderer/render_pass.h"
-#include "renderer/render_target.h"
 #include "renderer/resources/assets/asset_manager.h"
 #include "renderer/resources/shader_source.h"
 #include "renderer/stages/camera/manager.h"
@@ -23,34 +21,47 @@
 #include "renderer/stages/world/render_stage.h"
 #include "renderer/uniform_buffer.h"
 #include "time/clock.h"
-
+#include "util/fps.h"
 
 namespace openage::renderer::tests {
-
-void renderer_demo_3(const util::Path &path) {
+void renderer_stresstest_1(const util::Path &path) {
 	auto qtapp = std::make_shared<gui::GuiApplicationWithLogger>();
 
+	// Create the window and renderer
 	window_settings settings;
-	settings.width = 800;
-	settings.height = 600;
+	settings.width = 1024;
+	settings.height = 768;
+	settings.vsync = false;
 	settings.debug = true;
 	auto window = std::make_shared<opengl::GlWindow>("openage renderer test", settings);
 	auto renderer = window->make_renderer();
 
 	// Clock required by world renderer for timing animation frames
-	// (we never advance time in this demo though, so it has no significance)
 	auto clock = std::make_shared<time::Clock>();
 
 	// Camera
 	// our viewport into the game world
-	auto camera = std::make_shared<renderer::camera::Camera>(renderer, window->get_size());
-	window->add_resize_callback([&](size_t w, size_t h, double /*scale*/) {
-		camera->resize(w, h);
-	});
-
-	// The camera manager handles camera movement and zooming
-	// it is updated each frame before the render stages
-	auto cam_manager = std::make_shared<renderer::camera::CameraManager>(camera);
+	// on this one, enable frustum culling
+	auto camera = std::make_shared<renderer::camera::Camera>(renderer,
+	                                                         window->get_size(),
+	                                                         Eigen::Vector3f{17.0f, 10.0f, 7.0f},
+	                                                         1.f,
+	                                                         64.f,
+	                                                         1.f / 49.f);
+	auto cam_unifs = camera->get_uniform_buffer()->create_empty_input();
+	cam_unifs->update(
+		"view",
+		camera->get_view_matrix(),
+		"proj",
+		camera->get_projection_matrix(),
+		"inv_zoom",
+		1.0f / camera->get_zoom());
+	auto viewport_size = camera->get_viewport_size();
+	Eigen::Vector2f viewport_size_vec{
+		1.0f / static_cast<float>(viewport_size[0]),
+		1.0f / static_cast<float>(viewport_size[1])};
+	cam_unifs->update("inv_viewport_size", viewport_size_vec);
+	camera->get_uniform_buffer()->update_uniforms(cam_unifs);
 
 	// Render stages
 	// every stage use a different subrenderer that manages renderables,
@@ -88,6 +99,9 @@ void renderer_demo_3(const util::Path &path) {
 		asset_manager,
 		clock);
 
+	// Enable frustum culling
+	renderer::world::WorldRenderStage::ENABLE_FRUSTUM_CULLING = true;
+
 	// Store the render passes of the renderers
 	// The order is important as its also the order in which they
 	// are rendered and drawn onto the screen.
@@ -108,15 +122,16 @@ void renderer_demo_3(const util::Path &path) {
 	}
 	screen_renderer->set_render_targets(targets);
 
-	render_passes.push_back(screen_renderer->get_render_pass());
-
 	window->add_resize_callback([&](size_t, size_t, double /*scale*/) {
+		// Acquire the render targets for all previous passes
 		std::vector<std::shared_ptr<renderer::RenderTarget>> targets{};
 		for (size_t i = 0; i < render_passes.size() - 1; ++i) {
 			targets.push_back(render_passes[i]->get_target());
 		}
 		screen_renderer->set_render_targets(targets);
 	});
+
+	render_passes.push_back(screen_renderer->get_render_pass());
 
 	// Create some entities to populate the scene
 	auto render_factory = std::make_shared<RenderFactory>(terrain_renderer, world_renderer);
@@ -133,86 +148,72 @@ void renderer_demo_3(const util::Path &path) {
 	auto terrain0 = render_factory->add_terrain_render_entity(terrain_size,
 	                                                          coord::tile_delta{0, 0});
 
-	// Create "test bumps" in the terrain to check if rendering works
-	tiles[11].first = 1.0f;
-	tiles[23].first = 2.3f;
-	tiles[42].first = 4.2f;
-	tiles[69].first = 6.9f; // nice
-
-	// A hill
-	tiles[55].first = 3.0f; // center
-	tiles[45].first = 2.0f; // bottom left slope
-	tiles[35].first = 1.0f;
-	tiles[56].first = 1.0f; // bottom right slope (little steeper)
-	tiles[65].first = 2.0f; // top right slope
-	tiles[75].first = 1.0f;
-	tiles[54].first = 2.0f; // top left slope
-	tiles[53].first = 1.0f;
-
 	// send the terrain data to the terrain renderer
 	terrain0->update(terrain_size, tiles);
 
-	// World entities
-	auto world0 = render_factory->add_world_render_entity();
-	world0->update(0, coord::phys3(3.0f, 3.0f, 0.0f), "./textures/test_gaben.sprite");
+	std::vector<std::shared_ptr<renderer::world::WorldRenderEntity>> render_entities{};
+	auto add_world_entity = [&](const coord::phys3 initial_pos,
+	                            const time::time_t time) {
+		const auto animation_path = "./textures/test_tank_mirrored.sprite";
 
-	// should behind gaben and caught by depth test
-	auto world1 = render_factory->add_world_render_entity();
-	world1->update(1, coord::phys3(4.0f, 1.0f, 0.0f), "./textures/test_missing.sprite");
+		auto position = curve::Continuous<coord::phys3>{nullptr, 0, "", nullptr, coord::phys3(0, 0, 0)};
+		position.set_insert(time, initial_pos);
+		position.set_insert(time + 1, initial_pos + coord::phys3_delta{5, 0, 0});
+		position.set_insert(time + 2, initial_pos + coord::phys3_delta{12, -2, 0});
+		position.set_insert(time + 3, initial_pos + coord::phys3_delta{5, 5, 0});
+		position.set_insert(time + 4, initial_pos + coord::phys3_delta{12, 12, 0});
+		position.set_insert(time + 5, initial_pos + coord::phys3_delta{5, 9, 0});
+		position.set_insert(time + 6, initial_pos + coord::phys3_delta{-2, 12, 0});
+		position.set_insert(time + 7, initial_pos + coord::phys3_delta{0, 5, 0});
+		position.set_insert(time + 8, initial_pos);
 
-	auto world2 = render_factory->add_world_render_entity();
-	world2->update(2, coord::phys3(1.0f, 3.0f, 0.0f), "./textures/test_missing.sprite");
+		auto angle = curve::Segmented<coord::phys_angle_t>{nullptr, 0};
+		angle.set_insert(time, coord::phys_angle_t::from_int(225));
+		angle.set_insert_jump(time + 1, coord::phys_angle_t::from_int(225), coord::phys_angle_t::from_int(210));
+		angle.set_insert_jump(time + 2, coord::phys_angle_t::from_int(210), coord::phys_angle_t::from_int(0));
+		angle.set_insert_jump(time + 3, coord::phys_angle_t::from_int(0), coord::phys_angle_t::from_int(270));
+		angle.set_insert_jump(time + 4, coord::phys_angle_t::from_int(270), coord::phys_angle_t::from_int(60));
+		angle.set_insert_jump(time + 5, coord::phys_angle_t::from_int(60), coord::phys_angle_t::from_int(45));
+		angle.set_insert_jump(time + 6, coord::phys_angle_t::from_int(45), coord::phys_angle_t::from_int(120));
+		angle.set_insert_jump(time + 7, coord::phys_angle_t::from_int(120), coord::phys_angle_t::from_int(135));
+		angle.set_insert_jump(time + 8, coord::phys_angle_t::from_int(135), coord::phys_angle_t::from_int(225));
 
-	// Zoom in/out with mouse wheel
-	window->add_mouse_wheel_callback([&](const QWheelEvent &ev) {
-		auto delta = ev.angleDelta().y() / 120;
+		auto entity = render_factory->add_world_render_entity();
+		entity->update(render_entities.size(),
+		               position,
+		               angle,
+		               animation_path,
+		               time);
+		render_entities.push_back(entity);
+	};
 
-		// zoom_frame updates the camera zoom level in the next drawn frame
-		if (delta < 0) {
-			cam_manager->zoom_frame(renderer::camera::ZoomDirection::OUT, 0.05f);
-		}
-		else if (delta > 0) {
-			cam_manager->zoom_frame(renderer::camera::ZoomDirection::IN, 0.05f);
-		}
-	});
+	// Stop after 1000 entities
+	size_t entity_limit = 1000;
 
-	// Move around the scene with WASD
-	window->add_key_callback([&](const QKeyEvent &ev) {
-		if (ev.type() == QEvent::KeyPress) {
-			auto key = ev.key();
+	clock->start();
 
-			// move_frame moves the camera in the specified direction in the next drawn frame
-			switch (key) {
-			case Qt::Key_W: { // forward
-				cam_manager->move_frame(renderer::camera::MoveDirection::FORWARD, 0.5f);
-			} break;
-			case Qt::Key_A: { // left
-				cam_manager->move_frame(renderer::camera::MoveDirection::LEFT, 0.5f);
-			} break;
-			case Qt::Key_S: { // back
-				cam_manager->move_frame(renderer::camera::MoveDirection::BACKWARD, 0.5f);
-			} break;
-			case Qt::Key_D: { // right
-				cam_manager->move_frame(renderer::camera::MoveDirection::RIGHT, 0.5f);
-			} break;
-			default:
-				break;
-			}
-		}
-	});
+	util::FrameCounter timer;
 
-	log::log(INFO << "Instructions:");
-	log::log(INFO << "  1. Move the camera with WASD");
-	log::log(INFO << "  2. Zoom in and out with MOUSE WHEEL");
+	time::time_t next_entity = clock->get_real_time();
+	while (render_entities.size() <= entity_limit) {
+		// Print FPS
+		timer.frame();
+		std::cout
+			<< "Entities: " << render_entities.size()
+			<< " -- "
+			<< "FPS: " << timer.fps << "\r" << std::flush;
 
-	while (not window->should_close()) {
 		qtapp->process_events();
 
-		// update the camera matrices
-		cam_manager->update();
+		// Advance time
+		clock->update_time();
+		auto current_time = clock->get_real_time();
+		if (current_time > next_entity) {
+			add_world_entity(coord::phys3(0.5, 0.5, 0.0f), clock->get_time());
+			next_entity = current_time + 0.05;
+		}
 
 		// Update the renderables of the subrenderers
-		// camera zoom/position changes are also handled in here
 		terrain_renderer->update();
 		world_renderer->update();
 
@@ -226,7 +227,10 @@ void renderer_demo_3(const util::Path &path) {
 		// Display final output on screen
 		window->update();
 	}
+
+	clock->stop();
+	log::log(MSG(info) << "Stopped after rendering " << render_entities.size() << " entities");
+
 	window->close();
 }
-
 } // namespace openage::renderer::tests
