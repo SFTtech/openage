@@ -15,3 +15,6 @@ from pip:
 ```
 pip3 install cython --break-system-packages
 ```
+
+# Linux Mint Issue
+Linux Mint has a [problem with `toml11`](https://github.com/SFTtech/openage/issues/1601), since CMake can't find it. To solve this, download the [toml11.zip](https://github.com/SFTtech/openage/files/13401192/toml11.zip), after, put the files in the `/usr/lib/x86_64-linux-gnu/cmake/toml11` path. (if the `toml11` directory doesn't exist, create it)
