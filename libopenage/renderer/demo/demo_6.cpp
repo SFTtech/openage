@@ -254,7 +254,9 @@ const std::vector<renderer::Renderable> RenderManagerDemo6::create_frame_obj() {
 			"scale",
 			scale,
 			"frame_size",
-			frame_size);
+			frame_size,
+			"incol",
+			Eigen::Vector4f{0.0f, 0.0f, 1.0f, 1.0f});
 		Renderable frame_obj{
 			frame_unifs,
 			frame_geometry,
