@@ -43,6 +43,8 @@ void renderer_demo_6(const util::Path &path) {
 	render_mgr.obj_3d_pass->add_renderables({renderables_3d});
 	render_mgr.frame_pass->add_renderables(std::move(renderables_frame));
 
+	// Move the camera with the WASD keys
+	// This is where we will also update the frustum for the 2D objects
 	render_mgr.window->add_key_callback([&](const QKeyEvent &ev) {
 		if (ev.type() == QEvent::KeyPress) {
 			auto key = ev.key();
@@ -50,13 +52,13 @@ void renderer_demo_6(const util::Path &path) {
 			// move_frame moves the camera in the specified direction in the next drawn frame
 			switch (key) {
 			case Qt::Key_W: { // forward
-				render_mgr.camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, -1.0f), 0.25f);
+				render_mgr.camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, -1.0f), 0.5f);
 			} break;
 			case Qt::Key_A: { // left
 				render_mgr.camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, 1.0f), 0.25f);
 			} break;
 			case Qt::Key_S: { // back
-				render_mgr.camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, 1.0f), 0.25f);
+				render_mgr.camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, 1.0f), 0.5f);
 			} break;
 			case Qt::Key_D: { // right
 				render_mgr.camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, -1.0f), 0.25f);
@@ -65,6 +67,7 @@ void renderer_demo_6(const util::Path &path) {
 				break;
 			}
 
+			// Update the camera uniform buffer
 			auto new_cam_unifs = render_mgr.camera->get_uniform_buffer()->new_uniform_input(
 				"view",
 				render_mgr.camera->get_view_matrix(),
@@ -72,16 +75,32 @@ void renderer_demo_6(const util::Path &path) {
 				render_mgr.camera->get_projection_matrix());
 			render_mgr.camera->get_uniform_buffer()->update_uniforms(new_cam_unifs);
 
+			/* Generate the frustum for the 2D objects */
+
+			// Copy the camera used for drawing
+			//
+			// In this demo, we will manipulate the frustum camera
+			// to create a slightly smaller frustum for the 2D objects
+			// to show the effect of frustum culling.
+			//
+			// In the real renderer, the normal camera would be used.
 			auto frustum_camera = *render_mgr.camera;
-			auto half_cam_size = util::Vector2s{render_mgr.camera->get_viewport_size()[0] * 0.7,
-			                                    render_mgr.camera->get_viewport_size()[1] * 0.7};
-			frustum_camera.resize(half_cam_size[0], half_cam_size[1]);
+
+			// Downsize the frustum to 70% of the camera size
+			float frustum_factor = 0.7f;
+			auto frustum_cam_size = util::Vector2s{render_mgr.camera->get_viewport_size()[0] * frustum_factor,
+			                                       render_mgr.camera->get_viewport_size()[1] * frustum_factor};
+			frustum_camera.resize(frustum_cam_size[0], frustum_cam_size[1]);
+
+			// Get a 2D frustum object
 			auto frustum_2d = frustum_camera.get_frustum_2d();
 			frustum_2d.update(frustum_camera.get_viewport_size(),
 			                  frustum_camera.get_view_matrix(),
 			                  frustum_camera.get_projection_matrix(),
 			                  frustum_camera.get_zoom());
 
+			// Check if the 2D scene objects are in the frustum
+			// and update the renderables in the 2D render pass
 			auto renderables_2d = render_mgr.create_2d_obj();
 			std::vector<renderer::Renderable> renderables_in_frustum{};
 			for (size_t i = 0; i < render_mgr.obj_2d_positions.size(); ++i) {
@@ -91,14 +110,19 @@ void renderer_demo_6(const util::Path &path) {
 				                                        render_mgr.animation_2d_info.get_scalefactor(),
 				                                        render_mgr.animation_2d_info.get_max_bounds());
 				if (in_frustum) {
+					// Only add objects that are in the frustum
 					renderables_in_frustum.push_back(renderables_2d.at(i));
 				}
 			}
+
+			// Clear the renderables in the 2D render pass
+			// and add ONLY the renderables that are inside the frustum
 			render_mgr.obj_2d_pass->clear_renderables();
 			render_mgr.obj_2d_pass->add_renderables(std::move(renderables_in_frustum));
 		}
 	});
 
+	// Draw everything
 	render_mgr.run();
 }
 
@@ -167,10 +191,6 @@ const std::vector<renderer::Renderable> RenderManagerDemo6::create_2d_obj() {
 }
 
 const renderer::Renderable RenderManagerDemo6::create_3d_obj() {
-	auto terrain_tex_info = this->terrain_3d_info.get_texture(0);
-	auto terrain_tex_data = resources::Texture2dData{*terrain_tex_info};
-	this->obj_3d_texture = this->renderer->add_texture(terrain_tex_data);
-
 	// Create renderable for terrain
 	auto terrain_unifs = this->obj_3d_shader->new_uniform_input(
 		"tex",
@@ -337,7 +357,7 @@ void RenderManagerDemo6::load_shaders() {
 }
 
 void RenderManagerDemo6::load_assets() {
-	// Load assets
+	// Load assets for 2D objects
 	auto animation_2d_path = this->path / "assets" / "test" / "textures" / "test_tank.sprite";
 	this->animation_2d_info = resources::parser::parse_sprite_file(animation_2d_path);
 
@@ -345,9 +365,13 @@ void RenderManagerDemo6::load_assets() {
 	auto tex_data = resources::Texture2dData{*tex_info};
 	this->obj_2d_texture = this->renderer->add_texture(tex_data);
 
-	// Load assets
+	// Load assets for 3D objects
 	auto terrain_path = this->path / "assets" / "test" / "textures" / "test_terrain.terrain";
 	this->terrain_3d_info = resources::parser::parse_terrain_file(terrain_path);
+
+	auto terrain_tex_info = this->terrain_3d_info.get_texture(0);
+	auto terrain_tex_data = resources::Texture2dData{*terrain_tex_info};
+	this->obj_3d_texture = this->renderer->add_texture(terrain_tex_data);
 }
 
 void RenderManagerDemo6::create_camera() {
