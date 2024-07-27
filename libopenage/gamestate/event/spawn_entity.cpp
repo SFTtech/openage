@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #include "spawn_entity.h"
 
@@ -19,6 +19,7 @@
 #include "gamestate/game_entity.h"
 #include "gamestate/game_state.h"
 #include "gamestate/manager.h"
+#include "gamestate/map.h"
 #include "gamestate/types.h"
 
 // TODO: Testing
@@ -155,6 +156,21 @@ void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
                                 const param_map &params) {
 	auto gstate = std::dynamic_pointer_cast<gamestate::GameState>(state);
 
+	// Check if spawn position is on the map
+	auto pos = params.get("position", gamestate::WORLD_ORIGIN);
+	auto map_size = gstate->get_map()->get_size();
+	if (not(pos.ne >= 0
+	        and pos.ne < map_size[0]
+	        and pos.se >= 0
+	        and pos.se < map_size[1])) {
+		// Do nothing if the spawn position is not on the map
+		log::log(DBG << "Entity spawn failed: "
+		             << "Spawn position " << pos
+		             << " is not inside the map area "
+		             << "(map size: " << map_size << ")");
+		return;
+	}
+
 	auto nyan_db = gstate->get_db_view();
 
 	auto game_entities = nyan_db->get_obj_children_all("engine.util.game_entity.GameEntity");
@@ -183,7 +199,6 @@ void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
 	auto entity_pos = std::dynamic_pointer_cast<component::Position>(
 		entity->get_component(component::component_t::POSITION));
 
-	auto pos = params.get("position", gamestate::WORLD_ORIGIN);
 	entity_pos->set_position(time, pos);
 	entity_pos->set_angle(time, coord::phys_angle_t::from_int(315));
 
