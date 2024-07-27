@@ -87,6 +87,9 @@ public:
 		coord::scene3{3, -2, 0},
 	};
 
+	/// Rendered angles of the 2D objects
+	const std::array<size_t, 5> obj_2d_angles = {0, 1, 2, 3, 4};
+
 	/// Animation and texture information
 	resources::Animation2dInfo animation_2d_info;
 	resources::TerrainInfo terrain_3d_info;

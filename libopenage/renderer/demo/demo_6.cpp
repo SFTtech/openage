@@ -148,11 +148,13 @@ void RenderManagerDemo6::run() {
 
 const std::vector<renderer::Renderable> RenderManagerDemo6::create_2d_obj() {
 	std::vector<renderer::Renderable> renderables;
-	for (auto scene_pos : this->obj_2d_positions) {
+	for (size_t i = 0; i < this->obj_2d_positions.size(); ++i) {
 		// Create renderable for 2D animation
 		auto scale = this->animation_2d_info.get_scalefactor();
-		auto tex_id = this->animation_2d_info.get_layer(0).get_angle(0)->get_frame(0)->get_texture_idx();
-		auto subtex_id = this->animation_2d_info.get_layer(0).get_angle(0)->get_frame(0)->get_subtexture_idx();
+		auto angle = this->obj_2d_angles.at(i);
+		auto frame_info = this->animation_2d_info.get_layer(0).get_angle(angle)->get_frame(0);
+		auto tex_id = frame_info->get_texture_idx();
+		auto subtex_id = frame_info->get_subtexture_idx();
 		auto subtex = this->animation_2d_info.get_texture(tex_id)->get_subtex_info(subtex_id);
 		auto subtex_size = subtex.get_size();
 		Eigen::Vector2f subtex_size_vec{
@@ -163,6 +165,7 @@ const std::vector<renderer::Renderable> RenderManagerDemo6::create_2d_obj() {
 			static_cast<float>(anchor_params[0]),
 			static_cast<float>(anchor_params[1])};
 		auto tile_params = subtex.get_subtex_coords();
+		auto scene_pos = this->obj_2d_positions.at(i);
 		auto animation_2d_unifs = this->obj_2d_shader->new_uniform_input(
 			"obj_world_position",
 			scene_pos.to_world_space(),
