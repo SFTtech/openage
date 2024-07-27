@@ -4,6 +4,7 @@
 
 #include "coord/chunk.h"
 #include "coord/phys.h"
+#include "pathfinding/cost_field.h"
 #include "pathfinding/flow_field.h"
 #include "pathfinding/grid.h"
 #include "pathfinding/integration_field.h"
@@ -31,8 +32,10 @@ const Path Pathfinder::get_path(const PathRequest &request) {
 	    or request.target.se < 0
 	    or request.target.ne >= static_cast<coord::tile_t>(grid_width)
 	    or request.target.se >= static_cast<coord::tile_t>(grid_height)) {
-		log::log(DBG << "Path not found (start = " << request.start << "; target = " << request.target << ")");
-		log::log(DBG << "Target is out of bounds.");
+		log::log(DBG << "Path not found (start = "
+		             << request.start << "; target = "
+		             << request.target << "): "
+		             << "Target is out of bounds.");
 		return Path{request.grid_id, PathResult::OUT_OF_BOUNDS, {}};
 	}
 
@@ -43,6 +46,16 @@ const Path Pathfinder::get_path(const PathRequest &request) {
 	auto target_sector_x = request.target.ne / sector_size;
 	auto target_sector_y = request.target.se / sector_size;
 	auto target_sector = grid->get_sector(target_sector_x, target_sector_y);
+
+	auto target = request.target - target_sector->get_position().to_tile(sector_size);
+	if (target_sector->get_cost_field()->get_cost(target) == COST_IMPASSABLE) {
+		// TODO: This may be okay if the target is a building or unit
+		log::log(DBG << "Path not found (start = "
+		             << request.start << "; target = "
+		             << request.target << "): "
+		             << "Target is impassable.");
+		return Path{request.grid_id, PathResult::NOT_FOUND, {}};
+	}
 
 	// Integrate the target field
 	coord::tile_delta target_delta = request.target - target_sector->get_position().to_tile(sector_size);
@@ -64,8 +77,10 @@ const Path Pathfinder::get_path(const PathRequest &request) {
 			}
 			waypoints.insert(waypoints.end(), flow_field_waypoints.begin(), flow_field_waypoints.end());
 
-			log::log(DBG << "Path found (start = " << request.start << "; target = " << request.target << ")");
-			log::log(DBG << "Path is within the same sector.");
+			log::log(DBG << "Path found (start = "
+			             << request.start << "; target = "
+			             << request.target << "): "
+			             << "Path is within the same sector.");
 			return Path{request.grid_id, PathResult::FOUND, waypoints};
 		}
 	}
@@ -97,8 +112,10 @@ const Path Pathfinder::get_path(const PathRequest &request) {
 
 	if (target_portal_ids.empty() or start_portal_ids.empty()) {
 		// Exit early if no portals are reachable from the start or target
-		log::log(DBG << "Path not found (start = " << request.start << "; target = " << request.target << ")");
-		log::log(DBG << "No portals are reachable from the start or target.");
+		log::log(DBG << "Path not found (start = "
+		             << request.start << "; target = "
+		             << request.target << "): "
+		             << "No portals are reachable from the start or target.");
 		return Path{request.grid_id, PathResult::NOT_FOUND, {}};
 	}
 
@@ -157,11 +174,16 @@ const Path Pathfinder::get_path(const PathRequest &request) {
 	waypoints.insert(waypoints.end(), flow_field_waypoints.begin(), flow_field_waypoints.end());
 
 	if (portal_status == PathResult::NOT_FOUND) {
-		log::log(DBG << "Path not found (start = " << request.start << "; target = " << request.target << ")");
+		log::log(DBG << "Path not found (start = "
+		             << request.start << "; target = "
+		             << request.target << ")");
 	}
 	else {
-		log::log(DBG << "Path found (start = " << request.start << "; target = " << request.target << ")");
+		log::log(DBG << "Path found (start = "
+		             << request.start << "; target = "
+		             << request.target << ")");
 	}
+
 	return Path{request.grid_id, portal_status, waypoints};
 }
 
