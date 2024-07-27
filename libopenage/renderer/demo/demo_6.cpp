@@ -52,16 +52,16 @@ void renderer_demo_6(const util::Path &path) {
 			// move_frame moves the camera in the specified direction in the next drawn frame
 			switch (key) {
 			case Qt::Key_W: { // forward
-				render_mgr.camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, -1.0f), 0.5f);
+				render_mgr.camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, -1.0f), 0.2f);
 			} break;
 			case Qt::Key_A: { // left
-				render_mgr.camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, 1.0f), 0.25f);
+				render_mgr.camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, 1.0f), 0.1f);
 			} break;
 			case Qt::Key_S: { // back
-				render_mgr.camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, 1.0f), 0.5f);
+				render_mgr.camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, 1.0f), 0.2f);
 			} break;
 			case Qt::Key_D: { // right
-				render_mgr.camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, -1.0f), 0.25f);
+				render_mgr.camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, -1.0f), 0.1f);
 			} break;
 			default:
 				break;
@@ -231,7 +231,7 @@ const renderer::Renderable RenderManagerDemo6::create_3d_obj() {
 const std::vector<renderer::Renderable> RenderManagerDemo6::create_frame_obj() {
 	std::vector<renderer::Renderable> renderables;
 	for (auto scene_pos : this->obj_2d_positions) {
-		// Create renderable for frame
+		// Create renderables for frame around sprites
 		std::array<float, 8> frame_verts{-1.0f, -1.0f, -1.0f, 1.0f, 1.0f, 1.0f, 1.0f, -1.0f};
 		std::vector<uint8_t> frame_vert_data(frame_verts.size() * sizeof(float));
 		std::memcpy(frame_vert_data.data(), frame_verts.data(), frame_vert_data.size());
@@ -266,6 +266,29 @@ const std::vector<renderer::Renderable> RenderManagerDemo6::create_frame_obj() {
 
 		renderables.push_back(frame_obj);
 	}
+
+	// Create renderable for frustum frame
+	std::array<float, 8> frame_verts{-0.7f, -0.7f, -0.7f, 0.7f, 0.7f, 0.7f, 0.7f, -0.7f};
+	std::vector<uint8_t> frame_vert_data(frame_verts.size() * sizeof(float));
+	std::memcpy(frame_vert_data.data(), frame_verts.data(), frame_vert_data.size());
+	auto frame_vert_info = resources::VertexInputInfo{
+		{resources::vertex_input_t::V2F32},
+		resources::vertex_layout_t::AOS,
+		resources::vertex_primitive_t::LINE_LOOP,
+	};
+	auto frame_mesh = resources::MeshData{std::move(frame_vert_data), frame_vert_info};
+	auto frame_geometry = this->renderer->add_mesh_geometry(frame_mesh);
+
+	auto frame_unifs = this->frustum_shader->new_uniform_input(
+		"incol",
+		Eigen::Vector4f{1.0f, 0.0f, 0.0f, 1.0f});
+	Renderable frame_obj{
+		frame_unifs,
+		frame_geometry,
+		true,
+		true,
+	};
+	renderables.push_back(frame_obj);
 
 	return renderables;
 }
@@ -336,6 +359,17 @@ void RenderManagerDemo6::load_shaders() {
 		frame_fshader_file.read());
 	frame_fshader_file.close();
 
+	/* Shader for frustrum frame */
+	auto frustum_vshader_file = (shaderdir / "demo_6_2d_frustum_frame.vert.glsl").open();
+	auto frustum_vshader_src = resources::ShaderSource(
+		resources::shader_lang_t::glsl,
+		resources::shader_stage_t::vertex,
+		frustum_vshader_file.read());
+	frustum_vshader_file.close();
+
+	// Use the same fragment shader as the frame shader
+	auto frustum_fshader_src = frame_fshader_src;
+
 	/* Shader for rendering to the screen */
 	auto display_vshader_file = (shaderdir / "demo_6_display.vert.glsl").open();
 	auto display_vshader_src = resources::ShaderSource(
@@ -355,6 +389,7 @@ void RenderManagerDemo6::load_shaders() {
 	this->obj_3d_shader = this->renderer->add_shader({obj_vshader_src, obj_fshader_src});
 	this->obj_2d_shader = this->renderer->add_shader({obj_2d_vshader_src, obj_2d_fshader_src});
 	this->frame_shader = this->renderer->add_shader({frame_vshader_src, frame_fshader_src});
+	this->frustum_shader = this->renderer->add_shader({frustum_vshader_src, frustum_fshader_src});
 	this->display_shader = this->renderer->add_shader({display_vshader_src, display_fshader_src});
 }
 

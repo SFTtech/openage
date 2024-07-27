@@ -111,6 +111,7 @@ private:
 	std::shared_ptr<renderer::ShaderProgram> obj_2d_shader;
 	std::shared_ptr<renderer::ShaderProgram> obj_3d_shader;
 	std::shared_ptr<renderer::ShaderProgram> frame_shader;
+	std::shared_ptr<renderer::ShaderProgram> frustum_shader;
 	std::shared_ptr<renderer::ShaderProgram> display_shader;
 
 	/// Textures for the rendered objects (2D and 3D)
