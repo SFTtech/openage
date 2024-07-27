@@ -98,7 +98,7 @@ void WorldObject::update_uniforms(const time::time_t &time) {
 	auto angle_degrees = this->angle.get(time).to_float();
 
 	// Animation information
-	auto animation_info = this->animation_info.get(time);
+	auto [last_update, animation_info] = this->animation_info.frame(time);
 
 	for (size_t layer_idx = 0; layer_idx < this->layer_uniforms.size(); ++layer_idx) {
 		auto &layer_unifs = this->layer_uniforms.at(layer_idx);
@@ -123,7 +123,7 @@ void WorldObject::update_uniforms(const time::time_t &time) {
 		case renderer::resources::display_mode::LOOP: {
 			// ONCE and LOOP are animated based on time
 			auto &timing = layer.get_frame_timing();
-			frame_idx = timing->get_frame(time, this->render_entity->get_update_time());
+			frame_idx = timing->get_frame(time, last_update);
 		} break;
 		case renderer::resources::display_mode::OFF:
 		default:
