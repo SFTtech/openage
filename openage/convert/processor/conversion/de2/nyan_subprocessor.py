@@ -1,4 +1,4 @@
-# Copyright 2020-2023 the openage authors. See copying.md for legal info.
+# Copyright 2020-2024 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-locals,too-many-statements,too-many-branches
 #
@@ -13,7 +13,7 @@ import typing
 
 from ....entity_object.conversion.aoc.genie_tech import UnitLineUpgrade
 from ....entity_object.conversion.aoc.genie_unit import GenieVillagerGroup, \
-    GenieGarrisonMode, GenieMonkGroup, GenieStackBuildingGroup
+    GenieGarrisonMode, GenieMonkGroup
 from ....entity_object.conversion.combined_terrain import CombinedTerrain
 from ....entity_object.conversion.converter_object import RawAPIObject
 from ....service.conversion import internal_name_lookups
@@ -224,7 +224,7 @@ class DE2NyanSubprocessor:
         abilities_set.append(AoCAbilitySubprocessor.delete_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.despawn_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.idle_ability(unit_line))
-        abilities_set.append(AoCAbilitySubprocessor.hitbox_ability(unit_line))
+        abilities_set.append(AoCAbilitySubprocessor.collision_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.live_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.los_ability(unit_line))
         abilities_set.append(AoCAbilitySubprocessor.move_ability(unit_line))
@@ -436,7 +436,7 @@ class DE2NyanSubprocessor:
         abilities_set.append(AoCAbilitySubprocessor.delete_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.despawn_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.idle_ability(building_line))
-        abilities_set.append(AoCAbilitySubprocessor.hitbox_ability(building_line))
+        abilities_set.append(AoCAbilitySubprocessor.collision_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.live_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.los_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.named_ability(building_line))
@@ -450,9 +450,8 @@ class DE2NyanSubprocessor:
         if building_line.is_creatable():
             abilities_set.append(AoCAbilitySubprocessor.constructable_ability(building_line))
 
-        if building_line.is_passable() or\
-                (isinstance(building_line, GenieStackBuildingGroup) and building_line.is_gate()):
-            abilities_set.append(AoCAbilitySubprocessor.passable_ability(building_line))
+        if not building_line.is_passable():
+            abilities_set.append(AoCAbilitySubprocessor.pathable_ability(building_line))
 
         if building_line.has_foundation():
             if building_line.get_class_id() == 49:
@@ -783,6 +782,36 @@ class DE2NyanSubprocessor:
 # ===============================================================================
 
         raw_api_object.add_raw_member("ambience", ambience, "engine.util.terrain.Terrain")
+
+        # =======================================================================
+        # Path Costs
+        # =======================================================================
+        path_costs = {}
+        restrictions = dataset.genie_terrain_restrictions
+
+        # Land grid
+        path_type = dataset.pregen_nyan_objects["util.path.types.Land"].get_nyan_object()
+        land_restrictions = restrictions[0x07]
+        if land_restrictions.is_accessible(terrain_index):
+            path_costs[path_type] = 1
+
+        else:
+            path_costs[path_type] = 255
+
+        # Water grid
+        path_type = dataset.pregen_nyan_objects["util.path.types.Water"].get_nyan_object()
+        water_restrictions = restrictions[0x03]
+        if water_restrictions.is_accessible(terrain_index):
+            path_costs[path_type] = 1
+
+        else:
+            path_costs[path_type] = 255
+
+        # Air grid (default accessible)
+        path_type = dataset.pregen_nyan_objects["util.path.types.Air"].get_nyan_object()
+        path_costs[path_type] = 1
+
+        raw_api_object.add_raw_member("path_costs", path_costs, "engine.util.terrain.Terrain")
 
         # =======================================================================
         # Graphic

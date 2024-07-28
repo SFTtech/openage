@@ -1,4 +1,4 @@
-# Copyright 2019-2023 the openage authors. See copying.md for legal info.
+# Copyright 2019-2024 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=line-too-long,too-many-lines,too-many-statements
 """
@@ -153,6 +153,13 @@ def _create_objects(api_objects: dict[str, NyanObject]) -> None:
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
+    # engine.ability.type.Collision
+    parents = [api_objects["engine.ability.Ability"]]
+    nyan_object = NyanObject("Collision", parents)
+    fqon = "engine.ability.type.Collision"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
     # engine.ability.type.Constructable
     parents = [api_objects["engine.ability.Ability"]]
     nyan_object = NyanObject("Constructable", parents)
@@ -272,13 +279,6 @@ def _create_objects(api_objects: dict[str, NyanObject]) -> None:
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.ability.type.Hitbox
-    parents = [api_objects["engine.ability.Ability"]]
-    nyan_object = NyanObject("Hitbox", parents)
-    fqon = "engine.ability.type.Hitbox"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
     # engine.ability.type.Idle
     parents = [api_objects["engine.ability.Ability"]]
     nyan_object = NyanObject("Idle", parents)
@@ -328,17 +328,17 @@ def _create_objects(api_objects: dict[str, NyanObject]) -> None:
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.ability.type.Passable
-    parents = [api_objects["engine.ability.Ability"]]
-    nyan_object = NyanObject("Passable", parents)
-    fqon = "engine.ability.type.Passable"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
     # engine.ability.type.PassiveTransformTo
     parents = [api_objects["engine.ability.Ability"]]
     nyan_object = NyanObject("PassiveTransformTo", parents)
     fqon = "engine.ability.type.PassiveTransformTo"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.ability.type.Pathable
+    parents = [api_objects["engine.ability.Ability"]]
+    nyan_object = NyanObject("Pathable", parents)
+    fqon = "engine.ability.type.Pathable"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -1372,27 +1372,6 @@ def _create_objects(api_objects: dict[str, NyanObject]) -> None:
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.util.passable_mode.PassableMode
-    parents = [api_objects["engine.root.Object"]]
-    nyan_object = NyanObject("PassableMode", parents)
-    fqon = "engine.util.passable_mode.PassableMode"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
-    # engine.util.passable_mode.type.Gate
-    parents = [api_objects["engine.util.passable_mode.PassableMode"]]
-    nyan_object = NyanObject("Gate", parents)
-    fqon = "engine.util.passable_mode.type.Gate"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
-    # engine.util.passable_mode.type.Normal
-    parents = [api_objects["engine.util.passable_mode.PassableMode"]]
-    nyan_object = NyanObject("Normal", parents)
-    fqon = "engine.util.passable_mode.type.Normal"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
     # engine.util.patch.NyanPatch
     parents = [api_objects["engine.root.Object"]]
     nyan_object = NyanObject("NyanPatch", parents)
@@ -1418,6 +1397,13 @@ def _create_objects(api_objects: dict[str, NyanObject]) -> None:
     parents = [api_objects["engine.util.patch.property.PatchProperty"]]
     nyan_object = NyanObject("Diplomatic", parents)
     fqon = "engine.util.patch.property.type.Diplomatic"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.util.path_type.PathType
+    parents = [api_objects["engine.root.Object"]]
+    nyan_object = NyanObject("PathType", parents)
+    fqon = "engine.util.path_type.PathType"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -2680,6 +2666,13 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     member = NyanMember("storage_elements", member_type, None, None, 0)
     api_object.add_member(member)
 
+    # engine.ability.type.Collision
+    api_object = api_objects["engine.ability.type.Collision"]
+
+    member_type = NyanMemberType(api_objects["engine.util.hitbox.Hitbox"])
+    member = NyanMember("hitbox", member_type, None, None, 0)
+    api_object.add_member(member)
+
     # engine.ability.type.Constructable
     api_object = api_objects["engine.ability.type.Constructable"]
 
@@ -2893,13 +2886,6 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     member = NyanMember("mode", member_type, None, None, 0)
     api_object.add_member(member)
 
-    # engine.ability.type.Hitbox
-    api_object = api_objects["engine.ability.type.Hitbox"]
-
-    member_type = NyanMemberType(api_objects["engine.util.hitbox.Hitbox"])
-    member = NyanMember("hitbox", member_type, None, None, 0)
-    api_object.add_member(member)
-
     # engine.ability.type.LineOfSight
     api_object = api_objects["engine.ability.type.LineOfSight"]
 
@@ -2931,6 +2917,10 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("modes", member_type, None, None, 0)
     api_object.add_member(member)
+    subtype = NyanMemberType(api_objects["engine.util.path_type.PathType"])
+    member_type = NyanMemberType(MemberType.CHILDREN, (subtype,))
+    member = NyanMember("path_type", member_type, None, None, 0)
+    api_object.add_member(member)
 
     # engine.ability.type.Named
     api_object = api_objects["engine.ability.type.Named"]
@@ -2955,16 +2945,6 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     member = NyanMember("terrain_overlay", member_type, None, None, 0)
     api_object.add_member(member)
 
-    # engine.ability.type.Passable
-    api_object = api_objects["engine.ability.type.Passable"]
-
-    member_type = NyanMemberType(api_objects["engine.util.hitbox.Hitbox"])
-    member = NyanMember("hitbox", member_type, None, None, 0)
-    api_object.add_member(member)
-    member_type = NyanMemberType(api_objects["engine.util.passable_mode.PassableMode"])
-    member = NyanMember("mode", member_type, None, None, 0)
-    api_object.add_member(member)
-
     # engine.ability.type.PassiveTransformTo
     api_object = api_objects["engine.ability.type.PassiveTransformTo"]
 
@@ -2980,6 +2960,19 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     elem_type = NyanMemberType(api_objects["engine.util.progress.Progress"])
     member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("transform_progress", member_type, None, None, 0)
+    api_object.add_member(member)
+
+    # engine.ability.type.Pathable
+    api_object = api_objects["engine.ability.type.Pathable"]
+
+    member_type = NyanMemberType(api_objects["engine.util.hitbox.Hitbox"])
+    member = NyanMember("hitbox", member_type, None, None, 0)
+    api_object.add_member(member)
+    subtype = NyanMemberType(api_objects["engine.util.path_type.PathType"])
+    key_type = NyanMemberType(MemberType.CHILDREN, (subtype,))
+    elem_type = N_INT
+    member_type = NyanMemberType(MemberType.DICT, (key_type, elem_type))
+    member = NyanMember("path_costs", member_type, None, None, 0)
     api_object.add_member(member)
 
     # engine.ability.type.ProductionQueue
@@ -3849,28 +3842,6 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     member = NyanMember("range", N_FLOAT, None, None, 0)
     api_object.add_member(member)
 
-    # engine.util.passable_mode.PassableMode
-    api_object = api_objects["engine.util.passable_mode.PassableMode"]
-
-    subtype = NyanMemberType(api_objects["engine.util.game_entity_type.GameEntityType"])
-    elem_type = NyanMemberType(MemberType.CHILDREN, (subtype,))
-    member_type = NyanMemberType(MemberType.SET, (elem_type,))
-    member = NyanMember("allowed_types", member_type, None, None, 0)
-    api_object.add_member(member)
-    elem_type = NyanMemberType(api_objects["engine.util.game_entity.GameEntity"])
-    member_type = NyanMemberType(MemberType.SET, (elem_type,))
-    member = NyanMember("blacklisted_entities", member_type, None, None, 0)
-    api_object.add_member(member)
-
-    # engine.util.passable_mode.type.Gate
-    api_object = api_objects["engine.util.passable_mode.type.Gate"]
-
-    subtype = NyanMemberType(api_objects["engine.util.diplomatic_stance.DiplomaticStance"])
-    elem_type = NyanMemberType(MemberType.CHILDREN, (subtype,))
-    member_type = NyanMemberType(MemberType.SET, (elem_type,))
-    member = NyanMember("stances", member_type, None, None, 0)
-    api_object.add_member(member)
-
     # engine.util.patch.Patch
     api_object = api_objects["engine.util.patch.Patch"]
 
@@ -4295,6 +4266,12 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     elem_type = NyanMemberType(api_objects["engine.util.terrain.TerrainAmbient"])
     member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("ambience", member_type, None, None, 0)
+    api_object.add_member(member)
+    subtype = NyanMemberType(api_objects["engine.util.path_type.PathType"])
+    key_type = NyanMemberType(MemberType.CHILDREN, (subtype,))
+    elem_type = N_INT
+    member_type = NyanMemberType(MemberType.DICT, (key_type, elem_type))
+    member = NyanMember("path_costs", member_type, None, None, 0)
     api_object.add_member(member)
 
     # engine.util.terrain.TerrainAmbient

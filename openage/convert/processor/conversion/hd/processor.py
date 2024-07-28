@@ -1,4 +1,4 @@
-# Copyright 2021-2023 the openage authors. See copying.md for legal info.
+# Copyright 2021-2024 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-few-public-methods
 
@@ -107,6 +107,7 @@ class HDProcessor:
         AoCProcessor.extract_genie_graphics(gamespec, dataset)
         AoCProcessor.extract_genie_sounds(gamespec, dataset)
         AoCProcessor.extract_genie_terrains(gamespec, dataset)
+        AoCProcessor.extract_genie_restrictions(gamespec, dataset)
 
         return dataset
 

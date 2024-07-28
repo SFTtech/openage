@@ -1,4 +1,4 @@
-# Copyright 2020-2023 the openage authors. See copying.md for legal info.
+# Copyright 2020-2024 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals
 
@@ -42,6 +42,7 @@ class RoRPregenSubprocessor:
         # TODO:
         # cls._generate_modifiers(gamedata, pregen_converter_group)
         AoCPregenSubprocessor.generate_terrain_types(full_data_set, pregen_converter_group)
+        AoCPregenSubprocessor.generate_path_types(full_data_set, pregen_converter_group)
         AoCPregenSubprocessor.generate_resources(full_data_set, pregen_converter_group)
         cls.generate_death_condition(full_data_set, pregen_converter_group)
 

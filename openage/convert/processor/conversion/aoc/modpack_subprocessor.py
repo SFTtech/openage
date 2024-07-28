@@ -1,4 +1,4 @@
-# Copyright 2020-2023 the openage authors. See copying.md for legal info.
+# Copyright 2020-2024 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-branches,too-few-public-methods,too-many-statements
 
@@ -198,7 +198,7 @@ class AoCModpackSubprocessor:
         import_tree.add_alias(("engine", "util", "logic", "literal_scope", "type"), "literal_scope")
         import_tree.add_alias(("engine", "util", "patch"), "patch")
         import_tree.add_alias(("engine", "util", "patch", "property", "type"), "patch_prop")
-        import_tree.add_alias(("engine", "util", "passable_mode", "type"), "passable_mode")
+        import_tree.add_alias(("engine", "util", "path_type"), "path_type")
         import_tree.add_alias(("engine", "util", "payment_mode", "type"), "payment_mode")
         import_tree.add_alias(("engine", "util", "placement_mode", "type"), "placement_mode")
         import_tree.add_alias(("engine", "util", "price_mode", "type"), "price_mode")
@@ -322,6 +322,10 @@ class AoCModpackSubprocessor:
             (modpack.name, "data", "util", "logic", "garrison_empty",
              "garrison_empty"),
             "empty_garrison_condition"
+        )
+        import_tree.add_alias(
+            (modpack.name, "data", "util", "path_type", "types"),
+            prefix + "path_type"
         )
         import_tree.add_alias(
             (modpack.name, "data", "util", "resource", "market_trading"),

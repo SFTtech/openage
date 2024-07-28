@@ -1,4 +1,4 @@
-# Copyright 2021-2023 the openage authors. See copying.md for legal info.
+# Copyright 2021-2024 the openage authors. See copying.md for legal info.
 
 """
 Convert data from DE1 to openage formats.
@@ -107,6 +107,7 @@ class DE1Processor:
         cls.extract_genie_graphics(gamespec, dataset)
         RoRProcessor.extract_genie_sounds(gamespec, dataset)
         AoCProcessor.extract_genie_terrains(gamespec, dataset)
+        AoCProcessor.extract_genie_restrictions(gamespec, dataset)
 
         return dataset
 

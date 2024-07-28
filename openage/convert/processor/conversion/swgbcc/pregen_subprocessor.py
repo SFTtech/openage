@@ -1,4 +1,4 @@
-# Copyright 2020-2023 the openage authors. See copying.md for legal info.
+# Copyright 2020-2024 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-statements
 #
@@ -49,6 +49,7 @@ class SWGBCCPregenSubprocessor:
         AoCPregenSubprocessor.generate_misc_effect_objects(full_data_set, pregen_converter_group)
         # cls._generate_modifiers(gamedata, pregen_converter_group) ??
         # cls._generate_terrain_types(gamedata, pregen_converter_group) TODO: Create terrain types
+        AoCPregenSubprocessor.generate_path_types(full_data_set, pregen_converter_group)
         cls.generate_resources(full_data_set, pregen_converter_group)
         AoCPregenSubprocessor.generate_death_condition(full_data_set, pregen_converter_group)
 
