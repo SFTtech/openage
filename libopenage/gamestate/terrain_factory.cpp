@@ -26,15 +26,30 @@ static const std::vector<std::string> test_terrain_paths = {
 	"../test/textures/test_terrain2.terrain",
 };
 
-static const std::vector<nyan::fqon_t> aoe1_test_terrain = {};
-static const std::vector<nyan::fqon_t> de1_test_terrain = {};
+static const std::vector<nyan::fqon_t> aoe1_test_terrain = {
+	"aoe1_base.data.terrain.forest.forest.Forest",
+	"aoe1_base.data.terrain.grass.grass.Grass",
+	"aoe1_base.data.terrain.dirt.dirt.Dirt",
+	"aoe1_base.data.terrain.water.water.Water",
+};
+static const std::vector<nyan::fqon_t> de1_test_terrain = {
+	"aoe1_base.data.terrain.desert.desert.Desert",
+	"aoe1_base.data.terrain.grass.grass.Grass",
+	"aoe1_base.data.terrain.dirt.dirt.Dirt",
+	"aoe1_base.data.terrain.water.water.Water",
+};
 static const std::vector<nyan::fqon_t> aoe2_test_terrain = {
 	"aoe2_base.data.terrain.foundation.foundation.Foundation",
 	"aoe2_base.data.terrain.grass.grass.Grass",
 	"aoe2_base.data.terrain.dirt.dirt.Dirt",
 	"aoe2_base.data.terrain.water.water.Water",
 };
-static const std::vector<nyan::fqon_t> de2_test_terrain = {};
+static const std::vector<nyan::fqon_t> de2_test_terrain = {
+	"de2_base.data.terrain.foundation.foundation.Foundation",
+	"de2_base.data.terrain.grass.grass.Grass",
+	"de2_base.data.terrain.dirt.dirt.Dirt",
+	"de2_base.data.terrain.water.water.Water",
+};
 static const std::vector<nyan::fqon_t> hd_test_terrain = {
 	"hd_base.data.terrain.foundation.foundation.Foundation",
 	"hd_base.data.terrain.grass.grass.Grass",
@@ -47,10 +62,16 @@ static const std::vector<nyan::fqon_t> swgb_test_terrain = {
 	"swgb_base.data.terrain.desert0.desert0.Desert0",
 	"swgb_base.data.terrain.water1.water1.Water1",
 };
-static const std::vector<nyan::fqon_t> trial_test_terrain = {};
+static const std::vector<nyan::fqon_t> trial_test_terrain = {
+	"trial_base.data.terrain.foundation.foundation.Foundation",
+	"trial_base.data.terrain.grass.grass.Grass",
+	"trial_base.data.terrain.dirt.dirt.Dirt",
+	"trial_base.data.terrain.water.water.Water",
+};
 
 // TODO: Remove hardcoded test texture references
 static std::vector<nyan::fqon_t> test_terrains; // declare static so we only have to do this once
+static bool has_graphics = false;
 
 void build_test_terrains(const std::shared_ptr<GameState> &gstate) {
 	auto modpack_ids = gstate->get_mod_manager()->get_load_order();
@@ -59,36 +80,43 @@ void build_test_terrains(const std::shared_ptr<GameState> &gstate) {
 			test_terrains.insert(test_terrains.end(),
 			                     aoe1_test_terrain.begin(),
 			                     aoe1_test_terrain.end());
+			has_graphics = false;
 		}
 		else if (modpack_id == "de1_base") {
 			test_terrains.insert(test_terrains.end(),
 			                     de1_test_terrain.begin(),
 			                     de1_test_terrain.end());
+			has_graphics = false;
 		}
 		else if (modpack_id == "aoe2_base") {
 			test_terrains.insert(test_terrains.end(),
 			                     aoe2_test_terrain.begin(),
 			                     aoe2_test_terrain.end());
+			has_graphics = true;
 		}
 		else if (modpack_id == "de2_base") {
 			test_terrains.insert(test_terrains.end(),
 			                     de2_test_terrain.begin(),
 			                     de2_test_terrain.end());
+			has_graphics = false;
 		}
 		else if (modpack_id == "hd_base") {
 			test_terrains.insert(test_terrains.end(),
 			                     hd_test_terrain.begin(),
 			                     hd_test_terrain.end());
+			has_graphics = true;
 		}
 		else if (modpack_id == "swgb_base") {
 			test_terrains.insert(test_terrains.end(),
 			                     swgb_test_terrain.begin(),
 			                     swgb_test_terrain.end());
+			has_graphics = true;
 		}
 		else if (modpack_id == "trial_base") {
 			test_terrains.insert(test_terrains.end(),
 			                     trial_test_terrain.begin(),
 			                     trial_test_terrain.end());
+			has_graphics = true;
 		}
 	}
 }
@@ -185,7 +213,7 @@ std::shared_ptr<TerrainChunk> TerrainFactory::add_chunk(const std::shared_ptr<Ga
 
 	// TODO: Remove test texture references
 	// ==========
-	std::optional<nyan::Object> terrain_obj;
+	nyan::Object terrain_obj;
 	if (test_terrains.empty()) {
 		build_test_terrains(gstate);
 	}
@@ -204,20 +232,14 @@ std::shared_ptr<TerrainChunk> TerrainFactory::add_chunk(const std::shared_ptr<Ga
 		for (size_t i = 0; i < size[0] * size[1]; ++i) {
 			size_t terrain_index = layout_chunks.at(test_chunk_index).at(i);
 			terrain_obj = gstate->get_db_view()->get_object(test_terrains.at(terrain_index));
-			terrain_info_path = api::APITerrain::get_terrain_path(terrain_obj.value());
-			tiles.push_back({terrain_obj, terrain_info_path, terrain_elevation_t::zero()});
-		}
 
-		test_chunk_index += 1;
-	}
-	else {
-		// use a test texture
-		if (test_chunk_index >= test_terrain_paths.size()) {
-			test_chunk_index = 0;
-		}
-		terrain_info_path = test_terrain_paths.at(test_chunk_index);
+			if (has_graphics) {
+				terrain_info_path = api::APITerrain::get_terrain_path(terrain_obj);
+			}
+			else {
+				terrain_info_path = test_terrain_paths.at(test_chunk_index % test_terrain_paths.size());
+			}
 
-		for (size_t i = 0; i < size[0] * size[1]; ++i) {
 			tiles.push_back({terrain_obj, terrain_info_path, terrain_elevation_t::zero()});
 		}
 
