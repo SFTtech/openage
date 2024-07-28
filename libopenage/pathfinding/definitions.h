@@ -35,7 +35,7 @@ constexpr cost_t COST_IMPASSABLE = 255;
 /**
  * Start value for goal cells.
  */
-const integrated_cost_t INTEGRATED_COST_START = 0;
+constexpr integrated_cost_t INTEGRATED_COST_START = 0;
 
 /**
  * Unreachable value for a cells in the integration grid.
