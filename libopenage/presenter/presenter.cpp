@@ -116,6 +116,7 @@ void Presenter::init_graphics(bool debug) {
 
 	// Camera
 	this->camera = std::make_shared<renderer::camera::Camera>(this->renderer, this->window->get_size());
+	this->camera->look_at_coord(coord::scene3{10.0, 10.0, 0}); // Center camera on the map
 	this->window->add_resize_callback([this](size_t w, size_t h, double /*scale*/) {
 		this->camera->resize(w, h);
 	});
