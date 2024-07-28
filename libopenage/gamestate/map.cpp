@@ -27,17 +27,15 @@ Map::Map(const std::shared_ptr<Terrain> &terrain) :
 	util::Vector2s grid_size{this->terrain->get_row_size(), this->terrain->get_column_size()};
 	for (const auto &chunk : this->terrain->get_chunks()) {
 		for (const auto &tile : chunk->get_tiles()) {
-			if (tile.terrain != std::nullopt) {
-				auto path_costs = api::APITerrain::get_path_costs(*tile.terrain);
+			auto path_costs = api::APITerrain::get_path_costs(tile.terrain);
 
-				for (const auto &path_cost : path_costs) {
-					if (not this->grid_lookup.contains(path_cost.first)) {
-						auto grid = std::make_shared<path::Grid>(grid_idx, grid_size, side_length);
-						this->pathfinder->add_grid(grid);
+			for (const auto &path_cost : path_costs) {
+				if (not this->grid_lookup.contains(path_cost.first)) {
+					auto grid = std::make_shared<path::Grid>(grid_idx, grid_size, side_length);
+					this->pathfinder->add_grid(grid);
 
-						this->grid_lookup.emplace(path_cost.first, grid_idx);
-						grid_idx += 1;
-					}
+					this->grid_lookup.emplace(path_cost.first, grid_idx);
+					grid_idx += 1;
 				}
 			}
 		}
@@ -48,17 +46,15 @@ Map::Map(const std::shared_ptr<Terrain> &terrain) :
 		auto chunk_terrain = this->terrain->get_chunk(chunk_idx);
 		for (size_t tile_idx = 0; tile_idx < chunk_terrain->get_tiles().size(); ++tile_idx) {
 			auto tile = chunk_terrain->get_tile(tile_idx);
-			if (tile.terrain != std::nullopt) {
-				auto path_costs = api::APITerrain::get_path_costs(*tile.terrain);
+			auto path_costs = api::APITerrain::get_path_costs(tile.terrain);
 
-				for (const auto &path_cost : path_costs) {
-					auto grid_id = this->grid_lookup.at(path_cost.first);
-					auto grid = this->pathfinder->get_grid(grid_id);
+			for (const auto &path_cost : path_costs) {
+				auto grid_id = this->grid_lookup.at(path_cost.first);
+				auto grid = this->pathfinder->get_grid(grid_id);
 
-					auto sector = grid->get_sector(chunk_idx);
-					auto cost_field = sector->get_cost_field();
-					cost_field->set_cost(tile_idx, path_cost.second);
-				}
+				auto sector = grid->get_sector(chunk_idx);
+				auto cost_field = sector->get_cost_field();
+				cost_field->set_cost(tile_idx, path_cost.second);
 			}
 		}
 	}
