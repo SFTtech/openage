@@ -324,12 +324,12 @@ void GlShaderProgram::use() {
 
 
 bool GlShaderProgram::in_use() const {
-	return this->context->get_current_program().lock() == this->shared_from_this();
+	return this->context->get_current_program().lock().get() == this;
 }
 
 
 void GlShaderProgram::update_uniforms(std::shared_ptr<GlUniformInput> const &unif_in) {
-	ENSURE(unif_in->get_program() == this->shared_from_this(), "Uniform input passed to different shader than it was created with.");
+	ENSURE(unif_in->get_program().get() == this, "Uniform input passed to different shader than it was created with.");
 
 	// TODO: use glProgramUniform when we're on OpenGL 4.1
 	// then we don't need to "use" and then call glUniform*
