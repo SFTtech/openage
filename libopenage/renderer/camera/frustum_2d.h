@@ -68,9 +68,11 @@ private:
 	Eigen::Matrix4f transform_matrix;
 
 	/**
-	 * Viewport size of the camera (width x height).
+	 * Size of a pixel (width x height) in clip space.
+	 *
+	 * Uses normalized device coordinates (NDC) for the pixel size.
 	 */
-	Eigen::Vector2f inv_viewport_size;
+	Eigen::Vector2f pixel_size_ndc;
 
 	/**
 	 * Zoom factor of the camera.

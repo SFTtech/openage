@@ -8,6 +8,7 @@ High-level renderer for transforming data from the gamestate to render objects f
 2. [Stages](#stages)
    1. [Updating Render Stages from the Gamestate](#updating-render-stages-from-the-gamestate)
 3. [Camera](#camera)
+   1. [Frustum Culling](#frustum-culling)
 
 ## Stages
 
@@ -61,3 +62,40 @@ Zoom levels can also be adjusted with these methods:
 For displaying 3D objects, the `Camera` can also calculate a view matrix (`get_view_matrix()`) and projection matrix (`get_projection_matrix()`) that take current position and zoom level into account.
 
 Camera parameters may be used for raycasting operations, e.g. mouse picking/selection. Since the camera utilizes orthographic projection and a fied angle, the ray direction is exactly the same as the camera direction vector (accessible as `cam_direction`). To find the origin point of a ray for a pixel coordinate in the viewport, the `get_input_pos(..)` method can be used. This method calculates the position of the pixel coordinate on the othographic camera plane that represents the viewport. The result is the absolute position of the pixel coordinate inside the 3D scene. Ray origin point and direction can then be used to perform calculations for line-plane or line sphere intersections.
+
+### Frustum Culling
+
+Frustum culling is a technique used to discard objects that are outside the view frustum of the camera.
+This can save a lot of computation time that would be spent on updating shaders and rendering objects
+that are not visible in the camera's view.
+
+The openage renderer provides two frustum types: 2D and 3D frustums. 2D frustums are used
+for sprite animations and other 2D objects, while 3D frustums are used for 3D objects. Both frustums
+can be created from a camera object.
+
+```c++
+std::shared_ptr<Camera> camera = std::make_shared<Camera>(renderer, {800, 600});
+
+Frustum2d frustum_2d = camera->get_frustum_2d();
+Frustum3d frustum_3d = camera->get_frustum_3d();
+```
+
+`Frustum2d` and `Frustum3d` provide a method `is_visible(..)` that can be used to check if an object is
+located inside the frustum. The required inputs differ depending on the frustum type. For 3D frustums,
+only the 3D scene position is required:
+
+```c++
+bool is_visible = frustum_3d.is_visible({0.f, 0.f, 0.f});
+```
+
+For 2D frustums, in addition to the 3D scene position, a model matrix, the animation's scalefactor
+as well as the bounding box of the animation must be provided.
+
+```c++
+bool is_visible = frustum_2d.is_visible(
+  {0.f, 0.f, 0.f},
+  model_matrix, // the model matrix of the animation
+  scalefactor, // how much the animation is scaled
+  {10, 20, 50, 10} // max distance from the center to the edges of the bounding box
+);
+```

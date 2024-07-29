@@ -43,6 +43,8 @@ void renderer_demo_6(const util::Path &path) {
 	render_mgr.obj_3d_pass->add_renderables({renderables_3d});
 	render_mgr.frame_pass->add_renderables(std::move(renderables_frame));
 
+	// Move the camera with the WASD keys
+	// This is where we will also update the frustum for the 2D objects
 	render_mgr.window->add_key_callback([&](const QKeyEvent &ev) {
 		if (ev.type() == QEvent::KeyPress) {
 			auto key = ev.key();
@@ -50,21 +52,22 @@ void renderer_demo_6(const util::Path &path) {
 			// move_frame moves the camera in the specified direction in the next drawn frame
 			switch (key) {
 			case Qt::Key_W: { // forward
-				render_mgr.camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, -1.0f), 0.25f);
+				render_mgr.camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, -1.0f), 0.2f);
 			} break;
 			case Qt::Key_A: { // left
-				render_mgr.camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, 1.0f), 0.25f);
+				render_mgr.camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, 1.0f), 0.1f);
 			} break;
 			case Qt::Key_S: { // back
-				render_mgr.camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, 1.0f), 0.25f);
+				render_mgr.camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, 1.0f), 0.2f);
 			} break;
 			case Qt::Key_D: { // right
-				render_mgr.camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, -1.0f), 0.25f);
+				render_mgr.camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, -1.0f), 0.1f);
 			} break;
 			default:
 				break;
 			}
 
+			// Update the camera uniform buffer
 			auto new_cam_unifs = render_mgr.camera->get_uniform_buffer()->new_uniform_input(
 				"view",
 				render_mgr.camera->get_view_matrix(),
@@ -72,16 +75,32 @@ void renderer_demo_6(const util::Path &path) {
 				render_mgr.camera->get_projection_matrix());
 			render_mgr.camera->get_uniform_buffer()->update_uniforms(new_cam_unifs);
 
+			/* Generate the frustum for the 2D objects */
+
+			// Copy the camera used for drawing
+			//
+			// In this demo, we will manipulate the frustum camera
+			// to create a slightly smaller frustum for the 2D objects
+			// to show the effect of frustum culling.
+			//
+			// In the real renderer, the normal camera would be used.
 			auto frustum_camera = *render_mgr.camera;
-			auto half_cam_size = util::Vector2s{render_mgr.camera->get_viewport_size()[0] * 0.7,
-			                                    render_mgr.camera->get_viewport_size()[1] * 0.7};
-			frustum_camera.resize(half_cam_size[0], half_cam_size[1]);
+
+			// Downsize the frustum to 70% of the camera size
+			float frustum_factor = 0.7f;
+			auto frustum_cam_size = util::Vector2s{render_mgr.camera->get_viewport_size()[0] * frustum_factor,
+			                                       render_mgr.camera->get_viewport_size()[1] * frustum_factor};
+			frustum_camera.resize(frustum_cam_size[0], frustum_cam_size[1]);
+
+			// Get a 2D frustum object
 			auto frustum_2d = frustum_camera.get_frustum_2d();
 			frustum_2d.update(frustum_camera.get_viewport_size(),
 			                  frustum_camera.get_view_matrix(),
 			                  frustum_camera.get_projection_matrix(),
 			                  frustum_camera.get_zoom());
 
+			// Check if the 2D scene objects are in the frustum
+			// and update the renderables in the 2D render pass
 			auto renderables_2d = render_mgr.create_2d_obj();
 			std::vector<renderer::Renderable> renderables_in_frustum{};
 			for (size_t i = 0; i < render_mgr.obj_2d_positions.size(); ++i) {
@@ -91,14 +110,19 @@ void renderer_demo_6(const util::Path &path) {
 				                                        render_mgr.animation_2d_info.get_scalefactor(),
 				                                        render_mgr.animation_2d_info.get_max_bounds());
 				if (in_frustum) {
+					// Only add objects that are in the frustum
 					renderables_in_frustum.push_back(renderables_2d.at(i));
 				}
 			}
+
+			// Clear the renderables in the 2D render pass
+			// and add ONLY the renderables that are inside the frustum
 			render_mgr.obj_2d_pass->clear_renderables();
 			render_mgr.obj_2d_pass->add_renderables(std::move(renderables_in_frustum));
 		}
 	});
 
+	// Draw everything
 	render_mgr.run();
 }
 
@@ -124,11 +148,13 @@ void RenderManagerDemo6::run() {
 
 const std::vector<renderer::Renderable> RenderManagerDemo6::create_2d_obj() {
 	std::vector<renderer::Renderable> renderables;
-	for (auto scene_pos : this->obj_2d_positions) {
+	for (size_t i = 0; i < this->obj_2d_positions.size(); ++i) {
 		// Create renderable for 2D animation
 		auto scale = this->animation_2d_info.get_scalefactor();
-		auto tex_id = this->animation_2d_info.get_layer(0).get_angle(0)->get_frame(0)->get_texture_idx();
-		auto subtex_id = this->animation_2d_info.get_layer(0).get_angle(0)->get_frame(0)->get_subtexture_idx();
+		auto angle = this->obj_2d_angles.at(i);
+		auto frame_info = this->animation_2d_info.get_layer(0).get_angle(angle)->get_frame(0);
+		auto tex_id = frame_info->get_texture_idx();
+		auto subtex_id = frame_info->get_subtexture_idx();
 		auto subtex = this->animation_2d_info.get_texture(tex_id)->get_subtex_info(subtex_id);
 		auto subtex_size = subtex.get_size();
 		Eigen::Vector2f subtex_size_vec{
@@ -139,6 +165,7 @@ const std::vector<renderer::Renderable> RenderManagerDemo6::create_2d_obj() {
 			static_cast<float>(anchor_params[0]),
 			static_cast<float>(anchor_params[1])};
 		auto tile_params = subtex.get_subtex_coords();
+		auto scene_pos = this->obj_2d_positions.at(i);
 		auto animation_2d_unifs = this->obj_2d_shader->new_uniform_input(
 			"obj_world_position",
 			scene_pos.to_world_space(),
@@ -167,10 +194,6 @@ const std::vector<renderer::Renderable> RenderManagerDemo6::create_2d_obj() {
 }
 
 const renderer::Renderable RenderManagerDemo6::create_3d_obj() {
-	auto terrain_tex_info = this->terrain_3d_info.get_texture(0);
-	auto terrain_tex_data = resources::Texture2dData{*terrain_tex_info};
-	this->obj_3d_texture = this->renderer->add_texture(terrain_tex_data);
-
 	// Create renderable for terrain
 	auto terrain_unifs = this->obj_3d_shader->new_uniform_input(
 		"tex",
@@ -211,7 +234,7 @@ const renderer::Renderable RenderManagerDemo6::create_3d_obj() {
 const std::vector<renderer::Renderable> RenderManagerDemo6::create_frame_obj() {
 	std::vector<renderer::Renderable> renderables;
 	for (auto scene_pos : this->obj_2d_positions) {
-		// Create renderable for frame
+		// Create renderables for frame around sprites
 		std::array<float, 8> frame_verts{-1.0f, -1.0f, -1.0f, 1.0f, 1.0f, 1.0f, 1.0f, -1.0f};
 		std::vector<uint8_t> frame_vert_data(frame_verts.size() * sizeof(float));
 		std::memcpy(frame_vert_data.data(), frame_verts.data(), frame_vert_data.size());
@@ -234,7 +257,9 @@ const std::vector<renderer::Renderable> RenderManagerDemo6::create_frame_obj() {
 			"scale",
 			scale,
 			"frame_size",
-			frame_size);
+			frame_size,
+			"incol",
+			Eigen::Vector4f{0.0f, 0.0f, 1.0f, 1.0f});
 		Renderable frame_obj{
 			frame_unifs,
 			frame_geometry,
@@ -244,6 +269,29 @@ const std::vector<renderer::Renderable> RenderManagerDemo6::create_frame_obj() {
 
 		renderables.push_back(frame_obj);
 	}
+
+	// Create renderable for frustum frame
+	std::array<float, 8> frame_verts{-0.7f, -0.7f, -0.7f, 0.7f, 0.7f, 0.7f, 0.7f, -0.7f};
+	std::vector<uint8_t> frame_vert_data(frame_verts.size() * sizeof(float));
+	std::memcpy(frame_vert_data.data(), frame_verts.data(), frame_vert_data.size());
+	auto frame_vert_info = resources::VertexInputInfo{
+		{resources::vertex_input_t::V2F32},
+		resources::vertex_layout_t::AOS,
+		resources::vertex_primitive_t::LINE_LOOP,
+	};
+	auto frame_mesh = resources::MeshData{std::move(frame_vert_data), frame_vert_info};
+	auto frame_geometry = this->renderer->add_mesh_geometry(frame_mesh);
+
+	auto frame_unifs = this->frustum_shader->new_uniform_input(
+		"incol",
+		Eigen::Vector4f{1.0f, 0.0f, 0.0f, 1.0f});
+	Renderable frame_obj{
+		frame_unifs,
+		frame_geometry,
+		true,
+		true,
+	};
+	renderables.push_back(frame_obj);
 
 	return renderables;
 }
@@ -314,6 +362,17 @@ void RenderManagerDemo6::load_shaders() {
 		frame_fshader_file.read());
 	frame_fshader_file.close();
 
+	/* Shader for frustrum frame */
+	auto frustum_vshader_file = (shaderdir / "demo_6_2d_frustum_frame.vert.glsl").open();
+	auto frustum_vshader_src = resources::ShaderSource(
+		resources::shader_lang_t::glsl,
+		resources::shader_stage_t::vertex,
+		frustum_vshader_file.read());
+	frustum_vshader_file.close();
+
+	// Use the same fragment shader as the frame shader
+	auto frustum_fshader_src = frame_fshader_src;
+
 	/* Shader for rendering to the screen */
 	auto display_vshader_file = (shaderdir / "demo_6_display.vert.glsl").open();
 	auto display_vshader_src = resources::ShaderSource(
@@ -333,11 +392,12 @@ void RenderManagerDemo6::load_shaders() {
 	this->obj_3d_shader = this->renderer->add_shader({obj_vshader_src, obj_fshader_src});
 	this->obj_2d_shader = this->renderer->add_shader({obj_2d_vshader_src, obj_2d_fshader_src});
 	this->frame_shader = this->renderer->add_shader({frame_vshader_src, frame_fshader_src});
+	this->frustum_shader = this->renderer->add_shader({frustum_vshader_src, frustum_fshader_src});
 	this->display_shader = this->renderer->add_shader({display_vshader_src, display_fshader_src});
 }
 
 void RenderManagerDemo6::load_assets() {
-	// Load assets
+	// Load assets for 2D objects
 	auto animation_2d_path = this->path / "assets" / "test" / "textures" / "test_tank.sprite";
 	this->animation_2d_info = resources::parser::parse_sprite_file(animation_2d_path);
 
@@ -345,9 +405,13 @@ void RenderManagerDemo6::load_assets() {
 	auto tex_data = resources::Texture2dData{*tex_info};
 	this->obj_2d_texture = this->renderer->add_texture(tex_data);
 
-	// Load assets
+	// Load assets for 3D objects
 	auto terrain_path = this->path / "assets" / "test" / "textures" / "test_terrain.terrain";
 	this->terrain_3d_info = resources::parser::parse_terrain_file(terrain_path);
+
+	auto terrain_tex_info = this->terrain_3d_info.get_texture(0);
+	auto terrain_tex_data = resources::Texture2dData{*terrain_tex_info};
+	this->obj_3d_texture = this->renderer->add_texture(terrain_tex_data);
 }
 
 void RenderManagerDemo6::create_camera() {

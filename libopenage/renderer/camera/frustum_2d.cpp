@@ -16,7 +16,7 @@ void Frustum2d::update(const util::Vector2s &viewport_size,
                        const Eigen::Matrix4f &view_matrix,
                        const Eigen::Matrix4f &projection_matrix,
                        const float zoom) {
-	this->inv_viewport_size = {1.0f / viewport_size[0], 1.0f / viewport_size[1]};
+	this->pixel_size_ndc = {2.0f / viewport_size[0], 2.0f / viewport_size[1]};
 	this->inv_zoom_factor = 1.0f / zoom;
 
 	// calculate the transformation matrix
@@ -34,11 +34,11 @@ bool Frustum2d::in_frustum(const Eigen::Vector3f &scene_pos,
 
 	float zoom_scale = scalefactor * this->inv_zoom_factor;
 
-	// Scale the boundaries by the zoom factor and the viewport size
-	float left_bound = boundaries[0] * zoom_scale * this->inv_viewport_size[0];
-	float right_bound = boundaries[1] * zoom_scale * this->inv_viewport_size[0];
-	float top_bound = boundaries[2] * zoom_scale * this->inv_viewport_size[1];
-	float bottom_bound = boundaries[3] * zoom_scale * this->inv_viewport_size[1];
+	// Scale the boundaries by the zoom factor and the pixel size
+	float left_bound = boundaries[0] * zoom_scale * this->pixel_size_ndc[0];
+	float right_bound = boundaries[1] * zoom_scale * this->pixel_size_ndc[0];
+	float top_bound = boundaries[2] * zoom_scale * this->pixel_size_ndc[1];
+	float bottom_bound = boundaries[3] * zoom_scale * this->pixel_size_ndc[1];
 
 	// check if the object boundaries are inside the frustum
 	if (x_ndc - left_bound >= 1.0f) {
