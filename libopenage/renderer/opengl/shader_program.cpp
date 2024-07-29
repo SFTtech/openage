@@ -341,7 +341,7 @@ void GlShaderProgram::update_uniforms(std::shared_ptr<GlUniformInput> const &uni
 	uint8_t const *data = unif_in->update_data.data();
 	for (auto const &pair : unif_in->update_offs) {
 		uint8_t const *ptr = data + pair.second;
-		const auto &unif = this->uniforms.at(pair.first);
+		const auto &unif = this->uniforms[pair.first];
 		auto loc = unif.location;
 
 		switch (unif.type) {
@@ -497,7 +497,10 @@ void GlShaderProgram::set_unif(std::shared_ptr<UniformInput> const &in,
 	ENSURE(unif_id < this->uniforms.size(),
 	       "Tried to set uniform '" << unif_id << "' that does not exist in the shader program.");
 
-	auto const &unif_info = this->uniforms.at(unif_id);
+	ENSURE(unif_id < this->uniforms.size(),
+	       "Tried to set uniform with invalid ID " << unif_id);
+
+	auto const &unif_info = this->uniforms[unif_id];
 	ENSURE(type == unif_info.type,
 	       "Tried to set uniform '" << unif_id << "' to a value of the wrong type.");
 
