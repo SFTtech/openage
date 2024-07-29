@@ -158,8 +158,8 @@ private:
 	/// Maps sampler uniform names to their assigned texture units.
 	std::unordered_map<uniform_id_t, GLuint> texunits_per_unifs;
 
-	/// Maps texture units to the texture handles that are currently bound to them.
-	std::unordered_map<GLuint, GLuint> textures_per_texunits;
+	/// Store which texture handles are currently bound to the shader's texture units.
+	std::vector<TexunitBinding> textures_per_texunits;
 
 	/// Whether this program has been validated.
 	bool validated;

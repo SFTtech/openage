@@ -179,7 +179,7 @@ GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
 				block_binding}));
 	}
 
-	GLuint tex_unit = 0;
+	GLuint tex_unit_id = 0;
 
 	// Extract information about uniforms in the default block.
 
@@ -211,18 +211,21 @@ GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
 			unif_id));
 
 		if (type == GL_SAMPLER_2D) {
-			ENSURE(tex_unit < caps.max_texture_slots,
+			ENSURE(tex_unit_id < caps.max_texture_slots,
 			       "Tried to create an OpenGL shader that uses more texture sampler uniforms "
 			           << "than there are texture unit slots (" << caps.max_texture_slots << " available).");
 
-			this->texunits_per_unifs.insert(std::make_pair(unif_id, tex_unit));
+			this->texunits_per_unifs.insert(std::make_pair(unif_id, tex_unit_id));
 
-			tex_unit += 1;
+			tex_unit_id += 1;
 		}
 
 		// Increment uniform ID
 		unif_id += 1;
 	}
+
+	// Initialize the texture unit bindings
+	this->textures_per_texunits.resize(this->texunits_per_unifs.size());
 
 	// Extract vertex attribute descriptions.
 	for (GLuint i_attrib = 0; i_attrib < attrib_count; ++i_attrib) {
@@ -304,21 +307,28 @@ void GlShaderProgram::use() {
 		std::static_pointer_cast<GlShaderProgram>(
 			this->shared_from_this()));
 
-	for (auto const &pair : this->textures_per_texunits) {
+	for (size_t i = 0; i < this->textures_per_texunits.size(); ++i) {
+		auto &tex_unit = this->textures_per_texunits[i];
+		if (not tex_unit.used) {
+			continue;
+		}
+
+		if (not glIsTexture(tex_unit.tex)) {
+			// By the time we use the shader again, the texture may have been deleted
+			// but if it's fixed afterwards using update_uniforms, the render state
+			// will still be fine
+			// We can free the texture unit in this case
+			tex_unit.used = false;
+			continue;
+		}
+
 		// We have to bind the texture to their texture units here because
 		// the texture unit bindings are global to the context. Each time
 		// the shader switches, it is possible that some other shader overwrote
 		// these, and since we want the uniform values to persist across update_uniforms
 		// calls, we have to set them more often than just on update_uniforms.
-		glActiveTexture(GL_TEXTURE0 + pair.first);
-		glBindTexture(GL_TEXTURE_2D, pair.second);
-
-		// By the time we call bind, the texture may have been deleted, but if it's fixed
-		// afterwards using update_uniforms, the render state will still be fine, so we can ignore
-		// this error.
-		// TODO this will swallow actual errors elsewhere, and should be avoided. how?
-		// probably by holding the texture object as shared_ptr as long as it is bound
-		glGetError();
+		glActiveTexture(GL_TEXTURE0 + i);
+		glBindTexture(GL_TEXTURE_2D, tex_unit.tex);
 	}
 }
 
@@ -395,13 +405,15 @@ void GlShaderProgram::update_uniforms(std::shared_ptr<GlUniformInput> const &uni
 			glUniformMatrix4fv(loc, 1, GLboolean(false), reinterpret_cast<const float *>(ptr));
 			break;
 		case GL_SAMPLER_2D: {
-			GLuint tex_unit = this->texunits_per_unifs.at(pair.first);
+			GLuint tex_unit_id = this->texunits_per_unifs.at(pair.first);
 			GLuint tex = *reinterpret_cast<const GLuint *>(ptr);
-			glActiveTexture(GL_TEXTURE0 + tex_unit);
+			glActiveTexture(GL_TEXTURE0 + tex_unit_id);
 			glBindTexture(GL_TEXTURE_2D, tex);
 			// TODO: maybe call this at a more appropriate position
-			glUniform1i(loc, tex_unit);
-			this->textures_per_texunits[tex_unit] = tex;
+			glUniform1i(loc, tex_unit_id);
+			auto &tex_unit = this->textures_per_texunits[tex_unit_id];
+			tex_unit.tex = tex;
+			tex_unit.used = true;
 			break;
 		}
 		default:
