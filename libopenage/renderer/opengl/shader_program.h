@@ -64,8 +64,37 @@ public:
 	 */
 	const GlUniformBlock &get_uniform_block(const char *block_name) const;
 
+	/**
+	 * Get the uniform ID for the given uniform name.
+	 *
+	 * @param name Name of the uniform in the shader code.
+	 *
+	 * @return ID of the uniform.
+	 */
 	uniform_id_t get_uniform_id(const char *name) override;
 
+	/**
+	 * Get the uniforms in the default block of the shader program.
+	 * This does not include uniforms in blocks.
+	 *
+	 * @return Uniforms in the shader program.
+	 */
+	const std::vector<GlUniform> &get_uniforms() const;
+
+	/**
+	 * Get the map of uniform blocks in the shader program.
+	 *
+	 * @return Uniform blocks in the shader program.
+	 */
+	const std::unordered_map<std::string, GlUniformBlock> &get_uniform_blocks() const;
+
+	/**
+	 * Check whether the shader program contains a uniform variable with the given name.
+	 *
+	 * @param name Name of the uniform in the shader code.
+	 *
+	 * @return true if the shader program contains the uniform, false otherwise.
+	 */
 	bool has_uniform(const char *name) override;
 
 	/**
