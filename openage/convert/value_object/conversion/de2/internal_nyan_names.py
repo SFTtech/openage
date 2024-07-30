@@ -1,4 +1,4 @@
-# Copyright 2020-2023 the openage authors. See copying.md for legal info.
+# Copyright 2020-2024 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=line-too-long
 
@@ -51,6 +51,13 @@ UNIT_LINE_LOOKUPS = {
     1790: ("Centurion", "centurion"),
     1795: ("Dromon", "dromon"),
 
+    # TMR
+    1800: ("CompositeBowman", "composite_bowman"),
+    1803: ("Monaspa", "monaspa"),
+    1811: ("WarriorPriest", "warrior_priest"),
+    1813: ("Savar", "savar"),
+    1817: ("QizilbashWarrior", "qizilbash_warrior"),
+
     # TODO: These are upgrades
     1737: ("EliteUrumiSwordsman", "elite_urumi_swordsman"),
     1743: ("EliteChakramThrower", "elite_chakram_thrower"),
@@ -60,6 +67,9 @@ UNIT_LINE_LOOKUPS = {
     1761: ("EliteRRatha", "elite_rratha"),
     1792: ("EliteCenturion", "elite_centurion"),
     1793: ("Legionary", "legionary"),
+
+    1802: ("EliteCompositeBowman", "elite_composite_bowman"),
+    1805: ("EliteMonaspa", "elite_monaspa"),
 }
 
 # key: head unit id; value: (nyan object name, filename prefix)
@@ -75,6 +85,9 @@ BUILDING_LINE_LOOKUPS = {
 
     # DOI
     1754: ("Caravanserai", "caravanserai"),
+
+    # TMR
+    1808: ("MuleCart", "mule_cart"),
 }
 
 # key: (head) unit id; value: (nyan object name, filename prefix)
@@ -91,6 +104,8 @@ VARIANT_GROUP_LOOKUPS = {
 # key: head unit id; value: (nyan object name, filename prefix)
 # contains only new techs of DE2
 TECH_GROUP_LOOKUPS = {
+    46: ("Devotion", "devotion"),
+
     488: ("Kamandaran", "kamandaran"),
     678: ("EliteKonnik", "elite_konnik"),
     680: ("EliteKeshik", "elite_keshik"),
@@ -139,11 +154,23 @@ TECH_GROUP_LOOKUPS = {
     840: ("EliteGhulam", "elite_ghulam"),
     843: ("EliteSHrivamshaRider", "elite_shrivamsha_rider"),
 
+    875: ("Gambesons", "gambesons"),
+
     # ROR
     882: ("EliteCenturion", "elite_centurion"),
     883: ("Ballistas", "ballistas"),
     884: ("Comitatensis", "comitatensis"),
     885: ("Legionary", "legionary"),
+
+    # TMR
+    918: ("EliteCompositeBowman", "elite_composite_bowman"),
+    920: ("EliteMonaspa", "elite_monaspa"),
+    921: ("Fereters", "fereters"),
+    922: ("CilicianFleet", "cilician_fleet"),
+    923: ("SvanTowers", "svan_towers"),
+    924: ("AsnuariCavalry", "asnuari_cavalry"),
+    929: ("FortifiedChurch", "fortified_church"),
+    967: ("EliteQizilbashWarrior", "elite_qizilbash_warrior"),
 }
 
 # key: civ index; value: (nyan object name, filename prefix)
@@ -170,6 +197,10 @@ CIV_GROUP_LOOKUPS = {
 
     # ROR
     43: ("Romans", "romans"),
+
+    # TMR
+    44: ("Armenians", "armenians"),
+    45: ("Georgians", "georgians"),
 }
 
 # key: civ index; value: (civ ids, nyan object name, filename prefix)
@@ -177,7 +208,7 @@ CIV_GROUP_LOOKUPS = {
 GRAPHICS_SET_LOOKUPS = {
     0: ((0, 1, 2, 13, 14, 36), "WesternEuropean", "western_european"),
     4: ((7, 37), "Byzantine", "byzantine"),
-    6: ((19, 24, 43), "Mediterranean", "mediterranean"),
+    6: ((19, 24, 43, 44, 45), "Mediterranean", "mediterranean"),
     7: ((20, 40, 41, 42), "Indian", "indian"),
     8: ((22, 23, 32, 35, 38, 39), "EasternEuropean", "eastern_european"),
     11: ((33, 34), "CentralAsian", "central_asian"),

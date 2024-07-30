@@ -1,4 +1,4 @@
-# Copyright 2020-2023 the openage authors. See copying.md for legal info.
+# Copyright 2020-2024 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-few-public-methods
 
@@ -40,7 +40,7 @@ class DE2ModpackSubprocessor:
 
         mod_def = modpack.get_info()
 
-        mod_def.set_info("de2_base", "0.5.1", versionstr="1.0c", repo="openage")
+        mod_def.set_info("de2_base", "0.6.0", versionstr="Update 118476+", repo="openage")
 
         mod_def.add_include("data/**")
 

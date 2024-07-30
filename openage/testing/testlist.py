@@ -26,7 +26,6 @@ def tests_py():
     yield "openage.assets.test"
     yield ("openage.cabextract.test.test", "test CAB archive extraction",
            lambda env: env["has_assets"])
-    yield "openage.convert.service.init.changelog.test"
     yield "openage.cppinterface.exctranslate_tests.cpp_to_py"
     yield ("openage.cppinterface.exctranslate_tests.cpp_to_py_bounce",
            "translates the exception back and forth a few times")

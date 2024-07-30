@@ -16,7 +16,6 @@ from ..processor.export.modpack_exporter import ModpackExporter
 from ..service.debug_info import debug_gamedata_format
 from ..service.debug_info import debug_string_resources, \
     debug_registered_graphics, debug_modpack, debug_execution_time
-from ..service.init.changelog import (ASSET_VERSION)
 from ..service.read.gamedata import get_gamespec
 from ..service.read.palette import get_palettes
 from ..service.read.register_media import get_existing_graphics
@@ -39,8 +38,6 @@ def convert(args: Namespace) -> None:
 
     # clean args (set by convert_metadata for convert_media)
     del args.palettes
-
-    info(f"asset conversion complete; asset version: {ASSET_VERSION}", )
 
 
 def convert_metadata(args: Namespace) -> None:
@@ -105,8 +102,11 @@ def convert_metadata(args: Namespace) -> None:
         ModpackExporter.export(modpack, args)
         debug_modpack(args.debugdir, args.debug_info, modpack)
 
-    export_end = timeit.default_timer()
-    info("Finished modpack export (%.2f seconds)", export_end - export_start)
+        export_end = timeit.default_timer()
+        info("Finished export of modpack '%s' v%s (%.2f seconds)",
+             modpack.info.packagename,
+             modpack.info.version,
+             export_end - export_start)
 
     stages_time = {
         "read": read_end - read_start,

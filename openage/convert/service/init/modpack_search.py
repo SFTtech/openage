@@ -1,4 +1,4 @@
-# Copyright 2023-2023 the openage authors. See copying.md for legal info.
+# Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 """
 Search for and enumerate openage modpacks.
@@ -86,17 +86,21 @@ def query_modpack(proposals: set[str]) -> str:
     Query interactively for a modpack from a selection of proposals.
     """
     print("\nPlease select a modpack before starting.")
-    print("Insert the index of one of the proposals (Default = 0):")
+    print("Enter the index of one of the proposals (Default = 0):")
 
     proposals = sorted(proposals)
     for index, proposal in enumerate(proposals):
         print(f"({index}) {proposal}")
 
     user_selection = input("> ")
-    if user_selection.isdecimal() and int(user_selection) < len(proposals):
-        selection = proposals[int(user_selection)]
+    if user_selection == "":
+        selection = proposals[0]
 
     else:
-        selection = proposals[0]
+        while not (user_selection.isdecimal() and int(user_selection) < len(proposals)):
+            print(f"'{user_selection}' is not a valid index. Please try again.")
+            user_selection = input("> ")
+
+        selection = proposals[int(user_selection)]
 
     return selection

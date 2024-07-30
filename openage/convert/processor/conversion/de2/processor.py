@@ -312,7 +312,10 @@ class DE2Processor:
                               process.
         :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         """
-        extra_units = (1734,)  # Folwark
+        extra_units = (
+            1734,  # Folwark
+            1808,  # Mule Cart
+        )
 
         for unit_id in extra_units:
             building_line = GenieBuildingLineGroup(unit_id, full_data_set)

@@ -1,4 +1,4 @@
-# Copyright 2013-2023 the openage authors. See copying.md for legal info.
+# Copyright 2013-2024 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R,too-many-lines
 from __future__ import annotations
@@ -695,7 +695,8 @@ class ActionUnit(MovingUnit):
 
         if game_version.edition.game_id == "AOE2DE":
             data_format.extend([
-                (READ_GEN, "drop_sites", StorageType.ARRAY_ID, "int16_t[3]"),
+                (READ, "drop_sites_count", StorageType.INT_MEMBER, "int16_t"),
+                (READ_GEN, "drop_sites", StorageType.ARRAY_ID, "int16_t[drop_sites_count]"),
             ])
         else:
             data_format.extend([

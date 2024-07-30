@@ -1,4 +1,4 @@
-# Copyright 2020-2023 the openage authors. See copying.md for legal info.
+# Copyright 2020-2024 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-branches
 
@@ -155,7 +155,11 @@ class DE2TechSubprocessor:
         267: DE2UpgradeResourceSubprocessor.forager_wood_gather_upgrade,
         268: DE2UpgradeResourceSubprocessor.resource_decay_upgrade,
         269: DE2UpgradeResourceSubprocessor.tech_reward_upgrade,
+        272: DE2UpgradeResourceSubprocessor.cliff_defense_upgrade,
+        273: DE2UpgradeResourceSubprocessor.elevation_defense_upgrade,
         274: DE2UpgradeResourceSubprocessor.chieftains_upgrade,
+        280: DE2UpgradeResourceSubprocessor.conversion_range_upgrade,
+        282: DE2UpgradeResourceSubprocessor.unknown_recharge_rate_upgrade,
     }
 
     @classmethod

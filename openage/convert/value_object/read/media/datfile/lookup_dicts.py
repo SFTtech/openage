@@ -431,6 +431,7 @@ COMMAND_ABILITY = {
     149: "SHEAR",
     150: "REGENERATION",
     151: "FEITORIA",
+    153: "RESOURCE_FOLLOW",
     154: "LOOT",         # Chieftains tech; looting on killing villagers, monks, trade carts
     155: "BOOST_MOVE_AND_ATTACK",
     768: "UNKNOWN_768",
@@ -752,6 +753,7 @@ GARRISON_TYPES = {
     0x04: "CAVALRY",
     0x07: "SWGB_NO_JEDI",
     0x08: "MONK",
+    0x09: "DE2_FORTIFIED_CHURCH",
     0x0b: "NOCAVALRY",
     0x0f: "ALL",
     0x10: "SWGB_LIVESTOCK",

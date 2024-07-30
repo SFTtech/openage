@@ -446,6 +446,9 @@ class DE2NyanSubprocessor:
         abilities_set.append(AoCAbilitySubprocessor.terrain_requirement_ability(building_line))
         abilities_set.append(AoCAbilitySubprocessor.visibility_ability(building_line))
 
+        if building_line.get_head_unit()["speed"].value > 0:
+            abilities_set.append(AoCAbilitySubprocessor.move_ability(building_line))
+
         # Config abilities
         if building_line.is_creatable():
             abilities_set.append(AoCAbilitySubprocessor.constructable_ability(building_line))
