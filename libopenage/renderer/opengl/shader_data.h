@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include <optional>
 #include <string>
 #include <unordered_map>
 
@@ -22,6 +23,13 @@ struct GlUniform {
 	 * NOT the same as the uniform index.
 	 */
 	GLuint location;
+
+	/**
+	 * Only used for sampler uniforms.
+	 *
+	 * Texture unit to which the sampler is bound.
+	 */
+	std::optional<GLuint> tex_unit;
 };
 
 /**
@@ -86,16 +94,6 @@ struct GlVertexAttrib {
 	GLint location;
 	// TODO what is this?
 	GLint size;
-};
-
-/**
- * Represents a texture unit binding in a shader program.
- */
-struct TexunitBinding {
-	/// Texture bound to the texture unit.
-	GLuint tex = 0;
-	/// true if the texture unit is currently bound to a texture.
-	bool used = false;
 };
 
 } // namespace openage::renderer::opengl

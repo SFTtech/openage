@@ -204,7 +204,7 @@ GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
 
 		GLuint loc = glGetUniformLocation(handle, name.data());
 
-		this->uniforms.push_back({type, loc});
+		this->uniforms.push_back({type, loc, std::nullopt});
 
 		this->uniforms_by_name.insert(std::make_pair(
 			name.data(),
@@ -215,7 +215,7 @@ GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
 			       "Tried to create an OpenGL shader that uses more texture sampler uniforms "
 			           << "than there are texture unit slots (" << caps.max_texture_slots << " available).");
 
-			this->texunits_per_unifs.insert(std::make_pair(unif_id, tex_unit_id));
+			this->uniforms[unif_id].tex_unit = tex_unit_id;
 
 			tex_unit_id += 1;
 		}
@@ -224,8 +224,9 @@ GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
 		unif_id += 1;
 	}
 
-	// Initialize the texture unit bindings
-	this->textures_per_texunits.resize(this->texunits_per_unifs.size());
+	// Resize the texture unit bindings
+	// to number of texture units used by the shader
+	this->textures_per_texunits.resize(tex_unit_id);
 
 	// Extract vertex attribute descriptions.
 	for (GLuint i_attrib = 0; i_attrib < attrib_count; ++i_attrib) {
@@ -309,16 +310,16 @@ void GlShaderProgram::use() {
 
 	for (size_t i = 0; i < this->textures_per_texunits.size(); ++i) {
 		auto &tex_unit = this->textures_per_texunits[i];
-		if (not tex_unit.used) {
+		if (not tex_unit) {
 			continue;
 		}
 
-		if (not glIsTexture(tex_unit.tex)) {
+		if (not glIsTexture(*tex_unit)) {
 			// By the time we use the shader again, the texture may have been deleted
 			// but if it's fixed afterwards using update_uniforms, the render state
 			// will still be fine
 			// We can free the texture unit in this case
-			tex_unit.used = false;
+			tex_unit = std::nullopt;
 			continue;
 		}
 
@@ -328,7 +329,7 @@ void GlShaderProgram::use() {
 		// these, and since we want the uniform values to persist across update_uniforms
 		// calls, we have to set them more often than just on update_uniforms.
 		glActiveTexture(GL_TEXTURE0 + i);
-		glBindTexture(GL_TEXTURE_2D, tex_unit.tex);
+		glBindTexture(GL_TEXTURE_2D, *tex_unit);
 	}
 }
 
@@ -348,16 +349,17 @@ void GlShaderProgram::update_uniforms(std::shared_ptr<GlUniformInput> const &uni
 		this->use();
 	}
 
-	auto &update_offs = unif_in->update_offs;
-	auto &uniforms = this->uniforms;
+	const auto &update_offs = unif_in->update_offs;
+	const auto &uniforms = this->uniforms;
 	uint8_t const *data = unif_in->update_data.data();
 	for (uniform_id_t i = 0; i < this->uniforms.size(); ++i) {
-		if (not update_offs[i].used) {
+		const auto &update_off = update_offs[i];
+		if (not update_off.used) {
 			// Uniform value has not been set
 			continue;
 		}
 
-		uint8_t const *ptr = data + update_offs[i].offset;
+		uint8_t const *ptr = data + update_off.offset;
 		const auto &unif = uniforms[i];
 		auto loc = unif.location;
 
@@ -412,15 +414,17 @@ void GlShaderProgram::update_uniforms(std::shared_ptr<GlUniformInput> const &uni
 			glUniformMatrix4fv(loc, 1, GLboolean(false), reinterpret_cast<const float *>(ptr));
 			break;
 		case GL_SAMPLER_2D: {
-			GLuint tex_unit_id = this->texunits_per_unifs.at(i);
+			ENSURE(unif.tex_unit,
+			       "Tried to access texture unit for uniform that has no texture unit assigned.");
+			GLuint tex_unit_id = *unif.tex_unit;
+
 			GLuint tex = *reinterpret_cast<const GLuint *>(ptr);
 			glActiveTexture(GL_TEXTURE0 + tex_unit_id);
 			glBindTexture(GL_TEXTURE_2D, tex);
 			// TODO: maybe call this at a more appropriate position
 			glUniform1i(loc, tex_unit_id);
-			auto &tex_unit = this->textures_per_texunits[tex_unit_id];
-			tex_unit.tex = tex;
-			tex_unit.used = true;
+			auto &tex_value = *this->textures_per_texunits[tex_unit_id];
+			tex_value = tex;
 			break;
 		}
 		default:

@@ -184,11 +184,8 @@ private:
 	/// Maps per-vertex attribute names to their descriptions.
 	std::unordered_map<std::string, GlVertexAttrib> attribs;
 
-	/// Maps sampler uniform names to their assigned texture units.
-	std::unordered_map<uniform_id_t, GLuint> texunits_per_unifs;
-
 	/// Store which texture handles are currently bound to the shader's texture units.
-	std::vector<TexunitBinding> textures_per_texunits;
+	std::vector<std::optional<GLuint>> textures_per_texunits;
 
 	/// Whether this program has been validated.
 	bool validated;
