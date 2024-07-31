@@ -7,27 +7,27 @@ The invocation could be:
 
 SLPs in DRS archives (for older versions of Age of Empires 1, Age of Empires 2 and SWGB):
 ```
-python3 -m openage convert-file --palettes-path ~/games/aoe2/Data/interfac.drs --drs ~/games/aoe2/Data/graphics.drs 326.slp /tmp/rofl.png
+python3 -m openage convert-file --palettes-path ~/games/aoe2/Data/ --drs ~/games/aoe2/Data/graphics.drs 326.slp /tmp/rofl.png
 ```
 
 Standalone SLPs (Age of Empires 1: DE and Age of Empires 2: HD):
 ```
-python3 -m openage convert-file --palette-file ~/games/aoe2hd/Data/50500.bina 326.slp /tmp/rofl.png
+python3 -m openage convert-file --palettes-path ~/games/aoede/Assets/Palettes 326.slp /tmp/rofl.png
 ```
 
 Standalone SLDs (Age of Empires 2: DE):
 ```
-python3 -m openage convert-file --player-palette-file ~/games/aoe2de/Data/playercolor_blue.pal --palette-file ~/games/aoe2de/Data/b_west.pal u_elite_eagle.sld /tmp/rofl.png
+python3 -m openage convert-file --palettes-path ~/games/aoe2de/Data/ u_elite_eagle.sld /tmp/rofl.png
 ```
 
 Standalone SMXs (Age of Empires 2: DE):
 ```
-python3 -m openage convert-file --player-palette-file ~/games/aoe2de/Data/playercolor_blue.pal --palette-file ~/games/aoe2de/Data/b_west.pal u_elite_eagle.smx /tmp/rofl.png
+python3 -m openage convert-file --palettes-path ~/games/aoe2de/Data/ u_elite_eagle.smx /tmp/rofl.png
 ```
 
 Standalone SMPs (Age of Empires 2: DE):
 ```
-python3 -m openage convert-file --player-palette-file ~/games/aoe2de/Data/playercolor_blue.pal --palette-file ~/games/aoe2de/Data/b_west.pal u_elite_eagle.smp /tmp/rofl.png
+python3 -m openage convert-file --palettes-path ~/games/aoe2de/resources/_common/palettes u_elite_eagle.smp /tmp/rofl.png
 ```
 
 WAVs in DRS archives (for older versions of Age of Empires 1, Age of Empires 2 and SWGB):
