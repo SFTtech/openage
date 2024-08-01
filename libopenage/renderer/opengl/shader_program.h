@@ -154,22 +154,32 @@ private:
 	 * If performance is important, use the alternative \p set_unif(..) implementation
 	 * that works on IDs instead.
 	 *
-	 * @param unif_in Uniform input.
+	 * @param in Uniform input.
 	 * @param name Name of the uniform.
 	 * @param value Value to set.
+	 * @param size Size of the value (in bytes).
 	 * @param type Type of the value.
 	 */
-	void set_unif(std::shared_ptr<UniformInput> const &, const char *, void const *, GLenum);
+	void set_unif(std::shared_ptr<UniformInput> const &in,
+	              const char *name,
+	              void const *value,
+	              size_t size,
+	              GLenum type);
 
 	/**
 	 * Set the uniform value via uniform ID from a uniform input.
 	 *
-	 * @param unif_in Uniform input.
+	 * @param in Uniform input.
 	 * @param id ID of the uniform.
 	 * @param value Value to set.
+	 * @param size Size of the value (in bytes).
 	 * @param type Type of the value.
 	 */
-	void set_unif(std::shared_ptr<UniformInput> const &, const uniform_id_t &, void const *, GLenum);
+	void set_unif(std::shared_ptr<UniformInput> const &,
+	              const uniform_id_t &unif_id,
+	              void const *value,
+	              size_t size,
+	              GLenum type);
 
 	/// Uniforms in the shader program. Contains only
 	/// uniforms in the default block, i.e. not within named blocks.

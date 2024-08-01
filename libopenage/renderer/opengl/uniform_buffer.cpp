@@ -92,7 +92,9 @@ void GlUniformBuffer::set_unif(std::shared_ptr<UniformBufferInput> const &in, co
 	ENSURE(type == unif_data.type,
 	       "Tried to set uniform " << unif << " to a value of the wrong type.");
 
-	size_t size = get_uniform_type_size(type);
+	size_t size = GL_UNIFORM_TYPE_SIZE.get(type);
+	ENSURE(size == unif_data.size,
+	       "Tried to set uniform " << unif << " to a value of the wrong size.");
 
 	auto update_off = unif_in->update_offs.find(unif);
 	if (update_off != std::end(unif_in->update_offs)) [[likely]] { // always used after the uniform value is written once

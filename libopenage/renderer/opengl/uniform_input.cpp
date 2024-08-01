@@ -2,6 +2,7 @@
 
 #include "uniform_input.h"
 
+#include "renderer/opengl/lookup.h"
 #include "renderer/opengl/shader_program.h"
 #include "renderer/opengl/util.h"
 
@@ -20,7 +21,7 @@ GlUniformInput::GlUniformInput(const std::shared_ptr<ShaderProgram> &prog) :
 	this->update_offs.reserve(glprog->get_uniforms().size());
 	for (auto &uniform : glprog->get_uniforms()) {
 		this->update_offs.push_back({offset, false});
-		offset += get_uniform_type_size(uniform.type);
+		offset += GL_UNIFORM_TYPE_SIZE.get(uniform.type);
 	}
 
 	// Resize the update data buffer to the total size of all uniforms.
