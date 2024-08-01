@@ -35,6 +35,11 @@ public:
 	GlUniformInput(const std::shared_ptr<ShaderProgram> &prog);
 
 	/**
+	 * Store the IDs of the uniforms from the shader set by this uniform input.
+	 */
+	std::vector<uniform_id_t> used_uniforms;
+
+	/**
 	 * Store offsets of uniforms in the update_data buffer and
 	 * whether the uniform value has been set.
 	 *

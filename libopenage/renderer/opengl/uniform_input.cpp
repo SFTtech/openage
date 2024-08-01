@@ -12,6 +12,9 @@ GlUniformInput::GlUniformInput(const std::shared_ptr<ShaderProgram> &prog) :
 	UniformInput{prog} {
 	auto glprog = std::dynamic_pointer_cast<GlShaderProgram>(prog);
 
+	// Reserve space for the used uniforms.
+	this->used_uniforms.reserve(glprog->get_uniforms().size());
+
 	// Calculate the byte-wise offsets of all uniforms.
 	size_t offset = 0;
 	this->update_offs.reserve(glprog->get_uniforms().size());

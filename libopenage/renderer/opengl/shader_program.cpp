@@ -350,17 +350,18 @@ void GlShaderProgram::update_uniforms(std::shared_ptr<GlUniformInput> const &uni
 	}
 
 	const auto &update_offs = unif_in->update_offs;
+	const auto &used_uniforms = unif_in->used_uniforms;
 	const auto &uniforms = this->uniforms;
 	uint8_t const *data = unif_in->update_data.data();
-	for (uniform_id_t i = 0; i < this->uniforms.size(); ++i) {
-		const auto &update_off = update_offs[i];
-		if (not update_off.used) {
-			// Uniform value has not been set
-			continue;
-		}
 
+	size_t unif_count = used_uniforms.size();
+	for (size_t i = 0; i < unif_count; ++i) {
+		uniform_id_t unif_id = used_uniforms[i];
+
+		const auto &update_off = update_offs[unif_id];
 		uint8_t const *ptr = data + update_off.offset;
-		const auto &unif = uniforms[i];
+
+		const auto &unif = uniforms[unif_id];
 		auto loc = unif.location;
 
 		switch (unif.type) {
@@ -517,7 +518,14 @@ void GlShaderProgram::set_unif(std::shared_ptr<UniformInput> const &in,
 	auto offset = update_off.offset;
 	size_t size = get_uniform_type_size(type);
 	memcpy(unif_in->update_data.data() + offset, val, size);
-	update_off.used = true;
+	if (not update_off.used) [[unlikely]] { // only true if the uniform value was not set before
+		auto lower_bound = std::lower_bound(
+			std::begin(unif_in->used_uniforms),
+			std::end(unif_in->used_uniforms),
+			unif_id);
+		unif_in->used_uniforms.insert(lower_bound, unif_id);
+		update_off.used = true;
+	}
 }
 
 void GlShaderProgram::set_i32(std::shared_ptr<UniformInput> const &in, const char *unif, int32_t val) {
