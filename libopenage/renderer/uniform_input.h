@@ -85,23 +85,23 @@ public:
 	void update(const char *unif, std::shared_ptr<Texture2d> &val) override;
 	void update(const char *unif, Eigen::Matrix4f const &val) override;
 
-	void update(const uniform_id_t &id, int32_t val);
-	void update(const uniform_id_t &id, uint32_t val);
-	void update(const uniform_id_t &id, float val);
-	void update(const uniform_id_t &id, double val);
-	void update(const uniform_id_t &id, bool val);
-	void update(const uniform_id_t &id, Eigen::Vector2f const &val);
-	void update(const uniform_id_t &id, Eigen::Vector3f const &val);
-	void update(const uniform_id_t &id, Eigen::Vector4f const &val);
-	void update(const uniform_id_t &id, Eigen::Vector2i const &val);
-	void update(const uniform_id_t &id, Eigen::Vector3i const &val);
-	void update(const uniform_id_t &id, Eigen::Vector4i const &val);
-	void update(const uniform_id_t &id, Eigen::Vector2<uint32_t> const &val);
-	void update(const uniform_id_t &id, Eigen::Vector3<uint32_t> const &val);
-	void update(const uniform_id_t &id, Eigen::Vector4<uint32_t> const &val);
-	void update(const uniform_id_t &id, std::shared_ptr<Texture2d> const &val);
-	void update(const uniform_id_t &id, std::shared_ptr<Texture2d> &val);
-	void update(const uniform_id_t &id, Eigen::Matrix4f const &val);
+	void update(uniform_id_t id, int32_t val);
+	void update(uniform_id_t id, uint32_t val);
+	void update(uniform_id_t id, float val);
+	void update(uniform_id_t id, double val);
+	void update(uniform_id_t id, bool val);
+	void update(uniform_id_t id, Eigen::Vector2f const &val);
+	void update(uniform_id_t id, Eigen::Vector3f const &val);
+	void update(uniform_id_t id, Eigen::Vector4f const &val);
+	void update(uniform_id_t id, Eigen::Vector2i const &val);
+	void update(uniform_id_t id, Eigen::Vector3i const &val);
+	void update(uniform_id_t id, Eigen::Vector4i const &val);
+	void update(uniform_id_t id, Eigen::Vector2<uint32_t> const &val);
+	void update(uniform_id_t id, Eigen::Vector3<uint32_t> const &val);
+	void update(uniform_id_t id, Eigen::Vector4<uint32_t> const &val);
+	void update(uniform_id_t id, std::shared_ptr<Texture2d> const &val);
+	void update(uniform_id_t id, std::shared_ptr<Texture2d> &val);
+	void update(uniform_id_t id, Eigen::Matrix4f const &val);
 
 	/**
 	 * Catch-all template in order to handle unsupported types and avoid infinite recursion.

@@ -128,22 +128,22 @@ protected:
 	void set_m4f32(UniformInput &in, const char *, Eigen::Matrix4f const &) override;
 	void set_tex(UniformInput &in, const char *, std::shared_ptr<Texture2d> const &) override;
 
-	void set_i32(UniformInput &in, const uniform_id_t &, int32_t) override;
-	void set_u32(UniformInput &in, const uniform_id_t &, uint32_t) override;
-	void set_f32(UniformInput &in, const uniform_id_t &, float) override;
-	void set_f64(UniformInput &in, const uniform_id_t &, double) override;
-	void set_bool(UniformInput &in, const uniform_id_t &, bool) override;
-	void set_v2f32(UniformInput &in, const uniform_id_t &, Eigen::Vector2f const &) override;
-	void set_v3f32(UniformInput &in, const uniform_id_t &, Eigen::Vector3f const &) override;
-	void set_v4f32(UniformInput &in, const uniform_id_t &, Eigen::Vector4f const &) override;
-	void set_v2i32(UniformInput &in, const uniform_id_t &, Eigen::Vector2i const &) override;
-	void set_v3i32(UniformInput &in, const uniform_id_t &, Eigen::Vector3i const &) override;
-	void set_v4i32(UniformInput &in, const uniform_id_t &, Eigen::Vector4i const &) override;
-	void set_v2ui32(UniformInput &in, const uniform_id_t &, Eigen::Vector2<uint32_t> const &) override;
-	void set_v3ui32(UniformInput &in, const uniform_id_t &, Eigen::Vector3<uint32_t> const &) override;
-	void set_v4ui32(UniformInput &in, const uniform_id_t &, Eigen::Vector4<uint32_t> const &) override;
-	void set_m4f32(UniformInput &in, const uniform_id_t &, Eigen::Matrix4f const &) override;
-	void set_tex(UniformInput &in, const uniform_id_t &, std::shared_ptr<Texture2d> const &) override;
+	void set_i32(UniformInput &in, uniform_id_t id, int32_t) override;
+	void set_u32(UniformInput &in, uniform_id_t id, uint32_t) override;
+	void set_f32(UniformInput &in, uniform_id_t id, float) override;
+	void set_f64(UniformInput &in, uniform_id_t id, double) override;
+	void set_bool(UniformInput &in, uniform_id_t id, bool) override;
+	void set_v2f32(UniformInput &in, uniform_id_t id, Eigen::Vector2f const &) override;
+	void set_v3f32(UniformInput &in, uniform_id_t id, Eigen::Vector3f const &) override;
+	void set_v4f32(UniformInput &in, uniform_id_t id, Eigen::Vector4f const &) override;
+	void set_v2i32(UniformInput &in, uniform_id_t id, Eigen::Vector2i const &) override;
+	void set_v3i32(UniformInput &in, uniform_id_t id, Eigen::Vector3i const &) override;
+	void set_v4i32(UniformInput &in, uniform_id_t id, Eigen::Vector4i const &) override;
+	void set_v2ui32(UniformInput &in, uniform_id_t id, Eigen::Vector2<uint32_t> const &) override;
+	void set_v3ui32(UniformInput &in, uniform_id_t id, Eigen::Vector3<uint32_t> const &) override;
+	void set_v4ui32(UniformInput &in, uniform_id_t id, Eigen::Vector4<uint32_t> const &) override;
+	void set_m4f32(UniformInput &in, uniform_id_t id, Eigen::Matrix4f const &) override;
+	void set_tex(UniformInput &in, uniform_id_t id, std::shared_ptr<Texture2d> const &) override;
 
 private:
 	/**
@@ -170,13 +170,13 @@ private:
 	 * Set the uniform value via uniform ID from a uniform input.
 	 *
 	 * @param in Uniform input.
-	 * @param id ID of the uniform.
+	 * @param unif_id ID of the uniform.
 	 * @param value Value to set.
 	 * @param size Size of the value (in bytes).
 	 * @param type Type of the value.
 	 */
 	void set_unif(UniformInput &in,
-	              const uniform_id_t &unif_id,
+	              uniform_id_t unif_id,
 	              void const *value,
 	              size_t size,
 	              GLenum type);
