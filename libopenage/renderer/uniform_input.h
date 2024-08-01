@@ -54,8 +54,7 @@ public:
  * Abstract base for uniform input. Besides the uniform values, it stores information about
  * which shader program the input was created for.
  */
-class UniformInput : public DataInput
-	, public std::enable_shared_from_this<UniformInput> {
+class UniformInput : public DataInput {
 protected:
 	/**
 	 * Create a new uniform input for a given shader program.
