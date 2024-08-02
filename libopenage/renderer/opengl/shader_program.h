@@ -64,8 +64,37 @@ public:
 	 */
 	const GlUniformBlock &get_uniform_block(const char *block_name) const;
 
+	/**
+	 * Get the uniform ID for the given uniform name.
+	 *
+	 * @param name Name of the uniform in the shader code.
+	 *
+	 * @return ID of the uniform.
+	 */
 	uniform_id_t get_uniform_id(const char *name) override;
 
+	/**
+	 * Get the uniforms in the default block of the shader program.
+	 * This does not include uniforms in blocks.
+	 *
+	 * @return Uniforms in the shader program.
+	 */
+	const std::vector<GlUniform> &get_uniforms() const;
+
+	/**
+	 * Get the map of uniform blocks in the shader program.
+	 *
+	 * @return Uniform blocks in the shader program.
+	 */
+	const std::unordered_map<std::string, GlUniformBlock> &get_uniform_blocks() const;
+
+	/**
+	 * Check whether the shader program contains a uniform variable with the given name.
+	 *
+	 * @param name Name of the uniform in the shader code.
+	 *
+	 * @return true if the shader program contains the uniform, false otherwise.
+	 */
 	bool has_uniform(const char *name) override;
 
 	/**
@@ -82,39 +111,39 @@ public:
 
 protected:
 	std::shared_ptr<UniformInput> new_unif_in() override;
-	void set_i32(std::shared_ptr<UniformInput> const &, const char *, int32_t) override;
-	void set_u32(std::shared_ptr<UniformInput> const &, const char *, uint32_t) override;
-	void set_f32(std::shared_ptr<UniformInput> const &, const char *, float) override;
-	void set_f64(std::shared_ptr<UniformInput> const &, const char *, double) override;
-	void set_bool(std::shared_ptr<UniformInput> const &, const char *, bool) override;
-	void set_v2f32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector2f const &) override;
-	void set_v3f32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector3f const &) override;
-	void set_v4f32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector4f const &) override;
-	void set_v2i32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector2i const &) override;
-	void set_v3i32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector3i const &) override;
-	void set_v4i32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector4i const &) override;
-	void set_v2ui32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector2<uint32_t> const &) override;
-	void set_v3ui32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector3<uint32_t> const &) override;
-	void set_v4ui32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector4<uint32_t> const &) override;
-	void set_m4f32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Matrix4f const &) override;
-	void set_tex(std::shared_ptr<UniformInput> const &, const char *, std::shared_ptr<Texture2d> const &) override;
+	void set_i32(UniformInput &in, const char *, int32_t) override;
+	void set_u32(UniformInput &in, const char *, uint32_t) override;
+	void set_f32(UniformInput &in, const char *, float) override;
+	void set_f64(UniformInput &in, const char *, double) override;
+	void set_bool(UniformInput &in, const char *, bool) override;
+	void set_v2f32(UniformInput &in, const char *, Eigen::Vector2f const &) override;
+	void set_v3f32(UniformInput &in, const char *, Eigen::Vector3f const &) override;
+	void set_v4f32(UniformInput &in, const char *, Eigen::Vector4f const &) override;
+	void set_v2i32(UniformInput &in, const char *, Eigen::Vector2i const &) override;
+	void set_v3i32(UniformInput &in, const char *, Eigen::Vector3i const &) override;
+	void set_v4i32(UniformInput &in, const char *, Eigen::Vector4i const &) override;
+	void set_v2ui32(UniformInput &in, const char *, Eigen::Vector2<uint32_t> const &) override;
+	void set_v3ui32(UniformInput &in, const char *, Eigen::Vector3<uint32_t> const &) override;
+	void set_v4ui32(UniformInput &in, const char *, Eigen::Vector4<uint32_t> const &) override;
+	void set_m4f32(UniformInput &in, const char *, Eigen::Matrix4f const &) override;
+	void set_tex(UniformInput &in, const char *, std::shared_ptr<Texture2d> const &) override;
 
-	void set_i32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, int32_t) override;
-	void set_u32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, uint32_t) override;
-	void set_f32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, float) override;
-	void set_f64(std::shared_ptr<UniformInput> const &, const uniform_id_t &, double) override;
-	void set_bool(std::shared_ptr<UniformInput> const &, const uniform_id_t &, bool) override;
-	void set_v2f32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector2f const &) override;
-	void set_v3f32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector3f const &) override;
-	void set_v4f32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector4f const &) override;
-	void set_v2i32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector2i const &) override;
-	void set_v3i32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector3i const &) override;
-	void set_v4i32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector4i const &) override;
-	void set_v2ui32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector2<uint32_t> const &) override;
-	void set_v3ui32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector3<uint32_t> const &) override;
-	void set_v4ui32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector4<uint32_t> const &) override;
-	void set_m4f32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Matrix4f const &) override;
-	void set_tex(std::shared_ptr<UniformInput> const &, const uniform_id_t &, std::shared_ptr<Texture2d> const &) override;
+	void set_i32(UniformInput &in, uniform_id_t id, int32_t) override;
+	void set_u32(UniformInput &in, uniform_id_t id, uint32_t) override;
+	void set_f32(UniformInput &in, uniform_id_t id, float) override;
+	void set_f64(UniformInput &in, uniform_id_t id, double) override;
+	void set_bool(UniformInput &in, uniform_id_t id, bool) override;
+	void set_v2f32(UniformInput &in, uniform_id_t id, Eigen::Vector2f const &) override;
+	void set_v3f32(UniformInput &in, uniform_id_t id, Eigen::Vector3f const &) override;
+	void set_v4f32(UniformInput &in, uniform_id_t id, Eigen::Vector4f const &) override;
+	void set_v2i32(UniformInput &in, uniform_id_t id, Eigen::Vector2i const &) override;
+	void set_v3i32(UniformInput &in, uniform_id_t id, Eigen::Vector3i const &) override;
+	void set_v4i32(UniformInput &in, uniform_id_t id, Eigen::Vector4i const &) override;
+	void set_v2ui32(UniformInput &in, uniform_id_t id, Eigen::Vector2<uint32_t> const &) override;
+	void set_v3ui32(UniformInput &in, uniform_id_t id, Eigen::Vector3<uint32_t> const &) override;
+	void set_v4ui32(UniformInput &in, uniform_id_t id, Eigen::Vector4<uint32_t> const &) override;
+	void set_m4f32(UniformInput &in, uniform_id_t id, Eigen::Matrix4f const &) override;
+	void set_tex(UniformInput &in, uniform_id_t id, std::shared_ptr<Texture2d> const &) override;
 
 private:
 	/**
@@ -125,22 +154,32 @@ private:
 	 * If performance is important, use the alternative \p set_unif(..) implementation
 	 * that works on IDs instead.
 	 *
-	 * @param unif_in Uniform input.
+	 * @param in Uniform input.
 	 * @param name Name of the uniform.
 	 * @param value Value to set.
+	 * @param size Size of the value (in bytes).
 	 * @param type Type of the value.
 	 */
-	void set_unif(std::shared_ptr<UniformInput> const &, const char *, void const *, GLenum);
+	void set_unif(UniformInput &in,
+	              const char *name,
+	              void const *value,
+	              size_t size,
+	              GLenum type);
 
 	/**
 	 * Set the uniform value via uniform ID from a uniform input.
 	 *
-	 * @param unif_in Uniform input.
-	 * @param id ID of the uniform.
+	 * @param in Uniform input.
+	 * @param unif_id ID of the uniform.
 	 * @param value Value to set.
+	 * @param size Size of the value (in bytes).
 	 * @param type Type of the value.
 	 */
-	void set_unif(std::shared_ptr<UniformInput> const &, const uniform_id_t &, void const *, GLenum);
+	void set_unif(UniformInput &in,
+	              uniform_id_t unif_id,
+	              void const *value,
+	              size_t size,
+	              GLenum type);
 
 	/// Uniforms in the shader program. Contains only
 	/// uniforms in the default block, i.e. not within named blocks.
@@ -155,11 +194,8 @@ private:
 	/// Maps per-vertex attribute names to their descriptions.
 	std::unordered_map<std::string, GlVertexAttrib> attribs;
 
-	/// Maps sampler uniform names to their assigned texture units.
-	std::unordered_map<uniform_id_t, GLuint> texunits_per_unifs;
-
-	/// Maps texture units to the texture handles that are currently bound to them.
-	std::unordered_map<GLuint, GLuint> textures_per_texunits;
+	/// Store which texture handles are currently bound to the shader's texture units.
+	std::vector<std::optional<GLuint>> textures_per_texunits;
 
 	/// Whether this program has been validated.
 	bool validated;

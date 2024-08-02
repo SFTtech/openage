@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include <optional>
 #include <string>
 #include <unordered_map>
 
@@ -22,6 +23,13 @@ struct GlUniform {
 	 * NOT the same as the uniform index.
 	 */
 	GLuint location;
+
+	/**
+	 * Only used for sampler uniforms.
+	 *
+	 * Texture unit to which the sampler is bound.
+	 */
+	std::optional<GLuint> tex_unit;
 };
 
 /**

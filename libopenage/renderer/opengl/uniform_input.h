@@ -23,18 +23,29 @@ class GlShaderProgram;
  * Describes OpenGL-specific uniform valuations.
  */
 class GlUniformInput final : public UniformInput {
+private:
+	struct GlUniformOffset {
+		// Offset in the update_data buffer.
+		size_t offset;
+		/// Dtermine whether the uniform value has been set.
+		bool used;
+	};
+
 public:
-	GlUniformInput(std::shared_ptr<ShaderProgram> const &);
+	GlUniformInput(const std::shared_ptr<ShaderProgram> &prog);
 
 	/**
-	 * We store uniform updates lazily. They are only actually uploaded to GPU
-	 * when a draw call is made.
-	 *
-	 * \p update_offs maps the uniform IDs to where their
-	 * value is in \p update_data in terms of a byte-wise offset. This is only a partial
-	 * valuation, so not all uniforms have to be present here.
+	 * Store the IDs of the uniforms from the shader set by this uniform input.
 	 */
-	std::unordered_map<uniform_id_t, size_t> update_offs;
+	std::vector<uniform_id_t> used_uniforms;
+
+	/**
+	 * Store offsets of uniforms in the update_data buffer and
+	 * whether the uniform value has been set.
+	 *
+	 * Index in the vector corresponds to the uniform ID in the shader.
+	 */
+	std::vector<GlUniformOffset> update_offs;
 
 	/**
 	 * Buffer containing untyped uniform update data.

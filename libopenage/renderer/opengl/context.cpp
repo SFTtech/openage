@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #include <array>
 #include <epoxy/gl.h>
@@ -74,6 +74,8 @@ gl_context_spec GlContext::find_spec() {
 	caps.max_texture_slots = temp;
 	glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &temp);
 	caps.max_vertex_attributes = temp;
+	glGetIntegerv(GL_MAX_UNIFORM_LOCATIONS, &temp);
+	caps.max_uniform_locations = temp;
 	glGetIntegerv(GL_MAX_UNIFORM_BUFFER_BINDINGS, &temp);
 	caps.max_uniform_buffer_bindings = temp;
 

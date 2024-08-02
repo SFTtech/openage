@@ -94,39 +94,39 @@ protected:
 	/**
 	 * Set a uniform input variable in the actual shader program.
 	 */
-	virtual void set_i32(std::shared_ptr<UniformInput> const &, const char *, int32_t) = 0;
-	virtual void set_u32(std::shared_ptr<UniformInput> const &, const char *, uint32_t) = 0;
-	virtual void set_f32(std::shared_ptr<UniformInput> const &, const char *, float) = 0;
-	virtual void set_f64(std::shared_ptr<UniformInput> const &, const char *, double) = 0;
-	virtual void set_bool(std::shared_ptr<UniformInput> const &, const char *, bool) = 0;
-	virtual void set_v2f32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector2f const &) = 0;
-	virtual void set_v3f32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector3f const &) = 0;
-	virtual void set_v4f32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector4f const &) = 0;
-	virtual void set_v2i32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector2i const &) = 0;
-	virtual void set_v3i32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector3i const &) = 0;
-	virtual void set_v4i32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector4i const &) = 0;
-	virtual void set_v2ui32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector2<uint32_t> const &) = 0;
-	virtual void set_v3ui32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector3<uint32_t> const &) = 0;
-	virtual void set_v4ui32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Vector4<uint32_t> const &) = 0;
-	virtual void set_m4f32(std::shared_ptr<UniformInput> const &, const char *, Eigen::Matrix4f const &) = 0;
-	virtual void set_tex(std::shared_ptr<UniformInput> const &, const char *, std::shared_ptr<Texture2d> const &) = 0;
+	virtual void set_i32(UniformInput &in, const char *, int32_t) = 0;
+	virtual void set_u32(UniformInput &in, const char *, uint32_t) = 0;
+	virtual void set_f32(UniformInput &in, const char *, float) = 0;
+	virtual void set_f64(UniformInput &in, const char *, double) = 0;
+	virtual void set_bool(UniformInput &in, const char *, bool) = 0;
+	virtual void set_v2f32(UniformInput &in, const char *, Eigen::Vector2f const &) = 0;
+	virtual void set_v3f32(UniformInput &in, const char *, Eigen::Vector3f const &) = 0;
+	virtual void set_v4f32(UniformInput &in, const char *, Eigen::Vector4f const &) = 0;
+	virtual void set_v2i32(UniformInput &in, const char *, Eigen::Vector2i const &) = 0;
+	virtual void set_v3i32(UniformInput &in, const char *, Eigen::Vector3i const &) = 0;
+	virtual void set_v4i32(UniformInput &in, const char *, Eigen::Vector4i const &) = 0;
+	virtual void set_v2ui32(UniformInput &in, const char *, Eigen::Vector2<uint32_t> const &) = 0;
+	virtual void set_v3ui32(UniformInput &in, const char *, Eigen::Vector3<uint32_t> const &) = 0;
+	virtual void set_v4ui32(UniformInput &in, const char *, Eigen::Vector4<uint32_t> const &) = 0;
+	virtual void set_m4f32(UniformInput &in, const char *, Eigen::Matrix4f const &) = 0;
+	virtual void set_tex(UniformInput &in, const char *, std::shared_ptr<Texture2d> const &) = 0;
 
-	virtual void set_i32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, int32_t) = 0;
-	virtual void set_u32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, uint32_t) = 0;
-	virtual void set_f32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, float) = 0;
-	virtual void set_f64(std::shared_ptr<UniformInput> const &, const uniform_id_t &, double) = 0;
-	virtual void set_bool(std::shared_ptr<UniformInput> const &, const uniform_id_t &, bool) = 0;
-	virtual void set_v2f32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector2f const &) = 0;
-	virtual void set_v3f32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector3f const &) = 0;
-	virtual void set_v4f32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector4f const &) = 0;
-	virtual void set_v2i32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector2i const &) = 0;
-	virtual void set_v3i32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector3i const &) = 0;
-	virtual void set_v4i32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector4i const &) = 0;
-	virtual void set_v2ui32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector2<uint32_t> const &) = 0;
-	virtual void set_v3ui32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector3<uint32_t> const &) = 0;
-	virtual void set_v4ui32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Vector4<uint32_t> const &) = 0;
-	virtual void set_m4f32(std::shared_ptr<UniformInput> const &, const uniform_id_t &, Eigen::Matrix4f const &) = 0;
-	virtual void set_tex(std::shared_ptr<UniformInput> const &, const uniform_id_t &, std::shared_ptr<Texture2d> const &) = 0;
+	virtual void set_i32(UniformInput &in, uniform_id_t id, int32_t) = 0;
+	virtual void set_u32(UniformInput &in, uniform_id_t id, uint32_t) = 0;
+	virtual void set_f32(UniformInput &in, uniform_id_t id, float) = 0;
+	virtual void set_f64(UniformInput &in, uniform_id_t id, double) = 0;
+	virtual void set_bool(UniformInput &in, uniform_id_t id, bool) = 0;
+	virtual void set_v2f32(UniformInput &in, uniform_id_t id, Eigen::Vector2f const &) = 0;
+	virtual void set_v3f32(UniformInput &in, uniform_id_t id, Eigen::Vector3f const &) = 0;
+	virtual void set_v4f32(UniformInput &in, uniform_id_t id, Eigen::Vector4f const &) = 0;
+	virtual void set_v2i32(UniformInput &in, uniform_id_t id, Eigen::Vector2i const &) = 0;
+	virtual void set_v3i32(UniformInput &in, uniform_id_t id, Eigen::Vector3i const &) = 0;
+	virtual void set_v4i32(UniformInput &in, uniform_id_t id, Eigen::Vector4i const &) = 0;
+	virtual void set_v2ui32(UniformInput &in, uniform_id_t id, Eigen::Vector2<uint32_t> const &) = 0;
+	virtual void set_v3ui32(UniformInput &in, uniform_id_t id, Eigen::Vector3<uint32_t> const &) = 0;
+	virtual void set_v4ui32(UniformInput &in, uniform_id_t id, Eigen::Vector4<uint32_t> const &) = 0;
+	virtual void set_m4f32(UniformInput &in, uniform_id_t id, Eigen::Matrix4f const &) = 0;
+	virtual void set_tex(UniformInput &in, uniform_id_t id, std::shared_ptr<Texture2d> const &) = 0;
 };
 
 } // namespace renderer
