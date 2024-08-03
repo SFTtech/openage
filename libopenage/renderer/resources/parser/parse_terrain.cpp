@@ -200,8 +200,8 @@ TerrainInfo parse_terrain_file(const util::Path &path,
 		})};
 
 	for (auto line : lines) {
-		// Skip empty lines, lines with carriage returns, and comments
-		if (line.empty() || line.substr(0, 1) == "#" || line[0] == '\r') {
+		// Skip empty lines and comments
+		if (line.empty() || line.substr(0, 1) == "#") {
 			continue;
 		}
 		std::vector<std::string> args{util::split(line, ' ')};
