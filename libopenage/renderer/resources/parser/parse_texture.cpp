@@ -144,15 +144,15 @@ SubtextureData parse_subtex(const std::vector<std::string> &args) {
 	return subtex;
 }
 
-Texture2dInfo parse_texture_file(const util::Path &file) {
-	if (not file.is_file()) [[unlikely]] {
+Texture2dInfo parse_texture_file(const util::Path &path) {
+	if (not path.is_file()) [[unlikely]] {
 		throw Error(MSG(err) << "Reading .texture file '"
-		                     << file.get_name()
+		                     << path.get_name()
 		                     << "' failed. Reason: File not found");
 	}
 
-	auto content = file.open();
-	auto lines = content.get_lines();
+	auto file = path.open();
+	auto lines = util::split_newline(file.read());
 
 	std::string imagefile;
 	SizeData size;
@@ -165,7 +165,7 @@ Texture2dInfo parse_texture_file(const util::Path &file) {
 
 			if (version_no != 1) {
 				throw Error(MSG(err) << "Reading .texture file '"
-			                         << file.get_name()
+			                         << path.get_name()
 			                         << "' failed. Reason: Version "
 			                         << version_no << " not supported");
 			}
@@ -193,7 +193,7 @@ Texture2dInfo parse_texture_file(const util::Path &file) {
 		// TODO: Avoid double lookup with keywordfuncs.find(args[0])
 		if (not keywordfuncs.contains(args[0])) [[unlikely]] {
 			throw Error(MSG(err) << "Reading .texture file '"
-			                     << file.get_name()
+			                     << path.get_name()
 			                     << "' failed. Reason: Keyword "
 			                     << args[0] << " is not defined");
 		}
@@ -213,7 +213,7 @@ Texture2dInfo parse_texture_file(const util::Path &file) {
 		                      size.height);
 	}
 
-	auto imagepath = file.get_parent() / imagefile;
+	auto imagepath = path.get_parent() / imagefile;
 
 	auto align = guess_row_alignment(size.width);
 	return Texture2dInfo(size.width, size.height, pxformat.format, imagepath, align, std::move(subinfos));

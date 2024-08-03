@@ -134,16 +134,16 @@ FrameData parse_frame(const std::vector<std::string> &args) {
 	return frame;
 }
 
-Animation2dInfo parse_sprite_file(const util::Path &file,
+Animation2dInfo parse_sprite_file(const util::Path &path,
                                   const std::shared_ptr<AssetCache> &cache) {
-	if (not file.is_file()) [[unlikely]] {
+	if (not path.is_file()) [[unlikely]] {
 		throw Error(MSG(err) << "Reading .sprite file '"
-		                     << file.get_name()
+		                     << path.get_name()
 		                     << "' failed. Reason: File not found");
 	}
 
-	auto content = file.open();
-	auto lines = content.get_lines();
+	auto file = path.open();
+	auto lines = util::split_newline(file.read());
 
 	float scalefactor = 1.0;
 	std::vector<TextureData> textures;
@@ -162,7 +162,7 @@ Animation2dInfo parse_sprite_file(const util::Path &file,
 
 			if (version_no != 2) {
 				throw Error(MSG(err) << "Reading .sprite file '"
-			                         << file.get_name()
+			                         << path.get_name()
 			                         << "' failed. Reason: Version "
 			                         << version_no << " not supported");
 			}
@@ -204,7 +204,7 @@ Animation2dInfo parse_sprite_file(const util::Path &file,
 		// TODO: Avoid double lookup with keywordfuncs.find(args[0])
 		if (not keywordfuncs.contains(args[0])) [[unlikely]] {
 			throw Error(MSG(err) << "Reading .sprite file '"
-			                     << file.get_name()
+			                     << path.get_name()
 			                     << "' failed. Reason: Keyword "
 			                     << args[0] << " is not defined");
 		}
@@ -317,7 +317,7 @@ Animation2dInfo parse_sprite_file(const util::Path &file,
 	// Parse textures
 	std::vector<std::shared_ptr<Texture2dInfo>> texture_infos;
 	for (auto texture : textures) {
-		util::Path texturepath = (file.get_parent() / texture.path);
+		util::Path texturepath = (path.get_parent() / texture.path);
 
 		if (cache && cache->check_texture_cache(texturepath)) {
 			// already loaded
