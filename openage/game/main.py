@@ -1,4 +1,4 @@
-# Copyright 2015-2023 the openage authors. See copying.md for legal info.
+# Copyright 2015-2024 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals
 
@@ -79,7 +79,13 @@ def main(args, error):
 
     # ensure that the assets have been converted
     if conversion_required(asset_path):
+        # TODO: Run conversion for mods specified in args.modpacks
         convert_assets(asset_path, args)
+
+    # else
+    #    for modpack in args.modpacks:
+    #        if check_modpack_outdated():
+    #            convert_assets(asset_path, args)
 
     # modpacks
     mods = []

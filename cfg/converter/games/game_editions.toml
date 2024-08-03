@@ -101,6 +101,8 @@ expansions      = []
     "C:/Program Files (x86)/Microsoft Games/Age of Empires II",
   ]
 
+  [AOK.targetmods]
+
 
 [AOE1DE]
 name            = "Age of Empires 1: Definitive Edition (Steam)"

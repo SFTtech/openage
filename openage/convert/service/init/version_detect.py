@@ -1,4 +1,4 @@
-# Copyright 2020-2023 the openage authors. See copying.md for legal info.
+# Copyright 2020-2024 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-arguments,too-many-locals,too-many-branches
 """
@@ -180,7 +180,7 @@ def create_game_obj(
     game_name = game_info['name']
     game_id = game_info['game_edition_id']
     support = game_info['support']
-    modpacks = game_info['targetmod']
+    modpacks = game_info['targetmods']
     if not expansion:
         expansions = game_info['expansions']
 

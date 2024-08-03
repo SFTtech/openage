@@ -10,8 +10,6 @@ from __future__ import annotations
 import typing
 import timeit
 
-from openage.convert.service import export
-
 
 from ...log import info, dbg
 from ..processor.export.modpack_exporter import ModpackExporter
