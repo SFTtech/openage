@@ -10,6 +10,8 @@ from __future__ import annotations
 import typing
 import timeit
 
+from openage.convert.service import export
+
 
 from ...log import info, dbg
 from ..processor.export.modpack_exporter import ModpackExporter
@@ -99,14 +101,17 @@ def convert_metadata(args: Namespace) -> None:
 
     export_start = timeit.default_timer()
     for modpack in modpacks:
+        mod_export_start = timeit.default_timer()
         ModpackExporter.export(modpack, args)
         debug_modpack(args.debugdir, args.debug_info, modpack)
 
-        export_end = timeit.default_timer()
+        mod_export_end = timeit.default_timer()
         info("Finished export of modpack '%s' v%s (%.2f seconds)",
              modpack.info.packagename,
              modpack.info.version,
-             export_end - export_start)
+             mod_export_end - mod_export_start)
+
+    export_end = timeit.default_timer()
 
     stages_time = {
         "read": read_end - read_start,
