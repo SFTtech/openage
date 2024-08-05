@@ -31,6 +31,11 @@ def init_subparser(cli: ArgumentParser) -> None:
         "--modpacks", nargs="+", required=True, type=str,
         help="list of modpacks to load")
 
+    cli.add_argument(
+        "--check-updates", action='store_true',
+        help="Check if the assets are up to date"
+    )
+
 
 def main(args, error):
     """
@@ -46,6 +51,7 @@ def main(args, error):
     from ..assets import get_asset_path
     from ..convert.tool.api_export import export_api
     from ..convert.service.init.api_export_required import api_export_required
+    from ..convert.service.init.changelog import check_updates
     from ..convert.service.init.modpack_search import enumerate_modpacks
     from ..cppinterface.setup import setup as cpp_interface_setup
     from ..cvar.location import get_config_path
@@ -84,6 +90,10 @@ def main(args, error):
     for modpack in args.modpacks:
         if modpack not in available_modpacks:
             raise FileNotFoundError(f"Modpack '{modpack}' not found in {modpack_dir}")
+
+    # check if the converted modpacks are up to date
+    if args.check_updates:
+        check_updates(available_modpacks, args.cfg_dir / "converter" / "games")
 
     # encode modpacks as bytes for the C++ interface
     args.modpacks = [modpack.encode('utf-8') for modpack in args.modpacks]

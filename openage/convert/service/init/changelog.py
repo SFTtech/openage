@@ -12,7 +12,6 @@ from openage.util.version import SemanticVersion
 
 from ....log import info
 
-from .modpack_search import enumerate_modpacks
 from ..init.version_detect import create_version_objects
 
 
@@ -20,15 +19,14 @@ if typing.TYPE_CHECKING:
     from openage.util.fslike.union import UnionPath
 
 
-def check_updates(modpack_dir: UnionPath, game_info_dir: UnionPath):
+def check_updates(available_modpacks: dict[str, str], game_info_dir: UnionPath):
     """
     Check if there are updates available for the openage converter modpacks.
 
-    :param modpack_dir: The directory containing the modpacks.
+    :param available_modpacks: Available modpacks and their versions. Modpack names are keys,
+                               versions are values.
     :param game_info_dir: The directory containing the game information.
     """
-    available_modpacks = enumerate_modpacks(modpack_dir, exclude={"engine"})
-
     game_editions, game_expansions = create_version_objects(game_info_dir)
     for game_def in chain(game_editions, game_expansions):
         for targetmod_name, targetmod_def in game_def.target_modpacks.items():

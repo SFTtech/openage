@@ -44,6 +44,7 @@ def main(args, error):
     from ..assets import get_asset_path
     from ..convert.main import convert_assets
     from ..convert.service.init.api_export_required import api_export_required
+    from ..convert.service.init.changelog import check_updates
     from ..convert.service.init.modpack_search import enumerate_modpacks, query_modpack
     from ..convert.tool.api_export import export_api
     from ..convert.tool.subtool.acquire_sourcedir import wanna_convert
@@ -88,6 +89,9 @@ def main(args, error):
         if not args.modpacks:
             info("Starting bare 'engine' mode")
             args.modpacks = ["engine"]
+
+    # check if the converted modpacks are up to date
+    check_updates(available_modpacks, args.cfg_dir / "converter" / "games")
 
     # pass modpacks to engine
     if args.modpacks:

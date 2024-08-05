@@ -15,9 +15,10 @@ from ..util.fslike.directory import CaseIgnoringDirectory
 from ..util.fslike.wrapper import (DirectoryCreator,
                                    Synchronizer as AccessSynchronizer)
 from .service.debug_info import debug_cli_args, debug_game_version, debug_mounts
+from .service.init.changelog import check_updates
+from .service.init.modpack_search import enumerate_modpacks
 from .service.init.mount_asset_dirs import mount_asset_dirs
 from .service.init.version_detect import create_version_objects
-from .service.init.changelog import check_updates
 from .tool.interactive import interactive_browser
 from .tool.subtool.acquire_sourcedir import acquire_conversion_source_dir, wanna_convert, \
     wanna_check_updates
@@ -285,7 +286,10 @@ def main(args, error):
     if args.check_updates or (args.show_prompts and wanna_check_updates()):
         # check if the assets are up to date
         modpack_dir = outdir / "converted"
+        available_modpacks = enumerate_modpacks(modpack_dir, exclude={"engine"})
+
         game_info_dir = args.cfg_dir / "converter" / "games"
-        check_updates(modpack_dir, game_info_dir)
+
+        check_updates(available_modpacks, game_info_dir)
 
     return 0
