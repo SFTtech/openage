@@ -63,9 +63,11 @@ def convert_metadata(args: Namespace) -> None:
     if gamedata_path.exists():
         gamedata_path.removerecursive()
 
-    read_start = timeit.default_timer()
+    # Record time taken for each stage
+    stages_time = {}
 
     # Read .dat
+    stage_start = timeit.default_timer()
     debug_gamedata_format(args.debugdir, args.debug_info, args.game_version)
     gamespec = get_gamespec(args.srcdir, args.game_version, not args.flag("no_pickle_cache"))
 
@@ -84,20 +86,23 @@ def convert_metadata(args: Namespace) -> None:
     existing_graphics = get_existing_graphics(args)
     debug_registered_graphics(args.debugdir, args.debug_info, existing_graphics)
 
-    read_end = timeit.default_timer()
-    info("Finished metadata read (%.2f seconds)", read_end - read_start)
+    stage_end = timeit.default_timer()
+    info("Finished metadata read (%.2f seconds)", stage_end - stage_start)
+    stages_time.update({"read": stage_end - stage_start})
 
-    conversion_start = timeit.default_timer()
-    # Convert
+    # nyan conversion
+    stage_start = timeit.default_timer()
     modpacks = args.converter.convert(gamespec,
                                       args,
                                       string_resources,
                                       existing_graphics)
 
-    conversion_end = timeit.default_timer()
-    info("Finished data conversion (%.2f seconds)", conversion_end - conversion_start)
+    stage_end = timeit.default_timer()
+    info("Finished data conversion (%.2f seconds)", stage_end - stage_start)
+    stages_time.update({"convert": stage_end - stage_start})
 
-    export_start = timeit.default_timer()
+    # Export modpacks
+    stage_start = timeit.default_timer()
     for modpack in modpacks:
         mod_export_start = timeit.default_timer()
         ModpackExporter.export(modpack, args)
@@ -109,13 +114,10 @@ def convert_metadata(args: Namespace) -> None:
              modpack.info.version,
              mod_export_end - mod_export_start)
 
-    export_end = timeit.default_timer()
+    stage_end = timeit.default_timer()
+    info("Finished export (%.2f seconds)", stage_end - stage_start)
+    stages_time.update({"export": stage_end - stage_start})
 
-    stages_time = {
-        "read": read_end - read_start,
-        "convert": conversion_end - conversion_start,
-        "export": export_end - export_start,
-    }
     debug_execution_time(args.debugdir, args.debug_info, stages_time)
 
     # TODO: player palettes
