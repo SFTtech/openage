@@ -15,11 +15,12 @@ from ..util.fslike.directory import CaseIgnoringDirectory
 from ..util.fslike.wrapper import (DirectoryCreator,
                                    Synchronizer as AccessSynchronizer)
 from .service.debug_info import debug_cli_args, debug_game_version, debug_mounts
-from .service.init.conversion_required import conversion_required
 from .service.init.mount_asset_dirs import mount_asset_dirs
 from .service.init.version_detect import create_version_objects
+from .service.init.changelog import check_updates
 from .tool.interactive import interactive_browser
-from .tool.subtool.acquire_sourcedir import acquire_conversion_source_dir, wanna_convert
+from .tool.subtool.acquire_sourcedir import acquire_conversion_source_dir, wanna_convert, \
+    wanna_check_updates
 from .tool.subtool.version_select import get_game_version
 
 if typing.TYPE_CHECKING:
@@ -238,6 +239,16 @@ def init_subparser(cli: ArgumentParser):
         "--export-api", action='store_true',
         help="Export the openage nyan API definition as a modpack")
 
+    cli.add_argument(
+        "--check-updates", action='store_true',
+        help="Check if the assets are up to date"
+    )
+
+    cli.add_argument(
+        "--no-prompts", action='store_false', dest='show_prompts',
+        help="Disable user prompts"
+    )
+
 
 def main(args, error):
     """ CLI entry point """
@@ -268,11 +279,13 @@ def main(args, error):
     from ..assets import get_asset_path
     outdir = get_asset_path(args.output_dir)
 
-    if args.force or wanna_convert() or conversion_required(outdir):
+    if args.force or (args.show_prompts and wanna_convert()):
         convert_assets(outdir, args, srcdir)
 
-    else:
-        print("assets are up to date; no conversion is required.")
-        print("override with --force.")
+    if args.check_updates or (args.show_prompts and wanna_check_updates()):
+        # check if the assets are up to date
+        modpack_dir = outdir / "converted"
+        game_info_dir = args.cfg_dir / "converter" / "games"
+        check_updates(modpack_dir, game_info_dir)
 
     return 0

@@ -1,4 +1,4 @@
-# Copyright 2020-2023 the openage authors. See copying.md for legal info.
+# Copyright 2020-2024 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-branches
 
@@ -21,7 +21,6 @@ import tempfile
 from urllib.request import urlopen
 
 from ....log import warn, info, dbg
-from ....util.files import which
 from ....util.fslike.directory import CaseIgnoringDirectory, Directory
 
 if typing.TYPE_CHECKING:
@@ -48,106 +47,45 @@ def expand_relative_path(path: str) -> AnyStr:
     return os.path.realpath(os.path.expandvars(os.path.expanduser(path)))
 
 
-def wanna_convert() -> bool:
+def prompt(msg: str, answer: typing.Union[bool, None] = None) -> bool:
+    """
+    Ask the user a yes/no question.
+
+    :param msg: Message to display.
+    :param answer: Pre-determined answer (optional).
+    """
+    while answer is None:
+        print(f"  {msg} [Y/n]")
+
+        user_selection = input("> ")
+        if user_selection.lower() in {"yes", "y", ""}:
+            answer = True
+
+        elif user_selection.lower() in {"no", "n"}:
+            answer = False
+
+    return answer
+
+
+def wanna_convert(answer: typing.Union[bool, None] = None) -> bool:
     """
     Ask the user if assets should be converted.
     """
-    answer = None
-    while answer is None:
-        print("  Do you want to convert assets? [Y/n]")
-
-        user_selection = input("> ")
-        if user_selection.lower() in {"yes", "y", ""}:
-            answer = True
-
-        elif user_selection.lower() in {"no", "n"}:
-            answer = False
-
-    return answer
+    return prompt("Do you want to convert assets?", answer=answer)
 
 
-def wanna_download_trial() -> bool:
+def wanna_check_updates(answer: typing.Union[bool, None] = None) -> bool:
+    """
+    Ask the user if they want to check for updates.
+    """
+    return prompt("Do you want to check for updates?", answer=answer)
+
+
+def wanna_download_trial(answer: typing.Union[bool, None] = None) -> bool:
     """
     Ask the user if the AoC trial should be downloaded.
     """
-    answer = None
-    while answer is None:
-        print("  Do you want to download the AoC trial version? [Y/n]")
-
-        user_selection = input("> ")
-        if user_selection.lower() in {"yes", "y", ""}:
-            answer = True
-
-        elif user_selection.lower() in {"no", "n"}:
-            answer = False
-
-    return answer
-
-
-def wanna_use_wine() -> bool:
-    """
-    Ask the user if wine should be used.
-    Wine is not used if user has no wine installed.
-    """
-
-    # TODO: a possibility to call different wine binaries
-    # (e.g. wine-devel from wine upstream debian repos)
-
-    if not which("wine"):
-        return False
-
-    answer = None
-    long_prompt = True
-    while answer is None:
-        if long_prompt:
-            print(
-                "  Should we call wine to determine an AOE installation? [Y/n]")
-            long_prompt = False
-        else:
-            # TODO: text-adventure here
-            print("  Don't know what you want. Use wine? [Y/n]")
-
-        user_selection = input("> ")
-        if user_selection.lower() in {"yes", "y", ""}:
-            answer = True
-
-        elif user_selection.lower() in {"no", "n"}:
-            answer = False
-
-    return answer
-
-
-def set_custom_wineprefix() -> None:
-    """
-    Allow the customization of the WINEPREFIX environment variable.
-    """
-
-    print("The WINEPREFIX is a separate 'container' for windows "
-          "software installations.")
-
-    current_wineprefix = os.environ.get("WINEPREFIX")
-    if current_wineprefix:
-        print(f"Currently: WINEPREFIX='{current_wineprefix}'")
-
-    print("Enter a custom value or leave empty to keep it as-is:")
-    while True:
-        new_wineprefix = input("WINEPREFIX=")
-
-        if not new_wineprefix:
-            break
-
-        new_wineprefix = expand_relative_path(new_wineprefix)
-
-        # test if it probably is a wineprefix
-        if (Path(new_wineprefix) / "drive_c").is_dir():  # pylint: disable=no-member
-            break
-
-        print("This does not appear to be a valid WINEPREFIX.")
-        print("Enter a valid one, or leave it empty to skip.")
-
-    # store the updated env variable for the wine subprocess
-    if new_wineprefix:
-        os.environ["WINEPREFIX"] = new_wineprefix
+    return prompt("Do you want to download the AoC trial version?", answer=answer)
 
 
 def query_source_dir(proposals: set[str]) -> AnyStr:

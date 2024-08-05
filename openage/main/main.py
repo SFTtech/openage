@@ -1,4 +1,4 @@
-# Copyright 2015-2023 the openage authors. See copying.md for legal info.
+# Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 """
 Main engine entry point for openage.
@@ -25,7 +25,7 @@ def init_subparser(cli: ArgumentParser):
         help="run without displaying graphics")
 
     cli.add_argument(
-        "--modpacks", nargs="+",
+        "--modpacks", nargs="+", type=str,
         help="list of modpacks to load")
 
 
@@ -42,8 +42,9 @@ def main(args, error):
     from .main_cpp import run_game
     from .. import config
     from ..assets import get_asset_path
-    from ..convert.main import conversion_required, convert_assets
+    from ..convert.main import convert_assets
     from ..convert.service.init.api_export_required import api_export_required
+    from ..convert.service.init.modpack_search import enumerate_modpacks, query_modpack
     from ..convert.tool.api_export import export_api
     from ..convert.tool.subtool.acquire_sourcedir import wanna_convert
     from ..cppinterface.setup import setup as cpp_interface_setup
@@ -77,22 +78,29 @@ def main(args, error):
         converted_path.mkdirs()
         export_api(converted_path)
 
-    # ensure that the assets have been converted
-    if wanna_convert() or conversion_required(asset_path):
+    # check if modpacks need to be converted
+    if wanna_convert():
         convert_assets(asset_path, args)
+
+    available_modpacks = enumerate_modpacks(asset_path / "converted", exclude={"engine"})
+    if len(available_modpacks) == 0:
+        info("No modpacks have been found")
+        if not args.modpacks:
+            info("Starting bare 'engine' mode")
+            args.modpacks = ["engine"]
 
     # pass modpacks to engine
     if args.modpacks:
-        mods = []
+        # ensure that specified modpacks are available
         for modpack in args.modpacks:
-            mods.append(modpack.encode("utf-8"))
+            if modpack not in available_modpacks:
+                raise FileNotFoundError(
+                    f"Modpack '{modpack}' not found in {asset_path / 'converted'}")
 
-        args.modpacks = mods
+        args.modpacks = [modpack.encode("utf-8") for modpack in args.modpacks]
 
     else:
-        from ..convert.service.init.modpack_search import enumerate_modpacks, query_modpack
-        avail_modpacks = enumerate_modpacks(asset_path / "converted")
-        args.modpacks = [query_modpack(avail_modpacks).encode("utf-8")]
+        args.modpacks = [query_modpack(list(available_modpacks.keys())).encode("utf-8")]
 
     # start the game, continue in main_cpp.pyx!
     return run_game(args, root)

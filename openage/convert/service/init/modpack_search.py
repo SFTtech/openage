@@ -14,27 +14,35 @@ if typing.TYPE_CHECKING:
     from openage.util.fslike.union import UnionPath
 
 
-def enumerate_modpacks(modpacks_dir: UnionPath) -> set[str]:
+def enumerate_modpacks(modpacks_dir: UnionPath, exclude: set[str] = None) -> dict[str, str]:
     """
     Enumerate openage modpacks in a directory.
 
     :param asset_dir: The asset directory to search in.
     :type asset_dir: UnionPath
-    :returns: A list of modpack names that were found.
-    :rtype: set[str]
+    :param exclude: Modpack names to exclude from the enumeration.
+    :type exclude: set[str]
+    :returns: Modpacks that were found. Names are keys, versions are values.
+    :rtype: dict[str, str]
     """
     if not modpacks_dir.exists():
         info("openage modpack directory has not been created yet")
         raise FileNotFoundError("openage modpack directory not found")
 
-    modpacks: set[str] = set()
+    modpacks: dict[str] = {}
     for check_dir in modpacks_dir.iterdir():
         if check_dir.is_dir():
             try:
                 modpack_info = get_modpack_info(check_dir)
                 modpack_name = modpack_info["info"]["name"]
-                info("Found modpack %s", modpack_name)
-                modpacks.add(modpack_name)
+                modpack_version = modpack_info["info"]["version"]
+                info("Found modpack %s v%s", modpack_name, modpack_version)
+
+                if exclude is not None and modpack_name in exclude:
+                    dbg("Excluding modpack %s from enumeration", modpack_name)
+                    continue
+
+                modpacks.update({modpack_name: modpack_version})
 
             except (FileNotFoundError, TypeError, toml.TomlDecodeError):
                 dbg("No modpack found in directory: %s", check_dir)
@@ -81,7 +89,7 @@ def get_modpack_info(modpack_dir: UnionPath) -> dict[str, typing.Any]:
         raise err
 
 
-def query_modpack(proposals: set[str]) -> str:
+def query_modpack(proposals: list[str]) -> str:
     """
     Query interactively for a modpack from a selection of proposals.
     """
