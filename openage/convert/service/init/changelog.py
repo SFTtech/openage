@@ -32,7 +32,14 @@ def check_updates(available_modpacks: dict[str, str], game_info_dir: UnionPath):
         for targetmod_name, targetmod_def in game_def.target_modpacks.items():
             if targetmod_name in available_modpacks:
                 converter_version = SemanticVersion(targetmod_def["version"])
-                modpack_version = SemanticVersion(available_modpacks[targetmod_name])
+                try:
+                    modpack_version = SemanticVersion(available_modpacks[targetmod_name])
+
+                except ValueError:
+                    # Some really old converted modpacks don't use semantic versioning
+                    # these should always be updated
+                    modpack_version = SemanticVersion("0.0.0")
+
                 if converter_version > modpack_version:
                     info(("Modpack %s v%s is outdated: "
                           "newer version v%s is available"),
