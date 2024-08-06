@@ -40,7 +40,7 @@ blending_mask parse_mask(const std::vector<std::string> &args) {
 	if (args[0].starts_with("0b")) {
 		// discard prefix because std::stoul doesn't understand binary prefixes
 		std::string strip = args[0].substr(2, args[2].size() - 1);
-		dir = std::stoul(args[0], nullptr, 2);
+		dir = std::stoul(strip, nullptr, 2);
 	}
 	else {
 		dir = std::stoul(args[0]);
