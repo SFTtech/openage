@@ -143,7 +143,7 @@ Animation2dInfo parse_sprite_file(const util::Path &path,
 	}
 
 	auto file = path.open();
-	auto lines = util::split_newline(file.read());
+	auto lines = file.get_lines();
 
 	float scalefactor = 1.0;
 	std::vector<TextureData> textures;

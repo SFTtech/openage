@@ -147,7 +147,7 @@ Texture2dInfo parse_texture_file(const util::Path &path) {
 	}
 
 	auto file = path.open();
-	auto lines = util::split_newline(file.read());
+	auto lines = file.get_lines();
 
 	std::string imagefile;
 	SizeData size;

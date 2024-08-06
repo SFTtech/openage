@@ -76,7 +76,7 @@ BlendTableInfo parse_blendtable_file(const util::Path &path,
 	}
 
 	auto file = path.open();
-	auto lines = util::split_newline(file.read());
+	auto lines = file.get_lines();
 
 	std::vector<size_t> blendtable;
 	std::vector<PatternData> patterns;

@@ -71,7 +71,7 @@ PaletteInfo parse_palette_file(const util::Path &path) {
 	}
 
 	auto file = path.open();
-	auto lines = util::split_newline(file.read());
+	auto lines = file.get_lines();
 
 	size_t entries = 0;
 	std::vector<uint8_t> colours;
