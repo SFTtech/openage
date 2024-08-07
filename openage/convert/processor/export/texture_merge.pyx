@@ -1,4 +1,4 @@
-# Copyright 2014-2023 the openage authors. See copying.md for legal info.
+# Copyright 2014-2024 the openage authors. See copying.md for legal info.
 #
 # cython: infer_types=True
 # pylint: disable=too-many-locals
@@ -9,14 +9,15 @@ a terrain texture.
 import numpy
 from enum import Enum
 
-from ....log import spam
-from ...entity_object.export.texture import TextureImage
-from ...service.export.png.binpack cimport Packer, DeterministicPacker, RowPacker, ColumnPacker, BinaryTreePacker, BestPacker
-from ...value_object.read.media.hardcoded.texture import (MAX_TEXTURE_DIMENSION, MARGIN,
-                                                          TERRAIN_ASPECT_RATIO)
-
 cimport cython
 cimport numpy
+
+from ....log import spam
+from ...service.export.png.binpack cimport block
+from ...entity_object.export.texture import TextureImage
+from ...service.export.png.binpack cimport DeterministicPacker, RowPacker, ColumnPacker, BinaryTreePacker, BestPacker
+from ...value_object.read.media.hardcoded.texture import (MAX_TEXTURE_DIMENSION, MARGIN,
+                                                          TERRAIN_ASPECT_RATIO)
 
 class PackerType(Enum):
     """
@@ -57,6 +58,7 @@ cdef void cmerge_frames(texture, packer_type=PackerType.BINPACK, cache=None) exc
     :type cache: list
     """
     cdef list frames = texture.frames
+    cdef list blocks = [block(idx, frame.width, frame.height) for idx, frame in enumerate(frames)]
 
     if len(frames) == 0:
         raise ValueError("cannot create texture with empty input frame list")
@@ -64,7 +66,7 @@ cdef void cmerge_frames(texture, packer_type=PackerType.BINPACK, cache=None) exc
     cdef BestPacker packer
 
     if cache:
-        packer = BestPacker([DeterministicPacker(margin=MARGIN,hints=cache)])
+        packer = BestPacker([DeterministicPacker(margin=MARGIN, hints=cache)])
 
     else:
         if packer_type == PackerType.ROW:
@@ -81,7 +83,7 @@ cdef void cmerge_frames(texture, packer_type=PackerType.BINPACK, cache=None) exc
                                  RowPacker(margin=MARGIN),
                                  ColumnPacker(margin=MARGIN)])
 
-    packer.pack(frames)
+    packer.pack(blocks)
 
     cdef int width = packer.width()
     cdef int height = packer.height()
@@ -106,11 +108,11 @@ cdef void cmerge_frames(texture, packer_type=PackerType.BINPACK, cache=None) exc
     cdef int sub_h
 
     cdef list drawn_frames_meta = []
-    for sub_frame in frames:
+    for index, sub_frame in enumerate(frames):
         sub_w = sub_frame.width
         sub_h = sub_frame.height
 
-        pos_x, pos_y = packer.pos(sub_frame)
+        pos_x, pos_y = packer.pos(index)
 
         spam("drawing frame %03d on atlas at %d x %d...",
              len(drawn_frames_meta), pos_x, pos_y)
@@ -143,4 +145,4 @@ cdef void cmerge_frames(texture, packer_type=PackerType.BINPACK, cache=None) exc
     if isinstance(packer, BestPacker):
         # Only generate these values if no custom packer was used
         # TODO: It might make sense to do it anyway for debugging purposes
-        texture.best_packer_hints = packer.get_mapping_hints(frames)
+        texture.best_packer_hints = packer.get_mapping_hints(blocks)
