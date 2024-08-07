@@ -1,17 +1,17 @@
-// Copyright 2013-2023 the openage authors. See copying.md for legal info.
+// Copyright 2013-2024 the openage authors. See copying.md for legal info.
 
 #include "strings.h"
 
-#include <cstdlib>
 #include <cstdio>
+#include <cstdlib>
 #include <cstring>
 #include <memory>
 #include <string>
 #include <vector>
 
-#include "config.h"
 #include "../error/error.h"
 #include "compiler.h"
+#include "config.h"
 
 namespace openage::util {
 
@@ -72,12 +72,10 @@ size_t rstrip(char *s) {
 	size_t strippedlen = strlen(s);
 
 	while (strippedlen > 0) {
-		if (s[strippedlen - 1] == '\n' ||
-		    s[strippedlen - 1] == ' '  ||
-		    s[strippedlen - 1] == '\t') {
-
+		if (s[strippedlen - 1] == '\n' || s[strippedlen - 1] == ' ' || s[strippedlen - 1] == '\t') {
 			strippedlen -= 1;
-		} else {
+		}
+		else {
 			break;
 		}
 	}
@@ -141,7 +139,6 @@ std::vector<std::string> split(const std::string &txt, char delimiter) {
 
 
 std::vector<std::string> split_escape(const std::string &txt, char delim, size_t size_hint) {
-
 	// output vector
 	std::vector<std::string> items;
 	if (size_hint) [[likely]] {
@@ -161,7 +158,6 @@ std::vector<std::string> split_escape(const std::string &txt, char delim, size_t
 	// copy characters to buf, and a buf is emitted as a token
 	// when the delimiter or end is reached.
 	while (true) {
-
 		// end of input string
 		if (*r == '\0') {
 			items.emplace_back(std::begin(buf), std::end(buf));
@@ -210,4 +206,17 @@ std::vector<std::string> split_escape(const std::string &txt, char delim, size_t
 	return items;
 }
 
-} // openage::util
+std::vector<std::string> split_newline(const std::string &txt) {
+	auto lines = split(txt, '\n');
+
+	// remove the '\r' from the end of each line
+	for (auto &line : lines) {
+		if (not line.empty() and line.back() == '\r') {
+			line.pop_back();
+		}
+	}
+
+	return lines;
+}
+
+} // namespace openage::util

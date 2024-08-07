@@ -1,4 +1,4 @@
-// Copyright 2013-2019 the openage authors. See copying.md for legal info.
+// Copyright 2013-2024 the openage authors. See copying.md for legal info.
 
 #include "file.h"
 
@@ -9,11 +9,13 @@
 #include <sys/types.h>
 #include <utility>
 
-#include "path.h"
-#include "filelike/native.h"
-#include "filelike/python.h"
-#include "../error/error.h"
-#include "../log/log.h"
+#include "error/error.h"
+#include "log/log.h"
+
+#include "util/filelike/native.h"
+#include "util/filelike/python.h"
+#include "util/path.h"
+#include "util/strings.h"
 
 
 namespace openage::util {
@@ -23,8 +25,7 @@ File::File() = default;
 
 
 // yes. i'm sorry. but cython can't enum class yet.
-File::File(const std::string &path, int mode)
-	:
+File::File(const std::string &path, int mode) :
 	File{path, static_cast<mode_t>(mode)} {}
 
 
@@ -33,8 +34,7 @@ File::File(const std::string &path, mode_t mode) {
 }
 
 
-File::File(std::shared_ptr<filelike::FileLike> filelike)
-	:
+File::File(std::shared_ptr<filelike::FileLike> filelike) :
 	filelike{filelike} {}
 
 
@@ -102,13 +102,7 @@ std::vector<std::string> File::get_lines() {
 	// TODO: relay the get_lines to the underlaying filelike
 	//       which may do a better job in getting the lines.
 	//       instead, we read everything and then split up into lines.
-	std::string line;
-	std::vector<std::string> result{};
-	std::istringstream content{this->read()};
-
-	while (std::getline(content, line)) {
-		result.push_back(line);
-	}
+	std::vector<std::string> result = util::split_newline(this->read());
 
 	return result;
 }
@@ -119,7 +113,7 @@ std::shared_ptr<filelike::FileLike> File::get_fileobj() const {
 }
 
 
-std::ostream &operator <<(std::ostream &stream, const File &file) {
+std::ostream &operator<<(std::ostream &stream, const File &file) {
 	stream << "File(";
 	file.filelike->repr(stream);
 	stream << ")";
@@ -128,4 +122,4 @@ std::ostream &operator <<(std::ostream &stream, const File &file) {
 }
 
 
-} // openage::util
+} // namespace openage::util

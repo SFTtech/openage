@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #include "parse_blendmask.h"
 
@@ -40,7 +40,7 @@ blending_mask parse_mask(const std::vector<std::string> &args) {
 	if (args[0].starts_with("0b")) {
 		// discard prefix because std::stoul doesn't understand binary prefixes
 		std::string strip = args[0].substr(2, args[2].size() - 1);
-		dir = std::stoul(args[0], nullptr, 2);
+		dir = std::stoul(strip, nullptr, 2);
 	}
 	else {
 		dir = std::stoul(args[0]);
@@ -58,16 +58,16 @@ blending_mask parse_mask(const std::vector<std::string> &args) {
 	return mask;
 }
 
-BlendPatternInfo parse_blendmask_file(const util::Path &file,
+BlendPatternInfo parse_blendmask_file(const util::Path &path,
                                       const std::shared_ptr<AssetCache> &cache) {
-	if (not file.is_file()) [[unlikely]] {
+	if (not path.is_file()) [[unlikely]] {
 		throw Error(MSG(err) << "Reading .blmask file '"
-		                     << file.get_name()
+		                     << path.get_name()
 		                     << "' failed. Reason: File not found");
 	}
 
-	auto content = file.open();
-	auto lines = content.get_lines();
+	auto file = path.open();
+	auto lines = file.get_lines();
 
 	float scalefactor = 1.0;
 	std::vector<TextureData> textures;
@@ -79,7 +79,7 @@ BlendPatternInfo parse_blendmask_file(const util::Path &file,
 
 			if (version_no != 2) {
 				throw Error(MSG(err) << "Reading .blmask file '"
-			                         << file.get_name()
+			                         << path.get_name()
 			                         << "' failed. Reason: Version "
 			                         << version_no << " not supported");
 			}
@@ -104,7 +104,7 @@ BlendPatternInfo parse_blendmask_file(const util::Path &file,
 		// TODO: Avoid double lookup with keywordfuncs.find(args[0])
 		if (not keywordfuncs.contains(args[0])) [[unlikely]] {
 			throw Error(MSG(err) << "Reading .blmask file '"
-			                     << file.get_name()
+			                     << path.get_name()
 			                     << "' failed. Reason: Keyword "
 			                     << args[0] << " is not defined");
 		}
@@ -128,7 +128,7 @@ BlendPatternInfo parse_blendmask_file(const util::Path &file,
 	// Parse textures
 	std::vector<std::shared_ptr<Texture2dInfo>> texture_infos;
 	for (auto texture : textures) {
-		util::Path texturepath = (file.get_parent() / texture.path);
+		util::Path texturepath = (path.get_parent() / texture.path);
 
 		if (cache && cache->check_texture_cache(texturepath)) {
 			// already loaded

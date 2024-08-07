@@ -116,5 +116,10 @@ std::vector<std::string> split_escape(const std::string &txt,
                                       char delim,
                                       size_t size_hint = 0);
 
+/**
+ * Newline splitter that works with both \n and \r\n.
+ */
+std::vector<std::string> split_newline(const std::string &txt);
+
 } // namespace util
 } // namespace openage

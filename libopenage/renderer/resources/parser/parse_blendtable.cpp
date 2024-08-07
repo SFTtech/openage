@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #include "parse_blendtable.h"
 
@@ -67,16 +67,16 @@ PatternData parse_pattern(const std::vector<std::string> &args) {
 	return pattern;
 }
 
-BlendTableInfo parse_blendtable_file(const util::Path &file,
+BlendTableInfo parse_blendtable_file(const util::Path &path,
                                      const std::shared_ptr<AssetCache> &cache) {
-	if (not file.is_file()) [[unlikely]] {
+	if (not path.is_file()) [[unlikely]] {
 		throw Error(MSG(err) << "Reading .bltable file '"
-		                     << file.get_name()
+		                     << path.get_name()
 		                     << "' failed. Reason: File not found");
 	}
 
-	auto content = file.open();
-	auto lines = content.get_lines();
+	auto file = path.open();
+	auto lines = file.get_lines();
 
 	std::vector<size_t> blendtable;
 	std::vector<PatternData> patterns;
@@ -87,7 +87,7 @@ BlendTableInfo parse_blendtable_file(const util::Path &file,
 
 			if (version_no != 1) {
 				throw Error(MSG(err) << "Reading .bltable file '"
-			                         << file.get_name()
+			                         << path.get_name()
 			                         << "' failed. Reason: Version "
 			                         << version_no << " not supported");
 			}
@@ -110,7 +110,7 @@ BlendTableInfo parse_blendtable_file(const util::Path &file,
 		// TODO: Avoid double lookup with keywordfuncs.find(args[0])
 		if (not keywordfuncs.contains(args[0])) [[unlikely]] {
 			throw Error(MSG(err) << "Reading .bltable file '"
-			                     << file.get_name()
+			                     << path.get_name()
 			                     << "' failed. Reason: Keyword "
 			                     << args[0] << " is not defined");
 		}
@@ -125,7 +125,7 @@ BlendTableInfo parse_blendtable_file(const util::Path &file,
 				i += 1;
 				if (i >= lines.size()) {
 					throw Error(MSG(err) << "Reading .bltable file '"
-					                     << file.get_name()
+					                     << path.get_name()
 					                     << "' failed. Reason: Matrix for keyword "
 					                     << args[0] << " is malformed");
 				}
@@ -142,7 +142,7 @@ BlendTableInfo parse_blendtable_file(const util::Path &file,
 
 	std::vector<std::shared_ptr<BlendPatternInfo>> pattern_infos;
 	for (auto pattern : patterns) {
-		util::Path maskpath = (file.get_parent() / pattern.path);
+		util::Path maskpath = (path.get_parent() / pattern.path);
 
 		if (cache && cache->check_blpattern_cache(maskpath)) {
 			// already loaded
