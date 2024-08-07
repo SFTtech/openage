@@ -1,4 +1,4 @@
-# Copyright 2021-2023 the openage authors. See copying.md for legal info.
+# Copyright 2021-2024 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-few-public-methods
 
@@ -40,7 +40,10 @@ class HDModpackSubprocessor:
 
         mod_def = modpack.get_info()
 
-        mod_def.set_info("hd_base", "0.5.1", versionstr="5.8", repo="openage")
+        targetmod_info = full_data_set.game_version.edition.target_modpacks["hd_base"]
+        version = targetmod_info["version"]
+        versionstr = targetmod_info["versionstr"]
+        mod_def.set_info("hd_base", version, versionstr=versionstr, repo="openage")
 
         mod_def.add_include("data/**")
 

@@ -1,4 +1,4 @@
-# Copyright 2020-2023 the openage authors. See copying.md for legal info.
+# Copyright 2020-2024 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-arguments
 
@@ -35,7 +35,7 @@ class GameBase:
         support: Support,
         game_version_info: list[tuple[list[str], dict[str, str]]],
         media_paths: list[tuple[str, list[str]]],
-        modpacks: list[str],
+        modpacks: dict[str, dict[str, str]],
         **flags
     ):
         """

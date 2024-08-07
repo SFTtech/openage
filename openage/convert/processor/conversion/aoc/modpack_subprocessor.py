@@ -44,7 +44,10 @@ class AoCModpackSubprocessor:
 
         mod_def = modpack.get_info()
 
-        mod_def.set_info("aoe2_base", "0.5.1", versionstr="1.0c", repo="openage")
+        targetmod_info = full_data_set.game_version.edition.target_modpacks["aoe2_base"]
+        version = targetmod_info["version"]
+        versionstr = targetmod_info["versionstr"]
+        mod_def.set_info("aoe2_base", version, versionstr=versionstr, repo="openage")
 
         mod_def.add_include("data/**")
 

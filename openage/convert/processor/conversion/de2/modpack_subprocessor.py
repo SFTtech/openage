@@ -40,7 +40,10 @@ class DE2ModpackSubprocessor:
 
         mod_def = modpack.get_info()
 
-        mod_def.set_info("de2_base", "0.6.0", versionstr="Update 118476+", repo="openage")
+        targetmod_info = full_data_set.game_version.edition.target_modpacks["de2_base"]
+        version = targetmod_info["version"]
+        versionstr = targetmod_info["versionstr"]
+        mod_def.set_info("de2_base", version, versionstr=versionstr, repo="openage")
 
         mod_def.add_include("data/**")
 

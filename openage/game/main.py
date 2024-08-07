@@ -1,4 +1,4 @@
-# Copyright 2015-2023 the openage authors. See copying.md for legal info.
+# Copyright 2015-2024 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals
 
@@ -7,6 +7,7 @@ Holds the game entry point for openage.
 """
 from __future__ import annotations
 import typing
+
 
 from ..log import info
 
@@ -27,8 +28,13 @@ def init_subparser(cli: ArgumentParser) -> None:
         help="run without displaying graphics")
 
     cli.add_argument(
-        "--modpacks", nargs="+", required=True,
+        "--modpacks", nargs="+", required=True, type=str,
         help="list of modpacks to load")
+
+    cli.add_argument(
+        "--check-updates", action='store_true',
+        help="Check if the assets are up to date"
+    )
 
 
 def main(args, error):
@@ -43,9 +49,10 @@ def main(args, error):
     from .main_cpp import run_game
     from .. import config
     from ..assets import get_asset_path
-    from ..convert.main import conversion_required, convert_assets
     from ..convert.tool.api_export import export_api
     from ..convert.service.init.api_export_required import api_export_required
+    from ..convert.service.init.changelog import check_updates
+    from ..convert.service.init.modpack_search import enumerate_modpacks
     from ..cppinterface.setup import setup as cpp_interface_setup
     from ..cvar.location import get_config_path
     from ..util.fslike.union import Union
@@ -77,16 +84,19 @@ def main(args, error):
         converted_path.mkdirs()
         export_api(converted_path)
 
-    # ensure that the assets have been converted
-    if conversion_required(asset_path):
-        convert_assets(asset_path, args)
-
-    # modpacks
-    mods = []
+    # ensure that modpacks are available
+    modpack_dir = asset_path / "converted"
+    available_modpacks = enumerate_modpacks(modpack_dir, exclude={"engine"})
     for modpack in args.modpacks:
-        mods.append(modpack.encode("utf-8"))
+        if modpack not in available_modpacks:
+            raise FileNotFoundError(f"Modpack '{modpack}' not found in {modpack_dir}")
 
-    args.modpacks = mods
+    # check if the converted modpacks are up to date
+    if args.check_updates:
+        check_updates(available_modpacks, args.cfg_dir / "converter" / "games")
+
+    # encode modpacks as bytes for the C++ interface
+    args.modpacks = [modpack.encode('utf-8') for modpack in args.modpacks]
 
     # start the game, continue in main_cpp.pyx!
     return run_game(args, root)

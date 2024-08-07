@@ -1,4 +1,4 @@
-# Copyright 2020-2023 the openage authors. See copying.md for legal info.
+# Copyright 2020-2024 the openage authors. See copying.md for legal info.
 
 """
 Module for reading .dat files.
@@ -73,8 +73,8 @@ def load_gamespec(
                 # pickle.load() can fail in many ways, we need to catch all.
                 # pylint: disable=broad-except
                 try:
-                    gamespec = pickle.load(cachefile)
                     info("using cached wrapper: %s", cachefile_name)
+                    gamespec = pickle.load(cachefile)
                     return gamespec
                 except Exception:
                     warn("could not use cached wrapper:")

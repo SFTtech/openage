@@ -1,4 +1,4 @@
-# Copyright 2020-2023 the openage authors. See copying.md for legal info.
+# Copyright 2020-2024 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-few-public-methods
 
@@ -40,7 +40,10 @@ class SWGBCCModpackSubprocessor:
 
         mod_def = modpack.get_info()
 
-        mod_def.set_info("swgb_base", "0.5.1", versionstr="1.1-gog4", repo="openage")
+        targetmod_info = full_data_set.game_version.edition.target_modpacks["swgb_base"]
+        version = targetmod_info["version"]
+        versionstr = targetmod_info["versionstr"]
+        mod_def.set_info("swgb_base", version, versionstr=versionstr, repo="openage")
 
         mod_def.add_include("data/**")
 

@@ -37,6 +37,11 @@ expansions      = []
     "C:/Program Files (x86)/Microsoft Games/Age of Empires II",
   ]
 
+  [AOC.targetmods.aoe2_base]
+  version         = "0.5.1"
+  versionstr      = "1.0c"
+  min_api_version = "0.5.0"
+
 
 [AOCDEMO]
 name            = "Age of Empires 2: The Conqueror's Trial Version"
@@ -56,6 +61,12 @@ expansions      = []
   interface = ["data/interfac.drs"]
   terrain   = ["data/Terrain.drs"]
   blend     = ["data/blendomatic.dat"]
+
+  [AOCDEMO.targetmods.trial_base]
+  version         = "0.5.1"
+  versionstr      = "Trial"
+  min_api_version = "0.5.0"
+
 
 [AOK]
 name            = "Age of Empires 2: Age of Kings"
@@ -89,6 +100,8 @@ expansions      = []
     "C:/Program Files/Microsoft Games/Age of Empires II",
     "C:/Program Files (x86)/Microsoft Games/Age of Empires II",
   ]
+
+  [AOK.targetmods]
 
 
 [AOE1DE]
@@ -131,6 +144,11 @@ expansions      = []
     "C:/Program Files (x86)/Steam/steamapps/common/AoEDE",
   ]
 
+  [AOE1DE.targetmods.de1_base]
+  version         = "0.5.1"
+  versionstr      = "1.0a"
+  min_api_version = "0.5.0"
+
 
 [ROR]
 name            = "Age of Empires 1: Rise of Rome"
@@ -165,6 +183,11 @@ expansions      = []
     "C:/Program Files/Microsoft Games/Age of Empires",
     "C:/Program Files (x86)/Microsoft Games/Age of Empires",
   ]
+
+  [ROR.targetmods.aoe1_base]
+  version         = "0.5.1"
+  versionstr      = "1.0a"
+  min_api_version = "0.5.0"
 
 
 [HDEDITION]
@@ -204,6 +227,11 @@ expansions      = []
     "C:/Program Files/Steam/steamapps/common/Age2HD",
     "C:/Program Files (x86)/Steam/steamapps/common/Age2HD",
   ]
+
+  [HDEDITION.targetmods.hd_base]
+  version         = "0.5.1"
+  versionstr      = "5.8"
+  min_api_version = "0.5.0"
 
 
 [AOE2DE]
@@ -249,6 +277,11 @@ expansions      = []
     "C:/Program Files (x86)/Steam/steamapps/common/AoE2DE",
   ]
 
+  [AOE2DE.targetmods.de2_base]
+  version         = "0.6.0"
+  versionstr      = "Update 118476+"
+  min_api_version = "0.5.0"
+
 
 [SWGB]
 name            = "Star Wars: Galactic Battlegrounds"
@@ -285,3 +318,8 @@ expansions      = ["SWGB_CC"]
     "C:/Program Files (x86)/Steam/steamapps/common/STAR WARS - Galactic Battlegrounds Saga",
     "C:/Program Files/Steam/steamapps/common/STAR WARS - Galactic Battlegrounds Saga",
   ]
+
+  [SWGB.targetmods.swgb_base]
+  version         = "0.5.1"
+  versionstr      = "1.1-gog4"
+  min_api_version = "0.5.0"
