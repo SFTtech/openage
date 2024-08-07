@@ -10,6 +10,8 @@ cdef class Packer:
     cdef (unsigned int, unsigned int) pos(self, block)
     cdef unsigned int width(self)
     cdef unsigned int height(self)
+    cdef list get_mapping_hints(self, list blocks)
+    cdef tuple get_packer_settings(self)
 
 cdef class DeterministicPacker(Packer):
     pass
@@ -23,6 +25,8 @@ cdef class BestPacker:
     cdef (unsigned int, unsigned int) pos(self, block)
     cdef unsigned int width(self)
     cdef unsigned int height(self)
+    cdef list get_mapping_hints(self, list blocks)
+    cdef tuple get_packer_settings(self)
 
 cdef class RowPacker(Packer):
     pass
@@ -35,6 +39,7 @@ cdef class BinaryTreePacker(Packer):
     cdef packer_node *root
 
     cdef void fit(self, block)
+    cdef tuple get_packer_settings(self)
     cdef packer_node *find_node(self, packer_node *root, unsigned int width, unsigned int height)
     cdef packer_node *split_node(self, packer_node *node, unsigned int width, unsigned int height)
     cdef packer_node *grow_node(self, unsigned int width, unsigned int height)

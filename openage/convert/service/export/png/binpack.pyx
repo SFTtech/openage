@@ -1,13 +1,11 @@
 # Copyright 2016-2023 the openage authors. See copying.md for legal info.
 #
-# cython: infer_types=True,profile=False
+# cython: infer_types=True,profile=True
 # TODO pylint: disable=C,R
 
 """
 Routines for 2D binpacking
 """
-
-from enum import Enum
 
 cimport cython
 from libc.stdint cimport uintptr_t
@@ -24,6 +22,7 @@ cdef inline (unsigned int, unsigned int) factor(unsigned int n):
     Return two (preferable close) factors of n.
     """
     cdef unsigned int a = <unsigned int>sqrt(n)
+    cdef int num
     for num in range(a, 0, -1):
         if n % num == 0:
             return num, n // num
@@ -33,7 +32,7 @@ cdef class Packer:
     """
     Packs blocks.
     """
-    def __init__(self, margin):
+    def __init__(self, int margin):
         self.margin = margin
         self.mapping = {}
 
@@ -60,14 +59,14 @@ cdef class Packer:
         """
         return max(self.pos(block)[1] + block.height for block in self.mapping)
 
-    def get_packer_settings(self):
+    cdef tuple get_packer_settings(self):
         """
         Get the init parameters set for the packer.
         """
         return (self.margin,)
 
-    def get_mapping_hints(self, blocks):
-        hints = []
+    cdef list get_mapping_hints(self, list blocks):
+        cdef list hints = []
         for block in blocks:
             hints.append(self.pos(block))
 
@@ -79,13 +78,15 @@ cdef class DeterministicPacker(Packer):
     Packs blocks based on predetermined settings.
     """
 
-    def __init__(self, margin, hints):
+    def __init__(self, int margin, list hints):
         super().__init__(margin)
         self.hints = hints
 
     cdef void pack(self, list blocks):
-        for idx, block in enumerate(blocks):
-            self.mapping[block] = self.hints[idx]
+        cdef int i
+        cdef int n = len(blocks)
+        for i in range(n):
+            self.mapping[self.blocks[i]] = self.hints[i]
 
 
 cdef class BestPacker:
@@ -98,9 +99,9 @@ cdef class BestPacker:
 
     cdef void pack(self, list blocks):
         cdef Packer p
+        cdef Packer packer
         for packer in self.packers:
-            p = packer
-            p.pack(blocks)
+            packer.pack(blocks)
 
         self.current_best = self.best_packer()
 
@@ -116,10 +117,10 @@ cdef class BestPacker:
     cdef unsigned int height(self):
         return self.current_best.height()
 
-    def get_packer_settings(self):
+    cdef tuple get_packer_settings(self):
         return self.current_best.get_packer_settings()
 
-    def get_mapping_hints(self, blocks):
+    cdef list get_mapping_hints(self, list blocks):
         return self.current_best.get_mapping_hints(blocks)
 
 
@@ -129,10 +130,11 @@ cdef class RowPacker(Packer):
     """
 
     cdef void pack(self, list blocks):
-        self.mapping = {}
-
         cdef unsigned int num_rows
         cdef list rows
+        cdef int y = 0
+
+        self.mapping = {}
 
         num_rows, _ = factor(len(blocks))
         rows = [[] for _ in range(num_rows)]
@@ -143,7 +145,6 @@ cdef class RowPacker(Packer):
             min_row.append(block)
 
         # Calculate positions.
-        y = 0
         for row in rows:
             x = 0
 
@@ -160,6 +161,10 @@ cdef class ColumnPacker(Packer):
     """
 
     cdef void pack(self, list blocks):
+        cdef unsigned int num_columns
+        cdef list columns
+        cdef int x = 0
+
         self.mapping = {}
 
         num_columns, _ = factor(len(blocks))
@@ -171,7 +176,6 @@ cdef class ColumnPacker(Packer):
             min_col.append(block)
 
         # Calculate positions.
-        x = 0
         for column in columns:
             y = 0
 
@@ -202,7 +206,7 @@ cdef class BinaryTreePacker(Packer):
     textures.
     """
 
-    def __init__(self, margin, aspect_ratio=1):
+    def __init__(self, int margin, int aspect_ratio=1):
         # ASF: what about heuristic=max_heuristic?
         super().__init__(margin)
         self.aspect_ratio = aspect_ratio
@@ -219,7 +223,7 @@ cdef class BinaryTreePacker(Packer):
         node = self.mapping[block]
         return node[0], node[1]
 
-    def get_packer_settings(self):
+    cdef tuple get_packer_settings(self):
         return (self.margin,)
 
     cdef void fit(self, block):
