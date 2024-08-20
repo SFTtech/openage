@@ -33,9 +33,17 @@ def init_subparser(cli: ArgumentParser) -> None:
 
     cli.add_argument(
         "--check-updates", action='store_true',
-        help="Check if the assets are up to date"
-    )
+        help="Check if the assets are up to date")
+        
+    cli.add_argument(
+        "--width", type=int, default=None,
+        help="width of the game window")
 
+    cli.add_argument(
+        "--height", type=int, default=None,
+        help="height of the game window"
+    )
+    
 
 def main(args, error):
     """

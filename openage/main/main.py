@@ -28,6 +28,15 @@ def init_subparser(cli: ArgumentParser):
         "--modpacks", nargs="+", type=str,
         help="list of modpacks to load")
 
+    cli.add_argument(
+        "--width", type=int, default=None,
+        help="width of the game window")
+
+    cli.add_argument(
+        "--height", type=int, default=None,
+        help="height of the game window"
+    )
+
 
 def main(args, error):
     """

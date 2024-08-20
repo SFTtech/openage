@@ -72,11 +72,15 @@ public:
 	 * @param root_dir openage root directory.
 	 * @param mods The mods to load.
 	 * @param debug_graphics If true, enable OpenGL debug logging.
+	 * @param wWidth Width of the window.
+	 * @param wHeight Height of the window.
 	 */
 	Engine(mode mode,
 	       const util::Path &root_dir,
 	       const std::vector<std::string> &mods,
-	       bool debug_graphics = false);
+	       bool debug_graphics = false,
+		   int wWidth = 1024,
+		   int wHeight = 768);
 
 	// engine should not be copied or moved
 	Engine(const Engine &) = delete;
@@ -107,6 +111,16 @@ private:
 	 * openage root directory.
 	 */
 	util::Path root_dir;
+
+	/**
+	 * The width of the rendering window.
+	 */
+	int width;
+
+	/**
+	 * The height of the rendering window.
+	 */
+	int height;
 
 	/**
 	 * The threads used by the engine.

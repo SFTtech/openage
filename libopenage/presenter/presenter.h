@@ -88,8 +88,10 @@ public:
 	 * Start the presenter and initialize subsystems.
 	 *
 	 * @param debug_graphics If true, enable OpenGL debug logging.
+	 * @param width Width of the window rendered.
+	 * @param height height of the window rendered.
 	 */
-	void run(bool debug_graphics = false);
+	void run(bool debug_graphics = false, int width = 1024, int height = 768);
 
 	/**
 	 * Set the game simulation controlled by this presenter.
@@ -120,7 +122,7 @@ protected:
 	 *     - main renderer
 	 *     - component renderers (Terrain, Game Entities, GUI)
 	 */
-	void init_graphics(bool debug = false);
+	void init_graphics(bool debug = false, int width = 1024, int height = 768);
 
 	/**
 	 * Initialize the GUI.

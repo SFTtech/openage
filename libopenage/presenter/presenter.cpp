@@ -48,10 +48,10 @@ Presenter::Presenter(const util::Path &root_dir,
 	time_loop{time_loop} {}
 
 
-void Presenter::run(bool debug_graphics) {
+void Presenter::run(bool debug_graphics, int width, int height) {
 	log::log(INFO << "Presenter: Launching subsystems...");
 
-	this->init_graphics(debug_graphics);
+	this->init_graphics(debug_graphics, width, height);
 
 	this->init_input();
 
@@ -93,7 +93,7 @@ std::shared_ptr<qtgui::GuiApplication> Presenter::init_window_system() {
 	return std::make_shared<renderer::gui::GuiApplicationWithLogger>();
 }
 
-void Presenter::init_graphics(bool debug) {
+void Presenter::init_graphics(int width, int height, bool debug) {
 	log::log(INFO << "Presenter: Initializing graphics subsystems...");
 
 	// Start up rendering framework

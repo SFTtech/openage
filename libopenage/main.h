@@ -26,12 +26,16 @@ namespace openage {
  *     bool gl_debug
  *     bool headless
  *     vector[string] mods
+ *     int width
+ *     int height
  */
 struct main_arguments {
 	util::Path root_path;
 	bool gl_debug;
 	bool headless;
 	std::vector<std::string> mods;
+	int width;
+	int height;
 };
 
 
