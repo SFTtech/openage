@@ -22,9 +22,9 @@ Engine::Engine(mode mode,
 	running{true},
 	run_mode{mode},
 	root_dir{root_dir},
-	threads{},
+	height{wHeight},
 	width{wWidth},
-	height{wHeight} {
+	threads{} {
 	log::log(INFO
 	         << "launching engine with root directory"
 	         << root_dir

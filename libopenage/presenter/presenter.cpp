@@ -93,7 +93,7 @@ std::shared_ptr<qtgui::GuiApplication> Presenter::init_window_system() {
 	return std::make_shared<renderer::gui::GuiApplicationWithLogger>();
 }
 
-void Presenter::init_graphics(int width, int height, bool debug) {
+void Presenter::init_graphics(bool debug, int width, int height) {
 	log::log(INFO << "Presenter: Initializing graphics subsystems...");
 
 	// Start up rendering framework
