@@ -24,12 +24,12 @@ Engine::Engine(mode mode,
 	root_dir{root_dir},
 	threads{},
 	width{wWidth},
-	height{wHeight}, {
+	height{wHeight} {
 	log::log(INFO
 	         << "launching engine with root directory"
 	         << root_dir
-			 <<"width: " << width
-			 <<"height: " << height);
+			 << "width: " << width
+			 << "height: " << height);
 
 	// read and apply the configuration files
 	this->cvar_manager = std::make_shared<cvar::CVarManager>(this->root_dir["cfg"]);
