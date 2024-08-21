@@ -29,11 +29,11 @@ def init_subparser(cli: ArgumentParser):
         help="list of modpacks to load")
 
     cli.add_argument(
-        "--width", type=int, default=None,
+        "--width", type=int, default=1024,
         help="width of the game window")
 
     cli.add_argument(
-        "--height", type=int, default=None,
+        "--height", type=int, default=768,
         help="height of the game window"
     )
 

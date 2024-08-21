@@ -17,13 +17,13 @@ Engine::Engine(mode mode,
                const util::Path &root_dir,
                const std::vector<std::string> &mods,
                bool debug_graphics,
-			   int wWidth,
-			   int wHeight) :
+			   size_t window_width,
+			   size_t window_height) :
 	running{true},
 	run_mode{mode},
 	root_dir{root_dir},
-	height{wHeight},
-	width{wWidth},
+	height{window_height},
+	width{window_width},
 	threads{} {
 	log::log(INFO
 	         << "launching engine with root directory"
@@ -61,8 +61,8 @@ Engine::Engine(mode mode,
 
 	// if presenter is used, run it in a separate thread
 	if (this->run_mode == mode::FULL) {
-		this->threads.emplace_back([&, debug_graphics]() {
-			this->presenter->run(debug_graphics, width, height);
+		this->threads.emplace_back([&, debug_graphics, window_width, window_height]() {
+			this->presenter->run(debug_graphics);
 
 			// Make sure that the presenter gets destructed in the same thread
 			// otherwise OpenGL complains about missing contexts
