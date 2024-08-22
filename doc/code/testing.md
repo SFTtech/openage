@@ -1,170 +1,100 @@
-# Test system
+To integrate C++ with Python for a demo and handle command-line arguments using Python's argparse, you can follow a simple and effective approach. Below is a guide that you can document in doc/code/testing.md to illustrate how this can be achieved.
 
-## openage computer-enriched testing automation
+Documenting C++ Demo Integration with Python
+Overview
+This guide explains how to set up a simple demonstration where Python is used to handle command-line arguments, which are then passed to a C++ program. This approach is useful for testing and integrating C++ code with Python's flexible argument parsing capabilities.
 
-### Tests
+Example Workflow
+Create a C++ Program
 
-There are various supported kinds of tests:
+1)First, write a simple C++ program that accepts command-line arguments. This program will be called from Python.
 
- - cpp tests
- - py tests
- - py doctests
+**demo.cpp**
+_#include <iostream>
 
-Tests run without user interaction to check for errors automatically.
-
-All tests are run automatically by [Kevin](https://github.com/SFTtech/kevin/) for pullrequests.
-
-
-You can invoke them with `bin/run test -a` or `make test`
-
-Have a look at `bin/run test --help` for further options.
-
-
-You are encouraged to write tests for all your contributions, as well as other components that currently lack testing.
-
-
-### Demos
-
-In addition to testing, openage supports _demos_:
-
- - cpp demos
- - py demos
-
-As opposed to tests, demos are run manually and individually by the user.
-They usually produce lots of output on stdout or may even be interactive. Python demos even accept an `argv` parameter.
-
-All tests must be registered in `openage/testing/testlist.py` (else the game won't know about them).
-
-Also see `bin/run test --help`.
-
-## Adding new tests
-
-### C++ tests
-
-C++ tests are simple `void()` functions somewhere in the `openage` namespace.
-
-They shall return on success, and raise `openage::testing::TestError` on failure.
-
-They shall not be declared in a header file; instead, add them to `openage/testing/testlist.py`.
-
-The header `libopenage/testing/testing.h` provides `TestError` and some convenience macros:
-
- - `TESTFAIL`
-    throws `TestError`
- - `TESTFAILMSG("a" << "b")`
-    throws `TestError("ab")`
- - `TESTEQUALS(left, right)`
-    evaluates `left` and `right`
-    throws `TestError(left)` if `left != right`
-    throws `TestError(exc)` if a non-`TestError` exception `exc` is raised.
- - `TESTTHROWS(expr)`
-    evaluates `expr`, catching any exception, including `TestError`.
-    raises `TestError` if no exception was caught.
-
-Example test function:
-
-``` cpp
-void test_prime() {
-    is_prime(23) or TESTFAIL;
-    is_prime(42) and TESTFAIL;
+int main(int argc, char* argv[]) {
+    std::cout << "C++ Demo Program\n";
+    std::cout << "Arguments received:\n";
+    for (int i = 0; i < argc; ++i) {
+        std::cout << "  " << argv[i] << "\n";
+    }
+    return 0;
 }
-```
+_
+
+**Compile the C++ Program**
+_g++ -o demo demo.cpp_
+
+2)Create a Python Script with Argument Parsing
+Write a Python script that uses argparse to parse command-line arguments and then invokes the C++ program.
+
+**run_demo.py**
+import argparse
+import subprocess
+
+def main():
+    # Set up argument parsing
+    parser = argparse.ArgumentParser(description="Run the C++ demo program")
+    parser.add_argument('--args', nargs='*', help="Arguments to pass to the C++ program")
+    args = parser.parse_args()
+
+    # Prepare command to call the C++ program
+   cpp_args = ['./demo']
+   if args.args:
+        cpp_args.extend(args.args)
+
+    # Call the C++ program
+   result = subprocess.run(cpp_args, capture_output=True, text=True)
+
+    # Print the output from the C++ program
+   print("C++ Program Output:")
+    print(result.stdout)
+    if result.stderr:
+        print("C++ Program Errors:")
+        print(result.stderr)
+
+if __name__ == "__main__":
+    main()
 
 
-### Python tests
+3)Test the Integration
+Run the Python script and provide arguments to pass to the C++ program.
+_python run_demo.py --args arg1 arg2 arg3_
 
-Python tests are simple argument-less functions somewhere in the `openage` package.
-
-They shall return `None` on success, and raise `openage.testing.testing.TestError` on failure.
-
-Add their names to `openage/testing/testlist.py`.
-
-The module `openage.testing.testing` provides `TestError` and some convenience functions:
-
- - `assert_value(<expr>, expected)`
-    checks whether expr == expected, and raises `TestError` if not.
- - `assert_raises(expected_exception_type)`
-    a context guard that verifies that the named exception occurs inside;
-    consult the example in `openage/testing/testing.py`.
-
-You may define tests in `.pyx` files.
-
-Example test function:
-
-``` python
-def test_prime():
-    assert_value(is_prime(23), True)
-    assert_value(is_prime(42), False)
-
-    with assert_raises(ValueError):
-        result(is_prime(-1337))
-```
+Expected Output:
+_C++ Demo Program
+Arguments received:
+  ./demo
+  arg1
+  arg2
+  arg3_
 
 
-### Python doctests
 
-[Doctests](https://docs.python.org/3/library/doctest.html) are an integrated feature of Python.
+**Practical Example**
+In the openage/renderer/ project, the following command demonstrates calling a C++ function (renderer_demo) from Python:
 
-They defined in function and module docstrings, are extremely lightweight and also serve as documentation.
+C++ Function (renderer_demo)
+_// libopenage/renderer/tests.cpp
+void renderer_demo(int argc, char* argv[]) {
+    // Function implementation
+}_
 
-Simply add the name of a Python module to `openage/testing/testlist.py`, and all doctests in that module will run.
+**Python Invocation**
+_import subprocess
 
-Example doctest for a function:
+def run_renderer_demo(args):
+    cpp_args = ['./demo'] + args
+    result = subprocess.run(cpp_args, capture_output=True, text=True)
+    print(result.stdout)
+    if result.stderr:
+        print(result.stderr)
 
-``` python
-def is_prime(p):
-    """
-    High-performance, state-of-the-art primality tester.
-
-    >>> is_prime(23)
-    True
-    >>> is_prime(42)
-    False
-    """
-    return not any(p % x == 0 for x in range(2, p))
-```
-
-### C++ demos
-
-Technically, those are very much like `C++` tests. In fact, the only difference to tests is the section in `openage/testing/testlist.py` where they are declared.
-
-C++ demos don't support `argv`; if you want that, make it a Python demo in a `.pyx` file and do the argparsing in Python; the Python demo function can then easily call any C++ function using the Python interface.
+if __name__ == "__main__":
+    run_renderer_demo(['arg1', 'arg2'])_
 
 
-### Python demos
 
-Similar to Python tests, but have one argument, `argv`. Pass arguments in the invocation:
-
-    bin/run test -d prime_demo 100
-
-Example demo:
-
-``` python
-def prime_demo(argv):
-    import argparse
-    cli = argparse.ArgumentParser()
-    cli.add_argument('max_number', type=int)
-    args = cli.parse_args(argv)
-
-    for p in range(2, args.max_number):
-        if is_prime(p):
-            print(p)
-```
+This documentation illustrates how to leverage Python's argparse to handle command-line arguments and then pass them to a C++ program. This method combines Python's ease of use with C++'s performance, allowing for a flexible and powerful demonstration setup.
 
 
-## Why?
-
-### Demos
-
-Demos should be used to implement and develop new features.
-You can directly call your code without having to launch up the whole engine.
-
-Use demos while developing new things or improvements.
-
-
-### Tests
-
-All tests are run for each pull requests, so we can detect your change broke something.
-Please try to write tests for everything you do.
-
-This is our only way of automated regression detection.
