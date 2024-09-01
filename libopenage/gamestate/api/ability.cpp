@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #include "ability.h"
 
@@ -20,15 +20,22 @@ bool APIAbility::is_ability(const nyan::Object &obj) {
 	return immediate_parent == "engine.ability.Ability";
 }
 
+bool APIAbility::check_type(const nyan::Object &ability,
+                            const ability_t &type) {
+	nyan::fqon_t immediate_parent = ability.get_parents()[0];
+	nyan::ValueHolder ability_type = ABILITY_DEFS.get(type);
+
+	std::shared_ptr<nyan::ObjectValue> ability_val = std::dynamic_pointer_cast<nyan::ObjectValue>(
+		ability_type.get_ptr());
+
+	return ability_val->get_name() == immediate_parent;
+}
+
 bool APIAbility::check_property(const nyan::Object &ability, const ability_property_t &property) {
 	std::shared_ptr<nyan::Dict> properties = ability.get<nyan::Dict>("Ability.properties");
 	nyan::ValueHolder property_type = ABILITY_PROPERTY_DEFS.get(property);
 
-	if (properties->contains(property_type)) {
-		return true;
-	}
-
-	return false;
+	return properties->contains(property_type);
 }
 
 
