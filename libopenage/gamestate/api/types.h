@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -9,6 +9,10 @@ namespace openage::gamestate::api {
  * Types of abilities for API objects.
  */
 enum class ability_t {
+	APPLY_CONTINUOUS_EFFECT,
+	APPLY_DISCRETE_EFFECT,
+	RANGED_CONTINUOUS_EFFECT,
+	RANGED_DISCRETE_EFFECT,
 	IDLE,
 	LIVE,
 	MOVE,
