@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -25,6 +25,14 @@ namespace openage::gamestate::api {
  * Maps internal ability types to nyan API values.
  */
 static const auto ABILITY_DEFS = datastructure::create_const_map<ability_t, nyan::ValueHolder>(
+	std::pair(ability_t::APPLY_CONTINUOUS_EFFECT,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.ApplyContinuousEffect"))),
+	std::pair(ability_t::APPLY_DISCRETE_EFFECT,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.ApplyDiscreteEffect"))),
+	std::pair(ability_t::RANGED_CONTINUOUS_EFFECT,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.RangedContinuousEffect"))),
+	std::pair(ability_t::RANGED_DISCRETE_EFFECT,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.RangedDiscreteEffect"))),
 	std::pair(ability_t::IDLE,
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.Idle"))),
 	std::pair(ability_t::MOVE,
