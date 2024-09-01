@@ -23,6 +23,17 @@ public:
 	static bool is_ability(const nyan::Object &obj);
 
 	/**
+	 * Check if an ability is of a given type.
+	 *
+	 * @param ability \p Ability nyan object (type == \p engine.ability.Ability).
+	 * @param type Ability type.
+	 *
+	 * @return true if the ability is of the given type, else false.
+	 */
+	static bool check_type(const nyan::Object &ability,
+	                       const ability_t &type);
+
+	/**
 	 * Check if an ability has a given property.
 	 *
 	 * @param ability \p Ability nyan object (type == \p engine.ability.Ability).
