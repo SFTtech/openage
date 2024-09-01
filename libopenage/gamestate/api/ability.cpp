@@ -16,8 +16,13 @@
 namespace openage::gamestate::api {
 
 bool APIAbility::is_ability(const nyan::Object &obj) {
-	nyan::fqon_t immediate_parent = obj.get_parents()[0];
-	return immediate_parent == "engine.ability.Ability";
+	for (auto &parent : obj.get_parents()) {
+		if (parent == "engine.ability.Ability") {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 bool APIAbility::check_type(const nyan::Object &ability,
