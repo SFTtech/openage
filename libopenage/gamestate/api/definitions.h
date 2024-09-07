@@ -25,26 +25,30 @@ namespace openage::gamestate::api {
  * Maps internal ability types to nyan API values.
  */
 static const auto ABILITY_DEFS = datastructure::create_const_map<ability_t, nyan::ValueHolder>(
+	std::pair(ability_t::ACTIVITY,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.Activity"))),
 	std::pair(ability_t::APPLY_CONTINUOUS_EFFECT,
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.ApplyContinuousEffect"))),
 	std::pair(ability_t::APPLY_DISCRETE_EFFECT,
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.ApplyDiscreteEffect"))),
+	std::pair(ability_t::IDLE,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.Idle"))),
+	std::pair(ability_t::MOVE,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.Move"))),
+	std::pair(ability_t::LINE_OF_SIGHT,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.LineOfSight"))),
+	std::pair(ability_t::LIVE,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.Live"))),
 	std::pair(ability_t::RANGED_CONTINUOUS_EFFECT,
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.RangedContinuousEffect"))),
 	std::pair(ability_t::RANGED_DISCRETE_EFFECT,
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.RangedDiscreteEffect"))),
 	std::pair(ability_t::RESISTANCE,
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.Resistance"))),
-	std::pair(ability_t::IDLE,
-              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.Idle"))),
-	std::pair(ability_t::MOVE,
-              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.Move"))),
-	std::pair(ability_t::LIVE,
-              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.Live"))),
+	std::pair(ability_t::SELECTABLE,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.Selectable"))),
 	std::pair(ability_t::TURN,
-              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.Turn"))),
-	std::pair(ability_t::LINE_OF_SIGHT,
-              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.LineOfSight"))));
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.Turn"))));
 
 /**
  * Maps internal effect types to nyan API values.
