@@ -25,6 +25,7 @@
 #include "gamestate/api/activity.h"
 #include "gamestate/component/api/apply_effect.h"
 #include "gamestate/component/api/idle.h"
+#include "gamestate/component/api/line_of_sight.h"
 #include "gamestate/component/api/live.h"
 #include "gamestate/component/api/move.h"
 #include "gamestate/component/api/resistance.h"
@@ -220,6 +221,10 @@ void EntityFactory::init_components(const std::shared_ptr<openage::event::EventL
 		else if (ability_parent == "engine.ability.type.Resistance") {
 			auto resistance = std::make_shared<component::Resistance>(loop, ability_obj);
 			entity->add_component(resistance);
+		}
+		else if (ability_parent == "engine.ability.type.LineOfSight") {
+			auto line_of_sight = std::make_shared<component::LineOfSight>(loop, ability_obj);
+			entity->add_component(line_of_sight);
 		}
 		else {
 			log::log(DBG << "Entity has unrecognized ability type: " << ability_parent);

@@ -1,6 +1,7 @@
 add_sources(libopenage
     apply_effect.cpp
     idle.cpp
+    line_of_sight.cpp
     live.cpp
     move.cpp
     resistance.cpp
