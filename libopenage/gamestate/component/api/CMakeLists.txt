@@ -3,6 +3,7 @@ add_sources(libopenage
     idle.cpp
     live.cpp
     move.cpp
+    resistance.cpp
     selectable.cpp
     turn.cpp
 )
