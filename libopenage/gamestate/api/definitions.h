@@ -45,7 +45,74 @@ static const auto ABILITY_DEFS = datastructure::create_const_map<ability_t, nyan
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.Turn"))));
 
 /**
- * Maps internal property types to nyan API values.
+ * Maps internal effect types to nyan API values.
+ */
+static const auto EFFECT_DEFS = datastructure::create_const_map<effect_t, nyan::ValueHolder>(
+	std::pair(effect_t::CONTINUOUS_FLAC_DECREASE,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>(
+				  "engine.effect.continuous.flat_attribute_change.type.FlatAttributeChangeDecrease"))),
+	std::pair(effect_t::CONTINUOUS_FLAC_INCREASE,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>(
+				  "engine.effect.continuous.flat_attribute_change.type.FlatAttributeChangeIncrease"))),
+	std::pair(effect_t::CONTINUOUS_LURE,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.effect.continuous.type.Lure"))),
+	std::pair(effect_t::CONTINUOUS_TRAC_DECREASE,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>(
+				  "engine.effect.continuous.time_relative_attribute_change.type.TimeRelativeAttributeChangeDecrease"))),
+	std::pair(effect_t::CONTINUOUS_TRAC_INCREASE,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>(
+				  "engine.effect.continuous.time_relative_attribute_change.type.TimeRelativeAttributeChangeIncrease"))),
+	std::pair(effect_t::CONTINUOUS_TRPC_DECREASE,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>(
+				  "engine.effect.continuous.time_relative_progress_change.type.TimeRelativeProgressChangeDecrease"))),
+	std::pair(effect_t::CONTINUOUS_TRPC_INCREASE,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>(
+				  "engine.effect.continuous.time_relative_progress_change.type.TimeRelativeProgressChangeIncrease"))),
+	std::pair(effect_t::DISCRETE_CONVERT,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.effect.discrete.Convert"))),
+	std::pair(effect_t::DISCRETE_FLAC_DECREASE,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>(
+				  "engine.effect.discrete.flat_attribute_change.type.FlatAttributeChangeDecrease"))),
+	std::pair(effect_t::DISCRETE_FLAC_INCREASE,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>(
+				  "engine.effect.discrete.flat_attribute_change.type.FlatAttributeChangeIncrease"))),
+	std::pair(effect_t::DISCRETE_MAKE_HARVESTABLE,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.effect.discrete.type.MakeHarvestable"))),
+	std::pair(effect_t::DISCRETE_SEND_TO_CONTAINER,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.effect.discrete.type.SendToContainer"))));
+
+/**
+ * Maps API effect types to internal effect types.
+ */
+static const auto EFFECT_TYPE_LOOKUP = datastructure::create_const_map<nyan::fqon_t, effect_t>(
+	std::pair("engine.effect.continuous.flat_attribute_change.type.FlatAttributeChangeDecrease",
+              effect_t::CONTINUOUS_FLAC_DECREASE),
+	std::pair("engine.effect.continuous.flat_attribute_change.type.FlatAttributeChangeIncrease",
+              effect_t::CONTINUOUS_FLAC_INCREASE),
+	std::pair("engine.effect.continuous.type.Lure",
+              effect_t::CONTINUOUS_LURE),
+	std::pair("engine.effect.continuous.time_relative_attribute_change.type.TimeRelativeAttributeChangeDecrease",
+              effect_t::CONTINUOUS_TRAC_DECREASE),
+	std::pair("engine.effect.continuous.time_relative_attribute_change.type.TimeRelativeAttributeChangeIncrease",
+              effect_t::CONTINUOUS_TRAC_INCREASE),
+	std::pair("engine.effect.continuous.time_relative_progress_change.type.TimeRelativeProgressChangeDecrease",
+              effect_t::CONTINUOUS_TRPC_DECREASE),
+	std::pair("engine.effect.continuous.time_relative_progress_change.type.TimeRelativeProgressChangeIncrease",
+              effect_t::CONTINUOUS_TRPC_INCREASE),
+	std::pair("engine.effect.discrete.Convert",
+              effect_t::DISCRETE_CONVERT),
+	std::pair("engine.effect.discrete.flat_attribute_change.type.FlatAttributeChangeDecrease",
+              effect_t::DISCRETE_FLAC_DECREASE),
+	std::pair("engine.effect.discrete.flat_attribute_change.type.FlatAttributeChangeIncrease",
+              effect_t::DISCRETE_FLAC_INCREASE),
+	std::pair("engine.effect.discrete.type.MakeHarvestable",
+              effect_t::DISCRETE_MAKE_HARVESTABLE),
+	std::pair("engine.effect.discrete.type.SendToContainer",
+              effect_t::DISCRETE_SEND_TO_CONTAINER));
+
+
+/**
+ * Maps internal ability property types to nyan API values.
  */
 static const auto ABILITY_PROPERTY_DEFS = datastructure::create_const_map<ability_property_t, nyan::ValueHolder>(
 	std::pair(ability_property_t::ANIMATED,
@@ -60,6 +127,19 @@ static const auto ABILITY_PROPERTY_DEFS = datastructure::create_const_map<abilit
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.property.type.Diplomatic"))),
 	std::pair(ability_property_t::LOCK,
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.property.type.Lock"))));
+
+/**
+ * Maps internal effect property types to nyan API values.
+ */
+static const auto EFFECT_PROPERTY_DEFS = datastructure::create_const_map<effect_property_t, nyan::ValueHolder>(
+	std::pair(effect_property_t::AREA,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.effect.property.type.Area"))),
+	std::pair(effect_property_t::COST,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.effect.property.type.Cost"))),
+	std::pair(effect_property_t::DIPLOMATIC,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.effect.property.type.Diplomatic"))),
+	std::pair(effect_property_t::PRIORITY,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.effect.property.type.Priority"))));
 
 /**
  * Maps API activity node types to engine node types.
