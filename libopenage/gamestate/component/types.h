@@ -23,6 +23,7 @@ enum class component_t {
 	MOVE,
 	SELECTABLE,
 	LIVE,
+	LINE_OF_SIGHT,
 };
 
 } // namespace openage::gamestate::component
