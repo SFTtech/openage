@@ -27,7 +27,7 @@ class Node;
 
 namespace component {
 
-class Activity : public InternalComponent {
+class Activity final : public InternalComponent {
 public:
 	/**
 	 * Creates a new activity component.

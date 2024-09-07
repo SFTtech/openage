@@ -19,7 +19,7 @@ class EventLoop;
 
 namespace gamestate::component {
 
-class Ownership : public InternalComponent {
+class Ownership final : public InternalComponent {
 public:
 	/**
 	 * Creates an Ownership component.
