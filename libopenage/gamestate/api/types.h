@@ -9,16 +9,18 @@ namespace openage::gamestate::api {
  * Types of abilities for API objects.
  */
 enum class ability_t {
+	ACTIVITY,
 	APPLY_CONTINUOUS_EFFECT,
 	APPLY_DISCRETE_EFFECT,
+	IDLE,
+	LINE_OF_SIGHT,
+	LIVE,
+	MOVE,
 	RANGED_CONTINUOUS_EFFECT,
 	RANGED_DISCRETE_EFFECT,
 	RESISTANCE,
-	IDLE,
-	LIVE,
-	MOVE,
+	SELECTABLE,
 	TURN,
-	LINE_OF_SIGHT,
 
 	// TODO
 };
