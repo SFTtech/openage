@@ -17,11 +17,12 @@ enum class component_t {
 
 	// API
 	APPLY_EFFECT,
+	RESISTANCE,
 	IDLE,
 	TURN,
 	MOVE,
 	SELECTABLE,
-	LIVE
+	LIVE,
 };
 
 } // namespace openage::gamestate::component
