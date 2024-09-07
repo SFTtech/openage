@@ -33,6 +33,8 @@ static const auto ABILITY_DEFS = datastructure::create_const_map<ability_t, nyan
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.RangedContinuousEffect"))),
 	std::pair(ability_t::RANGED_DISCRETE_EFFECT,
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.RangedDiscreteEffect"))),
+	std::pair(ability_t::RESISTANCE,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.Resistance"))),
 	std::pair(ability_t::IDLE,
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.Idle"))),
 	std::pair(ability_t::MOVE,
