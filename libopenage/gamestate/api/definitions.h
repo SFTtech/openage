@@ -42,7 +42,9 @@ static const auto ABILITY_DEFS = datastructure::create_const_map<ability_t, nyan
 	std::pair(ability_t::LIVE,
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.Live"))),
 	std::pair(ability_t::TURN,
-              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.Turn"))));
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.Turn"))),
+	std::pair(ability_t::LINE_OF_SIGHT,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.LineOfSight"))));
 
 /**
  * Maps internal effect types to nyan API values.
