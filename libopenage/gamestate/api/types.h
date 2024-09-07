@@ -18,6 +18,7 @@ enum class ability_t {
 	LIVE,
 	MOVE,
 	TURN,
+	LINE_OF_SIGHT,
 
 	// TODO
 };
