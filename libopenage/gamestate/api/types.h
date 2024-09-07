@@ -64,6 +64,14 @@ enum class effect_property_t {
 };
 
 /**
+ * Types of properties for API resistances.
+ */
+enum class resistance_property_t {
+	COST,
+	STACKED,
+};
+
+/**
  * Types of properties for API patches.
  */
 enum class patch_property_t {
