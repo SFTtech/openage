@@ -82,6 +82,43 @@ static const auto EFFECT_DEFS = datastructure::create_const_map<effect_t, nyan::
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.effect.discrete.type.SendToContainer"))));
 
 /**
+ * Maps internal effect types to nyan API values.
+ */
+static const auto RESISTANCE_DEFS = datastructure::create_const_map<effect_t, nyan::ValueHolder>(
+	std::pair(effect_t::CONTINUOUS_FLAC_DECREASE,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>(
+				  "engine.resistance.type.ContinuousFlatAttributeChangeDecrease"))),
+	std::pair(effect_t::CONTINUOUS_FLAC_INCREASE,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>(
+				  "engine.resistance.type.ContinuousFlatAttributeChangeIncrease"))),
+	std::pair(effect_t::CONTINUOUS_LURE,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.resistance.type.Lure"))),
+	std::pair(effect_t::CONTINUOUS_TRAC_DECREASE,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>(
+				  "engine.resistance.type.ContinuousTimeRelativeAttributeChangeDecrease"))),
+	std::pair(effect_t::CONTINUOUS_TRAC_INCREASE,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>(
+				  "engine.resistance.type.ContinuousTimeRelativeAttributeChangeIncrease"))),
+	std::pair(effect_t::CONTINUOUS_TRPC_DECREASE,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>(
+				  "engine.resistance.type.ContinuousTimeRelativeProgressChangeDecrease"))),
+	std::pair(effect_t::CONTINUOUS_TRPC_INCREASE,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>(
+				  "engine.resistance.type.ContinuousTimeRelativeProgressChangeIncrease"))),
+	std::pair(effect_t::DISCRETE_CONVERT,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.resistance.type.Convert"))),
+	std::pair(effect_t::DISCRETE_FLAC_DECREASE,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>(
+				  "engine.resistance.type.DiscreteFlatAttributeChangeDecrease"))),
+	std::pair(effect_t::DISCRETE_FLAC_INCREASE,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>(
+				  "engine.resistance.type.DiscreteFlatAttributeChangeIncrease"))),
+	std::pair(effect_t::DISCRETE_MAKE_HARVESTABLE,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.resistance.type.MakeHarvestable"))),
+	std::pair(effect_t::DISCRETE_SEND_TO_CONTAINER,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.resistance.type.SendToContainer"))));
+
+/**
  * Maps API effect types to internal effect types.
  */
 static const auto EFFECT_TYPE_LOOKUP = datastructure::create_const_map<nyan::fqon_t, effect_t>(
@@ -108,6 +145,35 @@ static const auto EFFECT_TYPE_LOOKUP = datastructure::create_const_map<nyan::fqo
 	std::pair("engine.effect.discrete.type.MakeHarvestable",
               effect_t::DISCRETE_MAKE_HARVESTABLE),
 	std::pair("engine.effect.discrete.type.SendToContainer",
+              effect_t::DISCRETE_SEND_TO_CONTAINER));
+
+/**
+ * Maps API resistance types to internal effect types.
+ */
+static const auto RESISTANCE_TYPE_LOOKUP = datastructure::create_const_map<nyan::fqon_t, effect_t>(
+	std::pair("engine.resistance.type.ContinuousFlatAttributeChangeDecrease",
+              effect_t::CONTINUOUS_FLAC_DECREASE),
+	std::pair("engine.resistance.type.ContinuousFlatAttributeChangeIncrease",
+              effect_t::CONTINUOUS_FLAC_INCREASE),
+	std::pair("engine.resistance.type.Lure",
+              effect_t::CONTINUOUS_LURE),
+	std::pair("engine.resistance.type.ContinuousTimeRelativeAttributeChangeDecrease",
+              effect_t::CONTINUOUS_TRAC_DECREASE),
+	std::pair("engine.resistance.type.ContinuousTimeRelativeAttributeChangeIncrease",
+              effect_t::CONTINUOUS_TRAC_INCREASE),
+	std::pair("engine.resistance.type.ContinuousTimeRelativeProgressChangeDecrease",
+              effect_t::CONTINUOUS_TRPC_DECREASE),
+	std::pair("engine.resistance.type.ContinuousTimeRelativeProgressChangeIncrease",
+              effect_t::CONTINUOUS_TRPC_INCREASE),
+	std::pair("engine.resistance.type.Convert",
+              effect_t::DISCRETE_CONVERT),
+	std::pair("engine.resistance.type.DiscreteFlatAttributeChangeDecrease",
+              effect_t::DISCRETE_FLAC_DECREASE),
+	std::pair("engine.resistance.type.DiscreteFlatAttributeChangeIncrease",
+              effect_t::DISCRETE_FLAC_INCREASE),
+	std::pair("engine.resistance.type.MakeHarvestable",
+              effect_t::DISCRETE_MAKE_HARVESTABLE),
+	std::pair("engine.resistance.type.SendToContainer",
               effect_t::DISCRETE_SEND_TO_CONTAINER));
 
 
@@ -140,6 +206,15 @@ static const auto EFFECT_PROPERTY_DEFS = datastructure::create_const_map<effect_
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.effect.property.type.Diplomatic"))),
 	std::pair(effect_property_t::PRIORITY,
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.effect.property.type.Priority"))));
+
+/**
+ * Maps internal resistance property types to nyan API values.
+ */
+static const auto RESISTANCE_PROPERTY_DEFS = datastructure::create_const_map<resistance_property_t, nyan::ValueHolder>(
+	std::pair(resistance_property_t::COST,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.resistance.property.type.Cost"))),
+	std::pair(resistance_property_t::STACKED,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.resistance.property.type.Stacked"))));
 
 /**
  * Maps API activity node types to engine node types.
