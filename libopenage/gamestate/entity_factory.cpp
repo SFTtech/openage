@@ -27,6 +27,7 @@
 #include "gamestate/component/api/idle.h"
 #include "gamestate/component/api/live.h"
 #include "gamestate/component/api/move.h"
+#include "gamestate/component/api/resistance.h"
 #include "gamestate/component/api/selectable.h"
 #include "gamestate/component/api/turn.h"
 #include "gamestate/component/internal/activity.h"
@@ -215,6 +216,10 @@ void EntityFactory::init_components(const std::shared_ptr<openage::event::EventL
 		         or ability_parent == "engine.ability.type.RangedDiscreteEffect") {
 			auto apply_effect = std::make_shared<component::ApplyEffect>(loop, ability_obj);
 			entity->add_component(apply_effect);
+		}
+		else if (ability_parent == "engine.ability.type.Resistance") {
+			auto resistance = std::make_shared<component::Resistance>(loop, ability_obj);
+			entity->add_component(resistance);
 		}
 		else {
 			log::log(DBG << "Entity has unrecognized ability type: " << ability_parent);
