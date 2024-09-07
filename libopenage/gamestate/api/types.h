@@ -23,6 +23,25 @@ enum class ability_t {
 };
 
 /**
+ * Types of effects for API objects.
+ */
+enum class effect_t {
+	CONTINUOUS_FLAC_DECREASE,
+	CONTINUOUS_FLAC_INCREASE,
+	CONTINUOUS_LURE,
+	CONTINUOUS_TRAC_DECREASE,
+	CONTINUOUS_TRAC_INCREASE,
+	CONTINUOUS_TRPC_DECREASE,
+	CONTINUOUS_TRPC_INCREASE,
+
+	DISCRETE_CONVERT,
+	DISCRETE_FLAC_DECREASE,
+	DISCRETE_FLAC_INCREASE,
+	DISCRETE_MAKE_HARVESTABLE,
+	DISCRETE_SEND_TO_CONTAINER,
+};
+
+/**
  * Types of properties for API abilities.
  */
 enum class ability_property_t {
@@ -32,6 +51,16 @@ enum class ability_property_t {
 	EXECUTION_SOUND,
 	DIPLOMATIC,
 	LOCK,
+};
+
+/**
+ * Types of properties for API effects.
+ */
+enum class effect_property_t {
+	AREA,
+	COST,
+	DIPLOMATIC,
+	PRIORITY,
 };
 
 /**
