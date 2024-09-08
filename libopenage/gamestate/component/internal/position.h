@@ -20,7 +20,7 @@ class EventLoop;
 
 namespace gamestate::component {
 
-class Position : public InternalComponent {
+class Position final : public InternalComponent {
 public:
 	/**
 	 * Create a Position component.

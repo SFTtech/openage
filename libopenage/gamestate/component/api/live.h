@@ -14,7 +14,7 @@
 
 
 namespace openage::gamestate::component {
-class Live : public APIComponent {
+class Live final : public APIComponent {
 public:
 	using APIComponent::APIComponent;
 
