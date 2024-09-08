@@ -23,7 +23,7 @@ public:
 	 * Create a new empty grid of width x height sectors with a specified size.
 	 *
 	 * @param id ID of the grid.
-	 * @param size Size of the grid (width x height).
+	 * @param size Size of the grid in sectors (width x height).
 	 * @param sector_size Side length of each sector.
 	 */
 	Grid(grid_id_t id,
@@ -34,7 +34,7 @@ public:
 	 * Create a grid of width x height sectors from a list of existing sectors.
 	 *
 	 * @param id ID of the grid.
-	 * @param size Size of the grid (width x height).
+	 * @param size Size of the grid in sectors (width x height).
 	 * @param sectors Existing sectors.
 	 */
 	Grid(grid_id_t id,

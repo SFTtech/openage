@@ -5,6 +5,7 @@
 #include <nyan/nyan.h>
 
 #include "gamestate/api/terrain.h"
+#include "gamestate/game_state.h"
 #include "gamestate/terrain.h"
 #include "gamestate/terrain_chunk.h"
 #include "pathfinding/cost_field.h"
@@ -14,31 +15,25 @@
 
 
 namespace openage::gamestate {
-Map::Map(const std::shared_ptr<Terrain> &terrain) :
+Map::Map(const std::shared_ptr<GameState> &state,
+         const std::shared_ptr<Terrain> &terrain) :
 	terrain{terrain},
 	pathfinder{std::make_shared<path::Pathfinder>()},
 	grid_lookup{} {
-	// Get grid types
-	// TODO: This should probably not be dependent on the existing tiles, but
-	//       on all defined nyan PathType objects
+	// Create a grid for each path type
+	// TODO: This is non-deterministic because of the unordered set. Is this a problem?
+	auto nyan_db = state->get_db_view();
+	std::unordered_set<nyan::fqon_t> path_types = nyan_db->get_obj_children_all("engine.util.path_type.PathType");
 	size_t grid_idx = 0;
 	auto chunk_size = this->terrain->get_chunk(0)->get_size();
-	auto side_length = std::max(chunk_size[0], chunk_size[0]);
-	util::Vector2s grid_size{this->terrain->get_row_size(), this->terrain->get_column_size()};
-	for (const auto &chunk : this->terrain->get_chunks()) {
-		for (const auto &tile : chunk->get_tiles()) {
-			auto path_costs = api::APITerrain::get_path_costs(tile.terrain);
+	auto side_length = std::max(chunk_size[0], chunk_size[1]);
+	auto grid_size = this->terrain->get_chunks_size();
+	for (const auto &path_type : path_types) {
+		auto grid = std::make_shared<path::Grid>(grid_idx, grid_size, side_length);
+		this->pathfinder->add_grid(grid);
 
-			for (const auto &path_cost : path_costs) {
-				if (not this->grid_lookup.contains(path_cost.first)) {
-					auto grid = std::make_shared<path::Grid>(grid_idx, grid_size, side_length);
-					this->pathfinder->add_grid(grid);
-
-					this->grid_lookup.emplace(path_cost.first, grid_idx);
-					grid_idx += 1;
-				}
-			}
-		}
+		this->grid_lookup.emplace(path_type, grid_idx);
+		grid_idx += 1;
 	}
 
 	// Set path costs

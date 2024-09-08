@@ -17,6 +17,7 @@ class Pathfinder;
 } // namespace path
 
 namespace gamestate {
+class GameState;
 class Terrain;
 
 class Map {
@@ -26,9 +27,11 @@ public:
 	 *
 	 * Initializes the pathfinder with the terrain path costs.
 	 *
+	 * @param state Game state.
 	 * @param terrain Terrain object.
 	 */
-	Map(const std::shared_ptr<Terrain> &terrain);
+	Map(const std::shared_ptr<GameState> &state,
+	    const std::shared_ptr<Terrain> &terrain);
 
 	~Map() = default;
 

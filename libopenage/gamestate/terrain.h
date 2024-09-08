@@ -52,18 +52,11 @@ public:
 	const util::Vector2s &get_size() const;
 
 	/**
-	 * Get the size of a row in the terrain.
+	 * Get the size of the terrain (in chunks).
 	 *
-	 * @return Row size (width).
+	 * @return Terrain chunk size (width x height).
 	 */
-	size_t get_row_size() const;
-
-	/**
-	 * Get the size of a column in the terrain.
-	 *
-	 * @return Column size (height).
-	 */
-	size_t get_column_size() const;
+	const util::Vector2s get_chunks_size() const;
 
 	/**
 	 * Add a chunk to the terrain.
