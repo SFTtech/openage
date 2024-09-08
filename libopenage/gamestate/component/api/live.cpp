@@ -1,12 +1,10 @@
-// Copyright 2021-2025 the openage authors. See copying.md for legal info.
+// Copyright 2021-2024 the openage authors. See copying.md for legal info.
 
 #include "live.h"
 
-#include <optional>
-
 #include "curve/container/iterator.h"
 #include "curve/container/map_filter_iterator.h"
-#include "curve/discrete.h"
+#include "curve/segmented.h"
 #include "gamestate/component/types.h"
 
 
@@ -18,20 +16,22 @@ component_t Live::get_type() const {
 
 void Live::add_attribute(const time::time_t &time,
                          const nyan::fqon_t &attribute,
-                         std::shared_ptr<curve::Discrete<int64_t>> starting_values) {
-	this->attribute_values.insert(time, attribute, starting_values);
+                         std::shared_ptr<curve::Segmented<attribute_value_t>> starting_values) {
+	this->attributes.insert(time, attribute, starting_values);
 }
 
 void Live::set_attribute(const time::time_t &time,
                          const nyan::fqon_t &attribute,
-                         int64_t value) {
-	auto attribute_value = this->attribute_values.at(time, attribute);
-
-	if (attribute_value) {
-		(**attribute_value)->set_last(time, value);
+                         attribute_value_t value) {
+	auto attribute_iterator = this->attributes.at(time, attribute);
+	if (attribute_iterator) {
+		auto attribute_curve = **attribute_iterator;
+		auto current_value = attribute_curve->get(time);
+		attribute_curve->set_last_jump(time, current_value, value);
 	}
 	else {
-		// TODO: fail here
+		throw Error(MSG(err) << "Attribute not found: " << attribute);
 	}
 }
+
 } // namespace openage::gamestate::component
