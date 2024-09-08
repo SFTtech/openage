@@ -93,7 +93,7 @@ _Note:_ If you want to download and build Nyan automatically add `-DDOWNLOAD_NYA
       - If prebuilt QT6 was installed, the original location of QT6 DLLs is `<QT6 directory>\bin`.
 
   - Now, to run the openage:
-    - Open a CMD window in `<openage directory>\build\` and run `python -m openage game`
+    - Open a CMD window in `<openage directory>\build\` and run `python -m openage main`
     - Execute`<openage directory>\build\run.exe` every time after that and enjoy!
 
 ## Packaging
