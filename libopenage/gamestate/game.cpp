@@ -143,7 +143,7 @@ void Game::generate_terrain(const std::shared_ptr<TerrainFactory> &terrain_facto
 
 	auto terrain = terrain_factory->add_terrain({20, 20}, {chunk0, chunk1, chunk2, chunk3});
 
-	auto map = std::make_shared<Map>(terrain);
+	auto map = std::make_shared<Map>(this->state, terrain);
 	this->state->set_map(map);
 }
 

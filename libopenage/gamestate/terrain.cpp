@@ -78,14 +78,9 @@ const util::Vector2s &Terrain::get_size() const {
 	return this->size;
 }
 
-size_t Terrain::get_row_size() const {
+const util::Vector2s Terrain::get_chunks_size() const {
 	auto chunk_size = this->chunks[0]->get_size();
-	return this->size[0] / chunk_size[0];
-}
-
-size_t Terrain::get_column_size() const {
-	auto chunk_size = this->chunks[0]->get_size();
-	return this->size[1] / chunk_size[1];
+	return {this->size[0] / chunk_size[0], this->size[1] / chunk_size[1]};
 }
 
 void Terrain::add_chunk(const std::shared_ptr<TerrainChunk> &chunk) {
