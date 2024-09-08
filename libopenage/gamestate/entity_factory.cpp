@@ -197,11 +197,12 @@ void EntityFactory::init_components(const std::shared_ptr<openage::event::EventL
 
 				live->add_attribute(time::TIME_MIN,
 				                    attribute.get_name(),
-				                    std::make_shared<curve::Discrete<int64_t>>(loop,
-				                                                               0,
-				                                                               "",
-				                                                               nullptr,
-				                                                               start_value));
+				                    std::make_shared<curve::Segmented<component::attribute_value_t>>(
+										loop,
+										0,
+										"",
+										nullptr,
+										start_value));
 			}
 		}
 		else if (ability_parent == "engine.ability.type.Activity") {
