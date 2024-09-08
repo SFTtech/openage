@@ -2,8 +2,15 @@
 
 #pragma once
 
+#include "util/fixed_point.h"
+
 
 namespace openage::gamestate::component {
+
+/**
+ * Type for attribute values.
+ */
+using attribute_value_t = util::FixedPoint<int64_t, 16>;
 
 /**
  * Types of components.
