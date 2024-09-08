@@ -1,4 +1,4 @@
-// Copyright 2021-2025 the openage authors. See copying.md for legal info.
+// Copyright 2021-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -13,7 +13,14 @@
 #include "time/time.h"
 
 
-namespace openage::gamestate::component {
+namespace openage {
+
+namespace curve {
+template <typename T>
+class Segmented;
+} // namespace curve
+
+namespace gamestate::component {
 class Live final : public APIComponent {
 public:
 	using APIComponent::APIComponent;
@@ -29,7 +36,7 @@ public:
 	 */
 	void add_attribute(const time::time_t &time,
 	                   const nyan::fqon_t &attribute,
-	                   std::shared_ptr<curve::Discrete<int64_t>> starting_values);
+	                   std::shared_ptr<curve::Segmented<attribute_value_t>> starting_values);
 
 	/**
 	 * Set the value of an attribute at a given time.
@@ -40,16 +47,17 @@ public:
 	 */
 	void set_attribute(const time::time_t &time,
 	                   const nyan::fqon_t &attribute,
-	                   int64_t value);
+	                   attribute_value_t value);
 
 private:
 	using attribute_storage_t = curve::UnorderedMap<nyan::fqon_t,
-	                                                std::shared_ptr<curve::Discrete<int64_t>>>;
+	                                                std::shared_ptr<curve::Segmented<attribute_value_t>>>;
 
 	/**
 	 * Map of attribute values by attribute type.
 	 */
-	attribute_storage_t attribute_values;
+	attribute_storage_t attributes;
 };
 
-} // namespace openage::gamestate::component
+} // namespace gamestate::component
+} // namespace openage
