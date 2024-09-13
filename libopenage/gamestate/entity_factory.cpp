@@ -228,7 +228,7 @@ void EntityFactory::init_components(const std::shared_ptr<openage::event::EventL
 			entity->add_component(line_of_sight);
 		}
 		else {
-			log::log(DBG << "Entity has unrecognized ability type: " << ability_parent);
+			log::log(SPAM << "Entity has unrecognized ability type: " << ability_parent);
 		}
 	}
 
