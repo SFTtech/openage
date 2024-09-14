@@ -1,4 +1,4 @@
-// Copyright 2023-2025 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #include "move.h"
 
@@ -80,7 +80,7 @@ const time::time_t Move::move_command(const std::shared_ptr<gamestate::GameEntit
                                       const time::time_t &start_time) {
 	auto command_queue = std::dynamic_pointer_cast<component::CommandQueue>(
 		entity->get_component(component::component_t::COMMANDQUEUE));
-	auto command = std::dynamic_pointer_cast<component::command::MoveCommand>(
+	auto command = std::dynamic_pointer_cast<component::command::Move>(
 		command_queue->pop_command(start_time));
 
 	if (not command) [[unlikely]] {
