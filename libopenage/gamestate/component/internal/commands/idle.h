@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -11,10 +11,10 @@ namespace openage::gamestate::component::command {
 /**
  * Command for idling (TODO: rename to Stop?).
  */
-class IdleCommand : public Command {
+class Idle final : public Command {
 public:
-	IdleCommand() = default;
-	virtual ~IdleCommand() = default;
+	Idle() = default;
+	virtual ~Idle() = default;
 
 	inline command_t get_type() const override {
 		return command_t::IDLE;
