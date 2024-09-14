@@ -13,15 +13,15 @@ namespace openage::gamestate::component::command {
 /**
  * Custom command for everything that is not covered by the other commands.
  */
-class CustomCommand : public Command {
+class Custom final : public Command {
 public:
 	/**
 	 * Create a new custom command.
 	 *
 	 * @param id Command identifier.
 	 */
-	CustomCommand(const std::string &id);
-	virtual ~CustomCommand() = default;
+	Custom(const std::string &id);
+	virtual ~Custom() = default;
 
 	inline command_t get_type() const override {
 		return command_t::CUSTOM;
