@@ -70,7 +70,12 @@ const time::time_t ApplyEffect::apply_effect(const std::shared_ptr<gamestate::Ga
 		resistances[resistance_type].push_back(resistance_obj);
 	}
 
-	time::time_t end_time = start_time;
+	time::time_t total_time = 0;
+
+	// TODO: Check if delay is necessary
+	auto delay = effect_ability.get_float("ApplyDiscreteEffect.application_delay");
+	auto reload_time = effect_ability.get_float("ApplyDiscreteEffect.reload_time");
+	total_time += delay + reload_time;
 
 	// Check for matching effects and resistances
 	for (auto &effect : effects) {
@@ -91,24 +96,19 @@ const time::time_t ApplyEffect::apply_effect(const std::shared_ptr<gamestate::Ga
 			auto attribute = attribute_amount.get_object("AttributeAmount.type");
 			auto applied_value = get_applied_discrete_flac(effect_objs, resistance_objs);
 
-			// TODO: Check if delay is necessary
-			auto delay = effect_ability.get_float("ApplyDiscreteEffect.application_delay");
-			auto reload_time = effect_ability.get_float("ApplyDiscreteEffect.reload_time");
-			end_time += delay + reload_time;
-
 			// Record the time when the effects were applied
 			effects_component->set_init_time(start_time + delay);
-			effects_component->set_last_used(end_time);
+			effects_component->set_last_used(start_time + total_time);
 
 			// Apply the effect to the live component
-			live_component->set_attribute(end_time, attribute.get_name(), applied_value);
+			live_component->set_attribute(start_time + delay, attribute.get_name(), applied_value);
 		} break;
 		default:
 			throw Error(MSG(err) << "Effect type not implemented: " << static_cast<int>(effect_type));
 		}
 	}
 
-	return end_time;
+	return total_time;
 }
 
 
