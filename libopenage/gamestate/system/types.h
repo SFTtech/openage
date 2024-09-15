@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -10,6 +10,8 @@ namespace openage::gamestate::system {
  */
 enum class system_id_t {
 	NONE,
+
+	APPLY_EFFECT,
 
 	IDLE,
 

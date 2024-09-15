@@ -157,29 +157,31 @@ static const auto EFFECT_TYPE_LOOKUP = datastructure::create_const_map<nyan::fqo
  * Maps API resistance types to internal effect types.
  */
 static const auto RESISTANCE_TYPE_LOOKUP = datastructure::create_const_map<nyan::fqon_t, effect_t>(
-	std::pair("engine.resistance.type.ContinuousFlatAttributeChangeDecrease",
+	std::pair("engine.resistance.continuous.flat_attribute_change.type.FlatAttributeChangeDecrease",
               effect_t::CONTINUOUS_FLAC_DECREASE),
-	std::pair("engine.resistance.type.ContinuousFlatAttributeChangeIncrease",
+	std::pair("engine.resistance.continuous.flat_attribute_change.type.FlatAttributeChangeIncrease",
               effect_t::CONTINUOUS_FLAC_INCREASE),
-	std::pair("engine.resistance.type.Lure",
+	std::pair("engine.resistance.continuous.type.Lure",
               effect_t::CONTINUOUS_LURE),
-	std::pair("engine.resistance.type.ContinuousTimeRelativeAttributeChangeDecrease",
+	std::pair("engine.resistance.continuous.type.TimeRelativeAttributeChangeDecrease",
               effect_t::CONTINUOUS_TRAC_DECREASE),
-	std::pair("engine.resistance.type.ContinuousTimeRelativeAttributeChangeIncrease",
+	std::pair("engine.resistance.continuous.type.TimeRelativeAttributeChangeIncrease",
               effect_t::CONTINUOUS_TRAC_INCREASE),
-	std::pair("engine.resistance.type.ContinuousTimeRelativeProgressChangeDecrease",
+	std::pair("engine.resistance.continuous.type.TimeRelativeProgressChangeDecrease",
               effect_t::CONTINUOUS_TRPC_DECREASE),
-	std::pair("engine.resistance.type.ContinuousTimeRelativeProgressChangeIncrease",
+	std::pair("engine.resistance.continuous.type.TimeRelativeProgressChangeIncrease",
               effect_t::CONTINUOUS_TRPC_INCREASE),
-	std::pair("engine.resistance.type.Convert",
+	std::pair("engine.resistance.discrete.type.Convert",
               effect_t::DISCRETE_CONVERT),
-	std::pair("engine.resistance.type.DiscreteFlatAttributeChangeDecrease",
+	std::pair("engine.resistance.discrete.convert.type.AoE2Convert", // TODO: Remove from API
+              effect_t::DISCRETE_CONVERT),
+	std::pair("engine.resistance.discrete.flat_attribute_change.type.FlatAttributeChangeDecrease",
               effect_t::DISCRETE_FLAC_DECREASE),
-	std::pair("engine.resistance.type.DiscreteFlatAttributeChangeIncrease",
+	std::pair("engine.resistance.discrete.flat_attribute_change.type.FlatAttributeChangeIncrease",
               effect_t::DISCRETE_FLAC_INCREASE),
-	std::pair("engine.resistance.type.MakeHarvestable",
+	std::pair("engine.resistance.discrete.type.MakeHarvestable",
               effect_t::DISCRETE_MAKE_HARVESTABLE),
-	std::pair("engine.resistance.type.SendToContainer",
+	std::pair("engine.resistance.discrete.type.SendToContainer",
               effect_t::DISCRETE_SEND_TO_CONTAINER));
 
 
@@ -243,6 +245,8 @@ static const auto ACTIVITY_NODE_DEFS = datastructure::create_const_map<std::stri
  * TODO: Expand this to include all systems.
  */
 static const auto ACTIVITY_TASK_SYSTEM_DEFS = datastructure::create_const_map<std::string, system::system_id_t>(
+	std::pair("engine.ability.type.ApplyDiscreteEffect",
+              system::system_id_t::APPLY_EFFECT),
 	std::pair("engine.ability.type.Idle",
               system::system_id_t::IDLE),
 	std::pair("engine.ability.type.Move",
@@ -254,6 +258,8 @@ static const auto ACTIVITY_TASK_SYSTEM_DEFS = datastructure::create_const_map<st
 static const auto ACTIVITY_CONDITIONS = datastructure::create_const_map<std::string, activity::condition_t>(
 	std::pair("engine.util.activity.condition.type.CommandInQueue",
               std::function(gamestate::activity::command_in_queue)),
+	std::pair("engine.util.activity.condition.type.NextCommandApplyEffect",
+              std::function(gamestate::activity::next_command_apply_effect)),
 	std::pair("engine.util.activity.condition.type.NextCommandIdle",
               std::function(gamestate::activity::next_command_idle)),
 	std::pair("engine.util.activity.condition.type.NextCommandMove",
