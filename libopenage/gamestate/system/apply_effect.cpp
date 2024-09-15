@@ -15,6 +15,7 @@
 #include "gamestate/component/types.h"
 #include "gamestate/game_entity.h"
 #include "gamestate/game_state.h"
+#include "gamestate/system/property.h"
 
 
 namespace openage::gamestate::system {
@@ -107,6 +108,10 @@ const time::time_t ApplyEffect::apply_effect(const std::shared_ptr<gamestate::Ga
 			throw Error(MSG(err) << "Effect type not implemented: " << static_cast<int>(effect_type));
 		}
 	}
+
+	// properties
+	auto ability = effects_component->get_ability();
+	handle_animated(effector, ability, start_time);
 
 	return total_time;
 }
