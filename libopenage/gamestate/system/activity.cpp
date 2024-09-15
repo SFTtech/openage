@@ -19,6 +19,7 @@
 #include "gamestate/component/internal/activity.h"
 #include "gamestate/component/types.h"
 #include "gamestate/game_entity.h"
+#include "gamestate/system/apply_effect.h"
 #include "gamestate/system/idle.h"
 #include "gamestate/system/move.h"
 #include "util/fixed_point.h"
@@ -125,6 +126,9 @@ const time::time_t Activity::handle_subsystem(const time::time_t &start_time,
                                               const std::shared_ptr<openage::gamestate::GameState> &state,
                                               system_id_t system_id) {
 	switch (system_id) {
+	case system_id_t::APPLY_EFFECT:
+		return ApplyEffect::apply_effect(entity, state, entity, start_time);
+		break;
 	case system_id_t::IDLE:
 		return Idle::idle(entity, start_time);
 		break;
