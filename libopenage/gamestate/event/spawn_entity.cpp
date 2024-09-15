@@ -11,6 +11,7 @@
 #include "coord/phys.h"
 #include "gamestate/component/internal/activity.h"
 #include "gamestate/component/internal/command_queue.h"
+#include "gamestate/component/internal/commands/apply_effect.h"
 #include "gamestate/component/internal/ownership.h"
 #include "gamestate/component/internal/position.h"
 #include "gamestate/component/types.h"
@@ -206,9 +207,18 @@ void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
 		entity->get_component(component::component_t::OWNERSHIP));
 	entity_owner->set_owner(time, owner_id);
 
+	// ASDF: Remove demo code below for applying effects
+	// add apply effect command to the command queue
+	auto command_queue = std::dynamic_pointer_cast<component::CommandQueue>(
+		entity->get_component(component::component_t::COMMANDQUEUE));
+	auto apply_command = std::make_shared<component::command::ApplyEffect>(entity->get_id());
+	command_queue->add_command(time, apply_command);
+
 	auto activity = std::dynamic_pointer_cast<component::Activity>(
 		entity->get_component(component::component_t::ACTIVITY));
 	activity->init(time);
+
+	// Important: Running the activity system must be done AFTER all components are initialized
 	entity->get_manager()->run_activity_system(time);
 
 	gstate->add_game_entity(entity);
