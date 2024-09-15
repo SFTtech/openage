@@ -546,6 +546,13 @@ def _create_objects(api_objects: dict[str, NyanObject]) -> None:
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
+    # engine.util.activity.condition.type.NextCommandApplyEffect
+    parents = [api_objects["engine.util.activity.condition.Condition"]]
+    nyan_object = NyanObject("NextCommandApplyEffect", parents)
+    fqon = "engine.util.activity.condition.type.NextCommandApplyEffect"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
     # engine.util.activity.condition.type.NextCommandIdle
     parents = [api_objects["engine.util.activity.condition.Condition"]]
     nyan_object = NyanObject("NextCommandIdle", parents)
