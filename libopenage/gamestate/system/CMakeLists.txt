@@ -3,5 +3,6 @@ add_sources(libopenage
     apply_effect.cpp
     idle.cpp
     move.cpp
+    property.cpp
     types.cpp
 )
