@@ -127,6 +127,26 @@ If the lock pool
 
 the ability with this property cannot become active.
 
+## ability.property.type.Ranged
+
+```python
+Ranged(AbilityProperty):
+    min_range : float
+    max_range : float
+```
+
+Abilities with this property can only be used within a specified range around the game entity. The property mostly affects abilities that are *targeted*, i.e. that are used on other game entities or locations in the game world.
+
+If the target of the ability is another game entity and said game entity has a `Collision` ability, the range check factors in the `Hitbox` boundaries of the targeted game entity when calculating the distance.
+
+Without this property, abilities behave as if `min_range` and `max_range` are `0.0`.
+
+**min_range**
+Minimum distance to the target of the ability.
+
+**max_range**
+Maximum distance to the target of the ability.
+
 ## ability.type.ActiveTransformTo
 
 ```python
@@ -327,15 +347,11 @@ Alters the abilities and modifiers of a game entity after the despawn condition 
 
 ```python
 DetectCloak(Ability):
-    range                : float
     allowed_types        : set(children(GameEntityType))
     blacklisted_entities : set(GameEntity)
 ```
 
 Enables the game entity to decloak other game entities which use the `Cloak` ability.
-
-**range**
-Range around the game entity in which other game entities will be decloaked.
 
 **allowed_types**
 Whitelist of game entity types that can be decloaked.
@@ -543,16 +559,12 @@ Determines whether the resource spot is harvestable when it is created. If `True
 
 ```python
 Herd(Ability):
-    range                : float
     strength             : int
     allowed_types        : set(children(GameEntityType))
     blacklisted_entities : set(GameEntity)
 ```
 
 Allows a game entity to change the ownership of other game entities with the `Herdable` ability.
-
-**range**
-Minimum distance to a herdable game entity to make it change ownership.
 
 **strength**
 Comparison value for situations when the game entity competes with other game entities for a herdable. The game entity with the highest `strength` value will always be prefered, even if other game entities fulfill the condition set by `mode` in `Herdable` better.
@@ -787,38 +799,6 @@ RallyPoint(Ability):
 
 Allows a game entity to set a rally point on the map. Game entities spawned by the `Create` ability or ejected from a container will move to the rally point location. The rally point can be placed on another game entity. In that case, the game entities moving there will try to use an appropriate ability on it.
 
-## ability.type.RangedContinuousEffect
-
-```python
-RangedContinuousEffect(ApplyContinuousEffect):
-    min_range : int
-    max_range : int
-```
-
-Applies continuous effects on another game entity. This specialization of `ApplyContinuousEffect` allows ranged application.
-
-**min_range**
-Minimum distance to target.
-
-**max_range**
-Maximum distance to the target.
-
-## ability.type.RangedDiscreteEffect
-
-```python
-RangedDiscreteEffect(ApplyDiscreteEffect):
-    min_range : int
-    max_range : int
-```
-
-Applies batches of discrete effects on another game entity. This specialization of `ApplyDiscreteEffect` allows ranged application.
-
-**min_range**
-Minimum distance to target.
-
-**max_range**
-Maximum distance to the target.
-
 ## ability.type.RegenerateAttribute
 
 ```python
@@ -966,8 +946,6 @@ ShootProjectile(Ability):
     projectiles              : orderedset(GameEntity)
     min_projectiles          : int
     max_projectiles          : int
-    min_range                : int
-    max_range                : int
     reload_time              : float
     spawn_delay              : float
     projectile_delay         : float
@@ -993,12 +971,6 @@ Minimum amount of projectiles spawned.
 
 **max_projectiles**
 Maximum amount of projectiles spawned.
-
-**min_range**
-Minimum distance to the targeted game entity.
-
-**max_range**
-Maximum distance to the targeted game entity.
 
 **reload_time**
 Time until the ability can be used again in seconds. The timer starts after the *last* projectile has been fired.

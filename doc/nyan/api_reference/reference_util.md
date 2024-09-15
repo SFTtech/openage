@@ -54,6 +54,18 @@ Generalization object for conditions that can be used in `XORGate` nodes.
 **node**
 Node that is visited when the condition is true.
 
+## util.activity.condition.type.AbilityUsable
+
+```python
+AbilityUsable(Condition):
+    ability : abstract(Ability)
+```
+
+Is true when an ability can be used by the game entity when the node is visited.
+
+**ability**
+Ability definition used for the usability check. This can reference a specific ability of the game entity or an abstract API object from the `engine.ability.type` namespace. If a specific ability is referenced, the ability must be assigned to the game entity **and** be enabled for the check to pass. If an API object is referenced, at least one ability of the same type must be enabled for the check to pass.
+
 ## util.activity.condition.type.CommandInQueue
 
 ```python
@@ -61,25 +73,35 @@ CommandInQueue(Condition):
     pass
 ```
 
-Is true when the command queue is not empty when the node is visited.
+Is true when the game entity's command queue is not empty when the node is visited.
 
-## util.activity.condition.type.NextCommandIdle
-
-```python
-NextCommandIdle(Condition):
-    pass
-```
-
-Is true when the next command in the queue is of type `Idle`.
-
-## util.activity.condition.type.NextCommandMove
+## util.activity.condition.type.NextCommand
 
 ```python
-NextCommandMove(Condition):
-    pass
+NextCommand(Condition):
+    command : children(Command)
 ```
 
-Is true when the next command in the queue is of type `Move`.
+Is true when the next command in the game entity's command queue is of a specific type.
+
+**command**
+Command type checked by the condition.
+
+## util.activity.condition.type.TargetInRange
+
+```python
+TargetInRange(Condition):
+    ability : abstract(Ability)
+```
+
+Is true when the target of the next command in the game entity's command queue is in range of an ability.
+
+**ability**
+Ability definition used for the range check.
+
+This can reference a specific ability of the game entity or an abstract API object from the `engine.ability.type` namespace. If a specific ability is referenced, the ability must be assigned to the game entity and must be enabled. Otherwise, the range check fails. If an API object is referenced, the first active ability with the same type as the API object is executed.
+
+If the ability has the property `Ranged`, the attributes of this property are utilized for the range check calculations. If the ability does not have a `Ranged` property, the condition is only true when the game entity is at the same position as the target.
 
 ## util.activity.event.Event
 
@@ -149,7 +171,7 @@ Next node in the activity graph.
 **ability**
 Ability that is executed.
 
-This can reference a specific ability of the game entity or an abstract API object from the `engine.ability.type` namespace. If a specific ability is referenced, the ability must be assigned to the game entity and must not be disabled. Otherwise, the ability is not executed. If an API object is referenced, the first active ability with the same type as the API object is executed.
+This can reference a specific ability of the game entity or an abstract API object from the `engine.ability.type` namespace. If a specific ability is referenced, the ability must be assigned to the game entity and must be enabled. Otherwise, the ability is not executed. If an API object is referenced, the first active ability with the same type as the API object is executed.
 
 ## util.activity.node.type.End
 
@@ -171,6 +193,22 @@ Start of an activity. Does nothing but pointing to the next node.
 
 **next**
 Next node in the activity graph.
+
+## util.activity.node.type.Task
+
+```python
+Task(Node):
+    next : Node
+    task : children(Task)
+```
+
+Executes a task on the game entity when the node is visited.
+
+**next**
+Next node in the activity graph.
+
+**task**
+Task that is executed.
 
 ## util.activity.node.type.XOREventGate
 
@@ -195,10 +233,83 @@ XORGate(Node):
 Gateway that branches the activity graph depending on the result of conditional queries. Queries are executed immediately when the node is visited.
 
 **next**
-Mapping of conditional queries to the next node in the activity graph. The first query that evaluates to true is used to determine the next node. If no query evaluates to true, the `default` node is used.
+Mapping of conditional queries to the next node in the activity graph. The first query that evaluates to true is used to determine the next node. If no query evaluates to true, the `default` node is used as fallback.
 
 **default**
 Default node that is used if no query evaluates to true.
+
+## util.activity.node.type.XORSwitchGate
+
+```python
+XORSwitchGate(Node):
+    switch  : children(SwitchCondition)
+    default : Node
+```
+
+Gateway that branches the activity graph depending on the value of a runtime parameter. In comparison to `XORGate`, only one conditional query is done based on the value (similar to the behaviour of a [switch statement](https://en.wikipedia.org/wiki/Switch_statement)). The query is executed immediately when the node is visited.
+
+**switch**
+Defines which runtime parameter is checked as well as the mapping of parameter value to the next node in the activity graph. If a value is encountered at query execution time that is not associated with a node, the `default` node is used as fallback.
+
+**default**
+Default node that is used if a value does not have an associated node.
+
+## util.activity.switch_condition.SwitchCondition
+
+```python
+SwitchCondition(Object):
+    pass
+```
+
+Generalization object for conditions that can be used in `XORSwitchGate` nodes.
+
+## util.activity.switch_condition.type.NextCommand
+
+```python
+NextCommand(SwitchCondition):
+    next : dict(children(Command), Node)
+```
+
+Switches branches based on the type of command that is in the queue of the game entity.
+
+**next**
+Mapping of command types to the next node in the activity graph.
+
+## util.activity.task.Task
+
+```python
+Task(Object):
+    pass
+```
+
+Generalization object for tasks that can be used in `Task` nodes.
+
+## util.activity.task.type.ClearCommandQueue
+
+```python
+ClearCommandQueue(Task):
+    pass
+```
+
+Clear the command queue of the game entity executing the activity.
+
+## util.activity.task.type.MoveToTarget
+
+```python
+MoveToTarget(Task):
+    pass
+```
+
+Move to the current target of the game entity. The target may be a position or another game entity. If the game entity has no target at time of execution, the task is skipped.
+
+## util.activity.task.type.PopCommandQueue
+
+```python
+PopCommandQueue(Task):
+    pass
+```
+
+Pop the front command from the command queue of the game entity executing the activity.
 
 ## util.animation_override.AnimationOverride
 
@@ -419,6 +530,42 @@ The activation message that has to be typed into the chat console.
 
 **changes**
 Changes to API objects.
+
+## util.command.Command
+
+```python
+Command(Object):
+    pass
+```
+
+Generalization object for commands of a game entity.
+
+## util.command.type.ApplyEffect
+
+```python
+ApplyEffect(Command):
+    pass
+```
+
+Game entity command for using the `ApplyEffect` ability.
+
+## util.command.type.Idle
+
+```python
+Idle(Command):
+    pass
+```
+
+Game entity command for using the `Idle` ability.
+
+## util.command.type.Move
+
+```python
+Move(Command):
+    pass
+```
+
+Game entity command for using the `Move` ability.
 
 ## util.container_type.SendToContainerType
 
