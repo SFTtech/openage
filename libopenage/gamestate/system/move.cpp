@@ -26,6 +26,7 @@
 #include "gamestate/game_entity.h"
 #include "gamestate/game_state.h"
 #include "gamestate/map.h"
+#include "gamestate/system/property.h"
 #include "pathfinding/path.h"
 #include "pathfinding/pathfinder.h"
 #include "util/fixed_point.h"
@@ -173,15 +174,7 @@ const time::time_t Move::move_default(const std::shared_ptr<gamestate::GameEntit
 
 	// properties
 	auto ability = move_component->get_ability();
-	if (api::APIAbility::check_property(ability, api::ability_property_t::ANIMATED)) {
-		auto property = api::APIAbility::get_property(ability, api::ability_property_t::ANIMATED);
-		auto animations = api::APIAbilityProperty::get_animations(property);
-		auto animation_paths = api::APIAnimation::get_animation_paths(animations);
-
-		if (animation_paths.size() > 0) [[likely]] {
-			entity->render_update(start_time, animation_paths[0]);
-		}
-	}
+	handle_animated(entity, ability, start_time);
 
 	return total_time;
 }
