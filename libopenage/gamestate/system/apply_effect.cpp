@@ -26,7 +26,7 @@ const time::time_t ApplyEffect::apply_effect(const std::shared_ptr<gamestate::Ga
 	auto effects_component = std::dynamic_pointer_cast<component::ApplyEffect>(
 		effector->get_component(component::component_t::APPLY_EFFECT));
 	auto effect_ability = effects_component->get_ability();
-	auto batches = effect_ability.get_set("ApplyEffect.batches");
+	auto batches = effect_ability.get_set("ApplyDiscreteEffect.batches");
 
 	auto resistance_component = std::dynamic_pointer_cast<component::Resistance>(
 		resistor->get_component(component::component_t::RESISTANCE));
@@ -48,7 +48,7 @@ const time::time_t ApplyEffect::apply_effect(const std::shared_ptr<gamestate::Ga
 			auto effect_obj = effect_ability.get_view()->get_object(effect_obj_val->get_name());
 			auto effect_type = api::APIEffect::get_type(effect_obj);
 
-			if (effects.contains(effect_type)) {
+			if (not effects.contains(effect_type)) {
 				effects.emplace(effect_type, std::vector<nyan::Object>{});
 			}
 
@@ -63,7 +63,7 @@ const time::time_t ApplyEffect::apply_effect(const std::shared_ptr<gamestate::Ga
 		auto resistance_obj = resistance_ability.get_view()->get_object(resistance_obj_val->get_name());
 		auto resistance_type = api::APIResistance::get_effect_type(resistance_obj);
 
-		if (resistances.contains(resistance_type)) {
+		if (not resistances.contains(resistance_type)) {
 			resistances.emplace(resistance_type, std::vector<nyan::Object>{});
 		}
 
@@ -77,7 +77,7 @@ const time::time_t ApplyEffect::apply_effect(const std::shared_ptr<gamestate::Ga
 		auto effect_type = effect.first;
 		auto effect_objs = effect.second;
 
-		if (!resistances.contains(effect_type)) {
+		if (not resistances.contains(effect_type)) {
 			continue;
 		}
 
@@ -119,9 +119,9 @@ const component::attribute_value_t ApplyEffect::get_applied_discrete_flac(const 
 	component::attribute_value_t max_change = component::attribute_value_t::max_value();
 
 	for (auto &effect : effects) {
-		auto change_amount = effect.get_object("FlatAttributeChange.value");
+		auto change_amount = effect.get_object("FlatAttributeChange.change_value");
 		auto min_change_amount = effect.get_optional<nyan::Object>("FlatAttributeChange.min_change_value");
-		auto max_change_amount = effect.get_optional<nyan::Object>("FlatAttributeChange.max_change_value");
+		auto max_change_amount = effect.get_optional<nyan::Object, true>("max_change_value");
 
 		// Get value from change amount
 		// TODO: Ensure that the attribute is the same for all effects
@@ -149,9 +149,7 @@ const component::attribute_value_t ApplyEffect::get_applied_discrete_flac(const 
 	//       idea: move effect type to Effect object and make Resistance.resistances a dict.
 
 	for (auto &resistance : resistances) {
-		auto block_amount = resistance.get_object("FlatAttributeChange.value");
-		auto min_block_amount = resistance.get_optional<nyan::Object>("FlatAttributeChange.min_change_value");
-		auto max_block_amount = resistance.get_optional<nyan::Object>("FlatAttributeChange.max_change_value");
+		auto block_amount = resistance.get_object("FlatAttributeChange.block_value");
 
 		// Get value from block amount
 		// TODO: Ensure that the attribute is the same attribute used in the effects
