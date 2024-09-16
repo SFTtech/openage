@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #include "main.h"
 
@@ -31,7 +31,7 @@ int run_game(const main_arguments &args) {
 		run_mode = openage::engine::Engine::mode::HEADLESS;
 	}
 
-	openage::engine::Engine engine{run_mode, args.root_path, args.mods, args.gl_debug};
+	openage::engine::Engine engine{run_mode, args.root_path, args.mods, args.gl_debug, args.width, args.height};
 
 	engine.loop();
 

@@ -1,4 +1,4 @@
-# Copyright 2015-2023 the openage authors. See copying.md for legal info.
+# Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 from cpython.ref cimport PyObject
 from libcpp.string cimport string
@@ -36,6 +36,12 @@ def run_game(args, root_path):
             args_cpp.mods = args.modpacks
         else:
             args_cpp.mods = vector[string]()
+
+        # window width
+        args_cpp.width = args.width
+
+        # window height
+        args_cpp.height = args.height
 
         # run the game!
         with nogil:
