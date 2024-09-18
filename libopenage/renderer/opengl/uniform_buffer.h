@@ -51,22 +51,22 @@ public:
 
 protected:
 	std::shared_ptr<UniformBufferInput> new_unif_in() override;
-	void set_i32(std::shared_ptr<UniformBufferInput> const &, const char *, int32_t) override;
-	void set_u32(std::shared_ptr<UniformBufferInput> const &, const char *, uint32_t) override;
-	void set_f32(std::shared_ptr<UniformBufferInput> const &, const char *, float) override;
-	void set_f64(std::shared_ptr<UniformBufferInput> const &, const char *, double) override;
-	void set_bool(std::shared_ptr<UniformBufferInput> const &, const char *, bool) override;
-	void set_v2f32(std::shared_ptr<UniformBufferInput> const &, const char *, Eigen::Vector2f const &) override;
-	void set_v3f32(std::shared_ptr<UniformBufferInput> const &, const char *, Eigen::Vector3f const &) override;
-	void set_v4f32(std::shared_ptr<UniformBufferInput> const &, const char *, Eigen::Vector4f const &) override;
-	void set_v2i32(std::shared_ptr<UniformBufferInput> const &, const char *, Eigen::Vector2i const &) override;
-	void set_v3i32(std::shared_ptr<UniformBufferInput> const &, const char *, Eigen::Vector3i const &) override;
-	void set_v4i32(std::shared_ptr<UniformBufferInput> const &, const char *, Eigen::Vector4i const &) override;
-	void set_v2ui32(std::shared_ptr<UniformBufferInput> const &, const char *, Eigen::Vector2<uint32_t> const &) override;
-	void set_v3ui32(std::shared_ptr<UniformBufferInput> const &, const char *, Eigen::Vector3<uint32_t> const &) override;
-	void set_v4ui32(std::shared_ptr<UniformBufferInput> const &, const char *, Eigen::Vector4<uint32_t> const &) override;
-	void set_m4f32(std::shared_ptr<UniformBufferInput> const &, const char *, Eigen::Matrix4f const &) override;
-	void set_tex(std::shared_ptr<UniformBufferInput> const &, const char *, std::shared_ptr<Texture2d> const &) override;
+	void set_i32(UniformBufferInput &in, const char *, int32_t) override;
+	void set_u32(UniformBufferInput &in, const char *, uint32_t) override;
+	void set_f32(UniformBufferInput &in, const char *, float) override;
+	void set_f64(UniformBufferInput &in, const char *, double) override;
+	void set_bool(UniformBufferInput &in, const char *, bool) override;
+	void set_v2f32(UniformBufferInput &in, const char *, Eigen::Vector2f const &) override;
+	void set_v3f32(UniformBufferInput &in, const char *, Eigen::Vector3f const &) override;
+	void set_v4f32(UniformBufferInput &in, const char *, Eigen::Vector4f const &) override;
+	void set_v2i32(UniformBufferInput &in, const char *, Eigen::Vector2i const &) override;
+	void set_v3i32(UniformBufferInput &in, const char *, Eigen::Vector3i const &) override;
+	void set_v4i32(UniformBufferInput &in, const char *, Eigen::Vector4i const &) override;
+	void set_v2ui32(UniformBufferInput &in, const char *, Eigen::Vector2<uint32_t> const &) override;
+	void set_v3ui32(UniformBufferInput &in, const char *, Eigen::Vector3<uint32_t> const &) override;
+	void set_v4ui32(UniformBufferInput &in, const char *, Eigen::Vector4<uint32_t> const &) override;
+	void set_m4f32(UniformBufferInput &in, const char *, Eigen::Matrix4f const &) override;
+	void set_tex(UniformBufferInput &in, const char *, std::shared_ptr<Texture2d> const &) override;
 
 private:
 	/**
@@ -80,7 +80,7 @@ private:
 	 * @param val Pointer to the value to update the uniform with.
 	 * @param type Type of the uniform.
 	 */
-	void set_unif(std::shared_ptr<UniformBufferInput> const &in,
+	void set_unif(UniformBufferInput &in,
 	              const char *name,
 	              void const *val,
 	              GLenum type);

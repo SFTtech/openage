@@ -80,8 +80,8 @@ std::shared_ptr<UniformBufferInput> GlUniformBuffer::new_unif_in() {
 	return in;
 }
 
-void GlUniformBuffer::set_unif(std::shared_ptr<UniformBufferInput> const &in, const char *unif, void const *val, GLenum type) {
-	auto unif_in = std::dynamic_pointer_cast<GlUniformBufferInput>(in);
+void GlUniformBuffer::set_unif(UniformBufferInput &in, const char *unif, void const *val, GLenum type) {
+	auto &unif_in = dynamic_cast<GlUniformBufferInput &>(in);
 
 	auto uniform = this->uniforms.find(unif);
 	ENSURE(uniform != std::end(this->uniforms),
@@ -96,83 +96,82 @@ void GlUniformBuffer::set_unif(std::shared_ptr<UniformBufferInput> const &in, co
 	ENSURE(size == unif_data.size,
 	       "Tried to set uniform " << unif << " to a value of the wrong size.");
 
-	auto update_off = unif_in->update_offs.find(unif);
-	if (update_off != std::end(unif_in->update_offs)) [[likely]] { // always used after the uniform value is written once
-		// already wrote to this uniform since last upload
+	auto update_off = unif_in.update_offs.find(unif);
+	if (update_off != std::end(unif_in.update_offs)) [[likely]] { // always used after the uniform value is written once // already wrote to this uniform since last upload
 		size_t off = update_off->second;
-		memcpy(unif_in->update_data.data() + off, val, size);
+		memcpy(unif_in.update_data.data() + off, val, size);
 	}
 	else {
 		// first time writing to this uniform since last upload, so
 		// extend the buffer before storing the uniform value
-		size_t prev_size = unif_in->update_data.size();
-		unif_in->update_data.resize(prev_size + size);
-		memcpy(unif_in->update_data.data() + prev_size, val, size);
-		unif_in->update_offs.emplace(unif, prev_size);
+		size_t prev_size = unif_in.update_data.size();
+		unif_in.update_data.resize(prev_size + size);
+		memcpy(unif_in.update_data.data() + prev_size, val, size);
+		unif_in.update_offs.emplace(unif, prev_size);
 	}
 }
 
-void GlUniformBuffer::set_i32(std::shared_ptr<UniformBufferInput> const &in, const char *unif, int32_t val) {
+void GlUniformBuffer::set_i32(UniformBufferInput &in, const char *unif, int32_t val) {
 	this->set_unif(in, unif, &val, GL_INT);
 }
 
-void GlUniformBuffer::set_u32(std::shared_ptr<UniformBufferInput> const &in, const char *unif, uint32_t val) {
+void GlUniformBuffer::set_u32(UniformBufferInput &in, const char *unif, uint32_t val) {
 	this->set_unif(in, unif, &val, GL_UNSIGNED_INT);
 }
 
-void GlUniformBuffer::set_f32(std::shared_ptr<UniformBufferInput> const &in, const char *unif, float val) {
+void GlUniformBuffer::set_f32(UniformBufferInput &in, const char *unif, float val) {
 	this->set_unif(in, unif, &val, GL_FLOAT);
 }
 
-void GlUniformBuffer::set_f64(std::shared_ptr<UniformBufferInput> const &in, const char *unif, double val) {
+void GlUniformBuffer::set_f64(UniformBufferInput &in, const char *unif, double val) {
 	this->set_unif(in, unif, &val, GL_DOUBLE);
 }
 
-void GlUniformBuffer::set_bool(std::shared_ptr<UniformBufferInput> const &in, const char *unif, bool val) {
+void GlUniformBuffer::set_bool(UniformBufferInput &in, const char *unif, bool val) {
 	this->set_unif(in, unif, &val, GL_BOOL);
 }
 
-void GlUniformBuffer::set_v2f32(std::shared_ptr<UniformBufferInput> const &in, const char *unif, Eigen::Vector2f const &val) {
+void GlUniformBuffer::set_v2f32(UniformBufferInput &in, const char *unif, Eigen::Vector2f const &val) {
 	this->set_unif(in, unif, val.data(), GL_FLOAT_VEC2);
 }
 
-void GlUniformBuffer::set_v3f32(std::shared_ptr<UniformBufferInput> const &in, const char *unif, Eigen::Vector3f const &val) {
+void GlUniformBuffer::set_v3f32(UniformBufferInput &in, const char *unif, Eigen::Vector3f const &val) {
 	this->set_unif(in, unif, val.data(), GL_FLOAT_VEC3);
 }
 
-void GlUniformBuffer::set_v4f32(std::shared_ptr<UniformBufferInput> const &in, const char *unif, Eigen::Vector4f const &val) {
+void GlUniformBuffer::set_v4f32(UniformBufferInput &in, const char *unif, Eigen::Vector4f const &val) {
 	this->set_unif(in, unif, val.data(), GL_FLOAT_VEC4);
 }
 
-void GlUniformBuffer::set_v2i32(std::shared_ptr<UniformBufferInput> const &in, const char *unif, Eigen::Vector2i const &val) {
+void GlUniformBuffer::set_v2i32(UniformBufferInput &in, const char *unif, Eigen::Vector2i const &val) {
 	this->set_unif(in, unif, val.data(), GL_INT_VEC2);
 }
 
-void GlUniformBuffer::set_v3i32(std::shared_ptr<UniformBufferInput> const &in, const char *unif, Eigen::Vector3i const &val) {
+void GlUniformBuffer::set_v3i32(UniformBufferInput &in, const char *unif, Eigen::Vector3i const &val) {
 	this->set_unif(in, unif, val.data(), GL_INT_VEC3);
 }
 
-void GlUniformBuffer::set_v4i32(std::shared_ptr<UniformBufferInput> const &in, const char *unif, Eigen::Vector4i const &val) {
+void GlUniformBuffer::set_v4i32(UniformBufferInput &in, const char *unif, Eigen::Vector4i const &val) {
 	this->set_unif(in, unif, val.data(), GL_INT_VEC4);
 }
 
-void GlUniformBuffer::set_v2ui32(std::shared_ptr<UniformBufferInput> const &in, const char *unif, Eigen::Vector2<uint32_t> const &val) {
+void GlUniformBuffer::set_v2ui32(UniformBufferInput &in, const char *unif, Eigen::Vector2<uint32_t> const &val) {
 	this->set_unif(in, unif, val.data(), GL_UNSIGNED_INT_VEC2);
 }
 
-void GlUniformBuffer::set_v3ui32(std::shared_ptr<UniformBufferInput> const &in, const char *unif, Eigen::Vector3<uint32_t> const &val) {
+void GlUniformBuffer::set_v3ui32(UniformBufferInput &in, const char *unif, Eigen::Vector3<uint32_t> const &val) {
 	this->set_unif(in, unif, val.data(), GL_UNSIGNED_INT_VEC3);
 }
 
-void GlUniformBuffer::set_v4ui32(std::shared_ptr<UniformBufferInput> const &in, const char *unif, Eigen::Vector4<uint32_t> const &val) {
+void GlUniformBuffer::set_v4ui32(UniformBufferInput &in, const char *unif, Eigen::Vector4<uint32_t> const &val) {
 	this->set_unif(in, unif, val.data(), GL_UNSIGNED_INT_VEC4);
 }
 
-void GlUniformBuffer::set_m4f32(std::shared_ptr<UniformBufferInput> const &in, const char *unif, Eigen::Matrix4f const &val) {
+void GlUniformBuffer::set_m4f32(UniformBufferInput &in, const char *unif, Eigen::Matrix4f const &val) {
 	this->set_unif(in, unif, val.data(), GL_FLOAT_MAT4);
 }
 
-void GlUniformBuffer::set_tex(std::shared_ptr<UniformBufferInput> const &in, const char *unif, std::shared_ptr<Texture2d> const &val) {
+void GlUniformBuffer::set_tex(UniformBufferInput &in, const char *unif, std::shared_ptr<Texture2d> const &val) {
 	auto tex = std::dynamic_pointer_cast<GlTexture2d>(val);
 	GLuint handle = tex->get_handle();
 	this->set_unif(in, unif, &handle, GL_SAMPLER_2D);
