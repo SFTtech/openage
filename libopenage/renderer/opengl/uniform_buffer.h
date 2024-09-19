@@ -34,6 +34,13 @@ public:
 	GLuint get_binding_point() const;
 
 	/**
+	 * Get the uniform buffers uniforms.
+	 *
+	 * @return Uniforms in the shader program.
+	 */
+	const std::unordered_map<std::string, GlInBlockUniform> &get_uniforms() const;
+
+	/**
 	 * Set the binding point of the buffer.
 	 *
 	 * @param binding_point Binding point ID.
@@ -89,6 +96,11 @@ private:
 	 * Uniform definitions inside the buffer.
 	 */
 	std::unordered_map<std::string, GlInBlockUniform> uniforms;
+
+	/**
+	 * Maps uniform names to their ID (the index in the uniform vector).
+	 */
+	std::unordered_map<std::string, uniform_id_t> uniforms_by_name;
 
 	/**
 	 * Size of the buffer (in bytes).

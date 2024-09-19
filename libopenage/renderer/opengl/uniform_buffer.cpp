@@ -33,6 +33,12 @@ GlUniformBuffer::GlUniformBuffer(const std::shared_ptr<GlContext> &context,
 	this->bind();
 	glBufferData(GL_UNIFORM_BUFFER, this->data_size, NULL, usage);
 
+	uniform_id_t unif_id = 0;
+	for (auto &uniform : uniforms) {
+		this->uniforms_by_name.insert(std::make_pair(uniform.first, unif_id));
+		unif_id += 1;
+	}
+
 	glBindBufferRange(GL_UNIFORM_BUFFER, this->binding_point, *this->handle, 0, this->data_size);
 
 	log::log(MSG(dbg) << "Created OpenGL uniform buffer (size: "
@@ -51,19 +57,26 @@ void GlUniformBuffer::set_binding_point(GLuint binding_point) {
 
 void GlUniformBuffer::update_uniforms(std::shared_ptr<UniformBufferInput> const &unif_in) {
 	auto glunif_in = std::dynamic_pointer_cast<GlUniformBufferInput>(unif_in);
-	ENSURE(glunif_in->get_buffer() == this->shared_from_this(), "Uniform input passed to different buffer than it was created with.");
+	ENSURE(glunif_in->get_buffer().get() == this, "Uniform input passed to different buffer than it was created with.");
 
 	this->bind();
 
+	const auto &update_offs = glunif_in->update_offs;
 	uint8_t const *data = glunif_in->update_data.data();
-	for (auto const &pair : glunif_in->update_offs) {
-		uint8_t const *ptr = data + pair.second;
-		auto unif_def = this->uniforms[pair.first];
+	for (auto const &pair : this->uniforms_by_name) {
+		auto id = pair.second;
+		auto offset = update_offs[id];
+		uint8_t const *ptr = data + offset.offset;
+		auto unif_def = this->uniforms.find(pair.first)->second;
 		auto loc = unif_def.offset;
 		auto size = unif_def.size;
 
 		glBufferSubData(GL_UNIFORM_BUFFER, loc, size, ptr);
 	}
+}
+
+const std::unordered_map<std::string, GlInBlockUniform> &GlUniformBuffer::get_uniforms() const {
+	return this->uniforms;
 }
 
 bool GlUniformBuffer::has_uniform(const char *unif) {
@@ -83,6 +96,10 @@ std::shared_ptr<UniformBufferInput> GlUniformBuffer::new_unif_in() {
 void GlUniformBuffer::set_unif(UniformBufferInput &in, const char *unif, void const *val, GLenum type) {
 	auto &unif_in = dynamic_cast<GlUniformBufferInput &>(in);
 
+	auto unif_id = this->uniforms_by_name.find(unif)->second;
+	ENSURE(unif_id < this->uniforms.size(),
+	       "Tried to set uniform with invalid ID " << unif_id);
+
 	auto uniform = this->uniforms.find(unif);
 	ENSURE(uniform != std::end(this->uniforms),
 	       "Tried to set uniform " << unif << " that does not exist in the shader program.");
@@ -96,18 +113,16 @@ void GlUniformBuffer::set_unif(UniformBufferInput &in, const char *unif, void co
 	ENSURE(size == unif_data.size,
 	       "Tried to set uniform " << unif << " to a value of the wrong size.");
 
-	auto update_off = unif_in.update_offs.find(unif);
-	if (update_off != std::end(unif_in.update_offs)) [[likely]] { // always used after the uniform value is written once // already wrote to this uniform since last upload
-		size_t off = update_off->second;
-		memcpy(unif_in.update_data.data() + off, val, size);
-	}
-	else {
-		// first time writing to this uniform since last upload, so
-		// extend the buffer before storing the uniform value
-		size_t prev_size = unif_in.update_data.size();
-		unif_in.update_data.resize(prev_size + size);
-		memcpy(unif_in.update_data.data() + prev_size, val, size);
-		unif_in.update_offs.emplace(unif, prev_size);
+	auto &update_off = unif_in.update_offs[unif_id];
+	auto offset = update_off.offset;
+	memcpy(unif_in.update_data.data() + offset, val, size);
+	if (not update_off.used) [[unlikely]] { // only true if the uniform value was not set before
+		auto lower_bound = std::lower_bound(
+			std::begin(unif_in.used_uniforms),
+			std::end(unif_in.used_uniforms),
+			unif_id);
+		unif_in.used_uniforms.insert(lower_bound, unif_id);
+		update_off.used = true;
 	}
 }
 
