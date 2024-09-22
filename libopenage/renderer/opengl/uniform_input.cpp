@@ -42,8 +42,8 @@ GlUniformBufferInput::GlUniformBufferInput(const std::shared_ptr<UniformBuffer> 
 	size_t offset = 0;
 	this->update_offs.reserve(uniforms.size());
 	for (auto &uniform : uniforms) {
-		this->update_offs.push_back({uniform.second.offset, false});
-		offset += GL_UNIFORM_TYPE_SIZE.get(uniform.second.type);
+		this->update_offs.push_back({uniform.offset, false});
+		offset += GL_UNIFORM_TYPE_SIZE.get(uniform.type);
 	}
 
 	// Resize the update data buffer to the total size of all uniforms.

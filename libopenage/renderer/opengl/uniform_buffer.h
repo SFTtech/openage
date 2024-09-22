@@ -22,7 +22,7 @@ class GlUniformBuffer final : public UniformBuffer
 public:
 	GlUniformBuffer(const std::shared_ptr<GlContext> &context,
 	                size_t size,
-	                std::unordered_map<std::string, GlInBlockUniform> uniforms,
+	                std::vector<GlInBlockUniform> uniforms,
 	                GLuint binding_point = 0,
 	                GLenum usage = GL_DYNAMIC_DRAW);
 
@@ -38,7 +38,7 @@ public:
 	 *
 	 * @return Uniforms in the shader program.
 	 */
-	const std::unordered_map<std::string, GlInBlockUniform> &get_uniforms() const;
+	const std::vector<GlInBlockUniform> &get_uniforms() const;
 
 	/**
 	 * Set the binding point of the buffer.
@@ -95,7 +95,7 @@ private:
 	/**
 	 * Uniform definitions inside the buffer.
 	 */
-	std::unordered_map<std::string, GlInBlockUniform> uniforms;
+	std::vector<GlInBlockUniform> uniforms;
 
 	/**
 	 * Maps uniform names to their ID (the index in the uniform vector).

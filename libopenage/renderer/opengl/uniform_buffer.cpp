@@ -16,7 +16,7 @@ namespace openage::renderer::opengl {
 
 GlUniformBuffer::GlUniformBuffer(const std::shared_ptr<GlContext> &context,
                                  size_t size,
-                                 std::unordered_map<std::string, GlInBlockUniform> uniforms,
+                                 std::vector<GlInBlockUniform> uniforms,
                                  GLuint binding_point,
                                  GLenum usage) :
 	GlSimpleObject(context,
@@ -35,7 +35,7 @@ GlUniformBuffer::GlUniformBuffer(const std::shared_ptr<GlContext> &context,
 
 	uniform_id_t unif_id = 0;
 	for (auto &uniform : uniforms) {
-		this->uniforms_by_name.insert(std::make_pair(uniform.first, unif_id));
+		this->uniforms_by_name.insert(std::make_pair(uniform.name, unif_id));
 		unif_id += 1;
 	}
 
@@ -62,25 +62,30 @@ void GlUniformBuffer::update_uniforms(std::shared_ptr<UniformBufferInput> const 
 	this->bind();
 
 	const auto &update_offs = glunif_in->update_offs;
+	const auto &used_uniforms = glunif_in->used_uniforms;
+	const auto &uniforms = this->uniforms;
 	uint8_t const *data = glunif_in->update_data.data();
-	for (auto const &pair : this->uniforms_by_name) {
-		auto id = pair.second;
-		auto offset = update_offs[id];
+
+	size_t unif_count = used_uniforms.size();
+	for (size_t i = 0; i < unif_count; ++i) {
+		uniform_id_t unif_id = used_uniforms[i];
+		auto offset = update_offs[unif_id];
+
 		uint8_t const *ptr = data + offset.offset;
-		auto unif_def = this->uniforms.find(pair.first)->second;
-		auto loc = unif_def.offset;
-		auto size = unif_def.size;
+		auto &unif = uniforms[unif_id];
+		auto loc = unif.offset;
+		auto size = unif.size;
 
 		glBufferSubData(GL_UNIFORM_BUFFER, loc, size, ptr);
 	}
 }
 
-const std::unordered_map<std::string, GlInBlockUniform> &GlUniformBuffer::get_uniforms() const {
+const std::vector<GlInBlockUniform> &GlUniformBuffer::get_uniforms() const {
 	return this->uniforms;
 }
 
-bool GlUniformBuffer::has_uniform(const char *unif) {
-	return this->uniforms.count(unif) != 0;
+bool GlUniformBuffer::has_uniform(const char *name) {
+	return this->uniforms_by_name.contains(name);
 }
 
 void GlUniformBuffer::bind() const {
@@ -100,11 +105,7 @@ void GlUniformBuffer::set_unif(UniformBufferInput &in, const char *unif, void co
 	ENSURE(unif_id < this->uniforms.size(),
 	       "Tried to set uniform with invalid ID " << unif_id);
 
-	auto uniform = this->uniforms.find(unif);
-	ENSURE(uniform != std::end(this->uniforms),
-	       "Tried to set uniform " << unif << " that does not exist in the shader program.");
-
-	auto const &unif_data = uniform->second;
+	auto const &unif_data = this->uniforms[unif_id];
 
 	ENSURE(type == unif_data.type,
 	       "Tried to set uniform " << unif << " to a value of the wrong type.");
