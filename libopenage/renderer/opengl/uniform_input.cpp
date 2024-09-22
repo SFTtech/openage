@@ -4,6 +4,7 @@
 
 #include "renderer/opengl/lookup.h"
 #include "renderer/opengl/shader_program.h"
+#include "renderer/opengl/uniform_buffer.h"
 #include "renderer/opengl/util.h"
 
 
@@ -28,7 +29,25 @@ GlUniformInput::GlUniformInput(const std::shared_ptr<ShaderProgram> &prog) :
 	this->update_data.resize(offset);
 }
 
-GlUniformBufferInput::GlUniformBufferInput(std::shared_ptr<UniformBuffer> const &buffer) :
-	UniformBufferInput{buffer} {}
+GlUniformBufferInput::GlUniformBufferInput(const std::shared_ptr<UniformBuffer> &buffer) :
+	UniformBufferInput{buffer} {
+	auto glBuf = std::dynamic_pointer_cast<GlUniformBuffer>(buffer);
+
+	auto uniforms = glBuf->get_uniforms();
+
+	// Reserve space for the used uniforms.
+	this->used_uniforms.reserve(uniforms.size());
+
+	// Calculate the byte-wise offsets of all uniforms.
+	size_t offset = 0;
+	this->update_offs.reserve(uniforms.size());
+	for (auto &uniform : uniforms) {
+		this->update_offs.push_back({uniform.offset, false});
+		offset += GL_UNIFORM_TYPE_SIZE.get(uniform.type);
+	}
+
+	// Resize the update data buffer to the total size of all uniforms.
+	this->update_data.resize(offset);
+}
 
 } // namespace openage::renderer::opengl
