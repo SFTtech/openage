@@ -23,6 +23,7 @@
 #include "renderer/shader_program.h"
 #include "renderer/texture.h"
 #include "renderer/uniform_buffer.h"
+#include "renderer/stages/camera/manager.h"
 #include "time/clock.h"
 #include "util/path.h"
 #include "util/vector.h"
@@ -52,16 +53,16 @@ void renderer_demo_6(const util::Path &path) {
 			// move_frame moves the camera in the specified direction in the next drawn frame
 			switch (key) {
 			case Qt::Key_W: { // forward
-				render_mgr.camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, -1.0f), 0.2f);
+				render_mgr.camera_manager->move_frame(camera::MoveDirection::FORWARD, 0.2f);
 			} break;
 			case Qt::Key_A: { // left
-				render_mgr.camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, 1.0f), 0.1f);
+				render_mgr.camera_manager->move_frame(camera::MoveDirection::LEFT, 0.1f);
 			} break;
 			case Qt::Key_S: { // back
-				render_mgr.camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, 1.0f), 0.2f);
+				render_mgr.camera_manager->move_frame(camera::MoveDirection::BACKWARD, 0.2f);
 			} break;
 			case Qt::Key_D: { // right
-				render_mgr.camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, -1.0f), 0.1f);
+				render_mgr.camera_manager->move_frame(camera::MoveDirection::RIGHT, 0.1f);
 			} break;
 			default:
 				break;
@@ -438,6 +439,7 @@ void RenderManagerDemo6::create_camera() {
 		1.0f / static_cast<float>(viewport_size[1])};
 	camera_unifs->update("inv_viewport_size", viewport_size_vec);
 	this->camera->get_uniform_buffer()->update_uniforms(camera_unifs);
+	this->camera_manager = std::make_shared<camera::CameraManager>(camera);
 }
 
 void RenderManagerDemo6::create_render_passes() {

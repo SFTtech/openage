@@ -15,6 +15,7 @@
 #include "renderer/camera/definitions.h"
 #include "renderer/camera/frustum_2d.h"
 #include "renderer/camera/frustum_3d.h"
+#include <optional>
 
 
 namespace openage::renderer {
@@ -84,7 +85,9 @@ public:
 	 *
 	 * @param scene_pos New 3D position of the camera in the scene.
 	 */
-	void move_to(Eigen::Vector3f scene_pos);
+	void move_to(Eigen::Vector3f scene_pos, std::optional<std::pair<float, float>> x_bounds = std::nullopt,
+											std::optional<std::pair<float, float>> z_bounds = std::nullopt);
+
 
 	/**
 	 * Move the camera position in the direction of a given vector.
@@ -94,7 +97,9 @@ public:
 	 *              value is multiplied with the directional vector before its applied to
 	 *              the positional vector.
 	 */
-	void move_rel(Eigen::Vector3f direction, float delta = 1.0f);
+	void move_rel(Eigen::Vector3f direction, std::pair<float, float> x_bounds,
+											std::pair<float, float> z_bounds,
+											float delta = 1.0f);
 
 	/**
 	 * Set the zoom level of the camera. Values smaller than 1.0f let the
