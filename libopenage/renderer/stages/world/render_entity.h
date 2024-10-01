@@ -4,6 +4,7 @@
 
 #include <cstdint>
 #include <list>
+#include <mutex>
 #include <shared_mutex>
 #include <string>
 
@@ -30,6 +31,8 @@ public:
 	/**
 	 * Update the render entity with information from the gamestate.
 	 *
+	 * Updating the render entity with this method is thread-safe.
+	 *
 	 * @param ref_id Game entity ID.
 	 * @param position Position of the game entity inside the game world.
 	 * @param angle Angle of the game entity inside the game world.
@@ -47,6 +50,8 @@ public:
 	 *
 	 * Update the render entity with information from the gamestate.
 	 *
+	 * Updating the render entity with this method is thread-safe.
+	 *
 	 * @param ref_id Game entity ID.
 	 * @param position Position of the game entity inside the game world.
 	 * @param animation_path Path to the animation definition.
@@ -60,12 +65,17 @@ public:
 	/**
 	 * Get the ID of the corresponding game entity.
 	 *
+	 * Accessing the game entity ID is thread-safe.
+	 *
 	 * @return Game entity ID.
 	 */
 	uint32_t get_id();
 
 	/**
 	 * Get the position of the entity inside the game world.
+	 *
+	 * Accessing the position curve REQUIRES a read lock on the render entity
+	 * (using \p get_read_lock()) to ensure thread safety.
 	 *
 	 * @return Position curve of the entity.
 	 */
@@ -74,6 +84,9 @@ public:
 	/**
 	 * Get the angle of the entity inside the game world.
 	 *
+	 * Accessing the angle curve REQUIRES a read lock on the render entity
+	 * (using \p get_read_lock()) to ensure thread safety.
+	 *
 	 * @return Angle curve of the entity.
 	 */
 	const curve::Segmented<coord::phys_angle_t> &get_angle();
@@ -81,12 +94,17 @@ public:
 	/**
 	 * Get the animation definition path.
 	 *
+	 * Accessing the animation path curve requires a read lock on the render entity
+	 * (using \p get_read_lock()) to ensure thread safety.
+	 *
 	 * @return Path to the animation definition file.
 	 */
 	const curve::Discrete<std::string> &get_animation_path();
 
 	/**
 	 * Get the time of the last update.
+	 *
+	 * Accessing the update time is thread-safe.
 	 *
 	 * @return Time of last update.
 	 */
@@ -104,6 +122,15 @@ public:
 	 * Clear the update flag by setting it to false.
 	 */
 	void clear_changed_flag();
+
+	/**
+	 * Get a shared lock for thread-safe reading from the render entity.
+	 *
+	 * The caller is responsible for unlocking the mutex after reading.
+	 *
+	 * @return Lock for the render entity.
+	 */
+	std::shared_lock<std::shared_mutex> get_read_lock();
 
 private:
 	/**
