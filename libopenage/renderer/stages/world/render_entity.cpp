@@ -1,4 +1,4 @@
-// Copyright 2022-2023 the openage authors. See copying.md for legal info.
+// Copyright 2022-2024 the openage authors. See copying.md for legal info.
 
 #include "render_entity.h"
 
@@ -94,6 +94,10 @@ void WorldRenderEntity::clear_changed_flag() {
 	std::unique_lock lock{this->mutex};
 
 	this->changed = false;
+}
+
+std::shared_lock<std::shared_mutex> WorldRenderEntity::get_read_lock() {
+	return std::shared_lock{this->mutex};
 }
 
 } // namespace openage::renderer::world
