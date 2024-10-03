@@ -24,10 +24,14 @@ void DragRenderEntity::update(const coord::input drag_pos,
 }
 
 const curve::Continuous<coord::input> &DragRenderEntity::get_drag_pos() {
+	std::shared_lock lock{this->mutex};
+
 	return this->drag_pos;
 }
 
-const coord::input &DragRenderEntity::get_drag_start() {
+const coord::input DragRenderEntity::get_drag_start() {
+	std::shared_lock lock{this->mutex};
+
 	return this->drag_start;
 }
 

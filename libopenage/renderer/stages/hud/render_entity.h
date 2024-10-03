@@ -28,6 +28,8 @@ public:
 	 * Update the render entity with information from the gamestate
 	 * or input system.
 	 *
+	 * Updating the render entity with this method is thread-safe.
+	 *
 	 * @param drag_pos Position of the dragged corner.
 	 * @param time Current simulation time.
 	 */
@@ -37,6 +39,9 @@ public:
 	/**
 	 * Get the position of the dragged corner.
 	 *
+	 * Accessing the drag position curve REQUIRES a read lock on the render entity
+	 * (using \p get_read_lock()) to ensure thread safety.
+	 *
 	 * @return Coordinates of the dragged corner.
 	 */
 	const curve::Continuous<coord::input> &get_drag_pos();
@@ -44,9 +49,11 @@ public:
 	/**
 	 * Get the position of the start corner.
 	 *
+	 * Accessing the drag start is thread-safe.
+	 *
 	 * @return Coordinates of the start corner.
 	 */
-	const coord::input &get_drag_start();
+	const coord::input get_drag_start();
 
 private:
 	/**
