@@ -18,10 +18,10 @@ namespace openage::renderer::world {
 /**
  * Render entity for pushing updates to the World renderer.
  */
-class WorldRenderEntity final : public renderer::RenderEntity {
+class RenderEntity final : public renderer::RenderEntity {
 public:
-	WorldRenderEntity();
-	~WorldRenderEntity() = default;
+	RenderEntity();
+	~RenderEntity() = default;
 
 	/**
 	 * Update the render entity with information from the gamestate.

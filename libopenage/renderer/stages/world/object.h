@@ -29,7 +29,7 @@ class Animation2dInfo;
 } // namespace resources
 
 namespace world {
-class WorldRenderEntity;
+class RenderEntity;
 
 /**
  * Stores the state of a renderable object in the World render stage.
@@ -49,7 +49,7 @@ public:
 	 *
 	 * @param entity New world render entity.
 	 */
-	void set_render_entity(const std::shared_ptr<WorldRenderEntity> &entity);
+	void set_render_entity(const std::shared_ptr<RenderEntity> &entity);
 
 	/**
 	 * Fetch updates from the render entity.
@@ -177,7 +177,7 @@ private:
 	 * Entity that gets updates from the gamestate, e.g. the position and
 	 * requested animation data.
 	 */
-	std::shared_ptr<WorldRenderEntity> render_entity;
+	std::shared_ptr<RenderEntity> render_entity;
 
 	/**
 	 * Reference ID for passing interaction with the graphic (e.g. mouse clicks) back to

@@ -23,8 +23,8 @@ std::shared_ptr<terrain::RenderEntity> RenderFactory::add_terrain_render_entity(
 	return entity;
 }
 
-std::shared_ptr<world::WorldRenderEntity> RenderFactory::add_world_render_entity() {
-	auto entity = std::make_shared<world::WorldRenderEntity>();
+std::shared_ptr<world::RenderEntity> RenderFactory::add_world_render_entity() {
+	auto entity = std::make_shared<world::RenderEntity>();
 	this->world_renderer->add_render_entity(entity);
 
 	return entity;
