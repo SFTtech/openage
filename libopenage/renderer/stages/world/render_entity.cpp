@@ -11,12 +11,11 @@
 namespace openage::renderer::world {
 
 WorldRenderEntity::WorldRenderEntity() :
-	changed{false},
+	RenderEntity{},
 	ref_id{0},
 	position{nullptr, 0, "", nullptr, SCENE_ORIGIN},
 	angle{nullptr, 0, "", nullptr, 0},
-	animation_path{nullptr, 0},
-	last_update{0.0} {
+	animation_path{nullptr, 0} {
 }
 
 void WorldRenderEntity::update(const uint32_t ref_id,
@@ -76,28 +75,6 @@ const curve::Discrete<std::string> &WorldRenderEntity::get_animation_path() {
 	std::shared_lock lock{this->mutex};
 
 	return this->animation_path;
-}
-
-time::time_t WorldRenderEntity::get_update_time() {
-	std::shared_lock lock{this->mutex};
-
-	return this->last_update;
-}
-
-bool WorldRenderEntity::is_changed() {
-	std::shared_lock lock{this->mutex};
-
-	return this->changed;
-}
-
-void WorldRenderEntity::clear_changed_flag() {
-	std::unique_lock lock{this->mutex};
-
-	this->changed = false;
-}
-
-std::shared_lock<std::shared_mutex> WorldRenderEntity::get_read_lock() {
-	return std::shared_lock{this->mutex};
 }
 
 } // namespace openage::renderer::world

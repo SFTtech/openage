@@ -10,10 +10,9 @@
 namespace openage::renderer::terrain {
 
 TerrainRenderEntity::TerrainRenderEntity() :
-	changed{false},
+	RenderEntity{},
 	size{0, 0},
 	tiles{},
-	last_update{0.0},
 	terrain_paths{},
 	vertices{}
 // terrain_path{nullptr, 0},
@@ -130,18 +129,6 @@ const util::Vector2s &TerrainRenderEntity::get_size() {
 	std::shared_lock lock{this->mutex};
 
 	return this->size;
-}
-
-bool TerrainRenderEntity::is_changed() {
-	std::shared_lock lock{this->mutex};
-
-	return this->changed;
-}
-
-void TerrainRenderEntity::clear_changed_flag() {
-	std::unique_lock lock{this->mutex};
-
-	this->changed = false;
 }
 
 } // namespace openage::renderer::terrain

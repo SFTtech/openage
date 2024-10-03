@@ -3,19 +3,14 @@
 #pragma once
 
 #include <cstdint>
-#include <list>
-#include <mutex>
-#include <shared_mutex>
 #include <string>
-
-#include <eigen3/Eigen/Dense>
 
 #include "coord/phys.h"
 #include "coord/scene.h"
 #include "curve/continuous.h"
 #include "curve/discrete.h"
 #include "curve/segmented.h"
-#include "time/time.h"
+#include "renderer/stages/render_entity.h"
 
 
 namespace openage::renderer::world {
@@ -23,7 +18,7 @@ namespace openage::renderer::world {
 /**
  * Render entity for pushing updates to the World renderer.
  */
-class WorldRenderEntity {
+class WorldRenderEntity final : public renderer::RenderEntity {
 public:
 	WorldRenderEntity();
 	~WorldRenderEntity() = default;
@@ -101,45 +96,7 @@ public:
 	 */
 	const curve::Discrete<std::string> &get_animation_path();
 
-	/**
-	 * Get the time of the last update.
-	 *
-	 * Accessing the update time is thread-safe.
-	 *
-	 * @return Time of last update.
-	 */
-	time::time_t get_update_time();
-
-	/**
-	 * Check whether the render entity has received new updates from the
-	 * gamestate.
-	 *
-	 * @return true if updates have been received, else false.
-	 */
-	bool is_changed();
-
-	/**
-	 * Clear the update flag by setting it to false.
-	 */
-	void clear_changed_flag();
-
-	/**
-	 * Get a shared lock for thread-safe reading from the render entity.
-	 *
-	 * The caller is responsible for unlocking the mutex after reading.
-	 *
-	 * @return Lock for the render entity.
-	 */
-	std::shared_lock<std::shared_mutex> get_read_lock();
-
 private:
-	/**
-	 * Flag for determining if the render entity has been updated by the
-	 * corresponding gamestate entity. Set to true every time \p update()
-	 * is called.
-	 */
-	bool changed;
-
 	/**
 	 * ID of the game entity in the gamestate.
 	 */
@@ -159,15 +116,5 @@ private:
 	 * Path to the animation definition file.
 	 */
 	curve::Discrete<std::string> animation_path;
-
-	/**
-	 * Time of the last update call.
-	 */
-	time::time_t last_update;
-
-	/**
-	 * Mutex for protecting threaded access.
-	 */
-	std::shared_mutex mutex;
 };
 } // namespace openage::renderer::world
