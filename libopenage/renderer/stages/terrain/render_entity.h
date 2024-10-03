@@ -2,8 +2,6 @@
 
 #pragma once
 
-#include <memory>
-#include <shared_mutex>
 #include <string>
 #include <unordered_set>
 #include <vector>
@@ -11,7 +9,7 @@
 #include "coord/scene.h"
 #include "coord/tile.h"
 #include "curve/discrete.h"
-#include "time/time.h"
+#include "renderer/stages/render_entity.h"
 #include "util/vector.h"
 
 
@@ -20,7 +18,7 @@ namespace openage::renderer::terrain {
 /**
  * Render entity for pushing updates to the Terrain renderer.
  */
-class TerrainRenderEntity {
+class TerrainRenderEntity final : public renderer::RenderEntity {
 public:
 	TerrainRenderEntity();
 	~TerrainRenderEntity() = default;
@@ -84,27 +82,7 @@ public:
 	 */
 	const util::Vector2s &get_size();
 
-	/**
-	 * Check whether the render entity has received new updates from the
-	 * gamestate.
-	 *
-	 * @return true if updates have been received, else false.
-	 */
-	bool is_changed();
-
-	/**
-	 * Clear the update flag by setting it to false.
-	 */
-	void clear_changed_flag();
-
 private:
-	/**
-	 * Flag for determining if the render entity has been updated by the
-	 * corresponding gamestate entity. Set to true every time \p update()
-	 * is called.
-	 */
-	bool changed;
-
 	/**
 	 * Chunk dimensions (width x height).
 	 */
@@ -116,11 +94,6 @@ private:
 	tiles_t tiles;
 
 	/**
-	 * Time of the last update call.
-	 */
-	time::time_t last_update;
-
-	/**
 	 * Terrain texture paths used in \p tiles .
 	 */
 	std::unordered_set<std::string> terrain_paths;
@@ -129,10 +102,5 @@ private:
 	 * Terrain vertices (ingame coordinates).
 	 */
 	std::vector<coord::scene3> vertices;
-
-	/**
-	 * Mutex for protecting threaded access.
-	 */
-	std::shared_mutex mutex;
 };
 } // namespace openage::renderer::terrain
