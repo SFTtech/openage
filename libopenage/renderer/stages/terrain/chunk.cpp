@@ -31,11 +31,19 @@ void TerrainChunk::fetch_updates(const time::time_t & /* time */) {
 	if (not this->render_entity->is_changed()) {
 		return;
 	}
+
+	// Get the terrain data from the render entity
+	auto terrain_size = this->render_entity->get_size();
+	auto terrain_paths = this->render_entity->get_terrain_paths();
+	auto tiles = this->render_entity->get_tiles();
+	auto heightmap_verts = this->render_entity->get_vertices();
+
+	// Recreate the mesh data
 	// TODO: Change mesh instead of recreating it
 	// TODO: Multiple meshes
 	this->meshes.clear();
-	for (const auto &terrain_path : this->render_entity->get_terrain_paths()) {
-		auto new_mesh = this->create_mesh(terrain_path);
+	for (const auto &terrain_path : terrain_paths) {
+		auto new_mesh = this->create_mesh(terrain_size, tiles, heightmap_verts, terrain_path);
 		new_mesh->create_model_matrix(this->offset);
 		this->meshes.push_back(new_mesh);
 	}
@@ -59,13 +67,12 @@ const std::vector<std::shared_ptr<TerrainRenderMesh>> &TerrainChunk::get_meshes(
 	return this->meshes;
 }
 
-std::shared_ptr<TerrainRenderMesh> TerrainChunk::create_mesh(const std::string &texture_path) {
-	auto size = this->render_entity->get_size();
-	auto v_width = size[0];
-	auto v_height = size[1];
-
-	auto tiles = this->render_entity->get_tiles();
-	auto heightmap_verts = this->render_entity->get_vertices();
+std::shared_ptr<TerrainRenderMesh> TerrainChunk::create_mesh(const util::Vector2s vert_size,
+                                                             const RenderEntity::tiles_t &tiles,
+                                                             const std::vector<coord::scene3> &heightmap_verts,
+                                                             const std::string &texture_path) {
+	auto v_width = vert_size[0];
+	auto v_height = vert_size[1];
 
 	// vertex data for the mesh
 	std::vector<float> mesh_verts{};

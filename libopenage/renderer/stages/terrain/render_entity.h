@@ -30,6 +30,8 @@ public:
 	 * Update a single tile of the displayed terrain (chunk) with information from the
 	 * gamestate.
 	 *
+	 * Updating the render entity with this method is thread-safe.
+	 *
 	 * @param size Size of the terrain in tiles (width x length)
 	 * @param pos Position of the tile in the chunk.
 	 * @param elevation Height of terrain tile.
@@ -46,6 +48,8 @@ public:
 	 * Update the full grid of the displayed terrain (chunk) with information from the
 	 * gamestate.
 	 *
+	 * Updating the render entity with this method is thread-safe.
+	 *
 	 * @param size Size of the terrain in tiles (width x length)
 	 * @param tiles Animation data for each tile (elevation, terrain path).
 	 * @param time Simulation time of the update.
@@ -57,30 +61,38 @@ public:
 	/**
 	 * Get the vertices of the terrain.
 	 *
+	 * Accessing the terrain vertices is thread-safe.
+	 *
 	 * @return Vector of vertex coordinates.
 	 */
-	const std::vector<coord::scene3> &get_vertices();
+	const std::vector<coord::scene3> get_vertices();
 
 	/**
 	 * Get the tiles of the terrain.
 	 *
+	 * Accessing the terrain tiles is thread-safe.
+	 *
 	 * @return Terrain tiles.
 	 */
-	const tiles_t &get_tiles();
+	const tiles_t get_tiles();
 
 	/**
 	 * Get the terrain paths used in the terrain.
 	 *
+	 * Accessing the terrain paths is thread-safe.
+	 *
 	 * @return Terrain paths.
 	 */
-	const std::unordered_set<std::string> &get_terrain_paths();
+	const std::unordered_set<std::string> get_terrain_paths();
 
 	/**
 	 * Get the number of vertices on each side of the terrain.
 	 *
+	 * Accessing the vertices size is thread-safe.
+	 *
 	 * @return Vector with width as first element and height as second element.
 	 */
-	const util::Vector2s &get_size();
+	const util::Vector2s get_size();
 
 private:
 	/**

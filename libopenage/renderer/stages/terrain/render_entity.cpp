@@ -14,9 +14,7 @@ RenderEntity::RenderEntity() :
 	size{0, 0},
 	tiles{},
 	terrain_paths{},
-	vertices{}
-// terrain_path{nullptr, 0},
-{
+	vertices{} {
 }
 
 void RenderEntity::update_tile(const util::Vector2s size,
@@ -107,25 +105,25 @@ void RenderEntity::update(const util::Vector2s size,
 	this->changed = true;
 }
 
-const std::vector<coord::scene3> &RenderEntity::get_vertices() {
+const std::vector<coord::scene3> RenderEntity::get_vertices() {
 	std::shared_lock lock{this->mutex};
 
 	return this->vertices;
 }
 
-const RenderEntity::tiles_t &RenderEntity::get_tiles() {
+const RenderEntity::tiles_t RenderEntity::get_tiles() {
 	std::shared_lock lock{this->mutex};
 
 	return this->tiles;
 }
 
-const std::unordered_set<std::string> &RenderEntity::get_terrain_paths() {
+const std::unordered_set<std::string> RenderEntity::get_terrain_paths() {
 	std::shared_lock lock{this->mutex};
 
 	return this->terrain_paths;
 }
 
-const util::Vector2s &RenderEntity::get_size() {
+const util::Vector2s RenderEntity::get_size() {
 	std::shared_lock lock{this->mutex};
 
 	return this->size;
