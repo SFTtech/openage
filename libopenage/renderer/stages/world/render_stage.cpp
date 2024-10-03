@@ -50,7 +50,7 @@ std::shared_ptr<renderer::RenderPass> WorldRenderStage::get_render_pass() {
 	return this->render_pass;
 }
 
-void WorldRenderStage::add_render_entity(const std::shared_ptr<WorldRenderEntity> entity) {
+void WorldRenderStage::add_render_entity(const std::shared_ptr<RenderEntity> entity) {
 	std::unique_lock lock{this->mutex};
 
 	auto world_object = std::make_shared<WorldObject>(this->asset_manager);
