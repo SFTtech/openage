@@ -32,7 +32,7 @@ public:
 	 *
 	 * @param entity New render entity.
 	 */
-	void set_render_entity(const std::shared_ptr<renderer::terrain::TerrainRenderEntity> &entity);
+	void set_render_entity(const std::shared_ptr<renderer::terrain::RenderEntity> &entity);
 
 	/**
 	 * Get the size of this terrain chunk.
@@ -78,7 +78,7 @@ private:
 	/**
 	 * Render entity for pushing updates to the renderer. Can be \p nullptr.
 	 */
-	std::shared_ptr<renderer::terrain::TerrainRenderEntity> render_entity;
+	std::shared_ptr<renderer::terrain::RenderEntity> render_entity;
 };
 
 } // namespace openage::gamestate

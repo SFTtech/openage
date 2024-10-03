@@ -17,7 +17,7 @@ TerrainChunk::TerrainChunk(const std::shared_ptr<renderer::resources::AssetManag
 	offset{offset},
 	asset_manager{asset_manager} {}
 
-void TerrainChunk::set_render_entity(const std::shared_ptr<TerrainRenderEntity> &entity) {
+void TerrainChunk::set_render_entity(const std::shared_ptr<RenderEntity> &entity) {
 	this->render_entity = entity;
 }
 
