@@ -147,7 +147,7 @@ void renderer_stresstest_0(const util::Path &path) {
 	terrain0->update(terrain_size, tiles);
 
 	// World entities
-	std::vector<std::shared_ptr<renderer::world::WorldRenderEntity>> render_entities{};
+	std::vector<std::shared_ptr<renderer::world::RenderEntity>> render_entities{};
 	auto add_world_entity = [&](const coord::phys3 initial_pos,
 	                            const time::time_t time) {
 		const auto animation_path = "./textures/test_tank_mirrored.sprite";

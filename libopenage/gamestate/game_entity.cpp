@@ -1,4 +1,4 @@
-// Copyright 2022-2023 the openage authors. See copying.md for legal info.
+// Copyright 2022-2024 the openage authors. See copying.md for legal info.
 
 #include "game_entity.h"
 
@@ -30,7 +30,7 @@ entity_id_t GameEntity::get_id() const {
 	return this->id;
 }
 
-void GameEntity::set_render_entity(const std::shared_ptr<renderer::world::WorldRenderEntity> &entity) {
+void GameEntity::set_render_entity(const std::shared_ptr<renderer::world::RenderEntity> &entity) {
 	// TODO: Transfer state from old render entity to new one?
 
 	this->render_entity = entity;

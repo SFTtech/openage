@@ -16,7 +16,7 @@ class RenderEntity;
 
 namespace world {
 class WorldRenderStage;
-class WorldRenderEntity;
+class RenderEntity;
 } // namespace world
 
 /**
@@ -55,7 +55,7 @@ public:
 	 *
 	 * @return Render entity for pushing terrain updates.
 	 */
-	std::shared_ptr<world::WorldRenderEntity> add_world_render_entity();
+	std::shared_ptr<world::RenderEntity> add_world_render_entity();
 
 private:
 	/**

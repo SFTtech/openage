@@ -10,19 +10,19 @@
 
 namespace openage::renderer::world {
 
-WorldRenderEntity::WorldRenderEntity() :
-	RenderEntity{},
+RenderEntity::RenderEntity() :
+	renderer::RenderEntity{},
 	ref_id{0},
 	position{nullptr, 0, "", nullptr, SCENE_ORIGIN},
 	angle{nullptr, 0, "", nullptr, 0},
 	animation_path{nullptr, 0} {
 }
 
-void WorldRenderEntity::update(const uint32_t ref_id,
-                               const curve::Continuous<coord::phys3> &position,
-                               const curve::Segmented<coord::phys_angle_t> &angle,
-                               const std::string animation_path,
-                               const time::time_t time) {
+void RenderEntity::update(const uint32_t ref_id,
+                          const curve::Continuous<coord::phys3> &position,
+                          const curve::Segmented<coord::phys_angle_t> &angle,
+                          const std::string animation_path,
+                          const time::time_t time) {
 	std::unique_lock lock{this->mutex};
 
 	this->ref_id = ref_id;
@@ -40,10 +40,10 @@ void WorldRenderEntity::update(const uint32_t ref_id,
 	this->last_update = time;
 }
 
-void WorldRenderEntity::update(const uint32_t ref_id,
-                               const coord::phys3 position,
-                               const std::string animation_path,
-                               const time::time_t time) {
+void RenderEntity::update(const uint32_t ref_id,
+                          const coord::phys3 position,
+                          const std::string animation_path,
+                          const time::time_t time) {
 	std::unique_lock lock{this->mutex};
 
 	this->ref_id = ref_id;
@@ -53,25 +53,25 @@ void WorldRenderEntity::update(const uint32_t ref_id,
 	this->last_update = time;
 }
 
-uint32_t WorldRenderEntity::get_id() {
+uint32_t RenderEntity::get_id() {
 	std::shared_lock lock{this->mutex};
 
 	return this->ref_id;
 }
 
-const curve::Continuous<coord::scene3> &WorldRenderEntity::get_position() {
+const curve::Continuous<coord::scene3> &RenderEntity::get_position() {
 	std::shared_lock lock{this->mutex};
 
 	return this->position;
 }
 
-const curve::Segmented<coord::phys_angle_t> &WorldRenderEntity::get_angle() {
+const curve::Segmented<coord::phys_angle_t> &RenderEntity::get_angle() {
 	std::shared_lock lock{this->mutex};
 
 	return this->angle;
 }
 
-const curve::Discrete<std::string> &WorldRenderEntity::get_animation_path() {
+const curve::Discrete<std::string> &RenderEntity::get_animation_path() {
 	std::shared_lock lock{this->mutex};
 
 	return this->animation_path;

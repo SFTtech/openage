@@ -43,7 +43,7 @@ WorldObject::WorldObject(const std::shared_ptr<renderer::resources::AssetManager
 	last_update{0.0} {
 }
 
-void WorldObject::set_render_entity(const std::shared_ptr<WorldRenderEntity> &entity) {
+void WorldObject::set_render_entity(const std::shared_ptr<RenderEntity> &entity) {
 	this->render_entity = entity;
 	this->fetch_updates();
 }
