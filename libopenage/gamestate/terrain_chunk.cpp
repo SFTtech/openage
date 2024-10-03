@@ -18,7 +18,7 @@ TerrainChunk::TerrainChunk(const util::Vector2s size,
 	}
 }
 
-void TerrainChunk::set_render_entity(const std::shared_ptr<renderer::terrain::TerrainRenderEntity> &entity) {
+void TerrainChunk::set_render_entity(const std::shared_ptr<renderer::terrain::RenderEntity> &entity) {
 	this->render_entity = entity;
 }
 

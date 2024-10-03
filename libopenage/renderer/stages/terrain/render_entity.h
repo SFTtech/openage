@@ -18,10 +18,10 @@ namespace openage::renderer::terrain {
 /**
  * Render entity for pushing updates to the Terrain renderer.
  */
-class TerrainRenderEntity final : public renderer::RenderEntity {
+class RenderEntity final : public renderer::RenderEntity {
 public:
-	TerrainRenderEntity();
-	~TerrainRenderEntity() = default;
+	RenderEntity();
+	~RenderEntity() = default;
 
 	using terrain_elevation_t = util::FixedPoint<uint64_t, 16>;
 	using tiles_t = std::vector<std::pair<terrain_elevation_t, std::string>>;

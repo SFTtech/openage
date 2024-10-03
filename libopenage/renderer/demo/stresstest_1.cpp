@@ -138,7 +138,7 @@ void renderer_stresstest_1(const util::Path &path) {
 
 	// Fill a 10x10 terrain grid with height values
 	auto terrain_size = util::Vector2s{10, 10};
-	std::vector<std::pair<terrain::TerrainRenderEntity::terrain_elevation_t, std::string>> tiles{};
+	std::vector<std::pair<terrain::RenderEntity::terrain_elevation_t, std::string>> tiles{};
 	tiles.reserve(terrain_size[0] * terrain_size[1]);
 	for (size_t i = 0; i < terrain_size[0] * terrain_size[1]; ++i) {
 		tiles.emplace_back(0.0f, "./textures/test_terrain.terrain");
