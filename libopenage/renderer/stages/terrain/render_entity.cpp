@@ -9,8 +9,8 @@
 
 namespace openage::renderer::terrain {
 
-TerrainRenderEntity::TerrainRenderEntity() :
-	RenderEntity{},
+RenderEntity::RenderEntity() :
+	renderer::RenderEntity{},
 	size{0, 0},
 	tiles{},
 	terrain_paths{},
@@ -19,11 +19,11 @@ TerrainRenderEntity::TerrainRenderEntity() :
 {
 }
 
-void TerrainRenderEntity::update_tile(const util::Vector2s size,
-                                      const coord::tile &pos,
-                                      const terrain_elevation_t elevation,
-                                      const std::string terrain_path,
-                                      const time::time_t time) {
+void RenderEntity::update_tile(const util::Vector2s size,
+                               const coord::tile &pos,
+                               const terrain_elevation_t elevation,
+                               const std::string terrain_path,
+                               const time::time_t time) {
 	std::unique_lock lock{this->mutex};
 
 	if (this->vertices.empty()) {
@@ -51,9 +51,9 @@ void TerrainRenderEntity::update_tile(const util::Vector2s size,
 	this->changed = true;
 }
 
-void TerrainRenderEntity::update(const util::Vector2s size,
-                                 const tiles_t tiles,
-                                 const time::time_t time) {
+void RenderEntity::update(const util::Vector2s size,
+                          const tiles_t tiles,
+                          const time::time_t time) {
 	std::unique_lock lock{this->mutex};
 
 	// increase by 1 in every dimension because tiles
@@ -107,25 +107,25 @@ void TerrainRenderEntity::update(const util::Vector2s size,
 	this->changed = true;
 }
 
-const std::vector<coord::scene3> &TerrainRenderEntity::get_vertices() {
+const std::vector<coord::scene3> &RenderEntity::get_vertices() {
 	std::shared_lock lock{this->mutex};
 
 	return this->vertices;
 }
 
-const TerrainRenderEntity::tiles_t &TerrainRenderEntity::get_tiles() {
+const RenderEntity::tiles_t &RenderEntity::get_tiles() {
 	std::shared_lock lock{this->mutex};
 
 	return this->tiles;
 }
 
-const std::unordered_set<std::string> &TerrainRenderEntity::get_terrain_paths() {
+const std::unordered_set<std::string> &RenderEntity::get_terrain_paths() {
 	std::shared_lock lock{this->mutex};
 
 	return this->terrain_paths;
 }
 
-const util::Vector2s &TerrainRenderEntity::get_size() {
+const util::Vector2s &RenderEntity::get_size() {
 	std::shared_lock lock{this->mutex};
 
 	return this->size;

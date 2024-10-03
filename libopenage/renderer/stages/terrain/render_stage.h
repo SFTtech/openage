@@ -32,7 +32,7 @@ class AssetManager;
 }
 
 namespace terrain {
-class TerrainRenderEntity;
+class RenderEntity;
 class TerrainRenderMesh;
 class TerrainRenderModel;
 
@@ -73,7 +73,7 @@ public:
 	 *
 	 * @param render_entity New render entity.
 	 */
-	void add_render_entity(const std::shared_ptr<TerrainRenderEntity> entity,
+	void add_render_entity(const std::shared_ptr<RenderEntity> entity,
 	                       const util::Vector2s chunk_size,
 	                       const coord::scene2_delta chunk_offset);
 
@@ -119,7 +119,7 @@ private:
 	/**
 	 * Engine interface for updating terrain draw information.
 	 */
-	std::shared_ptr<TerrainRenderEntity> render_entity;
+	std::shared_ptr<RenderEntity> render_entity;
 
 	/**
 	 * 3D model of the terrain.

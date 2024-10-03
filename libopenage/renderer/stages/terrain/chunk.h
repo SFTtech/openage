@@ -19,7 +19,7 @@ class AssetManager;
 
 namespace terrain {
 class TerrainRenderMesh;
-class TerrainRenderEntity;
+class RenderEntity;
 
 /**
  * Stores the state of a terrain chunk in the terrain render stage.
@@ -44,7 +44,7 @@ public:
 	 * @param size Size of the chunk in tiles.
 	 * @param offset Offset of the chunk from origin in tiles.
 	 */
-	void set_render_entity(const std::shared_ptr<TerrainRenderEntity> &entity);
+	void set_render_entity(const std::shared_ptr<RenderEntity> &entity);
 
 	/**
 	 * Fetch updates from the render entity.
@@ -114,7 +114,7 @@ private:
 	 * Source for ingame terrain coordinates. These coordinates are translated into
 	 * our render vertex mesh when \p update() is called.
 	 */
-	std::shared_ptr<TerrainRenderEntity> render_entity;
+	std::shared_ptr<RenderEntity> render_entity;
 };
 
 
