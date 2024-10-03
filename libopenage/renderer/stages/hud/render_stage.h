@@ -31,7 +31,7 @@ class AssetManager;
 
 namespace hud {
 class HudDragObject;
-class HudDragRenderEntity;
+class DragRenderEntity;
 
 /**
  * Renderer for the "Heads-Up Display" (HUD).
@@ -71,7 +71,7 @@ public:
 	 *
 	 * @param render_entity New render entity.
 	 */
-	void add_drag_entity(const std::shared_ptr<HudDragRenderEntity> entity);
+	void add_drag_entity(const std::shared_ptr<DragRenderEntity> entity);
 
 	/**
 	 * Remove the render object for drag selection.

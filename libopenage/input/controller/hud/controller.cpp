@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #include "controller.h"
 
@@ -27,11 +27,11 @@ bool Controller::process(const event_arguments &ev_args,
 	return true;
 }
 
-void Controller::set_drag_entity(const std::shared_ptr<renderer::hud::HudDragRenderEntity> &entity) {
+void Controller::set_drag_entity(const std::shared_ptr<renderer::hud::DragRenderEntity> &entity) {
 	this->drag_entity = entity;
 }
 
-const std::shared_ptr<renderer::hud::HudDragRenderEntity> &Controller::get_drag_entity() const {
+const std::shared_ptr<renderer::hud::DragRenderEntity> &Controller::get_drag_entity() const {
 	return this->drag_entity;
 }
 
@@ -39,7 +39,7 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
                     const std::shared_ptr<renderer::hud::HudRenderStage> &hud_renderer) {
 	binding_func_t drag_selection_init{[&](const event_arguments &args,
 	                                       const std::shared_ptr<Controller> controller) {
-		auto render_entity = std::make_shared<renderer::hud::HudDragRenderEntity>(args.mouse);
+		auto render_entity = std::make_shared<renderer::hud::DragRenderEntity>(args.mouse);
 		hud_renderer->add_drag_entity(render_entity);
 		controller->set_drag_entity(render_entity);
 	}};
