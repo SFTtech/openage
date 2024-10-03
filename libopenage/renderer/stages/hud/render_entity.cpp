@@ -7,14 +7,14 @@
 
 namespace openage::renderer::hud {
 
-HudDragRenderEntity::HudDragRenderEntity(const coord::input drag_start) :
-	RenderEntity{},
+DragRenderEntity::DragRenderEntity(const coord::input drag_start) :
+	renderer::RenderEntity{},
 	drag_pos{nullptr, 0, "", nullptr, drag_start},
 	drag_start{drag_start} {
 }
 
-void HudDragRenderEntity::update(const coord::input drag_pos,
-                                 const time::time_t time) {
+void DragRenderEntity::update(const coord::input drag_pos,
+                              const time::time_t time) {
 	std::unique_lock lock{this->mutex};
 
 	this->drag_pos.set_insert(time, drag_pos);
@@ -23,11 +23,11 @@ void HudDragRenderEntity::update(const coord::input drag_pos,
 	this->changed = true;
 }
 
-const curve::Continuous<coord::input> &HudDragRenderEntity::get_drag_pos() {
+const curve::Continuous<coord::input> &DragRenderEntity::get_drag_pos() {
 	return this->drag_pos;
 }
 
-const coord::input &HudDragRenderEntity::get_drag_start() {
+const coord::input &DragRenderEntity::get_drag_start() {
 	return this->drag_start;
 }
 

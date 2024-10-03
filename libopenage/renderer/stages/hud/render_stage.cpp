@@ -45,7 +45,7 @@ std::shared_ptr<renderer::RenderPass> HudRenderStage::get_render_pass() {
 	return this->render_pass;
 }
 
-void HudRenderStage::add_drag_entity(const std::shared_ptr<HudDragRenderEntity> entity) {
+void HudRenderStage::add_drag_entity(const std::shared_ptr<DragRenderEntity> entity) {
 	std::unique_lock lock{this->mutex};
 
 	auto hud_object = std::make_shared<HudDragObject>(this->asset_manager);

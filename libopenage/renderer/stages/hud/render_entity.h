@@ -14,15 +14,15 @@ namespace openage::renderer::hud {
 /**
  * Render entity for pushing drag selection updates to the HUD renderer.
  */
-class HudDragRenderEntity final : public renderer::RenderEntity {
+class DragRenderEntity final : public renderer::RenderEntity {
 public:
 	/**
 	 * Create a new render entity for drag selection in the HUD.
 	 *
 	 * @param drag_start Position of the start corner.
 	 */
-	HudDragRenderEntity(const coord::input drag_start);
-	~HudDragRenderEntity() = default;
+	DragRenderEntity(const coord::input drag_start);
+	~DragRenderEntity() = default;
 
 	/**
 	 * Update the render entity with information from the gamestate
