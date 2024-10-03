@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #include "object.h"
 
@@ -21,7 +21,7 @@ HudDragObject::HudDragObject(const std::shared_ptr<renderer::resources::AssetMan
 	last_update{0.0} {
 }
 
-void HudDragObject::set_render_entity(const std::shared_ptr<HudDragRenderEntity> &entity) {
+void HudDragObject::set_render_entity(const std::shared_ptr<DragRenderEntity> &entity) {
 	this->render_entity = entity;
 	this->fetch_updates();
 }
