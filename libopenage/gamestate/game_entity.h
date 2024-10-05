@@ -14,7 +14,7 @@
 namespace openage {
 
 namespace renderer::world {
-class WorldRenderEntity;
+class RenderEntity;
 }
 
 namespace gamestate {
@@ -62,7 +62,7 @@ public:
 	 *
 	 * @param entity New render entity.
 	 */
-	void set_render_entity(const std::shared_ptr<renderer::world::WorldRenderEntity> &entity);
+	void set_render_entity(const std::shared_ptr<renderer::world::RenderEntity> &entity);
 
 	/**
 	 * Set the event manager of this entity.
@@ -142,7 +142,7 @@ private:
 	/**
 	 * Render entity for pushing updates to the renderer. Can be \p nullptr.
 	 */
-	std::shared_ptr<renderer::world::WorldRenderEntity> render_entity;
+	std::shared_ptr<renderer::world::RenderEntity> render_entity;
 
 	/**
 	 * Event manager.

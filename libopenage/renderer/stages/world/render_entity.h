@@ -3,18 +3,14 @@
 #pragma once
 
 #include <cstdint>
-#include <list>
-#include <shared_mutex>
 #include <string>
-
-#include <eigen3/Eigen/Dense>
 
 #include "coord/phys.h"
 #include "coord/scene.h"
 #include "curve/continuous.h"
 #include "curve/discrete.h"
 #include "curve/segmented.h"
-#include "time/time.h"
+#include "renderer/stages/render_entity.h"
 
 
 namespace openage::renderer::world {
@@ -22,13 +18,15 @@ namespace openage::renderer::world {
 /**
  * Render entity for pushing updates to the World renderer.
  */
-class WorldRenderEntity {
+class RenderEntity final : public renderer::RenderEntity {
 public:
-	WorldRenderEntity();
-	~WorldRenderEntity() = default;
+	RenderEntity();
+	~RenderEntity() = default;
 
 	/**
 	 * Update the render entity with information from the gamestate.
+	 *
+	 * Updating the render entity with this method is thread-safe.
 	 *
 	 * @param ref_id Game entity ID.
 	 * @param position Position of the game entity inside the game world.
@@ -47,6 +45,8 @@ public:
 	 *
 	 * Update the render entity with information from the gamestate.
 	 *
+	 * Updating the render entity with this method is thread-safe.
+	 *
 	 * @param ref_id Game entity ID.
 	 * @param position Position of the game entity inside the game world.
 	 * @param animation_path Path to the animation definition.
@@ -60,12 +60,17 @@ public:
 	/**
 	 * Get the ID of the corresponding game entity.
 	 *
+	 * Accessing the game entity ID is thread-safe.
+	 *
 	 * @return Game entity ID.
 	 */
 	uint32_t get_id();
 
 	/**
 	 * Get the position of the entity inside the game world.
+	 *
+	 * Accessing the position curve REQUIRES a read lock on the render entity
+	 * (using \p get_read_lock()) to ensure thread safety.
 	 *
 	 * @return Position curve of the entity.
 	 */
@@ -74,6 +79,9 @@ public:
 	/**
 	 * Get the angle of the entity inside the game world.
 	 *
+	 * Accessing the angle curve REQUIRES a read lock on the render entity
+	 * (using \p get_read_lock()) to ensure thread safety.
+	 *
 	 * @return Angle curve of the entity.
 	 */
 	const curve::Segmented<coord::phys_angle_t> &get_angle();
@@ -81,38 +89,14 @@ public:
 	/**
 	 * Get the animation definition path.
 	 *
+	 * Accessing the animation path curve requires a read lock on the render entity
+	 * (using \p get_read_lock()) to ensure thread safety.
+	 *
 	 * @return Path to the animation definition file.
 	 */
 	const curve::Discrete<std::string> &get_animation_path();
 
-	/**
-	 * Get the time of the last update.
-	 *
-	 * @return Time of last update.
-	 */
-	time::time_t get_update_time();
-
-	/**
-	 * Check whether the render entity has received new updates from the
-	 * gamestate.
-	 *
-	 * @return true if updates have been received, else false.
-	 */
-	bool is_changed();
-
-	/**
-	 * Clear the update flag by setting it to false.
-	 */
-	void clear_changed_flag();
-
 private:
-	/**
-	 * Flag for determining if the render entity has been updated by the
-	 * corresponding gamestate entity. Set to true every time \p update()
-	 * is called.
-	 */
-	bool changed;
-
 	/**
 	 * ID of the game entity in the gamestate.
 	 */
@@ -132,15 +116,5 @@ private:
 	 * Path to the animation definition file.
 	 */
 	curve::Discrete<std::string> animation_path;
-
-	/**
-	 * Time of the last update call.
-	 */
-	time::time_t last_update;
-
-	/**
-	 * Mutex for protecting threaded access.
-	 */
-	std::shared_mutex mutex;
 };
 } // namespace openage::renderer::world

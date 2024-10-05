@@ -86,7 +86,7 @@ std::shared_ptr<RenderTarget> GlRenderer::get_display_target() {
 
 std::shared_ptr<UniformBuffer> GlRenderer::add_uniform_buffer(resources::UniformBufferInfo const &info) {
 	auto inputs = info.get_inputs();
-	std::unordered_map<std::string, GlInBlockUniform> uniforms{};
+	std::vector<GlInBlockUniform> uniforms{};
 	size_t offset = 0;
 	for (auto const &input : inputs) {
 		auto type = GL_UBO_INPUT_TYPE.get(input.type);
@@ -94,14 +94,13 @@ std::shared_ptr<UniformBuffer> GlRenderer::add_uniform_buffer(resources::Uniform
 
 		// align offset to the size of the type
 		offset += offset % size;
-
-		uniforms.emplace(
-			std::make_pair(input.name,
-		                   GlInBlockUniform{type,
-		                                    offset,
-		                                    resources::UniformBufferInfo::get_size(input, info.get_layout()),
-		                                    resources::UniformBufferInfo::get_stride_size(input.type, info.get_layout()),
-		                                    input.count}));
+		uniforms.push_back(
+			GlInBlockUniform{type,
+		                     offset,
+		                     resources::UniformBufferInfo::get_size(input, info.get_layout()),
+		                     resources::UniformBufferInfo::get_stride_size(input.type, info.get_layout()),
+		                     input.count,
+							 input.name});
 
 		offset += size;
 	}

@@ -125,7 +125,7 @@ GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
 		std::vector<GLint> uniform_indices(val);
 		glGetActiveUniformBlockiv(handle, i_unif_block, GL_UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES, uniform_indices.data());
 
-		std::unordered_map<std::string, GlInBlockUniform> uniforms;
+		std::vector<GlInBlockUniform> uniforms;
 		for (GLuint const i_unif : uniform_indices) {
 			in_block_unifs.insert(i_unif);
 
@@ -152,14 +152,14 @@ GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
 			// We do not need to handle sampler types here like in the uniform loop below,
 			// because named blocks cannot contain samplers.
 
-			uniforms.insert(std::make_pair(
-				name.data(),
+			uniforms.push_back(
 				GlInBlockUniform{
 					type,
 					size_t(offset),
 					size_t(count) * GL_UNIFORM_TYPE_SIZE.get(type),
 					size_t(stride),
-					size_t(count)}));
+					size_t(count),
+					std::string(name.data())});
 		}
 
 		// ENSURE(block_binding < caps.max_uniform_buffer_bindings,
@@ -257,10 +257,10 @@ GlShaderProgram::GlShaderProgram(const std::shared_ptr<GlContext> &context,
 		for (auto const &pair : this->uniform_blocks) {
 			log::log(MSG(dbg) << "(" << pair.second.index << ") " << pair.first
 			                  << " (size: " << pair.second.data_size << ") {");
-			for (auto const &unif_pair : pair.second.uniforms) {
-				log::log(MSG(dbg) << "\t+" << unif_pair.second.offset
-				                  << " " << unif_pair.first << ": "
-				                  << GLSL_TYPE_NAME.get(unif_pair.second.type));
+			for (auto const &unif : pair.second.uniforms) {
+				log::log(MSG(dbg) << "\t+" << unif.offset
+				                  << " " << unif.name << ": "
+				                  << GLSL_TYPE_NAME.get(unif.type));
 			}
 			log::log(MSG(dbg) << "}");
 		}
@@ -478,9 +478,9 @@ void GlShaderProgram::bind_uniform_buffer(const char *block_name, std::shared_pt
 	auto &block = this->uniform_blocks[block_name];
 
 	// Check if the uniform buffer matches the block definition
-	for (auto const &pair : block.uniforms) {
-		ENSURE(gl_buffer->has_uniform(pair.first.c_str()),
-		       "Uniform buffer does not contain uniform '" << pair.first << "' required by block " << block_name);
+	for (auto const &unif : block.uniforms) {
+		ENSURE(gl_buffer->has_uniform(unif.name.c_str()),
+		       "Uniform buffer does not contain uniform '" << unif.name << "' required by block " << block_name);
 	}
 
 	block.binding_point = gl_buffer->get_binding_point();

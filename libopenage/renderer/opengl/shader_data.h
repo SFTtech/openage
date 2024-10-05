@@ -5,6 +5,7 @@
 #include <optional>
 #include <string>
 #include <unordered_map>
+#include <vector>
 
 #include <epoxy/gl.h>
 
@@ -61,6 +62,11 @@ struct GlInBlockUniform {
 	 * Only relevant for arrays. The number of elements in the array.
 	 */
 	size_t count;
+
+	/**
+	 * Name of the block uniform.
+	 */
+	std::string name;
 };
 
 /**
@@ -78,7 +84,7 @@ struct GlUniformBlock {
 	/**
 	 * Maps uniform names within this block to their descriptions.
 	 */
-	std::unordered_map<std::string, GlInBlockUniform> uniforms;
+	std::vector<GlInBlockUniform> uniforms;
 
 	/**
 	 * The binding point assigned to this block.

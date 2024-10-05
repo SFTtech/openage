@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "coord/scene.h"
+#include "renderer/stages/terrain/render_entity.h"
 #include "time/time.h"
 #include "util/vector.h"
 
@@ -19,7 +20,6 @@ class AssetManager;
 
 namespace terrain {
 class TerrainRenderMesh;
-class TerrainRenderEntity;
 
 /**
  * Stores the state of a terrain chunk in the terrain render stage.
@@ -44,7 +44,7 @@ public:
 	 * @param size Size of the chunk in tiles.
 	 * @param offset Offset of the chunk from origin in tiles.
 	 */
-	void set_render_entity(const std::shared_ptr<TerrainRenderEntity> &entity);
+	void set_render_entity(const std::shared_ptr<RenderEntity> &entity);
 
 	/**
 	 * Fetch updates from the render entity.
@@ -85,9 +85,17 @@ private:
 	/**
 	 * Create a terrain mesh from the data provided by the render entity.
 	 *
+	 * @param vert_size Size of the terrain in vertices.
+	 * @param tiles Data for each tile (elevation, terrain path).
+	 * @param heightmap_verts Position of each vertex in the chunk.
+	 * @param texture_path Path to the texture for the terrain.
+	 *
 	 * @return New terrain mesh.
 	 */
-	std::shared_ptr<TerrainRenderMesh> create_mesh(const std::string &texture_path);
+	std::shared_ptr<TerrainRenderMesh> create_mesh(const util::Vector2s vert_size,
+	                                               const RenderEntity::tiles_t &tiles,
+	                                               const std::vector<coord::scene3> &heightmap_verts,
+	                                               const std::string &texture_path);
 
 	/**
 	 * Size of the chunk in tiles (width x height).
@@ -114,7 +122,7 @@ private:
 	 * Source for ingame terrain coordinates. These coordinates are translated into
 	 * our render vertex mesh when \p update() is called.
 	 */
-	std::shared_ptr<TerrainRenderEntity> render_entity;
+	std::shared_ptr<RenderEntity> render_entity;
 };
 
 
