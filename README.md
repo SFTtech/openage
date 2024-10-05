@@ -186,7 +186,7 @@ just have to ask and we'll find something. Alternatively, lurking is also allowe
 
 ----
 
-Cheers, happy hacking!
+Cheers, happy hecking!
 
 
 Development Process
