@@ -424,8 +424,11 @@ void GlShaderProgram::update_uniforms(std::shared_ptr<GlUniformInput> const &uni
 			glBindTexture(GL_TEXTURE_2D, tex);
 			// TODO: maybe call this at a more appropriate position
 			glUniform1i(loc, tex_unit_id);
-			auto &tex_value = *this->textures_per_texunits[tex_unit_id];
-			tex_value = tex;
+			ENSURE(tex_unit_id < this->textures_per_texunits.size(),
+			       "Tried to assign texture to non-existant texture unit at index "
+			           << tex_unit_id
+			           << " (max: " << this->textures_per_texunits.size() << ").");
+			this->textures_per_texunits[tex_unit_id] = tex;
 			break;
 		}
 		default:
