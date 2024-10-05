@@ -53,7 +53,7 @@ Goals
 -----
 
 * Fully authentic look and feel
-    * This can only be approximated, since the behaviour of the original game is mostly undocumented,
+    * This can only be approximated since the behavior of the original game is mostly undocumented,
     and guessing/experimenting can only get you this close
     * We will not implement useless artificial limitations (max 30 selectable units...)
 * An easily-moddable content format: [**nyan** yet another notation](https://github.com/SFTtech/nyan)
@@ -79,7 +79,7 @@ Current State of the Project
 
 **Important notice**: At the moment, "gameplay" is basically non-functional.
 We're implementing the internal game simulation (how units even do anything) with simplicity and extensibility in mind, so we had to get rid of the temporary (but kind of working) previous version.
-With these changes we can (finally) actually make use of our converted asset packs and our nyan API!
+With these changes, we can (finally) actually make use of our converted asset packs and our nyan API!
 We're working day and night to make gameplay return\*.
 If you're interested, we wrote detailed explanations on our blog: [Part 1](https://blog.openage.dev/new-gamestate-2020.html), [Part 2](https://blog.openage.dev/engine-core-modules.html), [Monthly Devlog](https://blog.openage.dev/tag/news.html).
 
@@ -99,16 +99,16 @@ If you're interested, we wrote detailed explanations on our blog: [Part 1](https
 Installation Packages
 ---------------------
 
-There's many missing parts for an actually working game.
+There are many missing parts for an actually working game.
 So if you "just wanna play", [you'll be disappointed](#current-state-of-the-project), unfortunately.
 
-We strongly recommend to build the program from source to get the latest, greatest and shiniest project state :)
+We strongly recommend building the program from source to get the latest, greatest, and shiniest project state :)
 
 
-* For **Linux** check at [repology](https://repology.org/project/openage/versions) if your distribution has any packages available. Otherwise you need to build from source.
+* For **Linux** check at [repology](https://repology.org/project/openage/versions) if your distribution has any packages available. Otherwise, you need to build from source.
   We don't release `*.deb`, `*.rpm`, Flatpak, snap or AppImage packages yet.
 * For **Windows** check our [release page](https://github.com/SFTtech/openage/releases) for the latest installer.
-  Otherwise, you need to build from source.
+  Otherwise, you need to build from the source.
 
 * For **macOS** we currently don't have any packages, you need to build from source.
 
@@ -152,7 +152,7 @@ Contributing
 You might ask yourself now "Sounds cool, but how do I participate
 and ~~get famous~~ contribute useful features?".
 
-Fortunately for you, there is a lot to do and we are very grateful for help.
+Fortunately for you, there is a lot to do and we are very grateful for your help.
 
 ## Where do I start?
 
@@ -160,7 +160,7 @@ Fortunately for you, there is a lot to do and we are very grateful for help.
 * **Ask us** in the [chat](https://matrix.to/#/#sfttech:matrix.org). Someone there could need
   help with something.
 * You can also **take the initiative** and fix a bug you found, create an issue for discussion or
-  implement a feature that we never though of, but always wanted.
+  implement a feature that we never thought of, but always wanted.
 
 
 ## Ok, I found something. What now?
@@ -176,7 +176,7 @@ Fortunately for you, there is a lot to do and we are very grateful for help.
 ## How do I contribute my features/changes?
 
 * Read the **[contributing guide](/doc/contributing.md)**.
-* You can upload work in progress (WIP) versions or drafts of your contribution to get feedback or support.
+* You can upload work-in-progress (WIP) versions or drafts of your contribution to get feedback or support.
 * Tell us (again) when you want us to review your work.
 
 ## I want to help, but I'm not a programmer...
