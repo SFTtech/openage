@@ -195,6 +195,7 @@ private:
 	std::unordered_map<std::string, GlVertexAttrib> attribs;
 
 	/// Store which texture handles are currently bound to the shader's texture units.
+	/// A value of std::nullopt means the texture unit is unbound (no texture assigned).
 	std::vector<std::optional<GLuint>> textures_per_texunits;
 
 	/// Whether this program has been validated.
