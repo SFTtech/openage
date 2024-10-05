@@ -79,7 +79,7 @@ Current State of the Project
 
 **Important notice**: At the moment, "gameplay" is basically non-functional.
 We're implementing the internal game simulation (how units even do anything) with simplicity and extensibility in mind, so we had to get rid of the temporary (but kind of working) previous version.
-With these changes, we can (finally) actually make use of our converted asset packs and our Nyan API!
+With these changes, we can (finally) actually make use of our converted asset packs and our nyan API!
 We're working day and night to make gameplay return\*.
 If you're interested, we wrote detailed explanations on our blog: [Part 1](https://blog.openage.dev/new-gamestate-2020.html), [Part 2](https://blog.openage.dev/engine-core-modules.html), [Monthly Devlog](https://blog.openage.dev/tag/news.html).
 
