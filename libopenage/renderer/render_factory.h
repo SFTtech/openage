@@ -11,12 +11,12 @@
 namespace openage::renderer {
 namespace terrain {
 class TerrainRenderStage;
-class TerrainRenderEntity;
+class RenderEntity;
 } // namespace terrain
 
 namespace world {
 class WorldRenderStage;
-class WorldRenderEntity;
+class RenderEntity;
 } // namespace world
 
 /**
@@ -47,15 +47,15 @@ public:
 	 *
 	 * @return Render entity for pushing terrain updates.
 	 */
-	std::shared_ptr<terrain::TerrainRenderEntity> add_terrain_render_entity(const util::Vector2s chunk_size,
-	                                                                        const coord::tile_delta chunk_offset);
+	std::shared_ptr<terrain::RenderEntity> add_terrain_render_entity(const util::Vector2s chunk_size,
+	                                                                 const coord::tile_delta chunk_offset);
 
 	/**
 	 * Create a new world render entity and register it at the world renderer.
 	 *
 	 * @return Render entity for pushing terrain updates.
 	 */
-	std::shared_ptr<world::WorldRenderEntity> add_world_render_entity();
+	std::shared_ptr<world::RenderEntity> add_world_render_entity();
 
 private:
 	/**

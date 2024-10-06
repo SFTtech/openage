@@ -1,3 +1,7 @@
+add_sources(libopenage
+	render_entity.cpp
+)
+
 add_subdirectory(camera/)
 add_subdirectory(hud/)
 add_subdirectory(screen/)
