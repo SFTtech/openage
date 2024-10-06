@@ -3,6 +3,7 @@
 #include "manager.h"
 
 #include <eigen3/Eigen/Dense>
+#include <numbers>
 
 #include "renderer/camera/camera.h"
 #include "renderer/uniform_buffer.h"
@@ -21,6 +22,9 @@ CameraManager::CameraManager(const std::shared_ptr<renderer::camera::Camera> &ca
 		camera->get_view_matrix(),
 		"proj",
 		camera->get_projection_matrix());
+
+	x_bounds = std::make_pair(XMIN, XMAX);
+	z_bounds = std::make_pair(ZMIN, ZMAX);
 }
 
 void CameraManager::update() {
@@ -33,18 +37,18 @@ void CameraManager::move_frame(MoveDirection direction, float speed) {
 	case MoveDirection::LEFT:
 		// half the speed because the relationship between forward/back and
 		// left/right is 1:2 in our ortho projection.
-		this->camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, 1.0f), speed / 2);
+		this->camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, 1.0f), this->x_bounds, this->z_bounds, speed / 2);
 		break;
 	case MoveDirection::RIGHT:
 		// half the speed because the relationship between forward/back and
 		// left/right is 1:2 in our ortho projection.
-		this->camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, -1.0f), speed / 2);
+		this->camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, -1.0f), this->x_bounds, this->z_bounds, speed / 2);
 		break;
 	case MoveDirection::FORWARD:
-		this->camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, -1.0f), speed);
+		this->camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, -1.0f), this->x_bounds, this->z_bounds, speed);
 		break;
 	case MoveDirection::BACKWARD:
-		this->camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, 1.0f), speed);
+		this->camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, 1.0f), this->x_bounds, this->z_bounds, speed);
 		break;
 
 	default:
@@ -83,7 +87,7 @@ void CameraManager::update_motion() {
 			move_dir += Eigen::Vector3f(1.0f, 0.0f, 1.0f);
 		}
 
-		this->camera->move_rel(move_dir, this->move_motion_speed);
+		this->camera->move_rel(move_dir, this->x_bounds, this->z_bounds, this->move_motion_speed);
 	}
 
 	if (this->zoom_motion_direction != static_cast<int>(ZoomDirection::NONE)) {

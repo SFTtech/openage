@@ -3,6 +3,7 @@
 #pragma once
 
 #include <memory>
+#include <utility>
 
 
 namespace openage::renderer {
@@ -143,6 +144,17 @@ private:
 	 * Uniform buffer input for the camera.
 	 */
 	std::shared_ptr<renderer::UniformBufferInput> uniforms;
+
+	/**
+	 * x and z bounds for the camera.
+	 */
+	std::pair<float, float> x_bounds, z_bounds;
+
+	/**
+	 * Constant values for the camera bounds.
+	 * TODO: Make boundaries dynamic based on map size.
+	 */
+	const float XMIN = 12.25f, XMAX = 32.25f, ZMIN = -8.25f, ZMAX = 12.25f;
 };
 
 } // namespace camera

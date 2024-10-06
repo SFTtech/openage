@@ -102,15 +102,37 @@ void Camera::look_at_coord(coord::scene3 coord_pos) {
 	this->look_at_scene(scene_pos);
 }
 
-void Camera::move_to(Eigen::Vector3f scene_pos) {
-	// TODO: Check and set bounds for where the camera can go and check them here
+void Camera::move_to(Eigen::Vector3f scene_pos,
+                     std::optional<std::pair<float, float>> x_bounds,
+                     std::optional<std::pair<float, float>> z_bounds) {
+	// Calculate look at coordinates using same method as in look_at_scene(..)
+	auto y_delta = this->scene_pos[1] - scene_pos[1];
+	auto xz_distance = y_delta * std::numbers::sqrt3;
+
+	float side_length = xz_distance / std::numbers::sqrt2;
+	scene_pos[0] += side_length;
+	scene_pos[2] += side_length;
+
+	// Clamp the x coordinate if x_bounds are provided
+	if (x_bounds.has_value()) {
+		scene_pos[0] = std::clamp(scene_pos[0], x_bounds->first, x_bounds->second);
+	}
+
+	// Clamp the z coordinate if z_bounds are provided
+	if (z_bounds.has_value()) {
+		scene_pos[2] = std::clamp(scene_pos[2], z_bounds->first, z_bounds->second);
+	}
 
 	this->scene_pos = scene_pos;
 	this->moved = true;
 }
 
-void Camera::move_rel(Eigen::Vector3f direction, float delta) {
-	this->move_to(this->scene_pos + (direction * delta));
+void Camera::move_rel(Eigen::Vector3f direction,
+                      std::pair<float, float> x_bounds,
+                      std::pair<float, float> z_bounds,
+                      float delta) {
+
+	this->move_to(this->scene_pos + (direction * delta), x_bounds, z_bounds);
 }
 
 void Camera::set_zoom(float zoom) {
