@@ -33,15 +33,15 @@ void path_demo_0(const util::Path &path) {
 
 	// Cost field with some obstacles
 	auto cost_field = std::make_shared<CostField>(field_length);
-	cost_field->set_cost(coord::tile{0, 0}, COST_IMPASSABLE);
-	cost_field->set_cost(coord::tile{1, 0}, 254);
-	cost_field->set_cost(coord::tile{4, 3}, 128);
-	cost_field->set_cost(coord::tile{5, 3}, 128);
-	cost_field->set_cost(coord::tile{6, 3}, 128);
-	cost_field->set_cost(coord::tile{4, 4}, 128);
-	cost_field->set_cost(coord::tile{5, 4}, 128);
-	cost_field->set_cost(coord::tile{6, 4}, 128);
-	cost_field->set_cost(coord::tile{1, 7}, COST_IMPASSABLE);
+	cost_field->set_cost(coord::tile_delta{0, 0}, COST_IMPASSABLE);
+	cost_field->set_cost(coord::tile_delta{1, 0}, 254);
+	cost_field->set_cost(coord::tile_delta{4, 3}, 128);
+	cost_field->set_cost(coord::tile_delta{5, 3}, 128);
+	cost_field->set_cost(coord::tile_delta{6, 3}, 128);
+	cost_field->set_cost(coord::tile_delta{4, 4}, 128);
+	cost_field->set_cost(coord::tile_delta{5, 4}, 128);
+	cost_field->set_cost(coord::tile_delta{6, 4}, 128);
+	cost_field->set_cost(coord::tile_delta{1, 7}, COST_IMPASSABLE);
 	log::log(INFO << "Created cost field");
 
 	// Create an integration field from the cost field
@@ -49,7 +49,7 @@ void path_demo_0(const util::Path &path) {
 	log::log(INFO << "Created integration field");
 
 	// Set cell (7, 7) to be the initial target cell
-	auto wavefront_blocked = integration_field->integrate_los(cost_field, coord::tile{7, 7});
+	auto wavefront_blocked = integration_field->integrate_los(cost_field, coord::tile_delta{7, 7});
 	integration_field->integrate_cost(cost_field, std::move(wavefront_blocked));
 	log::log(INFO << "Calculated integration field for target cell (7, 7)");
 
@@ -92,7 +92,8 @@ void path_demo_0(const util::Path &path) {
 
 					// Recalculate the integration field and the flow field
 					integration_field->reset();
-					auto wavefront_blocked = integration_field->integrate_los(cost_field, coord::tile{grid_x, grid_y});
+					auto wavefront_blocked = integration_field->integrate_los(cost_field,
+					                                                          coord::tile_delta{grid_x, grid_y});
 					integration_field->integrate_cost(cost_field, std::move(wavefront_blocked));
 					log::log(INFO << "Calculated integration field for target cell ("
 					              << grid_x << ", " << grid_y << ")");
@@ -110,7 +111,7 @@ void path_demo_0(const util::Path &path) {
 						render_manager->show_integration_field(integration_field);
 						break;
 					case RenderManager0::field_t::FLOW:
-						render_manager->show_flow_field(flow_field);
+						render_manager->show_flow_field(flow_field, integration_field);
 						break;
 					}
 
@@ -136,7 +137,7 @@ void path_demo_0(const util::Path &path) {
 				log::log(INFO << "Showing integration field");
 			}
 			else if (ev.key() == Qt::Key_F3) { // Show flow field
-				render_manager->show_flow_field(flow_field);
+				render_manager->show_flow_field(flow_field, integration_field);
 				current_field = RenderManager0::field_t::FLOW;
 				log::log(INFO << "Showing flow field");
 			}
@@ -240,7 +241,8 @@ void RenderManager0::show_integration_field(const std::shared_ptr<path::Integrat
 	this->field_pass->set_renderables({renderable});
 }
 
-void RenderManager0::show_flow_field(const std::shared_ptr<path::FlowField> &field) {
+void RenderManager0::show_flow_field(const std::shared_ptr<path::FlowField> &flow_field,
+                                     const std::shared_ptr<path::IntegrationField> &int_field) {
 	Eigen::Matrix4f model = Eigen::Matrix4f::Identity();
 	auto unifs = this->flow_shader->new_uniform_input(
 		"model",
@@ -249,7 +251,7 @@ void RenderManager0::show_flow_field(const std::shared_ptr<path::FlowField> &fie
 		this->camera->get_view_matrix(),
 		"proj",
 		this->camera->get_projection_matrix());
-	auto mesh = get_flow_field_mesh(field, 4);
+	auto mesh = get_flow_field_mesh(flow_field, int_field, 4);
 	auto geometry = this->renderer->add_mesh_geometry(mesh);
 	renderer::Renderable renderable{
 		unifs,
@@ -275,7 +277,7 @@ void RenderManager0::show_vectors(const std::shared_ptr<path::FlowField> &field)
 	this->vector_pass->clear_renderables();
 	for (size_t y = 0; y < field->get_size(); ++y) {
 		for (size_t x = 0; x < field->get_size(); ++x) {
-			auto cell = field->get_cell(coord::tile(x, y));
+			auto cell = field->get_cell(coord::tile_delta(x, y));
 			if (cell & FLOW_PATHABLE_MASK and not(cell & FLOW_LOS_MASK)) {
 				Eigen::Affine3f arrow_model = Eigen::Affine3f::Identity();
 				arrow_model.translate(Eigen::Vector3f(y + 0.5, 0, -1.0f * x - 0.5));
@@ -566,19 +568,19 @@ renderer::resources::MeshData RenderManager0::get_cost_field_mesh(const std::sha
 			// for each vertex, compare the surrounding tiles
 			std::vector<float> surround{};
 			if (j - 1 >= 0 and i - 1 >= 0) {
-				auto cost = field->get_cost(coord::tile((i - 1) / resolution, (j - 1) / resolution));
+				auto cost = field->get_cost((i - 1) / resolution, (j - 1) / resolution);
 				surround.push_back(cost);
 			}
 			if (j < static_cast<int>(field->get_size()) and i - 1 >= 0) {
-				auto cost = field->get_cost(coord::tile((i - 1) / resolution, j / resolution));
+				auto cost = field->get_cost((i - 1) / resolution, j / resolution);
 				surround.push_back(cost);
 			}
 			if (j < static_cast<int>(field->get_size()) and i < static_cast<int>(field->get_size())) {
-				auto cost = field->get_cost(coord::tile(i / resolution, j / resolution));
+				auto cost = field->get_cost(i / resolution, j / resolution);
 				surround.push_back(cost);
 			}
 			if (j - 1 >= 0 and i < static_cast<int>(field->get_size())) {
-				auto cost = field->get_cost(coord::tile(i / resolution, (j - 1) / resolution));
+				auto cost = field->get_cost(i / resolution, (j - 1) / resolution);
 				surround.push_back(cost);
 			}
 			// use the cost of the most expensive surrounding tile
@@ -652,19 +654,19 @@ renderer::resources::MeshData RenderManager0::get_integration_field_mesh(const s
 			// for each vertex, compare the surrounding tiles
 			std::vector<float> surround{};
 			if (j - 1 >= 0 and i - 1 >= 0) {
-				auto cost = field->get_cell(coord::tile((i - 1) / resolution, (j - 1) / resolution)).cost;
+				auto cost = field->get_cell((i - 1) / resolution, (j - 1) / resolution).cost;
 				surround.push_back(cost);
 			}
 			if (j < static_cast<int>(field->get_size()) and i - 1 >= 0) {
-				auto cost = field->get_cell(coord::tile((i - 1) / resolution, j / resolution)).cost;
+				auto cost = field->get_cell((i - 1) / resolution, j / resolution).cost;
 				surround.push_back(cost);
 			}
 			if (j < static_cast<int>(field->get_size()) and i < static_cast<int>(field->get_size())) {
-				auto cost = field->get_cell(coord::tile(i / resolution, j / resolution)).cost;
+				auto cost = field->get_cell(i / resolution, j / resolution).cost;
 				surround.push_back(cost);
 			}
 			if (j - 1 >= 0 and i < static_cast<int>(field->get_size())) {
-				auto cost = field->get_cell(coord::tile(i / resolution, (j - 1) / resolution)).cost;
+				auto cost = field->get_cell(i / resolution, (j - 1) / resolution).cost;
 				surround.push_back(cost);
 			}
 			// use the cost of the most expensive surrounding tile
@@ -719,42 +721,63 @@ renderer::resources::MeshData RenderManager0::get_integration_field_mesh(const s
 	return {std::move(vert_data), std::move(idx_data), info};
 }
 
-renderer::resources::MeshData RenderManager0::get_flow_field_mesh(const std::shared_ptr<FlowField> &field,
+renderer::resources::MeshData RenderManager0::get_flow_field_mesh(const std::shared_ptr<FlowField> &flow_field,
+                                                                  const std::shared_ptr<path::IntegrationField> &int_field,
                                                                   size_t resolution) {
 	// increase by 1 in every dimension because to get the vertex length
 	// of each dimension
 	util::Vector2s size{
-		field->get_size() * resolution + 1,
-		field->get_size() * resolution + 1,
+		flow_field->get_size() * resolution + 1,
+		flow_field->get_size() * resolution + 1,
 	};
 	auto vert_distance = 1.0f / resolution;
 
 	// add vertices for the cells of the grid
 	std::vector<float> verts{};
 	auto vert_count = size[0] * size[1];
-	verts.reserve(vert_count * 4);
+	verts.reserve(vert_count * 5);
 	for (int i = 0; i < static_cast<int>(size[0]); ++i) {
 		for (int j = 0; j < static_cast<int>(size[1]); ++j) {
 			// for each vertex, compare the surrounding tiles
-			std::vector<float> surround{};
+			std::vector<flow_t> ff_surround{};
+			std::vector<integrated_flags_t> int_surround{};
 			if (j - 1 >= 0 and i - 1 >= 0) {
-				auto cost = field->get_cell(coord::tile((i - 1) / resolution, (j - 1) / resolution));
-				surround.push_back(cost);
+				auto ff_cost = flow_field->get_cell((i - 1) / resolution, (j - 1) / resolution);
+				ff_surround.push_back(ff_cost);
+
+				auto int_flags = int_field->get_cell((i - 1) / resolution, (j - 1) / resolution).flags;
+				int_surround.push_back(int_flags);
 			}
-			if (j < static_cast<int>(field->get_size()) and i - 1 >= 0) {
-				auto cost = field->get_cell(coord::tile((i - 1) / resolution, j / resolution));
-				surround.push_back(cost);
+			if (j < static_cast<int>(flow_field->get_size()) and i - 1 >= 0) {
+				auto ff_cost = flow_field->get_cell((i - 1) / resolution, j / resolution);
+				ff_surround.push_back(ff_cost);
+
+				auto int_flags = int_field->get_cell((i - 1) / resolution, j / resolution).flags;
+				int_surround.push_back(int_flags);
 			}
-			if (j < static_cast<int>(field->get_size()) and i < static_cast<int>(field->get_size())) {
-				auto cost = field->get_cell(coord::tile(i / resolution, j / resolution));
-				surround.push_back(cost);
+			if (j < static_cast<int>(flow_field->get_size()) and i < static_cast<int>(flow_field->get_size())) {
+				auto ff_cost = flow_field->get_cell(i / resolution, j / resolution);
+				ff_surround.push_back(ff_cost);
+
+				auto int_flags = int_field->get_cell(i / resolution, j / resolution).flags;
+				int_surround.push_back(int_flags);
 			}
-			if (j - 1 >= 0 and i < static_cast<int>(field->get_size())) {
-				auto cost = field->get_cell(coord::tile(i / resolution, (j - 1) / resolution));
-				surround.push_back(cost);
+			if (j - 1 >= 0 and i < static_cast<int>(flow_field->get_size())) {
+				auto ff_cost = flow_field->get_cell(i / resolution, (j - 1) / resolution);
+				ff_surround.push_back(ff_cost);
+
+				auto int_flags = int_field->get_cell(i / resolution, (j - 1) / resolution).flags;
+				int_surround.push_back(int_flags);
 			}
-			// use the cost of the most expensive surrounding tile
-			auto max_cost = *std::max_element(surround.begin(), surround.end());
+			// combine the flags of the sorrounding tiles
+			auto ff_max_flags = 0;
+			for (auto &val : ff_surround) {
+				ff_max_flags |= val & 0xF0;
+			}
+			auto int_max_flags = 0;
+			for (auto &val : int_surround) {
+				int_max_flags |= val;
+			}
 
 			coord::scene3 v{
 				static_cast<float>(i * vert_distance),
@@ -765,7 +788,8 @@ renderer::resources::MeshData RenderManager0::get_flow_field_mesh(const std::sha
 			verts.push_back(world_v[0]);
 			verts.push_back(world_v[1]);
 			verts.push_back(world_v[2]);
-			verts.push_back(max_cost);
+			verts.push_back(ff_max_flags);
+			verts.push_back(int_max_flags);
 		}
 	}
 
@@ -789,7 +813,9 @@ renderer::resources::MeshData RenderManager0::get_flow_field_mesh(const std::sha
 	}
 
 	renderer::resources::VertexInputInfo info{
-		{renderer::resources::vertex_input_t::V3F32, renderer::resources::vertex_input_t::F32},
+		{renderer::resources::vertex_input_t::V3F32,
+	     renderer::resources::vertex_input_t::F32,
+	     renderer::resources::vertex_input_t::F32},
 		renderer::resources::vertex_layout_t::AOS,
 		renderer::resources::vertex_primitive_t::TRIANGLES,
 		renderer::resources::index_t::U16};

@@ -92,9 +92,11 @@ public:
 	/**
 	 * Draw a flow field to the screen.
 	 *
-	 * @param field Flow field.
+	 * @param flow_field Flow field.
+	 * @param int_field Integration field.
 	 */
-	void show_flow_field(const std::shared_ptr<path::FlowField> &field);
+	void show_flow_field(const std::shared_ptr<path::FlowField> &flow_field,
+	                     const std::shared_ptr<path::IntegrationField> &int_field);
 
 	/**
 	 * Draw the steering vectors of a flow field to the screen.
@@ -160,9 +162,11 @@ private:
 	/**
 	 * Create a mesh for the flow field.
 	 *
-	 * @param field Flow field to visualize.
+	 * @param flow_field Flow field to visualize.
+	 * @param int_field Integration field.
 	 */
-	static renderer::resources::MeshData get_flow_field_mesh(const std::shared_ptr<path::FlowField> &field,
+	static renderer::resources::MeshData get_flow_field_mesh(const std::shared_ptr<path::FlowField> &flow_field,
+	                                                         const std::shared_ptr<path::IntegrationField> &int_field,
 	                                                         size_t resolution = 2);
 
 	/**

@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #include "game_state.h"
 
@@ -37,8 +37,8 @@ void GameState::add_player(const std::shared_ptr<Player> &player) {
 	this->players[player->get_id()] = player;
 }
 
-void GameState::set_terrain(const std::shared_ptr<Terrain> &terrain) {
-	this->terrain = terrain;
+void GameState::set_map(const std::shared_ptr<Map> &map) {
+	this->map = map;
 }
 
 const std::shared_ptr<GameEntity> &GameState::get_game_entity(entity_id_t id) const {
@@ -59,8 +59,8 @@ const std::shared_ptr<Player> &GameState::get_player(player_id_t id) const {
 	return this->players.at(id);
 }
 
-const std::shared_ptr<Terrain> &GameState::get_terrain() const {
-	return this->terrain;
+const std::shared_ptr<Map> &GameState::get_map() const {
+	return this->map;
 }
 
 const std::shared_ptr<assets::ModManager> &GameState::get_mod_manager() const {

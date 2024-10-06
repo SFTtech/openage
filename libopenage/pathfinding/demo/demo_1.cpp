@@ -96,7 +96,7 @@ void path_demo_1(const util::Path &path) {
 	Path path_result = pathfinder->get_path(path_request);
 	timer.stop();
 
-	log::log(INFO << "Pathfinding took " << timer.getval() / 1000 << " ps");
+	log::log(INFO << "Pathfinding took " << timer.getval() / 1000 << " us");
 
 	// Create a renderer to display the grid and path
 	auto qtapp = std::make_shared<renderer::gui::GuiApplicationWithLogger>();
@@ -133,10 +133,12 @@ void path_demo_1(const util::Path &path) {
 				path_result = pathfinder->get_path(new_path_request);
 				timer.stop();
 
-				log::log(INFO << "Pathfinding took " << timer.getval() / 1000 << " ps");
+				log::log(INFO << "Pathfinding took " << timer.getval() / 1000 << " us");
 
-				// Create renderables for the waypoints of the path
-				render_manager->create_waypoint_tiles(path_result);
+				if (path_result.status == PathResult::FOUND) {
+					// Create renderables for the waypoints of the path
+					render_manager->create_waypoint_tiles(path_result);
+				}
 			}
 			else if (ev.button() == Qt::LeftButton) { // Set start cell
 				start = coord::tile{grid_x, grid_y};
@@ -151,10 +153,12 @@ void path_demo_1(const util::Path &path) {
 				path_result = pathfinder->get_path(new_path_request);
 				timer.stop();
 
-				log::log(INFO << "Pathfinding took " << timer.getval() / 1000 << " ps");
+				log::log(INFO << "Pathfinding took " << timer.getval() / 1000 << " us");
 
-				// Create renderables for the waypoints of the path
-				render_manager->create_waypoint_tiles(path_result);
+				if (path_result.status == PathResult::FOUND) {
+					// Create renderables for the waypoints of the path
+					render_manager->create_waypoint_tiles(path_result);
+				}
 			}
 		}
 	});
@@ -163,7 +167,6 @@ void path_demo_1(const util::Path &path) {
 	render_manager->create_waypoint_tiles(path_result);
 
 	// Run the renderer pss to draw the grid and path into a window
-	// TODO: Make this a while (not window.should_close()) loop
 	render_manager->run();
 }
 
@@ -449,7 +452,7 @@ void RenderManager1::create_impassible_tiles(const std::shared_ptr<path::Grid> &
 			auto cost_field = sector->get_cost_field();
 			for (size_t y = 0; y < sector_size; y++) {
 				for (size_t x = 0; x < sector_size; x++) {
-					auto cost = cost_field->get_cost(coord::tile(x, y));
+					auto cost = cost_field->get_cost(x, y);
 					if (cost == COST_IMPASSABLE) {
 						std::array<float, 8> tile_data{
 							-1.0f + x * tile_offset_width + sector_size * sector_x * tile_offset_width,

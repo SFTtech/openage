@@ -13,7 +13,7 @@
 
 namespace openage {
 namespace coord {
-struct tile;
+struct tile_delta;
 } // namespace coord
 
 namespace path {
@@ -46,30 +46,65 @@ public:
 	/**
 	 * Get the flow field value at a specified position.
 	 *
-	 * @param pos Coordinates of the cell.
+	 * @param pos Coordinates of the cell (relative to field origin).
 	 *
 	 * @return Flowfield value at the specified position.
 	 */
-	flow_t get_cell(const coord::tile &pos) const;
+	flow_t get_cell(const coord::tile_delta &pos) const;
+
+	/**
+	 * Get the flow field value at a specified position.
+	 *
+	 * @param x X-coordinate of the cell.
+	 * @param y Y-coordinate of the cell.
+	 *
+	 * @return Flowfield value at the specified position.
+	 */
+	flow_t get_cell(size_t x, size_t y) const;
 
 	/**
 	 * Get the flow field direction at a specified position.
 	 *
-	 * @param pos Coordinates of the cell.
+	 * @param idx Index of the cell.
+	 *
+	 * @return Flowfield value at the specified position.
+	 */
+	flow_t get_cell(size_t idx) const;
+
+	/**
+	 * Get the flow field direction at a specified position.
+	 *
+	 * @param pos Coordinates of the cell (relative to field origin).
 	 *
 	 * @return Flowfield direction at the specified position.
 	 */
-	flow_dir_t get_dir(const coord::tile &pos) const;
+	flow_dir_t get_dir(const coord::tile_delta &pos) const;
+
+	/**
+	 * Get the flow field direction at a specified position.
+	 *
+	 * @param x X-coordinate of the cell.
+	 * @param y Y-coordinate of the cell.
+	 *
+	 * @return Flowfield direction at the specified position.
+	 */
+	flow_dir_t get_dir(size_t x, size_t y) const;
+
+	/**
+	 * Get the flow field direction at a specified position.
+	 *
+	 * @param idx Index of the cell.
+	 *
+	 * @return Flowfield direction at the specified position.
+	 */
+	flow_dir_t get_dir(size_t idx) const;
 
 	/**
 	 * Build the flow field.
 	 *
 	 * @param integration_field Integration field.
-	 * @param target_cells Target cells of the flow field. These cells are ignored
-	 *                     when building the field.
 	 */
-	void build(const std::shared_ptr<IntegrationField> &integration_field,
-	           const std::unordered_set<size_t> &target_cells = {});
+	void build(const std::shared_ptr<IntegrationField> &integration_field);
 
 	/**
 	 * Build the flow field for a portal.
@@ -95,6 +130,32 @@ public:
 	 * Reset the flow field values for rebuilding the field.
 	 */
 	void reset();
+
+	/**
+	 * Reset all flags that are dependent on the path target location.
+	 *
+	 * These flags should be removed when the field is cached and reused for
+	 * other targets.
+	 *
+	 * Relevant flags are:
+	 * - FLOW_LOS_MASK
+	 * - FLOW_WAVEFRONT_BLOCKED_MASK
+	 */
+	void reset_dynamic_flags();
+
+	/**
+	 * Transfer dynamic flags from an integration field.
+	 *
+	 * These flags should be transferred when the field is copied from cache.
+	 * Flow field directions are not altered.
+	 *
+	 * Relevant flags are:
+	 * - FLOW_LOS_MASK
+	 * - FLOW_WAVEFRONT_BLOCKED_MASK
+	 *
+	 * @param integration_field Integration field.
+	 */
+	void transfer_dynamic_flags(const std::shared_ptr<IntegrationField> &integration_field);
 
 private:
 	/**
