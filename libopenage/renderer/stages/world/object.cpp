@@ -43,7 +43,7 @@ WorldObject::WorldObject(const std::shared_ptr<renderer::resources::AssetManager
 	last_update{0.0} {
 }
 
-void WorldObject::set_render_entity(const std::shared_ptr<WorldRenderEntity> &entity) {
+void WorldObject::set_render_entity(const std::shared_ptr<RenderEntity> &entity) {
 	this->render_entity = entity;
 	this->fetch_updates();
 }
@@ -63,6 +63,9 @@ void WorldObject::fetch_updates(const time::time_t &time) {
 
 	// Get data from render entity
 	this->ref_id = this->render_entity->get_id();
+
+	// Thread-safe access to curves needs a lock on the render entity's mutex
+	auto read_lock = this->render_entity->get_read_lock();
 	this->position.sync(this->render_entity->get_position());
 	this->animation_info.sync(this->render_entity->get_animation_path(),
 	                          std::function<std::shared_ptr<renderer::resources::Animation2dInfo>(const std::string &)>(
@@ -78,6 +81,9 @@ void WorldObject::fetch_updates(const time::time_t &time) {
 								  }),
 	                          this->last_update);
 	this->angle.sync(this->render_entity->get_angle(), this->last_update);
+
+	// Unlock mutex of the render entity
+	read_lock.unlock();
 
 	// Set self to changed so that world renderer can update the renderable
 	this->changed = true;
@@ -98,7 +104,7 @@ void WorldObject::update_uniforms(const time::time_t &time) {
 	auto angle_degrees = this->angle.get(time).to_float();
 
 	// Animation information
-	auto animation_info = this->animation_info.get(time);
+	auto [last_update, animation_info] = this->animation_info.frame(time);
 
 	for (size_t layer_idx = 0; layer_idx < this->layer_uniforms.size(); ++layer_idx) {
 		auto &layer_unifs = this->layer_uniforms.at(layer_idx);
@@ -123,7 +129,7 @@ void WorldObject::update_uniforms(const time::time_t &time) {
 		case renderer::resources::display_mode::LOOP: {
 			// ONCE and LOOP are animated based on time
 			auto &timing = layer.get_frame_timing();
-			frame_idx = timing->get_frame(time, this->render_entity->get_update_time());
+			frame_idx = timing->get_frame(time, last_update);
 		} break;
 		case renderer::resources::display_mode::OFF:
 		default:

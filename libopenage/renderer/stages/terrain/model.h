@@ -21,7 +21,7 @@ class AssetManager;
 }
 
 namespace terrain {
-class TerrainRenderEntity;
+class RenderEntity;
 class TerrainRenderMesh;
 class TerrainChunk;
 
@@ -46,7 +46,7 @@ public:
 	 * @param chunk_size Size of the chunk in tiles.
 	 * @param chunk_offset Offset of the chunk from origin in tiles.
 	 */
-	void add_chunk(const std::shared_ptr<TerrainRenderEntity> &entity,
+	void add_chunk(const std::shared_ptr<RenderEntity> &entity,
 	               const util::Vector2s chunk_size,
 	               const coord::scene2_delta chunk_offset);
 

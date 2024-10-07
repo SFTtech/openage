@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #include "object.h"
 
@@ -21,7 +21,7 @@ HudDragObject::HudDragObject(const std::shared_ptr<renderer::resources::AssetMan
 	last_update{0.0} {
 }
 
-void HudDragObject::set_render_entity(const std::shared_ptr<HudDragRenderEntity> &entity) {
+void HudDragObject::set_render_entity(const std::shared_ptr<DragRenderEntity> &entity) {
 	this->render_entity = entity;
 	this->fetch_updates();
 }
@@ -38,7 +38,14 @@ void HudDragObject::fetch_updates(const time::time_t &time) {
 
 	// Get data from render entity
 	this->drag_start = this->render_entity->get_drag_start();
+
+	// Thread-safe access to curves needs a lock on the render entity's mutex
+	auto read_lock = this->render_entity->get_read_lock();
+
 	this->drag_pos.sync(this->render_entity->get_drag_pos() /* , this->last_update */);
+
+	// Unlock the render entity mutex
+	read_lock.unlock();
 
 	// Set self to changed so that world renderer can update the renderable
 	this->changed = true;

@@ -57,7 +57,7 @@ public:
 	/**
 	 * Get the position of this sector in the grid.
 	 *
-	 * @return Position of the sector.
+	 * @return Position of the sector (absolute on the grid).
 	 */
 	const coord::chunk &get_position() const;
 
@@ -110,7 +110,7 @@ private:
 	sector_id_t id;
 
 	/**
-	 * Position of the sector in the grid.
+	 * Position of the sector (absolute on the grid).
 	 */
 	coord::chunk position;
 

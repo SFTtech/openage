@@ -9,6 +9,18 @@
 namespace openage::path {
 
 /**
+ * Path result type.
+ */
+enum class PathResult {
+	/// Path was found.
+	FOUND,
+	/// Path was not found.
+	NOT_FOUND,
+	/// Target is not on grid.
+	OUT_OF_BOUNDS,
+};
+
+/**
  * Movement cost in the cost field.
  *
  * TODO: Cost stamps
@@ -41,8 +53,16 @@ struct integrated_t {
 	/**
 	 * Flags.
 	 *
-	 * Bit 6: Wave front blocked flag.
-	 * Bit 7: Line of sight flag.
+	 * Bit 0-3: Shared flags with the flow field.
+	 *  - 0: Unused.
+	 *  - 1: Target flag.
+	 *  - 2: Line of sight flag.
+	 *  - 3: Unused.
+	 * Bit 4-7: Integration field specific flags.
+	 *  - 4: Unused.
+	 *  - 5: Wave front blocked flag.
+	 *  - 6: LOS found flag.
+	 *  - 7: Unused.
 	 */
 	integrated_flags_t flags;
 };
@@ -67,7 +87,7 @@ enum class flow_dir_t : uint8_t {
  * Flow field cell value.
  *
  * Bit 0: Unused.
- * Bit 1: Wave front blocked flag.
+ * Bit 1: Target flag.
  * Bit 2: Line of sight flag.
  * Bit 3: Pathable flag.
  * Bits 4-7: flow direction.

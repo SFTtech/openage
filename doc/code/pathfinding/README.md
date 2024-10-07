@@ -109,12 +109,11 @@ a path request is made, the main influence on performance is the A\* algorithm. 
 a limited number of portals, the A\* search should overall be very cheap.
 
 The resulting list of sectors and portals is subsequently used in the low-level flow
-field calculations. As a first step, the pathfinder uses its integrator to generate
+field calculations. More details can be found in the [field types](field_types.md) document.
+As a first step, the pathfinder uses its integrator to generate
 a flow field for each identified sector. Generation starts with the target sector
 and ends with the start sector. Flow field results are passed through at the cells
 of the identified portals to make the flow between sectors seamless.
-
-<!-- TODO: More descriptions of cost/integration/flow field calculations -->
 
 In a second step, the pathfinder follows the movement vectors in the flow fields from
 the start cell to the target cell. Waypoints are created for every direction change, so

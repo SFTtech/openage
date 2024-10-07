@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #include "spawn_entity.h"
 
@@ -11,6 +11,7 @@
 #include "coord/phys.h"
 #include "gamestate/component/internal/activity.h"
 #include "gamestate/component/internal/command_queue.h"
+#include "gamestate/component/internal/commands/apply_effect.h"
 #include "gamestate/component/internal/ownership.h"
 #include "gamestate/component/internal/position.h"
 #include "gamestate/component/types.h"
@@ -19,6 +20,7 @@
 #include "gamestate/game_entity.h"
 #include "gamestate/game_state.h"
 #include "gamestate/manager.h"
+#include "gamestate/map.h"
 #include "gamestate/types.h"
 
 // TODO: Testing
@@ -155,6 +157,21 @@ void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
                                 const param_map &params) {
 	auto gstate = std::dynamic_pointer_cast<gamestate::GameState>(state);
 
+	// Check if spawn position is on the map
+	auto pos = params.get("position", gamestate::WORLD_ORIGIN);
+	auto map_size = gstate->get_map()->get_size();
+	if (not(pos.ne >= 0
+	        and pos.ne < map_size[0]
+	        and pos.se >= 0
+	        and pos.se < map_size[1])) {
+		// Do nothing if the spawn position is not on the map
+		log::log(DBG << "Entity spawn failed: "
+		             << "Spawn position " << pos
+		             << " is not inside the map area "
+		             << "(map size: " << map_size << ")");
+		return;
+	}
+
 	auto nyan_db = gstate->get_db_view();
 
 	auto game_entities = nyan_db->get_obj_children_all("engine.util.game_entity.GameEntity");
@@ -183,7 +200,6 @@ void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
 	auto entity_pos = std::dynamic_pointer_cast<component::Position>(
 		entity->get_component(component::component_t::POSITION));
 
-	auto pos = params.get("position", gamestate::WORLD_ORIGIN);
 	entity_pos->set_position(time, pos);
 	entity_pos->set_angle(time, coord::phys_angle_t::from_int(315));
 
@@ -191,9 +207,18 @@ void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
 		entity->get_component(component::component_t::OWNERSHIP));
 	entity_owner->set_owner(time, owner_id);
 
+	// ASDF: Remove demo code below for applying effects
+	// add apply effect command to the command queue
+	auto command_queue = std::dynamic_pointer_cast<component::CommandQueue>(
+		entity->get_component(component::component_t::COMMANDQUEUE));
+	auto apply_command = std::make_shared<component::command::ApplyEffect>(entity->get_id());
+	command_queue->add_command(time, apply_command);
+
 	auto activity = std::dynamic_pointer_cast<component::Activity>(
 		entity->get_component(component::component_t::ACTIVITY));
 	activity->init(time);
+
+	// Important: Running the activity system must be done AFTER all components are initialized
 	entity->get_manager()->run_activity_system(time);
 
 	gstate->add_game_entity(entity);

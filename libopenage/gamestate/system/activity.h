@@ -40,14 +40,16 @@ private:
 	/**
 	 * Run a built-in engine subsystem.
 	 *
-	 * @param entity Game entity.
 	 * @param start_time Start time of change.
+	 * @param entity Game entity.
+	 * @param state Game state.
 	 * @param system_id ID of the subsystem to run.
 	 *
 	 * @return Runtime of the change in simulation time.
 	 */
-	static const time::time_t handle_subsystem(const std::shared_ptr<gamestate::GameEntity> &entity,
-	                                           const time::time_t &start_time,
+	static const time::time_t handle_subsystem(const time::time_t &start_time,
+	                                           const std::shared_ptr<gamestate::GameEntity> &entity,
+	                                           const std::shared_ptr<openage::gamestate::GameState> &state,
 	                                           system_id_t system_id);
 };
 

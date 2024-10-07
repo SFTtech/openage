@@ -36,7 +36,8 @@ public:
 	 *
 	 * @return New terrain object.
 	 */
-	std::shared_ptr<Terrain> add_terrain();
+	std::shared_ptr<Terrain> add_terrain(const util::Vector2s &size,
+	                                     std::vector<std::shared_ptr<TerrainChunk>> &&chunks);
 
 	/**
 	 * Create a new empty terrain chunk.

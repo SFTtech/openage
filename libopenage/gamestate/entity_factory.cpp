@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #include "entity_factory.h"
 
@@ -23,9 +23,12 @@
 #include "gamestate/activity/xor_event_gate.h"
 #include "gamestate/activity/xor_gate.h"
 #include "gamestate/api/activity.h"
+#include "gamestate/component/api/apply_effect.h"
 #include "gamestate/component/api/idle.h"
+#include "gamestate/component/api/line_of_sight.h"
 #include "gamestate/component/api/live.h"
 #include "gamestate/component/api/move.h"
+#include "gamestate/component/api/resistance.h"
 #include "gamestate/component/api/selectable.h"
 #include "gamestate/component/api/turn.h"
 #include "gamestate/component/internal/activity.h"
@@ -121,7 +124,7 @@ std::shared_ptr<GameEntity> EntityFactory::add_game_entity(const std::shared_ptr
 	// use the owner's data to initialize the entity
 	// this ensures that only the owner's tech upgrades apply
 	auto db_view = state->get_player(owner_id)->get_db_view();
-	init_components(loop, db_view, entity, nyan_entity);
+	this->init_components(loop, db_view, entity, nyan_entity);
 
 	if (this->render_factory) {
 		entity->set_render_entity(this->render_factory->add_world_render_entity());
@@ -194,11 +197,12 @@ void EntityFactory::init_components(const std::shared_ptr<openage::event::EventL
 
 				live->add_attribute(time::TIME_MIN,
 				                    attribute.get_name(),
-				                    std::make_shared<curve::Discrete<int64_t>>(loop,
-				                                                               0,
-				                                                               "",
-				                                                               nullptr,
-				                                                               start_value));
+				                    std::make_shared<curve::Segmented<component::attribute_value_t>>(
+										loop,
+										0,
+										"",
+										nullptr,
+										start_value));
 			}
 		}
 		else if (ability_parent == "engine.ability.type.Activity") {
@@ -207,6 +211,24 @@ void EntityFactory::init_components(const std::shared_ptr<openage::event::EventL
 		else if (ability_parent == "engine.ability.type.Selectable") {
 			auto selectable = std::make_shared<component::Selectable>(loop, ability_obj);
 			entity->add_component(selectable);
+		}
+		else if (ability_parent == "engine.ability.type.ApplyContinuousEffect"
+		         or ability_parent == "engine.ability.type.ApplyDiscreteEffect"
+		         or ability_parent == "engine.ability.type.RangedContinuousEffect"
+		         or ability_parent == "engine.ability.type.RangedDiscreteEffect") {
+			auto apply_effect = std::make_shared<component::ApplyEffect>(loop, ability_obj);
+			entity->add_component(apply_effect);
+		}
+		else if (ability_parent == "engine.ability.type.Resistance") {
+			auto resistance = std::make_shared<component::Resistance>(loop, ability_obj);
+			entity->add_component(resistance);
+		}
+		else if (ability_parent == "engine.ability.type.LineOfSight") {
+			auto line_of_sight = std::make_shared<component::LineOfSight>(loop, ability_obj);
+			entity->add_component(line_of_sight);
+		}
+		else {
+			log::log(SPAM << "Entity has unrecognized ability type: " << ability_parent);
 		}
 	}
 

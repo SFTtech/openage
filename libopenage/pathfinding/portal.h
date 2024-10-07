@@ -49,15 +49,15 @@ public:
 	 * @param sector1 Second sector connected by the portal.
 	 *                Must be south or west on the grid in relation to sector 0.
 	 * @param direction Direction of the portal from sector 0 to sector 1.
-	 * @param cell_start Start cell coordinate in sector 0.
-	 * @param cell_end End cell coordinate in sector 0.
+	 * @param cell_start Start cell coordinate in sector 0 (relative to sector origin).
+	 * @param cell_end End cell coordinate in sector 0 (relative to sector origin).
 	 */
 	Portal(portal_id_t id,
 	       sector_id_t sector0,
 	       sector_id_t sector1,
 	       PortalDirection direction,
-	       const coord::tile &cell_start,
-	       const coord::tile &cell_end);
+	       const coord::tile_delta &cell_start,
+	       const coord::tile_delta &cell_end);
 
 	~Portal() = default;
 
@@ -110,54 +110,54 @@ public:
 	 *
 	 * @param entry_sector Sector from which the portal is entered.
 	 *
-	 * @return Cell coordinates of the start of the portal in the entry sector.
+	 * @return Cell coordinates of the start of the portal in the entry sector (relative to sector origin).
 	 */
-	const coord::tile get_entry_start(sector_id_t entry_sector) const;
+	const coord::tile_delta get_entry_start(sector_id_t entry_sector) const;
 
 	/**
 	 * Get the cell coordinates of the center of the portal in the entry sector.
 	 *
 	 * @param entry_sector Sector from which the portal is entered.
 	 *
-	 * @return Cell coordinates of the center of the portal in the entry sector.
+	 * @return Cell coordinates of the center of the portal in the entry sector (relative to sector origin).
 	 */
-	const coord::tile get_entry_center(sector_id_t entry_sector) const;
+	const coord::tile_delta get_entry_center(sector_id_t entry_sector) const;
 
 	/**
 	 * Get the cell coordinates of the start of the portal in the entry sector.
 	 *
 	 * @param entry_sector Sector from which the portal is entered.
 	 *
-	 * @return Cell coordinates of the start of the portal in the entry sector.
+	 * @return Cell coordinates of the start of the portal in the entry sector (relative to sector origin).
 	 */
-	const coord::tile get_entry_end(sector_id_t entry_sector) const;
+	const coord::tile_delta get_entry_end(sector_id_t entry_sector) const;
 
 	/**
 	 * Get the cell coordinates of the start of the portal in the exit sector.
 	 *
 	 * @param entry_sector Sector from which the portal is entered.
 	 *
-	 * @return Cell coordinates of the start of the portal in the exit sector.
+	 * @return Cell coordinates of the start of the portal in the exit sector (relative to sector origin).
 	 */
-	const coord::tile get_exit_start(sector_id_t entry_sector) const;
+	const coord::tile_delta get_exit_start(sector_id_t entry_sector) const;
 
 	/**
 	 * Get the cell coordinates of the center of the portal in the exit sector.
 	 *
 	 * @param entry_sector Sector from which the portal is entered.
 	 *
-	 * @return Cell coordinates of the center of the portal in the exit sector.
+	 * @return Cell coordinates of the center of the portal in the exit sector (relative to sector origin).
 	 */
-	const coord::tile get_exit_center(sector_id_t entry_sector) const;
+	const coord::tile_delta get_exit_center(sector_id_t entry_sector) const;
 
 	/**
 	 * Get the cell coordinates of the end of the portal in the exit sector.
 	 *
 	 * @param entry_sector Sector from which the portal is entered.
 	 *
-	 * @return Cell coordinates of the end of the portal in the exit sector.
+	 * @return Cell coordinates of the end of the portal in the exit sector (relative to sector origin).
 	 */
-	const coord::tile get_exit_end(sector_id_t entry_sector) const;
+	const coord::tile_delta get_exit_end(sector_id_t entry_sector) const;
 
 	/**
 	 * Get the direction of the portal from sector 0 to sector 1.
@@ -170,30 +170,30 @@ private:
 	/**
 	 * Get the start cell coordinates of the portal.
 	 *
-	 * @return Start cell coordinates of the portal.
+	 * @return Start cell coordinates of the portal (relative to sector origin).
 	 */
-	const coord::tile &get_sector0_start() const;
+	const coord::tile_delta &get_sector0_start() const;
 
 	/**
 	 * Get the end cell coordinates of the portal.
 	 *
-	 * @return End cell coordinates of the portal.
+	 * @return End cell coordinates of the portal (relative to sector origin).
 	 */
-	const coord::tile &get_sector0_end() const;
+	const coord::tile_delta &get_sector0_end() const;
 
 	/**
 	 * Get the start cell coordinates of the portal.
 	 *
-	 * @return Start cell coordinates of the portal.
+	 * @return Start cell coordinates of the portal (relative to sector origin).
 	 */
-	const coord::tile get_sector1_start() const;
+	const coord::tile_delta get_sector1_start() const;
 
 	/**
 	 * Get the end cell coordinates of the portal.
 	 *
-	 * @return End cell coordinates of the portal.
+	 * @return End cell coordinates of the portal (relative to sector origin).
 	 */
-	const coord::tile get_sector1_end() const;
+	const coord::tile_delta get_sector1_end() const;
 
 	/**
 	 * ID of the portal.
@@ -230,13 +230,17 @@ private:
 	PortalDirection direction;
 
 	/**
-	 * Start cell coordinate.
+	 * Start cell coordinate in sector 0 (relative to sector origin).
+	 *
+	 * Coordinates for sector 1 are calculated on-the-fly using the direction.
 	 */
-	coord::tile cell_start;
+	coord::tile_delta cell_start;
 
 	/**
-	 * End cell coordinate.
+	 * End cell coordinate in sector 0 (relative to sector origin).
+	 *
+	 * Coordinates for sector 1 are calculated on-the-fly using the direction.
 	 */
-	coord::tile cell_end;
+	coord::tile_delta cell_end;
 };
 } // namespace openage::path

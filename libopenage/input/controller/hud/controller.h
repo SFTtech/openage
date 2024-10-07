@@ -10,7 +10,7 @@
 namespace openage {
 
 namespace renderer::hud {
-class HudDragRenderEntity;
+class DragRenderEntity;
 class HudRenderStage;
 } // namespace renderer::hud
 
@@ -42,20 +42,20 @@ public:
 	 *
 	 * @param entity New render entity.
 	 */
-	void set_drag_entity(const std::shared_ptr<renderer::hud::HudDragRenderEntity> &entity);
+	void set_drag_entity(const std::shared_ptr<renderer::hud::DragRenderEntity> &entity);
 
 	/**
 	 * Get the render entity for the selection box.
 	 *
 	 * @return Render entity for the selection box.
 	 */
-	const std::shared_ptr<renderer::hud::HudDragRenderEntity> &get_drag_entity() const;
+	const std::shared_ptr<renderer::hud::DragRenderEntity> &get_drag_entity() const;
 
 private:
 	/**
 	 * Render entity for the selection box.
 	 */
-	std::shared_ptr<renderer::hud::HudDragRenderEntity> drag_entity;
+	std::shared_ptr<renderer::hud::DragRenderEntity> drag_entity;
 };
 
 /**

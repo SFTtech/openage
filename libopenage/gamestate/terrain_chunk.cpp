@@ -18,7 +18,7 @@ TerrainChunk::TerrainChunk(const util::Vector2s size,
 	}
 }
 
-void TerrainChunk::set_render_entity(const std::shared_ptr<renderer::terrain::TerrainRenderEntity> &entity) {
+void TerrainChunk::set_render_entity(const std::shared_ptr<renderer::terrain::RenderEntity> &entity) {
 	this->render_entity = entity;
 }
 
@@ -28,6 +28,18 @@ const util::Vector2s &TerrainChunk::get_size() const {
 
 const coord::tile_delta &TerrainChunk::get_offset() const {
 	return this->offset;
+}
+
+const std::vector<TerrainTile> &TerrainChunk::get_tiles() const {
+	return this->tiles;
+}
+
+const TerrainTile &TerrainChunk::get_tile(size_t idx) const {
+	return this->tiles.at(idx);
+}
+
+const TerrainTile &TerrainChunk::get_tile(const coord::tile &pos) const {
+	return this->tiles.at(pos.ne + pos.se * this->size[0]);
 }
 
 void TerrainChunk::render_update(const time::time_t &time) {
