@@ -98,7 +98,6 @@ cdef class BestPacker:
         self.current_best = None
 
     cdef void pack(self, list blocks):
-        cdef Packer p
         cdef Packer packer
         for packer in self.packers:
             packer.pack(blocks)
@@ -130,11 +129,11 @@ cdef class RowPacker(Packer):
     """
 
     cdef void pack(self, list blocks):
+        self.mapping = {}
+
         cdef unsigned int num_rows
         cdef list rows
-        cdef int y = 0
 
-        self.mapping = {}
 
         num_rows, _ = factor(len(blocks))
         rows = [[] for _ in range(num_rows)]
@@ -145,6 +144,7 @@ cdef class RowPacker(Packer):
             min_row.append(block)
 
         # Calculate positions.
+        cdef int y = 0
         for row in rows:
             x = 0
 
@@ -161,11 +161,11 @@ cdef class ColumnPacker(Packer):
     """
 
     cdef void pack(self, list blocks):
+        self.mapping = {}
+
         cdef unsigned int num_columns
         cdef list columns
-        cdef int x = 0
 
-        self.mapping = {}
 
         num_columns, _ = factor(len(blocks))
         columns = [[] for _ in range(num_columns)]
@@ -176,6 +176,7 @@ cdef class ColumnPacker(Packer):
             min_col.append(block)
 
         # Calculate positions.
+        cdef int x = 0
         for column in columns:
             y = 0
 
