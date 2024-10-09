@@ -81,7 +81,7 @@ cdef void cmerge_frames(texture, packer_type=PackerType.BINPACK, cache=None) exc
                                  RowPacker(margin=MARGIN),
                                  ColumnPacker(margin=MARGIN)])
 
-    packer.pack(frames)
+    packer.pack([(frame.width, frame.height) for frame in frames])
 
     cdef int width = packer.width()
     cdef int height = packer.height()
@@ -106,11 +106,11 @@ cdef void cmerge_frames(texture, packer_type=PackerType.BINPACK, cache=None) exc
     cdef int sub_h
 
     cdef list drawn_frames_meta = []
-    for sub_frame in frames:
+    for index, sub_frame in enumerate(frames):
         sub_w = sub_frame.width
         sub_h = sub_frame.height
 
-        pos_x, pos_y = packer.pos(sub_frame)
+        pos_x, pos_y = packer.pos(index)
 
         spam("drawing frame %03d on atlas at %d x %d...",
              len(drawn_frames_meta), pos_x, pos_y)
