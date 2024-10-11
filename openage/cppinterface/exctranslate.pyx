@@ -35,8 +35,8 @@ from ..log import info
 cdef extern from "Python.h":
     int PyException_SetTraceback(PyObject *ex, PyObject *tb)
 
-cdef extern from "traceback.h":
-    void _PyTraceback_Add(const char *funcname, const char *filename, int lineno)
+# cdef extern from "traceback.h":
+#     void _PyTraceback_Add(const char *funcname, const char *filename, int lineno)
 
 
 cdef void PyTraceback_Add(const char *functionname, const char *filename, int lineno) noexcept with gil:
@@ -47,7 +47,7 @@ cdef void PyTraceback_Add(const char *functionname, const char *filename, int li
     # possible since 3.4.3 due to http://bugs.python.org/issue24436.
     # the function will likely remain internal due to https://bugs.python.org/issue24743
 
-    _PyTraceback_Add(functionname, filename, lineno)
+    # _PyTraceback_Add(functionname, filename, lineno)
 
 
 cdef class CPPMessageObject:
