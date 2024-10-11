@@ -1,4 +1,4 @@
-# Copyright 2015-2023 the openage authors. See copying.md for legal info.
+# Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 """
 Provides the raise_py_exception and describe_py_exception callbacks for
@@ -10,21 +10,14 @@ from cpython.exc cimport (
     PyErr_Occurred,
     PyErr_Fetch,
     PyErr_NormalizeException,
-    PyErr_SetObject,
-    PyErr_Restore
-)
-from cpython.pystate cimport (
-    PyThreadState,
-    PyThreadState_Get
+    PyErr_SetObject
 )
 
-from libcpp.string cimport string
 from libcpp cimport bool as cppbool
 
-from libopenage.log.level cimport level, err as lvl_err
 from libopenage.log.message cimport message
 from libopenage.error.error cimport Error
-from libopenage.error.backtrace cimport Backtrace, backtrace_symbol
+from libopenage.error.backtrace cimport backtrace_symbol
 from libopenage.pyinterface.functional cimport Func1
 from libopenage.pyinterface.pyexception cimport (
     PyException,
@@ -36,9 +29,8 @@ from libopenage.pyinterface.exctranslate cimport (
     set_exc_translation_funcs
 )
 
-import importlib
 from ..testing.testing import TestError
-from ..log import err, info
+from ..log import info
 
 cdef extern from "Python.h":
     int PyException_SetTraceback(PyObject *ex, PyObject *tb)
