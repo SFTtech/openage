@@ -35,6 +35,9 @@ from ..log import info
 cdef extern from "Python.h":
     int PyException_SetTraceback(PyObject *ex, PyObject *tb)
 
+# _PyTraceback_Add has been made private in Python 3.13
+# see https://github.com/python/cpython/pull/108453
+# TODO: Find another solution to add tracebacks
 # cdef extern from "traceback.h":
 #     void _PyTraceback_Add(const char *funcname, const char *filename, int lineno)
 
@@ -42,11 +45,12 @@ cdef extern from "Python.h":
 cdef void PyTraceback_Add(const char *functionname, const char *filename, int lineno) noexcept with gil:
     """
     Add a new traceback stack frame.
-    Redirects to Python's internal _PyTraceback_Add function.
-    """
-    # possible since 3.4.3 due to http://bugs.python.org/issue24436.
-    # the function will likely remain internal due to https://bugs.python.org/issue24743
 
+    Note: Currently does nothing, because _PyTraceback_Add is no longer
+          accessible since Python 3.13.
+
+    TODO: Find another solution to add tracebacks.
+    """
     # _PyTraceback_Add(functionname, filename, lineno)
 
 
