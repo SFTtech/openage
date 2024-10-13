@@ -1,4 +1,4 @@
-# Copyright 2015-2023 the openage authors. See copying.md for legal info.
+# Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 """
 Provides the raise_py_exception and describe_py_exception callbacks for
@@ -10,21 +10,14 @@ from cpython.exc cimport (
     PyErr_Occurred,
     PyErr_Fetch,
     PyErr_NormalizeException,
-    PyErr_SetObject,
-    PyErr_Restore
-)
-from cpython.pystate cimport (
-    PyThreadState,
-    PyThreadState_Get
+    PyErr_SetObject
 )
 
-from libcpp.string cimport string
 from libcpp cimport bool as cppbool
 
-from libopenage.log.level cimport level, err as lvl_err
 from libopenage.log.message cimport message
 from libopenage.error.error cimport Error
-from libopenage.error.backtrace cimport Backtrace, backtrace_symbol
+from libopenage.error.backtrace cimport backtrace_symbol
 from libopenage.pyinterface.functional cimport Func1
 from libopenage.pyinterface.pyexception cimport (
     PyException,
@@ -36,26 +29,29 @@ from libopenage.pyinterface.exctranslate cimport (
     set_exc_translation_funcs
 )
 
-import importlib
 from ..testing.testing import TestError
-from ..log import err, info
+from ..log import info
 
 cdef extern from "Python.h":
     int PyException_SetTraceback(PyObject *ex, PyObject *tb)
 
-cdef extern from "traceback.h":
-    void _PyTraceback_Add(const char *funcname, const char *filename, int lineno)
+# _PyTraceback_Add has been made private in Python 3.13
+# see https://github.com/python/cpython/pull/108453
+# TODO: Find another solution to add tracebacks
+# cdef extern from "traceback.h":
+#     void _PyTraceback_Add(const char *funcname, const char *filename, int lineno)
 
 
 cdef void PyTraceback_Add(const char *functionname, const char *filename, int lineno) noexcept with gil:
     """
     Add a new traceback stack frame.
-    Redirects to Python's internal _PyTraceback_Add function.
-    """
-    # possible since 3.4.3 due to http://bugs.python.org/issue24436.
-    # the function will likely remain internal due to https://bugs.python.org/issue24743
 
-    _PyTraceback_Add(functionname, filename, lineno)
+    Note: Currently does nothing, because _PyTraceback_Add is no longer
+          accessible since Python 3.13.
+
+    TODO: Find another solution to add tracebacks.
+    """
+    # _PyTraceback_Add(functionname, filename, lineno)
 
 
 cdef class CPPMessageObject:
