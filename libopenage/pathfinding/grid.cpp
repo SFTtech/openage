@@ -98,4 +98,27 @@ void Grid::init_portals() {
 	}
 }
 
+const nodemap_t &Grid::get_portal_map() {
+	return portal_nodes;
+}
+
+void Grid::init_portal_nodes() {
+	// create portal_nodes
+	for (auto &sector : this->sectors) {
+		for (auto &portal : sector->get_portals()) {
+			if (!this->portal_nodes.contains(portal->get_id())) {
+				auto portal_node = std::make_shared<PortalNode>(portal);
+				portal_node->node_sector_0 = sector->get_id();
+				portal_node->node_sector_1 = portal_node->portal->get_exit_sector(sector->get_id());
+				this->portal_nodes[portal->get_id()] = portal_node;
+			}
+		}
+	}
+
+	// init portal_node exits
+	for (auto &[id, node] : this->portal_nodes) {
+		node->init_exits(this->portal_nodes);
+	}
+}
+
 } // namespace openage::path
