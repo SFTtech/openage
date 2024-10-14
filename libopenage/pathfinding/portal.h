@@ -33,7 +33,7 @@ enum class PortalDirection {
  * The portal is bidirectional, meaning that it can be entered from either sector and
  * exited into the other sector. The direction of the portal from one sector to the other
  * is stored in the portal node. As a convention and to simplify computations, sector 0 must be
- * the either the north or east sector on the grid in relation to sector 1.
+ * either the north or east sector on the grid in relation to sector 1.
  */
 class Portal {
 public:

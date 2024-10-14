@@ -201,6 +201,9 @@ const Pathfinder::portal_star_t Pathfinder::portal_a_star(const PathRequest &req
 	std::vector<std::shared_ptr<Portal>> result;
 
 	auto grid = this->grids.at(request.grid_id);
+
+	auto map = portal_map(grid);
+
 	auto sector_size = grid->get_sector_size();
 
 	auto start_sector_x = request.start.ne / sector_size;
@@ -462,6 +465,32 @@ int Pathfinder::distance_cost(const coord::tile_delta &portal1_pos,
 	return delta.length();
 }
 
+
+ nodemap_t Pathfinder::portal_map(std::shared_ptr<openage::path::Grid> grid) const
+{
+	//map
+	nodemap_t map;
+
+	for(auto& sector: grid->get_sectors())
+	{
+		for(auto& portal : sector->get_portals())
+		{
+			node_t portal_node = std::make_shared<PortalNode>(portal, sector->get_id(), nullptr);
+			for(auto& exit : portal_node->get_exits(map, sector->get_id()))
+			{
+				int cost = Pathfinder::distance_cost(
+								portal_node->portal->get_exit_center(portal_node->entry_sector),
+								exit->portal->get_entry_center(exit->entry_sector)); 
+
+				portal_node->neighbours.insert({exit, cost});
+				exit->neighbours.insert({portal_node, cost});
+				map[portal->get_id()] = portal_node;
+				map[exit->portal->get_id()] = exit;
+			}
+		}
+	}
+	return map;
+}
 
 PortalNode::PortalNode(const std::shared_ptr<Portal> &portal,
                        sector_id_t entry_sector,

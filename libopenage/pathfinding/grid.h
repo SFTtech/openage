@@ -7,6 +7,7 @@
 #include <utility>
 #include <vector>
 
+#include "pathfinding/pathfinder.h"
 #include "pathfinding/types.h"
 #include "util/vector.h"
 
@@ -95,6 +96,9 @@ public:
 	 */
 	void init_portals();
 
+
+	const nodemap_t &get_portal_map() const;
+
 private:
 	/**
 	 * ID of the grid.
@@ -115,6 +119,8 @@ private:
 	 * Sectors of the grid.
 	 */
 	std::vector<std::shared_ptr<Sector>> sectors;
+
+	nodemap_t portal_map;
 };
 
 

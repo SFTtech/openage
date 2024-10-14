@@ -5,6 +5,7 @@
 #include <memory>
 #include <unordered_map>
 #include <unordered_set>
+#include <set>
 
 #include "coord/tile.h"
 #include "datastructure/pairing_heap.h"
@@ -17,6 +18,122 @@ class Grid;
 class Integrator;
 class Portal;
 class FlowField;
+
+
+
+class PortalNode;
+using node_t = std::shared_ptr<PortalNode>;
+
+/**
+ * Cost comparison for node_t on the pairing heap.
+ *
+ * Extracts the nodes from the shared_ptr and compares them. We have
+ * to use a custom comparison function because otherwise the shared_ptr
+ * would be compared instead of the actual node.
+ */
+struct compare_node_cost {
+	bool operator()(const node_t &lhs, const node_t &rhs) const;
+};
+
+using heap_t = datastructure::PairingHeap<node_t, compare_node_cost>;
+using nodemap_t = std::unordered_map<portal_id_t, node_t>;
+
+/**
+ * One navigation waypoint in a path.
+ */
+class PortalNode : public std::enable_shared_from_this<PortalNode> {
+public:
+	PortalNode(const std::shared_ptr<Portal> &portal,
+	           sector_id_t entry_sector,
+	           const node_t &prev_portal);
+	PortalNode(const std::shared_ptr<Portal> &portal,
+	           sector_id_t entry_sector,
+	           const node_t &prev_portal,
+	           int past_cost,
+	           int heuristic_cost);
+
+	/**
+	 * Orders nodes according to their future cost value.
+	 */
+	bool operator<(const PortalNode &other) const;
+
+	/**
+	 * Compare the node to another one.
+	 * They are the same if their portal is.
+	 */
+	bool operator==(const PortalNode &other) const;
+
+	/**
+	 * Calculates the actual movement cost to another node.
+	 */
+	int cost_to(const PortalNode &other) const;
+
+
+	struct ComparePairs {
+		bool operator()(const std::pair<node_t, int>& a, const std::pair<node_t, int>& b) const {
+			return a.second < b.second;
+		}
+	};
+
+	std::set<std::pair<node_t, int>, ComparePairs> neighbours;
+	/**
+	 * Create a backtrace path beginning at this node.
+	 */
+	std::vector<node_t> generate_backtrace();
+
+	/**
+	 * Get all exits of a node.
+	 */
+	std::vector<node_t> get_exits(const nodemap_t &nodes, sector_id_t entry_sector);
+
+	/**
+	 * The portal this node is associated to.
+	 */
+	std::shared_ptr<Portal> portal;
+
+	/**
+	 * Sector where the portal is entered.
+	 */
+	sector_id_t entry_sector;
+
+	/**
+	 * Future cost estimation value for this node.
+	 */
+	int future_cost;
+
+	/**
+	 * Evaluated past cost value for the node.
+	 * This stores the actual cost from start to this node.
+	 */
+	int current_cost;
+
+	/**
+	 * Heuristic cost cache.
+	 * Calculated once, is the heuristic distance from this node
+	 * to the goal.
+	 */
+	int heuristic_cost;
+
+	/**
+	 * Does this node already have an alternative path?
+	 * If the node was once selected as the best next hop,
+	 * this is set to true.
+	 */
+	bool was_best = false;
+
+	/**
+	 * Node where this one was reached by least cost.
+	 */
+	node_t prev_portal;
+
+	/**
+	 * Priority queue node that contains this path node.
+	 */
+	heap_t::element_t heap_node;
+};
+
+
+
 
 /**
  * Pathfinder for flow field pathfinding.
@@ -78,6 +195,9 @@ private:
 	                                  const std::unordered_set<portal_id_t> &target_portal_ids,
 	                                  const std::unordered_set<portal_id_t> &start_portal_ids) const;
 
+
+	nodemap_t portal_map(std::shared_ptr<openage::path::Grid> grid) const;
+
 	/**
 	 * Low-level pathfinder. Uses flow fields to find the path through the sectors.
 	 *
@@ -122,111 +242,5 @@ private:
 	 */
 	std::shared_ptr<Integrator> integrator;
 };
-
-
-class PortalNode;
-
-using node_t = std::shared_ptr<PortalNode>;
-
-/**
- * Cost comparison for node_t on the pairing heap.
- *
- * Extracts the nodes from the shared_ptr and compares them. We have
- * to use a custom comparison function because otherwise the shared_ptr
- * would be compared instead of the actual node.
- */
-struct compare_node_cost {
-	bool operator()(const node_t &lhs, const node_t &rhs) const;
-};
-
-using heap_t = datastructure::PairingHeap<node_t, compare_node_cost>;
-using nodemap_t = std::unordered_map<portal_id_t, node_t>;
-
-/**
- * One navigation waypoint in a path.
- */
-class PortalNode : public std::enable_shared_from_this<PortalNode> {
-public:
-	PortalNode(const std::shared_ptr<Portal> &portal,
-	           sector_id_t entry_sector,
-	           const node_t &prev_portal);
-	PortalNode(const std::shared_ptr<Portal> &portal,
-	           sector_id_t entry_sector,
-	           const node_t &prev_portal,
-	           int past_cost,
-	           int heuristic_cost);
-
-	/**
-	 * Orders nodes according to their future cost value.
-	 */
-	bool operator<(const PortalNode &other) const;
-
-	/**
-	 * Compare the node to another one.
-	 * They are the same if their portal is.
-	 */
-	bool operator==(const PortalNode &other) const;
-
-	/**
-	 * Calculates the actual movement cose to another node.
-	 */
-	int cost_to(const PortalNode &other) const;
-
-	/**
-	 * Create a backtrace path beginning at this node.
-	 */
-	std::vector<node_t> generate_backtrace();
-
-	/**
-	 * Get all exits of a node.
-	 */
-	std::vector<node_t> get_exits(const nodemap_t &nodes, sector_id_t entry_sector);
-
-	/**
-	 * The portal this node is associated to.
-	 */
-	std::shared_ptr<Portal> portal;
-
-	/**
-	 * Sector where the portal is entered.
-	 */
-	sector_id_t entry_sector;
-
-	/**
-	 * Future cost estimation value for this node.
-	 */
-	int future_cost;
-
-	/**
-	 * Evaluated past cost value for the node.
-	 * This stores the actual cost from start to this node.
-	 */
-	int current_cost;
-
-	/**
-	 * Heuristic cost cache.
-	 * Calculated once, is the heuristic distance from this node
-	 * to the goal.
-	 */
-	int heuristic_cost;
-
-	/**
-	 * Does this node already have an alternative path?
-	 * If the node was once selected as the best next hop,
-	 * this is set to true.
-	 */
-	bool was_best = false;
-
-	/**
-	 * Node where this one was reached by least cost.
-	 */
-	node_t prev_portal;
-
-	/**
-	 * Priority queue node that contains this path node.
-	 */
-	heap_t::element_t heap_node;
-};
-
 
 } // namespace openage::path

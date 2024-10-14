@@ -64,6 +64,10 @@ const std::vector<std::shared_ptr<Sector>> &Grid::get_sectors() const {
 	return this->sectors;
 }
 
+const nodemap_t &Grid::get_portal_map() const {
+	return this->portal_map;
+}
+
 void Grid::init_portals() {
 	// Create portals between neighboring sectors.
 	portal_id_t portal_id = 0;
