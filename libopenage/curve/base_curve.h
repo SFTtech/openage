@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include <concepts>
 #include <cstddef>
 #include <functional>
 #include <memory>
@@ -110,12 +111,9 @@ public:
 	 *
 	 * @param at Time the keyframe is inserted at.
 	 * @param value Value of the keyframe.
-	 * @param compress If true, only insert the keyframe if the value at time \p at
-	 *                 is different from the given value.
 	 */
 	virtual void set_replace(const time::time_t &at,
-	                         const T &value,
-	                         bool compress = false);
+	                         const T &value);
 
 	/**
 	 * Remove all values that have the given time.
@@ -244,6 +242,13 @@ void BaseCurve<T>::set_last(const time::time_t &at,
 
 	hint = this->container.erase_after(hint);
 
+	if (compress and this->get(at) == value) {
+		// skip insertion if the value is the same as the last one
+		// erasure still happened, so we need to notify about the change
+		this->changes(at);
+		return;
+	}
+
 	this->container.insert_before(at, value, hint);
 	this->last_element = hint;
 
@@ -255,19 +260,25 @@ template <typename T>
 void BaseCurve<T>::set_insert(const time::time_t &at,
                               const T &value,
                               bool compress) {
+	if (compress and this->get(at) == value) {
+		// skip insertion if the value is the same as the last one
+		return;
+	}
+
 	auto hint = this->container.insert_after(at, value, this->last_element);
+
 	// check if this is now the final keyframe
 	if (this->container.get(hint).time() > this->container.get(this->last_element).time()) {
 		this->last_element = hint;
 	}
+
 	this->changes(at);
 }
 
 
 template <typename T>
 void BaseCurve<T>::set_replace(const time::time_t &at,
-                               const T &value,
-                               bool compress) {
+                               const T &value) {
 	this->container.insert_overwrite(at, value, this->last_element);
 	this->changes(at);
 }
