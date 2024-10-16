@@ -124,12 +124,12 @@ public:
 	 * If there is a keyframe with identical time, this will
 	 * insert the new keyframe before the old one.
 	 *
-	 * @param value Keyframe to insert.
+	 * @param keyframe Keyframe to insert.
 	 *
 	 * @return The location (index) of the inserted element.
 	 */
-	elem_ptr insert_before(const keyframe_t &value) {
-		return this->insert_before(value, this->container.size());
+	elem_ptr insert_before(const keyframe_t &keyframe) {
+		return this->insert_before(keyframe, this->container.size());
 	}
 
 	/**
@@ -143,12 +143,12 @@ public:
 	 * If there is a keyframe with identical time, this will
 	 * insert the new keyframe before the old one.
 	 *
-	 * @param value Keyframe to insert.
+	 * @param keyframe Keyframe to insert.
 	 * @param hint Index of the approximate insertion location.
 	 *
 	 * @return The location (index) of the inserted element.
 	 */
-	elem_ptr insert_before(const keyframe_t &value,
+	elem_ptr insert_before(const keyframe_t &keyframe,
 	                       const elem_ptr &hint);
 
 	/**
@@ -197,14 +197,14 @@ public:
 	 * `overwrite_all` == true -> overwrite all same-time elements.
 	 * `overwrite_all` == false -> overwrite the last of the time-conflict elements.
 	 *
-	 * @param value Keyframe to insert.
+	 * @param keyframe Keyframe to insert.
 	 * @param hint Index of the approximate insertion location.
 	 * @param overwrite_all If true, overwrite all elements with the same time.
 	 *                      If false, overwrite only the last element with the same time.
 	 *
 	 * @return The location (index) of the inserted element.
 	 */
-	elem_ptr insert_overwrite(const keyframe_t &value,
+	elem_ptr insert_overwrite(const keyframe_t &keyframe,
 	                          const elem_ptr &hint,
 	                          bool overwrite_all = false);
 
@@ -253,12 +253,12 @@ public:
 	 * conflict. The hint gives an approximate insertion location to minimize runtime on
 	 * big-history curves.
 	 *
-	 * @param value Keyframe to insert.
+	 * @param keyframe Keyframe to insert.
 	 * @param hint Index of the approximate insertion location.
 	 *
 	 * @return The location (index) of the inserted element.
 	 */
-	elem_ptr insert_after(const keyframe_t &value,
+	elem_ptr insert_after(const keyframe_t &keyframe,
 	                      const elem_ptr &hint);
 
 	/**
