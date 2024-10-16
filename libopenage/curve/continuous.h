@@ -33,10 +33,14 @@ public:
 	 * If multiple elements exist at the given time,
 	 * overwrite all of them.
 	 */
-	void set_last(const time::time_t &t, const T &value) override;
+	void set_last(const time::time_t &t,
+	              const T &value,
+	              bool compress = false) override;
 
 	/** This just calls set_replace in order to guarantee the continuity. */
-	void set_insert(const time::time_t &t, const T &value) override;
+	void set_insert(const time::time_t &t,
+	                const T &value,
+	                bool compress = false) override;
 
 	/** human readable identifier */
 	std::string idstr() const override;
@@ -44,7 +48,9 @@ public:
 
 
 template <typename T>
-void Continuous<T>::set_last(const time::time_t &at, const T &value) {
+void Continuous<T>::set_last(const time::time_t &at,
+                             const T &value,
+                             bool compress) {
 	auto hint = this->container.last(at, this->last_element);
 
 	// erase all same-time entries
@@ -62,7 +68,9 @@ void Continuous<T>::set_last(const time::time_t &at, const T &value) {
 
 
 template <typename T>
-void Continuous<T>::set_insert(const time::time_t &t, const T &value) {
+void Continuous<T>::set_insert(const time::time_t &t,
+                               const T &value,
+                               bool compress) {
 	this->set_replace(t, value);
 }
 
