@@ -39,8 +39,12 @@ public:
 
 	// Override insertion/erasure to get interval time
 
-	void set_last(const time::time_t &at, const T &value) override;
-	void set_insert(const time::time_t &at, const T &value) override;
+	void set_last(const time::time_t &at,
+	              const T &value,
+	              bool compress = false) override;
+	void set_insert(const time::time_t &at,
+	                const T &value,
+	                bool compress = false) override;
 	void erase(const time::time_t &at) override;
 
 	/**
@@ -72,14 +76,18 @@ private:
 
 
 template <typename T>
-void DiscreteMod<T>::set_last(const time::time_t &at, const T &value) {
+void DiscreteMod<T>::set_last(const time::time_t &at,
+                              const T &value,
+                              bool compress) {
 	BaseCurve<T>::set_last(at, value);
 	this->time_length = at;
 }
 
 
 template <typename T>
-void DiscreteMod<T>::set_insert(const time::time_t &at, const T &value) {
+void DiscreteMod<T>::set_insert(const time::time_t &at,
+                                const T &value,
+                                bool compress) {
 	BaseCurve<T>::set_insert(at, value);
 
 	if (this->time_length < at) {
@@ -127,7 +135,8 @@ T DiscreteMod<T>::get_mod(const time::time_t &time, const time::time_t &start) c
 
 
 template <typename T>
-std::pair<time::time_t, T> DiscreteMod<T>::get_time_mod(const time::time_t &time, const time::time_t &start) const {
+std::pair<time::time_t, T> DiscreteMod<T>::get_time_mod(const time::time_t &time,
+                                                        const time::time_t &start) const {
 	time::time_t offset = time - start;
 	if (this->time_length == 0) {
 		// modulo would fail here so return early
@@ -140,7 +149,8 @@ std::pair<time::time_t, T> DiscreteMod<T>::get_time_mod(const time::time_t &time
 
 
 template <typename T>
-std::optional<std::pair<time::time_t, T>> DiscreteMod<T>::get_previous_mod(const time::time_t &time, const time::time_t &start) const {
+std::optional<std::pair<time::time_t, T>> DiscreteMod<T>::get_previous_mod(const time::time_t &time,
+                                                                           const time::time_t &start) const {
 	time::time_t offset = time - start;
 	if (this->time_length == 0) {
 		// modulo would fail here so return early
