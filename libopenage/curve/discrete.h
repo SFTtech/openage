@@ -64,11 +64,28 @@ template <typename T>
 void Discrete<T>::compress(const time::time_t &start) {
 	auto e = this->container.last_before(start, this->last_element);
 
-	for (auto next = e + 1; next < this->container.size(); next++) {
-		if (this->container.get(next - 1).val() == this->container.get(next).val()) {
-			this->container.erase(next);
+	// Store elements that should be kept
+	std::vector<Keyframe<T>> to_keep;
+	auto last_kept = e;
+	for (auto current = e + 1; current < this->container.size(); ++current) {
+		if (this->container.get(last_kept).val() != this->container.get(current).val()) {
+			// Keep values that are different from the last kept value
+			to_keep.push_back(this->container.get(current));
+			last_kept = current;
 		}
 	}
+
+	// Erase all elements and insert the kept ones
+	this->container.erase_after(e);
+	for (auto &elem : to_keep) {
+		this->container.insert_after(elem, this->container.size() - 1);
+	}
+
+	// Update the cached element pointer
+	this->last_element = e;
+
+	// Notify observers about the changes
+	this->changes(start);
 }
 
 template <typename T>
