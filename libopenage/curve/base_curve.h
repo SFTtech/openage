@@ -121,6 +121,17 @@ public:
 	virtual void erase(const time::time_t &at);
 
 	/**
+	 * Compress the curve by removing redundant keyframes.
+	 *
+	 * A keyframe is redundant if it doesn't change the value calculation of the curve
+	 * at any given time, e.g. duplicate keyframes.
+	 *
+	 * @param start Start time at which keyframes are compressed (default = -INF).
+	 *              Using the default value compresses ALL keyframes of the curve.
+	 */
+	virtual void compress(const time::time_t &start = time::TIME_MIN) = 0;
+
+	/**
 	 * Integrity check, for debugging/testing reasons only.
 	 */
 	void check_integrity() const;
