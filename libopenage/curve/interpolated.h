@@ -82,17 +82,40 @@ T Interpolated<T>::get(const time::time_t &time) const {
 
 template <typename T>
 void Interpolated<T>::compress(const time::time_t &start) {
+	// Find the last element before the start time
 	auto e = this->container.last_before(start, this->last_element);
 
+	// Store elements that should be kept
+	std::vector<Keyframe<T>> to_keep;
+	auto last_kept = e;
 	for (auto current = e + 1; current < this->container.size() - 1; ++current) {
-		// TODO: Interpolate between current - 1 and current + 1, then check if
-		//       the interpolated value is equal to the next value.
-		auto elapsed = this->container.get(current).time() - this->container.get(current - 1).time();
-		auto interpolated = this->interpolate(current - 1, current + 1, elapsed.to_double());
-		if (interpolated == this->container.get(current + 1).val()) {
-			this->container.erase(current);
+		// offset is between current keyframe and the last kept keyframe
+		auto offset = this->container.get(current).time() - this->container.get(last_kept).time();
+		auto interval = this->container.get(current + 1).time() - this->container.get(last_kept).time();
+		auto elapsed_frac = offset.to_double() / interval.to_double();
+
+		// Interpolate the value that would be at the current keyframe (if it didn't exist)
+		auto interpolated = this->interpolate(last_kept, current + 1, elapsed_frac);
+		if (interpolated != this->container.get(current).val()) {
+			// Keep values that are different from the interpolated value
+			to_keep.push_back(this->container.get(current));
+			last_kept = current;
 		}
 	}
+	// The last element is always kept, so we have to add it manually to keep it
+	to_keep.push_back(this->container.get(this->container.size() - 1));
+
+	// Erase all old keyframes after start and reinsert the non-redundant keyframes
+	this->container.erase_after(e);
+	for (auto elem : to_keep) {
+		this->container.insert_after(elem, this->container.size() - 1);
+	}
+
+	// Update the cached element pointer
+	this->last_element = e;
+
+	// Notify observers about the changes
+	this->changes(start);
 }
 
 template <typename T>
