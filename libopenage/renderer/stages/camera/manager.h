@@ -5,6 +5,7 @@
 #include <memory>
 #include <utility>
 
+#include "renderer/camera/camera.h"
 
 namespace openage::renderer {
 class UniformBufferInput;
@@ -12,6 +13,7 @@ class UniformBufferInput;
 namespace camera {
 
 class Camera;
+struct CameraBoundaries;
 
 enum class MoveDirection {
 	NONE = 0x0000,
@@ -146,15 +148,10 @@ private:
 	std::shared_ptr<renderer::UniformBufferInput> uniforms;
 
 	/**
-	 * x and z bounds for the camera.
+	 * Camera boundaries for X and Z movement. Contains minimum and maximum values for each axes.
 	 */
-	std::pair<float, float> x_bounds, z_bounds;
+	struct CameraBoundaries camera_boundaries;
 
-	/**
-	 * Constant values for the camera bounds.
-	 * TODO: Make boundaries dynamic based on map size.
-	 */
-	const float XMIN = 12.25f, XMAX = 32.25f, ZMIN = -8.25f, ZMAX = 12.25f;
 };
 
 } // namespace camera

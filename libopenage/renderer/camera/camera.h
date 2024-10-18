@@ -4,7 +4,9 @@
 
 #include <cmath>
 #include <cstddef>
+#include <limits>
 #include <memory>
+#include <optional>
 
 #include <eigen3/Eigen/Dense>
 
@@ -15,7 +17,6 @@
 #include "renderer/camera/definitions.h"
 #include "renderer/camera/frustum_2d.h"
 #include "renderer/camera/frustum_3d.h"
-#include <optional>
 
 
 namespace openage::renderer {
@@ -23,6 +24,13 @@ class Renderer;
 class UniformBuffer;
 
 namespace camera {
+
+/**
+ * Defines constant boundaries for the camera's view in the X and Z axes.
+ */
+struct CameraBoundaries {
+	const float x_min, x_max, z_min, z_max;
+};
 
 /**
  * Camera for selecting what part of the ingame world is displayed.
@@ -85,8 +93,7 @@ public:
 	 *
 	 * @param scene_pos New 3D position of the camera in the scene.
 	 */
-	void move_to(Eigen::Vector3f scene_pos, std::optional<std::pair<float, float>> x_bounds = std::nullopt,
-											std::optional<std::pair<float, float>> z_bounds = std::nullopt);
+	void move_to(Eigen::Vector3f scene_pos);
 
 
 	/**
@@ -97,9 +104,20 @@ public:
 	 *              value is multiplied with the directional vector before its applied to
 	 *              the positional vector.
 	 */
-	void move_rel(Eigen::Vector3f direction, std::pair<float, float> x_bounds,
-											std::pair<float, float> z_bounds,
-											float delta = 1.0f);
+	void move_rel(Eigen::Vector3f direction, float delta = 1.0f);
+
+
+	/**
+	 * Move the camera position in the direction of a given vector taking the
+	 * camera boundaries into account.
+	 *
+	 * @param direction Direction vector. Added to the current position.
+	 * @param delta Delta for controlling the amount by which the camera is moved. The
+	 *              value is multiplied with the directional vector before its applied to
+	 *              the positional vector.
+	 * @param camera_boundaries X and Z boundaries for the camera in the scene.
+	 */
+	void move_rel(Eigen::Vector3f direction, float delta, struct CameraBoundaries camera_boundaries);
 
 	/**
 	 * Set the zoom level of the camera. Values smaller than 1.0f let the
@@ -205,6 +223,7 @@ public:
 	 */
 	const Frustum3d get_frustum_3d() const;
 
+
 private:
 	/**
 	 * Create the uniform buffer for the camera.
@@ -212,6 +231,13 @@ private:
 	 * @param renderer openage renderer instance.
 	 */
 	void init_uniform_buffer(const std::shared_ptr<Renderer> &renderer);
+
+	/**
+	 * Calculates the camera's position needed to center its view on the given target.
+	 *
+	 * @param target The target position in the 3D scene the camera should focus on.
+	 */
+	Eigen::Vector3f calc_look_at(Eigen::Vector3f target);
 
 	/**
 	 * Get the zoom factor applied to the camera projection.

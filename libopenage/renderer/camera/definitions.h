@@ -58,4 +58,10 @@ static constexpr float DEFAULT_MAX_ZOOM_OUT = 64.0f;
  */
 static constexpr float DEFAULT_ZOOM_RATIO = 1.0f / 49;
 
+/**
+ * Constant values for the camera bounds.
+ * TODO: Make boundaries dynamic based on map size.
+ */
+static const float X_MIN = 12.25f, X_MAX = 32.25f, Z_MIN = -8.25f, Z_MAX = 12.25f;
+
 } // namespace openage::renderer::camera

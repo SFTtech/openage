@@ -17,7 +17,6 @@
 #include "renderer/shader_program.h"
 #include "renderer/uniform_buffer.h"
 #include "renderer/uniform_input.h"
-#include "renderer/stages/camera/manager.h"
 
 
 namespace openage::renderer::tests {
@@ -39,7 +38,6 @@ void renderer_demo_5(const util::Path &path) {
 		camera->resize(w, h);
 	});
 
-	camera::CameraManager camera_manager(camera);
 	/* Display the subtextures using the meta information */
 	log::log(INFO << "Loading shaders...");
 
@@ -144,7 +142,7 @@ void renderer_demo_5(const util::Path &path) {
 
 			switch (key) {
 			case Qt::Key_W: { // forward
-				camera_manager.move_frame(camera::MoveDirection::FORWARD, 0.5f);
+				camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, -1.0f), 0.5f);
 				cam_update = true;
 
 				log::log(INFO << "Camera moved forward.");
@@ -152,13 +150,13 @@ void renderer_demo_5(const util::Path &path) {
 			case Qt::Key_A: { // left
 				// half the speed because the relationship between forward/back and
 				// left/right is 1:2 in our ortho projection.
-				camera_manager.move_frame(camera::MoveDirection::LEFT, 0.25f);
+				camera->move_rel(Eigen::Vector3f(-1.0f, 0.0f, 1.0f), 0.25f);
 				cam_update = true;
 
 				log::log(INFO << "Camera moved left.");
 			} break;
 			case Qt::Key_S: { // back
-				camera_manager.move_frame(camera::MoveDirection::BACKWARD, 0.5f);
+				camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, 1.0f), 0.5f);
 				cam_update = true;
 
 				log::log(INFO << "Camera moved back.");
@@ -166,7 +164,7 @@ void renderer_demo_5(const util::Path &path) {
 			case Qt::Key_D: { // right
 				// half the speed because the relationship between forward/back and
 				// left/right is 1:2 in our ortho projection.
-				camera_manager.move_frame(camera::MoveDirection::RIGHT, 0.25f);
+				camera->move_rel(Eigen::Vector3f(1.0f, 0.0f, -1.0f), 0.25f);
 				cam_update = true;
 
 				log::log(INFO << "Camera moved right.");

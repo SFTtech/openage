@@ -61,38 +61,7 @@ Camera::Camera(const std::shared_ptr<Renderer> &renderer,
 }
 
 void Camera::look_at_scene(Eigen::Vector3f scene_pos) {
-	if (scene_pos[1] > this->scene_pos[1]) {
-		// TODO: camera can't look at a position that's
-		//       higher than it's own position
-	}
-
-	// TODO: Although the below method should be faster, calculating and adding the direction
-	//       vector from scene_pos to new_pos may be easier to understand
-	//       i.e. new_pos = scene_pos + b/sin(30) * direction_vec
-
-	// due to the fixed angle, the centered scene position
-	// and the new camera position form a right triangle.
-	//
-	//           c - + new camera pos
-	//          -    |b
-	// center +------+
-	//            a
-	//
-	// we can calculate the new camera position via the offset a
-	// using the angle and length of side b.
-	auto y_delta = this->scene_pos[1] - scene_pos[1]; // b (vertical distance)
-	auto xz_distance = y_delta * std::numbers::sqrt3; // a (horizontal distance); a = b * (cos(30°) / sin(30°))
-
-	// get x and z offsets
-	// the camera is pointed diagonally to the negative x and z axis
-	// a is the length of the diagonal from camera.xz to scene_pos.xz
-	// so the x and z offest are sides of a square with the same diagonal
-	auto side_length = xz_distance / std::numbers::sqrt2;
-	auto new_pos = Eigen::Vector3f(
-		scene_pos[0] + side_length,
-		this->scene_pos[1], // height unchanged
-		scene_pos[2] + side_length);
-
+	auto new_pos = calc_look_at(scene_pos);
 	this->move_to(new_pos);
 }
 
@@ -102,37 +71,22 @@ void Camera::look_at_coord(coord::scene3 coord_pos) {
 	this->look_at_scene(scene_pos);
 }
 
-void Camera::move_to(Eigen::Vector3f scene_pos,
-                     std::optional<std::pair<float, float>> x_bounds,
-                     std::optional<std::pair<float, float>> z_bounds) {
-	// Calculate look at coordinates using same method as in look_at_scene(..)
-	auto y_delta = this->scene_pos[1] - scene_pos[1];
-	auto xz_distance = y_delta * std::numbers::sqrt3;
-
-	float side_length = xz_distance / std::numbers::sqrt2;
-	scene_pos[0] += side_length;
-	scene_pos[2] += side_length;
-
-	// Clamp the x coordinate if x_bounds are provided
-	if (x_bounds.has_value()) {
-		scene_pos[0] = std::clamp(scene_pos[0], x_bounds->first, x_bounds->second);
-	}
-
-	// Clamp the z coordinate if z_bounds are provided
-	if (z_bounds.has_value()) {
-		scene_pos[2] = std::clamp(scene_pos[2], z_bounds->first, z_bounds->second);
-	}
-
+void Camera::move_to(Eigen::Vector3f scene_pos) {
 	this->scene_pos = scene_pos;
 	this->moved = true;
 }
 
-void Camera::move_rel(Eigen::Vector3f direction,
-                      std::pair<float, float> x_bounds,
-                      std::pair<float, float> z_bounds,
-                      float delta) {
+void Camera::move_rel(Eigen::Vector3f direction, float delta) {
+	this->move_to(this->scene_pos + (direction * delta));
+}
 
-	this->move_to(this->scene_pos + (direction * delta), x_bounds, z_bounds);
+void Camera::move_rel(Eigen::Vector3f direction, float delta, struct CameraBoundaries camera_boundaries) {
+	auto new_pos = calc_look_at(this->scene_pos + (direction * delta));
+
+	new_pos[0] = std::clamp(new_pos[0], camera_boundaries.x_min, camera_boundaries.x_max);
+	new_pos[2] = std::clamp(new_pos[2], camera_boundaries.z_min, camera_boundaries.z_max);
+
+	this->move_to(new_pos);
 }
 
 void Camera::set_zoom(float zoom) {
@@ -314,8 +268,43 @@ void Camera::init_uniform_buffer(const std::shared_ptr<Renderer> &renderer) {
 	this->uniform_buffer = renderer->add_uniform_buffer(ubo_info);
 }
 
+Eigen::Vector3f Camera::calc_look_at(Eigen::Vector3f target) {
+	if (target[1] > this->scene_pos[1]) {
+		// TODO: camera can't look at a position that's
+		//       higher than it's own position
+	}
+
+	// TODO: Although the below method should be faster, calculating and adding the direction
+	//       vector from scene_pos to new_pos may be easier to understand
+	//       i.e. new_pos = scene_pos + b/sin(30) * direction_vec
+
+	// due to the fixed angle, the centered scene position
+	// and the new camera position form a right triangle.
+	//
+	//           c - + new camera pos
+	//          -    |b
+	// center +------+
+	//            a
+	//
+	// we can calculate the new camera position via the offset a
+	// using the angle and length of side b.
+	auto y_delta = this->scene_pos[1] - target[1];    // b (vertical distance)
+	auto xz_distance = y_delta * std::numbers::sqrt3; // a (horizontal distance); a = b * (cos(30°) / sin(30°))
+
+	// get x and z offsets
+	// the camera is pointed diagonally to the negative x and z axis
+	// a is the length of the diagonal from camera.xz to scene_pos.xz
+	// so the x and z offest are sides of a square with the same diagonal
+	auto side_length = xz_distance / std::numbers::sqrt2;
+	return Eigen::Vector3f(
+		target[0] + side_length,
+		this->scene_pos[1], // height unchanged
+		target[2] + side_length);
+}
+
 inline float Camera::get_real_zoom_factor() const {
 	return 0.5f * this->default_zoom_ratio * this->zoom;
 }
+
 
 } // namespace openage::renderer::camera
