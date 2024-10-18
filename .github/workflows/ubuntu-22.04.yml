@@ -16,7 +16,7 @@ jobs:
         sudo docker save openage-devenv:latest | gzip > /tmp/staging/devenv.tar.gz
       shell: bash
     - name: Publish the Docker image
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: devenv-image-compressed.tar.gz
         path: '/tmp/staging/devenv.tar.gz'
@@ -32,7 +32,7 @@ jobs:
       run: mkdir -p /tmp/image
       shell: bash
     - name: Download devenv image
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: devenv-image-compressed.tar.gz
         path: '/tmp/image'
@@ -47,7 +47,7 @@ jobs:
         mkdir -p /tmp/openage
         tar -czvf /tmp/openage/openage-build.tar.gz ./build
     - name: Publish build artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: openage-build.tar.gz
         path: '/tmp/openage/openage-build.tar.gz'
