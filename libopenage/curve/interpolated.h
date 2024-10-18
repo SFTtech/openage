@@ -35,6 +35,13 @@ public:
 	 */
 
 	T get(const time::time_t &) const override;
+
+	void compress(const time::time_t &start = time::TIME_MIN) override;
+
+private:
+	T interpolate(KeyframeContainer<T>::elem_ptr before,
+	              KeyframeContainer<T>::elem_ptr after,
+	              double elapsed) const;
 };
 
 
@@ -59,8 +66,8 @@ T Interpolated<T>::get(const time::time_t &time) const {
 
 	// If the next element is at the same time, just return the value of this one.
 	if (nxt == this->container.size() // use the last curve value
-	    || offset == 0 // values equal -> don't need to interpolate
-	    || interval == 0) { // values at the same time -> division-by-zero-error
+	    || offset == 0                // values equal -> don't need to interpolate
+	    || interval == 0) {           // values at the same time -> division-by-zero-error
 
 		return this->container.get(e).val();
 	}
@@ -69,12 +76,34 @@ T Interpolated<T>::get(const time::time_t &time) const {
 		// TODO: Elapsed time does not use fixed point arithmetic
 		double elapsed_frac = offset.to_double() / interval.to_double();
 
-		// TODO: nxt->value - e->value will produce wrong results if
-		//       the nxt->value < e->value and curve element type is unsigned
-		//       Example: nxt = 2, e = 4; type = uint8_t ==> 2 - 4 = 254
-		auto diff_value = (this->container.get(nxt).val() - this->container.get(e).val()) * elapsed_frac;
-		return this->container.get(e).val() + diff_value;
+		return this->interpolate(e, nxt, elapsed_frac);
 	}
+}
+
+template <typename T>
+void Interpolated<T>::compress(const time::time_t &start) {
+	auto e = this->container.last_before(start, this->last_element);
+
+	for (auto current = e + 1; current < this->container.size() - 1; ++current) {
+		// TODO: Interpolate between current - 1 and current + 1, then check if
+		//       the interpolated value is equal to the next value.
+		auto elapsed = this->container.get(current).time() - this->container.get(current - 1).time();
+		auto interpolated = this->interpolate(current - 1, current + 1, elapsed.to_double());
+		if (interpolated == this->container.get(current + 1).val()) {
+			this->container.erase(current);
+		}
+	}
+}
+
+template <typename T>
+inline T Interpolated<T>::interpolate(KeyframeContainer<T>::elem_ptr before,
+                                      KeyframeContainer<T>::elem_ptr after,
+                                      double elapsed) const {
+	// TODO: after->value - before->value will produce wrong results if
+	//       after->value < before->value and curve element type is unsigned
+	//       Example: after = 2, before = 4; type = uint8_t ==> 2 - 4 = 254
+	auto diff_value = (this->container.get(after).val() - this->container.get(before).val()) * elapsed;
+	return this->container.get(before).val() + diff_value;
 }
 
 
