@@ -30,6 +30,9 @@ namespace camera {
  */
 struct CameraBoundaries {
 	const float x_min, x_max, z_min, z_max;
+
+    CameraBoundaries(float x_min, float x_max, float z_min, float z_max)
+        : x_min(x_min), x_max(x_max), z_min(z_min), z_max(z_max) {}
 };
 
 /**
