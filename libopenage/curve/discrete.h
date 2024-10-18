@@ -1,4 +1,4 @@
-// Copyright 2017-2025 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -34,6 +34,8 @@ public:
 	 */
 	T get(const time::time_t &t) const override;
 
+	void compress(const time::time_t &start = time::TIME_MIN) override;
+
 	/**
 	 * Get a human readable id string.
 	 */
@@ -58,6 +60,16 @@ T Discrete<T>::get(const time::time_t &time) const {
 	return this->container.get(e).val();
 }
 
+template <typename T>
+void Discrete<T>::compress(const time::time_t &start) {
+	auto e = this->container.last_before(start, this->last_element);
+
+	for (auto next = e + 1; next < this->container.size(); next++) {
+		if (this->container.get(next - 1).val() == this->container.get(next).val()) {
+			this->container.erase(next);
+		}
+	}
+}
 
 template <typename T>
 std::string Discrete<T>::idstr() const {
