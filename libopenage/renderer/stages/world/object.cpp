@@ -66,7 +66,7 @@ void WorldObject::fetch_updates(const time::time_t &time) {
 
 	// Thread-safe access to curves needs a lock on the render entity's mutex
 	auto read_lock = this->render_entity->get_read_lock();
-	this->position.sync(this->render_entity->get_position());
+	this->position.sync(this->render_entity->get_position(), this->last_update);
 	this->animation_info.sync(this->render_entity->get_animation_path(),
 	                          std::function<std::shared_ptr<renderer::resources::Animation2dInfo>(const std::string &)>(
 								  [&](const std::string &path) {
@@ -79,7 +79,8 @@ void WorldObject::fetch_updates(const time::time_t &time) {
 									  }
 									  return this->asset_manager->request_animation(path);
 								  }),
-	                          this->last_update);
+	                          this->last_update,
+	                          true);
 	this->angle.sync(this->render_entity->get_angle(), this->last_update);
 
 	// Unlock mutex of the render entity
