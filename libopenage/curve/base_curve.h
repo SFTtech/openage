@@ -355,6 +355,10 @@ void BaseCurve<T>::sync(const BaseCurve<T> &other,
 		this->set_insert(start, get_other);
 	}
 
+	if (compress) {
+		this->compress(start);
+	}
+
 	this->changes(start);
 }
 
@@ -373,6 +377,10 @@ void BaseCurve<T>::sync(const BaseCurve<O> &other,
 	auto get_other = converter(other.get(start));
 	if (this->get(start) != get_other) {
 		this->set_insert(start, get_other);
+	}
+
+	if (compress) {
+		this->compress(start);
 	}
 
 	this->changes(start);
