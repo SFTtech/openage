@@ -79,7 +79,7 @@ template <typename T>
 void DiscreteMod<T>::set_last(const time::time_t &at,
                               const T &value,
                               bool compress) {
-	BaseCurve<T>::set_last(at, value);
+	BaseCurve<T>::set_last(at, value, compress);
 	this->time_length = at;
 }
 
@@ -88,7 +88,7 @@ template <typename T>
 void DiscreteMod<T>::set_insert(const time::time_t &at,
                                 const T &value,
                                 bool compress) {
-	BaseCurve<T>::set_insert(at, value);
+	BaseCurve<T>::set_insert(at, value, compress);
 
 	if (this->time_length < at) {
 		this->time_length = at;
