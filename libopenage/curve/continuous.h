@@ -60,6 +60,13 @@ void Continuous<T>::set_last(const time::time_t &at,
 
 	hint = this->container.erase_after(hint);
 
+	if (compress and this->get(at) == value) {
+		// skip insertion if the value is the same as the last one
+		// erasure still happened, so we need to notify about the change
+		this->changes(at);
+		return;
+	}
+
 	this->container.insert_before(at, value, hint);
 	this->last_element = hint;
 
@@ -70,7 +77,7 @@ void Continuous<T>::set_last(const time::time_t &at,
 template <typename T>
 void Continuous<T>::set_insert(const time::time_t &t,
                                const T &value,
-                               bool compress) {
+                               bool /* compress */) {
 	this->set_replace(t, value);
 }
 
