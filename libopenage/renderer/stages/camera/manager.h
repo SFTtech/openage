@@ -150,7 +150,7 @@ private:
 	/**
 	 * Camera boundaries for X and Z movement. Contains minimum and maximum values for each axes.
 	 */
-	struct CameraBoundaries camera_boundaries;
+	CameraBoundaries camera_boundaries;
 
 };
 

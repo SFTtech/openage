@@ -16,7 +16,7 @@ CameraManager::CameraManager(const std::shared_ptr<renderer::camera::Camera> &ca
 	zoom_motion_direction{static_cast<int>(ZoomDirection::NONE)},
 	move_motion_speed{0.2f},
 	zoom_motion_speed{0.05f},
-	camera_boundaries(CameraBoundaries(X_MIN, X_MAX, Z_MIN, Z_MAX)) {
+	camera_boundaries({X_MIN, X_MAX, Z_MIN, Z_MAX}) {
 	this->uniforms = this->camera->get_uniform_buffer()->new_uniform_input(
 		"view",
 		camera->get_view_matrix(),

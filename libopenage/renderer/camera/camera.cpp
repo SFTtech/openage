@@ -80,7 +80,7 @@ void Camera::move_rel(Eigen::Vector3f direction, float delta) {
 	this->move_to(this->scene_pos + (direction * delta));
 }
 
-void Camera::move_rel(Eigen::Vector3f direction, float delta, struct CameraBoundaries camera_boundaries) {
+void Camera::move_rel(Eigen::Vector3f direction, float delta, CameraBoundaries camera_boundaries) {
 	auto new_pos = calc_look_at(this->scene_pos + (direction * delta));
 
 	new_pos[0] = std::clamp(new_pos[0], camera_boundaries.x_min, camera_boundaries.x_max);

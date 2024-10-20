@@ -29,10 +29,7 @@ namespace camera {
  * Defines constant boundaries for the camera's view in the X and Z axes.
  */
 struct CameraBoundaries {
-	const float x_min, x_max, z_min, z_max;
-
-    CameraBoundaries(float x_min, float x_max, float z_min, float z_max)
-        : x_min(x_min), x_max(x_max), z_min(z_min), z_max(z_max) {}
+	float x_min, x_max, z_min, z_max;
 };
 
 /**
@@ -120,7 +117,7 @@ public:
 	 *              the positional vector.
 	 * @param camera_boundaries X and Z boundaries for the camera in the scene.
 	 */
-	void move_rel(Eigen::Vector3f direction, float delta, struct CameraBoundaries camera_boundaries);
+	void move_rel(Eigen::Vector3f direction, float delta, CameraBoundaries camera_boundaries);
 
 	/**
 	 * Set the zoom level of the camera. Values smaller than 1.0f let the
