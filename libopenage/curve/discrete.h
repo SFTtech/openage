@@ -9,6 +9,7 @@
 #include <utility>
 
 #include "curve/base_curve.h"
+#include "curve/concept.h"
 #include "time/time.h"
 
 
@@ -18,13 +19,8 @@ namespace openage::curve {
  * Does not interpolate between values. The template type does only need to
  * implement `operator=` and copy ctor.
  */
-template <typename T>
+template <KeyframeValueLike T>
 class Discrete : public BaseCurve<T> {
-	static_assert(std::is_copy_assignable<T>::value,
-	              "Template type is not copy assignable");
-	static_assert(std::is_copy_constructible<T>::value,
-	              "Template type is not copy constructible");
-
 public:
 	using BaseCurve<T>::BaseCurve;
 
@@ -53,14 +49,14 @@ public:
 };
 
 
-template <typename T>
+template <KeyframeValueLike T>
 T Discrete<T>::get(const time::time_t &time) const {
 	auto e = this->container.last(time, this->last_element);
 	this->last_element = e; // TODO if Caching?
 	return this->container.get(e).val();
 }
 
-template <typename T>
+template <KeyframeValueLike T>
 void Discrete<T>::compress(const time::time_t &start) {
 	auto e = this->container.last_before(start, this->last_element);
 
@@ -88,7 +84,7 @@ void Discrete<T>::compress(const time::time_t &start) {
 	this->changes(start);
 }
 
-template <typename T>
+template <KeyframeValueLike T>
 std::string Discrete<T>::idstr() const {
 	std::stringstream ss;
 	ss << "DiscreteCurve[";
@@ -103,7 +99,7 @@ std::string Discrete<T>::idstr() const {
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 std::pair<time::time_t, T> Discrete<T>::get_time(const time::time_t &time) const {
 	auto e = this->container.last(time, this->last_element);
 	this->last_element = e;
@@ -113,7 +109,7 @@ std::pair<time::time_t, T> Discrete<T>::get_time(const time::time_t &time) const
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 std::optional<std::pair<time::time_t, T>> Discrete<T>::get_previous(const time::time_t &time) const {
 	auto e = this->container.last(time, this->last_element);
 	this->last_element = e;

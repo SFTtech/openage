@@ -5,6 +5,7 @@
 #include <sstream>
 #include <string>
 
+#include "curve/concept.h"
 #include "curve/interpolated.h"
 #include "time/time.h"
 
@@ -22,7 +23,7 @@ namespace openage::curve {
  * The bound template type T has to implement `operator+(T)` and
  * `operator*(time::time_t)`.
  */
-template <typename T>
+template <KeyframeValueLike T>
 class Continuous : public Interpolated<T> {
 public:
 	using Interpolated<T>::Interpolated;
@@ -47,7 +48,7 @@ public:
 };
 
 
-template <typename T>
+template <KeyframeValueLike T>
 void Continuous<T>::set_last(const time::time_t &at,
                              const T &value,
                              bool compress) {
@@ -74,7 +75,7 @@ void Continuous<T>::set_last(const time::time_t &at,
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 void Continuous<T>::set_insert(const time::time_t &t,
                                const T &value,
                                bool /* compress */) {
@@ -82,7 +83,7 @@ void Continuous<T>::set_insert(const time::time_t &t,
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 std::string Continuous<T>::idstr() const {
 	std::stringstream ss;
 	ss << "ContinuousCurve[";
