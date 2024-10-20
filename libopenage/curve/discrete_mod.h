@@ -9,6 +9,7 @@
 #include <utility>
 
 #include "curve/base_curve.h"
+#include "curve/concept.h"
 #include "curve/discrete.h"
 #include "time/time.h"
 #include "util/fixed_point.h"
@@ -27,13 +28,8 @@ namespace openage::curve {
  * always be inserted at t = 0. Also, the last keyframe should have the same value
  * as the first keyframe as a convention.
  */
-template <typename T>
+template <KeyframeValueLike T>
 class DiscreteMod : public Discrete<T> {
-	static_assert(std::is_copy_assignable<T>::value,
-	              "Template type is not copy assignable");
-	static_assert(std::is_copy_constructible<T>::value,
-	              "Template type is not copy constructible");
-
 public:
 	using Discrete<T>::Discrete;
 
@@ -75,7 +71,7 @@ private:
 };
 
 
-template <typename T>
+template <KeyframeValueLike T>
 void DiscreteMod<T>::set_last(const time::time_t &at,
                               const T &value,
                               bool compress) {
@@ -84,7 +80,7 @@ void DiscreteMod<T>::set_last(const time::time_t &at,
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 void DiscreteMod<T>::set_insert(const time::time_t &at,
                                 const T &value,
                                 bool compress) {
@@ -96,7 +92,7 @@ void DiscreteMod<T>::set_insert(const time::time_t &at,
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 void DiscreteMod<T>::erase(const time::time_t &at) {
 	BaseCurve<T>::erase(at);
 
@@ -106,7 +102,7 @@ void DiscreteMod<T>::erase(const time::time_t &at) {
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 std::string DiscreteMod<T>::idstr() const {
 	std::stringstream ss;
 	ss << "DiscreteRingCurve[";
@@ -121,7 +117,7 @@ std::string DiscreteMod<T>::idstr() const {
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 T DiscreteMod<T>::get_mod(const time::time_t &time, const time::time_t &start) const {
 	time::time_t offset = time - start;
 	if (this->time_length == 0) {
@@ -134,7 +130,7 @@ T DiscreteMod<T>::get_mod(const time::time_t &time, const time::time_t &start) c
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 std::pair<time::time_t, T> DiscreteMod<T>::get_time_mod(const time::time_t &time,
                                                         const time::time_t &start) const {
 	time::time_t offset = time - start;
@@ -148,7 +144,7 @@ std::pair<time::time_t, T> DiscreteMod<T>::get_time_mod(const time::time_t &time
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 std::optional<std::pair<time::time_t, T>> DiscreteMod<T>::get_previous_mod(const time::time_t &time,
                                                                            const time::time_t &start) const {
 	time::time_t offset = time - start;

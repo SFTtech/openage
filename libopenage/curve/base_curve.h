@@ -14,6 +14,7 @@
 #include "log/log.h"
 #include "log/message.h"
 
+#include "curve/concept.h"
 #include "curve/keyframe_container.h"
 #include "event/evententity.h"
 #include "time/time.h"
@@ -27,7 +28,7 @@ class EventLoop;
 
 namespace curve {
 
-template <typename T>
+template <KeyframeValueLike T>
 class BaseCurve : public event::EventEntity {
 public:
 	BaseCurve(const std::shared_ptr<event::EventLoop> &loop,
@@ -171,7 +172,7 @@ public:
 	 *                 Redundant keyframes are keyframes that don't change the value
 	 *                 calculaton of the curve at any given time, e.g. duplicate keyframes.
 	 */
-	template <typename O>
+	template <KeyframeValueLike O>
 	void sync(const BaseCurve<O> &other,
 	          const std::function<T(const O &)> &converter,
 	          const time::time_t &start = time::TIME_MIN,
@@ -240,7 +241,7 @@ protected:
 };
 
 
-template <typename T>
+template <KeyframeValueLike T>
 void BaseCurve<T>::set_last(const time::time_t &at,
                             const T &value,
                             bool compress) {
@@ -267,7 +268,7 @@ void BaseCurve<T>::set_last(const time::time_t &at,
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 void BaseCurve<T>::set_insert(const time::time_t &at,
                               const T &value,
                               bool compress) {
@@ -287,7 +288,7 @@ void BaseCurve<T>::set_insert(const time::time_t &at,
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 void BaseCurve<T>::set_replace(const time::time_t &at,
                                const T &value) {
 	this->container.insert_overwrite(at, value, this->last_element);
@@ -295,14 +296,14 @@ void BaseCurve<T>::set_replace(const time::time_t &at,
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 void BaseCurve<T>::erase(const time::time_t &at) {
 	this->last_element = this->container.erase(at, this->last_element);
 	this->changes(at);
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 std::pair<time::time_t, const T> BaseCurve<T>::frame(const time::time_t &time) const {
 	auto e = this->container.last(time, this->container.size());
 	auto elem = this->container.get(e);
@@ -310,7 +311,7 @@ std::pair<time::time_t, const T> BaseCurve<T>::frame(const time::time_t &time) c
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 std::pair<time::time_t, const T> BaseCurve<T>::next_frame(const time::time_t &time) const {
 	auto e = this->container.last(time, this->container.size());
 	e++;
@@ -318,7 +319,7 @@ std::pair<time::time_t, const T> BaseCurve<T>::next_frame(const time::time_t &ti
 	return elem.as_pair();
 }
 
-template <typename T>
+template <KeyframeValueLike T>
 std::string BaseCurve<T>::str() const {
 	std::stringstream ss;
 	ss << "Curve[" << this->idstr() << "]{" << std::endl;
@@ -330,7 +331,7 @@ std::string BaseCurve<T>::str() const {
 	return ss.str();
 }
 
-template <typename T>
+template <KeyframeValueLike T>
 void BaseCurve<T>::check_integrity() const {
 	time::time_t last_time = time::TIME_MIN;
 	for (const auto &keyframe : this->container) {
@@ -341,7 +342,7 @@ void BaseCurve<T>::check_integrity() const {
 	}
 }
 
-template <typename T>
+template <KeyframeValueLike T>
 void BaseCurve<T>::sync(const BaseCurve<T> &other,
                         const time::time_t &start,
                         bool compress) {
@@ -363,8 +364,8 @@ void BaseCurve<T>::sync(const BaseCurve<T> &other,
 }
 
 
-template <typename T>
-template <typename O>
+template <KeyframeValueLike T>
+template <KeyframeValueLike O>
 void BaseCurve<T>::sync(const BaseCurve<O> &other,
                         const std::function<T(const O &)> &converter,
                         const time::time_t &start,

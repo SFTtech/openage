@@ -3,6 +3,7 @@
 #pragma once
 
 #include "curve/base_curve.h"
+#include "curve/concept.h"
 #include "time/time.h"
 #include "util/fixed_point.h"
 
@@ -17,7 +18,7 @@ namespace openage::curve {
  * The bound template type T has to implement `operator +(T)` and
  * `operator *(time::time_t)`.
  */
-template <typename T>
+template <KeyframeValueLike T>
 class Interpolated : public BaseCurve<T> {
 public:
 	using BaseCurve<T>::BaseCurve;
@@ -56,7 +57,7 @@ private:
 };
 
 
-template <typename T>
+template <KeyframeValueLike T>
 T Interpolated<T>::get(const time::time_t &time) const {
 	const auto e = this->container.last(time, this->last_element);
 	this->last_element = e;
@@ -91,7 +92,7 @@ T Interpolated<T>::get(const time::time_t &time) const {
 	}
 }
 
-template <typename T>
+template <KeyframeValueLike T>
 void Interpolated<T>::compress(const time::time_t &start) {
 	// Find the last element before the start time
 	auto e = this->container.last_before(start, this->last_element);
@@ -129,7 +130,7 @@ void Interpolated<T>::compress(const time::time_t &start) {
 	this->changes(start);
 }
 
-template <typename T>
+template <KeyframeValueLike T>
 inline T Interpolated<T>::interpolate(typename KeyframeContainer<T>::elem_ptr before,
                                       typename KeyframeContainer<T>::elem_ptr after,
                                       double elapsed) const {

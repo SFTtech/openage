@@ -16,7 +16,7 @@
 namespace openage {
 
 namespace curve {
-template <typename T>
+template <KeyframeValueLike T>
 class Segmented;
 } // namespace curve
 

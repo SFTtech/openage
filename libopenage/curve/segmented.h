@@ -5,6 +5,7 @@
 #include <sstream>
 #include <string>
 
+#include "curve/concept.h"
 #include "curve/interpolated.h"
 #include "time/time.h"
 
@@ -25,7 +26,7 @@ namespace openage::curve {
  * The bound template type T has to implement `operator +(T)` and
  * `operator *(time::time_t)`.
  */
-template <typename T>
+template <KeyframeValueLike T>
 class Segmented : public Interpolated<T> {
 public:
 	using Interpolated<T>::Interpolated;
@@ -49,7 +50,7 @@ public:
 };
 
 
-template <typename T>
+template <KeyframeValueLike T>
 void Segmented<T>::set_insert_jump(const time::time_t &at, const T &leftval, const T &rightval) {
 	auto hint = this->container.insert_overwrite(at, leftval, this->last_element, true);
 	this->container.insert_after(at, rightval, hint);
@@ -57,7 +58,7 @@ void Segmented<T>::set_insert_jump(const time::time_t &at, const T &leftval, con
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 void Segmented<T>::set_last_jump(const time::time_t &at, const T &leftval, const T &rightval) {
 	auto hint = this->container.last(at, this->last_element);
 
@@ -76,7 +77,7 @@ void Segmented<T>::set_last_jump(const time::time_t &at, const T &leftval, const
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 std::string Segmented<T>::idstr() const {
 	std::stringstream ss;
 	ss << "SegmentedCurve[";

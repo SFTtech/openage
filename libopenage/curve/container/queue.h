@@ -1,4 +1,4 @@
-// Copyright 2017-2025 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -11,6 +11,7 @@
 
 #include "error/error.h"
 
+#include "curve/concept.h"
 #include "curve/container/element_wrapper.h"
 #include "curve/container/iterator.h"
 #include "curve/container/queue_filter_iterator.h"
@@ -31,7 +32,7 @@ namespace curve {
  * time it will happen.
  * This container can be used to store interactions
  */
-template <class T>
+template <KeyframeValueLike T>
 class Queue : public event::EventEntity {
 public:
 	/**
@@ -242,7 +243,7 @@ private:
 };
 
 
-template <class T>
+template <KeyframeValueLike T>
 typename Queue<T>::elem_ptr Queue<T>::first_alive(const time::time_t &time) const {
 	elem_ptr hint = 0;
 
@@ -266,7 +267,7 @@ typename Queue<T>::elem_ptr Queue<T>::first_alive(const time::time_t &time) cons
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 const T &Queue<T>::front(const time::time_t &time) const {
 	elem_ptr at = this->first_alive(time);
 	ENSURE(at < this->container.size(),
@@ -281,7 +282,7 @@ const T &Queue<T>::front(const time::time_t &time) const {
 }
 
 
-template <class T>
+template <KeyframeValueLike T>
 const T &Queue<T>::pop_front(const time::time_t &time) {
 	elem_ptr at = this->first_alive(time);
 	ENSURE(at < this->container.size(),
@@ -307,7 +308,7 @@ const T &Queue<T>::pop_front(const time::time_t &time) {
 }
 
 
-template <class T>
+template <KeyframeValueLike T>
 bool Queue<T>::empty(const time::time_t &time) const {
 	if (this->container.empty()) {
 		return true;
@@ -317,7 +318,7 @@ bool Queue<T>::empty(const time::time_t &time) const {
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 QueueFilterIterator<T, Queue<T>> Queue<T>::begin(const time::time_t &t) const {
 	for (auto it = this->container.begin(); it != this->container.end(); ++it) {
 		if (it->alive() >= t) {
@@ -333,7 +334,7 @@ QueueFilterIterator<T, Queue<T>> Queue<T>::begin(const time::time_t &t) const {
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 QueueFilterIterator<T, Queue<T>> Queue<T>::end(const time::time_t &t) const {
 	return QueueFilterIterator<T, Queue<T>>(
 		container.end(),
@@ -343,7 +344,7 @@ QueueFilterIterator<T, Queue<T>> Queue<T>::end(const time::time_t &t) const {
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 QueueFilterIterator<T, Queue<T>> Queue<T>::between(const time::time_t &begin,
                                                    const time::time_t &end) const {
 	auto it = QueueFilterIterator<T, Queue<T>>(
@@ -358,20 +359,20 @@ QueueFilterIterator<T, Queue<T>> Queue<T>::between(const time::time_t &begin,
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 void Queue<T>::erase(const CurveIterator<T, Queue<T>> &it) {
 	container.erase(it.get_base());
 }
 
 
-template <class T>
+template <KeyframeValueLike T>
 void Queue<T>::kill(const time::time_t &time,
                     elem_ptr at) {
 	this->container[at].set_dead(time);
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 QueueFilterIterator<T, Queue<T>> Queue<T>::insert(const time::time_t &time,
                                                   const T &e) {
 	elem_ptr at = this->container.size();
@@ -415,7 +416,7 @@ QueueFilterIterator<T, Queue<T>> Queue<T>::insert(const time::time_t &time,
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 void Queue<T>::clear(const time::time_t &time) {
 	elem_ptr at = this->first_alive(time);
 
