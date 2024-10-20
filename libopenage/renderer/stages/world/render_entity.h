@@ -60,17 +60,12 @@ public:
 	/**
 	 * Get the ID of the corresponding game entity.
 	 *
-	 * Accessing the game entity ID is thread-safe.
-	 *
 	 * @return Game entity ID.
 	 */
 	uint32_t get_id();
 
 	/**
 	 * Get the position of the entity inside the game world.
-	 *
-	 * Accessing the position curve REQUIRES a read lock on the render entity
-	 * (using \p get_read_lock()) to ensure thread safety.
 	 *
 	 * @return Position curve of the entity.
 	 */
@@ -79,18 +74,12 @@ public:
 	/**
 	 * Get the angle of the entity inside the game world.
 	 *
-	 * Accessing the angle curve REQUIRES a read lock on the render entity
-	 * (using \p get_read_lock()) to ensure thread safety.
-	 *
 	 * @return Angle curve of the entity.
 	 */
 	const curve::Segmented<coord::phys_angle_t> &get_angle();
 
 	/**
 	 * Get the animation definition path.
-	 *
-	 * Accessing the animation path curve requires a read lock on the render entity
-	 * (using \p get_read_lock()) to ensure thread safety.
 	 *
 	 * @return Path to the animation definition file.
 	 */

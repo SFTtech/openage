@@ -42,6 +42,7 @@ void RenderEntity::update_tile(const util::Vector2s size,
 
 	// update the last update time
 	this->last_update = time;
+	this->fetch_time = time;
 
 	// update the terrain paths
 	this->terrain_paths.insert(terrain_path);
@@ -94,7 +95,7 @@ void RenderEntity::update(const util::Vector2s size,
 	this->tiles = tiles;
 
 	// update the last update time
-	this->last_update = time;
+	this->fetch_time = time;
 
 	// update the terrain paths
 	this->terrain_paths.clear();
@@ -106,26 +107,18 @@ void RenderEntity::update(const util::Vector2s size,
 }
 
 const std::vector<coord::scene3> RenderEntity::get_vertices() {
-	std::shared_lock lock{this->mutex};
-
 	return this->vertices;
 }
 
 const RenderEntity::tiles_t RenderEntity::get_tiles() {
-	std::shared_lock lock{this->mutex};
-
 	return this->tiles;
 }
 
 const std::unordered_set<std::string> RenderEntity::get_terrain_paths() {
-	std::shared_lock lock{this->mutex};
-
 	return this->terrain_paths;
 }
 
 const util::Vector2s RenderEntity::get_size() {
-	std::shared_lock lock{this->mutex};
-
 	return this->size;
 }
 

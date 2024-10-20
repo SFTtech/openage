@@ -36,20 +36,17 @@ void HudDragObject::fetch_updates(const time::time_t &time) {
 		return;
 	}
 
-	// Get data from render entity
-	this->drag_start = this->render_entity->get_drag_start();
-
 	// Thread-safe access to curves needs a lock on the render entity's mutex
 	auto read_lock = this->render_entity->get_read_lock();
 
-	this->drag_pos.sync(this->render_entity->get_drag_pos() /* , this->last_update */);
+	// Get data from render entity
+	this->drag_start = this->render_entity->get_drag_start();
 
-	// Unlock the render entity mutex
-	read_lock.unlock();
+	this->drag_pos.sync(this->render_entity->get_drag_pos() /* , this->last_update */);
 
 	// Set self to changed so that world renderer can update the renderable
 	this->changed = true;
-	this->render_entity->clear_changed_flag();
+	this->render_entity->fetch_done();
 	this->last_update = time;
 }
 

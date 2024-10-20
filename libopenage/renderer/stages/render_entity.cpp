@@ -2,20 +2,17 @@
 
 #include "render_entity.h"
 
-#include <mutex>
-
 
 namespace openage::renderer {
 
 RenderEntity::RenderEntity() :
 	changed{false},
-	last_update{time::time_t::zero()} {
+	last_update{time::TIME_ZERO},
+	fetch_time{time::TIME_MAX} {
 }
 
-time::time_t RenderEntity::get_update_time() {
-	std::shared_lock lock{this->mutex};
-
-	return this->last_update;
+time::time_t RenderEntity::get_fetch_time() {
+	return this->fetch_time;
 }
 
 bool RenderEntity::is_changed() {
@@ -24,14 +21,13 @@ bool RenderEntity::is_changed() {
 	return this->changed;
 }
 
-void RenderEntity::clear_changed_flag() {
-	std::unique_lock lock{this->mutex};
-
+void RenderEntity::fetch_done() {
 	this->changed = false;
+	this->fetch_time = time::TIME_MAX;
 }
 
-std::shared_lock<std::shared_mutex> RenderEntity::get_read_lock() {
-	return std::shared_lock{this->mutex};
+std::unique_lock<std::shared_mutex> RenderEntity::get_read_lock() {
+	return std::unique_lock{this->mutex};
 }
 
 } // namespace openage::renderer
