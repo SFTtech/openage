@@ -1,7 +1,8 @@
-// Copyright 2017-2025 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
+#include "curve/concept.h"
 #include "curve/container/iterator.h"
 #include "time/time.h"
 
@@ -16,7 +17,7 @@ namespace openage::curve {
  * It depends on val_t as its value type, container_t is the container
  * to operate on and the function valid_f, that checks if an element is alive.
  */
-template <typename val_t,
+template <KeyframeValueLike val_t,
           typename container_t>
 class QueueFilterIterator : public CurveIterator<val_t, container_t, typename container_t::const_iterator> {
 public:
