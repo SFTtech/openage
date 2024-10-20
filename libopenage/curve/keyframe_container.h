@@ -7,6 +7,7 @@
 #include <iostream>
 #include <list>
 
+#include "curve/concept.h"
 #include "curve/keyframe.h"
 #include "time/time.h"
 #include "util/fixed_point.h"
@@ -23,7 +24,7 @@ namespace openage::curve {
  * the exact timestamp has to be known, it will always return the one closest,
  * less or equal to the requested one.
  **/
-template <typename T>
+template <KeyframeValueLike T>
 class KeyframeContainer {
 public:
 	/**
@@ -379,7 +380,7 @@ public:
 	 *              Using the default value replaces ALL keyframes of \p this with
 	 *              the keyframes of \p other.
 	 */
-	template <typename O>
+	template <KeyframeValueLike O>
 	elem_ptr sync(const KeyframeContainer<O> &other,
 	              const std::function<T(const O &)> &converter,
 	              const time::time_t &start = time::TIME_MIN);
@@ -408,7 +409,7 @@ private:
 };
 
 
-template <typename T>
+template <KeyframeValueLike T>
 KeyframeContainer<T>::KeyframeContainer() {
 	// Create a default element at -Inf, that can always be dereferenced - so
 	// there will by definition never be a element that cannot be dereferenced
@@ -416,7 +417,7 @@ KeyframeContainer<T>::KeyframeContainer() {
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 KeyframeContainer<T>::KeyframeContainer(const T &defaultval) {
 	// Create a default element at -Inf, that can always be dereferenced - so
 	// there will by definition never be a element that cannot be dereferenced
@@ -424,7 +425,7 @@ KeyframeContainer<T>::KeyframeContainer(const T &defaultval) {
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 size_t KeyframeContainer<T>::size() const {
 	return this->container.size();
 }
@@ -438,7 +439,7 @@ size_t KeyframeContainer<T>::size() const {
  * Intuitively, this function returns the element that set the last value
  * that determines the curve value for a searched time.
  */
-template <typename T>
+template <KeyframeValueLike T>
 typename KeyframeContainer<T>::elem_ptr
 KeyframeContainer<T>::last(const time::time_t &time,
                            const KeyframeContainer<T>::elem_ptr &hint) const {
@@ -474,7 +475,7 @@ KeyframeContainer<T>::last(const time::time_t &time,
  *
  * ASDF: Remove all comments for the implementations.
  */
-template <typename T>
+template <KeyframeValueLike T>
 typename KeyframeContainer<T>::elem_ptr
 KeyframeContainer<T>::last_before(const time::time_t &time,
                                   const KeyframeContainer<T>::elem_ptr &hint) const {
@@ -503,7 +504,7 @@ KeyframeContainer<T>::last_before(const time::time_t &time,
 /*
  * Determine where to insert based on time, and insert.
  */
-template <typename T>
+template <KeyframeValueLike T>
 typename KeyframeContainer<T>::elem_ptr
 KeyframeContainer<T>::insert_before(const KeyframeContainer<T>::keyframe_t &e,
                                     const KeyframeContainer<T>::elem_ptr &hint) {
@@ -529,7 +530,7 @@ KeyframeContainer<T>::insert_before(const KeyframeContainer<T>::keyframe_t &e,
 /*
  * Determine where to insert based on time, and insert, overwriting value(s) with same time.
  */
-template <typename T>
+template <KeyframeValueLike T>
 typename KeyframeContainer<T>::elem_ptr
 KeyframeContainer<T>::insert_overwrite(const KeyframeContainer<T>::keyframe_t &e,
                                        const KeyframeContainer<T>::elem_ptr &hint,
@@ -559,7 +560,7 @@ KeyframeContainer<T>::insert_overwrite(const KeyframeContainer<T>::keyframe_t &e
  * Determine where to insert based on time, and insert.
  * If there is a time conflict, insert after the existing element.
  */
-template <typename T>
+template <KeyframeValueLike T>
 typename KeyframeContainer<T>::elem_ptr
 KeyframeContainer<T>::insert_after(const KeyframeContainer<T>::keyframe_t &e,
                                    const KeyframeContainer<T>::elem_ptr &hint) {
@@ -578,7 +579,7 @@ KeyframeContainer<T>::insert_after(const KeyframeContainer<T>::keyframe_t &e,
 /*
  * Go from the end to the last_valid element, and call erase on all of them
  */
-template <typename T>
+template <KeyframeValueLike T>
 typename KeyframeContainer<T>::elem_ptr
 KeyframeContainer<T>::erase_after(KeyframeContainer<T>::elem_ptr last_valid) {
 	// exclude the last_valid element from deletion
@@ -595,7 +596,7 @@ KeyframeContainer<T>::erase_after(KeyframeContainer<T>::elem_ptr last_valid) {
 /*
  * Delete the element from the list and call delete on it.
  */
-template <typename T>
+template <KeyframeValueLike T>
 typename KeyframeContainer<T>::elem_ptr
 KeyframeContainer<T>::erase(KeyframeContainer<T>::elem_ptr e) {
 	this->container.erase(this->begin() + e);
@@ -603,7 +604,7 @@ KeyframeContainer<T>::erase(KeyframeContainer<T>::elem_ptr e) {
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 typename KeyframeContainer<T>::elem_ptr
 KeyframeContainer<T>::sync(const KeyframeContainer<T> &other,
                            const time::time_t &start) {
@@ -624,8 +625,8 @@ KeyframeContainer<T>::sync(const KeyframeContainer<T> &other,
 }
 
 
-template <typename T>
-template <typename O>
+template <KeyframeValueLike T>
+template <KeyframeValueLike O>
 typename KeyframeContainer<T>::elem_ptr
 KeyframeContainer<T>::sync(const KeyframeContainer<O> &other,
                            const std::function<T(const O &)> &converter,
@@ -648,7 +649,7 @@ KeyframeContainer<T>::sync(const KeyframeContainer<O> &other,
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 typename KeyframeContainer<T>::elem_ptr
 KeyframeContainer<T>::erase_group(const time::time_t &time,
                                   const KeyframeContainer<T>::elem_ptr &last_elem) {
