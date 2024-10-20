@@ -607,18 +607,18 @@ template <typename T>
 typename KeyframeContainer<T>::elem_ptr
 KeyframeContainer<T>::sync(const KeyframeContainer<T> &other,
                            const time::time_t &start) {
-	// Delete elements after start time
+	// Delete elements from this container after start time
 	elem_ptr at = this->last_before(start, this->container.size());
 	at = this->erase_after(at);
 
-	auto at_other = 1; // always skip the first element (because it's the default value)
+	// Find the last element before the start time in the other container
+	elem_ptr at_other = other.last_before(start, other.size());
+	++at_other; // move one element forward so that at_other.time() >= start
 
 	// Copy all elements from other with time >= start
-	for (size_t i = at_other; i < other.size(); i++) {
-		if (other.get(i).time() >= start) {
-			at = this->insert_after(other.get(i), at);
-		}
-	}
+	this->container.insert(this->container.end(),
+	                       other.container.begin() + at_other,
+	                       other.container.end());
 
 	return this->container.size();
 }
@@ -634,13 +634,14 @@ KeyframeContainer<T>::sync(const KeyframeContainer<O> &other,
 	elem_ptr at = this->last_before(start, this->container.size());
 	at = this->erase_after(at);
 
-	auto at_other = 1; // always skip the first element (because it's the default value)
+	// Find the last element before the start time in the other container
+	elem_ptr at_other = other.last_before(start, other.size());
+	++at_other; // move one element forward so that at_other.time() >= start
 
 	// Copy all elements from other with time >= start
 	for (size_t i = at_other; i < other.size(); i++) {
-		if (other.get(i).time() >= start) {
-			at = this->insert_after(keyframe_t(other.get(i).time(), converter(other.get(i).val())), at);
-		}
+		auto &elem = other.get(i);
+		this->container.emplace_back(elem.time(), converter(elem.val()));
 	}
 
 	return this->container.size();
