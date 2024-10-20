@@ -33,14 +33,25 @@ public:
 	 * example for a <= t <= b:
 	 * val([a:x, b:y], t) = x + (y - x)/(b - a) * (t - a)
 	 */
-
 	T get(const time::time_t &) const override;
 
 	void compress(const time::time_t &start = time::TIME_MIN) override;
 
 private:
-	T interpolate(KeyframeContainer<T>::elem_ptr before,
-	              KeyframeContainer<T>::elem_ptr after,
+	/**
+	 * Get an interpolated value between two keyframes.
+	 *
+	 * 'before' and 'after' must be ordered such that the index of 'before' is
+	 * less than the index of 'after'.
+	 *
+	 * @param before Index of the earlier keyframe.
+	 * @param after Index of the later keyframe.
+	 * @param elapsed Elapsed time after the earlier keyframe.
+	 *
+	 * @return Interpolated value.
+	 */
+	T interpolate(typename KeyframeContainer<T>::elem_ptr before,
+	              typename KeyframeContainer<T>::elem_ptr after,
 	              double elapsed) const;
 };
 
@@ -119,9 +130,13 @@ void Interpolated<T>::compress(const time::time_t &start) {
 }
 
 template <typename T>
-inline T Interpolated<T>::interpolate(KeyframeContainer<T>::elem_ptr before,
-                                      KeyframeContainer<T>::elem_ptr after,
+inline T Interpolated<T>::interpolate(typename KeyframeContainer<T>::elem_ptr before,
+                                      typename KeyframeContainer<T>::elem_ptr after,
                                       double elapsed) const {
+	ENSURE(before <= after, "Index of 'before' must be before 'after'");
+	ENSURE(elapsed <= (this->container.get(after).time().to_double()
+	                   - this->container.get(before).time().to_double()),
+	       "Elapsed time must be less than or equal to the time between before and after");
 	// TODO: after->value - before->value will produce wrong results if
 	//       after->value < before->value and curve element type is unsigned
 	//       Example: after = 2, before = 4; type = uint8_t ==> 2 - 4 = 254
