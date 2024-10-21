@@ -1,6 +1,6 @@
 # Copyright 2016-2023 the openage authors. See copying.md for legal info.
 #
-# cython: infer_types=True,profile=True
+# cython: infer_types=True,profile=False
 # TODO pylint: disable=C,R
 
 """
@@ -44,20 +44,24 @@ cdef class Packer:
         """
         raise NotImplementedError
 
-    cdef (unsigned int, unsigned int) pos(self, int index):
-        return self.mapping[index]
+    cdef (unsigned int, unsigned int) pos(self, block):
+        return self.mapping[block]
 
     cdef unsigned int width(self):
         """
         Gets the total width of the packing.
         """
-        return max(self.pos(i)[0] + block[0] for i, block in enumerate(self.mapping.values()))
+        w = max(self.pos(i)[0] + block[2][0] for i, block in self.mapping.items())
+        print(w)
+        return w
 
     cdef unsigned int height(self):
         """
         Gets the total height of the packing.
         """
-        return max(self.pos(i)[1] + block[1] for i, block in enumerate(self.mapping.values()))
+        h = max(self.pos(i)[1] + block[2][1] for i, block in self.mapping.items())
+        print(h)
+        return h
 
     cdef tuple get_packer_settings(self):
         """
@@ -67,9 +71,8 @@ cdef class Packer:
 
     cdef list get_mapping_hints(self, list blocks):
         cdef list hints = []
-        cdef int n = len(blocks)
-        for index in range(n):
-            hints.append(self.pos(index))
+        for block in blocks:
+            hints.append(self.pos(block[2]))
 
         return hints
 
@@ -84,10 +87,8 @@ cdef class DeterministicPacker(Packer):
         self.hints = hints
 
     cdef void pack(self, list blocks):
-        cdef int i
-        cdef int n = len(blocks)
-        for i in range(n):
-            self.mapping[i] = self.hints[i]
+        for idx, block in enumerate(blocks):
+            self.mapping[block[2]] = self.hints[idx]
 
 
 cdef class BestPacker:
@@ -108,8 +109,8 @@ cdef class BestPacker:
     cdef Packer best_packer(self):
         return min(self.packers, key=lambda Packer p: p.width() * p.height())
 
-    cdef (unsigned int, unsigned int) pos(self, int index):
-        return self.current_best.pos(index)
+    cdef (unsigned int, unsigned int) pos(self, block):
+        return self.current_best.pos(block)
 
     cdef unsigned int width(self):
         return self.current_best.width()
@@ -135,22 +136,22 @@ cdef class RowPacker(Packer):
         cdef unsigned int num_rows
         cdef list rows
 
-
         num_rows, _ = factor(len(blocks))
         rows = [[] for _ in range(num_rows)]
+        print(rows)
 
         # Put blocks into rows.
         for block in blocks:
-            min_row = min(rows, key=lambda row: sum(b.width for b in row))
+            min_row = min(rows, key=lambda row: sum(b[0] for b in row))
             min_row.append(block)
 
         # Calculate positions.
-        cdef int y = 0
+        y = 0
         for row in rows:
             x = 0
 
-            for index, block in enumerate(row):
-                self.mapping[index] = (x, y)
+            for block in row:
+                self.mapping[block[2]] = (x, y)
                 x += block[0] + self.margin
 
             y += max(block[1] for block in row) + self.margin
@@ -164,25 +165,22 @@ cdef class ColumnPacker(Packer):
     cdef void pack(self, list blocks):
         self.mapping = {}
 
-        cdef unsigned int num_columns
-        cdef list columns
-
-
         num_columns, _ = factor(len(blocks))
         columns = [[] for _ in range(num_columns)]
+        print(columns)
 
         # Put blocks into columns.
         for block in blocks:
-            min_col = min(columns, key=lambda col: sum(b.height for b in col))
+            min_col = min(columns, key=lambda col: sum(b[1] for b in col))
             min_col.append(block)
 
         # Calculate positions.
-        cdef int x = 0
+        x = 0
         for column in columns:
             y = 0
 
-            for index, block in enumerate(column):
-                self.mapping[index] = (x, y)
+            for block in column:
+                self.mapping[block[2]] = (x, y)
                 y += block[1] + self.margin
 
             x += max(block[0] for block in column) + self.margin
@@ -218,17 +216,17 @@ cdef class BinaryTreePacker(Packer):
         self.mapping = {}
         self.root = NULL
 
-        for i, block in enumerate(sorted(blocks, key=maxside_heuristic, reverse=True)):
-            self.fit(i, block)
+        for block in sorted(blocks, key=maxside_heuristic, reverse=True):
+            self.fit(block)
 
-    cdef (unsigned int, unsigned int) pos(self, int index):
-        node = self.mapping[index]
+    cdef (unsigned int, unsigned int) pos(self, block):
+        node = self.mapping[block]
         return node[0], node[1]
 
     cdef tuple get_packer_settings(self):
         return (self.margin,)
 
-    cdef void fit(self, int index, block):
+    cdef void fit(self, block):
         cdef packer_node *node
         if self.root == NULL:
             self.root = <packer_node *>malloc(sizeof(packer_node))
@@ -252,7 +250,7 @@ cdef class BinaryTreePacker(Packer):
             node = self.grow_node(block[0] + self.margin,
                                   block[1] + self.margin)
 
-        self.mapping[index] = (node.x, node.y)
+        self.mapping[block[2]] = (node.x, node.y, (block[0], block[1]))
 
     cdef packer_node *find_node(self, packer_node *root, unsigned int width, unsigned int height):
         if root.used:
