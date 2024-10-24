@@ -13,7 +13,6 @@ class UniformBufferInput;
 namespace camera {
 
 class Camera;
-struct CameraBoundaries;
 
 enum class MoveDirection {
 	NONE = 0x0000,
@@ -151,7 +150,6 @@ private:
 	 * Camera boundaries for X and Z movement. Contains minimum and maximum values for each axes.
 	 */
 	CameraBoundaries camera_boundaries;
-
 };
 
 } // namespace camera

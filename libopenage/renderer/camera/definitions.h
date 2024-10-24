@@ -3,7 +3,9 @@
 #pragma once
 
 #include <eigen3/Eigen/Dense>
+#include <limits>
 
+#include "renderer/camera/boundaries.h"
 
 namespace openage::renderer::camera {
 
@@ -58,10 +60,18 @@ static constexpr float DEFAULT_MAX_ZOOM_OUT = 64.0f;
  */
 static constexpr float DEFAULT_ZOOM_RATIO = 1.0f / 49;
 
+static constexpr CameraBoundaries DEFAULT_CAM_BOUNDARIES{
+	std::numeric_limits<float>::min(),
+	std::numeric_limits<float>::max(),
+	std::numeric_limits<float>::min(),
+	std::numeric_limits<float>::max(),
+	std::numeric_limits<float>::min(),
+	std::numeric_limits<float>::max()};
+
 /**
  * Constant values for the camera bounds.
  * TODO: Make boundaries dynamic based on map size.
  */
-static const float X_MIN = 12.25f, X_MAX = 32.25f, Z_MIN = -8.25f, Z_MAX = 12.25f;
+static constexpr float X_MIN = 12.25f, X_MAX = 32.25f, Z_MIN = -8.25f, Z_MAX = 12.25f;
 
 } // namespace openage::renderer::camera

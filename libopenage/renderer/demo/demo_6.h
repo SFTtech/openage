@@ -19,7 +19,6 @@ class Texture2d;
 
 namespace camera {
 class Camera;
-class CameraManager;
 }
 
 namespace gui {
@@ -72,9 +71,6 @@ public:
 
 	/// Camera
 	std::shared_ptr<camera::Camera> camera;
-
-	/// Camera manager
-	std::shared_ptr<camera::CameraManager> camera_manager;
 
 	/// Render passes
 	std::shared_ptr<renderer::RenderPass> obj_2d_pass;

@@ -14,6 +14,7 @@
 #include "coord/scene.h"
 #include "util/vector.h"
 
+#include "renderer/camera/boundaries.h"
 #include "renderer/camera/definitions.h"
 #include "renderer/camera/frustum_2d.h"
 #include "renderer/camera/frustum_3d.h"
@@ -24,13 +25,6 @@ class Renderer;
 class UniformBuffer;
 
 namespace camera {
-
-/**
- * Defines constant boundaries for the camera's view in the X and Z axes.
- */
-struct CameraBoundaries {
-	float x_min, x_max, z_min, z_max;
-};
 
 /**
  * Camera for selecting what part of the ingame world is displayed.
@@ -92,20 +86,9 @@ public:
 	 * Move the camera position in the direction of a given vector.
 	 *
 	 * @param scene_pos New 3D position of the camera in the scene.
+	 * @param camera_boundaries 3D boundaries for the camera.
 	 */
-	void move_to(Eigen::Vector3f scene_pos);
-
-
-	/**
-	 * Move the camera position in the direction of a given vector.
-	 *
-	 * @param direction Direction vector. Added to the current position.
-	 * @param delta Delta for controlling the amount by which the camera is moved. The
-	 *              value is multiplied with the directional vector before its applied to
-	 *              the positional vector.
-	 */
-	void move_rel(Eigen::Vector3f direction, float delta = 1.0f);
-
+	void move_to(Eigen::Vector3f scene_pos, const CameraBoundaries &camera_boundaries = DEFAULT_CAM_BOUNDARIES);
 
 	/**
 	 * Move the camera position in the direction of a given vector taking the
@@ -115,9 +98,9 @@ public:
 	 * @param delta Delta for controlling the amount by which the camera is moved. The
 	 *              value is multiplied with the directional vector before its applied to
 	 *              the positional vector.
-	 * @param camera_boundaries X and Z boundaries for the camera in the scene.
+	 * @param camera_boundaries 3D boundaries for the camera.
 	 */
-	void move_rel(Eigen::Vector3f direction, float delta, CameraBoundaries camera_boundaries);
+	void move_rel(Eigen::Vector3f direction, float delta = 1.0f, const CameraBoundaries &camera_boundaries = DEFAULT_CAM_BOUNDARIES);
 
 	/**
 	 * Set the zoom level of the camera. Values smaller than 1.0f let the

@@ -71,22 +71,16 @@ void Camera::look_at_coord(coord::scene3 coord_pos) {
 	this->look_at_scene(scene_pos);
 }
 
-void Camera::move_to(Eigen::Vector3f scene_pos) {
+void Camera::move_to(Eigen::Vector3f scene_pos, const CameraBoundaries &camera_boundaries) {
+	scene_pos[0] = std::clamp(scene_pos[0], camera_boundaries.x_min, camera_boundaries.x_max);
+	scene_pos[2] = std::clamp(scene_pos[2], camera_boundaries.z_min, camera_boundaries.z_max);
+
 	this->scene_pos = scene_pos;
 	this->moved = true;
 }
 
-void Camera::move_rel(Eigen::Vector3f direction, float delta) {
-	this->move_to(this->scene_pos + (direction * delta));
-}
-
-void Camera::move_rel(Eigen::Vector3f direction, float delta, CameraBoundaries camera_boundaries) {
-	auto new_pos = calc_look_at(this->scene_pos + (direction * delta));
-
-	new_pos[0] = std::clamp(new_pos[0], camera_boundaries.x_min, camera_boundaries.x_max);
-	new_pos[2] = std::clamp(new_pos[2], camera_boundaries.z_min, camera_boundaries.z_max);
-
-	this->move_to(new_pos);
+void Camera::move_rel(Eigen::Vector3f direction, float delta, const CameraBoundaries &camera_boundaries) {
+	this->move_to(this->scene_pos + (direction * delta), camera_boundaries);
 }
 
 void Camera::set_zoom(float zoom) {
