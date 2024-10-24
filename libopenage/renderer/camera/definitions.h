@@ -61,11 +61,11 @@ static constexpr float DEFAULT_MAX_ZOOM_OUT = 64.0f;
 static constexpr float DEFAULT_ZOOM_RATIO = 1.0f / 49;
 
 static constexpr CameraBoundaries DEFAULT_CAM_BOUNDARIES{
-	std::numeric_limits<float>::min(),
+	std::numeric_limits<float>::lowest(),
 	std::numeric_limits<float>::max(),
-	std::numeric_limits<float>::min(),
+	std::numeric_limits<float>::lowest(),
 	std::numeric_limits<float>::max(),
-	std::numeric_limits<float>::min(),
+	std::numeric_limits<float>::lowest(),
 	std::numeric_limits<float>::max()};
 
 /**
