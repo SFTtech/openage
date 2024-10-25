@@ -44,8 +44,8 @@ cdef class Packer:
         """
         raise NotImplementedError
 
-    cdef (unsigned int, unsigned int) pos(self, block):
-        return self.mapping[block]
+    cdef (unsigned int, unsigned int) pos(self, int index):
+        return self.mapping[index]
 
     cdef unsigned int width(self):
         """
@@ -109,8 +109,8 @@ cdef class BestPacker:
     cdef Packer best_packer(self):
         return min(self.packers, key=lambda Packer p: p.width() * p.height())
 
-    cdef (unsigned int, unsigned int) pos(self, block):
-        return self.current_best.pos(block)
+    cdef (unsigned int, unsigned int) pos(self, int index):
+        return self.current_best.pos(index)
 
     cdef unsigned int width(self):
         return self.current_best.width()
@@ -138,7 +138,6 @@ cdef class RowPacker(Packer):
 
         num_rows, _ = factor(len(blocks))
         rows = [[] for _ in range(num_rows)]
-        print(rows)
 
         # Put blocks into rows.
         for block in blocks:
@@ -167,7 +166,6 @@ cdef class ColumnPacker(Packer):
 
         num_columns, _ = factor(len(blocks))
         columns = [[] for _ in range(num_columns)]
-        print(columns)
 
         # Put blocks into columns.
         for block in blocks:
@@ -219,8 +217,8 @@ cdef class BinaryTreePacker(Packer):
         for block in sorted(blocks, key=maxside_heuristic, reverse=True):
             self.fit(block)
 
-    cdef (unsigned int, unsigned int) pos(self, block):
-        node = self.mapping[block]
+    cdef (unsigned int, unsigned int) pos(self, int index):
+        node = self.mapping[index]
         return node[0], node[1]
 
     cdef tuple get_packer_settings(self):

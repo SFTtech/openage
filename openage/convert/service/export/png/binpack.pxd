@@ -7,7 +7,7 @@ cdef class Packer:
     cdef dict mapping
 
     cdef void pack(self, list blocks)
-    cdef (unsigned int, unsigned int) pos(self, block)
+    cdef (unsigned int, unsigned int) pos(self, int index)
     cdef unsigned int width(self)
     cdef unsigned int height(self)
     cdef list get_mapping_hints(self, list blocks)
@@ -22,7 +22,7 @@ cdef class BestPacker:
 
     cdef void pack(self, list blocks)
     cdef Packer best_packer(self)
-    cdef (unsigned int, unsigned int) pos(self, block)
+    cdef (unsigned int, unsigned int) pos(self, int index)
     cdef unsigned int width(self)
     cdef unsigned int height(self)
     cdef list get_mapping_hints(self, list blocks)
