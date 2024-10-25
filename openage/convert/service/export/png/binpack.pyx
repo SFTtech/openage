@@ -51,17 +51,13 @@ cdef class Packer:
         """
         Gets the total width of the packing.
         """
-        w = max(self.pos(i)[0] + block[2][0] for i, block in self.mapping.items())
-        print(w)
-        return w
+        return max(self.pos(i)[0] + block[2][0] for i, block in self.mapping.items())
 
     cdef unsigned int height(self):
         """
         Gets the total height of the packing.
         """
-        h = max(self.pos(i)[1] + block[2][1] for i, block in self.mapping.items())
-        print(h)
-        return h
+        return max(self.pos(i)[1] + block[2][1] for i, block in self.mapping.items())
 
     cdef tuple get_packer_settings(self):
         """
