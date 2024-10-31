@@ -3,12 +3,10 @@
 #pragma once
 
 #include <cstdint>
-#include <shared_mutex>
-#include <string>
 
 #include "coord/pixel.h"
 #include "curve/continuous.h"
-#include "time/time.h"
+#include "renderer/stages/render_entity.h"
 
 
 namespace openage::renderer::hud {
@@ -16,19 +14,21 @@ namespace openage::renderer::hud {
 /**
  * Render entity for pushing drag selection updates to the HUD renderer.
  */
-class HudDragRenderEntity {
+class DragRenderEntity final : public renderer::RenderEntity {
 public:
 	/**
 	 * Create a new render entity for drag selection in the HUD.
 	 *
 	 * @param drag_start Position of the start corner.
 	 */
-	HudDragRenderEntity(const coord::input drag_start);
-	~HudDragRenderEntity() = default;
+	DragRenderEntity(const coord::input drag_start);
+	~DragRenderEntity() = default;
 
 	/**
 	 * Update the render entity with information from the gamestate
 	 * or input system.
+	 *
+	 * Updating the render entity with this method is thread-safe.
 	 *
 	 * @param drag_pos Position of the dragged corner.
 	 * @param time Current simulation time.
@@ -37,14 +37,10 @@ public:
 	            const time::time_t time = 0.0);
 
 	/**
-	 * Get the time of the last update.
-	 *
-	 * @return Time of last update.
-	 */
-	time::time_t get_update_time();
-
-	/**
 	 * Get the position of the dragged corner.
+	 *
+	 * Accessing the drag position curve REQUIRES a read lock on the render entity
+	 * (using \p get_read_lock()) to ensure thread safety.
 	 *
 	 * @return Coordinates of the dragged corner.
 	 */
@@ -53,35 +49,13 @@ public:
 	/**
 	 * Get the position of the start corner.
 	 *
+	 * Accessing the drag start is thread-safe.
+	 *
 	 * @return Coordinates of the start corner.
 	 */
-	const coord::input &get_drag_start();
-
-	/**
-	 * Check whether the render entity has received new updates.
-	 *
-	 * @return true if updates have been received, else false.
-	 */
-	bool is_changed();
-
-	/**
-	 * Clear the update flag by setting it to false.
-	 */
-	void clear_changed_flag();
+	const coord::input get_drag_start();
 
 private:
-	/**
-	 * Flag for determining if the render entity has been updated by the
-	 * corresponding gamestate entity. Set to true every time \p update()
-	 * is called.
-	 */
-	bool changed;
-
-	/**
-	 * Time of the last update call.
-	 */
-	time::time_t last_update;
-
 	/**
 	 * Position of the dragged corner.
 	 */
@@ -91,10 +65,5 @@ private:
 	 * Position of the start corner.
 	 */
 	coord::input drag_start;
-
-	/**
-	 * Mutex for protecting threaded access.
-	 */
-	std::shared_mutex mutex;
 };
 } // namespace openage::renderer::hud

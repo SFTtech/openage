@@ -31,7 +31,7 @@ class AssetManager;
 }
 
 namespace world {
-class WorldRenderEntity;
+class RenderEntity;
 class WorldObject;
 
 /**
@@ -74,7 +74,7 @@ public:
 	 *
 	 * @param render_entity New render entity.
 	 */
-	void add_render_entity(const std::shared_ptr<WorldRenderEntity> entity);
+	void add_render_entity(const std::shared_ptr<RenderEntity> entity);
 
 	/**
 	 * Update the render entities and render positions.

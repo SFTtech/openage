@@ -48,7 +48,7 @@ std::shared_ptr<renderer::RenderPass> TerrainRenderStage::get_render_pass() {
 	return this->render_pass;
 }
 
-void TerrainRenderStage::add_render_entity(const std::shared_ptr<TerrainRenderEntity> entity,
+void TerrainRenderStage::add_render_entity(const std::shared_ptr<RenderEntity> entity,
                                            const util::Vector2s chunk_size,
                                            const coord::scene2_delta chunk_offset) {
 	std::unique_lock lock{this->mutex};

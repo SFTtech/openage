@@ -1,4 +1,4 @@
-// Copyright 2022-2023 the openage authors. See copying.md for legal info.
+// Copyright 2022-2024 the openage authors. See copying.md for legal info.
 
 #include "render_factory.h"
 
@@ -15,16 +15,16 @@ RenderFactory::RenderFactory(const std::shared_ptr<terrain::TerrainRenderStage> 
 	world_renderer{world_renderer} {
 }
 
-std::shared_ptr<terrain::TerrainRenderEntity> RenderFactory::add_terrain_render_entity(const util::Vector2s chunk_size,
-                                                                                       const coord::tile_delta chunk_offset) {
-	auto entity = std::make_shared<terrain::TerrainRenderEntity>();
+std::shared_ptr<terrain::RenderEntity> RenderFactory::add_terrain_render_entity(const util::Vector2s chunk_size,
+                                                                                const coord::tile_delta chunk_offset) {
+	auto entity = std::make_shared<terrain::RenderEntity>();
 	this->terrain_renderer->add_render_entity(entity, chunk_size, chunk_offset.to_phys2().to_scene2());
 
 	return entity;
 }
 
-std::shared_ptr<world::WorldRenderEntity> RenderFactory::add_world_render_entity() {
-	auto entity = std::make_shared<world::WorldRenderEntity>();
+std::shared_ptr<world::RenderEntity> RenderFactory::add_world_render_entity() {
+	auto entity = std::make_shared<world::RenderEntity>();
 	this->world_renderer->add_render_entity(entity);
 
 	return entity;

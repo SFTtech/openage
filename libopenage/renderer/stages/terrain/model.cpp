@@ -1,4 +1,4 @@
-// Copyright 2022-2023 the openage authors. See copying.md for legal info.
+// Copyright 2022-2024 the openage authors. See copying.md for legal info.
 
 #include "model.h"
 
@@ -26,7 +26,7 @@ TerrainRenderModel::TerrainRenderModel(const std::shared_ptr<renderer::resources
 	asset_manager{asset_manager} {
 }
 
-void TerrainRenderModel::add_chunk(const std::shared_ptr<TerrainRenderEntity> &entity,
+void TerrainRenderModel::add_chunk(const std::shared_ptr<RenderEntity> &entity,
                                    const util::Vector2s size,
                                    const coord::scene2_delta offset) {
 	auto chunk = std::make_shared<TerrainChunk>(this->asset_manager, size, offset);

@@ -26,7 +26,7 @@ class Animation2dInfo;
 } // namespace resources
 
 namespace hud {
-class HudDragRenderEntity;
+class DragRenderEntity;
 
 /**
  * Stores the state of a renderable object in the HUD render stage.
@@ -46,7 +46,7 @@ public:
 	 *
 	 * @param entity New world render entity.
 	 */
-	void set_render_entity(const std::shared_ptr<HudDragRenderEntity> &entity);
+	void set_render_entity(const std::shared_ptr<DragRenderEntity> &entity);
 
 	/**
 	 * Set the current camera of the scene.
@@ -147,7 +147,7 @@ private:
 	/**
 	 * Source for positional and texture data.
 	 */
-	std::shared_ptr<HudDragRenderEntity> render_entity;
+	std::shared_ptr<DragRenderEntity> render_entity;
 
 	/**
 	 * Position of the dragged corner.
