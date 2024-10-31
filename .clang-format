@@ -81,7 +81,7 @@ IndentCaseBlocks: false
 IndentCaseLabels: false
 IndentExternBlock: NoIndent
 IndentGotoLabels: false
-IndentPPDirectives: None
+IndentPPDirectives: BeforeHash
 IndentWidth:     4
 IndentWrappedFunctionNames: false
 # clang-format-16 InsertNewlineAtEOF: true
