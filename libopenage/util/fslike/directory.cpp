@@ -1,11 +1,11 @@
-// Copyright 2017-2019 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #include "directory.h"
 
 // HACK: windows.h defines max and min as macros. This results in compile errors.
 #ifdef _WIN32
-// defining `NOMINMAX` disables the definition of those macros.
-#define NOMINMAX
+	// defining `NOMINMAX` disables the definition of those macros.
+	#define NOMINMAX
 #endif
 
 #include <cstdio>
@@ -17,34 +17,32 @@
 #include <utility>
 
 #ifdef __APPLE__
-#include <sys/time.h>
+	#include <sys/time.h>
 #endif
 #ifdef _WIN32
-#include <direct.h>
-#include <io.h>
-#include <sys/utime.h>
-// HACK: What the heck? I want the std::filesystem library!
-#define O_NOCTTY 0
-#define O_NONBLOCK 0
-#define W_OK 2
+	#include <direct.h>
+	#include <io.h>
+	#include <sys/utime.h>
+	// HACK: What the heck? I want the std::filesystem library!
+	#define O_NOCTTY 0
+	#define O_NONBLOCK 0
+	#define W_OK 2
 #else // ! _MSC_VER
-#include <unistd.h>
+	#include <unistd.h>
 #endif
 
-#include "./native.h"
 #include "../file.h"
 #include "../filelike/native.h"
 #include "../misc.h"
 #include "../path.h"
+#include "./native.h"
 
 
 namespace openage::util::fslike {
 
 
-Directory::Directory(std::string basepath, bool create_if_missing)
-	:
+Directory::Directory(std::string basepath, bool create_if_missing) :
 	basepath{std::move(basepath)} {
-
 	if (create_if_missing) {
 		this->mkdirs({});
 	}
@@ -78,8 +76,7 @@ bool Directory::is_file(const Path::parts_t &parts) {
 	auto stat_result = this->do_stat(parts);
 
 	// test for regular file
-	if (std::get<1>(stat_result) == 0 and
-	    S_ISREG(std::get<0>(stat_result).st_mode)) {
+	if (std::get<1>(stat_result) == 0 and S_ISREG(std::get<0>(stat_result).st_mode)) {
 		return true;
 	}
 
@@ -91,8 +88,7 @@ bool Directory::is_dir(const Path::parts_t &parts) {
 	auto stat_result = this->do_stat(parts);
 
 	// test for regular file
-	if (std::get<1>(stat_result) == 0 and
-	    S_ISDIR(std::get<0>(stat_result).st_mode)) {
+	if (std::get<1>(stat_result) == 0 and S_ISDIR(std::get<0>(stat_result).st_mode)) {
 		return true;
 	}
 
@@ -104,9 +100,7 @@ bool Directory::writable(const Path::parts_t &parts) {
 	Path::parts_t parts_test = parts;
 
 	// try to find the first existing path-part
-	while (not (this->is_dir(parts_test) or
-	            this->is_file(parts_test))) {
-
+	while (not(this->is_dir(parts_test) or this->is_file(parts_test))) {
 		if (parts_test.size() == 0) {
 			throw Error{ERR << "file not found"};
 		}
@@ -120,7 +114,6 @@ bool Directory::writable(const Path::parts_t &parts) {
 
 
 std::vector<Path::part_t> Directory::list(const Path::parts_t &parts) {
-
 	const std::string path = this->resolve(parts);
 	std::vector<Path::part_t> ret;
 
@@ -145,7 +138,6 @@ std::vector<Path::part_t> Directory::list(const Path::parts_t &parts) {
 
 
 bool Directory::mkdirs(const Path::parts_t &parts) {
-
 	Path::parts_t all_parts = util::split(this->basepath, PATHSEP);
 
 	vector_extend(all_parts, parts);
@@ -158,9 +150,7 @@ bool Directory::mkdirs(const Path::parts_t &parts) {
 		struct stat buf;
 
 		// it it exists already, try creating the next one
-		if (stat(dirpath.c_str(), &buf) == 0 and
-		    S_ISDIR(buf.st_mode)) {
-
+		if (stat(dirpath.c_str(), &buf) == 0 and S_ISDIR(buf.st_mode)) {
 			continue;
 		}
 
@@ -184,40 +174,35 @@ bool Directory::mkdirs(const Path::parts_t &parts) {
 File Directory::open_r(const Path::parts_t &parts) {
 	return File{
 		std::make_shared<filelike::Native>(this->resolve(parts),
-		                                   filelike::Native::mode_t::R)
-	};
+	                                       filelike::Native::mode_t::R)};
 }
 
 
 File Directory::open_w(const Path::parts_t &parts) {
 	return File{
 		std::make_shared<filelike::Native>(this->resolve(parts),
-		                                   filelike::Native::mode_t::W)
-	};
+	                                       filelike::Native::mode_t::W)};
 }
 
 
 File Directory::open_rw(const Path::parts_t &parts) {
 	return File{
 		std::make_shared<filelike::Native>(this->resolve(parts),
-		                                   filelike::Native::mode_t::RW)
-	};
+	                                       filelike::Native::mode_t::RW)};
 }
 
 
 File Directory::open_a(const Path::parts_t &parts) {
 	return File{
 		std::make_shared<filelike::Native>(this->resolve(parts),
-		                                   filelike::Native::mode_t::A)
-	};
+	                                       filelike::Native::mode_t::A)};
 }
 
 
 File Directory::open_ar(const Path::parts_t &parts) {
 	return File{
 		std::make_shared<filelike::Native>(this->resolve(parts),
-		                                   filelike::Native::mode_t::AR)
-	};
+	                                       filelike::Native::mode_t::AR)};
 }
 
 
@@ -228,9 +213,9 @@ std::string Directory::get_native_path(const Path::parts_t &parts) {
 
 bool Directory::rename(const Path::parts_t &parts,
                        const Path::parts_t &target_parts) {
-
 	return std::rename(this->resolve(parts).c_str(),
-	                   this->resolve(target_parts).c_str()) == 0;
+	                   this->resolve(target_parts).c_str())
+	       == 0;
 }
 
 
@@ -245,9 +230,8 @@ bool Directory::touch(const Path::parts_t &parts) {
 	// create the file if missing
 	int fd = open(
 		path.c_str(),
-		O_WRONLY|O_CREAT|O_NOCTTY|O_NONBLOCK,
-		0666
-	);
+		O_WRONLY | O_CREAT | O_NOCTTY | O_NONBLOCK,
+		0666);
 
 	if (fd < 0) {
 		return false;
@@ -308,4 +292,4 @@ std::ostream &Directory::repr(std::ostream &stream) {
 	return stream;
 }
 
-} // openage::util::fslike
+} // namespace openage::util::fslike

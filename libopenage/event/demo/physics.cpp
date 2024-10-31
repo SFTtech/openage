@@ -1,4 +1,4 @@
-// Copyright 2017-2023 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #include "physics.h"
 
@@ -9,13 +9,13 @@
 #include <string>
 
 #if WITH_NCURSES
-#ifdef __MINGW32__
-#include <ncurses/ncurses.h>
-#else
-#include <ncurses.h>
-#endif // __MINGW32__
+	#ifdef __MINGW32__
+		#include <ncurses/ncurses.h>
+	#else
+		#include <ncurses.h>
+	#endif // __MINGW32__
 
-#include "gui.h"
+	#include "gui.h"
 #endif
 
 #include "error/error.h"
@@ -377,7 +377,7 @@ void Physics::init(const std::shared_ptr<PongState> &gstate,
 	loop->create_event("demo.ball.reflect_panel", state->ball->position, state, now);
 
 	// FIXME once "reset": deregister
-	//reset(state, mgr, now);
+	// reset(state, mgr, now);
 }
 
 void Physics::process_input(const std::shared_ptr<PongState> &state,
@@ -466,11 +466,11 @@ void Physics::process_input(const std::shared_ptr<PongState> &state,
 				Physics::reset(state, *mgr, now);
 				break;
 
-				//if (player->state->get(now).state == PongEvent::LOST) {
+				// if (player->state->get(now).state == PongEvent::LOST) {
 				//	state->ball.position->set_last(now, state.display_boundary * 0.5);
-				//}
-				//update_ball(state, now, init_recursion_limit);
-				//break;
+				// }
+				// update_ball(state, now, init_recursion_limit);
+				// break;
 
 			default:
 				break;

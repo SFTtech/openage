@@ -11,9 +11,9 @@
 #include <vector>
 
 #if defined(__GNUC__)
-#define ATTRIBUTE_FORMAT(i, j) __attribute__((format(printf, i, j)))
+	#define ATTRIBUTE_FORMAT(i, j) __attribute__((format(printf, i, j)))
 #else
-#define ATTRIBUTE_FORMAT(i, j)
+	#define ATTRIBUTE_FORMAT(i, j)
 #endif
 
 namespace openage {

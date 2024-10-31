@@ -1,4 +1,4 @@
-// Copyright 2014-2019 the openage authors. See copying.md for legal info.
+// Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 #include "fds.h"
 
@@ -7,12 +7,12 @@
 #include <cstdlib>
 #include <cstring>
 
-#include <fcntl.h>
 #include "pty.h"
+#include <fcntl.h>
 #ifdef _WIN32
-#include <io.h>
+	#include <io.h>
 #else
-#include <unistd.h>
+	#include <unistd.h>
 #endif
 
 #include "unicode.h"
@@ -28,10 +28,10 @@ FD::FD(int fd, bool set_nonblocking) {
 	this->close_on_destroy = true;
 
 	if (set_nonblocking) {
-		#ifndef _WIN32
+#ifndef _WIN32
 		int flags = ::fcntl(this->fd, F_GETFL, 0);
 		::fcntl(this->fd, F_SETFL, flags | O_NONBLOCK);
-		#endif
+#endif
 	}
 }
 
@@ -64,31 +64,32 @@ int FD::putbyte(char c) {
 int FD::putcp(int cp) {
 	char utf8buf[5];
 	if (util::utf8_encode(cp, utf8buf) == 0) {
-		//unrepresentable character (question mark in black rhombus)
+		// unrepresentable character (question mark in black rhombus)
 		return this->puts("\uFFFD");
-	} else {
+	}
+	else {
 		return this->puts(utf8buf);
 	}
 }
 
 int FD::printf(const char *format, ...) {
 	const unsigned buf_size = 16;
-	char *buf = static_cast<char*>(malloc(sizeof(char) * buf_size));
+	char *buf = static_cast<char *>(malloc(sizeof(char) * buf_size));
 	if (!buf) {
 		return -1;
 	}
 
 	va_list vl;
 
-	//first, try to vsnprintf to a buffer of length 16
+	// first, try to vsnprintf to a buffer of length 16
 	va_start(vl, format);
 	unsigned len = vsnprintf(buf, buf_size, format, vl);
 	va_end(vl);
 
-	//if that wasn't enough, allocate more memory and try again
+	// if that wasn't enough, allocate more memory and try again
 	if (len >= buf_size) {
 		char *oldbuf = buf;
-		buf = static_cast<char*>(realloc(oldbuf, sizeof(char) * (len + 1)));
+		buf = static_cast<char *>(realloc(oldbuf, sizeof(char) * (len + 1)));
 		if (!buf) {
 			free(oldbuf);
 			return -1;
@@ -99,42 +100,42 @@ int FD::printf(const char *format, ...) {
 		va_end(vl);
 	}
 
-	//output buf to the socket
+	// output buf to the socket
 	int result = this->puts(buf);
 
-	//free the buffer
+	// free the buffer
 	free(buf);
 
 	return result;
 }
 
 void FD::setinputmodecanon() {
-	#ifndef _WIN32
+#ifndef _WIN32
 
 	if (::isatty(this->fd)) {
-		//get the terminal settings for stdin
+		// get the terminal settings for stdin
 		::tcgetattr(this->fd, &this->old_tio);
-		//backup old settings
+		// backup old settings
 		struct termios new_tio = this->old_tio;
-		//disable buffered i/o (canonical mode) and local echo
+		// disable buffered i/o (canonical mode) and local echo
 		new_tio.c_lflag &= (~ICANON & ~ECHO & ~ISIG);
-		//set the settings
+		// set the settings
 		::tcsetattr(this->fd, TCSANOW, &new_tio);
 		this->restore_input_mode_on_destroy = true;
 	}
 
-	#endif /* _WIN32 */
+#endif /* _WIN32 */
 }
 
 void FD::restoreinputmode() {
-	#ifndef _WIN32
+#ifndef _WIN32
 
 	if (::isatty(this->fd)) {
 		::tcsetattr(this->fd, TCSANOW, &this->old_tio);
 		this->restore_input_mode_on_destroy = false;
 	}
 
-	#endif /* _WIN32 */
+#endif /* _WIN32 */
 }
 
-} // openage::util
+} // namespace openage::util

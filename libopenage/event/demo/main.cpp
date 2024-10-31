@@ -1,4 +1,4 @@
-// Copyright 2016-2023 the openage authors. See copying.md for legal info.
+// Copyright 2016-2024 the openage authors. See copying.md for legal info.
 
 #include "main.h"
 
@@ -16,11 +16,11 @@
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 
 #if WITH_NCURSES
-#ifdef __MINGW32__
-#include <ncurses/ncurses.h>
-#else
-#include <ncurses.h>
-#endif // __MINGW32__
+	#ifdef __MINGW32__
+		#include <ncurses/ncurses.h>
+	#else
+		#include <ncurses.h>
+	#endif // __MINGW32__
 #endif
 
 

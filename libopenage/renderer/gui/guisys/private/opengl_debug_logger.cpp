@@ -1,4 +1,4 @@
-// Copyright 2017-2023 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #include "opengl_debug_logger.h"
 
@@ -7,11 +7,11 @@
 #include <QOpenGLVersionFunctionsFactory>
 
 #ifdef __APPLE__
-// from https://www.khronos.org/registry/OpenGL/api/GL/glext.h
-#define GL_DEBUG_CALLBACK_FUNCTION 0x8244
-#define GL_DEBUG_OUTPUT_SYNCHRONOUS 0x8242
-#define GL_DEBUG_TYPE_ERROR 0x824C
-#define GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR 0x824E
+	// from https://www.khronos.org/registry/OpenGL/api/GL/glext.h
+	#define GL_DEBUG_CALLBACK_FUNCTION 0x8244
+	#define GL_DEBUG_OUTPUT_SYNCHRONOUS 0x8242
+	#define GL_DEBUG_TYPE_ERROR 0x824C
+	#define GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR 0x824E
 #endif
 
 namespace qtgui {

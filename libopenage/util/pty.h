@@ -3,14 +3,14 @@
 #pragma once
 
 #ifdef __APPLE__
-#include <util.h>
+	#include <util.h>
 #elif defined(__FreeBSD__)
-#include <libutil.h>
-#include <sys/ioctl.h>
-#include <sys/types.h>
-#include <termios.h>
+	#include <libutil.h>
+	#include <sys/ioctl.h>
+	#include <sys/types.h>
+	#include <termios.h>
 #elif _WIN32
 // TODO not yet implemented
 #else
-#include <pty.h>
+	#include <pty.h>
 #endif

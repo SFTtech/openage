@@ -1,22 +1,22 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #include "compiler.h"
 
 #ifndef _WIN32
-#include <cxxabi.h>
-#include <dlfcn.h>
+	#include <cxxabi.h>
+	#include <dlfcn.h>
 #else
-#define WIN32_LEAN_AND_MEAN
-#include <Windows.h>
-#include <DbgHelp.h>
+	#define WIN32_LEAN_AND_MEAN
+	#include <DbgHelp.h>
+	#include <Windows.h>
 #endif
 
 #include "strings.h"
 
 #include <array>
 #include <iostream>
-#include <optional>
 #include <mutex>
+#include <optional>
 
 namespace openage {
 namespace util {
@@ -34,7 +34,8 @@ std::string demangle(const char *symbol) {
 
 	if (status != 0) {
 		return symbol;
-	} else {
+	}
+	else {
 		std::string result{buf};
 		free(buf);
 		return result;
@@ -78,12 +79,12 @@ std::optional<std::string> symbol_name_win(const void *addr) {
 		constexpr int buffer_size = sizeof(SYMBOL_INFO) + name_buffer_size * sizeof(char);
 		std::array<char, buffer_size> buffer;
 
-		SYMBOL_INFO *symbol_info = reinterpret_cast<SYMBOL_INFO*>(buffer.data());
+		SYMBOL_INFO *symbol_info = reinterpret_cast<SYMBOL_INFO *>(buffer.data());
 
 		symbol_info->SizeOfStruct = sizeof(SYMBOL_INFO);
 		symbol_info->MaxNameLen = name_buffer_size;
 
-		if (SymFromAddr(process_handle, reinterpret_cast<DWORD64>(addr), nullptr, symbol_info))	{
+		if (SymFromAddr(process_handle, reinterpret_cast<DWORD64>(addr), nullptr, symbol_info)) {
 			return std::string(symbol_info->Name);
 		}
 	}
@@ -92,7 +93,7 @@ std::optional<std::string> symbol_name_win(const void *addr) {
 }
 
 
-}
+} // namespace
 #endif
 
 std::string symbol_name(const void *addr, bool require_exact_addr, bool no_pure_addrs) {
@@ -100,8 +101,7 @@ std::string symbol_name(const void *addr, bool require_exact_addr, bool no_pure_
 
 	auto symbol_name_result = symbol_name_win(addr);
 
-	if (!initialized_symbol_handler_successfully ||
-		!symbol_name_result.has_value()) {
+	if (!initialized_symbol_handler_successfully || !symbol_name_result.has_value()) {
 		return no_pure_addrs ? "" : addr_to_string(addr);
 	}
 
@@ -113,8 +113,9 @@ std::string symbol_name(const void *addr, bool require_exact_addr, bool no_pure_
 	if (dladdr(addr, &addr_info) == 0) {
 		// dladdr has... failed.
 		return no_pure_addrs ? "" : addr_to_string(addr);
-	} else {
-		size_t symbol_offset = (size_t) addr - (size_t) addr_info.dli_saddr;
+	}
+	else {
+		size_t symbol_offset = (size_t)addr - (size_t)addr_info.dli_saddr;
 
 		if (addr_info.dli_sname == nullptr or (symbol_offset != 0 and require_exact_addr)) {
 			return no_pure_addrs ? "" : addr_to_string(addr);
@@ -123,7 +124,8 @@ std::string symbol_name(const void *addr, bool require_exact_addr, bool no_pure_
 		if (symbol_offset == 0) {
 			// this is our symbol name.
 			return demangle(addr_info.dli_sname);
-		} else {
+		}
+		else {
 			return util::sformat("%s+0x%lx",
 			                     demangle(addr_info.dli_sname).c_str(),
 			                     symbol_offset);
@@ -138,7 +140,8 @@ bool is_symbol(const void *addr) {
 
 	if (!initialized_symbol_handler_successfully) {
 		return true;
-	} else {
+	}
+	else {
 		return symbol_name_win(addr).has_value();
 	}
 
@@ -154,4 +157,5 @@ bool is_symbol(const void *addr) {
 }
 
 
-}} // openage::util
+} // namespace util
+} // namespace openage

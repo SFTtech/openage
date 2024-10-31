@@ -21,11 +21,11 @@
 
 
 #if defined(__GNUC__)
-#define OPENAGE_FUNC_NAME __PRETTY_FUNCTION__
+	#define OPENAGE_FUNC_NAME __PRETTY_FUNCTION__
 #elif defined(_MSC_VER)
-#define OPENAGE_FUNC_NAME __FUNCSIG__
+	#define OPENAGE_FUNC_NAME __FUNCSIG__
 #else
-#define OPENAGE_FUNC_NAME __FUNCTION__
+	#define OPENAGE_FUNC_NAME __FUNCTION__
 #endif
 
 namespace openage {

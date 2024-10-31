@@ -1,13 +1,13 @@
-// Copyright 2015-2018 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #include "thread_id.h"
 
 #include "config.h"
 
 #if HAVE_THREAD_LOCAL_STORAGE
-#include <atomic>
+	#include <atomic>
 #else
-#include <thread>
+	#include <thread>
 #endif
 
 namespace openage {
@@ -23,9 +23,8 @@ namespace util {
  */
 class ThreadIdSupplier {
 public:
-	ThreadIdSupplier()
-	:
-	val{ThreadIdSupplier::counting_id++} {}
+	ThreadIdSupplier() :
+		val{ThreadIdSupplier::counting_id++} {}
 
 	const size_t val;
 
@@ -42,12 +41,13 @@ std::atomic<size_t> ThreadIdSupplier::counting_id{0};
 #endif
 
 size_t get_current_thread_id() {
-	#if HAVE_THREAD_LOCAL_STORAGE
+#if HAVE_THREAD_LOCAL_STORAGE
 	static thread_local ThreadIdSupplier current_thread_id;
 	return current_thread_id.val;
-	#else
+#else
 	return std::hash<std::thread::id>()(std::this_thread::get_id());
-	#endif
+#endif
 }
 
-}} // namespace openage::util
+} // namespace util
+} // namespace openage

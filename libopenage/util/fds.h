@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 #ifndef _WIN32
-#include <termios.h>
+	#include <termios.h>
 #endif
 
 namespace openage {
