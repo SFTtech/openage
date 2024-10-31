@@ -72,6 +72,6 @@ static constexpr CameraBoundaries DEFAULT_CAM_BOUNDARIES{
  * Constant values for the camera bounds.
  * TODO: Make boundaries dynamic based on map size.
  */
-static constexpr float X_MIN = 12.25f, X_MAX = 32.25f, Z_MIN = -8.25f, Z_MAX = 12.25f;
+static constexpr float X_MIN = 12.25f, X_MAX = 32.25f, Y_MIN = 0.0f, Y_MAX = 20.0f, Z_MIN = -8.25f, Z_MAX = 12.25f;
 
 } // namespace openage::renderer::camera

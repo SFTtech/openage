@@ -73,6 +73,7 @@ void Camera::look_at_coord(coord::scene3 coord_pos) {
 
 void Camera::move_to(Eigen::Vector3f scene_pos, const CameraBoundaries &camera_boundaries) {
 	scene_pos[0] = std::clamp(scene_pos[0], camera_boundaries.x_min, camera_boundaries.x_max);
+	scene_pos[1] = std::clamp(scene_pos[1], camera_boundaries.y_min, camera_boundaries.y_max);
 	scene_pos[2] = std::clamp(scene_pos[2], camera_boundaries.z_min, camera_boundaries.z_max);
 
 	this->scene_pos = scene_pos;
