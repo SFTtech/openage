@@ -2,6 +2,8 @@
 
 #include "flow_field.h"
 
+#include <bitset>
+
 #include "error/error.h"
 #include "log/log.h"
 
@@ -28,16 +30,31 @@ size_t FlowField::get_size() const {
 	return this->size;
 }
 
-flow_t FlowField::get_cell(const coord::tile &pos) const {
+flow_t FlowField::get_cell(const coord::tile_delta &pos) const {
 	return this->cells.at(pos.ne + pos.se * this->size);
 }
 
-flow_dir_t FlowField::get_dir(const coord::tile &pos) const {
+flow_t FlowField::get_cell(size_t x, size_t y) const {
+	return this->cells.at(x + y * this->size);
+}
+
+flow_t FlowField::get_cell(size_t idx) const {
+	return this->cells.at(idx);
+}
+
+flow_dir_t FlowField::get_dir(const coord::tile_delta &pos) const {
 	return static_cast<flow_dir_t>(this->get_cell(pos) & FLOW_DIR_MASK);
 }
 
-void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field,
-                      const std::unordered_set<size_t> &target_cells) {
+flow_dir_t FlowField::get_dir(size_t x, size_t y) const {
+	return static_cast<flow_dir_t>(this->get_cell(x, y) & FLOW_DIR_MASK);
+}
+
+flow_dir_t FlowField::get_dir(size_t idx) const {
+	return static_cast<flow_dir_t>(this->get_cell(idx) & FLOW_DIR_MASK);
+}
+
+void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field) {
 	ENSURE(integration_field->get_size() == this->get_size(),
 	       "integration field size "
 	           << integration_field->get_size() << "x" << integration_field->get_size()
@@ -51,84 +68,102 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 		for (size_t x = 0; x < this->size; ++x) {
 			size_t idx = y * this->size + x;
 
-			if (target_cells.contains(idx)) {
-				// Ignore target cells
-				continue;
-			}
+			const auto &integrate_cell = integrate_cells[idx];
+			auto &flow_cell = flow_cells[idx];
 
-			if (integrate_cells[idx].cost == INTEGRATED_COST_UNREACHABLE) {
+			if (integrate_cell.cost == INTEGRATED_COST_UNREACHABLE) {
 				// Cell cannot be used as path
 				continue;
 			}
 
-			if (integrate_cells[idx].flags & INTEGRATE_LOS_MASK) {
-				// Cell is in line of sight
-				this->cells[idx] = this->cells[idx] | FLOW_LOS_MASK;
+			flow_t transfer_flags = integrate_cell.flags & FLOW_FLAGS_MASK;
+			flow_cell |= transfer_flags;
 
-				// we can skip calculating the flow direction as we can
-				// move straight to the target from this cell
-				this->cells[idx] = this->cells[idx] | FLOW_PATHABLE_MASK;
+			if (flow_cell & FLOW_TARGET_MASK) {
+				// target cells are pathable
+				flow_cell |= FLOW_PATHABLE_MASK;
+
+				// they also have a preset flow direction so we can skip here
 				continue;
 			}
 
-			if (integrate_cells[idx].flags & INTEGRATE_WAVEFRONT_BLOCKED_MASK) {
-				// Cell is blocked by a line-of-sight corner
-				this->cells[idx] = this->cells[idx] | FLOW_WAVEFRONT_BLOCKED_MASK;
-			}
+			// Store which of the non-diagonal directions are unreachable.
+			// north == 0x01, east == 0x02, south == 0x04, west == 0x08
+			uint8_t directions_unreachable = 0x00;
 
 			// Find the neighbor with the smallest cost.
-			flow_dir_t direction = static_cast<flow_dir_t>(this->cells[idx] & FLOW_DIR_MASK);
+			flow_dir_t direction = static_cast<flow_dir_t>(flow_cell & FLOW_DIR_MASK);
 			auto smallest_cost = INTEGRATED_COST_UNREACHABLE;
+
+			// Cardinal directions
 			if (y > 0) {
 				auto cost = integrate_cells[idx - this->size].cost;
-				if (cost < smallest_cost) {
+				if (cost == INTEGRATED_COST_UNREACHABLE) {
+					directions_unreachable |= 0x01;
+				}
+				else if (cost < smallest_cost) {
 					smallest_cost = cost;
 					direction = flow_dir_t::NORTH;
 				}
 			}
-			if (x < this->size - 1 && y > 0) {
+			if (x < this->size - 1) {
+				auto cost = integrate_cells[idx + 1].cost;
+				if (cost == INTEGRATED_COST_UNREACHABLE) {
+					directions_unreachable |= 0x02;
+				}
+				else if (cost < smallest_cost) {
+					smallest_cost = cost;
+					direction = flow_dir_t::EAST;
+				}
+			}
+			if (y < this->size - 1) {
+				auto cost = integrate_cells[idx + this->size].cost;
+				if (cost == INTEGRATED_COST_UNREACHABLE) {
+					directions_unreachable |= 0x04;
+				}
+				else if (cost < smallest_cost) {
+					smallest_cost = cost;
+					direction = flow_dir_t::SOUTH;
+				}
+			}
+			if (x > 0) {
+				auto cost = integrate_cells[idx - 1].cost;
+				if (cost == INTEGRATED_COST_UNREACHABLE) {
+					directions_unreachable |= 0x08;
+				}
+				else if (cost < smallest_cost) {
+					smallest_cost = cost;
+					direction = flow_dir_t::WEST;
+				}
+			}
+
+			// Diagonal directions
+			if (x < this->size - 1 and y > 0
+			    and not(directions_unreachable & 0x01 and directions_unreachable & 0x02)) {
 				auto cost = integrate_cells[idx - this->size + 1].cost;
 				if (cost < smallest_cost) {
 					smallest_cost = cost;
 					direction = flow_dir_t::NORTH_EAST;
 				}
 			}
-			if (x < this->size - 1) {
-				auto cost = integrate_cells[idx + 1].cost;
-				if (cost < smallest_cost) {
-					smallest_cost = cost;
-					direction = flow_dir_t::EAST;
-				}
-			}
-			if (x < this->size - 1 && y < this->size - 1) {
+			if (x < this->size - 1 and y < this->size - 1
+			    and not(directions_unreachable & 0x02 and directions_unreachable & 0x04)) {
 				auto cost = integrate_cells[idx + this->size + 1].cost;
 				if (cost < smallest_cost) {
 					smallest_cost = cost;
 					direction = flow_dir_t::SOUTH_EAST;
 				}
 			}
-			if (y < this->size - 1) {
-				auto cost = integrate_cells[idx + this->size].cost;
-				if (cost < smallest_cost) {
-					smallest_cost = cost;
-					direction = flow_dir_t::SOUTH;
-				}
-			}
-			if (x > 0 && y < this->size - 1) {
+			if (x > 0 and y < this->size - 1
+			    and not(directions_unreachable & 0x04 and directions_unreachable & 0x08)) {
 				auto cost = integrate_cells[idx + this->size - 1].cost;
 				if (cost < smallest_cost) {
 					smallest_cost = cost;
 					direction = flow_dir_t::SOUTH_WEST;
 				}
 			}
-			if (x > 0) {
-				auto cost = integrate_cells[idx - 1].cost;
-				if (cost < smallest_cost) {
-					smallest_cost = cost;
-					direction = flow_dir_t::WEST;
-				}
-			}
-			if (x > 0 && y > 0) {
+			if (x > 0 and y > 0
+			    and not(directions_unreachable & 0x01 and directions_unreachable & 0x08)) {
 				auto cost = integrate_cells[idx - this->size - 1].cost;
 				if (cost < smallest_cost) {
 					smallest_cost = cost;
@@ -137,10 +172,10 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 			}
 
 			// Set the flow field cell to pathable.
-			flow_cells[idx] = flow_cells[idx] | FLOW_PATHABLE_MASK;
+			flow_cell |= FLOW_PATHABLE_MASK;
 
 			// Set the flow field cell to the direction of the smallest cost.
-			flow_cells[idx] = flow_cells[idx] | static_cast<uint8_t>(direction);
+			flow_cell |= static_cast<uint8_t>(direction);
 		}
 	}
 }
@@ -166,9 +201,6 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 	// TODO: Compare integration values from other side of portal
 	// auto &integrate_cells = integration_field->get_cells();
 
-	// cells that are part of the portal
-	std::unordered_set<size_t> portal_cells;
-
 	// set the direction for the flow field cells that are part of the portal
 	if (direction == PortalDirection::NORTH_SOUTH) {
 		bool other_is_north = entry_start.se > exit_start.se;
@@ -178,7 +210,6 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 				auto idx = y * this->size + x;
 				flow_cells[idx] = flow_cells[idx] | FLOW_PATHABLE_MASK;
 				flow_cells[idx] = flow_cells[idx] | static_cast<uint8_t>(flow_dir_t::NORTH);
-				portal_cells.insert(idx);
 			}
 		}
 		else {
@@ -187,7 +218,6 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 				auto idx = y * this->size + x;
 				flow_cells[idx] = flow_cells[idx] | FLOW_PATHABLE_MASK;
 				flow_cells[idx] = flow_cells[idx] | static_cast<uint8_t>(flow_dir_t::SOUTH);
-				portal_cells.insert(idx);
 			}
 		}
 	}
@@ -199,7 +229,6 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 				auto idx = y * this->size + x;
 				flow_cells[idx] = flow_cells[idx] | FLOW_PATHABLE_MASK;
 				flow_cells[idx] = flow_cells[idx] | static_cast<uint8_t>(flow_dir_t::EAST);
-				portal_cells.insert(idx);
 			}
 		}
 		else {
@@ -208,7 +237,6 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 				auto idx = y * this->size + x;
 				flow_cells[idx] = flow_cells[idx] | FLOW_PATHABLE_MASK;
 				flow_cells[idx] = flow_cells[idx] | static_cast<uint8_t>(flow_dir_t::WEST);
-				portal_cells.insert(idx);
 			}
 		}
 	}
@@ -216,7 +244,7 @@ void FlowField::build(const std::shared_ptr<IntegrationField> &integration_field
 		throw Error(ERR << "Invalid portal direction: " << static_cast<int>(direction));
 	}
 
-	this->build(integration_field, portal_cells);
+	this->build(integration_field);
 }
 
 const std::vector<flow_t> &FlowField::get_cells() const {
@@ -224,11 +252,32 @@ const std::vector<flow_t> &FlowField::get_cells() const {
 }
 
 void FlowField::reset() {
-	for (auto &cell : this->cells) {
-		cell = FLOW_INIT;
-	}
+	std::fill(this->cells.begin(), this->cells.end(), FLOW_INIT);
 
 	log::log(DBG << "Flow field has been reset");
+}
+
+void FlowField::reset_dynamic_flags() {
+	flow_t mask = 0xFF & ~(FLOW_LOS_MASK);
+	for (flow_t &cell : this->cells) {
+		cell = cell & mask;
+	}
+
+	log::log(DBG << "Flow field dynamic flags have been reset");
+}
+
+void FlowField::transfer_dynamic_flags(const std::shared_ptr<IntegrationField> &integration_field) {
+	auto &integrate_cells = integration_field->get_cells();
+	auto &flow_cells = this->cells;
+
+	for (size_t idx = 0; idx < integrate_cells.size(); ++idx) {
+		if (integrate_cells[idx].flags & INTEGRATE_LOS_MASK) {
+			// Cell is in line of sight
+			flow_cells[idx] |= FLOW_LOS_MASK;
+		}
+	}
+
+	log::log(DBG << "Flow field dynamic flags have been transferred");
 }
 
 } // namespace openage::path

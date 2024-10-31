@@ -10,7 +10,7 @@
 
 namespace openage {
 namespace coord {
-struct tile;
+struct tile_delta;
 } // namespace coord
 
 namespace path {
@@ -37,10 +37,19 @@ public:
 	/**
 	 * Get the cost at a specified position.
 	 *
-	 * @param pos Coordinates of the cell.
+	 * @param pos Coordinates of the cell (relative to field origin).
 	 * @return Cost at the specified position.
 	 */
-	cost_t get_cost(const coord::tile &pos) const;
+	cost_t get_cost(const coord::tile_delta &pos) const;
+
+	/**
+	 * Get the cost at a specified position.
+	 *
+	 * @param x X-coordinate of the cell.
+	 * @param y Y-coordinate of the cell.
+	 * @return Cost at the specified position.
+	 */
+	cost_t get_cost(size_t x, size_t y) const;
 
 	/**
 	 * Get the cost at a specified position.
@@ -53,10 +62,19 @@ public:
 	/**
 	 * Set the cost at a specified position.
 	 *
-	 * @param pos Coordinates of the cell.
+	 * @param pos Coordinates of the cell (relative to field origin).
 	 * @param cost Cost to set.
 	 */
-	void set_cost(const coord::tile &pos, cost_t cost);
+	void set_cost(const coord::tile_delta &pos, cost_t cost);
+
+	/**
+	 * Set the cost at a specified position.
+	 *
+	 * @param x X-coordinate of the cell.
+	 * @param y Y-coordinate of the cell.
+	 * @param cost Cost to set.
+	 */
+	void set_cost(size_t x, size_t y, cost_t cost);
 
 	/**
 	 * Set the cost at a specified position.

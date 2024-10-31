@@ -35,7 +35,7 @@ constexpr cost_t COST_IMPASSABLE = 255;
 /**
  * Start value for goal cells.
  */
-const integrated_cost_t INTEGRATED_COST_START = 0;
+constexpr integrated_cost_t INTEGRATED_COST_START = 0;
 
 /**
  * Unreachable value for a cells in the integration grid.
@@ -45,12 +45,22 @@ constexpr integrated_cost_t INTEGRATED_COST_UNREACHABLE = std::numeric_limits<in
 /**
  * Line of sight flag in an integrated_flags_t value.
  */
-constexpr integrated_flags_t INTEGRATE_LOS_MASK = 0x01;
+constexpr integrated_flags_t INTEGRATE_LOS_MASK = 0x20;
+
+/**
+ * Target flag in an integrated_flags_t value.
+ */
+constexpr integrated_flags_t INTEGRATE_TARGET_MASK = 0x40;
+
+/**
+ * Found flag in an integrated_flags_t value.
+ */
+constexpr integrated_flags_t INTEGRATE_FOUND_MASK = 0x02;
 
 /**
  * Wavefront blocked flag in an integrated_flags_t value.
  */
-constexpr integrated_flags_t INTEGRATE_WAVEFRONT_BLOCKED_MASK = 0x02;
+constexpr integrated_flags_t INTEGRATE_WAVEFRONT_BLOCKED_MASK = 0x04;
 
 /**
  * Initial value for a cell in the integration grid.
@@ -69,6 +79,11 @@ constexpr flow_t FLOW_INIT = 0;
 constexpr flow_t FLOW_DIR_MASK = 0x0F;
 
 /**
+ * Mask for the flow flag bits in a flow_t value.
+ */
+constexpr flow_t FLOW_FLAGS_MASK = 0xF0;
+
+/**
  * Pathable flag in a flow_t value.
  */
 constexpr flow_t FLOW_PATHABLE_MASK = 0x10;
@@ -79,8 +94,8 @@ constexpr flow_t FLOW_PATHABLE_MASK = 0x10;
 constexpr flow_t FLOW_LOS_MASK = 0x20;
 
 /**
- * Wavefront blocked flag in a flow_t value.
+ * Target flag in a flow_t value.
  */
-constexpr flow_t FLOW_WAVEFRONT_BLOCKED_MASK = 0x40;
+constexpr flow_t FLOW_TARGET_MASK = 0x40;
 
 } // namespace openage::path

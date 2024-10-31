@@ -30,6 +30,15 @@ public:
 	 * @return Relative path to the terrain file.
 	 */
 	static const std::string get_terrain_path(const nyan::Object &terrain);
+
+	/**
+	 * Get the path costs of a terrain.
+	 *
+	 * @param terrain \p Terrain nyan object (type == \p engine.util.terrain.Terrain).
+	 *
+	 * @return Path costs for the cost fields of the pathfinder.
+	 */
+	static const std::unordered_map<nyan::fqon_t, int> get_path_costs(const nyan::Object &terrain);
 };
 
 } // namespace openage::gamestate::api

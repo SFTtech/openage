@@ -11,8 +11,8 @@ Portal::Portal(portal_id_t id,
                sector_id_t sector0,
                sector_id_t sector1,
                PortalDirection direction,
-               const coord::tile &cell_start,
-               const coord::tile &cell_end) :
+               const coord::tile_delta &cell_start,
+               const coord::tile_delta &cell_end) :
 	id{id},
 	sector0{sector0},
 	sector1{sector1},
@@ -65,7 +65,7 @@ sector_id_t Portal::get_exit_sector(sector_id_t entry_sector) const {
 	return this->sector0;
 }
 
-const coord::tile Portal::get_entry_start(sector_id_t entry_sector) const {
+const coord::tile_delta Portal::get_entry_start(sector_id_t entry_sector) const {
 	ENSURE(entry_sector == this->sector0 || entry_sector == this->sector1, "Invalid entry sector");
 
 	if (entry_sector == this->sector0) {
@@ -75,7 +75,7 @@ const coord::tile Portal::get_entry_start(sector_id_t entry_sector) const {
 	return this->get_sector1_start();
 }
 
-const coord::tile Portal::get_entry_center(sector_id_t entry_sector) const {
+const coord::tile_delta Portal::get_entry_center(sector_id_t entry_sector) const {
 	ENSURE(entry_sector == this->sector0 || entry_sector == this->sector1, "Invalid entry sector");
 
 	if (entry_sector == this->sector0) {
@@ -89,7 +89,7 @@ const coord::tile Portal::get_entry_center(sector_id_t entry_sector) const {
 	return {(start.ne + end.ne) / 2, (start.se + end.se) / 2};
 }
 
-const coord::tile Portal::get_entry_end(sector_id_t entry_sector) const {
+const coord::tile_delta Portal::get_entry_end(sector_id_t entry_sector) const {
 	ENSURE(entry_sector == this->sector0 || entry_sector == this->sector1, "Invalid entry sector");
 
 	if (entry_sector == this->sector0) {
@@ -99,7 +99,7 @@ const coord::tile Portal::get_entry_end(sector_id_t entry_sector) const {
 	return this->get_sector1_end();
 }
 
-const coord::tile Portal::get_exit_start(sector_id_t entry_sector) const {
+const coord::tile_delta Portal::get_exit_start(sector_id_t entry_sector) const {
 	ENSURE(entry_sector == this->sector0 || entry_sector == this->sector1, "Invalid entry sector");
 
 	if (entry_sector == this->sector0) {
@@ -109,7 +109,7 @@ const coord::tile Portal::get_exit_start(sector_id_t entry_sector) const {
 	return this->get_sector0_start();
 }
 
-const coord::tile Portal::get_exit_center(sector_id_t entry_sector) const {
+const coord::tile_delta Portal::get_exit_center(sector_id_t entry_sector) const {
 	ENSURE(entry_sector == this->sector0 || entry_sector == this->sector1, "Invalid entry sector");
 
 	if (entry_sector == this->sector0) {
@@ -123,7 +123,7 @@ const coord::tile Portal::get_exit_center(sector_id_t entry_sector) const {
 	return {(start.ne + end.ne) / 2, (start.se + end.se) / 2};
 }
 
-const coord::tile Portal::get_exit_end(sector_id_t entry_sector) const {
+const coord::tile_delta Portal::get_exit_end(sector_id_t entry_sector) const {
 	ENSURE(entry_sector == this->sector0 || entry_sector == this->sector1, "Invalid entry sector");
 
 	if (entry_sector == this->sector0) {
@@ -137,22 +137,22 @@ PortalDirection Portal::get_direction() const {
 	return this->direction;
 }
 
-const coord::tile &Portal::get_sector0_start() const {
+const coord::tile_delta &Portal::get_sector0_start() const {
 	return this->cell_start;
 }
 
-const coord::tile &Portal::get_sector0_end() const {
+const coord::tile_delta &Portal::get_sector0_end() const {
 	return this->cell_end;
 }
 
-const coord::tile Portal::get_sector1_start() const {
+const coord::tile_delta Portal::get_sector1_start() const {
 	if (this->direction == PortalDirection::NORTH_SOUTH) {
 		return {this->cell_start.ne, 0};
 	}
 	return {0, this->cell_start.se};
 }
 
-const coord::tile Portal::get_sector1_end() const {
+const coord::tile_delta Portal::get_sector1_end() const {
 	if (this->direction == PortalDirection::NORTH_SOUTH) {
 		return {this->cell_end.ne, 0};
 	}

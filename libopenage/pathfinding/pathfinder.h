@@ -4,6 +4,7 @@
 
 #include <memory>
 #include <unordered_map>
+#include <unordered_set>
 
 #include "coord/tile.h"
 #include "datastructure/pairing_heap.h"
@@ -62,14 +63,20 @@ public:
 	const Path get_path(const PathRequest &request);
 
 private:
+	using portal_star_t = std::pair<PathResult, std::vector<std::shared_ptr<Portal>>>;
+
 	/**
 	 * High-level pathfinder. Uses A* to find the path through the portals of sectors.
 	 *
 	 * @param request Pathfinding request.
+	 * @param target_portal_ids IDs of portals that can be reached from the target cell.
+	 * @param start_portal_ids IDs of portals that can be reached from the start cell.
 	 *
 	 * @return Portals to traverse in order to reach the target.
 	 */
-	const std::vector<std::shared_ptr<Portal>> portal_a_star(const PathRequest &request) const;
+	const portal_star_t portal_a_star(const PathRequest &request,
+	                                  const std::unordered_set<portal_id_t> &target_portal_ids,
+	                                  const std::unordered_set<portal_id_t> &start_portal_ids) const;
 
 	/**
 	 * Low-level pathfinder. Uses flow fields to find the path through the sectors.
@@ -85,8 +92,9 @@ private:
 	/**
 	 * Calculate the heuristic cost between a portal and a target cell.
 	 *
-	 * @param portal_pos Position of the portal. This should be the center of the portal exit.
-	 * @param target_pos Position of the target cell.
+	 * @param portal_pos Position of the portal (absolute on the grid).
+	 *                   This should be the center of the portal exit.
+	 * @param target_pos Position of the target cell (absolute on the grid).
 	 *
 	 * @return Heuristic cost between the cells.
 	 */
@@ -95,12 +103,12 @@ private:
 	/**
 	 * Calculate the distance cost between two portals.
 	 *
-	 * @param portal1_pos Center of the first portal.
-	 * @param portal2_pos Center of the second portal.
+	 * @param portal1_pos Center of the first portal (relative to sector origin).
+	 * @param portal2_pos Center of the second portal (relative to sector origin).
 	 *
 	 * @return Distance cost between the portal centers.
 	 */
-	static int distance_cost(const coord::tile &portal1_pos, const coord::tile &portal2_pos);
+	static int distance_cost(const coord::tile_delta &portal1_pos, const coord::tile_delta &portal2_pos);
 
 	/**
 	 * Grids managed by this pathfinder.
