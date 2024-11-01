@@ -1,9 +1,9 @@
-// Copyright 2020-2023 the openage authors. See copying.md for legal info.
+// Copyright 2020-2024 the openage authors. See copying.md for legal info.
 
 #include "versions.h"
 
 #ifdef __linux__
-#include <gnu/libc-version.h>
+	#include <gnu/libc-version.h>
 #endif
 
 #include <eigen3/Eigen/Dense>

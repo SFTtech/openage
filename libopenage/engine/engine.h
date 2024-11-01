@@ -11,7 +11,7 @@
 
 // TODO: Remove custom jthread definition when clang/libc++ finally supports it
 #if __llvm__
-#if !__cpp_lib_jthread
+	#if !__cpp_lib_jthread
 namespace std {
 class jthread : public thread {
 public:
@@ -27,9 +27,9 @@ public:
 	}
 };
 } // namespace std
-#endif
+	#endif
 #else
-#include <stop_token>
+	#include <stop_token>
 #endif
 
 

@@ -1,12 +1,11 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #include "color.h"
 
 namespace openage {
 namespace renderer {
 
-Color::Color()
-	:
+Color::Color() :
 	r{0},
 	g{0},
 	b{0},
@@ -14,8 +13,7 @@ Color::Color()
 	// Empty
 }
 
-Color::Color(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
-	:
+Color::Color(uint8_t r, uint8_t g, uint8_t b, uint8_t a) :
 	r{r},
 	g{g},
 	b{b},
@@ -32,6 +30,7 @@ bool Color::operator!=(const Color &other) const {
 }
 
 Color Colors::WHITE = {255, 255, 255, 255};
-Color Colors::BLACK = {  0,   0,   0, 255};
+Color Colors::BLACK = {0, 0, 0, 255};
 
-}} // openage::renderer
+} // namespace renderer
+} // namespace openage

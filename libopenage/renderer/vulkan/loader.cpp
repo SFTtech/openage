@@ -1,4 +1,4 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #include "loader.h"
 
@@ -9,14 +9,14 @@ namespace openage {
 namespace renderer {
 namespace vulkan {
 
-VlkLoader::VlkLoader()
-	: inited(false) {}
+VlkLoader::VlkLoader() :
+	inited(false) {}
 
 void VlkLoader::init(VkInstance instance) {
-	#ifndef NDEBUG
+#ifndef NDEBUG
 	this->pCreateDebugReportCallbackEXT = PFN_vkCreateDebugReportCallbackEXT(vkGetInstanceProcAddr(instance, "vkCreateDebugReportCallbackEXT"));
 	this->pDestroyDebugReportCallbackEXT = PFN_vkDestroyDebugReportCallbackEXT(vkGetInstanceProcAddr(instance, "vkDestroyDebugReportCallbackEXT"));
-	#endif
+#endif
 
 	this->inited = true;
 }
@@ -24,10 +24,9 @@ void VlkLoader::init(VkInstance instance) {
 #ifndef NDEBUG
 VkResult VlkLoader::vkCreateDebugReportCallbackEXT(
 	VkInstance instance,
-	const VkDebugReportCallbackCreateInfoEXT* pCreateInfo,
-	const VkAllocationCallbacks* pAllocator,
-	VkDebugReportCallbackEXT* pCallback
-) {
+	const VkDebugReportCallbackCreateInfoEXT *pCreateInfo,
+	const VkAllocationCallbacks *pAllocator,
+	VkDebugReportCallbackEXT *pCallback) {
 	if (!this->inited) {
 		throw Error(MSG(err) << "Tried to request function from Vulkan extension loader before initializing it.");
 	}
@@ -42,8 +41,7 @@ VkResult VlkLoader::vkCreateDebugReportCallbackEXT(
 void VlkLoader::vkDestroyDebugReportCallbackEXT(
 	VkInstance instance,
 	VkDebugReportCallbackEXT callback,
-	const VkAllocationCallbacks* pAllocator
-) {
+	const VkAllocationCallbacks *pAllocator) {
 	if (!this->inited) {
 		throw Error(MSG(err) << "Tried to request function from Vulkan extension loader before initializing it.");
 	}
@@ -54,4 +52,6 @@ void VlkLoader::vkDestroyDebugReportCallbackEXT(
 }
 #endif
 
-}}} // openage::renderer::vulkan
+} // namespace vulkan
+} // namespace renderer
+} // namespace openage

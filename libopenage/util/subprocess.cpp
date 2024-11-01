@@ -1,19 +1,19 @@
-// Copyright 2014-2019 the openage authors. See copying.md for legal info.
+// Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 #include "subprocess.h"
 
+#include <cerrno>
 #include <cstdlib>
 #include <cstring>
-#include <cerrno>
 
 #ifdef _WIN32
 // TODO not yet implemented
 #else
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <sys/wait.h>
+	#include <fcntl.h>
+	#include <sys/stat.h>
+	#include <sys/types.h>
+	#include <sys/wait.h>
+	#include <unistd.h>
 #endif
 
 #include "../log/log.h"
@@ -90,7 +90,7 @@ int call(const std::vector<const char *> &argv, bool wait, const char *redirect_
 	if (redirect_stdout_to != nullptr) {
 		replacement_stdout_fd = open(
 			redirect_stdout_to,
-			O_WRONLY | O_CREAT|O_TRUNC|O_CLOEXEC,
+			O_WRONLY | O_CREAT | O_TRUNC | O_CLOEXEC,
 			0644);
 
 		if (replacement_stdout_fd < 0) {
@@ -215,8 +215,8 @@ int call(const std::vector<const char *> &argv, bool wait, const char *redirect_
 		}
 
 		if (child_errno > 0) {
-		    log::log(MSG(err) << "execv has failed: " << strerror(child_errno));
-		    return -1;
+			log::log(MSG(err) << "execv has failed: " << strerror(child_errno));
+			return -1;
 		}
 	}
 
@@ -235,7 +235,7 @@ int call(const std::vector<const char *> &argv, bool wait, const char *redirect_
 
 	// everything went well.
 	return status;
-	#endif
+#endif
 }
 
 } // namespace openage::subprocess

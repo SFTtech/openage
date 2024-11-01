@@ -1,12 +1,12 @@
-// Copyright 2014-2019 the openage authors. See copying.md for legal info.
+// Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
-#include <vector>
 #include <string>
+#include <vector>
 
 #ifdef _MSC_VER
-#define STDOUT_FILENO 1
+	#define STDOUT_FILENO 1
 #else
-#include <unistd.h>
+	#include <unistd.h>
 #endif
 #include "../util/fds.h"
 #include "../util/pty.h"
@@ -15,8 +15,8 @@
 #include <cstdlib>
 #include <fcntl.h>
 
-#include "../log/log.h"
 #include "../error/error.h"
+#include "../log/log.h"
 
 #include "buf.h"
 #include "console.h"
@@ -51,7 +51,7 @@ void render() {
 
 
 void interactive() {
-	#ifndef _WIN32
+#ifndef _WIN32
 
 	console::Buf buf{{80, 25}, 1337, 80};
 	struct winsize ws;
@@ -75,7 +75,7 @@ void interactive() {
 		throw Error(MSG(err) << "execl(\"" << shell << "\", \"" << shell << "\", nullptr) failed: " << strerror(errno));
 	}
 	default:
-		//we are the parent
+		// we are the parent
 		break;
 	}
 
@@ -143,7 +143,7 @@ void interactive() {
 				ssize_t retval = read(ptyin.fd, rdbuf, rdbuf_size);
 				switch (retval) {
 				case -1:
-					switch(errno) {
+					switch (errno) {
 					case EIO:
 						loop = false;
 						break;
@@ -175,7 +175,7 @@ void interactive() {
 	// show cursor
 	termout.puts("\x1b[?25h");
 
-	#endif /* _WIN32 */
+#endif /* _WIN32 */
 }
 
 

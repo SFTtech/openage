@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #include "stackanalyzer.h"
 
@@ -30,8 +30,8 @@ constexpr uint64_t base_skip_frames = 1;
 
 #if WITH_BACKTRACE
 
-// use modern <backtrace.h>
-#include <backtrace.h>
+	// use modern <backtrace.h>
+	#include <backtrace.h>
 
 namespace openage {
 namespace error {
@@ -59,7 +59,7 @@ struct backtrace_state *bt_state;
 util::OnInit init_backtrace_state([]() {
 	bt_state = backtrace_create_state(
 		nullptr, // auto-determine filename
-		1, // threaded
+		1,       // threaded
 		backtrace_error_callback,
 		nullptr // passed to the callback
 	);
@@ -189,8 +189,8 @@ void StackAnalyzer::get_symbols(std::function<void(const backtrace_symbol *)> cb
 
 #else // WITHOUT_BACKTRACE
 
-#ifdef _WIN32
-#include <windows.h>
+	#ifdef _WIN32
+		#include <windows.h>
 
 namespace openage {
 namespace error {
@@ -208,10 +208,10 @@ void StackAnalyzer::analyze() {
 } // namespace error
 } // namespace openage
 
-#else // not _MSC_VER
+	#else // not _MSC_VER
 
-// use GNU's <execinfo.h>
-#include <execinfo.h>
+		// use GNU's <execinfo.h>
+		#include <execinfo.h>
 
 namespace openage::error {
 
@@ -256,7 +256,7 @@ void StackAnalyzer::analyze() {
 
 } // namespace openage::error
 
-#endif // for _MSC_VER or GNU execinfo
+	#endif // for _MSC_VER or GNU execinfo
 
 namespace openage::error {
 

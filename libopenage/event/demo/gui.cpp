@@ -1,25 +1,25 @@
-// Copyright 2016-2023 the openage authors. See copying.md for legal info.
+// Copyright 2016-2024 the openage authors. See copying.md for legal info.
 
 #include "gui.h"
 
 // the gui requires ncurses.
 #if WITH_NCURSES
 
-#include <algorithm>
-#include <array>
-#include <cstdlib>
-#include <cstring>
-#ifdef __MINGW32__
-#include <ncurses/ncurses.h>
-#else
-#include <ncurses.h>
-#endif // __MINGW32__
-#include <vector>
+	#include <algorithm>
+	#include <array>
+	#include <cstdlib>
+	#include <cstring>
+	#ifdef __MINGW32__
+		#include <ncurses/ncurses.h>
+	#else
+		#include <ncurses.h>
+	#endif // __MINGW32__
+	#include <vector>
 
-#include "curve/continuous.h"
-#include "curve/discrete.h"
-#include "event/demo/gamestate.h"
-#include "util/fixed_point.h"
+	#include "curve/continuous.h"
+	#include "curve/discrete.h"
+	#include "event/demo/gamestate.h"
+	#include "util/fixed_point.h"
 
 namespace openage::event::demo {
 

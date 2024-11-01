@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 /*
  * This file holds handlers for std::terminate and SIGSEGV.
@@ -17,9 +17,9 @@
 #include <iostream>
 
 #ifdef _MSC_VER
-#include <io.h>
+	#include <io.h>
 #else
-#include <unistd.h>
+	#include <unistd.h>
 #endif
 
 #include "util/init.h"

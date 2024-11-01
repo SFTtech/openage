@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -50,11 +50,11 @@ struct OAAPI level : util::Enum<level_value> {
 	level();
 
 #ifdef __MINGW32__
-// Do not try to optimize these out even if it seems they are not used.
-// Namely MIN that is not used within the library.
-#define NOOPTIMIZE __attribute__((__used__))
+	// Do not try to optimize these out even if it seems they are not used.
+	// Namely MIN that is not used within the library.
+	#define NOOPTIMIZE __attribute__((__used__))
 #else
-#define NOOPTIMIZE
+	#define NOOPTIMIZE
 #endif // _win32
 
 	static constexpr level_value MIN NOOPTIMIZE{{"min loglevel", -1000}, "5"};

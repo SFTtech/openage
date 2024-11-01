@@ -1,4 +1,4 @@
-// Copyright 2014-2019 the openage authors. See copying.md for legal info.
+// Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 #include "os.h"
 
@@ -7,16 +7,16 @@
 #ifdef _WIN32
 // TODO not yet implemented
 #else
-#include <unistd.h>
+	#include <unistd.h>
 #endif
 
 #ifdef __APPLE__
-#include <mach-o/dyld.h>
+	#include <mach-o/dyld.h>
 #endif
 
 #ifdef __FreeBSD__
-#include <sys/types.h>
-#include <sys/sysctl.h>
+	#include <sys/sysctl.h>
+	#include <sys/types.h>
 #endif
 
 #include "../log/log.h"
@@ -77,8 +77,7 @@ std::string self_exec_filename() {
 		CTL_KERN,
 		KERN_PROC,
 		KERN_PROC_PATHNAME,
-		-1
-	};
+		-1};
 
 	while (true) {
 		std::unique_ptr<char[]> buf{new char[bufsize]};
@@ -103,23 +102,23 @@ int execute_file(const char *path, bool background) {
 	// TODO some sort of shell-open, not yet implemented
 	return -1; // failure
 #else
-		std::string runner = "";
-#ifdef __APPLE__
-			runner = subprocess::which("open");
-#else
-			runner = subprocess::which("xdg-open");
-			// fallback
-			if (runner.size() == 0) {
-				runner = subprocess::which("gnome-open");
-			}
-#endif
-		if (runner.size() == 0) {
-			log::log(MSG(err) << "could not locate file-opener");
-			return -1;
-		}
+	std::string runner = "";
+	#ifdef __APPLE__
+	runner = subprocess::which("open");
+	#else
+	runner = subprocess::which("xdg-open");
+	// fallback
+	if (runner.size() == 0) {
+		runner = subprocess::which("gnome-open");
+	}
+	#endif
+	if (runner.size() == 0) {
+		log::log(MSG(err) << "could not locate file-opener");
+		return -1;
+	}
 
-		return subprocess::call({runner.c_str(), path, nullptr}, not background);
+	return subprocess::call({runner.c_str(), path, nullptr}, not background);
 #endif
 }
 
-} // namespace openage
+} // namespace openage::os

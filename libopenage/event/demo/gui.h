@@ -1,18 +1,18 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include "config.h"
 
 #if WITH_NCURSES
-#include <deque>
-#include <memory>
-#include <string>
-#include <vector>
+	#include <deque>
+	#include <memory>
+	#include <string>
+	#include <vector>
 
-#include "event/demo/gamestate.h"
-#include "time/time.h"
-#include "util/vector.h"
+	#include "event/demo/gamestate.h"
+	#include "time/time.h"
+	#include "util/vector.h"
 
 
 namespace openage::event::demo {
