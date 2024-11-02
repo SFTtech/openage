@@ -74,12 +74,8 @@ struct Coord${camelcase}Absolute {
 		return static_cast<Absolute &>(*this);
 	}
 
-	constexpr bool operator ==(const Absolute &other) const {
-		return ${formatted_members("(this->{0} == other.{0})", join_with=" && ")};
-	}
-
-	constexpr bool operator !=(const Absolute &other) const {
-		return !(*this == other);
+	friend constexpr bool operator ==(const Absolute &lhs, const Absolute &rhs) {
+		return ${formatted_members("(lhs.{0} == rhs.{0})", join_with=" && ")};
 	}
 };
 
@@ -167,12 +163,8 @@ struct Coord${camelcase}Relative {
 		return static_cast<Relative &>(*this);
 	}
 
-	constexpr bool operator ==(const Relative &other) const {
-		return ${formatted_members("(this->{0} == other.{0})", join_with=" && ")};
-	}
-
-	constexpr bool operator !=(const Relative &other) const {
-		return !(*this == other);
+	friend constexpr bool operator ==(const Relative &lhs, const Relative &rhs) {
+		return ${formatted_members("(lhs.{0} == rhs.{0})", join_with=" && ")};
 	}
 };
 
