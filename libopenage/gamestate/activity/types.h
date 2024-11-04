@@ -13,6 +13,7 @@ enum class node_t {
 	END,
 	XOR_EVENT_GATE,
 	XOR_GATE,
+	XOR_SWITCH_GATE,
 	TASK_CUSTOM,
 	TASK_SYSTEM,
 };
