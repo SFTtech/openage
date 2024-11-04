@@ -61,7 +61,7 @@ public:
 	 * @param label Human-readable label (optional).
 	 */
 	XorEventGate(node_id_t id,
-	             node_label_t label = "EventGateWay");
+	             node_label_t label = "ExclusiveEventGateway");
 
 	/**
 	 * Create a new exclusive event gateway.

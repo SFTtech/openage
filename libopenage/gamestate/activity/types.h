@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -13,6 +13,7 @@ enum class node_t {
 	END,
 	XOR_EVENT_GATE,
 	XOR_GATE,
+	XOR_SWITCH_GATE,
 	TASK_CUSTOM,
 	TASK_SYSTEM,
 };
