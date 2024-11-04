@@ -48,11 +48,12 @@ you can use available [BPMN tools](https://bpmn.io/) to draw activity node graph
 ## Node Types
 
 
-| Type             | Inputs | Outputs | Description               |
-| ---------------- | ------ | ------- | ------------------------- |
-| `START`          | 0      | 1       | Start of activity         |
-| `END`            | 1      | 0       | End of activity           |
-| `TASK_SYSTEM`    | 1      | 1       | Run built-in system       |
-| `TASK_CUSTOM`    | 1      | 1       | Run custom function       |
-| `XOR_EVENT_GATE` | 1      | 1+      | Wait for event and branch |
-| `XOR_GATE`       | 1      | 1+      | Branch on condition       |
+| Type              | Inputs | Outputs | Description               |
+| ----------------- | ------ | ------- | ------------------------- |
+| `START`           | 0      | 1       | Start of activity         |
+| `END`             | 1      | 0       | End of activity           |
+| `TASK_SYSTEM`     | 1      | 1       | Run built-in system       |
+| `TASK_CUSTOM`     | 1      | 1       | Run custom function       |
+| `XOR_EVENT_GATE`  | 1      | 1+      | Wait for event and branch |
+| `XOR_GATE`        | 1      | 1+      | Branch on condition       |
+| `XOR_SWITCH_GATE` | 1      | 1+      | Branch on value           |

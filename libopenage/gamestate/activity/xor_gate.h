@@ -24,7 +24,7 @@ namespace activity {
 /**
  * Function that determines if an output node is chosen.
  *
- * @param time Current game time.
+ * @param time Current simulation time.
  * @param entity Entity that is executing the activity.
  *
  * @return true if the output node is chosen, false otherwise.
