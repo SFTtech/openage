@@ -16,6 +16,7 @@
 #include "gamestate/activity/types.h"
 #include "gamestate/activity/xor_event_gate.h"
 #include "gamestate/activity/xor_gate.h"
+#include "gamestate/activity/xor_switch_gate.h"
 #include "gamestate/component/internal/activity.h"
 #include "gamestate/component/types.h"
 #include "gamestate/game_entity.h"
@@ -111,6 +112,15 @@ void Activity::advance(const time::time_t &start_time,
 			// exit and wait for event
 			event_wait_time = 0;
 			stop = true;
+		} break;
+		case activity::node_t::XOR_SWITCH_GATE: {
+			auto node = std::dynamic_pointer_cast<activity::XorSwitchGate>(current_node);
+			auto next_id = node->get_default()->get_id();
+			auto key = node->get_lookup_func()(start_time, entity);
+			if (node->get_lookup_dict().contains(key)) {
+				next_id = node->get_lookup_dict().at(key)->get_id();
+			}
+			current_node = node->next(next_id);
 		} break;
 		default:
 			throw Error{ERR << "Unhandled node type for node " << current_node->str()};
