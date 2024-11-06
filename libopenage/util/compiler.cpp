@@ -7,8 +7,8 @@
 	#include <dlfcn.h>
 #else
 	#define WIN32_LEAN_AND_MEAN
-	#include <DbgHelp.h>
 	#include <Windows.h>
+	#include <DbgHelp.h>
 #endif
 
 #include "strings.h"
