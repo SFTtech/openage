@@ -4,7 +4,9 @@
 
 #include <cmath>
 #include <cstddef>
+#include <limits>
 #include <memory>
+#include <optional>
 
 #include <eigen3/Eigen/Dense>
 
@@ -12,6 +14,7 @@
 #include "coord/scene.h"
 #include "util/vector.h"
 
+#include "renderer/camera/boundaries.h"
 #include "renderer/camera/definitions.h"
 #include "renderer/camera/frustum_2d.h"
 #include "renderer/camera/frustum_3d.h"
@@ -83,18 +86,21 @@ public:
 	 * Move the camera position in the direction of a given vector.
 	 *
 	 * @param scene_pos New 3D position of the camera in the scene.
+	 * @param camera_boundaries 3D boundaries for the camera.
 	 */
-	void move_to(Eigen::Vector3f scene_pos);
+	void move_to(Eigen::Vector3f scene_pos, const CameraBoundaries &camera_boundaries = DEFAULT_CAM_BOUNDARIES);
 
 	/**
-	 * Move the camera position in the direction of a given vector.
+	 * Move the camera position in the direction of a given vector taking the
+	 * camera boundaries into account.
 	 *
 	 * @param direction Direction vector. Added to the current position.
 	 * @param delta Delta for controlling the amount by which the camera is moved. The
 	 *              value is multiplied with the directional vector before its applied to
 	 *              the positional vector.
+	 * @param camera_boundaries 3D boundaries for the camera.
 	 */
-	void move_rel(Eigen::Vector3f direction, float delta = 1.0f);
+	void move_rel(Eigen::Vector3f direction, float delta = 1.0f, const CameraBoundaries &camera_boundaries = DEFAULT_CAM_BOUNDARIES);
 
 	/**
 	 * Set the zoom level of the camera. Values smaller than 1.0f let the
@@ -200,6 +206,7 @@ public:
 	 */
 	const Frustum3d get_frustum_3d() const;
 
+
 private:
 	/**
 	 * Create the uniform buffer for the camera.
@@ -207,6 +214,13 @@ private:
 	 * @param renderer openage renderer instance.
 	 */
 	void init_uniform_buffer(const std::shared_ptr<Renderer> &renderer);
+
+	/**
+	 * Calculates the camera's position needed to center its view on the given target.
+	 *
+	 * @param target The target position in the 3D scene the camera should focus on.
+	 */
+	Eigen::Vector3f calc_look_at(Eigen::Vector3f target);
 
 	/**
 	 * Get the zoom factor applied to the camera projection.

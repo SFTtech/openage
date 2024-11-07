@@ -3,7 +3,9 @@
 #pragma once
 
 #include <eigen3/Eigen/Dense>
+#include <limits>
 
+#include "renderer/camera/boundaries.h"
 
 namespace openage::renderer::camera {
 
@@ -57,5 +59,24 @@ static constexpr float DEFAULT_MAX_ZOOM_OUT = 64.0f;
  * 1.0f / 49 is the default value for the AoE2 sprites.
  */
 static constexpr float DEFAULT_ZOOM_RATIO = 1.0f / 49;
+
+static constexpr CameraBoundaries DEFAULT_CAM_BOUNDARIES{
+	std::numeric_limits<float>::lowest(),
+	std::numeric_limits<float>::max(),
+	std::numeric_limits<float>::lowest(),
+	std::numeric_limits<float>::max(),
+	std::numeric_limits<float>::lowest(),
+	std::numeric_limits<float>::max()};
+
+/**
+ * Constant values for the camera bounds (based on current fix terrain grid of 20x20).
+ * TODO: Make boundaries dynamic based on map size.
+ */
+static constexpr float X_BOUND_MIN = 12.25f;
+static constexpr float X_BOUND_MAX = 32.25f;
+static constexpr float Y_BOUND_MIN = 0.0f;
+static constexpr float Y_BOUND_MAX = 20.0f;
+static constexpr float Z_BOUND_MIN = -8.25f;
+static constexpr float Z_BOUND_MAX = 12.25f;
 
 } // namespace openage::renderer::camera

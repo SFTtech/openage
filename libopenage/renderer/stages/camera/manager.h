@@ -3,7 +3,9 @@
 #pragma once
 
 #include <memory>
+#include <utility>
 
+#include "renderer/camera/camera.h"
 
 namespace openage::renderer {
 class UniformBufferInput;
@@ -47,8 +49,10 @@ public:
 	 * Create a new camera manager.
 	 *
 	 * @param camera Camera to manage.
+	 * @param camera_boundaries Boundaries for the camera movement in the scene.
 	 */
-	CameraManager(const std::shared_ptr<renderer::camera::Camera> &camera);
+	CameraManager(const std::shared_ptr<renderer::camera::Camera> &camera,
+	              const CameraBoundaries &camera_boundaries = DEFAULT_CAM_BOUNDARIES);
 	~CameraManager() = default;
 
 	/**
@@ -103,6 +107,13 @@ public:
 	 */
 	void set_zoom_motion_speed(float speed);
 
+	/**
+	 * Set boundaries for camera movement in the scene.
+	 *
+	 * @param camera_boundaries XYZ boundaries for the camera movement.
+	 */
+	void set_camera_boundaries(const CameraBoundaries &camera_boundaries);
+
 private:
 	/**
 	 * Update the camera parameters.
@@ -143,6 +154,11 @@ private:
 	 * Uniform buffer input for the camera.
 	 */
 	std::shared_ptr<renderer::UniformBufferInput> uniforms;
+
+	/**
+	 * Camera boundaries for X and Z movement. Contains minimum and maximum values for each axes.
+	 */
+	CameraBoundaries camera_boundaries;
 };
 
 } // namespace camera
