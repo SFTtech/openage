@@ -10,11 +10,13 @@
 #include "datastructure/constexpr_map.h"
 #include "gamestate/activity/condition/command_in_queue.h"
 #include "gamestate/activity/condition/next_command.h"
+#include "gamestate/activity/condition/next_command_switch.h"
 #include "gamestate/activity/event/command_in_queue.h"
 #include "gamestate/activity/event/wait.h"
 #include "gamestate/activity/types.h"
 #include "gamestate/activity/xor_event_gate.h"
 #include "gamestate/activity/xor_gate.h"
+#include "gamestate/activity/xor_switch_gate.h"
 #include "gamestate/api/types.h"
 #include "gamestate/system/types.h"
 
@@ -237,7 +239,9 @@ static const auto ACTIVITY_NODE_DEFS = datastructure::create_const_map<std::stri
 	std::pair("engine.util.activity.node.type.XORGate",
               activity::node_t::XOR_GATE),
 	std::pair("engine.util.activity.node.type.XOREventGate",
-              activity::node_t::XOR_EVENT_GATE));
+              activity::node_t::XOR_EVENT_GATE),
+	std::pair("engine.util.activity.node.type.XORSwitchGate",
+              activity::node_t::XOR_SWITCH_GATE));
 
 /**
  * Maps API activity task system types to engine system types.
@@ -265,6 +269,9 @@ static const auto ACTIVITY_CONDITIONS = datastructure::create_const_map<std::str
 	std::pair("engine.util.activity.condition.type.NextCommandMove",
               std::function(gamestate::activity::next_command_move)));
 
+/**
+ * Maps API activity event types to event primer functions.
+ */
 static const auto ACTIVITY_EVENT_PRIMERS = datastructure::create_const_map<std::string, activity::event_primer_t>(
 	std::pair("engine.util.activity.event.type.CommandInQueue",
               std::function(gamestate::activity::primer_command_in_queue)),
@@ -272,6 +279,19 @@ static const auto ACTIVITY_EVENT_PRIMERS = datastructure::create_const_map<std::
               std::function(gamestate::activity::primer_wait)),
 	std::pair("engine.util.activity.event.type.WaitAbility",
               std::function(gamestate::activity::primer_wait)));
+
+/**
+ * Maps API activity switch condition types to lookup functions.
+ */
+static const auto ACTIVITY_SWITCH_CONDITIONS = datastructure::create_const_map<std::string,
+                                                                               activity::XorSwitchGate::lookup_function_t>(
+	std::pair("engine.util.activity.switch_condition.type.NextCommand",
+              std::function(gamestate::activity::next_command_switch)));
+
+static const auto ACTIVITY_SWITCH_CONDITION_TYPES = datastructure::create_const_map<std::string,
+                                                                                    switch_condition_t>(
+	std::pair("engine.util.activity.switch_condition.type.NextCommand",
+              switch_condition_t::NEXT_COMMAND));
 
 /**
  * Maps internal patch property types to nyan API values.
