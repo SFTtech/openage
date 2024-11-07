@@ -1,4 +1,4 @@
-# Copyright 2014-2023 the openage authors. See copying.md for legal info.
+# Copyright 2014-2024 the openage authors. See copying.md for legal info.
 #
 # cython: infer_types=True
 # pylint: disable=too-many-locals
@@ -81,7 +81,7 @@ cdef void cmerge_frames(texture, packer_type=PackerType.BINPACK, cache=None) exc
                                  RowPacker(margin=MARGIN),
                                  ColumnPacker(margin=MARGIN)])
 
-    packer.pack(frames)
+    packer.pack([(frame.width, frame.height, i) for i, frame in enumerate(frames)])
 
     cdef int width = packer.width()
     cdef int height = packer.height()
@@ -106,11 +106,11 @@ cdef void cmerge_frames(texture, packer_type=PackerType.BINPACK, cache=None) exc
     cdef int sub_h
 
     cdef list drawn_frames_meta = []
-    for sub_frame in frames:
+    for index, sub_frame in enumerate(frames):
         sub_w = sub_frame.width
         sub_h = sub_frame.height
 
-        pos_x, pos_y = packer.pos(sub_frame)
+        pos_x, pos_y = packer.pos(index)
 
         spam("drawing frame %03d on atlas at %d x %d...",
              len(drawn_frames_meta), pos_x, pos_y)
@@ -143,4 +143,4 @@ cdef void cmerge_frames(texture, packer_type=PackerType.BINPACK, cache=None) exc
     if isinstance(packer, BestPacker):
         # Only generate these values if no custom packer was used
         # TODO: It might make sense to do it anyway for debugging purposes
-        texture.best_packer_hints = packer.get_mapping_hints(frames)
+        texture.best_packer_hints = packer.get_mapping_hints([(frame.width, frame.height, i) for i, frame in enumerate(frames)])
