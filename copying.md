@@ -155,6 +155,7 @@ _the openage authors_ are:
 | Michael Seibt               | RoboSchmied                 | github à roboschmie dawt de                       |
 | Nikhil Ghosh                | NikhilGhosh75               | nghosh606 à gmail dawt com                        |
 | Edvin Lindholm              | EdvinLndh                   | edvinlndh à gmail dawt com                        |
+| Jeremiah Morgan             | jere8184                    | jeremiahmorgan dawt bham à outlook dawt com       |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
