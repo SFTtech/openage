@@ -126,12 +126,12 @@ void Presenter::init_graphics(bool debug) {
 	// TODO: Make boundaries dynamic based on map size.
 	this->camera_manager->set_camera_boundaries(
 		renderer::camera::CameraBoundaries{
-			renderer::camera::X_MIN,
-			renderer::camera::X_MAX,
-			renderer::camera::Y_MIN,
-			renderer::camera::Y_MAX,
-			renderer::camera::Z_MIN,
-			renderer::camera::Z_MAX});
+			renderer::camera::X_BOUND_MIN,
+			renderer::camera::X_BOUND_MAX,
+			renderer::camera::Y_BOUND_MIN,
+			renderer::camera::Y_BOUND_MAX,
+			renderer::camera::Z_BOUND_MIN,
+			renderer::camera::Z_BOUND_MAX});
 
 	// Skybox
 	this->skybox_renderer = std::make_shared<renderer::skybox::SkyboxRenderStage>(
