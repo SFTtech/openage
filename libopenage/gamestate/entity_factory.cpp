@@ -22,6 +22,7 @@
 #include "gamestate/activity/task_system_node.h"
 #include "gamestate/activity/xor_event_gate.h"
 #include "gamestate/activity/xor_gate.h"
+#include "gamestate/activity/xor_switch_gate.h"
 #include "gamestate/api/activity.h"
 #include "gamestate/component/api/apply_effect.h"
 #include "gamestate/component/api/idle.h"
@@ -294,6 +295,9 @@ void EntityFactory::init_activity(const std::shared_ptr<openage::event::EventLoo
 			break;
 		case activity::node_t::XOR_EVENT_GATE:
 			node_id_map[node_id] = std::make_shared<activity::XorEventGate>(node_id);
+			break;
+		case activity::node_t::XOR_SWITCH_GATE:
+			node_id_map[node_id] = std::make_shared<activity::XorSwitchGate>(node_id);
 			break;
 		default:
 			throw Error{ERR << "Unknown activity node type of node: " << node.get_name()};

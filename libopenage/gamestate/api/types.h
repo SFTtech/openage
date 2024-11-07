@@ -81,4 +81,11 @@ enum class patch_property_t {
 	DIPLOMATIC,
 };
 
+/**
+ * Types of conditions for the XORSwitchGate API activity node.
+ */
+enum class switch_condition_t {
+	NEXT_COMMAND,
+};
+
 } // namespace openage::gamestate::api
