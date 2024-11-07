@@ -10,13 +10,14 @@
 
 namespace openage::renderer::camera {
 
-CameraManager::CameraManager(const std::shared_ptr<renderer::camera::Camera> &camera) :
+CameraManager::CameraManager(const std::shared_ptr<renderer::camera::Camera> &camera,
+                             const CameraBoundaries &camera_boundaries) :
 	camera{camera},
 	move_motion_directions{static_cast<int>(MoveDirection::NONE)},
 	zoom_motion_direction{static_cast<int>(ZoomDirection::NONE)},
 	move_motion_speed{0.2f},
 	zoom_motion_speed{0.05f},
-	camera_boundaries{X_MIN, X_MAX, Y_MIN, Y_MAX, Z_MIN, Z_MAX} {
+	camera_boundaries{camera_boundaries} {
 	this->uniforms = this->camera->get_uniform_buffer()->new_uniform_input(
 		"view",
 		camera->get_view_matrix(),
@@ -65,6 +66,10 @@ void CameraManager::zoom_frame(ZoomDirection direction, float speed) {
 	default:
 		break;
 	}
+}
+
+void CameraManager::set_camera_boundaries(const CameraBoundaries &camera_boundaries) {
+	this->camera_boundaries = camera_boundaries;
 }
 
 void CameraManager::update_motion() {

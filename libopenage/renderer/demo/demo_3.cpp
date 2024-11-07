@@ -52,6 +52,18 @@ void renderer_demo_3(const util::Path &path) {
 	// it is updated each frame before the render stages
 	auto cam_manager = std::make_shared<renderer::camera::CameraManager>(camera);
 
+	// Set boundaries for camera movement in the scene
+	// this restricts camera movement to the area defined by the boundaries
+	// i.e. the map terrain in this case
+	cam_manager->set_camera_boundaries(
+		camera::CameraBoundaries{
+			12.25f,
+			22.25f,
+			0.0f,
+			20.0f,
+			2.25f,
+			12.25f});
+
 	// Render stages
 	// every stage use a different subrenderer that manages renderables,
 	// shaders, textures & more.

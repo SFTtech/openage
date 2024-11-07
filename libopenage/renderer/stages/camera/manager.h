@@ -49,8 +49,10 @@ public:
 	 * Create a new camera manager.
 	 *
 	 * @param camera Camera to manage.
+	 * @param camera_boundaries Boundaries for the camera movement in the scene.
 	 */
-	CameraManager(const std::shared_ptr<renderer::camera::Camera> &camera);
+	CameraManager(const std::shared_ptr<renderer::camera::Camera> &camera,
+	              const CameraBoundaries &camera_boundaries = DEFAULT_CAM_BOUNDARIES);
 	~CameraManager() = default;
 
 	/**
@@ -104,6 +106,13 @@ public:
 	 * @param speed Speed of the camera.
 	 */
 	void set_zoom_motion_speed(float speed);
+
+	/**
+	 * Set boundaries for camera movement in the scene.
+	 *
+	 * @param camera_boundaries XYZ boundaries for the camera movement.
+	 */
+	void set_camera_boundaries(const CameraBoundaries &camera_boundaries);
 
 private:
 	/**
