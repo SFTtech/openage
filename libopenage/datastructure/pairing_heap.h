@@ -96,7 +96,7 @@ public:
 	 * by comparing `this` with `node`.
 	 * The new root is returned, it has the other node as child.
 	 */
-	this_type* link_with(this_type* node) {
+	this_type* link_with(this_type* const node) {
 		this_type* new_root;
 		this_type* new_child;
 
@@ -179,10 +179,10 @@ public:
 	}
 
 private:
-	this_type* child; 
-	this_type* prev_sibling;
-	this_type* next_sibling;
-	this_type* parent; // for decrease-key and delete
+	this_type* child = nullptr; 
+	this_type* prev_sibling = nullptr;
+	this_type* next_sibling = nullptr;
+	this_type* parent = nullptr; // for decrease-key and delete
 };
 
 
@@ -205,7 +205,10 @@ public:
 		root_node(nullptr) {
 	}
 
-	~PairingHeap() = default;
+	~PairingHeap()
+	{
+		this->clear();
+	};
 
 	/**
 	 * adds the given item to the heap.
@@ -246,9 +249,9 @@ public:
 	 *
 	 * O(pop_node)
 	 */
-	std::shared_ptr<heapnode_t> unlink_node(const element_t &node) { //how can we garuntee poped node deleted, without use of shared ptr, or making this function private?
+	void unlink_node(const element_t &node) { //how can we garuntee poped node deleted, without use of shared ptr, or making this function private?
 		if (node == this->root_node) {
-			return std::shared_ptr<heapnode_t>(this->pop_node());
+			this->pop_node();
 		}
 		else {
 			node->loosen();
@@ -263,7 +266,6 @@ public:
 			if (new_root != nullptr) {
 				this->root_insert(new_root);
 			}
-			return std::shared_ptr<heapnode_t>(node);
 		}
 	}
 
@@ -312,8 +314,7 @@ public:
 	 */
 	void update(const element_t &node) {
 		if (node != this->root_node) [[likely]] {
-			auto ptr = this->unlink_node(node);
-			ptr = nullptr;
+ 			this->unlink_node(node);
 			this->push_node(node);
 		}
 		else {
