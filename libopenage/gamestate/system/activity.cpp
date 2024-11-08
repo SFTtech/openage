@@ -16,9 +16,11 @@
 #include "gamestate/activity/types.h"
 #include "gamestate/activity/xor_event_gate.h"
 #include "gamestate/activity/xor_gate.h"
+#include "gamestate/activity/xor_switch_gate.h"
 #include "gamestate/component/internal/activity.h"
 #include "gamestate/component/types.h"
 #include "gamestate/game_entity.h"
+#include "gamestate/system/apply_effect.h"
 #include "gamestate/system/idle.h"
 #include "gamestate/system/move.h"
 #include "util/fixed_point.h"
@@ -111,6 +113,15 @@ void Activity::advance(const time::time_t &start_time,
 			event_wait_time = 0;
 			stop = true;
 		} break;
+		case activity::node_t::XOR_SWITCH_GATE: {
+			auto node = std::dynamic_pointer_cast<activity::XorSwitchGate>(current_node);
+			auto next_id = node->get_default()->get_id();
+			auto key = node->get_lookup_func()(start_time, entity);
+			if (node->get_lookup_dict().contains(key)) {
+				next_id = node->get_lookup_dict().at(key)->get_id();
+			}
+			current_node = node->next(next_id);
+		} break;
 		default:
 			throw Error{ERR << "Unhandled node type for node " << current_node->str()};
 		}
@@ -125,6 +136,9 @@ const time::time_t Activity::handle_subsystem(const time::time_t &start_time,
                                               const std::shared_ptr<openage::gamestate::GameState> &state,
                                               system_id_t system_id) {
 	switch (system_id) {
+	case system_id_t::APPLY_EFFECT:
+		return ApplyEffect::apply_effect(entity, state, entity, start_time);
+		break;
 	case system_id_t::IDLE:
 		return Idle::idle(entity, start_time);
 		break;

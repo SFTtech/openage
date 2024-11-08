@@ -1,4 +1,4 @@
-// Copyright 2017-2023 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -44,6 +44,10 @@ public:
 		player(id), state(s) {}
 	PongEvent() :
 		player(0), state(IDLE) {}
+
+	bool operator==(const PongEvent &other) const {
+		return this->player == other.player and this->state == other.state;
+	}
 
 	size_t player;
 	state_e state;

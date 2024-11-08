@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "curve/concept.h"
 #include "curve/iterator.h"
 #include "time/time.h"
 
@@ -16,7 +17,7 @@ namespace openage::curve {
  * It depends on val_t as its value type, container_t is the container
  * to operate on and the function valid_f, that checks if an element is alive.
  */
-template <typename val_t,
+template <KeyframeValueLike val_t,
           typename container_t>
 class QueueFilterIterator : public CurveIterator<val_t, container_t, typename container_t::const_iterator> {
 public:
