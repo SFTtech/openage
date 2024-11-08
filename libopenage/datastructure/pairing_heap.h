@@ -69,14 +69,14 @@ public:
 	/**
 	 * Let this node become a child of the given one.
 	 */
-	void become_child_of(const this_type& node) {
+	void become_child_of(this_type* const node) {
 		node.add_child(this);
 	}
 
 	/**
 	 * Add the given node as a child to this one.
 	 */
-	void add_child(const this_type &new_child) {
+	void add_child(this_type* const new_child) {
 		// first child is the most recently attached one
 		// it must not have siblings as they will get lost.
 
@@ -96,7 +96,7 @@ public:
 	 * by comparing `this` with `node`.
 	 * The new root is returned, it has the other node as child.
 	 */
-	this_type* link_with(const this_type* node) {
+	this_type* link_with(this_type* node) {
 		this_type* new_root;
 		this_type* new_child;
 
