@@ -70,7 +70,7 @@ public:
 	 * Let this node become a child of the given one.
 	 */
 	void become_child_of(this_type* const node) {
-		node.add_child(this);
+		node->add_child(this);
 	}
 
 	/**
