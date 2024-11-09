@@ -3,7 +3,6 @@
 #include "path.h"
 
 #include <utility>
-#include <stdio.h>
 
 #include "../error/error.h"
 #include "compiler.h"
@@ -12,7 +11,6 @@
 #include "fslike/python.h"
 #include "misc.h"
 #include "strings.h"
-#include "file.h"
 
 
 namespace openage::util {
@@ -392,15 +390,6 @@ std::string dirname(const std::string &fullpath) {
 	else {
 		return fullpath.substr(0, rsep_pos);
 	}
-}
-
-static File get_temp_file() {
-	std::FILE* tmp_file = std::tmpfile();
-	int temp_fd = fileno(tmp_file);
-	std::string tf_path = "/proc/self/fd/" + std::to_string(temp_fd);
-	mode_t mode = 0777;
-	File file_wrapper = File(tf_path, mode);
-	return file_wrapper;
 }
 
 

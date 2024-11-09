@@ -96,7 +96,7 @@ public:
 	File open_rw() const;
 	File open_a() const;
 	File open_ar() const;
-	static File get_temp_file();
+
 	/**
 	 * Resolve the native path by flattening all underlying
 	 * filesystem objects (like unions).
@@ -137,6 +137,7 @@ public:
 	Path operator[](const parts_t &subpaths) const;
 	Path operator[](const part_t &subpath) const;
 	Path operator/(const part_t &subpath) const;
+
 	Path with_name(const part_t &name) const;
 	Path with_suffix(const part_t &suffix) const;
 

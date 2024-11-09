@@ -47,6 +47,8 @@ public:
 	uint64_t get_filesize(const Path::parts_t &parts) override;
 
 	std::ostream &repr(std::ostream &) override;
+	
+	static Directory get_temp_directory();
 
 protected:
 	/**
@@ -54,12 +56,10 @@ protected:
 	 * basically basepath + "/".join(parts)
 	 */
 	std::string resolve(const Path::parts_t &parts) const;
-
 	std::tuple<struct stat, int> do_stat(const Path::parts_t &parts) const;
-
+	
 	std::string basepath;
 };
-
 } // namespace fslike
 } // namespace util
 } // namespace openage

@@ -121,5 +121,13 @@ std::ostream &operator<<(std::ostream &stream, const File &file) {
 	return stream;
 }
 
+static File get_temp_file() {
+	std::FILE* tmp_file = std::tmpfile();
+	int temp_fd = fileno(tmp_file);
+	std::string tf_path = "/proc/self/fd/" + std::to_string(temp_fd);
+	mode_t mode = 0777;
+	File file_wrapper = File(tf_path, mode);
+	return file_wrapper;
+}
 
 } // namespace openage::util

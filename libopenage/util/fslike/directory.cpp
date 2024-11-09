@@ -12,6 +12,7 @@
 #include <dirent.h>
 #include <fcntl.h>
 #include <iostream>
+#include <filesystem>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <utility>
@@ -290,6 +291,13 @@ uint64_t Directory::get_filesize(const Path::parts_t &parts) {
 std::ostream &Directory::repr(std::ostream &stream) {
 	stream << this->basepath;
 	return stream;
+}
+
+static Directory get_temp_directory() {
+	std::string temp_dir_path = std::filesystem::temp_directory_path() / std::tmpnam(nullptr);
+	bool create = true;
+	Directory directory = Directory(temp_dir_path, create);
+	return directory;
 }
 
 } // namespace openage::util::fslike
