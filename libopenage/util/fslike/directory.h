@@ -56,8 +56,9 @@ protected:
 	 * basically basepath + "/".join(parts)
 	 */
 	std::string resolve(const Path::parts_t &parts) const;
+
 	std::tuple<struct stat, int> do_stat(const Path::parts_t &parts) const;
-	
+
 	std::string basepath;
 };
 } // namespace fslike

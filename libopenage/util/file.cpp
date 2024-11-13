@@ -16,6 +16,7 @@
 #include "util/filelike/python.h"
 #include "util/path.h"
 #include "util/strings.h"
+#include "util/fslike/directory.h"
 
 
 namespace openage::util {
@@ -122,11 +123,12 @@ std::ostream &operator<<(std::ostream &stream, const File &file) {
 }
 
 static File get_temp_file() {
-	std::FILE* tmp_file = std::tmpfile();
-	int temp_fd = fileno(tmp_file);
-	std::string tf_path = "/proc/self/fd/" + std::to_string(temp_fd);
+	fslike::Directory temp_dir = fslike::Directory::get_temp_directory();
+	std::string file_name = std::tmpnam(nullptr);
+	std::ostringstream dir_path;
+	temp_dir.repr(dir_path);
 	mode_t mode = 0777;
-	File file_wrapper = File(tf_path, mode);
+	File file_wrapper = File(dir_path.str() + file_name, mode);
 	return file_wrapper;
 }
 
