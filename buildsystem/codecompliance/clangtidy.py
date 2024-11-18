@@ -22,7 +22,7 @@ def find_issues(check_files, dirnames):
         'performance-*'
     ]
     # Create the checks string
-    checks = ','.join(checks_to_include)
+    checks = ', '.join(checks_to_include)
 
     # Invocation command
     invocation = ['clang-tidy', f'-checks=-*,{checks}']
@@ -40,26 +40,25 @@ def find_issues(check_files, dirnames):
         # Run clang-tidy for each file
         print(f"Starting clang-tidy check on file: {filename}")
         try:
-            process = subprocess.Popen(
+            with subprocess.Popen(
                 invocation + [filename],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 text=True
-            )
+            ) as process:
+                # Stream output in real-time
+                while True:
+                    output = process.stdout.readline()
+                    if output:
+                        yield ("clang-tidy output", output.strip(), None)
+                    elif process.poll() is not None:
+                        break
 
-            # Stream output in real-time
-            while True:
-                output = process.stdout.readline()
-                if output:
-                    yield ("clang-tidy output", output.strip(), None)
-                elif process.poll() is not None:
-                    break
+                # Capture remaining errors (if any)
+                for error_line in process.stderr:
+                    yield ("clang-tidy error", error_line.strip(), None)
 
-            # Capture remaining errors (if any)
-            for error_line in process.stderr:
-                yield ("clang-tidy error", error_line.strip(), None)
-
-        except Exception as exc:
+        except subprocess.SubprocessError as exc:
             yield (
                 "clang-tidy error",
                 f"An error occurred while running clang-tidy on {filename}: {str(exc)}",
