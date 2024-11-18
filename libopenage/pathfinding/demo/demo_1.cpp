@@ -92,6 +92,7 @@ void path_demo_1(const util::Path &path) {
 		start,
 		target,
 	};
+	grid->init_portal_nodes();
 	timer.start();
 	Path path_result = pathfinder->get_path(path_request);
 	timer.stop();
