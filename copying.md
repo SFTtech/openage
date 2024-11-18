@@ -157,6 +157,7 @@ _the openage authors_ are:
 | Edvin Lindholm              | EdvinLndh                   | edvinlndh à gmail dawt com                        |
 | Jeremiah Morgan             | jere8184                    | jeremiahmorgan dawt bham à outlook dawt com       |
 | Tobias Alam                 | alamt22                     | tobiasal à umich dawt edu                         |
+| Haytham Tang                | haytham918                  | yunxuant à umich dawt edu                         |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
