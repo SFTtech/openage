@@ -48,6 +48,8 @@ public:
 
 	std::ostream &repr(std::ostream &) override;
 
+	static Directory get_temp_directory();
+
 protected:
 	/**
 	 * resolve the path to an actually usable one.
@@ -59,7 +61,6 @@ protected:
 
 	std::string basepath;
 };
-
 } // namespace fslike
 } // namespace util
 } // namespace openage

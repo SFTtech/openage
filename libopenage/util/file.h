@@ -98,8 +98,9 @@ public:
 	void flush();
 	ssize_t size();
 	std::vector<std::string> get_lines();
-
 	std::shared_ptr<filelike::FileLike> get_fileobj() const;
+
+	static File get_temp_file();
 
 protected:
 	std::shared_ptr<filelike::FileLike> filelike;
