@@ -47,7 +47,7 @@ public:
 	uint64_t get_filesize(const Path::parts_t &parts) override;
 
 	std::ostream &repr(std::ostream &) override;
-	
+
 	static Directory get_temp_directory();
 
 protected:
