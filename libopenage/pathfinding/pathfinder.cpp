@@ -4,6 +4,7 @@
 
 #include "coord/chunk.h"
 #include "coord/phys.h"
+#include "error/error.h"
 #include "pathfinding/cost_field.h"
 #include "pathfinding/flow_field.h"
 #include "pathfinding/grid.h"
@@ -201,6 +202,7 @@ const Pathfinder::portal_star_t Pathfinder::portal_a_star(const PathRequest &req
 	std::vector<std::shared_ptr<Portal>> result;
 
 	auto grid = this->grids.at(request.grid_id);
+	auto &portal_map = grid->get_portal_map();
 	auto sector_size = grid->get_sector_size();
 
 	auto start_sector_x = request.start.ne / sector_size;
@@ -210,8 +212,7 @@ const Pathfinder::portal_star_t Pathfinder::portal_a_star(const PathRequest &req
 	// path node storage, always provides cheapest next node.
 	heap_t node_candidates;
 
-	// list of known portals and corresponding node.
-	nodemap_t visited_portals;
+	std::unordered_set<portal_id_t> visited_portals;
 
 	// TODO: Compute cost to travel from one portal to another when creating portals
 	// const int distance_cost = 1;
@@ -223,7 +224,8 @@ const Pathfinder::portal_star_t Pathfinder::portal_a_star(const PathRequest &req
 			continue;
 		}
 
-		auto portal_node = std::make_shared<PortalNode>(portal, start_sector->get_id(), nullptr);
+		auto &portal_node = portal_map.at(portal->get_id());
+		portal_node->entry_sector = start_sector->get_id();
 
 		auto sector_pos = grid->get_sector(portal->get_exit_sector(start_sector->get_id()))->get_position().to_tile(sector_size);
 		auto portal_pos = portal->get_exit_center(start_sector->get_id());
@@ -235,7 +237,9 @@ const Pathfinder::portal_star_t Pathfinder::portal_a_star(const PathRequest &req
 		portal_node->future_cost = portal_node->current_cost + heuristic_cost;
 
 		portal_node->heap_node = node_candidates.push(portal_node);
-		visited_portals[portal->get_id()] = portal_node;
+		portal_node->prev_portal = nullptr;
+		portal_node->was_best = false;
+		visited_portals.insert(portal->get_id());
 	}
 
 	// track the closest we can get to the end position
@@ -266,20 +270,21 @@ const Pathfinder::portal_star_t Pathfinder::portal_a_star(const PathRequest &req
 		}
 
 		// get the exits of the current node
-		auto exits = current_node->get_exits(visited_portals, current_node->entry_sector);
+		const auto &exits = current_node->get_exits(current_node->entry_sector);
 
 		// evaluate all neighbors of the current candidate for further progress
-		for (auto &exit : exits) {
-			if (exit->was_best) {
+		for (auto &[exit, distance_cost] : exits) {
+			exit->entry_sector = current_node->portal->get_exit_sector(current_node->entry_sector);
+			bool not_visited = !visited_portals.contains(exit->portal->get_id());
+
+			if (not_visited) {
+				exit->was_best = false;
+			}
+			else if (exit->was_best) {
 				continue;
 			}
 
-			// Get distance cost (from current node to exit node)
-			auto distance_cost = Pathfinder::distance_cost(
-				current_node->portal->get_exit_center(current_node->entry_sector),
-				exit->portal->get_entry_center(exit->entry_sector));
 
-			bool not_visited = !visited_portals.contains(exit->portal->get_id());
 			auto tentative_cost = current_node->current_cost + distance_cost;
 
 			if (not_visited or tentative_cost < exit->current_cost) {
@@ -300,7 +305,7 @@ const Pathfinder::portal_star_t Pathfinder::portal_a_star(const PathRequest &req
 
 				if (not_visited) {
 					exit->heap_node = node_candidates.push(exit);
-					visited_portals[exit->portal->get_id()] = exit;
+					visited_portals.insert(exit->portal->get_id());
 				}
 				else {
 					node_candidates.decrease(exit->heap_node);
@@ -463,6 +468,16 @@ int Pathfinder::distance_cost(const coord::tile_delta &portal1_pos,
 }
 
 
+PortalNode::PortalNode(const std::shared_ptr<Portal> &portal) :
+	portal{portal},
+	entry_sector{NULL},
+	future_cost{std::numeric_limits<int>::max()},
+	current_cost{std::numeric_limits<int>::max()},
+	heuristic_cost{std::numeric_limits<int>::max()},
+	was_best{false},
+	prev_portal{nullptr},
+	heap_node{nullptr} {}
+
 PortalNode::PortalNode(const std::shared_ptr<Portal> &portal,
                        sector_id_t entry_sector,
                        const node_t &prev_portal) :
@@ -511,27 +526,37 @@ std::vector<node_t> PortalNode::generate_backtrace() {
 	return waypoints;
 }
 
-std::vector<node_t> PortalNode::get_exits(const nodemap_t &nodes,
-                                          sector_id_t entry_sector) {
-	auto &exits = this->portal->get_exits(entry_sector);
-	std::vector<node_t> exit_nodes;
-	exit_nodes.reserve(exits.size());
-
-	auto exit_sector = this->portal->get_exit_sector(entry_sector);
+void PortalNode::init_exits(const nodemap_t &node_map) {
+	auto exits = this->portal->get_exits(this->node_sector_0);
 	for (auto &exit : exits) {
-		auto exit_id = exit->get_id();
+		int distance_cost = Pathfinder::distance_cost(
+			this->portal->get_exit_center(this->node_sector_0),
+			exit->get_entry_center(this->node_sector_1));
 
-		auto exit_node = nodes.find(exit_id);
-		if (exit_node != nodes.end()) {
-			exit_nodes.push_back(exit_node->second);
-		}
-		else {
-			exit_nodes.push_back(std::make_shared<PortalNode>(exit,
-			                                                  exit_sector,
-			                                                  this->shared_from_this()));
-		}
+		auto exit_node = node_map.at(exit->get_id());
+		this->exits_1[exit_node] = distance_cost;
 	}
-	return exit_nodes;
+
+	exits = this->portal->get_exits(this->node_sector_1);
+	for (auto &exit : exits) {
+		int distance_cost = Pathfinder::distance_cost(
+			this->portal->get_exit_center(this->node_sector_1),
+			exit->get_entry_center(this->node_sector_0));
+
+		auto exit_node = node_map.at(exit->get_id());
+		this->exits_0[exit_node] = distance_cost;
+	}
+}
+
+const PortalNode::exits_t &PortalNode::get_exits(sector_id_t entry_sector) {
+	ENSURE(entry_sector == this->node_sector_0 || entry_sector == this->node_sector_1, "Invalid entry sector");
+
+	if (this->node_sector_0 == entry_sector) {
+		return exits_1;
+	}
+	else {
+		return exits_0;
+	}
 }
 
 

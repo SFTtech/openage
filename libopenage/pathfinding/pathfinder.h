@@ -2,9 +2,9 @@
 
 #pragma once
 
+#include <map>
 #include <memory>
 #include <unordered_map>
-#include <unordered_set>
 
 #include "coord/tile.h"
 #include "datastructure/pairing_heap.h"
@@ -62,6 +62,17 @@ public:
 	 */
 	const Path get_path(const PathRequest &request);
 
+
+	/**
+	 * Calculate the distance cost between two portals.
+	 *
+	 * @param portal1_pos Center of the first portal (relative to sector origin).
+	 * @param portal2_pos Center of the second portal (relative to sector origin).
+	 *
+	 * @return Distance cost between the portal centers.
+	 */
+	static int distance_cost(const coord::tile_delta &portal1_pos, const coord::tile_delta &portal2_pos);
+
 private:
 	using portal_star_t = std::pair<PathResult, std::vector<std::shared_ptr<Portal>>>;
 
@@ -100,15 +111,6 @@ private:
 	 */
 	static int heuristic_cost(const coord::tile &portal_pos, const coord::tile &target_pos);
 
-	/**
-	 * Calculate the distance cost between two portals.
-	 *
-	 * @param portal1_pos Center of the first portal (relative to sector origin).
-	 * @param portal2_pos Center of the second portal (relative to sector origin).
-	 *
-	 * @return Distance cost between the portal centers.
-	 */
-	static int distance_cost(const coord::tile_delta &portal1_pos, const coord::tile_delta &portal2_pos);
 
 	/**
 	 * Grids managed by this pathfinder.
@@ -147,6 +149,7 @@ using nodemap_t = std::unordered_map<portal_id_t, node_t>;
  */
 class PortalNode : public std::enable_shared_from_this<PortalNode> {
 public:
+	PortalNode(const std::shared_ptr<Portal> &portal);
 	PortalNode(const std::shared_ptr<Portal> &portal,
 	           sector_id_t entry_sector,
 	           const node_t &prev_portal);
@@ -178,9 +181,25 @@ public:
 	std::vector<node_t> generate_backtrace();
 
 	/**
-	 * Get all exits of a node.
+	 * init PortalNode::exits.
 	 */
-	std::vector<node_t> get_exits(const nodemap_t &nodes, sector_id_t entry_sector);
+	void init_exits(const nodemap_t &node_map);
+
+
+	/**
+	 * maps node_t of a neigbhour portal to the distance cost to travel between the portals
+	 */
+	using exits_t = std::map<const node_t, int>;
+
+
+	/**
+	 * Get the exit portals reachable via the portal when entering from a specified sector.
+	 *
+	 * @param entry_sector Sector from which the portal is entered.
+	 *
+	 * @return Exit portals nodes reachable from the portal.
+	 */
+	const exits_t &get_exits(sector_id_t entry_sector);
 
 	/**
 	 * The portal this node is associated to.
@@ -226,6 +245,26 @@ public:
 	 * Priority queue node that contains this path node.
 	 */
 	heap_t::element_t heap_node;
+
+	/**
+	 * First sector connected by the portal.
+	 */
+	sector_id_t node_sector_0;
+
+	/**
+	 * Second sector connected by the portal.
+	 */
+	sector_id_t node_sector_1;
+
+	/**
+	 * Exits in sector 0 reachable from the portal.
+	 */
+	exits_t exits_0;
+
+	/**
+	 * Exits in sector 1 reachable from the portal.
+	 */
+	exits_t exits_1;
 };
 
 
