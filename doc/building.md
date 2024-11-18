@@ -57,6 +57,7 @@ Dependency list:
     CR    qt6 >=6.2 (Core, Quick, QuickControls, Multimedia modules)
     CR    toml11
     CR  O vulkan
+       S  clang-tidy
 
       A   An installed version of any of the following (wine is your friend).
           Other versions _might_ work:
