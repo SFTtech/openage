@@ -57,6 +57,8 @@ def parse_args():
                      help="increase program verbosity")
     cli.add_argument("-q", "--quiet", action="count", default=0,
                      help="decrease program verbosity")
+    cli.add_argument("--clangtidy", action="store_true", 
+                      help="Check the C++ code with clang-tidy.")
 
     args = cli.parse_args()
     process_args(args, cli.error)
@@ -92,6 +94,7 @@ def process_args(args, error):
         args.pystyle = True
         args.pylint = True
         args.test_git_change_years = True
+        args.clangtidy = True
 
     if not any((args.headerguards, args.legal, args.authors, args.pystyle,
                 args.cppstyle, args.cython, args.test_git_change_years,
@@ -127,6 +130,10 @@ def process_args(args, error):
     if args.pylint:
         if not importlib.util.find_spec('pylint'):
             error("pylint python module required for linting")
+    
+    if args.clangtidy:
+        if not shutil.which('clang-tidy'):
+            error("--clang-tidy requires clang-tidy to be installed")
 
 
 def get_changed_files(gitref):
@@ -264,6 +271,10 @@ def find_all_issues(args, check_files=None):
         from .modes import find_issues
         yield from find_issues(check_files, ('openage', 'buildsystem',
                                              'libopenage', 'etc/gdb_pretty'))
+    
+    if args.clangtidy:
+        from .clangtidy import find_issues
+        yield from find_issues(check_files, ('libopenage', ))
 
 
 if __name__ == '__main__':
