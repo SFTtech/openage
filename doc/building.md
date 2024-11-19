@@ -39,6 +39,7 @@ Dependency list:
     CR    opengl >=3.3
     CR    libepoxy
     CR    libpng
+       S  clang-tidy
      R    dejavu font
     CR    eigen >=3
     CR    freetype2
@@ -57,7 +58,6 @@ Dependency list:
     CR    qt6 >=6.2 (Core, Quick, QuickControls, Multimedia modules)
     CR    toml11
     CR  O vulkan
-       S  clang-tidy
 
       A   An installed version of any of the following (wine is your friend).
           Other versions _might_ work:
