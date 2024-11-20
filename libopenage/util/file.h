@@ -100,7 +100,7 @@ public:
 	std::vector<std::string> get_lines();
 	std::shared_ptr<filelike::FileLike> get_fileobj() const;
 
-	static File get_temp_file();
+	static File get_temp_file(bool executable = false);
 
 protected:
 	std::shared_ptr<filelike::FileLike> filelike;
