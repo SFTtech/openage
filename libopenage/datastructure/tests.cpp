@@ -1,4 +1,4 @@
-// Copyright 2014-2023 the openage authors. See copying.md for legal info.
+// Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 #include "tests.h"
 
@@ -118,7 +118,8 @@ void pairing_heap_2() {
 	heap.push(heap_elem{3});
 
 	// state: 1 2 3, now remove 2
-	heap.unlink_node(node);
+	auto data = heap.remove_node(node);
+	TESTEQUALS(data.data, 2);
 
 	// state: 1 3
 	TESTEQUALS(heap.pop().data, 1);

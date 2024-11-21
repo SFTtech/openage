@@ -1,4 +1,4 @@
-// Copyright 2018-2023 the openage authors. See copying.md for legal info.
+// Copyright 2018-2024 the openage authors. See copying.md for legal info.
 
 #include "eventstore.h"
 
@@ -56,7 +56,7 @@ bool EventStore::erase(const std::shared_ptr<Event> &event) {
 	bool erased = false;
 	auto it = this->events.find(event);
 	if (it != std::end(this->events)) {
-		this->heap.unlink_node(it->second);
+		this->heap.remove_node(it->second);
 		this->events.erase(it);
 		erased = true;
 	}
