@@ -11,8 +11,8 @@
 #include <cstdio>
 #include <dirent.h>
 #include <fcntl.h>
-#include <iostream>
 #include <filesystem>
+#include <iostream>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <utility>
@@ -293,7 +293,7 @@ std::ostream &Directory::repr(std::ostream &stream) {
 	return stream;
 }
 
-static Directory get_temp_directory() {
+Directory Directory::get_temp_directory() {
 	std::string temp_dir_path = std::filesystem::temp_directory_path() / std::tmpnam(nullptr);
 	bool create = true;
 	Directory directory = Directory(temp_dir_path, create);
