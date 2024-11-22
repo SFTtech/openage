@@ -294,7 +294,8 @@ std::ostream &Directory::repr(std::ostream &stream) {
 }
 
 Directory Directory::get_temp_directory() {
-	std::string temp_dir_path = std::filesystem::temp_directory_path() / std::tmpnam(nullptr);
+	std::filesystem::path path = std::filesystem::temp_directory_path() / std::tmpnam(nullptr);
+	std::string temp_dir_path = path.string();
 	bool create = true;
 	Directory directory = Directory(temp_dir_path, create);
 	return directory;
