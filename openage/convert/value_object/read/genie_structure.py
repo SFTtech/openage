@@ -1,4 +1,4 @@
-# Copyright 2014-2023 the openage authors. See copying.md for legal info.
+# Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -456,30 +456,40 @@ class GenieStructure:
                     array_members = []
                     allowed_member_type = None
 
+                    if storage_type is StorageType.ARRAY_INT:
+                        allowed_member_type = StorageType.INT_MEMBER
+
+                    elif storage_type is StorageType.ARRAY_FLOAT:
+                        allowed_member_type = StorageType.FLOAT_MEMBER
+
+                    elif storage_type is StorageType.ARRAY_BOOL:
+                        allowed_member_type = StorageType.BOOLEAN_MEMBER
+
+                    elif storage_type is StorageType.ARRAY_ID:
+                        allowed_member_type = StorageType.ID_MEMBER
+
+                    elif storage_type is StorageType.ARRAY_STRING:
+                        allowed_member_type = StorageType.STRING_MEMBER
+
                     for elem in result:
                         if storage_type is StorageType.ARRAY_INT:
                             gen_member = IntMember(var_name, elem)
-                            allowed_member_type = StorageType.INT_MEMBER
                             array_members.append(gen_member)
 
                         elif storage_type is StorageType.ARRAY_FLOAT:
                             gen_member = FloatMember(var_name, elem)
-                            allowed_member_type = StorageType.FLOAT_MEMBER
                             array_members.append(gen_member)
 
                         elif storage_type is StorageType.ARRAY_BOOL:
                             gen_member = BooleanMember(var_name, elem)
-                            allowed_member_type = StorageType.BOOLEAN_MEMBER
                             array_members.append(gen_member)
 
                         elif storage_type is StorageType.ARRAY_ID:
                             gen_member = IDMember(var_name, elem)
-                            allowed_member_type = StorageType.ID_MEMBER
                             array_members.append(gen_member)
 
                         elif storage_type is StorageType.ARRAY_STRING:
                             gen_member = StringMember(var_name, elem)
-                            allowed_member_type = StorageType.STRING_MEMBER
                             array_members.append(gen_member)
 
                         else:

@@ -279,6 +279,8 @@ RESOURCE_TYPES = {
     248: "DE2_UNKNOWN_248",
     249: "DE2_UNKNOWN_249",
     250: "DE2_UNKNOWN_250",
+    501: "DE2_UNKNOWN_501",
+    506: "DE2_UNKNOWN_506",
 }
 
 EFFECT_APPLY_TYPE = {
@@ -337,6 +339,10 @@ EFFECT_APPLY_TYPE = {
     101: "TECHCOST_MODIFY",
     102: "TECH_TOGGLE",       # d == research_id
     103: "TECH_TIME_MODIFY",  # a == research_id, if c == 0: d==absval else d==relval
+
+    -54: "UNKNOWN",  # 199: "UNKNOWN",
+    -55: "UNKNOWN",  # 200: "UNKNOWN",
+    -56: "UNKNOWN",  # 201: "UNKNOWN",
 
     # attribute_id:
     # 0: hit points
@@ -506,6 +512,8 @@ ARMOR_CLASS = {
     37: "DE2_SIEGE_BALLISTA",
     38: "DE2_SKIRMISHER",
     39: "DE2_CAMEL_RIDER",
+    40: "DE2_UNKNOWN_40",
+    60: "DE2_UNKNOWN_60",
 }
 
 UNIT_CLASSES = {
@@ -757,4 +765,5 @@ GARRISON_TYPES = {
     0x0b: "NOCAVALRY",
     0x0f: "ALL",
     0x10: "SWGB_LIVESTOCK",
+    0x40: "DE2_UNKNOWN_40",
 }

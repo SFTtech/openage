@@ -49,6 +49,156 @@ class DE2UpgradeResourceSubprocessor:
         return patches
 
     @staticmethod
+    def bfg_unknown_69_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
+        """
+        Creates a patch for a BfG unknown resource effect (ID: 69).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
+
+        return patches
+
+    @staticmethod
+    def bfg_unknown_219_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
+        """
+        Creates a patch for a BfG unknown resource effect (ID: 219).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
+
+        return patches
+
+    @staticmethod
+    def bfg_unknown_502_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
+        """
+        Creates a patch for a BfG unknown resource effect (ID: 502).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
+
+        return patches
+
+    @staticmethod
+    def bfg_unknown_507_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
+        """
+        Creates a patch for a BfG unknown resource effect (ID: 507).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
+
+        return patches
+
+    @staticmethod
+    def bfg_unknown_521_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
+        """
+        Creates a patch for a BfG unknown resource effect (ID: 521).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
+
+        return patches
+
+    @staticmethod
+    def bfg_unknown_551_upgrade(
+        converter_group: ConverterObjectGroup,
+        value: typing.Union[int, float],
+        operator: MemberOperator,
+        team: bool = False
+    ) -> list[ForwardRef]:
+        """
+        Creates a patch for a BfG unknown resource effect (ID: 551).
+
+        :param converter_group: Tech/Civ that gets the patch.
+        :type converter_group: ...dataformat.converter_object.ConverterObjectGroup
+        :param value: Value used for patching the member.
+        :type value: MemberOperator
+        :param operator: Operator used for patching the member.
+        :type operator: MemberOperator
+        :returns: The forward references for the generated patches.
+        :rtype: list
+        """
+        patches = []
+
+        # TODO: Implement
+
+        return patches
+
+    @staticmethod
     def burgundian_vineyards_upgrade(
         converter_group: ConverterObjectGroup,
         value: typing.Union[int, float],
