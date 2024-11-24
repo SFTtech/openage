@@ -1361,10 +1361,10 @@ class AoCProcessor:
                         continue
 
                     trade_post_id = command["unit_id"].value
-                    break
 
-                # Notify buiding
-                full_data_set.building_lines[trade_post_id].add_trading_line(unit_line)
+                    # Notify buiding
+                    if trade_post_id in full_data_set.building_lines.keys():
+                        full_data_set.building_lines[trade_post_id].add_trading_line(unit_line)
 
     @staticmethod
     def link_repairables(full_data_set: GenieObjectContainer) -> None:
