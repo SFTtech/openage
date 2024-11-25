@@ -285,7 +285,7 @@ RESOURCE_TYPES = {
 
 EFFECT_APPLY_TYPE = {
     # unused assignage: a = -1, b = -1, c = -1, d = 0
-    -1: "DISABLED",
+    255: "DISABLED",
     # if a != -1: a == unit_id, else b == unit_class_id; c =
     # attribute_id, d = new_value
     0: "ATTRIBUTE_ABSSET",
@@ -340,9 +340,10 @@ EFFECT_APPLY_TYPE = {
     102: "TECH_TOGGLE",       # d == research_id
     103: "TECH_TIME_MODIFY",  # a == research_id, if c == 0: d==absval else d==relval
 
-    -54: "UNKNOWN",  # 199: "UNKNOWN",
-    -55: "UNKNOWN",  # 200: "UNKNOWN",
-    -56: "UNKNOWN",  # 201: "UNKNOWN",
+    # unknown; used in DE2 BfG
+    199: "UNKNOWN",
+    200: "UNKNOWN",
+    201: "UNKNOWN",
 
     # attribute_id:
     # 0: hit points
