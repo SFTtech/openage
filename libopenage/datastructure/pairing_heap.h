@@ -405,7 +405,7 @@ public:
 	 */
 	void clear() {
 		auto delete_node = [](element_t node) { delete node; };
-		this->iter_all(delete_node, true);
+		this->iter_all<true>(delete_node);
 		this->root_node = nullptr;
 		this->node_count = 0;
 #if OPENAGE_PAIRINGHEAP_DEBUG
@@ -579,30 +579,44 @@ public:
 	}
 #endif
 
-	void iter_all(const std::function<void(const element_t &)> &func, bool reverse = true) const {
-		this->walk_tree(this->root_node, func, reverse);
+	/**
+	 * Apply the given function to all nodes in the tree.
+	 *
+	 * @tparam reverse If true, the function is applied to the nodes in reverse order.
+	 * @param func Function to apply to each node.
+	 */
+	template <bool reverse = false>
+	void iter_all(const std::function<void(const element_t &)> &func) const {
+		this->walk_tree<reverse>(this->root_node, func);
 	}
 
 private:
-	void walk_tree(const element_t &root,
-	               const std::function<void(const element_t &)> &func,
-	               bool reverse = false) const {
-		if (!reverse) {
-			func(root);
+	/**
+	 * Apply the given function to all nodes in the tree.
+	 *
+	 * @tparam reverse If true, the function is applied to the nodes in reverse order.
+	 * @param start Starting node.
+	 * @param func Function to apply to each node.
+	 */
+	template <bool reverse = false>
+	void walk_tree(const element_t &start,
+	               const std::function<void(const element_t &)> &func) const {
+		if constexpr (not reverse) {
+			func(start);
 		}
 
-		if (root) {
-			auto node = root->first_child;
+		if (start) {
+			auto node = start->first_child;
 			while (true) {
 				if (not node) {
 					break;
 				}
 
-				this->walk_tree(node, func, reverse);
+				this->walk_tree<reverse>(node, func);
 				node = node->next_sibling;
 			}
-			if (reverse) {
-				func(root);
+			if constexpr (reverse) {
+				func(start);
 			}
 		}
 	}
