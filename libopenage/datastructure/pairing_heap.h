@@ -38,7 +38,7 @@ class PairingHeap;
 
 
 template <typename T, typename compare = std::less<T>>
-class PairingHeapNode : public std::enable_shared_from_this<PairingHeapNode<T, compare>> {
+class PairingHeapNode {
 public:
 	using this_type = PairingHeapNode<T, compare>;
 
@@ -47,7 +47,6 @@ public:
 	T data;
 	compare cmp;
 
-public:
 	PairingHeapNode(const T &data) :
 		data{data} {}
 
@@ -55,6 +54,10 @@ public:
 		data{std::move(data)} {}
 
 	~PairingHeapNode() = default;
+
+	PairingHeapNode(const this_type &other) = delete;
+
+	this_type &operator=(const this_type &other) = delete;
 
 	/**
 	 * Get contained node data.
@@ -66,14 +69,14 @@ public:
 	/**
 	 * Let this node become a child of the given one.
 	 */
-	void become_child_of(const std::shared_ptr<this_type> &node) {
-		node->add_child(this->shared_from_this());
+	void become_child_of(this_type *const node) {
+		node->add_child(this);
 	}
 
 	/**
 	 * Add the given node as a child to this one.
 	 */
-	void add_child(const std::shared_ptr<this_type> &new_child) {
+	void add_child(this_type *const new_child) {
 		// first child is the most recently attached one
 		// it must not have siblings as they will get lost.
 
@@ -85,7 +88,7 @@ public:
 		}
 
 		this->first_child = new_child;
-		new_child->parent = this->shared_from_this();
+		new_child->parent = this;
 	}
 
 	/**
@@ -93,23 +96,23 @@ public:
 	 * by comparing `this` with `node`.
 	 * The new root is returned, it has the other node as child.
 	 */
-	std::shared_ptr<this_type> link_with(const std::shared_ptr<this_type> &node) {
-		std::shared_ptr<this_type> new_root;
-		std::shared_ptr<this_type> new_child;
+	this_type *link_with(this_type *const node) {
+		this_type *new_root;
+		this_type *new_child;
 
 		if (this->cmp(this->data, node->data)) {
-			new_root = this->shared_from_this();
+			new_root = this;
 			new_child = node;
 		}
 		else {
 			new_root = node;
-			new_child = this->shared_from_this();
+			new_child = this;
 		}
 
 		// children of new root become siblings of new new_child
 		// -> parent of new child = new root
 
-		// this whll be set by the add_child method
+		// this will be set by the add_child method
 		new_child->prev_sibling = nullptr;
 		new_child->next_sibling = nullptr;
 
@@ -128,15 +131,15 @@ public:
 	 * Recursive call, one stage for each all childs of the root node.
 	 * This results in the computation of the new subtree root.
 	 */
-	std::shared_ptr<this_type> link_backwards() {
+	this_type *link_backwards() {
 		if (this->next_sibling == nullptr) {
 			// reached end, return this as current root,
 			// the previous siblings will be linked to it.
-			return this->shared_from_this();
+			return this;
 		}
 
 		// recurse to last sibling,
-		std::shared_ptr<this_type> node = this->next_sibling->link_backwards();
+		this_type *node = this->next_sibling->link_backwards();
 
 		// then link ourself to the new root.
 		this->next_sibling = nullptr;
@@ -153,9 +156,9 @@ public:
 	 */
 	void loosen() {
 		// release us from some other node
-		if (this->parent and this->parent->first_child == this->shared_from_this()) {
-			// we are the first child
-			// make the next sibling the first child
+		if (this->parent and this->parent->first_child == this) {
+			// we are child
+			// make the next sibling child
 			this->parent->first_child = this->next_sibling;
 		}
 		// if we have a previous sibling
@@ -176,10 +179,10 @@ public:
 	}
 
 private:
-	std::shared_ptr<this_type> first_child;
-	std::shared_ptr<this_type> prev_sibling;
-	std::shared_ptr<this_type> next_sibling;
-	std::shared_ptr<this_type> parent; // for decrease-key and delete
+	this_type *first_child = nullptr;
+	this_type *prev_sibling = nullptr;
+	this_type *next_sibling = nullptr;
+	this_type *parent = nullptr; // for decrease-key and delete
 };
 
 
@@ -191,10 +194,8 @@ template <typename T,
           typename heapnode_t = PairingHeapNode<T, compare>>
 class PairingHeap final {
 public:
-	using node_t = heapnode_t;
-	using element_t = std::shared_ptr<node_t>;
-	using this_type = PairingHeap<T, compare, node_t>;
-	using cmp_t = compare;
+	using element_t = heapnode_t *;
+	using this_type = PairingHeap<T, compare, heapnode_t>;
 
 	/**
 	 * create a empty heap.
@@ -204,14 +205,16 @@ public:
 		root_node(nullptr) {
 	}
 
-	~PairingHeap() = default;
+	~PairingHeap() {
+		this->clear();
+	};
 
 	/**
 	 * adds the given item to the heap.
 	 * O(1)
 	 */
 	element_t push(const T &item) {
-		element_t new_node = std::make_shared<node_t>(item);
+		element_t new_node = new heapnode_t(item);
 		this->push_node(new_node);
 		return new_node;
 	}
@@ -221,16 +224,9 @@ public:
 	 * O(1)
 	 */
 	element_t push(T &&item) {
-		element_t new_node = std::make_shared<node_t>(std::move(item));
+		element_t new_node = new heapnode_t(std::move(item));
 		this->push_node(new_node);
 		return new_node;
-	}
-
-	/**
-	 * returns and removes the smallest item on the heap.
-	 */
-	T pop() {
-		return std::move(this->pop_node()->data);
 	}
 
 	/**
@@ -239,7 +235,7 @@ public:
 	 *                       _________
 	 * Ω(log log n), O(2^(2*√log log n'))
 	 */
-	element_t pop_node() {
+	T pop() {
 		if (this->root_node == nullptr) {
 			throw Error{MSG(err) << "Can't pop an empty heap!"};
 		}
@@ -316,36 +312,9 @@ public:
 		ret->first_child = nullptr;
 
 		// and it's done!
-		return ret;
-	}
-
-	/**
-	 * Unlink a node from the heap.
-	 *
-	 * If the item is the current root, just pop().
-	 * else, cut the node from its parent, pop() that subtree
-	 * and merge these trees.
-	 *
-	 * O(pop_node)
-	 */
-	void unlink_node(const element_t &node) {
-		if (node == this->root_node) {
-			this->pop_node();
-		}
-		else {
-			node->loosen();
-
-			element_t real_root = this->root_node;
-			this->root_node = node;
-			this->pop_node();
-
-			element_t new_root = this->root_node;
-			this->root_node = real_root;
-
-			if (new_root != nullptr) {
-				this->root_insert(new_root);
-			}
-		}
+		T data = std::move(ret->data);
+		delete ret;
+		return data;
 	}
 
 	/**
@@ -391,14 +360,43 @@ public:
 	 *
 	 * O(1) (but slower than decrease), and O(pop) when node is the root.
 	 */
-	void update(const element_t &node) {
+	void update(element_t &node) {
 		if (node != this->root_node) [[likely]] {
-			this->unlink_node(node);
-			this->push_node(node);
+			node = this->push(this->remove_node(node));
 		}
 		else {
 			// it's the root node, so we just pop and push it.
-			this->push_node(this->pop_node());
+			node = this->push(this->pop());
+		}
+	}
+
+	/**
+	 * remove a node from the heap. Return its data.
+	 *
+	 * If the item is the current root, just pop().
+	 * else, cut the node from its parent, pop() that subtree
+	 * and merge these trees.
+	 *
+	 * O(pop_node)
+	 */
+	T remove_node(const element_t &node) {
+		if (node == this->root_node) {
+			return this->pop();
+		}
+		else {
+			node->loosen();
+
+			element_t real_root = this->root_node;
+			this->root_node = node;
+			T data = this->pop();
+
+			element_t new_root = this->root_node;
+			this->root_node = real_root;
+
+			if (new_root != nullptr) {
+				this->root_insert(new_root);
+			}
+			return data;
 		}
 	}
 
@@ -406,6 +404,8 @@ public:
 	 * erase all elements on the heap.
 	 */
 	void clear() {
+		auto delete_node = [](element_t node) { delete node; };
+		this->iter_all<true>(delete_node);
 		this->root_node = nullptr;
 		this->node_count = 0;
 #if OPENAGE_PAIRINGHEAP_DEBUG
@@ -579,27 +579,48 @@ public:
 	}
 #endif
 
+	/**
+	 * Apply the given function to all nodes in the tree.
+	 *
+	 * @tparam reverse If true, the function is applied to the nodes in reverse order.
+	 * @param func Function to apply to each node.
+	 */
+	template <bool reverse = false>
 	void iter_all(const std::function<void(const element_t &)> &func) const {
-		this->walk_tree(this->root_node, func);
+		this->walk_tree<reverse>(this->root_node, func);
 	}
 
-protected:
-	void walk_tree(const element_t &root,
+private:
+	/**
+	 * Apply the given function to all nodes in the tree.
+	 *
+	 * @tparam reverse If true, the function is applied to the nodes in reverse order.
+	 * @param start Starting node.
+	 * @param func Function to apply to each node.
+	 */
+	template <bool reverse = false>
+	void walk_tree(const element_t &start,
 	               const std::function<void(const element_t &)> &func) const {
-		func(root);
+		if constexpr (not reverse) {
+			func(start);
+		}
 
-		if (root) {
-			auto node = root->first_child;
+		if (start) {
+			auto node = start->first_child;
 			while (true) {
 				if (not node) {
 					break;
 				}
 
-				this->walk_tree(node, func);
+				this->walk_tree<reverse>(node, func);
 				node = node->next_sibling;
+			}
+			if constexpr (reverse) {
+				func(start);
 			}
 		}
 	}
+
 
 	/**
 	 * adds the given node to the heap.
@@ -608,10 +629,9 @@ protected:
 	 */
 	void push_node(const element_t &node) {
 		this->root_insert(node);
-
 #if OPENAGE_PAIRINGHEAP_DEBUG
-		auto ins = this->nodes.insert(node);
-		if (not ins.second) {
+		auto [iter, result] = this->nodes.insert(node);
+		if (not result) {
 			throw Error{ERR << "node already known"};
 		}
 #endif
@@ -631,7 +651,6 @@ protected:
 		}
 	}
 
-protected:
 	compare cmp;
 	size_t node_count;
 	element_t root_node;
