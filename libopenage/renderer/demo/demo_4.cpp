@@ -165,6 +165,11 @@ void renderer_demo_4(const util::Path &path) {
 
 	auto pass2 = renderer->add_render_pass({display_obj}, renderer->get_display_target());
 
+	/* Check if all uniform values for uniform inputs have been set */
+	if (!obj1_unifs->is_complete() || !proj_unif->is_complete() || !color_texture_unif->is_complete()) {
+		log::log(WARN << "Some Uniform values have not been set.");
+	}
+
 	window.add_resize_callback([&](size_t w, size_t h, double /*scale*/) {
 		/* Calculate a projection matrix for the new screen size. */
 		float aspectRatio = float(w) / float(h);

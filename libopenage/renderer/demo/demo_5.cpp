@@ -134,6 +134,11 @@ void renderer_demo_5(const util::Path &path) {
 		"tex",
 		gltex);
 
+	/* Check if all uniform values for uniform inputs have been set */
+	if (!transform_unifs->is_complete()) {
+		log::log(WARN << "Some Uniform values have not been set.");
+	}
+
 	// Move around the scene with WASD
 	window.add_key_callback([&](const QKeyEvent &ev) {
 		bool cam_update = false;

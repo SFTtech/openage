@@ -224,6 +224,11 @@ void renderer_demo_2(const util::Path &path) {
 
 	auto pass2 = renderer->add_render_pass({display_obj}, renderer->get_display_target());
 
+	/* Check if all uniform values for uniform inputs have been set */
+	if (!obj1_unifs->is_complete() || !proj_unif->is_complete() || !color_texture_unif->is_complete()) {
+		log::log(WARN << "Some Uniform values have not been set.");
+	}
+
 	/* Data retrieved from the object index texture. */
 	resources::Texture2dData id_texture_data = id_texture->into_data();
 	bool texture_data_valid = false;

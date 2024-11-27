@@ -43,8 +43,13 @@ void renderer_demo_0(const util::Path &path) {
 	auto display_shader = renderer->add_shader({display_vshader_src, display_fshader_src});
 
 	auto quad = renderer->add_mesh_geometry(resources::MeshData::make_quad());
+	auto display_unif = display_shader->create_empty_input();
+	/* Check if all uniform values for uniform inputs have been set */
+	if (!display_unif->is_complete()) {
+		log::log(WARN << "Some Uniform values have not been set.");
+	}
 	Renderable display_stuff{
-		display_shader->create_empty_input(),
+		display_unif,
 		quad,
 		false,
 		false,

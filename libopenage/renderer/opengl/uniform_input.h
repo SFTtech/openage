@@ -35,6 +35,11 @@ private:
 public:
 	GlUniformInput(const std::shared_ptr<ShaderProgram> &prog);
 
+  /**
+   * Check if all uniforms have been set.
+   */
+    bool is_complete() const override;
+
 	/**
 	 * Store the IDs of the uniforms from the shader set by this uniform input.
 	 */
