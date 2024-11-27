@@ -15,6 +15,7 @@ def find_issues(check_files, dirnames):
     Yields issues found by clang-tidy in real-time.
     """
     # Specify the checks to include
+    # 4 checks we focus on
     checks_to_include = [
         'clang-analyzer-*',
         'bugprone-*',
@@ -27,6 +28,7 @@ def find_issues(check_files, dirnames):
     # Invocation command
     invocation = ['clang-tidy', f'-checks=-*,{checks}']
 
+    # Use utility functions from util.py and cppstyle.py
     if check_files is not None:
         filenames = list(filter_file_list(check_files, dirnames))
     else:
@@ -58,6 +60,7 @@ def find_issues(check_files, dirnames):
                 for error_line in process.stderr:
                     yield ("clang-tidy error", error_line.strip(), None)
 
+        # Handle exception
         except subprocess.SubprocessError as exc:
             yield (
                 "clang-tidy error",
