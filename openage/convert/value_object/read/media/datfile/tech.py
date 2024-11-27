@@ -1,4 +1,4 @@
-# Copyright 2013-2023 the openage authors. See copying.md for legal info.
+# Copyright 2013-2024 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 from __future__ import annotations
@@ -31,7 +31,7 @@ class Effect(GenieStructure):
         """
         data_format = [
             (READ_GEN, "type_id", StorageType.ID_MEMBER, EnumLookupMember(
-                raw_type="int8_t",
+                raw_type="uint8_t",
                 type_name="effect_apply_type",
                 lookup_dict=EFFECT_APPLY_TYPE
             )),

@@ -58,6 +58,7 @@ Map::Map(const std::shared_ptr<GameState> &state,
 	for (const auto &path_type : this->grid_lookup) {
 		auto grid = this->pathfinder->get_grid(path_type.second);
 		grid->init_portals();
+		grid->init_portal_nodes();
 	}
 }
 

@@ -279,11 +279,13 @@ RESOURCE_TYPES = {
     248: "DE2_UNKNOWN_248",
     249: "DE2_UNKNOWN_249",
     250: "DE2_UNKNOWN_250",
+    501: "DE2_UNKNOWN_501",
+    506: "DE2_UNKNOWN_506",
 }
 
 EFFECT_APPLY_TYPE = {
     # unused assignage: a = -1, b = -1, c = -1, d = 0
-    -1: "DISABLED",
+    255: "DISABLED",
     # if a != -1: a == unit_id, else b == unit_class_id; c =
     # attribute_id, d = new_value
     0: "ATTRIBUTE_ABSSET",
@@ -337,6 +339,11 @@ EFFECT_APPLY_TYPE = {
     101: "TECHCOST_MODIFY",
     102: "TECH_TOGGLE",       # d == research_id
     103: "TECH_TIME_MODIFY",  # a == research_id, if c == 0: d==absval else d==relval
+
+    # unknown; used in DE2 BfG
+    199: "UNKNOWN",
+    200: "UNKNOWN",
+    201: "UNKNOWN",
 
     # attribute_id:
     # 0: hit points
@@ -506,6 +513,8 @@ ARMOR_CLASS = {
     37: "DE2_SIEGE_BALLISTA",
     38: "DE2_SKIRMISHER",
     39: "DE2_CAMEL_RIDER",
+    40: "DE2_UNKNOWN_40",
+    60: "DE2_UNKNOWN_60",
 }
 
 UNIT_CLASSES = {
@@ -757,4 +766,5 @@ GARRISON_TYPES = {
     0x0b: "NOCAVALRY",
     0x0f: "ALL",
     0x10: "SWGB_LIVESTOCK",
+    0x40: "DE2_UNKNOWN_40",
 }

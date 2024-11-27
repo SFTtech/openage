@@ -63,11 +63,14 @@ class DE2TechSubprocessor:
         57: AoCUpgradeAttributeSubprocessor.kidnap_storage_upgrade,
 
         30: DE2UpgradeAttributeSubprocessor.herdable_capacity_upgrade,
+        51: DE2UpgradeAttributeSubprocessor.bfg_unknown_51_upgrade,
         59: DE2UpgradeAttributeSubprocessor.charge_attack_upgrade,
         60: DE2UpgradeAttributeSubprocessor.charge_regen_upgrade,
         61: DE2UpgradeAttributeSubprocessor.charge_event_upgrade,
         62: DE2UpgradeAttributeSubprocessor.charge_type_upgrade,
         63: AoCUpgradeAttributeSubprocessor.ignore_armor_upgrade,
+        71: DE2UpgradeAttributeSubprocessor.bfg_unknown_71_upgrade,
+        73: DE2UpgradeAttributeSubprocessor.bfg_unknown_73_upgrade,
         100: AoCUpgradeAttributeSubprocessor.resource_cost_upgrade,
         101: AoCUpgradeAttributeSubprocessor.creation_time_upgrade,
         102: AoCUpgradeAttributeSubprocessor.min_projectiles_upgrade,
@@ -99,6 +102,7 @@ class DE2TechSubprocessor:
         46: AoCUpgradeResourceSubprocessor.tribute_inefficiency_upgrade,
         47: AoCUpgradeResourceSubprocessor.gather_gold_efficiency_upgrade,
         50: AoCUpgradeResourceSubprocessor.reveal_ally_upgrade,
+        69: DE2UpgradeResourceSubprocessor.bfg_unknown_69_upgrade,
         77: AoCUpgradeResourceSubprocessor.conversion_resistance_upgrade,
         78: AoCUpgradeResourceSubprocessor.trade_penalty_upgrade,
         79: AoCUpgradeResourceSubprocessor.gather_stone_efficiency_upgrade,
@@ -137,6 +141,7 @@ class DE2TechSubprocessor:
         214: DE2UpgradeResourceSubprocessor.free_kipchaks_upgrade,
         216: DE2UpgradeResourceSubprocessor.sheep_food_amount_upgrade,
         218: DE2UpgradeResourceSubprocessor.cuman_tc_upgrade,
+        219: DE2UpgradeResourceSubprocessor.bfg_unknown_219_upgrade,
         220: DE2UpgradeResourceSubprocessor.relic_food_production_upgrade,
         234: DE2UpgradeResourceSubprocessor.first_crusade_upgrade,
         236: DE2UpgradeResourceSubprocessor.burgundian_vineyards_upgrade,
@@ -160,6 +165,10 @@ class DE2TechSubprocessor:
         274: DE2UpgradeResourceSubprocessor.chieftains_upgrade,
         280: DE2UpgradeResourceSubprocessor.conversion_range_upgrade,
         282: DE2UpgradeResourceSubprocessor.unknown_recharge_rate_upgrade,
+        502: DE2UpgradeResourceSubprocessor.bfg_unknown_502_upgrade,
+        507: DE2UpgradeResourceSubprocessor.bfg_unknown_507_upgrade,
+        521: DE2UpgradeResourceSubprocessor.bfg_unknown_521_upgrade,
+        551: DE2UpgradeResourceSubprocessor.bfg_unknown_551_upgrade,
     }
 
     @classmethod
