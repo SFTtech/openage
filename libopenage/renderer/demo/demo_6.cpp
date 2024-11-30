@@ -9,6 +9,7 @@
 #include "renderer/camera/camera.h"
 #include "renderer/camera/frustum_2d.h"
 #include "renderer/camera/frustum_3d.h"
+#include "renderer/demo/util.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/opengl/window.h"
 #include "renderer/render_pass.h"
@@ -23,7 +24,6 @@
 #include "renderer/shader_program.h"
 #include "renderer/texture.h"
 #include "renderer/uniform_buffer.h"
-#include "renderer/demo/util.h"
 #include "time/clock.h"
 #include "util/path.h"
 #include "util/vector.h"
@@ -490,7 +490,7 @@ void RenderManagerDemo6::create_render_passes() {
 		{display_obj_3d, display_obj_2d, display_obj_frame},
 		renderer->get_display_target());
 
-	if (!check_uniform_completeness({display_obj_3d, display_obj_2d, display_obj_frame})) {
+	if (not check_uniform_completeness({display_obj_3d, display_obj_2d, display_obj_frame})) {
 		log::log(WARN << "Uniforms not complete.");
 	}
 }

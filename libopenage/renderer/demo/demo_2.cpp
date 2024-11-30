@@ -6,6 +6,7 @@
 #include <epoxy/gl.h>
 #include <QMouseEvent>
 
+#include "renderer/demo/util.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/opengl/window.h"
 #include "renderer/render_pass.h"
@@ -18,7 +19,6 @@
 #include "renderer/resources/texture_data.h"
 #include "renderer/shader_program.h"
 #include "renderer/texture.h"
-#include "renderer/demo/util.h"
 
 
 namespace openage::renderer::tests {
@@ -225,7 +225,7 @@ void renderer_demo_2(const util::Path &path) {
 
 	auto pass2 = renderer->add_render_pass({display_obj}, renderer->get_display_target());
 
-	if (!check_uniform_completeness({proj_update, obj1, display_obj})) {
+	if (not check_uniform_completeness({proj_update, obj1, display_obj})) {
 		log::log(WARN << "Uniforms not complete.");
 	}
 

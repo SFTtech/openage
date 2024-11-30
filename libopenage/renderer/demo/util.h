@@ -3,6 +3,7 @@
 #pragma once
 
 #include <vector>
+
 #include "renderer/renderable.h"
 
 namespace openage::renderer::tests {

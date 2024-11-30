@@ -2,6 +2,7 @@
 
 #include "demo_0.h"
 
+#include "renderer/demo/util.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/opengl/window.h"
 #include "renderer/render_pass.h"
@@ -9,7 +10,6 @@
 #include "renderer/resources/mesh_data.h"
 #include "renderer/resources/shader_source.h"
 #include "renderer/shader_program.h"
-#include "renderer/demo/util.h"
 
 
 namespace openage::renderer::tests {
@@ -51,7 +51,7 @@ void renderer_demo_0(const util::Path &path) {
 		false,
 	};
 
-	if (!check_uniform_completeness({display_stuff})) {
+	if (not check_uniform_completeness({display_stuff})) {
 		log::log(WARN << "Uniforms not complete.");
 	}
 

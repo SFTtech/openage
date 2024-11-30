@@ -7,6 +7,7 @@
 #include <QMouseEvent>
 
 #include "renderer/camera/camera.h"
+#include "renderer/demo/util.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/opengl/window.h"
 #include "renderer/render_pass.h"
@@ -17,7 +18,6 @@
 #include "renderer/shader_program.h"
 #include "renderer/uniform_buffer.h"
 #include "renderer/uniform_input.h"
-#include "renderer/demo/util.h"
 
 
 namespace openage::renderer::tests {
@@ -135,7 +135,7 @@ void renderer_demo_5(const util::Path &path) {
 		"tex",
 		gltex);
 
-	if (!check_uniform_completeness({terrain_obj})) {
+	if (not check_uniform_completeness({terrain_obj})) {
 		log::log(WARN << "Uniforms not complete.");
 	}
 
