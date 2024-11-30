@@ -248,7 +248,7 @@ void renderer_demo_2(const util::Path &path) {
 			ssize_t y = qpos.y();
 
 			log::log(INFO << "Clicked at location (" << x << ", " << y << ")");
-			if (!texture_data_valid) {
+			if (not texture_data_valid) {
 				id_texture_data = id_texture->into_data();
 				texture_data_valid = true;
 			}
