@@ -23,6 +23,7 @@
 #include "renderer/shader_program.h"
 #include "renderer/texture.h"
 #include "renderer/uniform_buffer.h"
+#include "renderer/demo/util.h"
 #include "time/clock.h"
 #include "util/path.h"
 #include "util/vector.h"
@@ -179,10 +180,6 @@ const std::vector<renderer::Renderable> RenderManagerDemo6::create_2d_obj() {
 			this->obj_2d_texture,
 			"tile_params",
 			tile_params);
-		/* Check if all uniform values for uniform inputs have been set */
-		if (!animation_2d_unifs->is_complete()) {
-			log::log(WARN << "Some Uniform values have not been set.");
-		}
 		auto quad = this->renderer->add_mesh_geometry(resources::MeshData::make_quad());
 		Renderable animation_2d_obj{
 			animation_2d_unifs,
@@ -202,10 +199,6 @@ const renderer::Renderable RenderManagerDemo6::create_3d_obj() {
 	auto terrain_unifs = this->obj_3d_shader->new_uniform_input(
 		"tex",
 		this->obj_3d_texture);
-	/* Check if all uniform values for uniform inputs have been set */
-	if (!terrain_unifs->is_complete()) {
-		log::log(WARN << "Some Uniform values have not been set.");
-	}
 
 	std::vector<coord::scene3> terrain_pos{};
 	terrain_pos.push_back({-25, -25, 0});
@@ -269,9 +262,6 @@ const std::vector<renderer::Renderable> RenderManagerDemo6::create_frame_obj() {
 			frame_size,
 			"incol",
 			Eigen::Vector4f{0.0f, 0.0f, 1.0f, 1.0f});
-		if (!frame_unifs->is_complete()) {
-			log::log(WARN << "Some Uniform values have not been set.");
-		}
 		Renderable frame_obj{
 			frame_unifs,
 			frame_geometry,
@@ -499,6 +489,10 @@ void RenderManagerDemo6::create_render_passes() {
 	this->display_pass = renderer->add_render_pass(
 		{display_obj_3d, display_obj_2d, display_obj_frame},
 		renderer->get_display_target());
+
+	if (!check_uniform_completeness({display_obj_3d, display_obj_2d, display_obj_frame})) {
+		log::log(WARN << "Uniforms not complete.");
+	}
 }
 
 } // namespace openage::renderer::tests

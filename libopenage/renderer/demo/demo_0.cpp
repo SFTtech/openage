@@ -9,6 +9,7 @@
 #include "renderer/resources/mesh_data.h"
 #include "renderer/resources/shader_source.h"
 #include "renderer/shader_program.h"
+#include "renderer/demo/util.h"
 
 
 namespace openage::renderer::tests {
@@ -43,17 +44,16 @@ void renderer_demo_0(const util::Path &path) {
 	auto display_shader = renderer->add_shader({display_vshader_src, display_fshader_src});
 
 	auto quad = renderer->add_mesh_geometry(resources::MeshData::make_quad());
-	auto display_unif = display_shader->create_empty_input();
-	/* Check if all uniform values for uniform inputs have been set */
-	if (!display_unif->is_complete()) {
-		log::log(WARN << "Some Uniform values have not been set.");
-	}
 	Renderable display_stuff{
-		display_unif,
+		display_shader->create_empty_input(),
 		quad,
 		false,
 		false,
 	};
+
+	if (!check_uniform_completeness({display_stuff})) {
+		log::log(WARN << "Uniforms not complete.");
+	}
 
 	auto pass = renderer->add_render_pass({display_stuff}, renderer->get_display_target());
 

@@ -17,6 +17,7 @@
 #include "renderer/shader_program.h"
 #include "renderer/uniform_buffer.h"
 #include "renderer/uniform_input.h"
+#include "renderer/demo/util.h"
 
 
 namespace openage::renderer::tests {
@@ -134,9 +135,8 @@ void renderer_demo_5(const util::Path &path) {
 		"tex",
 		gltex);
 
-	/* Check if all uniform values for uniform inputs have been set */
-	if (!transform_unifs->is_complete()) {
-		log::log(WARN << "Some Uniform values have not been set.");
+	if (!check_uniform_completeness({terrain_obj})) {
+		log::log(WARN << "Uniforms not complete.");
 	}
 
 	// Move around the scene with WASD

@@ -15,6 +15,7 @@
 #include "renderer/shader_program.h"
 #include "renderer/texture.h"
 #include "util/math_constants.h"
+#include "renderer/demo/util.h"
 
 
 namespace openage::renderer::tests {
@@ -172,10 +173,8 @@ void renderer_demo_1(const util::Path &path) {
 
 	auto pass2 = renderer->add_render_pass({display_obj}, renderer->get_display_target());
 
-	/* Check if all uniform values for uniform inputs have been set */
-	if (!obj1_unifs->is_complete() || !obj2_unifs->is_complete() || !obj3_unifs->is_complete()
-		|| !proj_unif->is_complete() || !color_texture_unif->is_complete()) {
-		log::log(WARN << "Some Uniform values have not been set.");
+	if (!check_uniform_completeness({obj1, obj2, obj3, proj_update, display_obj})) {
+		log::log(WARN << "Uniforms not complete.");
 	}
 
 	/* Data retrieved from the object index texture. */

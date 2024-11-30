@@ -16,6 +16,7 @@
 #include "renderer/resources/shader_source.h"
 #include "renderer/resources/texture_data.h"
 #include "renderer/shader_program.h"
+#include "renderer/demo/util.h"
 #include "time/clock.h"
 
 
@@ -165,9 +166,8 @@ void renderer_demo_4(const util::Path &path) {
 
 	auto pass2 = renderer->add_render_pass({display_obj}, renderer->get_display_target());
 
-	/* Check if all uniform values for uniform inputs have been set */
-	if (!obj1_unifs->is_complete() || !proj_unif->is_complete() || !color_texture_unif->is_complete()) {
-		log::log(WARN << "Some Uniform values have not been set.");
+	if (!check_uniform_completeness({proj_update, obj1, display_obj})) {
+		log::log(WARN << "Uniforms not complete.");
 	}
 
 	window.add_resize_callback([&](size_t w, size_t h, double /*scale*/) {

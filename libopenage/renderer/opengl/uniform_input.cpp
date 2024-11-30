@@ -51,12 +51,12 @@ GlUniformBufferInput::GlUniformBufferInput(const std::shared_ptr<UniformBuffer> 
 }
 
 bool GlUniformInput::is_complete() const {
-  for (const auto& uniform : this->update_offs) {
-    if (!uniform.used) {
-      return false;
-    }
-  }
-  return true;
+	for (const auto& uniform : this->update_offs) {
+		if (!uniform.used) {
+			return false;
+		}
+	}
+	return true;
 }
 
 } // namespace openage::renderer::opengl
