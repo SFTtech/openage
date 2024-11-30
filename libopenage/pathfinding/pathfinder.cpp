@@ -231,8 +231,8 @@ const Pathfinder::portal_star_t Pathfinder::portal_a_star(const PathRequest &req
 		auto portal_pos = portal->get_exit_center(start_sector->get_id());
 		auto portal_abs_pos = sector_pos + portal_pos;
 		auto heuristic_cost = Pathfinder::heuristic_cost(portal_abs_pos, request.target);
-
-		portal_node->current_cost = 0;
+		std::cout << portal->get_id() << ": " << heuristic_cost << std::endl;
+		portal_node->current_cost = Pathfinder::heuristic_cost(portal_abs_pos, request.start);
 		portal_node->heuristic_cost = heuristic_cost;
 		portal_node->future_cost = portal_node->current_cost + heuristic_cost;
 
