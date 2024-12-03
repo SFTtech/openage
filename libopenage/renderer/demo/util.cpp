@@ -10,7 +10,7 @@ namespace openage::renderer::tests {
 bool check_uniform_completeness(const std::vector<Renderable> &renderables) {
 	// Iterate over each renderable object
 	for (const auto &renderable : renderables) {
-		if (renderable.uniform && not renderable.uniform->is_complete()) {
+		if (renderable.uniform and not renderable.uniform->is_complete()) {
 			return false;
 		}
 	}
