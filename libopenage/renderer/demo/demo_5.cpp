@@ -7,6 +7,7 @@
 #include <QMouseEvent>
 
 #include "renderer/camera/camera.h"
+#include "renderer/demo/util.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/opengl/window.h"
 #include "renderer/render_pass.h"
@@ -133,6 +134,10 @@ void renderer_demo_5(const util::Path &path) {
 		model,
 		"tex",
 		gltex);
+
+	if (not check_uniform_completeness({terrain_obj})) {
+		log::log(WARN << "Uniforms not complete.");
+	}
 
 	// Move around the scene with WASD
 	window.add_key_callback([&](const QKeyEvent &ev) {

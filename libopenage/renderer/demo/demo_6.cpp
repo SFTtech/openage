@@ -9,6 +9,7 @@
 #include "renderer/camera/camera.h"
 #include "renderer/camera/frustum_2d.h"
 #include "renderer/camera/frustum_3d.h"
+#include "renderer/demo/util.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/opengl/window.h"
 #include "renderer/render_pass.h"
@@ -198,6 +199,7 @@ const renderer::Renderable RenderManagerDemo6::create_3d_obj() {
 	auto terrain_unifs = this->obj_3d_shader->new_uniform_input(
 		"tex",
 		this->obj_3d_texture);
+
 	std::vector<coord::scene3> terrain_pos{};
 	terrain_pos.push_back({-25, -25, 0});
 	terrain_pos.push_back({25, -25, 0});
@@ -487,6 +489,10 @@ void RenderManagerDemo6::create_render_passes() {
 	this->display_pass = renderer->add_render_pass(
 		{display_obj_3d, display_obj_2d, display_obj_frame},
 		renderer->get_display_target());
+
+	if (not check_uniform_completeness({display_obj_3d, display_obj_2d, display_obj_frame})) {
+		log::log(WARN << "Uniforms not complete.");
+	}
 }
 
 } // namespace openage::renderer::tests

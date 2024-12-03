@@ -2,6 +2,7 @@
 
 #include "demo_0.h"
 
+#include "renderer/demo/util.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/opengl/window.h"
 #include "renderer/render_pass.h"
@@ -49,6 +50,10 @@ void renderer_demo_0(const util::Path &path) {
 		false,
 		false,
 	};
+
+	if (not check_uniform_completeness({display_stuff})) {
+		log::log(WARN << "Uniforms not complete.");
+	}
 
 	auto pass = renderer->add_render_pass({display_stuff}, renderer->get_display_target());
 

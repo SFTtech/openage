@@ -6,6 +6,7 @@
 #include <epoxy/gl.h>
 #include <QMouseEvent>
 
+#include "renderer/demo/util.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/opengl/window.h"
 #include "renderer/render_pass.h"
@@ -172,6 +173,10 @@ void renderer_demo_1(const util::Path &path) {
 
 	auto pass2 = renderer->add_render_pass({display_obj}, renderer->get_display_target());
 
+	if (not check_uniform_completeness({obj1, obj2, obj3, proj_update, display_obj})) {
+		log::log(WARN << "Uniforms not complete.");
+	}
+
 	/* Data retrieved from the object index texture. */
 	resources::Texture2dData id_texture_data = id_texture->into_data();
 	bool texture_data_valid = false;
@@ -188,7 +193,7 @@ void renderer_demo_1(const util::Path &path) {
 			ssize_t y = qpos.y();
 
 			log::log(INFO << "Clicked at location (" << x << ", " << y << ")");
-			if (!texture_data_valid) {
+			if (not texture_data_valid) {
 				id_texture_data = id_texture->into_data();
 				texture_data_valid = true;
 			}
