@@ -35,8 +35,8 @@ public:
 	using CurveIterator<val_t, container_t>::operator=;
 
 	virtual bool valid() const override {
-		return (this->get_base()->second.alive >= this->from
-		        and this->get_base()->second.dead < this->to);
+		return (this->get_base()->second.alive() >= this->from
+		        and this->get_base()->second.dead() < this->to);
 	}
 
 	/**

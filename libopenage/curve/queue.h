@@ -13,6 +13,7 @@
 
 #include "curve/iterator.h"
 #include "curve/queue_filter_iterator.h"
+#include "curve/element_wrapper.h"
 #include "event/evententity.h"
 #include "time/time.h"
 #include "util/fixed_point.h"
@@ -32,39 +33,11 @@ namespace curve {
  */
 template <class T>
 class Queue : public event::EventEntity {
-	struct queue_wrapper {
-		// Insertion time of the element
-		time::time_t _alive;
-		// Erase time of the element
-		// TODO: this has to be mutable because erase() will complain otherwise
-		mutable time::time_t _dead;
-		// Element value
-		T value;
-
-		queue_wrapper(const time::time_t &time, const T &value) :
-			_alive{time},
-			_dead{time::TIME_MAX},
-			value{value} {}
-
-		const time::time_t &alive() const {
-			return _alive;
-		}
-
-		const time::time_t &dead() const {
-			return _dead;
-		}
-
-		// TODO: this has to be const because erase() will complain otherwise
-		void set_dead(const time::time_t &time) const {
-			_dead = time;
-		}
-	};
-
 public:
 	/**
 	 * The underlaying container type.
 	 */
-	using container_t = typename std::vector<queue_wrapper>;
+	using container_t = typename std::vector<element_wrapper<T>>;
 
 	/**
 	 * The index type to access elements in the container
@@ -412,7 +385,7 @@ QueueFilterIterator<T, Queue<T>> Queue<T>::insert(const time::time_t &time,
 
 	// Get the iterator to the insertion point
 	iterator insertion_point = std::next(this->container.begin(), at);
-	insertion_point = this->container.insert(insertion_point, queue_wrapper{time, e});
+	insertion_point = this->container.insert(insertion_point, element_wrapper<T>{time, e});
 
 	// TODO: Inserting before any dead elements shoud reset their death time
 	//       since by definition, they cannot be popped before the new element
