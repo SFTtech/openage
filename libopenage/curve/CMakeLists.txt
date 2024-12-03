@@ -12,6 +12,7 @@ add_sources(libopenage
 	queue.cpp
 	queue_filter_iterator.cpp
 	segmented.cpp
+	array.cpp
 )
 
 add_subdirectory("tests")
