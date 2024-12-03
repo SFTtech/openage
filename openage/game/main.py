@@ -36,6 +36,19 @@ def init_subparser(cli: ArgumentParser) -> None:
         help="Check if the assets are up to date"
     )
 
+    cli.add_argument(
+        "--window-size", nargs=2, type=int, default=[1024, 768],
+        metavar=('WIDTH', 'HEIGHT'),
+        help="initial window size in pixels, e.g., --window-size 1024 768")
+
+    cli.add_argument(
+        "--vsync", action='store_true',
+        help="enable vertical synchronization")
+
+    cli.add_argument(
+        "--window-mode", choices=["fullscreen", "borderless", "windowed"], default="windowed",
+        help="set the window mode: fullscreen, borderless, or windowed (default)")
+
 
 def main(args, error):
     """
@@ -97,6 +110,14 @@ def main(args, error):
 
     # encode modpacks as bytes for the C++ interface
     args.modpacks = [modpack.encode('utf-8') for modpack in args.modpacks]
+
+    # Pass window parameters to engine
+    args.window_args = {
+        "width": args.window_size[0],
+        "height": args.window_size[1],
+        "vsync": args.vsync,
+        "window_mode": args.window_mode,
+    }
 
     # start the game, continue in main_cpp.pyx!
     return run_game(args, root)
