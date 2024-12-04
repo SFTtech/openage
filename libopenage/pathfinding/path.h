@@ -6,6 +6,7 @@
 
 #include "coord/tile.h"
 #include "pathfinding/types.h"
+#include "time/time.h"
 
 
 namespace openage::path {
@@ -20,6 +21,8 @@ struct PathRequest {
 	coord::tile start;
 	/// Target position of the path.
 	coord::tile target;
+	/// Time request was made.
+	time::time_t time;
 };
 
 /**
@@ -34,6 +37,8 @@ struct Path {
 	/// First waypoint is the start position of the path request.
 	/// Last waypoint is the target position of the path request.
 	std::vector<coord::tile> waypoints;
+	/// Time path was created.
+	time::time_t time;
 };
 
 } // namespace openage::path
