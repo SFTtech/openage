@@ -155,7 +155,8 @@ const Path Pathfinder::get_path(const PathRequest &request) {
 		                                      prev_sector_id,
 		                                      portal,
 		                                      target_delta,
-		                                      with_los);
+		                                      with_los,
+											  next_sector->is_dirty(request.time));
 		flow_fields.push_back(std::make_pair(next_sector_id, sector_fields.second));
 
 		prev_integration_field = sector_fields.first;

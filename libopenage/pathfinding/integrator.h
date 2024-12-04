@@ -2,9 +2,7 @@
 
 #pragma once
 
-#include <cstddef>
 #include <memory>
-#include <unordered_map>
 
 #include "pathfinding/types.h"
 #include "util/hash.h"
@@ -20,6 +18,7 @@ class CostField;
 class FlowField;
 class IntegrationField;
 class Portal;
+class FieldCache;
 
 /**
  * Integrator for the flow field pathfinding algorithm.
@@ -65,7 +64,8 @@ public:
 	                                            sector_id_t other_sector_id,
 	                                            const std::shared_ptr<Portal> &portal,
 	                                            const coord::tile_delta &target,
-	                                            bool with_los = true);
+	                                            bool with_los = true,
+												bool evict_cache = false);
 
 	/**
 	 * Build the flow field from an integration field.
@@ -91,7 +91,8 @@ public:
 	                                 const std::shared_ptr<IntegrationField> &other,
 	                                 sector_id_t other_sector_id,
 	                                 const std::shared_ptr<Portal> &portal,
-	                                 bool with_los = true);
+	                                 bool with_los = true,
+					 				 bool evict_cache = false);
 
 	using get_return_t = std::pair<std::shared_ptr<IntegrationField>, std::shared_ptr<FlowField>>;
 
@@ -123,30 +124,11 @@ public:
 	                 sector_id_t other_sector_id,
 	                 const std::shared_ptr<Portal> &portal,
 	                 const coord::tile_delta &target,
-	                 bool with_los = true);
+	                 bool with_los = true,
+					 bool evict_cache = false);
 
 private:
-	/**
-	 * Hash function for the field cache.
-	 */
-	struct pair_hash {
-		template <class T1, class T2>
-		std::size_t operator()(const std::pair<T1, T2> &pair) const {
-			return util::hash_combine(std::hash<T1>{}(pair.first), std::hash<T2>{}(pair.second));
-		}
-	};
-
-	/**
-	 * Cache for already computed fields.
-	 *
-	 * Key is the portal ID and the sector ID from which the field was entered. Fields that are cached are
-	 * cleared of dynamic flags, i.e. wavefront or LOS flags. These have to be recalculated
-	 * when the field is reused.
-	 */
-	std::unordered_map<std::pair<portal_id_t, sector_id_t>,
-	                   get_return_t,
-	                   pair_hash>
-		field_cache;
+	std::shared_ptr<FieldCache> field_cache;
 };
 
 } // namespace path
