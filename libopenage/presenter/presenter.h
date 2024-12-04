@@ -7,6 +7,9 @@
 
 #include "util/path.h"
 
+#include <renderer/window.h>
+
+
 namespace qtgui {
 class GuiApplication;
 }
@@ -88,8 +91,9 @@ public:
 	 * Start the presenter and initialize subsystems.
 	 *
 	 * @param debug_graphics If true, enable OpenGL debug logging.
+	 * @param window_settings window display setting
 	 */
-	void run(bool debug_graphics = false);
+	void run(bool debug_graphics = false, const renderer::window_settings &window_settings = {});
 
 	/**
 	 * Set the game simulation controlled by this presenter.
@@ -120,7 +124,7 @@ protected:
 	 *     - main renderer
 	 *     - component renderers (Terrain, Game Entities, GUI)
 	 */
-	void init_graphics(bool debug = false);
+	void init_graphics(bool debug = false, const renderer::window_settings &window_settings = {});
 
 	/**
 	 * Initialize the GUI.

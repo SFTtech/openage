@@ -32,7 +32,6 @@
 #include "renderer/stages/skybox/render_stage.h"
 #include "renderer/stages/terrain/render_stage.h"
 #include "renderer/stages/world/render_stage.h"
-#include "renderer/window.h"
 #include "time/time_loop.h"
 #include "util/path.h"
 
@@ -48,10 +47,10 @@ Presenter::Presenter(const util::Path &root_dir,
 	time_loop{time_loop} {}
 
 
-void Presenter::run(bool debug_graphics) {
+void Presenter::run(bool debug_graphics, const renderer::window_settings &window_settings) {
 	log::log(INFO << "Presenter: Launching subsystems...");
 
-	this->init_graphics(debug_graphics);
+	this->init_graphics(debug_graphics, window_settings);
 
 	this->init_input();
 
@@ -93,18 +92,14 @@ std::shared_ptr<qtgui::GuiApplication> Presenter::init_window_system() {
 	return std::make_shared<renderer::gui::GuiApplicationWithLogger>();
 }
 
-void Presenter::init_graphics(bool debug) {
+void Presenter::init_graphics(bool debug, const renderer::window_settings &window_settings) {
 	log::log(INFO << "Presenter: Initializing graphics subsystems...");
 
 	// Start up rendering framework
 	this->gui_app = this->init_window_system();
 
 	// Window and renderer
-	renderer::window_settings settings;
-	settings.width = 1024;
-	settings.height = 768;
-	settings.debug = debug;
-	this->window = renderer::Window::create("openage presenter test", settings);
+	this->window = renderer::Window::create("openage presenter test", window_settings);
 	this->renderer = this->window->make_renderer();
 
 	// Asset mangement

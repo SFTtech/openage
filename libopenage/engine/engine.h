@@ -9,6 +9,8 @@
 
 #include "util/path.h"
 
+#include <renderer/window.h>
+
 // TODO: Remove custom jthread definition when clang/libc++ finally supports it
 #if __llvm__
 	#if !__cpp_lib_jthread
@@ -72,11 +74,13 @@ public:
 	 * @param root_dir openage root directory.
 	 * @param mods The mods to load.
 	 * @param debug_graphics If true, enable OpenGL debug logging.
+	 * @param window_settings window display setting
 	 */
 	Engine(mode mode,
 	       const util::Path &root_dir,
 	       const std::vector<std::string> &mods,
-	       bool debug_graphics = false);
+	       bool debug_graphics = false,
+	       const renderer::window_settings &window_settings = {});
 
 	// engine should not be copied or moved
 	Engine(const Engine &) = delete;
