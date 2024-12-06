@@ -249,7 +249,7 @@ void Sector::connect_exits() {
 	}
 }
 
-bool Sector::is_dirty(time::time_t time) {
+bool Sector::is_dirty(const time::time_t time) {
 	return this->cost_field->is_dirty(time);
 }
 

@@ -34,7 +34,7 @@ void path_demo_0(const util::Path &path) {
 	// Cost field with some obstacles
 	auto cost_field = std::make_shared<CostField>(field_length);
 	
-	time::time_t time = time::TIME_ZERO;
+	const time::time_t time = time::TIME_ZERO;
 	cost_field->set_cost(coord::tile_delta{0, 0}, COST_IMPASSABLE, time);
 	cost_field->set_cost(coord::tile_delta{1, 0}, 254, time);
 	cost_field->set_cost(coord::tile_delta{4, 3}, 128, time);

@@ -32,7 +32,7 @@ void path_demo_1(const util::Path &path) {
 	auto clock = time_loop->get_clock();
 	auto grid = std::make_shared<Grid>(0, util::Vector2s{4, 3}, 10);
 
-	time::time_t time = clock->get_time();
+	const time::time_t time = clock->get_time();
 	// Initialize the cost field for each sector.
 	for (auto &sector : grid->get_sectors()) {
 		auto cost_field = sector->get_cost_field();
@@ -93,7 +93,7 @@ void path_demo_1(const util::Path &path) {
 	coord::tile start{2, 26};
 	coord::tile target{36, 2};
 
-	time::time_t request_time = clock->get_time();
+	const time::time_t request_time = clock->get_time();
 
 	PathRequest path_request{
 		grid->get_id(),
@@ -102,11 +102,11 @@ void path_demo_1(const util::Path &path) {
 		request_time
 	};
 
-	log::log(INFO << "Pathfinding request at " << request_time);
 	grid->init_portal_nodes();
 	timer.start();
 	Path path_result = pathfinder->get_path(path_request);
 	timer.stop();
+	log::log(INFO << "Pathfinding request at " << request_time);
 	log::log(INFO << "Pathfinding took " << timer.getval() / 1000 << " us");
 
 	// Create a renderer to display the grid and path

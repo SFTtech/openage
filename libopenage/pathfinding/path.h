@@ -22,7 +22,7 @@ struct PathRequest {
 	/// Target position of the path.
 	coord::tile target;
 	/// Time request was made.
-	time::time_t time;
+	const time::time_t time;
 };
 
 /**
@@ -38,7 +38,7 @@ struct Path {
 	/// Last waypoint is the target position of the path request.
 	std::vector<coord::tile> waypoints;
 	/// Time path was created.
-	time::time_t time;
+	const time::time_t time;
 };
 
 } // namespace openage::path
