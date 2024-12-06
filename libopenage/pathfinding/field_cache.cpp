@@ -15,8 +15,7 @@ void FieldCache::evict(std::pair<unsigned long long, unsigned long long> cache_k
 }
 
 bool FieldCache::is_cached(std::pair<unsigned long long, unsigned long long> cache_key) {
-    auto cached = this->cache.find(cache_key);
-    return cached != this->cache.end();
+    return this->cache.contains(cache_key);
 }
 
 std::shared_ptr<IntegrationField> FieldCache::get_integration_field(std::pair<unsigned long long, unsigned long long> cache_key) {
