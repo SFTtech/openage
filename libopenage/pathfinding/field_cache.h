@@ -55,7 +55,6 @@ private:
 	 * cleared of dynamic flags, i.e. wavefront or LOS flags. These have to be recalculated
 	 * when the field is reused.
 	 */
-
 	std::unordered_map<std::pair<portal_id_t, sector_id_t>,
 	                   get_return_t,
 	                   pair_hash>

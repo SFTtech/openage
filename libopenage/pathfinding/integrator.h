@@ -128,7 +128,11 @@ public:
 					 bool evict_cache = false);
 
 private:
-	std::shared_ptr<FieldCache> field_cache;
+	
+	/**
+	 * Cache for already computed fields.
+	 */
+	std::unique_ptr<FieldCache> field_cache;
 };
 
 } // namespace path
