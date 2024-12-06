@@ -24,7 +24,7 @@ void flow_field() {
 	// | 1 | 1 | 1 |
 	// | 1 | X | 1 |
 	// | 1 | 1 | 1 |
-	time::time_t time = time::TIME_ZERO;
+	const time::time_t time = time::TIME_ZERO;
 	cost_field->set_costs({1, 1, 1, 1, 255, 1, 1, 1, 1}, time);
 
 	// Test the different field types
