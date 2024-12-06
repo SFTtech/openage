@@ -39,15 +39,15 @@ def init_subparser(cli: ArgumentParser) -> None:
     cli.add_argument(
         "--window-size", nargs=2, type=int, default=[1024, 768],
         metavar=('WIDTH', 'HEIGHT'),
-        help="initial window size in pixels, e.g., --window-size 1024 768")
+        help="Initial window size in pixels")
 
     cli.add_argument(
         "--vsync", action='store_true',
-        help="enable vertical synchronization")
+        help="Enable vertical synchronization")
 
     cli.add_argument(
         "--window-mode", choices=["fullscreen", "borderless", "windowed"], default="windowed",
-        help="set the window mode: fullscreen, borderless, or windowed (default)")
+        help="Set the window mode")
 
 
 def main(args, error):

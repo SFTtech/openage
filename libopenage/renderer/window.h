@@ -45,7 +45,7 @@ struct window_settings {
 	// If true, enable debug logging for the selected backend.
 	bool debug = false;
 	// Display mode for the window.
-	window_mode mode = window_mode::FULLSCREEN;
+	window_mode mode = window_mode::WINDOWED;
 };
 
 

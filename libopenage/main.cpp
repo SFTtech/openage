@@ -44,12 +44,16 @@ int run_game(const main_arguments &args) {
 	else if (args.window_args.mode == "borderless") {
 		wmode = renderer::window_mode::BORDERLESS;
 	}
-	else {
+	else if (args.window_args.mode == "windowed") {
 		wmode = renderer::window_mode::WINDOWED;
 	}
+	else {
+		throw Error(MSG(err) << "Invalid window mode: " << args.window_args.mode);
+	}
 	win_settings.mode = wmode;
+	win_settings.debug = args.gl_debug;
 
-	openage::engine::Engine engine{run_mode, args.root_path, args.mods, args.gl_debug, win_settings};
+	openage::engine::Engine engine{run_mode, args.root_path, args.mods, win_settings};
 
 	engine.loop();
 
