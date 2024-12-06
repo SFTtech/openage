@@ -14,7 +14,7 @@ namespace openage::path {
 CostField::CostField(size_t size) :
 	size{size},
 	cells(this->size * this->size, COST_MIN),
-	changed{time::time_t::min_value()} {
+	changed{time::TIME_MIN} {
 	log::log(DBG << "Created cost field with size " << this->size << "x" << this->size);
 }
 
