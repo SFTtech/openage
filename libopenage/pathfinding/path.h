@@ -21,7 +21,7 @@ struct PathRequest {
 	coord::tile start;
 	/// Target position of the path.
 	coord::tile target;
-	/// Time request was made.
+	/// Time the request was made.
 	const time::time_t time;
 };
 
