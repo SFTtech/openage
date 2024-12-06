@@ -37,7 +37,7 @@ struct Path {
 	/// First waypoint is the start position of the path request.
 	/// Last waypoint is the target position of the path request.
 	std::vector<coord::tile> waypoints;
-	/// Time path was created.
+	/// Time the path was created.
 	const time::time_t time;
 };
 
