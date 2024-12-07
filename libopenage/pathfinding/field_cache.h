@@ -17,25 +17,39 @@ namespace path {
 class IntegrationField;
 class FlowField;
 
-class FieldCache
-{
+/**
+ * Cache to store already calculated flow and integration fields for the pathfinding algorithm.
+ */
+class FieldCache {
 public:
-    FieldCache() = default;
-    ~FieldCache() = default;
+	FieldCache() = default;
+	~FieldCache() = default;
 
-    void add(std::pair<unsigned long long, unsigned long long> cache_key,
-             std::shared_ptr<IntegrationField> &integration_field,
-             std::shared_ptr<FlowField> &flow_field);
+	/**
+	 * Adds a new field cache entry to the cache with a given portal and sector cache key.
+	 */
+	void add(cache_key_t cache_key,
+	         field_cache_t cache_entry);
 
-	void evict(std::pair<unsigned long long, unsigned long long> cache_key);
+	/**
+	 * Evicts a given field cache entry from the cache at the given cache key.
+	 */
+	void evict(cache_key_t cache_key);
 
-    bool is_cached(std::pair<unsigned long long, unsigned long long> cache_key);
+	/**
+	 * Checks if there is a cached entry at a specific cache key.
+	 */
+	bool is_cached(cache_key_t cache_key);
 
-    std::shared_ptr<IntegrationField> get_integration_field(std::pair<unsigned long long, unsigned long long> cache_key);
-    
-    std::shared_ptr<FlowField> get_flow_field(std::pair<unsigned long long, unsigned long long> cache_key);
-    
-    using get_return_t = std::pair<std::shared_ptr<IntegrationField>, std::shared_ptr<FlowField>>;
+	/**
+	 * Gets the integration field from a given cache entry.
+	 */
+	std::shared_ptr<IntegrationField> get_integration_field(cache_key_t cache_key);
+
+	/**
+	 * Gets the flow field from a given cache entry.
+	 */
+	std::shared_ptr<FlowField> get_flow_field(cache_key_t cache_key);
 
 private:
 	/**
@@ -55,8 +69,8 @@ private:
 	 * cleared of dynamic flags, i.e. wavefront or LOS flags. These have to be recalculated
 	 * when the field is reused.
 	 */
-	std::unordered_map<std::pair<portal_id_t, sector_id_t>,
-	                   get_return_t,
+	std::unordered_map<cache_key_t,
+	                   field_cache_t,
 	                   pair_hash>
 		cache;
 };

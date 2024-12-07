@@ -84,17 +84,9 @@ public:
 	 *
 	 * @param idx Index of the cell.
 	 * @param cost Cost to set.
-	 */
-	void set_cost(size_t idx, cost_t cost);
-
-	/**
-	 * Set the cost at a specified position.
-	 *
-	 * @param idx Index of the cell.
-	 * @param cost Cost to set.
 	 * @param changed Time at which the cost value is changed.
 	 */
-	void set_cost(size_t idx, cost_t cost, const time::time_t &changed);
+	inline void set_cost(size_t idx, cost_t cost, const time::time_t &changed);
 
 	/**
 	 * Get the cost field values.
@@ -113,10 +105,15 @@ public:
 
 	/**
 	 * Check if the cost field is dirty at the specified time.
-	 * 
-	 * @param time Cost field is dirty if the cost field is accessed before the latest change to the cost field.
+	 *
+	 * @param time Cost field is dirty if the cost field is accessed after the time given in valid_until.
 	 */
 	bool is_dirty(const time::time_t &time);
+
+	/**
+	 * Cleans the dirty flag by setting it to time_MAX.
+	 */
+	void clean();
 
 private:
 	/**
@@ -127,7 +124,7 @@ private:
 	/**
 	 * Time the cost field was last changed.
 	 */
-	const time::time_t changed;
+	time::time_t &valid_until;
 
 	/**
 	 * Cost field values.
