@@ -22,6 +22,15 @@ namespace openage::renderer {
 class WindowEventHandler;
 
 /**
+ * Modes for window display.
+ */
+enum class window_mode {
+	FULLSCREEN,
+	BORDERLESS,
+	WINDOWED
+};
+
+/**
  * Settings for creating a window.
  */
 struct window_settings {
@@ -35,6 +44,8 @@ struct window_settings {
 	bool vsync = true;
 	// If true, enable debug logging for the selected backend.
 	bool debug = false;
+	// Display mode for the window.
+	window_mode mode = window_mode::WINDOWED;
 };
 
 
