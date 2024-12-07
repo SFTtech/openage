@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -17,6 +17,24 @@
 namespace openage {
 
 /**
+ * Window parameters struct.
+ *
+ * pxd:
+ *
+ * cppclass window_arguments:
+ *     int width
+ *     int height
+ *     bool vsync
+ *     string mode
+ */
+struct window_arguments {
+	int width;
+	int height;
+	bool vsync;
+	std::string mode;
+};
+
+/**
  * Used for passing arguments to run_game.
  *
  * pxd:
@@ -26,12 +44,14 @@ namespace openage {
  *     bool gl_debug
  *     bool headless
  *     vector[string] mods
+ *     window_arguments window_args
  */
 struct main_arguments {
 	util::Path root_path;
 	bool gl_debug;
 	bool headless;
 	std::vector<std::string> mods;
+	window_arguments window_args;
 };
 
 

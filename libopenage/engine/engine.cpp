@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #include "engine.h"
 
@@ -16,7 +16,7 @@ namespace openage::engine {
 Engine::Engine(mode mode,
                const util::Path &root_dir,
                const std::vector<std::string> &mods,
-               bool debug_graphics) :
+               const renderer::window_settings &window_settings) :
 	running{true},
 	run_mode{mode},
 	root_dir{root_dir},
@@ -55,8 +55,8 @@ Engine::Engine(mode mode,
 
 	// if presenter is used, run it in a separate thread
 	if (this->run_mode == mode::FULL) {
-		this->threads.emplace_back([&, debug_graphics]() {
-			this->presenter->run(debug_graphics);
+		this->threads.emplace_back([&]() {
+			this->presenter->run(window_settings);
 
 			// Make sure that the presenter gets destructed in the same thread
 			// otherwise OpenGL complains about missing contexts

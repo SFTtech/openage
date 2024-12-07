@@ -66,6 +66,8 @@ protected:
 public:
 	virtual ~UniformInput() = default;
 
+	virtual bool is_complete() const = 0;
+
 	void update() override;
 	void update(const char *unif, int32_t val) override;
 	void update(const char *unif, uint32_t val) override;
