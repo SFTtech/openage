@@ -62,7 +62,7 @@ GlWindow::GlWindow(const std::string &title,
 	this->window->setWindowState(Qt::WindowNoState);
 	switch (settings.mode) {
 	case window_mode::WINDOWED:
-		this->window->setFlags(this->window->flags() & ~Qt::FramelessWindowHint);
+		// nothing to do because it's the default
 		break;
 	case window_mode::BORDERLESS:
 		this->window->setFlags(this->window->flags() | Qt::FramelessWindowHint);

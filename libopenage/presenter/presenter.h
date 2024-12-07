@@ -91,7 +91,7 @@ public:
 	 *
 	 * @param window_settings The settings to customize the display window (e.g. size, display mode, vsync).
 	 */
-	void run(const renderer::window_settings &window_settings = {});
+	void run(const renderer::window_settings window_settings = {});
 
 	/**
 	 * Set the game simulation controlled by this presenter.

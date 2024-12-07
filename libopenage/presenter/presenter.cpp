@@ -47,7 +47,7 @@ Presenter::Presenter(const util::Path &root_dir,
 	time_loop{time_loop} {}
 
 
-void Presenter::run(const renderer::window_settings &window_settings) {
+void Presenter::run(const renderer::window_settings window_settings) {
 	log::log(INFO << "Presenter: Launching subsystems...");
 
 	this->init_graphics(window_settings);
