@@ -4,28 +4,27 @@
 
 namespace openage::path {
 
-void FieldCache::add(std::pair<unsigned long long, unsigned long long> cache_key,
-            std::shared_ptr<IntegrationField> &integration_field,
-            std::shared_ptr<FlowField> &flow_field) {
-    this->cache[cache_key] = std::make_pair(integration_field, flow_field);
+void FieldCache::add(cache_key_t cache_key,
+                     field_cache_t cache_entry) {
+	this->cache[cache_key] = cache_entry;
 }
 
-void FieldCache::evict(std::pair<unsigned long long, unsigned long long> cache_key) {
-    this->cache.erase(cache_key);
+void FieldCache::evict(cache_key_t cache_key) {
+	this->cache.erase(cache_key);
 }
 
-bool FieldCache::is_cached(std::pair<unsigned long long, unsigned long long> cache_key) {
-    return this->cache.contains(cache_key);
+bool FieldCache::is_cached(cache_key_t cache_key) {
+	return this->cache.contains(cache_key);
 }
 
-std::shared_ptr<IntegrationField> FieldCache::get_integration_field(std::pair<unsigned long long, unsigned long long> cache_key) {
-    auto cached = this->cache.find(cache_key);
-    return cached->second.first;
+std::shared_ptr<IntegrationField> FieldCache::get_integration_field(cache_key_t cache_key) {
+	auto cached = this->cache.find(cache_key);
+	return cached->second.first;
 }
 
-std::shared_ptr<FlowField> FieldCache::get_flow_field(std::pair<unsigned long long, unsigned long long> cache_key) {
-    auto cached = this->cache.find(cache_key);
-    return cached->second.second;
+std::shared_ptr<FlowField> FieldCache::get_flow_field(cache_key_t cache_key) {
+	auto cached = this->cache.find(cache_key);
+	return cached->second.second;
 }
 
 } // namespace openage::path
