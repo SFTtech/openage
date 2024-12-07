@@ -39,6 +39,7 @@ Dependency list:
     CR    opengl >=3.3
     CR    libepoxy
     CR    libpng
+       S  clang-tidy
      R    dejavu font
     CR    eigen >=3
     CR    freetype2
