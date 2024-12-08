@@ -1,3 +1,5 @@
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
+
 
 #pragma once
 
@@ -73,12 +75,6 @@ namespace curve {
         return this->frame().value;
     }
 
-    /*template <typename T, size_t size>
-    T Array<T, size>::get(const time::time_t& t, const size_t index, const size_t hint) const
-    {
-        container[index].get(t, hint);
-    }*/
-
     template <typename T, size_t s>
     std::array<T, s>  Array<T, s>::get(const time::time_t& t) const
     {
@@ -90,20 +86,6 @@ namespace curve {
             }(std::make_index_sequence<size>{})
         };
     }
-
-
-    
-
-    /*template <typename T, size_t size>
-    std::array<Keyframe<T>, size>  Array<T, size>::get(const time::time_t& t, const size_t hint) const
-    {
-        return std::array<Keyframe<T>, size> arr{
-            []<size_t...I>(std::index_sequence<I...>)
-            {
-                return std::array<Keyframe<T>, size>{(this->container[I].get(t, hint))...};
-            }(std::make_index_sequence<size>{})
-        };
-    }*/
 
     template <typename T, size_t size>
     size_t Array<T, size>::size() const
