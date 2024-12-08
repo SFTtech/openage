@@ -127,7 +127,7 @@ namespace curve {
     template <typename T, size_t Size>
     void Array<T, Size>::set_replace(const time::time_t& t, const size_t index, T value)
     {
-        size_t i = this->container[index].insert_overwrite(t, value);
+        this->container[index].insert_overwrite(t, value);
     }
 
     template <typename T, size_t Size>
@@ -140,14 +140,14 @@ namespace curve {
     }
 
     template <typename T, size_t Size>
-    Array<T, Size>::ArrayIterator Array<T, Size>::begin(const time::time_t &time) const
+    typename Array<T, Size>::ArrayIterator Array<T, Size>::begin(const time::time_t &time) const
     {
         return Array<T, Size>::ArrayIterator(this->container, time);
     }
 	
 
     template <typename T, size_t Size>
-    Array<T, Size>::ArrayIterator Array<T, Size>::end(const time::time_t &time) const
+    typename Array<T, Size>::ArrayIterator Array<T, Size>::end(const time::time_t &time) const
     {
         return Array<T, Size>::ArrayIterator(this->container, time, this->container.size);
     }
