@@ -13,14 +13,17 @@
 namespace openage {
 namespace curve {
 
-    template <typename T, size_t s>
+    template <typename T, size_t Size>
     class Array
     {
     public:
-        using this_type = Array<T, s>;
-        using container_t = typename std::array<KeyframeContainer<T>, s>;
+        using this_type = Array<T, Size>;
+        using container_t = std::array<KeyframeContainer<T>, Size>;
 
-        // prevent accidental copy of queue
+
+        //Array() = default;
+
+        //prevent accidental copy of queue
         //Array(const Array &) = delete;
 
 
@@ -29,7 +32,7 @@ namespace curve {
 
         
  
-        std::array<T, s> get(const time::time_t& t) const;
+        std::array<T, Size> get(const time::time_t& t) const;
         //std::array<Keyframe<T>, size> get(const time::time_t& t, const size_t hint) const;
 
         
@@ -46,7 +49,19 @@ namespace curve {
 
         void set_replace(const time::time_t& t, const size_t index, T value);	
 
-        void sync(const Array<T, s>& other, const time::time_t& t);
+        void sync(const Array<T, Size>& other, const time::time_t& t);
+ 
+
+        class ArrayIterator : std::array<T, Size>::iterator
+        {         
+            ArrayIterator(const container_t& container, const time::time_t& time = time::TIME_MAX, size_t offset = 0): std::array<T, Size>::iterator(&container.get(time)[0], offset){};
+        };
+
+
+        ArrayIterator begin(const time::time_t &time = time::TIME_MAX) const;
+
+        ArrayIterator end(const time::time_t &time = time::TIME_MAX) const;
+
 
     private:
         container_t container;
@@ -54,77 +69,88 @@ namespace curve {
 
 
     
-    template <typename T, size_t size>
-    const Keyframe<T>& Array<T, size>::frame(const time::time_t& t, const size_t index) const
+    template <typename T, size_t Size>
+    const Keyframe<T>& Array<T, Size>::frame(const time::time_t& t, const size_t index) const
     {
         size_t container_index = container[index].last(t);
         return container[index].get(container_index);
     }
 
-    template <typename T, size_t size>
-    const Keyframe<T>& Array<T, size>::next_frame(const time::time_t& t, const size_t index) const
+    template <typename T, size_t Size>
+    const Keyframe<T>& Array<T, Size>::next_frame(const time::time_t& t, const size_t index) const
     {
         size_t container_index = container[index].last(t);
 
         return container[index].get(++container_index);
     }
     
-    template <typename T, size_t size>
-    T Array<T, size>::get(const time::time_t& t, const size_t index) const
+    template <typename T, size_t Size>
+    T Array<T, Size>::get(const time::time_t& t, const size_t index) const
     {
         return this->frame().value;
     }
 
-    template <typename T, size_t s>
-    std::array<T, s>  Array<T, s>::get(const time::time_t& t) const
+    template <typename T, size_t Size>
+    std::array<T, Size>  Array<T, Size>::get(const time::time_t& t) const
     {
-        return std::array<T, size>
+        return std::array<T, Size>
         {
             []<auto... I>(std::index_sequence<I...>)
             {
-                return std::array<T, size> { this->get(t, I)... };
-            }(std::make_index_sequence<size>{})
+                return std::array<T, Size> { this->get(t, I)... };
+            }(std::make_index_sequence<Size>{})
         };
     }
 
-    template <typename T, size_t size>
-    size_t Array<T, size>::size() const
+    template <typename T, size_t Size>
+    size_t Array<T, Size>::size() const
     {
         return size;
     }
 
 
-    template <typename T, size_t size>
-    void Array<T, size>::set_insert(const time::time_t& t, const size_t index, T value)
+    template <typename T, size_t Size>
+    void Array<T, Size>::set_insert(const time::time_t& t, const size_t index, T value)
     {
         this->container[index].insert_after(t, value);
     }
 
 
-    template <typename T, size_t size>
-    void Array<T, size>::set_last(const time::time_t& t, const size_t index, T value)
+    template <typename T, size_t Size>
+    void Array<T, Size>::set_last(const time::time_t& t, const size_t index, T value)
     {
         size_t i = this->container[index].insert_after(t, value);
         this->container[index].erase_after(i);
     }
 
 
-    template <typename T, size_t size>
-    void Array<T, size>::set_replace(const time::time_t& t, const size_t index, T value)
+    template <typename T, size_t Size>
+    void Array<T, Size>::set_replace(const time::time_t& t, const size_t index, T value)
     {
         size_t i = this->container[index].insert_overwrite(t, value);
     }
 
-    template <typename T, size_t s>
-    void Array<T, s>::sync(const Array<T, s>& other, const time::time_t& start)
+    template <typename T, size_t Size>
+    void Array<T, Size>::sync(const Array<T, Size>& other, const time::time_t& start)
     {  
-        for(int i = 0; i < s, i++)
+        for(int i = 0; i < Size; i++)
         {
             this->container[i].sync(other, start);
         }
     }
 
+    template <typename T, size_t Size>
+    Array<T, Size>::ArrayIterator Array<T, Size>::begin(const time::time_t &time) const
+    {
+        return Array<T, Size>::ArrayIterator(this->container, time);
+    }
+	
 
+    template <typename T, size_t Size>
+    Array<T, Size>::ArrayIterator Array<T, Size>::end(const time::time_t &time) const
+    {
+        return Array<T, Size>::ArrayIterator(this->container, time, this->container.size);
+    }
 
 } //curve
 } //openage
