@@ -95,7 +95,7 @@ namespace curve {
     {
         return std::array<T, Size>
         {
-            [&this]<auto... I>(std::index_sequence<I...>)
+            [this]<auto... I>(std::index_sequence<I...>)
             {
                 return std::array<T, Size> { this->get(t, I)... };
             }(std::make_index_sequence<Size>{})
