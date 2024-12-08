@@ -11,6 +11,7 @@
 #include "curve/keyframe.h"
 #include "curve/keyframe_container.h"
 #include "curve/segmented.h"
+#include "curve/array.h"
 #include "event/event_loop.h"
 #include "testing/testing.h"
 #include "time/time.h"
@@ -385,6 +386,11 @@ void curve_types() {
 		// [0:0]
 		TESTEQUALS(c.get(1), 0);
 		TESTEQUALS(c.get(5), 0);
+	}
+
+	{//array
+		auto f = std::make_shared<event::EventLoop>();
+		Array<int, 5> a;
 	}
 }
 
