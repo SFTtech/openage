@@ -3,9 +3,11 @@ add_sources(libopenage
     activity.cpp
     animation.cpp
     definitions.cpp
+    effect.cpp
     patch.cpp
     player_setup.cpp
     property.cpp
+    resistance.cpp
     sound.cpp
     terrain.cpp
     types.cpp
