@@ -5,6 +5,7 @@
 #include <memory>
 #include <string>
 
+#include "curve/array.h"
 #include "curve/continuous.h"
 #include "curve/discrete.h"
 #include "curve/discrete_mod.h"
@@ -232,7 +233,7 @@ void curve_types() {
 		TESTEQUALS(c.get(8), 4);
 	}
 
-	//Check the discrete type
+	// Check the discrete type
 	{
 		auto f = std::make_shared<event::EventLoop>();
 		Discrete<int> c(f, 0);
@@ -257,7 +258,7 @@ void curve_types() {
 		TESTEQUALS(complex.get(10), "Test 10");
 	}
 
-	//Check the discrete mod type
+	// Check the discrete mod type
 	{
 		auto f = std::make_shared<event::EventLoop>();
 		DiscreteMod<int> c(f, 0);
@@ -290,7 +291,7 @@ void curve_types() {
 		TESTEQUALS(c.get_mod(15, 0), 0);
 	}
 
-	//check set_last
+	// check set_last
 	{
 		auto f = std::make_shared<event::EventLoop>();
 		Discrete<int> c(f, 0);
@@ -385,6 +386,15 @@ void curve_types() {
 		// [0:0]
 		TESTEQUALS(c.get(1), 0);
 		TESTEQUALS(c.get(5), 0);
+	}
+
+	{ // array
+		Array<int, 2> a;
+		a.set_insert(time::time_t(1), 0, 0);
+		a.set_insert(time::time_t(1), 1, 1);
+		const auto res = a.get_all(1);
+		TESTEQUALS(res[0], 0);
+		TESTEQUALS(res[1], 1);
 	}
 }
 
