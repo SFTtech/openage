@@ -20,10 +20,10 @@ public:
 	using container_t = std::array<KeyframeContainer<T>, Size>;
 
 
-	// Array() = default;
+	Array() = default;
 
 	// prevent accidental copy of queue
-	// Array(const Array &) = delete;
+	Array(const Array &) = delete;
 
 
 	T get(const time::time_t &t, const size_t index) const;
