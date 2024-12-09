@@ -395,10 +395,6 @@ void curve_types() {
 		const auto res = a.get_all(1);
 		TESTEQUALS(res[0], 0);
 		TESTEQUALS(res[1], 1);
-
-		for (auto r : a) {
-			std::cout << r << std::endl;
-		}
 	}
 }
 

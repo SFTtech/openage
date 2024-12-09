@@ -1,6 +1,5 @@
 // Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
-
 #pragma once
 
 #include <array>
@@ -60,7 +59,6 @@ public:
 		Iterator(const Array<T, Size> *curve, const time::time_t &time = time::TIME_MAX, size_t offset = 0) :
 			curve(curve), time(time), offset(offset) {
 			if (this->offset != Size) {
-				std::cout << this->offset << Size;
 				ptr = &this->curve->frame(this->time, this->offset).value;
 			}
 		};
