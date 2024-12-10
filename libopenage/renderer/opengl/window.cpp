@@ -57,6 +57,23 @@ GlWindow::GlWindow(const std::string &title,
 	this->window->setFormat(format);
 	this->window->create();
 
+	// set display mode
+	// Reset to a known state
+	this->window->setWindowState(Qt::WindowNoState);
+	switch (settings.mode) {
+	case window_mode::WINDOWED:
+		// nothing to do because it's the default
+		break;
+	case window_mode::BORDERLESS:
+		this->window->setFlags(this->window->flags() | Qt::FramelessWindowHint);
+		break;
+	case window_mode::FULLSCREEN:
+		this->window->setWindowState(Qt::WindowFullScreen);
+		break;
+	default:
+		throw Error{MSG(err) << "Invalid window mode."};
+	}
+
 	this->context = std::make_shared<GlContext>(this->window, settings.debug);
 	if (not this->context->get_raw_context()->isValid()) {
 		throw Error{MSG(err) << "Failed to create Qt OpenGL context."};

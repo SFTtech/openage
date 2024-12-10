@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #include "main.h"
 
@@ -31,7 +31,29 @@ int run_game(const main_arguments &args) {
 		run_mode = openage::engine::Engine::mode::HEADLESS;
 	}
 
-	openage::engine::Engine engine{run_mode, args.root_path, args.mods, args.gl_debug};
+	// convert window arguments to window settings
+	renderer::window_settings win_settings = {};
+	win_settings.width = args.window_args.width;
+	win_settings.height = args.window_args.height;
+	win_settings.vsync = args.window_args.vsync;
+
+	renderer::window_mode wmode;
+	if (args.window_args.mode == "fullscreen") {
+		wmode = renderer::window_mode::FULLSCREEN;
+	}
+	else if (args.window_args.mode == "borderless") {
+		wmode = renderer::window_mode::BORDERLESS;
+	}
+	else if (args.window_args.mode == "windowed") {
+		wmode = renderer::window_mode::WINDOWED;
+	}
+	else {
+		throw Error(MSG(err) << "Invalid window mode: " << args.window_args.mode);
+	}
+	win_settings.mode = wmode;
+	win_settings.debug = args.gl_debug;
+
+	openage::engine::Engine engine{run_mode, args.root_path, args.mods, win_settings};
 
 	engine.loop();
 
