@@ -15,7 +15,6 @@ namespace curve {
 template <typename T, size_t Size>
 class Array {
 public:
-	using this_type = Array<T, Size>;
 	using container_t = std::array<KeyframeContainer<T>, Size>;
 
 
@@ -26,11 +25,9 @@ public:
 
 
 	T get(const time::time_t &t, const size_t index) const;
-	// T get(const time::time_t& t, const size_t index, const size_t hint) const;
 
 
 	std::array<T, Size> get_all(const time::time_t &t) const;
-	// std::array<Keyframe<T>, size> get_all(const time::time_t& t, const size_t hint) const;
 
 
 	size_t size() const;
@@ -51,21 +48,11 @@ public:
 
 	class Iterator {
 	public:
-		const T *ptr;
-		size_t offset;
-		const Array<T, Size> *const curve;
-		time::time_t time;
-
-		Iterator(const Array<T, Size> *curve, const time::time_t &time = time::TIME_MAX, size_t offset = 0) :
-			curve(curve), time(time), offset(offset) {
-			if (this->offset != Size) {
-				ptr = &this->curve->frame(this->time, this->offset).value;
-			}
-		};
+		Iterator(Array<T, Size> *curve, const time::time_t &time = time::TIME_MAX, size_t offset = 0) :
+			curve(curve), time(time), offset(offset) {};
 
 		const T &operator*() {
-			ptr = &curve->frame(this->time, this->offset).value;
-			return *this->ptr;
+			return curve->frame(this->time, this->offset).value;
 		}
 
 		void operator++() {
@@ -75,12 +62,18 @@ public:
 		bool operator!=(const Array<T, Size>::Iterator &rhs) const {
 			return this->offset != rhs.offset;
 		}
+
+
+	private:
+		size_t offset;
+		Array<T, Size> *curve;
+		time::time_t time;
 	};
 
 
-	Iterator begin(const time::time_t &time = time::TIME_MAX) const;
+	Iterator begin(const time::time_t &time = time::TIME_MAX);
 
-	Iterator end(const time::time_t &time = time::TIME_MAX) const;
+	Iterator end(const time::time_t &time = time::TIME_MAX);
 
 
 private:
@@ -145,13 +138,13 @@ void Array<T, Size>::sync(const Array<T, Size> &other, const time::time_t &start
 }
 
 template <typename T, size_t Size>
-typename Array<T, Size>::Iterator Array<T, Size>::begin(const time::time_t &time) const {
+typename Array<T, Size>::Iterator Array<T, Size>::begin(const time::time_t &time) {
 	return Array<T, Size>::Iterator(this, time);
 }
 
 
 template <typename T, size_t Size>
-typename Array<T, Size>::Iterator Array<T, Size>::end(const time::time_t &time) const {
+typename Array<T, Size>::Iterator Array<T, Size>::end(const time::time_t &time) {
 	return Array<T, Size>::Iterator(this, time, this->container.size());
 }
 
