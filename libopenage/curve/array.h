@@ -1,4 +1,4 @@
-// Copyright 2017-2024 the openage authors. See copying.md for legal info.
+// Copyright 2024-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -15,9 +15,6 @@ namespace curve {
 template <typename T, size_t Size>
 class Array {
 public:
-	using container_t = std::array<KeyframeContainer<T>, Size>;
-
-
 	Array() = default;
 
 	// prevent accidental copy of queue
@@ -30,12 +27,12 @@ public:
 	std::array<T, Size> get_all(const time::time_t &t) const;
 
 
-	size_t size() const;
+	consteval size_t size() const;
 
-	const Keyframe<T> &frame(const time::time_t &t, const size_t index) const;
+	std::pair<time::time_t, T> frame(const time::time_t &t, const size_t index) const;
 
 
-	const Keyframe<T> &next_frame(const time::time_t &t, const size_t index) const;
+	std::pair<time::time_t, T> next_frame(const time::time_t &t, const size_t index) const;
 
 	void set_insert(const time::time_t &t, const size_t index, T value);
 
@@ -52,7 +49,7 @@ public:
 			curve(curve), time(time), offset(offset) {};
 
 		const T &operator*() {
-			return curve->frame(this->time, this->offset).value;
+			return curve->frame(this->time, this->offset).second;
 		}
 
 		void operator++() {
@@ -77,26 +74,28 @@ public:
 
 
 private:
-	container_t container;
-	mutable size_t last_hit_index = 0;
+	std::array<KeyframeContainer<T>, Size> container;
+
+	//hint for KeyframeContainer operations
+	mutable size_t last_element = 0;
 };
 
 
 template <typename T, size_t Size>
-const Keyframe<T> &Array<T, Size>::frame(const time::time_t &t, const size_t index) const {
-	this->last_hit_index = container[index].last(t, this->last_hit_index);
-	return container[index].get(this->last_hit_index);
+std::pair<time::time_t, T> Array<T, Size>::frame(const time::time_t &t, const size_t index) const {
+	this->last_element = container[index].last(t, this->last_element);
+	return container[index].get(this->last_element).make_pair();
 }
 
 template <typename T, size_t Size>
-const Keyframe<T> &Array<T, Size>::next_frame(const time::time_t &t, const size_t index) const {
-	this->last_hit_index = container[index].last(t, this->last_hit_index);
-	return container[index].get(this->last_hit_index + 1);
+std::pair<time::time_t, T> Array<T, Size>::next_frame(const time::time_t &t, const size_t index) const {
+	this->last_element = container[index].last(t, this->last_element);
+	return container[index].get(this->last_element + 1);
 }
 
 template <typename T, size_t Size>
 T Array<T, Size>::get(const time::time_t &t, const size_t index) const {
-	return this->frame(t, index).value;
+	return this->frame(t, index).second;
 }
 
 template <typename T, size_t Size>
@@ -107,33 +106,33 @@ std::array<T, Size> Array<T, Size>::get_all(const time::time_t &t) const {
 }
 
 template <typename T, size_t Size>
-size_t Array<T, Size>::size() const {
+consteval size_t Array<T, Size>::size() const {
 	return Size;
 }
 
 
 template <typename T, size_t Size>
 void Array<T, Size>::set_insert(const time::time_t &t, const size_t index, T value) {
-	this->last_hit_index = this->container[index].insert_after(Keyframe(t, value), this->last_hit_index);
+	this->last_element = this->container[index].insert_after(Keyframe(t, value), this->last_element);
 }
 
 
 template <typename T, size_t Size>
 void Array<T, Size>::set_last(const time::time_t &t, const size_t index, T value) {
-	this->last_hit_index = this->container[index].insert_after(Keyframe(t, value), this->last_hit_index);
-	this->container[index].erase_after(this->last_hit_index);
+	this->last_element = this->container[index].insert_after(Keyframe(t, value), this->last_element);
+	this->container[index].erase_after(this->last_element);
 }
 
 
 template <typename T, size_t Size>
 void Array<T, Size>::set_replace(const time::time_t &t, const size_t index, T value) {
-	this->container[index].insert_overwrite(Keyframe(t, value), this->last_hit_index);
+	this->container[index].insert_overwrite(Keyframe(t, value), this->last_element);
 }
 
 template <typename T, size_t Size>
 void Array<T, Size>::sync(const Array<T, Size> &other, const time::time_t &start) {
 	for (int i = 0; i < Size; i++) {
-		this->container[i].sync(other, start);
+		this->container[i].sync(other[i], start);
 	}
 }
 
