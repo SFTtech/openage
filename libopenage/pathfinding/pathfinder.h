@@ -4,6 +4,7 @@
 
 #include <map>
 #include <memory>
+#include <optional>
 #include <unordered_map>
 
 #include "coord/tile.h"
@@ -209,7 +210,7 @@ public:
 	/**
 	 * Sector where the portal is entered.
 	 */
-	sector_id_t entry_sector;
+	std::optional<sector_id_t> entry_sector;
 
 	/**
 	 * Future cost estimation value for this node.
