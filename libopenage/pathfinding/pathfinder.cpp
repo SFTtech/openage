@@ -469,7 +469,7 @@ int Pathfinder::distance_cost(const coord::tile_delta &portal1_pos,
 
 PortalNode::PortalNode(const std::shared_ptr<Portal> &portal) :
 	portal{portal},
-	entry_sector{NULL},
+	entry_sector{0},
 	future_cost{std::numeric_limits<int>::max()},
 	current_cost{std::numeric_limits<int>::max()},
 	heuristic_cost{std::numeric_limits<int>::max()},
