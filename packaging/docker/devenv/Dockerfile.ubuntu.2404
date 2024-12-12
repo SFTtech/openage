@@ -1,4 +1,4 @@
-FROM ubuntu:23.04
+FROM ubuntu:24.04
 
 RUN apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get install -y sudo \
     && sudo apt-get update \
@@ -8,8 +8,8 @@ RUN apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get install -y sudo \
     cmake \
     cython3 \
     flex \
-    gcc-11 \
-    g++-11 \
+    gcc \
+    g++ \
     git \
     libeigen3-dev \
     libepoxy-dev \

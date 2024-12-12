@@ -42,7 +42,7 @@ directly invalidating the state, making curves more reliable in async scenarios 
 resolving dependencies for keyframes in the past can still be challenging).
 
 The usage of curves has a few downsides though. They are less space efficient due to the
-keyframe storage, interpolation are more costly more costly than incremental changes, and
+keyframe storage, interpolation are more costly than incremental changes, and
 their integration is more complex than the usage of simpler data structures. However, in
 situations where operations are predictable, long-lasting, and easy to calculate - which
 is the case for most RTS games - the positives may outweigh the downsides.
