@@ -279,8 +279,6 @@ public:
 	 * Replaces all keyframes beginning at t >= start with keyframes from \p other.
 	 *
 	 * @param other Curve that keyframes are copied from.
-	 * @param converter Function that converts the value type of \p other to the
-	 *                  value type of \p this.
 	 * @param start Start time at which keyframes are replaced (default = -INF).
 	 *              Using the default value replaces ALL keyframes of \p this with
 	 *              the keyframes of \p other.

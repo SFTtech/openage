@@ -5,6 +5,7 @@
 #include <memory>
 #include <string>
 
+#include "curve/array.h"
 #include "curve/continuous.h"
 #include "curve/discrete.h"
 #include "curve/discrete_mod.h"
@@ -232,7 +233,7 @@ void curve_types() {
 		TESTEQUALS(c.get(8), 4);
 	}
 
-	//Check the discrete type
+	// Check the discrete type
 	{
 		auto f = std::make_shared<event::EventLoop>();
 		Discrete<int> c(f, 0);
@@ -257,7 +258,7 @@ void curve_types() {
 		TESTEQUALS(complex.get(10), "Test 10");
 	}
 
-	//Check the discrete mod type
+	// Check the discrete mod type
 	{
 		auto f = std::make_shared<event::EventLoop>();
 		DiscreteMod<int> c(f, 0);
@@ -290,7 +291,7 @@ void curve_types() {
 		TESTEQUALS(c.get_mod(15, 0), 0);
 	}
 
-	//check set_last
+	// check set_last
 	{
 		auto f = std::make_shared<event::EventLoop>();
 		Discrete<int> c(f, 0);
@@ -385,6 +386,49 @@ void curve_types() {
 		// [0:0]
 		TESTEQUALS(c.get(1), 0);
 		TESTEQUALS(c.get(5), 0);
+	}
+
+	{ // array
+		auto f = std::make_shared<event::EventLoop>();
+
+		Array<int, 4> a(f,0);
+		a.set_insert(time::time_t(1), 0, 0);
+		a.set_insert(time::time_t(1), 1, 1);
+		a.set_insert(time::time_t(1), 2, 2);
+		a.set_insert(time::time_t(1), 3, 3);
+		//a = [[0:0, 1:0],[0:0, 1:1],[0:0, 1:2],[0:0, 1:3]]
+
+		auto res = a.get_all(time::time_t(1));
+		TESTEQUALS(res[0], 0);
+		TESTEQUALS(res[1], 1);
+		TESTEQUALS(res[2], 2);
+		TESTEQUALS(res[3], 3);
+
+		Array<int, 4> other(f,0);
+		other[0].last(999);
+		other[1].last(999);
+		other[2].last(999);
+		other[3].last(999);
+		other.set_insert(time::time_t(1), 0, 4);
+		other.set_insert(time::time_t(1), 1, 5);
+		other.set_insert(time::time_t(1), 2, 6);
+		other.set_insert(time::time_t(1), 3, 7);
+		//other = [[0:999, 1:4],[0:999, 1:5],[0:999, 1:6],[0:999, 1:7]]
+
+
+		a.sync(other, time::time_t(1));
+		//a = [[0:0, 1:4],[0:0, 1:5],[0:0, 1:6],[0:0, 1:7]]
+
+		res = a.get_all(time::time_t(0));
+		TESTEQUALS(res[0], 0);
+		TESTEQUALS(res[1], 0);
+		TESTEQUALS(res[2], 0);
+		TESTEQUALS(res[3], 0);
+		res = a.get_all(time::time_t(1));
+		TESTEQUALS(res[0], 4);
+		TESTEQUALS(res[1], 5);
+		TESTEQUALS(res[2], 6);
+		TESTEQUALS(res[3], 7);
 	}
 }
 
