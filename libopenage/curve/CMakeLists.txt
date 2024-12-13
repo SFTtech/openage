@@ -1,4 +1,5 @@
 add_sources(libopenage
+	array.cpp
 	base_curve.cpp
 	continuous.cpp
 	discrete.cpp
