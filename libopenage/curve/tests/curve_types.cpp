@@ -232,7 +232,43 @@ void curve_types() {
 		TESTEQUALS(c.get(8), 4);
 	}
 
-	//Check the discrete type
+	{
+		// compression
+		auto f = std::make_shared<event::EventLoop>();
+		Continuous<util::FixedPoint<int64_t, 16>> c(f, 0);
+		c.set_insert(0, 0);
+		c.set_insert(1, 1); // redundant
+		c.set_insert(2, 2); // redundant
+		c.set_insert(3, 3);
+		c.set_insert(4, 3); // redundant
+		c.set_insert(5, 3);
+		c.set_insert(6, 4);
+		c.set_insert(7, 4);
+
+		auto frame0 = c.frame(2);
+		TESTEQUALS(frame0.first, 2);
+		TESTEQUALS(frame0.second, 2);
+		TESTEQUALS(c.get(2), 2);
+
+		auto frame1 = c.frame(4);
+		TESTEQUALS(frame1.first, 4);
+		TESTEQUALS(frame1.second, 3);
+		TESTEQUALS(c.get(4), 3);
+
+		c.compress(0);
+
+		auto frame2 = c.frame(2);
+		TESTEQUALS(frame2.first, 0);
+		TESTEQUALS(frame2.second, 0);
+		TESTEQUALS(c.get(2), 2);
+
+		auto frame3 = c.frame(4);
+		TESTEQUALS(frame3.first, 3);
+		TESTEQUALS(frame3.second, 3);
+		TESTEQUALS(c.get(4), 3);
+	}
+
+	// Check the discrete type
 	{
 		auto f = std::make_shared<event::EventLoop>();
 		Discrete<int> c(f, 0);
@@ -257,7 +293,41 @@ void curve_types() {
 		TESTEQUALS(complex.get(10), "Test 10");
 	}
 
-	//Check the discrete mod type
+	{
+		// compression
+		auto f = std::make_shared<event::EventLoop>();
+		Discrete<int64_t> c(f, 0);
+		c.set_insert(0, 1);
+		c.set_insert(1, 3);
+		c.set_insert(2, 3); // redundant
+		c.set_insert(3, 3); // redundant
+		c.set_insert(4, 4);
+		c.set_insert(5, 4); // redundant
+
+		auto frame0 = c.frame(2);
+		TESTEQUALS(frame0.first, 2);
+		TESTEQUALS(frame0.second, 3);
+		TESTEQUALS(c.get(2), 3);
+
+		auto frame1 = c.frame(5);
+		TESTEQUALS(frame1.first, 5);
+		TESTEQUALS(frame1.second, 4);
+		TESTEQUALS(c.get(5), 4);
+
+		c.compress(0);
+
+		auto frame2 = c.frame(2);
+		TESTEQUALS(frame2.first, 1);
+		TESTEQUALS(frame2.second, 3);
+		TESTEQUALS(c.get(2), 3);
+
+		auto frame3 = c.frame(5);
+		TESTEQUALS(frame3.first, 4);
+		TESTEQUALS(frame3.second, 4);
+		TESTEQUALS(c.get(5), 4);
+	}
+
+	// Check the discrete mod type
 	{
 		auto f = std::make_shared<event::EventLoop>();
 		DiscreteMod<int> c(f, 0);
@@ -290,7 +360,7 @@ void curve_types() {
 		TESTEQUALS(c.get_mod(15, 0), 0);
 	}
 
-	//check set_last
+	// check set_last
 	{
 		auto f = std::make_shared<event::EventLoop>();
 		Discrete<int> c(f, 0);
