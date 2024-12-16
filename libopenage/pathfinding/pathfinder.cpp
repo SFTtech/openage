@@ -269,11 +269,12 @@ const Pathfinder::portal_star_t Pathfinder::portal_a_star(const PathRequest &req
 		}
 
 		// get the exits of the current node
-		const auto &exits = current_node->get_exits(current_node->entry_sector);
+		ENSURE(current_node->entry_sector != std::nullopt, "Entry sector not set for portal node.");
+		const auto &exits = current_node->get_exits(current_node->entry_sector.value());
 
 		// evaluate all neighbors of the current candidate for further progress
 		for (auto &[exit, distance_cost] : exits) {
-			exit->entry_sector = current_node->portal->get_exit_sector(current_node->entry_sector);
+			exit->entry_sector = current_node->portal->get_exit_sector(current_node->entry_sector.value());
 			bool not_visited = !visited_portals.contains(exit->portal->get_id());
 
 			if (not_visited) {
@@ -289,9 +290,9 @@ const Pathfinder::portal_star_t Pathfinder::portal_a_star(const PathRequest &req
 			if (not_visited or tentative_cost < exit->current_cost) {
 				if (not_visited) {
 					// Get heuristic cost (from exit node to target cell)
-					auto exit_sector = grid->get_sector(exit->portal->get_exit_sector(exit->entry_sector));
+					auto exit_sector = grid->get_sector(exit->portal->get_exit_sector(exit->entry_sector.value()));
 					auto exit_sector_pos = exit_sector->get_position().to_tile(sector_size);
-					auto exit_portal_pos = exit->portal->get_exit_center(exit->entry_sector);
+					auto exit_portal_pos = exit->portal->get_exit_center(exit->entry_sector.value());
 					exit->heuristic_cost = Pathfinder::heuristic_cost(
 						exit_sector_pos + exit_portal_pos,
 						request.target);
@@ -469,7 +470,7 @@ int Pathfinder::distance_cost(const coord::tile_delta &portal1_pos,
 
 PortalNode::PortalNode(const std::shared_ptr<Portal> &portal) :
 	portal{portal},
-	entry_sector{NULL},
+	entry_sector{std::nullopt},
 	future_cost{std::numeric_limits<int>::max()},
 	current_cost{std::numeric_limits<int>::max()},
 	heuristic_cost{std::numeric_limits<int>::max()},
