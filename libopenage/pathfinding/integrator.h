@@ -5,6 +5,7 @@
 #include <memory>
 
 #include "pathfinding/types.h"
+#include "pathfinding/field_cache.h"
 #include "util/hash.h"
 
 
@@ -18,7 +19,6 @@ class CostField;
 class FlowField;
 class IntegrationField;
 class Portal;
-class FieldCache;
 
 /**
  * Integrator for the flow field pathfinding algorithm.

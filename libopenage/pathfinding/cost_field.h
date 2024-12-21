@@ -67,7 +67,7 @@ public:
 	 * @param cost Cost to set.
 	 * @param changed Time at which the cost value is changed.
 	 */
-	void set_cost(const coord::tile_delta &pos, cost_t cost, const time::time_t &changed);
+	void set_cost(const coord::tile_delta &pos, cost_t cost, const time::time_t &valid_until);
 
 	/**
 	 * Set the cost at a specified position.
@@ -77,7 +77,7 @@ public:
 	 * @param cost Cost to set.
 	 * @param changed Time at which the cost value is changed.
 	 */
-	void set_cost(size_t x, size_t y, cost_t cost, const time::time_t &changed);
+	void set_cost(size_t x, size_t y, cost_t cost, const time::time_t &valid_until);
 
 	/**
 	 * Set the cost at a specified position.
@@ -86,7 +86,11 @@ public:
 	 * @param cost Cost to set.
 	 * @param changed Time at which the cost value is changed.
 	 */
-	inline void set_cost(size_t idx, cost_t cost, const time::time_t &changed);
+
+	inline void set_cost(size_t idx, cost_t cost, const time::time_t &until) {
+		cells[idx] = cost;
+		valid_until = until;
+	}
 
 	/**
 	 * Get the cost field values.
@@ -124,7 +128,7 @@ private:
 	/**
 	 * Time the cost field was last changed.
 	 */
-	time::time_t &valid_until;
+	time::time_t valid_until;
 
 	/**
 	 * Cost field values.

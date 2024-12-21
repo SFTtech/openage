@@ -206,7 +206,9 @@ Integrator::get_return_t Integrator::get(const std::shared_ptr<CostField> &cost_
 	std::shared_ptr<FlowField> cached_flow_field = std::make_shared<FlowField>(*flow_field);
 	cached_flow_field->reset_dynamic_flags();
 
-	this->field_cache->add(cache_key, cached_integration_field, cached_flow_field);
+	field_cache_t field_cache = field_cache_t(cached_integration_field, cached_flow_field);
+
+	this->field_cache->add(cache_key, field_cache);
 
 	return std::make_pair(integration_field, flow_field);
 }

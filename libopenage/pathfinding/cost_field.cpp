@@ -42,11 +42,6 @@ void CostField::set_cost(size_t x, size_t y, cost_t cost, const time::time_t &va
 	this->set_cost(x + y * this->size, cost, valid_until);
 }
 
-inline void CostField::set_cost(size_t idx, cost_t cost, const time::time_t &valid_until) {
-	this->cells[idx] = cost;
-	this->valid_until = valid_until;
-}
-
 const std::vector<cost_t> &CostField::get_costs() const {
 	return this->cells;
 }
