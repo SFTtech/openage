@@ -6,6 +6,7 @@
 
 #include "coord/tile.h"
 #include "pathfinding/types.h"
+#include "time/time.h"
 
 
 namespace openage::path {
@@ -20,6 +21,8 @@ struct PathRequest {
 	coord::tile start;
 	/// Target position of the path.
 	coord::tile target;
+	/// Time the request was made.
+	const time::time_t time;
 };
 
 /**
