@@ -9,6 +9,7 @@
 #include "pathfinding/flow_field.h"
 #include "pathfinding/integration_field.h"
 #include "pathfinding/portal.h"
+#include "time/time.h"
 
 
 namespace openage::path {
@@ -37,10 +38,10 @@ std::shared_ptr<IntegrationField> Integrator::integrate(const std::shared_ptr<Co
                                                         sector_id_t other_sector_id,
                                                         const std::shared_ptr<Portal> &portal,
                                                         const coord::tile_delta &target,
-                                                        bool with_los,
-                                                        bool evict_cache) {
+                                                        const time::time_t &time,
+                                                        bool with_los) {
 	auto cache_key = std::make_pair(portal->get_id(), other_sector_id);
-	if (evict_cache) {
+	if (cost_field->is_dirty(time)) {
 		this->field_cache->evict(cache_key);
 	}
 	else if (this->field_cache->is_cached(cache_key)) {
@@ -105,13 +106,9 @@ std::shared_ptr<FlowField> Integrator::build(const std::shared_ptr<IntegrationFi
                                              const std::shared_ptr<IntegrationField> &other,
                                              sector_id_t other_sector_id,
                                              const std::shared_ptr<Portal> &portal,
-                                             bool with_los,
-                                             bool evict_cache) {
+                                             bool with_los) {
 	auto cache_key = std::make_pair(portal->get_id(), other_sector_id);
-	if (evict_cache) {
-		this->field_cache->evict(cache_key);
-	}
-	else if (this->field_cache->is_cached(cache_key)) {
+	if (this->field_cache->is_cached(cache_key)) {
 		log::log(DBG << "Using cached flow field for portal " << portal->get_id()
 		             << " from sector " << other_sector_id);
 
@@ -155,10 +152,10 @@ Integrator::get_return_t Integrator::get(const std::shared_ptr<CostField> &cost_
                                          sector_id_t other_sector_id,
                                          const std::shared_ptr<Portal> &portal,
                                          const coord::tile_delta &target,
-                                         bool with_los,
-                                         bool evict_cache) {
+                                         const time::time_t &time,
+                                         bool with_los) {
 	auto cache_key = std::make_pair(portal->get_id(), other_sector_id);
-	if (evict_cache) {
+	if (cost_field->is_dirty(time)) {
 		this->field_cache->evict(cache_key);
 	}
 	else if (this->field_cache->is_cached(cache_key)) {
@@ -193,8 +190,8 @@ Integrator::get_return_t Integrator::get(const std::shared_ptr<CostField> &cost_
 		return std::make_pair(cached_integration_field, cached_flow_field);
 	}
 
-	auto integration_field = this->integrate(cost_field, other, other_sector_id, portal, target, with_los, evict_cache);
-	auto flow_field = this->build(integration_field, other, other_sector_id, portal, evict_cache);
+	auto integration_field = this->integrate(cost_field, other, other_sector_id, portal, target, time, with_los);
+	auto flow_field = this->build(integration_field, other, other_sector_id, portal);
 
 	log::log(DBG << "Caching integration and flow fields for portal ID: " << portal->get_id()
 	             << ", sector ID: " << other_sector_id);

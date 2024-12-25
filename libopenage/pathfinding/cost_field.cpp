@@ -60,7 +60,7 @@ bool CostField::is_dirty(const time::time_t &time) {
 	return time >= this->valid_until;
 }
 
-void CostField::clean() {
+void CostField::clear_dirty() {
 	this->valid_until = time::TIME_MAX;
 }
 
