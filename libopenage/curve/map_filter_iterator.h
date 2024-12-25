@@ -1,4 +1,4 @@
-// Copyright 2017-2023 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -35,8 +35,8 @@ public:
 	using CurveIterator<val_t, container_t>::operator=;
 
 	virtual bool valid() const override {
-		return (this->get_base()->second.alive >= this->from
-		        and this->get_base()->second.dead < this->to);
+		return (this->get_base()->second.alive() >= this->from
+		        and this->get_base()->second.dead() < this->to);
 	}
 
 	/**
@@ -44,7 +44,7 @@ public:
 	 * Nicer way of accessing it beside operator *.
 	 */
 	val_t const &value() const override {
-		return this->get_base()->second.value;
+		return this->get_base()->second.value();
 	}
 
 	/**
