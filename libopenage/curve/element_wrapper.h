@@ -40,7 +40,7 @@ struct element_wrapper {
 	 * @param dead Erasure time of the element.
 	 * @param value Element value.
 	 */
-	element_wrapper(const T &value, const time::time_t &alive, const time::time_t &dead) :
+	element_wrapper(const time::time_t &alive, const time::time_t &dead, const T &value) :
 		_alive{alive},
 		_dead{dead},
 		value{value} {}

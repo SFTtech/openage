@@ -150,7 +150,7 @@ UnorderedMap<key_t, val_t>::insert(const time::time_t &alive,
                                    const time::time_t &dead,
                                    const key_t &key,
                                    const val_t &value) {
-	element_wrapper<val_t> e(value, alive, dead);
+	element_wrapper<val_t> e{alive, dead, value};
 	auto it = this->container.insert(std::make_pair(key, e));
 	return MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>(
 		it.first,
