@@ -3,6 +3,7 @@ add_sources(libopenage
 	continuous.cpp
 	discrete.cpp
 	discrete_mod.cpp
+    element_wrapper.cpp
 	interpolated.cpp
 	iterator.cpp
 	keyframe.cpp
