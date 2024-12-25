@@ -27,12 +27,11 @@
 namespace openage::path::tests {
 
 void path_demo_1(const util::Path &path) {
-	auto time_loop = std::make_shared<time::TimeLoop>();
-	time_loop->run();
-	auto clock = time_loop->get_clock();
 	auto grid = std::make_shared<Grid>(0, util::Vector2s{4, 3}, 10);
 
-	const time::time_t time = clock->get_time();
+	time::Clock clock = time::Clock();
+	clock.start();
+	const time::time_t time = clock.get_time();
 	// Initialize the cost field for each sector.
 	for (auto &sector : grid->get_sectors()) {
 		auto cost_field = sector->get_cost_field();
@@ -93,7 +92,7 @@ void path_demo_1(const util::Path &path) {
 	coord::tile start{2, 26};
 	coord::tile target{36, 2};
 
-	const time::time_t request_time = clock->get_time();
+	const time::time_t request_time = clock.get_time();
 
 	PathRequest path_request{
 		grid->get_id(),
@@ -137,7 +136,7 @@ void path_demo_1(const util::Path &path) {
 					grid->get_id(),
 					start,
 					target,
-					clock->get_time()
+					clock.get_time()
 				};
 
 				timer.reset();
@@ -158,7 +157,7 @@ void path_demo_1(const util::Path &path) {
 					grid->get_id(),
 					start,
 					target,
-					clock->get_time()
+					clock.get_time()
 				};
 
 				timer.reset();

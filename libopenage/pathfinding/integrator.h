@@ -7,6 +7,7 @@
 #include "pathfinding/types.h"
 #include "pathfinding/field_cache.h"
 #include "util/hash.h"
+#include "time/time.h"
 
 
 namespace openage {
@@ -55,6 +56,7 @@ public:
 	 * @param other_sector_id Sector ID of the other side of the portal.
 	 * @param portal Portal.
 	 * @param target Coordinates of the target cell, relative to the integration field origin.
+	 * @param time The time to check is the cached cost field is dirty.
 	 * @param with_los If true an LOS pass is performed before cost integration.
 	 *
 	 * @return Integration field.
@@ -64,8 +66,8 @@ public:
 	                                            sector_id_t other_sector_id,
 	                                            const std::shared_ptr<Portal> &portal,
 	                                            const coord::tile_delta &target,
-	                                            bool with_los = true,
-												bool evict_cache = false);
+												const time::time_t &time,
+	                                            bool with_los = true);
 
 	/**
 	 * Build the flow field from an integration field.
@@ -91,8 +93,7 @@ public:
 	                                 const std::shared_ptr<IntegrationField> &other,
 	                                 sector_id_t other_sector_id,
 	                                 const std::shared_ptr<Portal> &portal,
-	                                 bool with_los = true,
-					 				 bool evict_cache = false);
+	                                 bool with_los = true);
 
 	using get_return_t = std::pair<std::shared_ptr<IntegrationField>, std::shared_ptr<FlowField>>;
 
@@ -115,6 +116,7 @@ public:
 	 * @param other_sector_id Sector ID of the other side of the portal.
 	 * @param portal Portal.
 	 * @param target Coordinates of the target cell, relative to the integration field origin.
+	 * @param time The time to check is the cached cost field is dirty.
 	 * @param with_los If true an LOS pass is performed before cost integration.
 	 *
 	 * @return Integration field and flow field.
@@ -124,8 +126,8 @@ public:
 	                 sector_id_t other_sector_id,
 	                 const std::shared_ptr<Portal> &portal,
 	                 const coord::tile_delta &target,
-	                 bool with_los = true,
-					 bool evict_cache = false);
+					 const time::time_t &time,
+	                 bool with_los = true);
 
 private:
 	

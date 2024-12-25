@@ -87,9 +87,9 @@ public:
 	 * @param changed Time at which the cost value is changed.
 	 */
 
-	inline void set_cost(size_t idx, cost_t cost, const time::time_t &until) {
-		cells[idx] = cost;
-		valid_until = until;
+	inline void set_cost(size_t idx, cost_t cost, const time::time_t &valid_until) {
+		this->cells[idx] = cost;
+		this->valid_until = valid_until;
 	}
 
 	/**
@@ -117,7 +117,7 @@ public:
 	/**
 	 * Cleans the dirty flag by setting it to time_MAX.
 	 */
-	void clean();
+	void clear_dirty();
 
 private:
 	/**
