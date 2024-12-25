@@ -12,14 +12,8 @@ namespace openage::curve {
  * Stores the lifetime of the element (insertion time and erasure time) alongside the value.
  */
 template <typename T>
-struct element_wrapper {
-	/// Time of insertion of the element into the container
-	time::time_t _alive;
-	/// Time of erasure of the element from the container
-	time::time_t _dead;
-	/// Element value
-	T value;
-
+class element_wrapper {
+public:
 	/**
 	 * Create a new element with insertion time \p time and a given value.
 	 *
@@ -31,7 +25,7 @@ struct element_wrapper {
 	element_wrapper(const time::time_t &time, const T &value) :
 		_alive{time},
 		_dead{time::TIME_MAX},
-		value{value} {}
+		_value{value} {}
 
 	/**
 	 * Create a new element with insertion time \p alive and erasure time \p dead and a given value.
@@ -43,7 +37,7 @@ struct element_wrapper {
 	element_wrapper(const time::time_t &alive, const time::time_t &dead, const T &value) :
 		_alive{alive},
 		_dead{dead},
-		value{value} {}
+		_value{value} {}
 
 	/**
 	 * Get the insertion time of this element.
@@ -71,6 +65,31 @@ struct element_wrapper {
 	void set_dead(const time::time_t &time) {
 		_dead = time;
 	}
+
+	/**
+	 * Get the value of this element.
+	 *
+	 * @return Value of the element.
+	 */
+	const T &value() const {
+		return _value;
+	}
+
+private:
+	/**
+	 * Time of insertion of the element into the container
+	 */
+	time::time_t _alive;
+
+	/**
+	 * Time of erasure of the element from the container
+	 */
+	time::time_t _dead;
+
+	/**
+	 * Element value
+	 */
+	T _value;
 };
 
 } // namespace openage::curve

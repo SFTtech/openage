@@ -44,7 +44,7 @@ public:
 	 * Nicer way of accessing it beside operator *.
 	 */
 	val_t const &value() const override {
-		return this->get_base()->second.value;
+		return this->get_base()->second.value();
 	}
 
 	/**

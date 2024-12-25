@@ -277,7 +277,7 @@ const T &Queue<T>::front(const time::time_t &time) const {
 	                                   << ", container size: " << this->container.size()
 	                                   << ")");
 
-	return this->container.at(at).value;
+	return this->container.at(at).value();
 }
 
 
@@ -303,7 +303,7 @@ const T &Queue<T>::pop_front(const time::time_t &time) {
 
 	this->changes(time);
 
-	return this->container.at(at).value;
+	return this->container.at(at).value();
 }
 
 
