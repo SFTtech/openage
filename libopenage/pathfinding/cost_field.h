@@ -65,7 +65,7 @@ public:
 	 *
 	 * @param pos Coordinates of the cell (relative to field origin).
 	 * @param cost Cost to set.
-	 * @param changed Time at which the cost value is changed.
+	 * @param valid_until Time at which the cost value is changed.
 	 */
 	void set_cost(const coord::tile_delta &pos, cost_t cost, const time::time_t &valid_until);
 
