@@ -16,10 +16,10 @@ template <typename T, size_t Size>
 class Array : event::EventEntity {
 public:
 	Array(const std::shared_ptr<event::EventLoop> &loop,
-	          size_t id,
-	          const std::string &idstr = "",
-	          const EventEntity::single_change_notifier &notifier = nullptr) :
-		EventEntity(loop, notifier), _id{id}, _idstr{idstr}, loop{loop}{}
+	      size_t id,
+	      const std::string &idstr = "",
+	      const EventEntity::single_change_notifier &notifier = nullptr) :
+		EventEntity(loop, notifier), _id{id}, _idstr{idstr}, loop{loop} {}
 
 	Array(const Array &) = delete;
 
@@ -28,16 +28,16 @@ public:
 	 * Get the last element with elem->time <= time from
 	 * the keyfram container at a given index
 	 */
-	T get(const time::time_t &t, const size_t index) const;
+	T at(const time::time_t &t, const size_t index) const;
 
 
 	/**
 	 * Get an array of the last elements with elem->time <= time from
 	 * all keyfram containers contained within this array curve
 	 */
-	std::array<T, Size> get_all(const time::time_t &t) const;
+	std::array<T, Size> get(const time::time_t &t) const;
 
-
+	// Get the amount of KeyframeContainers in array curve
 	consteval size_t size() const;
 
 	/**
@@ -107,92 +107,107 @@ public:
 	}
 
 
-	KeyframeContainer<T>& operator[] (size_t index)
-	{
-		return this->container[index];
+	// get a copy to the KeyframeContainer at index
+	KeyframeContainer<T> operator[](size_t index) const {
+		return this->container.at(index);
 	}
 
-	KeyframeContainer<T> operator[] (size_t index) const
-	{
-		return this->container[index];
-	}
-
+	// Array::Iterator is used to iterate over KeyframeContainers contained in a curve at a given time.
 	class Iterator {
 	public:
 		Iterator(Array<T, Size> *curve, const time::time_t &time = time::TIME_MAX, size_t offset = 0) :
 			curve(curve), time(time), offset(offset) {};
 
+		// returns a copy of the keyframe at the current offset and time
 		const T operator*() {
-			return curve->frame(this->time, this->offset).second;
+			return this->curve->frame(this->time, this->offset).second;
 		}
 
+		// increments the Iterator to point at the next KeyframeContainer
 		void operator++() {
 			this->offset++;
 		}
 
+		// Compare two Iterators by their offset
 		bool operator!=(const Array<T, Size>::Iterator &rhs) const {
 			return this->offset != rhs.offset;
 		}
 
 
 	private:
+		// used to index the Curve::Array pointed to by this iterator
 		size_t offset;
+
+		// curve::Array that this iterator is iterating over
 		Array<T, Size> *curve;
+
+		// time at which this iterator is iterating over
 		time::time_t time;
 	};
 
 
-	Iterator begin(const time::time_t &time = time::TIME_MAX);
+	// iterator pointing to a keyframe of the first KeyframeContainer in the curve at a given time
+	Iterator begin(const time::time_t &time = time::TIME_MIN);
 
-	Iterator end(const time::time_t &time = time::TIME_MAX);
+	// iterator pointing after the last KeyframeContainer in the curve at a given time
+	Iterator end(const time::time_t &time = time::TIME_MIN);
 
 
 private:
 	std::array<KeyframeContainer<T>, Size> container;
 
-	//hint for KeyframeContainer operations
+	/**
+	 * hints for KeyframeContainer operations, mutable as hints
+	 * are updated by const read functions.
+	 * This is used to speed up the search for next keyframe to be accessed
+	 */
 	mutable std::array<size_t, Size> last_element = {};
 
 	/**
-	* Identifier for the container
-	*/
+	 * Identifier for the container
+	 */
 	const size_t _id;
 
 	/**
-	* Human-readable identifier for the container
-	*/
+	 * Human-readable identifier for the container
+	 */
 	const std::string _idstr;
 
 	/**
-	* The eventloop this curve was registered to
-	*/
+	 * The eventloop this curve was registered to
+	 */
 	const std::shared_ptr<event::EventLoop> loop;
 };
 
 
 template <typename T, size_t Size>
 std::pair<time::time_t, T> Array<T, Size>::frame(const time::time_t &t, const size_t index) const {
-	size_t frmae_index = container[index].last(t, this->last_element[index]);
-	this->last_element[index] = frmae_index;
-	return container[index].get(frmae_index).make_pair();
+	size_t &hint = this->last_element[index];
+	size_t frame_index = this->container.at(index).last(t, hint);
+	hint = frame_index;
+	return this->container.at(index).get(frame_index).make_pair();
 }
 
 template <typename T, size_t Size>
 std::pair<time::time_t, T> Array<T, Size>::next_frame(const time::time_t &t, const size_t index) const {
-	size_t frmae_index = container[index].last(t, this->last_element[index]);
-	this->last_element[index] = frmae_index;
-	return container[index].get(frmae_index + 1).make_pair();
+	size_t &hint = this->last_element[index];
+	size_t frame_index = this->container.at(index).last(t, hint);
+	hint = frame_index;
+	return this->container.at(index).get(frame_index + 1).make_pair();
 }
 
 template <typename T, size_t Size>
-T Array<T, Size>::get(const time::time_t &t, const size_t index) const {
-	return this->frame(t, index).second;
+T Array<T, Size>::at(const time::time_t &t, const size_t index) const {
+	size_t &hint = this->last_element[index];
+	size_t frame_index = this->container.at(index).last(t, hint);
+	hint = frame_index;
+	return this->container.at(index).get(frame_index).val();
 }
 
 template <typename T, size_t Size>
-std::array<T, Size> Array<T, Size>::get_all(const time::time_t &t) const {
+std::array<T, Size> Array<T, Size>::get(const time::time_t &t) const {
 	return [&]<auto... I>(std::index_sequence<I...>) {
-		return std::array<T, Size>{this->get(t, I)...};
+		return std::array<T, Size>{this->at(t, I)...};
 	}(std::make_index_sequence<Size>{});
 }
 
@@ -204,22 +219,21 @@ consteval size_t Array<T, Size>::size() const {
 
 template <typename T, size_t Size>
 void Array<T, Size>::set_insert(const time::time_t &t, const size_t index, T value) {
-	this->last_element[index] = this->container[index].insert_after(Keyframe(t, value), this->last_element[index]);
+	this->last_element[index] = this->container.at(index).insert_after(Keyframe{t, value}, this->last_element[index]);
 }
 
 
 template <typename T, size_t Size>
 void Array<T, Size>::set_last(const time::time_t &t, const size_t index, T value) {
-
-	size_t frame_index = this->container[index].insert_after(Keyframe(t, value), this->last_element[index]);
+	size_t frame_index = this->container.at(index).insert_after(Keyframe{t, value}, this->last_element[index]);
 	this->last_element[index] = frame_index;
-	this->container[index].erase_after(frame_index);
+	this->container.at(index).erase_after(frame_index);
 }
 
 
 template <typename T, size_t Size>
 void Array<T, Size>::set_replace(const time::time_t &t, const size_t index, T value) {
-	this->container[index].insert_overwrite(Keyframe(t, value), this->last_element[index]);
+	this->container.at(index).insert_overwrite(Keyframe{t, value}, this->last_element[index]);
 }
 
 template <typename T, size_t Size>
