@@ -40,7 +40,7 @@ public:
 
 	const val_t &value() const override {
 		const auto &a = *this->get_base();
-		return a.value;
+		return a.value();
 	}
 };
 

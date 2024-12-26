@@ -1,4 +1,4 @@
-// Copyright 2017-2023 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -8,6 +8,7 @@
 #include <utility>
 
 #include "curve/map_filter_iterator.h"
+#include "curve/element_wrapper.h"
 #include "time/time.h"
 #include "util/fixed_point.h"
 
@@ -20,26 +21,15 @@ namespace openage::curve {
  */
 template <typename key_t, typename val_t>
 class UnorderedMap {
-	/** Internal container to access all data and metadata */
-	struct map_element {
-		map_element(const val_t &v, const time::time_t &a, const time::time_t &d) :
-			value(v),
-			alive(a),
-			dead(d) {}
-
-		val_t value;
-		time::time_t alive;
-		time::time_t dead;
-	};
 
 	/**
 	 * Data holder. Maps keys to map elements.
 	 * Map elements themselves store when they are valid.
 	 */
-	std::unordered_map<key_t, map_element> container;
+	std::unordered_map<key_t, element_wrapper<val_t>> container;
 
 public:
-	using const_iterator = typename std::unordered_map<key_t, map_element>::const_iterator;
+	using const_iterator = typename std::unordered_map<key_t, element_wrapper<val_t>>::const_iterator;
 
 	std::optional<MapFilterIterator<key_t, val_t, UnorderedMap>>
 	operator()(const time::time_t &, const key_t &) const;
@@ -95,7 +85,7 @@ std::optional<MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>>
 UnorderedMap<key_t, val_t>::at(const time::time_t &time,
                                const key_t &key) const {
 	auto e = this->container.find(key);
-	if (e != this->container.end() and e->second.alive <= time and e->second.dead > time) {
+	if (e != this->container.end() and e->second.alive() <= time and e->second.dead() > time) {
 		return MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>(
 			e,
 			this,
@@ -160,7 +150,7 @@ UnorderedMap<key_t, val_t>::insert(const time::time_t &alive,
                                    const time::time_t &dead,
                                    const key_t &key,
                                    const val_t &value) {
-	map_element e(value, alive, dead);
+	element_wrapper<val_t> e{alive, dead, value};
 	auto it = this->container.insert(std::make_pair(key, e));
 	return MapFilterIterator<key_t, val_t, UnorderedMap<key_t, val_t>>(
 		it.first,

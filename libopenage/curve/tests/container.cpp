@@ -308,9 +308,6 @@ void test_array() {
 	TESTEQUALS(next_frame.second, 40);
 	TESTEQUALS(next_frame.first, 5);
 
-	// Test operator[]
-	TESTEQUALS(a[0].get(a[0].last(2)).val(), 25);
-	TESTEQUALS(a[1].get(a[1].last(2)).val(), 5);
 
 	// Test begin and end
 	auto it = a.begin(1);

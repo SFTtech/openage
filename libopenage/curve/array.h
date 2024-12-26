@@ -22,6 +22,7 @@ public:
 		EventEntity(loop, notifier), _id{id}, _idstr{idstr}, loop{loop} {}
 
 	Array(const Array &) = delete;
+	Array &operator=(const Array &) = delete;
 
 
 	/**
