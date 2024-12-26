@@ -245,7 +245,7 @@ template <typename T>
 std::pair<time::time_t, const T> BaseCurve<T>::frame(const time::time_t &time) const {
 	auto e = this->container.last(time, this->container.size());
 	auto elem = this->container.get(e);
-	return std::make_pair(elem.time(), elem.val());
+	return elem.make_pair();
 }
 
 
@@ -254,7 +254,7 @@ std::pair<time::time_t, const T> BaseCurve<T>::next_frame(const time::time_t &ti
 	auto e = this->container.last(time, this->container.size());
 	e++;
 	auto elem = this->container.get(e);
-	return std::make_pair(elem.time(), elem.val());
+	return elem.make_pair();
 }
 
 template <typename T>
