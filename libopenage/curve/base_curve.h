@@ -47,6 +47,7 @@ public:
 	// registration. If you need to copy a curve, use the sync() method.
 	// TODO: if copying is enabled again, these members have to be reassigned: _id, _idstr, last_element
 	BaseCurve(const BaseCurve &) = delete;
+	BaseCurve &operator=(const BaseCurve &) = delete;
 
 	BaseCurve(BaseCurve &&) = default;
 
