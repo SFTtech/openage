@@ -57,17 +57,21 @@ cdef public dict LAYER_TYPES = {
     1: SMXLayerType.SHADOW,
     2: SMXLayerType.OUTLINE,
 }
-cdef class SMXMainLayer8to5:
-    pass
+cdef class SMXMainLayer8to5(SMXLayer):
+    def __init__(self, layer_header, data):
+        super().__init__(layer_header, data)
 
-cdef class SMXMainLayer4plus1:
-    pass
+cdef class SMXMainLayer4plus1(SMXLayer):
+    def __init__(self, layer_header, data):
+        super().__init__(layer_header, data)
 
-cdef class SMXOutlineLayer:
-    pass
+cdef class SMXOutlineLayer(SMXLayer):
+    def __init__(self, layer_header, data):
+        super().__init__(layer_header, data)
 
-cdef class SMXShadowLayer:
-    pass
+cdef class SMXShadowLayer(SMXLayer):
+    def __init__(self, layer_header, data):
+        super().__init__(layer_header, data)
 
 
 ctypedef fused SMXLayerVariant:
