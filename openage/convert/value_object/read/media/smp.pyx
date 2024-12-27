@@ -1,7 +1,10 @@
-# Copyright 2013-2023 the openage authors. See copying.md for legal info.
+# Copyright 2013-2024 the openage authors. See copying.md for legal info.
 #
 # cython: infer_types=True
 
+from libcpp.vector cimport vector
+from libcpp cimport bool
+from libc.stdint cimport uint8_t, uint16_t
 from enum import Enum
 import numpy
 from struct import Struct, unpack_from
@@ -11,11 +14,6 @@ from .....log import spam, dbg
 
 cimport cython
 cimport numpy
-
-from libc.stdint cimport uint8_t, uint16_t
-from libcpp cimport bool
-from libcpp.vector cimport vector
-
 
 
 # SMP files have little endian byte order
@@ -50,8 +48,8 @@ class SMPLayerType(Enum):
     """
     SMP layer types.
     """
-    MAIN    = "main"
-    SHADOW  = "shadow"
+    MAIN = "main"
+    SHADOW = "shadow"
     OUTLINE = "outline"
 
 
@@ -106,7 +104,7 @@ class SMP:
 
     def __init__(self, data):
         smp_header = SMP.smp_header.unpack_from(data)
-        signature, version, frame_count, facet_count, frames_per_facet,\
+        signature, version, frame_count, facet_count, frames_per_facet, \
             checksum, file_size, source_format, comment = smp_header
 
         dbg("SMP")
@@ -159,12 +157,14 @@ class SMP:
 
                 elif layer_header.layer_type == 0x04:
                     # layer that stores a shadow
-                    self.shadow_frames.append(SMPShadowLayer(layer_header, data))
+                    self.shadow_frames.append(
+                        SMPShadowLayer(layer_header, data))
 
                 elif layer_header.layer_type == 0x08 or \
-                     layer_header.layer_type == 0x10:
+                        layer_header.layer_type == 0x10:
                     # layer that stores an outline
-                    self.outline_frames.append(SMPOutlineLayer(layer_header, data))
+                    self.outline_frames.append(
+                        SMPOutlineLayer(layer_header, data))
 
                 else:
                     raise Exception(
@@ -282,11 +282,11 @@ ctypedef fused SMPLayerVariant:
 
 @cython.boundscheck(False)
 cdef void process_drawing_cmds(SMPLayerVariant variant,
-                               const uint8_t[::1] &data_raw,
-                                   vector[pixel] &row_data,
-                                   Py_ssize_t rowid,
-                                   Py_ssize_t first_cmd_offset,
-                                   size_t expected_size):
+                               const uint8_t[::1] & data_raw,
+                               vector[pixel] & row_data,
+                               Py_ssize_t rowid,
+                               Py_ssize_t first_cmd_offset,
+                               size_t expected_size):
 
     """
       extract colors (pixels) for the drawing commands
@@ -360,22 +360,22 @@ cdef void process_drawing_cmds(SMPLayerVariant variant,
                     dpos += 1
                     nextbyte = data_raw[dpos]
                     row_data.push_back(pixel(color_shadow,
-                                            nextbyte, 0, 0, 0))
+                                             nextbyte, 0, 0, 0))
                 elif variant is SMPOutlineLayer:
                     # we don't know the color the game wants
                     # so we just draw index 0
                     row_data.push_back(pixel(color_outline,
-                                            0, 0, 0, 0))
+                                             0, 0, 0, 0))
                 elif variant is SMPMainLayer:
                     for _ in range(4):
                         dpos += 1
                         pixel_data.push_back(data_raw[dpos])
 
                     row_data.push_back(pixel(color_standard,
-                                            pixel_data[0],
-                                            pixel_data[1],
-                                            pixel_data[2],
-                                            pixel_data[3] & 0x1F))  # remove "usage" bit here
+                                             pixel_data[0],
+                                             pixel_data[1],
+                                             pixel_data[2],
+                                             pixel_data[3] & 0x1F))  # remove "usage" bit here
                     pixel_data.clear()
 
         elif lower_crumb == 0b00000010 and variant in (SMPMainLayer, SMPShadowLayer):
@@ -391,17 +391,17 @@ cdef void process_drawing_cmds(SMPLayerVariant variant,
                     dpos += 1
                     nextbyte = data_raw[dpos]
                     row_data.push_back(pixel(color_shadow,
-                                            nextbyte, 0, 0, 0))
+                                             nextbyte, 0, 0, 0))
                 else:
                     for _ in range(4):
                         dpos += 1
                         pixel_data.push_back(data_raw[dpos])
 
                     row_data.push_back(pixel(color_player,
-                                            pixel_data[0],
-                                            pixel_data[1],
-                                            pixel_data[2],
-                                            pixel_data[3] & 0x1F))  # remove "usage" bit here
+                                             pixel_data[0],
+                                             pixel_data[1],
+                                             pixel_data[2],
+                                             pixel_data[3] & 0x1F))  # remove "usage" bit here
                     pixel_data.clear()
 
         else:
@@ -493,7 +493,7 @@ cdef class SMPLayer:
             self.pcolor.push_back(self.create_color_row(data_raw, i))
 
     cdef vector[pixel] create_color_row(self,
-                                        const uint8_t[::1] &data_raw,
+                                        const uint8_t[::1] & data_raw,
                                         Py_ssize_t rowid):
         """
         extract colors (pixels) for the given rowid.
@@ -573,12 +573,10 @@ cdef class SMPLayer:
         return repr(self.info)
 
 
-
-
 @cython.boundscheck(False)
 @cython.wraparound(False)
-cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
-                                         numpy.ndarray[numpy.uint8_t, ndim=2, mode="c"] palette):
+cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] & image_matrix,
+                                         numpy.ndarray[numpy.uint8_t, ndim = 2, mode = "c"] palette):
     """
     converts a palette index image matrix to an rgba matrix.
     """
@@ -586,7 +584,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
     cdef size_t height = image_matrix.size()
     cdef size_t width = image_matrix[0].size()
 
-    cdef numpy.ndarray[numpy.uint8_t, ndim=3, mode="c"] array_data = \
+    cdef numpy.ndarray[numpy.uint8_t, ndim = 3, mode = "c"] array_data = \
         numpy.zeros((height, width, 4), dtype=numpy.uint8)
 
     cdef uint8_t[:, ::1] m_lookup = palette
@@ -681,9 +679,10 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
 
     return array_data
 
+
 @cython.boundscheck(False)
 @cython.wraparound(False)
-cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] &image_matrix):
+cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] & image_matrix):
     """
     converts the damage modifier values to an image using the RG values.
 
@@ -693,7 +692,7 @@ cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] &image_matrix):
     cdef size_t height = image_matrix.size()
     cdef size_t width = image_matrix[0].size()
 
-    cdef numpy.ndarray[numpy.uint8_t, ndim=3, mode="c"] array_data = \
+    cdef numpy.ndarray[numpy.uint8_t, ndim = 3, mode = "c"] array_data = \
         numpy.zeros((height, width, 4), dtype=numpy.uint8)
 
     cdef uint8_t r
