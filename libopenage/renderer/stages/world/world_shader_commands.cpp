@@ -2,6 +2,8 @@
 
 #include "world_shader_commands.h"
 
+#include <cstring>
+
 #include "error/error.h"
 #include "log/log.h"
 
@@ -44,7 +46,7 @@ std::string WorldShaderCommands::integrate_command(const std::string &base_shade
 	}
 
 	// Replace the insertion point with the generated command code
-	final_shader.replace(insert_point, strlen(COMMAND_MARKER), commands_code);
+	final_shader.replace(insert_point, std::strlen(COMMAND_MARKER), commands_code);
 
 	return final_shader;
 }
