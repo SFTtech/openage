@@ -127,7 +127,7 @@ def main(argv=None):
         "codegen",
         parents=[global_cli]))
 
-    args = cli.parse_args(argv)
+    args, remaining_args = cli.parse_known_args(argv)
 
     dll_manager = None
     if sys.platform == 'win32':
@@ -139,7 +139,7 @@ def main(argv=None):
 
     if not args.subcommand:
         # the user didn't specify a subcommand. default to 'main'.
-        args = main_cli.parse_args(argv)
+        args = main_cli.parse_args(remaining_args)
 
     args.dll_manager = dll_manager
 
