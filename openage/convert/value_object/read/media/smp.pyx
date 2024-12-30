@@ -297,7 +297,7 @@ cdef vector[pixel] create_color_row(SMPLayerVariant variant,
     cdef vector[pixel] row_data
     cdef Py_ssize_t i
 
-    cdef Py_ssize_t first_cmd_offset = variant.cmd_offsets[rowid]  # redudent
+    cdef Py_ssize_t first_cmd_offset = variant.cmd_offsets[rowid]
     cdef boundary_def bounds = variant.boundaries[rowid]
     cdef size_t pixel_count = variant.info.size[0]
 

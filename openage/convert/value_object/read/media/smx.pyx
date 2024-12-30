@@ -1,4 +1,4 @@
-# Copyright 2019-2023 the openage authors. See copying.md for legal info.
+# Copyright 2019-2024 the openage authors. See copying.md for legal info.
 #
 # cython: infer_types=True
 
@@ -64,6 +64,9 @@ cdef class SMXMainLayer8to5(SMXLayer):
         for i in range(self.row_count):
             cmd_offset, color_offset, chunk_pos, row_data = create_color_row(
                 self, i)
+            self.cmd_offset = cmd_offset
+            self.color_offset = color_offset
+            self.chunk_pos = chunk_pos
 
             self.pcolor.push_back(row_data)
 
@@ -74,6 +77,9 @@ cdef class SMXMainLayer4plus1(SMXLayer):
         for i in range(self.row_count):
             cmd_offset, color_offset, chunk_pos, row_data = create_color_row(
                 self, i)
+            self.cmd_offset = cmd_offset
+            self.color_offset = color_offset
+            self.chunk_pos = chunk_pos
 
             self.pcolor.push_back(row_data)
 
@@ -84,6 +90,9 @@ cdef class SMXOutlineLayer(SMXLayer):
         for i in range(self.row_count):
             cmd_offset, color_offset, chunk_pos, row_data = create_color_row(
                 self, i)
+            self.cmd_offset = cmd_offset
+            self.color_offset = color_offset
+            self.chunk_pos = chunk_pos
 
             self.pcolor.push_back(row_data)
 
@@ -94,6 +103,9 @@ cdef class SMXShadowLayer(SMXLayer):
         for i in range(self.row_count):
             cmd_offset, color_offset, chunk_pos, row_data = create_color_row(
                 self, i)
+            self.cmd_offset = cmd_offset
+            self.color_offset = color_offset
+            self.chunk_pos = chunk_pos
 
             self.pcolor.push_back(row_data)
 
@@ -182,7 +194,6 @@ cdef inline(int, int, int, vector[pixel]) process_drawing_cmds(SMXLayerVariant v
     """
     TODO: docstring
     """
-
     # position in the command array, we start at the first command of this row
     cdef Py_ssize_t dpos_cmd = first_cmd_offset
 
@@ -204,8 +215,6 @@ cdef inline(int, int, int, vector[pixel]) process_drawing_cmds(SMXLayerVariant v
     cdef uint8_t pixel_mask_even_1 = 0b00000011
     cdef uint8_t pixel_mask_even_2 = 0b11110000
     cdef uint8_t pixel_mask_even_3 = 0b00111111
-
-    print(type(variant))
 
     if SMXLayerVariant is SMXMainLayer8to5 or SMXLayerVariant is SMXMainLayer4plus1:
         # Position in the pixel data array
@@ -229,24 +238,22 @@ cdef inline(int, int, int, vector[pixel]) process_drawing_cmds(SMXLayerVariant v
 
         # Last 2 bits store command type
         lower_crumb = 0b00000011 & cmd
-        print(lower_crumb)
-
         if lower_crumb == 0b00000011:
             # eor (end of row) command, this row is finished now.
+
             eor = True
             dpos_cmd += 1
 
-            if SMXLayerVariant is SMXShadowLayer:
-                # shadows sometimes need an extra pixel at
-                # the end
-                if row_data.size() < expected_size:
-                    # copy the last drawn pixel
-                    # (still stored in nextbyte)
-                    #
-                    # TODO: confirm that this is the
-                    #       right way to do it
-                    row_data.push_back(pixel(color_shadow,
-                                             nextbyte, 0, 0, 0))
+            # shadows sometimes need an extra pixel at
+            # the end
+            if SMXLayerVariant is SMXShadowLayer and row_data.size() < expected_size:
+                # copy the last drawn pixel
+                # (still stored in nextbyte)
+                #
+                # TODO: confirm that this is the
+                #       right way to do it
+                row_data.push_back(pixel(color_shadow,
+                                         nextbyte, 0, 0, 0))
             continue
 
         elif lower_crumb == 0b00000000:
@@ -344,8 +351,8 @@ cdef inline(int, int, int, vector[pixel]) process_drawing_cmds(SMXLayerVariant v
 
             if SMXLayerVariant is SMXShadowLayer:
                 for _ in range(pixel_count):
-                    dpos_color += 1
-                    nextbyte = data_raw[dpos_color]
+                    dpos_cmd += 1
+                    nextbyte = data_raw[dpos_cmd]
 
                     row_data.push_back(pixel(color_shadow,
                                              nextbyte, 0, 0, 0))
@@ -417,8 +424,7 @@ cdef inline(int, int, int, vector[pixel]) process_drawing_cmds(SMXLayerVariant v
                     odd = not odd
                     pixel_data.clear()
 
-        elif lower_crumb == 0b00000010:
-            if SMXLayerVariant is SMXMainLayer4plus1:
+            elif SMXLayerVariant is SMXMainLayer4plus1:
                 # player_color command
                 # draw the following 'count' pixels
                 # 4 pixels are stored in every 5 byte chunk.
@@ -446,9 +452,6 @@ cdef inline(int, int, int, vector[pixel]) process_drawing_cmds(SMXLayerVariant v
                         chunk_pos = 0
                         dpos_color += 1  # Skip palette section block
                         palette_section_block = data_raw[dpos_color + 4]
-
-            if SMXLayerVariant is SMXOutlineLayer or SMXLayerVariant is SMXShadowLayer:
-                pass
 
         else:
             raise Exception(
@@ -826,7 +829,7 @@ cdef class SMXLayer:
 @cython.boundscheck(False)
 @cython.wraparound(False)
 cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] & image_matrix,
-                                         numpy.ndarray[numpy.uint8_t, ndim = 2, mode = "c"] palette):
+                                         numpy.ndarray[numpy.uint8_t, ndim= 2, mode = "c"] palette):
     """
     converts a palette index image matrix to an rgba matrix.
 
@@ -837,7 +840,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] & image_matrix,
     cdef size_t height = image_matrix.size()
     cdef size_t width = image_matrix[0].size()
 
-    cdef numpy.ndarray[numpy.uint8_t, ndim = 3, mode = "c"] array_data = \
+    cdef numpy.ndarray[numpy.uint8_t, ndim= 3, mode = "c"] array_data = \
         numpy.zeros((height, width, 4), dtype=numpy.uint8)
 
     cdef uint8_t[:, ::1] m_lookup = palette
@@ -936,7 +939,7 @@ cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] & image_matrix)
     cdef size_t height = image_matrix.size()
     cdef size_t width = image_matrix[0].size()
 
-    cdef numpy.ndarray[numpy.uint8_t, ndim = 3, mode = "c"] array_data = \
+    cdef numpy.ndarray[numpy.uint8_t, ndim= 3, mode = "c"] array_data = \
         numpy.zeros((height, width, 4), dtype=numpy.uint8)
 
     cdef uint8_t r = 0
