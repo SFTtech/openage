@@ -60,26 +60,114 @@ cdef public dict LAYER_TYPES = {
 cdef class SMXMainLayer8to5(SMXLayer):
     def __init__(self, layer_header, data):
         super().__init__(layer_header, data)
+        # process cmd table
+        for i in range(self.row_count):
+            cmd_offset, color_offset, chunk_pos, row_data = create_color_row(
+                self, i)
+
+            self.pcolor.push_back(row_data)
 
 cdef class SMXMainLayer4plus1(SMXLayer):
     def __init__(self, layer_header, data):
         super().__init__(layer_header, data)
+        # process cmd table
+        for i in range(self.row_count):
+            cmd_offset, color_offset, chunk_pos, row_data = create_color_row(
+                self, i)
+
+            self.pcolor.push_back(row_data)
 
 cdef class SMXOutlineLayer(SMXLayer):
     def __init__(self, layer_header, data):
         super().__init__(layer_header, data)
+        # process cmd table
+        for i in range(self.row_count):
+            cmd_offset, color_offset, chunk_pos, row_data = create_color_row(
+                self, i)
+
+            self.pcolor.push_back(row_data)
 
 cdef class SMXShadowLayer(SMXLayer):
     def __init__(self, layer_header, data):
         super().__init__(layer_header, data)
+        # process cmd table
+        for i in range(self.row_count):
+            cmd_offset, color_offset, chunk_pos, row_data = create_color_row(
+                self, i)
+
+            self.pcolor.push_back(row_data)
 
 
 ctypedef fused SMXLayerVariant:
-    SMXLayer
     SMXMainLayer8to5
     SMXMainLayer4plus1
     SMXOutlineLayer
     SMXShadowLayer
+
+
+cdef inline(int, int, int, vector[pixel]) create_color_row(SMXLayerVariant variant,
+                                                           Py_ssize_t rowid):
+    """
+    Extract colors (pixels) for the given rowid.
+
+    :param rowid: Index of the current row in the layer.
+    :param cmd_offset: Offset of the command table of the layer.
+    :param color_offset: Offset of the color table of the layer.
+    :param chunk_pos: Current position in the compressed chunk.
+    """
+
+    cdef vector[pixel] row_data
+    cdef Py_ssize_t i
+
+    cdef int first_cmd_offset = variant.cmd_offset
+    cdef int first_color_offset = variant.color_offset
+    cdef int first_chunk_pos = variant.chunk_pos
+    cdef boundary_def bounds = variant.boundaries[rowid]
+    cdef size_t pixel_count = variant.info.size[0]
+
+    # preallocate memory
+    row_data.reserve(pixel_count)
+
+    # row is completely transparent
+    if bounds.full_row:
+        for _ in range(pixel_count):
+            row_data.push_back(pixel(color_transparent, 0, 0, 0, 0))
+
+        return variant.cmd_offset, variant.color_offset, variant.chunk_pos, row_data
+
+    # start drawing the left transparent space
+    for i in range(bounds.left):
+        row_data.push_back(pixel(color_transparent, 0, 0, 0, 0))
+
+    # process the drawing commands for this row.
+    next_cmd_offset, next_color_offset, next_chunk_pos, row_data = \
+        process_drawing_cmds(variant,
+                             variant.data_raw,
+                             row_data,
+                             rowid,
+                             first_cmd_offset,
+                             first_color_offset,
+                             first_chunk_pos,
+                             pixel_count - bounds.right
+                             )
+
+    # finish by filling up the right transparent space
+    for i in range(bounds.right):
+        row_data.push_back(pixel(color_transparent, 0, 0, 0, 0))
+
+    # verify size of generated row
+    if row_data.size() != pixel_count:
+        got = row_data.size()
+        summary = "%d/%d -> row %d, layer type %s, offset %d / %#x" % (
+            got, pixel_count, rowid, variant.info.layer_type,
+            first_cmd_offset, first_cmd_offset
+        )
+        txt = "got %%s pixels than expected: %s, missing: %d" % (
+            summary, abs(pixel_count - got))
+
+        raise Exception(txt % ("LESS" if got < pixel_count else "MORE"))
+
+    return next_cmd_offset, next_color_offset, next_chunk_pos, row_data
 
 
 @cython.boundscheck(False)
@@ -117,7 +205,9 @@ cdef inline(int, int, int, vector[pixel]) process_drawing_cmds(SMXLayerVariant v
     cdef uint8_t pixel_mask_even_2 = 0b11110000
     cdef uint8_t pixel_mask_even_3 = 0b00111111
 
-    if variant in (SMXMainLayer8to5, SMXMainLayer4plus1):
+    print(type(variant))
+
+    if SMXLayerVariant is SMXMainLayer8to5 or SMXLayerVariant is SMXMainLayer4plus1:
         # Position in the pixel data array
         dpos_color = first_color_offset
 
@@ -139,13 +229,14 @@ cdef inline(int, int, int, vector[pixel]) process_drawing_cmds(SMXLayerVariant v
 
         # Last 2 bits store command type
         lower_crumb = 0b00000011 & cmd
+        print(lower_crumb)
 
         if lower_crumb == 0b00000011:
             # eor (end of row) command, this row is finished now.
             eor = True
             dpos_cmd += 1
 
-            if variant is SMXShadowLayer:
+            if SMXLayerVariant is SMXShadowLayer:
                 # shadows sometimes need an extra pixel at
                 # the end
                 if row_data.size() < expected_size:
@@ -179,7 +270,7 @@ cdef inline(int, int, int, vector[pixel]) process_drawing_cmds(SMXLayerVariant v
 
             pixel_count = (cmd >> 2) + 1
 
-            if variant is SMXMainLayer8to5:
+            if SMXLayerVariant is SMXMainLayer8to5:
                 pixel_data.reserve(4)
                 for _ in range(pixel_count):
                     # Start fetching pixel data
@@ -229,7 +320,7 @@ cdef inline(int, int, int, vector[pixel]) process_drawing_cmds(SMXLayerVariant v
                     odd = not odd
                     pixel_data.clear()
 
-            if variant is SMXMainLayer4plus1:
+            if SMXLayerVariant is SMXMainLayer4plus1:
                 palette_section_block = data_raw[dpos_color + (4 - chunk_pos)]
 
                 for _ in range(pixel_count):
@@ -251,7 +342,7 @@ cdef inline(int, int, int, vector[pixel]) process_drawing_cmds(SMXLayerVariant v
                         dpos_color += 1  # Skip palette section block
                         palette_section_block = data_raw[dpos_color + 4]
 
-            if variant is SMXShadowLayer:
+            if SMXLayerVariant is SMXShadowLayer:
                 for _ in range(pixel_count):
                     dpos_color += 1
                     nextbyte = data_raw[dpos_color]
@@ -259,14 +350,14 @@ cdef inline(int, int, int, vector[pixel]) process_drawing_cmds(SMXLayerVariant v
                     row_data.push_back(pixel(color_shadow,
                                              nextbyte, 0, 0, 0))
 
-            if variant is SMXOutlineLayer:
+            if SMXLayerVariant is SMXOutlineLayer:
                 # we don't know the color the game wants
                 # so we just draw index 0
                 row_data.push_back(pixel(color_outline,
                                          0, 0, 0, 0))
 
         elif lower_crumb == 0b00000010:
-            if variant is SMXMainLayer8to5:
+            if SMXLayerVariant is SMXMainLayer8to5:
                 # player_color command
                 # draw the following 'count' pixels
                 # pixels are stored in 5 byte chunks
@@ -327,7 +418,7 @@ cdef inline(int, int, int, vector[pixel]) process_drawing_cmds(SMXLayerVariant v
                     pixel_data.clear()
 
         elif lower_crumb == 0b00000010:
-            if variant is SMXMainLayer4plus1:
+            if SMXLayerVariant is SMXMainLayer4plus1:
                 # player_color command
                 # draw the following 'count' pixels
                 # 4 pixels are stored in every 5 byte chunk.
@@ -356,7 +447,7 @@ cdef inline(int, int, int, vector[pixel]) process_drawing_cmds(SMXLayerVariant v
                         dpos_color += 1  # Skip palette section block
                         palette_section_block = data_raw[dpos_color + 4]
 
-            if variant is (SMXOutlineLayer, SMXShadowLayer):
+            if SMXLayerVariant is SMXOutlineLayer or SMXLayerVariant is SMXShadowLayer:
                 pass
 
         else:
@@ -368,9 +459,9 @@ cdef inline(int, int, int, vector[pixel]) process_drawing_cmds(SMXLayerVariant v
         # Process next command
         dpos_cmd += 1
 
-    if variant in (SMXMainLayer8to5, SMXMainLayer4plus1):
-        return dpos_cmd, dpos_color, odd, row_data
-    if variant in (SMXOutlineLayer, SMXShadowLayer):
+    if SMXLayerVariant is SMXMainLayer8to5 or SMXLayerVariant is SMXMainLayer4plus1:
+        return dpos_cmd, dpos_color, chunk_pos, row_data
+    if SMXLayerVariant is SMXOutlineLayer or SMXLayerVariant is SMXShadowLayer:
         return dpos_cmd, dpos_cmd, chunk_pos, row_data
 
 
@@ -640,6 +731,21 @@ cdef class SMXLayer:
     # pixel matrix representing the final image
     cdef vector[vector[pixel]] pcolor
 
+    # memory pointer
+    cdef const uint8_t[::1] data_raw
+
+    # current command
+    cdef int cmd_offset
+
+    # current color
+    cdef int color_offset
+
+    # current chunk position
+    cdef int chunk_pos
+
+    # rows
+    cdef size_t row_count
+
     def __init__(self, layer_header, data):
         """
         SMX layer definition superclass. There can be various types of
@@ -655,19 +761,18 @@ cdef class SMXLayer:
         if not (isinstance(data, bytes) or isinstance(data, bytearray)):
             raise ValueError("Layer data must be some bytes object")
 
-        # memory pointer
         # convert the bytes obj to char*
-        cdef const uint8_t[::1] data_raw = data
+        self.data_raw = data
 
         cdef unsigned short left
         cdef unsigned short right
 
         cdef size_t i
-        cdef size_t row_count = self.info.size[1]
-        self.pcolor.reserve(row_count)
+        self.row_count = self.info.size[1]
+        self.pcolor.reserve(self.row_count)
 
         # process bondary table
-        for i in range(row_count):
+        for i in range(self.row_count):
             outline_entry_position = (self.info.outline_table_offset +
                                       i * SMXLayer.smp_layer_row_edge.size)
 
@@ -681,84 +786,9 @@ cdef class SMXLayer:
             else:
                 self.boundaries.push_back(boundary_def(left, right, False))
 
-        cdef int cmd_offset = self.info.qdl_command_table_offset
-        cdef int color_offset = self.info.qdl_color_table_offset
-        cdef int chunk_pos = 0
-
-        # process cmd table
-        for i in range(row_count):
-            cmd_offset, color_offset, chunk_pos, row_data = \
-                self.create_color_row(
-                    data_raw, i, cmd_offset, color_offset, chunk_pos)
-
-            self.pcolor.push_back(row_data)
-
-    cdef inline(int, int, int, vector[pixel]) create_color_row(self,
-                                                               const uint8_t[::1] & data_raw,
-                                                               Py_ssize_t rowid,
-                                                               int cmd_offset,
-                                                               int color_offset,
-                                                               int chunk_pos):
-        """
-        Extract colors (pixels) for the given rowid.
-
-        :param rowid: Index of the current row in the layer.
-        :param cmd_offset: Offset of the command table of the layer.
-        :param color_offset: Offset of the color table of the layer.
-        :param chunk_pos: Current position in the compressed chunk.
-        """
-
-        cdef vector[pixel] row_data
-        cdef Py_ssize_t i
-
-        cdef int first_cmd_offset = cmd_offset
-        cdef int first_color_offset = color_offset
-        cdef boundary_def bounds = self.boundaries[rowid]
-        cdef size_t pixel_count = self.info.size[0]
-
-        # preallocate memory
-        row_data.reserve(pixel_count)
-
-        # row is completely transparent
-        if bounds.full_row:
-            for _ in range(pixel_count):
-                row_data.push_back(pixel(color_transparent, 0, 0, 0, 0))
-
-            return cmd_offset, color_offset, chunk_pos, row_data
-
-        # start drawing the left transparent space
-        for i in range(bounds.left):
-            row_data.push_back(pixel(color_transparent, 0, 0, 0, 0))
-
-        # process the drawing commands for this row.
-        next_cmd_offset, next_color_offset, chunk_pos, row_data = \
-            process_drawing_cmds(self,
-                                 data_raw,
-                                 row_data,
-                                 rowid,
-                                 first_cmd_offset,
-                                 first_color_offset,
-                                 chunk_pos,
-                                 pixel_count - bounds.right
-                                 )
-
-        # finish by filling up the right transparent space
-        for i in range(bounds.right):
-            row_data.push_back(pixel(color_transparent, 0, 0, 0, 0))
-
-        # verify size of generated row
-        if row_data.size() != pixel_count:
-            got = row_data.size()
-            summary = "%d/%d -> row %d, layer type %d, offset %d / %#x" % (
-                got, pixel_count, rowid, self.info.layer_type,
-                first_cmd_offset, first_cmd_offset
-            )
-            txt = "got %%s pixels than expected: %s, missing: %d" % (
-                summary, abs(pixel_count - got))
-
-            raise Exception(txt % ("LESS" if got < pixel_count else "MORE"))
-
-        return next_cmd_offset, next_color_offset, chunk_pos, row_data
+        self.cmd_offset = self.info.qdl_command_table_offset
+        self.color_offset = self.info.qdl_color_table_offset
+        self.chunk_pos = 0
 
     def get_picture_data(self, palette):
         """
