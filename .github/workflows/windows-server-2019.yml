@@ -76,7 +76,7 @@ jobs:
         $DLL_PATH = Join-Path package dll | Resolve-Path
         cd package
         python -m openage --add-dll-search-path $DLL_PATH --version
-        ./run.exe test -a 
+        python -m openage --add-dll-search-path $DLL_PATH test -a
       shell: pwsh
     - name: Publish build artifacts
       uses: actions/upload-artifact@v4
