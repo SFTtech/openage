@@ -142,6 +142,10 @@ protected:
 
 	// void init_audio();
 
+	void enable_stencil_for_gui_mask();
+	void enable_stencil_for_world();
+	void disable_stencil();
+
 	/**
 	 * Render all configured render passes in sequence.
 	 */
