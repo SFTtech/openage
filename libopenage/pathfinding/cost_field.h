@@ -109,7 +109,7 @@ public:
 	/**
 	 * Check if the cost field is dirty at the specified time.
 	 *
-	 * @param time Cost field is dirty if the cost field is accessed after the time given in valid_until.
+	 * @param time Time of access to the cost field.
 	 */
 	bool is_dirty(const time::time_t &time);
 
