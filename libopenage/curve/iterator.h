@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "curve/concept.h"
 #include "time/time.h"
 #include "util/fixed_point.h"
 
@@ -11,7 +12,7 @@ namespace openage::curve {
 /**
  * Default interface for curve containers
  */
-template <typename val_t,
+template <KeyframeValueLike val_t,
           typename container_t,
           typename iterator_t = typename container_t::const_iterator>
 class CurveIterator {

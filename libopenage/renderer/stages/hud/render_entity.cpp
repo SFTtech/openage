@@ -20,18 +20,15 @@ void DragRenderEntity::update(const coord::input drag_pos,
 	this->drag_pos.set_insert(time, drag_pos);
 
 	this->last_update = time;
+	this->fetch_time = time;
 	this->changed = true;
 }
 
 const curve::Continuous<coord::input> &DragRenderEntity::get_drag_pos() {
-	std::shared_lock lock{this->mutex};
-
 	return this->drag_pos;
 }
 
 const coord::input DragRenderEntity::get_drag_start() {
-	std::shared_lock lock{this->mutex};
-
 	return this->drag_start;
 }
 

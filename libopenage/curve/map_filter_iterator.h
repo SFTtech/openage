@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "curve/concept.h"
 #include "curve/iterator.h"
 #include "time/time.h"
 
@@ -16,8 +17,8 @@ namespace openage::curve {
  * It depends on key_t and val_t as map-parameters, container_t is the container
  * to operate on and the function valid_f, that checks if an element is alive.
  */
-template <typename key_t,
-          typename val_t,
+template <KeyframeValueLike key_t,
+          KeyframeValueLike val_t,
           typename container_t>
 class MapFilterIterator : public CurveIterator<val_t, container_t> {
 public:
