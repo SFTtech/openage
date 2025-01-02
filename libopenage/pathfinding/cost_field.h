@@ -114,7 +114,7 @@ public:
 	bool is_dirty(const time::time_t &time);
 
 	/**
-	 * Cleans the dirty flag by setting it to time_MAX.
+	 * Clear the dirty flag.
 	 */
 	void clear_dirty();
 
