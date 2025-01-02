@@ -1,4 +1,4 @@
-// Copyright 2017-2024 the openage authors. See copying.md for legal info.
+// Copyright 2017-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -17,6 +17,7 @@ namespace opengl {
 class GlContext;
 class GlRenderPass;
 class GlRenderTarget;
+class GlVertexArray;
 class GlWindow;
 
 /// The OpenGL specialization of the rendering interface.
@@ -67,6 +68,14 @@ private:
 
 	/// The main screen surface as a render target.
 	std::shared_ptr<GlRenderTarget> display;
+
+	/// An empty vertex array object (VAO).
+	///
+	/// This VAO has to be bound at the start of a render pass to ensure
+	/// that bufferless quad geometry can be drawn without errors. Drawing a
+	/// bufferless quad requires any VAO to be bound
+	/// see https://www.khronos.org/opengl/wiki/Vertex_Rendering#Causes_of_rendering_failure
+	std::shared_ptr<GlVertexArray> shared_quad_vao;
 };
 
 } // namespace opengl
