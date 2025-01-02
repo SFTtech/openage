@@ -56,7 +56,7 @@ public:
 	 * @param other_sector_id Sector ID of the other side of the portal.
 	 * @param portal Portal.
 	 * @param target Coordinates of the target cell, relative to the integration field origin.
-	 * @param time The time to check is the cached cost field is dirty.
+	 * @param time Time of the path request.
 	 * @param with_los If true an LOS pass is performed before cost integration.
 	 *
 	 * @return Integration field.
