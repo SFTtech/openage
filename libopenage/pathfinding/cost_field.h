@@ -65,7 +65,7 @@ public:
 	 *
 	 * @param pos Coordinates of the cell (relative to field origin).
 	 * @param cost Cost to set.
-	 * @param valid_until Time at which the cost value is changed.
+	 * @param valid_until Time at which the cost value expires.
 	 */
 	void set_cost(const coord::tile_delta &pos, cost_t cost, const time::time_t &valid_until);
 
@@ -75,7 +75,7 @@ public:
 	 * @param x X-coordinate of the cell.
 	 * @param y Y-coordinate of the cell.
 	 * @param cost Cost to set.
-	 * @param changed Time at which the cost value is changed.
+	 * @param valid_until Time at which the cost value expires.
 	 */
 	void set_cost(size_t x, size_t y, cost_t cost, const time::time_t &valid_until);
 
@@ -84,9 +84,8 @@ public:
 	 *
 	 * @param idx Index of the cell.
 	 * @param cost Cost to set.
-	 * @param changed Time at which the cost value is changed.
+	 * @param valid_until Time at which the cost value expires.
 	 */
-
 	inline void set_cost(size_t idx, cost_t cost, const time::time_t &valid_until) {
 		this->cells[idx] = cost;
 		this->valid_until = valid_until;
@@ -103,7 +102,7 @@ public:
 	 * Set the cost field values.
 	 *
 	 * @param cells Cost field values.
-	 * @param changed Time at which the cost value is changed.
+	 * @param valid_until Time at which the cost value expires.
 	 */
 	void set_costs(std::vector<cost_t> &&cells, const time::time_t &changed);
 
@@ -126,7 +125,7 @@ private:
 	size_t size;
 
 	/**
-	 * Time the cost field was last changed.
+	 * Time the cost field expires.
 	 */
 	time::time_t valid_until;
 
