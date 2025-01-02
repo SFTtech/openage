@@ -160,6 +160,7 @@ _the openage authors_ are:
 | Alex Zhuohao He             | ZzzhHe                      | zhuohao dawt he à outlook dawt com                |
 | David Wever                 | dmwever                     | dmwever à crimson dawt ua dawt edu                |
 | Michael Lynch               | mtlynch                     | git à mtlynch dawt io                             |
+| Ngô Xuân Minh               |                             | xminh dawt ngo dawt 00 à gmail dawt com           |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
