@@ -54,6 +54,15 @@ public:
 		return this->value;
 	}
 
+	/**
+	 * Get the value and timestamp of the keyframe in form of std::pair<time, value>
+	 * @return keyframe pair
+	 */
+	std::pair<time::time_t, T> make_pair() const
+	{
+		return {time(), val()};
+	}
+
 public:
 	/**
 	 * Value of the keyframe.
