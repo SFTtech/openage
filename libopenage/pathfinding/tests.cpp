@@ -10,6 +10,7 @@
 #include "pathfinding/integration_field.h"
 #include "pathfinding/integrator.h"
 #include "pathfinding/types.h"
+#include "time/time.h"
 
 
 namespace openage {
@@ -23,7 +24,8 @@ void flow_field() {
 	// | 1 | 1 | 1 |
 	// | 1 | X | 1 |
 	// | 1 | 1 | 1 |
-	cost_field->set_costs({1, 1, 1, 1, 255, 1, 1, 1, 1});
+	const time::time_t time = time::TIME_ZERO;
+	cost_field->set_costs({1, 1, 1, 1, 255, 1, 1, 1, 1}, time);
 
 	// Test the different field types
 	{

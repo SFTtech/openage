@@ -1,4 +1,4 @@
-// Copyright 2024-2024 the openage authors. See copying.md for legal info.
+// Copyright 2024-2025 the openage authors. See copying.md for legal info.
 
 #include "demo_1.h"
 
@@ -11,6 +11,8 @@
 #include "pathfinding/portal.h"
 #include "pathfinding/sector.h"
 #include "util/timer.h"
+#include "time/time_loop.h"
+#include "time/clock.h"
 
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/opengl/window.h"
@@ -31,7 +33,8 @@ void path_demo_1(const util::Path &path) {
 	for (auto &sector : grid->get_sectors()) {
 		auto cost_field = sector->get_cost_field();
 		std::vector<cost_t> sector_cost = sectors_cost.at(sector->get_id());
-		cost_field->set_costs(std::move(sector_cost));
+		cost_field->set_costs(std::move(sector_cost), 0);
+		cost_field->clear_dirty();
 	}
 
 	// Initialize portals between sectors.
@@ -91,12 +94,13 @@ void path_demo_1(const util::Path &path) {
 		grid->get_id(),
 		start,
 		target,
+		0
 	};
+
 	grid->init_portal_nodes();
 	timer.start();
 	Path path_result = pathfinder->get_path(path_request);
 	timer.stop();
-
 	log::log(INFO << "Pathfinding took " << timer.getval() / 1000 << " us");
 
 	// Create a renderer to display the grid and path
@@ -127,6 +131,7 @@ void path_demo_1(const util::Path &path) {
 					grid->get_id(),
 					start,
 					target,
+					0
 				};
 
 				timer.reset();
@@ -147,6 +152,7 @@ void path_demo_1(const util::Path &path) {
 					grid->get_id(),
 					start,
 					target,
+					0
 				};
 
 				timer.reset();

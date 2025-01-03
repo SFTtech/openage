@@ -1,6 +1,7 @@
 add_sources(libopenage
     cost_field.cpp
 	definitions.cpp
+	field_cache.cpp
     flow_field.cpp
 	grid.cpp
 	integration_field.cpp
