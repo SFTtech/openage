@@ -1,14 +1,14 @@
-name: Ubuntu 22.04 CI
+name: Ubuntu 24.04 CI
 
 on: [push, workflow_dispatch]
 
 jobs:
   build-devenv:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: sudo DOCKER_BUILDKIT=1 docker build ./packaging/docker/devenv --file ./packaging/docker/devenv/Dockerfile.ubuntu.2204 --tag openage-devenv:latest
+      run: sudo DOCKER_BUILDKIT=1 docker build ./packaging/docker/devenv --file ./packaging/docker/devenv/Dockerfile.ubuntu.2404 --tag openage-devenv:latest
       shell: bash
     - name: Save the Docker image
       run: |
@@ -24,7 +24,7 @@ jobs:
         retention-days: 30
 
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: build-devenv
     steps:
     - uses: actions/checkout@v4
