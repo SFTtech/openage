@@ -1,4 +1,4 @@
-// Copyright 2015-2024 the openage authors. See copying.md for legal info.
+// Copyright 2015-2025 the openage authors. See copying.md for legal info.
 
 #include "geometry.h"
 
@@ -54,6 +54,7 @@ void GlGeometry::update_verts_offset(std::vector<uint8_t> const &verts, size_t o
 void GlGeometry::draw() const {
 	switch (this->get_type()) {
 	case geometry_t::bufferless_quad:
+		// any VAO must be bound before this call
 		glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 		break;
 
