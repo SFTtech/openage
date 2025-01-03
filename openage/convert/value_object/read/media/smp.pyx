@@ -1,7 +1,10 @@
-# Copyright 2013-2023 the openage authors. See copying.md for legal info.
+# Copyright 2013-2024 the openage authors. See copying.md for legal info.
 #
 # cython: infer_types=True
 
+from libcpp.vector cimport vector
+from libcpp cimport bool
+from libc.stdint cimport uint8_t, uint16_t
 from enum import Enum
 import numpy
 from struct import Struct, unpack_from
@@ -11,11 +14,6 @@ from .....log import spam, dbg
 
 cimport cython
 cimport numpy
-
-from libc.stdint cimport uint8_t, uint16_t
-from libcpp cimport bool
-from libcpp.vector cimport vector
-
 
 
 # SMP files have little endian byte order
@@ -50,8 +48,8 @@ class SMPLayerType(Enum):
     """
     SMP layer types.
     """
-    MAIN    = "main"
-    SHADOW  = "shadow"
+    MAIN = "main"
+    SHADOW = "shadow"
     OUTLINE = "outline"
 
 
@@ -106,7 +104,7 @@ class SMP:
 
     def __init__(self, data):
         smp_header = SMP.smp_header.unpack_from(data)
-        signature, version, frame_count, facet_count, frames_per_facet,\
+        signature, version, frame_count, facet_count, frames_per_facet, \
             checksum, file_size, source_format, comment = smp_header
 
         dbg("SMP")
@@ -159,12 +157,14 @@ class SMP:
 
                 elif layer_header.layer_type == 0x04:
                     # layer that stores a shadow
-                    self.shadow_frames.append(SMPShadowLayer(layer_header, data))
+                    self.shadow_frames.append(
+                        SMPShadowLayer(layer_header, data))
 
                 elif layer_header.layer_type == 0x08 or \
-                     layer_header.layer_type == 0x10:
+                        layer_header.layer_type == 0x10:
                     # layer that stores an outline
-                    self.outline_frames.append(SMPOutlineLayer(layer_header, data))
+                    self.outline_frames.append(
+                        SMPOutlineLayer(layer_header, data))
 
                 else:
                     raise Exception(
@@ -253,6 +253,232 @@ class SMPLayerHeader:
         )
         return "".join(ret)
 
+
+cdef class SMPMainLayer(SMPLayer):
+    def __init__(self, layer_header, data):
+        super().__init__(layer_header, data)
+
+        for i in range(self.row_count):
+            self.pcolor.push_back(create_color_row(self, i))
+
+    def get_damage_mask(self):
+        """
+        Convert the 4th pixel byte to a mask used for damaged units.
+        """
+        return determine_damage_matrix(self.pcolor)
+
+cdef class SMPShadowLayer(SMPLayer):
+    def __init__(self, layer_header, data):
+        super().__init__(layer_header, data)
+
+        for i in range(self.row_count):
+            self.pcolor.push_back(create_color_row(self, i))
+
+cdef class SMPOutlineLayer(SMPLayer):
+    def __init__(self, layer_header, data):
+        super().__init__(layer_header, data)
+
+        for i in range(self.row_count):
+            self.pcolor.push_back(create_color_row(self, i))
+
+
+ctypedef fused SMPLayerVariant:
+    SMPMainLayer
+    SMPShadowLayer
+    SMPOutlineLayer
+
+
+@cython.boundscheck(False)
+cdef vector[pixel] create_color_row(SMPLayerVariant variant,
+                                    Py_ssize_t rowid):
+    """
+    extract colors (pixels) for the given rowid.
+    """
+    cdef vector[pixel] row_data
+    cdef Py_ssize_t i
+
+    cdef Py_ssize_t first_cmd_offset = variant.cmd_offsets[rowid]
+    cdef boundary_def bounds = variant.boundaries[rowid]
+    cdef size_t pixel_count = variant.info.size[0]
+
+    # preallocate memory
+    row_data.reserve(pixel_count)
+
+    # row is completely transparent
+    if bounds.full_row:
+        for _ in range(pixel_count):
+            row_data.push_back(pixel(color_transparent, 0, 0, 0, 0))
+
+        return row_data
+
+    # start drawing the left transparent space
+    for i in range(bounds.left):
+        row_data.push_back(pixel(color_transparent, 0, 0, 0, 0))
+
+    # process the drawing commands for this row.
+    process_drawing_cmds(variant, variant.data_raw,
+                         row_data, rowid,
+                         first_cmd_offset,
+                         pixel_count - bounds.right)
+
+    # finish by filling up the right transparent space
+    for i in range(bounds.right):
+        row_data.push_back(pixel(color_transparent, 0, 0, 0, 0))
+
+    # verify size of generated row
+    if row_data.size() != pixel_count:
+        got = row_data.size()
+        summary = (
+            f"{got:d}/{pixel_count:d} -> row {rowid:d}, "
+            f"layer type {variant.info.layer_type:x}, "
+            f"offset {first_cmd_offset:d} / {first_cmd_offset:#x}"
+        )
+        message = (
+            f"got {'LESS' if got < pixel_count else 'MORE'} pixels than expected: {summary}, "
+            f"missing: {abs(pixel_count - got):d}"
+        )
+
+        raise Exception(message)
+
+    return row_data
+
+
+@cython.boundscheck(False)
+cdef void process_drawing_cmds(SMPLayerVariant variant,
+                               const uint8_t[::1] & data_raw,
+                               vector[pixel] & row_data,
+                               Py_ssize_t rowid,
+                               Py_ssize_t first_cmd_offset,
+                               size_t expected_size):
+
+    """
+      extract colors (pixels) for the drawing commands
+      found for this row in the SMP frame.
+      """
+
+    # position in the data blob, we start at the first command of this row
+    cdef Py_ssize_t dpos = first_cmd_offset
+
+    # is the end of the current row reached?
+    cdef bool eor = False
+
+    cdef uint8_t cmd = 0
+    cdef uint8_t nextbyte = 0
+    cdef uint8_t lower_crumb = 0
+    cdef int pixel_count = 0
+
+    cdef vector[uint8_t] pixel_data
+    pixel_data.reserve(4)
+
+    # work through commands till end of row.
+    while not eor:
+        if row_data.size() > expected_size:
+            raise Exception(
+                f"Only {expected_size:d} pixels should be drawn in row {rowid:d} " +
+                f"with layer type {variant.info.layer_type:#x}, but we have {row_data.size():d} already!"
+            )
+
+        # fetch drawing instruction
+        cmd = data_raw[dpos]
+
+        # Last 2 bits store command type
+        lower_crumb = 0b00000011 & cmd
+        # opcode: cmd, rowid: rowid
+
+        if lower_crumb == 0b00000011:
+            # eol (end of line) command, this row is finished now.
+            eor = True
+
+            if SMPLayerVariant is SMPShadowLayer and row_data.size() < expected_size:
+                # copy the last drawn pixel
+                # (still stored in nextbyte)
+                #
+                # TODO: confirm that this is the
+                #       right way to do it
+                row_data.push_back(pixel(color_shadow, nextbyte, 0, 0, 0))
+
+            continue
+
+        elif lower_crumb == 0b00000000:
+            # skip command
+            # draw 'count' transparent pixels
+            # count = (cmd >> 2) + 1
+
+            pixel_count = (cmd >> 2) + 1
+
+            for _ in range(pixel_count):
+                row_data.push_back(pixel(color_transparent, 0, 0, 0, 0))
+
+        elif lower_crumb == 0b00000001:
+            # color_list command
+            # draw the following 'count' pixels
+            # pixels are stored as 4 byte palette and meta infos
+            # count = (cmd >> 2) + 1
+
+            pixel_count = (cmd >> 2) + 1
+
+            for _ in range(pixel_count):
+                if SMPLayerVariant is SMPShadowLayer:
+                    dpos += 1
+                    nextbyte = data_raw[dpos]
+                    row_data.push_back(pixel(color_shadow,
+                                             nextbyte, 0, 0, 0))
+                elif SMPLayerVariant is SMPOutlineLayer:
+                    # we don't know the color the game wants
+                    # so we just draw index 0
+                    row_data.push_back(pixel(color_outline,
+                                             0, 0, 0, 0))
+                elif SMPLayerVariant is SMPMainLayer:
+                    for _ in range(4):
+                        dpos += 1
+                        pixel_data.push_back(data_raw[dpos])
+
+                    row_data.push_back(pixel(color_standard,
+                                             pixel_data[0],
+                                             pixel_data[1],
+                                             pixel_data[2],
+                                             pixel_data[3] & 0x1F))  # remove "usage" bit here
+                    pixel_data.clear()
+
+        elif lower_crumb == 0b00000010 and (SMPLayerVariant is SMPMainLayer or SMPLayerVariant is SMPShadowLayer):
+            # player_color command
+            # draw the following 'count' pixels
+            # pixels are stored as 4 byte palette and meta infos
+            # count = (cmd >> 2) + 1
+
+            pixel_count = (cmd >> 2) + 1
+
+            for _ in range(pixel_count):
+                if SMPLayerVariant is SMPShadowLayer:
+                    dpos += 1
+                    nextbyte = data_raw[dpos]
+                    row_data.push_back(pixel(color_shadow,
+                                             nextbyte, 0, 0, 0))
+                else:
+                    for _ in range(4):
+                        dpos += 1
+                        pixel_data.push_back(data_raw[dpos])
+
+                    row_data.push_back(pixel(color_player,
+                                             pixel_data[0],
+                                             pixel_data[1],
+                                             pixel_data[2],
+                                             pixel_data[3] & 0x1F))  # remove "usage" bit here
+                    pixel_data.clear()
+
+        else:
+            raise Exception(
+                f"unknown smp {variant.info.layer_type} layer drawing command: " +
+                f"{cmd:#x} in row {rowid:d}"
+            )
+
+        # process next command
+        dpos += 1
+
+    # end of row reached, return the created pixel array.
+    return
+
+
 cdef class SMPLayer:
     """
     one layer inside the SMP. you can imagine it as a frame of a video.
@@ -282,15 +508,20 @@ cdef class SMPLayer:
     # pixel matrix representing the final image
     cdef vector[vector[pixel]] pcolor
 
+    # memory pointer
+    cdef const uint8_t[::1] data_raw
+
+    # rows of image
+    cdef size_t row_count
+
     def __init__(self, layer_header, data):
         self.info = layer_header
 
         if not (isinstance(data, bytes) or isinstance(data, bytearray)):
             raise ValueError("Layer data must be some bytes object")
 
-        # memory pointer
         # convert the bytes obj to char*
-        cdef const uint8_t[::1] data_raw = data
+        self.data_raw = data
 
         cdef unsigned short left
         cdef unsigned short right
@@ -298,11 +529,11 @@ cdef class SMPLayer:
         cdef size_t i
         cdef int cmd_offset
 
-        cdef size_t row_count = self.info.size[1]
-        self.pcolor.reserve(row_count)
+        self.row_count = self.info.size[1]
+        self.pcolor.reserve(self.row_count)
 
         # process bondary table
-        for i in range(row_count):
+        for i in range(self.row_count):
             outline_entry_position = (self.info.outline_table_offset +
                                       i * SMPLayer.smp_frame_row_edge.size)
 
@@ -317,80 +548,13 @@ cdef class SMPLayer:
                 self.boundaries.push_back(boundary_def(left, right, False))
 
         # process cmd table
-        for i in range(row_count):
+        for i in range(self.row_count):
             cmd_table_position = (self.info.qdl_table_offset +
                                   i * SMPLayer.smp_command_offset.size)
 
             cmd_offset = SMPLayer.smp_command_offset.unpack_from(
                 data, cmd_table_position)[0] + self.info.frame_offset
             self.cmd_offsets.push_back(cmd_offset)
-
-        for i in range(row_count):
-            self.pcolor.push_back(self.create_color_row(data_raw, i))
-
-    cdef vector[pixel] create_color_row(self,
-                                        const uint8_t[::1] &data_raw,
-                                        Py_ssize_t rowid):
-        """
-        extract colors (pixels) for the given rowid.
-        """
-
-        cdef vector[pixel] row_data
-        cdef Py_ssize_t i
-
-        first_cmd_offset = self.cmd_offsets[rowid]
-        cdef boundary_def bounds = self.boundaries[rowid]
-        cdef size_t pixel_count = self.info.size[0]
-
-        # preallocate memory
-        row_data.reserve(pixel_count)
-
-        # row is completely transparent
-        if bounds.full_row:
-            for _ in range(pixel_count):
-                row_data.push_back(pixel(color_transparent, 0, 0, 0, 0))
-
-            return row_data
-
-        # start drawing the left transparent space
-        for i in range(bounds.left):
-            row_data.push_back(pixel(color_transparent, 0, 0, 0, 0))
-
-        # process the drawing commands for this row.
-        self.process_drawing_cmds(data_raw,
-                                  row_data, rowid,
-                                  first_cmd_offset,
-                                  pixel_count - bounds.right)
-
-        # finish by filling up the right transparent space
-        for i in range(bounds.right):
-            row_data.push_back(pixel(color_transparent, 0, 0, 0, 0))
-
-        # verify size of generated row
-        if row_data.size() != pixel_count:
-            got = row_data.size()
-            summary = (
-                f"{got:d}/{pixel_count:d} -> row {rowid:d}, "
-                f"layer type {self.info.layer_type:x}, "
-                f"offset {first_cmd_offset:d} / {first_cmd_offset:#x}"
-            )
-            message = (
-                f"got {'LESS' if got < pixel_count else 'MORE'} pixels than expected: {summary}, "
-                f"missing: {abs(pixel_count - got):d}"
-            )
-
-            raise Exception(message)
-
-        return row_data
-
-    @cython.boundscheck(False)
-    cdef void process_drawing_cmds(self,
-                                   const uint8_t[::1] &data_raw,
-                                   vector[pixel] &row_data,
-                                   Py_ssize_t rowid,
-                                   Py_ssize_t first_cmd_offset,
-                                   size_t expected_size):
-        pass
 
     def get_picture_data(self, palette):
         """
@@ -417,329 +581,10 @@ cdef class SMPLayer:
         return repr(self.info)
 
 
-cdef class SMPMainLayer(SMPLayer):
-    """
-    SMPLayer for the main graphics sprite.
-    """
-
-    def __init__(self, layer_header, data):
-        super().__init__(layer_header, data)
-
-    @cython.boundscheck(False)
-    cdef void process_drawing_cmds(self,
-                                   const uint8_t[::1] &data_raw,
-                                   vector[pixel] &row_data,
-                                   Py_ssize_t rowid,
-                                   Py_ssize_t first_cmd_offset,
-                                   size_t expected_size):
-        """
-        extract colors (pixels) for the drawing commands
-        found for this row in the SMP frame.
-        """
-
-        # position in the data blob, we start at the first command of this row
-        cdef Py_ssize_t dpos = first_cmd_offset
-
-        # is the end of the current row reached?
-        cdef bool eor = False
-
-        cdef uint8_t cmd
-        cdef uint8_t nextbyte
-        cdef uint8_t lower_crumb
-        cdef int pixel_count
-
-        cdef vector[uint8_t] pixel_data
-        pixel_data.reserve(4)
-
-        # work through commands till end of row.
-        while not eor:
-            if row_data.size() > expected_size:
-                raise Exception(
-                    f"Only {expected_size:d} pixels should be drawn in row {rowid:d} " +
-                    f"with layer type {self.info.layer_type:#x}, but we have {row_data.size():d}"
-                )
-
-            # fetch drawing instruction
-            cmd = data_raw[dpos]
-
-            # Last 2 bits store command type
-            lower_crumb = 0b00000011 & cmd
-
-            # opcode: cmd, rowid: rowid
-
-            if lower_crumb == 0b00000011:
-                # eol (end of line) command, this row is finished now.
-                eor = True
-
-                continue
-
-            elif lower_crumb == 0b00000000:
-                # skip command
-                # draw 'count' transparent pixels
-                # count = (cmd >> 2) + 1
-
-                pixel_count = (cmd >> 2) + 1
-
-                for _ in range(pixel_count):
-                    row_data.push_back(pixel(color_transparent, 0, 0, 0, 0))
-
-            elif lower_crumb == 0b00000001:
-                # color_list command
-                # draw the following 'count' pixels
-                # pixels are stored as 4 byte palette and meta infos
-                # count = (cmd >> 2) + 1
-
-                pixel_count = (cmd >> 2) + 1
-
-                for _ in range(pixel_count):
-                    for _ in range(4):
-                        dpos += 1
-                        pixel_data.push_back(data_raw[dpos])
-
-                    row_data.push_back(pixel(color_standard,
-                                             pixel_data[0],
-                                             pixel_data[1],
-                                             pixel_data[2],
-                                             pixel_data[3] & 0x1F)) # remove "usage" bit here
-
-                    pixel_data.clear()
-
-            elif lower_crumb == 0b00000010:
-                # player_color command
-                # draw the following 'count' pixels
-                # pixels are stored as 4 byte palette and meta infos
-                # count = (cmd >> 2) + 1
-
-                pixel_count = (cmd >> 2) + 1
-
-                for _ in range(pixel_count):
-                    for _ in range(4):
-                        dpos += 1
-                        pixel_data.push_back(data_raw[dpos])
-
-                    row_data.push_back(pixel(color_player,
-                                             pixel_data[0],
-                                             pixel_data[1],
-                                             pixel_data[2],
-                                             pixel_data[3] & 0x1F)) # remove "usage" bit here
-
-                    pixel_data.clear()
-
-            else:
-                raise Exception(
-                    f"unknown smp main graphics layer drawing command: " +
-                    f"{cmd:#x} in row {rowid:d}"
-                )
-
-            # process next command
-            dpos += 1
-
-        # end of row reached, return the created pixel array.
-        return
-
-    def get_damage_mask(self):
-        """
-        Convert the 4th pixel byte to a mask used for damaged units.
-        """
-        return determine_damage_matrix(self.pcolor)
-
-
-cdef class SMPShadowLayer(SMPLayer):
-    """
-    SMPLayer for the shadow graphics.
-    """
-
-    def __init__(self, layer_header, data):
-        super().__init__(layer_header, data)
-
-    @cython.boundscheck(False)
-    cdef void process_drawing_cmds(self,
-                                   const uint8_t[::1] &data_raw,
-                                   vector[pixel] &row_data,
-                                   Py_ssize_t rowid,
-                                   Py_ssize_t first_cmd_offset,
-                                   size_t expected_size):
-        """
-        extract colors (pixels) for the drawing commands
-        found for this row in the SMP frame.
-        """
-
-        # position in the data blob, we start at the first command of this row
-        cdef Py_ssize_t dpos = first_cmd_offset
-
-        # is the end of the current row reached?
-        cdef bool eor = False
-
-        cdef uint8_t cmd
-        cdef uint8_t nextbyte
-        cdef uint8_t lower_crumb
-        cdef int pixel_count
-
-        # work through commands till end of row.
-        while not eor:
-            if row_data.size() > expected_size:
-                raise Exception(
-                    f"Only {expected_size:d} pixels should be drawn in row {rowid:d} " +
-                    f"with layer type {self.info.layer_type:#x}, but we have {row_data.size():d} " +
-                    f"already!"
-                )
-
-            # fetch drawing instruction
-            cmd = data_raw[dpos]
-
-            # Last 2 bits store command type
-            lower_crumb = 0b00000011 & cmd
-
-            # opcode: cmd, rowid: rowid
-
-            if lower_crumb == 0b00000011:
-                # eol (end of line) command, this row is finished now.
-                eor = True
-
-                # shadows sometimes need an extra pixel at
-                # the end
-                if row_data.size() < expected_size:
-                    # copy the last drawn pixel
-                    # (still stored in nextbyte)
-                    #
-                    # TODO: confirm that this is the
-                    #       right way to do it
-                    row_data.push_back(pixel(color_shadow,
-                                             nextbyte, 0, 0, 0))
-
-                continue
-
-            elif lower_crumb == 0b00000000:
-                # skip command
-                # draw 'count' transparent pixels
-                # count = (cmd >> 2) + 1
-
-                pixel_count = (cmd >> 2) + 1
-
-                for _ in range(pixel_count):
-                    row_data.push_back(pixel(color_transparent, 0, 0, 0, 0))
-
-            elif lower_crumb == 0b00000001:
-                # color_list command
-                # draw the following 'count' pixels
-                # pixels are stored as 1 byte alpha values
-                # count = (cmd >> 2) + 1
-
-                pixel_count = (cmd >> 2) + 1
-
-                for _ in range(pixel_count):
-
-                    dpos += 1
-                    nextbyte = data_raw[dpos]
-
-                    row_data.push_back(pixel(color_shadow,
-                                             nextbyte, 0, 0, 0))
-
-            else:
-                raise Exception(
-                    f"unknown smp shadow layer drawing command: " +
-                    f"{cmd:#x} in row {rowid:d}")
-
-            # process next command
-            dpos += 1
-
-        # end of row reached, return the created pixel array.
-        return
-
-
-cdef class SMPOutlineLayer(SMPLayer):
-    """
-    SMPLayer for the outline graphics.
-    """
-
-    def __init__(self, layer_header, data):
-        super().__init__(layer_header, data)
-
-    @cython.boundscheck(False)
-    cdef void process_drawing_cmds(self,
-                                   const uint8_t[::1] &data_raw,
-                                   vector[pixel] &row_data,
-                                   Py_ssize_t rowid,
-                                   Py_ssize_t first_cmd_offset,
-                                   size_t expected_size):
-        """
-        extract colors (pixels) for the drawing commands
-        found for this row in the SMP frame.
-        """
-
-        # position in the data blob, we start at the first command of this row
-        cdef Py_ssize_t dpos = first_cmd_offset
-
-        # is the end of the current row reached?
-        cdef bool eor = False
-
-        cdef uint8_t cmd
-        cdef uint8_t nextbyte
-        cdef uint8_t lower_crumb
-        cdef int pixel_count
-
-        # work through commands till end of row.
-        while not eor:
-            if row_data.size() > expected_size:
-                raise Exception(
-                    f"Only {expected_size:d} pixels should be drawn in row {rowid:d} " +
-                    f"with layer type {self.info.layer_type:#x}, but we have {row_data.size():d} "
-                    f"already!"
-                )
-
-            # fetch drawing instruction
-            cmd = data_raw[dpos]
-
-            # Last 2 bits store command type
-            lower_crumb = 0b00000011 & cmd
-
-            # opcode: cmd, rowid: rowid
-
-            if lower_crumb == 0b00000011:
-                # eol (end of line) command, this row is finished now.
-                eor = True
-
-                continue
-
-            elif lower_crumb == 0b00000000:
-                # skip command
-                # draw 'count' transparent pixels
-                # count = (cmd >> 2) + 1
-
-                pixel_count = (cmd >> 2) + 1
-
-                for _ in range(pixel_count):
-                    row_data.push_back(pixel(color_transparent, 0, 0, 0, 0))
-
-            elif lower_crumb == 0b00000001:
-                # color_list command
-                # draw the following 'count' pixels
-                # as player outline colors.
-                # count = (cmd >> 2) + 1
-
-                pixel_count = (cmd >> 2) + 1
-
-                for _ in range(pixel_count):
-                    # we don't know the color the game wants
-                    # so we just draw index 0
-                    row_data.push_back(pixel(color_outline,
-                                             0, 0, 0, 0))
-
-            else:
-                raise Exception(
-                    f"unknown smp outline layer drawing command: " +
-                    f"{cmd:#x} in row {rowid:d}")
-            # process next command
-            dpos += 1
-
-        # end of row reached, return the created pixel array.
-        return
-
-
 @cython.boundscheck(False)
 @cython.wraparound(False)
-cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
-                                         numpy.ndarray[numpy.uint8_t, ndim=2, mode="c"] palette):
+cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] & image_matrix,
+                                         numpy.ndarray[numpy.uint8_t, ndim= 2, mode = "c"] palette):
     """
     converts a palette index image matrix to an rgba matrix.
     """
@@ -747,7 +592,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
     cdef size_t height = image_matrix.size()
     cdef size_t width = image_matrix[0].size()
 
-    cdef numpy.ndarray[numpy.uint8_t, ndim=3, mode="c"] array_data = \
+    cdef numpy.ndarray[numpy.uint8_t, ndim= 3, mode = "c"] array_data = \
         numpy.zeros((height, width, 4), dtype=numpy.uint8)
 
     cdef uint8_t[:, ::1] m_lookup = palette
@@ -842,9 +687,10 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
 
     return array_data
 
+
 @cython.boundscheck(False)
 @cython.wraparound(False)
-cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] &image_matrix):
+cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] & image_matrix):
     """
     converts the damage modifier values to an image using the RG values.
 
@@ -854,7 +700,7 @@ cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] &image_matrix):
     cdef size_t height = image_matrix.size()
     cdef size_t width = image_matrix[0].size()
 
-    cdef numpy.ndarray[numpy.uint8_t, ndim=3, mode="c"] array_data = \
+    cdef numpy.ndarray[numpy.uint8_t, ndim= 3, mode = "c"] array_data = \
         numpy.zeros((height, width, 4), dtype=numpy.uint8)
 
     cdef uint8_t r
