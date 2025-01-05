@@ -1,4 +1,4 @@
-// Copyright 2019-2024 the openage authors. See copying.md for legal info.
+// Copyright 2019-2025 the openage authors. See copying.md for legal info.
 
 #include "presenter.h"
 
@@ -309,12 +309,15 @@ void Presenter::init_final_render_pass() {
 	});
 }
 
-void Presenter::enable_stencil_for_gui_mask() {
+void Presenter::init_stencil_test() {
 	glEnable(GL_STENCIL_TEST);
+	glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
 	glClear(GL_STENCIL_BUFFER_BIT);
+}
+
+void Presenter::enable_stencil_for_gui_mask() {
 	// Replace stencil value with 1 when depth test passes
 	glStencilFunc(GL_ALWAYS, 1, 0xFF);
-	glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
 	glStencilMask(0xFF);
 	glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
 }
@@ -337,6 +340,8 @@ void Presenter::render() {
 	this->terrain_renderer->update();
 	this->world_renderer->update();
 	this->hud_renderer->update();
+
+	this->init_stencil_test();
 
 	// First Pass: Render GUI to stencil buffer
 	this->enable_stencil_for_gui_mask();
