@@ -1,4 +1,4 @@
-// Copyright 2019-2024 the openage authors. See copying.md for legal info.
+// Copyright 2019-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -142,6 +142,7 @@ protected:
 
 	// void init_audio();
 
+	void init_stencil_test();
 	void enable_stencil_for_gui_mask();
 	void enable_stencil_for_world();
 	void disable_stencil();
