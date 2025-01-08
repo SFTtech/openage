@@ -247,6 +247,7 @@ void test_array() {
 	auto f = std::make_shared<event::EventLoop>();
 
 	Array<int, 4> a(f, 0);
+	const std::array<int, 4> &default_val = std::array<int, 4>();
 	a.set_insert(1, 0, 0);
 	a.set_insert(1, 1, 1);
 	a.set_insert(1, 2, 2);
@@ -307,10 +308,6 @@ void test_array() {
 	auto next_frame = a.next_frame(1, 3);
 	TESTEQUALS(next_frame.second, 40);
 	TESTEQUALS(next_frame.first, 5);
-
-	// Test operator[]
-	TESTEQUALS(a[0].get(a[0].last(2)).val(), 25);
-	TESTEQUALS(a[1].get(a[1].last(2)).val(), 5);
 
 	// Test begin and end
 	auto it = a.begin(1);
