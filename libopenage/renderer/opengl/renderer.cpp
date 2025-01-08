@@ -1,4 +1,4 @@
-// Copyright 2017-2024 the openage authors. See copying.md for legal info.
+// Copyright 2017-2025 the openage authors. See copying.md for legal info.
 
 #include "renderer.h"
 
@@ -15,6 +15,7 @@
 #include "renderer/opengl/texture.h"
 #include "renderer/opengl/uniform_buffer.h"
 #include "renderer/opengl/uniform_input.h"
+#include "renderer/opengl/vertex_array.h"
 #include "renderer/opengl/window.h"
 #include "renderer/resources/buffer_info.h"
 
@@ -26,7 +27,8 @@ GlRenderer::GlRenderer(const std::shared_ptr<GlContext> &ctx,
 	gl_context{ctx},
 	display{std::make_shared<GlRenderTarget>(ctx,
                                              viewport_size[0],
-                                             viewport_size[1])} {
+                                             viewport_size[1])},
+	shared_quad_vao{std::make_shared<GlVertexArray>(ctx)} {
 	// color used to clear the color buffers
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
@@ -100,7 +102,7 @@ std::shared_ptr<UniformBuffer> GlRenderer::add_uniform_buffer(resources::Uniform
 		                     resources::UniformBufferInfo::get_size(input, info.get_layout()),
 		                     resources::UniformBufferInfo::get_stride_size(input.type, info.get_layout()),
 		                     input.count,
-							 input.name});
+		                     input.name});
 
 		offset += size;
 	}
@@ -168,6 +170,11 @@ void GlRenderer::check_error() {
 void GlRenderer::render(const std::shared_ptr<RenderPass> &pass) {
 	auto gl_target = std::dynamic_pointer_cast<GlRenderTarget>(pass->get_target());
 	gl_target->bind_write();
+
+	// ensure that an (empty) VAO is bound before rendering geometry
+	// a bound VAO is required to render bufferless quad geometries by OpenGL
+	// see https://www.khronos.org/opengl/wiki/Vertex_Rendering#Causes_of_rendering_failure
+	shared_quad_vao->bind();
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
