@@ -1,25 +1,34 @@
-// Copyright 2024-2024 the openage authors. See copying.md for legal info.
+// Copyright 2024-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <array>
 
+#include "curve/iterator.h"
 #include "curve/keyframe_container.h"
 #include "event/evententity.h"
 
 
-// remember to update docs
+// ASDF: remember to update docs
 namespace openage {
 namespace curve {
 
 template <typename T, size_t Size>
 class Array : event::EventEntity {
 public:
+	/**
+	 * The underlaying container type.
+	 */
+	using container_t = std::array<KeyframeContainer<T>, Size>;
+
 	Array(const std::shared_ptr<event::EventLoop> &loop,
 	      size_t id,
+	      const T &default_val = T(),
 	      const std::string &idstr = "",
 	      const EventEntity::single_change_notifier &notifier = nullptr) :
-		EventEntity(loop, notifier), _id{id}, _idstr{idstr}, loop{loop} {}
+		EventEntity(loop, notifier),
+		_id{id}, _idstr{idstr}, loop{loop}, container{KeyframeContainer(default_val)} {
+	}
 
 	Array(const Array &) = delete;
 
@@ -37,7 +46,9 @@ public:
 	 */
 	std::array<T, Size> get(const time::time_t &t) const;
 
-	// Get the amount of KeyframeContainers in array curve
+	/**
+	 * Get the amount of KeyframeContainers in array curve
+	 */
 	consteval size_t size() const;
 
 	/**
@@ -107,59 +118,80 @@ public:
 	}
 
 
-	// get a copy to the KeyframeContainer at index
-	KeyframeContainer<T> operator[](size_t index) const {
-		return this->container.at(index);
-	}
-
-	// Array::Iterator is used to iterate over KeyframeContainers contained in a curve at a given time.
+	/**
+	 *  Array::Iterator is used to iterate over KeyframeContainers contained in a curve at a given time.
+	 */
 	class Iterator {
 	public:
 		Iterator(Array<T, Size> *curve, const time::time_t &time = time::TIME_MAX, size_t offset = 0) :
 			curve(curve), time(time), offset(offset) {};
 
-		// returns a copy of the keyframe at the current offset and time
+		/**
+		 *  returns a copy of the keyframe at the current offset and time
+		 */
 		const T operator*() {
 			return this->curve->frame(this->time, this->offset).second;
 		}
 
-		// increments the Iterator to point at the next KeyframeContainer
+		/**
+		 * increments the Iterator to point at the next KeyframeContainer
+		 */
 		void operator++() {
 			this->offset++;
 		}
 
-		// Compare two Iterators by their offset
+		/**
+		 * Compare two Iterators by their offset
+		 */
 		bool operator!=(const Array<T, Size>::Iterator &rhs) const {
 			return this->offset != rhs.offset;
 		}
 
 
 	private:
-		// used to index the Curve::Array pointed to by this iterator
+		/**
+		 * used to index the Curve::Array pointed to by this iterator
+		 */
 		size_t offset;
 
-		// curve::Array that this iterator is iterating over
+		/**
+		 * the curve object that this iterator, iterates over
+		 */
 		Array<T, Size> *curve;
 
-		// time at which this iterator is iterating over
+		/**
+		 * time at which this iterator is iterating over
+		 */
 		time::time_t time;
 	};
 
 
-	// iterator pointing to a keyframe of the first KeyframeContainer in the curve at a given time
+	/**
+	 * iterator pointing to a keyframe of the first KeyframeContainer in the curve at a given time
+	 */
 	Iterator begin(const time::time_t &time = time::TIME_MIN);
 
-	// iterator pointing after the last KeyframeContainer in the curve at a given time
+	/**
+	 *  iterator pointing after the last KeyframeContainer in the curve at a given time
+	 */
 	Iterator end(const time::time_t &time = time::TIME_MIN);
 
 
 private:
+	/**
+	 * get a copy to the KeyframeContainer at index
+	 */
+	KeyframeContainer<T> operator[](size_t index) const {
+		return this->container.at(index);
+	}
+
+
 	std::array<KeyframeContainer<T>, Size> container;
 
 	/**
-	 * hints for KeyframeContainer operations, mutable as hints
-	 * are updated by const read functions.
-	 * This is used to speed up the search for next keyframe to be accessed
+	 * hints for KeyframeContainer operations
+	 * hints is used to speed up the search for next keyframe to be accessed
+	 * mutable as hints are updated by const read-only functions.
 	 */
 	mutable std::array<size_t, Size> last_element = {};
 
