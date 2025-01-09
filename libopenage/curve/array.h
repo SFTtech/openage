@@ -9,7 +9,6 @@
 #include "event/evententity.h"
 
 
-// ASDF: remember to update docs
 namespace openage {
 namespace curve {
 

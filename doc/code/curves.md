@@ -198,7 +198,7 @@ e.g. angles between 0 and 360 degrees.
 ### Container
 
 Container curves are intended for storing changes to collections and containers.
-The currently supported containers are `Queue` and `UnorderedMap`.
+The currently supported containers are `Queue`, `UnorderedMap` and `Array`.
 
 The most important distinction between regular C++ containers and curve containers
 is that curve containers track the *lifespan* of each element, i.e. their insertion time,
@@ -253,3 +253,36 @@ Unordered map curve containers store key-value pairs while additionally keeping
 track of element insertion time. Requests for a key `k` at time `t` will return the value
 of `k` at that time. The unordered map can also be iterated over for a specific time `t` which
 allows access to all key-value pairs that were in the map at time `t`.
+
+
+#### Array
+Array curve containers are the equivalent to the `std::array` C++ containers. Unlike other curve containers, 
+each element of the underlying std::array is a `keyframecontainer` and when a value is added to the `Array curve`
+at a given index they are added to the respective `keyframecontainer` at that index as a keyframe. 
+
+**Read**
+
+Read operations retrieve values for a specific point in time.
+
+| Method            | Description                                                              |
+| ----------------- | --------------------------------------- ---------------------------------|
+| `get(t, i)`       | Get value of index `i` at time <= `t`                                    |
+| `get(t)`          | Get array of keyframes at time <= `t`                                    |
+| `size()`          | Get size of the array                                                    |
+| `frame(t, i)`     | Get the time and value of the keyframe at index `i` with time <= `t`     |
+| `next_frame(t, i)`| Get the time and value of the first keyframe at index `i` with time > `t`|
+
+**Modify**
+
+Modify operations insert values for a specific point in time.
+
+| Method                    | Description                                                                               |
+| ------------------------- | ------------------------------------------------------------------------------------------|
+| `set_insert(t, i, value)` | Insert a new keyframe(`t`, `value`) at index `i`                                          |
+| `set_last(t, i, value)`   | Insert a new keyframe(`t`, `value`) at index `i`; delete all keyframes after time `t`     |
+| `set_replace(t, i, value)`| Insert a new keyframe(`t`, `value`) at index `i`; remove all other keyframes with time `t`|
+
+**Copy**
+| Method           | Description                                                                                      |
+| ---------------- | ------------------------------------------------------------------------------------------------ | 
+| `sync(Curve, t)` | Replace all keyframes from self after time `t` with keyframes from source `Curve` after time `t` |
