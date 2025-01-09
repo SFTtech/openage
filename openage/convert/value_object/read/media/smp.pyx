@@ -1,10 +1,7 @@
-# Copyright 2013-2024 the openage authors. See copying.md for legal info.
+# Copyright 2013-2025 the openage authors. See copying.md for legal info.
 #
 # cython: infer_types=True
 
-from libcpp.vector cimport vector
-from libcpp cimport bool
-from libc.stdint cimport uint8_t, uint16_t
 from enum import Enum
 import numpy
 from struct import Struct, unpack_from
@@ -14,6 +11,11 @@ from .....log import spam, dbg
 
 cimport cython
 cimport numpy
+
+from libc.stdint cimport uint8_t, uint16_t
+from libcpp cimport bool
+from libcpp.vector cimport vector
+
 
 
 # SMP files have little endian byte order
@@ -48,8 +50,8 @@ class SMPLayerType(Enum):
     """
     SMP layer types.
     """
-    MAIN = "main"
-    SHADOW = "shadow"
+    MAIN    = "main"
+    SHADOW  = "shadow"
     OUTLINE = "outline"
 
 
@@ -104,7 +106,7 @@ class SMP:
 
     def __init__(self, data):
         smp_header = SMP.smp_header.unpack_from(data)
-        signature, version, frame_count, facet_count, frames_per_facet, \
+        signature, version, frame_count, facet_count, frames_per_facet,\
             checksum, file_size, source_format, comment = smp_header
 
         dbg("SMP")
@@ -157,14 +159,12 @@ class SMP:
 
                 elif layer_header.layer_type == 0x04:
                     # layer that stores a shadow
-                    self.shadow_frames.append(
-                        SMPShadowLayer(layer_header, data))
+                    self.shadow_frames.append(SMPShadowLayer(layer_header, data))
 
                 elif layer_header.layer_type == 0x08 or \
-                        layer_header.layer_type == 0x10:
+                     layer_header.layer_type == 0x10:
                     # layer that stores an outline
-                    self.outline_frames.append(
-                        SMPOutlineLayer(layer_header, data))
+                    self.outline_frames.append(SMPOutlineLayer(layer_header, data))
 
                 else:
                     raise Exception(
@@ -252,6 +252,108 @@ class SMPLayerHeader:
             "        % 9d|" % self.qdl_table_offset,
         )
         return "".join(ret)
+
+
+cdef class SMPLayer:
+    """
+    one layer inside the SMP. you can imagine it as a frame of a video.
+    """
+
+    # struct smp_frame_row_edge {
+    #   unsigned short left_space;
+    #   unsigned short right_space;
+    # };
+    smp_frame_row_edge = Struct(endianness + "H H")
+
+    # struct smp_command_offset {
+    #   unsigned int offset;
+    # }
+    smp_command_offset = Struct(endianness + "I")
+
+    # layer and frame information
+    cdef object info
+
+    # for each row:
+    # contains (left, right, full_row) number of boundary pixels
+    cdef vector[boundary_def] boundaries
+
+    # stores the file offset for the first drawing command
+    cdef vector[int] cmd_offsets
+
+    # pixel matrix representing the final image
+    cdef vector[vector[pixel]] pcolor
+
+    # memory pointer
+    cdef const uint8_t[::1] data_raw
+
+    # rows of image
+    cdef size_t row_count
+
+    def __init__(self, layer_header, data):
+        self.info = layer_header
+
+        if not (isinstance(data, bytes) or isinstance(data, bytearray)):
+            raise ValueError("Layer data must be some bytes object")
+
+        # convert the bytes obj to char*
+        self.data_raw = data
+
+        cdef unsigned short left
+        cdef unsigned short right
+
+        cdef size_t i
+        cdef int cmd_offset
+
+        self.row_count = self.info.size[1]
+        self.pcolor.reserve(self.row_count)
+
+        # process bondary table
+        for i in range(self.row_count):
+            outline_entry_position = (self.info.outline_table_offset +
+                                      i * SMPLayer.smp_frame_row_edge.size)
+
+            left, right = SMPLayer.smp_frame_row_edge.unpack_from(
+                data, outline_entry_position
+            )
+
+            # is this row completely transparent?
+            if left == 0xFFFF or right == 0xFFFF:
+                self.boundaries.push_back(boundary_def(0, 0, True))
+            else:
+                self.boundaries.push_back(boundary_def(left, right, False))
+
+        # process cmd table
+        for i in range(self.row_count):
+            cmd_table_position = (self.info.qdl_table_offset +
+                                  i * SMPLayer.smp_command_offset.size)
+
+            cmd_offset = SMPLayer.smp_command_offset.unpack_from(
+                data, cmd_table_position)[0] + self.info.frame_offset
+            self.cmd_offsets.push_back(cmd_offset)
+
+    def get_picture_data(self, palette):
+        """
+        Convert the palette index matrix to a colored image.
+        """
+        return determine_rgba_matrix(self.pcolor, palette)
+
+    def get_hotspot(self):
+        """
+        Return the layer's hotspot (the "center" of the image)
+        """
+        return self.info.hotspot
+
+    def get_palette_number(self):
+        """
+        Return the layer's palette number.
+
+        :return: Palette number of the layer.
+        :rtype: int
+        """
+        return self.pcolor[0][0].palette & 0b00111111
+
+    def __repr__(self):
+        return repr(self.info)
 
 
 cdef class SMPMainLayer(SMPLayer):
@@ -479,112 +581,13 @@ cdef void process_drawing_cmds(SMPLayerVariant variant,
     return
 
 
-cdef class SMPLayer:
-    """
-    one layer inside the SMP. you can imagine it as a frame of a video.
-    """
 
-    # struct smp_frame_row_edge {
-    #   unsigned short left_space;
-    #   unsigned short right_space;
-    # };
-    smp_frame_row_edge = Struct(endianness + "H H")
-
-    # struct smp_command_offset {
-    #   unsigned int offset;
-    # }
-    smp_command_offset = Struct(endianness + "I")
-
-    # layer and frame information
-    cdef object info
-
-    # for each row:
-    # contains (left, right, full_row) number of boundary pixels
-    cdef vector[boundary_def] boundaries
-
-    # stores the file offset for the first drawing command
-    cdef vector[int] cmd_offsets
-
-    # pixel matrix representing the final image
-    cdef vector[vector[pixel]] pcolor
-
-    # memory pointer
-    cdef const uint8_t[::1] data_raw
-
-    # rows of image
-    cdef size_t row_count
-
-    def __init__(self, layer_header, data):
-        self.info = layer_header
-
-        if not (isinstance(data, bytes) or isinstance(data, bytearray)):
-            raise ValueError("Layer data must be some bytes object")
-
-        # convert the bytes obj to char*
-        self.data_raw = data
-
-        cdef unsigned short left
-        cdef unsigned short right
-
-        cdef size_t i
-        cdef int cmd_offset
-
-        self.row_count = self.info.size[1]
-        self.pcolor.reserve(self.row_count)
-
-        # process bondary table
-        for i in range(self.row_count):
-            outline_entry_position = (self.info.outline_table_offset +
-                                      i * SMPLayer.smp_frame_row_edge.size)
-
-            left, right = SMPLayer.smp_frame_row_edge.unpack_from(
-                data, outline_entry_position
-            )
-
-            # is this row completely transparent?
-            if left == 0xFFFF or right == 0xFFFF:
-                self.boundaries.push_back(boundary_def(0, 0, True))
-            else:
-                self.boundaries.push_back(boundary_def(left, right, False))
-
-        # process cmd table
-        for i in range(self.row_count):
-            cmd_table_position = (self.info.qdl_table_offset +
-                                  i * SMPLayer.smp_command_offset.size)
-
-            cmd_offset = SMPLayer.smp_command_offset.unpack_from(
-                data, cmd_table_position)[0] + self.info.frame_offset
-            self.cmd_offsets.push_back(cmd_offset)
-
-    def get_picture_data(self, palette):
-        """
-        Convert the palette index matrix to a colored image.
-        """
-        return determine_rgba_matrix(self.pcolor, palette)
-
-    def get_hotspot(self):
-        """
-        Return the layer's hotspot (the "center" of the image)
-        """
-        return self.info.hotspot
-
-    def get_palette_number(self):
-        """
-        Return the layer's palette number.
-
-        :return: Palette number of the layer.
-        :rtype: int
-        """
-        return self.pcolor[0][0].palette & 0b00111111
-
-    def __repr__(self):
-        return repr(self.info)
 
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] & image_matrix,
-                                         numpy.ndarray[numpy.uint8_t, ndim= 2, mode = "c"] palette):
+cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
+                                         numpy.ndarray[numpy.uint8_t, ndim=2, mode="c"] palette):
     """
     converts a palette index image matrix to an rgba matrix.
     """
@@ -592,7 +595,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] & image_matrix,
     cdef size_t height = image_matrix.size()
     cdef size_t width = image_matrix[0].size()
 
-    cdef numpy.ndarray[numpy.uint8_t, ndim= 3, mode = "c"] array_data = \
+    cdef numpy.ndarray[numpy.uint8_t, ndim=3, mode="c"] array_data = \
         numpy.zeros((height, width, 4), dtype=numpy.uint8)
 
     cdef uint8_t[:, ::1] m_lookup = palette
@@ -690,7 +693,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] & image_matrix,
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] & image_matrix):
+cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] &image_matrix):
     """
     converts the damage modifier values to an image using the RG values.
 
@@ -700,7 +703,7 @@ cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] & image_matrix)
     cdef size_t height = image_matrix.size()
     cdef size_t width = image_matrix[0].size()
 
-    cdef numpy.ndarray[numpy.uint8_t, ndim= 3, mode = "c"] array_data = \
+    cdef numpy.ndarray[numpy.uint8_t, ndim=3, mode="c"] array_data = \
         numpy.zeros((height, width, 4), dtype=numpy.uint8)
 
     cdef uint8_t r
