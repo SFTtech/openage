@@ -1,4 +1,4 @@
-// Copyright 2015-2024 the openage authors. See copying.md for legal info.
+// Copyright 2015-2025 the openage authors. See copying.md for legal info.
 
 #include "compiler.h"
 
@@ -24,10 +24,10 @@ namespace util {
 
 std::string demangle(const char *symbol) {
 #ifdef _WIN32
-	// TODO: demangle names for MSVC; Possibly using UnDecorateSymbolName
-	// https://msdn.microsoft.com/en-us/library/windows/desktop/ms681400(v=vs.85).aspx
-	// Could it be that MSVC's typeid(T).name() already returns a demangled name? It seems that .raw_name() returns the mangled name
-	return symbol;
+	//  MSVC's typeid(T).name() already returns a demangled name
+	// unlike clang and gcc the MSVC demangled name is prefixed with "class " or "stuct "
+	// we remove the prefix to match the format of clang and gcc
+	return strchr(symbol, ' ') + 1;
 #else
 	int status;
 	char *buf = abi::__cxa_demangle(symbol, nullptr, nullptr, &status);
