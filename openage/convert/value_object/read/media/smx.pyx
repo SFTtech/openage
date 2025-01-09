@@ -1,10 +1,7 @@
-# Copyright 2019-2024 the openage authors. See copying.md for legal info.
+# Copyright 2019-2025 the openage authors. See copying.md for legal info.
 #
 # cython: infer_types=True
 
-from libcpp.vector cimport vector
-from libcpp cimport bool
-from libc.stdint cimport uint8_t, uint16_t
 from enum import Enum
 import numpy
 from struct import Struct, unpack_from
@@ -14,6 +11,11 @@ from .....log import spam, dbg
 
 cimport cython
 cimport numpy
+
+from libc.stdint cimport uint8_t, uint16_t
+from libcpp cimport bool
+from libcpp.vector cimport vector
+
 
 
 # SMX files have little endian byte order
@@ -47,8 +49,8 @@ class SMXLayerType(Enum):
     """
     SMX layer types.
     """
-    MAIN = "main"
-    SHADOW = "shadow"
+    MAIN    = "main"
+    SHADOW  = "shadow"
     OUTLINE = "outline"
 
 
@@ -57,57 +59,6 @@ cdef public dict LAYER_TYPES = {
     1: SMXLayerType.SHADOW,
     2: SMXLayerType.OUTLINE,
 }
-cdef class SMXMainLayer8to5(SMXLayer):
-    def __init__(self, layer_header, data):
-        super().__init__(layer_header, data)
-        # process cmd table
-        for i in range(self.row_count):
-            cmd_offset, color_offset, chunk_pos, row_data = create_color_row(
-                self, i)
-            self.cmd_offset = cmd_offset
-            self.color_offset = color_offset
-            self.chunk_pos = chunk_pos
-
-            self.pcolor.push_back(row_data)
-
-cdef class SMXMainLayer4plus1(SMXLayer):
-    def __init__(self, layer_header, data):
-        super().__init__(layer_header, data)
-        # process cmd table
-        for i in range(self.row_count):
-            cmd_offset, color_offset, chunk_pos, row_data = create_color_row(
-                self, i)
-            self.cmd_offset = cmd_offset
-            self.color_offset = color_offset
-            self.chunk_pos = chunk_pos
-
-            self.pcolor.push_back(row_data)
-
-cdef class SMXOutlineLayer(SMXLayer):
-    def __init__(self, layer_header, data):
-        super().__init__(layer_header, data)
-        # process cmd table
-        for i in range(self.row_count):
-            cmd_offset, color_offset, chunk_pos, row_data = create_color_row(
-                self, i)
-            self.cmd_offset = cmd_offset
-            self.color_offset = color_offset
-            self.chunk_pos = chunk_pos
-
-            self.pcolor.push_back(row_data)
-
-cdef class SMXShadowLayer(SMXLayer):
-    def __init__(self, layer_header, data):
-        super().__init__(layer_header, data)
-        # process cmd table
-        for i in range(self.row_count):
-            cmd_offset, color_offset, chunk_pos, row_data = create_color_row(
-                self, i)
-            self.cmd_offset = cmd_offset
-            self.color_offset = color_offset
-            self.chunk_pos = chunk_pos
-
-            self.pcolor.push_back(row_data)
 
 
 ctypedef fused SMXLayerVariant:
@@ -246,15 +197,16 @@ cdef inline(int, int, int, vector[pixel]) process_drawing_cmds(SMXLayerVariant v
 
             # shadows sometimes need an extra pixel at
             # the end
-            if SMXLayerVariant is SMXShadowLayer and row_data.size() < expected_size:
-                # copy the last drawn pixel
-                # (still stored in nextbyte)
-                #
-                # TODO: confirm that this is the
-                #       right way to do it
-                row_data.push_back(pixel(color_shadow,
-                                         nextbyte, 0, 0, 0))
-            continue
+            if SMXLayerVariant is SMXShadowLayer:
+                if row_data.size() < expected_size:
+                    # copy the last drawn pixel
+                    # (still stored in nextbyte)
+                    #
+                    # TODO: confirm that this is the
+                    #       right way to do it
+                    row_data.push_back(pixel(color_shadow,
+                                            nextbyte, 0, 0, 0))
+                continue
 
         elif lower_crumb == 0b00000000:
             # skip command
@@ -510,16 +462,14 @@ class SMX:
         """
 
         smx_header = SMX.smx_header.unpack_from(data)
-        self.smp_type, version, frame_count, file_size_comp, \
+        self.smp_type, version, frame_count, file_size_comp,\
             file_size_uncomp, comment = smx_header
 
         dbg("SMX")
         dbg(" version:                %s",   version)
         dbg(" frame count:            %s",   frame_count)
-        # 0x20 = SMX header size
-        dbg(" file size compressed:   %s B", file_size_comp + 0x20)
-        # 0x80 = SMP header size
-        dbg(" file size uncompressed: %s B", file_size_uncomp + 0x40)
+        dbg(" file size compressed:   %s B", file_size_comp + 0x20)   # 0x20 = SMX header size
+        dbg(" file size uncompressed: %s B", file_size_uncomp + 0x40) # 0x80 = SMP header size
         dbg(" comment:                %s",   comment.decode('ascii'))
 
         # SMX graphic frames are created from overlaying
@@ -537,7 +487,7 @@ class SMX:
             frame_header = SMX.smx_frame_header.unpack_from(
                 data, current_offset)
 
-            frame_type, palette_number, _ = frame_header
+            frame_type , palette_number, _ = frame_header
 
             current_offset += SMX.smx_frame_header.size
 
@@ -556,7 +506,7 @@ class SMX:
                 layer_header_data = SMX.smx_layer_header.unpack_from(
                     data, current_offset)
 
-                width, height, hotspot_x, hotspot_y, \
+                width, height, hotspot_x, hotspot_y,\
                     distance_next_frame, _ = layer_header_data
 
                 current_offset += SMX.smx_layer_header.size
@@ -566,14 +516,12 @@ class SMX:
                 # Skip outline table
                 current_offset += 4 * height
 
-                qdl_command_array_size = Struct(
-                    "< I").unpack_from(data, current_offset)[0]
+                qdl_command_array_size = Struct("< I").unpack_from(data, current_offset)[0]
                 current_offset += 4
 
                 # Read length of color table
                 if layer_type is SMXLayerType.MAIN:
-                    qdl_color_table_size = Struct(
-                        "< I").unpack_from(data, current_offset)[0]
+                    qdl_color_table_size = Struct("< I").unpack_from(data, current_offset)[0]
                     current_offset += 4
                     qdl_color_table_offset = current_offset + qdl_command_array_size
 
@@ -593,20 +541,16 @@ class SMX:
 
                 if layer_type is SMXLayerType.MAIN:
                     if layer_header.compression_type == 0x08:
-                        self.main_frames.append(
-                            SMXMainLayer8to5(layer_header, data))
+                        self.main_frames.append(SMXMainLayer8to5(layer_header, data))
 
                     elif layer_header.compression_type == 0x00:
-                        self.main_frames.append(
-                            SMXMainLayer4plus1(layer_header, data))
+                        self.main_frames.append(SMXMainLayer4plus1(layer_header, data))
 
                 elif layer_type is SMXLayerType.SHADOW:
-                    self.shadow_frames.append(
-                        SMXShadowLayer(layer_header, data))
+                    self.shadow_frames.append(SMXShadowLayer(layer_header, data))
 
                 elif layer_type is SMXLayerType.OUTLINE:
-                    self.outline_frames.append(
-                        SMXOutlineLayer(layer_header, data))
+                    self.outline_frames.append(SMXOutlineLayer(layer_header, data))
 
     def get_frames(self, layer: int = 0):
         """
@@ -826,10 +770,68 @@ cdef class SMXLayer:
         return repr(self.info)
 
 
+cdef class SMXMainLayer8to5(SMXLayer):
+    """
+    Compressed SMP layer (compression type 8to5) for the main graphics sprite.
+    """
+
+    def __init__(self, layer_header, data):
+        super().__init__(layer_header, data)
+        # process cmd table
+        for i in range(self.row_count):
+            cmd_offset, color_offset, chunk_pos, row_data = create_color_row(
+                self, i)
+            self.cmd_offset = cmd_offset
+            self.color_offset = color_offset
+            self.chunk_pos = chunk_pos
+
+            self.pcolor.push_back(row_data)
+
+cdef class SMXMainLayer4plus1(SMXLayer):
+    def __init__(self, layer_header, data):
+        super().__init__(layer_header, data)
+        # process cmd table
+        for i in range(self.row_count):
+            cmd_offset, color_offset, chunk_pos, row_data = create_color_row(
+                self, i)
+            self.cmd_offset = cmd_offset
+            self.color_offset = color_offset
+            self.chunk_pos = chunk_pos
+
+            self.pcolor.push_back(row_data)
+
+cdef class SMXOutlineLayer(SMXLayer):
+    def __init__(self, layer_header, data):
+        super().__init__(layer_header, data)
+        # process cmd table
+        for i in range(self.row_count):
+            cmd_offset, color_offset, chunk_pos, row_data = create_color_row(
+                self, i)
+            self.cmd_offset = cmd_offset
+            self.color_offset = color_offset
+            self.chunk_pos = chunk_pos
+
+            self.pcolor.push_back(row_data)
+
+cdef class SMXShadowLayer(SMXLayer):
+    def __init__(self, layer_header, data):
+        super().__init__(layer_header, data)
+        # process cmd table
+        for i in range(self.row_count):
+            cmd_offset, color_offset, chunk_pos, row_data = create_color_row(
+                self, i)
+            self.cmd_offset = cmd_offset
+            self.color_offset = color_offset
+            self.chunk_pos = chunk_pos
+
+            self.pcolor.push_back(row_data)
+
+
+
 @cython.boundscheck(False)
 @cython.wraparound(False)
-cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] & image_matrix,
-                                         numpy.ndarray[numpy.uint8_t, ndim= 2, mode = "c"] palette):
+cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
+                                         numpy.ndarray[numpy.uint8_t, ndim=2, mode="c"] palette):
     """
     converts a palette index image matrix to an rgba matrix.
 
@@ -840,7 +842,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] & image_matrix,
     cdef size_t height = image_matrix.size()
     cdef size_t width = image_matrix[0].size()
 
-    cdef numpy.ndarray[numpy.uint8_t, ndim= 3, mode = "c"] array_data = \
+    cdef numpy.ndarray[numpy.uint8_t, ndim=3, mode="c"] array_data = \
         numpy.zeros((height, width, 4), dtype=numpy.uint8)
 
     cdef uint8_t[:, ::1] m_lookup = palette
@@ -929,7 +931,7 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] & image_matrix,
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] & image_matrix):
+cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] &image_matrix):
     """
     converts the damage modifier values to an image using the RG values.
 
@@ -939,7 +941,7 @@ cdef numpy.ndarray determine_damage_matrix(vector[vector[pixel]] & image_matrix)
     cdef size_t height = image_matrix.size()
     cdef size_t width = image_matrix[0].size()
 
-    cdef numpy.ndarray[numpy.uint8_t, ndim= 3, mode = "c"] array_data = \
+    cdef numpy.ndarray[numpy.uint8_t, ndim=3, mode="c"] array_data = \
         numpy.zeros((height, width, 4), dtype=numpy.uint8)
 
     cdef uint8_t r = 0
