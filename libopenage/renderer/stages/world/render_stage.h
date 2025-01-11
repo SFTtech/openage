@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "util/path.h"
+#include "world_shader_commands.h"
 
 namespace openage {
 
@@ -112,6 +113,12 @@ private:
 	void init_uniform_ids();
 
 	/**
+    * Initialize the shader command system and register default commands.
+    * This must be called before initializing the shader program.
+    */
+	void init_shader_commands();
+
+	/**
 	 * Reference to the openage renderer.
 	 */
 	std::shared_ptr<renderer::Renderer> renderer;
@@ -174,6 +181,12 @@ private:
 	 * Mutex for protecting threaded access.
 	 */
 	std::shared_mutex mutex;
+
+	/**
+     * Shader command system for the world fragment shader.
+     * Manages custom rendering behaviors through alpha channel commands.
+     */
+	std::unique_ptr<WorldShaderCommands> shader_commands;
 };
 } // namespace world
 } // namespace renderer
