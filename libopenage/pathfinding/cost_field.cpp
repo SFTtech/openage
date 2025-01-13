@@ -56,7 +56,7 @@ void CostField::set_costs(std::vector<cost_t> &&cells, const time::time_t &valid
 	this->valid_until = valid_until;
 }
 
-bool CostField::is_dirty(const time::time_t &time) {
+bool CostField::is_dirty(const time::time_t &time) const {
 	return time >= this->valid_until;
 }
 
