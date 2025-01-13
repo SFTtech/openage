@@ -106,7 +106,7 @@ public:
 
 	/**
 	 * Check if the cost field is dirty at the specified time.
-	 * 
+	 *
 	 * @param time Specified time to check.
 	 */
 	bool is_dirty(const time::time_t &time);
