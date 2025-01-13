@@ -113,7 +113,7 @@ public:
 	 *
 	 * @return Whether the cost field is dirty.
 	 */
-	bool is_dirty(const time::time_t &time);
+	bool is_dirty(const time::time_t &time) const;
 
 	/**
 	 * Clear the dirty flag.

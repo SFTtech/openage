@@ -109,7 +109,7 @@ public:
 	 *
 	 * @param time Specified time to check.
 	 */
-	bool is_dirty(const time::time_t &time);
+	bool is_dirty(const time::time_t &time) const;
 
 private:
 	/**
