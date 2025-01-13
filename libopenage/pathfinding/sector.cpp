@@ -249,8 +249,4 @@ void Sector::connect_exits() {
 	}
 }
 
-bool Sector::is_dirty(const time::time_t &time) const {
-	return this->cost_field->is_dirty(time);
-}
-
 } // namespace openage::path
