@@ -9,7 +9,6 @@
 #include "coord/chunk.h"
 #include "pathfinding/portal.h"
 #include "pathfinding/types.h"
-#include "time/time.h"
 
 
 namespace openage::path {
@@ -103,13 +102,6 @@ public:
 	 * been created and initialized.
 	 */
 	void connect_exits();
-
-	/**
-	 * Check if the cost field is dirty at the specified time.
-	 *
-	 * @param time Specified time to check.
-	 */
-	bool is_dirty(const time::time_t &time) const;
 
 private:
 	/**
