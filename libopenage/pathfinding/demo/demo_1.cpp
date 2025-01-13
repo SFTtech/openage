@@ -35,7 +35,7 @@ void path_demo_1(const util::Path &path) {
 		std::vector<cost_t> sector_cost = SECTORS_COST.at(sector->get_id());
 
 		// Set the cost field for the sector
-		cost_field->set_costs(std::move(sector_cost), time::TIME_ZERO);
+		cost_field->set_costs(std::move(sector_cost), time::TIME_MAX);
 	}
 
 	// Initialize portals between sectors
