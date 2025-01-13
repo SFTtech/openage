@@ -14,6 +14,11 @@
 
 namespace openage::path {
 
+Integrator::Integrator() :
+	field_cache{std::make_unique<FieldCache>()} {
+}
+
+
 std::shared_ptr<IntegrationField> Integrator::integrate(const std::shared_ptr<CostField> &cost_field,
                                                         const coord::tile_delta &target,
                                                         bool with_los) {

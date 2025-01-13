@@ -26,7 +26,11 @@ class Portal;
  */
 class Integrator {
 public:
-	Integrator() = default;
+	/**
+	 * Create a new integrator.
+	 */
+	Integrator();
+
 	~Integrator() = default;
 
 	/**
@@ -130,7 +134,6 @@ public:
 	                 bool with_los = true);
 
 private:
-	
 	/**
 	 * Cache for already computed fields.
 	 */
