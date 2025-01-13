@@ -1,4 +1,4 @@
-// Copyright 2024-2024 the openage authors. See copying.md for legal info.
+// Copyright 2024-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -7,6 +7,7 @@
 
 #include "pathfinding/types.h"
 #include "util/hash.h"
+
 
 namespace openage {
 namespace coord {
@@ -26,30 +27,60 @@ public:
 	~FieldCache() = default;
 
 	/**
-	 * Adds a new field cache entry to the cache with a given portal and sector cache key.
+	 * Adds a new field entry to the cache.
+	 *
+	 * @param cache_key Cache key for the field entry.
+	 * @param cache_entry Field entry (integration field, flow field).
 	 */
-	void add(cache_key_t cache_key,
-	         field_cache_t cache_entry);
+	void add(const cache_key_t cache_key,
+	         const field_cache_t cache_entry);
 
 	/**
-	 * Evicts a given field cache entry from the cache at the given cache key.
+	 * Evict field entry from the cache.
+	 *
+	 * @param cache_key Cache key for the field entry to evict.
+	 *
+	 * @return true if the cache key was found and evicted, false otherwise.
 	 */
-	void evict(cache_key_t cache_key);
+	bool evict(const cache_key_t cache_key);
 
 	/**
-	 * Checks if there is a cached entry at a specific cache key.
+	 * Check if there is a cached entry for a specific cache key.
+	 *
+	 * @param cache_key Cache key to check.
+	 *
+	 * @return true if a field entry is found for the cache key, false otherwise.
 	 */
-	bool is_cached(cache_key_t cache_key);
+	bool is_cached(const cache_key_t cache_key) const;
 
 	/**
-	 * Gets the integration field from a given cache entry.
+	 * Get a cached integration field.
+	 *
+	 * @param cache_key Cache key for the field entry.
+	 *
+	 * @return Integration field.
 	 */
-	std::shared_ptr<IntegrationField> get_integration_field(cache_key_t cache_key);
+	std::shared_ptr<IntegrationField> get_integration_field(const cache_key_t cache_key) const;
 
 	/**
-	 * Gets the flow field from a given cache entry.
+	 * Get a cached flow field.
+	 *
+	 * @param cache_key Cache key for the field entry.
+	 *
+	 * @return Flow field.
 	 */
-	std::shared_ptr<FlowField> get_flow_field(cache_key_t cache_key);
+	std::shared_ptr<FlowField> get_flow_field(const cache_key_t cache_key) const;
+
+	/**
+	 * Get a cached field entry.
+	 *
+	 * Contains both integration field and flow field.
+	 *
+	 * @param cache_key Cache key for the field entry.
+	 *
+	 * @return Field entry (integration field, flow field).
+	 */
+	field_cache_t get(const cache_key_t cache_key) const;
 
 private:
 	/**
