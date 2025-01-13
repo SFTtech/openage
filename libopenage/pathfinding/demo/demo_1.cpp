@@ -11,8 +11,6 @@
 #include "pathfinding/portal.h"
 #include "pathfinding/sector.h"
 #include "util/timer.h"
-#include "time/time_loop.h"
-#include "time/clock.h"
 
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/opengl/window.h"
@@ -32,21 +30,30 @@ void path_demo_1(const util::Path &path) {
 	// Initialize the cost field for each sector.
 	for (auto &sector : grid->get_sectors()) {
 		auto cost_field = sector->get_cost_field();
-		std::vector<cost_t> sector_cost = sectors_cost.at(sector->get_id());
-		cost_field->set_costs(std::move(sector_cost), 0);
-		cost_field->clear_dirty();
+
+		// Read the data from the preconfigured table
+		std::vector<cost_t> sector_cost = SECTORS_COST.at(sector->get_id());
+
+		// Set the cost field for the sector
+		cost_field->set_costs(std::move(sector_cost), time::TIME_ZERO);
 	}
 
-	// Initialize portals between sectors.
+	// Initialize portals between sectors
 	util::Vector2s grid_size = grid->get_size();
 	portal_id_t portal_id = 0;
 	for (size_t y = 0; y < grid_size[1]; y++) {
 		for (size_t x = 0; x < grid_size[0]; x++) {
+			// For each sector on the grid, we will seatch for portals to the east and south
+			// sectors and connect them
+
 			auto sector = grid->get_sector(x, y);
 
 			if (x < grid_size[0] - 1) {
+				// Check the sector to the east
 				auto neighbor = grid->get_sector(x + 1, y);
 				auto portals = sector->find_portals(neighbor, PortalDirection::EAST_WEST, portal_id);
+
+				// Add the portals to the sector and the neighbor
 				for (auto &portal : portals) {
 					sector->add_portal(portal);
 					neighbor->add_portal(portal);
@@ -54,8 +61,11 @@ void path_demo_1(const util::Path &path) {
 				portal_id += portals.size();
 			}
 			if (y < grid_size[1] - 1) {
+				// Check the sector to the south
 				auto neighbor = grid->get_sector(x, y + 1);
 				auto portals = sector->find_portals(neighbor, PortalDirection::NORTH_SOUTH, portal_id);
+
+				// Add the portals to the sector and the neighbor
 				for (auto &portal : portals) {
 					sector->add_portal(portal);
 					neighbor->add_portal(portal);
@@ -65,7 +75,8 @@ void path_demo_1(const util::Path &path) {
 		}
 	}
 
-	// Connect portals inside sectors.
+	// Connect portals that can mutually reach each other
+	// within the same sector
 	for (auto sector : grid->get_sectors()) {
 		sector->connect_exits();
 
@@ -84,23 +95,28 @@ void path_demo_1(const util::Path &path) {
 	auto pathfinder = std::make_shared<path::Pathfinder>();
 	pathfinder->add_grid(grid);
 
+	// Add a timer to measure the pathfinding speed
 	util::Timer timer;
 
-	// Create a path request and get the path
+	// Create a path request from one end of the grid to the other
 	coord::tile start{2, 26};
 	coord::tile target{36, 2};
-
 	PathRequest path_request{
 		grid->get_id(),
 		start,
 		target,
-		0
+		time::TIME_ZERO,
 	};
 
+	// Initialize the portal nodes of the grid
+	// This is used for the A* pathfinding search at the beginning
 	grid->init_portal_nodes();
+
 	timer.start();
+	// Let the pathfinder search for a path
 	Path path_result = pathfinder->get_path(path_request);
 	timer.stop();
+
 	log::log(INFO << "Pathfinding took " << timer.getval() / 1000 << " us");
 
 	// Create a renderer to display the grid and path
@@ -113,8 +129,11 @@ void path_demo_1(const util::Path &path) {
 	auto render_manager = std::make_shared<RenderManager1>(qtapp, window, path, grid);
 	log::log(INFO << "Created render manager for pathfinding demo");
 
+	// Callbacks for mouse button events
+	// Used to set the start and target cells for pathfinding
 	window->add_mouse_button_callback([&](const QMouseEvent &ev) {
 		if (ev.type() == QEvent::MouseButtonRelease) {
+			// From the mouse position, calculate the position/cell on the grid
 			auto cell_count_x = grid->get_size()[0] * grid->get_sector_size();
 			auto cell_count_y = grid->get_size()[1] * grid->get_sector_size();
 			auto window_size = window->get_size();
@@ -131,7 +150,7 @@ void path_demo_1(const util::Path &path) {
 					grid->get_id(),
 					start,
 					target,
-					0
+					time::TIME_ZERO,
 				};
 
 				timer.reset();
@@ -152,7 +171,7 @@ void path_demo_1(const util::Path &path) {
 					grid->get_id(),
 					start,
 					target,
-					0
+					time::TIME_ZERO,
 				};
 
 				timer.reset();
