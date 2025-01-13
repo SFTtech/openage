@@ -110,7 +110,7 @@ public:
 	 * Check if the cost field is dirty at the specified time.
 	 *
 	 * @param time Time of access to the cost field.
-	 * 
+	 *
 	 * @return Whether the cost field is dirty.
 	 */
 	bool is_dirty(const time::time_t &time);
