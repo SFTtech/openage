@@ -18,7 +18,6 @@ Integrator::Integrator() :
 	field_cache{std::make_unique<FieldCache>()} {
 }
 
-
 std::shared_ptr<IntegrationField> Integrator::integrate(const std::shared_ptr<CostField> &cost_field,
                                                         const coord::tile_delta &target,
                                                         bool with_los) {
@@ -47,6 +46,8 @@ std::shared_ptr<IntegrationField> Integrator::integrate(const std::shared_ptr<Co
                                                         bool with_los) {
 	auto cache_key = std::make_pair(portal->get_id(), other_sector_id);
 	if (cost_field->is_dirty(time)) {
+		log::log(DBG << "Evicting cached integration and flow fields for portal " << portal->get_id()
+		             << " from sector " << other_sector_id);
 		this->field_cache->evict(cache_key);
 	}
 	else if (this->field_cache->is_cached(cache_key)) {
@@ -161,6 +162,8 @@ Integrator::get_return_t Integrator::get(const std::shared_ptr<CostField> &cost_
                                          bool with_los) {
 	auto cache_key = std::make_pair(portal->get_id(), other_sector_id);
 	if (cost_field->is_dirty(time)) {
+		log::log(DBG << "Evicting cached integration and flow fields for portal " << portal->get_id()
+		             << " from sector " << other_sector_id);
 		this->field_cache->evict(cache_key);
 	}
 	else if (this->field_cache->is_cached(cache_key)) {
@@ -168,9 +171,9 @@ Integrator::get_return_t Integrator::get(const std::shared_ptr<CostField> &cost_
 		             << " from sector " << other_sector_id);
 
 		// retrieve cached fields
-		auto cached_integration_field = this->field_cache->get_integration_field(cache_key);
-		auto cached_flow_field = this->field_cache->get_flow_field(cache_key);
-
+		auto cached_fields = this->field_cache->get(cache_key);
+		auto cached_integration_field = cached_fields.first;
+		auto cached_flow_field = cached_fields.second;
 
 		if (with_los) {
 			log::log(SPAM << "Performing LOS pass on cached field");
