@@ -1,4 +1,4 @@
-// Copyright 2024-2024 the openage authors. See copying.md for legal info.
+// Copyright 2024-2025 the openage authors. See copying.md for legal info.
 
 #include "demo_0.h"
 
@@ -33,15 +33,17 @@ void path_demo_0(const util::Path &path) {
 
 	// Cost field with some obstacles
 	auto cost_field = std::make_shared<CostField>(field_length);
-	cost_field->set_cost(coord::tile_delta{0, 0}, COST_IMPASSABLE);
-	cost_field->set_cost(coord::tile_delta{1, 0}, 254);
-	cost_field->set_cost(coord::tile_delta{4, 3}, 128);
-	cost_field->set_cost(coord::tile_delta{5, 3}, 128);
-	cost_field->set_cost(coord::tile_delta{6, 3}, 128);
-	cost_field->set_cost(coord::tile_delta{4, 4}, 128);
-	cost_field->set_cost(coord::tile_delta{5, 4}, 128);
-	cost_field->set_cost(coord::tile_delta{6, 4}, 128);
-	cost_field->set_cost(coord::tile_delta{1, 7}, COST_IMPASSABLE);
+
+	const time::time_t time = time::TIME_ZERO;
+	cost_field->set_cost(coord::tile_delta{0, 0}, COST_IMPASSABLE, time);
+	cost_field->set_cost(coord::tile_delta{1, 0}, 254, time);
+	cost_field->set_cost(coord::tile_delta{4, 3}, 128, time);
+	cost_field->set_cost(coord::tile_delta{5, 3}, 128, time);
+	cost_field->set_cost(coord::tile_delta{6, 3}, 128, time);
+	cost_field->set_cost(coord::tile_delta{4, 4}, 128, time);
+	cost_field->set_cost(coord::tile_delta{5, 4}, 128, time);
+	cost_field->set_cost(coord::tile_delta{6, 4}, 128, time);
+	cost_field->set_cost(coord::tile_delta{1, 7}, COST_IMPASSABLE, time);
 	log::log(INFO << "Created cost field");
 
 	// Create an integration field from the cost field

@@ -49,7 +49,7 @@ Map::Map(const std::shared_ptr<GameState> &state,
 
 				auto sector = grid->get_sector(chunk_idx);
 				auto cost_field = sector->get_cost_field();
-				cost_field->set_cost(tile_idx, path_cost.second);
+				cost_field->set_cost(tile_idx, path_cost.second, time::TIME_ZERO);
 			}
 		}
 	}

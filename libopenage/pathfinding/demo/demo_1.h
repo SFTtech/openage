@@ -1,4 +1,4 @@
-// Copyright 2024-2024 the openage authors. See copying.md for legal info.
+// Copyright 2024-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -182,7 +182,7 @@ private:
 
 // Cost for the sectors in the grid
 // taken from Figure 23.1 in "Crowd Pathfinding and Steering Using Flow Field Tiles"
-const std::vector<std::vector<cost_t>> sectors_cost = {
+const std::vector<std::vector<cost_t>> SECTORS_COST = {
 	{
 		// clang-format off
           1,   1,   1,   1,   1,   1,   1,   1,   1,   1,
