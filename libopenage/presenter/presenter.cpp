@@ -1,4 +1,4 @@
-// Copyright 2019-2024 the openage authors. See copying.md for legal info.
+// Copyright 2019-2025 the openage authors. See copying.md for legal info.
 
 #include "presenter.h"
 
@@ -20,6 +20,8 @@
 #include "renderer/camera/camera.h"
 #include "renderer/gui/gui.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
+#include "renderer/opengl/context.h"
+#include "renderer/opengl/lookup.h"
 #include "renderer/render_factory.h"
 #include "renderer/render_pass.h"
 #include "renderer/render_target.h"
@@ -307,17 +309,57 @@ void Presenter::init_final_render_pass() {
 	});
 }
 
+void Presenter::init_stencil_test() {
+	glEnable(GL_STENCIL_TEST);
+	glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+	glClear(GL_STENCIL_BUFFER_BIT);
+}
+
+void Presenter::enable_stencil_for_gui_mask() {
+	// Replace stencil value with 1 when depth test passes
+	glStencilFunc(GL_ALWAYS, 1, 0xFF);
+	glStencilMask(0xFF);
+	glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
+}
+
+void Presenter::enable_stencil_for_world() {
+	// Only pass if stencil value is not 1
+	glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
+	glStencilMask(0x00);
+	glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+}
+
+void Presenter::disable_stencil() {
+	glDisable(GL_STENCIL_TEST);
+	glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+}
+
 void Presenter::render() {
 	// TODO: Pass current time to update() instead of fetching it in renderer
 	this->camera_manager->update();
 	this->terrain_renderer->update();
 	this->world_renderer->update();
 	this->hud_renderer->update();
+
+	this->init_stencil_test();
+
+	// First Pass: Render GUI to stencil buffer
+	this->enable_stencil_for_gui_mask();
 	this->gui->render();
 
-	for (auto &pass : this->render_passes) {
-		this->renderer->render(pass);
+	// Second Pass: Render game world with stencil buffer
+	this->enable_stencil_for_world();
+	for (size_t i = 0; i < this->render_passes.size() - 2; ++i) {
+		this->renderer->render(this->render_passes[i]);
 	}
+
+	// Third Pass: Render GUI to screen
+	this->disable_stencil();
+	this->gui->render();
+	this->renderer->render(this->render_passes[this->render_passes.size() - 2]);
+
+	// Fourth Pass: Render screen to window
+	this->renderer->render(this->render_passes.back());
 }
 
 } // namespace openage::presenter
