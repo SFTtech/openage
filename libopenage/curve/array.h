@@ -300,7 +300,7 @@ void Array<T, Size>::set_insert(const time::time_t &t,
                                 T value) {
 	this->last_element[index] = this->containers.at(index).insert_after(Keyframe{t, value}, this->last_element[index]);
 
-	// ASDF: Change notification
+	this->changes(t);
 }
 
 template <typename T, size_t Size>
@@ -311,7 +311,7 @@ void Array<T, Size>::set_last(const time::time_t &t,
 	this->last_element[index] = frame_index;
 	this->containers.at(index).erase_after(frame_index);
 
-	// ASDF: Change notification
+	this->changes(t);
 }
 
 template <typename T, size_t Size>
@@ -320,7 +320,7 @@ void Array<T, Size>::set_replace(const time::time_t &t,
                                  T value) {
 	this->containers.at(index).insert_overwrite(Keyframe{t, value}, this->last_element[index]);
 
-	// ASDF: Change notification
+	this->changes(t);
 }
 
 template <typename T, size_t Size>
@@ -330,7 +330,7 @@ void Array<T, Size>::sync(const Array<T, Size> &other,
 		this->containers[i].sync(other.containers[i], start);
 	}
 
-	// ASDF: Change notification
+	this->changes(start);
 }
 
 template <typename T, size_t Size>
