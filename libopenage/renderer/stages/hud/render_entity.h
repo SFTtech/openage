@@ -39,17 +39,12 @@ public:
 	/**
 	 * Get the position of the dragged corner.
 	 *
-	 * Accessing the drag position curve REQUIRES a read lock on the render entity
-	 * (using \p get_read_lock()) to ensure thread safety.
-	 *
 	 * @return Coordinates of the dragged corner.
 	 */
 	const curve::Continuous<coord::input> &get_drag_pos();
 
 	/**
 	 * Get the position of the start corner.
-	 *
-	 * Accessing the drag start is thread-safe.
 	 *
 	 * @return Coordinates of the start corner.
 	 */

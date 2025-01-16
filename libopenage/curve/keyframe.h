@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "curve/concept.h"
 #include "time/time.h"
 #include "util/fixed_point.h"
 
@@ -15,7 +16,7 @@ namespace openage::curve {
  * If you change this class, remember to update the gdb pretty printers
  * in etc/gdb_pretty/printers.py.
  */
-template <typename T>
+template <KeyframeValueLike T>
 class Keyframe {
 public:
 	/**

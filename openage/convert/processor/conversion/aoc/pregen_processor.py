@@ -93,11 +93,14 @@ class AoCPregenSubprocessor:
         ability_parent = "engine.util.activity.node.type.Ability"
         xor_parent = "engine.util.activity.node.type.XORGate"
         xor_event_parent = "engine.util.activity.node.type.XOREventGate"
+        xor_switch_parent = "engine.util.activity.node.type.XORSwitchGate"
 
         # Condition types
         condition_parent = "engine.util.activity.condition.Condition"
         condition_queue_parent = "engine.util.activity.condition.type.CommandInQueue"
-        condition_next_move_parent = "engine.util.activity.condition.type.NextCommandMove"
+        condition_next_command_parent = (
+            "engine.util.activity.switch_condition.type.NextCommand"
+        )
 
         # =======================================================================
         # Default (Start -> Ability(Idle) -> End)
@@ -274,37 +277,61 @@ class AoCPregenSubprocessor:
         branch_raw_api_object = RawAPIObject(branch_ref_in_modpack,
                                              "BranchCommand", api_objects)
         branch_raw_api_object.set_location(unit_forward_ref)
-        branch_raw_api_object.add_raw_parent(xor_parent)
+        branch_raw_api_object.add_raw_parent(xor_switch_parent)
 
-        condition_forward_ref = ForwardRef(pregen_converter_group,
-                                           "util.activity.types.Unit.NextCommandMove")
-        branch_raw_api_object.add_raw_member("next",
-                                             [condition_forward_ref],
-                                             xor_parent)
+        switch_forward_ref = ForwardRef(pregen_converter_group,
+                                        "util.activity.types.Unit.NextCommandSwitch")
+        branch_raw_api_object.add_raw_member("switch",
+                                             switch_forward_ref,
+                                             xor_switch_parent)
         idle_forward_ref = ForwardRef(pregen_converter_group,
                                       "util.activity.types.Unit.Idle")
         branch_raw_api_object.add_raw_member("default",
                                              idle_forward_ref,
-                                             xor_parent)
+                                             xor_switch_parent)
 
         pregen_converter_group.add_raw_api_object(branch_raw_api_object)
         pregen_nyan_objects.update({branch_ref_in_modpack: branch_raw_api_object})
 
-        # condition for branching to move
-        condition_ref_in_modpack = "util.activity.types.Unit.NextCommandMove"
+        # condition for branching based on command
+        condition_ref_in_modpack = "util.activity.types.Unit.NextCommandSwitch"
         condition_raw_api_object = RawAPIObject(condition_ref_in_modpack,
-                                                "NextCommandMove", api_objects)
+                                                "NextCommandSwitch", api_objects)
         condition_raw_api_object.set_location(branch_forward_ref)
-        condition_raw_api_object.add_raw_parent(condition_next_move_parent)
+        condition_raw_api_object.add_raw_parent(condition_next_command_parent)
 
+        apply_effect_forward_ref = ForwardRef(pregen_converter_group,
+                                              "util.activity.types.Unit.ApplyEffect")
         move_forward_ref = ForwardRef(pregen_converter_group,
                                       "util.activity.types.Unit.Move")
+        next_nodes_lookup = {
+            api_objects["engine.util.command.type.ApplyEffect"]: apply_effect_forward_ref,
+            api_objects["engine.util.command.type.Move"]: move_forward_ref,
+        }
         condition_raw_api_object.add_raw_member("next",
-                                                move_forward_ref,
-                                                condition_parent)
+                                                next_nodes_lookup,
+                                                condition_next_command_parent)
 
         pregen_converter_group.add_raw_api_object(condition_raw_api_object)
         pregen_nyan_objects.update({condition_ref_in_modpack: condition_raw_api_object})
+
+        # Apply effect
+        apply_effect_ref_in_modpack = "util.activity.types.Unit.ApplyEffect"
+        apply_effect_raw_api_object = RawAPIObject(apply_effect_ref_in_modpack,
+                                                   "ApplyEffect", api_objects)
+        apply_effect_raw_api_object.set_location(unit_forward_ref)
+        apply_effect_raw_api_object.add_raw_parent(ability_parent)
+
+        wait_forward_ref = ForwardRef(pregen_converter_group,
+                                      "util.activity.types.Unit.Wait")
+        apply_effect_raw_api_object.add_raw_member("next", wait_forward_ref,
+                                                   ability_parent)
+        apply_effect_raw_api_object.add_raw_member("ability",
+                                                   api_objects["engine.ability.type.ApplyDiscreteEffect"],
+                                                   ability_parent)
+
+        pregen_converter_group.add_raw_api_object(apply_effect_raw_api_object)
+        pregen_nyan_objects.update({apply_effect_ref_in_modpack: apply_effect_raw_api_object})
 
         # Move
         move_ref_in_modpack = "util.activity.types.Unit.Move"
@@ -355,7 +382,7 @@ class AoCPregenSubprocessor:
         pregen_converter_group.add_raw_api_object(end_raw_api_object)
         pregen_nyan_objects.update({end_ref_in_modpack: end_raw_api_object})
 
-    @staticmethod
+    @ staticmethod
     def generate_attributes(
         full_data_set: GenieObjectContainer,
         pregen_converter_group: ConverterObjectGroup
@@ -468,7 +495,7 @@ class AoCPregenSubprocessor:
         pregen_converter_group.add_raw_api_object(faith_abbrv_value)
         pregen_nyan_objects.update({faith_abbrv_ref_in_modpack: faith_abbrv_value})
 
-    @staticmethod
+    @ staticmethod
     def generate_diplomatic_stances(
         full_data_set: GenieObjectContainer,
         pregen_converter_group: ConverterObjectGroup
@@ -543,7 +570,7 @@ class AoCPregenSubprocessor:
         pregen_converter_group.add_raw_api_object(gaia_raw_api_object)
         pregen_nyan_objects.update({gaia_ref_in_modpack: gaia_raw_api_object})
 
-    @staticmethod
+    @ staticmethod
     def generate_team_property(
         full_data_set: GenieObjectContainer,
         pregen_converter_group: ConverterObjectGroup
@@ -582,7 +609,7 @@ class AoCPregenSubprocessor:
                                            stances,
                                            "engine.util.patch.property.type.Diplomatic")
 
-    @staticmethod
+    @ staticmethod
     def generate_entity_types(
         full_data_set: GenieObjectContainer,
         pregen_converter_group: ConverterObjectGroup
@@ -709,7 +736,7 @@ class AoCPregenSubprocessor:
             pregen_converter_group.add_raw_api_object(new_game_entity_type)
             pregen_nyan_objects.update({class_obj_name: new_game_entity_type})
 
-    @staticmethod
+    @ staticmethod
     def generate_effect_types(
         full_data_set: GenieObjectContainer,
         pregen_converter_group: ConverterObjectGroup
@@ -855,7 +882,7 @@ class AoCPregenSubprocessor:
         pregen_converter_group.add_raw_api_object(type_raw_api_object)
         pregen_nyan_objects.update({type_ref_in_modpack: type_raw_api_object})
 
-    @staticmethod
+    @ staticmethod
     def generate_exchange_objects(
         full_data_set: GenieObjectContainer,
         pregen_converter_group: ConverterObjectGroup
@@ -1148,7 +1175,7 @@ class AoCPregenSubprocessor:
         pregen_converter_group.add_raw_api_object(price_mode_raw_api_object)
         pregen_nyan_objects.update({price_mode_ref_in_modpack: price_mode_raw_api_object})
 
-    @staticmethod
+    @ staticmethod
     def generate_formation_types(
         full_data_set: GenieObjectContainer,
         pregen_converter_group: ConverterObjectGroup
@@ -1361,7 +1388,7 @@ class AoCPregenSubprocessor:
         pregen_converter_group.add_raw_api_object(subformation_raw_api_object)
         pregen_nyan_objects.update({subformation_ref_in_modpack: subformation_raw_api_object})
 
-    @staticmethod
+    @ staticmethod
     def generate_language_objects(
         full_data_set: GenieObjectContainer,
         pregen_converter_group: ConverterObjectGroup
@@ -1402,7 +1429,7 @@ class AoCPregenSubprocessor:
             pregen_converter_group.add_raw_api_object(language_raw_api_object)
             pregen_nyan_objects.update({language_ref_in_modpack: language_raw_api_object})
 
-    @staticmethod
+    @ staticmethod
     def generate_misc_effect_objects(
         full_data_set: GenieObjectContainer,
         pregen_converter_group: ConverterObjectGroup
@@ -1724,7 +1751,7 @@ class AoCPregenSubprocessor:
                                            calc_forward_ref,
                                            "engine.resistance.property.type.Stacked")
 
-    @staticmethod
+    @ staticmethod
     def generate_modifiers(
         full_data_set: GenieObjectContainer,
         pregen_converter_group: ConverterObjectGroup
@@ -1880,7 +1907,7 @@ class AoCPregenSubprocessor:
                                                properties,
                                                modifier_parent)
 
-    @staticmethod
+    @ staticmethod
     def generate_terrain_types(
         full_data_set: GenieObjectContainer,
         pregen_converter_group: ConverterObjectGroup
@@ -1920,7 +1947,7 @@ class AoCPregenSubprocessor:
             pregen_converter_group.add_raw_api_object(type_raw_api_object)
             pregen_nyan_objects.update({type_ref_in_modpack: type_raw_api_object})
 
-    @staticmethod
+    @ staticmethod
     def generate_path_types(
         full_data_set: GenieObjectContainer,
         pregen_converter_group: ConverterObjectGroup
@@ -1985,7 +2012,7 @@ class AoCPregenSubprocessor:
         pregen_converter_group.add_raw_api_object(path_type_raw_api_object)
         pregen_nyan_objects.update({path_type_ref_in_modpack: path_type_raw_api_object})
 
-    @staticmethod
+    @ staticmethod
     def generate_resources(
         full_data_set: GenieObjectContainer,
         pregen_converter_group: ConverterObjectGroup
@@ -2185,7 +2212,7 @@ class AoCPregenSubprocessor:
         pregen_converter_group.add_raw_api_object(pop_name_value)
         pregen_nyan_objects.update({pop_name_ref_in_modpack: pop_name_value})
 
-    @staticmethod
+    @ staticmethod
     def generate_death_condition(
         full_data_set: GenieObjectContainer,
         pregen_converter_group: ConverterObjectGroup
