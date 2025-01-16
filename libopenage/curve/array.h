@@ -13,12 +13,21 @@ namespace openage {
 namespace curve {
 
 template <typename T, size_t Size>
+constexpr std::array<KeyframeContainer<T>, Size> init_default_vals(const std::array<T, Size> &default_vals) {
+	std::array<KeyframeContainer<T>, Size> containers;
+	for (size_t i = 0; i < Size; i++) {
+		containers[i] = KeyframeContainer<T>(default_vals[i]);
+	}
+	return containers;
+}
+
+template <typename T, size_t Size>
 class Array : event::EventEntity {
 public:
-	/**
-	 * The underlaying container type.
-	 */
+	/// Underlying container type.
 	using container_t = std::array<KeyframeContainer<T>, Size>;
+	/// Index type to access elements in the container.
+	using index_t = typename container_t::size_type;
 
 	/**
 	 * Create a new array curve container.
@@ -27,15 +36,15 @@ public:
 	 * @param id Unique identifier for this curve.
 	 * @param idstr Human-readable identifier for this curve.
 	 * @param notifier Function to call when this curve changes.
-	 * @param default_val Default value for all elements in the array.
+	 * @param default_vals Default values for the array elements.
 	 */
 	Array(const std::shared_ptr<event::EventLoop> &loop,
 	      size_t id,
 	      const std::string &idstr = "",
 	      const EventEntity::single_change_notifier &notifier = nullptr,
-	      const T &default_val = T()) :
+	      const std::array<T, Size> &default_vals = {}) :
 		EventEntity(loop, notifier),
-		containers{KeyframeContainer(default_val)},
+		containers{init_default_vals(default_vals)},
 		_id{id},
 		_idstr{idstr},
 		loop{loop},
@@ -56,7 +65,7 @@ public:
 	 *
 	 * @return Value of the last element with time <= t.
 	 */
-	T at(const time::time_t &t, const size_t index) const;
+	T at(const time::time_t &t, const index_t index) const;
 
 	/**
 	 * Get all elements at time t.
@@ -82,7 +91,7 @@ public:
 	 *
 	 * @return Time-value pair of the last keyframe with time <= t.
 	 */
-	std::pair<time::time_t, T> frame(const time::time_t &t, const size_t index) const;
+	std::pair<time::time_t, T> frame(const time::time_t &t, const index_t index) const;
 
 	/**
 	 * Get the first keyframe value and time with elem->time > time.
@@ -94,7 +103,7 @@ public:
 	 *
 	 * @return Time-value pair of the first keyframe with time > t.
 	 */
-	std::pair<time::time_t, T> next_frame(const time::time_t &t, const size_t index) const;
+	std::pair<time::time_t, T> next_frame(const time::time_t &t, const index_t index) const;
 
 	/**
 	 * Insert a new keyframe value at time t.
@@ -105,7 +114,7 @@ public:
 	 * @param index Index of the array element.
 	 * @param value Keyframe value.
 	 */
-	void set_insert(const time::time_t &t, const size_t index, T value);
+	void set_insert(const time::time_t &t, const index_t index, T value);
 
 	/**
 	 * Insert a new keyframe value at time t. Erase all other keyframes with elem->time > t.
@@ -114,7 +123,7 @@ public:
 	 * @param index Index of the array element.
 	 * @param value Keyframe value.
 	 */
-	void set_last(const time::time_t &t, const size_t index, T value);
+	void set_last(const time::time_t &t, const index_t index, T value);
 
 	/**
 	 * Replace all keyframes at elem->time == t with a new keyframe value.
@@ -123,7 +132,7 @@ public:
 	 * @param index Index of the array element.
 	 * @param value Keyframe value.
 	 */
-	void set_replace(const time::time_t &t, const size_t index, T value);
+	void set_replace(const time::time_t &t, const index_t index, T value);
 
 	/**
 	 * Copy keyframes from another container to this container.
@@ -218,7 +227,7 @@ private:
 	/**
 	 * get a copy to the KeyframeContainer at index
 	 */
-	KeyframeContainer<T> operator[](size_t index) const {
+	KeyframeContainer<T> operator[](index_t index) const {
 		return this->containers.at(index);
 	}
 
@@ -227,7 +236,7 @@ private:
 	 *
 	 * Each element is managed by a KeyframeContainer.
 	 */
-	std::array<KeyframeContainer<T>, Size> containers;
+	container_t containers;
 
 	/**
 	 * Identifier for the container
@@ -257,7 +266,7 @@ private:
 
 template <typename T, size_t Size>
 std::pair<time::time_t, T> Array<T, Size>::frame(const time::time_t &t,
-                                                 const size_t index) const {
+                                                 const index_t index) const {
 	size_t &hint = this->last_element[index];
 	size_t frame_index = this->containers.at(index).last(t, hint);
 	hint = frame_index;
@@ -266,7 +275,7 @@ std::pair<time::time_t, T> Array<T, Size>::frame(const time::time_t &t,
 
 template <typename T, size_t Size>
 std::pair<time::time_t, T> Array<T, Size>::next_frame(const time::time_t &t,
-                                                      const size_t index) const {
+                                                      const index_t index) const {
 	size_t &hint = this->last_element[index];
 	size_t frame_index = this->containers.at(index).last(t, hint);
 	hint = frame_index;
@@ -275,7 +284,7 @@ std::pair<time::time_t, T> Array<T, Size>::next_frame(const time::time_t &t,
 
 template <typename T, size_t Size>
 T Array<T, Size>::at(const time::time_t &t,
-                     const size_t index) const {
+                     const index_t index) const {
 	size_t &hint = this->last_element[index];
 	size_t frame_index = this->containers.at(index).last(t, hint);
 	hint = frame_index;
@@ -296,7 +305,7 @@ consteval size_t Array<T, Size>::size() const {
 
 template <typename T, size_t Size>
 void Array<T, Size>::set_insert(const time::time_t &t,
-                                const size_t index,
+                                const index_t index,
                                 T value) {
 	this->last_element[index] = this->containers.at(index).insert_after(Keyframe{t, value}, this->last_element[index]);
 
@@ -305,7 +314,7 @@ void Array<T, Size>::set_insert(const time::time_t &t,
 
 template <typename T, size_t Size>
 void Array<T, Size>::set_last(const time::time_t &t,
-                              const size_t index,
+                              const index_t index,
                               T value) {
 	size_t frame_index = this->containers.at(index).insert_after(Keyframe{t, value}, this->last_element[index]);
 	this->last_element[index] = frame_index;
@@ -316,7 +325,7 @@ void Array<T, Size>::set_last(const time::time_t &t,
 
 template <typename T, size_t Size>
 void Array<T, Size>::set_replace(const time::time_t &t,
-                                 const size_t index,
+                                 const index_t index,
                                  T value) {
 	this->containers.at(index).insert_overwrite(Keyframe{t, value}, this->last_element[index]);
 
