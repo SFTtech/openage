@@ -198,11 +198,6 @@ public:
 
 	private:
 		/**
-		 * used to index the Curve::Array pointed to by this iterator
-		 */
-		size_t offset;
-
-		/**
 		 * the curve object that this iterator, iterates over
 		 */
 		Array<T, Size> *curve;
@@ -211,6 +206,11 @@ public:
 		 * time at which this iterator is iterating over
 		 */
 		time::time_t time;
+
+		/**
+		 * used to index the Curve::Array pointed to by this iterator
+		 */
+		size_t offset;
 	};
 
 	/**
@@ -335,7 +335,7 @@ void Array<T, Size>::set_replace(const time::time_t &t,
 template <typename T, size_t Size>
 void Array<T, Size>::sync(const Array<T, Size> &other,
                           const time::time_t &start) {
-	for (int i = 0; i < Size; i++) {
+	for (index_t i = 0; i < Size; i++) {
 		this->containers[i].sync(other.containers[i], start);
 	}
 
