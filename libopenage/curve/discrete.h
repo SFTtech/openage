@@ -1,4 +1,4 @@
-// Copyright 2017-2024 the openage authors. See copying.md for legal info.
+// Copyright 2017-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -80,7 +80,7 @@ std::pair<time::time_t, T> Discrete<T>::get_time(const time::time_t &time) const
 	this->last_element = e;
 
 	auto elem = this->container.get(e);
-	return std::make_pair(elem.time, elem.value);
+	return elem.as_pair();
 }
 
 
@@ -97,7 +97,7 @@ std::optional<std::pair<time::time_t, T>> Discrete<T>::get_previous(const time::
 
 	e--;
 	auto elem = this->container.get(e);
-	return std::make_pair(elem.time(), elem.val());
+	return elem.as_pair();
 }
 
 } // namespace openage::curve

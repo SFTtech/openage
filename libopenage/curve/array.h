@@ -48,7 +48,7 @@ public:
 		_id{id},
 		_idstr{idstr},
 		loop{loop},
-		last_element{} {}
+		last_elements{} {}
 
 	// prevent copying because it invalidates the usage of unique ids and event
 	// registration. If you need to copy a curve, use the sync() method.
@@ -260,35 +260,50 @@ private:
 	 *
 	 * mutable as hints are updated by const read-only functions.
 	 */
-	mutable std::array<typename KeyframeContainer<T>::elem_ptr, Size> last_element = {};
+	mutable std::array<typename KeyframeContainer<T>::elem_ptr, Size> last_elements = {};
 };
 
 
 template <typename T, size_t Size>
 std::pair<time::time_t, T> Array<T, Size>::frame(const time::time_t &t,
                                                  const index_t index) const {
-	size_t &hint = this->last_element[index];
-	size_t frame_index = this->containers.at(index).last(t, hint);
-	hint = frame_index;
-	return this->containers.at(index).get(frame_index).make_pair();
+	// find elem_ptr in container to get the last keyframe
+	auto hint = this->last_elements[index];
+	auto frame_index = this->containers.at(index).last(t, hint);
+
+	// update the hint
+	this->last_elements[index] = frame_index;
+
+	return this->containers.at(index).get(frame_index).as_pair();
 }
 
 template <typename T, size_t Size>
 std::pair<time::time_t, T> Array<T, Size>::next_frame(const time::time_t &t,
                                                       const index_t index) const {
-	size_t &hint = this->last_element[index];
-	size_t frame_index = this->containers.at(index).last(t, hint);
-	hint = frame_index;
-	return this->containers.at(index).get(frame_index + 1).make_pair();
+	// find elem_ptr in container to get the last keyframe with time <= t
+	auto hint = this->last_elements[index];
+	auto frame_index = this->containers.at(index).last(t, hint);
+
+	// increment the index to get the next keyframe
+	frame_index++;
+
+	// update the hint
+	this->last_elements[index] = frame_index;
+
+	return this->containers.at(index).get(frame_index).as_pair();
 }
 
 template <typename T, size_t Size>
 T Array<T, Size>::at(const time::time_t &t,
                      const index_t index) const {
-	size_t &hint = this->last_element[index];
-	size_t frame_index = this->containers.at(index).last(t, hint);
-	hint = frame_index;
-	return this->containers.at(index).get(frame_index).val();
+	// find elem_ptr in container to get the last keyframe with time <= t
+	auto hint = this->last_elements[index];
+	auto e = this->containers.at(index).last(t, hint);
+
+	// update the hint
+	this->last_elements[index] = e;
+
+	return this->containers.at(index).get(e).val();
 }
 
 template <typename T, size_t Size>
@@ -307,7 +322,12 @@ template <typename T, size_t Size>
 void Array<T, Size>::set_insert(const time::time_t &t,
                                 const index_t index,
                                 T value) {
-	this->last_element[index] = this->containers.at(index).insert_after(Keyframe{t, value}, this->last_element[index]);
+	// find elem_ptr in container to get the last keyframe with time <= t
+	auto hint = this->last_elements[index];
+	auto e = this->containers.at(index).insert_after(Keyframe{t, value}, hint);
+
+	// update the hint
+	this->last_elements[index] = e;
 
 	this->changes(t);
 }
@@ -316,9 +336,23 @@ template <typename T, size_t Size>
 void Array<T, Size>::set_last(const time::time_t &t,
                               const index_t index,
                               T value) {
-	size_t frame_index = this->containers.at(index).insert_after(Keyframe{t, value}, this->last_element[index]);
-	this->last_element[index] = frame_index;
-	this->containers.at(index).erase_after(frame_index);
+	// find elem_ptr in container to get the last keyframe with time <= t
+	auto hint = this->last_elements[index];
+	auto e = this->containers.at(index).last(t, hint);
+
+	// erase max one same-time value
+	if (this->containers.at(index).get(e).time() == t) {
+		e--;
+	}
+
+	// erase all keyframes with time > t
+	this->containers.at(index).erase_after(e);
+
+	// insert the new keyframe at the end
+	this->containers.at(index).insert_before(Keyframe{t, value}, e);
+
+	// update the hint
+	this->last_elements[index] = hint;
 
 	this->changes(t);
 }
@@ -327,7 +361,12 @@ template <typename T, size_t Size>
 void Array<T, Size>::set_replace(const time::time_t &t,
                                  const index_t index,
                                  T value) {
-	this->containers.at(index).insert_overwrite(Keyframe{t, value}, this->last_element[index]);
+	// find elem_ptr in container to get the last keyframe with time <= t
+	auto hint = this->last_elements[index];
+	auto e = this->containers.at(index).insert_overwrite(Keyframe{t, value}, hint);
+
+	// update the hint
+	this->last_elements[index] = e;
 
 	this->changes(t);
 }
