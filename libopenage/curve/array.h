@@ -20,67 +20,110 @@ public:
 	 */
 	using container_t = std::array<KeyframeContainer<T>, Size>;
 
+	/**
+	 * Create a new array curve container.
+	 *
+	 * @param loop Event loop this curve is registered on for notifications.
+	 * @param id Unique identifier for this curve.
+	 * @param idstr Human-readable identifier for this curve.
+	 * @param notifier Function to call when this curve changes.
+	 * @param default_val Default value for all elements in the array.
+	 */
 	Array(const std::shared_ptr<event::EventLoop> &loop,
 	      size_t id,
-	      const T &default_val = T(),
 	      const std::string &idstr = "",
-	      const EventEntity::single_change_notifier &notifier = nullptr) :
+	      const EventEntity::single_change_notifier &notifier = nullptr,
+	      const T &default_val = T()) :
 		EventEntity(loop, notifier),
-		_id{id}, _idstr{idstr}, loop{loop}, container{KeyframeContainer(default_val)} {
-	}
+		containers{KeyframeContainer(default_val)},
+		_id{id},
+		_idstr{idstr},
+		loop{loop},
+		last_element{} {}
 
+	// prevent copying because it invalidates the usage of unique ids and event
+	// registration. If you need to copy a curve, use the sync() method.
 	Array(const Array &) = delete;
+	Array &operator=(const Array &) = delete;
 
+	Array(Array &&) = default;
 
 	/**
-	 * Get the last element with elem->time <= time from
-	 * the keyfram container at a given index
+	 * Get the last element with elem->time <= time.
+	 *
+	 * @param t Time of access.
+	 * @param index Index of the array element.
+	 *
+	 * @return Value of the last element with time <= t.
 	 */
 	T at(const time::time_t &t, const size_t index) const;
 
-
 	/**
-	 * Get an array of the last elements with elem->time <= time from
-	 * all keyfram containers contained within this array curve
+	 * Get all elements at time t.
+	 *
+	 * @param t Time of access.
+	 *
+	 * @return Array of values at time t.
 	 */
 	std::array<T, Size> get(const time::time_t &t) const;
 
 	/**
-	 * Get the amount of KeyframeContainers in array curve
+	 * Get the size of the array.
+	 *
+	 * @return Array size.
 	 */
 	consteval size_t size() const;
 
 	/**
-	 * Get the last element and associated time which has elem->time <= time from
-	 * the keyfram container at a given index
+	 * Get the last keyframe value and time with elem->time <= time.
+	 *
+	 * @param t Time of access.
+	 * @param index Index of the array element.
+	 *
+	 * @return Time-value pair of the last keyframe with time <= t.
 	 */
 	std::pair<time::time_t, T> frame(const time::time_t &t, const size_t index) const;
 
-
 	/**
-	 * Get the first element and associated time which has elem->time >= time from
-	 * the keyfram container at a given index
+	 * Get the first keyframe value and time with elem->time > time.
+	 *
+	 * If there is no keyframe with time > t, the behavior is undefined.
+	 *
+	 * @param t Time of access.
+	 * @param index Index of the array element.
+	 *
+	 * @return Time-value pair of the first keyframe with time > t.
 	 */
 	std::pair<time::time_t, T> next_frame(const time::time_t &t, const size_t index) const;
 
-
 	/**
-	 * Insert a new keyframe value at time t at index
+	 * Insert a new keyframe value at time t.
+	 *
+	 * If there is already a keyframe at time t, the new keyframe is inserted after the existing one.
+	 *
+	 * @param t Time of insertion.
+	 * @param index Index of the array element.
+	 * @param value Keyframe value.
 	 */
 	void set_insert(const time::time_t &t, const size_t index, T value);
 
-
 	/**
-	 * Insert a new keyframe value at time t; delete all keyframes after time t at index
+	 * Insert a new keyframe value at time t. Erase all other keyframes with elem->time > t.
+	 *
+	 * @param t Time of insertion.
+	 * @param index Index of the array element.
+	 * @param value Keyframe value.
 	 */
 	void set_last(const time::time_t &t, const size_t index, T value);
 
-
 	/**
-	 * Insert a new keyframe value at time t at index i; remove all other keyframes with time t at index i
+	 * Replace all keyframes at elem->time == t with a new keyframe value.
+	 *
+	 * @param t Time of insertion.
+	 * @param index Index of the array element.
+	 * @param value Keyframe value.
 	 */
 	void set_replace(const time::time_t &t, const size_t index, T value);
-
 
 	/**
 	 * Copy keyframes from another container to this container.
@@ -93,7 +136,6 @@ public:
 	 *              the keyframes of \p other.
 	 */
 	void sync(const Array<T, Size> &other, const time::time_t &start);
-
 
 	/**
 	 * Get the identifier of this curve.
@@ -115,7 +157,6 @@ public:
 		}
 		return this->_idstr;
 	}
-
 
 	/**
 	 *  Array::Iterator is used to iterate over KeyframeContainers contained in a curve at a given time.
@@ -146,7 +187,6 @@ public:
 			return this->offset != rhs.offset;
 		}
 
-
 	private:
 		/**
 		 * used to index the Curve::Array pointed to by this iterator
@@ -164,7 +204,6 @@ public:
 		time::time_t time;
 	};
 
-
 	/**
 	 * iterator pointing to a keyframe of the first KeyframeContainer in the curve at a given time
 	 */
@@ -175,24 +214,20 @@ public:
 	 */
 	Iterator end(const time::time_t &time = time::TIME_MIN);
 
-
 private:
 	/**
 	 * get a copy to the KeyframeContainer at index
 	 */
 	KeyframeContainer<T> operator[](size_t index) const {
-		return this->container.at(index);
+		return this->containers.at(index);
 	}
 
-
-	std::array<KeyframeContainer<T>, Size> container;
-
 	/**
-	 * hints for KeyframeContainer operations
-	 * hints is used to speed up the search for next keyframe to be accessed
-	 * mutable as hints are updated by const read-only functions.
+	 * Containers for each array element.
+	 *
+	 * Each element is managed by a KeyframeContainer.
 	 */
-	mutable std::array<size_t, Size> last_element = {};
+	std::array<KeyframeContainer<T>, Size> containers;
 
 	/**
 	 * Identifier for the container
@@ -208,31 +243,43 @@ private:
 	 * The eventloop this curve was registered to
 	 */
 	const std::shared_ptr<event::EventLoop> loop;
+
+	/**
+	 * Cache hints for containers. Stores the index of the last keyframe accessed in each container.
+	 *
+	 * hints is used to speed up the search for keyframes.
+	 *
+	 * mutable as hints are updated by const read-only functions.
+	 */
+	mutable std::array<typename KeyframeContainer<T>::elem_ptr, Size> last_element = {};
 };
 
 
 template <typename T, size_t Size>
-std::pair<time::time_t, T> Array<T, Size>::frame(const time::time_t &t, const size_t index) const {
+std::pair<time::time_t, T> Array<T, Size>::frame(const time::time_t &t,
+                                                 const size_t index) const {
 	size_t &hint = this->last_element[index];
-	size_t frame_index = this->container.at(index).last(t, hint);
+	size_t frame_index = this->containers.at(index).last(t, hint);
 	hint = frame_index;
-	return this->container.at(index).get(frame_index).make_pair();
+	return this->containers.at(index).get(frame_index).make_pair();
 }
 
 template <typename T, size_t Size>
-std::pair<time::time_t, T> Array<T, Size>::next_frame(const time::time_t &t, const size_t index) const {
+std::pair<time::time_t, T> Array<T, Size>::next_frame(const time::time_t &t,
+                                                      const size_t index) const {
 	size_t &hint = this->last_element[index];
-	size_t frame_index = this->container.at(index).last(t, hint);
+	size_t frame_index = this->containers.at(index).last(t, hint);
 	hint = frame_index;
-	return this->container.at(index).get(frame_index + 1).make_pair();
+	return this->containers.at(index).get(frame_index + 1).make_pair();
 }
 
 template <typename T, size_t Size>
-T Array<T, Size>::at(const time::time_t &t, const size_t index) const {
+T Array<T, Size>::at(const time::time_t &t,
+                     const size_t index) const {
 	size_t &hint = this->last_element[index];
-	size_t frame_index = this->container.at(index).last(t, hint);
+	size_t frame_index = this->containers.at(index).last(t, hint);
 	hint = frame_index;
-	return this->container.at(index).get(frame_index).val();
+	return this->containers.at(index).get(frame_index).val();
 }
 
 template <typename T, size_t Size>
@@ -247,31 +294,43 @@ consteval size_t Array<T, Size>::size() const {
 	return Size;
 }
 
-
 template <typename T, size_t Size>
-void Array<T, Size>::set_insert(const time::time_t &t, const size_t index, T value) {
-	this->last_element[index] = this->container.at(index).insert_after(Keyframe{t, value}, this->last_element[index]);
+void Array<T, Size>::set_insert(const time::time_t &t,
+                                const size_t index,
+                                T value) {
+	this->last_element[index] = this->containers.at(index).insert_after(Keyframe{t, value}, this->last_element[index]);
+
+	// ASDF: Change notification
 }
 
-
 template <typename T, size_t Size>
-void Array<T, Size>::set_last(const time::time_t &t, const size_t index, T value) {
-	size_t frame_index = this->container.at(index).insert_after(Keyframe{t, value}, this->last_element[index]);
+void Array<T, Size>::set_last(const time::time_t &t,
+                              const size_t index,
+                              T value) {
+	size_t frame_index = this->containers.at(index).insert_after(Keyframe{t, value}, this->last_element[index]);
 	this->last_element[index] = frame_index;
-	this->container.at(index).erase_after(frame_index);
-}
+	this->containers.at(index).erase_after(frame_index);
 
-
-template <typename T, size_t Size>
-void Array<T, Size>::set_replace(const time::time_t &t, const size_t index, T value) {
-	this->container.at(index).insert_overwrite(Keyframe{t, value}, this->last_element[index]);
+	// ASDF: Change notification
 }
 
 template <typename T, size_t Size>
-void Array<T, Size>::sync(const Array<T, Size> &other, const time::time_t &start) {
+void Array<T, Size>::set_replace(const time::time_t &t,
+                                 const size_t index,
+                                 T value) {
+	this->containers.at(index).insert_overwrite(Keyframe{t, value}, this->last_element[index]);
+
+	// ASDF: Change notification
+}
+
+template <typename T, size_t Size>
+void Array<T, Size>::sync(const Array<T, Size> &other,
+                          const time::time_t &start) {
 	for (int i = 0; i < Size; i++) {
-		this->container[i].sync(other.container[i], start);
+		this->containers[i].sync(other.containers[i], start);
 	}
+
+	// ASDF: Change notification
 }
 
 template <typename T, size_t Size>
@@ -279,10 +338,9 @@ typename Array<T, Size>::Iterator Array<T, Size>::begin(const time::time_t &time
 	return Array<T, Size>::Iterator(this, time);
 }
 
-
 template <typename T, size_t Size>
 typename Array<T, Size>::Iterator Array<T, Size>::end(const time::time_t &time) {
-	return Array<T, Size>::Iterator(this, time, this->container.size());
+	return Array<T, Size>::Iterator(this, time, this->containers.size());
 }
 
 } // namespace curve
