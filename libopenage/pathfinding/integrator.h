@@ -1,13 +1,13 @@
-// Copyright 2024-2024 the openage authors. See copying.md for legal info.
+// Copyright 2024-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include <cstddef>
 #include <memory>
-#include <unordered_map>
 
 #include "pathfinding/types.h"
+#include "pathfinding/field_cache.h"
 #include "util/hash.h"
+#include "time/time.h"
 
 
 namespace openage {
@@ -26,7 +26,11 @@ class Portal;
  */
 class Integrator {
 public:
-	Integrator() = default;
+	/**
+	 * Create a new integrator.
+	 */
+	Integrator();
+
 	~Integrator() = default;
 
 	/**
@@ -56,6 +60,7 @@ public:
 	 * @param other_sector_id Sector ID of the other side of the portal.
 	 * @param portal Portal.
 	 * @param target Coordinates of the target cell, relative to the integration field origin.
+	 * @param time Time of the path request.
 	 * @param with_los If true an LOS pass is performed before cost integration.
 	 *
 	 * @return Integration field.
@@ -65,6 +70,7 @@ public:
 	                                            sector_id_t other_sector_id,
 	                                            const std::shared_ptr<Portal> &portal,
 	                                            const coord::tile_delta &target,
+												const time::time_t &time,
 	                                            bool with_los = true);
 
 	/**
@@ -114,6 +120,7 @@ public:
 	 * @param other_sector_id Sector ID of the other side of the portal.
 	 * @param portal Portal.
 	 * @param target Coordinates of the target cell, relative to the integration field origin.
+	 * @param time Time of the path request.
 	 * @param with_los If true an LOS pass is performed before cost integration.
 	 *
 	 * @return Integration field and flow field.
@@ -123,30 +130,14 @@ public:
 	                 sector_id_t other_sector_id,
 	                 const std::shared_ptr<Portal> &portal,
 	                 const coord::tile_delta &target,
+					 const time::time_t &time,
 	                 bool with_los = true);
 
 private:
 	/**
-	 * Hash function for the field cache.
-	 */
-	struct pair_hash {
-		template <class T1, class T2>
-		std::size_t operator()(const std::pair<T1, T2> &pair) const {
-			return util::hash_combine(std::hash<T1>{}(pair.first), std::hash<T2>{}(pair.second));
-		}
-	};
-
-	/**
 	 * Cache for already computed fields.
-	 *
-	 * Key is the portal ID and the sector ID from which the field was entered. Fields that are cached are
-	 * cleared of dynamic flags, i.e. wavefront or LOS flags. These have to be recalculated
-	 * when the field is reused.
 	 */
-	std::unordered_map<std::pair<portal_id_t, sector_id_t>,
-	                   get_return_t,
-	                   pair_hash>
-		field_cache;
+	std::unique_ptr<FieldCache> field_cache;
 };
 
 } // namespace path

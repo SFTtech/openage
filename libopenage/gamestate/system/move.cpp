@@ -1,4 +1,4 @@
-// Copyright 2023-2024 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #include "move.h"
 
@@ -37,7 +37,8 @@ namespace openage::gamestate::system {
 std::vector<coord::phys3> find_path(const std::shared_ptr<path::Pathfinder> &pathfinder,
                                     path::grid_id_t grid_id,
                                     const coord::phys3 &start,
-                                    const coord::phys3 &end) {
+                                    const coord::phys3 &end,
+                                    const time::time_t &start_time) {
 	auto start_tile = start.to_tile();
 	auto end_tile = end.to_tile();
 
@@ -46,6 +47,7 @@ std::vector<coord::phys3> find_path(const std::shared_ptr<path::Pathfinder> &pat
 		grid_id,
 		start_tile,
 		end_tile,
+		start_time,
 	};
 	auto tile_path = pathfinder->get_path(request);
 
@@ -122,7 +124,7 @@ const time::time_t Move::move_default(const std::shared_ptr<gamestate::GameEntit
 	auto map = state->get_map();
 	auto pathfinder = map->get_pathfinder();
 	auto grid_id = map->get_grid_id(move_path_grid->get_name());
-	auto waypoints = find_path(pathfinder, grid_id, current_pos, destination);
+	auto waypoints = find_path(pathfinder, grid_id, current_pos, destination, start_time);
 
 	// use waypoints for movement
 	double total_time = 0;

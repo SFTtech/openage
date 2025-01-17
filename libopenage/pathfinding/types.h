@@ -4,6 +4,8 @@
 
 #include <cstddef>
 #include <cstdint>
+#include <memory>
+#include <utility>
 
 
 namespace openage::path {
@@ -108,5 +110,18 @@ using sector_id_t = size_t;
  * Portal identifier (unique per grid).
  */
 using portal_id_t = size_t;
+
+class FlowField;
+class IntegrationField;
+
+/**
+ * Cache key for accessing the field cache using a portal id and a sector id.
+ */
+using cache_key_t = std::pair<portal_id_t, sector_id_t>;
+
+/**
+ * Returnable field cache entry pair containing an integration field and a flow field.
+ */
+using field_cache_t = std::pair<std::shared_ptr<IntegrationField>, std::shared_ptr<FlowField>>;
 
 } // namespace openage::path
