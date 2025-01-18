@@ -142,11 +142,6 @@ protected:
 
 	// void init_audio();
 
-	void init_stencil_test();
-	void enable_stencil_for_gui_mask();
-	void enable_stencil_for_world();
-	void disable_stencil();
-
 	/**
 	 * Render all configured render passes in sequence.
 	 */
@@ -235,6 +230,13 @@ protected:
 	 * Input manager.
 	 */
 	std::shared_ptr<input::InputManager> input_manager;
+	
+	/**
+	 * Pass indices.
+	 */
+	size_t index_gui_stencil_pass;
+	size_t index_gui_render_pass;
+	size_t index_final_render_pass;
 };
 
 } // namespace presenter

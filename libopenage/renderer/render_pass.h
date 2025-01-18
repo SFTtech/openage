@@ -15,6 +15,18 @@ namespace renderer {
 class RenderTarget;
 
 /**
+ * Stencil states for the render pass.
+ */
+enum class StencilState {
+	/// State for writing GUI elements to stencil buffer.
+	WRITE_STENCIL_MASK, 
+	/// State for using the mask when rendering scene.
+	USE_STENCIL_TEST, 
+	/// State for normal rendering (GUI rendering).
+	DISABLE_STENCIL,  
+};
+
+/**
  * Defines a layer in the render pass. A layer is a slice of the renderables
  * that have the same priority. Each layer can have its own settings.
  *
@@ -27,6 +39,8 @@ struct Layer {
 	int64_t priority;
 	/// Whether to clear the depth buffer before rendering this layer.
 	bool clear_depth = true;
+	/// The state of the stencil buffer for the render pass.
+	StencilState stencil_state;
 };
 
 /**
@@ -95,8 +109,17 @@ public:
 	 *
 	 * @param priority Priority of the layer. Layers with higher priority are drawn first.
 	 * @param clear_depth If true clears the depth buffer before rendering this layer.
+     * @param stencil_state State of the stencil buffer, using to do stencil test. 
 	 */
-	void add_layer(int64_t priority, bool clear_depth = true);
+	void add_layer(int64_t priority, bool clear_depth = true, 
+				   StencilState stencil_state = StencilState::DISABLE_STENCIL);
+
+	/**
+	 * Set the stencil state for the render pass.
+	 *
+	 * @param state The new stencil state.
+	 */
+	void set_stencil_state(StencilState state);
 
 	/**
 	 * Clear the list of renderables
@@ -137,9 +160,11 @@ private:
 	 *
 	 * @param index Index in \p layers member to insert the new layer.
 	 * @param priority Priority of the layer. Layers with higher priority are drawn first.
-	 * @param clear_depth If true clears the depth buffer before rendering this layer.
+	 * @param clear_depth If true clears the depth buffer before rendering this layer. 
+     * @param stencil_state State of the stencil buffer, using to do stencil test. 
 	 */
-	void add_layer(size_t index, int64_t priority, bool clear_depth = true);
+	void add_layer(size_t index, int64_t priority, bool clear_depth = true, 
+				   StencilState stencil_state = StencilState::DISABLE_STENCIL);
 
 	/**
 	 * Render target to write to.

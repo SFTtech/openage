@@ -162,6 +162,30 @@ void GlRenderer::optimize(const std::shared_ptr<GlRenderPass> &pass) {
 	}
 }
 
+void GlRenderer::setupStencilWrite() {
+	glEnable(GL_STENCIL_TEST);
+	glStencilFunc(GL_ALWAYS, 1, 0xFF);
+	glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+	glStencilMask(0xFF);
+	glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
+	glDepthMask(GL_FALSE);
+}
+
+void GlRenderer::setupStencilTest() {
+	glEnable(GL_STENCIL_TEST);
+	glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
+	glStencilMask(0x00);
+	glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+	glDepthMask(GL_TRUE);
+}
+
+void GlRenderer::disableStencilTest() {
+	glDisable(GL_STENCIL_TEST);
+	glStencilMask(0xFF);
+	glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+	glDepthMask(GL_TRUE);
+}
+
 void GlRenderer::check_error() {
 	// thanks for the global state, opengl!
 	GlContext::check_error();
@@ -176,7 +200,12 @@ void GlRenderer::render(const std::shared_ptr<RenderPass> &pass) {
 	// see https://www.khronos.org/opengl/wiki/Vertex_Rendering#Causes_of_rendering_failure
 	shared_quad_vao->bind();
 
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	// ensure that an (empty) VAO is bound before rendering geometry
+	// a bound VAO is required to render bufferless quad geometries by OpenGL
+	// see https://www.khronos.org/opengl/wiki/Vertex_Rendering#Causes_of_rendering_failure
+	shared_quad_vao->bind();
+
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
 	// TODO: Option for face culling
 	// glEnable(GL_CULL_FACE);
@@ -196,6 +225,20 @@ void GlRenderer::render(const std::shared_ptr<RenderPass> &pass) {
 
 		if (layer.clear_depth) {
 			glClear(GL_DEPTH_BUFFER_BIT);
+		}
+
+		switch (layer.stencil_state) {
+		case StencilState::WRITE_STENCIL_MASK:
+			setupStencilWrite();
+			break;
+
+		case StencilState::USE_STENCIL_TEST:
+			setupStencilTest();
+			break;
+
+		case StencilState::DISABLE_STENCIL:
+			disableStencilTest();
+			break;
 		}
 
 		for (auto const &obj : objects) {

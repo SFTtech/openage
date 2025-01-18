@@ -64,6 +64,13 @@ public:
 	std::shared_ptr<renderer::RenderPass> get_render_pass() const;
 
 	/**
+	 * Get the stencil render pass of the GUI.
+	 * 
+	 * @return stencil render pass of the GUI	
+	 */
+	std::shared_ptr<renderer::RenderPass> get_stencil_pass() const;
+
+	/**
 	 * Render the GUI texture.
 	 */
 	void render();
@@ -139,6 +146,11 @@ private:
 	 * this pass via a \p renderer::resources::Renderable.
 	 */
 	std::shared_ptr<renderer::RenderPass> render_pass;
+
+	/**
+	 * Render pass for the stencil mask of the GUI.
+	 */
+	std::shared_ptr<renderer::RenderPass> stencil_pass;
 };
 
 } // namespace gui

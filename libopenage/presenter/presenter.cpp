@@ -20,8 +20,6 @@
 #include "renderer/camera/camera.h"
 #include "renderer/gui/gui.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
-#include "renderer/opengl/context.h"
-#include "renderer/opengl/lookup.h"
 #include "renderer/render_factory.h"
 #include "renderer/render_pass.h"
 #include "renderer/render_target.h"
@@ -167,9 +165,18 @@ void Presenter::init_graphics(const renderer::window_settings &window_settings) 
 		this->asset_manager,
 		this->time_loop->get_clock());
 	this->render_passes.push_back(this->hud_renderer->get_render_pass());
+	
+	for (auto& render_pass : render_passes) {
+		render_pass->set_stencil_state(renderer::StencilState::USE_STENCIL_TEST);
+	}
 
 	this->init_gui();
 	this->init_final_render_pass();
+
+	// set passes indices
+	this->index_gui_stencil_pass = this->render_passes.size() - 3;
+	this->index_gui_render_pass = this->render_passes.size() - 2;
+	this->index_final_render_pass = this->render_passes.size() - 1;
 
 	if (this->simulation) {
 		auto render_factory = std::make_shared<renderer::RenderFactory>(this->terrain_renderer, this->world_renderer);
@@ -213,7 +220,10 @@ void Presenter::init_gui() {
 		qml_root,      // directory to watch for qml file changes
 		qml_assets,    // qml data: Engine *, the data directory, ...
 		this->renderer // openage renderer
-	);
+	);	
+
+	auto stencil_pass = this->gui->get_stencil_pass();
+	this->render_passes.push_back(stencil_pass);
 
 	auto gui_pass = this->gui->get_render_pass();
 	this->render_passes.push_back(gui_pass);
@@ -309,31 +319,6 @@ void Presenter::init_final_render_pass() {
 	});
 }
 
-void Presenter::init_stencil_test() {
-	glEnable(GL_STENCIL_TEST);
-	glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
-	glClear(GL_STENCIL_BUFFER_BIT);
-}
-
-void Presenter::enable_stencil_for_gui_mask() {
-	// Replace stencil value with 1 when depth test passes
-	glStencilFunc(GL_ALWAYS, 1, 0xFF);
-	glStencilMask(0xFF);
-	glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
-}
-
-void Presenter::enable_stencil_for_world() {
-	// Only pass if stencil value is not 1
-	glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
-	glStencilMask(0x00);
-	glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
-}
-
-void Presenter::disable_stencil() {
-	glDisable(GL_STENCIL_TEST);
-	glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
-}
-
 void Presenter::render() {
 	// TODO: Pass current time to update() instead of fetching it in renderer
 	this->camera_manager->update();
@@ -341,25 +326,17 @@ void Presenter::render() {
 	this->world_renderer->update();
 	this->hud_renderer->update();
 
-	this->init_stencil_test();
-
-	// First Pass: Render GUI to stencil buffer
-	this->enable_stencil_for_gui_mask();
 	this->gui->render();
+	this->renderer->render(this->render_passes[this->index_gui_stencil_pass]);
 
-	// Second Pass: Render game world with stencil buffer
-	this->enable_stencil_for_world();
-	for (size_t i = 0; i < this->render_passes.size() - 2; ++i) {
+	for (size_t i = 0; i < this->index_gui_stencil_pass; ++i) {
 		this->renderer->render(this->render_passes[i]);
 	}
 
-	// Third Pass: Render GUI to screen
-	this->disable_stencil();
 	this->gui->render();
-	this->renderer->render(this->render_passes[this->render_passes.size() - 2]);
+	this->renderer->render(this->render_passes[this->index_gui_render_pass]);
 
-	// Fourth Pass: Render screen to window
-	this->renderer->render(this->render_passes.back());
+	this->renderer->render(this->render_passes[this->index_final_render_pass]);
 }
 
 } // namespace openage::presenter
