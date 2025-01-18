@@ -34,6 +34,9 @@ __pycache__
 /.ccls-cache
 /.cache
 
+# Nix build output
+/result
+
 # root dir run script
 /run
 /run.cpp
