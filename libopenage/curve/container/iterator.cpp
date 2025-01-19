@@ -1,6 +1,6 @@
-// Copyright 2017-2018 the openage authors. See copying.md for legal info.
+// Copyright 2017-2025 the openage authors. See copying.md for legal info.
 
-#include "map.h"
+#include "iterator.h"
 
 namespace openage::curve {
 

@@ -1,4 +1,4 @@
-// Copyright 2017-2024 the openage authors. See copying.md for legal info.
+// Copyright 2017-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -7,8 +7,8 @@
 #include <unordered_map>
 #include <utility>
 
-#include "curve/map_filter_iterator.h"
-#include "curve/element_wrapper.h"
+#include "curve/container/element_wrapper.h"
+#include "curve/container/map_filter_iterator.h"
 #include "time/time.h"
 #include "util/fixed_point.h"
 
@@ -21,7 +21,6 @@ namespace openage::curve {
  */
 template <typename key_t, typename val_t>
 class UnorderedMap {
-
 	/**
 	 * Data holder. Maps keys to map elements.
 	 * Map elements themselves store when they are valid.

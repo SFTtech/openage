@@ -1,4 +1,4 @@
-// Copyright 2017-2024 the openage authors. See copying.md for legal info.
+// Copyright 2017-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -11,9 +11,9 @@
 
 #include "error/error.h"
 
-#include "curve/iterator.h"
-#include "curve/queue_filter_iterator.h"
-#include "curve/element_wrapper.h"
+#include "curve/container/element_wrapper.h"
+#include "curve/container/iterator.h"
+#include "curve/container/queue_filter_iterator.h"
 #include "event/evententity.h"
 #include "time/time.h"
 #include "util/fixed_point.h"

@@ -4,7 +4,7 @@
 
 #include <array>
 
-#include "curve/iterator.h"
+#include "curve/container/iterator.h"
 #include "curve/keyframe_container.h"
 #include "event/evententity.h"
 

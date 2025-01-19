@@ -1,8 +1,8 @@
-// Copyright 2017-2024 the openage authors. See copying.md for legal info.
+// Copyright 2017-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
-#include "curve/iterator.h"
+#include "curve/container/iterator.h"
 #include "time/time.h"
 
 

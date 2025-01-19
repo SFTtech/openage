@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #include "entity_factory.h"
 
@@ -10,8 +10,8 @@
 
 #include "error/error.h"
 
+#include "curve/container/queue.h"
 #include "curve/discrete.h"
-#include "curve/queue.h"
 #include "event/event_loop.h"
 #include "gamestate/activity/activity.h"
 #include "gamestate/activity/condition/command_in_queue.h"

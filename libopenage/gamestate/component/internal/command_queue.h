@@ -1,10 +1,10 @@
-// Copyright 2021-2024 the openage authors. See copying.md for legal info.
+// Copyright 2021-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <memory>
 
-#include "curve/queue.h"
+#include "curve/container/queue.h"
 #include "gamestate/component/internal/commands/base_command.h"
 #include "gamestate/component/internal_component.h"
 #include "gamestate/component/types.h"

@@ -9,12 +9,12 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "curve/array.h"
-#include "curve/iterator.h"
-#include "curve/map.h"
-#include "curve/map_filter_iterator.h"
-#include "curve/queue.h"
-#include "curve/queue_filter_iterator.h"
+#include "curve/container/array.h"
+#include "curve/container/iterator.h"
+#include "curve/container/map.h"
+#include "curve/container/map_filter_iterator.h"
+#include "curve/container/queue.h"
+#include "curve/container/queue_filter_iterator.h"
 #include "event/event_loop.h"
 #include "testing/testing.h"
 

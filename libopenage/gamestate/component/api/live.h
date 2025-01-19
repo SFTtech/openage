@@ -1,4 +1,4 @@
-// Copyright 2021-2024 the openage authors. See copying.md for legal info.
+// Copyright 2021-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -7,7 +7,7 @@
 
 #include <nyan/nyan.h>
 
-#include "curve/map.h"
+#include "curve/container/map.h"
 #include "gamestate/component/api_component.h"
 #include "gamestate/component/types.h"
 #include "time/time.h"
