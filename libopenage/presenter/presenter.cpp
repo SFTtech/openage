@@ -165,8 +165,8 @@ void Presenter::init_graphics(const renderer::window_settings &window_settings) 
 		this->asset_manager,
 		this->time_loop->get_clock());
 	this->render_passes.push_back(this->hud_renderer->get_render_pass());
-	
-	for (auto& render_pass : render_passes) {
+
+	for (auto &render_pass : render_passes) {
 		render_pass->set_stencil_state(renderer::StencilState::USE_STENCIL_TEST);
 	}
 
@@ -220,7 +220,7 @@ void Presenter::init_gui() {
 		qml_root,      // directory to watch for qml file changes
 		qml_assets,    // qml data: Engine *, the data directory, ...
 		this->renderer // openage renderer
-	);	
+	);
 
 	auto stencil_pass = this->gui->get_stencil_pass();
 	this->render_passes.push_back(stencil_pass);

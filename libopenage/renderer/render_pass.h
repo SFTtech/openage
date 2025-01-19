@@ -1,4 +1,4 @@
-// Copyright 2024-2024 the openage authors. See copying.md for legal info.
+// Copyright 2024-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -19,11 +19,11 @@ class RenderTarget;
  */
 enum class StencilState {
 	/// State for writing GUI elements to stencil buffer.
-	WRITE_STENCIL_MASK, 
+	WRITE_STENCIL_MASK,
 	/// State for using the mask when rendering scene.
-	USE_STENCIL_TEST, 
+	USE_STENCIL_TEST,
 	/// State for normal rendering (GUI rendering).
-	DISABLE_STENCIL,  
+	DISABLE_STENCIL
 };
 
 /**
@@ -109,10 +109,9 @@ public:
 	 *
 	 * @param priority Priority of the layer. Layers with higher priority are drawn first.
 	 * @param clear_depth If true clears the depth buffer before rendering this layer.
-     * @param stencil_state State of the stencil buffer, using to do stencil test. 
+	 * @param stencil_state State of the stencil buffer, using to do stencil test.
 	 */
-	void add_layer(int64_t priority, bool clear_depth = true, 
-				   StencilState stencil_state = StencilState::DISABLE_STENCIL);
+	void add_layer(int64_t priority, bool clear_depth = true, StencilState stencil_state = StencilState::DISABLE_STENCIL);
 
 	/**
 	 * Set the stencil state for the render pass.
@@ -160,11 +159,10 @@ private:
 	 *
 	 * @param index Index in \p layers member to insert the new layer.
 	 * @param priority Priority of the layer. Layers with higher priority are drawn first.
-	 * @param clear_depth If true clears the depth buffer before rendering this layer. 
-     * @param stencil_state State of the stencil buffer, using to do stencil test. 
+	 * @param clear_depth If true clears the depth buffer before rendering this layer.
+	 * @param stencil_state State of the stencil buffer, using to do stencil test.
 	 */
-	void add_layer(size_t index, int64_t priority, bool clear_depth = true, 
-				   StencilState stencil_state = StencilState::DISABLE_STENCIL);
+	void add_layer(size_t index, int64_t priority, bool clear_depth = true, StencilState stencil_state = StencilState::DISABLE_STENCIL);
 
 	/**
 	 * Render target to write to.

@@ -230,7 +230,7 @@ protected:
 	 * Input manager.
 	 */
 	std::shared_ptr<input::InputManager> input_manager;
-	
+
 	/**
 	 * Pass indices.
 	 */

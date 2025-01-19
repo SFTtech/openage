@@ -64,9 +64,9 @@ private:
 	static void optimize(const std::shared_ptr<GlRenderPass> &pass);
 
 	void setupStencilWrite();
-	
+
 	void setupStencilTest();
-	
+
 	void disableStencilTest();
 
 	/// The GL context.
