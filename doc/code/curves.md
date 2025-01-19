@@ -17,6 +17,7 @@ Curves are an integral part of openage's event-based game simulation.
    2. [Container](#container)
       1. [Queue](#queue)
       2. [Unordered Map](#unordered-map)
+      3. [Array](#array)
 
 
 ## Motivation
@@ -198,7 +199,7 @@ e.g. angles between 0 and 360 degrees.
 ### Container
 
 Container curves are intended for storing changes to collections and containers.
-The currently supported containers are `Queue` and `UnorderedMap`.
+The currently supported containers are `Queue`, `UnorderedMap` and `Array`.
 
 The most important distinction between regular C++ containers and curve containers
 is that curve containers track the *lifespan* of each element, i.e. their insertion time,
@@ -253,3 +254,41 @@ Unordered map curve containers store key-value pairs while additionally keeping
 track of element insertion time. Requests for a key `k` at time `t` will return the value
 of `k` at that time. The unordered map can also be iterated over for a specific time `t` which
 allows access to all key-value pairs that were in the map at time `t`.
+
+
+#### Array
+
+Array curve containers store a fixed number of `n` elements where `n` is determined at compile-time.
+They are the curve equivalent to the `std::array` C++ containers. In comparison to `std::array` each
+element in the array curve container is tracked individually over time. Hence, each index is associated
+with its own `KeyframeContainer` whose keyframes can be updated independent from other indices.
+When a value is added to the `Array` curve at a given index, a new keyframe is added to the respective
+`KeyframeContainer` stored at that index.
+
+**Read**
+
+Read operations retrieve values for a specific point in time.
+
+| Method             | Description                                                              |
+| ------------------ | ------------------------------------------------------------------------ |
+| `get(t, i)`        | Get value of element at index `i` at time <= `t`                         |
+| `get(t)`           | Get array of values at time <= `t`                                       |
+| `size()`           | Get the number of elements in the array                                  |
+| `frame(t, i)`      | Get the previous keyframe (time and value) at index `i` before or at `t` |
+| `next_frame(t, i)` | Get the next keyframe (time and value) at index `i` after `t`            |
+
+**Modify**
+
+Modify operations insert values for a specific point in time.
+
+| Method                     | Description                                                                                |
+| -------------------------- | ------------------------------------------------------------------------------------------ |
+| `set_insert(t, i, value)`  | Insert a new keyframe(`t`, `value`) at index `i`                                           |
+| `set_last(t, i, value)`    | Insert a new keyframe(`t`, `value`) at index `i`; delete all keyframes after time `t`      |
+| `set_replace(t, i, value)` | Insert a new keyframe(`t`, `value`) at index `i`; remove all other keyframes with time `t` |
+
+**Copy**
+
+| Method           | Description                                                                                      |
+| ---------------- | ------------------------------------------------------------------------------------------------ |
+| `sync(Curve, t)` | Replace all keyframes from self after time `t` with keyframes from source `Curve` after time `t` |

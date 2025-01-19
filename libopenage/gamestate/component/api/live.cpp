@@ -1,12 +1,12 @@
-// Copyright 2021-2023 the openage authors. See copying.md for legal info.
+// Copyright 2021-2025 the openage authors. See copying.md for legal info.
 
 #include "live.h"
 
 #include <optional>
 
+#include "curve/container/iterator.h"
+#include "curve/container/map_filter_iterator.h"
 #include "curve/discrete.h"
-#include "curve/iterator.h"
-#include "curve/map_filter_iterator.h"
 #include "gamestate/component/types.h"
 
 

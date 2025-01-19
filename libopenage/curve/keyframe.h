@@ -1,4 +1,4 @@
-// Copyright 2019-2024 the openage authors. See copying.md for legal info.
+// Copyright 2019-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -52,6 +52,15 @@ public:
 	 */
 	const T &val() const {
 		return this->value;
+	}
+
+	/**
+	 * Get a time-value pair of this keyframe.
+	 *
+	 * @return Keyframe time-value pair.
+	 */
+	std::pair<time::time_t, T> as_pair() const {
+		return {this->timestamp, this->value};
 	}
 
 public:

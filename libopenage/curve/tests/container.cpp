@@ -1,4 +1,4 @@
-// Copyright 2017-2024 the openage authors. See copying.md for legal info.
+// Copyright 2017-2025 the openage authors. See copying.md for legal info.
 
 #include <algorithm>
 #include <deque>
@@ -9,11 +9,12 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "curve/iterator.h"
-#include "curve/map.h"
-#include "curve/map_filter_iterator.h"
-#include "curve/queue.h"
-#include "curve/queue_filter_iterator.h"
+#include "curve/container/array.h"
+#include "curve/container/iterator.h"
+#include "curve/container/map.h"
+#include "curve/container/map_filter_iterator.h"
+#include "curve/container/queue.h"
+#include "curve/container/queue_filter_iterator.h"
 #include "event/event_loop.h"
 #include "testing/testing.h"
 
@@ -56,7 +57,7 @@ void test_map() {
 
 	// Basic tests test lookup in the middle of the range.
 	{
-		auto t = map.at(2, 0); //At timestamp 2 element 0
+		auto t = map.at(2, 0); // At timestamp 2 element 0
 		TESTEQUALS(t.has_value(), true);
 		TESTEQUALS(t.value().value(), 0);
 		t = map.at(20, 5);
@@ -242,11 +243,115 @@ void test_queue() {
 	TESTEQUALS(q.empty(100001), false);
 }
 
+void test_array() {
+	auto loop = std::make_shared<event::EventLoop>();
+
+	Array<int, 4> a(loop, 0);
+	a.set_insert(1, 0, 0);
+	a.set_insert(1, 1, 1);
+	a.set_insert(1, 2, 2);
+	a.set_insert(1, 3, 3);
+	// a = [[0:0, 1:0],[0:0, 1:1],[0:0, 1:2],[0:0, 1:3]]
+
+	// test size
+	TESTEQUALS(a.size(), 4);
+
+	// extracting array at time t == 1
+	auto res = a.get(1);
+	auto expected = std::array<int, 4>{0, 1, 2, 3};
+	TESTEQUALS(res.at(0), expected.at(0));
+	TESTEQUALS(res.at(1), expected.at(1));
+	TESTEQUALS(res.at(2), expected.at(2));
+	TESTEQUALS(res.at(3), expected.at(3));
+	TESTEQUALS(res.size(), expected.size());
+
+	// extracting array at time t == 0
+	// array should have default values (== 0) for all keyframes
+	res = a.get(0);
+	TESTEQUALS(res.at(0), 0);
+	TESTEQUALS(res.at(1), 0);
+	TESTEQUALS(res.at(2), 0);
+	TESTEQUALS(res.at(3), 0);
+
+	Array<int, 4> other(loop, 0);
+	other.set_last(0, 0, 999);
+	other.set_last(0, 1, 999);
+	other.set_last(0, 2, 999);
+	other.set_last(0, 3, 999);
+
+	// inserting keyframes at time t == 1
+	other.set_insert(1, 0, 4);
+	other.set_insert(1, 1, 5);
+	other.set_insert(1, 2, 6);
+	other.set_insert(1, 3, 7);
+	// other = [[0:999, 1:4],[0:999, 1:5],[0:999, 1:6],[0:999, 1:7]]
+
+	TESTEQUALS(other.at(0, 0), 999);
+	TESTEQUALS(other.at(0, 1), 999);
+	TESTEQUALS(other.at(0, 2), 999);
+	TESTEQUALS(other.at(0, 3), 999);
+	TESTEQUALS(other.at(1, 0), 4);
+	TESTEQUALS(other.at(1, 1), 5);
+	TESTEQUALS(other.at(1, 2), 6);
+	TESTEQUALS(other.at(1, 3), 7);
+
+	// sync keyframes from other to a
+	a.sync(other, 1);
+	// a = [[0:0, 1:4],[0:0, 1:5],[0:0, 1:6],[0:0, 1:7]]
+
+	res = a.get(0);
+	TESTEQUALS(res.at(0), 0);
+	TESTEQUALS(res.at(1), 0);
+	TESTEQUALS(res.at(2), 0);
+	TESTEQUALS(res.at(3), 0);
+	res = a.get(1);
+	TESTEQUALS(res.at(0), 4);
+	TESTEQUALS(res.at(1), 5);
+	TESTEQUALS(res.at(2), 6);
+	TESTEQUALS(res.at(3), 7);
+
+	// replace keyframes at time t == 2
+	a.set_insert(2, 0, 15);
+	a.set_insert(2, 0, 20);
+	a.set_replace(2, 0, 25);
+	TESTEQUALS(a.at(2, 0), 25);
+	// a = [[0:0, 1:4, 2:25],[0:0, 1:5],[0:0, 1:6],[0:0, 1:7]]
+
+	// set last keyframe at time t == 3
+	a.set_insert(3, 0, 30); // a = [[0:0, 1:4, 2:25, 3:30], ...
+	a.set_insert(4, 0, 40); // a = [[0:0, 1:4, 2:25, 3:30, 4:40], ...
+	a.set_last(3, 0, 35);   // a = [[0:0, 1:4, 2:25, 3:35],...
+	TESTEQUALS(a.at(4, 0), 35);
+	// a = [[0:0, 1:4, 2:25, 3:35],[0:0, 1:5],[0:0, 1:6],[0:0, 1:7]]
+
+	// test frame and next_frame
+	auto frame = a.frame(1, 2);
+	TESTEQUALS(frame.first, 1);  // time
+	TESTEQUALS(frame.second, 6); // value
+
+	a.set_insert(5, 3, 40);
+	// a = [[0:0, 1:4, 2:25, 3:35],[0:0, 1:5],[0:0, 1:6],[0:0, 1:7, 5:40]]
+	auto next_frame = a.next_frame(1, 3);
+	TESTEQUALS(next_frame.first, 5);   // time
+	TESTEQUALS(next_frame.second, 40); // value
+
+	// Test begin and end
+	auto it = a.begin(1);
+	TESTEQUALS(*it, 4);
+	++it;
+	TESTEQUALS(*it, 5);
+	++it;
+	TESTEQUALS(*it, 6);
+	++it;
+	TESTEQUALS(*it, 7);
+}
+
 
 void container() {
 	test_map();
 	test_list();
 	test_queue();
+	test_array();
 }
 
 
