@@ -439,13 +439,14 @@ cdef class SMPLayer:
                 # eol (end of line) command, this row is finished now.
                 eor = True
 
-                if SMPLayerVariant is SMPShadowLayer and row_data.size() < expected_size:
-                    # copy the last drawn pixel
-                    # (still stored in nextbyte)
-                    #
-                    # TODO: confirm that this is the
-                    #       right way to do it
-                    row_data.push_back(pixel(color_shadow, nextbyte, 0, 0, 0))
+                if SMPLayerVariant is SMPShadowLayer:
+                    if row_data.size() < expected_size:
+                        # copy the last drawn pixel
+                        # (still stored in nextbyte)
+                        #
+                        # TODO: confirm that this is the
+                        #       right way to do it
+                        row_data.push_back(pixel(color_shadow, nextbyte, 0, 0, 0))
 
                 continue
 
@@ -488,31 +489,37 @@ cdef class SMPLayer:
                                                 pixel_data[3] & 0x1F)) # remove "usage" bit here
                         pixel_data.clear()
 
-            elif lower_crumb == 0b00000010 and (SMPLayerVariant is SMPMainLayer or SMPLayerVariant is SMPShadowLayer):
-                # player_color command
-                # draw the following 'count' pixels
-                # pixels are stored as 4 byte palette and meta infos
-                # count = (cmd >> 2) + 1
+            elif lower_crumb == 0b00000010:
+                if (SMPLayerVariant is SMPMainLayer or SMPLayerVariant is SMPShadowLayer):
+                    # player_color command
+                    # draw the following 'count' pixels
+                    # pixels are stored as 4 byte palette and meta infos
+                    # count = (cmd >> 2) + 1
 
-                pixel_count = (cmd >> 2) + 1
+                    pixel_count = (cmd >> 2) + 1
 
-                for _ in range(pixel_count):
-                    if SMPLayerVariant is SMPShadowLayer:
-                        dpos += 1
-                        nextbyte = data_raw[dpos]
-                        row_data.push_back(pixel(color_shadow,
-                                                nextbyte, 0, 0, 0))
-                    else:
-                        for _ in range(4):
+                    for _ in range(pixel_count):
+                        if SMPLayerVariant is SMPShadowLayer:
                             dpos += 1
-                            pixel_data.push_back(data_raw[dpos])
+                            nextbyte = data_raw[dpos]
+                            row_data.push_back(pixel(color_shadow,
+                                                    nextbyte, 0, 0, 0))
+                        else:
+                            for _ in range(4):
+                                dpos += 1
+                                pixel_data.push_back(data_raw[dpos])
 
-                        row_data.push_back(pixel(color_player,
-                                                pixel_data[0],
-                                                pixel_data[1],
-                                                pixel_data[2],
-                                                pixel_data[3] & 0x1F))  # remove "usage" bit here
-                        pixel_data.clear()
+                            row_data.push_back(pixel(color_player,
+                                                    pixel_data[0],
+                                                    pixel_data[1],
+                                                    pixel_data[2],
+                                                    pixel_data[3] & 0x1F))  # remove "usage" bit here
+                            pixel_data.clear()
+                else:
+                    raise Exception(
+                        f"unknown smp {self.info.layer_type} layer drawing command: " +
+                        f"{cmd:#x} in row {rowid:d}"
+                )
 
             else:
                 raise Exception(
