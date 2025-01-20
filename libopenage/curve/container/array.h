@@ -26,6 +26,10 @@ class Array : event::EventEntity {
 public:
 	/// Underlying container type.
 	using container_t = std::array<KeyframeContainer<T>, Size>;
+
+	/// Uderlying iterator type
+	using const_iterator = typename std::array<KeyframeContainer<T>, Size>::const_iterator;
+
 	/// Index type to access elements in the container.
 	using index_t = typename container_t::size_type;
 
@@ -167,61 +171,60 @@ public:
 		return this->_idstr;
 	}
 
-	/**
-	 *  Array::Iterator is used to iterate over KeyframeContainers contained in a curve at a given time.
-	 */
-	class Iterator {
+
+	class ArrayIterator : public CurveIterator<T, Array<T, Size>> {
 	public:
-		Iterator(Array<T, Size> *curve, const time::time_t &time = time::TIME_MAX, size_t offset = 0) :
-			curve(curve), time(time), offset(offset) {};
-
 		/**
-		 *  returns a copy of the keyframe at the current offset and time
+		 * Construct the iterator from its boundary conditions: time and container
 		 */
-		const T operator*() {
-			return this->curve->frame(this->time, this->offset).second;
+		ArrayIterator(const const_iterator &base,
+		              const Array<T, Size> *base_container,
+		              const time::time_t &to) :
+			CurveIterator<T, Array<T, Size>>(base, base_container, -time::TIME_MAX, to) {
+		}
+
+
+		virtual bool valid() const override {
+			if (this->container->end().get_base() != this->get_base() && this->get_base()->begin()->time() <= this->to) {
+				return true;
+			}
+			return false;
 		}
 
 		/**
-		 * increments the Iterator to point at the next KeyframeContainer
+		 * Get the keyFrame with a time <= this->to from the KeyframeContainer
+		 * that this iterator currently points at
 		 */
-		void operator++() {
-			this->offset++;
+		const T &value() const override {
+			const auto &key_frame_container = *this->get_base();
+			size_t hint_index = std::distance(this->container->begin().get_base(), this->get_base());
+			size_t e = key_frame_container.last(this->to, last_elements[hint_index]);
+			this->last_elements[hint_index] = e;
+			return key_frame_container.get(e).val();
 		}
 
 		/**
-		 * Compare two Iterators by their offset
+		 * Cache hints for containers. Stores the index of the last keyframe accessed in each container.
+		 *
+		 * hints is used to speed up the search for keyframes.
+		 *
+		 * mutable as hints are updated by const read-only functions.
 		 */
-		bool operator!=(const Array<T, Size>::Iterator &rhs) const {
-			return this->offset != rhs.offset;
-		}
-
-	private:
-		/**
-		 * the curve object that this iterator, iterates over
-		 */
-		Array<T, Size> *curve;
-
-		/**
-		 * time at which this iterator is iterating over
-		 */
-		time::time_t time;
-
-		/**
-		 * used to index the Curve::Array pointed to by this iterator
-		 */
-		size_t offset;
+		mutable std::array<typename KeyframeContainer<T>::elem_ptr, Size> last_elements = {};
 	};
+
 
 	/**
 	 * iterator pointing to a keyframe of the first KeyframeContainer in the curve at a given time
 	 */
-	Iterator begin(const time::time_t &time = time::TIME_MIN);
+	ArrayIterator begin(const time::time_t &time = time::TIME_MIN) const;
+
 
 	/**
 	 *  iterator pointing after the last KeyframeContainer in the curve at a given time
 	 */
-	Iterator end(const time::time_t &time = time::TIME_MIN);
+	ArrayIterator end(const time::time_t &time = time::TIME_MAX) const;
+
 
 private:
 	/**
@@ -382,13 +385,14 @@ void Array<T, Size>::sync(const Array<T, Size> &other,
 }
 
 template <typename T, size_t Size>
-typename Array<T, Size>::Iterator Array<T, Size>::begin(const time::time_t &time) {
-	return Array<T, Size>::Iterator(this, time);
+auto Array<T, Size>::begin(const time::time_t &t) const -> ArrayIterator {
+	return ArrayIterator(this->containers.begin(), this, t);
 }
 
+
 template <typename T, size_t Size>
-typename Array<T, Size>::Iterator Array<T, Size>::end(const time::time_t &time) {
-	return Array<T, Size>::Iterator(this, time, this->containers.size());
+auto Array<T, Size>::end(const time::time_t &t) const -> ArrayIterator {
+	return ArrayIterator(this->containers.end(), this, t);
 }
 
 } // namespace curve
