@@ -26,7 +26,15 @@ void main() {
 
 			// do not save the ID
 			return;
-		//@INSERT_COMMANDS@
+		case 254:
+			col = vec4(1.0f, 0.0f, 0.0f, 1.0f);
+			break;
+		case 252:
+			col = vec4(0.0f, 1.0f, 0.0f, 1.0f);
+			break;
+		case 250:
+			col = vec4(0.0f, 0.0f, 1.0f, 1.0f);
+			break;
 		default:
 			col = tex_val;
 			break;

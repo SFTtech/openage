@@ -127,18 +127,12 @@ void WorldRenderStage::initialize_render_pass(size_t width,
 		vert_shader_file.read());
 	vert_shader_file.close();
 
-	// Initialize shader command system before loading fragment shader
-	this->shader_commands = std::make_unique<WorldShaderCommands>();
-	this->init_shader_commands();
-
 	auto frag_shader_file = (shaderdir / "world2d.frag.glsl").open();
-	auto base_shader = frag_shader_file.read();
-	frag_shader_file.close();
-
 	auto frag_shader_src = renderer::resources::ShaderSource(
 		resources::shader_lang_t::glsl,
 		resources::shader_stage_t::fragment,
-		this->shader_commands->integrate_command(base_shader));
+		frag_shader_file.read());
+	frag_shader_file.close();
 
 	this->output_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::rgba8));
 	this->depth_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::depth24));
@@ -160,24 +154,6 @@ void WorldRenderStage::init_uniform_ids() {
 	WorldObject::scale = this->display_shader->get_uniform_id("scale");
 	WorldObject::subtex_size = this->display_shader->get_uniform_id("subtex_size");
 	WorldObject::anchor_offset = this->display_shader->get_uniform_id("anchor_offset");
-}
-
-void WorldRenderStage::init_shader_commands() {
-	// Register default shader commands
-	this->shader_commands->add_command(
-		254,
-		"col = vec4(1.0f, 0.0f, 0.0f, 1.0f);",
-		"Red tint command");
-	this->shader_commands->add_command(
-		252,
-		"col = vec4(0.0f, 1.0f, 0.0f, 1.0f);",
-		"Green tint command");
-	this->shader_commands->add_command(
-		250,
-		"col = vec4(0.0f, 0.0f, 1.0f, 1.0f);",
-		"Blue tint command");
-
-	// Additional commands can be added here
 }
 
 } // namespace openage::renderer::world
