@@ -336,7 +336,6 @@ void test_array() {
 	TESTEQUALS(next_frame.second, 40); // value
 
 	// Test begin and end
-
 	auto it = a.begin(1);
 	TESTEQUALS(*it, 4);
 	++it;
