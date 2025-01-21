@@ -337,7 +337,7 @@ void test_array() {
 
 	// Test begin and end
 
-	auto it = a.begin(openage::time::time_t(1));
+	auto it = a.begin(1);
 	TESTEQUALS(*it, 4);
 	++it;
 	TESTEQUALS(*it, 5);
