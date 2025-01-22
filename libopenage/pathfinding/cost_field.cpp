@@ -56,6 +56,27 @@ void CostField::set_costs(std::vector<cost_t> &&cells, const time::time_t &valid
 	this->valid_until = valid_until;
 }
 
+bool CostField::stamp(size_t idx, cost_t cost, const time::time_t &stamped_at) {
+	if (this->cost_stamps.contains(idx)) return false;
+
+	cost_t original_cost = this->get_cost(idx);
+	this->cost_stamps[idx].original_cost = original_cost;
+	this->cost_stamps[idx].stamp_time = stamped_at;
+
+	this->set_cost(idx, cost, stamped_at);
+	return true;
+}
+
+bool CostField::unstamp(size_t idx, const time::time_t &unstamped_at) {
+	if (!this->cost_stamps.contains(idx)) return false;
+	if (unstamped_at < this->cost_stamps[idx].stamp_time) return false;
+
+	cost_t original_cost = cost_stamps[idx].original_cost;
+
+	this->set_cost(idx, original_cost, unstamped_at);
+	return this->cost_stamps.erase(idx) != 0;
+}
+
 bool CostField::is_dirty(const time::time_t &time) const {
 	return time >= this->valid_until;
 }

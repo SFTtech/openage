@@ -124,4 +124,19 @@ using cache_key_t = std::pair<portal_id_t, sector_id_t>;
  */
 using field_cache_t = std::pair<std::shared_ptr<IntegrationField>, std::shared_ptr<FlowField>>;
 
+/**
+ * Cost stamp for a given cost field cell.
+ */
+struct cost_stamp_t {
+	/**
+	 * Original cost of the stamped cell. 
+	 */
+	cost_t original_cost;
+
+	/**
+	 * Time the cost field cell was stamped.
+	 */
+	time::time_t stamp_time;
+};
+
 } // namespace openage::path
