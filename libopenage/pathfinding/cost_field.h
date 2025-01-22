@@ -108,21 +108,21 @@ public:
 
 	/**
 	 * Stamp a cost field cell at a given time.
-	 * 
+	 *
 	 * @param idx Index of the cell.
 	 * @param cost Cost to set.
 	 * @param stamped_at Time at which the cost cell is to be stamped.
-	 * 
+	 *
 	 * @return True if the cell was successfully stamped, false if the cell was already stamped.
 	 */
 	bool stamp(size_t idx, cost_t cost, const time::time_t &stamped_at);
 
 	/**
 	 * Unstamp a cost field cell at a given time.
-	 * 
+	 *
 	 * @param idx Index of the cell.
 	 * @param unstamped_at Time at which the cost cell is to be unstamped.
-	 * 
+	 *
 	 * @return True if the cell was successfully unstamped, false if the cell was already not stamped.
 	 */
 	bool unstamp(size_t idx, const time::time_t &unstamped_at);
