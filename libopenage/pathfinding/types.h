@@ -1,4 +1,4 @@
-// Copyright 2024-2024 the openage authors. See copying.md for legal info.
+// Copyright 2024-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -130,7 +130,7 @@ using field_cache_t = std::pair<std::shared_ptr<IntegrationField>, std::shared_p
  */
 struct cost_stamp_t {
 	/**
-	 * Original cost of the stamped cell. 
+	 * Original cost of the stamped cell.
 	 */
 	cost_t original_cost;
 
