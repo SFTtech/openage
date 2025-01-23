@@ -4,6 +4,7 @@
 
 #include <cstddef>
 #include <vector>
+#include <optional>
 
 #include "pathfinding/types.h"
 #include "time/time.h"
