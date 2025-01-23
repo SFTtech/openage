@@ -160,7 +160,7 @@ private:
 	/**
 	 * Cost field values.
 	 */
-	std::unordered_map<size_t, cost_stamp_t> cost_stamps;
+	std::vector<std::optional<cost_stamp_t>> cost_stamps;
 };
 
 } // namespace path
