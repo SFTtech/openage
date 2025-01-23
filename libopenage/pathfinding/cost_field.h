@@ -159,7 +159,7 @@ private:
 	std::vector<cost_t> cells;
 
 	/**
-	 * Cost field values.
+	 * Cost stamp vector.
 	 */
 	std::vector<std::optional<cost_stamp_t>> cost_stamps;
 };
