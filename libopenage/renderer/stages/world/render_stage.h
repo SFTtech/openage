@@ -1,4 +1,4 @@
-// Copyright 2022-2024 the openage authors. See copying.md for legal info.
+// Copyright 2022-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -33,6 +33,7 @@ class AssetManager;
 namespace world {
 class RenderEntity;
 class WorldObject;
+class ShaderCommandTemplate;
 
 /**
  * Renderer for drawing and displaying entities in the game world (units, buildings, etc.)
@@ -60,6 +61,26 @@ public:
 	                 const util::Path &shaderdir,
 	                 const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
 	                 const std::shared_ptr<time::Clock> clock);
+
+	/**
+	 * Create a new render stage for the game world with shader command.
+	 *
+	 * @param window openage window targeted for rendering.
+	 * @param renderer openage low-level renderer.
+	 * @param camera Camera used for the rendered scene.
+	 * @param shaderdir Directory containing the shader source files.
+	 * @param configdir Directory containing the config for shader command.
+	 * @param asset_manager Asset manager for loading resources.
+	 * @param clock Simulation clock for timing animations.
+	 */
+	WorldRenderStage(const std::shared_ptr<Window> &window,
+	                 const std::shared_ptr<renderer::Renderer> &renderer,
+	                 const std::shared_ptr<renderer::camera::Camera> &camera,
+	                 const util::Path &shaderdir,
+	                 const util::Path &configdir,
+	                 const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
+	                 const std::shared_ptr<time::Clock> clock);
+
 	~WorldRenderStage() = default;
 
 	/**
@@ -112,6 +133,17 @@ private:
 	void init_uniform_ids();
 
 	/**
+	 * Initialize render pass with shader commands.
+	 * This is an alternative to initialize_render_pass() that uses configurable shader commands.
+	 *
+	 * @param width Width of the FBO.
+	 * @param height Height of the FBO.
+	 * @param shaderdir Directory containing shader files.
+	 * @param configdir Directory containing configuration file.
+	 */
+	void initialize_render_pass_with_shader_commands(size_t width, size_t height, const util::Path &shaderdir, const util::Path &config_path);
+
+	/**
 	 * Reference to the openage renderer.
 	 */
 	std::shared_ptr<renderer::Renderer> renderer;
@@ -130,6 +162,11 @@ private:
 	 * Render pass for the world drawing.
 	 */
 	std::shared_ptr<renderer::RenderPass> render_pass;
+
+	/**
+	 * Template for the world shader program.
+	 */
+	std::shared_ptr<ShaderCommandTemplate> shader_template;
 
 	/**
 	 * Render entities requested by the game world.

@@ -1,4 +1,4 @@
-// Copyright 2024-2024 the openage authors. See copying.md for legal info.
+// Copyright 2024-2025 the openage authors. See copying.md for legal info.
 
 #include "world_shader_commands.h"
 
@@ -9,67 +9,158 @@
 
 namespace openage::renderer::world {
 
-bool WorldShaderCommands::add_command(uint8_t alpha, const std::string &code, const std::string &description) {
-	if (!validate_alpha(alpha)) {
-		log::log(ERR << "Invalid alpha value: " << int(alpha));
+ShaderCommandTemplate::ShaderCommandTemplate(const std::string &template_code) :
+	template_code{template_code} {}
+
+bool ShaderCommandTemplate::load_commands(const util::Path &config_path) {
+	try {
+		log::log(INFO << "Loading shader commands config from: " << config_path);
+		auto config_file = config_path.open();
+		std::string line;
+		std::stringstream ss(config_file.read());
+
+		ShaderCommandConfig current_command;
+		// if true, we are reading the code block for the current command.
+		bool reading_code = false;
+		std::string code_block;
+
+		while (std::getline(ss, line)) {
+			if (!line.empty() && line.back() == '\r') {
+				line.pop_back();
+			}
+			// Trim whitespace from line
+			line = trim(line);
+			log::log(INFO << "Parsing line: " << line);
+
+			// Skip empty lines and comments
+			if (line.empty() || line[0] == '#') {
+				continue;
+			}
+
+			if (reading_code) {
+				if (line == "}") {
+					reading_code = false;
+					current_command.code = code_block;
+
+					// Generate and add snippet
+					std::string snippet = generate_snippet(current_command);
+					add_snippet(current_command.placeholder_id, snippet);
+					commands.push_back(current_command);
+
+					// Reset for next command
+					code_block.clear();
+				}
+				else {
+					code_block += line + "\n";
+				}
+				continue;
+			}
+
+			if (line == "[COMMAND]") {
+				current_command = ShaderCommandConfig{};
+				continue;
+			}
+
+			// Parse key-value pairs
+			size_t pos = line.find('=');
+			if (pos != std::string::npos) {
+				std::string key = trim(line.substr(0, pos));
+				std::string value = trim(line.substr(pos + 1));
+
+				if (key == "placeholder") {
+					current_command.placeholder_id = value;
+				}
+				else if (key == "alpha") {
+					uint8_t alpha = static_cast<uint8_t>(std::stoi(value));
+					if (alpha % 2 == 0 && alpha >= 0 && alpha <= 254) {
+						current_command.alpha = alpha;
+					}
+					else {
+						log::log(ERR << "Invalid alpha value for command: " << alpha);
+						return false;
+					}
+				}
+				else if (key == "description") {
+					current_command.description = value;
+				}
+				else if (key == "code") {
+					if (value == "{") {
+						reading_code = true;
+						code_block.clear();
+					}
+				}
+			}
+		}
+
+		return true;
+	}
+	catch (const std::exception &e) {
+		log::log(ERR << "Failed to load shader commands: " << e.what());
 		return false;
 	}
-	if (!validate_code(code)) {
-		log::log(ERR << "Invalid command code");
+}
+
+bool ShaderCommandTemplate::add_snippet(const std::string &placeholder_id, const std::string &snippet) {
+	if (snippet.empty()) {
+		log::log(ERR << "Empty snippet for placeholder: " << placeholder_id);
 		return false;
 	}
 
-	commands_map[alpha] = {alpha, code, description};
+	if (placeholder_id.empty()) {
+		log::log(ERR << "Empty placeholder ID for snippet");
+		return false;
+	}
+
+	// Check if the placeholder exists in the template
+	std::string placeholder = "//@" + placeholder_id + "@";
+	if (template_code.find(placeholder) == std::string::npos) {
+		log::log(ERR << "Placeholder not found in template: " << placeholder_id);
+		return false;
+	}
+
+	// Store the snippet
+	snippets[placeholder_id].push_back(snippet);
 	return true;
 }
 
-bool WorldShaderCommands::remove_command(uint8_t alpha) {
-	if (!validate_alpha(alpha)) {
-		return false;
-	}
-	commands_map.erase(alpha);
-	return true;
+std::string ShaderCommandTemplate::generate_snippet(const ShaderCommandConfig &command) {
+	return "case " + std::to_string(command.alpha) + ":\n"
+	       + "\t\t// " + command.description + "\n"
+	       + "\t\t" + command.code + "\t\tbreak;\n";
 }
 
-bool WorldShaderCommands::has_command(uint8_t alpha) const {
-	return commands_map.contains(alpha);
-}
+std::string ShaderCommandTemplate::generate_source() const {
+	std::string result = template_code;
 
-std::string WorldShaderCommands::integrate_command(const std::string &base_shader) {
-	std::string final_shader = base_shader;
-	std::string commands_code = generate_command_code();
+	// Process each placeholder
+	for (const auto &[placeholder_id, snippet_list] : snippets) {
+		std::string combined_snippets;
 
-	// Find the insertion point
-	size_t insert_point = final_shader.find(COMMAND_MARKER);
-	if (insert_point == std::string::npos) {
-		throw Error(MSG(err) << "Failed to find command insertion point in shader.");
-	}
+		// Combine all snippets for this placeholder
+		for (const auto &snippet : snippet_list) {
+			combined_snippets += snippet;
+		}
 
-	// Replace the insertion point with the generated command code
-	final_shader.replace(insert_point, std::strlen(COMMAND_MARKER), commands_code);
+		// Find and replace the placeholder
+		std::string placeholder = "//@" + placeholder_id + "@";
+		size_t pos = result.find(placeholder);
+		if (pos == std::string::npos) {
+			throw Error(MSG(err) << "Placeholder disappeared from template: " << placeholder_id);
+		}
 
-	return final_shader;
-}
-
-std::string WorldShaderCommands::generate_command_code() const {
-	std::string result = "";
-
-	for (const auto &[alpha, command] : commands_map) {
-		result += "    case " + std::to_string(alpha) + ":\n";
-		result += "        // " + command.description + "\n";
-		result += "        " + command.code + "\n";
-		result += "        break;\n\n";
+		// Replace placeholder with combined snippets
+		result.replace(pos, placeholder.length(), combined_snippets);
 	}
 
 	return result;
 }
 
-bool WorldShaderCommands::validate_alpha(uint8_t alpha) const {
-	return alpha % 2 == 0 && alpha >= 0 && alpha <= 254;
+std::string ShaderCommandTemplate::trim(const std::string &str) const {
+	size_t first = str.find_first_not_of(" \t");
+	if (first == std::string::npos) {
+		return "";
+	}
+	size_t last = str.find_last_not_of(" \t");
+	return str.substr(first, (last - first + 1));
 }
-
-bool WorldShaderCommands::validate_code(const std::string &code) const {
-	return !code.empty();
-}
-
 } // namespace openage::renderer::world

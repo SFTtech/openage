@@ -1,10 +1,13 @@
-// Copyright 2024-2024 the openage authors. See copying.md for legal info.
+// Copyright 2024-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <map>
 #include <memory>
+#include <string>
 #include <vector>
+
+#include "util/path.h"
 
 namespace openage {
 namespace renderer {
@@ -15,94 +18,69 @@ namespace world {
  * Commands are identified by their alpha values and contain GLSL code snippets
  * that define custom rendering behavior.
  */
-struct ShaderCommand {
-	// Command identifier ((must be even, range 0-254))
+struct ShaderCommandConfig {
+	/// ID of the placeholder where this snippet should be inserted
+	std::string placeholder_id;
+	/// Command identifier ((must be even, range 0-254))
 	uint8_t alpha;
-	// GLSL code snippet that defines the command's behavior
+	/// GLSL code snippet that defines the command's behavior
 	std::string code;
-	// Documentation (optional)
+	/// Documentation (optional)
 	std::string description;
 };
 
 /**
- * Manages shader commands for the world fragment shader.
- * Provides functionality to add, remove, and integrate commands into the base shader.
- * Commands are inserted at a predefined marker in the shader code.
+ * Manages shader templates and their code snippets.
+ * Allows loading configurable shader commands and generating
+ * complete shader source code.
  */
-class WorldShaderCommands {
+class ShaderCommandTemplate {
 public:
-	// Marker in shader code where commands will be inserted
-	static constexpr const char *COMMAND_MARKER = "//@INSERT_COMMANDS@";
+	/**
+	 * Create a shader template from source code of shader.
+	 *
+	 * @param template_code Source code containing placeholders.
+	 */
+	explicit ShaderCommandTemplate(const std::string &template_code);
 
 	/**
-	 * Add a new shader command.
+	 * Load commands from a configuration file.
 	 *
-	 * @param alpha Command identifier (must be even, range 0-254)
-	 * @param code GLSL code snippet defining the command's behavior
-	 * @param description Human-readable description of the command's purpose
-	 *
-	 * @return true if command was added successfully, false if validation failed
+	 * @param config_path Path to the command configuration file.
+	 * @return true if commands were loaded successfully.
 	 */
-	bool add_command(uint8_t alpha, const std::string &code, const std::string &description = "");
+	bool load_commands(const util::Path &config_path);
 
 	/**
-	 * Remove a command.
+	 * Add a single code snippet to the template.
 	 *
-	 * @param alpha Command identifier (even values 0-254)
+	 * @param placeholder_id Where to insert the snippet.
+	 * @param snippet Code to insert.
+	 * @return true if snippet was added successfully.
 	 */
-	bool remove_command(uint8_t alpha);
+	bool add_snippet(const std::string &placeholder_id, const std::string &snippet);
 
 	/**
-	 * Check if a command is registered.
+	 * Generate final shader source code with all snippets inserted.
 	 *
-	 * @param alpha Command identifier to check
-	 *
-	 * @return true if command is registered
+	 * @return Complete shader code.
+	 * @throws Error if any required placeholders are missing snippets.
 	 */
-	bool has_command(uint8_t alpha) const;
-
-	/**
-	 * Integrate registered commands into the base shader code.
-	 *
-	 * @param base_shader Original shader code containing the command marker
-	 *
-	 * @return Complete shader code with commands integrated at the marker position
-	 *
-	 * @throws Error if command marker is not found in the base shader
-	 */
-	std::string integrate_command(const std::string &base_shader);
+	std::string generate_source() const;
 
 private:
-	/**
-	 * Generate GLSL code for all registered commands.
-	 *
-	 * @return String containing case statements for each command
-	 */
-	std::string generate_command_code() const;
+	// Generate a single code snippet for a command.
+	std::string generate_snippet(const ShaderCommandConfig &command);
+	// Helper function to trim whitespace from a string
+	std::string trim(const std::string &str) const;
 
-	/**
-	 * Validate a command identifier.
-	 *
-	 * @param alpha Command identifier to validate
-	 *
-	 * @return true if alpha is even and within valid range (0-254)
-	 */
-	bool validate_alpha(uint8_t alpha) const;
-
-	/**
-	 * Validate command GLSL code.
-	 *
-	 * @param code GLSL code snippet to validate
-	 *
-	 * @return true if code is not empty (additional validation could be added)
-	 */
-
-	bool validate_code(const std::string &code) const;
-
-	// Map of command identifiers to their respective commands
-	std::map<uint8_t, ShaderCommand> commands_map;
+	// Original template code with placeholders
+	std::string template_code;
+	// Mapping of placeholder IDs to their code snippets
+	std::map<std::string, std::vector<std::string>> snippets;
+	// Loaded command configurations
+	std::vector<ShaderCommandConfig> commands;
 };
-
 } // namespace world
 } // namespace renderer
 } // namespace openage
