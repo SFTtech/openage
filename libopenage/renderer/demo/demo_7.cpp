@@ -1,5 +1,6 @@
-// demo_shader_commands.h
-#pragma once
+// Copyright 2025-2025 the openage authors. See copying.md for legal info.
+
+#include "demo_7.h"
 
 #include "util/path.h"
 
