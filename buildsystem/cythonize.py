@@ -89,17 +89,17 @@ def cythonize_wrapper(modules, force_optimized_lib = False, **kwargs):
             if src_modules:
                 cythonize(src_modules, **kwargs)
                 if sys.platform == 'win32' and force_optimized_lib:
-                    windows_use_optimized_lib_python(src_modules, bin_dir)
+                    win_use_optimized_lib_python(src_modules, bin_dir)
 
             if bin_modules:
                 os.chdir(bin_dir)
                 cythonize(bin_modules, **kwargs)
                 if sys.platform == 'win32' and force_optimized_lib:
-                    windows_use_optimized_lib_python(bin_modules, bin_dir)
+                    win_use_optimized_lib_python(bin_modules, bin_dir)
                 os.chdir(src_dir)
 
 
-def windows_use_optimized_lib_python(modules, path):
+def win_use_optimized_lib_python(modules, path):
     """
     Add an #ifdef statement in cythonized .cpp files to temporarily undefine _DEBUG before
     #include "Python.h"
@@ -107,6 +107,8 @@ def windows_use_optimized_lib_python(modules, path):
     This function modifies the generated C++ files from Cython to prevent linking to
     the debug version of the Python library on Windows. The debug version of the
     Python library cannot import Python libraries that contain extension modules.
+    see: https://github.com/python/cpython/issues/127619 (To unserstand the problem)
+    see: https://stackoverflow.com/a/59566420 (To understand the soloution)
     """
 
     for module in modules:
@@ -117,10 +119,24 @@ def windows_use_optimized_lib_python(modules, path):
         module = module + ".cpp"
         with open(module, "r", encoding='utf8') as file:
             text = file.read()
-            text = text.replace("#include \"Python.h\"",
-                                "#ifdef _DEBUG\n#define _DEBUG_WAS_DEFINED\n#undef _DEBUG\n#endif\n\
-                                #include \"Python.h\"\n#ifdef _DEBUG_WAS_DEFINED\n#define _DEBUG\n\
-                                #undef _DEBUG_WAS_DEFINED\n#endif", 1)
+            if not text.count("OPENAGE: UNDEF_DEBUG_INSERTED"):
+                text = text.replace(
+                    '#include "Python.h"',
+                    (
+                        "\n\n// OPENAGE: UNDEF_DEBUG_INSERTED\n"
+                        "// Avoid linking to the debug version of the Python library on Windows\n\n"
+                        "#ifdef _DEBUG\n"
+                        "#define _DEBUG_WAS_DEFINED\n"
+                        "#undef _DEBUG\n#endif\n"
+                        "#include \"Python.h\"\n"
+                        "#ifdef _DEBUG_WAS_DEFINED\n"
+                        "#define _DEBUG\n"
+                        "#undef _DEBUG_WAS_DEFINED\n"
+                        "#endif\n\n"
+                        "// OPENAGE: UNDEF_DEBUG_INSERTED\n\n"
+                    ),
+                    1
+                )
         with open(module, "w", encoding='utf8') as file:
             file.write(text)
 

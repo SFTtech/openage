@@ -375,9 +375,6 @@ function(python_finalize)
 
 
 	# cythonize (.pyx -> .cpp)
-	if(WIN32 AND "${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
-		set(force_optimized_lib "--force_optimized_lib")
-	endif()
 
 	get_property(cython_modules GLOBAL PROPERTY SFT_CYTHON_MODULES)
 	write_on_change("${CMAKE_BINARY_DIR}/py/cython_modules" "${cython_modules}")
@@ -396,7 +393,7 @@ function(python_finalize)
 		"${CMAKE_BINARY_DIR}/py/cython_modules"
 		"${CMAKE_BINARY_DIR}/py/cython_modules_embed"
 		"${CMAKE_BINARY_DIR}/py/pxd_list"
-		${force_optimized_lib}
+		${force_optimized_lib_flag}
 		"--build-dir" "${CMAKE_BINARY_DIR}"
 		COMMAND "${CMAKE_COMMAND}" -E touch "${CYTHONIZE_TIMEFILE}"
 		DEPENDS

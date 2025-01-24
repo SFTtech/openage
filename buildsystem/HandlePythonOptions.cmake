@@ -47,6 +47,7 @@ if(WIN32 AND "${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
 	if (${_index} GREATER -1)
 		MATH(EXPR _index "${_index}+1")
 		list(GET PYEXT_LIBRARY ${_index} PYEXT_LIBRARY)
+		set(force_optimized_lib_flag "--force_optimized_lib")
 	endif()
 endif()
 
