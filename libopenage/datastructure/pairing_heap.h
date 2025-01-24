@@ -1,4 +1,4 @@
-// Copyright 2014-2024 the openage authors. See copying.md for legal info.
+// Copyright 2014-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -404,7 +404,7 @@ public:
 	 * erase all elements on the heap.
 	 */
 	void clear() {
-		auto delete_node = [](element_t node) { delete node; };
+		auto delete_node = [](element_t& node) { delete node; node = nullptr; };
 		this->iter_all<true>(delete_node);
 		this->root_node = nullptr;
 		this->node_count = 0;
@@ -586,7 +586,7 @@ public:
 	 * @param func Function to apply to each node.
 	 */
 	template <bool reverse = false>
-	void iter_all(const std::function<void(const element_t &)> &func) const {
+	void iter_all(const std::function<void(element_t &)> &func) {
 		this->walk_tree<reverse>(this->root_node, func);
 	}
 
@@ -599,21 +599,18 @@ private:
 	 * @param func Function to apply to each node.
 	 */
 	template <bool reverse = false>
-	void walk_tree(const element_t &start,
-	               const std::function<void(const element_t &)> &func) const {
+	void walk_tree(element_t &start,
+	               const std::function<void(element_t &)> &func) {
 		if constexpr (not reverse) {
 			func(start);
 		}
 
 		if (start) {
 			auto node = start->first_child;
-			while (true) {
-				if (not node) {
-					break;
-				}
-
+			while (node) {
 				this->walk_tree<reverse>(node, func);
-				node = node->next_sibling;
+				if (node)
+					node = node->next_sibling;
 			}
 			if constexpr (reverse) {
 				func(start);
