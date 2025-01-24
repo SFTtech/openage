@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# Copyright 2015-2021 the openage authors. See copying.md for legal info.
+# Copyright 2015-2025 the openage authors. See copying.md for legal info.
 
 """
 Runs Cython on all modules that were listed via add_cython_module.
@@ -73,7 +73,7 @@ def remove_if_exists(filename):
         filename.unlink()
 
 
-def cythonize_wrapper(modules, **kwargs):
+def cythonize_wrapper(modules, force_optimized_lib = False, **kwargs):
     """ Calls cythonize, filtering useless warnings """
     bin_dir, bin_modules = kwargs['build_dir'], []
     src_dir, src_modules = Path.cwd(), []
@@ -88,29 +88,40 @@ def cythonize_wrapper(modules, **kwargs):
         with redirect_stdout(cython_filter):
             if src_modules:
                 cythonize(src_modules, **kwargs)
-                windows_include_python_debug_build_wrapper(src_modules, bin_dir)
+                if sys.platform == 'win32' and force_optimized_lib:
+                    windows_use_optimized_lib_python(src_modules, bin_dir)
 
             if bin_modules:
                 os.chdir(bin_dir)
                 cythonize(bin_modules, **kwargs)
-                windows_include_python_debug_build_wrapper(bin_modules, bin_dir)
+                if sys.platform == 'win32' and force_optimized_lib:
+                    windows_use_optimized_lib_python(bin_modules, bin_dir)
                 os.chdir(src_dir)
 
 
-def windows_include_python_debug_build_wrapper(modules, path):
+def windows_use_optimized_lib_python(modules, path):
+    """
+    Add an #ifdef statement in cythonized .cpp files to temporarily undefine _DEBUG before
+    #include "Python.h"
+
+    This function modifies the generated C++ files from Cython to prevent linking to
+    the debug version of the Python library on Windows. The debug version of the
+    Python library cannot import Python libraries that contain extension modules.
+    """
+
     for module in modules:
         module = str(module)
-        if (path):
+        if path:
             module = path + "\\" + module
         module = module.removesuffix(".py").removesuffix(".pyx")
         module = module + ".cpp"
-        with open(module, "r") as file:
+        with open(module, "r", encoding='utf8') as file:
             text = file.read()
             text = text.replace("#include \"Python.h\"",
                                 "#ifdef _DEBUG\n#define _DEBUG_WAS_DEFINED\n#undef _DEBUG\n#endif\n\
                                 #include \"Python.h\"\n#ifdef _DEBUG_WAS_DEFINED\n#define _DEBUG\n\
                                 #undef _DEBUG_WAS_DEFINED\n#endif", 1)
-        with open(module, "w") as file:
+        with open(module, "w", encoding='utf8') as file:
             file.write(text)
 
 
@@ -144,6 +155,8 @@ def main():
     ))
     cli.add_argument("--threads", type=int, default=cpu_count(),
                      help="number of compilation threads to use")
+    cli.add_argument("--force_optimized_lib", action="store_true",
+                     help= "edit compiled .cpp files to link to optimized version of python libary")
     args = cli.parse_args()
 
     # cython emits warnings on using absolute paths to modules
@@ -178,12 +191,12 @@ def main():
     # writing funny lines at the head of each file.
     cythonize_args['language'] = 'c++'
 
-    cythonize_wrapper(modules, **cythonize_args)
+    cythonize_wrapper(modules, args.force_optimized_lib, **cythonize_args)
 
     # build standalone executables that embed the py interpreter
     Options.embed = "main"
 
-    cythonize_wrapper(embedded_modules, **cythonize_args)
+    cythonize_wrapper(embedded_modules, args.force_optimized_lib, **cythonize_args)
 
     # verify depends
     from Cython.Build.Dependencies import _dep_tree
