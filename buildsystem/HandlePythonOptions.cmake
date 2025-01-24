@@ -1,4 +1,4 @@
-# Copyright 2015-2023 the openage authors. See copying.md for legal info.
+# Copyright 2015-2025 the openage authors. See copying.md for legal info.
 
 # finds the python interpreter, install destination and extension flags.
 
@@ -39,6 +39,17 @@ if(PYTHON_VER VERSION_GREATER_EQUAL 3.8 AND PYTHON_VERSION VERSION_LESS 3.9)
 endif()
 
 set(PYEXT_LIBRARY "${PYTHON_LIBRARIES}")
+
+#Windows always uses optimized version of Python lib
+if(WIN32 AND "${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
+	#get index of string "optimized" and increment it by 1 so index points at the path of the optimized lib
+	list (FIND PYEXT_LIBRARY "optimized" _index)
+	if (${_index} GREATER -1)
+		MATH(EXPR _index "${_index}+1")
+		list(GET PYEXT_LIBRARY ${_index} PYEXT_LIBRARY)
+	endif()
+endif()
+
 set(PYEXT_INCLUDE_DIRS "${PYTHON_INCLUDE_DIRS};${NUMPY_INCLUDE_DIR}")
 
 if(NOT CMAKE_PY_INSTALL_PREFIX)

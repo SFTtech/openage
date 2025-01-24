@@ -1,4 +1,4 @@
-# Copyright 2014-2020 the openage authors. See copying.md for legal info.
+# Copyright 2014-2025 the openage authors. See copying.md for legal info.
 
 # provides macros for defining python extension modules and pxdgen sources.
 # and a 'finalize' function that must be called in the end.
@@ -128,7 +128,8 @@ function(add_cython_modules)
 				if(MINGW)
 					set_target_properties("${TARGETNAME}" PROPERTIES LINK_FLAGS "-municode")
 				endif()
-				target_link_libraries("${TARGETNAME}" PRIVATE C:/vcpkg/installed/x64-windows/lib/python311.lib)
+
+				target_link_libraries("${TARGETNAME}" PRIVATE ${PYEXT_LIBRARY})
 			else()
 				set_property(GLOBAL APPEND PROPERTY SFT_CYTHON_MODULES "${source}")
 				add_library("${TARGETNAME}" MODULE "${CPPNAME}")
@@ -139,7 +140,7 @@ function(add_cython_modules)
 				)
 
 				if(WIN32)
-					target_link_libraries("${TARGETNAME}" PRIVATE C:/vcpkg/installed/x64-windows/lib/python311.lib)
+					target_link_libraries("${TARGETNAME}" PRIVATE ${PYEXT_LIBRARY})
 				endif()
 			endif()
 
@@ -374,6 +375,9 @@ function(python_finalize)
 
 
 	# cythonize (.pyx -> .cpp)
+	if(WIN32 AND "${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
+		set(force_optimized_lib "--force_optimized_lib")
+	endif()
 
 	get_property(cython_modules GLOBAL PROPERTY SFT_CYTHON_MODULES)
 	write_on_change("${CMAKE_BINARY_DIR}/py/cython_modules" "${cython_modules}")
@@ -392,6 +396,7 @@ function(python_finalize)
 		"${CMAKE_BINARY_DIR}/py/cython_modules"
 		"${CMAKE_BINARY_DIR}/py/cython_modules_embed"
 		"${CMAKE_BINARY_DIR}/py/pxd_list"
+		${force_optimized_lib}
 		"--build-dir" "${CMAKE_BINARY_DIR}"
 		COMMAND "${CMAKE_COMMAND}" -E touch "${CYTHONIZE_TIMEFILE}"
 		DEPENDS
@@ -513,7 +518,6 @@ function(python_finalize)
 		${INPLACEMODULES_LISTFILE}
 		"$<CONFIG>"
 	)
-	message(hello jeremiah, ${INPLACEMODULES_LISTFILE})
 	set(INPLACEMODULES_TIMEFILE "${CMAKE_BINARY_DIR}/py/inplacemodules_timefile")
 	add_custom_command(OUTPUT "${INPLACEMODULES_TIMEFILE}"
 		COMMAND ${INPLACEMODULES_INVOCATION}
