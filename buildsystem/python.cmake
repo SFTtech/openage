@@ -128,8 +128,7 @@ function(add_cython_modules)
 				if(MINGW)
 					set_target_properties("${TARGETNAME}" PROPERTIES LINK_FLAGS "-municode")
 				endif()
-
-				target_link_libraries("${TARGETNAME}" PRIVATE ${PYEXT_LIBRARY})
+				target_link_libraries("${TARGETNAME}" PRIVATE C:/vcpkg/installed/x64-windows/lib/python311.lib)
 			else()
 				set_property(GLOBAL APPEND PROPERTY SFT_CYTHON_MODULES "${source}")
 				add_library("${TARGETNAME}" MODULE "${CPPNAME}")
@@ -140,7 +139,7 @@ function(add_cython_modules)
 				)
 
 				if(WIN32)
-					target_link_libraries("${TARGETNAME}" PRIVATE ${PYEXT_LIBRARY})
+					target_link_libraries("${TARGETNAME}" PRIVATE C:/vcpkg/installed/x64-windows/lib/python311.lib)
 				endif()
 			endif()
 
@@ -514,6 +513,7 @@ function(python_finalize)
 		${INPLACEMODULES_LISTFILE}
 		"$<CONFIG>"
 	)
+	message(hello jeremiah, ${INPLACEMODULES_LISTFILE})
 	set(INPLACEMODULES_TIMEFILE "${CMAKE_BINARY_DIR}/py/inplacemodules_timefile")
 	add_custom_command(OUTPUT "${INPLACEMODULES_TIMEFILE}"
 		COMMAND ${INPLACEMODULES_INVOCATION}

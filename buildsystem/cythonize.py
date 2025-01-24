@@ -88,11 +88,30 @@ def cythonize_wrapper(modules, **kwargs):
         with redirect_stdout(cython_filter):
             if src_modules:
                 cythonize(src_modules, **kwargs)
+                windows_include_python_debug_build_wrapper(src_modules, bin_dir)
 
             if bin_modules:
                 os.chdir(bin_dir)
                 cythonize(bin_modules, **kwargs)
+                windows_include_python_debug_build_wrapper(bin_modules, bin_dir)
                 os.chdir(src_dir)
+
+
+def windows_include_python_debug_build_wrapper(modules, path):
+    for module in modules:
+        module = str(module)
+        if (path):
+            module = path + "\\" + module
+        module = module.removesuffix(".py").removesuffix(".pyx")
+        module = module + ".cpp"
+        with open(module, "r") as file:
+            text = file.read()
+            text = text.replace("#include \"Python.h\"",
+                                "#ifdef _DEBUG\n#define _DEBUG_WAS_DEFINED\n#undef _DEBUG\n#endif\n\
+                                #include \"Python.h\"\n#ifdef _DEBUG_WAS_DEFINED\n#define _DEBUG\n\
+                                #undef _DEBUG_WAS_DEFINED\n#endif", 1)
+        with open(module, "w") as file:
+            file.write(text)
 
 
 def main():
