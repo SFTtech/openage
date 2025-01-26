@@ -14,7 +14,8 @@ namespace openage::path {
 CostField::CostField(size_t size) :
 	size{size},
 	valid_until{time::TIME_MIN},
-	cells(this->size * this->size, COST_MIN) {
+	cells(this->size * this->size, COST_MIN),
+	cell_cost_history() {
 	log::log(DBG << "Created cost field with size " << this->size << "x" << this->size);
 }
 
@@ -54,6 +55,7 @@ void CostField::set_costs(std::vector<cost_t> &&cells, const time::time_t &valid
 
 	this->cells = std::move(cells);
 	this->valid_until = valid_until;
+	this->cell_cost_history.set_insert_range(valid_until, this->cells.begin(), this->cells.end());
 }
 
 bool CostField::stamp(size_t idx, cost_t cost, const time::time_t &stamped_at) {

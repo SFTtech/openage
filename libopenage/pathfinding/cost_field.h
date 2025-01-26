@@ -6,6 +6,7 @@
 #include <vector>
 #include <optional>
 
+#include "curve/container/array.h"
 #include "pathfinding/types.h"
 #include "time/time.h"
 
@@ -14,6 +15,8 @@ namespace openage {
 namespace coord {
 struct tile_delta;
 } // namespace coord
+
+const unsigned int CHUNK_SIZE = 100;
 
 namespace path {
 
@@ -90,6 +93,7 @@ public:
 	inline void set_cost(size_t idx, cost_t cost, const time::time_t &valid_until) {
 		this->cells[idx] = cost;
 		this->valid_until = valid_until;
+		this->cell_cost_history.set_insert(valid_until, idx, this->cells[idx]);
 	}
 
 	/**
@@ -162,6 +166,12 @@ private:
 	 * Cost stamp vector.
 	 */
 	std::vector<std::optional<cost_stamp_t>> cost_stamps;
+
+
+	/**
+	 * Array curve recording cell cost history,
+	 */
+	curve::Array<cost_t, CHUNK_SIZE> cell_cost_history;
 };
 
 } // namespace path
