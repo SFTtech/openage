@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include <algorithm>
 #include <array>
 
 #include "curve/container/iterator.h"
@@ -42,8 +43,8 @@ public:
 	 * @param notifier Function to call when this curve changes.
 	 * @param default_vals Default values for the array elements.
 	 */
-	Array(const std::shared_ptr<event::EventLoop> &loop,
-	      size_t id,
+	Array(const std::shared_ptr<event::EventLoop> &loop = nullptr,
+	      size_t id = 0,
 	      const std::string &idstr = "",
 	      const EventEntity::single_change_notifier &notifier = nullptr,
 	      const std::array<T, Size> &default_vals = {}) :
@@ -109,6 +110,14 @@ public:
 	 */
 	std::pair<time::time_t, T> next_frame(const time::time_t &t, const index_t index) const;
 
+
+	void set_insert_range(const time::time_t &t, auto begin_it, auto end_it) {
+		ENSURE(std::distance(begin_it, end_it) <= Size,
+		       "trying to insert more values than there are postions: max allowed = " << Size);
+		index_t i = 0;
+		std::for_each(begin_it, end_it, [&](const T &val) { this->set_insert(t, i++, val); });
+	}
+
 	/**
 	 * Insert a new keyframe value at time t.
 	 *
@@ -118,7 +127,7 @@ public:
 	 * @param index Index of the array element.
 	 * @param value Keyframe value.
 	 */
-	void set_insert(const time::time_t &t, const index_t index, T value);
+	void set_insert(const time::time_t &t, const index_t index, const T &value);
 
 	/**
 	 * Insert a new keyframe value at time t. Erase all other keyframes with elem->time > t.
@@ -127,7 +136,7 @@ public:
 	 * @param index Index of the array element.
 	 * @param value Keyframe value.
 	 */
-	void set_last(const time::time_t &t, const index_t index, T value);
+	void set_last(const time::time_t &t, const index_t index, const T &value);
 
 	/**
 	 * Replace all keyframes at elem->time == t with a new keyframe value.
@@ -136,7 +145,7 @@ public:
 	 * @param index Index of the array element.
 	 * @param value Keyframe value.
 	 */
-	void set_replace(const time::time_t &t, const index_t index, T value);
+	void set_replace(const time::time_t &t, const index_t index, const T &value);
 
 	/**
 	 * Copy keyframes from another container to this container.
@@ -324,7 +333,7 @@ consteval size_t Array<T, Size>::size() const {
 template <typename T, size_t Size>
 void Array<T, Size>::set_insert(const time::time_t &t,
                                 const index_t index,
-                                T value) {
+                                const T &value) {
 	// find elem_ptr in container to get the last keyframe with time <= t
 	auto hint = this->last_elements[index];
 	auto e = this->containers.at(index).insert_after(Keyframe{t, value}, hint);
@@ -338,7 +347,7 @@ void Array<T, Size>::set_insert(const time::time_t &t,
 template <typename T, size_t Size>
 void Array<T, Size>::set_last(const time::time_t &t,
                               const index_t index,
-                              T value) {
+                              const T &value) {
 	// find elem_ptr in container to get the last keyframe with time <= t
 	auto hint = this->last_elements[index];
 	auto e = this->containers.at(index).last(t, hint);
@@ -363,7 +372,7 @@ void Array<T, Size>::set_last(const time::time_t &t,
 template <typename T, size_t Size>
 void Array<T, Size>::set_replace(const time::time_t &t,
                                  const index_t index,
-                                 T value) {
+                                 const T &value) {
 	// find elem_ptr in container to get the last keyframe with time <= t
 	auto hint = this->last_elements[index];
 	auto e = this->containers.at(index).insert_overwrite(Keyframe{t, value}, hint);
