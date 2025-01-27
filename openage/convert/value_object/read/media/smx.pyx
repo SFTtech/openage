@@ -211,8 +211,7 @@ class SMX:
                     self.shadow_frames.append(SMXLayer(SMXShadowLayer(), layer_header, data))
 
                 elif layer_type is SMXLayerType.OUTLINE:
-                    # self.outline_frames.append(SMXLayer(SMXOutlineLayer(), layer_header, data))
-                    pass
+                    self.outline_frames.append(SMXLayer(SMXOutlineLayer(), layer_header, data))
 
     def get_frames(self, layer: int = 0):
         """
@@ -653,8 +652,9 @@ cdef class SMXLayer:
                 if SMXLayerVariant is SMXOutlineLayer:
                     # we don't know the color the game wants
                     # so we just draw index 0
-                    row_data.push_back(pixel(color_outline,
-                                            0, 0, 0, 0))
+                    for _ in range(pixel_count):
+                        row_data.push_back(pixel(color_outline,
+                                                0, 0, 0, 0))
 
             elif lower_crumb == 0b00000010:
                 if SMXLayerVariant is SMXMainLayer8to5:
