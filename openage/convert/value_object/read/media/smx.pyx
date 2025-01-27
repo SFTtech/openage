@@ -61,12 +61,24 @@ cdef public dict LAYER_TYPES = {
 }
 
 
+cdef class SMXMainLayer8to5:
+    pass
+
+cdef class SMXMainLayer4plus1:
+    pass
+
+cdef class SMXShadowLayer:
+    pass
+
+cdef class SMXOutlineLayer:
+    pass
+
+
 ctypedef fused SMXLayerVariant:
     SMXMainLayer8to5
     SMXMainLayer4plus1
-    SMXOutlineLayer
     SMXShadowLayer
-
+    SMXOutlineLayer
 
 
 class SMX:
@@ -190,16 +202,17 @@ class SMX:
 
                 if layer_type is SMXLayerType.MAIN:
                     if layer_header.compression_type == 0x08:
-                        self.main_frames.append(SMXMainLayer8to5(layer_header, data))
+                        self.main_frames.append(SMXLayer(SMXMainLayer8to5(), layer_header, data))
 
                     elif layer_header.compression_type == 0x00:
-                        self.main_frames.append(SMXMainLayer4plus1(layer_header, data))
+                        self.main_frames.append(SMXLayer(SMXMainLayer4plus1(), layer_header, data))
 
                 elif layer_type is SMXLayerType.SHADOW:
-                    self.shadow_frames.append(SMXShadowLayer(layer_header, data))
+                    self.shadow_frames.append(SMXLayer(SMXShadowLayer(), layer_header, data))
 
                 elif layer_type is SMXLayerType.OUTLINE:
-                    self.outline_frames.append(SMXOutlineLayer(layer_header, data))
+                    # self.outline_frames.append(SMXLayer(SMXOutlineLayer(), layer_header, data))
+                    pass
 
     def get_frames(self, layer: int = 0):
         """
@@ -327,6 +340,9 @@ cdef class SMXLayer:
     # pixel matrix representing the final image
     cdef vector[vector[pixel]] pcolor
 
+    def __init__(self, variant, layer_header, data) -> None:
+        self.init(variant, layer_header, data)
+
     def init(self, SMXLayerVariant variant, layer_header, data):
         """
         SMX layer definition superclass. There can be various types of
@@ -376,7 +392,6 @@ cdef class SMXLayer:
         for i in range(row_count):
             cmd_offset, color_offset, chunk_pos, row_data = \
                 self.create_color_row(variant, data_raw, i, cmd_offset, color_offset, chunk_pos)
-
             self.pcolor.push_back(row_data)
 
 
@@ -438,8 +453,8 @@ cdef class SMXLayer:
         # verify size of generated row
         if row_data.size() != pixel_count:
             got = row_data.size()
-            summary = "%d/%d -> row %d, layer type %d, offset %d / %#x" % (
-                got, pixel_count, rowid, self.info.layer_type,
+            summary = "%d/%d -> row %d, layer type %s, offset %d / %#x" % (
+                got, pixel_count, rowid, repr(self.info.layer_type),
                 first_cmd_offset, first_cmd_offset
                 )
             txt = "got %%s pixels than expected: %s, missing: %d" % (
@@ -773,31 +788,6 @@ cdef class SMXLayer:
 
     def __repr__(self):
         return repr(self.info)
-
-
-cdef class SMXMainLayer8to5(SMXLayer):
-    """
-    Compressed SMP layer (compression type 8to5) for the main graphics sprite.
-    """
-
-    def __init__(self, layer_header, data):
-        self.init(self, layer_header, data)
-
-cdef class SMXMainLayer4plus1(SMXLayer):
-    def __init__(self, layer_header, data):
-        self.init(self, layer_header, data)
-
-
-cdef class SMXOutlineLayer(SMXLayer):
-    def __init__(self, layer_header, data):
-        self.init(self, layer_header, data)
-
-
-cdef class SMXShadowLayer(SMXLayer):
-    def __init__(self, layer_header, data):
-        self.init(self, layer_header, data)
-
-
 
 
 @cython.boundscheck(False)
