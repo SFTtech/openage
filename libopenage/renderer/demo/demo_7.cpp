@@ -4,27 +4,15 @@
 
 #include "util/path.h"
 
-#include <eigen3/Eigen/Dense>
-#include <QKeyEvent>
-
-#include "coord/tile.h"
-#include "renderer/camera/camera.h"
+#include "renderer/demo/util.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/opengl/window.h"
-#include "renderer/render_factory.h"
 #include "renderer/render_pass.h"
 #include "renderer/render_target.h"
-#include "renderer/resources/assets/asset_manager.h"
+#include "renderer/resources/mesh_data.h"
 #include "renderer/resources/shader_source.h"
-#include "renderer/stages/camera/manager.h"
-#include "renderer/stages/screen/render_stage.h"
-#include "renderer/stages/skybox/render_stage.h"
-#include "renderer/stages/terrain/render_entity.h"
-#include "renderer/stages/terrain/render_stage.h"
-#include "renderer/stages/world/render_entity.h"
-#include "renderer/stages/world/render_stage.h"
-#include "renderer/uniform_buffer.h"
-#include "time/clock.h"
+#include "renderer/shader_program.h"
+#include "renderer/stages/world/shader_template.h"
 
 namespace openage::renderer::tests {
 
@@ -36,72 +24,62 @@ void renderer_demo_7(const util::Path &path) {
 	settings.height = 600;
 	settings.debug = true;
 
-	auto window = std::make_shared<opengl::GlWindow>("Shader Commands Demo", settings);
-	auto renderer = window->make_renderer();
-	auto camera = std::make_shared<renderer::camera::Camera>(renderer, window->get_size());
-	auto clock = std::make_shared<time::Clock>();
-	auto asset_manager = std::make_shared<renderer::resources::AssetManager>(
-		renderer,
-		path["assets"]["test"]);
-	auto cam_manager = std::make_shared<renderer::camera::CameraManager>(camera);
+	opengl::GlWindow window("Shader Commands Demo", settings);
+	auto renderer = window.make_renderer();
 
 	auto shaderdir = path / "assets" / "test" / "shaders";
 
-	std::vector<std::shared_ptr<RenderPass>>
-		render_passes{};
+	// Initialize shader templlalte
+	world::ShaderTemplate frag_template(shaderdir / "demo_7_shader_command.frag.glsl");
 
-	// Initialize world renderer with shader commands
-	auto world_renderer = std::make_shared<renderer::world::WorldRenderStage>(
-		window,
-		renderer,
-		camera,
-		shaderdir,
-		shaderdir, // Temporarily, Shader commands config has the same path with shaders for this demo
-		asset_manager,
-		clock);
+	// Load snippets from a snippet directory
+	frag_template.load_snippets(shaderdir / "demo_7_snippets");
 
-	render_passes.push_back(world_renderer->get_render_pass());
+	auto vert_shader_file = (shaderdir / "demo_7_shader_command.vert.glsl").open();
+	auto vert_shader_src = resources::ShaderSource(
+		resources::shader_lang_t::glsl,
+		resources::shader_stage_t::vertex,
+		vert_shader_file.read());
+	vert_shader_file.close();
 
-	auto screen_renderer = std::make_shared<renderer::screen::ScreenRenderStage>(
-		window,
-		renderer,
-		path["assets"]["shaders"]);
-	std::vector<std::shared_ptr<renderer::RenderTarget>> targets{};
-	for (auto &pass : render_passes) {
-		targets.push_back(pass->get_target());
+	auto frag_shader_src = resources::ShaderSource(
+		resources::shader_lang_t::glsl,
+		resources::shader_stage_t::fragment,
+		frag_template.generate_source());
+
+	auto shader = renderer->add_shader({vert_shader_src, frag_shader_src});
+
+	// Create a simple quad for rendering
+	auto quad = renderer->add_mesh_geometry(resources::MeshData::make_quad());
+
+	auto uniforms = shader->new_uniform_input("time", 0.0f);
+
+	Renderable display_obj{
+		uniforms,
+		quad,
+		false,
+		false,
+	};
+
+	if (not check_uniform_completeness({display_obj})) {
+		log::log(WARN << "Uniforms not complete.");
 	}
-	screen_renderer->set_render_targets(targets);
 
-	render_passes.push_back(screen_renderer->get_render_pass());
-
-	auto render_factory = std::make_shared<RenderFactory>(nullptr, world_renderer);
-
-	auto entity1 = render_factory->add_world_render_entity();
-	entity1->update(0, coord::phys3(0.0f, 0.0f, 0.0f), "./textures/test_gaben.sprite");
-
-	auto entity2 = render_factory->add_world_render_entity();
-	entity2->update(1, coord::phys3(3.0f, 0.0f, 0.0f), "./textures/test_gaben.sprite");
-
-	auto entity3 = render_factory->add_world_render_entity();
-	entity3->update(2, coord::phys3(-3.0f, 0.0f, 0.0f), "./textures/test_gaben.sprite");
+	auto pass = renderer->add_render_pass({display_obj}, renderer->get_display_target());
 
 	// Main loop
-	while (not window->should_close()) {
+	float time = 0.0f;
+	while (not window.should_close()) {
+		time += 0.016f;
+		uniforms->update("time", time);
+
+		renderer->render(pass);
+		window.update();
 		qtapp->process_events();
 
-		// Update camera matrices
-		cam_manager->update();
-
-		world_renderer->update();
-
-		for (auto &pass : render_passes) {
-			renderer->render(pass);
-		}
-
 		renderer->check_error();
-
-		window->update();
 	}
+	window.close();
 }
 
 } // namespace openage::renderer::tests

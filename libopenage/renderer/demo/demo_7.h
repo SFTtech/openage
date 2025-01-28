@@ -7,13 +7,13 @@
 namespace openage::renderer::tests {
 
 /**
- * Show off the render stages in the level 2 renderer and the camera
- * system.
+ * Demonstrate the shader template system for shader generation.
  *     - Window creation
- *     - Creating a camera
- *     - Initializing the level 2 render stages: skybox, terrain, world, screen
- *     - Adding renderables to the render stages via the render factory
- *     - Moving camera with mouse/keyboard callbacks
+ *     - Create a shader template
+ *     - Load shader snippets (command) from files
+ *     - Generate shader sources from the template
+ *     - Creating a render pass
+ *     - Creating a renderable from a mesh
  *
  * @param path Path to the project rootdir.
  */
