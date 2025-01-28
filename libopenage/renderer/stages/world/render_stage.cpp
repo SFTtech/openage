@@ -1,4 +1,4 @@
-// Copyright 2022-2025 the openage authors. See copying.md for legal info.
+// Copyright 2022-2024 the openage authors. See copying.md for legal info.
 
 #include "render_stage.h"
 
@@ -12,7 +12,6 @@
 #include "renderer/resources/texture_info.h"
 #include "renderer/shader_program.h"
 #include "renderer/stages/world/object.h"
-#include "renderer/stages/world/world_shader_commands.h"
 #include "renderer/texture.h"
 #include "renderer/window.h"
 #include "time/clock.h"
@@ -45,30 +44,6 @@ WorldRenderStage::WorldRenderStage(const std::shared_ptr<Window> &window,
 	});
 
 	log::log(INFO << "Created render stage 'World'");
-}
-
-WorldRenderStage::WorldRenderStage(const std::shared_ptr<Window> &window,
-                                   const std::shared_ptr<renderer::Renderer> &renderer,
-                                   const std::shared_ptr<renderer::camera::Camera> &camera,
-                                   const util::Path &shaderdir,
-                                   const util::Path &configdir,
-                                   const std::shared_ptr<renderer::resources::AssetManager> &asset_manager,
-                                   const std::shared_ptr<time::Clock> clock) :
-	renderer{renderer},
-	camera{camera},
-	asset_manager{asset_manager},
-	render_objects{},
-	clock{clock},
-	default_geometry{this->renderer->add_mesh_geometry(WorldObject::get_mesh())} {
-	auto size = window->get_size();
-	this->initialize_render_pass_with_shader_commands(size[0], size[1], shaderdir, configdir);
-	this->init_uniform_ids();
-
-	window->add_resize_callback([this](size_t width, size_t height, double /*scale*/) {
-		this->resize(width, height);
-	});
-
-	log::log(INFO << "Created render stage 'World' with shader command");
 }
 
 std::shared_ptr<renderer::RenderPass> WorldRenderStage::get_render_pass() {
@@ -179,39 +154,6 @@ void WorldRenderStage::init_uniform_ids() {
 	WorldObject::scale = this->display_shader->get_uniform_id("scale");
 	WorldObject::subtex_size = this->display_shader->get_uniform_id("subtex_size");
 	WorldObject::anchor_offset = this->display_shader->get_uniform_id("anchor_offset");
-}
-
-void WorldRenderStage::initialize_render_pass_with_shader_commands(size_t width, size_t height, const util::Path &shaderdir, const util::Path &config_path) {
-	auto vert_shader_file = (shaderdir / "demo_7_world.vert.glsl").open();
-	auto vert_shader_src = renderer::resources::ShaderSource(
-		resources::shader_lang_t::glsl,
-		resources::shader_stage_t::vertex,
-		vert_shader_file.read());
-	vert_shader_file.close();
-
-	auto frag_shader_file = (shaderdir / "demo_7_world.frag.glsl").open();
-	log::log(INFO << "Loading shader commands config from: " << (shaderdir / "demo_7_display.frag.glsl"));
-	this->shader_template = std::make_shared<ShaderCommandTemplate>(frag_shader_file.read());
-	if (not this->shader_template->load_commands(config_path / "world_commands.config")) {
-		log::log(ERR << "Failed to load shader commands configuration for world stage");
-		return;
-	}
-
-	auto frag_shader_src = renderer::resources::ShaderSource(
-		resources::shader_lang_t::glsl,
-		resources::shader_stage_t::fragment,
-		this->shader_template->generate_source());
-	frag_shader_file.close();
-
-	this->output_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::rgba8));
-	this->depth_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::depth24));
-	this->id_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::r32ui));
-
-	this->display_shader = this->renderer->add_shader({vert_shader_src, frag_shader_src});
-	this->display_shader->bind_uniform_buffer("camera", this->camera->get_uniform_buffer());
-
-	auto fbo = this->renderer->create_texture_target({this->output_texture, this->depth_texture, this->id_texture});
-	this->render_pass = this->renderer->add_render_pass({}, fbo);
 }
 
 } // namespace openage::renderer::world
