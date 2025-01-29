@@ -70,7 +70,9 @@ bool CostField::stamp(size_t idx, cost_t cost, const time::time_t &stamped_at) {
 }
 
 bool CostField::unstamp(size_t idx, const time::time_t &unstamped_at) {
-	if (!this->cost_stamps[idx].has_value() || unstamped_at < this->cost_stamps[idx]->stamp_time) return false;
+	if (not this->cost_stamps[idx].has_value() or unstamped_at < this->cost_stamps[idx]->stamp_time) {
+	    return false;
+	}
 
 	cost_t original_cost = cost_stamps[idx]->original_cost;
 
