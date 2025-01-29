@@ -57,7 +57,9 @@ void CostField::set_costs(std::vector<cost_t> &&cells, const time::time_t &valid
 }
 
 bool CostField::stamp(size_t idx, cost_t cost, const time::time_t &stamped_at) {
-	if (this->cost_stamps[idx].has_value()) return false;
+	if (this->cost_stamps[idx].has_value()) {
+	    return false;
+	}
 
 	cost_t original_cost = this->get_cost(idx);
 	this->cost_stamps[idx]->original_cost = original_cost;
