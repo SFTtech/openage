@@ -1,4 +1,4 @@
-// Copyright 2015-2024 the openage authors. See copying.md for legal info.
+// Copyright 2015-2025 the openage authors. See copying.md for legal info.
 
 #include "gui.h"
 
@@ -7,6 +7,7 @@
 #include "renderer/gui/guisys/public/gui_renderer.h"
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "renderer/opengl/context.h"
+#include "renderer/opengl/render_pass.h"
 #include "renderer/render_pass.h"
 #include "renderer/render_target.h"
 #include "renderer/renderer.h"
@@ -85,19 +86,26 @@ void GUI::initialize_render_pass(size_t width,
 	// GUI draw surface. gets drawn on top of the gameworld in the presenter.
 	auto output_texture = this->renderer->add_texture(
 		resources::Texture2dInfo(width, height, resources::pixel_format::rgba8));
-	auto fbo = this->renderer->create_texture_target({output_texture});
+	auto depth_stencil_texture = this->renderer->add_texture(
+		resources::Texture2dInfo(width, height, resources::pixel_format::depth24_stencil8));
+	auto fbo = this->renderer->create_texture_target({output_texture, depth_stencil_texture});
 
 	this->texture_unif = maptex_shader->new_uniform_input("texture", this->texture);
 	Renderable display_obj{
 		this->texture_unif,
 		quad,
 		true,
-		true,
+		false,
 	};
 
 	// TODO: Rendering into the FBO is a bit redundant right now because we
 	// just copy the GUI texture into the output texture
 	this->render_pass = renderer->add_render_pass({display_obj}, fbo);
+
+	auto gl_pass = std::dynamic_pointer_cast<opengl::GlRenderPass>(this->render_pass);
+	if (gl_pass) {
+		gl_pass->set_stencil_config(true, true, 1, 0xFF, 0xFF, GL_ALWAYS);
+	}
 }
 
 

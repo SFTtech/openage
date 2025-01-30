@@ -188,11 +188,21 @@ void GlRenderer::render(const std::shared_ptr<RenderPass> &pass) {
 	// render all objects in the pass
 	const auto &layers = gl_pass->get_layers();
 	const auto &renderables = gl_pass->get_renderables();
+	const auto &stencil_config = gl_pass->get_stencil_config();
 
 	// Draw by layers
 	for (size_t i = 0; i < layers.size(); i++) {
 		const auto &layer = layers[i];
 		const auto &objects = renderables[i];
+
+		if (stencil_config.enabled) {
+			glEnable(GL_STENCIL_TEST);
+			glStencilMask(stencil_config.write ? stencil_config.write_mask : 0x00);
+			glStencilFunc(stencil_config.test_func, stencil_config.ref_value, stencil_config.read_mask);
+		}
+		else {
+			glDisable(GL_STENCIL_TEST);
+		}
 
 		if (layer.clear_depth) {
 			glClear(GL_DEPTH_BUFFER_BIT);

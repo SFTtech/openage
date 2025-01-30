@@ -1,4 +1,4 @@
-// Copyright 2019-2024 the openage authors. See copying.md for legal info.
+// Copyright 2019-2025 the openage authors. See copying.md for legal info.
 
 #include "render_pass.h"
 
@@ -35,4 +35,18 @@ bool GlRenderPass::get_is_optimized() const {
 void GlRenderPass::set_is_optimized(bool flag) {
 	this->is_optimized = flag;
 }
+
+void GlRenderPass::set_stencil_config(bool enabled, bool write, uint8_t ref_value, uint8_t write_mask, uint8_t read_mask, GLenum test_func) {
+	this->stencil_config.enabled = enabled;
+	this->stencil_config.write = write;
+	this->stencil_config.ref_value = ref_value;
+	this->stencil_config.write_mask = write_mask;
+	this->stencil_config.read_mask = read_mask;
+	this->stencil_config.test_func = test_func;
+}
+
+const StencilConfig &GlRenderPass::get_stencil_config() const {
+	return this->stencil_config;
+}
+
 } // namespace openage::renderer::opengl
