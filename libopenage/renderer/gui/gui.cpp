@@ -1,4 +1,4 @@
-// Copyright 2015-2025 the openage authors. See copying.md for legal info.
+// Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
 #include "gui.h"
 
@@ -62,10 +62,6 @@ std::shared_ptr<renderer::RenderPass> GUI::get_render_pass() const {
 	return this->render_pass;
 }
 
-std::shared_ptr<renderer::RenderPass> GUI::get_stencil_pass() const {
-	return this->stencil_pass;
-}
-
 void GUI::initialize_render_pass(size_t width,
                                  size_t height,
                                  const util::Path &shaderdir) {
@@ -102,10 +98,6 @@ void GUI::initialize_render_pass(size_t width,
 	// TODO: Rendering into the FBO is a bit redundant right now because we
 	// just copy the GUI texture into the output texture
 	this->render_pass = renderer->add_render_pass({display_obj}, fbo);
-
-	auto stencil_pass = renderer->add_render_pass({display_obj}, fbo);
-	stencil_pass->set_stencil_state(StencilState::WRITE_STENCIL_MASK);
-	this->stencil_pass = stencil_pass;
 }
 
 

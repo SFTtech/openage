@@ -1,4 +1,4 @@
-// Copyright 2019-2025 the openage authors. See copying.md for legal info.
+// Copyright 2019-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -230,13 +230,6 @@ protected:
 	 * Input manager.
 	 */
 	std::shared_ptr<input::InputManager> input_manager;
-
-	/**
-	 * Pass indices.
-	 */
-	size_t index_gui_stencil_pass;
-	size_t index_gui_render_pass;
-	size_t index_final_render_pass;
 };
 
 } // namespace presenter

@@ -63,12 +63,6 @@ private:
 	/// Optimize the render pass by reordering stuff
 	static void optimize(const std::shared_ptr<GlRenderPass> &pass);
 
-	void setupStencilWrite();
-
-	void setupStencilTest();
-
-	void disableStencilTest();
-
 	/// The GL context.
 	std::shared_ptr<GlContext> gl_context;
 

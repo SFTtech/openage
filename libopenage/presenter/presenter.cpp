@@ -1,4 +1,4 @@
-// Copyright 2019-2025 the openage authors. See copying.md for legal info.
+// Copyright 2019-2024 the openage authors. See copying.md for legal info.
 
 #include "presenter.h"
 
@@ -166,17 +166,8 @@ void Presenter::init_graphics(const renderer::window_settings &window_settings) 
 		this->time_loop->get_clock());
 	this->render_passes.push_back(this->hud_renderer->get_render_pass());
 
-	for (auto &render_pass : render_passes) {
-		render_pass->set_stencil_state(renderer::StencilState::USE_STENCIL_TEST);
-	}
-
 	this->init_gui();
 	this->init_final_render_pass();
-
-	// set passes indices
-	this->index_gui_stencil_pass = this->render_passes.size() - 3;
-	this->index_gui_render_pass = this->render_passes.size() - 2;
-	this->index_final_render_pass = this->render_passes.size() - 1;
 
 	if (this->simulation) {
 		auto render_factory = std::make_shared<renderer::RenderFactory>(this->terrain_renderer, this->world_renderer);
@@ -221,9 +212,6 @@ void Presenter::init_gui() {
 		qml_assets,    // qml data: Engine *, the data directory, ...
 		this->renderer // openage renderer
 	);
-
-	auto stencil_pass = this->gui->get_stencil_pass();
-	this->render_passes.push_back(stencil_pass);
 
 	auto gui_pass = this->gui->get_render_pass();
 	this->render_passes.push_back(gui_pass);
@@ -325,18 +313,11 @@ void Presenter::render() {
 	this->terrain_renderer->update();
 	this->world_renderer->update();
 	this->hud_renderer->update();
-
 	this->gui->render();
-	this->renderer->render(this->render_passes[this->index_gui_stencil_pass]);
 
-	for (size_t i = 0; i < this->index_gui_stencil_pass; ++i) {
-		this->renderer->render(this->render_passes[i]);
+	for (auto &pass : this->render_passes) {
+		this->renderer->render(pass);
 	}
-
-	this->gui->render();
-	this->renderer->render(this->render_passes[this->index_gui_render_pass]);
-
-	this->renderer->render(this->render_passes[this->index_final_render_pass]);
 }
 
 } // namespace openage::presenter

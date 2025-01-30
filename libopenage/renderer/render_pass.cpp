@@ -1,4 +1,4 @@
-// Copyright 2024-2025 the openage authors. See copying.md for legal info.
+// Copyright 2024-2024 the openage authors. See copying.md for legal info.
 
 #include "render_pass.h"
 
@@ -83,7 +83,7 @@ void RenderPass::add_renderables(Renderable &&renderable, int64_t priority) {
 	this->add_renderables(std::vector<Renderable>{std::move(renderable)}, priority);
 }
 
-void RenderPass::add_layer(int64_t priority, bool clear_depth, StencilState stencil_state) {
+void RenderPass::add_layer(int64_t priority, bool clear_depth) {
 	size_t layer_index = 0;
 	for (const auto &layer : this->layers) {
 		if (layer.priority > priority) {
@@ -92,18 +92,12 @@ void RenderPass::add_layer(int64_t priority, bool clear_depth, StencilState sten
 		layer_index++;
 	}
 
-	this->add_layer(layer_index, priority, clear_depth, stencil_state);
+	this->add_layer(layer_index, priority, clear_depth);
 }
 
-void RenderPass::add_layer(size_t index, int64_t priority, bool clear_depth, StencilState stencil_state) {
-	this->layers.insert(this->layers.begin() + index, Layer{priority, clear_depth, stencil_state});
+void RenderPass::add_layer(size_t index, int64_t priority, bool clear_depth) {
+	this->layers.insert(this->layers.begin() + index, Layer{priority, clear_depth});
 	this->renderables.insert(this->renderables.begin() + index, std::vector<Renderable>{});
-}
-
-void RenderPass::set_stencil_state(StencilState state) {
-	for (auto &layer : this->layers) {
-		layer.stencil_state = state;
-	}
 }
 
 void RenderPass::clear_renderables() {
