@@ -1,4 +1,4 @@
-// Copyright 2018-2024 the openage authors. See copying.md for legal info.
+// Copyright 2018-2025 the openage authors. See copying.md for legal info.
 
 // Lookup tables for translating between OpenGL-specific values and generic renderer values,
 // as well as mapping things like type sizes within OpenGL.
@@ -25,7 +25,8 @@ static constexpr auto GL_PIXEL_FORMAT = datastructure::create_const_map<resource
 	std::pair(resources::pixel_format::bgr8, std::tuple(GL_RGB8, GL_BGR, GL_UNSIGNED_BYTE)),
 	std::pair(resources::pixel_format::rgba8, std::tuple(GL_RGBA8, GL_RGBA, GL_UNSIGNED_BYTE)),
 	std::pair(resources::pixel_format::rgba8ui, std::tuple(GL_RGBA8UI, GL_RGBA_INTEGER, GL_UNSIGNED_BYTE)),
-	std::pair(resources::pixel_format::depth24, std::tuple(GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE)));
+	std::pair(resources::pixel_format::depth24, std::tuple(GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE)),
+	std::pair(resources::pixel_format::depth24_stencil8, std::tuple(GL_DEPTH24_STENCIL8, GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8)));
 
 /// Sizes of various uniform/vertex input types in shaders.
 static constexpr auto GL_UNIFORM_TYPE_SIZE = datastructure::create_const_map<GLenum, size_t>(
