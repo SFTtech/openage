@@ -82,7 +82,7 @@ _Note:_ If you want to download and build Nyan automatically add `-DDOWNLOAD_NYA
     - Select all `ttf\DejaVuSerif*.ttf` files, right click and click `Install for all users`.
 
     _Note:_ This will require administrator rights.
-    - Set the `FONTCONFIG_PATH` environment variable to `<vcpkg directory>\installed\<relevant config>\tools\fontconfig\fonts\`.
+    - Set the `FONTCONFIG_PATH` environment variable to `<vcpkg directory>\installed\<relevant config>\tools\fontconfig\fonts\` or `<vcpkg directory>\installed\<relevant config>\etc\fonts\`.
     - Copy `fontconfig\57-dejavu-serif.conf` to `%FONTCONFIG_PATH%\conf.d`.
   - [Optional] Set the `AGE2DIR` environment variable to the AoE 2 installation directory.
   - Set `QML2_IMPORT_PATH` to `<vcpkg directory>\installed\<relevant config>\qml` or for prebuilt Qt `<qt directory>\<qt-version>\<compiler-version>\qml`
