@@ -36,13 +36,8 @@ void GlRenderPass::set_is_optimized(bool flag) {
 	this->is_optimized = flag;
 }
 
-void GlRenderPass::set_stencil_config(bool enabled, bool write, uint8_t ref_value, uint8_t write_mask, uint8_t read_mask, GLenum test_func) {
-	this->stencil_config.enabled = enabled;
-	this->stencil_config.write = write;
-	this->stencil_config.ref_value = ref_value;
-	this->stencil_config.write_mask = write_mask;
-	this->stencil_config.read_mask = read_mask;
-	this->stencil_config.test_func = test_func;
+void GlRenderPass::set_stencil_config(const StencilConfig config) {
+	this->stencil_config = config;
 }
 
 const StencilConfig &GlRenderPass::get_stencil_config() const {

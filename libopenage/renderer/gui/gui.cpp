@@ -104,8 +104,13 @@ void GUI::initialize_render_pass(size_t width,
 
 	auto gl_pass = std::dynamic_pointer_cast<opengl::GlRenderPass>(this->render_pass);
 	if (gl_pass) {
-		gl_pass->set_stencil_config(true, true, 1, 0xFF, 0xFF, GL_ALWAYS);
-	}
+		renderer::opengl::StencilConfig config;
+		config.enabled = true;
+		config.write = true;
+		config.ref_value = 1;
+		config.test_func = GL_ALWAYS;
+		gl_pass->set_stencil_config(config);
+	}	
 }
 
 

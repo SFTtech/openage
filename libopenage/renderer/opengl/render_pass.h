@@ -15,12 +15,18 @@ struct StencilConfig {
 	bool write = false;
 	/// Reference value for stencil test
 	uint8_t ref_value = 1;
+	/// Stencil test function
+	GLenum test_func = GL_ALWAYS;
 	/// Mask for writing to stencil buffer
 	uint8_t write_mask = 0xFF;
 	/// Mask for reading from stencil buffer
 	uint8_t read_mask = 0xFF;
-	/// Stencil test function
-	GLenum test_func = GL_EQUAL;
+	/// Stencil operation for stencil fail
+	GLenum stencil_fail = GL_KEEP;
+	/// Stencil operation for depth fail
+	GLenum depth_fail = GL_KEEP;
+	/// Stencil operation for pass
+	GLenum depth_pass = GL_KEEP;
 };
 
 class GlRenderPass final : public RenderPass {
@@ -35,7 +41,7 @@ public:
 	void set_is_optimized(bool);
 	bool get_is_optimized() const;
 
-	void set_stencil_config(bool enabled, bool write, uint8_t ref_value = 1, uint8_t write_mask = 0xFF, uint8_t read_mask = 0xFF, GLenum test_func = GL_EQUAL);
+	void set_stencil_config(const StencilConfig config);
 	const StencilConfig &get_stencil_config() const;
 
 private:
