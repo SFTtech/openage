@@ -12,6 +12,7 @@
 #include "renderer/demo/demo_4.h"
 #include "renderer/demo/demo_5.h"
 #include "renderer/demo/demo_6.h"
+#include "renderer/demo/demo_8.h"
 #include "renderer/demo/stresstest_0.h"
 #include "renderer/demo/stresstest_1.h"
 
@@ -45,6 +46,10 @@ void renderer_demo(int demo_id, const util::Path &path) {
 
 	case 6:
 		renderer_demo_6(path);
+		break;
+
+	case 8:
+		renderer_demo_8(path);
 		break;
 
 	default:
