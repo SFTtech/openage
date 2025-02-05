@@ -98,14 +98,14 @@ void renderer_demo_8(const util::Path &path) {
 		bg_uniforms,
 		quad,
 		false,
-		true, // Enable depth test
+		false, // Disable depth test to make stencil testing more visible
 	};
 
 	Renderable gui_obj{
 		gui_uniforms,
 		quad,
 		false,
-		false, // No depth test needed
+		false,
 	};
 
 	Renderable display_obj{
