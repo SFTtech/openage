@@ -199,6 +199,7 @@ void GlRenderer::render(const std::shared_ptr<RenderPass> &pass) {
 			glEnable(GL_STENCIL_TEST);
 			glStencilMask(stencil_config.write ? stencil_config.write_mask : 0x00);
 			glStencilFunc(stencil_config.test_func, stencil_config.ref_value, stencil_config.read_mask);
+			glStencilOp(stencil_config.stencil_fail, stencil_config.depth_fail, stencil_config.depth_pass);
 		}
 		else {
 			glDisable(GL_STENCIL_TEST);
