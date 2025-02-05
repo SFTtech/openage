@@ -8,8 +8,8 @@ namespace openage::renderer::tests {
 
 /**
  * Show a demo of stencil testing.
- *     - GUI elements will create a stencil mask
- *     - Background will only render in non-GUI areas  
+ *     - GUI elements will create a stencil mask.
+ *     - Background will only render in non-GUI areas.
  *
  * @param path Path to the project rootdir.
  */

@@ -110,7 +110,7 @@ void GUI::initialize_render_pass(size_t width,
 		config.ref_value = 1;
 		config.test_func = GL_ALWAYS;
 		gl_pass->set_stencil_config(config);
-	}	
+	}
 }
 
 

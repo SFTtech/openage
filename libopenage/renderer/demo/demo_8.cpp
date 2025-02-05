@@ -104,7 +104,7 @@ void renderer_demo_8(const util::Path &path) {
 	Renderable gui_obj{
 		gui_uniforms,
 		quad,
-		false, 
+		false,
 		false, // No depth test needed
 	};
 
