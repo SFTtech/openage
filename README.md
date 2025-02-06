@@ -87,7 +87,7 @@ If you're interested, we wrote detailed explanations on our blog: [Part 1](https
 
 |  Operating System   |                                                                                                       Build status                                                                                                        |
 | :-----------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|     Debian Sid      |                                                                                                     [Todo: Kevin #11]                                                                                                     |
+|     Debian Sid      | [![Kevin CI status](https://cidata.sft.lol/openage/branches/master/status.svg)](/kevinfile) |
 |  Ubuntu 24.04 LTS   |           [![Ubuntu 24.04 build status](https://github.com/SFTTech/openage/actions/workflows/ubuntu-24.04.yml/badge.svg?branch=master)](https://github.com/SFTtech/openage/actions/workflows/ubuntu-24.04.yml)            |
 |        macOS        |                              [![macOS build status](https://github.com/SFTtech/openage/workflows/macOS-CI/badge.svg)](https://github.com/SFTtech/openage/actions?query=workflow%3AmacOS-CI)                               |
 | Windows Server 2019 | [![Windows Server 2019 build status](https://github.com/SFTtech/openage/actions/workflows/windows-server-2019.yml/badge.svg?branch=master)](https://github.com/SFTtech/openage/actions/workflows/windows-server-2019.yml) |
