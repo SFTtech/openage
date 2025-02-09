@@ -62,6 +62,24 @@ cdef public dict LAYER_TYPES = {
 }
 
 
+cdef class SMPMainLayer:
+    pass
+
+
+cdef class SMPShadowLayer:
+    pass
+
+
+cdef class SMPOutlineLayer:
+    pass
+
+
+ctypedef fused SMPLayerVariant:
+    SMPMainLayer
+    SMPShadowLayer
+    SMPOutlineLayer
+
+
 class SMP:
     """
     Class for reading/converting the SMP image format (successor of SLP).
@@ -155,16 +173,16 @@ class SMP:
 
                 if layer_header.layer_type == 0x02:
                     # layer that store the main graphic
-                    self.main_frames.append(SMPMainLayer(layer_header, data))
+                    self.main_frames.append(SMPLayer(SMPMainLayer(), layer_header, data))
 
                 elif layer_header.layer_type == 0x04:
                     # layer that stores a shadow
-                    self.shadow_frames.append(SMPShadowLayer(layer_header, data))
+                    self.shadow_frames.append(SMPLayer(SMPShadowLayer(), layer_header, data))
 
                 elif layer_header.layer_type == 0x08 or \
                      layer_header.layer_type == 0x10:
                     # layer that stores an outline
-                    self.outline_frames.append(SMPOutlineLayer(layer_header, data))
+                    self.outline_frames.append(SMPLayer(SMPOutlineLayer(), layer_header, data))
 
                 else:
                     raise Exception(
@@ -253,11 +271,6 @@ class SMPLayerHeader:
         )
         return "".join(ret)
 
-ctypedef fused SMPLayerVariant:
-    SMPMainLayer
-    SMPShadowLayer
-    SMPOutlineLayer
-
 
 cdef class SMPLayer:
     """
@@ -287,6 +300,9 @@ cdef class SMPLayer:
 
     # pixel matrix representing the final image
     cdef vector[vector[pixel]] pcolor
+
+    def __init__(self, variant, layer_header, data) -> None:
+        self.init(variant, layer_header, data)
 
     def init(self, SMPLayerVariant variant, layer_header, data):
         self.info = layer_header
@@ -540,6 +556,12 @@ cdef class SMPLayer:
         """
         return determine_rgba_matrix(self.pcolor, palette)
 
+    def get_damage_mask(self):
+        """
+        Convert the 4th pixel byte to a mask used for damaged units.
+        """
+        return determine_damage_matrix(self.pcolor)
+
     def get_hotspot(self):
         """
         Return the layer's hotspot (the "center" of the image)
@@ -557,34 +579,6 @@ cdef class SMPLayer:
 
     def __repr__(self):
         return repr(self.info)
-
-
-cdef class SMPMainLayer(SMPLayer):
-    """
-    SMPLayer for the main graphics sprite.
-    """
-
-    def __init__(self, layer_header, data):
-        self.init(self ,layer_header, data)
-
-    def get_damage_mask(self):
-        """
-        Convert the 4th pixel byte to a mask used for damaged units.
-        """
-        return determine_damage_matrix(self.pcolor)
-
-
-cdef class SMPShadowLayer(SMPLayer):
-    """
-    SMPLayer for the shadow graphics.
-    """
-
-    def __init__(self, layer_header, data):
-        self.init(self ,layer_header, data)
-
-cdef class SMPOutlineLayer(SMPLayer):
-    def __init__(self, layer_header, data):
-        self.init(self, layer_header, data)
 
 
 @cython.boundscheck(False)
