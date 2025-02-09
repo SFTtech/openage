@@ -128,21 +128,25 @@ mrproperer: mrproper
 checkfast:
 	python3 -m buildsystem.codecompliance --fast
 
-.PHONY: checkall
-checkall:
-	python3 -m buildsystem.codecompliance --all
+.PHONY: checkmerge
+checkmerge:
+	python3 -m buildsystem.codecompliance --merge
 
 .PHONY: checkchanged
 checkchanged:
-	python3 -m buildsystem.codecompliance --all --only-changed-files=origin/master
+	python3 -m buildsystem.codecompliance --merge --only-changed-files=origin/master
 
 .PHONY: checkuncommited
 checkuncommited:
-	python3 -m buildsystem.codecompliance --all --only-changed-files=HEAD
+	python3 -m buildsystem.codecompliance --merge --only-changed-files=HEAD
 
 .PHONY: checkpy
 checkpy:
 	python3 -m buildsystem.codecompliance --pystyle --pylint
+
+.PHONY: checkall
+checkall:
+	python3 -m buildsystem.codecompliance --all
 
 .PHONY: help
 help: $(BUILDDIR)/Makefile
