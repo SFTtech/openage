@@ -1,4 +1,4 @@
-# Copyright 2014-2024 the openage authors. See copying.md for legal info.
+# Copyright 2014-2025 the openage authors. See copying.md for legal info.
 
 """
 Entry point for the code compliance checker.
@@ -18,16 +18,24 @@ def parse_args():
     """ Returns the raw argument namespace. """
 
     cli = argparse.ArgumentParser()
-    cli.add_argument("--fast", action="store_true",
-                     help="do all checks that can be performed quickly")
-    cli.add_argument("--all", action="store_true",
-                     help="do all checks, even the really slow ones")
+    check_types = cli.add_mutually_exclusive_group()
+    check_types.add_argument("--fast", action="store_true",
+                             help="do all checks that can be performed quickly")
+    check_types.add_argument("--merge", action="store_true",
+                             help="do all checks that are required before merges to master")
+    check_types.add_argument("--all", action="store_true",
+                             help="do all checks, even the really slow ones")
+
     cli.add_argument("--only-changed-files", metavar='GITREF',
                      help=("slow checks are only done on files that have "
                            "changed since GITREF."))
     cli.add_argument("--authors", action="store_true",
                      help=("check whether all git authors are in copying.md. "
                            "repo must be a git repository."))
+    cli.add_argument("--clang-tidy", action="store_true",
+                     help=("Check the C++ code with clang-tidy. Make sure you have build the "
+                           "project with ./configure --clang-tidy or have set "
+                           "CMAKE_CXX_CLANG_TIDY for your CMake build."))
     cli.add_argument("--cppstyle", action="store_true",
                      help="check the cpp code style")
     cli.add_argument("--cython", action="store_true",
@@ -76,7 +84,7 @@ def process_args(args, error):
     # set up log level
     log_setup(args.verbose - args.quiet)
 
-    if args.fast or args.all:
+    if args.fast or args.merge or args.all:
         # enable "fast" tests
         args.authors = True
         args.cppstyle = True
@@ -86,16 +94,19 @@ def process_args(args, error):
         args.filemodes = True
         args.textfiles = True
 
-    if args.all:
-        # enable tests that take a bit longer
-
+    if args.merge or args.all:
+        # enable tests that are required before merging to master
         args.pystyle = True
         args.pylint = True
         args.test_git_change_years = True
 
+    if args.all:
+        # enable tests that take a bit longer
+        args.clang_tidy = True
+
     if not any((args.headerguards, args.legal, args.authors, args.pystyle,
                 args.cppstyle, args.cython, args.test_git_change_years,
-                args.pylint, args.filemodes, args.textfiles)):
+                args.pylint, args.filemodes, args.textfiles, args.clang_tidy)):
         error("no checks were specified")
 
     has_git = bool(shutil.which('git'))
@@ -127,6 +138,10 @@ def process_args(args, error):
     if args.pylint:
         if not importlib.util.find_spec('pylint'):
             error("pylint python module required for linting")
+
+    if args.clang_tidy:
+        if not shutil.which('clang-tidy'):
+            error("--clang-tidy requires clang-tidy to be installed")
 
 
 def get_changed_files(gitref):
@@ -264,6 +279,9 @@ def find_all_issues(args, check_files=None):
         from .modes import find_issues
         yield from find_issues(check_files, ('openage', 'buildsystem',
                                              'libopenage', 'etc/gdb_pretty'))
+    if args.clang_tidy:
+        from .clangtidy import find_issues
+        yield from find_issues(check_files, ('libopenage', ))
 
 
 if __name__ == '__main__':
