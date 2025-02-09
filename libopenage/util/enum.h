@@ -1,4 +1,4 @@
-// Copyright 2015-2024 the openage authors. See copying.md for legal info.
+// Copyright 2015-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -44,7 +44,7 @@ namespace util {
  *     NumericType numeric
  */
 template <typename DerivedType, typename NumericType = int>
-class OAAPI EnumValue {
+class EnumValue {
 public:
 	constexpr EnumValue(const char *value_name, NumericType numeric_value) :
 		name(value_name), numeric(numeric_value) {}
@@ -124,7 +124,7 @@ public:
  *     bool operator >=(Enum[DerivedType] other) except +
  */
 template <typename DerivedType>
-class OAAPI Enum {
+class Enum {
 	using this_type = Enum<DerivedType>;
 
 public:

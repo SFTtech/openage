@@ -1,4 +1,4 @@
-# Copyright 2014-2020 the openage authors. See copying.md for legal info.
+# Copyright 2014-2025 the openage authors. See copying.md for legal info.
 
 # provides macros for defining python extension modules and pxdgen sources.
 # and a 'finalize' function that must be called in the end.
@@ -393,6 +393,7 @@ function(python_finalize)
 		"${CMAKE_BINARY_DIR}/py/cython_modules"
 		"${CMAKE_BINARY_DIR}/py/cython_modules_embed"
 		"${CMAKE_BINARY_DIR}/py/pxd_list"
+		${force_optimized_lib_flag}
 		"--build-dir" "${CMAKE_BINARY_DIR}"
 		COMMAND "${CMAKE_COMMAND}" -E touch "${CYTHONIZE_TIMEFILE}"
 		DEPENDS
