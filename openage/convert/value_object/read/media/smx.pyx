@@ -21,6 +21,8 @@ from libcpp.vector cimport vector
 # SMX files have little endian byte order
 endianness = "< "
 
+
+# Boundary of a row in a SMX layer.
 cdef struct boundary_def:
     Py_ssize_t left
     Py_ssize_t right
@@ -62,18 +64,31 @@ cdef public dict LAYER_TYPES = {
 
 
 cdef class SMXMainLayer8to5:
+    """
+    Main graphics layer of an SMX (compressed with 8to5).
+    """
     pass
 
 cdef class SMXMainLayer4plus1:
+    """
+    Main graphics layer of an SMX (compressed with 4plus1).
+    """
     pass
 
 cdef class SMXShadowLayer:
+    """
+    Shadow layer of an SMX.
+    """
     pass
 
 cdef class SMXOutlineLayer:
+    """
+    Outline layer of an SMX.
+    """
     pass
 
 
+# fused type for SMX layer variants
 ctypedef fused SMXLayerVariant:
     SMXMainLayer8to5
     SMXMainLayer4plus1
@@ -114,14 +129,12 @@ class SMX:
     # };
     smx_layer_header = Struct(endianness + "H H h h I i")
 
-    def __init__(self, data):
+    def __init__(self, data: bytes):
         """
-        Read an SMX image file.
+        Read an SMX image file and store the frames in the object.
 
-        :param data: File content as bytes.
-        :type data: bytes, bytearray
+        :param data: SMX file data.
         """
-
         smx_header = SMX.smx_header.unpack_from(data)
         self.smp_type, version, frame_count, file_size_comp,\
             file_size_uncomp, comment = smx_header
@@ -213,7 +226,7 @@ class SMX:
                 elif layer_type is SMXLayerType.OUTLINE:
                     self.outline_frames.append(SMXLayer(SMXOutlineLayer(), layer_header, data))
 
-    def get_frames(self, layer: int = 0):
+    def get_frames(self, layer: int = 0) -> list[SMXLayer]:
         """
         Get the frames in the SMX.
 
@@ -221,7 +234,6 @@ class SMX:
                         - 0 = main graphics
                         - 1 = shadow graphics
                         - 2 = outline
-        :type layer: int
         """
         cdef list frames
 
@@ -257,16 +269,23 @@ class SMX:
 
 
 class SMXLayerHeader:
-    def __init__(self, layer_type, frame_type,
-                 palette_number,
-                 width, height, hotspot_x, hotspot_y,
-                 outline_table_offset,
-                 qdl_command_table_offset,
-                 qdl_color_table_offset):
+    def __init__(
+        self,
+        layer_type: SMXLayerType,
+        frame_type: int,
+        palette_number: int,
+        width: int,
+        height: int,
+        hotspot_x: int,
+        hotspot_y: int,
+        outline_table_offset: int,
+        qdl_command_table_offset: int,
+        qdl_color_table_offset: int
+    ) -> None:
         """
         Stores the header of a layer including additional info about its frame.
 
-        :param layer_type: Type of layer. Either main. shadow or outline.
+        :param layer_type: Type of layer.
         :param frame_type: Type of the frame the layer belongs to.
         :param palette_number: Palette number used for pixels in the frame.
         :param width: Width of layer in pixels.
@@ -276,16 +295,6 @@ class SMXLayerHeader:
         :param outline_table_offset: Absolute position of the layer's outline table in the file.
         :param qdl_command_table_offset: Absolute position of the layer's command table in the file.
         :param qdl_color_table_offset: Absolute position of the layer's pixel data table in the file.
-        :type layer_type: str
-        :type frame_type: int
-        :type palette_number: int
-        :type width: int
-        :type height: int
-        :type hotspot_x: int
-        :type hotspot_y: int
-        :type outline_table_offset: int
-        :type qdl_command_table_offset: int
-        :type qdl_color_table_offset: int
         """
 
         self.size = (width, height)
@@ -301,12 +310,12 @@ class SMXLayerHeader:
         self.qdl_color_table_offset = qdl_color_table_offset
 
     @staticmethod
-    def repr_header():
+    def repr_header() -> str:
         return ("layer type | width x height | "
                 "hotspot x/y | "
                 )
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         ret = (
             "% s | " % self.layer_type,
             "% 5d x% 7d | " % self.size,
@@ -320,7 +329,7 @@ class SMXLayerHeader:
 
 cdef class SMXLayer:
     """
-    one layer inside the compressed SMP.
+    Layer inside the compressed SMX.
     """
 
     # struct smp_layer_row_edge {
@@ -339,18 +348,28 @@ cdef class SMXLayer:
     # pixel matrix representing the final image
     cdef vector[vector[pixel]] pcolor
 
-    def __init__(self, variant, layer_header, data) -> None:
+    def __init__(
+        self,
+        variant, # this argument must not be typed because cython can't handle it
+        layer_header: SMXLayerHeader,
+        data: bytes
+    ) -> None:
+        """
+        Create a SMX layer.
+
+        :param variant: Type of the layer.
+        :param layer_header: Header information of the layer.
+        :param data: Layer data.
+        """
         self.init(variant, layer_header, data)
 
-    def init(self, SMXLayerVariant variant, layer_header, data):
+    def init(self, SMXLayerVariant variant, layer_header: SMXLayerHeader, data: bytes) -> None:
         """
-        SMX layer definition superclass. There can be various types of
-        layers inside an SMX frame.
+        SMX layer definition. There can be various types of layers inside an SMX frame.
 
+        :param variant: Type of the layer.
         :param layer_header: Header definition of the layer.
         :param data: File content as bytes.
-        :type layer_header: SMXLayerHeader
-        :type data: bytes, bytearray
         """
         self.info = layer_header
 
@@ -402,8 +421,10 @@ cdef class SMXLayer:
                                                                 int color_offset,
                                                                 int chunk_pos):
         """
-        Extract colors (pixels) for the given rowid.
+        Extract colors (pixels) for a pixel row in the layer.
 
+        :param variant: Type of the layer.
+        :param data_raw: Raw data of the layer.
         :param rowid: Index of the current row in the layer.
         :param cmd_offset: Offset of the command table of the layer.
         :param color_offset: Offset of the color table of the layer.
@@ -477,6 +498,15 @@ cdef class SMXLayer:
         """
         extract colors (pixels) for the drawing commands that were
         compressed with 8to5 compression.
+
+        :param variant: Type of the layer.
+        :param data_raw: Raw data of the layer.
+        :param row_data: Stores the extracted pixels. May be prefilled with transparent pixels.
+        :param rowid: Row index.
+        :param first_cmd_offset: Offset of the first drawing command in the data.
+        :param first_color_offset: Offset of the first color command in the data.
+        :param chunk_pos: Current position in the compressed chunk.
+        :param expected_size: Expected number of pixels in the row.
         """
         # position in the command array, we start at the first command of this row
         cdef Py_ssize_t dpos_cmd = first_cmd_offset
@@ -757,32 +787,29 @@ cdef class SMXLayer:
             return dpos_cmd, dpos_cmd, chunk_pos, row_data
 
 
-    def get_picture_data(self, palette):
+    def get_picture_data(self, palette) -> numpy.ndarray:
         """
         Convert the palette index matrix to a RGBA image.
 
-        :param main_palette: Color palette used for pixels in the sprite.
-        :type main_palette: .colortable.ColorTable
+        :param palette: Color palette used for pixels in the sprite.
+        :type palette: .colortable.ColorTable
         :return: Array of RGBA values.
-        :rtype: numpy.ndarray
         """
         return determine_rgba_matrix(self.pcolor, palette)
 
-    def get_hotspot(self):
+    def get_hotspot(self) -> tuple[int, int]:
         """
         Return the layer's hotspot (the "center" of the image).
 
         :return: Hotspot of the layer.
-        :rtype: tuple
         """
         return self.info.hotspot
 
-    def get_palette_number(self):
+    def get_palette_number(self) -> int:
         """
         Return the layer's palette number.
 
         :return: Palette number of the layer.
-        :rtype: int
         """
         return self.info.palette_number
 

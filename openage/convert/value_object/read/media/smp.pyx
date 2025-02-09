@@ -22,6 +22,7 @@ from libcpp.vector cimport vector
 endianness = "< "
 
 
+# Boundary of a row in a SMP layer.
 cdef struct boundary_def:
     Py_ssize_t left
     Py_ssize_t right
@@ -63,17 +64,27 @@ cdef public dict LAYER_TYPES = {
 
 
 cdef class SMPMainLayer:
+    """
+    Main graphic layer of an SMP. Stores the color information.
+    """
     pass
 
 
 cdef class SMPShadowLayer:
+    """
+    Shadow layer of an SMP.
+    """
     pass
 
 
 cdef class SMPOutlineLayer:
+    """
+    Outline layer of an SMP.
+    """
     pass
 
 
+# fused type for the layer variants
 ctypedef fused SMPLayerVariant:
     SMPMainLayer
     SMPShadowLayer
@@ -83,7 +94,7 @@ ctypedef fused SMPLayerVariant:
 class SMP:
     """
     Class for reading/converting the SMP image format (successor of SLP).
-    This format is used to store all graphics within AoE2: Definitive Edition.
+    This format is used to store all graphics within AoE2: Definitive Edition (Beta).
     """
 
     # struct smp_header {
@@ -122,15 +133,23 @@ class SMP:
     # };
     smp_layer_header = Struct(endianness + "i i i i I I I I")
 
-    def __init__(self, data):
+    def __init__(self, data: bytes) -> None:
+        """
+        Read the SMP file and store the frames in the object.
+
+        :param data: SMP file data.
+        """
         smp_header = SMP.smp_header.unpack_from(data)
         signature, version, frame_count, facet_count, frames_per_facet,\
             checksum, file_size, source_format, comment = smp_header
 
         dbg("SMP")
+        spam(" signature:            %s", signature.decode('ascii'))
+        spam(" version:              %s", version)
         dbg(" frame count:          %s", frame_count)
         dbg(" facet count:          %s", facet_count)
         dbg(" facets per animation: %s", frames_per_facet)
+        spam(" checksum:             %s", checksum)
         dbg(" file size:            %s B", file_size)
         dbg(" source format:        %s", source_format)
         dbg(" comment:              %s", comment.decode('ascii'))
@@ -188,9 +207,10 @@ class SMP:
                     raise Exception(
                         f"unknown layer type: {layer_header.layer_type:#x} at offset {layer_header_offset:#x}"
                     )
+
                 spam(layer_header)
 
-    def get_frames(self, layer: int = 0):
+    def get_frames(self, layer: int = 0) -> list[SMPLayer]:
         """
         Get the frames in the SMP.
 
@@ -198,7 +218,6 @@ class SMP:
                         - 0 = main graphics
                         - 1 = shadow graphics
                         - 2 = outline
-        :type layer: int
         """
         cdef list frames
 
@@ -221,7 +240,7 @@ class SMP:
 
         return frames
 
-    def __str__(self):
+    def __str__(self) -> str:
         ret = list()
 
         ret.extend([repr(self), "\n", SMPLayerHeader.repr_header(), "\n"])
@@ -229,15 +248,39 @@ class SMP:
             ret.extend([repr(frame), "\n"])
         return "".join(ret)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"SMP image<{len(self.main_frames):d} frames>"
 
 
 class SMPLayerHeader:
-    def __init__(self, width, height, hotspot_x,
-                 hotspot_y, layer_type, outline_table_offset,
-                 qdl_table_offset, flags,
-                 frame_offset):
+    """
+    Header of a layer in the SMP file.
+    """
+    def __init__(
+        self,
+        width: int,
+        height: int,
+        hotspot_x: int,
+        hotspot_y: int,
+        layer_type: int,
+        outline_table_offset: int,
+        qdl_table_offset: int,
+        flags: int,
+        frame_offset: int
+    ) -> None:
+        """
+        Create a SMP layer header.
+
+        :param width: Width of the layer sprites.
+        :param height: Height of the layer sprites.
+        :param hotspot_x: X coordinate of the anchor point.
+        :param hotspot_y: Y coordinate of the anchor point.
+        :param layer_type: Type of the layer.
+        :param outline_table_offset: Offset of the outline table.
+        :param qdl_table_offset: Offset of the pixel command table.
+        :param flags: Flags of the layer.
+        :param frame_offset: Offset of the frame.
+        """
 
         self.size = (width, height)
         self.hotspot = (hotspot_x, hotspot_y)
@@ -252,16 +295,19 @@ class SMPLayerHeader:
         # the absolute offset of the frame
         self.frame_offset = frame_offset
 
+        # flags
+        self.flags = flags
+
         self.palette_number = -1
 
     @staticmethod
-    def repr_header():
+    def repr_header() -> str:
         return ("width x height | hotspot x/y | "
                 "layer type | "
                 "offset (outline table|qdl table)"
                 )
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         ret = (
             "% 5d x% 7d | " % self.size,
             "% 4d /% 5d | " % self.hotspot,
@@ -274,7 +320,7 @@ class SMPLayerHeader:
 
 cdef class SMPLayer:
     """
-    one layer inside the SMP. you can imagine it as a frame of a video.
+    Layer inside the SMP. you can imagine it as a frame of an animation.
     """
 
     # struct smp_frame_row_edge {
@@ -301,10 +347,29 @@ cdef class SMPLayer:
     # pixel matrix representing the final image
     cdef vector[vector[pixel]] pcolor
 
-    def __init__(self, variant, layer_header, data) -> None:
+    def __init__(
+        self,
+        variant, # this argument must not be typed because cython can't handle it
+        layer_header: SMPLayerHeader,
+        data: bytes
+    ) -> None:
+        """
+        Create a SMP layer.
+
+        :param variant: Type of the layer.
+        :param layer_header: Header information of the layer.
+        :param data: Layer data.
+        """
         self.init(variant, layer_header, data)
 
-    def init(self, SMPLayerVariant variant, layer_header, data):
+    def init(self, SMPLayerVariant variant, layer_header: SMPLayerHeader, data: bytes) -> None:
+        """
+        Read the pixel information of the SMP layer.
+
+        :param variant: Type of the layer.
+        :param layer_header: Header information of the layer.
+        :param data: Layer data.
+        """
         self.info = layer_header
 
         if not (isinstance(data, bytes) or isinstance(data, bytearray)):
@@ -355,7 +420,11 @@ cdef class SMPLayer:
                                         const uint8_t[::1] &data_raw,
                                         Py_ssize_t rowid):
         """
-        extract colors (pixels) for the given rowid.
+        Extract colors (pixels) for a pixel row in the layer.
+
+        :param variant: Type of the layer.
+        :param data_raw: Raw data of the layer.
+        :param rowid: Index of the current row in the layer.
         """
 
         cdef vector[pixel] row_data
@@ -417,8 +486,14 @@ cdef class SMPLayer:
                                    Py_ssize_t first_cmd_offset,
                                    size_t expected_size):
         """
-        extract colors (pixels) for the drawing commands
-        found for this row in the SMP frame.
+        Extract colors (pixels) from the drawing commands for a row in the layer.
+
+        :param variant: Type of the layer.
+        :param data_raw: Raw data of the layer.
+        :param row_data: Stores the extracted pixels. May be prefilled with transparent pixels.
+        :param rowid: Index of the current row in the layer.
+        :param first_cmd_offset: Offset of the first drawing command in the data.
+        :param expected_size: Expected number of pixels in the row.
         """
 
         # position in the data blob, we start at the first command of this row
@@ -550,34 +625,41 @@ cdef class SMPLayer:
         return
 
 
-    def get_picture_data(self, palette):
+    def get_picture_data(self, palette) -> numpy.ndarray:
         """
-        Convert the palette index matrix to a colored image.
+        Convert the palette index matrix to a RGBA image.
+
+        :param palette: Color palette used for pixels in the sprite.
+        :type palette: .colortable.ColorTable
+        :return: Array of RGBA values.
         """
         return determine_rgba_matrix(self.pcolor, palette)
 
-    def get_damage_mask(self):
+    def get_damage_mask(self) -> numpy.ndarray:
         """
         Convert the 4th pixel byte to a mask used for damaged units.
+
+        :return: Damage mask of the layer.
         """
         return determine_damage_matrix(self.pcolor)
 
-    def get_hotspot(self):
+    def get_hotspot(self) -> tuple[int, int]:
         """
-        Return the layer's hotspot (the "center" of the image)
+        Return the layer's hotspot (the "center" of the image).
+
+        :return: Hotspot of the layer.
         """
         return self.info.hotspot
 
-    def get_palette_number(self):
+    def get_palette_number(self) -> int:
         """
         Return the layer's palette number.
 
         :return: Palette number of the layer.
-        :rtype: int
         """
         return self.pcolor[0][0].palette & 0b00111111
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return repr(self.info)
 
 
@@ -587,6 +669,9 @@ cdef numpy.ndarray determine_rgba_matrix(vector[vector[pixel]] &image_matrix,
                                          numpy.ndarray[numpy.uint8_t, ndim=2, mode="c"] palette):
     """
     converts a palette index image matrix to an rgba matrix.
+
+    :param image_matrix: A 2-dimensional array of SMP pixels.
+    :param palette: Color palette used for normal pixels in the sprite.
     """
 
     cdef size_t height = image_matrix.size()
