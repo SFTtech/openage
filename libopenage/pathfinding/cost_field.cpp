@@ -63,8 +63,10 @@ bool CostField::stamp(size_t idx, cost_t cost, const time::time_t &stamped_at) {
 	}
 
 	cost_t original_cost = this->get_cost(idx);
-	this->cost_stamps[idx]->original_cost = original_cost;
-	this->cost_stamps[idx]->stamp_time = stamped_at;
+	this->cost_stamps[idx] = cost_stamp_t{
+		orginal_cost,
+		stamped_at,
+	};
 
 	this->set_cost(idx, cost, stamped_at);
 	return true;
