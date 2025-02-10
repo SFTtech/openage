@@ -244,9 +244,7 @@ void test_queue() {
 }
 
 void test_array() {
-	auto loop = std::make_shared<event::EventLoop>();
-
-	Array<int, 4> a(loop, 0);
+	Array<int, 4> a;
 	a.set_insert(1, 0, 0);
 	a.set_insert(1, 1, 1);
 	a.set_insert(1, 2, 2);
@@ -273,7 +271,7 @@ void test_array() {
 	TESTEQUALS(res.at(2), 0);
 	TESTEQUALS(res.at(3), 0);
 
-	Array<int, 4> other(loop, 0);
+	Array<int, 4> other;
 	other.set_last(0, 0, 999);
 	other.set_last(0, 1, 999);
 	other.set_last(0, 2, 999);
