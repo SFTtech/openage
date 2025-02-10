@@ -1,4 +1,4 @@
-// Copyright 2017-2024 the openage authors. See copying.md for legal info.
+// Copyright 2017-2025 the openage authors. See copying.md for legal info.
 
 #include "framebuffer.h"
 
@@ -41,6 +41,9 @@ GlFramebuffer::GlFramebuffer(const std::shared_ptr<GlContext> &context,
 		// TODO figure out attachment points from pixel formats
 		if (texture->get_info().get_format() == resources::pixel_format::depth24) {
 			glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, texture->get_handle(), 0);
+		}
+		else if (texture->get_info().get_format() == resources::pixel_format::depth24_stencil8) {
+			glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, texture->get_handle(), 0);
 		}
 		else {
 			auto attachmentPoint = GL_COLOR_ATTACHMENT0 + colorTextureCount++;

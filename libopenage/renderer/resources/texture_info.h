@@ -1,4 +1,4 @@
-// Copyright 2017-2024 the openage authors. See copying.md for legal info.
+// Copyright 2017-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -30,6 +30,8 @@ enum class pixel_format {
 	bgr8,
 	/// 24 bits per pixel, depth texture
 	depth24,
+	/// 32 bits per pixel, depth texture + stencil
+	depth24_stencil8,
 	/// 32 bits per pixel, float, alpha channel, RGBA order
 	rgba8,
 	/// 32 bits per pixel, unsigned integer, alpha channel, RGBA order
@@ -51,7 +53,8 @@ constexpr size_t pixel_size(pixel_format fmt) {
 		std::make_pair(pixel_format::bgr8, 3),
 		std::make_pair(pixel_format::rgba8, 4),
 		std::make_pair(pixel_format::rgba8ui, 4),
-		std::make_pair(pixel_format::depth24, 3));
+		std::make_pair(pixel_format::depth24, 3),
+		std::make_pair(pixel_format::depth24_stencil8, 4));
 
 	return pix_size.get(fmt);
 }
