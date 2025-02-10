@@ -14,10 +14,10 @@ namespace openage::path {
 CostField::CostField(size_t size) :
 	size{size},
 	valid_until{time::TIME_MIN},
-	cells(this->size * this->size, COST_MIN) {
+	cells(this->size * this->size, COST_MIN),
+	cost_stamps(this->size * this->size, std::nullopt) {
 		log::log(DBG << "Created cost field with size " << this->size << "x" << this->size);
-	},
-	cost_stamps(this->size * this->size, std::nullopt)
+	}
 
 size_t CostField::get_size() const {
 	return this->size;
@@ -64,7 +64,7 @@ bool CostField::stamp(size_t idx, cost_t cost, const time::time_t &stamped_at) {
 
 	cost_t original_cost = this->get_cost(idx);
 	this->cost_stamps[idx] = cost_stamp_t{
-		orginal_cost,
+		original_cost,
 		stamped_at,
 	};
 
