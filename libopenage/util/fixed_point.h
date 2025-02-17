@@ -451,6 +451,18 @@ public:
 	constexpr double atan2(const FixedPoint &n) {
 		return std::atan2(this->to_double(), n.to_double());
 	}
+
+	constexpr double sin() {
+		return std::sin(this->to_double());
+	}
+
+	constexpr double cos() {
+		return std::cos(this->to_double());
+	}
+
+	constexpr double tan() {
+		return std::tan(this->to_double());
+	}
 };
 
 
@@ -565,6 +577,21 @@ constexpr double sqrt(openage::util::FixedPoint<I, F> n) {
 template <typename I, unsigned F>
 constexpr double atan2(openage::util::FixedPoint<I, F> x, openage::util::FixedPoint<I, F> y) {
 	return x.atan2(y);
+}
+
+template <typename I, unsigned F>
+constexpr double sin(openage::util::FixedPoint<I, F> n) {
+	return n.sin();
+}
+
+template <typename I, unsigned F>
+constexpr double cos(openage::util::FixedPoint<I, F> n) {
+	return n.cos();
+}
+
+template <typename I, unsigned F>
+constexpr double tan(openage::util::FixedPoint<I, F> n) {
+	return n.tan();
 }
 
 template <typename I, unsigned F>
