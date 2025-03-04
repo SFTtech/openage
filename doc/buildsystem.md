@@ -42,7 +42,7 @@ Additional recipes:
  - `doc` (generate docs via Doxygen)
  - `test` (runs the various tests)
  - various cleaning recipes: `cleanelf`, `cleancodegen`, `cleancython`, `cleaninsourcebuild`, `cleanpxdgen`, `cleanbuilddirs`, `mrproper`, `mrproperer`
- - various compliance checkers: `checkfast`, `checkall`, ...
+ - various compliance checkers: `checkfast`, `checkmerge`, `checkall`, ...
 
 
 Phases

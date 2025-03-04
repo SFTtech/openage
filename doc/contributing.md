@@ -52,7 +52,7 @@ tl;dr
 - Add yourself to `copying.md`
 - `git add libopenage/unit/tentacle_monster.cpp`
 - `git commit -m "engine: fixed vomiting animation of tentacle monster"`
-- `make checkall`
+- `make checkmerge`
 - `make test`
 - `git push origin tentacle-monster-fix`
 - Create a pull request and look at the CI output
@@ -101,7 +101,7 @@ Before making a pull request, it's good to review these things:
 - Run `make test` to check whether any functionality has been broken
 - [Check your whitespaces](https://github.com/SFTtech/openage/blob/master/doc/code_style/tabs_n_spaces.md)
 - [Read all the codestyle docs]( https://github.com/SFTtech/openage/tree/master/doc/code_style)
-- Before pushing, run `make checkall`. If that fails, the automatic buildbot will reject your code.
+- Before pushing, run `make checkmerge`. If that fails, the automatic buildbot will reject your code.
 - If this is your first contribution, add yourself to the authors list in [copying.md](/copying.md).
 - Commit messages should be meaningful, they should say in a sentence (or very little text) what
   changes it has without requiring to read the entire diff. [tpope knows this very well!](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)

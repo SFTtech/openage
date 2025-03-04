@@ -179,6 +179,7 @@ help: $(BUILDDIR)/Makefile
 	@echo "tests              -> run the tests (py + cpp)"
 	@echo ""
 	@echo "checkall           -> full code compliance check"
+	@echo "checkmerge         -> code compliance check for merging to master"
 	@echo "checkfast          -> fast checks only"
 	@echo "checkchanged       -> full check for all files changed since origin/master"
 	@echo "checkuncommited    -> full check for all currently uncommited files"
