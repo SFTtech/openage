@@ -39,7 +39,7 @@ if(PYTHON_VER VERSION_GREATER_EQUAL 3.8 AND PYTHON_VERSION VERSION_LESS 3.9)
 endif()
 
 set(PYEXT_LIBRARY "${PYTHON_LIBRARIES}")
-
+message("PYTHON_LIBRARIES: " "${PYTHON_LIBRARIES}")
 #Windows always uses optimized version of Python lib
 if(WIN32 AND "${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
 	#get index of string "optimized" and increment it by 1 so index points at the path of the optimized lib
@@ -47,8 +47,10 @@ if(WIN32 AND "${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
 	if (${_index} GREATER -1)
 		MATH(EXPR _index "${_index}+1")
 		list(GET PYEXT_LIBRARY ${_index} PYEXT_LIBRARY)
-		set(force_optimized_lib_flag "--force_optimized_lib")
+		message("force linking to python release lib
+				 instead of debug lib when cythonising")
 	endif()
+	set(force_optimized_lib_flag "--force_optimized_lib")
 endif()
 
 set(PYEXT_INCLUDE_DIRS "${PYTHON_INCLUDE_DIRS};${NUMPY_INCLUDE_DIR}")
