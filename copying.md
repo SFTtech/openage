@@ -162,6 +162,7 @@ _the openage authors_ are:
 | Michael Lynch               | mtlynch                     | git à mtlynch dawt io                             |
 | Ngô Xuân Minh               |                             | xminh dawt ngo dawt 00 à gmail dawt com           |
 | Haytham Tang                | haytham918                  | yunxuant à umich dawt edu                         |
+| Ana Trias-Labellarte        | anatriaslabella             | ana dawt triaslabella à ufl dawt edu              |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
