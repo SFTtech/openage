@@ -1,4 +1,4 @@
-# Copyright 2015-2023 the openage authors. See copying.md for legal info.
+# Copyright 2015-2025 the openage authors. See copying.md for legal info.
 
 # Find Python
 # ~~~~~~~~~~~
@@ -78,6 +78,12 @@ set(PYTHON_MIN_VERSION_HEX "${BIT_SHIFT_HEX}")
 # there's a static_assert that tests the Python version.
 # that way, we verify the interpreter and the library version.
 # (the interpreter provided us the library location)
+
+if(WIN32 AND "${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
+	set(TEMP_CMAKE_TRY_COMPILE_CONFIGURATION ${CMAKE_TRY_COMPILE_CONFIGURATION})
+	set(CMAKE_TRY_COMPILE_CONFIGURATION "Release")
+endif()
+
 try_compile(PYTHON_TEST_RESULT
 	"${CMAKE_BINARY_DIR}"
 	SOURCES "${CMAKE_CURRENT_LIST_DIR}/FindPython_test.cpp"
@@ -86,6 +92,11 @@ try_compile(PYTHON_TEST_RESULT
 	COMPILE_DEFINITIONS "-DTARGET_VERSION=${PYTHON_MIN_VERSION_HEX}"
 	OUTPUT_VARIABLE PYTHON_TEST_OUTPUT
 )
+
+if(WIN32 AND "${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
+	set(CMAKE_TRY_COMPILE_CONFIGURATION ${TEMP_CMAKE_TRY_COMPILE_CONFIGURATION})
+endif()
+
 
 if(NOT PYTHON_TEST_RESULT)
 	message(STATUS "!! No suitable Python interpreter was found !!
