@@ -1,4 +1,4 @@
-// Copyright 2014-2024 the openage authors. See copying.md for legal info.
+// Copyright 2014-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -51,7 +51,9 @@ bool fail(const log::message &msg);
 		try { \
 			auto &&test_result_left = (left); \
 			if (test_result_left != (right)) { \
-				TESTFAILMSG("unexpected value: " << (test_result_left)); \
+				TESTFAILMSG(__FILE__ << ":" << __LINE__ << ": Expected " \
+				                     << test_result_left << " and " \
+				                     << (right) << " to be equal"); \
 			} \
 		} \
 		catch (::openage::testing::TestError & e) { \
@@ -63,6 +65,28 @@ bool fail(const log::message &msg);
 	} \
 	while (0)
 
+/**
+ * Asserts that the left expression does not equal the right expression,
+ * and that no exception is thrown.
+ */
+#define TESTNOTEQUALS(left, right) \
+	do { \
+		try { \
+			auto &&test_result_left = (left); \
+			if (test_result_left == (right)) { \
+				TESTFAILMSG(__FILE__ << ":" << __LINE__ << ": Expected " \
+				                     << test_result_left << " and " \
+				                     << (right) << " to be NOT equal"); \
+			} \
+		} \
+		catch (::openage::testing::TestError & e) { \
+			throw; \
+		} \
+		catch (::openage::error::Error & e) { \
+			TESTFAILMSG("unexpected exception: " << e); \
+		} \
+	} \
+	while (0)
 
 /**
  * Asserts that the left expression equals the right expression,
@@ -72,8 +96,9 @@ bool fail(const log::message &msg);
 	do { \
 		try { \
 			auto &&test_result_left = (left); \
-			if ((test_result_left < (right - epsilon)) or (test_result_left > (right + epsilon))) { \
-				TESTFAILMSG("unexpected value: " << (test_result_left)); \
+			auto &&test_result_right = (right); \
+			if ((test_result_left < (test_result_right - epsilon)) or (test_result_left > (test_result_right + epsilon))) { \
+				TESTFAILMSG(__FILE__ << ":" << __LINE__ << ": Expected " << (test_result_left) << " and " << (test_result_right) << " to be equal"); \
 			} \
 		} \
 		catch (::openage::testing::TestError & e) { \
@@ -99,7 +124,7 @@ bool fail(const log::message &msg);
 			expr_has_thrown = true; \
 		} \
 		if (not expr_has_thrown) { \
-			TESTFAILMSG("no exception"); \
+			TESTFAILMSG(__FILE__ << ":" << __LINE__ << ": no exception"); \
 		} \
 	} \
 	while (0)
@@ -114,7 +139,7 @@ bool fail(const log::message &msg);
 			expression; \
 		} \
 		catch (::openage::error::Error & e) { \
-			TESTFAILMSG("unexpected exception"); \
+			TESTFAILMSG(__FILE__ << ":" << __LINE__ << ": unexpected exception"); \
 		} \
 	} \
 	while (0)
