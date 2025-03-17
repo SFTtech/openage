@@ -37,3 +37,5 @@ RUN apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get install -y sudo \
     qml6-module-qtquick3d-spatialaudio \
     && sudo apt-get clean \
     && truncate -s 0 ~/.bash_history
+
+ENV CMAKE_CXX_COMPILER=/usr/bin/g++
