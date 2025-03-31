@@ -17,104 +17,112 @@ __NOTE:__ You need to manually make sure and doublecheck if the system you are b
 -->
 
 ## Setting up the build environment
- You will need to download and install the following manually.
- Those who already have the latest stable versions of these programs can skip this:
- - [Visual Studio Buildtools](https://aka.ms/vs/17/release/vs_BuildTools.exe)
-   - With the "Visual C++ Buildtools" workload.
+You will need to download and install the following manually.
+Those who already have the latest stable versions of these programs can skip this:
 
-    _NOTE:_ If you are searching for an IDE for development you can get an overview [here](https://en.wikipedia.org/wiki/Comparison_of_integrated_development_environments#C/C++).
-	We've also written some [instructions for developing with different IDEs](/doc/ide/README.md).
+- [Visual Studio Buildtools](https://aka.ms/vs/17/release/vs_BuildTools.exe)
+  - With the "Visual C++ Buildtools" workload.
+  _NOTE:_ If you are searching for an IDE for development you can get an overview [here](https://en.wikipedia.org/wiki/Comparison_of_integrated_development_environments#C/C++). We've also written some [instructions for developing with different IDEs](/doc/ide/README.md).
 
- - [Python 3](https://www.python.org/downloads/windows/)
-   - With the "pip" option enabled. We use `pip` to install other dependencies.
-   - With the "Precompile standard library" option enabled.
-   - With the "Download debug binaries (...)" option enabled.
-   - If in doubt, run the installer again and choose "Modify".
-   - You are going to need the 64-bit version of python if you are planning to build the 64-bit version of openage, and vice versa.
+- [Python 3](https://www.python.org/downloads/windows/)
+  - With the *pip* option enabled. We use `pip` to install other dependencies.
+  - With the *Precompile standard library* option enabled.
+  - With the *Download debug binaries (...)* option enabled.
+  - If in doubt, run the installer again and choose *Modify*.
+  - You are going to need the 64-bit version of python if you are planning to build the 64-bit version of openage, and vice versa.
 
  - [CMake](https://cmake.org/download/)
 
 ### Python Modules
- Open a command prompt at `<Python 3 installation directory>/Scripts`
+Open a command prompt at `<Python 3 installation directory>/Scripts`
 
-    pip install cython numpy lz4 toml pillow pygments pyreadline3 mako
-
+```ps
+pip install cython numpy lz4 toml pillow pygments pyreadline3 mako
+```
 _Note:_ Make sure the Python 3 instance you're installing these scripts for is the one you call `python` in CMD
+
 _Note:_ Also ensure that `python` and `python3` both point to the correct and the same version of Python 3
 
 ### vcpkg packages
- Set up [vcpkg](https://github.com/Microsoft/vcpkg#quick-start). Open a command prompt at `<vcpkg directory>`
+Set up [vcpkg](https://github.com/Microsoft/vcpkg#quick-start). Open a command prompt at `<vcpkg directory>`
 
-    vcpkg install dirent eigen3 fontconfig freetype harfbuzz libepoxy libogg libpng opus opusfile qtbase qtdeclarative qtmultimedia toml11
+```ps
+vcpkg install dirent eigen3 fontconfig freetype harfbuzz libepoxy libogg libpng opus opusfile qtbase qtdeclarative qtmultimedia toml11
+```
 
 If you also want Vulkan graphics support, you should also run this command:
 
-    vcpkg install vulkan
+```ps
+vcpkg install vulkan
+```
 
- _Note:_ The `qt` port in vcpkg has been split into multiple packages, build times are acceptable now.
- If you want, you can still use [the prebuilt version](https://www.qt.io/download-open-source/) instead.
- If you do so, include `-DCMAKE_PREFIX_PATH=<QT6 directory>` in the cmake configure command.
+_Note:_ The `qt` port in vcpkg has been split into multiple packages, build times are acceptable now. If you want, you can still use [the prebuilt version](https://www.qt.io/download-open-source/) instead. If you do so, include `-DCMAKE_PREFIX_PATH=<QT6 directory>` in the cmake configure command.
 
- _Note:_ If you are planning to build the 64-bit version of openage, you are going to need 64-bit libraries.
- Add command line option `--triplet x64-windows` to the above command or add the environment variable `VCPKG_DEFAULT_TRIPLET=x64-windows` to build x64 libraries. [See here](https://github.com/Microsoft/vcpkg/issues/1254)
+_Note:_ If you are planning to build the 64-bit version of openage, you are going to need 64-bit libraries. Add command line option `--triplet x64-windows` to the above command or add the environment variable `VCPKG_DEFAULT_TRIPLET=x64-windows` to build x64 libraries. [See here](https://github.com/Microsoft/vcpkg/issues/1254)
 
 <!---
 __NOTE:__ You can also download the pre-built vcpkg dependencies (without Qt) [from this repository](https://github.com/simonsan/openage-win-dependencies/releases).
 -->
 
 ## Building openage
- Note that openage doesn't support completely out-of-source-tree builds yet.
- We will, however, use a separate `build` directory to build the binaries.
+Note that openage doesn't support completely out-of-source-tree builds yet. We will, however, use a separate `build` directory to build the binaries.
 
-_Note:_ You will also need to set up [the dependencies for Nyan](https://github.com/SFTtech/nyan/blob/master/doc/building.md#windows), which is mainly [flex](https://sourceforge.net/projects/winflexbison/)
+_Note:_ You will also need to set up [the dependencies for nyan](https://github.com/SFTtech/nyan/blob/master/doc/building.md#windows), which is mainly [flex](https://sourceforge.net/projects/winflexbison/).
 
 Open a command prompt at `<openage directory>`:
 
-     mkdir build
-     cd build
-     cmake -DCMAKE_TOOLCHAIN_FILE=<vcpkg directory>\scripts\buildsystems\vcpkg.cmake ..
-     cmake --build . --config RelWithDebInfo -- /nologo /m /v:m
+```ps
+mkdir build
+cd build
+cmake -DCMAKE_TOOLCHAIN_FILE=<vcpkg directory>\scripts\buildsystems\vcpkg.cmake ..
+cmake --build . --config RelWithDebInfo -- /nologo /m /v:m
+```
 
 _Note:_ If you want to build the x64 version, please add `-G "Visual Studio 17 2022" -A x64` (for VS2022) to the first cmake command.
 
 _Note:_ If you want to download and build Nyan automatically add `-DDOWNLOAD_NYAN=YES -DFLEX_EXECUTABLE=<path to win_flex.exe>` to the first cmake command.
 
 ## Running openage (in devmode)
- While this is straightforward on other platforms, there is still stuff to do to run openage on Windows:
-  - Install the [DejaVu Book Font](https://dejavu-fonts.github.io/Download.html).
-    - Download and extract the latest `dejavu-fonts-ttf` tarball/zip file.
-    - Select all `ttf\DejaVuSerif*.ttf` files, right click and click `Install for all users`.
+While this is straightforward on other platforms, there is still stuff to do to run openage on Windows:
 
-    _Note:_ This will require administrator rights.
-    - Set the `FONTCONFIG_PATH` environment variable to `<vcpkg directory>\installed\<relevant config>\tools\fontconfig\fonts\` or `<vcpkg directory>\installed\<relevant config>\etc\fonts\`.
-    - Copy `fontconfig\57-dejavu-serif.conf` to `%FONTCONFIG_PATH%\conf.d`.
-  - [Optional] Set the `AGE2DIR` environment variable to the AoE 2 installation directory.
-  - Set `QML2_IMPORT_PATH` to `<vcpkg directory>\installed\<relevant config>\qml` or for prebuilt Qt `<qt directory>\<qt-version>\<compiler-version>\qml`
-  - openage needs these DLL files to run:
-    - `openage.dll` (Usually in `<openage directory>\build\libopenage\<config built>`.)
-    - `nyan.dll` (The location depends on the procedure chosen to get nyan.)
-    - DLLs from vcpkg-installed dependencies. Normally, these DLLs should be copied to `<openage directory>\build\libopenage\<config built>` during the build process. If they are not, you can find them in `<vcpkg directory>\installed\<relevant config>\bin`.
-      - If prebuilt QT6 was installed, the original location of QT6 DLLs is `<QT6 directory>\bin`.
+- Install the [DejaVu Book Font](https://dejavu-fonts.github.io/Download.html).
+  - Download and extract the latest `dejavu-fonts-ttf` tarball/zip file.
+  - Select all `ttf\DejaVuSerif*.ttf` files, right click and click `Install for all users`.
+  _Note:_ This will require administrator rights.
 
-  - Now, to run the openage:
-    - Open a CMD window in `<openage directory>\build\` and run `python -m openage main`
-    - Execute`<openage directory>\build\run.exe` every time after that and enjoy!
+  - Set the `FONTCONFIG_PATH` environment variable to `<vcpkg directory>\installed\<relevant config>\tools\fontconfig\fonts\` or `<vcpkg directory>\installed\<relevant config>\etc\fonts\`.
+  - Copy `fontconfig\57-dejavu-serif.conf` to `%FONTCONFIG_PATH%\conf.d`.
+- [Optional] Set the `AGE2DIR` environment variable to the AoE 2 installation directory.
+- Set `QML2_IMPORT_PATH` to `<vcpkg directory>\installed\<relevant config>\qml` or for prebuilt Qt `<qt directory>\<qt-version>\<compiler-version>\qml`
+- openage needs these DLL files to run:
+  - `openage.dll` (Usually in `<openage directory>\build\libopenage\<config built>`.)
+  - `nyan.dll` (The location depends on the procedure chosen to get nyan.)
+  - DLLs from vcpkg-installed dependencies. Normally, these DLLs should be copied to `<openage directory>\build\libopenage\<config built>` during the build process. If they are not, you can find them in `<vcpkg directory>\installed\<relevant config>\bin`.
+    - If prebuilt QT6 was installed, the original location of QT6 DLLs is `<QT6 directory>\bin`.
+
+Now, to run openage:
+
+- Open a CMD window in `<openage directory>\build\` and run `python -m openage main`
+- Execute`<openage directory>\build\run.exe` every time after that and enjoy!
 
 ## Packaging
 
- - Install [NSIS](https://sourceforge.net/projects/nsis/files/latest/download).
- - Depending on the way you installed Qt (vcpkg/pre-built) you need to edit the following line in `<openage-repo-dir>\buildsystem\templates\ForwardVariables.cmake.in`:
+- Install [NSIS](https://sourceforge.net/projects/nsis/files/latest/download).
+- Depending on the way you installed Qt (vcpkg/pre-built) you need to edit the following line in `<openage-repo-dir>\buildsystem\templates\ForwardVariables.cmake.in`:
+
 ```
-	# Use windeploy for packaging qt-prebuilt, standard value '1' for windeploy, '0' for vcpkg
-	set(use_windeployqt 1)
+# Use windeploy for packaging qt-prebuilt, standard value '1' for windeploy, '0' for vcpkg
+set(use_windeployqt 1)
 ```
 
- Open a command prompt at `<openage directory>\build` (or use the one from the building step):
+Open a command prompt at `<openage directory>\build` (or use the one from the building step):
 
+```ps
     cpack -C RelWithDebInfo
+```
 
- The installer (`openage-<version>-<arch>.exe`) will be generated in the same directory.<br>
+The installer (`openage-<version>-<arch>.exe`) will be generated in the same directory.<br>
 
- _Hint:_ Append `-V` to the `cpack` command for verbose output (it takes time to package all dependencies).
+_Note:_ Append `-V` to the `cpack` command for verbose output (it takes time to package all dependencies).
 
- _Hint:_ <arch> you can set with the environment variable `TARGET_PLATFORM` (e.g. amd64, x86).
+_Note:_ <arch> you can set with the environment variable `TARGET_PLATFORM` (e.g. amd64, x86).
