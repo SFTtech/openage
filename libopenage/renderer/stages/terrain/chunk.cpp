@@ -32,6 +32,9 @@ void TerrainChunk::fetch_updates(const time::time_t & /* time */) {
 		return;
 	}
 
+	// Thread-safe access to data needs a lock on the render entity's mutex
+	auto read_lock = this->render_entity->get_read_lock();
+
 	// Get the terrain data from the render entity
 	auto terrain_size = this->render_entity->get_size();
 	auto terrain_paths = this->render_entity->get_terrain_paths();
@@ -54,7 +57,7 @@ void TerrainChunk::fetch_updates(const time::time_t & /* time */) {
 	// this->meshes.push_back(new_mesh);
 
 	// Indicate to the render entity that its updates have been processed.
-	this->render_entity->clear_changed_flag();
+	this->render_entity->fetch_done();
 }
 
 void TerrainChunk::update_uniforms(const time::time_t &time) {

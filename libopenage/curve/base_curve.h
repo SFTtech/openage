@@ -1,7 +1,8 @@
-// Copyright 2017-2025 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
+#include <concepts>
 #include <cstddef>
 #include <functional>
 #include <memory>
@@ -13,6 +14,7 @@
 #include "log/log.h"
 #include "log/message.h"
 
+#include "curve/concept.h"
 #include "curve/keyframe_container.h"
 #include "event/evententity.h"
 #include "time/time.h"
@@ -26,7 +28,7 @@ class EventLoop;
 
 namespace curve {
 
-template <typename T>
+template <KeyframeValueLike T>
 class BaseCurve : public event::EventEntity {
 public:
 	BaseCurve(const std::shared_ptr<event::EventLoop> &loop,
@@ -74,29 +76,61 @@ public:
 	/**
 	 * Insert/overwrite given value at given time and erase all elements
 	 * that follow at a later time.
+	 *
 	 * If multiple elements exist at the given time,
 	 * overwrite the last one.
+	 *
+	 * @param at Time the keyframe is inserted at.
+	 * @param value Value of the keyframe.
+	 * @param compress If true, only insert the keyframe if the value at time \p at
+	 *                 is different from the given value.
 	 */
-	virtual void set_last(const time::time_t &at, const T &value);
+	virtual void set_last(const time::time_t &at,
+	                      const T &value,
+	                      bool compress = false);
 
 	/**
 	 * Insert a value at the given time.
+	 *
 	 * If there already is a value at this time,
 	 * the value is inserted directly after the existing one.
+	 *
+	 * @param at Time the keyframe is inserted at.
+	 * @param value Value of the keyframe.
+	 * @param compress If true, only insert the keyframe if the value at time \p at
+	 *                 is different from the given value.
 	 */
-	virtual void set_insert(const time::time_t &at, const T &value);
+	virtual void set_insert(const time::time_t &at,
+	                        const T &value,
+	                        bool compress = false);
 
 	/**
 	 * Insert a value at the given time.
+	 *
 	 * If there already is a value at this time,
 	 * the given value will replace the first value with the same time.
+	 *
+	 * @param at Time the keyframe is inserted at.
+	 * @param value Value of the keyframe.
 	 */
-	virtual void set_replace(const time::time_t &at, const T &value);
+	virtual void set_replace(const time::time_t &at,
+	                         const T &value);
 
 	/**
 	 * Remove all values that have the given time.
 	 */
 	virtual void erase(const time::time_t &at);
+
+	/**
+	 * Compress the curve by removing redundant keyframes.
+	 *
+	 * A keyframe is redundant if it doesn't change the value calculation of the curve
+	 * at any given time, e.g. duplicate keyframes.
+	 *
+	 * @param start Start time at which keyframes are compressed (default = -INF).
+	 *              Using the default value compresses ALL keyframes of the curve.
+	 */
+	virtual void compress(const time::time_t &start = time::TIME_MIN) = 0;
 
 	/**
 	 * Integrity check, for debugging/testing reasons only.
@@ -113,9 +147,13 @@ public:
 	 * @param start Start time at which keyframes are replaced (default = -INF).
 	 *              Using the default value replaces ALL keyframes of \p this with
 	 *              the keyframes of \p other.
+	 * @param compress If true, redundant keyframes are not copied during the sync.
+	 *                 Redundant keyframes are keyframes that don't change the value
+	 *                 calculaton of the curve at any given time, e.g. duplicate keyframes.
 	 */
 	void sync(const BaseCurve<T> &other,
-	          const time::time_t &start = time::TIME_MIN);
+	          const time::time_t &start = time::TIME_MIN,
+	          bool compress = false);
 
 	/**
 	 * Copy keyframes from another curve (with a different element type) to this curve.
@@ -130,11 +168,15 @@ public:
 	 * @param start Start time at which keyframes are replaced (default = -INF).
 	 *              Using the default value replaces ALL keyframes of \p this with
 	 *              the keyframes of \p other.
+	 * @param compress If true, redundant keyframes are not copied during the sync.
+	 *                 Redundant keyframes are keyframes that don't change the value
+	 *                 calculaton of the curve at any given time, e.g. duplicate keyframes.
 	 */
-	template <typename O>
+	template <KeyframeValueLike O>
 	void sync(const BaseCurve<O> &other,
 	          const std::function<T(const O &)> &converter,
-	          const time::time_t &start = time::TIME_MIN);
+	          const time::time_t &start = time::TIME_MIN,
+	          bool compress = false);
 
 	/**
 	 * Get the identifier of this curve.
@@ -199,8 +241,10 @@ protected:
 };
 
 
-template <typename T>
-void BaseCurve<T>::set_last(const time::time_t &at, const T &value) {
+template <KeyframeValueLike T>
+void BaseCurve<T>::set_last(const time::time_t &at,
+                            const T &value,
+                            bool compress) {
 	auto hint = this->container.last(at, this->last_element);
 
 	// erase max one same-time value
@@ -210,6 +254,13 @@ void BaseCurve<T>::set_last(const time::time_t &at, const T &value) {
 
 	hint = this->container.erase_after(hint);
 
+	if (compress and this->get(at) == value) {
+		// skip insertion if the value is the same as the last one
+		// erasure still happened, so we need to notify about the change
+		this->changes(at);
+		return;
+	}
+
 	this->container.insert_before(at, value, hint);
 	this->last_element = hint;
 
@@ -217,32 +268,42 @@ void BaseCurve<T>::set_last(const time::time_t &at, const T &value) {
 }
 
 
-template <typename T>
-void BaseCurve<T>::set_insert(const time::time_t &at, const T &value) {
+template <KeyframeValueLike T>
+void BaseCurve<T>::set_insert(const time::time_t &at,
+                              const T &value,
+                              bool compress) {
+	if (compress and this->get(at) == value) {
+		// skip insertion if the value is the same as the last one
+		return;
+	}
+
 	auto hint = this->container.insert_after(at, value, this->last_element);
+
 	// check if this is now the final keyframe
 	if (this->container.get(hint).time() > this->container.get(this->last_element).time()) {
 		this->last_element = hint;
 	}
+
 	this->changes(at);
 }
 
 
-template <typename T>
-void BaseCurve<T>::set_replace(const time::time_t &at, const T &value) {
+template <KeyframeValueLike T>
+void BaseCurve<T>::set_replace(const time::time_t &at,
+                               const T &value) {
 	this->container.insert_overwrite(at, value, this->last_element);
 	this->changes(at);
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 void BaseCurve<T>::erase(const time::time_t &at) {
 	this->last_element = this->container.erase(at, this->last_element);
 	this->changes(at);
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 std::pair<time::time_t, const T> BaseCurve<T>::frame(const time::time_t &time) const {
 	auto e = this->container.last(time, this->container.size());
 	auto elem = this->container.get(e);
@@ -250,7 +311,7 @@ std::pair<time::time_t, const T> BaseCurve<T>::frame(const time::time_t &time) c
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 std::pair<time::time_t, const T> BaseCurve<T>::next_frame(const time::time_t &time) const {
 	auto e = this->container.last(time, this->container.size());
 	e++;
@@ -258,7 +319,7 @@ std::pair<time::time_t, const T> BaseCurve<T>::next_frame(const time::time_t &ti
 	return elem.as_pair();
 }
 
-template <typename T>
+template <KeyframeValueLike T>
 std::string BaseCurve<T>::str() const {
 	std::stringstream ss;
 	ss << "Curve[" << this->idstr() << "]{" << std::endl;
@@ -270,7 +331,7 @@ std::string BaseCurve<T>::str() const {
 	return ss.str();
 }
 
-template <typename T>
+template <KeyframeValueLike T>
 void BaseCurve<T>::check_integrity() const {
 	time::time_t last_time = time::TIME_MIN;
 	for (const auto &keyframe : this->container) {
@@ -281,9 +342,10 @@ void BaseCurve<T>::check_integrity() const {
 	}
 }
 
-template <typename T>
+template <KeyframeValueLike T>
 void BaseCurve<T>::sync(const BaseCurve<T> &other,
-                        const time::time_t &start) {
+                        const time::time_t &start,
+                        bool compress) {
 	// Copy keyframes between containers for t >= start
 	this->last_element = this->container.sync(other.container, start);
 
@@ -294,15 +356,20 @@ void BaseCurve<T>::sync(const BaseCurve<T> &other,
 		this->set_insert(start, get_other);
 	}
 
+	if (compress) {
+		this->compress(start);
+	}
+
 	this->changes(start);
 }
 
 
-template <typename T>
-template <typename O>
+template <KeyframeValueLike T>
+template <KeyframeValueLike O>
 void BaseCurve<T>::sync(const BaseCurve<O> &other,
                         const std::function<T(const O &)> &converter,
-                        const time::time_t &start) {
+                        const time::time_t &start,
+                        bool compress) {
 	// Copy keyframes between containers for t >= start
 	this->last_element = this->container.sync(other.get_container(), converter, start);
 
@@ -311,6 +378,10 @@ void BaseCurve<T>::sync(const BaseCurve<O> &other,
 	auto get_other = converter(other.get(start));
 	if (this->get(start) != get_other) {
 		this->set_insert(start, get_other);
+	}
+
+	if (compress) {
+		this->compress(start);
 	}
 
 	this->changes(start);
