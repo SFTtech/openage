@@ -48,6 +48,7 @@ void fixed_point() {
 
 	TestType e(120.7);
 	TestType f(-12.4);
+	TestType g(3.0);
 	e += f;
 
 	TESTEQUALS_FLOAT(e.to_double(), 108.3, 1e-7);
@@ -64,6 +65,11 @@ void fixed_point() {
 	TESTEQUALS_FLOAT(std::hypot(e, f), hypot(108.3, -12.4), 1e-7);
 	TESTEQUALS_FLOAT(std::min(e, f), -12.4, 1e-7);
 	TESTEQUALS_FLOAT(std::max(e, f), 108.3, 1e-7);
+	TESTEQUALS_FLOAT(std::sin(e), e.sin(), 1e-7);
+	TESTEQUALS_FLOAT(std::cos(e), e.cos(), 1e-7);
+	TESTEQUALS_FLOAT(std::tan(e), e.tan(), 1e-7);
+	TESTEQUALS_FLOAT(std::pow(e, g), e.pow(g), 1e-7);
+	TESTEQUALS_FLOAT(std::log(e), e.log(), 1e-7);
 	TESTEQUALS_FLOAT(TestType::min_value().to_double(), -2147483648.0, 1e-7);
 	TESTEQUALS_FLOAT(TestType::max_value().to_double(), 2147483648.0, 1e-7);
 
