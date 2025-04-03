@@ -465,6 +465,14 @@ public:
 	constexpr double tan() {
 		return std::tan(this->to_double());
 	}
+
+	constexpr double pow(const FixedPoint &exponent) {
+		return std::pow(this->to_double(), exponent.to_double());
+	}
+
+	constexpr double log() {
+		return std::log(this->to_double());
+	}
 };
 
 
@@ -595,6 +603,16 @@ constexpr double cos(openage::util::FixedPoint<I, F, Inter> n) {
 template <typename I, unsigned F, typename Inter>
 constexpr double tan(openage::util::FixedPoint<I, F, Inter> n) {
 	return n.tan();
+}
+
+template <typename I, unsigned F, typename Inter>
+constexpr double pow(openage::util::FixedPoint<I, F, Inter> n, openage::util::FixedPoint<I, F, Inter> exponent) {
+	return n.pow(exponent);
+}
+
+template <typename I, unsigned F, typename Inter>
+constexpr double log(openage::util::FixedPoint<I, F, Inter> n) {
+	return n.log();
 }
 
 template <typename I, unsigned F, typename Inter>

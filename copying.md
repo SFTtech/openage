@@ -165,6 +165,7 @@ _the openage authors_ are:
 | Ana Trias-Labellarte        | anatriaslabella             | ana dawt triaslabella à ufl dawt edu              |
 | Eelco Empting               | Eeelco                      | me à eelco dawt de                                |
 | Jordan Sutton               | jsutCodes                   | jsutcodes à gmail dawt com                        |
+| Pablo Roizo                 | PRDeving                    | pablo dawt deving à gmail dawt com                |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
