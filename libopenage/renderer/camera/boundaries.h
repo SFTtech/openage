@@ -20,6 +20,8 @@ struct CameraBoundaries {
 	float z_min;
 	/// The maximum boundary for the camera's Z-coordinate.
 	float z_max;
+
+	bool operator==(const CameraBoundaries &rhs);
 };
 
 } // namespace openage::renderer::camera
