@@ -29,7 +29,7 @@ Dependency list:
 
     C     gcc >=10 or clang >=10
     CRA   python >=3.9
-    C     cython >=0.29.31
+    C     cython >=3.0.10 OR (>=0.29.31 AND <=3.0.7)
     C     cmake >=3.16
       A   numpy
       A   lz4
@@ -160,7 +160,6 @@ The reference package is [created for Gentoo](https://github.com/SFTtech/gentoo-
   pass `-DPython3_EXECUTABLE=...` or `-DPython3_ROOT_DIR=...` to `cmake`
 - Use `make install DESTDIR=/tmp/your_temporary_packaging_dir`,
   which will then be packed/installed by your package manager.
-
 
 ### Troubleshooting
 

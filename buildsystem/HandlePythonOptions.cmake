@@ -4,7 +4,17 @@
 
 # the Python version number requirement is in modules/FindPython_test.cpp
 find_package(Python ${PYTHON_MIN_VERSION} REQUIRED)
-find_package(Cython ${CYTHON_MIN_VERSION} REQUIRED)
+
+find_package(Cython ${CYTHON_MIN_VERSION})
+if(NOT CYTHON_FOUND)
+	message("Checking for alternative Cython fallback version (>=${CYTHON_MIN_VERSION_FALLBACK} AND <=${CYTHON_MAX_VERSION_FALLBACK})")
+	find_package(Cython ${CYTHON_MIN_VERSION_FALLBACK} QUIET)
+	if(CYTHON_VERSION VERSION_LESS ${CYTHON_MIN_VERSION} AND CYTHON_VERSION VERSION_GREATER ${CYTHON_MAX_VERSION_FALLBACK})
+		message(FATAL_ERROR "Cython version ${CYTHON_VERSION} is not compatible")
+	else()
+		message("Compatible Cython version ${CYTHON_VERSION} found")
+	endif()
+endif()
 
 py_get_config_var(EXT_SUFFIX PYEXT_SUFFIX)
 if(MINGW)
@@ -43,8 +53,8 @@ message("PYTHON_LIBRARIES: " "${PYTHON_LIBRARIES}")
 #Windows always uses optimized version of Python lib
 if(WIN32 AND "${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
 	#get index of string "optimized" and increment it by 1 so index points at the path of the optimized lib
-	list (FIND PYEXT_LIBRARY "optimized" _index)
-	if (${_index} GREATER -1)
+	list(FIND PYEXT_LIBRARY "optimized" _index)
+	if(${_index} GREATER -1)
 		MATH(EXPR _index "${_index}+1")
 		list(GET PYEXT_LIBRARY ${_index} PYEXT_LIBRARY)
 	endif()
