@@ -1,4 +1,4 @@
-// Copyright 2023-2024 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #include "activity.h"
 
@@ -124,6 +124,45 @@ bool APIActivityCondition::is_condition(const nyan::Object &obj) {
 activity::condition_t APIActivityCondition::get_condition(const nyan::Object &condition) {
 	nyan::fqon_t immediate_parent = condition.get_parents()[0];
 	return ACTIVITY_CONDITIONS.get(immediate_parent);
+}
+
+bool APIActivitySwitchCondition::is_switch_condition(const nyan::Object &obj) {
+	nyan::fqon_t immediate_parent = obj.get_parents()[0];
+	return immediate_parent == "engine.util.activity.switch_condition.SwitchCondition";
+}
+
+activity::XorSwitchGate::lookup_function_t APIActivitySwitchCondition::get_lookup(const nyan::Object &condition) {
+	nyan::fqon_t immediate_parent = condition.get_parents()[0];
+	return ACTIVITY_SWITCH_CONDITIONS.get(immediate_parent);
+}
+
+APIActivitySwitchCondition::lookup_map_t APIActivitySwitchCondition::get_lookup_map(const nyan::Object &condition) {
+	nyan::fqon_t immediate_parent = condition.get_parents()[0];
+	auto switch_condition_type = ACTIVITY_SWITCH_CONDITION_TYPES.get(immediate_parent);
+
+	switch (switch_condition_type) {
+	case switch_condition_t::NEXT_COMMAND: {
+		auto next = condition.get<nyan::Dict>("NextCommand.next");
+		lookup_map_t lookup_map{};
+		for (auto next_node : next->get()) {
+			auto key_value = std::dynamic_pointer_cast<nyan::ObjectValue>(next_node.first.get_ptr());
+			auto key_obj = condition.get_view()->get_object(key_value->get_name());
+
+			// Get engine lookup key value
+			auto key = static_cast<activity::XorSwitchGate::lookup_key_t>(COMMAND_DEFS.get(key_obj.get_name()));
+
+			// Get node ID
+			auto next_node_value = std::dynamic_pointer_cast<nyan::ObjectValue>(next_node.second.get_ptr());
+			auto next_node_id = next_node_value->get_name();
+
+			lookup_map[key] = next_node_id;
+		}
+
+		return lookup_map;
+	}
+	default:
+		throw Error(MSG(err) << "Unknown switch condition type.");
+	}
 }
 
 bool APIActivityEvent::is_event(const nyan::Object &obj) {

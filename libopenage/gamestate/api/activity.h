@@ -1,4 +1,4 @@
-// Copyright 2023-2024 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -9,6 +9,7 @@
 #include "gamestate/activity/types.h"
 #include "gamestate/activity/xor_event_gate.h"
 #include "gamestate/activity/xor_gate.h"
+#include "gamestate/activity/xor_switch_gate.h"
 #include "gamestate/system/types.h"
 
 
@@ -107,6 +108,42 @@ public:
 	 * @return Condition function.
 	 */
 	static activity::condition_t get_condition(const nyan::Object &condition);
+};
+
+/**
+ * Helper class for creating Activity switch condition objects from the nyan API.
+ */
+class APIActivitySwitchCondition {
+public:
+	/**
+	 * Check if a nyan object is a switch condition (type == \p engine.util.activity.switch_condition.SwitchCondition).
+	 *
+	 * @param obj nyan object.
+	 *
+	 * @return true if the object is a switch condition, else false.
+	 */
+	static bool is_switch_condition(const nyan::Object &obj);
+
+	/**
+	 * Get the lookup function for a switch condition.
+	 *
+	 * @param condition nyan object.
+	 *
+	 * @return Lookup function.
+	 */
+	static activity::XorSwitchGate::lookup_function_t get_lookup(const nyan::Object &condition);
+
+	using lookup_map_t = std::unordered_map<activity::XorSwitchGate::lookup_key_t, nyan::fqon_t>;
+
+	/**
+	 * Get the mapping of lookup keys to output node IDs. Lookup keys are resolved from nyan API
+	 * mappings to the engine's lookup key type.
+	 *
+	 * @param condition nyan object.
+	 *
+	 * @return Mapping of lookup keys to output node IDs.
+	 */
+	static lookup_map_t get_lookup_map(const nyan::Object &condition);
 };
 
 /**
