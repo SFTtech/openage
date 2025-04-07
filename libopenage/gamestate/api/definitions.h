@@ -1,4 +1,4 @@
-// Copyright 2023-2024 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -18,6 +18,7 @@
 #include "gamestate/activity/xor_gate.h"
 #include "gamestate/activity/xor_switch_gate.h"
 #include "gamestate/api/types.h"
+#include "gamestate/component/internal/commands/types.h"
 #include "gamestate/system/types.h"
 
 
@@ -288,6 +289,9 @@ static const auto ACTIVITY_SWITCH_CONDITIONS = datastructure::create_const_map<s
 	std::pair("engine.util.activity.switch_condition.type.NextCommand",
               std::function(gamestate::activity::next_command_switch)));
 
+/**
+ * Maps API activity switch condition types to nyan API values.
+ */
 static const auto ACTIVITY_SWITCH_CONDITION_TYPES = datastructure::create_const_map<std::string,
                                                                                     switch_condition_t>(
 	std::pair("engine.util.activity.switch_condition.type.NextCommand",
@@ -299,5 +303,16 @@ static const auto ACTIVITY_SWITCH_CONDITION_TYPES = datastructure::create_const_
 static const auto PATCH_PROPERTY_DEFS = datastructure::create_const_map<patch_property_t, nyan::ValueHolder>(
 	std::pair(patch_property_t::DIPLOMATIC,
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.patch.property.type.Diplomatic"))));
+
+/**
+ * Maps API command types to engine command types.
+ */
+static const auto COMMAND_DEFS = datastructure::create_const_map<nyan::fqon_t, component::command::command_t>(
+	std::pair("engine.util.command.type.Idle",
+              component::command::command_t::IDLE),
+	std::pair("engine.util.command.type.Move",
+              component::command::command_t::MOVE),
+	std::pair("engine.util.command.type.ApplyEffect",
+              component::command::command_t::APPLY_EFFECT));
 
 } // namespace openage::gamestate::api
