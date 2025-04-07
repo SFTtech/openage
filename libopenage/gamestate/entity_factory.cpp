@@ -1,4 +1,4 @@
-// Copyright 2023-2024 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #include "entity_factory.h"
 
@@ -370,6 +370,27 @@ void EntityFactory::init_activity(const std::shared_ptr<openage::event::EventLoo
 
 				xor_event_gate->add_output(output_node, api::APIActivityEvent::get_primer(event_obj));
 			}
+			break;
+		}
+		case activity::node_t::XOR_SWITCH_GATE: {
+			auto xor_switch_gate = std::static_pointer_cast<activity::XorSwitchGate>(activity_node);
+			auto switch_value = nyan_node.get<nyan::ObjectValue>("XORSwitchGate.switch");
+			auto switch_obj = owner_db_view->get_object(switch_value->get_name());
+
+			auto lookup_func = api::APIActivitySwitchCondition::get_lookup(switch_obj);
+			xor_switch_gate->set_lookup_func(lookup_func);
+
+			auto lookup_map = api::APIActivitySwitchCondition::get_lookup_map(switch_obj);
+			for (const auto &[key, node_id] : lookup_map) {
+				auto output_id = visited[node_id];
+				auto output_node = node_id_map[output_id];
+				xor_switch_gate->set_output(output_node, key);
+			}
+
+			auto default_fqon = nyan_node.get<nyan::ObjectValue>("XORSwitchGate.default")->get_name();
+			auto default_id = visited[default_fqon];
+			auto default_node = node_id_map[default_id];
+			xor_switch_gate->set_default(default_node);
 			break;
 		}
 		default:
