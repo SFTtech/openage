@@ -1,4 +1,4 @@
-// Copyright 2024-2024 the openage authors. See copying.md for legal info.
+// Copyright 2024-2025 the openage authors. See copying.md for legal info.
 
 #include "apply_effect.h"
 
@@ -91,18 +91,28 @@ const time::time_t ApplyEffect::apply_effect(const std::shared_ptr<gamestate::Ga
 
 		switch (effect_type) {
 		case api::effect_t::DISCRETE_FLAC_DECREASE:
+			[[fallthrough]];
 		case api::effect_t::DISCRETE_FLAC_INCREASE: {
 			// TODO: Filter effects by AttributeChangeType
 			auto attribute_amount = effect_objs[0].get_object("FlatAttributeChange.change_value");
 			auto attribute = attribute_amount.get_object("AttributeAmount.type");
 			auto applied_value = get_applied_discrete_flac(effect_objs, resistance_objs);
 
+			if (effect_type == api::effect_t::DISCRETE_FLAC_DECREASE) {
+				// negate the applied value for decrease effects
+				applied_value = -applied_value;
+			}
+
 			// Record the time when the effects were applied
 			effects_component->set_init_time(start_time + delay);
 			effects_component->set_last_used(start_time + total_time);
 
-			// Apply the effect to the live component
-			live_component->set_attribute(start_time + delay, attribute.get_name(), applied_value);
+			// Calculate the new attribute value
+			auto current_value = live_component->get_attribute(start_time, attribute.get_name());
+			auto new_value = current_value + applied_value;
+
+			// Apply the attribute change to the live component
+			live_component->set_attribute(start_time + delay, attribute.get_name(), new_value);
 		} break;
 		default:
 			throw Error(MSG(err) << "Effect type not implemented: " << static_cast<int>(effect_type));
