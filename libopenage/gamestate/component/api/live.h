@@ -1,4 +1,4 @@
-// Copyright 2021-2024 the openage authors. See copying.md for legal info.
+// Copyright 2021-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -37,6 +37,17 @@ public:
 	void add_attribute(const time::time_t &time,
 	                   const nyan::fqon_t &attribute,
 	                   std::shared_ptr<curve::Segmented<attribute_value_t>> starting_values);
+
+	/**
+	 * Get the value of an attribute at a given time.
+	 *
+	 * @param time The time at which the attribute is queried.
+	 * @param attribute Attribute identifier (fqon of the nyan object).
+	 *
+	 * @return Value of the attribute at the given time.
+	 */
+	const attribute_value_t get_attribute(const time::time_t &time,
+	                                      const nyan::fqon_t &attribute) const;
 
 	/**
 	 * Set the value of an attribute at a given time.
