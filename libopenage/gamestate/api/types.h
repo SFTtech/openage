@@ -1,4 +1,4 @@
-// Copyright 2023-2024 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -38,6 +38,7 @@ enum class effect_t {
 	CONTINUOUS_TRPC_INCREASE,
 
 	DISCRETE_CONVERT,
+	DISCRETE_CONVERT_AOE2, // TODO: Remove from API
 	DISCRETE_FLAC_DECREASE,
 	DISCRETE_FLAC_INCREASE,
 	DISCRETE_MAKE_HARVESTABLE,
