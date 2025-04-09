@@ -147,6 +147,8 @@ static const auto EFFECT_TYPE_LOOKUP = datastructure::create_const_map<nyan::fqo
               effect_t::CONTINUOUS_TRPC_INCREASE),
 	std::pair("engine.effect.discrete.Convert",
               effect_t::DISCRETE_CONVERT),
+	std::pair("engine.effect.discrete.convert.type.AoE2Convert", // TODO: Remove from API
+              effect_t::DISCRETE_CONVERT_AOE2),
 	std::pair("engine.effect.discrete.flat_attribute_change.type.FlatAttributeChangeDecrease",
               effect_t::DISCRETE_FLAC_DECREASE),
 	std::pair("engine.effect.discrete.flat_attribute_change.type.FlatAttributeChangeIncrease",
