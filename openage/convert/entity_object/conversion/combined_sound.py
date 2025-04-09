@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2025 the openage authors. See copying.md for legal info.
 
 """
 References a sound in the game that has to be converted.
@@ -86,7 +86,7 @@ class CombinedSound:
         is expected to be in the modpack.
         """
         if len(self._refs) > 1:
-            return f"../shared/sounds/{self.filename}.opus"
+            return f"../../shared/sounds/{self.filename}.opus"
 
         if len(self._refs) == 1:
             return f"./sounds/{self.filename}.opus"
