@@ -1,4 +1,4 @@
-// Copyright 2019-2024 the openage authors. See copying.md for legal info.
+// Copyright 2019-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -47,13 +47,14 @@ private:
 	 *
 	 * @param before Index of the earlier keyframe.
 	 * @param after Index of the later keyframe.
-	 * @param elapsed Elapsed time after the earlier keyframe.
+	 * @param elapsed_frac Fraction of elapsed time between \p before and \p after.
+	 *                     Must be between 0.0 and 1.0.
 	 *
 	 * @return Interpolated value.
 	 */
 	T interpolate(typename KeyframeContainer<T>::elem_ptr before,
 	              typename KeyframeContainer<T>::elem_ptr after,
-	              double elapsed) const;
+	              double elapsed_frac) const;
 };
 
 
@@ -84,7 +85,7 @@ T Interpolated<T>::get(const time::time_t &time) const {
 		return this->container.get(e).val();
 	}
 	else {
-		// Interpolation between time(now) and time(next) that has elapsed
+		// Interpolation between time(now) and time(next) that has elapsed_frac
 		// TODO: Elapsed time does not use fixed point arithmetic
 		double elapsed_frac = offset.to_double() / interval.to_double();
 
@@ -133,15 +134,14 @@ void Interpolated<T>::compress(const time::time_t &start) {
 template <KeyframeValueLike T>
 inline T Interpolated<T>::interpolate(typename KeyframeContainer<T>::elem_ptr before,
                                       typename KeyframeContainer<T>::elem_ptr after,
-                                      double elapsed) const {
+                                      double elapsed_frac) const {
 	ENSURE(before <= after, "Index of 'before' must be before 'after'");
-	ENSURE(elapsed <= (this->container.get(after).time().to_double()
-	                   - this->container.get(before).time().to_double()),
-	       "Elapsed time must be less than or equal to the time between before and after");
+	ENSURE(elapsed_frac >= 0.0 && elapsed_frac <= 1.0,
+	       "Elapsed fraction must be between 0.0 and 1.0");
 	// TODO: after->value - before->value will produce wrong results if
 	//       after->value < before->value and curve element type is unsigned
 	//       Example: after = 2, before = 4; type = uint8_t ==> 2 - 4 = 254
-	auto diff_value = (this->container.get(after).val() - this->container.get(before).val()) * elapsed;
+	auto diff_value = (this->container.get(after).val() - this->container.get(before).val()) * elapsed_frac;
 	return this->container.get(before).val() + diff_value;
 }
 
