@@ -41,7 +41,7 @@ jobs:
     - name: Build openage
       run: |
         sudo docker run --rm -v "$(pwd)":/mnt/openage -w /mnt/openage openage-devenv:latest \
-          bash -c 'mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=$(which gcc-11) -DCMAKE_CXX_COMPILER=$(which g++-11) -DCMAKE_CXX_FLAGS='' -DCMAKE_EXE_LINKER_FLAGS='' -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_MODULE_LINKER_FLAGS='' -DCMAKE_SHARED_LINKER_FLAGS='' -DDOWNLOAD_NYAN=YES -DCXX_OPTIMIZATION_LEVEL=auto -DCXX_SANITIZE_FATAL=False -DCXX_SANITIZE_MODE=none -DWANT_BACKTRACE=if_available -DWANT_GPERFTOOLS_PROFILER=if_available -DWANT_GPERFTOOLS_TCMALLOC=False -DWANT_INOTIFY=if_available -DWANT_NCURSES=if_available -DWANT_OPENGL=if_available -DWANT_VULKAN=if_available -G Ninja .. && cmake --build . --parallel $(nproc) -- -k1'
+          bash -c 'mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=$(which gcc) -DCMAKE_CXX_COMPILER=$(which g++) -DCMAKE_CXX_FLAGS='' -DCMAKE_EXE_LINKER_FLAGS='' -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_MODULE_LINKER_FLAGS='' -DCMAKE_SHARED_LINKER_FLAGS='' -DDOWNLOAD_NYAN=YES -DCXX_OPTIMIZATION_LEVEL=auto -DCXX_SANITIZE_FATAL=False -DCXX_SANITIZE_MODE=none -DWANT_BACKTRACE=if_available -DWANT_GPERFTOOLS_PROFILER=if_available -DWANT_GPERFTOOLS_TCMALLOC=False -DWANT_INOTIFY=if_available -DWANT_NCURSES=if_available -DWANT_OPENGL=if_available -DWANT_VULKAN=if_available -G Ninja .. && cmake --build . --parallel $(nproc) -- -k1'
     - name: Compress build artifacts
       run: |
         mkdir -p /tmp/openage

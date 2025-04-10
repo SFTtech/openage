@@ -1,4 +1,4 @@
-// Copyright 2016-2023 the openage authors. See copying.md for legal info.
+// Copyright 2016-2025 the openage authors. See copying.md for legal info.
 
 #include "fixed_point.h"
 
@@ -121,6 +121,40 @@ void fixed_point() {
 	using TestTypeShort = FixedPoint<int32_t, 16>;
 	TESTEQUALS_FLOAT(TestTypeShort::e().to_double(), math::E, 1e-3);
 	TESTEQUALS_FLOAT(TestTypeShort::pi().to_double(), math::PI, 1e-3);
+
+	{
+		using S = FixedPoint<uint16_t, 7U>;
+		using T = FixedPoint<uint16_t, 7U, uint64_t>;
+
+		auto a = S::from_int(16U);
+		TESTNOTEQUALS((a*a).to_int(), 256U);
+
+		auto b = T::from_int(16U);
+		TESTEQUALS((b*b).to_int(), 256U);
+
+		auto c = T::from_int(17U);
+		TESTEQUALS((c*c).to_int(), 289U);
+	}
+	{
+		using S = FixedPoint<int32_t, 12U>;
+		auto a = S::from_int(256);
+		auto b = S::from_int(8);
+		TESTNOTEQUALS((a/b).to_int(), 32);
+
+
+		using T = FixedPoint<int32_t, 12, int64_t>;
+		auto c = T::from_int(256);
+		auto d = T::from_int(8);
+		TESTEQUALS((c/d).to_int(), 32);
+	}
+	{
+		using T = FixedPoint<int32_t, 12, int64_t>;
+		auto a = T::from_double(4.75);
+		auto b = T::from_double(3.5);
+		auto c = -a;
+		TESTEQUALS_FLOAT((a/b).to_double(), 4.75/3.5, 0.1);
+		TESTEQUALS_FLOAT((c/b).to_double(), -4.75/3.5, 0.1);
+	}
 
 }
 

@@ -1,4 +1,4 @@
-// Copyright 2014-2024 the openage authors. See copying.md for legal info.
+// Copyright 2014-2025 the openage authors. See copying.md for legal info.
 
 #include "tests.h"
 
@@ -135,6 +135,14 @@ void pairing_heap_3() {
 	heap.push(heap_elem{3});
 	heap.push(heap_elem{4});
 	heap.push(heap_elem{5});
+
+	size_t i = 0;
+	std::array<int, 6> expected{0, 5, 4, 3, 2, 1};
+	for (auto &elem : heap) {
+		TESTEQUALS(elem.data, expected.at(i));
+		i++;
+	}
+
 	heap.pop(); // trigger pairing
 
 	heap.clear();

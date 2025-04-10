@@ -1,4 +1,4 @@
-// Copyright 2014-2024 the openage authors. See copying.md for legal info.
+// Copyright 2014-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -17,6 +17,7 @@
  */
 
 #include <functional>
+#include <iterator>
 #include <memory>
 #include <type_traits>
 #include <unordered_set>
@@ -36,6 +37,9 @@ template <typename T,
           typename heapnode_t>
 class PairingHeap;
 
+template <typename T, typename compare>
+class PairingHeapIterator;
+
 
 template <typename T, typename compare = std::less<T>>
 class PairingHeapNode {
@@ -43,6 +47,7 @@ public:
 	using this_type = PairingHeapNode<T, compare>;
 
 	friend PairingHeap<T, compare, this_type>;
+	friend PairingHeapIterator<T, compare>;
 
 	T data;
 	compare cmp;
@@ -187,6 +192,166 @@ private:
 
 
 /**
+ * @brief Iterator class for PairingHeap.
+ *
+ * This class provides a bidirectional iterator for the PairingHeap data structure.
+ * It allows traversal of the heap in both forward and backward directions.
+ * It is depth-first traversal.
+ *
+ * @tparam T The type of elements stored in the heap.
+ * @tparam compare The comparison functor used to order the elements.
+ */
+template <typename T, typename compare = std::less<T>>
+class PairingHeapIterator {
+public:
+	using iterator_category = std::bidirectional_iterator_tag;
+	using value_type = T;
+	using difference_type = std::ptrdiff_t;
+	using pointer = T *;
+	using reference = T &;
+
+	/**
+	 * @brief Constructs an iterator starting at the given node.
+	 *
+	 * @param node The starting node for the iterator.
+	 */
+	PairingHeapIterator(PairingHeapNode<T, compare> *node) :
+		current(node) {}
+
+	/**
+	 * @brief Dereference operator.
+	 *
+	 * @return A reference to the data stored in the current node.
+	 */
+	reference operator*() const {
+		return current->data;
+	}
+
+	/**
+	 * @brief Member access operator.
+	 *
+	 * @return A pointer to the data stored in the current node.
+	 */
+	pointer operator->() const {
+		return &(current->data);
+	}
+
+
+	/**
+	 * @brief Get current node.
+	 *
+	 * @return The current node.
+	 */
+	PairingHeapNode<T, compare> *node() {
+		return current;
+	}
+
+
+	/**
+	 * @brief Pre-increment operator.
+	 *
+	 * Moves the iterator to the next node in the heap.
+	 *
+	 * @return A reference to the incremented iterator.
+	 */
+	PairingHeapIterator &operator++() {
+		if (current->first_child) {
+			current = current->first_child;
+		}
+		else if (current->next_sibling) {
+			current = current->next_sibling;
+		}
+		else {
+			while (current->parent && !current->parent->next_sibling) {
+				current = current->parent;
+			}
+			if (current->parent) {
+				current = current->parent->next_sibling;
+			}
+			else {
+				current = nullptr;
+			}
+		}
+		return *this;
+	}
+
+	/**
+	 * @brief Post-increment operator.
+	 *
+	 * Moves the iterator to the next node in the heap.
+	 *
+	 * @return A copy of the iterator before incrementing.
+	 */
+	PairingHeapIterator operator++(int) {
+		PairingHeapIterator tmp = *this;
+		++(*this);
+		return tmp;
+	}
+
+	/**
+	 * @brief Pre-decrement operator.
+	 *
+	 * Moves the iterator to the previous node in the heap.
+	 *
+	 * @return A reference to the decremented iterator.
+	 */
+	PairingHeapIterator &operator--() {
+		if (current->prev_sibling) {
+			current = current->prev_sibling;
+			while (current->first_child) {
+				current = current->first_child;
+				while (current->next_sibling) {
+					current = current->next_sibling;
+				}
+			}
+		}
+		else if (current->parent) {
+			current = current->parent;
+		}
+		return *this;
+	}
+
+	/**
+	 * @brief Post-decrement operator.
+	 *
+	 * Moves the iterator to the previous node in the heap.
+	 *
+	 * @return A copy of the iterator before decrementing.
+	 */
+	PairingHeapIterator operator--(int) {
+		PairingHeapIterator tmp = *this;
+		--(*this);
+		return tmp;
+	}
+
+	/**
+	 * @brief Equality comparison operator.
+	 *
+	 * @param a The first iterator to compare.
+	 * @param b The second iterator to compare.
+	 * @return True if both iterators point to the same node, false otherwise.
+	 */
+	friend bool operator==(const PairingHeapIterator &a, const PairingHeapIterator &b) {
+		return a.current == b.current;
+	}
+
+	/**
+	 * @brief Inequality comparison operator.
+	 *
+	 * @param a The first iterator to compare.
+	 * @param b The second iterator to compare.
+	 * @return True if the iterators point to different nodes, false otherwise.
+	 */
+	friend bool operator!=(const PairingHeapIterator &a, const PairingHeapIterator &b) {
+		return a.current != b.current;
+	}
+
+private:
+	PairingHeapNode<T, compare> *current; ///< Pointer to the current node in the heap.
+};
+
+
+/**
  * (Quite) efficient heap implementation.
  */
 template <typename T,
@@ -196,6 +361,7 @@ class PairingHeap final {
 public:
 	using element_t = heapnode_t *;
 	using this_type = PairingHeap<T, compare, heapnode_t>;
+	using iterator = PairingHeapIterator<T, compare>;
 
 	/**
 	 * create a empty heap.
@@ -404,11 +570,24 @@ public:
 	 * erase all elements on the heap.
 	 */
 	void clear() {
-		auto delete_node = [](element_t node) { delete node; };
-		this->iter_all<true>(delete_node);
+		std::vector<element_t> to_delete;
+		to_delete.reserve(this->size());
+
+		// collect all node pointers to delete
+		for (iterator it = this->begin(); it != this->end(); it++) {
+			to_delete.push_back(it.node());
+		}
+
+		// delete all nodes
+		for (element_t node : to_delete) {
+			delete node;
+		}
+
+		// reset heap state to empty
 		this->root_node = nullptr;
 		this->node_count = 0;
 #if OPENAGE_PAIRINGHEAP_DEBUG
+		// clear the node set for debugging
 		this->nodes.clear();
 #endif
 	}
@@ -588,6 +767,14 @@ public:
 	template <bool reverse = false>
 	void iter_all(const std::function<void(const element_t &)> &func) const {
 		this->walk_tree<reverse>(this->root_node, func);
+	}
+
+	iterator begin() const {
+		return iterator(this->root_node);
+	}
+
+	iterator end() const {
+		return iterator(nullptr);
 	}
 
 private:

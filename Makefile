@@ -128,21 +128,25 @@ mrproperer: mrproper
 checkfast:
 	python3 -m buildsystem.codecompliance --fast
 
-.PHONY: checkall
-checkall:
-	python3 -m buildsystem.codecompliance --all
+.PHONY: checkmerge
+checkmerge:
+	python3 -m buildsystem.codecompliance --merge
 
 .PHONY: checkchanged
 checkchanged:
-	python3 -m buildsystem.codecompliance --all --only-changed-files=origin/master
+	python3 -m buildsystem.codecompliance --merge --only-changed-files=origin/master
 
 .PHONY: checkuncommited
 checkuncommited:
-	python3 -m buildsystem.codecompliance --all --only-changed-files=HEAD
+	python3 -m buildsystem.codecompliance --merge --only-changed-files=HEAD
 
 .PHONY: checkpy
 checkpy:
 	python3 -m buildsystem.codecompliance --pystyle --pylint
+
+.PHONY: checkall
+checkall:
+	python3 -m buildsystem.codecompliance --all
 
 .PHONY: help
 help: $(BUILDDIR)/Makefile
@@ -175,6 +179,7 @@ help: $(BUILDDIR)/Makefile
 	@echo "tests              -> run the tests (py + cpp)"
 	@echo ""
 	@echo "checkall           -> full code compliance check"
+	@echo "checkmerge         -> code compliance check for merging to master"
 	@echo "checkfast          -> fast checks only"
 	@echo "checkchanged       -> full check for all files changed since origin/master"
 	@echo "checkuncommited    -> full check for all currently uncommited files"

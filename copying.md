@@ -160,6 +160,11 @@ _the openage authors_ are:
 | Alex Zhuohao He             | ZzzhHe                      | zhuohao dawt he à outlook dawt com                |
 | David Wever                 | dmwever                     | dmwever à crimson dawt ua dawt edu                |
 | Michael Lynch               | mtlynch                     | git à mtlynch dawt io                             |
+| Ngô Xuân Minh               |                             | xminh dawt ngo dawt 00 à gmail dawt com           |
+| Haytham Tang                | haytham918                  | yunxuant à umich dawt edu                         |
+| Ana Trias-Labellarte        | anatriaslabella             | ana dawt triaslabella à ufl dawt edu              |
+| Eelco Empting               | Eeelco                      | me à eelco dawt de                                |
+| Jordan Sutton               | jsutCodes                   | jsutcodes à gmail dawt com                        |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.

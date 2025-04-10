@@ -51,7 +51,7 @@
             "type": "shell",
             "command": "make",
             "args": [
-                "checkall"
+                "checkmerge"
             ],
             "group": "build",
             "presentation": {

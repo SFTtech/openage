@@ -6,7 +6,7 @@
 
 sanity_check:
 	- skip              (? if job != "debian" ?)
-	make checkall
+	make checkmerge
 
 # Various optimisation options can affect warnings compiler generates.
 # Make sure both release and debug are tested. Arch job has more checks,
