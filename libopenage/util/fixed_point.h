@@ -422,6 +422,45 @@ public:
 		return *this;
 	}
 
+	/**
+	 * Get the absolute difference to another FixedPoint number.
+	 *
+	 * @param other Number to compare with.
+	 *
+	 * @return Absolute difference between \p this and \p other.
+	 */
+	constexpr same_type_but_unsigned abs_diff(const FixedPoint &other) const {
+		return FixedPoint::abs_diff(*this, other);
+	}
+
+	/**
+	 * Get the absolute difference between two FixedPoint numbers.
+	 *
+	 * Safe for signed types against integer overflow.
+	 *
+	 * @param first First number to compare with.
+	 * @param second Second number to compare with.
+	 *
+	 * @return Absolute difference between \p first and \p second.
+	 */
+	static constexpr same_type_but_unsigned abs_diff(const FixedPoint &first, const FixedPoint &second) {
+		int_type diff;
+		int_type max = std::max(first.raw_value, second.raw_value);
+		int_type min = std::min(first.raw_value, second.raw_value);
+
+		diff = max - min;
+
+		// check if there was an overflow
+		if (diff < 0) {
+			// if there is an overflow, max is positive and min is negative
+			// we can safely cast max to unsigned and subtract min
+			unsigned_int_type u_diff = static_cast<unsigned_int_type>(max) - min;
+			return FixedPoint::same_type_but_unsigned::from_raw_value(u_diff);
+		}
+
+		return FixedPoint::same_type_but_unsigned::from_raw_value(diff);
+	}
+
 	void swap(FixedPoint &rhs) {
 		std::swap(this->raw_value, rhs.raw_value);
 	}

@@ -83,6 +83,30 @@ void fixed_point() {
 	TESTEQUALS(e < f, false);
 	TESTEQUALS(e > f, true);
 
+	// test absolute difference
+	FixedPoint<int8_t, 4> g(1.5);
+	FixedPoint<int8_t, 4> h(2.5);
+	FixedPoint<int8_t, 4> i = FixedPoint<int8_t, 4>::min_value(); // -8.0
+	FixedPoint<int8_t, 4> j = FixedPoint<int8_t, 4>::max_value(); // 7.9375
+
+	FixedPoint<uint8_t, 4> k = FixedPoint<int8_t, 4>::abs_diff(g, h);
+	TESTEQUALS(k, 1);
+	k = FixedPoint<int8_t, 4>::abs_diff(h, g);
+	TESTEQUALS(k, 1);
+	k = FixedPoint<int8_t, 4>::abs_diff(g, i);
+	TESTEQUALS(k, 9.5);
+	k = FixedPoint<int8_t, 4>::abs_diff(i, g);
+	TESTEQUALS(k, 9.5);
+	k = h.abs_diff(j);
+	TESTEQUALS(k, 5.4375);
+	k = j.abs_diff(h);
+	TESTEQUALS(k, 5.4375);
+	k = i.abs_diff(j);
+	FixedPoint<uint8_t, 4> max = FixedPoint<uint8_t, 4>::max_value();
+	TESTEQUALS(k, max);
+	k = j.abs_diff(i);
+	TESTEQUALS(k, max);
+
 	// test the string I/O functions
 	FString s;
 	s << a;
