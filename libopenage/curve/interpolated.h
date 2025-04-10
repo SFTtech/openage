@@ -66,16 +66,14 @@ T Interpolated<T>::get(const time::time_t &time) const {
 	auto nxt = e;
 	++nxt;
 
-	time::time_t interval = 0;
+	// difference between time and previous keyframe
+	auto offset = time.abs_diff(this->container.get(e).time());
 
-	auto offset = time - this->container.get(e).time();
-
+	// difference between previous keyframe and next keyframe
+	time::time_duration_t interval = 0;
 	if (nxt != this->container.size()) {
-		interval = this->container.get(nxt).time() - this->container.get(e).time();
+		interval = this->container.get(nxt).time().abs_diff(this->container.get(e).time());
 	}
-
-	// here, offset > interval will never hold.
-	// otherwise the underlying storage is broken.
 
 	// If the next element is at the same time, just return the value of this one.
 	if (nxt == this->container.size() // use the last curve value
@@ -85,6 +83,9 @@ T Interpolated<T>::get(const time::time_t &time) const {
 		return this->container.get(e).val();
 	}
 	else {
+		// here, offset > interval will never hold.
+		// otherwise the underlying storage is broken.
+
 		// Interpolation between time(now) and time(next) that has elapsed_frac
 		// TODO: Elapsed time does not use fixed point arithmetic
 		double elapsed_frac = offset.to_double() / interval.to_double();
@@ -103,8 +104,8 @@ void Interpolated<T>::compress(const time::time_t &start) {
 	auto last_kept = e;
 	for (auto current = e + 1; current < this->container.size() - 1; ++current) {
 		// offset is between current keyframe and the last kept keyframe
-		auto offset = this->container.get(current).time() - this->container.get(last_kept).time();
-		auto interval = this->container.get(current + 1).time() - this->container.get(last_kept).time();
+		auto offset = this->container.get(current).time().abs_diff(this->container.get(last_kept).time());
+		auto interval = this->container.get(current + 1).time().abs_diff(this->container.get(last_kept).time());
 		auto elapsed_frac = offset.to_double() / interval.to_double();
 
 		// Interpolate the value that would be at the current keyframe (if it didn't exist)
