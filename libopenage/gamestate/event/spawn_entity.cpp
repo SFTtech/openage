@@ -1,4 +1,4 @@
-// Copyright 2023-2024 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #include "spawn_entity.h"
 
@@ -209,10 +209,12 @@ void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
 
 	// ASDF: Remove demo code below for applying effects
 	// add apply effect command to the command queue
-	auto command_queue = std::dynamic_pointer_cast<component::CommandQueue>(
-		entity->get_component(component::component_t::COMMANDQUEUE));
-	auto apply_command = std::make_shared<component::command::ApplyEffect>(entity->get_id());
-	command_queue->add_command(time, apply_command);
+	if (entity->has_component(component::component_t::APPLY_EFFECT)) {
+		auto command_queue = std::dynamic_pointer_cast<component::CommandQueue>(
+			entity->get_component(component::component_t::COMMANDQUEUE));
+		auto apply_command = std::make_shared<component::command::ApplyEffect>(entity->get_id());
+		command_queue->add_command(time, apply_command);
+	}
 
 	auto activity = std::dynamic_pointer_cast<component::Activity>(
 		entity->get_component(component::component_t::ACTIVITY));
