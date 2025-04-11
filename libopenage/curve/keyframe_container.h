@@ -1,4 +1,4 @@
-// Copyright 2017-2024 the openage authors. See copying.md for legal info.
+// Copyright 2017-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -16,40 +16,38 @@
 namespace openage::curve {
 
 /**
- * A timely ordered list with several management functions
+ * A container storing time-value (keyframe) pairs ordered by time.
  *
- * This class manages different time-based management functions for list
- * approach that lies underneath. It contains list to be accessed via a
- * non-accurate timing functionality, this means, that for getting a value, not
- * the exact timestamp has to be known, it will always return the one closest,
- * less or equal to the requested one.
+ * This class has several management functions for modifying and accessing the
+ * underlying storage. For getting a keyframe value, the exact timestamp does not
+ * have to be known, it will always return the one closest, less or equal to the
+ * requested one.
  **/
 template <KeyframeValueLike T>
 class KeyframeContainer {
 public:
 	/**
-	 * A element of the curvecontainer. This is especially used to keep track of
-	 * the value-timing.
+	 * Element of the container. Represents a single time-value pair.
 	 */
 	using keyframe_t = Keyframe<T>;
 
 	/**
-	 * The underlaying container type.
+	 * Underlaying container type.
 	 */
 	using container_t = std::vector<keyframe_t>;
 
 	/**
-	 * The index type to access elements in the container
+	 * Index type to access elements in the container
 	 */
 	using elem_ptr = typename container_t::size_type;
 
 	/**
-	 * The iterator type to access elements in the container
+	 * Iterator type to access elements in the container.
 	 */
 	using iterator = typename container_t::const_iterator;
 
 	/**
-	 * Create a new container.
+	 * Create a new keyframe container.
 	 *
 	 * Inserts a default element with value \p T() at \p time = -INF to ensure
 	 * that accessing the container always returns an element.
@@ -59,9 +57,9 @@ public:
 	KeyframeContainer();
 
 	/**
-	 * Create a new container.
+	 * Create a new keyframe container.
 	 *
-	 * Inserts a default element at \p time = -INF to ensure
+	 * Inserts a default element \p defaultval at \p time = -INF to ensure
 	 * that accessing the container always returns an element.
 	 *
 	 * @param defaultval Value of default element at -INF.
@@ -71,63 +69,89 @@ public:
 	KeyframeContainer(const T &defaultval);
 
 	/**
-	 * Return the number of elements in this container.
-	 * One element is always added at -Inf by default,
-	 * so this is usually your_added_elements + 1.
+	 * Get the number of elements in this container.
 	 */
 	size_t size() const;
 
+	/**
+	 * Get the value of the keyframe at the given index.
+	 *
+	 * @param idx Index of the keyframe to get.
+	 *
+	 * @return The keyframe at the given index.
+	 */
 	const keyframe_t &get(const elem_ptr &idx) const {
 		return this->container.at(idx);
 	}
 
 	/**
-	 * Get the last element in the curve which is at or before the given time.
-	 * (i.e. elem->time <= time). Given a hint where to start the search.
+	 * Get the last element in the container which is at or before the given time.
+	 * (i.e. elem->time <= time). Include a hint where to start the search.
+	 *
+	 * @param time Request time.
+	 * @param hint Index of the approximate element location.
+	 *
+	 * @return Last element with time <= time.
 	 */
 	elem_ptr last(const time::time_t &time,
 	              const elem_ptr &hint) const;
 
 	/**
-	 * Get the last element with elem->time <= time, without a hint where to start
-	 * searching.
+	 * Get the last element in the container which is at or before the given time.
+	 * (i.e. elem->time <= time).
 	 *
 	 * The usage of this method is discouraged - except if there is absolutely
 	 * no chance for you to have a hint (or the container is known to be nearly
-	 * empty)
+	 * empty).
+	 *
+	 * @param time Request time.
+	 *
+	 * @return Last element with time <= time.
 	 */
 	elem_ptr last(const time::time_t &time) const {
 		return this->last(time, this->container.size());
 	}
 
 	/**
-	 * Get the last element in the curve which is before the given time.
-	 * (i.e. elem->time < time). Given a hint where to start the search.
+	 * Get the last element in the container which is before the given time.
+	 * (i.e. elem->time < time). Include a hint where to start the search.
+	 *
+	 * @param time Request time.
+	 * @param hint Index of the approximate element location.
+	 *
+	 * @return Last element with time < time.
 	 */
 	elem_ptr last_before(const time::time_t &time,
 	                     const elem_ptr &hint) const;
 
 	/**
-	 * Get the last element with elem->time < time, without a hint where to start
-	 * searching.
+	 * Get the last element in the container which is before the given time.
+	 *
+	 * The usage of this method is discouraged - except if there is absolutely
+	 * no chance for you to have a hint (or the container is known to be nearly
+	 * empty).
+	 *
+	 * @param time Request time.
+	 *
+	 * @return Last element with time < time.
 	 */
 	elem_ptr last_before(const time::time_t &time) const {
 		return this->last_before(time, this->container.size());
 	}
 
 	/**
-	 * Insert a new element without submitting a hint. The search is
+	 * Insert a new element. The search for the insertion point is
 	 * started from the end of the data.
 	 *
-	 * The use of this function is discouraged, use it only, if your really
+	 * The use of this function is discouraged, use it only, if you really
 	 * do not have the possibility to get a hint.
 	 *
-	 * If there is a keyframe with identical time, this will
+	 * If there is already a keyframe with identical time in the container, this will
 	 * insert the new keyframe before the old one.
 	 *
 	 * @param keyframe Keyframe to insert.
 	 *
-	 * @return The location (index) of the inserted element.
+	 * @return Location (index) of the inserted element.
 	 */
 	elem_ptr insert_before(const keyframe_t &keyframe) {
 		return this->insert_before(keyframe, this->container.size());
@@ -137,7 +161,7 @@ public:
 	 * Insert a new element.
 	 *
 	 * The hint shall give an approximate location, where
-	 * the inserter will start to look for a insertion point. If a good hint is
+	 * the inserter will start to look for an insertion point. If a good hint is
 	 * given, the runtime of this function will not be affected by the current
 	 * history size.
 	 *
@@ -153,19 +177,19 @@ public:
 	                       const elem_ptr &hint);
 
 	/**
-	 * Create and insert a new element without submitting a hint. The search
-	 * is started from the end of the data.
+	 * Create and insert a new element. The search for the insertion point is
+	 * started from the end of the data.
 	 *
-	 * The use of this function is discouraged, use it only, if your really
+	 * The use of this function is discouraged, use it only, if you really
 	 * do not have the possibility to get a hint.
 	 *
-	 * If there is a keyframe with identical time, this will
+	 * If there is a keyframe with identical time in the container, this will
 	 * insert the new keyframe before the old one.
 	 *
 	 * @param time Time of the new keyframe.
 	 * @param value Value of the new keyframe.
 	 *
-	 * @return The location (index) of the inserted element.
+	 * @return Location (index) of the inserted element.
 	 */
 	elem_ptr insert_before(const time::time_t &time,
 	                       const T &value) {
@@ -174,7 +198,12 @@ public:
 	}
 
 	/**
-	 * Create and insert a new element. The hint gives an approximate location.
+	 * Create and insert a new element.
+	 *
+	 * The hint shall give an approximate location, where
+	 * the inserter will start to look for an insertion point. If a good hint is
+	 * given, the runtime of this function will not be affected by the current
+	 * history size.
 	 *
 	 * If there is a value with identical time, this will insert the new value
 	 * before the old one.
@@ -183,7 +212,7 @@ public:
 	 * @param value Value of the new keyframe.
 	 * @param hint Index of the approximate insertion location.
 	 *
-	 * @return The location (index) of the inserted element.
+	 * @return Location (index) of the inserted element.
 	 */
 	elem_ptr insert_before(const time::time_t &time,
 	                       const T &value,
@@ -195,6 +224,7 @@ public:
 	 * Insert a new element, overwriting elements that have a
 	 * time conflict. The hint gives an approximate insertion location to minimize runtime
 	 * on big-history curves.
+	 *
 	 * `overwrite_all` == true -> overwrite all same-time elements.
 	 * `overwrite_all` == false -> overwrite the last of the time-conflict elements.
 	 *
@@ -203,7 +233,7 @@ public:
 	 * @param overwrite_all If true, overwrite all elements with the same time.
 	 *                      If false, overwrite only the last element with the same time.
 	 *
-	 * @return The location (index) of the inserted element.
+	 * @return Location (index) of the inserted element.
 	 */
 	elem_ptr insert_overwrite(const keyframe_t &keyframe,
 	                          const elem_ptr &hint,
@@ -214,13 +244,13 @@ public:
 	 * elements with the same time. This function will start to search the time
 	 * from the end of the data.
 	 *
-	 * The use of this function is discouraged, use itonly, if your really
+	 * The use of this function is discouraged, use it only, if you really
 	 * do not have the possibility to get a hint.
 	 *
 	 * @param time Time of the new keyframe.
 	 * @param value Value of the new keyframe.
 	 *
-	 * @return The location (index) of the inserted element.
+	 * @return Location (index) of the inserted element.
 	 */
 	elem_ptr insert_overwrite(const time::time_t &time, const T &value) {
 		return this->insert_overwrite(keyframe_t(time, value),
@@ -229,10 +259,11 @@ public:
 
 	/**
 	 * Insert a new value at given time, which overwrites element(s) with
-	 * identical time. If `overwrite_all` is false, overwrite the last same-time
-	 * element. If `overwrite_all` is true, overwrite all elements with same-time.
-	 * Provide a insertion hint to abbreviate the search for the
+	 * identical time. Provide a insertion hint to abbreviate the search for the
 	 * insertion point.
+	 *
+	 * `overwrite_all` == true -> overwrite all same-time elements.
+	 * `overwrite_all` == false -> overwrite the last of the time-conflict elements.
 	 *
 	 * @param time Time of the new keyframe.
 	 * @param value Value of the new keyframe.
@@ -240,7 +271,7 @@ public:
 	 * @param overwrite_all If true, overwrite all elements with the same time.
 	 *                      If false, overwrite only the last element with the same time.
 	 *
-	 * @return The location (index) of the inserted element.
+	 * @return Location (index) of the inserted element.
 	 */
 	elem_ptr insert_overwrite(const time::time_t &time,
 	                          const T &value,
@@ -257,7 +288,7 @@ public:
 	 * @param keyframe Keyframe to insert.
 	 * @param hint Index of the approximate insertion location.
 	 *
-	 * @return The location (index) of the inserted element.
+	 * @return Location (index) of the inserted element.
 	 */
 	elem_ptr insert_after(const keyframe_t &keyframe,
 	                      const elem_ptr &hint);
@@ -267,13 +298,13 @@ public:
 	 * elements that have the same time. This function will start to search the
 	 * time from the end of the data.
 	 *
-	 * The use of this function is discouraged, use it only, if your really
+	 * The use of this function is discouraged, use it only, if you really
 	 * do not have the possibility to get a hint.
 	 *
 	 * @param time Time of the new keyframe.
 	 * @param value Value of the new keyframe.
 	 *
-	 * @return The location (index) of the inserted element.
+	 * @return Location (index) of the inserted element.
 	 */
 	elem_ptr insert_after(const time::time_t &time,
 	                      const T &value) {
@@ -289,7 +320,7 @@ public:
 	 * @param value Value of the new keyframe.
 	 * @param hint Index of the approximate insertion location.
 	 *
-	 * @return The location (index) of the inserted element.
+	 * @return Location (index) of the inserted element.
 	 */
 	elem_ptr insert_after(const time::time_t &time,
 	                      const T &value,
@@ -298,33 +329,41 @@ public:
 	}
 
 	/**
-	 * Erase all elements that come after this last valid element.
+	 * Erase all elements after the given element.
+     *
+     * @param last_valid Location of the last element to keep.
+     *
+     * @return Location (index) of the last element that was kept.
 	 */
 	elem_ptr erase_after(elem_ptr last_valid);
 
 	/**
-	 * Erase a single element from the curve.
-	 * Returns the element after the deleted one.
+	 * Erase a single element from the container.
+     *
+     * @param it Location of the element to erase.
+     *
+     * @return Location (index) of the next element after the erased one.
 	 */
 	elem_ptr erase(elem_ptr it);
 
 	/**
-	 * Erase all elements with given time.
-	 * Variant without hint, starts the search at the end of the container.
-	 * Returns the iterator after the deleted elements.
+	 * Erase all elements with given time. Starts the search at the end of the container.
+	 *
+     * @param time Time of the elements to erase.
+     *
+     * @return Location (index) of the next element after the erased one.
 	 */
 	elem_ptr erase(const time::time_t &time) {
 		return this->erase(time, this->container.size());
 	}
 
 	/**
-	 * Erase all element with given time.
-	 * `hint` is an iterator pointing hopefully close to the searched
-	 * elements.
+	 * Erase all element with given time. Include a hint where to start the search.
 	 *
-	 * Returns the iterator after the deleted elements.
-	 * Or, if no elements with this time exist,
-	 * the iterator to the first element after the requested time is returned
+	 * @param time Time of the elements to erase.
+     * @param hint Index of the approximate element location.
+     *
+     * @return Location (index) of the next element after the erased one.
 	 */
 	elem_ptr erase(const time::time_t &time,
 	               const elem_ptr &hint) {
@@ -332,14 +371,14 @@ public:
 	}
 
 	/**
-	 * Obtain an iterator to the first value with the smallest timestamp.
+	 * Get an iterator to the first keyframe in the container.
 	 */
 	iterator begin() const {
 		return this->container.begin();
 	}
 
 	/**
-	 * Obtain an iterator to the position after the last value.
+	 * Get an iterator to the end of the container.
 	 */
 	iterator end() const {
 		return this->container.end();
@@ -411,16 +450,12 @@ private:
 
 template <KeyframeValueLike T>
 KeyframeContainer<T>::KeyframeContainer() {
-	// Create a default element at -Inf, that can always be dereferenced - so
-	// there will by definition never be a element that cannot be dereferenced
 	this->container.push_back(keyframe_t(time::TIME_MIN, T()));
 }
 
 
 template <KeyframeValueLike T>
 KeyframeContainer<T>::KeyframeContainer(const T &defaultval) {
-	// Create a default element at -Inf, that can always be dereferenced - so
-	// there will by definition never be a element that cannot be dereferenced
 	this->container.push_back(keyframe_t(time::TIME_MIN, defaultval));
 }
 
@@ -431,14 +466,6 @@ size_t KeyframeContainer<T>::size() const {
 }
 
 
-/*
- * Select the last element that is <= a given time.
- * If there is multiple elements with the same time, return the last of them.
- * If there is no element with such time, return the next element before the time.
- *
- * Intuitively, this function returns the element that set the last value
- * that determines the curve value for a searched time.
- */
 template <KeyframeValueLike T>
 typename KeyframeContainer<T>::elem_ptr
 KeyframeContainer<T>::last(const time::time_t &time,
@@ -465,16 +492,6 @@ KeyframeContainer<T>::last(const time::time_t &time,
 }
 
 
-/*
- * Select the last element that is < a given time.
- * If there is multiple elements with the same time, return the last of them.
- * If there is no element with such time, return the next element before the time.
- *
- * Intuitively, this function returns the element that comes right before the
- * first element that matches the search time.
- *
- * ASDF: Remove all comments for the implementations.
- */
 template <KeyframeValueLike T>
 typename KeyframeContainer<T>::elem_ptr
 KeyframeContainer<T>::last_before(const time::time_t &time,
@@ -501,9 +518,6 @@ KeyframeContainer<T>::last_before(const time::time_t &time,
 }
 
 
-/*
- * Determine where to insert based on time, and insert.
- */
 template <KeyframeValueLike T>
 typename KeyframeContainer<T>::elem_ptr
 KeyframeContainer<T>::insert_before(const KeyframeContainer<T>::keyframe_t &e,
@@ -527,9 +541,6 @@ KeyframeContainer<T>::insert_before(const KeyframeContainer<T>::keyframe_t &e,
 }
 
 
-/*
- * Determine where to insert based on time, and insert, overwriting value(s) with same time.
- */
 template <KeyframeValueLike T>
 typename KeyframeContainer<T>::elem_ptr
 KeyframeContainer<T>::insert_overwrite(const KeyframeContainer<T>::keyframe_t &e,
@@ -556,10 +567,6 @@ KeyframeContainer<T>::insert_overwrite(const KeyframeContainer<T>::keyframe_t &e
 }
 
 
-/*
- * Determine where to insert based on time, and insert.
- * If there is a time conflict, insert after the existing element.
- */
 template <KeyframeValueLike T>
 typename KeyframeContainer<T>::elem_ptr
 KeyframeContainer<T>::insert_after(const KeyframeContainer<T>::keyframe_t &e,
@@ -576,9 +583,6 @@ KeyframeContainer<T>::insert_after(const KeyframeContainer<T>::keyframe_t &e,
 }
 
 
-/*
- * Go from the end to the last_valid element, and call erase on all of them
- */
 template <KeyframeValueLike T>
 typename KeyframeContainer<T>::elem_ptr
 KeyframeContainer<T>::erase_after(KeyframeContainer<T>::elem_ptr last_valid) {
@@ -593,9 +597,6 @@ KeyframeContainer<T>::erase_after(KeyframeContainer<T>::elem_ptr last_valid) {
 }
 
 
-/*
- * Delete the element from the list and call delete on it.
- */
 template <KeyframeValueLike T>
 typename KeyframeContainer<T>::elem_ptr
 KeyframeContainer<T>::erase(KeyframeContainer<T>::elem_ptr e) {
