@@ -19,12 +19,25 @@ namespace util {
 
 
 /**
+ * Concept for fixed point storage types.
+ */
+template <typename T>
+concept StorageLike = std::is_integral<T>::value;
+
+/**
+ * Concept for fixed point intermediate types.
+ */
+template <typename T>
+concept IntermediateLike = StorageLike<T>;
+
+
+/**
  * Helper function that performs a left shift without causing undefined
  * behavior.
  * regular left-shift is undefined if amount >= bitwidth,
  * or amount >= bitwidth - 1 for signed integers.
  */
-template <unsigned int amount, typename T>
+template <unsigned int amount, StorageLike T>
 constexpr static
 	typename std::enable_if<(amount + (std::is_signed<T>::value ? 1 : 0) < sizeof(T) * CHAR_BIT), T>::type
 	safe_shiftleft(T value) {
@@ -38,14 +51,14 @@ constexpr static
  * behavior.
  * right-shift is usually undefined if amount >= bit size.
  */
-template <unsigned int amount, typename T>
+template <unsigned int amount, StorageLike T>
 constexpr static
 	typename std::enable_if<(amount >= sizeof(T) * CHAR_BIT), T>::type
 	safe_shiftright(T value) {
 	return value < 0 ? -1 : 0;
 }
 
-template <unsigned int amount, typename T>
+template <unsigned int amount, StorageLike T>
 constexpr static
 	typename std::enable_if<(amount < sizeof(T) * CHAR_BIT), T>::type
 	safe_shiftright(T value) {
@@ -57,7 +70,7 @@ constexpr static
  * Helper function that performs either a safe shift-right (amount < 0),
  * or a safe shift-left (amount >= 0).
  */
-template <int amount, typename T>
+template <int amount, StorageLike T>
 constexpr static
 	typename std::enable_if<(amount < 0), T>::type
 	safe_shift(T value) {
@@ -65,7 +78,7 @@ constexpr static
 }
 
 
-template <int amount, typename T>
+template <int amount, StorageLike T>
 constexpr static
 	typename std::enable_if<(amount >= 0), T>::type
 	safe_shift(T value) {
@@ -86,7 +99,7 @@ constexpr static
  * If you change this class, remember to update the gdb pretty printers
  * in etc/gdb_pretty/printers.py.
  */
-template <typename int_type, unsigned int fractional_bits, typename intermediate_type = int_type>
+template <StorageLike int_type, unsigned int fractional_bits, IntermediateLike intermediate_type = int_type>
 class FixedPoint {
 public:
 	using raw_type = int_type;
@@ -267,13 +280,13 @@ public:
 	/**
 	 * Factory function to get a fixed-point number from a fixed-point number of different type.
 	 */
-	template <typename other_int_type, unsigned int other_fractional_bits, typename other_intermediate_type, typename std::enable_if<(fractional_bits > other_fractional_bits)>::type * = nullptr>
+	template <StorageLike other_int_type, unsigned int other_fractional_bits, IntermediateLike other_intermediate_type, typename std::enable_if<(fractional_bits > other_fractional_bits)>::type * = nullptr>
 	static constexpr FixedPoint from_fixedpoint(const FixedPoint<other_int_type, other_fractional_bits, other_intermediate_type> &other) {
 		return FixedPoint::from_raw_value(
 			safe_shift<fractional_bits - other_fractional_bits, int_type>(static_cast<int_type>(other.get_raw_value())));
 	}
 
-	template <typename other_int_type, unsigned int other_fractional_bits, typename other_intermediate_type, typename std::enable_if<(fractional_bits <= other_fractional_bits)>::type * = nullptr>
+	template <StorageLike other_int_type, unsigned int other_fractional_bits, IntermediateLike other_intermediate_type, typename std::enable_if<(fractional_bits <= other_fractional_bits)>::type * = nullptr>
 	static constexpr FixedPoint from_fixedpoint(const FixedPoint<other_int_type, other_fractional_bits, other_intermediate_type> &other) {
 		return FixedPoint::from_raw_value(
 			static_cast<int_type>(other.get_raw_value() / safe_shiftleft<other_fractional_bits - fractional_bits, other_int_type>(1)));
@@ -383,12 +396,12 @@ public:
 		return FixedPoint::this_type::from_raw_value(-this->raw_value);
 	}
 
-	template <typename I, unsigned F, typename Inter>
+	template <StorageLike I, unsigned F, IntermediateLike Inter>
 	constexpr double hypot(const FixedPoint<I, F, Inter> rhs) {
 		return std::hypot(this->to_double(), rhs.to_double());
 	}
 
-	template <typename I, unsigned F, typename Inter>
+	template <StorageLike I, unsigned F, IntermediateLike Inter>
 	constexpr FixedPoint<I, F> hypotfp(const FixedPoint<I, F, Inter> rhs) {
 		return FixedPoint<I, F, Inter>(this->hypot(rhs));
 	}
@@ -557,7 +570,7 @@ public:
 /**
  * FixedPoint + FixedPoint
  */
-template <typename I, unsigned int F, typename Inter>
+template <StorageLike I, unsigned int F, IntermediateLike Inter>
 constexpr FixedPoint<I, F, Inter> operator+(const FixedPoint<I, F, Inter> &lhs, const FixedPoint<I, F, Inter> &rhs) {
 	return FixedPoint<I, F, Inter>::from_raw_value(lhs.get_raw_value() + rhs.get_raw_value());
 }
@@ -565,7 +578,7 @@ constexpr FixedPoint<I, F, Inter> operator+(const FixedPoint<I, F, Inter> &lhs, 
 /**
  * FixedPoint + double
  */
-template <typename I, unsigned int F, typename Inter>
+template <StorageLike I, unsigned int F, IntermediateLike Inter>
 constexpr FixedPoint<I, F, Inter> operator+(const FixedPoint<I, F, Inter> &lhs, const double &rhs) {
 	return FixedPoint<I, F, Inter>{lhs} + FixedPoint<I, F, Inter>::from_double(rhs);
 }
@@ -573,7 +586,7 @@ constexpr FixedPoint<I, F, Inter> operator+(const FixedPoint<I, F, Inter> &lhs, 
 /**
  * FixedPoint - FixedPoint
  */
-template <typename I, unsigned int F, typename Inter>
+template <StorageLike I, unsigned int F, IntermediateLike Inter>
 constexpr FixedPoint<I, F, Inter> operator-(const FixedPoint<I, F, Inter> &lhs, const FixedPoint<I, F, Inter> &rhs) {
 	return FixedPoint<I, F, Inter>::from_raw_value(lhs.get_raw_value() - rhs.get_raw_value());
 }
@@ -581,7 +594,7 @@ constexpr FixedPoint<I, F, Inter> operator-(const FixedPoint<I, F, Inter> &lhs, 
 /**
  * FixedPoint - double
  */
-template <typename I, unsigned int F, typename Inter>
+template <StorageLike I, unsigned int F, IntermediateLike Inter>
 constexpr FixedPoint<I, F, Inter> operator-(const FixedPoint<I, F, Inter> &lhs, const double &rhs) {
 	return FixedPoint<I, F, Inter>{lhs} - FixedPoint<I, F, Inter>::from_double(rhs);
 }
@@ -590,7 +603,7 @@ constexpr FixedPoint<I, F, Inter> operator-(const FixedPoint<I, F, Inter> &lhs, 
 /**
  * FixedPoint * N
  */
-template <typename I, unsigned F, typename Inter, typename N>
+template <StorageLike I, unsigned F, IntermediateLike Inter, typename N>
 typename std::enable_if<std::is_arithmetic<N>::value, FixedPoint<I, F, Inter>>::type constexpr operator*(const FixedPoint<I, F, Inter> lhs, const N &rhs) {
 	return FixedPoint<I, F, Inter>::from_raw_value(lhs.get_raw_value() * rhs);
 }
@@ -612,7 +625,7 @@ typename std::enable_if<std::is_arithmetic<N>::value, FixedPoint<I, F, Inter>>::
  *
  * Use a larger intermediate type to prevent overflow
  */
-template <typename I, unsigned int F, typename Inter>
+template <StorageLike I, unsigned int F, IntermediateLike Inter>
 constexpr FixedPoint<I, F, Inter> operator*(const FixedPoint<I, F, Inter> lhs, const FixedPoint<I, F, Inter> rhs) {
 	Inter ret = static_cast<Inter>(lhs.get_raw_value()) * static_cast<Inter>(rhs.get_raw_value());
 	ret >>= F;
@@ -624,7 +637,7 @@ constexpr FixedPoint<I, F, Inter> operator*(const FixedPoint<I, F, Inter> lhs, c
 /**
  * FixedPoint / FixedPoint
  */
-template <typename I, unsigned int F, typename Inter>
+template <StorageLike I, unsigned int F, IntermediateLike Inter>
 constexpr FixedPoint<I, F, Inter> operator/(const FixedPoint<I, F, Inter> lhs, const FixedPoint<I, F, Inter> rhs) {
 	Inter ret = div((static_cast<Inter>(lhs.get_raw_value()) << F), static_cast<Inter>(rhs.get_raw_value()));
 	return FixedPoint<I, F, Inter>::from_raw_value(static_cast<I>(ret));
@@ -634,7 +647,7 @@ constexpr FixedPoint<I, F, Inter> operator/(const FixedPoint<I, F, Inter> lhs, c
 /**
  * FixedPoint / N
  */
-template <typename I, unsigned F, typename Inter, typename N>
+template <StorageLike I, unsigned F, IntermediateLike Inter, typename N>
 constexpr FixedPoint<I, F, Inter> operator/(const FixedPoint<I, F, Inter> lhs, const N &rhs) {
 	return FixedPoint<I, F, Inter>::from_raw_value(div(lhs.get_raw_value(), static_cast<I>(rhs)));
 }
@@ -642,7 +655,7 @@ constexpr FixedPoint<I, F, Inter> operator/(const FixedPoint<I, F, Inter> lhs, c
 /**
  * FixedPoint % FixedPoint (modulo)
  */
-template <typename I, unsigned int F, typename Inter>
+template <StorageLike I, unsigned int F, IntermediateLike Inter>
 constexpr FixedPoint<I, F, Inter> operator%(const FixedPoint<I, F, Inter> lhs, const FixedPoint<I, F, Inter> rhs) {
 	auto div = (lhs / rhs);
 	auto n = div.to_int();
