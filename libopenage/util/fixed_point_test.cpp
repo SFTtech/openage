@@ -156,6 +156,44 @@ void fixed_point() {
 		TESTEQUALS_FLOAT((c/b).to_double(), -4.75/3.5, 0.1);
 	}
 
+	// Pure FixedPoint sqrt tests
+	{
+		using T = FixedPoint<int64_t, 32, int64_t>;
+		TESTEQUALS_FLOAT(T(41231.131).sqrt(), 203.0545025356, 1e-7);
+		TESTEQUALS_FLOAT(T(547965.116).sqrt(), 740.2466588915, 1e-7);
+
+		TESTEQUALS_FLOAT(T(2).sqrt(), T::sqrt_2(), 1e-9);
+		TESTEQUALS_FLOAT(2 / T::pi().sqrt(), T::inv2_sqrt_pi(), 1e-9);
+
+		// Powers of two (anything over 2^15 will overflow (2^16)^2 = 2^32 >).
+		for (size_t i = 0; i < 15; i++) {
+			int64_t value = 1 << i;
+			TESTEQUALS_FLOAT(T(value * value).sqrt(), value, 1e-7);
+		}
+
+		for (size_t i = 0; i < 100; i++) {
+			double value = 14.25 * i;
+			TESTEQUALS_FLOAT(T(value * value).sqrt(), value, 1e-7);
+		}
+
+		// This one can go up to 2^63, but that would take years.
+		for (uint32_t i = 0; i < (1u << 16); i++) {
+			T value = T::from_raw_value(i * i);
+			TESTEQUALS_FLOAT(value.sqrt(), std::sqrt(value.to_double()), 1e-7);
+		}
+
+		// We lose some precision when raw_type == intermediate_type
+		for (uint64_t i = 1; i < (1ul << 63); i = (i << 1) ^ i) {
+			T value = T::from_raw_value(i * i);
+			TESTEQUALS_FLOAT(value.sqrt(), std::sqrt(value.to_double()), 1e-4);
+		}
+
+		using FP16_16 = FixedPoint<uint32_t, 16, uint64_t>;
+		for (uint32_t i = 0; i < (1u << 16); i++) {
+			FP16_16 value = FP16_16::from_raw_value(i);
+			TESTEQUALS_FLOAT(value.sqrt(), std::sqrt(value.to_double()), 1e-4);
+		}
+	}
 }
 
 }}} // openage::util::tests
