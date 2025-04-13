@@ -3,6 +3,7 @@
 #pragma once
 
 #include <algorithm>
+#include <bit>
 #include <climits>
 #include <cmath>
 #include <iomanip>
@@ -446,8 +447,37 @@ public:
 		return is;
 	}
 
+	/**
+	 * Pure FixedPoint sqrt implementation using Heron's Algorithm.
+	 *
+	 * Note that this function is undefined for negative values.
+	 */
 	constexpr double sqrt() {
-		return std::sqrt(this->to_double());
+		// Zero can cause issues later, so deal with now.
+		if (this->raw_value == 0) {
+			return 0.0;
+		}
+
+		// A greater shift = more precision, but can overflow the intermediate type if too large.
+		size_t max_shift = std::countl_zero((unsigned_intermediate_type)this->raw_value) - 1;
+		size_t shift = max_shift > fractional_bits ? fractional_bits : max_shift;
+		shift &= ~1;
+
+		// We can't use the safe shift since the shift value is unknown at compile time.
+		intermediate_type n = (intermediate_type)this->raw_value << shift;
+		intermediate_type guess = (intermediate_type)1 << fractional_bits;
+
+		for (size_t _i = 0; _i < fractional_bits; _i++) {
+			intermediate_type prev = guess;
+			guess = (guess + n / guess) / 2;
+			if (guess == prev)
+				break;
+		}
+
+		// The sqrt operation halves the number of bits, so we'll we'll have to calculate a shift back
+		size_t unshift = fractional_bits - (shift + fractional_bits) / 2;
+
+		return from_raw_value(guess << unshift).to_double();
 	}
 
 	constexpr double atan2(const FixedPoint &n) {
