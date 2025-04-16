@@ -1,4 +1,4 @@
-// Copyright 2023-2025 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #include "move.h"
 
@@ -26,6 +26,7 @@
 #include "gamestate/game_entity.h"
 #include "gamestate/game_state.h"
 #include "gamestate/map.h"
+#include "gamestate/system/property.h"
 #include "pathfinding/path.h"
 #include "pathfinding/pathfinder.h"
 #include "util/fixed_point.h"
@@ -80,7 +81,7 @@ const time::time_t Move::move_command(const std::shared_ptr<gamestate::GameEntit
                                       const time::time_t &start_time) {
 	auto command_queue = std::dynamic_pointer_cast<component::CommandQueue>(
 		entity->get_component(component::component_t::COMMANDQUEUE));
-	auto command = std::dynamic_pointer_cast<component::command::MoveCommand>(
+	auto command = std::dynamic_pointer_cast<component::command::Move>(
 		command_queue->pop_command(start_time));
 
 	if (not command) [[unlikely]] {
@@ -173,15 +174,7 @@ const time::time_t Move::move_default(const std::shared_ptr<gamestate::GameEntit
 
 	// properties
 	auto ability = move_component->get_ability();
-	if (api::APIAbility::check_property(ability, api::ability_property_t::ANIMATED)) {
-		auto property = api::APIAbility::get_property(ability, api::ability_property_t::ANIMATED);
-		auto animations = api::APIAbilityProperty::get_animations(property);
-		auto animation_paths = api::APIAnimation::get_animation_paths(animations);
-
-		if (animation_paths.size() > 0) [[likely]] {
-			entity->render_update(start_time, animation_paths[0]);
-		}
-	}
+	handle_animated(entity, ability, start_time);
 
 	return total_time;
 }

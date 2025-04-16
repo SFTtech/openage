@@ -22,10 +22,14 @@
 #include "gamestate/activity/task_system_node.h"
 #include "gamestate/activity/xor_event_gate.h"
 #include "gamestate/activity/xor_gate.h"
+#include "gamestate/activity/xor_switch_gate.h"
 #include "gamestate/api/activity.h"
+#include "gamestate/component/api/apply_effect.h"
 #include "gamestate/component/api/idle.h"
+#include "gamestate/component/api/line_of_sight.h"
 #include "gamestate/component/api/live.h"
 #include "gamestate/component/api/move.h"
+#include "gamestate/component/api/resistance.h"
 #include "gamestate/component/api/selectable.h"
 #include "gamestate/component/api/turn.h"
 #include "gamestate/component/internal/activity.h"
@@ -121,7 +125,7 @@ std::shared_ptr<GameEntity> EntityFactory::add_game_entity(const std::shared_ptr
 	// use the owner's data to initialize the entity
 	// this ensures that only the owner's tech upgrades apply
 	auto db_view = state->get_player(owner_id)->get_db_view();
-	init_components(loop, db_view, entity, nyan_entity);
+	this->init_components(loop, db_view, entity, nyan_entity);
 
 	if (this->render_factory) {
 		entity->set_render_entity(this->render_factory->add_world_render_entity());
@@ -194,11 +198,12 @@ void EntityFactory::init_components(const std::shared_ptr<openage::event::EventL
 
 				live->add_attribute(time::TIME_MIN,
 				                    attribute.get_name(),
-				                    std::make_shared<curve::Discrete<int64_t>>(loop,
-				                                                               0,
-				                                                               "",
-				                                                               nullptr,
-				                                                               start_value));
+				                    std::make_shared<curve::Segmented<component::attribute_value_t>>(
+										loop,
+										0,
+										"",
+										nullptr,
+										start_value));
 			}
 		}
 		else if (ability_parent == "engine.ability.type.Activity") {
@@ -207,6 +212,24 @@ void EntityFactory::init_components(const std::shared_ptr<openage::event::EventL
 		else if (ability_parent == "engine.ability.type.Selectable") {
 			auto selectable = std::make_shared<component::Selectable>(loop, ability_obj);
 			entity->add_component(selectable);
+		}
+		else if (ability_parent == "engine.ability.type.ApplyContinuousEffect"
+		         or ability_parent == "engine.ability.type.ApplyDiscreteEffect"
+		         or ability_parent == "engine.ability.type.RangedContinuousEffect"
+		         or ability_parent == "engine.ability.type.RangedDiscreteEffect") {
+			auto apply_effect = std::make_shared<component::ApplyEffect>(loop, ability_obj);
+			entity->add_component(apply_effect);
+		}
+		else if (ability_parent == "engine.ability.type.Resistance") {
+			auto resistance = std::make_shared<component::Resistance>(loop, ability_obj);
+			entity->add_component(resistance);
+		}
+		else if (ability_parent == "engine.ability.type.LineOfSight") {
+			auto line_of_sight = std::make_shared<component::LineOfSight>(loop, ability_obj);
+			entity->add_component(line_of_sight);
+		}
+		else {
+			log::log(SPAM << "Entity has unrecognized ability type: " << ability_parent);
 		}
 	}
 
@@ -272,6 +295,9 @@ void EntityFactory::init_activity(const std::shared_ptr<openage::event::EventLoo
 			break;
 		case activity::node_t::XOR_EVENT_GATE:
 			node_id_map[node_id] = std::make_shared<activity::XorEventGate>(node_id);
+			break;
+		case activity::node_t::XOR_SWITCH_GATE:
+			node_id_map[node_id] = std::make_shared<activity::XorSwitchGate>(node_id);
 			break;
 		default:
 			throw Error{ERR << "Unknown activity node type of node: " << node.get_name()};
@@ -344,6 +370,27 @@ void EntityFactory::init_activity(const std::shared_ptr<openage::event::EventLoo
 
 				xor_event_gate->add_output(output_node, api::APIActivityEvent::get_primer(event_obj));
 			}
+			break;
+		}
+		case activity::node_t::XOR_SWITCH_GATE: {
+			auto xor_switch_gate = std::static_pointer_cast<activity::XorSwitchGate>(activity_node);
+			auto switch_value = nyan_node.get<nyan::ObjectValue>("XORSwitchGate.switch");
+			auto switch_obj = owner_db_view->get_object(switch_value->get_name());
+
+			auto lookup_func = api::APIActivitySwitchCondition::get_lookup(switch_obj);
+			xor_switch_gate->set_lookup_func(lookup_func);
+
+			auto lookup_map = api::APIActivitySwitchCondition::get_lookup_map(switch_obj);
+			for (const auto &[key, node_id] : lookup_map) {
+				auto output_id = visited[node_id];
+				auto output_node = node_id_map[output_id];
+				xor_switch_gate->set_output(output_node, key);
+			}
+
+			auto default_fqon = nyan_node.get<nyan::ObjectValue>("XORSwitchGate.default")->get_name();
+			auto default_id = visited[default_fqon];
+			auto default_node = node_id_map[default_id];
+			xor_switch_gate->set_default(default_node);
 			break;
 		}
 		default:

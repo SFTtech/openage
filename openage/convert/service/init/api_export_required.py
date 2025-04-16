@@ -16,7 +16,7 @@ if typing.TYPE_CHECKING:
     from openage.util.fslike.union import UnionPath
 
 
-CURRENT_API_VERSION = "0.5.0"
+CURRENT_API_VERSION = "0.6.0"
 
 
 def api_export_required(asset_dir: UnionPath) -> bool:

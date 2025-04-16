@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2024 the openage authors. See copying.md for legal info.
 
 #include "send_command.h"
 
@@ -19,8 +19,8 @@ namespace component {
 class CommandQueue;
 
 namespace command {
-class IdleCommand;
-class MoveCommand;
+class Idle;
+class Move;
 } // namespace command
 } // namespace component
 
@@ -65,12 +65,12 @@ void SendCommandHandler::invoke(openage::event::EventLoop & /* loop */,
 
 		switch (command_type) {
 		case component::command::command_t::IDLE:
-			command_queue->add_command(time, std::make_shared<component::command::IdleCommand>());
+			command_queue->add_command(time, std::make_shared<component::command::Idle>());
 			break;
 		case component::command::command_t::MOVE:
 			command_queue->add_command(
 				time,
-				std::make_shared<component::command::MoveCommand>(
+				std::make_shared<component::command::Move>(
 					params.get("target",
 			                   coord::phys3{0, 0, 0})));
 			break;
