@@ -37,3 +37,7 @@ RUN apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get install -y sudo \
     qml6-module-qtquick3d-spatialaudio \
     && sudo apt-get clean \
     && truncate -s 0 ~/.bash_history
+
+# At least cython >= 3.0.10 < 4.0.0 is required to avoid runtime errors
+# TODO: Remove this line once cython is upgraded in Ubuntu 24.04.3 (expected around August 2025)
+RUN pip install "cython>=3.0.10,<4.0.0" --break-system-packages

@@ -127,6 +127,9 @@ Quickstart
    make
    ```
 
+**Alternative approach:**
+You can build and run the project using Docker. See [Running with docker](/doc/build_instructions/docker.md) for more details.
+
 * **I compiled everything. Now how do I run it?**
     * Execute `cd bin && ./run main`.
     * [The convert script](/doc/media_convert.md) will transform original assets into openage formats, which are a lot saner and more moddable.
@@ -144,7 +147,6 @@ To turn them off, use `./bin/run --dont-segfault --no-errors --dont-eat-dog`.
 
 If this still does not help, try our [troubleshooting guide](/doc/troubleshooting.md), the [contact section](#contact)
 or the [bug tracker](https://github.com/SFTtech/openage/issues).
-
 
 Contributing
 ============
