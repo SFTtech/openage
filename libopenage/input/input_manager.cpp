@@ -1,4 +1,4 @@
-// Copyright 2015-2024 the openage authors. See copying.md for legal info.
+// Copyright 2015-2025 the openage authors. See copying.md for legal info.
 
 #include "input_manager.h"
 
@@ -153,6 +153,10 @@ bool InputManager::process(const QEvent &ev) {
 	}
 
 	return false;
+}
+
+void InputManager::set_id_texture(const std::shared_ptr<renderer::Texture2d> &id_texture) {
+	this->game_controller->set_id_texture(id_texture);
 }
 
 void InputManager::process_action(const input::Event &ev,
