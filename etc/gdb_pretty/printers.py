@@ -1,4 +1,4 @@
-# Copyright 2024-2024 the openage authors. See copying.md for legal info.
+# Copyright 2024-2025 the openage authors. See copying.md for legal info.
 
 """
 Pretty printers for GDB.
@@ -6,6 +6,7 @@ Pretty printers for GDB.
 
 import re
 import gdb  # type: ignore
+import gdb.printing  # type: ignore
 
 # TODO: Printers should inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
 
