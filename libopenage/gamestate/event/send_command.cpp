@@ -1,4 +1,4 @@
-// Copyright 2023-2024 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #include "send_command.h"
 
@@ -73,6 +73,9 @@ void SendCommandHandler::invoke(openage::event::EventLoop & /* loop */,
 				std::make_shared<component::command::Move>(
 					params.get("target",
 			                   coord::phys3{0, 0, 0})));
+			break;
+		case component::command::command_t::APPLY_EFFECT:
+			// TODO: add command
 			break;
 		default:
 			break;

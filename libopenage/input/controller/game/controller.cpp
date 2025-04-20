@@ -14,6 +14,7 @@
 #include "gamestate/game_state.h"
 #include "gamestate/simulation.h"
 #include "input/controller/game/binding_context.h"
+#include "renderer/texture.h"
 #include "time/clock.h"
 #include "time/time_loop.h"
 
@@ -92,6 +93,10 @@ bool Controller::process(const event_arguments &ev_args, const std::shared_ptr<B
 	return true;
 }
 
+const std::shared_ptr<renderer::Texture2d> &Controller::get_id_texture() const {
+	return this->id_texture;
+}
+
 void Controller::set_id_texture(const std::shared_ptr<renderer::Texture2d> &id_texture) {
 	this->id_texture = id_texture;
 }
@@ -152,12 +157,28 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 
 	binding_func_t interact_entity{[&](const event_arguments &args,
 	                                   const std::shared_ptr<Controller> controller) {
-		auto mouse_pos = args.mouse.to_phys3(camera);
-		event::EventHandler::param_map::map_t params{
-			{"type", gamestate::component::command::command_t::MOVE},
-			{"target", mouse_pos},
-			{"entity_ids", controller->get_selected()},
-		};
+		auto id_texture = controller->get_id_texture();
+		auto texture_data = id_texture->into_data();
+
+		event::EventHandler::param_map::map_t params{};
+
+		auto target_entity_id = texture_data.read_pixel<uint32_t>(args.mouse.x, args.mouse.y);
+		log::log(DBG << "Targeting entity ID: " << target_entity_id);
+		if (target_entity_id == 0) {
+			auto mouse_pos = args.mouse.to_phys3(camera);
+			params = {
+				{"type", gamestate::component::command::command_t::MOVE},
+				{"target", mouse_pos},
+				{"entity_ids", controller->get_selected()},
+			};
+		}
+		else {
+			params = {
+				{"type", gamestate::component::command::command_t::APPLY_EFFECT},
+				{"target", target_entity_id},
+				{"entity_ids", controller->get_selected()},
+			};
+		}
 
 		auto event = simulation->get_event_loop()->create_event(
 			"game.send_command",
