@@ -26,25 +26,25 @@ void ShaderTemplate::load_snippets(const util::Path &snippet_path) {
 }
 
 void ShaderTemplate::add_snippet(const util::Path &snippet_path) {
-	std::string file_name = snippet_path.get_name();
-	std::string name = file_name.substr(0, file_name.find_last_of('.'));
 	auto file = snippet_path.open();
 	std::string content = file.read();
 	file.close();
 
+	std::string name = snippet_path.get_stem();
+
 	snippets[name] = content;
 }
 
-std::string ShaderTemplate::generate_source() const {
-	std::string result = template_code;
+renderer::resources::ShaderSource ShaderTemplate::generate_source() const {
+	std::string result_src = template_code;
 
 	// Process each placeholder
 	for (const auto &[name, snippet_code] : snippets) {
 		std::string placeholder = "// PLACEHOLDER: " + name;
-		size_t pos = result.find(placeholder);
+		size_t pos = result_src.find(placeholder);
 
 		if (pos != std::string::npos) {
-			result.replace(pos, placeholder.length(), snippet_code);
+			result_src.replace(pos, placeholder.length(), snippet_code);
 		}
 		else {
 			log::log(WARN << "Placeholder not found in template: " << name);
@@ -52,14 +52,20 @@ std::string ShaderTemplate::generate_source() const {
 	}
 
 	// Check if all placeholders were replaced
-	size_t placeholder_pos = result.find("// PLACEHOLDER:");
+	size_t placeholder_pos = result_src.find("// PLACEHOLDER:");
 	if (placeholder_pos != std::string::npos) {
-		size_t line_end = result.find('\n', placeholder_pos);
-		std::string missing = result.substr(placeholder_pos,
-		                                    line_end - placeholder_pos);
+		size_t line_end = result_src.find('\n', placeholder_pos);
+		std::string missing = result_src.substr(placeholder_pos,
+		                                        line_end - placeholder_pos);
 		throw Error(MSG(err) << "Missing snippet for placeholder: " << missing);
 	}
 
+	auto result = resources::ShaderSource(
+		resources::shader_lang_t::glsl,
+		resources::shader_stage_t::fragment,
+		std::move(result_src));
+
 	return result;
 }
+
 } // namespace openage::renderer::world
