@@ -1,4 +1,4 @@
-// Copyright 2022-2024 the openage authors. See copying.md for legal info.
+// Copyright 2022-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -89,6 +89,13 @@ public:
 	 * @param height New height of the FBO.
 	 */
 	void resize(size_t width, size_t height);
+
+	/**
+	 * Get the ID texture of the world renderer.
+	 *
+	 * @return ID texture.
+	 */
+	const std::shared_ptr<renderer::Texture2d> &get_id_texture() const;
 
 private:
 	/**

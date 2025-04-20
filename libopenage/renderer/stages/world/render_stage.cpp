@@ -1,4 +1,4 @@
-// Copyright 2022-2024 the openage authors. See copying.md for legal info.
+// Copyright 2022-2025 the openage authors. See copying.md for legal info.
 
 #include "render_stage.h"
 
@@ -115,6 +115,10 @@ void WorldRenderStage::resize(size_t width, size_t height) {
 
 	auto fbo = this->renderer->create_texture_target({this->output_texture, this->depth_texture, this->id_texture});
 	this->render_pass->set_target(fbo);
+}
+
+const std::shared_ptr<renderer::Texture2d> &WorldRenderStage::get_id_texture() const {
+	return this->id_texture;
 }
 
 void WorldRenderStage::initialize_render_pass(size_t width,
