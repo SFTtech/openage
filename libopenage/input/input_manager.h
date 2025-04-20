@@ -1,4 +1,4 @@
-// Copyright 2015-2024 the openage authors. See copying.md for legal info.
+// Copyright 2015-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -16,7 +16,13 @@ namespace qtgui {
 class GuiInput;
 }
 
-namespace openage::input {
+namespace openage {
+
+namespace renderer {
+class Texture2d;
+} // namespace renderer
+
+namespace input {
 
 namespace camera {
 class Controller;
@@ -149,6 +155,15 @@ public:
 	 */
 	bool process(const QEvent &ev);
 
+	/**
+	 * Set the texture that maps pixels to entity IDs.
+	 *
+	 * Each pixel value in the texture corresponds to an entity ID. This
+	 * mapping may be used for interacting with entities in the game world.
+	 *
+	 * @param id_texture ID texture.
+	 */
+	void set_id_texture(const std::shared_ptr<renderer::Texture2d> &id_texture);
 
 private:
 	/**
@@ -222,4 +237,5 @@ private:
  */
 void setup_defaults(const std::shared_ptr<InputContext> &ctx);
 
-} // namespace openage::input
+} // namespace input
+} // namespace openage
