@@ -117,6 +117,10 @@ void WorldRenderStage::resize(size_t width, size_t height) {
 	this->render_pass->set_target(fbo);
 }
 
+const std::shared_ptr<renderer::Texture2d> &WorldRenderStage::get_id_texture() const {
+	return this->id_texture;
+}
+
 void WorldRenderStage::initialize_render_pass(size_t width,
                                               size_t height,
                                               const util::Path &shaderdir) {
