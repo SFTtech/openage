@@ -1,4 +1,4 @@
-// Copyright 2021-2023 the openage authors. See copying.md for legal info.
+// Copyright 2021-2025 the openage authors. See copying.md for legal info.
 
 #include "controller.h"
 
@@ -92,6 +92,10 @@ bool Controller::process(const event_arguments &ev_args, const std::shared_ptr<B
 	return true;
 }
 
+void Controller::set_id_texture(const std::shared_ptr<renderer::Texture2d> &id_texture) {
+	this->id_texture = id_texture;
+}
+
 void Controller::set_drag_select_start(const coord::input &start) {
 	std::unique_lock lock{this->mutex};
 
@@ -146,8 +150,8 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 
 	ctx->bind(ev_mouse_lmb_ctrl, create_entity_action);
 
-	binding_func_t move_entity{[&](const event_arguments &args,
-	                               const std::shared_ptr<Controller> controller) {
+	binding_func_t interact_entity{[&](const event_arguments &args,
+	                                   const std::shared_ptr<Controller> controller) {
 		auto mouse_pos = args.mouse.to_phys3(camera);
 		event::EventHandler::param_map::map_t params{
 			{"type", gamestate::component::command::command_t::MOVE},
@@ -164,7 +168,7 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 		return event;
 	}};
 
-	binding_action move_entity_action{forward_action_t::SEND, move_entity};
+	binding_action move_entity_action{forward_action_t::SEND, interact_entity};
 	Event ev_mouse_rmb{
 		event_class::MOUSE_BUTTON,
 		Qt::MouseButton::RightButton,
