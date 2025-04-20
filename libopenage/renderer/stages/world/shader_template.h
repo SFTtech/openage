@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 
+#include "renderer/resources/shader_source.h"
 #include "util/path.h"
 
 namespace openage {
@@ -49,12 +50,12 @@ public:
 	 * @return Complete shader code.
 	 * @throws Error if any required placeholders are missing snippets.
 	 */
-	std::string generate_source() const;
+	renderer::resources::ShaderSource generate_source() const;
 
 private:
-	// Original template code with placeholders
+	/// Original template code with placeholders
 	std::string template_code;
-	// Mapping of placeholder IDs to their code snippets
+	/// Mapping of placeholder IDs to their code snippets
 	std::map<std::string, std::string> snippets;
 };
 } // namespace world

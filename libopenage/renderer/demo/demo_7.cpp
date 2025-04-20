@@ -29,7 +29,7 @@ void renderer_demo_7(const util::Path &path) {
 
 	auto shaderdir = path / "assets" / "test" / "shaders";
 
-	// Initialize shader templlalte
+	// Initialize shader template
 	world::ShaderTemplate frag_template(shaderdir / "demo_7_shader_command.frag.glsl");
 
 	// Load snippets from a snippet directory
@@ -42,10 +42,7 @@ void renderer_demo_7(const util::Path &path) {
 		vert_shader_file.read());
 	vert_shader_file.close();
 
-	auto frag_shader_src = resources::ShaderSource(
-		resources::shader_lang_t::glsl,
-		resources::shader_stage_t::fragment,
-		frag_template.generate_source());
+	auto frag_shader_src = frag_template.generate_source();
 
 	auto shader = renderer->add_shader({vert_shader_src, frag_shader_src});
 
