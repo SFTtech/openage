@@ -1,9 +1,10 @@
-// Copyright 2015-2024 the openage authors. See copying.md for legal info.
+// Copyright 2015-2025 the openage authors. See copying.md for legal info.
 
 #include "texture.h"
 
 #include <epoxy/gl.h>
 
+#include <algorithm>
 #include <tuple>
 
 #include "../../datastructure/constexpr_map.h"
@@ -86,12 +87,71 @@ GlTexture2d::GlTexture2d(const std::shared_ptr<GlContext> &context,
 		std::get<2>(fmt_in_out),
 		nullptr);
 
-	// TODO these are outdated, use sampler settings
+	// TODO: these are outdated, use sampler settings
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 	log::log(MSG(dbg) << "Created OpenGL texture from info parameters (size: "
 	                  << size.first << "x" << size.second << ")");
+}
+
+void GlTexture2d::resize(size_t width, size_t height) {
+	auto prev_size = this->info.get_size();
+	if (width == static_cast<size_t>(prev_size.first)
+	    and height == static_cast<size_t>(prev_size.second)) {
+		// size is the same, no need to resize
+		log::log(MSG(dbg) << "Texture resize called, but size is unchanged (size: "
+		                  << prev_size.first << "x" << prev_size.second << ")");
+		return;
+	}
+
+	// only allow resizing for internal textures that are not created from
+	// image files
+	// TODO: maybe allow this for all textures?
+	if (this->info.get_image_path().has_value()) {
+		throw Error(MSG(err) << "Cannot resize a texture that was created from an image file.");
+	}
+	if (this->info.get_subtex_count() != 0) {
+		throw Error(MSG(err) << "Cannot resize a texture that has subtextures.");
+	}
+
+	// create new info object
+	this->info = resources::Texture2dInfo(width,
+	                                      height,
+	                                      this->info.get_format(),
+	                                      this->info.get_image_path(),
+	                                      this->info.get_row_alignment());
+
+	glBindTexture(GL_TEXTURE_2D, *this->handle);
+
+	auto fmt_in_out = GL_PIXEL_FORMAT.get(this->info.get_format());
+	auto size = this->info.get_size();
+
+	// redefine the texture with the new size
+	glTexImage2D(
+		GL_TEXTURE_2D,
+		0,
+		std::get<0>(fmt_in_out),
+		size.first,
+		size.second,
+		0,
+		std::get<1>(fmt_in_out),
+		std::get<2>(fmt_in_out),
+		nullptr);
+
+	// copy the old texture data into the new texture
+	glCopyTexSubImage2D(
+		GL_TEXTURE_2D,
+		0,
+		0,
+		0,
+		0,
+		0,
+		std::min(size.first, prev_size.first), // avoid buffer overread with std::min
+		std::min(size.second, prev_size.second));
+
+	log::log(MSG(dbg) << "Resized OpenGL texture (size: "
+	                  << width << "x" << height << ")");
 }
 
 resources::Texture2dData GlTexture2d::into_data() {
