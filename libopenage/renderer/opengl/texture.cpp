@@ -139,16 +139,7 @@ void GlTexture2d::resize(size_t width, size_t height) {
 		std::get<2>(fmt_in_out),
 		nullptr);
 
-	// copy the old texture data into the new texture
-	glCopyTexSubImage2D(
-		GL_TEXTURE_2D,
-		0,
-		0,
-		0,
-		0,
-		0,
-		std::min(size.first, prev_size.first), // avoid buffer overread with std::min
-		std::min(size.second, prev_size.second));
+	// TODO: copy the old texture data into the new texture
 
 	log::log(MSG(dbg) << "Resized OpenGL texture (size: "
 	                  << width << "x" << height << ")");
