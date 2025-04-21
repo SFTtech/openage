@@ -460,11 +460,11 @@ public:
 	constexpr FixedPoint sqrt() {
 		// Zero can cause issues later, so deal with now.
 		if (this->raw_value == 0) {
-			return 0.0;
+			return zero();
 		}
 
-                // Check for negative values
-                ENSURE(std::is_unsigned<raw_type>() or std::is_signed<raw_type>() and this->raw_value > 0, "FixedPoint::sqrt() is undefined for negative values.");
+		// Check for negative values
+		ENSURE(std::is_unsigned<raw_type>() or std::is_signed<raw_type>() and this->raw_value > 0, "FixedPoint::sqrt() is undefined for negative values.");
 
 		// A greater shift = more precision, but can overflow the intermediate type if too large.
 		size_t max_shift = std::countl_zero(static_cast<unsigned_intermediate_type>(this->raw_value)) - 1;

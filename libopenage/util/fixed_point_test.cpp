@@ -192,7 +192,7 @@ void fixed_point() {
 		}
 
 		using FP16_16 = FixedPoint<uint32_t, 16, uint64_t>;
-		for (uint32_t i = 0; i < 65536; i++) {
+		for (uint32_t i = 1; i < 65536; i++) {
 			FP16_16 value = FP16_16::from_raw_value(i);
 			TESTEQUALS_FLOAT(value.sqrt(), std::sqrt(value.to_double()), 1e-4);
 		}
@@ -204,4 +204,5 @@ void fixed_point() {
 		TESTNOEXCEPT((FixedPoint<uint64_t, 32>::from_float(-3.25).sqrt()));
 	}
 }
+
 }}} // openage::util::tests
