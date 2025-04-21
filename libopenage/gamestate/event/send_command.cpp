@@ -6,6 +6,7 @@
 
 #include "coord/phys.h"
 #include "gamestate/component/internal/command_queue.h"
+#include "gamestate/component/internal/commands/apply_effect.h"
 #include "gamestate/component/internal/commands/idle.h"
 #include "gamestate/component/internal/commands/move.h"
 #include "gamestate/component/types.h"
@@ -75,7 +76,10 @@ void SendCommandHandler::invoke(openage::event::EventLoop & /* loop */,
 			                   coord::phys3{0, 0, 0})));
 			break;
 		case component::command::command_t::APPLY_EFFECT:
-			// TODO: add command
+			command_queue->add_command(
+				time,
+				std::make_shared<component::command::ApplyEffect>(
+					params.get("target", 0)));
 			break;
 		default:
 			break;
