@@ -109,9 +109,9 @@ void WorldRenderStage::update() {
 }
 
 void WorldRenderStage::resize(size_t width, size_t height) {
-	this->output_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::rgba8));
-	this->depth_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::depth24));
-	this->id_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::r32ui));
+	this->output_texture->resize(width, height);
+	this->depth_texture->resize(width, height);
+	this->id_texture->resize(width, height);
 
 	auto fbo = this->renderer->create_texture_target({this->output_texture, this->id_texture, this->depth_texture});
 	this->render_pass->set_target(fbo);
