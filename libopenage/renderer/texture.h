@@ -24,6 +24,19 @@ public:
 	const resources::Texture2dInfo &get_info() const;
 
 	/**
+	 * Resize the texture to a new size.
+	 *
+	 * Resizing is propagated to the GPU, so the texture may be reallocated depending on the
+	 * underlying graphics API. The texture info is updated accordingly.
+	 *
+	 * Texture created from images cannot be resized.
+	 *
+	 * @param width New width of the texture.
+	 * @param height New height of the texture.
+	 */
+	virtual void resize(size_t width, size_t height) = 0;
+
+	/**
 	 * Copies this texture's data from graphics hardware into a CPU-accessible
 	 * Texture2dData buffer.
 	 *
