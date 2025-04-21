@@ -1,4 +1,4 @@
-// Copyright 2017-2024 the openage authors. See copying.md for legal info.
+// Copyright 2017-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -150,6 +150,13 @@ public:
 	 * @return Number of subtextures.
 	 */
 	size_t get_subtex_count() const;
+
+	/**
+	 * Get the subtexture information for all subtextures.
+	 *
+	 * @return Subtexture information objects.
+	 */
+	const std::vector<Texture2dSubInfo> &get_subtextures() const;
 
 	/**
 	 * Get the subtexture information for a specific subtexture.

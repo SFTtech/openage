@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -22,6 +22,8 @@ public:
 	/// Constructs an empty texture with the given parameters.
 	GlTexture2d(const std::shared_ptr<GlContext> &context,
 	            resources::Texture2dInfo const &);
+
+    void resize(size_t width, size_t height) override;
 
 	resources::Texture2dData into_data() override;
 
