@@ -1,4 +1,4 @@
-// Copyright 2017-2024 the openage authors. See copying.md for legal info.
+// Copyright 2017-2025 the openage authors. See copying.md for legal info.
 
 #include "render_target.h"
 
@@ -22,8 +22,15 @@ GlRenderTarget::GlRenderTarget(const std::shared_ptr<GlContext> &context,
 	type(gl_render_target_t::framebuffer),
 	framebuffer({context, textures}),
 	textures(textures) {
-	// TODO: Check if the textures are all the same size
-	this->size = this->textures.value().at(0)->get_info().get_size();
+	// Check if the textures are all the same size
+	auto size = this->textures.value().at(0)->get_info().get_size();
+	for (const auto &tex : this->textures.value()) {
+		if (tex->get_info().get_size() != size) {
+			throw Error{ERR << "All texture targets must be the same size."};
+		}
+	}
+
+	this->size = size;
 
 	log::log(MSG(dbg) << "Created OpenGL render target for textures");
 }
