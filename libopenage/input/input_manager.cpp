@@ -155,10 +155,6 @@ bool InputManager::process(const QEvent &ev) {
 	return false;
 }
 
-void InputManager::set_id_texture(const std::shared_ptr<renderer::Texture2d> &id_texture) {
-	this->game_controller->set_id_texture(id_texture);
-}
-
 void InputManager::process_action(const input::Event &ev,
                                   const input_action &action,
                                   const std::shared_ptr<InputContext> &ctx) {
