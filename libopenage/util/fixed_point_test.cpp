@@ -163,7 +163,7 @@ void fixed_point() {
 		TESTEQUALS_FLOAT(T(547965.116).sqrt(), 740.2466588915, 1e-7);
 
 		TESTEQUALS_FLOAT(T(2).sqrt(), T::sqrt_2(), 1e-9);
-		TESTEQUALS_FLOAT(2 / T::pi().sqrt(), T::inv2_sqrt_pi(), 1e-9);
+		TESTEQUALS_FLOAT(2 / std::sqrt(T::pi()), T::inv2_sqrt_pi(), 1e-9);
 
 		// Powers of two (anything over 2^15 will overflow (2^16)^2 = 2^32 >).
 		for (size_t i = 0; i < 15; i++) {
@@ -177,23 +177,31 @@ void fixed_point() {
 		}
 
 		// This one can go up to 2^63, but that would take years.
-		for (uint32_t i = 0; i < (1u << 16); i++) {
+		for (uint32_t i = 0; i < 65536; i++) {
 			T value = T::from_raw_value(i * i);
 			TESTEQUALS_FLOAT(value.sqrt(), std::sqrt(value.to_double()), 1e-7);
 		}
 
 		// We lose some precision when raw_type == intermediate_type
-		for (uint64_t i = 1; i < (1ul << 63); i = (i << 1) ^ i) {
+		for (uint64_t i = 1; i < std::numeric_limits<uint64_t>::max(); i = (i * 2) ^ i) {
 			T value = T::from_raw_value(i * i);
+			if (value < 0) {
+				value = -value;
+			}
 			TESTEQUALS_FLOAT(value.sqrt(), std::sqrt(value.to_double()), 1e-4);
 		}
 
 		using FP16_16 = FixedPoint<uint32_t, 16, uint64_t>;
-		for (uint32_t i = 0; i < (1u << 16); i++) {
+		for (uint32_t i = 0; i < 65536; i++) {
 			FP16_16 value = FP16_16::from_raw_value(i);
 			TESTEQUALS_FLOAT(value.sqrt(), std::sqrt(value.to_double()), 1e-4);
 		}
+
+
+		// Test with negative number
+		TESTTHROWS((FixedPoint<int64_t, 32>::from_float(-3.25).sqrt()));
+		TESTNOEXCEPT((FixedPoint<int64_t, 32>::from_float(3.25).sqrt()));
+		TESTNOEXCEPT((FixedPoint<uint64_t, 32>::from_float(-3.25).sqrt()));
 	}
 }
-
 }}} // openage::util::tests
