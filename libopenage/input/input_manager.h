@@ -18,10 +18,6 @@ class GuiInput;
 
 namespace openage {
 
-namespace renderer {
-class Texture2d;
-} // namespace renderer
-
 namespace input {
 
 namespace camera {
@@ -154,16 +150,6 @@ public:
 	 * @return true if the event is accepted, else false.
 	 */
 	bool process(const QEvent &ev);
-
-	/**
-	 * Set the texture that maps pixels to entity IDs.
-	 *
-	 * Each pixel value in the texture corresponds to an entity ID. This
-	 * mapping may be used for interacting with entities in the game world.
-	 *
-	 * @param id_texture ID texture.
-	 */
-	void set_id_texture(const std::shared_ptr<renderer::Texture2d> &id_texture);
 
 private:
 	/**
