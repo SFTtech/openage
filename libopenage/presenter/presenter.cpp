@@ -255,14 +255,7 @@ void Presenter::init_input() {
 		input_ctx->set_game_bindings(engine_context);
 
 		auto id_texture = this->world_renderer->get_id_texture();
-		this->input_manager->set_id_texture(id_texture);
-
-		window->add_resize_callback([&](size_t /* width */, size_t /* height */, double /*scale*/) {
-			// TODO: We must guarantee that this happens AFTER the world renderer
-			//       has resized its textures.
-			auto id_texture = this->world_renderer->get_id_texture();
-			this->input_manager->set_id_texture(id_texture);
-		});
+		game_controller->set_id_texture(id_texture);
 	}
 
 	// attach GUI if it's initialized
