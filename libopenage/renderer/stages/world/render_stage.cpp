@@ -113,7 +113,7 @@ void WorldRenderStage::resize(size_t width, size_t height) {
 	this->depth_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::depth24));
 	this->id_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::r32ui));
 
-	auto fbo = this->renderer->create_texture_target({this->output_texture, this->depth_texture, this->id_texture});
+	auto fbo = this->renderer->create_texture_target({this->output_texture, this->id_texture, this->depth_texture});
 	this->render_pass->set_target(fbo);
 }
 
@@ -145,7 +145,7 @@ void WorldRenderStage::initialize_render_pass(size_t width,
 	this->display_shader = this->renderer->add_shader({vert_shader_src, frag_shader_src});
 	this->display_shader->bind_uniform_buffer("camera", this->camera->get_uniform_buffer());
 
-	auto fbo = this->renderer->create_texture_target({this->output_texture, this->depth_texture, this->id_texture});
+	auto fbo = this->renderer->create_texture_target({this->output_texture, this->id_texture, this->depth_texture});
 	this->render_pass = this->renderer->add_render_pass({}, fbo);
 }
 
