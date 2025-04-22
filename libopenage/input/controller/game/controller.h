@@ -46,8 +46,8 @@ public:
 	 * @param controlled_factions Factions that can be managed by the controller.
 	 * @param active_faction_id Current active faction ID.
 	 */
-	Controller(const std::unordered_set<size_t> &controlled_factions,
-	           size_t active_faction_id);
+	Controller(const std::unordered_set<gamestate::player_id_t> &controlled_factions,
+	           gamestate::player_id_t active_faction_id);
 
 	~Controller() = default;
 
@@ -57,7 +57,7 @@ public:
 	 *
 	 * @param faction_id ID of the new active faction.
 	 */
-	void set_control(size_t faction_id);
+	void set_control(gamestate::player_id_t faction_id);
 
 	/**
 	 * Get the ID of the faction actively controlled by the controller.
@@ -133,12 +133,12 @@ private:
 	/**
 	 * Factions controllable by this controller.
 	 */
-	std::unordered_set<size_t> controlled_factions;
+	std::unordered_set<gamestate::player_id_t> controlled_factions;
 
 	/**
 	 * ID of the currently active faction.
 	 */
-	size_t active_faction_id;
+	gamestate::player_id_t active_faction_id;
 
 	/**
 	 * Currently selected entities.
