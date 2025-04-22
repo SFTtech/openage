@@ -451,11 +451,11 @@ public:
 	 * Pure FixedPoint sqrt implementation using Heron's Algorithm.
 	 *
 	 * Note that this function is undefined for negative values.
-         *
-         * There's a small loss in precision depending on the value of fractional_bits and the position of
-         * the most significant bit: if the integer portion is very large, we won't have as much (absolute)
-         * precision. Ideally you would want the intermediate_type to be twice the size of raw_type to avoid
-         * any losses.
+	 *
+	 * There's a small loss in precision depending on the value of fractional_bits and the position of
+	 * the most significant bit: if the integer portion is very large, we won't have as much (absolute)
+	 * precision. Ideally you would want the intermediate_type to be twice the size of raw_type to avoid
+	 * any losses.
 	 */
 	constexpr FixedPoint sqrt() {
 		// Zero can cause issues later, so deal with now.
@@ -464,16 +464,16 @@ public:
 		}
 
 		// Check for negative values
-		ENSURE(std::is_unsigned<raw_type>() or std::is_signed<raw_type>() and this->raw_value > 0, "FixedPoint::sqrt() is undefined for negative values.");
+		ENSURE(std::is_unsigned<raw_type>() or (std::is_signed<raw_type>() and this->raw_value > 0), "FixedPoint::sqrt() is undefined for negative values.");
 
 		// A greater shift = more precision, but can overflow the intermediate type if too large.
 		size_t max_shift = std::countl_zero(static_cast<unsigned_intermediate_type>(this->raw_value)) - 1;
 		size_t shift = max_shift > fractional_bits ? fractional_bits : max_shift;
 
-                // shift + fractional bits must be an even number
-                if ((shift + fractional_bits) % 2) {
-                    shift -= 1;
-                }
+		// shift + fractional bits must be an even number
+		if ((shift + fractional_bits) % 2) {
+			shift -= 1;
+		}
 
 		// We can't use the safe shift since the shift value is unknown at compile time.
 		intermediate_type n = static_cast<intermediate_type>(this->raw_value) << shift;
@@ -484,8 +484,7 @@ public:
 			guess = (guess + n / guess) / 2;
 			if (guess == prev) {
 				break;
-
-                        }
+			}
 		}
 
 		// The sqrt operation halves the number of bits, so we'll we'll have to calculate a shift back
