@@ -24,13 +24,13 @@
 
 namespace openage::input::game {
 
-Controller::Controller(const std::unordered_set<size_t> &controlled_factions,
-                       size_t active_faction_id) :
+Controller::Controller(const std::unordered_set<gamestate::player_id_t> &controlled_factions,
+                       gamestate::player_id_t active_faction_id) :
 	controlled_factions{controlled_factions},
 	active_faction_id{active_faction_id},
 	outqueue{} {}
 
-void Controller::set_control(size_t faction_id) {
+void Controller::set_control(gamestate::player_id_t faction_id) {
 	std::unique_lock lock{this->mutex};
 
 	if (this->controlled_factions.find(faction_id) != this->controlled_factions.end()) {
@@ -38,7 +38,7 @@ void Controller::set_control(size_t faction_id) {
 	}
 }
 
-size_t Controller::get_controlled() const {
+gamestate::player_id_t Controller::get_controlled() const {
 	std::unique_lock lock{this->mutex};
 
 	return this->active_faction_id;
