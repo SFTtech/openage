@@ -1,4 +1,4 @@
-// Copyright 2023-2024 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -118,13 +118,17 @@ private:
 
 	/**
 	 * ID of the next game entity to be created.
+	 *
+	 * IDs 0-99 are reserved.
 	 */
-	entity_id_t next_entity_id;
+	entity_id_t next_entity_id = 100;
 
 	/**
 	 * ID of the next player to be created.
+	 *
+	 * ID 0 is reserved.
 	 */
-	player_id_t next_player_id;
+	player_id_t next_player_id = 1;
 
 	/**
 	 * Factory for creating connector objects to the renderer which make game entities displayable.

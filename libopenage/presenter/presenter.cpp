@@ -244,8 +244,8 @@ void Presenter::init_input() {
 		log::log(INFO << "Loading game simulation controls");
 
 		// TODO: Remove hardcoding for controlled/active factions
-		std::unordered_set<size_t> controlled_factions{0, 1, 2, 3};
-		size_t active_faction_id = 0;
+		std::unordered_set<gamestate::player_id_t> controlled_factions{1, 2, 3, 4};
+		gamestate::player_id_t active_faction_id = 1;
 		auto game_controller = std::make_shared<input::game::Controller>(
 			controlled_factions, active_faction_id);
 
