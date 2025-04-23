@@ -464,7 +464,9 @@ public:
 		}
 
 		// Check for negative values
-		ENSURE(std::is_unsigned<raw_type>() or (std::is_signed<raw_type>() and this->raw_value > 0), "FixedPoint::sqrt() is undefined for negative values.");
+		if constexpr (std::is_signed<raw_type>()) {
+			ENSURE(this->raw_value > 0, "FixedPoint::sqrt() is undefined for negative values.");
+		}
 
 		// A greater shift = more precision, but can overflow the intermediate type if too large.
 		size_t max_shift = std::countl_zero(static_cast<unsigned_intermediate_type>(this->raw_value)) - 1;
