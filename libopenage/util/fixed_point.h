@@ -3,6 +3,7 @@
 #pragma once
 
 #include <algorithm>
+#include <bit>
 #include <climits>
 #include <cmath>
 #include <iomanip>
@@ -446,8 +447,52 @@ public:
 		return is;
 	}
 
-	constexpr double sqrt() {
-		return std::sqrt(this->to_double());
+	/**
+	 * Pure FixedPoint sqrt implementation using Heron's Algorithm.
+	 *
+	 * Note that this function is undefined for negative values.
+	 *
+	 * There's a small loss in precision depending on the value of fractional_bits and the position of
+	 * the most significant bit: if the integer portion is very large, we won't have as much (absolute)
+	 * precision. Ideally you would want the intermediate_type to be twice the size of raw_type to avoid
+	 * any losses.
+	 */
+	constexpr FixedPoint sqrt() {
+		// Zero can cause issues later, so deal with now.
+		if (this->raw_value == 0) {
+			return zero();
+		}
+
+		// Check for negative values
+		if constexpr (std::is_signed<raw_type>()) {
+			ENSURE(this->raw_value > 0, "FixedPoint::sqrt() is undefined for negative values.");
+		}
+
+		// A greater shift = more precision, but can overflow the intermediate type if too large.
+		size_t max_shift = std::countl_zero(static_cast<unsigned_intermediate_type>(this->raw_value)) - 1;
+		size_t shift = max_shift > fractional_bits ? fractional_bits : max_shift;
+
+		// shift + fractional bits must be an even number
+		if ((shift + fractional_bits) % 2) {
+			shift -= 1;
+		}
+
+		// We can't use the safe shift since the shift value is unknown at compile time.
+		intermediate_type n = static_cast<intermediate_type>(this->raw_value) << shift;
+		intermediate_type guess = static_cast<intermediate_type>(1) << fractional_bits;
+
+		for (size_t i = 0; i < fractional_bits; i++) {
+			intermediate_type prev = guess;
+			guess = (guess + n / guess) / 2;
+			if (guess == prev) {
+				break;
+			}
+		}
+
+		// The sqrt operation halves the number of bits, so we'll we'll have to calculate a shift back
+		size_t unshift = fractional_bits - (shift + fractional_bits) / 2;
+
+		return from_raw_value(guess << unshift);
 	}
 
 	constexpr double atan2(const FixedPoint &n) {
@@ -574,7 +619,7 @@ namespace std {
 
 template <typename I, unsigned F, typename Inter>
 constexpr double sqrt(openage::util::FixedPoint<I, F, Inter> n) {
-	return n.sqrt();
+	return static_cast<double>(n.sqrt());
 }
 
 template <typename I, unsigned F, typename Inter>
