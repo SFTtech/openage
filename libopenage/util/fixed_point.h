@@ -414,6 +414,18 @@ public:
 	}
 
 	/**
+	 * FixedPoint *= FixedPoint
+	 *
+	 * This shares the same caveats as FixedPint * FixedPoint.
+	 *
+	 * Use a larger intermediate type to avoid overflow.
+	 */
+	constexpr FixedPoint operator*=(const FixedPoint &rhs) {
+		*this = *this *rhs;
+		return *this;
+	}
+
+	/**
 	 * FixedPoint /= N
 	 */
 	template <typename N>
@@ -499,16 +511,111 @@ public:
 		return std::atan2(this->to_double(), n.to_double());
 	}
 
-	constexpr double sin() {
-		return std::sin(this->to_double());
+	/**
+	 * Calculate pure FixedPoint sine using a power series approximation.
+	 *
+	 * This may lose absolute precision when the fractional part is small. Because trig functions are
+	 * cyclic, we don't lose precision for large integer values. For best results, you would want
+	 * intermediate_size to be twice the size of raw_type.
+	 */
+	constexpr FixedPoint sin() {
+		size_t order = 10;
+		FixedPoint x = *this;
+
+		// Sine is an odd function, so we can pull out the sign.
+		bool negative = x < 0;
+		if (negative) {
+			x = -x;
+		}
+
+		// Ensure we're in the interval (-pi, pi)
+		// Since this is a series expansion approximation around 0, this interval is where we are most accurate
+		if (x > FixedPoint::pi()) {
+			size_t n = round((x / FixedPoint::tau()).to_double());
+			x -= FixedPoint::tau() * n;
+		}
+
+		FixedPoint pow_x = x;
+		FixedPoint sin_x = 0;
+		size_t factorial = 1;
+		bool term_sign = 0;
+		for (size_t i = 0; i < order; i++) {
+			sin_x += pow_x * (-2 * term_sign + 1) / factorial;
+			term_sign = !term_sign;
+			pow_x *= x * x;
+			factorial *= (2 * i + 2) * (2 * i + 3);
+		}
+
+		return negative ? -sin_x : sin_x;
 	}
 
-	constexpr double cos() {
-		return std::cos(this->to_double());
+	/**
+	 * Calculate pure FixedPoint cosine using a power series approximation.
+	 *
+	 * This may lose absolute precision when the fractional part is small. Because trig functions are
+	 * cyclic, we don't lose precision for large integer values. For best results, you would want
+	 * intermediate_size to be twice the size of raw_type.
+	 */
+	constexpr FixedPoint cos() {
+		size_t order = 10;
+		FixedPoint x = *this;
+
+		// Cosine is an even function so we can drop the sign
+		if (x < 0) {
+			x = -x;
+		}
+
+		// Ensure we're in the interval (-pi, pi)
+		// Since this is a series expansion approximation around 0, this interval is where we are most accurate
+		if (x > FixedPoint::pi()) {
+			size_t n = round((x / FixedPoint::tau()).to_double());
+			x -= FixedPoint::tau() * n;
+		}
+
+		FixedPoint pow_x = 1;
+		FixedPoint cos_x = 0;
+		size_t factorial = 1;
+		bool term_sign = 0;
+		for (size_t i = 0; i < order; i++) {
+			cos_x += pow_x * (-2 * term_sign + 1) / factorial;
+			term_sign = !term_sign;
+			pow_x *= x * x;
+			factorial *= (2 * i + 1) * (2 * i + 2);
+		}
+
+		return cos_x;
 	}
 
-	constexpr double tan() {
-		return std::tan(this->to_double());
+	/**
+	 * Calculate pure FixedPoint tangent using sin() and cos().
+	 *
+	 * This may lose absolute precision when the fractional part is small. Because trig functions are
+	 * cyclic, we don't lose precision for large integer values. For best results, you would want
+	 * intermediate_size to be twice the size of raw_type.
+	 * This is guaranteed to lose precision when approaching its asymptotes (k * pi/2 for odd k).
+	 */
+	constexpr FixedPoint tan() {
+		FixedPoint x = *this;
+
+		// Tangent is odd, we can pull out the sign
+		bool negative = x < 0;
+		if (negative) {
+			x = -x;
+		}
+
+		// Ensure we are in the interval (-pi/2, pi/2) for maximum accuracy
+		if (x > FixedPoint::pi_2()) {
+			size_t n = round((x / FixedPoint::pi()).to_double());
+			x -= FixedPoint::pi() * n;
+		}
+
+		FixedPoint cos_x = x.cos();
+
+		// Raise an exception when too near an asymptote.
+		ENSURE(cos_x != std::clamp(cos_x.to_double(), -1e-7, 1e-7), "FixedPoint::tan() approaches +/- infinity for this value.");
+		FixedPoint tan_x = x.sin() / cos_x;
+
+		return negative ? -tan_x : tan_x;
 	}
 };
 
@@ -629,17 +736,17 @@ constexpr double atan2(openage::util::FixedPoint<I, F, Inter> x, openage::util::
 
 template <typename I, unsigned F, typename Inter>
 constexpr double sin(openage::util::FixedPoint<I, F, Inter> n) {
-	return n.sin();
+	return static_cast<double>(n.sin());
 }
 
 template <typename I, unsigned F, typename Inter>
 constexpr double cos(openage::util::FixedPoint<I, F, Inter> n) {
-	return n.cos();
+	return static_cast<double>(n.cos());
 }
 
 template <typename I, unsigned F, typename Inter>
 constexpr double tan(openage::util::FixedPoint<I, F, Inter> n) {
-	return n.tan();
+	return static_cast<double>(n.tan());
 }
 
 template <typename I, unsigned F, typename Inter>

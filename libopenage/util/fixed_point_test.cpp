@@ -203,6 +203,73 @@ void fixed_point() {
 		TESTNOEXCEPT((FixedPoint<int64_t, 32>::from_float(3.25).sqrt()));
 		TESTNOEXCEPT((FixedPoint<uint64_t, 32>::from_float(-3.25).sqrt()));
 	}
+
+	// Pure FixedPoint trig tests
+	{
+		using TrigType = FixedPoint<int64_t, 32, __int128>;
+
+		// Testing sin() and cos()
+		for (int i = -100'000; i <= 100'000; i++) {
+			TrigType x = TrigType::pi() * (0.001 * i);
+
+			// Test std overloads
+			TESTEQUALS(x.sin(), std::sin(x));
+			TESTEQUALS(x.cos(), std::cos(x));
+
+			// Test vs standard library implementation for doubles
+			TESTEQUALS_FLOAT(std::sin(x), std::sin(x.to_double()), 1e-7);
+			TESTEQUALS_FLOAT(std::cos(x), std::cos(x.to_double()), 1e-7);
+
+			// Test some trig identities
+			TESTEQUALS_FLOAT(std::cos(x), std::sin(TrigType::pi_2() - x), 1e-7);
+			TESTEQUALS_FLOAT(std::cos(TrigType::pi_2() - x), std::sin(x), 1e-7);
+			TESTEQUALS_FLOAT(std::sin(x) * std::sin(x) + std::cos(x) * std::cos(x), 1.0, 1e-7);
+			TESTEQUALS_FLOAT(std::sin(x * 2), std::sin(x) * std::cos(x) * 2, 1e-7);
+			TESTEQUALS_FLOAT(std::cos(x * 2), -std::sin(x) * std::sin(x) * 2 + 1, 1e-7);
+			TESTEQUALS_FLOAT(std::cos(x * 2), std::cos(x) * std::cos(x) * 2 - 1, 1e-7);
+		}
+
+		// Testing tan(), note the reduced precision
+		for (int i = -100'000; i <= 100'000; i++) {
+			TrigType x = TrigType::pi_2() * (0.001 * i);
+
+			// Skip values where tan(x) trends to infinity
+			if (i % 1000 == 0 and i % 2000 != 0) [[unlikely]] {
+				continue;
+			}
+
+			int asymptote_distance = abs(1000 - abs(i % 2000));
+			if (asymptote_distance <= 1) [[unlikely]] {
+				TESTEQUALS_FLOAT(std::tan(x), std::tan(x.to_double()), 1e-2);
+			}
+			else if (asymptote_distance <= 5) [[unlikely]] {
+				TESTEQUALS_FLOAT(std::tan(x), std::tan(x.to_double()), 1e-3);
+			}
+			else if (asymptote_distance <= 16) [[unlikely]] {
+				TESTEQUALS_FLOAT(std::tan(x), std::tan(x.to_double()), 1e-4);
+			}
+			else if (asymptote_distance <= 60) [[unlikely]] {
+				TESTEQUALS_FLOAT(std::tan(x), std::tan(x.to_double()), 1e-5);
+			}
+			else {
+				TESTEQUALS_FLOAT(std::tan(x), std::tan(x.to_double()), 1e-6);
+			}
+		}
+
+		// Testing tan() at asymptotes
+		TESTTHROWS(TrigType::pi_2().tan());
+		TESTTHROWS((-TrigType::pi_2()).tan());
+
+		// testing tan() vs atan2()
+		for (int i = 1; i <= 500; i++) {
+			TrigType x(0.01 * std::numbers::pi * i);
+			for (int j = -1000; j <= 1000; j++) {
+				TrigType y(j * 0.01);
+				TESTEQUALS_FLOAT(TrigType(y.atan2(x)).tan() * x, y, 1e-5);
+				TESTEQUALS_FLOAT(TrigType(y.atan2(-x)).tan() * -x, y, 1e-5);
+			}
+		}
+	}
 }
 
 }}} // openage::util::tests
