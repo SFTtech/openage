@@ -176,6 +176,13 @@ public:
 	}
 
 	/**
+	 * FixedPoint value that is preinitialized to one.
+	 */
+	static constexpr FixedPoint one() {
+		return FixedPoint::from_int(1);
+	}
+
+	/**
 	 * Math constants represented in FixedPoint
 	 */
 	// naming, definition and value are kept compatible with `math_constants.h`
@@ -366,6 +373,26 @@ public:
 			static_cast<FixedPoint::unsigned_int_type>(this->raw_value) & std::integral_constant<int_type, FixedPoint::fractional_part_bitmask()>::value);
 	}
 
+	/**
+	 * Converter to retrieve the integral (pre-decimal) part of the number.
+	 */
+	constexpr FixedPoint get_integral_part() const {
+		// similar to the get_fractional_part() implementation, but the opposite bits.
+		return FixedPoint::from_raw_value(this->raw_value & ~std::integral_constant<int_type, FixedPoint::fractional_part_bitmask()>::value);
+	}
+
+	/**
+	 * Round to the nearest integer.
+	 */
+	constexpr FixedPoint round() const {
+		if (this->get_fractional_part() < same_type_but_unsigned(0.5)) {
+			return this->get_integral_part();
+		}
+		else {
+			return this->get_integral_part() + one();
+		}
+	}
+
 	// Comparison operators for comparison with other
 	constexpr auto operator<=>(const FixedPoint &o) const = default;
 
@@ -531,7 +558,7 @@ public:
 		// Ensure we're in the interval (-pi, pi)
 		// Since this is a series expansion approximation around 0, this interval is where we are most accurate
 		if (x > FixedPoint::pi()) {
-			size_t n = round((x / FixedPoint::tau()).to_double());
+			int_type n = (x / FixedPoint::tau()).round().to_int();
 			x -= FixedPoint::tau() * n;
 		}
 
@@ -568,7 +595,7 @@ public:
 		// Ensure we're in the interval (-pi, pi)
 		// Since this is a series expansion approximation around 0, this interval is where we are most accurate
 		if (x > FixedPoint::pi()) {
-			size_t n = round((x / FixedPoint::tau()).to_double());
+			int_type n = (x / FixedPoint::tau()).round().to_int();
 			x -= FixedPoint::tau() * n;
 		}
 
@@ -605,7 +632,7 @@ public:
 
 		// Ensure we are in the interval (-pi/2, pi/2) for maximum accuracy
 		if (x > FixedPoint::pi_2()) {
-			size_t n = round((x / FixedPoint::pi()).to_double());
+			int_type n = (x / FixedPoint::pi()).round().to_int();
 			x -= FixedPoint::pi() * n;
 		}
 
