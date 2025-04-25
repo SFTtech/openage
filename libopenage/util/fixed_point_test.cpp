@@ -127,7 +127,8 @@ void fixed_point() {
 		using T = FixedPoint<uint16_t, 7U, uint64_t>;
 
 		auto a = S::from_int(16U);
-		TESTNOTEQUALS((a*a).to_int(), 256U);
+		// This test case is now equal with the improved multiplication algorithm
+		TESTEQUALS((a*a).to_int(), 256U);
 
 		auto b = T::from_int(16U);
 		TESTEQUALS((b*b).to_int(), 256U);
@@ -139,7 +140,8 @@ void fixed_point() {
 		using S = FixedPoint<int32_t, 12U>;
 		auto a = S::from_int(256);
 		auto b = S::from_int(8);
-		TESTNOTEQUALS((a/b).to_int(), 32);
+		// This test case is now equal with the improved division algorithm
+		TESTEQUALS((a/b).to_int(), 32);
 
 
 		using T = FixedPoint<int32_t, 12, int64_t>;
@@ -206,7 +208,7 @@ void fixed_point() {
 
 	// Pure FixedPoint trig tests
 	{
-		using TrigType = FixedPoint<int64_t, 32, __int128>;
+		using TrigType = FixedPoint<int64_t, 32, int64_t>;
 
 		// Testing sin() and cos()
 		for (int i = -100'000; i <= 100'000; i++) {
@@ -222,6 +224,7 @@ void fixed_point() {
 
 			// Test some trig identities
 			TESTEQUALS_FLOAT(std::cos(x), std::sin(TrigType::pi_2() - x), 1e-7);
+
 			TESTEQUALS_FLOAT(std::cos(TrigType::pi_2() - x), std::sin(x), 1e-7);
 			TESTEQUALS_FLOAT(std::sin(x) * std::sin(x) + std::cos(x) * std::cos(x), 1.0, 1e-7);
 			TESTEQUALS_FLOAT(std::sin(x * 2), std::sin(x) * std::cos(x) * 2, 1e-7);

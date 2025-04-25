@@ -546,7 +546,7 @@ public:
 	 * intermediate_size to be twice the size of raw_type.
 	 */
 	constexpr FixedPoint sin() {
-		size_t order = 10;
+		size_t order = this->approx_decimal_places;
 		FixedPoint x = *this;
 
 		// Sine is an odd function, so we can pull out the sign.
@@ -584,7 +584,7 @@ public:
 	 * intermediate_size to be twice the size of raw_type.
 	 */
 	constexpr FixedPoint cos() {
-		size_t order = 10;
+		size_t order = this->approx_decimal_places;
 		FixedPoint x = *this;
 
 		// Cosine is an even function so we can drop the sign
@@ -709,10 +709,56 @@ typename std::enable_if<std::is_arithmetic<N>::value, FixedPoint<I, F, Inter>>::
  */
 template <typename I, unsigned int F, typename Inter>
 constexpr FixedPoint<I, F, Inter> operator*(const FixedPoint<I, F, Inter> lhs, const FixedPoint<I, F, Inter> rhs) {
-	Inter ret = static_cast<Inter>(lhs.get_raw_value()) * static_cast<Inter>(rhs.get_raw_value());
-	ret >>= F;
+	using uInter = typename std::make_unsigned<Inter>::type;
 
-	return FixedPoint<I, F, Inter>::from_raw_value(static_cast<I>(ret));
+	// An optimization that can prevent overflows.
+	// This only helps overflows from the actual operations happening here, but not an ordinary overflow of int_type
+	// This is essentially just Karatsuba
+	if constexpr (sizeof(I) == sizeof(Inter)) {
+		constexpr int hwidth = sizeof(Inter) * 4;
+		uInter lower_mask = ~static_cast<uInter>(0) >> hwidth;
+
+		// Store half of each value in each variable
+		bool l_pos = lhs > 0;
+		uInter lhs_lower = static_cast<uInter>(std::abs(lhs.get_raw_value()));
+		Inter lhs_upper = lhs_lower >> hwidth;
+		lhs_lower = lhs_lower & lower_mask;
+
+		bool r_pos = rhs > 0;
+		uInter rhs_lower = static_cast<uInter>(std::abs(rhs.get_raw_value()));
+		Inter rhs_upper = rhs_lower >> hwidth;
+		rhs_lower = rhs_lower & lower_mask;
+
+		// Calculate the multiplication piecewise
+		uInter result_lower = lhs_lower * rhs_lower;
+		Inter result_mid = lhs_lower * rhs_upper + lhs_upper * rhs_lower;
+		Inter result_upper = lhs_upper * rhs_upper;
+
+		// And recombine.
+		I result = result_lower >> F;
+		if constexpr (F > hwidth) {
+			result += result_mid >> (F - hwidth);
+		}
+		else {
+			result += result_mid << (hwidth - F);
+		}
+		if constexpr (F > 2 * hwidth) {
+			result += result_upper >> (F - 2 * hwidth);
+		}
+		else {
+			// These are the bits that would have been lost. We still may lose some, but there are some we save
+			result += result_upper << (2 * hwidth - F);
+		}
+		result = l_pos ^ r_pos ? -result : result;
+
+		return FixedPoint<I, F, Inter>::from_raw_value(result);
+	}
+	else {
+		Inter ret = static_cast<Inter>(lhs.get_raw_value()) * static_cast<Inter>(rhs.get_raw_value());
+		ret >>= F;
+
+		return FixedPoint<I, F, Inter>::from_raw_value(static_cast<I>(ret));
+	}
 }
 
 
@@ -721,8 +767,44 @@ constexpr FixedPoint<I, F, Inter> operator*(const FixedPoint<I, F, Inter> lhs, c
  */
 template <typename I, unsigned int F, typename Inter>
 constexpr FixedPoint<I, F, Inter> operator/(const FixedPoint<I, F, Inter> lhs, const FixedPoint<I, F, Inter> rhs) {
-	Inter ret = div((static_cast<Inter>(lhs.get_raw_value()) << F), static_cast<Inter>(rhs.get_raw_value()));
-	return FixedPoint<I, F, Inter>::from_raw_value(static_cast<I>(ret));
+	using uInter = typename std::make_unsigned<Inter>::type;
+
+	// Implementation that doesn't lose bits using small intermediate values.
+	if constexpr (sizeof(I) == sizeof(Inter)) {
+		Inter mask = static_cast<Inter>(1);
+
+		// Save the signs for later
+		bool l_pos = lhs > 0;
+		bool r_pos = rhs > 0;
+
+		uInter r = 0;
+		uInter q = static_cast<Inter>(std::abs(lhs.get_raw_value()));
+		uInter d = static_cast<Inter>(std::abs(rhs.get_raw_value()));
+
+		// basically just doing long division
+		for (size_t i = 0; i < sizeof(Inter) * 8 + F; i++) {
+			q = std::rotl(q, 1);
+			r = std::rotl(r, 1);
+
+			// "shift" on onto the second Inter
+			r = r | (q & mask);
+			q = q & ~mask;
+
+			// Subtract if large enough
+			if (r >= d) {
+				r = r - d;
+				q = q | mask;
+			}
+		}
+
+		q = l_pos ^ r_pos ? -q : q;
+
+		return FixedPoint<I, F, Inter>::from_raw_value(static_cast<I>(q));
+	}
+	else {
+		Inter ret = div((static_cast<Inter>(lhs.get_raw_value()) << F), static_cast<Inter>(rhs.get_raw_value()));
+		return FixedPoint<I, F, Inter>::from_raw_value(static_cast<I>(ret));
+	}
 }
 
 
