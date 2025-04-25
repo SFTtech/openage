@@ -768,38 +768,47 @@ constexpr FixedPoint<I, F, Inter> operator*(const FixedPoint<I, F, Inter> lhs, c
 template <typename I, unsigned int F, typename Inter>
 constexpr FixedPoint<I, F, Inter> operator/(const FixedPoint<I, F, Inter> lhs, const FixedPoint<I, F, Inter> rhs) {
 	using uInter = typename std::make_unsigned<Inter>::type;
+	using FP = FixedPoint<I, F, Inter>;
 
 	// Implementation that doesn't lose bits using small intermediate values.
 	if constexpr (sizeof(I) == sizeof(Inter)) {
-		Inter mask = static_cast<Inter>(1);
+		constexpr uInter lower_mask = ~static_cast<uInter>(0) >> (sizeof(Inter) * 8 - F);
 
-		// Save the signs for later
+		// Store the integral and fractional parts in the upper and lower "halves"
 		bool l_pos = lhs > 0;
+		uInter lhs_lower = static_cast<uInter>(std::abs(lhs.get_raw_value()));
+		Inter lhs_upper = lhs_lower >> F;
+		lhs_lower = lhs_lower & lower_mask;
+
 		bool r_pos = rhs > 0;
+		uInter rhs_lower = static_cast<uInter>(std::abs(rhs.get_raw_value()));
+		Inter rhs_upper = rhs_lower >> F;
+		rhs_lower = rhs_lower & lower_mask;
 
-		uInter r = 0;
-		uInter q = static_cast<Inter>(std::abs(lhs.get_raw_value()));
-		uInter d = static_cast<Inter>(std::abs(rhs.get_raw_value()));
-
-		// basically just doing long division
-		for (size_t i = 0; i < sizeof(Inter) * 8 + F; i++) {
-			q = std::rotl(q, 1);
-			r = std::rotl(r, 1);
-
-			// "shift" on onto the second Inter
-			r = r | (q & mask);
-			q = q & ~mask;
-
-			// Subtract if large enough
-			if (r >= d) {
-				r = r - d;
-				q = q | mask;
-			}
+		// special case when integeral part of rhs is 0
+		if (rhs_upper == 0) {
+			// It's very likely this upper term is zero, but we should consider it regardless.
+			FP upper_term = FP::from_raw_value((lhs_upper << (2 * F)) / rhs_lower);
+			FP lower_term = FP::from_raw_value((lhs_lower << F) / rhs_lower);
+			FP result = upper_term + lower_term;
+			return l_pos ^ r_pos ? -result : result;
 		}
 
-		q = l_pos ^ r_pos ? -q : q;
+		// Calculate the multiplication piecewise
+		FP upper_term = FixedPoint<I, F, Inter>::from_raw_value((lhs_upper << F) / rhs_upper);
+		FP lower_term = FP::from_raw_value(((lhs_lower << F) / rhs_upper) >> F);
+		FP mixed_term = FixedPoint<I, F, Inter>::from_raw_value((rhs_lower) / rhs_upper);
 
-		return FixedPoint<I, F, Inter>::from_raw_value(static_cast<I>(q));
+		// Basically doing a power series expansion here for (lhs_upper + lhs_lower) / (rhs_upper + rhs_lower)
+		FP result = FP::zero();
+		FP term = FP::one();
+		for (size_t i = 0; i < 8; i++) {
+			result += term * upper_term;
+			result += term * lower_term;
+			term *= -mixed_term;
+		}
+
+		return l_pos ^ r_pos ? -result : result;
 	}
 	else {
 		Inter ret = div((static_cast<Inter>(lhs.get_raw_value()) << F), static_cast<Inter>(rhs.get_raw_value()));
