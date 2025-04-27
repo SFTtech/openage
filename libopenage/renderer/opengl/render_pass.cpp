@@ -1,4 +1,4 @@
-// Copyright 2019-2024 the openage authors. See copying.md for legal info.
+// Copyright 2019-2025 the openage authors. See copying.md for legal info.
 
 #include "render_pass.h"
 
@@ -35,4 +35,13 @@ bool GlRenderPass::get_is_optimized() const {
 void GlRenderPass::set_is_optimized(bool flag) {
 	this->is_optimized = flag;
 }
+
+void GlRenderPass::set_stencil_config(const StencilConfig config) {
+	this->stencil_config = config;
+}
+
+const StencilConfig &GlRenderPass::get_stencil_config() const {
+	return this->stencil_config;
+}
+
 } // namespace openage::renderer::opengl
