@@ -29,10 +29,9 @@ public:
 	explicit ShaderTemplate(const util::Path &template_path);
 
 	/**
-	 * Load all snippets from a JSON config file.
+	 * Load all snippets from a directory of .snippet files.
 	 *
-	 * @param config_path Path to JSON config file.
-	 * @param base_path Base path for resolving relative snippet paths.
+	 * @param snippet_path Path to directory containing snippet files.
 	 */
 	void load_snippets(const util::Path &snippet_path);
 
@@ -57,6 +56,15 @@ private:
 	std::string template_code;
 	/// Mapping of placeholder IDs to their code snippets
 	std::map<std::string, std::string> snippets;
+
+	/// Info about a placeholder found in the template 
+	struct Placeholder {
+			std::string name;
+			size_t position;
+			size_t length;
+	};
+
+	std::vector<Placeholder> placeholders;
 };
 } // namespace world
 } // namespace renderer
