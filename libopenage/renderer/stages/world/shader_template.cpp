@@ -13,6 +13,20 @@ ShaderTemplate::ShaderTemplate(const util::Path &template_path) {
 	auto file = template_path.open();
 	this->template_code = file.read();
 	file.close();
+
+	std::string marker = "// PLACEHOLDER: ";
+	size_t pos = 0;
+
+	while ((pos = this->template_code.find(marker, pos)) != std::string::npos) {
+		size_t name_start = pos + marker.length();
+		size_t line_end = this->template_code.find('\n', name_start);
+		std::string name = this->template_code.substr(name_start, line_end - name_start);
+		// Trim trailing whitespace (space, tab, carriage return, etc.)
+		name.erase(name.find_last_not_of(" \t\r\n") + 1);
+
+		this->placeholders.push_back({name, pos, line_end - pos});
+		pos = line_end;
+	}
 }
 
 void ShaderTemplate::load_snippets(const util::Path &snippet_path) {
@@ -38,26 +52,16 @@ void ShaderTemplate::add_snippet(const util::Path &snippet_path) {
 renderer::resources::ShaderSource ShaderTemplate::generate_source() const {
 	std::string result_src = template_code;
 
-	// Process each placeholder
-	for (const auto &[name, snippet_code] : snippets) {
-		std::string placeholder = "// PLACEHOLDER: " + name;
-		size_t pos = result_src.find(placeholder);
-
-		if (pos != std::string::npos) {
-			result_src.replace(pos, placeholder.length(), snippet_code);
+	// Replace placeholders in reverse order (to avoid offset issues)
+	for (auto it = placeholders.rbegin(); it != placeholders.rend(); ++it) {
+		const auto &ph = *it;
+		auto snippet_it = snippets.find(ph.name);
+		if (snippet_it != snippets.end()) {
+			result_src.replace(ph.position, ph.length, snippet_it->second);
 		}
 		else {
-			log::log(WARN << "Placeholder not found in template: " << name);
+			throw Error(MSG(err) << "Missing snippet for placeholder: " << ph.name);
 		}
-	}
-
-	// Check if all placeholders were replaced
-	size_t placeholder_pos = result_src.find("// PLACEHOLDER:");
-	if (placeholder_pos != std::string::npos) {
-		size_t line_end = result_src.find('\n', placeholder_pos);
-		std::string missing = result_src.substr(placeholder_pos,
-		                                        line_end - placeholder_pos);
-		throw Error(MSG(err) << "Missing snippet for placeholder: " << missing);
 	}
 
 	auto result = resources::ShaderSource(
