@@ -5,7 +5,7 @@
 # pylint: disable=invalid-name
 #
 # TODO:
-# pylint: disable=unused-argument,line-too-long
+# pylint: disable=unused-argument,line-too-long,too-many-positional-arguments
 
 """
 Derives and adds abilities to lines. Subroutine of the
@@ -304,6 +304,8 @@ class AoCAbilitySubprocessor:
             })
 
         # Effects
+        effects = None
+        allowed_types = None
         if command_id == 101:
             # Construct
             effects = AoCEffectSubprocessor.get_construct_effects(line, ability_ref)
@@ -584,6 +586,7 @@ class AoCAbilitySubprocessor:
 
         line.add_raw_api_object(batch_raw_api_object)
 
+        effects = None
         if command_id == 7:
             # Attack
             if projectile != 1:
@@ -5644,6 +5647,7 @@ class AoCAbilitySubprocessor:
                 # The unit uses no gathering command or we don't recognize it
                 continue
 
+            container_name = None
             if line.is_gatherer():
                 gatherer_unit_id = gatherer.get_id()
                 if gatherer_unit_id not in gather_lookup_dict:
@@ -5670,6 +5674,7 @@ class AoCAbilitySubprocessor:
                                                     "engine.util.storage.ResourceContainer")
 
             # Carry capacity
+            carry_capacity = None
             if line.is_gatherer():
                 carry_capacity = gatherer["resource_capacity"].value
 

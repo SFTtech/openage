@@ -379,6 +379,7 @@ class AoCUpgradeAttributeSubprocessor:
 
         patches = []
 
+        target_mode = None
         if value == 0:
             target_mode = dataset.nyan_api_objects["engine.util.target_mode.type.CurrentPosition"]
 

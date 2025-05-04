@@ -37,7 +37,7 @@ class RoRUpgradeAbilitySubprocessor:
         line: GenieGameEntityGroup,
         container_obj_ref: str,
         command_id: int,
-        diff: ConverterObject = None
+        diff: ConverterObject
     ) -> list[ForwardRef]:
         """
         Creates a patch for the Selectable ability of a line.
@@ -67,20 +67,20 @@ class RoRUpgradeAbilitySubprocessor:
         ability_name = command_lookup_dict[command_id][0]
 
         data_changed = False
-        if diff:
-            diff_animation = diff["attack_sprite_id"]
-            diff_comm_sound = diff["command_sound_id"]
-            diff_min_range = diff["weapon_range_min"]
-            diff_max_range = diff["weapon_range_min"]
-            diff_reload_time = diff["attack_speed"]
-            # spawn delay also depends on animation
-            diff_spawn_delay = diff["frame_delay"]
-            diff_spawn_area_offsets = diff["weapon_offset"]
 
-            if any(not isinstance(value, NoDiffMember) for value in (diff_reload_time,
-                                                                     diff_spawn_delay,
-                                                                     diff_spawn_area_offsets)):
-                data_changed = True
+        diff_animation = diff["attack_sprite_id"]
+        diff_comm_sound = diff["command_sound_id"]
+        diff_min_range = diff["weapon_range_min"]
+        diff_max_range = diff["weapon_range_min"]
+        diff_reload_time = diff["attack_speed"]
+        # spawn delay also depends on animation
+        diff_spawn_delay = diff["frame_delay"]
+        diff_spawn_area_offsets = diff["weapon_offset"]
+
+        if any(not isinstance(value, NoDiffMember) for value in (diff_reload_time,
+                                                                 diff_spawn_delay,
+                                                                 diff_spawn_area_offsets)):
+            data_changed = True
 
         if any(not isinstance(value, NoDiffMember) for value in (
             diff_min_range,
