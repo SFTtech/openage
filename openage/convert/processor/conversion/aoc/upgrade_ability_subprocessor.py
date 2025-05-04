@@ -4,7 +4,7 @@
 # pylint: disable=too-many-public-methods,too-many-branches,too-many-arguments
 #
 # TODO:
-# pylint: disable=unused-argument,line-too-long
+# pylint: disable=unused-argument,line-too-long,too-many-positional-arguments
 
 """
 Creates upgrade patches for abilities.
@@ -1512,32 +1512,32 @@ class AoCUpgradeAbilitySubprocessor:
         ability_name = command_lookup_dict[command_id][0]
 
         data_changed = False
-        if diff:
-            diff_animation = diff["attack_sprite_id"]
-            diff_comm_sound = diff["command_sound_id"]
-            diff_min_projectiles = diff["projectile_min_count"]
-            diff_max_projectiles = diff["projectile_max_count"]
-            diff_min_range = diff["weapon_range_min"]
-            diff_max_range = diff["weapon_range_min"]
-            diff_reload_time = diff["attack_speed"]
-            # spawn delay also depends on animation
-            diff_spawn_delay = diff["frame_delay"]
-            diff_spawn_area_offsets = diff["weapon_offset"]
-            diff_spawn_area_width = diff["projectile_spawning_area_width"]
-            diff_spawn_area_height = diff["projectile_spawning_area_length"]
-            diff_spawn_area_randomness = diff["projectile_spawning_area_randomness"]
 
-            if any(not isinstance(value, NoDiffMember) for value in (
-                diff_min_projectiles,
-                diff_max_projectiles,
-                diff_reload_time,
-                diff_spawn_delay,
-                diff_spawn_area_offsets,
-                diff_spawn_area_width,
-                diff_spawn_area_height,
-                diff_spawn_area_randomness
-            )):
-                data_changed = True
+        diff_animation = diff["attack_sprite_id"]
+        diff_comm_sound = diff["command_sound_id"]
+        diff_min_projectiles = diff["projectile_min_count"]
+        diff_max_projectiles = diff["projectile_max_count"]
+        diff_min_range = diff["weapon_range_min"]
+        diff_max_range = diff["weapon_range_min"]
+        diff_reload_time = diff["attack_speed"]
+        # spawn delay also depends on animation
+        diff_spawn_delay = diff["frame_delay"]
+        diff_spawn_area_offsets = diff["weapon_offset"]
+        diff_spawn_area_width = diff["projectile_spawning_area_width"]
+        diff_spawn_area_height = diff["projectile_spawning_area_length"]
+        diff_spawn_area_randomness = diff["projectile_spawning_area_randomness"]
+
+        if any(not isinstance(value, NoDiffMember) for value in (
+            diff_min_projectiles,
+            diff_max_projectiles,
+            diff_reload_time,
+            diff_spawn_delay,
+            diff_spawn_area_offsets,
+            diff_spawn_area_width,
+            diff_spawn_area_height,
+            diff_spawn_area_randomness
+        )):
+            data_changed = True
 
         if any(not isinstance(value, NoDiffMember) for value in (
             diff_min_range,
