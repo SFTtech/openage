@@ -1,4 +1,4 @@
-# Copyright 2020-2024 the openage authors. See copying.md for legal info.
+# Copyright 2020-2025 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-public-methods,too-many-lines,too-many-locals
 # pylint: disable=too-many-branches,too-many-statements,too-many-arguments
@@ -108,12 +108,7 @@ class SWGBCCAbilitySubprocessor:
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
         ability_name = command_lookup_dict[command_id][0]
-
-        if ranged:
-            ability_parent = "engine.ability.type.RangedDiscreteEffect"
-
-        else:
-            ability_parent = "engine.ability.type.ApplyDiscreteEffect"
+        ability_parent = "engine.ability.type.ApplyDiscreteEffect"
 
         if projectile == -1:
             ability_ref = f"{game_entity_name}.{ability_name}"
@@ -268,18 +263,35 @@ class SWGBCCAbilitySubprocessor:
                                               properties,
                                               "engine.ability.Ability")
 
+        # Range
         if ranged:
+            # Range
+            property_ref = f"{ability_ref}.Ranged"
+            property_raw_api_object = RawAPIObject(property_ref,
+                                                   "Ranged",
+                                                   dataset.nyan_api_objects)
+            property_raw_api_object.add_raw_parent("engine.ability.property.type.Ranged")
+            property_location = ForwardRef(line, ability_ref)
+            property_raw_api_object.set_location(property_location)
+
+            line.add_raw_api_object(property_raw_api_object)
+
             # Min range
             min_range = current_unit["weapon_range_min"].value
-            ability_raw_api_object.add_raw_member("min_range",
-                                                  min_range,
-                                                  "engine.ability.type.RangedDiscreteEffect")
+            property_raw_api_object.add_raw_member("min_range",
+                                                   min_range,
+                                                   "engine.ability.property.type.Ranged")
 
             # Max range
             max_range = current_unit["weapon_range_max"].value
-            ability_raw_api_object.add_raw_member("max_range",
-                                                  max_range,
-                                                  "engine.ability.type.RangedDiscreteEffect")
+            property_raw_api_object.add_raw_member("max_range",
+                                                   max_range,
+                                                   "engine.ability.property.type.Ranged")
+
+            property_forward_ref = ForwardRef(line, property_ref)
+            properties.update({
+                dataset.nyan_api_objects["engine.ability.property.type.Ranged"]: property_forward_ref
+            })
 
         # Effects
         batch_ref = f"{ability_ref}.Batch"
@@ -291,6 +303,7 @@ class SWGBCCAbilitySubprocessor:
         line.add_raw_api_object(batch_raw_api_object)
 
         # Effects
+        effects = []
         if command_id == 7:
             # Attack
             if projectile != 1:
@@ -1505,6 +1518,7 @@ class SWGBCCAbilitySubprocessor:
                 # The unit uses no gathering command or we don't recognize it
                 continue
 
+            container_name = None
             if line.is_gatherer():
                 gatherer_unit_id = gatherer.get_id()
                 if gatherer_unit_id not in gather_lookup_dict:

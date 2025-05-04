@@ -1,4 +1,4 @@
-# Copyright 2019-2024 the openage authors. See copying.md for legal info.
+# Copyright 2019-2025 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=line-too-long,too-many-lines,too-many-statements
 """
@@ -101,6 +101,13 @@ def _create_objects(api_objects: dict[str, NyanObject]) -> None:
     parents = [api_objects["engine.ability.property.AbilityProperty"]]
     nyan_object = NyanObject("Lock", parents)
     fqon = "engine.ability.property.type.Lock"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.ability.property.type.Ranged
+    parents = [api_objects["engine.ability.property.AbilityProperty"]]
+    nyan_object = NyanObject("Ranged", parents)
+    fqon = "engine.ability.property.type.Ranged"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -370,20 +377,6 @@ def _create_objects(api_objects: dict[str, NyanObject]) -> None:
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.ability.type.RangedContinuousEffect
-    parents = [api_objects["engine.ability.type.ApplyContinuousEffect"]]
-    nyan_object = NyanObject("RangedContinuousEffect", parents)
-    fqon = "engine.ability.type.RangedContinuousEffect"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
-    # engine.ability.type.RangedDiscreteEffect
-    parents = [api_objects["engine.ability.type.ApplyDiscreteEffect"]]
-    nyan_object = NyanObject("RangedDiscreteEffect", parents)
-    fqon = "engine.ability.type.RangedDiscreteEffect"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
     # engine.ability.type.RegenerateAttribute
     parents = [api_objects["engine.ability.Ability"]]
     nyan_object = NyanObject("RegenerateAttribute", parents)
@@ -546,6 +539,13 @@ def _create_objects(api_objects: dict[str, NyanObject]) -> None:
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
+    # engine.util.activity.condition.type.NextCommandApplyEffect
+    parents = [api_objects["engine.util.activity.condition.Condition"]]
+    nyan_object = NyanObject("NextCommandApplyEffect", parents)
+    fqon = "engine.util.activity.condition.type.NextCommandApplyEffect"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
     # engine.util.activity.condition.type.NextCommandIdle
     parents = [api_objects["engine.util.activity.condition.Condition"]]
     nyan_object = NyanObject("NextCommandIdle", parents)
@@ -627,6 +627,27 @@ def _create_objects(api_objects: dict[str, NyanObject]) -> None:
     parents = [api_objects["engine.util.activity.node.Node"]]
     nyan_object = NyanObject("XORGate", parents)
     fqon = "engine.util.activity.node.type.XORGate"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.util.activity.node.type.XORSwitchGate
+    parents = [api_objects["engine.util.activity.node.Node"]]
+    nyan_object = NyanObject("XORSwitchGate", parents)
+    fqon = "engine.util.activity.node.type.XORSwitchGate"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.util.activity.switch_condition.SwitchCondition
+    parents = [api_objects["engine.root.Object"]]
+    nyan_object = NyanObject("SwitchCondition", parents)
+    fqon = "engine.util.activity.switch_condition.SwitchCondition"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.util.activity.switch_condition.type.NextCommand
+    parents = [api_objects["engine.util.activity.switch_condition.SwitchCondition"]]
+    nyan_object = NyanObject("NextCommand", parents)
+    fqon = "engine.util.activity.switch_condition.type.NextCommand"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -725,6 +746,34 @@ def _create_objects(api_objects: dict[str, NyanObject]) -> None:
     parents = [api_objects["engine.root.Object"]]
     nyan_object = NyanObject("Cheat", parents)
     fqon = "engine.util.cheat.Cheat"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.util.command.Command
+    parents = [api_objects["engine.root.Object"]]
+    nyan_object = NyanObject("Command", parents)
+    fqon = "engine.util.command.Command"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.util.command.type.ApplyEffect
+    parents = [api_objects["engine.util.command.Command"]]
+    nyan_object = NyanObject("ApplyEffect", parents)
+    fqon = "engine.util.command.type.ApplyEffect"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.util.command.type.Idle
+    parents = [api_objects["engine.util.command.Command"]]
+    nyan_object = NyanObject("Idle", parents)
+    fqon = "engine.util.command.type.Idle"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.util.command.type.Move
+    parents = [api_objects["engine.util.command.Command"]]
+    nyan_object = NyanObject("Move", parents)
+    fqon = "engine.util.command.type.Move"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -2574,6 +2623,14 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     member = NyanMember("lock_pool", member_type, None, None, 0)
     api_object.add_member(member)
 
+    # engine.ability.property.type.Ranged
+    api_object = api_objects["engine.ability.property.type.Ranged"]
+
+    member = NyanMember("min_range", N_FLOAT, None, None, 0)
+    api_object.add_member(member)
+    member = NyanMember("max_range", N_FLOAT, None, None, 0)
+    api_object.add_member(member)
+
     # engine.ability.type.ActiveTransformTo
     api_object = api_objects["engine.ability.type.ActiveTransformTo"]
 
@@ -2713,8 +2770,6 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     # engine.ability.type.DetectCloak
     api_object = api_objects["engine.ability.type.DetectCloak"]
 
-    member = NyanMember("range", N_FLOAT, None, None, 0)
-    api_object.add_member(member)
     subtype = NyanMemberType(api_objects["engine.util.game_entity_type.GameEntityType"])
     elem_type = NyanMemberType(MemberType.CHILDREN, (subtype,))
     member_type = NyanMemberType(MemberType.SET, (elem_type,))
@@ -2863,8 +2918,6 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     # engine.ability.type.Herd
     api_object = api_objects["engine.ability.type.Herd"]
 
-    member = NyanMember("range", N_FLOAT, None, None, 0)
-    api_object.add_member(member)
     member = NyanMember("strength", N_INT, None, None, 0)
     api_object.add_member(member)
     subtype = NyanMemberType(api_objects["engine.util.game_entity_type.GameEntityType"])
@@ -3015,22 +3068,6 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     member = NyanMember("amount", member_type, None, None, 0)
     api_object.add_member(member)
 
-    # engine.ability.type.RangedContinuousEffect
-    api_object = api_objects["engine.ability.type.RangedContinuousEffect"]
-
-    member = NyanMember("min_range", N_INT, None, None, 0)
-    api_object.add_member(member)
-    member = NyanMember("max_range", N_INT, None, None, 0)
-    api_object.add_member(member)
-
-    # engine.ability.type.RangedDiscreteEffect
-    api_object = api_objects["engine.ability.type.RangedDiscreteEffect"]
-
-    member = NyanMember("min_range", N_INT, None, None, 0)
-    api_object.add_member(member)
-    member = NyanMember("max_range", N_INT, None, None, 0)
-    api_object.add_member(member)
-
     # engine.ability.type.RegenerateAttribute
     api_object = api_objects["engine.ability.type.RegenerateAttribute"]
 
@@ -3132,10 +3169,6 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     member = NyanMember("min_projectiles", N_INT, None, None, 0)
     api_object.add_member(member)
     member = NyanMember("max_projectiles", N_INT, None, None, 0)
-    api_object.add_member(member)
-    member = NyanMember("min_range", N_INT, None, None, 0)
-    api_object.add_member(member)
-    member = NyanMember("max_range", N_INT, None, None, 0)
     api_object.add_member(member)
     member = NyanMember("reload_time", N_FLOAT, None, None, 0)
     api_object.add_member(member)
@@ -3322,6 +3355,26 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     api_object.add_member(member)
     member_type = NyanMemberType(api_objects["engine.util.activity.node.Node"])
     member = NyanMember("default", member_type, None, None, 0)
+    api_object.add_member(member)
+
+    # engine.util.activity.node.type.XORSwitchGate
+    api_object = api_objects["engine.util.activity.node.type.XORSwitchGate"]
+
+    member_type = NyanMemberType(api_objects["engine.util.activity.switch_condition.SwitchCondition"])
+    member = NyanMember("switch", member_type, None, None, 0)
+    api_object.add_member(member)
+    member_type = NyanMemberType(api_objects["engine.util.activity.node.Node"])
+    member = NyanMember("default", member_type, None, None, 0)
+    api_object.add_member(member)
+
+    # engine.util.activity.switch_condition.type.NextCommand
+    api_object = api_objects["engine.util.activity.switch_condition.type.NextCommand"]
+
+    subtype = NyanMemberType(api_objects["engine.util.command.Command"])
+    key_type = NyanMemberType(MemberType.CHILDREN, (subtype,))
+    value_type = NyanMemberType(api_objects["engine.util.activity.node.Node"])
+    member_type = NyanMemberType(MemberType.DICT, (key_type, value_type))
+    member = NyanMember("next", member_type, None, None, 0)
     api_object.add_member(member)
 
     # engine.util.animation_override.AnimationOverride
