@@ -1,4 +1,4 @@
-# Copyright 2019-2024 the openage authors. See copying.md for legal info.
+# Copyright 2019-2025 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=line-too-long,too-many-lines,too-many-statements
 """
@@ -101,6 +101,13 @@ def _create_objects(api_objects: dict[str, NyanObject]) -> None:
     parents = [api_objects["engine.ability.property.AbilityProperty"]]
     nyan_object = NyanObject("Lock", parents)
     fqon = "engine.ability.property.type.Lock"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.ability.property.type.Ranged
+    parents = [api_objects["engine.ability.property.AbilityProperty"]]
+    nyan_object = NyanObject("Ranged", parents)
+    fqon = "engine.ability.property.type.Ranged"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -367,20 +374,6 @@ def _create_objects(api_objects: dict[str, NyanObject]) -> None:
     parents = [api_objects["engine.ability.Ability"]]
     nyan_object = NyanObject("RallyPoint", parents)
     fqon = "engine.ability.type.RallyPoint"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
-    # engine.ability.type.RangedContinuousEffect
-    parents = [api_objects["engine.ability.type.ApplyContinuousEffect"]]
-    nyan_object = NyanObject("RangedContinuousEffect", parents)
-    fqon = "engine.ability.type.RangedContinuousEffect"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
-    # engine.ability.type.RangedDiscreteEffect
-    parents = [api_objects["engine.ability.type.ApplyDiscreteEffect"]]
-    nyan_object = NyanObject("RangedDiscreteEffect", parents)
-    fqon = "engine.ability.type.RangedDiscreteEffect"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -2630,6 +2623,14 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     member = NyanMember("lock_pool", member_type, None, None, 0)
     api_object.add_member(member)
 
+    # engine.ability.property.type.Ranged
+    api_object = api_objects["engine.ability.property.type.Ranged"]
+
+    member = NyanMember("min_range", N_FLOAT, None, None, 0)
+    api_object.add_member(member)
+    member = NyanMember("max_range", N_FLOAT, None, None, 0)
+    api_object.add_member(member)
+
     # engine.ability.type.ActiveTransformTo
     api_object = api_objects["engine.ability.type.ActiveTransformTo"]
 
@@ -2769,8 +2770,6 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     # engine.ability.type.DetectCloak
     api_object = api_objects["engine.ability.type.DetectCloak"]
 
-    member = NyanMember("range", N_FLOAT, None, None, 0)
-    api_object.add_member(member)
     subtype = NyanMemberType(api_objects["engine.util.game_entity_type.GameEntityType"])
     elem_type = NyanMemberType(MemberType.CHILDREN, (subtype,))
     member_type = NyanMemberType(MemberType.SET, (elem_type,))
@@ -2919,8 +2918,6 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     # engine.ability.type.Herd
     api_object = api_objects["engine.ability.type.Herd"]
 
-    member = NyanMember("range", N_FLOAT, None, None, 0)
-    api_object.add_member(member)
     member = NyanMember("strength", N_INT, None, None, 0)
     api_object.add_member(member)
     subtype = NyanMemberType(api_objects["engine.util.game_entity_type.GameEntityType"])
@@ -3071,22 +3068,6 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     member = NyanMember("amount", member_type, None, None, 0)
     api_object.add_member(member)
 
-    # engine.ability.type.RangedContinuousEffect
-    api_object = api_objects["engine.ability.type.RangedContinuousEffect"]
-
-    member = NyanMember("min_range", N_INT, None, None, 0)
-    api_object.add_member(member)
-    member = NyanMember("max_range", N_INT, None, None, 0)
-    api_object.add_member(member)
-
-    # engine.ability.type.RangedDiscreteEffect
-    api_object = api_objects["engine.ability.type.RangedDiscreteEffect"]
-
-    member = NyanMember("min_range", N_INT, None, None, 0)
-    api_object.add_member(member)
-    member = NyanMember("max_range", N_INT, None, None, 0)
-    api_object.add_member(member)
-
     # engine.ability.type.RegenerateAttribute
     api_object = api_objects["engine.ability.type.RegenerateAttribute"]
 
@@ -3188,10 +3169,6 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     member = NyanMember("min_projectiles", N_INT, None, None, 0)
     api_object.add_member(member)
     member = NyanMember("max_projectiles", N_INT, None, None, 0)
-    api_object.add_member(member)
-    member = NyanMember("min_range", N_INT, None, None, 0)
-    api_object.add_member(member)
-    member = NyanMember("max_range", N_INT, None, None, 0)
     api_object.add_member(member)
     member = NyanMember("reload_time", N_FLOAT, None, None, 0)
     api_object.add_member(member)

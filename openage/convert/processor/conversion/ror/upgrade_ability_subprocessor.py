@@ -1,4 +1,4 @@
-# Copyright 2020-2023 the openage authors. See copying.md for legal info.
+# Copyright 2020-2025 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-lines,too-many-statements
 # pylint: disable=too-few-public-methods,too-many-branches
@@ -77,12 +77,69 @@ class RoRUpgradeAbilitySubprocessor:
             diff_spawn_delay = diff["frame_delay"]
             diff_spawn_area_offsets = diff["weapon_offset"]
 
-            if any(not isinstance(value, NoDiffMember) for value in (diff_min_range,
-                                                                     diff_max_range,
-                                                                     diff_reload_time,
+            if any(not isinstance(value, NoDiffMember) for value in (diff_reload_time,
                                                                      diff_spawn_delay,
                                                                      diff_spawn_area_offsets)):
                 data_changed = True
+
+        if any(not isinstance(value, NoDiffMember) for value in (
+            diff_min_range,
+            diff_max_range
+        )):
+            patch_target_ref = f"{game_entity_name}.{ability_name}.Ranged"
+            patch_target_forward_ref = ForwardRef(line, patch_target_ref)
+
+            # Wrapper
+            wrapper_name = f"Change{game_entity_name}{ability_name}RangedWrapper"
+            wrapper_ref = f"{container_obj_ref}.{wrapper_name}"
+            wrapper_raw_api_object = RawAPIObject(wrapper_ref,
+                                                  wrapper_name,
+                                                  dataset.nyan_api_objects)
+            wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
+
+            if isinstance(line, GenieBuildingLineGroup):
+                wrapper_raw_api_object.set_location(("data/game_entity/generic/"
+                                                     f"{name_lookup_dict[head_unit_id][1]}/"))
+                wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
+
+            else:
+                wrapper_raw_api_object.set_location(ForwardRef(converter_group, container_obj_ref))
+
+            # Nyan patch
+            nyan_patch_name = f"Change{game_entity_name}{ability_name}Ranged"
+            nyan_patch_ref = ForwardRef(line, nyan_patch_name)
+            nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
+            nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
+                                                     nyan_patch_name,
+                                                     dataset.nyan_api_objects,
+                                                     nyan_patch_location)
+            nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
+            nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
+
+            if not isinstance(diff_min_range, NoDiffMember):
+                min_range = diff_min_range.value
+                nyan_patch_raw_api_object.add_raw_patch_member("min_range",
+                                                               min_range,
+                                                               "engine.ability.property.type.Ranged",
+                                                               MemberOperator.ADD)
+
+            if not isinstance(diff_max_range, NoDiffMember):
+                max_range = diff_max_range.value
+                nyan_patch_raw_api_object.add_raw_patch_member("max_range",
+                                                               max_range,
+                                                               "engine.ability.property.type.Ranged",
+                                                               MemberOperator.ADD)
+
+            patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
+            wrapper_raw_api_object.add_raw_member("patch",
+                                                  patch_forward_ref,
+                                                  "engine.util.patch.Patch")
+
+            converter_group.add_raw_api_object(wrapper_raw_api_object)
+            converter_group.add_raw_api_object(nyan_patch_raw_api_object)
+
+            wrapper_forward_ref = ForwardRef(converter_group, wrapper_ref)
+            patches.append(wrapper_forward_ref)
 
         if not isinstance(diff_animation, NoDiffMember):
             diff_animation_id = diff_animation.value
@@ -166,22 +223,6 @@ class RoRUpgradeAbilitySubprocessor:
                                                      nyan_patch_location)
             nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
-
-            if not isinstance(diff_min_range, NoDiffMember):
-                min_range = diff_min_range.value
-
-                nyan_patch_raw_api_object.add_raw_patch_member("min_range",
-                                                               min_range,
-                                                               "engine.ability.type.ShootProjectile",
-                                                               MemberOperator.ADD)
-
-            if not isinstance(diff_max_range, NoDiffMember):
-                max_range = diff_max_range.value
-
-                nyan_patch_raw_api_object.add_raw_patch_member("max_range",
-                                                               max_range,
-                                                               "engine.ability.type.ShootProjectile",
-                                                               MemberOperator.ADD)
 
             if not isinstance(diff_reload_time, NoDiffMember):
                 reload_time = diff_reload_time.value

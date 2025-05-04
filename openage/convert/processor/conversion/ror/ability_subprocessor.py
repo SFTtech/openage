@@ -1,4 +1,4 @@
-# Copyright 2020-2023 the openage authors. See copying.md for legal info.
+# Copyright 2020-2025 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-branches,too-many-statements,too-many-locals
 #
@@ -65,12 +65,7 @@ class RoRAbilitySubprocessor:
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
         ability_name = command_lookup_dict[command_id][0]
-
-        if ranged:
-            ability_parent = "engine.ability.type.RangedDiscreteEffect"
-
-        else:
-            ability_parent = "engine.ability.type.ApplyDiscreteEffect"
+        ability_parent = "engine.ability.type.ApplyDiscreteEffect"
 
         if projectile == -1:
             ability_ref = f"{game_entity_name}.{ability_name}"
@@ -244,18 +239,35 @@ class RoRAbilitySubprocessor:
                                               properties,
                                               "engine.ability.Ability")
 
+        # Range
         if ranged:
+            # Range
+            property_ref = f"{ability_ref}.Ranged"
+            property_raw_api_object = RawAPIObject(property_ref,
+                                                   "Ranged",
+                                                   dataset.nyan_api_objects)
+            property_raw_api_object.add_raw_parent("engine.ability.property.type.Ranged")
+            property_location = ForwardRef(line, ability_ref)
+            property_raw_api_object.set_location(property_location)
+
+            line.add_raw_api_object(property_raw_api_object)
+
             # Min range
             min_range = current_unit["weapon_range_min"].value
-            ability_raw_api_object.add_raw_member("min_range",
-                                                  min_range,
-                                                  "engine.ability.type.RangedDiscreteEffect")
+            property_raw_api_object.add_raw_member("min_range",
+                                                   min_range,
+                                                   "engine.ability.property.type.Ranged")
 
             # Max range
             max_range = current_unit["weapon_range_max"].value
-            ability_raw_api_object.add_raw_member("max_range",
-                                                  max_range,
-                                                  "engine.ability.type.RangedDiscreteEffect")
+            property_raw_api_object.add_raw_member("max_range",
+                                                   max_range,
+                                                   "engine.ability.property.type.Ranged")
+
+            property_forward_ref = ForwardRef(line, property_ref)
+            properties.update({
+                dataset.nyan_api_objects["engine.ability.property.type.Ranged"]: property_forward_ref
+            })
 
         # Effects
         batch_ref = f"{ability_ref}.Batch"
@@ -690,6 +702,31 @@ class RoRAbilitySubprocessor:
         # Ability properties
         properties = {}
 
+        # Range
+        property_ref = f"{ability_ref}.Ranged"
+        property_raw_api_object = RawAPIObject(property_ref,
+                                               "Ranged",
+                                               dataset.nyan_api_objects)
+        property_raw_api_object.add_raw_parent("engine.ability.property.type.Ranged")
+        property_location = ForwardRef(line, ability_ref)
+        property_raw_api_object.set_location(property_location)
+
+        line.add_raw_api_object(property_raw_api_object)
+
+        min_range = current_unit["weapon_range_min"].value
+        property_raw_api_object.add_raw_member("min_range",
+                                               min_range,
+                                               "engine.ability.property.type.Ranged")
+        max_range = current_unit["weapon_range_max"].value
+        property_raw_api_object.add_raw_member("max_range",
+                                               max_range,
+                                               "engine.ability.property.type.Ranged")
+
+        property_forward_ref = ForwardRef(line, property_ref)
+        properties.update({
+            dataset.nyan_api_objects["engine.ability.property.type.Ranged"]: property_forward_ref
+        })
+
         # Animation
         ability_animation_id = current_unit["attack_sprite_id"].value
         if ability_animation_id > -1:
@@ -794,17 +831,6 @@ class RoRAbilitySubprocessor:
                                               "engine.ability.type.ShootProjectile")
         ability_raw_api_object.add_raw_member("max_projectiles",
                                               max_projectiles,
-                                              "engine.ability.type.ShootProjectile")
-
-        # Range
-        min_range = current_unit["weapon_range_min"].value
-        ability_raw_api_object.add_raw_member("min_range",
-                                              min_range,
-                                              "engine.ability.type.ShootProjectile")
-
-        max_range = current_unit["weapon_range_max"].value
-        ability_raw_api_object.add_raw_member("max_range",
-                                              max_range,
                                               "engine.ability.type.ShootProjectile")
 
         # Reload time and delay
