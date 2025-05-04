@@ -303,6 +303,7 @@ class SWGBCCAbilitySubprocessor:
         line.add_raw_api_object(batch_raw_api_object)
 
         # Effects
+        effects = []
         if command_id == 7:
             # Attack
             if projectile != 1:
@@ -1517,6 +1518,7 @@ class SWGBCCAbilitySubprocessor:
                 # The unit uses no gathering command or we don't recognize it
                 continue
 
+            container_name = None
             if line.is_gatherer():
                 gatherer_unit_id = gatherer.get_id()
                 if gatherer_unit_id not in gather_lookup_dict:
