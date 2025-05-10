@@ -1,4 +1,4 @@
-// Copyright 2023-2024 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #include "activity.h"
 
@@ -89,8 +89,9 @@ void Activity::advance(const time::time_t &start_time,
 			auto node = std::static_pointer_cast<activity::XorGate>(current_node);
 			auto next_id = node->get_default()->get_id();
 			for (auto &condition : node->get_conditions()) {
-				auto condition_func = condition.second;
-				if (condition_func(start_time, entity)) {
+				auto condition_obj = condition.second.api_object;
+				auto condition_func = condition.second.function;
+				if (condition_func(start_time, entity, condition_obj)) {
 					next_id = condition.first;
 					break;
 				}
@@ -116,7 +117,10 @@ void Activity::advance(const time::time_t &start_time,
 		case activity::node_t::XOR_SWITCH_GATE: {
 			auto node = std::dynamic_pointer_cast<activity::XorSwitchGate>(current_node);
 			auto next_id = node->get_default()->get_id();
-			auto key = node->get_lookup_func()(start_time, entity);
+
+			auto switch_condition_obj = node->get_switch_func().api_object;
+			auto switch_condition_func = node->get_switch_func().function;
+			auto key = switch_condition_func(start_time, entity, switch_condition_obj);
 			if (node->get_lookup_dict().contains(key)) {
 				next_id = node->get_lookup_dict().at(key)->get_id();
 			}

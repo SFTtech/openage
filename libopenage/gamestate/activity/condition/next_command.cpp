@@ -1,4 +1,4 @@
-// Copyright 2023-2024 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #include "next_command.h"
 
@@ -9,7 +9,8 @@
 namespace openage::gamestate::activity {
 
 bool next_command_idle(const time::time_t &time,
-                       const std::shared_ptr<gamestate::GameEntity> &entity) {
+                       const std::shared_ptr<gamestate::GameEntity> &entity,
+                       const std::shared_ptr<nyan::Object> & /* api_object */) {
 	auto command_queue = std::dynamic_pointer_cast<component::CommandQueue>(
 		entity->get_component(component::component_t::COMMANDQUEUE));
 
@@ -22,7 +23,8 @@ bool next_command_idle(const time::time_t &time,
 }
 
 bool next_command_move(const time::time_t &time,
-                       const std::shared_ptr<gamestate::GameEntity> &entity) {
+                       const std::shared_ptr<gamestate::GameEntity> &entity,
+                       const std::shared_ptr<nyan::Object> & /* api_object */) {
 	auto command_queue = std::dynamic_pointer_cast<component::CommandQueue>(
 		entity->get_component(component::component_t::COMMANDQUEUE));
 
@@ -35,7 +37,8 @@ bool next_command_move(const time::time_t &time,
 }
 
 bool next_command_apply_effect(const time::time_t &time,
-                               const std::shared_ptr<gamestate::GameEntity> &entity) {
+                               const std::shared_ptr<gamestate::GameEntity> &entity,
+                               const std::shared_ptr<nyan::Object> & /* api_object */) {
 	auto command_queue = std::dynamic_pointer_cast<component::CommandQueue>(
 		entity->get_component(component::component_t::COMMANDQUEUE));
 
