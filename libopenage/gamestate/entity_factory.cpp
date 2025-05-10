@@ -375,7 +375,7 @@ void EntityFactory::init_activity(const std::shared_ptr<openage::event::EventLoo
 			auto switch_value = nyan_node.get<nyan::ObjectValue>("XORSwitchGate.switch");
 			auto switch_obj = owner_db_view->get_object(switch_value->get_name());
 
-			auto lookup_func = api::APIActivitySwitchCondition::get_lookup(switch_obj);
+			auto lookup_func = api::APIActivitySwitchCondition::get_switch_func(switch_obj);
 			xor_switch_gate->set_lookup_func(lookup_func);
 
 			auto lookup_map = api::APIActivitySwitchCondition::get_lookup_map(switch_obj);

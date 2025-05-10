@@ -131,9 +131,9 @@ public:
 	 *
 	 * @return Lookup function.
 	 */
-	static activity::XorSwitchGate::lookup_function_t get_lookup(const nyan::Object &condition);
+	static activity::switch_function_t get_switch_func(const nyan::Object &condition);
 
-	using lookup_map_t = std::unordered_map<activity::XorSwitchGate::lookup_key_t, nyan::fqon_t>;
+	using lookup_map_t = std::unordered_map<activity::switch_key_t, nyan::fqon_t>;
 
 	/**
 	 * Get the mapping of lookup keys to output node IDs. Lookup keys are resolved from nyan API

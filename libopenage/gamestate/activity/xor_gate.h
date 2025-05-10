@@ -1,4 +1,4 @@
-// Copyright 2023-2024 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -16,22 +16,7 @@
 #include "time/time.h"
 
 
-namespace openage::gamestate {
-class GameEntity;
-
-namespace activity {
-
-/**
- * Function that determines if an output node is chosen.
- *
- * @param time Current simulation time.
- * @param entity Entity that is executing the activity.
- *
- * @return true if the output node is chosen, false otherwise.
- */
-using condition_t = std::function<bool(const time::time_t &,
-                                       const std::shared_ptr<gamestate::GameEntity> &)>;
-
+namespace openage::gamestate::activity {
 
 /**
  * Chooses one of its output nodes based on conditions.
@@ -115,5 +100,4 @@ private:
 	std::shared_ptr<Node> default_node;
 };
 
-} // namespace activity
-} // namespace openage::gamestate
+} // namespace openage::gamestate::activity
