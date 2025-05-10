@@ -1,4 +1,4 @@
-// Copyright 2024-2024 the openage authors. See copying.md for legal info.
+// Copyright 2024-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -14,10 +14,7 @@
 #include "time/time.h"
 
 
-namespace openage::gamestate {
-class GameEntity;
-
-namespace activity {
+namespace openage::gamestate::activity {
 
 /**
  * Chooses one of its output nodes based on enum values.
@@ -33,26 +30,9 @@ namespace activity {
 class XorSwitchGate : public Node {
 public:
 	/**
-	 * Type used as lookup key for the lookup dict.
-	 */
-	using lookup_key_t = int;
-
-	/**
-	 * Function that retrieves a lookup key for the lookup dict from
-	 * the current state of an entity.
-	 *
-	 * @param time Current simulation time.
-	 * @param entity Entity that is executing the activity.
-	 *
-	 * @return Lookup key.
-	 */
-	using lookup_function_t = std::function<lookup_key_t(const time::time_t &,
-	                                                     const std::shared_ptr<gamestate::GameEntity> &)>;
-
-	/**
 	 * Lookup dict that maps lookup keys to output node IDs.
 	 */
-	using lookup_dict_t = std::unordered_map<lookup_key_t, std::shared_ptr<Node>>;
+	using lookup_dict_t = std::unordered_map<switch_key_t, std::shared_ptr<Node>>;
 
 	/**
 	 * Creates a new XOR switch gate node.
@@ -74,7 +54,7 @@ public:
 	 */
 	XorSwitchGate(node_id_t id,
 	              node_label_t label,
-	              const lookup_function_t &lookup_func,
+	              const switch_function_t &lookup_func,
 	              const lookup_dict_t &lookup_dict,
 	              const std::shared_ptr<Node> &default_node);
 
@@ -91,21 +71,21 @@ public:
 	 * @param key Enumeration value.
 	 */
 	void set_output(const std::shared_ptr<Node> &output,
-	                const lookup_key_t &key);
+	                const switch_key_t &key);
 
 	/**
 	 * Get the lookup function for determining the output nodes.
 	 *
 	 * @return Lookup function.
 	 */
-	const lookup_function_t &get_lookup_func() const;
+	const switch_function_t &get_lookup_func() const;
 
 	/**
 	 * Set the lookup function for determining the output nodes.
 	 *
 	 * @param lookup_func Lookup function.
 	 */
-	void set_lookup_func(const lookup_function_t &lookup_func);
+	void set_lookup_func(const switch_function_t &lookup_func);
 
 	/**
 	 * Get the lookup dict for the output nodes.
@@ -135,7 +115,7 @@ private:
 	/**
 	 * Determines the lookup key for the lookup dict from the current state.
 	 */
-	lookup_function_t lookup_func;
+	switch_function_t lookup_func;
 
 	/**
 	 * Maps lookup keys to output node IDs.
@@ -148,5 +128,4 @@ private:
 	std::shared_ptr<Node> default_node;
 };
 
-} // namespace activity
-} // namespace openage::gamestate
+} // namespace openage::gamestate::activity
