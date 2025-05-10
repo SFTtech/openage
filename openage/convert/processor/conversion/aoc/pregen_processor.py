@@ -1,4 +1,4 @@
-# Copyright 2020-2024 the openage authors. See copying.md for legal info.
+# Copyright 2020-2025 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-locals,too-many-statements
 #
@@ -363,8 +363,6 @@ class AoCPregenSubprocessor:
         wait_raw_api_object.add_raw_member("next",
                                            {
                                                wait_finish: idle_forward_ref,
-                                               # TODO: don't go back to move, go to xor gate that
-                                               # branches depending on command
                                                wait_command: branch_forward_ref
                                            },
                                            xor_event_parent)
