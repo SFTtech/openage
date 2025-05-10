@@ -560,6 +560,13 @@ def _create_objects(api_objects: dict[str, NyanObject]) -> None:
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
+    # engine.util.activity.condition.type.TargetInRange
+    parents = [api_objects["engine.util.activity.condition.Condition"]]
+    nyan_object = NyanObject("TargetInRange", parents)
+    fqon = "engine.util.activity.condition.type.TargetInRange"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
     # engine.util.activity.event.Event
     parents = [api_objects["engine.root.Object"]]
     nyan_object = NyanObject("Event", parents)
@@ -3311,6 +3318,14 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
 
     member_type = NyanMemberType(api_objects["engine.util.activity.node.Node"])
     member = NyanMember("next", member_type, None, None, 0)
+    api_object.add_member(member)
+
+    # engine.util.activity.condition.type.TargetInRange
+    api_object = api_objects["engine.util.activity.condition.type.TargetInRange"]
+
+    subtype = NyanMemberType(api_objects["engine.ability.Ability"])
+    member_type = NyanMemberType(MemberType.CHILDREN, (subtype,))
+    member = NyanMember("ability", member_type, None, None, 0)
     api_object.add_member(member)
 
     # engine.util.activity.event.type.Wait
