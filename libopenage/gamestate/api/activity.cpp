@@ -131,7 +131,7 @@ bool APIActivitySwitchCondition::is_switch_condition(const nyan::Object &obj) {
 	return immediate_parent == "engine.util.activity.switch_condition.SwitchCondition";
 }
 
-activity::XorSwitchGate::lookup_function_t APIActivitySwitchCondition::get_lookup(const nyan::Object &condition) {
+activity::switch_function_t APIActivitySwitchCondition::get_switch_func(const nyan::Object &condition) {
 	nyan::fqon_t immediate_parent = condition.get_parents()[0];
 	return ACTIVITY_SWITCH_CONDITIONS.get(immediate_parent);
 }
@@ -149,7 +149,7 @@ APIActivitySwitchCondition::lookup_map_t APIActivitySwitchCondition::get_lookup_
 			auto key_obj = condition.get_view()->get_object(key_value->get_name());
 
 			// Get engine lookup key value
-			auto key = static_cast<activity::XorSwitchGate::lookup_key_t>(COMMAND_DEFS.get(key_obj.get_name()));
+			auto key = static_cast<activity::switch_key_t>(COMMAND_DEFS.get(key_obj.get_name()));
 
 			// Get node ID
 			auto next_node_value = std::dynamic_pointer_cast<nyan::ObjectValue>(next_node.second.get_ptr());
