@@ -539,24 +539,10 @@ def _create_objects(api_objects: dict[str, NyanObject]) -> None:
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
-    # engine.util.activity.condition.type.NextCommandApplyEffect
+    # engine.util.activity.condition.type.NextCommand
     parents = [api_objects["engine.util.activity.condition.Condition"]]
-    nyan_object = NyanObject("NextCommandApplyEffect", parents)
-    fqon = "engine.util.activity.condition.type.NextCommandApplyEffect"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
-    # engine.util.activity.condition.type.NextCommandIdle
-    parents = [api_objects["engine.util.activity.condition.Condition"]]
-    nyan_object = NyanObject("NextCommandIdle", parents)
-    fqon = "engine.util.activity.condition.type.NextCommandIdle"
-    nyan_object.set_fqon(fqon)
-    api_objects.update({fqon: nyan_object})
-
-    # engine.util.activity.condition.type.NextCommandMove
-    parents = [api_objects["engine.util.activity.condition.Condition"]]
-    nyan_object = NyanObject("NextCommandMove", parents)
-    fqon = "engine.util.activity.condition.type.NextCommandMove"
+    nyan_object = NyanObject("NextCommand", parents)
+    fqon = "engine.util.activity.condition.type.NextCommand"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -3318,6 +3304,14 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
 
     member_type = NyanMemberType(api_objects["engine.util.activity.node.Node"])
     member = NyanMember("next", member_type, None, None, 0)
+    api_object.add_member(member)
+
+    # engine.util.activity.condition.type.NextCommand
+    api_object = api_objects["engine.util.activity.condition.type.NextCommand"]
+
+    subtype = NyanMemberType(api_objects["engine.util.command.Command"])
+    member_type = NyanMemberType(MemberType.CHILDREN, (subtype,))
+    member = NyanMember("command", member_type, None, None, 0)
     api_object.add_member(member)
 
     # engine.util.activity.condition.type.TargetInRange
