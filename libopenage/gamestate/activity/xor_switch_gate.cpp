@@ -11,11 +11,11 @@ XorSwitchGate::XorSwitchGate(node_id_t id,
 
 XorSwitchGate::XorSwitchGate(node_id_t id,
                              node_label_t label,
-                             const switch_function_t &lookup_func,
+                             const switch_condition &switch_func,
                              const lookup_dict_t &lookup_dict,
                              const std::shared_ptr<Node> &default_node) :
 	Node{id, label},
-	lookup_func{lookup_func},
+	switch_func{switch_func},
 	lookup_dict{lookup_dict},
 	default_node{default_node} {}
 
@@ -25,12 +25,12 @@ void XorSwitchGate::set_output(const std::shared_ptr<Node> &output,
 	this->lookup_dict.emplace(key, output);
 }
 
-const switch_function_t &XorSwitchGate::get_lookup_func() const {
-	return this->lookup_func;
+const switch_condition &XorSwitchGate::get_switch_func() const {
+	return this->switch_func;
 }
 
-void XorSwitchGate::set_lookup_func(const switch_function_t &lookup_func) {
-	this->lookup_func = lookup_func;
+void XorSwitchGate::set_switch_func(const switch_condition &switch_func) {
+	this->switch_func = switch_func;
 }
 
 const XorSwitchGate::lookup_dict_t &XorSwitchGate::get_lookup_dict() const {
