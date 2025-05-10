@@ -287,7 +287,7 @@ static const auto ACTIVITY_EVENT_PRIMERS = datastructure::create_const_map<std::
  * Maps API activity switch condition types to lookup functions.
  */
 static const auto ACTIVITY_SWITCH_CONDITIONS = datastructure::create_const_map<std::string,
-                                                                               activity::XorSwitchGate::lookup_function_t>(
+                                                                               activity::switch_function_t>(
 	std::pair("engine.util.activity.switch_condition.type.NextCommand",
               std::function(gamestate::activity::next_command_switch)));
 
