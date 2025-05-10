@@ -265,12 +265,8 @@ static const auto ACTIVITY_TASK_SYSTEM_DEFS = datastructure::create_const_map<st
 static const auto ACTIVITY_CONDITIONS = datastructure::create_const_map<std::string, activity::condition_t>(
 	std::pair("engine.util.activity.condition.type.CommandInQueue",
               std::function(gamestate::activity::command_in_queue)),
-	std::pair("engine.util.activity.condition.type.NextCommandApplyEffect",
-              std::function(gamestate::activity::next_command_apply_effect)),
-	std::pair("engine.util.activity.condition.type.NextCommandIdle",
-              std::function(gamestate::activity::next_command_idle)),
-	std::pair("engine.util.activity.condition.type.NextCommandMove",
-              std::function(gamestate::activity::next_command_move)));
+	std::pair("engine.util.activity.condition.type.NextCommand",
+              std::function(gamestate::activity::next_command)));
 
 /**
  * Maps API activity event types to event primer functions.
