@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #include <cstddef>
 #include <functional>
@@ -154,8 +154,9 @@ const std::shared_ptr<activity::Node> activity_flow(const std::shared_ptr<activi
 			auto node = std::static_pointer_cast<activity::XorGate>(current);
 			auto next_id = node->get_default()->get_id();
 			for (auto &condition : node->get_conditions()) {
-				auto condition_func = condition.second;
-				if (condition_func(0, nullptr)) {
+				auto condition_obj = condition.second.api_object;
+				auto condition_func = condition.second.function;
+				if (condition_func(0, nullptr, condition_obj)) {
 					next_id = condition.first;
 					break;
 				}
@@ -233,7 +234,8 @@ void activity_demo() {
 	// Conditional branch
 	static size_t counter = 0;
 	activity::condition_t branch_task1 = [&](const time::time_t & /* time */,
-	                                         const std::shared_ptr<gamestate::GameEntity> & /* entity */) {
+	                                         const std::shared_ptr<gamestate::GameEntity> & /* entity */,
+	                                         const std::shared_ptr<nyan::Object> & /* api_object */) {
 		log::log(INFO << "Checking condition (counter < 4): counter=" << counter);
 		if (counter < 4) {
 			log::log(INFO << "Selecting path 1 (back to task node " << task1->get_id() << ")");
@@ -243,14 +245,19 @@ void activity_demo() {
 		}
 		return false;
 	};
-	xor_node->add_output(task1, branch_task1);
+	xor_node->add_output(task1,
+	                     {nullptr, // API object set to nullptr as it's never used by condition func
+	                      branch_task1});
 	activity::condition_t branch_event = [&](const time::time_t & /* time */,
-	                                         const std::shared_ptr<gamestate::GameEntity> & /* entity */) {
+	                                         const std::shared_ptr<gamestate::GameEntity> & /* entity */,
+	                                         const std::shared_ptr<nyan::Object> & /* api_object */) {
 		// No check needed here, the event node is always selected
 		log::log(INFO << "Selecting path 2 (to event node " << event_node->get_id() << ")");
 		return true;
 	};
-	xor_node->add_output(event_node, branch_event);
+	xor_node->add_output(event_node,
+	                     {nullptr, // API object set to nullptr as it's never used by condition func
+	                      branch_event});
 	xor_node->set_default(event_node);
 
 	// event node

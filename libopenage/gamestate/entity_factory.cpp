@@ -79,16 +79,19 @@ std::shared_ptr<activity::Activity> create_test_activity() {
 
 	// branch 1: check if the entity is moveable
 	activity::condition_t command_branch = [&](const time::time_t & /* time */,
-	                                           const std::shared_ptr<gamestate::GameEntity> &entity) {
+	                                           const std::shared_ptr<gamestate::GameEntity> &entity,
+	                                           const std::shared_ptr<nyan::Object> & /* api_object */) {
 		return entity->has_component(component::component_t::MOVE);
 	};
-	condition_moveable->add_output(condition_command, command_branch);
+	condition_moveable->add_output(condition_command,
+	                               {nullptr, // never used by condition func
+	                                command_branch});
 
 	// default: if it's not moveable, go straight to the end
 	condition_moveable->set_default(end);
 
 	// branch 1: check if there is already a command in the queue
-	condition_command->add_output(move, gamestate::activity::command_in_queue);
+	condition_command->add_output(move, {nullptr, gamestate::activity::command_in_queue});
 
 	// default: if there is no command, wait for a command
 	condition_command->set_default(wait_for_command);
@@ -338,13 +341,15 @@ void EntityFactory::init_activity(const std::shared_ptr<openage::event::EventLoo
 			auto conditions = nyan_node.get<nyan::OrderedSet>("XORGate.next");
 			for (auto &condition : conditions->get()) {
 				auto condition_value = std::dynamic_pointer_cast<nyan::ObjectValue>(condition.get_ptr());
-				auto condition_obj = owner_db_view->get_object(condition_value->get_name());
+				auto condition_obj = owner_db_view->get_object_ptr(condition_value->get_name());
 
-				auto output_value = condition_obj.get<nyan::ObjectValue>("Condition.next")->get_name();
+				auto output_value = condition_obj->get<nyan::ObjectValue>("Condition.next")->get_name();
 				auto output_id = visited[output_value];
 				auto output_node = node_id_map[output_id];
 
-				xor_gate->add_output(output_node, api::APIActivityCondition::get_condition(condition_obj));
+				// TODO: Replace nullptr with object
+				xor_gate->add_output(output_node,
+				                     {condition_obj, api::APIActivityCondition::get_condition(*condition_obj)});
 			}
 
 			auto default_fqon = nyan_node.get<nyan::ObjectValue>("XORGate.default")->get_name();
@@ -373,12 +378,12 @@ void EntityFactory::init_activity(const std::shared_ptr<openage::event::EventLoo
 		case activity::node_t::XOR_SWITCH_GATE: {
 			auto xor_switch_gate = std::static_pointer_cast<activity::XorSwitchGate>(activity_node);
 			auto switch_value = nyan_node.get<nyan::ObjectValue>("XORSwitchGate.switch");
-			auto switch_obj = owner_db_view->get_object(switch_value->get_name());
+			auto switch_obj = owner_db_view->get_object_ptr(switch_value->get_name());
 
-			auto lookup_func = api::APIActivitySwitchCondition::get_switch_func(switch_obj);
-			xor_switch_gate->set_lookup_func(lookup_func);
+			auto switch_condition_func = api::APIActivitySwitchCondition::get_switch_func(*switch_obj);
+			xor_switch_gate->set_switch_func({switch_obj, switch_condition_func});
 
-			auto lookup_map = api::APIActivitySwitchCondition::get_lookup_map(switch_obj);
+			auto lookup_map = api::APIActivitySwitchCondition::get_lookup_map(*switch_obj);
 			for (const auto &[key, node_id] : lookup_map) {
 				auto output_id = visited[node_id];
 				auto output_node = node_id_map[output_id];

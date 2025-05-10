@@ -48,13 +48,14 @@ public:
 	 *
 	 * @param id Unique identifier of the node.
 	 * @param label Human-readable label of the node.
-	 * @param lookup_func Function that looks up the key to the lookup dict.
-	 * @param lookup_dict Initial lookup dict that maps lookup keys to output node IDs.
-	 * @param default_node Default output node. Chosen if no lookup entry is defined.
+	 * @param switch_func Function for evaluating the key of the output node.
+	 * @param lookup_dict Initial lookup dict that maps switch keys to output node IDs.
+	 * @param default_node Default output node. Chosen if \p switch_func does not
+	 *                     return a key in the lookup dict.
 	 */
 	XorSwitchGate(node_id_t id,
 	              node_label_t label,
-	              const switch_function_t &lookup_func,
+	              const switch_condition &switch_func,
 	              const lookup_dict_t &lookup_dict,
 	              const std::shared_ptr<Node> &default_node);
 
@@ -65,7 +66,7 @@ public:
 	}
 
 	/**
-	 * Set the output node for a given lookup key.
+	 * Set the output node for a given switch key.
 	 *
 	 * @param output Output node.
 	 * @param key Enumeration value.
@@ -74,18 +75,18 @@ public:
 	                const switch_key_t &key);
 
 	/**
-	 * Get the lookup function for determining the output nodes.
+	 * Get the switch function for determining the output nodes.
 	 *
-	 * @return Lookup function.
+	 * @return Switch function.
 	 */
-	const switch_function_t &get_lookup_func() const;
+	const switch_condition &get_switch_func() const;
 
 	/**
-	 * Set the lookup function for determining the output nodes.
+	 * Set the switch function for determining the output nodes.
 	 *
-	 * @param lookup_func Lookup function.
+	 * @param switch_func Switch function.
 	 */
-	void set_lookup_func(const switch_function_t &lookup_func);
+	void set_switch_func(const switch_condition &switch_func);
 
 	/**
 	 * Get the lookup dict for the output nodes.
@@ -115,7 +116,7 @@ private:
 	/**
 	 * Determines the lookup key for the lookup dict from the current state.
 	 */
-	switch_function_t lookup_func;
+	switch_condition switch_func;
 
 	/**
 	 * Maps lookup keys to output node IDs.

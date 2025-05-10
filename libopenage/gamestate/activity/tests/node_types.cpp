@@ -1,4 +1,4 @@
-// Copyright 2024-2024 the openage authors. See copying.md for legal info.
+// Copyright 2024-2025 the openage authors. See copying.md for legal info.
 
 #include <memory>
 
@@ -102,7 +102,8 @@ void node_types() {
 		// Check that the node throws errors for invalid output IDs
 		TESTTHROWS(task_custom_node->next(999));
 
-		auto task_func = [](const time::time_t & /* time */, const std::shared_ptr<GameEntity> & /* entity */) {
+		auto task_func = [](const time::time_t & /* time */,
+		                    const std::shared_ptr<GameEntity> & /* entity */) {
 			// Do nothing
 		};
 		task_custom_node->set_task_func(task_func);
@@ -129,25 +130,35 @@ void node_types() {
 		TESTEQUALS(xor_gate_node->get_default(), default_node);
 
 		auto option1_node = std::make_shared<EndNode>(2);
-		xor_gate_node->add_output(option1_node, [](const time::time_t &time, const std::shared_ptr<GameEntity> & /* entity */) {
-			return time == time::TIME_ZERO;
-		});
+		xor_gate_node->add_output(option1_node,
+		                          {nullptr,
+		                           [](const time::time_t &time,
+		                              const std::shared_ptr<GameEntity> & /* entity */,
+		                              const std::shared_ptr<nyan::Object> & /* api_object */) {
+									   return time == time::TIME_ZERO;
+								   }});
 
 		auto option2_node = std::make_shared<EndNode>(3);
-		xor_gate_node->add_output(option2_node, [](const time::time_t &time, const std::shared_ptr<GameEntity> & /* entity */) {
-			return time == time::TIME_MAX;
-		});
+		xor_gate_node->add_output(option2_node,
+		                          {nullptr,
+		                           [](const time::time_t &time,
+		                              const std::shared_ptr<GameEntity> & /* entity */,
+		                              const std::shared_ptr<nyan::Object> & /* api_object */) {
+									   return time == time::TIME_MAX;
+								   }});
 
 		auto conditions = xor_gate_node->get_conditions();
 
 		// Check the conditions
 		TESTEQUALS(conditions.size(), 2);
 
-		TESTEQUALS(conditions.at(2)(time::TIME_ZERO, nullptr), true);
-		TESTEQUALS(conditions.at(3)(time::TIME_ZERO, nullptr), false);
+		// Check if the conditions are set correctly
+		// we don't pass GameEntity or nyan::Object as they are not used by the condition functions
+		TESTEQUALS(conditions.at(2).function(time::TIME_ZERO, nullptr, nullptr), true);
+		TESTEQUALS(conditions.at(3).function(time::TIME_ZERO, nullptr, nullptr), false);
 
-		TESTEQUALS(conditions.at(2)(time::TIME_MAX, nullptr), false);
-		TESTEQUALS(conditions.at(3)(time::TIME_MAX, nullptr), true);
+		TESTEQUALS(conditions.at(2).function(time::TIME_MAX, nullptr, nullptr), false);
+		TESTEQUALS(conditions.at(3).function(time::TIME_MAX, nullptr, nullptr), true);
 
 		// Check if next nodes return correctly
 		TESTEQUALS(xor_gate_node->next(1), default_node);
@@ -180,7 +191,9 @@ void node_types() {
 		auto option2_node = std::make_shared<EndNode>(3);
 		xor_switch_gate_node->set_output(option2_node, 2);
 
-		auto lookup_func = [](const time::time_t &time, const std::shared_ptr<GameEntity> & /* entity */) {
+		auto lookup_func = [](const time::time_t &time,
+		                      const std::shared_ptr<GameEntity> & /* entity */,
+		                      const std::shared_ptr<nyan::Object> & /* api_object */) {
 			if (time == time::TIME_ZERO) {
 				return 1;
 			}
@@ -190,12 +203,17 @@ void node_types() {
 
 			return 0;
 		};
-		xor_switch_gate_node->set_lookup_func(lookup_func);
+		// we don't pass a nyan::Object as it's not used by the switch function
+		xor_switch_gate_node->set_switch_func({nullptr, lookup_func});
 
-		// Check the lookup function
-		TESTEQUALS(xor_switch_gate_node->get_lookup_func()(time::TIME_ZERO, nullptr), 1);
-		TESTEQUALS(xor_switch_gate_node->get_lookup_func()(time::TIME_MAX, nullptr), 2);
-		TESTEQUALS(xor_switch_gate_node->get_lookup_func()(time::TIME_MIN, nullptr), 0);
+		// Check the switch function
+		// we don't pass GameEntity as it's not used by the switch functions
+		auto switch_condition = xor_switch_gate_node->get_switch_func();
+		auto switch_obj = switch_condition.api_object;
+		auto switch_func = switch_condition.function;
+		TESTEQUALS(switch_func(time::TIME_ZERO, nullptr, switch_obj), 1);
+		TESTEQUALS(switch_func(time::TIME_MAX, nullptr, switch_obj), 2);
+		TESTEQUALS(switch_func(time::TIME_MIN, nullptr, switch_obj), 0);
 
 		auto lookup_dict = xor_switch_gate_node->get_lookup_dict();
 

@@ -284,7 +284,7 @@ static const auto ACTIVITY_EVENT_PRIMERS = datastructure::create_const_map<std::
               std::function(gamestate::activity::primer_wait)));
 
 /**
- * Maps API activity switch condition types to lookup functions.
+ * Maps API activity switch condition types to switch functions.
  */
 static const auto ACTIVITY_SWITCH_CONDITIONS = datastructure::create_const_map<std::string,
                                                                                activity::switch_function_t>(
