@@ -8,6 +8,10 @@
 #include "time/time.h"
 
 
+namespace nyan {
+class Object;
+} // namespace nyan
+
 namespace openage {
 
 namespace event {
@@ -48,10 +52,10 @@ enum class node_t {
  *
  * @return Event registered on the event loop.
  */
-using event_primer_t = std::function<std::shared_ptr<openage::event::Event>(const time::time_t &,
-                                                                            const std::shared_ptr<gamestate::GameEntity> &,
-                                                                            const std::shared_ptr<event::EventLoop> &,
-                                                                            const std::shared_ptr<gamestate::GameState> &,
+using event_primer_t = std::function<std::shared_ptr<openage::event::Event>(const time::time_t &time,
+                                                                            const std::shared_ptr<gamestate::GameEntity> &entity,
+                                                                            const std::shared_ptr<event::EventLoop> &loop,
+                                                                            const std::shared_ptr<gamestate::GameState> &state,
                                                                             size_t next_id)>;
 
 /**
@@ -59,11 +63,25 @@ using event_primer_t = std::function<std::shared_ptr<openage::event::Event>(cons
  *
  * @param time Current simulation time.
  * @param entity Entity that is executing the activity.
+ * @param api_object API object that is used to define the condition. May be used to
+ *                   store additional data for evaluating the condition.
  *
  * @return true if the output node is chosen, false otherwise.
  */
-using condition_t = std::function<bool(const time::time_t &,
-                                       const std::shared_ptr<gamestate::GameEntity> &)>;
+using condition_t = std::function<bool(const time::time_t &time,
+                                       const std::shared_ptr<gamestate::GameEntity> &entity,
+                                       const std::shared_ptr<nyan::Object> &api_object)>;
+
+/**
+ * Condition used to determine if an output node is chosen.
+ */
+struct condition {
+	/// API object for the condition definition.
+	std::shared_ptr<nyan::Object> api_object;
+	/// Checks whether the condition is true.
+	/// TODO: We could look this function up at runtime.
+	condition_t function;
+};
 
 /**
  * Type used as key for the node lookup dict of the XorSwitchGate.
@@ -77,11 +95,26 @@ using switch_key_t = int;
  *
  * @param time Current simulation time.
  * @param entity Entity that is executing the activity.
+ * @param api_object API object that is used to define the condition. May be used to
+ *                   store additional data for evaluating the condition.
  *
  * @return Lookup key.
  */
-using switch_function_t = std::function<switch_key_t(const time::time_t &,
-                                                     const std::shared_ptr<gamestate::GameEntity> &)>;
+using switch_function_t = std::function<switch_key_t(const time::time_t &time,
+                                                     const std::shared_ptr<gamestate::GameEntity> &entity,
+                                                     const std::shared_ptr<nyan::Object> &api_object)>;
+
+/**
+ * Condition used to determine which output node of the
+ * XorSwitchGate is chosen.
+ */
+struct switch_condition {
+	/// API object for the condition definition.
+	std::shared_ptr<nyan::Object> api_object;
+	/// Returns the node lookup key for the output node that is chosen.
+	/// TODO: We could look this function up at runtime.
+	switch_function_t function;
+};
 
 } // namespace activity
 } // namespace gamestate

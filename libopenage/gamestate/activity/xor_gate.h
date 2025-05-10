@@ -44,7 +44,7 @@ public:
 	XorGate(node_id_t id,
 	        node_label_t label,
 	        const std::vector<std::shared_ptr<Node>> &outputs,
-	        const std::vector<condition_t> &conditions,
+	        const std::vector<condition> &conditions,
 	        const std::shared_ptr<Node> &default_node);
 
 	virtual ~XorGate() = default;
@@ -57,18 +57,18 @@ public:
 	 * Add an output node.
 	 *
 	 * @param output Output node.
-	 * @param condition_func Function that determines whether this output node is chosen.
+	 * @param condition Function that determines whether this output node is chosen.
 	 *                       This must be a valid node ID of one of the output nodes.
 	 */
 	void add_output(const std::shared_ptr<Node> &output,
-	                const condition_t condition_func);
+	                const condition condition);
 
 	/**
 	 * Get the output->condition mappings.
 	 *
 	 * @return Conditions for each output node.
 	 */
-	const std::map<node_id_t, condition_t> &get_conditions() const;
+	const std::map<node_id_t, condition> &get_conditions() const;
 
 	/**
 	 * Get the default output node.
@@ -88,11 +88,11 @@ public:
 
 private:
 	/**
-	 * Maps output node IDs to condition functions.
+	 * Maps output node IDs to conditions.
 	 *
 	 * Conditions are checked in order they appear in the map.
 	 */
-	std::map<node_id_t, condition_t> conditions;
+	std::map<node_id_t, condition> conditions;
 
 	/**
 	 * Default output node. Chosen if no condition is true.
