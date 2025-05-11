@@ -5,6 +5,8 @@
 #include <nyan/nyan.h>
 
 #include "gamestate/api/types.h"
+#include "gamestate/component/types.h"
+
 
 namespace openage::gamestate::api {
 
@@ -41,6 +43,15 @@ public:
 	 * @return Internal ability type.
 	 */
 	static ability_t get_type(const nyan::Object &ability);
+
+	/**
+	 * Get the internal component type from a nyan ability.
+	 *
+	 * @param ability \p Ability nyan object (type == \p engine.ability.Ability).
+	 *
+	 * @return Internal component type.
+	 */
+	static component::component_t get_component_type(const nyan::Object &ability);
 
 	/**
 	 * Check if an ability has a given property.

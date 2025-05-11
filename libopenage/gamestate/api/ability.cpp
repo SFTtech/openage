@@ -47,6 +47,12 @@ ability_t APIAbility::get_type(const nyan::Object &ability) {
 	return ABILITY_TYPE_LOOKUP.get(immediate_parent);
 }
 
+component::component_t APIAbility::get_component_type(const nyan::Object &ability) {
+	auto ability_type = APIAbility::get_type(ability);
+
+	return COMPONENT_TYPE_LOOKUP.get(ability_type);
+}
+
 bool APIAbility::check_property(const nyan::Object &ability, const ability_property_t &property) {
 	std::shared_ptr<nyan::Dict> properties = ability.get<nyan::Dict>("Ability.properties");
 	nyan::ValueHolder property_type = ABILITY_PROPERTY_DEFS.get(property);
