@@ -609,6 +609,13 @@ def _create_objects(api_objects: dict[str, NyanObject]) -> None:
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
+    # engine.util.activity.node.type.Task
+    parents = [api_objects["engine.util.activity.node.Node"]]
+    nyan_object = NyanObject("Task", parents)
+    fqon = "engine.util.activity.node.type.Task"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
     # engine.util.activity.node.type.XOREventGate
     parents = [api_objects["engine.util.activity.node.Node"]]
     nyan_object = NyanObject("XOREventGate", parents)
@@ -641,6 +648,27 @@ def _create_objects(api_objects: dict[str, NyanObject]) -> None:
     parents = [api_objects["engine.util.activity.switch_condition.SwitchCondition"]]
     nyan_object = NyanObject("NextCommand", parents)
     fqon = "engine.util.activity.switch_condition.type.NextCommand"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.util.activity.task.Task
+    parents = [api_objects["engine.root.Object"]]
+    nyan_object = NyanObject("Task", parents)
+    fqon = "engine.util.activity.task.Task"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.util.activity.task.type.ClearCommandQueue
+    parents = [api_objects["engine.util.activity.task.Task"]]
+    nyan_object = NyanObject("ClearCommandQueue", parents)
+    fqon = "engine.util.activity.task.type.ClearCommandQueue"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
+    # engine.util.activity.task.type.PopCommandQueue
+    parents = [api_objects["engine.util.activity.task.Task"]]
+    nyan_object = NyanObject("PopCommandQueue", parents)
+    fqon = "engine.util.activity.task.type.PopCommandQueue"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
@@ -3344,6 +3372,17 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
 
     member_type = NyanMemberType(api_objects["engine.util.activity.node.Node"])
     member = NyanMember("next", member_type, None, None, 0)
+    api_object.add_member(member)
+
+    # engine.util.activity.node.type.Task
+    api_object = api_objects["engine.util.activity.node.type.Task"]
+
+    member_type = NyanMemberType(api_objects["engine.util.activity.node.Node"])
+    member = NyanMember("next", member_type, None, None, 0)
+    api_object.add_member(member)
+    subtype = NyanMemberType(api_objects["engine.util.activity.task.Task"])
+    member_type = NyanMemberType(MemberType.CHILDREN, (subtype,))
+    member = NyanMember("task", member_type, None, None, 0)
     api_object.add_member(member)
 
     # engine.util.activity.node.type.XOREventGate
