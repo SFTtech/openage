@@ -55,6 +55,7 @@ enum class ability_property_t {
 	EXECUTION_SOUND,
 	DIPLOMATIC,
 	LOCK,
+	RANGED,
 };
 
 /**
