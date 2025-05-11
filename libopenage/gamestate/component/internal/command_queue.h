@@ -76,6 +76,35 @@ public:
 	 */
 	curve::Discrete<optional_target_t> &get_target();
 
+	/**
+	 * Set the target of the entity to a position in the game world.
+	 *
+	 * All target after \p time are deleted.
+	 *
+	 * @param time Time at which the target is set.
+	 * @param target Target position in the game world.
+	 */
+	void set_target(const time::time_t &time, const coord::phys3 &target);
+
+	/**
+	 * Set the target of the entity to another entity.
+	 *
+	 * All targets after \p time are deleted.
+	 *
+	 * @param time Time at which the target is set.
+	 * @param target Target entity ID.
+	 */
+	void set_target(const time::time_t &time, const entity_id_t target);
+
+	/**
+	 * Set the target of the entity to nothing.
+	 *
+	 * All targets after \p time are deleted.
+	 *
+	 * @param time Time at which the target is cleared.
+	 */
+	void clear_target(const time::time_t &time);
+
 private:
 	/**
 	 * Command queue.
@@ -84,6 +113,9 @@ private:
 
 	/**
 	 * Target of the entity.
+	 *
+	 * TODO: We could also figure out the target via the commands. Then we
+	 *       don't need to store the target separately.
 	 */
 	curve::Discrete<optional_target_t> target;
 };
