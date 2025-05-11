@@ -35,4 +35,16 @@ curve::Discrete<CommandQueue::optional_target_t> &CommandQueue::get_target() {
 	return this->target;
 }
 
+void CommandQueue::set_target(const time::time_t &time, const coord::phys3 &target) {
+	this->target.set_last(time, target);
+}
+
+void CommandQueue::set_target(const time::time_t &time, const entity_id_t target) {
+	this->target.set_last(time, target);
+}
+
+void CommandQueue::clear_target(const time::time_t &time) {
+	this->target.set_last(time, std::nullopt);
+}
+
 } // namespace openage::gamestate::component
