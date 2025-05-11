@@ -97,8 +97,9 @@ class AoCPregenSubprocessor:
 
         # Condition types
         condition_parent = "engine.util.activity.condition.Condition"
-        condition_queue_parent = "engine.util.activity.condition.type.CommandInQueue"
-        condition_next_command_parent = (
+        cond_queue_parent = "engine.util.activity.condition.type.CommandInQueue"
+        cond_target_parent = "engine.util.activity.condition.type.TargetInRange"
+        cond_command_switch_parent = (
             "engine.util.activity.switch_condition.type.NextCommand"
         )
 
@@ -244,7 +245,7 @@ class AoCPregenSubprocessor:
         condition_raw_api_object = RawAPIObject(condition_ref_in_modpack,
                                                 "CommandInQueue", api_objects)
         condition_raw_api_object.set_location(queue_forward_ref)
-        condition_raw_api_object.add_raw_parent(condition_queue_parent)
+        condition_raw_api_object.add_raw_parent(cond_queue_parent)
 
         branch_forward_ref = ForwardRef(pregen_converter_group,
                                         "util.activity.types.Unit.BranchCommand")
@@ -298,22 +299,67 @@ class AoCPregenSubprocessor:
         condition_raw_api_object = RawAPIObject(condition_ref_in_modpack,
                                                 "NextCommandSwitch", api_objects)
         condition_raw_api_object.set_location(branch_forward_ref)
-        condition_raw_api_object.add_raw_parent(condition_next_command_parent)
+        condition_raw_api_object.add_raw_parent(cond_command_switch_parent)
 
-        apply_effect_forward_ref = ForwardRef(pregen_converter_group,
-                                              "util.activity.types.Unit.ApplyEffect")
+        range_check_forward_ref = ForwardRef(pregen_converter_group,
+                                             "util.activity.types.Unit.RangeCheck")
         move_forward_ref = ForwardRef(pregen_converter_group,
                                       "util.activity.types.Unit.Move")
         next_nodes_lookup = {
-            api_objects["engine.util.command.type.ApplyEffect"]: apply_effect_forward_ref,
+            api_objects["engine.util.command.type.ApplyEffect"]: range_check_forward_ref,
             api_objects["engine.util.command.type.Move"]: move_forward_ref,
         }
         condition_raw_api_object.add_raw_member("next",
                                                 next_nodes_lookup,
-                                                condition_next_command_parent)
+                                                cond_command_switch_parent)
 
         pregen_converter_group.add_raw_api_object(condition_raw_api_object)
         pregen_nyan_objects.update({condition_ref_in_modpack: condition_raw_api_object})
+
+        # Target in range gate
+        range_check_ref_in_modpack = "util.activity.types.Unit.RangeCheck"
+        range_check_raw_api_object = RawAPIObject(range_check_ref_in_modpack,
+                                                  "RangeCheck", api_objects)
+        range_check_raw_api_object.set_location(unit_forward_ref)
+        range_check_raw_api_object.add_raw_parent(xor_parent)
+
+        target_in_range_forward_ref = ForwardRef(pregen_converter_group,
+                                                 "util.activity.types.Unit.TargetInRange")
+        range_check_raw_api_object.add_raw_member("next",
+                                                  [target_in_range_forward_ref],
+                                                  xor_parent)
+        idle_forward_ref = ForwardRef(pregen_converter_group,
+                                      "util.activity.types.Unit.Idle")
+        range_check_raw_api_object.add_raw_member("default",
+                                                  idle_forward_ref,
+                                                  xor_parent)
+
+        pregen_converter_group.add_raw_api_object(range_check_raw_api_object)
+        pregen_nyan_objects.update({range_check_ref_in_modpack: range_check_raw_api_object})
+
+        # Target in range condition
+        target_in_range_ref_in_modpack = "util.activity.types.Unit.TargetInRange"
+        target_in_range_raw_api_object = RawAPIObject(target_in_range_ref_in_modpack,
+                                                      "TargetInRange", api_objects)
+        target_in_range_raw_api_object.set_location(unit_forward_ref)
+        target_in_range_raw_api_object.add_raw_parent(cond_target_parent)
+
+        apply_effect_forward_ref = ForwardRef(pregen_converter_group,
+                                              "util.activity.types.Unit.ApplyEffect")
+        target_in_range_raw_api_object.add_raw_member("next",
+                                                      apply_effect_forward_ref,
+                                                      condition_parent)
+
+        target_in_range_raw_api_object.add_raw_member(
+            "ability",
+            api_objects["engine.ability.type.ApplyDiscreteEffect"],
+            cond_target_parent
+        )
+
+        pregen_converter_group.add_raw_api_object(target_in_range_raw_api_object)
+        pregen_nyan_objects.update(
+            {target_in_range_ref_in_modpack: target_in_range_raw_api_object}
+        )
 
         # Apply effect
         apply_effect_ref_in_modpack = "util.activity.types.Unit.ApplyEffect"
@@ -326,9 +372,11 @@ class AoCPregenSubprocessor:
                                       "util.activity.types.Unit.Wait")
         apply_effect_raw_api_object.add_raw_member("next", wait_forward_ref,
                                                    ability_parent)
-        apply_effect_raw_api_object.add_raw_member("ability",
-                                                   api_objects["engine.ability.type.ApplyDiscreteEffect"],
-                                                   ability_parent)
+        apply_effect_raw_api_object.add_raw_member(
+            "ability",
+            api_objects["engine.ability.type.ApplyDiscreteEffect"],
+            ability_parent
+        )
 
         pregen_converter_group.add_raw_api_object(apply_effect_raw_api_object)
         pregen_nyan_objects.update({apply_effect_ref_in_modpack: apply_effect_raw_api_object})
