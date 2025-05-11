@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #include "player_setup.h"
 
@@ -13,8 +13,13 @@
 namespace openage::gamestate::api {
 
 bool APIPlayerSetup::is_player_setup(const nyan::Object &obj) {
-	nyan::fqon_t immediate_parent = obj.get_parents()[0];
-	return immediate_parent == "engine.util.setup.PlayerSetup";
+	for (auto &parent : obj.get_parents()) {
+		if (parent == "engine.util.setup.PlayerSetup") {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 const std::vector<nyan::Object> APIPlayerSetup::get_modifiers(const nyan::Object &player_setup) {
