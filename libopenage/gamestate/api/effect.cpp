@@ -1,8 +1,9 @@
-// Copyright 2024-2024 the openage authors. See copying.md for legal info.
+// Copyright 2024-2025 the openage authors. See copying.md for legal info.
 
 #include "effect.h"
 
 #include "gamestate/api/definitions.h"
+#include "gamestate/api/util.h"
 
 
 namespace openage::gamestate::api {
@@ -19,13 +20,13 @@ bool APIEffect::is_effect(const nyan::Object &obj) {
 
 bool APIEffect::check_type(const nyan::Object &effect,
                            const effect_t &type) {
-	nyan::fqon_t immediate_parent = effect.get_parents()[0];
+	nyan::fqon_t api_parent = get_api_parent(effect);
 	nyan::ValueHolder effect_type = EFFECT_DEFS.get(type);
 
 	std::shared_ptr<nyan::ObjectValue> effect_val = std::dynamic_pointer_cast<nyan::ObjectValue>(
 		effect_type.get_ptr());
 
-	return effect_val->get_name() == immediate_parent;
+	return effect_val->get_name() == api_parent;
 }
 
 bool APIEffect::check_property(const nyan::Object &effect,
@@ -37,9 +38,9 @@ bool APIEffect::check_property(const nyan::Object &effect,
 }
 
 effect_t APIEffect::get_type(const nyan::Object &effect) {
-	nyan::fqon_t immediate_parent = effect.get_parents()[0];
+	nyan::fqon_t api_parent = get_api_parent(effect);
 
-	return EFFECT_TYPE_LOOKUP.get(immediate_parent);
+	return EFFECT_TYPE_LOOKUP.get(api_parent);
 }
 
 const nyan::Object APIEffect::get_property(const nyan::Object &effect,
