@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #include "property.h"
 
@@ -13,8 +13,13 @@
 namespace openage::gamestate::api {
 
 bool APIAbilityProperty::is_property(const nyan::Object &obj) {
-	nyan::fqon_t immediate_parent = obj.get_parents()[0];
-	return immediate_parent == "engine.ability.property.Property";
+	for (auto &parent : obj.get_parents()) {
+		if (parent == "engine.ability.property.Property") {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 const std::vector<nyan::Object> APIAbilityProperty::get_animations(const nyan::Object &property) {

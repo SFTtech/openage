@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -23,5 +23,19 @@ namespace openage::gamestate::api {
  * @return Relative file path from the modpack root folder.
  */
 const std::string resolve_file_path(const nyan::Object &obj, const std::string &path);
+
+/**
+ * Get the fqon of the first parent of the object that is defined in the
+ * API namespace (i.e. it's part of the \p engine namespace).
+ *
+ * If the object itself is part of the API namespace, it will return the fqon
+ * of the object.
+ *
+ * @param obj nyan object.
+ *
+ * @return fqon of the first parent in the API namespace.
+ * @throws Error if the object has no parents in the API namespace.
+ */
+const nyan::fqon_t &get_api_parent(const nyan::Object &obj);
 
 } // namespace openage::gamestate::api

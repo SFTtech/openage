@@ -25,6 +25,7 @@
 #include "gamestate/activity/xor_switch_gate.h"
 #include "gamestate/api/ability.h"
 #include "gamestate/api/activity.h"
+#include "gamestate/api/util.h"
 #include "gamestate/component/api/apply_effect.h"
 #include "gamestate/component/api/idle.h"
 #include "gamestate/component/api/line_of_sight.h"
@@ -175,7 +176,7 @@ void EntityFactory::init_components(const std::shared_ptr<openage::event::EventL
 		auto ability_fqon = std::dynamic_pointer_cast<nyan::ObjectValue>(ability_val.get_ptr())->get_name();
 		auto ability_obj = owner_db_view->get_object(ability_fqon);
 
-		auto ability_parent = ability_obj.get_parents()[0];
+		auto ability_parent = api::get_api_parent(ability_obj);
 		auto ability_type = api::APIAbility::get_type(ability_obj);
 		switch (ability_type) {
 		case api::ability_t::MOVE: {

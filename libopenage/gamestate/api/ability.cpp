@@ -11,6 +11,7 @@
 
 #include "datastructure/constexpr_map.h"
 #include "gamestate/api/definitions.h"
+#include "gamestate/api/util.h"
 
 
 namespace openage::gamestate::api {
@@ -27,24 +28,24 @@ bool APIAbility::is_ability(const nyan::Object &obj) {
 
 bool APIAbility::check_type(const nyan::Object &ability,
                             const ability_t &type) {
-	nyan::fqon_t immediate_parent = ability.get_parents()[0];
+	nyan::fqon_t api_parent = get_api_parent(ability);
 	nyan::ValueHolder ability_type = ABILITY_DEFS.get(type);
 
 	std::shared_ptr<nyan::ObjectValue> ability_val = std::dynamic_pointer_cast<nyan::ObjectValue>(
 		ability_type.get_ptr());
 
-	return ability_val->get_name() == immediate_parent;
+	return ability_val->get_name() == api_parent;
 }
 
 ability_t APIAbility::get_type(const nyan::Object &ability) {
-	nyan::fqon_t immediate_parent = ability.get_parents()[0];
+	nyan::fqon_t api_parent = get_api_parent(ability);
 
 	// TODO: remove once other ability types are implemented
-	if (not ABILITY_TYPE_LOOKUP.contains(immediate_parent)) {
+	if (not ABILITY_TYPE_LOOKUP.contains(api_parent)) {
 		return ability_t::UNKNOWN;
 	}
 
-	return ABILITY_TYPE_LOOKUP.get(immediate_parent);
+	return ABILITY_TYPE_LOOKUP.get(api_parent);
 }
 
 component::component_t APIAbility::get_component_type(const nyan::Object &ability) {
