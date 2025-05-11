@@ -11,6 +11,7 @@
 #include "gamestate/activity/condition/command_in_queue.h"
 #include "gamestate/activity/condition/next_command.h"
 #include "gamestate/activity/condition/next_command_switch.h"
+#include "gamestate/activity/condition/target_in_range.h"
 #include "gamestate/activity/event/command_in_queue.h"
 #include "gamestate/activity/event/wait.h"
 #include "gamestate/activity/types.h"
@@ -305,7 +306,9 @@ static const auto ACTIVITY_CONDITION_LOOKUP = datastructure::create_const_map<st
 	std::pair("engine.util.activity.condition.type.CommandInQueue",
               std::function(gamestate::activity::command_in_queue)),
 	std::pair("engine.util.activity.condition.type.NextCommand",
-              std::function(gamestate::activity::next_command)));
+              std::function(gamestate::activity::next_command)),
+	std::pair("engine.util.activity.condition.type.TargetInRange",
+              std::function(gamestate::activity::target_in_range)));
 
 /**
  * Maps API activity event types to event primer functions.
