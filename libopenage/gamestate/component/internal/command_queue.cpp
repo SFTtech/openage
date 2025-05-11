@@ -1,4 +1,4 @@
-// Copyright 2021-2023 the openage authors. See copying.md for legal info.
+// Copyright 2021-2025 the openage authors. See copying.md for legal info.
 
 #include "command_queue.h"
 
@@ -10,7 +10,8 @@
 namespace openage::gamestate::component {
 
 CommandQueue::CommandQueue(const std::shared_ptr<openage::event::EventLoop> &loop) :
-	command_queue{loop, 0} {
+	command_queue{loop, 0},
+	target{loop, 0} {
 }
 
 inline component_t CommandQueue::get_type() const {
@@ -30,5 +31,8 @@ const std::shared_ptr<command::Command> CommandQueue::pop_command(const time::ti
 	return this->command_queue.pop_front(time);
 }
 
+curve::Discrete<CommandQueue::optional_target_t> &CommandQueue::get_target() {
+	return this->target;
+}
 
 } // namespace openage::gamestate::component
