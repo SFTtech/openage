@@ -344,7 +344,20 @@ void EntityFactory::init_activity(const std::shared_ptr<openage::event::EventLoo
 		}
 		case activity::node_t::TASK_SYSTEM: {
 			auto task_system = std::static_pointer_cast<activity::TaskSystemNode>(activity_node);
-			auto output_fqon = nyan_node.get<nyan::ObjectValue>("Ability.next")->get_name();
+
+			auto api_parent = api::get_api_parent(nyan_node);
+			nyan::memberid_t member_name;
+			if (api_parent == "engine.util.activity.node.type.Ability") {
+				member_name = "Ability.next";
+			}
+			else if (api_parent == "engine.util.activity.node.type.Task") {
+				member_name = "Task.next";
+			}
+			else {
+				throw Error{ERR << "Node type '" << api_parent << "' cannot be used to get the next node."};
+			}
+
+			auto output_fqon = nyan_node.get<nyan::ObjectValue>(member_name)->get_name();
 			auto output_id = visited[output_fqon];
 			auto output_node = node_id_map[output_id];
 			task_system->add_output(output_node);
