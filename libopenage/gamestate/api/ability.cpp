@@ -1,4 +1,4 @@
-// Copyright 2023-2024 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #include "ability.h"
 
@@ -34,6 +34,17 @@ bool APIAbility::check_type(const nyan::Object &ability,
 		ability_type.get_ptr());
 
 	return ability_val->get_name() == immediate_parent;
+}
+
+ability_t APIAbility::get_type(const nyan::Object &ability) {
+	nyan::fqon_t immediate_parent = ability.get_parents()[0];
+
+	// TODO: remove once other ability types are implemented
+	if (not ABILITY_TYPE_LOOKUP.contains(immediate_parent)) {
+		return ability_t::UNKNOWN;
+	}
+
+	return ABILITY_TYPE_LOOKUP.get(immediate_parent);
 }
 
 bool APIAbility::check_property(const nyan::Object &ability, const ability_property_t &property) {

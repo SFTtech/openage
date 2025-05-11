@@ -1,4 +1,4 @@
-// Copyright 2023-2024 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -32,6 +32,15 @@ public:
 	 */
 	static bool check_type(const nyan::Object &ability,
 	                       const ability_t &type);
+
+	/**
+	 * Get the internal ability type from a nyan ability.
+	 *
+	 * @param ability \p Ability nyan object (type == \p engine.ability.Ability).
+	 *
+	 * @return Internal ability type.
+	 */
+	static ability_t get_type(const nyan::Object &ability);
 
 	/**
 	 * Check if an ability has a given property.
