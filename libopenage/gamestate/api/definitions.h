@@ -205,7 +205,9 @@ static const auto ABILITY_PROPERTY_DEFS = datastructure::create_const_map<abilit
 	std::pair(ability_property_t::DIPLOMATIC,
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.property.type.Diplomatic"))),
 	std::pair(ability_property_t::LOCK,
-              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.property.type.Lock"))));
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.property.type.Lock"))),
+	std::pair(ability_property_t::RANGED,
+              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.property.type.Ranged"))));
 
 /**
  * Maps internal effect property types to nyan API values.
