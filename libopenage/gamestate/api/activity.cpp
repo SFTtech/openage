@@ -50,7 +50,20 @@ std::vector<nyan::Object> APIActivityNode::get_next(const nyan::Object &node) {
 	}
 	// 1 next node
 	case activity::node_t::TASK_SYSTEM: {
-		auto next = node.get<nyan::ObjectValue>("Ability.next");
+		auto api_parent = get_api_parent(node);
+
+		nyan::memberid_t member_name;
+		if (api_parent == "engine.util.activity.node.type.Ability") {
+			member_name = "Ability.next";
+		}
+		else if (api_parent == "engine.util.activity.node.type.Task") {
+			member_name = "Task.next";
+		}
+		else {
+			throw Error(MSG(err) << "Node type '" << api_parent << "' cannot be used to get the next node.");
+		}
+
+		auto next = node.get<nyan::ObjectValue>(member_name);
 		std::shared_ptr<nyan::View> db_view = node.get_view();
 		return {db_view->get_object(next->get_name())};
 	}
@@ -118,14 +131,30 @@ std::vector<nyan::Object> APIActivityNode::get_next(const nyan::Object &node) {
 	}
 }
 
-system::system_id_t APIActivityNode::get_system_id(const nyan::Object &ability_node) {
-	auto ability = ability_node.get<nyan::ObjectValue>("Ability.ability");
+system::system_id_t APIActivityNode::get_system_id(const nyan::Object &node) {
+	nyan::fqon_t api_parent = get_api_parent(node);
 
-	if (not ACTIVITY_TASK_SYSTEM_LOOKUP.contains(ability->get_name())) [[unlikely]] {
-		throw Error(MSG(err) << "Ability '" << ability->get_name() << "' has no associated system defined.");
+	nyan::fqon_t task_obj_fqon;
+	if (api_parent == "engine.util.activity.node.type.Ability") {
+		task_obj_fqon = node.get<nyan::ObjectValue>("Ability.ability")->get_name();
+	}
+	else if (api_parent == "engine.util.activity.node.type.Task") {
+		task_obj_fqon = node.get<nyan::ObjectValue>("Task.task")->get_name();
+	}
+	else {
+		throw Error(MSG(err) << "Node type '" << api_parent << "' cannot be used to get the system ID.");
 	}
 
-	return ACTIVITY_TASK_SYSTEM_LOOKUP.get(ability->get_name());
+	// Get the API parent of the task object to look up the system ID
+	auto view = node.get_view();
+	auto task_obj = view->get_object(task_obj_fqon);
+	task_obj_fqon = get_api_parent(task_obj);
+
+	if (not ACTIVITY_TASK_SYSTEM_LOOKUP.contains(task_obj_fqon)) [[unlikely]] {
+		throw Error(MSG(err) << "'" << task_obj.get_name() << "' has no associated system defined.");
+	}
+
+	return ACTIVITY_TASK_SYSTEM_LOOKUP.get(task_obj_fqon);
 }
 
 bool APIActivityCondition::is_condition(const nyan::Object &obj) {

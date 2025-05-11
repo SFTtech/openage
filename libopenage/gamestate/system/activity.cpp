@@ -21,6 +21,7 @@
 #include "gamestate/component/types.h"
 #include "gamestate/game_entity.h"
 #include "gamestate/system/apply_effect.h"
+#include "gamestate/system/command_queue.h"
 #include "gamestate/system/idle.h"
 #include "gamestate/system/move.h"
 #include "util/fixed_point.h"
@@ -152,6 +153,12 @@ const time::time_t Activity::handle_subsystem(const time::time_t &start_time,
 	case system_id_t::MOVE_DEFAULT:
 		// TODO: replace destination value with a parameter
 		return Move::move_default(entity, state, {1, 1, 1}, start_time);
+		break;
+	case system_id_t::CLEAR_COMMAND_QUEUE:
+		return CommandQueue::clear_queue(entity, start_time);
+		break;
+	case system_id_t::POP_COMMAND_QUEUE:
+		return CommandQueue::pop_command(entity, start_time);
 		break;
 	default:
 		throw Error{ERR << "Unhandled subsystem " << static_cast<int>(system_id)};
