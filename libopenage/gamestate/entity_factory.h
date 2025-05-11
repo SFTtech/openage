@@ -7,6 +7,7 @@
 
 #include <nyan/nyan.h>
 
+#include "gamestate/definitions.h"
 #include "gamestate/types.h"
 
 
@@ -118,17 +119,13 @@ private:
 
 	/**
 	 * ID of the next game entity to be created.
-	 *
-	 * IDs 0-99 are reserved.
 	 */
-	entity_id_t next_entity_id = 100;
+	entity_id_t next_entity_id = GAME_ENTITY_ID_START;
 
 	/**
 	 * ID of the next player to be created.
-	 *
-	 * ID 0 is reserved.
 	 */
-	player_id_t next_player_id = 1;
+	player_id_t next_player_id = PLAYER_ID_START;
 
 	/**
 	 * Factory for creating connector objects to the renderer which make game entities displayable.
