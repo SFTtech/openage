@@ -91,6 +91,7 @@ class AoCPregenSubprocessor:
         start_parent = "engine.util.activity.node.type.Start"
         end_parent = "engine.util.activity.node.type.End"
         ability_parent = "engine.util.activity.node.type.Ability"
+        task_parent = "engine.util.activity.node.type.Task"
         xor_parent = "engine.util.activity.node.type.XORGate"
         xor_event_parent = "engine.util.activity.node.type.XOREventGate"
         xor_switch_parent = "engine.util.activity.node.type.XORSwitchGate"
@@ -328,10 +329,10 @@ class AoCPregenSubprocessor:
         range_check_raw_api_object.add_raw_member("next",
                                                   [target_in_range_forward_ref],
                                                   xor_parent)
-        idle_forward_ref = ForwardRef(pregen_converter_group,
-                                      "util.activity.types.Unit.Idle")
+        queue_clear_forward_ref = ForwardRef(pregen_converter_group,
+                                             "util.activity.types.Unit.ClearCommandQueue")
         range_check_raw_api_object.add_raw_member("default",
-                                                  idle_forward_ref,
+                                                  queue_clear_forward_ref,
                                                   xor_parent)
 
         pregen_converter_group.add_raw_api_object(range_check_raw_api_object)
@@ -359,6 +360,27 @@ class AoCPregenSubprocessor:
         pregen_converter_group.add_raw_api_object(target_in_range_raw_api_object)
         pregen_nyan_objects.update(
             {target_in_range_ref_in_modpack: target_in_range_raw_api_object}
+        )
+
+        # Clear command queue
+        clear_command_ref_in_modpack = "util.activity.types.Unit.ClearCommandQueue"
+        clear_command_raw_api_object = RawAPIObject(clear_command_ref_in_modpack,
+                                                    "ClearCommandQueue", api_objects)
+        clear_command_raw_api_object.set_location(unit_forward_ref)
+        clear_command_raw_api_object.add_raw_parent(task_parent)
+
+        clear_command_raw_api_object.add_raw_member("next",
+                                                    idle_forward_ref,
+                                                    task_parent)
+        clear_command_raw_api_object.add_raw_member(
+            "task",
+            api_objects["engine.util.activity.task.type.ClearCommandQueue"],
+            task_parent
+        )
+
+        pregen_converter_group.add_raw_api_object(clear_command_raw_api_object)
+        pregen_nyan_objects.update(
+            {clear_command_ref_in_modpack: clear_command_raw_api_object}
         )
 
         # Apply effect
