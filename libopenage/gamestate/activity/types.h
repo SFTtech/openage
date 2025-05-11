@@ -70,6 +70,7 @@ using event_primer_t = std::function<std::shared_ptr<openage::event::Event>(cons
  */
 using condition_t = std::function<bool(const time::time_t &time,
                                        const std::shared_ptr<gamestate::GameEntity> &entity,
+                                       const std::shared_ptr<gamestate::GameState> &state,
                                        const std::shared_ptr<nyan::Object> &api_object)>;
 
 /**
@@ -102,6 +103,7 @@ using switch_key_t = int;
  */
 using switch_function_t = std::function<switch_key_t(const time::time_t &time,
                                                      const std::shared_ptr<gamestate::GameEntity> &entity,
+                                                     const std::shared_ptr<gamestate::GameState> &state,
                                                      const std::shared_ptr<nyan::Object> &api_object)>;
 
 /**
