@@ -19,6 +19,7 @@
 #include "gamestate/activity/xor_switch_gate.h"
 #include "gamestate/api/types.h"
 #include "gamestate/component/internal/commands/types.h"
+#include "gamestate/component/types.h"
 #include "gamestate/system/types.h"
 
 
@@ -73,6 +74,21 @@ static const auto ABILITY_TYPE_LOOKUP = datastructure::create_const_map<nyan::fq
               ability_t::SELECTABLE),
 	std::pair("engine.ability.type.Turn",
               ability_t::TURN));
+
+/**
+ * Maps internal ability types to component types.
+ */
+static const auto COMPONENT_TYPE_LOOKUP = datastructure::create_const_map<ability_t, component::component_t>(
+	std::pair(ability_t::ACTIVITY, component::component_t::ACTIVITY),
+	std::pair(ability_t::APPLY_CONTINUOUS_EFFECT, component::component_t::APPLY_EFFECT),
+	std::pair(ability_t::APPLY_DISCRETE_EFFECT, component::component_t::APPLY_EFFECT),
+	std::pair(ability_t::IDLE, component::component_t::IDLE),
+	std::pair(ability_t::MOVE, component::component_t::MOVE),
+	std::pair(ability_t::LINE_OF_SIGHT, component::component_t::LINE_OF_SIGHT),
+	std::pair(ability_t::LIVE, component::component_t::LIVE),
+	std::pair(ability_t::RESISTANCE, component::component_t::RESISTANCE),
+	std::pair(ability_t::SELECTABLE, component::component_t::SELECTABLE),
+	std::pair(ability_t::TURN, component::component_t::TURN));
 
 /**
  * Maps internal effect types to nyan API values.
