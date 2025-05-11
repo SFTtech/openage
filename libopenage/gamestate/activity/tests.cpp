@@ -156,7 +156,7 @@ const std::shared_ptr<activity::Node> activity_flow(const std::shared_ptr<activi
 			for (auto &condition : node->get_conditions()) {
 				auto condition_obj = condition.second.api_object;
 				auto condition_func = condition.second.function;
-				if (condition_func(0, nullptr, condition_obj)) {
+				if (condition_func(0, nullptr, nullptr, condition_obj)) {
 					next_id = condition.first;
 					break;
 				}
@@ -235,6 +235,7 @@ void activity_demo() {
 	static size_t counter = 0;
 	activity::condition_t branch_task1 = [&](const time::time_t & /* time */,
 	                                         const std::shared_ptr<gamestate::GameEntity> & /* entity */,
+	                                         const std::shared_ptr<gamestate::GameState> & /* state */,
 	                                         const std::shared_ptr<nyan::Object> & /* api_object */) {
 		log::log(INFO << "Checking condition (counter < 4): counter=" << counter);
 		if (counter < 4) {
@@ -250,6 +251,7 @@ void activity_demo() {
 	                      branch_task1});
 	activity::condition_t branch_event = [&](const time::time_t & /* time */,
 	                                         const std::shared_ptr<gamestate::GameEntity> & /* entity */,
+	                                         const std::shared_ptr<gamestate::GameState> & /* state */,
 	                                         const std::shared_ptr<nyan::Object> & /* api_object */) {
 		// No check needed here, the event node is always selected
 		log::log(INFO << "Selecting path 2 (to event node " << event_node->get_id() << ")");

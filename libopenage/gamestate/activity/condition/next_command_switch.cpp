@@ -10,6 +10,7 @@ namespace openage::gamestate::activity {
 
 int next_command_switch(const time::time_t &time,
                         const std::shared_ptr<gamestate::GameEntity> &entity,
+                        const std::shared_ptr<gamestate::GameState> & /* state */,
                         const std::shared_ptr<nyan::Object> & /* api_object */) {
 	auto command_queue = std::dynamic_pointer_cast<component::CommandQueue>(
 		entity->get_component(component::component_t::COMMANDQUEUE));
