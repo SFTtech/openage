@@ -3318,7 +3318,7 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     api_object = api_objects["engine.util.activity.condition.type.TargetInRange"]
 
     subtype = NyanMemberType(api_objects["engine.ability.Ability"])
-    member_type = NyanMemberType(MemberType.CHILDREN, (subtype,))
+    member_type = NyanMemberType(MemberType.ABSTRACT, (subtype,))
     member = NyanMember("ability", member_type, None, None, 0)
     api_object.add_member(member)
 
