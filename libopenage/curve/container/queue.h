@@ -1,4 +1,4 @@
-// Copyright 2017-2024 the openage authors. See copying.md for legal info.
+// Copyright 2017-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -427,8 +427,8 @@ void Queue<T>::clear(const time::time_t &time) {
 	}
 
 	// erase all elements alive at t <= time
-	while (this->container.at(at).alive() <= time
-	       and at != this->container.size()) {
+	while (at != this->container.size()
+	       and this->container.at(at).alive() <= time) {
 		if (this->container.at(at).dead() > time) {
 			this->container[at].set_dead(time);
 		}
