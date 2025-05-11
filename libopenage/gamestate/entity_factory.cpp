@@ -215,9 +215,7 @@ void EntityFactory::init_components(const std::shared_ptr<openage::event::EventL
 			entity->add_component(selectable);
 		}
 		else if (ability_parent == "engine.ability.type.ApplyContinuousEffect"
-		         or ability_parent == "engine.ability.type.ApplyDiscreteEffect"
-		         or ability_parent == "engine.ability.type.RangedContinuousEffect"
-		         or ability_parent == "engine.ability.type.RangedDiscreteEffect") {
+		         or ability_parent == "engine.ability.type.ApplyDiscreteEffect") {
 			auto apply_effect = std::make_shared<component::ApplyEffect>(loop, ability_obj);
 			entity->add_component(apply_effect);
 		}
