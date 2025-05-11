@@ -3,11 +3,15 @@
 #pragma once
 
 #include <memory>
+#include <variant>
 
+#include "coord/phys.h"
 #include "curve/container/queue.h"
+#include "curve/discrete.h"
 #include "gamestate/component/internal/commands/base_command.h"
 #include "gamestate/component/internal_component.h"
 #include "gamestate/component/types.h"
+#include "gamestate/types.h"
 #include "time/time.h"
 
 
@@ -55,11 +59,33 @@ public:
 	 */
 	const std::shared_ptr<command::Command> pop_command(const time::time_t &time);
 
+	/**
+	 * Target type with several possible representations.
+	 *
+	 * Can be:
+	 * - coord::phys3: Position in the game world.
+	 * - entity_id_t: ID of another entity.
+	 * - std::nullopt: Nothing.
+	 */
+	using optional_target_t = std::optional<std::variant<coord::phys3, entity_id_t>>;
+
+	/**
+	 * Get the targets of the entity over time.
+	 *
+	 * @return Targets over time.
+	 */
+	curve::Discrete<optional_target_t> &get_target();
+
 private:
 	/**
 	 * Command queue.
 	 */
 	curve::Queue<std::shared_ptr<command::Command>> command_queue;
+
+	/**
+	 * Target of the entity.
+	 */
+	curve::Discrete<optional_target_t> target;
 };
 
 } // namespace gamestate::component
