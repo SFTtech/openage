@@ -4,6 +4,7 @@ add_sources(libopenage
     animation.cpp
     definitions.cpp
     effect.cpp
+    object.cpp
     patch.cpp
     player_setup.cpp
     property.cpp
