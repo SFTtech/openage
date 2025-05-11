@@ -1,4 +1,4 @@
-// Copyright 2023-2024 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -11,6 +11,7 @@ namespace openage::gamestate::system {
 enum class system_id_t {
 	NONE,
 
+	// ability systems
 	APPLY_EFFECT,
 
 	IDLE,
@@ -19,6 +20,10 @@ enum class system_id_t {
 	MOVE_DEFAULT,
 
 	ACTIVITY_ADVANCE,
+
+	// tasks
+	CLEAR_COMMAND_QUEUE,
+	POP_COMMAND_QUEUE,
 };
 
 } // namespace openage::gamestate::system

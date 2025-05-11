@@ -279,6 +279,8 @@ static const auto ACTIVITY_NODE_LOOKUP = datastructure::create_const_map<std::st
               activity::node_t::END),
 	std::pair("engine.util.activity.node.type.Ability",
               activity::node_t::TASK_SYSTEM),
+	std::pair("engine.util.activity.node.type.Task",
+              activity::node_t::TASK_SYSTEM), // TODO: Should this have its own type?
 	std::pair("engine.util.activity.node.type.XORGate",
               activity::node_t::XOR_GATE),
 	std::pair("engine.util.activity.node.type.XOREventGate",
@@ -297,7 +299,11 @@ static const auto ACTIVITY_TASK_SYSTEM_LOOKUP = datastructure::create_const_map<
 	std::pair("engine.ability.type.Idle",
               system::system_id_t::IDLE),
 	std::pair("engine.ability.type.Move",
-              system::system_id_t::MOVE_COMMAND));
+              system::system_id_t::MOVE_COMMAND),
+	std::pair("engine.util.activity.task.type.ClearCommandQueue",
+              system::system_id_t::CLEAR_COMMAND_QUEUE),
+	std::pair("engine.util.activity.task.type.PopCommandQueue",
+              system::system_id_t::POP_COMMAND_QUEUE));
 
 /**
  * Maps API activity condition types to engine condition types.
