@@ -21,7 +21,7 @@
 namespace openage::gamestate::system {
 
 const time::time_t ApplyEffect::apply_effect(const std::shared_ptr<gamestate::GameEntity> &effector,
-                                             const std::shared_ptr<openage::gamestate::GameState> &state,
+                                             const std::shared_ptr<openage::gamestate::GameState> & /* state */,
                                              const std::shared_ptr<gamestate::GameEntity> &resistor,
                                              const time::time_t &start_time) {
 	auto effects_component = std::dynamic_pointer_cast<component::ApplyEffect>(
@@ -120,8 +120,7 @@ const time::time_t ApplyEffect::apply_effect(const std::shared_ptr<gamestate::Ga
 	}
 
 	// properties
-	auto ability = effects_component->get_ability();
-	handle_animated(effector, ability, start_time);
+	handle_animated(effector, effect_ability, start_time);
 
 	return total_time;
 }
