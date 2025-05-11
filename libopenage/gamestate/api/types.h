@@ -20,7 +20,10 @@ enum class ability_t {
 	SELECTABLE,
 	TURN,
 
-	// TODO
+	// TODO: other ability types
+
+	// TODO: remove once other ability types are implemented
+	UNKNOWN,
 };
 
 /**
