@@ -14,6 +14,7 @@ class Object;
 
 namespace openage::gamestate {
 class GameEntity;
+class GameState;
 
 namespace activity {
 
@@ -30,6 +31,7 @@ namespace activity {
  */
 bool next_command(const time::time_t &time,
                   const std::shared_ptr<gamestate::GameEntity> &entity,
+                  const std::shared_ptr<gamestate::GameState> & /* state */,
                   const std::shared_ptr<nyan::Object> &condition);
 
 } // namespace activity
