@@ -65,22 +65,23 @@ void SendCommandHandler::invoke(openage::event::EventLoop & /* loop */,
 			entity->get_component(component::component_t::COMMANDQUEUE));
 
 		switch (command_type) {
-		case component::command::command_t::IDLE:
+		case component::command::command_t::IDLE: {
 			command_queue->add_command(time, std::make_shared<component::command::Idle>());
+			command_queue->clear_target(time);
 			break;
-		case component::command::command_t::MOVE:
-			command_queue->add_command(
-				time,
-				std::make_shared<component::command::Move>(
-					params.get("target",
-			                   coord::phys3{0, 0, 0})));
+		}
+		case component::command::command_t::MOVE: {
+			auto target_pos = params.get("target", coord::phys3{0, 0, 0});
+			command_queue->add_command(time, std::make_shared<component::command::Move>(target_pos));
+			command_queue->set_target(time, target_pos);
 			break;
-		case component::command::command_t::APPLY_EFFECT:
-			command_queue->add_command(
-				time,
-				std::make_shared<component::command::ApplyEffect>(
-					params.get("target", 0)));
+		}
+		case component::command::command_t::APPLY_EFFECT: {
+			auto target_id = params.get<entity_id_t>("target", 0);
+			command_queue->add_command(time, std::make_shared<component::command::ApplyEffect>(target_id));
+			command_queue->set_target(time, target_id);
 			break;
+		}
 		default:
 			break;
 		}
