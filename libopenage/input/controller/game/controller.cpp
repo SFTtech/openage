@@ -162,7 +162,7 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 
 		event::EventHandler::param_map::map_t params{};
 
-		auto target_entity_id = texture_data.read_pixel<uint32_t>(args.mouse.x, args.mouse.y);
+		gamestate::entity_id_t target_entity_id = texture_data.read_pixel<uint32_t>(args.mouse.x, args.mouse.y);
 		log::log(DBG << "Targeting entity ID: " << target_entity_id);
 		if (target_entity_id == 0) {
 			auto mouse_pos = args.mouse.to_phys3(camera);
