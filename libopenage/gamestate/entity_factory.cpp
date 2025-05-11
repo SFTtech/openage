@@ -23,6 +23,7 @@
 #include "gamestate/activity/xor_event_gate.h"
 #include "gamestate/activity/xor_gate.h"
 #include "gamestate/activity/xor_switch_gate.h"
+#include "gamestate/api/ability.h"
 #include "gamestate/api/activity.h"
 #include "gamestate/component/api/apply_effect.h"
 #include "gamestate/component/api/idle.h"
@@ -174,19 +175,24 @@ void EntityFactory::init_components(const std::shared_ptr<openage::event::EventL
 		auto ability_obj = owner_db_view->get_object(ability_fqon);
 
 		auto ability_parent = ability_obj.get_parents()[0];
-		if (ability_parent == "engine.ability.type.Move") {
+		auto ability_type = api::APIAbility::get_type(ability_obj);
+		switch (ability_type) {
+		case api::ability_t::MOVE: {
 			auto move = std::make_shared<component::Move>(loop, ability_obj);
 			entity->add_component(move);
+			break;
 		}
-		else if (ability_parent == "engine.ability.type.Turn") {
+		case api::ability_t::TURN: {
 			auto turn = std::make_shared<component::Turn>(loop, ability_obj);
 			entity->add_component(turn);
+			break;
 		}
-		else if (ability_parent == "engine.ability.type.Idle") {
+		case api::ability_t::IDLE: {
 			auto idle = std::make_shared<component::Idle>(loop, ability_obj);
 			entity->add_component(idle);
+			break;
 		}
-		else if (ability_parent == "engine.ability.type.Live") {
+		case api::ability_t::LIVE: {
 			auto live = std::make_shared<component::Live>(loop, ability_obj);
 			entity->add_component(live);
 
@@ -206,28 +212,36 @@ void EntityFactory::init_components(const std::shared_ptr<openage::event::EventL
 										nullptr,
 										start_value));
 			}
+			break;
 		}
-		else if (ability_parent == "engine.ability.type.Activity") {
+		case api::ability_t::ACTIVITY: {
 			activity_ability = ability_obj;
+			break;
 		}
-		else if (ability_parent == "engine.ability.type.Selectable") {
+		case api::ability_t::SELECTABLE: {
 			auto selectable = std::make_shared<component::Selectable>(loop, ability_obj);
 			entity->add_component(selectable);
+			break;
 		}
-		else if (ability_parent == "engine.ability.type.ApplyContinuousEffect"
-		         or ability_parent == "engine.ability.type.ApplyDiscreteEffect") {
+		case api::ability_t::APPLY_DISCRETE_EFFECT:
+			[[fallthrough]];
+		case api::ability_t::APPLY_CONTINUOUS_EFFECT: {
 			auto apply_effect = std::make_shared<component::ApplyEffect>(loop, ability_obj);
 			entity->add_component(apply_effect);
+			break;
 		}
-		else if (ability_parent == "engine.ability.type.Resistance") {
+		case api::ability_t::RESISTANCE: {
 			auto resistance = std::make_shared<component::Resistance>(loop, ability_obj);
 			entity->add_component(resistance);
+			break;
 		}
-		else if (ability_parent == "engine.ability.type.LineOfSight") {
+		case api::ability_t::LINE_OF_SIGHT: {
 			auto line_of_sight = std::make_shared<component::LineOfSight>(loop, ability_obj);
 			entity->add_component(line_of_sight);
+			break;
 		}
-		else {
+		default:
+			// TODO: Change verbosity from SPAM to INFO once we cover all ability types
 			log::log(SPAM << "Entity has unrecognized ability type: " << ability_parent);
 		}
 	}
