@@ -24,7 +24,7 @@ bool next_command(const time::time_t &time,
 	auto queue_command = command_queue->get_queue().front(time);
 
 	auto compare_command = condition->get<nyan::ObjectValue>("NextCommand.command");
-	auto compare_type = api::COMMAND_DEFS.get(compare_command->get_name());
+	auto compare_type = api::COMMAND_LOOKUP.get(compare_command->get_name());
 
 	return queue_command->get_type() == compare_type;
 }

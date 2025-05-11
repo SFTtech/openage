@@ -27,7 +27,7 @@ bool APIActivityNode::is_node(const nyan::Object &obj) {
 
 activity::node_t APIActivityNode::get_type(const nyan::Object &node) {
 	nyan::fqon_t immediate_parent = node.get_parents()[0];
-	return ACTIVITY_NODE_DEFS.get(immediate_parent);
+	return ACTIVITY_NODE_LOOKUP.get(immediate_parent);
 }
 
 std::vector<nyan::Object> APIActivityNode::get_next(const nyan::Object &node) {
@@ -84,7 +84,7 @@ std::vector<nyan::Object> APIActivityNode::get_next(const nyan::Object &node) {
 
 		auto switch_condition_obj = db_view->get_object(switch_condition->get_name());
 		auto switch_condition_parent = switch_condition_obj.get_parents()[0];
-		auto switch_condition_type = ACTIVITY_SWITCH_CONDITION_TYPES.get(switch_condition_parent);
+		auto switch_condition_type = ACTIVITY_SWITCH_CONDITION_TYPE_LOOKUP.get(switch_condition_parent);
 
 		switch (switch_condition_type) {
 		case switch_condition_t::NEXT_COMMAND: {
@@ -109,11 +109,11 @@ std::vector<nyan::Object> APIActivityNode::get_next(const nyan::Object &node) {
 system::system_id_t APIActivityNode::get_system_id(const nyan::Object &ability_node) {
 	auto ability = ability_node.get<nyan::ObjectValue>("Ability.ability");
 
-	if (not ACTIVITY_TASK_SYSTEM_DEFS.contains(ability->get_name())) [[unlikely]] {
+	if (not ACTIVITY_TASK_SYSTEM_LOOKUP.contains(ability->get_name())) [[unlikely]] {
 		throw Error(MSG(err) << "Ability '" << ability->get_name() << "' has no associated system defined.");
 	}
 
-	return ACTIVITY_TASK_SYSTEM_DEFS.get(ability->get_name());
+	return ACTIVITY_TASK_SYSTEM_LOOKUP.get(ability->get_name());
 }
 
 bool APIActivityCondition::is_condition(const nyan::Object &obj) {
@@ -123,7 +123,7 @@ bool APIActivityCondition::is_condition(const nyan::Object &obj) {
 
 activity::condition_t APIActivityCondition::get_condition(const nyan::Object &condition) {
 	nyan::fqon_t immediate_parent = condition.get_parents()[0];
-	return ACTIVITY_CONDITIONS.get(immediate_parent);
+	return ACTIVITY_CONDITION_LOOKUP.get(immediate_parent);
 }
 
 bool APIActivitySwitchCondition::is_switch_condition(const nyan::Object &obj) {
@@ -133,12 +133,12 @@ bool APIActivitySwitchCondition::is_switch_condition(const nyan::Object &obj) {
 
 activity::switch_function_t APIActivitySwitchCondition::get_switch_func(const nyan::Object &condition) {
 	nyan::fqon_t immediate_parent = condition.get_parents()[0];
-	return ACTIVITY_SWITCH_CONDITIONS.get(immediate_parent);
+	return ACTIVITY_SWITCH_CONDITION_LOOKUP.get(immediate_parent);
 }
 
 APIActivitySwitchCondition::lookup_map_t APIActivitySwitchCondition::get_lookup_map(const nyan::Object &condition) {
 	nyan::fqon_t immediate_parent = condition.get_parents()[0];
-	auto switch_condition_type = ACTIVITY_SWITCH_CONDITION_TYPES.get(immediate_parent);
+	auto switch_condition_type = ACTIVITY_SWITCH_CONDITION_TYPE_LOOKUP.get(immediate_parent);
 
 	switch (switch_condition_type) {
 	case switch_condition_t::NEXT_COMMAND: {
@@ -149,7 +149,7 @@ APIActivitySwitchCondition::lookup_map_t APIActivitySwitchCondition::get_lookup_
 			auto key_obj = condition.get_view()->get_object(key_value->get_name());
 
 			// Get engine lookup key value
-			auto key = static_cast<activity::switch_key_t>(COMMAND_DEFS.get(key_obj.get_name()));
+			auto key = static_cast<activity::switch_key_t>(COMMAND_LOOKUP.get(key_obj.get_name()));
 
 			// Get node ID
 			auto next_node_value = std::dynamic_pointer_cast<nyan::ObjectValue>(next_node.second.get_ptr());
@@ -171,7 +171,7 @@ bool APIActivityEvent::is_event(const nyan::Object &obj) {
 }
 
 activity::event_primer_t APIActivityEvent::get_primer(const nyan::Object &event) {
-	return ACTIVITY_EVENT_PRIMERS.get(event.get_name());
+	return ACTIVITY_EVENT_PRIMER_LOOKUP.get(event.get_name());
 }
 
 } // namespace openage::gamestate::api

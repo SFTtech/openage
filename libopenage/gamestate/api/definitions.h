@@ -42,16 +42,37 @@ static const auto ABILITY_DEFS = datastructure::create_const_map<ability_t, nyan
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.LineOfSight"))),
 	std::pair(ability_t::LIVE,
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.Live"))),
-	std::pair(ability_t::RANGED_CONTINUOUS_EFFECT,
-              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.RangedContinuousEffect"))),
-	std::pair(ability_t::RANGED_DISCRETE_EFFECT,
-              nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.RangedDiscreteEffect"))),
 	std::pair(ability_t::RESISTANCE,
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.Resistance"))),
 	std::pair(ability_t::SELECTABLE,
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.Selectable"))),
 	std::pair(ability_t::TURN,
               nyan::ValueHolder(std::make_shared<nyan::ObjectValue>("engine.ability.type.Turn"))));
+
+/**
+ * Maps nyan API ability fqon values to internal ability types.
+ */
+static const auto ABILITY_TYPE_LOOKUP = datastructure::create_const_map<nyan::fqon_t, ability_t>(
+	std::pair("engine.ability.type.Activity",
+              ability_t::ACTIVITY),
+	std::pair("engine.ability.type.ApplyContinuousEffect",
+              ability_t::APPLY_CONTINUOUS_EFFECT),
+	std::pair("engine.ability.type.ApplyDiscreteEffect",
+              ability_t::APPLY_DISCRETE_EFFECT),
+	std::pair("engine.ability.type.Idle",
+              ability_t::IDLE),
+	std::pair("engine.ability.type.Move",
+              ability_t::MOVE),
+	std::pair("engine.ability.type.LineOfSight",
+              ability_t::LINE_OF_SIGHT),
+	std::pair("engine.ability.type.Live",
+              ability_t::LIVE),
+	std::pair("engine.ability.type.Resistance",
+              ability_t::RESISTANCE),
+	std::pair("engine.ability.type.Selectable",
+              ability_t::SELECTABLE),
+	std::pair("engine.ability.type.Turn",
+              ability_t::TURN));
 
 /**
  * Maps internal effect types to nyan API values.
@@ -234,7 +255,7 @@ static const auto RESISTANCE_PROPERTY_DEFS = datastructure::create_const_map<res
 /**
  * Maps API activity node types to engine node types.
  */
-static const auto ACTIVITY_NODE_DEFS = datastructure::create_const_map<std::string, activity::node_t>(
+static const auto ACTIVITY_NODE_LOOKUP = datastructure::create_const_map<std::string, activity::node_t>(
 	std::pair("engine.util.activity.node.type.Start",
               activity::node_t::START),
 	std::pair("engine.util.activity.node.type.End",
@@ -253,7 +274,7 @@ static const auto ACTIVITY_NODE_DEFS = datastructure::create_const_map<std::stri
  *
  * TODO: Expand this to include all systems.
  */
-static const auto ACTIVITY_TASK_SYSTEM_DEFS = datastructure::create_const_map<std::string, system::system_id_t>(
+static const auto ACTIVITY_TASK_SYSTEM_LOOKUP = datastructure::create_const_map<std::string, system::system_id_t>(
 	std::pair("engine.ability.type.ApplyDiscreteEffect",
               system::system_id_t::APPLY_EFFECT),
 	std::pair("engine.ability.type.Idle",
@@ -264,7 +285,7 @@ static const auto ACTIVITY_TASK_SYSTEM_DEFS = datastructure::create_const_map<st
 /**
  * Maps API activity condition types to engine condition types.
  */
-static const auto ACTIVITY_CONDITIONS = datastructure::create_const_map<std::string, activity::condition_t>(
+static const auto ACTIVITY_CONDITION_LOOKUP = datastructure::create_const_map<std::string, activity::condition_t>(
 	std::pair("engine.util.activity.condition.type.CommandInQueue",
               std::function(gamestate::activity::command_in_queue)),
 	std::pair("engine.util.activity.condition.type.NextCommand",
@@ -273,7 +294,7 @@ static const auto ACTIVITY_CONDITIONS = datastructure::create_const_map<std::str
 /**
  * Maps API activity event types to event primer functions.
  */
-static const auto ACTIVITY_EVENT_PRIMERS = datastructure::create_const_map<std::string, activity::event_primer_t>(
+static const auto ACTIVITY_EVENT_PRIMER_LOOKUP = datastructure::create_const_map<std::string, activity::event_primer_t>(
 	std::pair("engine.util.activity.event.type.CommandInQueue",
               std::function(gamestate::activity::primer_command_in_queue)),
 	std::pair("engine.util.activity.event.type.Wait",
@@ -284,16 +305,16 @@ static const auto ACTIVITY_EVENT_PRIMERS = datastructure::create_const_map<std::
 /**
  * Maps API activity switch condition types to switch functions.
  */
-static const auto ACTIVITY_SWITCH_CONDITIONS = datastructure::create_const_map<std::string,
-                                                                               activity::switch_function_t>(
+static const auto ACTIVITY_SWITCH_CONDITION_LOOKUP = datastructure::create_const_map<std::string,
+                                                                                     activity::switch_function_t>(
 	std::pair("engine.util.activity.switch_condition.type.NextCommand",
               std::function(gamestate::activity::next_command_switch)));
 
 /**
  * Maps API activity switch condition types to nyan API values.
  */
-static const auto ACTIVITY_SWITCH_CONDITION_TYPES = datastructure::create_const_map<std::string,
-                                                                                    switch_condition_t>(
+static const auto ACTIVITY_SWITCH_CONDITION_TYPE_LOOKUP = datastructure::create_const_map<std::string,
+                                                                                          switch_condition_t>(
 	std::pair("engine.util.activity.switch_condition.type.NextCommand",
               switch_condition_t::NEXT_COMMAND));
 
@@ -307,7 +328,7 @@ static const auto PATCH_PROPERTY_DEFS = datastructure::create_const_map<patch_pr
 /**
  * Maps API command types to engine command types.
  */
-static const auto COMMAND_DEFS = datastructure::create_const_map<nyan::fqon_t, component::command::command_t>(
+static const auto COMMAND_LOOKUP = datastructure::create_const_map<nyan::fqon_t, component::command::command_t>(
 	std::pair("engine.util.command.type.Idle",
               component::command::command_t::IDLE),
 	std::pair("engine.util.command.type.Move",
