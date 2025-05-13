@@ -38,7 +38,7 @@ We advise against using the clang version that comes with macOS (Apple Clang) as
 ```
 # on Intel macOS, llvm is by default in /usr/local/Cellar/llvm/bin/
 # on ARM macOS, llvm is by default in /opt/homebrew/Cellar/llvm/bin/
-./configure --compiler="$(brew --prefix llvm)/bin/clang" --download-nyan
+./configure --compiler="$(brew --prefix llvm)/bin/clang++" --download-nyan
 ```
 
 Afterwards, trigger the build using `make`:
