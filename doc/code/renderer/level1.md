@@ -17,6 +17,7 @@ Low-level renderer for communicating with the OpenGL and Vulkan APIs.
    3. [Defining Layers in a Render Pass](#defining-layers-in-a-render-pass)
    4. [Complex Geometry](#complex-geometry)
    5. [Uniform Buffers](#uniform-buffers)
+   6. [Shader Templates](#shader-templates)
 5. [Thread-safety](#thread-safety)
 
 
@@ -541,6 +542,81 @@ resources::UniformBufferInfo ubo_info{
 
 std::shared_ptr<UniformBuffer> buffer = renderer->add_uniform_buffer(ubo_info);
 ```
+
+### Shader Templates
+
+Shader templates allow the definition of a shader source code with placeholders that can be replaced at
+load- or run-time. Templates are help if only specific parts of the shader code are supposed to
+be configurable. This may be used, for example, to alter certain code path of the built-in shaders
+without recompiling the engine.
+
+An example shader template looks like this:
+
+```glsl
+#version 330
+
+in vec2 tex_coord;
+out vec4 frag_color;
+
+// PLACEHOLDER: uniform_color
+
+void main() {
+	// PLACEHOLDER: alpha
+	frag_color = vec4(col.xyz, alpha);
+}
+```
+
+Placeholders are inserted as comments into the GLSL source. Every placeholder has an ID for
+referencing. For these IDs, *snippets* can be defined to insert code in place of the placeholder
+comment. Placeholders can be placed at any position in the template, so they can be used to insert
+other statements than the control code, including unforms, input/output variables, functions and more.
+
+The snippets for the above example may look like this:
+
+`uniform_color.snippet`
+
+```glsl
+uniform vec4 col;
+```
+
+`alpha.snippet`
+
+```glsl
+float alpha = 0.5;
+```
+
+In the renderer, shader templates can be created using the `renderer::resources::ShaderTemplate` class.
+
+```cpp
+util::Path template_path = shaderdir / "example_template.frag.glsl";
+resources::ShaderTemplate template(template_path);
+```
+
+After loading the template, snippets for the placeholders can be added. These are either loaded
+as single files or from a directory.
+
+```cpp
+util::Path snippets_path = shaderdir / "example_snippets";
+template.load_snippets(snippets_path);
+```
+
+or
+
+```cpp
+util::Path snippets_path = shaderdir / "example_snippets";
+template.add_snippet(snippets_path / "uniform_color.snippet");
+template.add_snippet(snippets_path / "alpha.snippet");
+```
+
+If snippets have been loaded for all placeholder IDs, the shader template can generate the final
+shader source code as `renderer::resources::ShaderSource`. This can then be used to create the actual
+`renderer::ShaderProgram` uploaded to the GPU.
+
+```cpp
+resources::ShaderSource source = template.generate_source();
+ShaderProgram prog = = renderer->add_shader({source});
+```
+
 
 ## Thread-safety
 This level might or might not be threadsafe depending on the concrete backend. The OpenGL version is, in typical GL fashion, so not-threadsafe it's almost anti-threadsafe. All code must be executed sequentially on a dedicated window thread, the same one on which the window and renderer were initially created. The plan for the Vulkan version is to make it at least independent of thread-local storage and hopefully completely threadsafe.

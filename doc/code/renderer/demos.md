@@ -144,6 +144,19 @@ This demo shows how to use [frustum culling](level2.md#frustum-culling) in the r
 ![Demo 6](/doc/code/renderer/images/demo_6.png)
 
 
+### Demo 6
+
+This demo shows how to use [shader templating](level1.md#shader-templates) in the renderer.
+
+```bash
+./bin/run test --demo renderer.tests.renderer_demo 6
+```
+
+**Result:**
+
+![Demo 7](/doc/code/renderer/images/demo_7.mp4)
+
+
 ## Stresstests
 
 ### Stresstest 0

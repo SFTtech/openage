@@ -64,6 +64,8 @@ private:
 			size_t length;
 	};
 
+	/// All placeholders found in the template
+	/// precomputed on creation
 	std::vector<Placeholder> placeholders;
 };
 } // namespace world
