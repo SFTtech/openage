@@ -7,7 +7,7 @@
 #include "error/error.h"
 #include "log/log.h"
 
-namespace openage::renderer::world {
+namespace openage::renderer::resources {
 
 ShaderTemplate::ShaderTemplate(const util::Path &template_path) {
 	auto file = template_path.open();

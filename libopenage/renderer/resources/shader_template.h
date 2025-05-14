@@ -12,7 +12,7 @@
 
 namespace openage {
 namespace renderer {
-namespace world {
+namespace resources {
 
 /**
  * Manages shader templates and their code snippets.
@@ -57,7 +57,7 @@ private:
 	/// Mapping of placeholder IDs to their code snippets
 	std::map<std::string, std::string> snippets;
 
-	/// Info about a placeholder found in the template 
+	/// Info about a placeholder found in the template
 	struct Placeholder {
 			std::string name;
 			size_t position;

@@ -11,8 +11,9 @@
 #include "renderer/render_target.h"
 #include "renderer/resources/mesh_data.h"
 #include "renderer/resources/shader_source.h"
+#include "renderer/resources/shader_template.h"
 #include "renderer/shader_program.h"
-#include "renderer/stages/world/shader_template.h"
+
 
 namespace openage::renderer::tests {
 
@@ -30,7 +31,7 @@ void renderer_demo_7(const util::Path &path) {
 	auto shaderdir = path / "assets" / "test" / "shaders";
 
 	// Initialize shader template
-	world::ShaderTemplate frag_template(shaderdir / "demo_7_shader_command.frag.glsl");
+	resources::ShaderTemplate frag_template(shaderdir / "demo_7_shader_command.frag.glsl");
 
 	// Load snippets from a snippet directory
 	frag_template.load_snippets(shaderdir / "demo_7_snippets");
