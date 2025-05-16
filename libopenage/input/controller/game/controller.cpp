@@ -1,4 +1,4 @@
-// Copyright 2021-2023 the openage authors. See copying.md for legal info.
+// Copyright 2021-2025 the openage authors. See copying.md for legal info.
 
 #include "controller.h"
 
@@ -14,6 +14,7 @@
 #include "gamestate/game_state.h"
 #include "gamestate/simulation.h"
 #include "input/controller/game/binding_context.h"
+#include "renderer/texture.h"
 #include "time/clock.h"
 #include "time/time_loop.h"
 
@@ -23,13 +24,13 @@
 
 namespace openage::input::game {
 
-Controller::Controller(const std::unordered_set<size_t> &controlled_factions,
-                       size_t active_faction_id) :
+Controller::Controller(const std::unordered_set<gamestate::player_id_t> &controlled_factions,
+                       gamestate::player_id_t active_faction_id) :
 	controlled_factions{controlled_factions},
 	active_faction_id{active_faction_id},
 	outqueue{} {}
 
-void Controller::set_control(size_t faction_id) {
+void Controller::set_control(gamestate::player_id_t faction_id) {
 	std::unique_lock lock{this->mutex};
 
 	if (this->controlled_factions.find(faction_id) != this->controlled_factions.end()) {
@@ -37,7 +38,7 @@ void Controller::set_control(size_t faction_id) {
 	}
 }
 
-size_t Controller::get_controlled() const {
+gamestate::player_id_t Controller::get_controlled() const {
 	std::unique_lock lock{this->mutex};
 
 	return this->active_faction_id;
@@ -90,6 +91,14 @@ bool Controller::process(const event_arguments &ev_args, const std::shared_ptr<B
 	}
 
 	return true;
+}
+
+const std::shared_ptr<renderer::Texture2d> &Controller::get_id_texture() const {
+	return this->id_texture;
+}
+
+void Controller::set_id_texture(const std::shared_ptr<renderer::Texture2d> &id_texture) {
+	this->id_texture = id_texture;
 }
 
 void Controller::set_drag_select_start(const coord::input &start) {
@@ -146,14 +155,30 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 
 	ctx->bind(ev_mouse_lmb_ctrl, create_entity_action);
 
-	binding_func_t move_entity{[&](const event_arguments &args,
-	                               const std::shared_ptr<Controller> controller) {
-		auto mouse_pos = args.mouse.to_phys3(camera);
-		event::EventHandler::param_map::map_t params{
-			{"type", gamestate::component::command::command_t::MOVE},
-			{"target", mouse_pos},
-			{"entity_ids", controller->get_selected()},
-		};
+	binding_func_t interact_entity{[&](const event_arguments &args,
+	                                   const std::shared_ptr<Controller> controller) {
+		auto id_texture = controller->get_id_texture();
+		auto texture_data = id_texture->into_data();
+
+		event::EventHandler::param_map::map_t params{};
+
+		gamestate::entity_id_t target_entity_id = texture_data.read_pixel<uint32_t>(args.mouse.x, args.mouse.y);
+		log::log(DBG << "Targeting entity ID: " << target_entity_id);
+		if (target_entity_id == 0) {
+			auto mouse_pos = args.mouse.to_phys3(camera);
+			params = {
+				{"type", gamestate::component::command::command_t::MOVE},
+				{"target", mouse_pos},
+				{"entity_ids", controller->get_selected()},
+			};
+		}
+		else {
+			params = {
+				{"type", gamestate::component::command::command_t::APPLY_EFFECT},
+				{"target", target_entity_id},
+				{"entity_ids", controller->get_selected()},
+			};
+		}
 
 		auto event = simulation->get_event_loop()->create_event(
 			"game.send_command",
@@ -164,7 +189,7 @@ void setup_defaults(const std::shared_ptr<BindingContext> &ctx,
 		return event;
 	}};
 
-	binding_action move_entity_action{forward_action_t::SEND, move_entity};
+	binding_action move_entity_action{forward_action_t::SEND, interact_entity};
 	Event ev_mouse_rmb{
 		event_class::MOUSE_BUTTON,
 		Qt::MouseButton::RightButton,

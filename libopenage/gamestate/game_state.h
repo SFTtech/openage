@@ -1,4 +1,4 @@
-// Copyright 2023-2024 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -107,6 +107,24 @@ public:
 	 * @return Map object.
 	 */
 	const std::shared_ptr<Map> &get_map() const;
+
+	/**
+	 * Check whether a game entity with the given ID exists.
+	 *
+	 * @param id ID of the game entity.
+	 *
+	 * @return true if the game entity exists, false otherwise.
+	 */
+	bool has_game_entity(entity_id_t id) const;
+
+	/**
+	 * Check whether a player with the given ID exists.
+	 *
+	 * @param id ID of the player.
+	 *
+	 * @return true if the player exists, false otherwise.
+	 */
+	bool has_player(player_id_t id) const;
 
 	/**
 	 * TODO: Only for testing.

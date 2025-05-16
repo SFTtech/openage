@@ -1,4 +1,4 @@
-// Copyright 2019-2024 the openage authors. See copying.md for legal info.
+// Copyright 2019-2025 the openage authors. See copying.md for legal info.
 
 #include "presenter.h"
 
@@ -243,13 +243,19 @@ void Presenter::init_input() {
 	if (this->simulation) {
 		log::log(INFO << "Loading game simulation controls");
 
-		// TODO: Remove hardcoding
+		// TODO: Remove hardcoding for controlled/active factions
+		std::unordered_set<gamestate::player_id_t> controlled_factions{1, 2, 3, 4};
+		gamestate::player_id_t active_faction_id = 1;
 		auto game_controller = std::make_shared<input::game::Controller>(
-			std::unordered_set<size_t>{0, 1, 2, 3}, 0);
+			controlled_factions, active_faction_id);
+
 		auto engine_context = std::make_shared<input::game::BindingContext>();
 		input::game::setup_defaults(engine_context, this->time_loop, this->simulation, this->camera);
 		this->input_manager->set_game_controller(game_controller);
 		input_ctx->set_game_bindings(engine_context);
+
+		auto id_texture = this->world_renderer->get_id_texture();
+		game_controller->set_id_texture(id_texture);
 	}
 
 	// attach GUI if it's initialized

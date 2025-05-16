@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #include "util.h"
 
@@ -40,6 +40,20 @@ const std::string resolve_file_path(const nyan::Object &obj, const std::string &
 		std::string obj_path = obj.get_info().get_namespace().to_dirpath();
 		return obj_path + "/" + path;
 	}
+}
+
+const nyan::fqon_t &get_api_parent(const nyan::Object &obj) {
+	if (obj.get_name().starts_with("engine")) {
+		return obj.get_name();
+	}
+
+	for (const auto &parent : obj.get_parents()) {
+		if (parent.starts_with("engine.")) {
+			return parent;
+		}
+	}
+
+	throw Error(MSG(err) << "No API parent found for object: " << obj.get_name());
 }
 
 } // namespace openage::gamestate::api

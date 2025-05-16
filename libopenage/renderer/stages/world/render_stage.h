@@ -90,6 +90,13 @@ public:
 	 */
 	void resize(size_t width, size_t height);
 
+	/**
+	 * Get the ID texture of the world renderer.
+	 *
+	 * @return ID texture.
+	 */
+	const std::shared_ptr<renderer::Texture2d> &get_id_texture() const;
+
 private:
 	/**
 	 * Create the render pass for world drawing.
