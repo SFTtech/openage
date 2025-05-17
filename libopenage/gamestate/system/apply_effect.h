@@ -1,4 +1,4 @@
-// Copyright 2024-2024 the openage authors. See copying.md for legal info.
+// Copyright 2024-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -21,6 +21,19 @@ namespace system {
 
 class ApplyEffect {
 public:
+	/**
+	 * Apply the effect of an ability from a command.
+	 *
+	 * @param entity Game entity applying the effects.
+	 * @param state Game state.
+	 * @param start_time Start time of change.
+	 *
+	 * @return Runtime of the change in simulation time.
+	 */
+	static const time::time_t apply_effect_command(const std::shared_ptr<gamestate::GameEntity> &entity,
+	                                               const std::shared_ptr<openage::gamestate::GameState> &state,
+	                                               const time::time_t &start_time);
+
 	/**
 	 * Apply the effect of an ability to a game entity.
 	 *
