@@ -12,6 +12,8 @@
 #include "gamestate/component/api/apply_effect.h"
 #include "gamestate/component/api/live.h"
 #include "gamestate/component/api/resistance.h"
+#include "gamestate/component/internal/command_queue.h"
+#include "gamestate/component/internal/commands/apply_effect.h"
 #include "gamestate/component/types.h"
 #include "gamestate/game_entity.h"
 #include "gamestate/game_state.h"
@@ -19,6 +21,25 @@
 
 
 namespace openage::gamestate::system {
+const time::time_t ApplyEffect::apply_effect_command(const std::shared_ptr<gamestate::GameEntity> &entity,
+                                                     const std::shared_ptr<openage::gamestate::GameState> &state,
+                                                     const time::time_t &start_time) {
+	auto command_queue = std::dynamic_pointer_cast<component::CommandQueue>(
+		entity->get_component(component::component_t::COMMANDQUEUE));
+	auto command = std::dynamic_pointer_cast<component::command::ApplyEffect>(
+		command_queue->pop_command(start_time));
+
+	if (not command) [[unlikely]] {
+		log::log(MSG(warn) << "Command is not a move command.");
+		return time::time_t::from_int(0);
+	}
+
+	auto resistor_id = command->get_target();
+	auto resistor = state->get_game_entity(resistor_id);
+
+	return ApplyEffect::apply_effect(entity, state, resistor, start_time);
+}
+
 
 const time::time_t ApplyEffect::apply_effect(const std::shared_ptr<gamestate::GameEntity> &effector,
                                              const std::shared_ptr<openage::gamestate::GameState> & /* state */,
