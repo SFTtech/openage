@@ -142,7 +142,7 @@ const time::time_t Activity::handle_subsystem(const time::time_t &start_time,
                                               system_id_t system_id) {
 	switch (system_id) {
 	case system_id_t::APPLY_EFFECT:
-		return ApplyEffect::apply_effect(entity, state, entity, start_time);
+		return ApplyEffect::apply_effect_command(entity, state, start_time);
 		break;
 	case system_id_t::IDLE:
 		return Idle::idle(entity, start_time);
