@@ -38,9 +38,9 @@ expansions      = []
   ]
 
   [AOC.targetmods.aoe2_base]
-  version         = "0.5.1"
+  version         = "0.6.0"
   versionstr      = "1.0c"
-  min_api_version = "0.5.0"
+  min_api_version = "0.6.0"
 
 
 [AOCDEMO]
@@ -63,9 +63,9 @@ expansions      = []
   blend     = ["data/blendomatic.dat"]
 
   [AOCDEMO.targetmods.trial_base]
-  version         = "0.5.1"
+  version         = "0.6.0"
   versionstr      = "Trial"
-  min_api_version = "0.5.0"
+  min_api_version = "0.6.0"
 
 
 [AOK]
@@ -145,9 +145,9 @@ expansions      = []
   ]
 
   [AOE1DE.targetmods.de1_base]
-  version         = "0.5.1"
+  version         = "0.6.0"
   versionstr      = "1.0a"
-  min_api_version = "0.5.0"
+  min_api_version = "0.6.0"
 
 
 [ROR]
@@ -185,9 +185,9 @@ expansions      = []
   ]
 
   [ROR.targetmods.aoe1_base]
-  version         = "0.5.1"
+  version         = "0.6.0"
   versionstr      = "1.0a"
-  min_api_version = "0.5.0"
+  min_api_version = "0.6.0"
 
 
 [HDEDITION]
@@ -229,9 +229,9 @@ expansions      = []
   ]
 
   [HDEDITION.targetmods.hd_base]
-  version         = "0.5.1"
+  version         = "0.6.0"
   versionstr      = "5.8"
-  min_api_version = "0.5.0"
+  min_api_version = "0.6.0"
 
 
 [AOE2DE]
@@ -278,9 +278,9 @@ expansions      = []
   ]
 
   [AOE2DE.targetmods.de2_base]
-  version         = "0.6.0"
+  version         = "0.7.0"
   versionstr      = "Update 118476+"
-  min_api_version = "0.5.0"
+  min_api_version = "0.6.0"
 
 
 [SWGB]
@@ -320,6 +320,6 @@ expansions      = ["SWGB_CC"]
   ]
 
   [SWGB.targetmods.swgb_base]
-  version         = "0.5.1"
+  version         = "0.6.0"
   versionstr      = "1.1-gog4"
-  min_api_version = "0.5.0"
+  min_api_version = "0.6.0"
