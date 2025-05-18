@@ -8,6 +8,7 @@
 #include <nyan/nyan.h>
 
 #include "datastructure/constexpr_map.h"
+#include "gamestate/activity/condition/ability_usable.h"
 #include "gamestate/activity/condition/command_in_queue.h"
 #include "gamestate/activity/condition/next_command.h"
 #include "gamestate/activity/condition/next_command_switch.h"
@@ -316,7 +317,9 @@ static const auto ACTIVITY_CONDITION_LOOKUP = datastructure::create_const_map<st
 	std::pair("engine.util.activity.condition.type.NextCommand",
               std::function(gamestate::activity::next_command)),
 	std::pair("engine.util.activity.condition.type.TargetInRange",
-              std::function(gamestate::activity::target_in_range)));
+              std::function(gamestate::activity::target_in_range)),
+	std::pair("engine.util.activity.condition.type.AbilityUsable",
+              std::function(gamestate::activity::component_enabled)));
 
 /**
  * Maps API activity event types to event primer functions.
