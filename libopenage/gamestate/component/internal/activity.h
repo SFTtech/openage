@@ -1,4 +1,4 @@
-// Copyright 2021-2024 the openage authors. See copying.md for legal info.
+// Copyright 2021-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -27,23 +27,26 @@ class Node;
 
 namespace component {
 
+/**
+ * Store the activity flow graph of a game entity.
+ */
 class Activity final : public InternalComponent {
 public:
 	/**
 	 * Creates a new activity component.
 	 *
 	 * @param loop Event loop that all events from the component are registered on.
-	 * @param start_activity Initial activity flow graph.
+	 * @param activity Activity flow graph.
 	 */
 	Activity(const std::shared_ptr<openage::event::EventLoop> &loop,
-	         const std::shared_ptr<activity::Activity> &start_activity);
+	         const std::shared_ptr<activity::Activity> &activity);
 
 	component_t get_type() const override;
 
 	/**
-	 * Get the initial activity.
+	 * Get the activity graph of the component.
 	 *
-	 * @return Initial activity.
+	 * @return Activity graph.
 	 */
 	const std::shared_ptr<activity::Activity> &get_start_activity() const;
 
@@ -51,35 +54,39 @@ public:
 	 * Get the node in the activity flow graph at a given time.
 	 *
 	 * @param time Time at which the node is requested.
-	 * @return Current node in the flow graph.
+	 *
+	 * @return Node in the flow graph.
 	 */
 	const std::shared_ptr<activity::Node> get_node(const time::time_t &time) const;
 
 	/**
-	 * Sets the current node in the activity flow graph at a given time.
+	 * Sets the node in the activity flow graph at a given time.
 	 *
 	 * @param time Time at which the node is set.
-	 * @param node Current node in the flow graph.
+	 * @param node Node in the flow graph.
 	 */
 	void set_node(const time::time_t &time,
 	              const std::shared_ptr<activity::Node> &node);
 
 	/**
-	 * Set the current node to the start node of the start activity.
+	 * Initialize the activity flow graph for the component at a given time.
 	 *
-	 * @param time Time at which the node is set.
+	 * This sets the current node at \p time to the start node of the activity graph.
+	 *
+	 * @param time Time at which the component is initialized.
 	 */
 	void init(const time::time_t &time);
 
 	/**
-	 * Add a scheduled event that is waited for to progress in the node graph.
+	 * Store a scheduled event that the activity system waits for to
+	 * progress in the node graph.
 	 *
 	 * @param event Event to add.
 	 */
 	void add_event(const std::shared_ptr<openage::event::Event> &event);
 
 	/**
-	 * Cancel all scheduled events.
+	 * Cancel all stored scheduled events.
 	 *
 	 * @param time Time at which the events are cancelled.
 	 */
@@ -87,7 +94,7 @@ public:
 
 private:
 	/**
-	 * Initial activity that encapsulates the entity's control flow graph.
+	 * Activity that encapsulates the entity's control flow graph.
 	 *
 	 * When a game entity is spawned, the activity system should advance in
 	 * this activity flow graph to initialize the entity's action state.
@@ -97,12 +104,12 @@ private:
 	std::shared_ptr<activity::Activity> start_activity;
 
 	/**
-	 * Current node in the activity flow graph.
+	 * Current active node in the activity flow graph over time.
 	 */
 	curve::Discrete<std::shared_ptr<activity::Node>> node;
 
 	/**
-	 * Scheduled events that are waited for to progress in the node graph.
+	 * Scheduled events that the actvity system waits for.
 	 */
 	std::vector<std::shared_ptr<openage::event::Event>> scheduled_events;
 };

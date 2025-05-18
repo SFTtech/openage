@@ -1,4 +1,4 @@
-// Copyright 2021-2024 the openage authors. See copying.md for legal info.
+// Copyright 2021-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -20,6 +20,11 @@ class EventLoop;
 
 namespace gamestate::component {
 
+/**
+ * Stores positional information about a game entity, i.e. location and
+ * direction.
+ *
+ */
 class Position final : public InternalComponent {
 public:
 	/**
