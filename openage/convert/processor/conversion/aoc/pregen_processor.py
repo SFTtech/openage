@@ -329,10 +329,10 @@ class AoCPregenSubprocessor:
         range_check_raw_api_object.add_raw_member("next",
                                                   [target_in_range_forward_ref],
                                                   xor_parent)
-        queue_clear_forward_ref = ForwardRef(pregen_converter_group,
-                                             "util.activity.types.Unit.ClearCommandQueue")
+        move_to_target_forward_ref = ForwardRef(pregen_converter_group,
+                                                "util.activity.types.Unit.MoveToTarget")
         range_check_raw_api_object.add_raw_member("default",
-                                                  queue_clear_forward_ref,
+                                                  move_to_target_forward_ref,
                                                   xor_parent)
 
         pregen_converter_group.add_raw_api_object(range_check_raw_api_object)
@@ -362,26 +362,51 @@ class AoCPregenSubprocessor:
             {target_in_range_ref_in_modpack: target_in_range_raw_api_object}
         )
 
-        # Clear command queue
-        clear_command_ref_in_modpack = "util.activity.types.Unit.ClearCommandQueue"
-        clear_command_raw_api_object = RawAPIObject(clear_command_ref_in_modpack,
-                                                    "ClearCommandQueue", api_objects)
-        clear_command_raw_api_object.set_location(unit_forward_ref)
-        clear_command_raw_api_object.add_raw_parent(task_parent)
+        # Move to target task
+        move_to_target_ref_in_modpack = "util.activity.types.Unit.MoveToTarget"
+        move_to_target_raw_api_object = RawAPIObject(move_to_target_ref_in_modpack,
+                                                     "MoveToTarget", api_objects)
+        move_to_target_raw_api_object.set_location(unit_forward_ref)
+        move_to_target_raw_api_object.add_raw_parent(task_parent)
 
-        clear_command_raw_api_object.add_raw_member("next",
-                                                    idle_forward_ref,
-                                                    task_parent)
-        clear_command_raw_api_object.add_raw_member(
+        wait_forward_ref = ForwardRef(pregen_converter_group,
+                                      "util.activity.types.Unit.WaitMoveToTarget")
+        move_to_target_raw_api_object.add_raw_member("next",
+                                                     wait_forward_ref,
+                                                     task_parent)
+        move_to_target_raw_api_object.add_raw_member(
             "task",
-            api_objects["engine.util.activity.task.type.ClearCommandQueue"],
+            api_objects["engine.util.activity.task.type.MoveToTarget"],
             task_parent
         )
 
-        pregen_converter_group.add_raw_api_object(clear_command_raw_api_object)
+        pregen_converter_group.add_raw_api_object(move_to_target_raw_api_object)
         pregen_nyan_objects.update(
-            {clear_command_ref_in_modpack: clear_command_raw_api_object}
+            {move_to_target_ref_in_modpack: move_to_target_raw_api_object}
         )
+
+        # Wait for MoveToTarget task (for movement to finish)
+        wait_ref_in_modpack = "util.activity.types.Unit.WaitMoveToTarget"
+        wait_raw_api_object = RawAPIObject(wait_ref_in_modpack,
+                                           "WaitMoveToTarget", api_objects)
+        wait_raw_api_object.set_location(unit_forward_ref)
+        wait_raw_api_object.add_raw_parent(xor_event_parent)
+
+        wait_finish = api_objects["engine.util.activity.event.type.WaitAbility"]
+        wait_command = api_objects["engine.util.activity.event.type.CommandInQueue"]
+        range_check_forward_ref = ForwardRef(pregen_converter_group,
+                                             "util.activity.types.Unit.RangeCheck")
+        branch_forward_ref = ForwardRef(pregen_converter_group,
+                                        "util.activity.types.Unit.BranchCommand")
+        wait_raw_api_object.add_raw_member("next",
+                                           {
+                                               wait_finish: range_check_forward_ref,
+                                               wait_command: branch_forward_ref
+                                           },
+                                           xor_event_parent)
+
+        pregen_converter_group.add_raw_api_object(wait_raw_api_object)
+        pregen_nyan_objects.update({wait_ref_in_modpack: wait_raw_api_object})
 
         # Apply effect
         apply_effect_ref_in_modpack = "util.activity.types.Unit.ApplyEffect"
@@ -391,7 +416,7 @@ class AoCPregenSubprocessor:
         apply_effect_raw_api_object.add_raw_parent(ability_parent)
 
         wait_forward_ref = ForwardRef(pregen_converter_group,
-                                      "util.activity.types.Unit.Wait")
+                                      "util.activity.types.Unit.WaitAbility")
         apply_effect_raw_api_object.add_raw_member("next", wait_forward_ref,
                                                    ability_parent)
         apply_effect_raw_api_object.add_raw_member(
@@ -411,7 +436,7 @@ class AoCPregenSubprocessor:
         move_raw_api_object.add_raw_parent(ability_parent)
 
         wait_forward_ref = ForwardRef(pregen_converter_group,
-                                      "util.activity.types.Unit.Wait")
+                                      "util.activity.types.Unit.WaitAbility")
         move_raw_api_object.add_raw_member("next", wait_forward_ref,
                                            ability_parent)
         move_raw_api_object.add_raw_member("ability",
@@ -421,8 +446,8 @@ class AoCPregenSubprocessor:
         pregen_converter_group.add_raw_api_object(move_raw_api_object)
         pregen_nyan_objects.update({move_ref_in_modpack: move_raw_api_object})
 
-        # Wait (for Move or Command)
-        wait_ref_in_modpack = "util.activity.types.Unit.Wait"
+        # Wait after ability usage (for Move/ApplyEffect or new command)
+        wait_ref_in_modpack = "util.activity.types.Unit.WaitAbility"
         wait_raw_api_object = RawAPIObject(wait_ref_in_modpack,
                                            "Wait", api_objects)
         wait_raw_api_object.set_location(unit_forward_ref)

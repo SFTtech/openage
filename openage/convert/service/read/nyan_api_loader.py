@@ -665,6 +665,13 @@ def _create_objects(api_objects: dict[str, NyanObject]) -> None:
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
+    # engine.util.activity.task.type.MoveToTarget
+    parents = [api_objects["engine.util.activity.task.Task"]]
+    nyan_object = NyanObject("MoveToTarget", parents)
+    fqon = "engine.util.activity.task.type.MoveToTarget"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
     # engine.util.activity.task.type.PopCommandQueue
     parents = [api_objects["engine.util.activity.task.Task"]]
     nyan_object = NyanObject("PopCommandQueue", parents)
