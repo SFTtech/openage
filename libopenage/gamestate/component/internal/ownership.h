@@ -1,4 +1,4 @@
-// Copyright 2021-2024 the openage authors. See copying.md for legal info.
+// Copyright 2021-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -19,6 +19,9 @@ class EventLoop;
 
 namespace gamestate::component {
 
+/**
+ * Stores ownership information of a game entity.
+ */
 class Ownership final : public InternalComponent {
 public:
 	/**
@@ -58,7 +61,7 @@ public:
 
 private:
 	/**
-	 * Owner ID storage over time.
+	 * ID of the entity owner over time.
 	 */
 	curve::Discrete<player_id_t> owner;
 };

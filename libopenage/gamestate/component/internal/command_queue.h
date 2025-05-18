@@ -23,6 +23,9 @@ class EventLoop;
 
 namespace gamestate::component {
 
+/**
+ * Stores commands for a game entity.
+ */
 class CommandQueue final : public InternalComponent {
 public:
 	/**
@@ -110,6 +113,8 @@ public:
 private:
 	/**
 	 * Command queue.
+	 *
+	 * Stores the commands received by the entity over time.
 	 */
 	curve::Queue<std::shared_ptr<command::Command>> command_queue;
 };

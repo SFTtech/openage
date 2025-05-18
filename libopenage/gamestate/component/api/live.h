@@ -21,6 +21,12 @@ class Segmented;
 } // namespace curve
 
 namespace gamestate::component {
+
+/**
+ * Stores runtime information for a Live ability of a game entity.
+ *
+ * Represents the ability of a game entity to have attributes, e.g. health, faith, etc.
+ */
 class Live final : public APIComponent {
 public:
 	using APIComponent::APIComponent;

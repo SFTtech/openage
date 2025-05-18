@@ -1,4 +1,4 @@
-// Copyright 2024-2024 the openage authors. See copying.md for legal info.
+// Copyright 2024-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -11,15 +11,30 @@
 namespace openage::gamestate::component {
 
 /**
- * Component for ApplyEffect abilities.
+ * Stores runtime information for an ApplyEffect ability of a game entity.
  */
 class ApplyEffect final : public APIComponent {
 public:
+	/**
+	 * Creates an ApplyEffect component.
+	 *
+	 * @param loop Event loop that all events from the component are registered on.
+	 * @param ability nyan ability object for the component.
+	 * @param creation_time Ingame creation time of the component.
+	 * @param enabled If true, enable the component at creation time.
+	 */
 	ApplyEffect(const std::shared_ptr<openage::event::EventLoop> &loop,
 	            nyan::Object &ability,
 	            const time::time_t &creation_time,
 	            bool enabled = true);
 
+	/**
+	 * Creates an ApplyEffect component.
+	 *
+	 * @param loop Event loop that all events from the component are registered on.
+	 * @param ability nyan ability object for the component.
+	 * @param enabled If true, enable the component at creation time.
+	 */
 	ApplyEffect(const std::shared_ptr<openage::event::EventLoop> &loop,
 	            nyan::Object &ability,
 	            bool enabled = true);
@@ -27,9 +42,12 @@ public:
 	component_t get_type() const override;
 
 	/**
-	 * Get the last initiaton time that is before the given \p time.
+	 * Get the last time an effect application was initiated that is before the given \p time.
 	 *
-	 * @param time Current simulation time.
+	 * This should be used to determine if the application of the effect is still
+	 * active and when the next application can be initiated.
+	 *
+	 * @param time Simulation time.
 	 *
 	 * @return Curve with the last initiation times.
 	 */
@@ -38,23 +56,28 @@ public:
 	/**
 	 * Get the last time the effects were applied before the given \p time.
 	 *
-	 * @param time Current simulation time.
+	 * This should be used to determine if the effects are under a cooldown, i.e.
+	 * to check if the effects can be applied again.
+	 *
+	 * @param time Simulation time.
 	 *
 	 * @return Curve with the last application times.
 	 */
 	const curve::Discrete<time::time_t> &get_last_used() const;
 
 	/**
-	 * Record the simulation time when the entity starts using the ability.
+	 * Record the simulation time when the entity initiates an effect application,
+	 * i.e. it starts using the ability.
 	 *
-	 * @param time Time at which the entity initiates using the ability.
+	 * @param time Time at which the entity starts using the ability.
 	 */
 	void set_init_time(const time::time_t &time);
 
 	/**
-	 * Record the simulation time when the entity last applied the effects.
+	 * Record the simulation time when the entity applies the effects
+	 * of the ability, i.e. init time + application delay.
 	 *
-	 * @param time Time at which the entity last applied the effects.
+	 * @param time Time at which the entity applies the effects.
 	 */
 	void set_last_used(const time::time_t &time);
 
