@@ -98,6 +98,7 @@ class AoCPregenSubprocessor:
 
         # Condition types
         condition_parent = "engine.util.activity.condition.Condition"
+        cond_ability_parent = "engine.util.activity.condition.type.AbilityUsable"
         cond_queue_parent = "engine.util.activity.condition.type.CommandInQueue"
         cond_target_parent = "engine.util.activity.condition.type.TargetInRange"
         cond_command_switch_parent = (
@@ -302,12 +303,12 @@ class AoCPregenSubprocessor:
         condition_raw_api_object.set_location(branch_forward_ref)
         condition_raw_api_object.add_raw_parent(cond_command_switch_parent)
 
-        range_check_forward_ref = ForwardRef(pregen_converter_group,
-                                             "util.activity.types.Unit.RangeCheck")
+        ability_check_forward_ref = ForwardRef(pregen_converter_group,
+                                               "util.activity.types.Unit.ApplyEffectUsableCheck")
         move_forward_ref = ForwardRef(pregen_converter_group,
                                       "util.activity.types.Unit.Move")
         next_nodes_lookup = {
-            api_objects["engine.util.command.type.ApplyEffect"]: range_check_forward_ref,
+            api_objects["engine.util.command.type.ApplyEffect"]: ability_check_forward_ref,
             api_objects["engine.util.command.type.Move"]: move_forward_ref,
         }
         condition_raw_api_object.add_raw_member("next",
@@ -316,6 +317,68 @@ class AoCPregenSubprocessor:
 
         pregen_converter_group.add_raw_api_object(condition_raw_api_object)
         pregen_nyan_objects.update({condition_ref_in_modpack: condition_raw_api_object})
+
+        # Ability usability gate
+        ability_check_ref_in_modpack = "util.activity.types.Unit.ApplyEffectUsableCheck"
+        ability_check_raw_api_object = RawAPIObject(ability_check_ref_in_modpack,
+                                                    "ApplyEffectUsableCheck", api_objects)
+        ability_check_raw_api_object.set_location(unit_forward_ref)
+        ability_check_raw_api_object.add_raw_parent(xor_parent)
+
+        condition_forward_ref = ForwardRef(pregen_converter_group,
+                                           "util.activity.types.Unit.ApplyEffectUsable")
+        ability_check_raw_api_object.add_raw_member("next",
+                                                    [condition_forward_ref],
+                                                    xor_parent)
+        pop_command_forward_ref = ForwardRef(pregen_converter_group,
+                                             "util.activity.types.Unit.PopCommand")
+        ability_check_raw_api_object.add_raw_member("default",
+                                                    pop_command_forward_ref,
+                                                    xor_parent)
+
+        pregen_converter_group.add_raw_api_object(ability_check_raw_api_object)
+        pregen_nyan_objects.update({ability_check_ref_in_modpack: ability_check_raw_api_object})
+
+        # Apply effect usability condition
+        apply_effect_ref_in_modpack = "util.activity.types.Unit.ApplyEffectUsable"
+        apply_effect_raw_api_object = RawAPIObject(apply_effect_ref_in_modpack,
+                                                   "ApplyEffectUsable", api_objects)
+        apply_effect_raw_api_object.set_location(unit_forward_ref)
+        apply_effect_raw_api_object.add_raw_parent(cond_ability_parent)
+
+        target_in_range_forward_ref = ForwardRef(pregen_converter_group,
+                                                 "util.activity.types.Unit.RangeCheck")
+        apply_effect_raw_api_object.add_raw_member("next",
+                                                   target_in_range_forward_ref,
+                                                   condition_parent)
+        apply_effect_raw_api_object.add_raw_member(
+            "ability",
+            api_objects["engine.ability.type.ApplyDiscreteEffect"],
+            cond_ability_parent
+        )
+
+        pregen_converter_group.add_raw_api_object(apply_effect_raw_api_object)
+        pregen_nyan_objects.update({apply_effect_ref_in_modpack: apply_effect_raw_api_object})
+
+        # Pop command task
+        pop_command_ref_in_modpack = "util.activity.types.Unit.PopCommand"
+        pop_command_raw_api_object = RawAPIObject(pop_command_ref_in_modpack,
+                                                  "PopCommand", api_objects)
+        pop_command_raw_api_object.set_location(unit_forward_ref)
+        pop_command_raw_api_object.add_raw_parent(task_parent)
+
+        idle_forward_ref = ForwardRef(pregen_converter_group,
+                                      "util.activity.types.Unit.Idle")
+        pop_command_raw_api_object.add_raw_member("next", idle_forward_ref,
+                                                  task_parent)
+        pop_command_raw_api_object.add_raw_member(
+            "task",
+            api_objects["engine.util.activity.task.type.PopCommandQueue"],
+            task_parent
+        )
+
+        pregen_converter_group.add_raw_api_object(pop_command_raw_api_object)
+        pregen_nyan_objects.update({pop_command_ref_in_modpack: pop_command_raw_api_object})
 
         # Target in range gate
         range_check_ref_in_modpack = "util.activity.types.Unit.RangeCheck"
