@@ -51,8 +51,6 @@ of the specific entity can be accessed via the `GameEntity` object's `get_compon
 
 ## Component Data Storage
 
-For a description of the available components, check the [component reference](components.md).
-
 ![Component class UML](images/component_uml.svg)
 
 Components are data storage objects for a game entity that also perform the dual role
@@ -129,19 +127,6 @@ be as configurable as possible. One could also think of activities as a behaviou
 where paths are taken based on the inputs a game entity receives. The architecture
 of the activity control flow is described in more detail in the
 [activity control flow documentation](activity.md).
-
-A game entity's current activity state is stored in its `Activity` component. This component
-holds a reference to the activity node graph used by the entity as well as the
-last visited node. This node describes which action/behavioural state the
-game entity currently is in.
-
-Advancement to the next node can be initiated in several ways, depending on the
-[node type](activity.md#node-types) of the current node.
-It can happen automatically or be triggered by an event. In the latter case,
-the event is handled by the `GameEntityManager` which calls an activity *system*
-that processes the event to choose the next node.
-
-![Activity Workflow](images/activity_workflow.png)
 
 
 ### Manager

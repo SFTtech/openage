@@ -1,4 +1,4 @@
-// Copyright 2024-2024 the openage authors. See copying.md for legal info.
+// Copyright 2024-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -8,6 +8,12 @@
 
 namespace openage::gamestate::component {
 
+/**
+ * Stores information about the resistances of a game entity.
+ *
+ * Used together with the ApplyEffect component to allow interactions
+ * between game entities via effects.
+ */
 class Resistance final : public APIComponent {
 public:
 	using APIComponent::APIComponent;
