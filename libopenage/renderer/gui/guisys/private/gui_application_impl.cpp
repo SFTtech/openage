@@ -35,9 +35,7 @@ GuiApplicationImpl::~GuiApplicationImpl() {
 
 void GuiApplicationImpl::processEvents() {
 	assert(std::this_thread::get_id() == this->owner);
-#ifndef __APPLE__
 	this->app.processEvents();
-#endif
 }
 
 namespace {
