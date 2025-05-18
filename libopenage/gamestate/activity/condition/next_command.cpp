@@ -18,11 +18,11 @@ bool next_command(const time::time_t &time,
 	auto command_queue = std::dynamic_pointer_cast<component::CommandQueue>(
 		entity->get_component(component::component_t::COMMANDQUEUE));
 
-	if (command_queue->get_queue().empty(time)) {
+	if (command_queue->get_commands().empty(time)) {
 		return false;
 	}
 
-	auto queue_command = command_queue->get_queue().front(time);
+	auto queue_command = command_queue->get_commands().front(time);
 
 	auto compare_command = condition->get<nyan::ObjectValue>("NextCommand.command");
 	auto compare_type = api::COMMAND_LOOKUP.get(compare_command->get_name());

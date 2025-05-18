@@ -15,11 +15,11 @@ int next_command_switch(const time::time_t &time,
 	auto command_queue = std::dynamic_pointer_cast<component::CommandQueue>(
 		entity->get_component(component::component_t::COMMANDQUEUE));
 
-	if (command_queue->get_queue().empty(time)) {
+	if (command_queue->get_commands().empty(time)) {
 		return -1;
 	}
 
-	auto command = command_queue->get_queue().front(time);
+	auto command = command_queue->get_commands().front(time);
 
 	return static_cast<int>(command->get_type());
 }
