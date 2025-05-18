@@ -303,7 +303,9 @@ static const auto ACTIVITY_TASK_SYSTEM_LOOKUP = datastructure::create_const_map<
 	std::pair("engine.util.activity.task.type.ClearCommandQueue",
               system::system_id_t::CLEAR_COMMAND_QUEUE),
 	std::pair("engine.util.activity.task.type.PopCommandQueue",
-              system::system_id_t::POP_COMMAND_QUEUE));
+              system::system_id_t::POP_COMMAND_QUEUE),
+	std::pair("engine.util.activity.task.type.MoveToTarget",
+              system::system_id_t::MOVE_TARGET));
 
 /**
  * Maps API activity condition types to engine condition types.
