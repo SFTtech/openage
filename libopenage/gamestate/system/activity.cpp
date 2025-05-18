@@ -153,10 +153,6 @@ const time::time_t Activity::handle_subsystem(const time::time_t &start_time,
 	case system_id_t::MOVE_TARGET:
 		return Move::move_target(entity, state, start_time);
 		break;
-	case system_id_t::MOVE_DEFAULT:
-		// TODO: replace destination value with a parameter
-		return Move::move_default(entity, state, {1, 1, 1}, start_time);
-		break;
 	case system_id_t::CLEAR_COMMAND_QUEUE:
 		return CommandQueue::clear_queue(entity, start_time);
 		break;

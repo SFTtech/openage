@@ -44,6 +44,7 @@ public:
 	                                      const std::shared_ptr<openage::gamestate::GameState> &state,
 	                                      const time::time_t &start_time);
 
+private:
 	/**
 	 * Move a game entity to a destination.
 	 *
