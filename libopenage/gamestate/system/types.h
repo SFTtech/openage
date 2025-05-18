@@ -18,7 +18,6 @@ enum class system_id_t {
 
 	MOVE_COMMAND,
 	MOVE_TARGET,
-	MOVE_DEFAULT,
 
 	ACTIVITY_ADVANCE,
 
