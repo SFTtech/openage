@@ -48,16 +48,35 @@ public:
 	 *
 	 * @return Command queue.
 	 */
-	curve::Queue<std::shared_ptr<command::Command>> &get_queue();
+	const curve::Queue<std::shared_ptr<command::Command>> &get_commands();
 
 	/**
-	 * Get the command in the front of the queue.
+	 * Clear all commands in the queue.
+	 *
+	 * @param time Time at which the queue is cleared.
+	 */
+	void clear(const time::time_t &time);
+
+	/**
+	 * Get the command in the front of the queue and remove it.
+	 *
+	 * Unlike curve::Queue::front(), calling this on an empty queue is
+	 * not undefined behavior.
+	 *
+	 * @param time Time at which the command is popped.
+	 *
+	 * @return Command in the front of the queue or nullptr if the queue is empty.
+	 */
+	const std::shared_ptr<command::Command> pop(const time::time_t &time);
+
+	/**
+	 * get the command at the front of the queue.
 	 *
 	 * @param time Time at which the command is retrieved.
 	 *
 	 * @return Command in the front of the queue or nullptr if the queue is empty.
 	 */
-	const std::shared_ptr<command::Command> pop_command(const time::time_t &time);
+	const std::shared_ptr<command::Command> front(const time::time_t &time) const;
 
 	/**
 	 * Target type with several possible representations.
@@ -70,54 +89,20 @@ public:
 	using optional_target_t = std::optional<std::variant<coord::phys3, entity_id_t>>;
 
 	/**
-	 * Get the targets of the entity over time.
+	 * Get the target of the entity at the given time.
 	 *
-	 * @return Targets over time.
+	 * The target may be empty if the command queue is empty or if the command
+	 * has no target.
+	 *
+	 * @return Target of the entity.
 	 */
-	curve::Discrete<optional_target_t> &get_target();
-
-	/**
-	 * Set the target of the entity to a position in the game world.
-	 *
-	 * All target after \p time are deleted.
-	 *
-	 * @param time Time at which the target is set.
-	 * @param target Target position in the game world.
-	 */
-	void set_target(const time::time_t &time, const coord::phys3 &target);
-
-	/**
-	 * Set the target of the entity to another entity.
-	 *
-	 * All targets after \p time are deleted.
-	 *
-	 * @param time Time at which the target is set.
-	 * @param target Target entity ID.
-	 */
-	void set_target(const time::time_t &time, const entity_id_t target);
-
-	/**
-	 * Set the target of the entity to nothing.
-	 *
-	 * All targets after \p time are deleted.
-	 *
-	 * @param time Time at which the target is cleared.
-	 */
-	void clear_target(const time::time_t &time);
+	optional_target_t get_target(const time::time_t &time) const;
 
 private:
 	/**
 	 * Command queue.
 	 */
 	curve::Queue<std::shared_ptr<command::Command>> command_queue;
-
-	/**
-	 * Target of the entity.
-	 *
-	 * TODO: We could also figure out the target via the commands. Then we
-	 *       don't need to store the target separately.
-	 */
-	curve::Discrete<optional_target_t> target;
 };
 
 } // namespace gamestate::component

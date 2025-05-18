@@ -70,6 +70,8 @@ public:
 	 *
 	 * Ignores dead elements.
 	 *
+	 * Note: Calling this function on an empty queue is undefined behavior.
+	 *
 	 * @param time The time to get the element at.
 	 *
 	 * @return Queue element.
@@ -95,6 +97,8 @@ public:
 	 * queue.
 	 *
 	 * Ignores dead elements.
+	 *
+	 * Note: Calling this function on an empty queue is undefined behavior.
 	 *
 	 * @param time The time to get the element at.
 	 * @param value Queue element.

@@ -25,7 +25,7 @@ bool target_in_range(const time::time_t &time,
 
 	auto command_queue = std::dynamic_pointer_cast<gamestate::component::CommandQueue>(
 		entity->get_component(component::component_t::COMMANDQUEUE));
-	auto target = command_queue->get_target().get(time);
+	auto target = command_queue->get_target(time);
 
 	if (not target.has_value()) {
 		// No target exists, exit early
