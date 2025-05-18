@@ -15,7 +15,7 @@ bool command_in_queue(const time::time_t &time,
 	auto command_queue = std::dynamic_pointer_cast<component::CommandQueue>(
 		entity->get_component(component::component_t::COMMANDQUEUE));
 
-	return not command_queue->get_queue().empty(time);
+	return not command_queue->get_commands().empty(time);
 }
 
 } // namespace openage::gamestate::activity
