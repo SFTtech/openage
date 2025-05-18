@@ -1,7 +1,8 @@
-// Copyright 2019-2025 the openage authors. See copying.md for legal info.
+// Copyright 2019-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
+#include "curve/concept.h"
 #include "time/time.h"
 #include "util/fixed_point.h"
 
@@ -15,7 +16,7 @@ namespace openage::curve {
  * If you change this class, remember to update the gdb pretty printers
  * in etc/gdb_pretty/printers.py.
  */
-template <typename T>
+template <KeyframeValueLike T>
 class Keyframe {
 public:
 	/**

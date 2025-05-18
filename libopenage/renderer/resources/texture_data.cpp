@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2025 the openage authors. See copying.md for legal info.
 
 #include "texture_data.h"
 
@@ -153,10 +153,6 @@ const uint8_t *Texture2dData::get_data() const {
 void Texture2dData::store(const util::Path &file) const {
 	log::log(MSG(info) << "Saving texture data to " << file);
 
-	if (this->info.get_format() != pixel_format::rgba8) {
-		throw Error(MSG(err) << "Storing 2D textures into files is unimplemented. PRs welcome :D");
-	}
-
 	auto size = this->info.get_size();
 
 	QImage::Format pix_fmt;
@@ -171,8 +167,11 @@ void Texture2dData::store(const util::Path &file) const {
 	case pixel_format::rgba8:
 		pix_fmt = QImage::Format_RGBA8888;
 		break;
+	case pixel_format::r32ui:
+		pix_fmt = QImage::Format_RGBA8888;
+		break;
 	default:
-		throw Error(MSG(err) << "Texture uses an unsupported format.");
+		throw Error(MSG(err) << "Texture uses an unsupported format for storing. PRs welcome :D");
 	}
 
 	QImage image{this->data.data(), size.first, size.second, pix_fmt};

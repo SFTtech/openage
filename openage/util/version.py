@@ -1,4 +1,4 @@
-# Copyright 2024-2024 the openage authors. See copying.md for legal info.
+# Copyright 2024-2025 the openage authors. See copying.md for legal info.
 
 """
 Handling of version information for openage.
@@ -36,26 +36,30 @@ class SemanticVersion:
         self.buildmetadata = match.group("buildmetadata")
 
     def __lt__(self, other: SemanticVersion) -> bool:
-        if self.major < other.major:
-            return True
-        if self.minor < other.minor:
-            return True
-        if self.patch < other.patch:
-            return True
+        if self.major != other.major:
+            return self.major < other.major
 
+        if self.minor != other.minor:
+            return self.minor < other.minor
+
+        if self.patch != other.patch:
+            return self.patch < other.patch
+
+        # else: versions are equal
         return False
 
     def __le__(self, other: SemanticVersion) -> bool:
-        if self.major <= other.major:
-            return True
+        if self.major != other.major:
+            return self.major < other.major
 
-        if self.minor <= other.minor:
-            return True
+        if self.minor != other.minor:
+            return self.minor < other.minor
 
-        if self.patch <= other.patch:
-            return True
+        if self.patch != other.patch:
+            return self.patch < other.patch
 
-        return False
+        # else: versions are equal
+        return True
 
     def __eq__(self, other: SemanticVersion) -> bool:
         return (self.major == other.major and

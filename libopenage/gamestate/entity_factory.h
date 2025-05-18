@@ -1,4 +1,4 @@
-// Copyright 2023-2024 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -7,6 +7,7 @@
 
 #include <nyan/nyan.h>
 
+#include "gamestate/definitions.h"
 #include "gamestate/types.h"
 
 
@@ -119,12 +120,12 @@ private:
 	/**
 	 * ID of the next game entity to be created.
 	 */
-	entity_id_t next_entity_id;
+	entity_id_t next_entity_id = GAME_ENTITY_ID_START;
 
 	/**
 	 * ID of the next player to be created.
 	 */
-	player_id_t next_player_id;
+	player_id_t next_player_id = PLAYER_ID_START;
 
 	/**
 	 * Factory for creating connector objects to the renderer which make game entities displayable.
