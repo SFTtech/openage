@@ -111,6 +111,11 @@ private:
 	util::Path root_dir;
 
 	/**
+	 * Window settings
+	 */ 
+	const renderer::window_settings window_settings;
+
+	/**
 	 * The threads used by the engine.
 	 */
 	std::vector<std::jthread> threads;

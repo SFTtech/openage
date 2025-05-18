@@ -20,6 +20,7 @@ Engine::Engine(mode mode,
 	running{true},
 	run_mode{mode},
 	root_dir{root_dir},
+	window_settings{window_settings},
 	threads{} {
 	log::log(INFO
 	         << "launching engine with root directory"
@@ -53,30 +54,39 @@ Engine::Engine(mode mode,
 		this->time_loop.reset();
 	});
 
-	// if presenter is used, run it in a separate thread
-	if (this->run_mode == mode::FULL) {
-		this->threads.emplace_back([&]() {
-			this->presenter->run(window_settings);
-
-			// Make sure that the presenter gets destructed in the same thread
-			// otherwise OpenGL complains about missing contexts
-			this->presenter.reset();
-			this->running = false;
-		});
-	}
-
 	log::log(INFO << "Using " << this->threads.size() + 1 << " threads "
 	              << "(" << std::jthread::hardware_concurrency() << " available)");
 }
 
 void Engine::loop() {
-	// Run the main game simulation loop:
-	this->simulation->run();
 
-	// After stopping, clean up the simulation
-	this->simulation.reset();
-	if (this->run_mode != mode::FULL) {
+	// if presenter is used, run the simulation in a separate thread
+	if (this->run_mode == mode::FULL) {
+
+		this->threads.emplace_back([&]() {
+			// Run the main game simulation loop:
+			this->simulation->run();
+			// After stopping, clean up the simulation
+			this->simulation.reset();
+			if (this->run_mode != mode::FULL) {
+				this->running = false;
+			}
+		});
+
+		this->presenter->run(this->window_settings);
+		// Make sure that the presenter gets destructed in the same thread
+		// otherwise OpenGL complains about missing contexts
+		this->presenter.reset();
 		this->running = false;
+	}
+	else {
+		// Run the main game simulation loop:
+		this->simulation->run();
+		// After stopping, clean up the simulation
+		this->simulation.reset();
+		if (this->run_mode != mode::FULL) {
+			this->running = false;
+		}
 	}
 }
 
