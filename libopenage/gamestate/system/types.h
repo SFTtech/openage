@@ -17,6 +17,7 @@ enum class system_id_t {
 	IDLE,
 
 	MOVE_COMMAND,
+	MOVE_TARGET,
 	MOVE_DEFAULT,
 
 	ACTIVITY_ADVANCE,
