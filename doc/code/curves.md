@@ -316,7 +316,7 @@ keyframe. `sync(Curve, t)` also supports compression with a flag `compress` pass
 an argument.
 
 Compression may be used in cases where the size should be kept small, e.g. when the curve
-is tranferred via network or recorded in a replay file. Another application of compression
+is transferred via network or recorded in a replay file. Another application of compression
 is in the [renderer](/doc/code/renderer/README.md) for the discrete curves storing an object's
 animations. Since compression removes redundant animation entries, the renderer can determine
 when the current animation has started much easier as this is then returned by the keyframe
