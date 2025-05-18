@@ -75,7 +75,7 @@ void node_types() {
 		// Check that the node throws errors for invalid output IDs
 		TESTTHROWS(task_system_node->next(999));
 
-		auto sytem_id = system::system_id_t::MOVE_DEFAULT;
+		auto sytem_id = system::system_id_t::IDLE;
 		task_system_node->set_system_id(sytem_id);
 
 		// Check the system ID
