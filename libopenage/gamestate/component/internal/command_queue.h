@@ -35,12 +35,21 @@ public:
 	component_t get_type() const override;
 
 	/**
-	 * Adds a command to the queue.
+	 * Append a command to the queue.
 	 *
-	 * @param time Time at which the command is added.
+	 * @param time Time at which the command is appended.
 	 * @param command New command.
 	 */
 	void add_command(const time::time_t &time,
+	                 const std::shared_ptr<command::Command> &command);
+
+	/**
+	 * Clear the queue and set the front command.
+	 *
+	 * @param time Time at which the command is set.
+	 * @param command New command.
+	 */
+	void set_command(const time::time_t &time,
 	                 const std::shared_ptr<command::Command> &command);
 
 	/**
