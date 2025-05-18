@@ -12,8 +12,10 @@
 #include "gamestate/component/api/apply_effect.h"
 #include "gamestate/component/api/live.h"
 #include "gamestate/component/api/resistance.h"
+#include "gamestate/component/api/turn.h"
 #include "gamestate/component/internal/command_queue.h"
 #include "gamestate/component/internal/commands/apply_effect.h"
+#include "gamestate/component/internal/position.h"
 #include "gamestate/component/types.h"
 #include "gamestate/game_entity.h"
 #include "gamestate/game_state.h"
@@ -45,6 +47,45 @@ const time::time_t ApplyEffect::apply_effect(const std::shared_ptr<gamestate::Ga
                                              const std::shared_ptr<openage::gamestate::GameState> & /* state */,
                                              const std::shared_ptr<gamestate::GameEntity> &resistor,
                                              const time::time_t &start_time) {
+	time::time_t total_time = 0;
+
+	// rotate towards resistor
+	auto turn_component_effector = std::dynamic_pointer_cast<component::Turn>(
+		effector->get_component(component::component_t::TURN));
+	auto turn_ability = turn_component_effector->get_ability();
+	auto turn_speed = turn_ability.get<nyan::Float>("Turn.turn_speed");
+
+	auto pos_component_effector = std::dynamic_pointer_cast<component::Position>(
+		effector->get_component(component::component_t::POSITION));
+	auto pos_component_resistor = std::dynamic_pointer_cast<component::Position>(
+		resistor->get_component(component::component_t::POSITION));
+	auto effector_pos = pos_component_effector->get_positions().get(start_time);
+	auto resistor_pos = pos_component_resistor->get_positions().get(start_time);
+	auto effector_angle = pos_component_effector->get_angles().get(start_time);
+
+	auto path_vector = resistor_pos - effector_pos;
+	auto path_angle = path_vector.to_angle();
+
+	if (not turn_speed->is_infinite_positive()) {
+		auto angle_diff = path_angle - effector_angle;
+		if (angle_diff < 0) {
+			// get the positive difference
+			angle_diff = angle_diff * -1;
+		}
+		if (angle_diff > 180) {
+			// always use the smaller angle
+			angle_diff = angle_diff - 360;
+			angle_diff = angle_diff * -1;
+		}
+
+		double turn_time = angle_diff.to_double() / turn_speed->get();
+		total_time += turn_time;
+
+		// TODO: Delay application of effect until the turn is finished
+	}
+	pos_component_effector->set_angle(start_time + total_time, path_angle);
+
+	// start applications
 	auto effects_component = std::dynamic_pointer_cast<component::ApplyEffect>(
 		effector->get_component(component::component_t::APPLY_EFFECT));
 	auto effect_ability = effects_component->get_ability();
@@ -92,8 +133,7 @@ const time::time_t ApplyEffect::apply_effect(const std::shared_ptr<gamestate::Ga
 		resistances[resistance_type].push_back(resistance_obj);
 	}
 
-	time::time_t total_time = 0;
-
+	// application time
 	// TODO: Check if delay is necessary
 	auto delay = effect_ability.get_float("ApplyDiscreteEffect.application_delay");
 	auto reload_time = effect_ability.get_float("ApplyDiscreteEffect.reload_time");
