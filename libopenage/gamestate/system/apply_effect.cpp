@@ -27,7 +27,7 @@ const time::time_t ApplyEffect::apply_effect_command(const std::shared_ptr<games
 	auto command_queue = std::dynamic_pointer_cast<component::CommandQueue>(
 		entity->get_component(component::component_t::COMMANDQUEUE));
 	auto command = std::dynamic_pointer_cast<component::command::ApplyEffect>(
-		command_queue->pop_command(start_time));
+		command_queue->pop(start_time));
 
 	if (not command) [[unlikely]] {
 		log::log(MSG(warn) << "Command is not a move command.");
