@@ -24,6 +24,12 @@ void CommandQueue::add_command(const time::time_t &time,
 	this->command_queue.insert(time, command);
 }
 
+void CommandQueue::set_command(const time::time_t &time,
+                               const std::shared_ptr<command::Command> &command) {
+	this->command_queue.clear(time);
+	this->command_queue.insert(time, command);
+}
+
 const curve::Queue<std::shared_ptr<command::Command>> &CommandQueue::get_commands() {
 	return this->command_queue;
 }
