@@ -31,14 +31,14 @@ namespace activity {
  *
  * @param time Time when the condition is checked.
  * @param entity Game entity that the activity is assigned to.
- * @param api_object nyan object for the condition. Used to read the command type.
+ * @param condition nyan object for the condition. Used to read the ability reference.
  *
  * @return true if the target is within range of the ability, false otherwise.
  */
 bool target_in_range(const time::time_t &time,
                      const std::shared_ptr<gamestate::GameEntity> &entity,
                      const std::shared_ptr<gamestate::GameState> &state,
-                     const std::shared_ptr<nyan::Object> &api_object);
+                     const std::shared_ptr<nyan::Object> &condition);
 
 } // namespace activity
 } // namespace openage::gamestate
