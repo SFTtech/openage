@@ -22,7 +22,12 @@ namespace system {
 class ApplyEffect {
 public:
 	/**
-	 * Apply the effect of an ability from a command.
+	 * Apply the effect of an ability from a command fetched from the command queue.
+	 *
+	 * The front command in the command queue is expected to be of type `ApplyEffect`. If
+	 * not, the command is ignored and a runtime of 0 is returned.
+	 *
+	 * Consumes (pops) the front command from the command queue.
 	 *
 	 * @param entity Game entity applying the effects.
 	 * @param state Game state.
@@ -34,8 +39,17 @@ public:
 	                                               const std::shared_ptr<openage::gamestate::GameState> &state,
 	                                               const time::time_t &start_time);
 
+private:
 	/**
-	 * Apply the effect of an ability to a game entity.
+	 * Apply the effect of an ability of one game entity (\p effector) to another
+	 * game entity (\p resistor).
+	 *
+	 * The effector requires an enabled `ApplyEffect` and `Turn` component.
+	 * The entity requires an enabled `Resistance` component.
+	 *
+	 * The effector takes the following actions:
+	 * - Rotate towards the resistor.
+	 * - Apply the effects of the ability to the resistor.
 	 *
 	 * @param effector Game entity applying the effects.
 	 * @param state Game state.
@@ -49,13 +63,12 @@ public:
 	                                       const std::shared_ptr<gamestate::GameEntity> &resistor,
 	                                       const time::time_t &start_time);
 
-private:
 	/**
 	 * Get the gross applied value for discrete FlatAttributeChange effects.
 	 *
 	 * The gross applied value is calculated as follows:
 	 *
-	 *    applied_value = clamp(change_value - block_value, min_change, max_change)
+	 *     applied_value = clamp(change_value - block_value, min_change, max_change)
 	 *
 	 * Effects and resistances MUST have the same attribute change type.
 	 *
