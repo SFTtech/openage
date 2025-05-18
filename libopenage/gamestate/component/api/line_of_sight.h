@@ -1,4 +1,4 @@
-// Copyright 2024-2024 the openage authors. See copying.md for legal info.
+// Copyright 2024-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -8,6 +8,9 @@
 
 namespace openage::gamestate::component {
 
+/**
+ * Stores the line of sight information of a game entity.
+ */
 class LineOfSight final : public APIComponent {
 public:
 	using APIComponent::APIComponent;
