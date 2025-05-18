@@ -532,6 +532,13 @@ def _create_objects(api_objects: dict[str, NyanObject]) -> None:
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
+    # engine.util.activity.condition.type.AbilityUsable
+    parents = [api_objects["engine.util.activity.condition.Condition"]]
+    nyan_object = NyanObject("AbilityUsable", parents)
+    fqon = "engine.util.activity.condition.type.AbilityUsable"
+    nyan_object.set_fqon(fqon)
+    api_objects.update({fqon: nyan_object})
+
     # engine.util.activity.condition.type.CommandInQueue
     parents = [api_objects["engine.util.activity.condition.Condition"]]
     nyan_object = NyanObject("CommandInQueue", parents)
@@ -3339,6 +3346,14 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
 
     member_type = NyanMemberType(api_objects["engine.util.activity.node.Node"])
     member = NyanMember("next", member_type, None, None, 0)
+    api_object.add_member(member)
+
+    # engine.util.activity.condition.type.AbilityUsable
+    api_object = api_objects["engine.util.activity.condition.type.AbilityUsable"]
+
+    subtype = NyanMemberType(api_objects["engine.ability.Ability"])
+    member_type = NyanMemberType(MemberType.ABSTRACT, (subtype,))
+    member = NyanMember("ability", member_type, None, None, 0)
     api_object.add_member(member)
 
     # engine.util.activity.condition.type.NextCommand
