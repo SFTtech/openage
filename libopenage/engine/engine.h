@@ -100,6 +100,12 @@ public:
 	bool running;
 
 private:
+
+	/**
+	 * Run the simulation loop
+	 */
+	void loop_simulation();
+
 	/**
 	 * The run mode to use.
 	 */

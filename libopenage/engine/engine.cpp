@@ -64,30 +64,30 @@ void Engine::loop() {
 	if (this->run_mode == mode::FULL) {
 
 		this->threads.emplace_back([&]() {
-			// Run the main game simulation loop:
-			this->simulation->run();
-			// After stopping, clean up the simulation
-			this->simulation.reset();
-			if (this->run_mode != mode::FULL) {
-				this->running = false;
-			}
+			this->loop_simulation();
 		});
 
 		this->presenter->run(this->window_settings);
+		log::log(MSG(info) << "presenter exited");
 		// Make sure that the presenter gets destructed in the same thread
 		// otherwise OpenGL complains about missing contexts
 		this->presenter.reset();
 		this->running = false;
 	}
 	else {
-		// Run the main game simulation loop:
-		this->simulation->run();
-		// After stopping, clean up the simulation
-		this->simulation.reset();
-		if (this->run_mode != mode::FULL) {
-			this->running = false;
-		}
+		this->loop_simulation();
 	}
+}
+
+void Engine::loop_simulation() {
+	// Run the main game simulation loop:
+	this->simulation->run();
+	// After stopping, clean up the simulation
+	this->simulation.reset();
+	if (this->run_mode != mode::FULL) {
+		this->running = false;
+	}
+
 }
 
 } // namespace openage::engine
