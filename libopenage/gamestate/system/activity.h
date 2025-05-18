@@ -1,4 +1,4 @@
-// Copyright 2023-2024 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -26,6 +26,9 @@ class Activity {
 public:
 	/**
 	 * Advance in the activity flow graph of the game entity.
+	 *
+	 * Visits and executes actions for the current node until a node that
+	 * requires an event to be triggered is reached.
 	 *
 	 * @param start_time Start time of change.
 	 * @param entity Game entity.

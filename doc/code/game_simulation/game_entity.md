@@ -7,6 +7,7 @@ Game entities represent objects inside the game world.
 3. [Component Data Storage](#component-data-storage)
 4. [Control Flow](#control-flow)
    1. [System](#system)
+      1. [System Types](#system-types)
    2. [Activities](#activities)
    3. [Manager](#manager)
 
@@ -88,8 +89,6 @@ make the game logic maintanable and extensible.
 
 ### System
 
-For a description of the available systems, check the [system reference](systems.md).
-
 A *system* in openage is basically a function that operates on game entity
 components. They are explicitely separated from game entity and component objects
 to allow for more flexible implementation. In practice, systems are implemented as static
@@ -107,6 +106,16 @@ be avoided at all cost, i.e. a system should never call another system directly.
 Exceptions should only be made for direct subsystems implementing subroutines
 or to avoid code redundancies. The reasoning behind this is that dependencies
 between systems may quickly become unmanageable.
+
+#### System Types
+
+| Type           | Description                                |
+| -------------- | ------------------------------------------ |
+| `Activity`     | Handle control flow in the activity graph  |
+| `ApplyEffect`  | Use the `ApplyEffect` ability of an entity |
+| `CommandQueue` | Control the command queue on an entity     |
+| `Idle`         | Use the `Idle` ability of an entity        |
+| `Move`         | Use the `Move` ability of an entity        |
 
 
 ### Activities
