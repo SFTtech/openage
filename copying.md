@@ -167,6 +167,7 @@ _the openage authors_ are:
 | Jordan Sutton               | jsutCodes                   | jsutcodes à gmail dawt com                        |
 | Daniel Wieczorek            | Danio                       | danielwieczorek96 à gmail dawt com                |
 |                             | bytegrrrl                   | bytegrrrl à proton dawt me                        |
+| Andreas Hellström           | Skosulor                    | andreas dawt ohman à gmail dawt com               |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
