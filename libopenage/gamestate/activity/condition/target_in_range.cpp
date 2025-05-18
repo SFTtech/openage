@@ -21,7 +21,7 @@ bool target_in_range(const time::time_t &time,
                      const std::shared_ptr<gamestate::GameEntity> &entity,
                      const std::shared_ptr<gamestate::GameState> &state,
                      const std::shared_ptr<nyan::Object> &condition) {
-	log::log(DBG << "Checking TargetInRange cvondition for entity " << entity->get_id());
+	log::log(DBG << "Checking TargetInRange condition for entity " << entity->get_id());
 
 	auto command_queue = std::dynamic_pointer_cast<gamestate::component::CommandQueue>(
 		entity->get_component(component::component_t::COMMANDQUEUE));

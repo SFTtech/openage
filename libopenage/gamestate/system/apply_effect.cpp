@@ -30,7 +30,7 @@ const time::time_t ApplyEffect::apply_effect_command(const std::shared_ptr<games
 		command_queue->pop(start_time));
 
 	if (not command) [[unlikely]] {
-		log::log(MSG(warn) << "Command is not a move command.");
+		log::log(MSG(warn) << "Command is not a apply effect command.");
 		return time::time_t::from_int(0);
 	}
 
