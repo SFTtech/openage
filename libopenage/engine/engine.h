@@ -112,7 +112,7 @@ private:
 
 	/**
 	 * Window settings
-	 */ 
+	 */
 	const renderer::window_settings window_settings;
 
 	/**
