@@ -119,7 +119,7 @@ void GUI::resize(size_t width, size_t height) {
 		auto fbo = renderer->create_texture_target({output_texture});
 
 		// pass the new texture to shader uniform
-		this->texture_unif->update("texture", this->texture);
+		this->texture_unif->update("texture_", this->texture);
 
 		this->render_pass->set_target(fbo);
 	}
