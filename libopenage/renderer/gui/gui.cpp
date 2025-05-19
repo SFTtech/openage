@@ -87,7 +87,7 @@ void GUI::initialize_render_pass(size_t width,
 		resources::Texture2dInfo(width, height, resources::pixel_format::rgba8));
 	auto fbo = this->renderer->create_texture_target({output_texture});
 
-	this->texture_unif = maptex_shader->new_uniform_input("texture", this->texture);
+	this->texture_unif = maptex_shader->new_uniform_input("texture_", this->texture);
 	Renderable display_obj{
 		this->texture_unif,
 		quad,
