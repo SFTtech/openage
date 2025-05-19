@@ -1,4 +1,4 @@
-// Copyright 2023-2024 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -100,6 +100,12 @@ public:
 	bool running;
 
 private:
+
+	/**
+	 * Run the simulation loop
+	 */
+	void loop_simulation();
+
 	/**
 	 * The run mode to use.
 	 */
@@ -109,6 +115,11 @@ private:
 	 * openage root directory.
 	 */
 	util::Path root_dir;
+
+	/**
+	 * Window settings
+	 */
+	const renderer::window_settings window_settings;
 
 	/**
 	 * The threads used by the engine.
