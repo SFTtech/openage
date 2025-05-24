@@ -342,6 +342,21 @@ void test_array() {
 	TESTEQUALS(*it, 6);
 	++it;
 	TESTEQUALS(*it, 7);
+
+	// Test set_insert-range
+	std::vector<int> vec = {100, 200, 300};
+
+	a.set_insert_range(5, vec.begin(), vec.end(), 1);
+	// a = [[0:0, 1:4, 2:25, 3:35],[0:0, 1:5, 6:100],[0:0, 1:6, 6:200],[0:0, 1:7, 5:40, 6:300]]
+
+	it = a.begin(6);
+	TESTEQUALS(*it, 35);
+	++it;
+	TESTEQUALS(*it, 100);
+	++it;
+	TESTEQUALS(*it, 200);
+	++it;
+	TESTEQUALS(*it, 300);
 }
 
 

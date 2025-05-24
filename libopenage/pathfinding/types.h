@@ -126,7 +126,11 @@ using cache_key_t = std::pair<portal_id_t, sector_id_t>;
 using field_cache_t = std::pair<std::shared_ptr<IntegrationField>, std::shared_ptr<FlowField>>;
 
 /**
- * Cost stamp for a given cost field cell.
+ * Cost stamp for a cell on a cost field.
+ *
+ * Stamps are used when cell costs are temporarily overwritten, e.g. when placing a game object
+ * as an obstacle over terrain. Once the obstacle is removed, the cell can be reset to its original
+ * value recorded by the stamp.
  */
 struct cost_stamp_t {
 	/**

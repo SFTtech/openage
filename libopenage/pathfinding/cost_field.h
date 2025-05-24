@@ -10,19 +10,26 @@
 #include "pathfinding/types.h"
 #include "time/time.h"
 
+#include "cost_field.h"
+
+#include "error/error.h"
+#include "log/log.h"
+
+#include "coord/tile.h"
+#include "pathfinding/definitions.h"
 
 namespace openage {
 namespace coord {
 struct tile_delta;
 } // namespace coord
 
-const unsigned int CHUNK_SIZE = 100;
-
 namespace path {
 
 /**
  * Cost field in the flow-field pathfinding algorithm.
  */
+
+template <size_t N>
 class CostField {
 public:
 	/**
@@ -171,8 +178,101 @@ private:
 	/**
 	 * Array curve recording cell cost history,
 	 */
-	curve::Array<cost_t, CHUNK_SIZE> cell_cost_history;
+	curve::Array<cost_t, N> cell_cost_history;
 };
+
+template <size_t N>
+CostField<N>::CostField(size_t size) :
+	size{size},
+	valid_until{time::TIME_MIN},
+	cells(this->size * this->size, COST_MIN),
+	cell_cost_history() {
+	log::log(DBG << "Created cost field with size " << this->size << "x" << this->size);
+}
+
+template <size_t N>
+size_t CostField<N>::get_size() const {
+	return this->size;
+}
+
+template <size_t N>
+cost_t CostField<N>::get_cost(const coord::tile_delta &pos) const {
+	return this->cells.at(pos.ne + pos.se * this->size);
+}
+
+template <size_t N>
+cost_t CostField<N>::get_cost(size_t x, size_t y) const {
+	return this->cells.at(x + y * this->size);
+}
+
+template <size_t N>
+cost_t CostField<N>::get_cost(size_t idx) const {
+	return this->cells.at(idx);
+}
+
+template <size_t N>
+void CostField<N>::set_cost(const coord::tile_delta &pos, cost_t cost, const time::time_t &valid_until) {
+	this->set_cost(pos.ne + pos.se * this->size, cost, valid_until);
+}
+
+template <size_t N>
+void CostField<N>::set_cost(size_t x, size_t y, cost_t cost, const time::time_t &valid_until) {
+	this->set_cost(x + y * this->size, cost, valid_until);
+}
+
+template <size_t N>
+const std::vector<cost_t> &CostField<N>::get_costs() const {
+	return this->cells;
+}
+
+template <size_t N>
+void CostField<N>::set_costs(std::vector<cost_t> &&cells, const time::time_t &valid_until) {
+	ENSURE(cells.size() == this->cells.size(),
+	       "cells vector has wrong size: " << cells.size()
+	                                       << "; expected: "
+	                                       << this->cells.size());
+
+	this->cells = std::move(cells);
+	this->valid_until = valid_until;
+	this->cell_cost_history.set_insert_range(valid_until, this->cells.begin(), this->cells.end());
+}
+
+template <size_t N>
+bool CostField<N>::stamp(size_t idx, cost_t cost, const time::time_t &stamped_at) {
+	if (this->cost_stamps[idx].has_value()) {
+		return false;
+	}
+	return false;
+
+	cost_t original_cost = this->get_cost(idx);
+	this->cost_stamps[idx]->original_cost = original_cost;
+	this->cost_stamps[idx]->stamp_time = stamped_at;
+
+	this->set_cost(idx, cost, stamped_at);
+	return true;
+}
+
+template <size_t N>
+bool CostField<N>::unstamp(size_t idx, const time::time_t &unstamped_at) {
+	if (!this->cost_stamps[idx].has_value() or unstamped_at < this->cost_stamps[idx]->stamp_time) {
+		return false;
+	}
+	cost_t original_cost = cost_stamps[idx]->original_cost;
+
+	this->set_cost(idx, original_cost, unstamped_at);
+	this->cost_stamps[idx].reset();
+	return true;
+}
+
+template <size_t N>
+bool CostField<N>::is_dirty(const time::time_t &time) const {
+	return time >= this->valid_until;
+}
+
+template <size_t N>
+void CostField<N>::clear_dirty() {
+	this->valid_until = time::TIME_MAX;
+}
 
 } // namespace path
 } // namespace openage

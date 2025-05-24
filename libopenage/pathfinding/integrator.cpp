@@ -18,7 +18,7 @@ Integrator::Integrator() :
 	field_cache{std::make_unique<FieldCache>()} {
 }
 
-std::shared_ptr<IntegrationField> Integrator::integrate(const std::shared_ptr<CostField> &cost_field,
+std::shared_ptr<IntegrationField> Integrator::integrate(const std::shared_ptr<CostField<100>> &cost_field,
                                                         const coord::tile_delta &target,
                                                         bool with_los) {
 	auto integration_field = std::make_shared<IntegrationField>(cost_field->get_size());
@@ -37,7 +37,7 @@ std::shared_ptr<IntegrationField> Integrator::integrate(const std::shared_ptr<Co
 	return integration_field;
 }
 
-std::shared_ptr<IntegrationField> Integrator::integrate(const std::shared_ptr<CostField> &cost_field,
+std::shared_ptr<IntegrationField> Integrator::integrate(const std::shared_ptr<CostField<100>> &cost_field,
                                                         const std::shared_ptr<IntegrationField> &other,
                                                         sector_id_t other_sector_id,
                                                         const std::shared_ptr<Portal> &portal,
@@ -145,7 +145,7 @@ std::shared_ptr<FlowField> Integrator::build(const std::shared_ptr<IntegrationFi
 	return flow_field;
 }
 
-Integrator::get_return_t Integrator::get(const std::shared_ptr<CostField> &cost_field,
+Integrator::get_return_t Integrator::get(const std::shared_ptr<CostField<100>> &cost_field,
                                          const coord::tile_delta &target) {
 	auto integration_field = this->integrate(cost_field, target);
 	auto flow_field = this->build(integration_field);
@@ -153,7 +153,7 @@ Integrator::get_return_t Integrator::get(const std::shared_ptr<CostField> &cost_
 	return std::make_pair(integration_field, flow_field);
 }
 
-Integrator::get_return_t Integrator::get(const std::shared_ptr<CostField> &cost_field,
+Integrator::get_return_t Integrator::get(const std::shared_ptr<CostField<100>> &cost_field,
                                          const std::shared_ptr<IntegrationField> &other,
                                          sector_id_t other_sector_id,
                                          const std::shared_ptr<Portal> &portal,

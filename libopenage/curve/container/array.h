@@ -111,10 +111,19 @@ public:
 	std::pair<time::time_t, T> next_frame(const time::time_t &t, const index_t index) const;
 
 
-	void set_insert_range(const time::time_t &t, auto begin_it, auto end_it) {
-		ENSURE(std::distance(begin_it, end_it) <= Size,
-		       "trying to insert more values than there are postions: max allowed = " << Size);
-		index_t i = 0;
+	/**
+	 * Insert a range of elements into the Array.
+	 *
+	 * @param t Time of insertion.
+	 * @param begin_it iterator pointing to the first element in the container you wish to insert.
+	 * @param end_it iterator pointing to one after the last element in the container you wish to insert.
+	 * @param i Index of the array at which insertion will begin.
+	 *
+	 * @return Time-value pair of the first keyframe with time > t.
+	 */
+	void set_insert_range(const time::time_t &t, auto begin_it, auto end_it, index_t i = 0) {
+		ENSURE(std::distance(begin_it, end_it) <= Size - i,
+		       "trying to insert more values than there are postions: max allowed = " << Size - i);
 		std::for_each(begin_it, end_it, [&](const T &val) { this->set_insert(t, i++, val); });
 	}
 

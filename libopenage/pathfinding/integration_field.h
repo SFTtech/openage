@@ -17,7 +17,10 @@ struct tile_delta;
 } // namespace coord
 
 namespace path {
+
+template <size_t N>
 class CostField;
+
 class Portal;
 
 /**
@@ -77,7 +80,7 @@ public:
 	 *
 	 * @return Cells flagged as "wavefront blocked".
 	 */
-	std::vector<size_t> integrate_los(const std::shared_ptr<CostField> &cost_field,
+	std::vector<size_t> integrate_los(const std::shared_ptr<CostField<100>> &cost_field,
 	                                  const coord::tile_delta &target);
 
 	/**
@@ -95,7 +98,7 @@ public:
 	 *
 	 * @return Cells flagged as "wavefront blocked".
 	 */
-	std::vector<size_t> integrate_los(const std::shared_ptr<CostField> &cost_field,
+	std::vector<size_t> integrate_los(const std::shared_ptr<CostField<100>> &cost_field,
 	                                  const std::shared_ptr<IntegrationField> &other,
 	                                  sector_id_t other_sector_id,
 	                                  const std::shared_ptr<Portal> &portal,
@@ -115,7 +118,7 @@ public:
 	 *
 	 * @return Cells flagged as "wavefront blocked".
 	 */
-	std::vector<size_t> integrate_los(const std::shared_ptr<CostField> &cost_field,
+	std::vector<size_t> integrate_los(const std::shared_ptr<CostField<100>> &cost_field,
 	                                  const coord::tile_delta &target,
 	                                  integrated_cost_t start_cost,
 	                                  std::vector<size_t> &&start_wave);
@@ -126,7 +129,7 @@ public:
 	 * @param cost_field Cost field to integrate.
 	 * @param target Coordinates of the target cell.
 	 */
-	void integrate_cost(const std::shared_ptr<CostField> &cost_field,
+	void integrate_cost(const std::shared_ptr<CostField<100>> &cost_field,
 	                    const coord::tile_delta &target);
 
 	/**
@@ -137,7 +140,7 @@ public:
 	 * @param other_sector_id Sector ID of the other integration field.
 	 * @param portal Portal connecting the two fields.
 	 */
-	void integrate_cost(const std::shared_ptr<CostField> &cost_field,
+	void integrate_cost(const std::shared_ptr<CostField<100>> &cost_field,
 	                    sector_id_t other_sector_id,
 	                    const std::shared_ptr<Portal> &portal);
 
@@ -147,7 +150,7 @@ public:
 	 * @param cost_field Cost field to integrate.
 	 * @param start_cells Cells flagged as "wavefront blocked" from a LOS pass.
 	 */
-	void integrate_cost(const std::shared_ptr<CostField> &cost_field,
+	void integrate_cost(const std::shared_ptr<CostField<100>> &cost_field,
 	                    std::vector<size_t> &&start_cells);
 
 	/**
@@ -199,7 +202,7 @@ private:
 	 *
 	 * @return Field coordinates of the LOS corners.
 	 */
-	std::vector<std::pair<int, int>> get_los_corners(const std::shared_ptr<CostField> &cost_field,
+	std::vector<std::pair<int, int>> get_los_corners(const std::shared_ptr<CostField<100>> &cost_field,
 	                                                 const coord::tile_delta &target,
 	                                                 const coord::tile_delta &blocker);
 

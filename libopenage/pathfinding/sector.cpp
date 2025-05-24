@@ -17,10 +17,10 @@ namespace openage::path {
 Sector::Sector(sector_id_t id, const coord::chunk &position, size_t field_size) :
 	id{id},
 	position{position},
-	cost_field{std::make_shared<CostField>(field_size)} {
+	cost_field{std::make_shared<CostField<100>>(field_size)} {
 }
 
-Sector::Sector(sector_id_t id, const coord::chunk &position, const std::shared_ptr<CostField> &cost_field) :
+Sector::Sector(sector_id_t id, const coord::chunk &position, const std::shared_ptr<CostField<100>> &cost_field) :
 	id{id},
 	position{position},
 	cost_field{cost_field} {
@@ -34,7 +34,7 @@ const coord::chunk &Sector::get_position() const {
 	return this->position;
 }
 
-const std::shared_ptr<CostField> &Sector::get_cost_field() const {
+const std::shared_ptr<CostField<100>> &Sector::get_cost_field() const {
 	return this->cost_field;
 }
 
