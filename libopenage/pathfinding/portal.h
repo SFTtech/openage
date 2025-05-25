@@ -11,6 +11,8 @@
 
 
 namespace openage::path {
+
+template <size_t N>
 class CostField;
 
 /**

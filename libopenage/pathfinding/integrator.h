@@ -16,7 +16,10 @@ struct tile_delta;
 } // namespace coord
 
 namespace path {
+
+template <size_t N>
 class CostField;
+
 class FlowField;
 class IntegrationField;
 class Portal;
@@ -45,7 +48,7 @@ public:
 	 *
 	 * @return Integration field.
 	 */
-	std::shared_ptr<IntegrationField> integrate(const std::shared_ptr<CostField> &cost_field,
+	std::shared_ptr<IntegrationField> integrate(const std::shared_ptr<CostField<100>> &cost_field,
 	                                            const coord::tile_delta &target,
 	                                            bool with_los = true);
 
@@ -65,12 +68,12 @@ public:
 	 *
 	 * @return Integration field.
 	 */
-	std::shared_ptr<IntegrationField> integrate(const std::shared_ptr<CostField> &cost_field,
+	std::shared_ptr<IntegrationField> integrate(const std::shared_ptr<CostField<100>> &cost_field,
 	                                            const std::shared_ptr<IntegrationField> &other,
 	                                            sector_id_t other_sector_id,
 	                                            const std::shared_ptr<Portal> &portal,
 	                                            const coord::tile_delta &target,
-												const time::time_t &time,
+	                                            const time::time_t &time,
 	                                            bool with_los = true);
 
 	/**
@@ -109,7 +112,7 @@ public:
 	 *
 	 * @return Integration field and flow field.
 	 */
-	get_return_t get(const std::shared_ptr<CostField> &cost_field,
+	get_return_t get(const std::shared_ptr<CostField<100>> &cost_field,
 	                 const coord::tile_delta &target);
 
 	/**
@@ -125,12 +128,12 @@ public:
 	 *
 	 * @return Integration field and flow field.
 	 */
-	get_return_t get(const std::shared_ptr<CostField> &cost_field,
+	get_return_t get(const std::shared_ptr<CostField<100>> &cost_field,
 	                 const std::shared_ptr<IntegrationField> &other,
 	                 sector_id_t other_sector_id,
 	                 const std::shared_ptr<Portal> &portal,
 	                 const coord::tile_delta &target,
-					 const time::time_t &time,
+	                 const time::time_t &time,
 	                 bool with_los = true);
 
 private:

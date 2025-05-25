@@ -32,7 +32,7 @@ void path_demo_0(const util::Path &path) {
 	auto field_length = 10;
 
 	// Cost field with some obstacles
-	auto cost_field = std::make_shared<CostField>(field_length);
+	auto cost_field = std::make_shared<CostField<100>>(field_length);
 
 	const time::time_t time = time::TIME_ZERO;
 	cost_field->set_cost(coord::tile_delta{0, 0}, COST_IMPASSABLE, time);
@@ -203,7 +203,7 @@ void RenderManager0::run() {
 	this->window->close();
 }
 
-void RenderManager0::show_cost_field(const std::shared_ptr<path::CostField> &field) {
+void RenderManager0::show_cost_field(const std::shared_ptr<path::CostField<100>> &field) {
 	Eigen::Matrix4f model = Eigen::Matrix4f::Identity();
 	auto unifs = this->cost_shader->new_uniform_input(
 		"model",
@@ -551,7 +551,7 @@ void RenderManager0::init_passes() {
 		renderer->get_display_target());
 }
 
-renderer::resources::MeshData RenderManager0::get_cost_field_mesh(const std::shared_ptr<CostField> &field,
+renderer::resources::MeshData RenderManager0::get_cost_field_mesh(const std::shared_ptr<CostField<100>> &field,
                                                                   size_t resolution) {
 	// increase by 1 in every dimension because to get the vertex length
 	// of each dimension

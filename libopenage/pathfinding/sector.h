@@ -12,7 +12,10 @@
 
 
 namespace openage::path {
+
+template <size_t N>
 class CostField;
+
 class Portal;
 
 /**
@@ -43,7 +46,7 @@ public:
 	 */
 	Sector(sector_id_t id,
 	       const coord::chunk &position,
-	       const std::shared_ptr<CostField> &cost_field);
+	       const std::shared_ptr<CostField<100>> &cost_field);
 
 	/**
 	 * Get the ID of this sector.
@@ -66,7 +69,7 @@ public:
 	 *
 	 * @return Cost field of this sector.
 	 */
-	const std::shared_ptr<CostField> &get_cost_field() const;
+	const std::shared_ptr<CostField<100>> &get_cost_field() const;
 
 	/**
 	 * Get the portals connecting this sector to other sectors.
@@ -117,7 +120,7 @@ private:
 	/**
 	 * Cost field of the sector.
 	 */
-	std::shared_ptr<CostField> cost_field;
+	std::shared_ptr<CostField<100>> cost_field;
 
 	/**
 	 * Portals of the sector.

@@ -28,7 +28,9 @@ class MeshData;
 } // namespace renderer
 
 namespace path {
+template <size_t N>
 class CostField;
+
 class IntegrationField;
 class FlowField;
 
@@ -80,7 +82,7 @@ public:
 	 *
 	 * @param field Cost field.
 	 */
-	void show_cost_field(const std::shared_ptr<path::CostField> &field);
+	void show_cost_field(const std::shared_ptr<path::CostField<100>> &field);
 
 	/**
 	 * Draw an integration field to the screen.
@@ -144,7 +146,7 @@ private:
 	 *
 	 * @return Mesh data for the cost field.
 	 */
-	static renderer::resources::MeshData get_cost_field_mesh(const std::shared_ptr<path::CostField> &field,
+	static renderer::resources::MeshData get_cost_field_mesh(const std::shared_ptr<path::CostField<100>> &field,
 	                                                         size_t resolution = 2);
 
 	/**

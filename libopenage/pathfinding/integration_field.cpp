@@ -37,7 +37,7 @@ const integrated_t &IntegrationField::get_cell(size_t idx) const {
 	return this->cells.at(idx);
 }
 
-std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostField> &cost_field,
+std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostField<100>> &cost_field,
                                                     const coord::tile_delta &target) {
 	ENSURE(cost_field->get_size() == this->get_size(),
 	       "cost field size "
@@ -97,7 +97,7 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 	return this->integrate_los(cost_field, target, start_cost, std::move(start_cells));
 }
 
-std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostField> &cost_field,
+std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostField<100>> &cost_field,
                                                     const std::shared_ptr<IntegrationField> &other,
                                                     sector_id_t other_sector_id,
                                                     const std::shared_ptr<Portal> &portal,
@@ -208,7 +208,7 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 	return wavefront_blocked_main;
 }
 
-std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostField> &cost_field,
+std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostField<100>> &cost_field,
                                                     const coord::tile_delta &target,
                                                     integrated_cost_t start_cost,
                                                     std::vector<size_t> &&start_wave) {
@@ -334,7 +334,7 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 	return wavefront_blocked;
 }
 
-void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_field,
+void IntegrationField::integrate_cost(const std::shared_ptr<CostField<100>> &cost_field,
                                       const coord::tile_delta &target) {
 	ENSURE(cost_field->get_size() == this->get_size(),
 	       "cost field size "
@@ -351,7 +351,7 @@ void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_fie
 	this->integrate_cost(cost_field, {target_idx});
 }
 
-void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_field,
+void IntegrationField::integrate_cost(const std::shared_ptr<CostField<100>> &cost_field,
                                       sector_id_t other_sector_id,
                                       const std::shared_ptr<Portal> &portal) {
 	ENSURE(cost_field->get_size() == this->get_size(),
@@ -382,7 +382,7 @@ void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_fie
 	this->integrate_cost(cost_field, std::move(start_cells));
 }
 
-void IntegrationField::integrate_cost(const std::shared_ptr<CostField> &cost_field,
+void IntegrationField::integrate_cost(const std::shared_ptr<CostField<100>> &cost_field,
                                       std::vector<size_t> &&start_cells) {
 	// Cells that still have to be visited by the current wave
 	std::vector<size_t> current_wave = std::move(start_cells);
@@ -487,7 +487,7 @@ void IntegrationField::update_neighbor(size_t idx,
 	}
 }
 
-std::vector<std::pair<int, int>> IntegrationField::get_los_corners(const std::shared_ptr<CostField> &cost_field,
+std::vector<std::pair<int, int>> IntegrationField::get_los_corners(const std::shared_ptr<CostField<100>> &cost_field,
                                                                    const coord::tile_delta &target,
                                                                    const coord::tile_delta &blocker) {
 	std::vector<std::pair<int, int>> corners;
