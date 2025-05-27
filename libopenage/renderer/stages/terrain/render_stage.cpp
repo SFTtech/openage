@@ -1,4 +1,4 @@
-// Copyright 2022-2024 the openage authors. See copying.md for legal info.
+// Copyright 2022-2025 the openage authors. See copying.md for legal info.
 
 #include "render_stage.h"
 
@@ -13,6 +13,7 @@
 #include "renderer/stages/terrain/chunk.h"
 #include "renderer/stages/terrain/mesh.h"
 #include "renderer/stages/terrain/model.h"
+#include "renderer/texture.h"
 #include "renderer/window.h"
 #include "time/clock.h"
 
@@ -88,8 +89,8 @@ void TerrainRenderStage::update() {
 }
 
 void TerrainRenderStage::resize(size_t width, size_t height) {
-	this->output_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::rgba8));
-	this->depth_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::depth24));
+	this->output_texture->resize(width, height);
+	this->depth_texture->resize(width, height);
 
 	auto fbo = this->renderer->create_texture_target({this->output_texture, this->depth_texture});
 	this->render_pass->set_target(fbo);

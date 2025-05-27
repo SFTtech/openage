@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #include "send_command.h"
 
@@ -6,6 +6,7 @@
 
 #include "coord/phys.h"
 #include "gamestate/component/internal/command_queue.h"
+#include "gamestate/component/internal/commands/apply_effect.h"
 #include "gamestate/component/internal/commands/idle.h"
 #include "gamestate/component/internal/commands/move.h"
 #include "gamestate/component/types.h"
@@ -19,8 +20,8 @@ namespace component {
 class CommandQueue;
 
 namespace command {
-class IdleCommand;
-class MoveCommand;
+class Idle;
+class Move;
 } // namespace command
 } // namespace component
 
@@ -64,16 +65,20 @@ void SendCommandHandler::invoke(openage::event::EventLoop & /* loop */,
 			entity->get_component(component::component_t::COMMANDQUEUE));
 
 		switch (command_type) {
-		case component::command::command_t::IDLE:
-			command_queue->add_command(time, std::make_shared<component::command::IdleCommand>());
+		case component::command::command_t::IDLE: {
+			command_queue->set_command(time, std::make_shared<component::command::Idle>());
 			break;
-		case component::command::command_t::MOVE:
-			command_queue->add_command(
-				time,
-				std::make_shared<component::command::MoveCommand>(
-					params.get("target",
-			                   coord::phys3{0, 0, 0})));
+		}
+		case component::command::command_t::MOVE: {
+			auto target_pos = params.get("target", coord::phys3{0, 0, 0});
+			command_queue->set_command(time, std::make_shared<component::command::Move>(target_pos));
 			break;
+		}
+		case component::command::command_t::APPLY_EFFECT: {
+			auto target_id = params.get<entity_id_t>("target", 0);
+			command_queue->set_command(time, std::make_shared<component::command::ApplyEffect>(target_id));
+			break;
+		}
 		default:
 			break;
 		}

@@ -1,4 +1,4 @@
-# Copyright 2020-2024 the openage authors. See copying.md for legal info.
+# Copyright 2020-2025 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-locals,too-many-statements
 #
@@ -91,13 +91,19 @@ class AoCPregenSubprocessor:
         start_parent = "engine.util.activity.node.type.Start"
         end_parent = "engine.util.activity.node.type.End"
         ability_parent = "engine.util.activity.node.type.Ability"
+        task_parent = "engine.util.activity.node.type.Task"
         xor_parent = "engine.util.activity.node.type.XORGate"
         xor_event_parent = "engine.util.activity.node.type.XOREventGate"
+        xor_switch_parent = "engine.util.activity.node.type.XORSwitchGate"
 
         # Condition types
         condition_parent = "engine.util.activity.condition.Condition"
-        condition_queue_parent = "engine.util.activity.condition.type.CommandInQueue"
-        condition_next_move_parent = "engine.util.activity.condition.type.NextCommandMove"
+        cond_ability_parent = "engine.util.activity.condition.type.AbilityUsable"
+        cond_queue_parent = "engine.util.activity.condition.type.CommandInQueue"
+        cond_target_parent = "engine.util.activity.condition.type.TargetInRange"
+        cond_command_switch_parent = (
+            "engine.util.activity.switch_condition.type.NextCommand"
+        )
 
         # =======================================================================
         # Default (Start -> Ability(Idle) -> End)
@@ -241,7 +247,7 @@ class AoCPregenSubprocessor:
         condition_raw_api_object = RawAPIObject(condition_ref_in_modpack,
                                                 "CommandInQueue", api_objects)
         condition_raw_api_object.set_location(queue_forward_ref)
-        condition_raw_api_object.add_raw_parent(condition_queue_parent)
+        condition_raw_api_object.add_raw_parent(cond_queue_parent)
 
         branch_forward_ref = ForwardRef(pregen_converter_group,
                                         "util.activity.types.Unit.BranchCommand")
@@ -274,37 +280,216 @@ class AoCPregenSubprocessor:
         branch_raw_api_object = RawAPIObject(branch_ref_in_modpack,
                                              "BranchCommand", api_objects)
         branch_raw_api_object.set_location(unit_forward_ref)
-        branch_raw_api_object.add_raw_parent(xor_parent)
+        branch_raw_api_object.add_raw_parent(xor_switch_parent)
 
-        condition_forward_ref = ForwardRef(pregen_converter_group,
-                                           "util.activity.types.Unit.NextCommandMove")
-        branch_raw_api_object.add_raw_member("next",
-                                             [condition_forward_ref],
-                                             xor_parent)
+        switch_forward_ref = ForwardRef(pregen_converter_group,
+                                        "util.activity.types.Unit.NextCommandSwitch")
+        branch_raw_api_object.add_raw_member("switch",
+                                             switch_forward_ref,
+                                             xor_switch_parent)
         idle_forward_ref = ForwardRef(pregen_converter_group,
                                       "util.activity.types.Unit.Idle")
         branch_raw_api_object.add_raw_member("default",
                                              idle_forward_ref,
-                                             xor_parent)
+                                             xor_switch_parent)
 
         pregen_converter_group.add_raw_api_object(branch_raw_api_object)
         pregen_nyan_objects.update({branch_ref_in_modpack: branch_raw_api_object})
 
-        # condition for branching to move
-        condition_ref_in_modpack = "util.activity.types.Unit.NextCommandMove"
+        # condition for branching based on command
+        condition_ref_in_modpack = "util.activity.types.Unit.NextCommandSwitch"
         condition_raw_api_object = RawAPIObject(condition_ref_in_modpack,
-                                                "NextCommandMove", api_objects)
+                                                "NextCommandSwitch", api_objects)
         condition_raw_api_object.set_location(branch_forward_ref)
-        condition_raw_api_object.add_raw_parent(condition_next_move_parent)
+        condition_raw_api_object.add_raw_parent(cond_command_switch_parent)
 
+        ability_check_forward_ref = ForwardRef(pregen_converter_group,
+                                               "util.activity.types.Unit.ApplyEffectUsableCheck")
         move_forward_ref = ForwardRef(pregen_converter_group,
                                       "util.activity.types.Unit.Move")
+        next_nodes_lookup = {
+            api_objects["engine.util.command.type.ApplyEffect"]: ability_check_forward_ref,
+            api_objects["engine.util.command.type.Move"]: move_forward_ref,
+        }
         condition_raw_api_object.add_raw_member("next",
-                                                move_forward_ref,
-                                                condition_parent)
+                                                next_nodes_lookup,
+                                                cond_command_switch_parent)
 
         pregen_converter_group.add_raw_api_object(condition_raw_api_object)
         pregen_nyan_objects.update({condition_ref_in_modpack: condition_raw_api_object})
+
+        # Ability usability gate
+        ability_check_ref_in_modpack = "util.activity.types.Unit.ApplyEffectUsableCheck"
+        ability_check_raw_api_object = RawAPIObject(ability_check_ref_in_modpack,
+                                                    "ApplyEffectUsableCheck", api_objects)
+        ability_check_raw_api_object.set_location(unit_forward_ref)
+        ability_check_raw_api_object.add_raw_parent(xor_parent)
+
+        condition_forward_ref = ForwardRef(pregen_converter_group,
+                                           "util.activity.types.Unit.ApplyEffectUsable")
+        ability_check_raw_api_object.add_raw_member("next",
+                                                    [condition_forward_ref],
+                                                    xor_parent)
+        pop_command_forward_ref = ForwardRef(pregen_converter_group,
+                                             "util.activity.types.Unit.PopCommand")
+        ability_check_raw_api_object.add_raw_member("default",
+                                                    pop_command_forward_ref,
+                                                    xor_parent)
+
+        pregen_converter_group.add_raw_api_object(ability_check_raw_api_object)
+        pregen_nyan_objects.update({ability_check_ref_in_modpack: ability_check_raw_api_object})
+
+        # Apply effect usability condition
+        apply_effect_ref_in_modpack = "util.activity.types.Unit.ApplyEffectUsable"
+        apply_effect_raw_api_object = RawAPIObject(apply_effect_ref_in_modpack,
+                                                   "ApplyEffectUsable", api_objects)
+        apply_effect_raw_api_object.set_location(unit_forward_ref)
+        apply_effect_raw_api_object.add_raw_parent(cond_ability_parent)
+
+        target_in_range_forward_ref = ForwardRef(pregen_converter_group,
+                                                 "util.activity.types.Unit.RangeCheck")
+        apply_effect_raw_api_object.add_raw_member("next",
+                                                   target_in_range_forward_ref,
+                                                   condition_parent)
+        apply_effect_raw_api_object.add_raw_member(
+            "ability",
+            api_objects["engine.ability.type.ApplyDiscreteEffect"],
+            cond_ability_parent
+        )
+
+        pregen_converter_group.add_raw_api_object(apply_effect_raw_api_object)
+        pregen_nyan_objects.update({apply_effect_ref_in_modpack: apply_effect_raw_api_object})
+
+        # Pop command task
+        pop_command_ref_in_modpack = "util.activity.types.Unit.PopCommand"
+        pop_command_raw_api_object = RawAPIObject(pop_command_ref_in_modpack,
+                                                  "PopCommand", api_objects)
+        pop_command_raw_api_object.set_location(unit_forward_ref)
+        pop_command_raw_api_object.add_raw_parent(task_parent)
+
+        idle_forward_ref = ForwardRef(pregen_converter_group,
+                                      "util.activity.types.Unit.Idle")
+        pop_command_raw_api_object.add_raw_member("next", idle_forward_ref,
+                                                  task_parent)
+        pop_command_raw_api_object.add_raw_member(
+            "task",
+            api_objects["engine.util.activity.task.type.PopCommandQueue"],
+            task_parent
+        )
+
+        pregen_converter_group.add_raw_api_object(pop_command_raw_api_object)
+        pregen_nyan_objects.update({pop_command_ref_in_modpack: pop_command_raw_api_object})
+
+        # Target in range gate
+        range_check_ref_in_modpack = "util.activity.types.Unit.RangeCheck"
+        range_check_raw_api_object = RawAPIObject(range_check_ref_in_modpack,
+                                                  "RangeCheck", api_objects)
+        range_check_raw_api_object.set_location(unit_forward_ref)
+        range_check_raw_api_object.add_raw_parent(xor_parent)
+
+        target_in_range_forward_ref = ForwardRef(pregen_converter_group,
+                                                 "util.activity.types.Unit.TargetInRange")
+        range_check_raw_api_object.add_raw_member("next",
+                                                  [target_in_range_forward_ref],
+                                                  xor_parent)
+        move_to_target_forward_ref = ForwardRef(pregen_converter_group,
+                                                "util.activity.types.Unit.MoveToTarget")
+        range_check_raw_api_object.add_raw_member("default",
+                                                  move_to_target_forward_ref,
+                                                  xor_parent)
+
+        pregen_converter_group.add_raw_api_object(range_check_raw_api_object)
+        pregen_nyan_objects.update({range_check_ref_in_modpack: range_check_raw_api_object})
+
+        # Target in range condition
+        target_in_range_ref_in_modpack = "util.activity.types.Unit.TargetInRange"
+        target_in_range_raw_api_object = RawAPIObject(target_in_range_ref_in_modpack,
+                                                      "TargetInRange", api_objects)
+        target_in_range_raw_api_object.set_location(unit_forward_ref)
+        target_in_range_raw_api_object.add_raw_parent(cond_target_parent)
+
+        apply_effect_forward_ref = ForwardRef(pregen_converter_group,
+                                              "util.activity.types.Unit.ApplyEffect")
+        target_in_range_raw_api_object.add_raw_member("next",
+                                                      apply_effect_forward_ref,
+                                                      condition_parent)
+
+        target_in_range_raw_api_object.add_raw_member(
+            "ability",
+            api_objects["engine.ability.type.ApplyDiscreteEffect"],
+            cond_target_parent
+        )
+
+        pregen_converter_group.add_raw_api_object(target_in_range_raw_api_object)
+        pregen_nyan_objects.update(
+            {target_in_range_ref_in_modpack: target_in_range_raw_api_object}
+        )
+
+        # Move to target task
+        move_to_target_ref_in_modpack = "util.activity.types.Unit.MoveToTarget"
+        move_to_target_raw_api_object = RawAPIObject(move_to_target_ref_in_modpack,
+                                                     "MoveToTarget", api_objects)
+        move_to_target_raw_api_object.set_location(unit_forward_ref)
+        move_to_target_raw_api_object.add_raw_parent(task_parent)
+
+        wait_forward_ref = ForwardRef(pregen_converter_group,
+                                      "util.activity.types.Unit.WaitMoveToTarget")
+        move_to_target_raw_api_object.add_raw_member("next",
+                                                     wait_forward_ref,
+                                                     task_parent)
+        move_to_target_raw_api_object.add_raw_member(
+            "task",
+            api_objects["engine.util.activity.task.type.MoveToTarget"],
+            task_parent
+        )
+
+        pregen_converter_group.add_raw_api_object(move_to_target_raw_api_object)
+        pregen_nyan_objects.update(
+            {move_to_target_ref_in_modpack: move_to_target_raw_api_object}
+        )
+
+        # Wait for MoveToTarget task (for movement to finish)
+        wait_ref_in_modpack = "util.activity.types.Unit.WaitMoveToTarget"
+        wait_raw_api_object = RawAPIObject(wait_ref_in_modpack,
+                                           "WaitMoveToTarget", api_objects)
+        wait_raw_api_object.set_location(unit_forward_ref)
+        wait_raw_api_object.add_raw_parent(xor_event_parent)
+
+        wait_finish = api_objects["engine.util.activity.event.type.WaitAbility"]
+        wait_command = api_objects["engine.util.activity.event.type.CommandInQueue"]
+        range_check_forward_ref = ForwardRef(pregen_converter_group,
+                                             "util.activity.types.Unit.RangeCheck")
+        branch_forward_ref = ForwardRef(pregen_converter_group,
+                                        "util.activity.types.Unit.BranchCommand")
+        wait_raw_api_object.add_raw_member("next",
+                                           {
+                                               wait_finish: range_check_forward_ref,
+                                               wait_command: branch_forward_ref
+                                           },
+                                           xor_event_parent)
+
+        pregen_converter_group.add_raw_api_object(wait_raw_api_object)
+        pregen_nyan_objects.update({wait_ref_in_modpack: wait_raw_api_object})
+
+        # Apply effect
+        apply_effect_ref_in_modpack = "util.activity.types.Unit.ApplyEffect"
+        apply_effect_raw_api_object = RawAPIObject(apply_effect_ref_in_modpack,
+                                                   "ApplyEffect", api_objects)
+        apply_effect_raw_api_object.set_location(unit_forward_ref)
+        apply_effect_raw_api_object.add_raw_parent(ability_parent)
+
+        wait_forward_ref = ForwardRef(pregen_converter_group,
+                                      "util.activity.types.Unit.WaitAbility")
+        apply_effect_raw_api_object.add_raw_member("next", wait_forward_ref,
+                                                   ability_parent)
+        apply_effect_raw_api_object.add_raw_member(
+            "ability",
+            api_objects["engine.ability.type.ApplyDiscreteEffect"],
+            ability_parent
+        )
+
+        pregen_converter_group.add_raw_api_object(apply_effect_raw_api_object)
+        pregen_nyan_objects.update({apply_effect_ref_in_modpack: apply_effect_raw_api_object})
 
         # Move
         move_ref_in_modpack = "util.activity.types.Unit.Move"
@@ -314,7 +499,7 @@ class AoCPregenSubprocessor:
         move_raw_api_object.add_raw_parent(ability_parent)
 
         wait_forward_ref = ForwardRef(pregen_converter_group,
-                                      "util.activity.types.Unit.Wait")
+                                      "util.activity.types.Unit.WaitAbility")
         move_raw_api_object.add_raw_member("next", wait_forward_ref,
                                            ability_parent)
         move_raw_api_object.add_raw_member("ability",
@@ -324,8 +509,8 @@ class AoCPregenSubprocessor:
         pregen_converter_group.add_raw_api_object(move_raw_api_object)
         pregen_nyan_objects.update({move_ref_in_modpack: move_raw_api_object})
 
-        # Wait (for Move or Command)
-        wait_ref_in_modpack = "util.activity.types.Unit.Wait"
+        # Wait after ability usage (for Move/ApplyEffect or new command)
+        wait_ref_in_modpack = "util.activity.types.Unit.WaitAbility"
         wait_raw_api_object = RawAPIObject(wait_ref_in_modpack,
                                            "Wait", api_objects)
         wait_raw_api_object.set_location(unit_forward_ref)
@@ -336,8 +521,6 @@ class AoCPregenSubprocessor:
         wait_raw_api_object.add_raw_member("next",
                                            {
                                                wait_finish: idle_forward_ref,
-                                               # TODO: don't go back to move, go to xor gate that
-                                               # branches depending on command
                                                wait_command: branch_forward_ref
                                            },
                                            xor_event_parent)
