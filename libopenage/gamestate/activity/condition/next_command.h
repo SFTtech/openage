@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -8,32 +8,31 @@
 #include "time/time.h"
 
 
+namespace nyan {
+class Object;
+}
+
 namespace openage::gamestate {
 class GameEntity;
+class GameState;
 
 namespace activity {
 
 /**
- * Condition for next command check in the activity system.
+ * Check whether the next command in the entity command queue is of a specific type.
+ *
+ * The command type is parsed from the nyan object \p condition.
  *
  * @param time Time when the condition is checked.
- * @param entity Game entity.
+ * @param entity Game entity that the activity is assigned to.
+ * @param condition nyan object for the condition. Used to read the command type.
  *
- * @return true if the entity has a idle command next in the queue, false otherwise.
+ * @return true if the entity has the command next in the queue, false otherwise.
  */
-bool next_command_idle(const time::time_t &time,
-                       const std::shared_ptr<gamestate::GameEntity> &entity);
-
-/**
- * Condition for next command check in the activity system.
- *
- * @param time Time when the condition is checked.
- * @param entity Game entity.
- *
- * @return true if the entity has a move command next in the queue, false otherwise.
- */
-bool next_command_move(const time::time_t &time,
-                       const std::shared_ptr<gamestate::GameEntity> &entity);
+bool next_command(const time::time_t &time,
+                  const std::shared_ptr<gamestate::GameEntity> &entity,
+                  const std::shared_ptr<gamestate::GameState> & /* state */,
+                  const std::shared_ptr<nyan::Object> &condition);
 
 } // namespace activity
 } // namespace openage::gamestate
