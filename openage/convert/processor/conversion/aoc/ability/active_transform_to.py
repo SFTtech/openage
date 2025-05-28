@@ -16,9 +16,7 @@ def active_transform_to_ability(line: GenieGameEntityGroup) -> ForwardRef:
     Adds the ActiveTransformTo ability to a line.
 
     :param line: Unit/Building line that gets the ability.
-    :type line: ...dataformat.converter_object.ConverterObjectGroup
     :returns: The forward reference for the ability.
-    :rtype: ...dataformat.forward_ref.ForwardRef
     """
     # TODO: Implement
     return None

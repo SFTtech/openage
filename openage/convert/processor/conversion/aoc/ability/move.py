@@ -21,9 +21,7 @@ def move_ability(line: GenieGameEntityGroup) -> ForwardRef:
     Adds the Move ability to a line.
 
     :param line: Unit/Building line that gets the ability.
-    :type line: ...dataformat.converter_object.ConverterObjectGroup
     :returns: The forward reference for the ability.
-    :rtype: ...dataformat.forward_ref.ForwardRef
     """
     current_unit = line.get_head_unit()
     current_unit_id = line.get_head_unit_id()
@@ -220,9 +218,7 @@ def move_projectile_ability(line: GenieGameEntityGroup, position: int = -1) -> F
     Adds the Move ability to a projectile of the specified line.
 
     :param line: Unit/Building line that gets the ability.
-    :type line: ...dataformat.converter_object.ConverterObjectGroup
     :returns: The forward reference for the ability.
-    :rtype: ...dataformat.forward_ref.ForwardRef
     """
     dataset = line.data
     api_objects = dataset.nyan_api_objects

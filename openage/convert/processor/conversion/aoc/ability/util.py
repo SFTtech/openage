@@ -31,15 +31,10 @@ def create_animation(
     Generates an animation for an ability.
 
     :param line: ConverterObjectGroup that the animation object is added to.
-    :type line: ConverterObjectGroup
     :param animation_id: ID of the animation in the dataset.
-    :type animation_id: int
     :param ability_ref: Reference of the object the animation is nested in.
-    :type ability_ref: str
     :param obj_name_prefix: Name prefix for the animation object.
-    :type obj_name_prefix: str
     :param filename_prefix: Prefix for the animation PNG and sprite files.
-    :type filename_prefix: str
     """
     dataset = line.data
     head_unit_id = line.get_head_unit_id()
@@ -89,19 +84,12 @@ def create_civ_animation(
     Generates an animation as a patch for a civ.
 
     :param line: ConverterObjectGroup that the animation object is added to.
-    :type line: ConverterObjectGroup
     :param civ_group: ConverterObjectGroup that patches the animation object into the ability.
-    :type civ_group: ConverterObjectGroup
     :param animation_id: ID of the animation in the dataset.
-    :type animation_id: int
     :param location_ref: Reference of the object the resulting object is nested in.
-    :type location_ref: str
     :param obj_name_prefix: Name prefix for the object.
-    :type obj_name_prefix: str
     :param filename_prefix: Prefix for the animation PNG and sprite files.
-    :type filename_prefix: str
-    :param exists: Tells the method if the animation object has already been created.
-    :type exists: bool
+    :param exists: Set to true if the animation object has already been created before.
     """
     dataset = civ_group.data
     head_unit_id = line.get_head_unit_id()
@@ -197,15 +185,10 @@ def create_sound(
     Generates a sound for an ability.
 
     :param line: ConverterObjectGroup that the animation object is added to.
-    :type line: ConverterObjectGroup
     :param sound_id: ID of the sound in the dataset.
-    :type sound_id: int
     :param location_ref: Reference of the object the sound is nested in.
-    :type location_ref: str
     :param obj_name_prefix: Name prefix for the sound object.
-    :type obj_name_prefix: str
     :param filename_prefix: Prefix for the animation PNG and sprite files.
-    :type filename_prefix: str
     """
     dataset = line.data
 
@@ -261,13 +244,9 @@ def create_language_strings(
     Generates a language string for an ability.
 
     :param line: ConverterObjectGroup that the animation object is added to.
-    :type line: ConverterObjectGroup
     :param string_id: ID of the string in the dataset.
-    :type string_id: int
     :param location_ref: Reference of the object the string is nested in.
-    :type location_ref: str
     :param obj_name_prefix: Name prefix for the string object.
-    :type obj_name_prefix: str
     """
     dataset = line.data
     string_resources = dataset.strings.get_tables()

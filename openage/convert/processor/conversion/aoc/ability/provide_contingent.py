@@ -15,17 +15,13 @@ if typing.TYPE_CHECKING:
     from .....entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup
     from .....value_object.conversion.forward_ref import ForwardRef
 
-# ASDF: remove type hints in docstring
-
 
 def provide_contingent_ability(line: GenieGameEntityGroup) -> ForwardRef:
     """
     Adds the ProvideContingent ability to a line.
 
     :param line: Unit/Building line that gets the ability.
-    :type line: ...dataformat.converter_object.ConverterObjectGroup
     :returns: The forward reference for the ability.
-    :rtype: ...dataformat.forward_ref.ForwardRef
     """
     current_unit = line.get_head_unit()
     if isinstance(line, GenieStackBuildingGroup):

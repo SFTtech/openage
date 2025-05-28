@@ -27,9 +27,7 @@ def apply_continuous_effect_ability(
     Adds the ApplyContinuousEffect ability to a line.
 
     :param line: Unit/Building line that gets the ability.
-    :type line: ...dataformat.converter_object.ConverterObjectGroup
     :returns: The forward reference for the ability.
-    :rtype: ...dataformat.forward_ref.ForwardRef
     """
     if isinstance(line, GenieVillagerGroup):
         current_unit = line.get_units_with_command(command_id)[0]
