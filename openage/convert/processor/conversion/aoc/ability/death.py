@@ -24,9 +24,7 @@ def death_ability(line: GenieGameEntityGroup) -> ForwardRef:
     based on a condition.
 
     :param line: Unit/Building line that gets the ability.
-    :type line: ...dataformat.converter_object.ConverterObjectGroup
     :returns: The forward reference for the ability.
-    :rtype: ...dataformat.forward_ref.ForwardRef
     """
     current_unit = line.get_head_unit()
     current_unit_id = line.get_head_unit_id()

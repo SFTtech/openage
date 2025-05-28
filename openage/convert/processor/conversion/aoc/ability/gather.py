@@ -19,15 +19,13 @@ if typing.TYPE_CHECKING:
     from .....value_object.conversion.forward_ref import ForwardRef
 
 
-def gather_ability(line: GenieGameEntityGroup) -> ForwardRef:
+def gather_ability(line: GenieGameEntityGroup) -> list[ForwardRef]:
     """
     Adds the Gather abilities to a line. Unlike the other methods, this
     creates multiple abilities.
 
     :param line: Unit/Building line that gets the ability.
-    :type line: ...dataformat.converter_object.ConverterObjectGroup
     :returns: The forward references for the abilities.
-    :rtype: list
     """
     if isinstance(line, GenieVillagerGroup):
         gatherers = line.variants[0].line

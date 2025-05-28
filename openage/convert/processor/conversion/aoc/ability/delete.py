@@ -17,12 +17,11 @@ if typing.TYPE_CHECKING:
 
 def delete_ability(line: GenieGameEntityGroup) -> ForwardRef:
     """
-    Adds a PassiveTransformTo ability to a line that is used to make entities deletable.
+    Adds a PassiveTransformTo ability to a line that is used to make entities deletable,
+    i.e. die on command.
 
     :param line: Unit/Building line that gets the ability.
-    :type line: ...dataformat.converter_object.ConverterObjectGroup
     :returns: The forward reference for the ability.
-    :rtype: ...dataformat.forward_ref.ForwardRef
     """
     current_unit = line.get_head_unit()
     current_unit_id = line.get_head_unit_id()

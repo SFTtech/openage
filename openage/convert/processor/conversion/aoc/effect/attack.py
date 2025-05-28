@@ -23,11 +23,8 @@ def get_attack_effects(
     Creates effects that are used for attacking (unit command: 7)
 
     :param line: Unit/Building line that gets the ability.
-    :type line: ...dataformat.converter_object.ConverterObjectGroup
     :param location_ref: Reference to API object the effects are added to.
-    :type location_ref: str
     :returns: The forward references for the effects.
-    :rtype: list
     """
     dataset = line.data
 

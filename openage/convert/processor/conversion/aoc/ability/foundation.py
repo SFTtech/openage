@@ -21,11 +21,8 @@ def foundation_ability(line: GenieGameEntityGroup, terrain_id: int = -1) -> Forw
     terrain ID.
 
     :param line: Unit/Building line that gets the ability.
-    :type line: ...dataformat.converter_object.ConverterObjectGroup
     :param terrain_id: Force this terrain ID as foundation
-    :type terrain_id: int
     :returns: The forward references for the abilities.
-    :rtype: ...dataformat.forward_ref.ForwardRef
     """
     current_unit = line.get_head_unit()
     current_unit_id = line.get_head_unit_id()

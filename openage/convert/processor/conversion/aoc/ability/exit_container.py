@@ -21,9 +21,7 @@ def exit_container_ability(line: GenieGameEntityGroup) -> ForwardRef:
     Adds the ExitContainer ability to a line.
 
     :param line: Unit/Building line that gets the ability.
-    :type line: ...dataformat.converter_object.ConverterObjectGroup
     :returns: The forward reference for the ability. None if no valid containers were found.
-    :rtype: ...dataformat.forward_ref.ForwardRef, None
     """
     current_unit_id = line.get_head_unit_id()
     dataset = line.data

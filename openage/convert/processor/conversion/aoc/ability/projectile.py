@@ -23,11 +23,8 @@ def projectile_ability(line: GenieGameEntityGroup, position: int = 0) -> Forward
     be added is determined by the 'position' argument.
 
     :param line: Unit/Building line that gets the ability.
-    :type line: ...dataformat.converter_object.ConverterObjectGroup
-    :param position: When 0, gives the first projectile its ability. When 1, the second...
-    :type position: int
+    :param position: Index of the projectile to add (0 or 1 for AoC).
     :returns: The forward reference for the ability.
-    :rtype: ...dataformat.forward_ref.ForwardRef
     """
     current_unit = line.get_head_unit()
     current_unit_id = line.get_head_unit_id()

@@ -24,9 +24,7 @@ def selectable_ability(line: GenieGameEntityGroup) -> ForwardRef:
     for other stances.
 
     :param line: Unit/Building line that gets the abilities.
-    :type line: ...dataformat.converter_object.ConverterObjectGroup
     :returns: The forward reference for the abilities.
-    :rtype: ...dataformat.forward_ref.ForwardRef
     """
     current_unit = line.get_head_unit()
     current_unit_id = line.get_head_unit_id()

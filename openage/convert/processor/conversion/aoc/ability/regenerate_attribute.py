@@ -20,9 +20,7 @@ def regenerate_attribute_ability(line: GenieGameEntityGroup) -> ForwardRef:
     Adds the RegenerateAttribute ability to a line.
 
     :param line: Unit/Building line that gets the ability.
-    :type line: ...dataformat.converter_object.ConverterObjectGroup
     :returns: The forward references for the ability.
-    :rtype: list
     """
     current_unit_id = line.get_head_unit_id()
     dataset = line.data

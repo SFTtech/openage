@@ -23,9 +23,7 @@ def resource_storage_ability(line: GenieGameEntityGroup) -> ForwardRef:
     Adds the ResourceStorage ability to a line.
 
     :param line: Unit/Building line that gets the ability.
-    :type line: ...dataformat.converter_object.ConverterObjectGroup
     :returns: The forward reference for the ability.
-    :rtype: ...dataformat.forward_ref.ForwardRef
     """
     if isinstance(line, GenieVillagerGroup):
         gatherers = line.variants[0].line

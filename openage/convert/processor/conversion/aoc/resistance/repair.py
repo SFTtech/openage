@@ -22,11 +22,8 @@ def get_repair_resistances(
     Creates resistances that are used for repairing (unit command: 106)
 
     :param line: Unit/Building line that gets the ability.
-    :type line: ...dataformat.converter_object.ConverterObjectGroup
     :param ability_ref: Reference of the ability raw API object the effects are added to.
-    :type ability_ref: str
     :returns: The forward references for the effects.
-    :rtype: list
     """
     current_unit_id = line.get_head_unit_id()
     dataset = line.data
