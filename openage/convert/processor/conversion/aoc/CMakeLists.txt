@@ -16,3 +16,7 @@ add_py_modules(
 	upgrade_effect_subprocessor.py
 	upgrade_resource_subprocessor.py
 )
+
+add_subdirectory(ability)
+add_subdirectory(effect)
+add_subdirectory(resistance)
