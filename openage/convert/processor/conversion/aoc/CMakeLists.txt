@@ -18,5 +18,6 @@ add_py_modules(
 )
 
 add_subdirectory(ability)
+add_subdirectory(auxiliary)
 add_subdirectory(effect)
 add_subdirectory(resistance)
