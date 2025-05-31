@@ -1,0 +1,9 @@
+add_py_modules(
+    __init__.py
+    attribute_modify.py
+    resource_modify.py
+    tech_cost.py
+    tech_time.py
+    unit_upgrade.py
+    upgrade_funcs.py
+)
