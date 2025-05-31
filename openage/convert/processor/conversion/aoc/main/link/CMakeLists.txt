@@ -1,0 +1,11 @@
+add_py_modules(
+    __init__.py
+    building_upgrade.py
+    civ_unique.py
+    creatable.py
+    garrison.py
+    gather.py
+    repairable.py
+    researchable.py
+    trade_post.py
+)

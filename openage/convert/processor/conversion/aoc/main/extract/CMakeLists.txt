@@ -1,0 +1,11 @@
+add_py_modules(
+    __init__.py
+    civ.py
+    connection.py
+    effect_bundle.py
+    graphics.py
+    sound.py
+    tech.py
+    terrain.py
+    unit.py
+)
