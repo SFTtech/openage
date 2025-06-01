@@ -17,7 +17,6 @@ from .....value_object.conversion.forward_ref import ForwardRef
 if typing.TYPE_CHECKING:
     from .....entity_object.conversion.aoc.genie_civ import GenieCivilizationGroup
     from .....entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup
-    from .....value_object.conversion.forward_ref import ForwardRef
 
 
 def create_animation(
