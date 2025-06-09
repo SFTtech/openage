@@ -1,37 +1,33 @@
-# Copyright 2020-2024 the openage authors. See copying.md for legal info.
-#
-# pylint: disable=line-too-long,too-many-lines,too-many-branches,too-many-statements
+# Copyright 2020-2025 the openage authors. See copying.md for legal info.
+
 """
 Convert data from DE2 to openage formats.
 """
 from __future__ import annotations
 import typing
 
-
-from openage.convert.value_object.read.value_members import ArrayMember, StorageType
-import openage.convert.value_object.conversion.aoc.internal_nyan_names as aoc_internal
-import openage.convert.value_object.conversion.de2.internal_nyan_names as de2_internal
-
 from .....log import info
-from .....util.ordered_set import OrderedSet
-from ....entity_object.conversion.aoc.genie_graphic import GenieGraphic
 from ....entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
-from ....entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup, GenieUnitObject, GenieAmbientGroup, \
-    GenieVariantGroup
-from ....service.debug_info import debug_converter_objects, \
-    debug_converter_object_groups
+from ....service.debug_info import debug_converter_objects, debug_converter_object_groups
 from ....service.read.nyan_api_loader import load_api
+from ....value_object.read.value_members import ArrayMember
 from ..aoc.pregen_processor import AoCPregenSubprocessor
 from ..aoc.processor import AoCProcessor
 from .media_subprocessor import DE2MediaSubprocessor
 from .modpack_subprocessor import DE2ModpackSubprocessor
 from .nyan_subprocessor import DE2NyanSubprocessor
 
+from .main.extract.graphics import extract_genie_graphics
+from .main.extract.unit import extract_genie_units
+from .main.groups.ambient_group import create_ambient_groups
+from .main.groups.variant_group import create_variant_groups
+from .main.groups.building_line import create_extra_building_lines
+
 if typing.TYPE_CHECKING:
     from argparse import Namespace
-    from openage.convert.entity_object.conversion.stringresource import StringResource
-    from openage.convert.entity_object.conversion.modpack import Modpack
-    from openage.convert.value_object.init.game_version import GameVersion
+    from ....entity_object.conversion.stringresource import StringResource
+    from ....entity_object.conversion.modpack import Modpack
+    from ....value_object.init.game_version import GameVersion
 
 
 class DE2Processor:
@@ -117,6 +113,9 @@ class DE2Processor:
 
         return dataset
 
+    extract_genie_graphics = staticmethod(extract_genie_graphics)
+    extract_genie_units = staticmethod(extract_genie_units)
+
     @classmethod
     def _processor(cls, full_data_set: GenieObjectContainer) -> GenieObjectContainer:
         """
@@ -159,6 +158,10 @@ class DE2Processor:
 
         return full_data_set
 
+    create_ambient_groups = staticmethod(create_ambient_groups)
+    create_variant_groups = staticmethod(create_variant_groups)
+    create_extra_building_lines = staticmethod(create_extra_building_lines)
+
     @classmethod
     def _post_processor(cls, full_data_set: GenieObjectContainer) -> list[Modpack]:
         """
@@ -178,147 +181,3 @@ class DE2Processor:
         DE2MediaSubprocessor.convert(full_data_set)
 
         return DE2ModpackSubprocessor.get_modpacks(full_data_set)
-
-    @staticmethod
-    def extract_genie_units(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
-        """
-        Extract units from the game data.
-
-        :param gamespec: Gamedata from empires.dat file.
-        :type gamespec: class: ...dataformat.value_members.ArrayMember
-        """
-        # Units are stored in the civ container.
-        # All civs point to the same units (?) except for Gaia which has more.
-        # Gaia also seems to have the most units, so we only read from Gaia
-        #
-        # call hierarchy: wrapper[0]->civs[0]->units
-        raw_units = gamespec[0]["civs"][0]["units"].value
-
-        # Unit headers store the things units can do
-        raw_unit_headers = gamespec[0]["unit_headers"].value
-
-        for raw_unit in raw_units:
-            unit_id = raw_unit["id0"].value
-            unit_members = raw_unit.value
-
-            # Turn attack and armor into containers to make diffing work
-            if "attacks" in unit_members.keys():
-                attacks_member = unit_members.pop("attacks")
-                attacks_member = attacks_member.get_container("type_id")
-                armors_member = unit_members.pop("armors")
-                armors_member = armors_member.get_container("type_id")
-
-                unit_members.update({"attacks": attacks_member})
-                unit_members.update({"armors": armors_member})
-
-            unit = GenieUnitObject(unit_id, full_data_set, members=unit_members)
-            full_data_set.genie_units.update({unit.get_id(): unit})
-
-            # Commands
-            if "unit_commands" not in unit_members.keys():
-                # Only ActionUnits with type >= 40 should have commands
-                unit_type = raw_unit["unit_type"].value
-                if unit_type >= 40:
-                    unit_commands = raw_unit_headers[unit_id]["unit_commands"]
-                    unit.add_member(unit_commands)
-
-                else:
-                    # Create empty member if no headers are present
-                    unit_commands = ArrayMember("unit_commands",
-                                                StorageType.CONTAINER_MEMBER,
-                                                members=[])
-                    unit.add_member(unit_commands)
-
-    @staticmethod
-    def extract_genie_graphics(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
-        """
-        Extract graphic definitions from the game data.
-
-        :param gamespec: Gamedata from empires.dat file.
-        :type gamespec: class: ...dataformat.value_members.ArrayMember
-        """
-        # call hierarchy: wrapper[0]->graphics
-        raw_graphics = gamespec[0]["graphics"].value
-
-        for raw_graphic in raw_graphics:
-            # Can be ignored if there is no filename associated
-            filename = raw_graphic["filename"].value.lower()
-            if not filename:
-                continue
-
-            graphic_id = raw_graphic["graphic_id"].value
-            graphic_members = raw_graphic.value
-            graphic = GenieGraphic(graphic_id, full_data_set, members=graphic_members)
-
-            if filename not in full_data_set.existing_graphics:
-                graphic.exists = False
-
-            full_data_set.genie_graphics.update({graphic.get_id(): graphic})
-
-        # Detect subgraphics
-        for genie_graphic in full_data_set.genie_graphics.values():
-            genie_graphic.detect_subgraphics()
-
-    @staticmethod
-    def create_ambient_groups(full_data_set: GenieObjectContainer) -> None:
-        """
-        Create ambient groups, mostly for resources and scenery.
-
-        :param full_data_set: GenieObjectContainer instance that
-                              contains all relevant data for the conversion
-                              process.
-        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
-        """
-        ambient_ids = OrderedSet()
-        ambient_ids.update(aoc_internal.AMBIENT_GROUP_LOOKUPS.keys())
-        ambient_ids.update(de2_internal.AMBIENT_GROUP_LOOKUPS.keys())
-        genie_units = full_data_set.genie_units
-
-        for ambient_id in ambient_ids:
-            ambient_group = GenieAmbientGroup(ambient_id, full_data_set)
-            ambient_group.add_unit(genie_units[ambient_id])
-            full_data_set.ambient_groups.update({ambient_group.get_id(): ambient_group})
-            full_data_set.unit_ref.update({ambient_id: ambient_group})
-
-    @staticmethod
-    def create_variant_groups(full_data_set: GenieObjectContainer) -> None:
-        """
-        Create variant groups.
-
-        :param full_data_set: GenieObjectContainer instance that
-                              contains all relevant data for the conversion
-                              process.
-        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
-        """
-        variants = {}
-        variants.update(aoc_internal.VARIANT_GROUP_LOOKUPS)
-        variants.update(de2_internal.VARIANT_GROUP_LOOKUPS)
-
-        for group_id, variant in variants.items():
-            variant_group = GenieVariantGroup(group_id, full_data_set)
-            full_data_set.variant_groups.update({variant_group.get_id(): variant_group})
-
-            for variant_id in variant[2]:
-                variant_group.add_unit(full_data_set.genie_units[variant_id])
-                full_data_set.unit_ref.update({variant_id: variant_group})
-
-    @staticmethod
-    def create_extra_building_lines(full_data_set: GenieObjectContainer) -> None:
-        """
-        Create additional units that are not in the building connections.
-
-        :param full_data_set: GenieObjectContainer instance that
-                              contains all relevant data for the conversion
-                              process.
-        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
-        """
-        extra_units = (
-            1734,  # Folwark
-            1808,  # Mule Cart
-        )
-
-        for unit_id in extra_units:
-            building_line = GenieBuildingLineGroup(unit_id, full_data_set)
-            building_line.add_unit(full_data_set.genie_units[unit_id])
-            full_data_set.building_lines.update({building_line.get_id(): building_line})
-            full_data_set.unit_ref.update({unit_id: building_line})

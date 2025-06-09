@@ -13,5 +13,6 @@ add_py_modules(
 
 add_subdirectory(ability)
 add_subdirectory(civ)
+add_subdirectory(main)
 add_subdirectory(media)
 add_subdirectory(nyan)
