@@ -1,0 +1,11 @@
+add_py_modules(
+	__init__.py
+    charge.py
+    convert_chance.py
+    herdable_capacity.py
+    max_convert.py
+    min_convert.py
+    regeneration_rate.py
+    unknown.py
+    villager_pop_space.py
+)
