@@ -1,0 +1,9 @@
+add_py_modules(
+    __init__.py
+    apply_discrete_effect.py
+    game_entity_stance.py
+    production_queue.py
+    projectile.py
+    resistance.py
+    shoot_projectile.py
+)
