@@ -15,3 +15,4 @@ add_py_modules(
 )
 
 add_subdirectory(ability)
+add_subdirectory(auxiliary)
