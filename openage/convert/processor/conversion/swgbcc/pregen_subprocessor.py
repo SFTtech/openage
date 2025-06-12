@@ -52,6 +52,7 @@ class SWGBCCPregenSubprocessor:
         AoCPregenSubprocessor.generate_path_types(full_data_set, pregen_converter_group)
         cls.generate_resources(full_data_set, pregen_converter_group)
         AoCPregenSubprocessor.generate_death_condition(full_data_set, pregen_converter_group)
+        AoCPregenSubprocessor.generate_garrison_empty_condition(full_data_set, pregen_converter_group)
 
         pregen_nyan_objects = full_data_set.pregen_nyan_objects
         # Create nyan objects from the raw API objects
