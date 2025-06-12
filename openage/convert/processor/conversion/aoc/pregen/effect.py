@@ -7,11 +7,12 @@ from __future__ import annotations
 import typing
 
 from ......nyan.nyan_structs import MemberSpecialValue
-from .....entity_object.conversion.converter_object import RawAPIObject, ConverterObjectGroup
+from .....entity_object.conversion.converter_object import RawAPIObject
 from .....service.conversion import internal_name_lookups
 from .....value_object.conversion.forward_ref import ForwardRef
 
 if typing.TYPE_CHECKING:
+    from .....entity_object.conversion.converter_object import ConverterObjectGroup
     from .....entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
 
 ATTRIBUTE_CHANGE_PARENT = "engine.util.attribute_change_type.AttributeChangeType"
@@ -45,9 +46,9 @@ def generate_effect_types(
     :param full_data_set: Storage for all converted objects and metadata.
     :param pregen_converter_group: Stores all pregenerated nyan objects.
     """
-    _generate_attribute_change_types(full_data_set, pregen_converter_group)
-    _generate_construct_types(full_data_set, pregen_converter_group)
-    _generate_convert_types(full_data_set, pregen_converter_group)
+    generate_attribute_change_types(full_data_set, pregen_converter_group)
+    generate_construct_types(full_data_set, pregen_converter_group)
+    generate_convert_types(full_data_set, pregen_converter_group)
 
 
 def generate_misc_effect_objects(
@@ -67,7 +68,7 @@ def generate_misc_effect_objects(
     _generate_repair_property(full_data_set, pregen_converter_group)
 
 
-def _generate_attribute_change_types(
+def generate_attribute_change_types(
     full_data_set: GenieObjectContainer,
     pregen_converter_group: ConverterObjectGroup
 ) -> None:
@@ -156,7 +157,7 @@ def _generate_attribute_change_types(
         pregen_nyan_objects.update({type_ref_in_modpack: type_raw_api_object})
 
 
-def _generate_construct_types(
+def generate_construct_types(
     full_data_set: GenieObjectContainer,
     pregen_converter_group: ConverterObjectGroup
 ) -> None:
@@ -189,7 +190,7 @@ def _generate_construct_types(
         pregen_nyan_objects.update({type_ref_in_modpack: type_raw_api_object})
 
 
-def _generate_convert_types(
+def generate_convert_types(
     full_data_set: GenieObjectContainer,
     pregen_converter_group: ConverterObjectGroup
 ) -> None:
