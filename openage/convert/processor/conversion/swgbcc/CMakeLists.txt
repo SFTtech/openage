@@ -15,5 +15,6 @@ add_py_modules(
 add_subdirectory(ability)
 add_subdirectory(auxiliary)
 add_subdirectory(civ)
+add_subdirectory(main)
 add_subdirectory(nyan)
 add_subdirectory(pregen)

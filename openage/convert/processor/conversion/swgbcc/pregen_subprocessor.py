@@ -41,8 +41,8 @@ class SWGBCCPregenSubprocessor:
         AoCPregenSubprocessor.generate_formation_types(full_data_set, pregen_converter_group)
         AoCPregenSubprocessor.generate_language_objects(full_data_set, pregen_converter_group)
         AoCPregenSubprocessor.generate_misc_effect_objects(full_data_set, pregen_converter_group)
-        # cls._generate_modifiers(gamedata, pregen_converter_group) ??
-        # cls._generate_terrain_types(gamedata, pregen_converter_group) TODO: Create terrain types
+        # generate_modifiers(gamedata, pregen_converter_group) ??
+        # generate_terrain_types(gamedata, pregen_converter_group) TODO: Create terrain types
         AoCPregenSubprocessor.generate_path_types(full_data_set, pregen_converter_group)
         generate_resources(full_data_set, pregen_converter_group)
         AoCPregenSubprocessor.generate_death_condition(full_data_set, pregen_converter_group)

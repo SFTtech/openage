@@ -1,0 +1,9 @@
+add_py_modules(
+    __init__.py
+    ambient_group.py
+    building_line.py
+    tech_group.py
+    unit_line.py
+    variant_group.py
+    villager_group.py
+)
