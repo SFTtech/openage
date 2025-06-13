@@ -24,7 +24,7 @@ The demo mostly follows the steps described in the [Level 1 Renderer - Basic Usa
 documentation.
 
 ```bash
-./bin/run test --demo renderer.tests.renderer_demo 0
+cd bin && ./run test --demo renderer.tests.renderer_demo 0
 ```
 
 **Result:**
@@ -38,7 +38,7 @@ This demo shows how simple *textured* meshes can be created and rendered. It als
 how to interact with the window and the renderer using window callbacks.
 
 ```bash
-./bin/run test --demo renderer.tests.renderer_demo 1
+cd bin && ./run test --demo renderer.tests.renderer_demo 1
 ```
 
 **Controls:**
@@ -56,7 +56,7 @@ In this demo, we show how animation and texture metadata files are parsed and us
 load and render the correct textures and animations for a mesh.
 
 ```bash
-./bin/run test --demo renderer.tests.renderer_demo 2
+cd bin && ./run test --demo renderer.tests.renderer_demo 2
 ```
 
 **Controls:**
@@ -76,7 +76,7 @@ This demo shows a minimal setup for the [Level 2 Renderer](level2.md) and how to
 with it. The demo also introduces the camera system and how to interact with it.
 
 ```bash
-./bin/run test --demo renderer.tests.renderer_demo 3
+cd bin && ./run test --demo renderer.tests.renderer_demo 3
 ```
 
 **Controls:**
@@ -95,7 +95,7 @@ This demos shows how animation frame timing works and how to control the animati
 with the engine's internal clock.
 
 ```bash
-./bin/run test --demo renderer.tests.renderer_demo 4
+cd bin && ./run test --demo renderer.tests.renderer_demo 4
 ```
 
 **Controls:**
@@ -115,7 +115,7 @@ This demo shows how to create [uniform buffers](level1.md#uniform-buffers) and h
 Additionally, uniform buffer usage for the camera system is demonstrated.
 
 ```bash
-./bin/run test --demo renderer.tests.renderer_demo 5
+cd bin && ./run test --demo renderer.tests.renderer_demo 5
 ```
 
 **Controls:**
@@ -132,7 +132,7 @@ Additionally, uniform buffer usage for the camera system is demonstrated.
 This demo shows how to use [frustum culling](level2.md#frustum-culling) in the renderer.
 
 ```bash
-./bin/run test --demo renderer.tests.renderer_demo 6
+cd bin && ./run test --demo renderer.tests.renderer_demo 6
 ```
 
 **Controls:**
@@ -144,12 +144,12 @@ This demo shows how to use [frustum culling](level2.md#frustum-culling) in the r
 ![Demo 6](/doc/code/renderer/images/demo_6.png)
 
 
-### Demo 6
+### Demo 7
 
 This demo shows how to use [shader templating](level1.md#shader-templates) in the renderer.
 
 ```bash
-./bin/run test --demo renderer.tests.renderer_demo 6
+cd bin && ./run test --demo renderer.tests.renderer_demo 7
 ```
 
 **Result:**
@@ -164,7 +164,7 @@ This demo shows how to use [shader templating](level1.md#shader-templates) in th
 This stresstest tests the performance when rendering an increasingly larger number of objects.
 
 ```bash
-./bin/run test --demo renderer.tests.stresstest 0
+cd bin && ./run test --demo renderer.tests.renderer_stresstest 0
 ```
 
 **Result:**
@@ -177,7 +177,7 @@ This stresstest tests the performance when [frustum culling](level2.md#frustum-c
 number of objects is rendered on the screen.
 
 ```bash
-./bin/run test --demo renderer.tests.stresstest 1
+cd bin && ./run test --demo renderer.tests.renderer_stresstest 1
 ```
 
 **Result:**
