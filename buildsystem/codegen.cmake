@@ -1,4 +1,4 @@
-# Copyright 2014-2019 the openage authors. See copying.md for legal info.
+# Copyright 2014-2025 the openage authors. See copying.md for legal info.
 
 # set CODEGEN_SCU_FILE to the absolute path to SCU file
 macro(get_codegen_scu_file)
@@ -52,7 +52,7 @@ function(codegen_run)
 		COMMENT "openage.codegen: generating c++ code"
 	)
 
-	add_custom_target(codegen
+	add_custom_target(cppgen
 		DEPENDS "${CODEGEN_TIMEFILE}"
 	)
 
