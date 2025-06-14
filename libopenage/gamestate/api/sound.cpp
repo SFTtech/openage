@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #include "sound.h"
 
@@ -12,8 +12,13 @@
 namespace openage::gamestate::api {
 
 bool APISound::is_sound(const nyan::Object &obj) {
-	nyan::fqon_t immediate_parent = obj.get_parents()[0];
-	return immediate_parent == "engine.util.sound.Sound";
+	for (auto &parent : obj.get_parents()) {
+		if (parent == "engine.util.sound.Sound") {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 const std::string APISound::get_sound_path(const nyan::Object &sound) {

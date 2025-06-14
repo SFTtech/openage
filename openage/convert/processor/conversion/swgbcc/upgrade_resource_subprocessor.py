@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2025 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-lines,too-many-statements,too-many-public-methods
 #
@@ -480,7 +480,7 @@ class SWGBCCUpgradeResourceSubprocessor:
 
         game_entity_name = name_lookup_dict[medic_id][0]
 
-        patch_target_ref = f"{game_entity_name}.Heal"
+        patch_target_ref = f"{game_entity_name}.Heal.Ranged"
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
@@ -506,7 +506,7 @@ class SWGBCCUpgradeResourceSubprocessor:
 
         nyan_patch_raw_api_object.add_raw_patch_member("max_range",
                                                        value,
-                                                       "engine.ability.type.RangedContinuousEffect",
+                                                       "engine.ability.property.type.Ranged",
                                                        operator)
 
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)

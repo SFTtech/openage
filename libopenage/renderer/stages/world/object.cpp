@@ -61,12 +61,16 @@ void WorldObject::fetch_updates(const time::time_t &time) {
 		return;
 	}
 
-	// Get data from render entity
-	this->ref_id = this->render_entity->get_id();
-
 	// Thread-safe access to curves needs a lock on the render entity's mutex
 	auto read_lock = this->render_entity->get_read_lock();
-	this->position.sync(this->render_entity->get_position());
+
+	// Data syncs need to be done starting from the time of the last
+	// recorded change.
+	auto sync_time = this->render_entity->get_fetch_time();
+
+	// Get data from render entity
+	this->ref_id = this->render_entity->get_id();
+	this->position.sync(this->render_entity->get_position(), sync_time);
 	this->animation_info.sync(this->render_entity->get_animation_path(),
 	                          std::function<std::shared_ptr<renderer::resources::Animation2dInfo>(const std::string &)>(
 								  [&](const std::string &path) {
@@ -79,16 +83,16 @@ void WorldObject::fetch_updates(const time::time_t &time) {
 									  }
 									  return this->asset_manager->request_animation(path);
 								  }),
-	                          this->last_update);
-	this->angle.sync(this->render_entity->get_angle(), this->last_update);
-
-	// Unlock mutex of the render entity
-	read_lock.unlock();
+	                          sync_time,
+	                          true);
+	this->angle.sync(this->render_entity->get_angle(), sync_time);
 
 	// Set self to changed so that world renderer can update the renderable
 	this->changed = true;
-	this->render_entity->clear_changed_flag();
 	this->last_update = time;
+
+	// Indicate to the render entity that its updates have been processed.
+	this->render_entity->fetch_done();
 }
 
 void WorldObject::update_uniforms(const time::time_t &time) {

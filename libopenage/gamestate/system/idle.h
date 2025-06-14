@@ -1,4 +1,4 @@
-// Copyright 2023-2024 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -16,6 +16,8 @@ class Idle {
 public:
 	/**
 	 * Let a game entity idle.
+	 *
+	 * The entity requires an enabled `Idle` component.
 	 *
 	 * This does not change the state of a unit. It only changes its animation and
 	 * sounds.
