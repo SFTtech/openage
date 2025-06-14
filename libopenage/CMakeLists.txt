@@ -1,4 +1,4 @@
-# Copyright 2014-2019 the openage authors. See copying.md for legal info.
+# Copyright 2014-2025 the openage authors. See copying.md for legal info.
 
 # main C++ library definitions.
 # dependency and source file setup for the resulting library.
@@ -13,7 +13,7 @@ declare_binary(libopenage openage library allow_no_undefined)
 set_target_properties(libopenage PROPERTIES
 	VERSION 0
 	AUTOMOC ON
-	AUTOGEN_TARGET_DEPENDS "codegen"
+	AUTOGEN_TARGET_DEPENDS "cppgen"
 )
 
 ##################################################

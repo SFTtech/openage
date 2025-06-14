@@ -45,7 +45,11 @@ libopenage: $(BUILDDIR)
 
 .PHONY: codegen
 codegen: $(BUILDDIR)
-	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) codegen
+	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) cppgen
+
+.PHONY: cppgen
+cppgen: $(BUILDDIR)
+	$(MAKE) $(MAKEARGS) -C $(BUILDDIR) cppgen
 
 .PHONY: pxdgen
 pxdgen: $(BUILDDIR)
