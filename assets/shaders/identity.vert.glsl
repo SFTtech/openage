@@ -1,16 +1,14 @@
-#version 120
+#version 330 core
 
-// no-transformation texture mapping vertex shader
+// Input vertex position
+layout(location = 0) in vec4 vertex_position;
 
-// the position of this vertex
-attribute vec4 vertex_position;
-
-// interpolated texture coordinates sent to fragment shader
-varying vec2 tex_position;
+// Output to fragment shader
+out vec2 tex_position;
 
 void main(void) {
-	gl_Position = vertex_position;
+    gl_Position = vertex_position;
 
-	// convert from screen coordinates (-1, 1) to texture coordinates (0, 1)
-	tex_position = (vertex_position.xy + vec2(1.f)) / 2.f;
+    // Convert from clip space (-1, 1) to texture space (0, 1)
+    tex_position = (vertex_position.xy + vec2(1.0)) * 0.5;
 }

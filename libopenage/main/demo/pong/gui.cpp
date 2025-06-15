@@ -1,4 +1,4 @@
-// Copyright 2019-2024 the openage authors. See copying.md for legal info.
+// Copyright 2019-2025 the openage authors. See copying.md for legal info.
 
 #include "gui.h"
 

@@ -1,13 +1,10 @@
-#version 120
-// total basic standard texture drawing fragment shader
+#version 330 core
 
-// the texture data
-uniform sampler2D texture;
+uniform sampler2D texture_;
 
-// interpolated texture coordinates received from vertex shader
-varying vec2 tex_position;
+in vec2 tex_position;
+out vec4 frag_color;
 
-void main (void) {
-	// this sets the fragment color to the corresponding texel.
-	gl_FragColor = texture2D(texture, tex_position);
+void main(void) {
+    frag_color = texture(texture_, tex_position);
 }
