@@ -13,7 +13,20 @@
 #include "time/time.h"
 
 
-namespace openage::gamestate::component {
+namespace openage {
+
+namespace curve {
+template <KeyframeValueLike T>
+class Segmented;
+} // namespace curve
+
+namespace gamestate::component {
+
+/**
+ * Stores runtime information for a Live ability of a game entity.
+ *
+ * Represents the ability of a game entity to have attributes, e.g. health, faith, etc.
+ */
 class Live final : public APIComponent {
 public:
 	using APIComponent::APIComponent;
@@ -29,7 +42,18 @@ public:
 	 */
 	void add_attribute(const time::time_t &time,
 	                   const nyan::fqon_t &attribute,
-	                   std::shared_ptr<curve::Discrete<int64_t>> starting_values);
+	                   std::shared_ptr<curve::Segmented<attribute_value_t>> starting_values);
+
+	/**
+	 * Get the value of an attribute at a given time.
+	 *
+	 * @param time The time at which the attribute is queried.
+	 * @param attribute Attribute identifier (fqon of the nyan object).
+	 *
+	 * @return Value of the attribute at the given time.
+	 */
+	const attribute_value_t get_attribute(const time::time_t &time,
+	                                      const nyan::fqon_t &attribute) const;
 
 	/**
 	 * Set the value of an attribute at a given time.
@@ -40,16 +64,17 @@ public:
 	 */
 	void set_attribute(const time::time_t &time,
 	                   const nyan::fqon_t &attribute,
-	                   int64_t value);
+	                   attribute_value_t value);
 
 private:
 	using attribute_storage_t = curve::UnorderedMap<nyan::fqon_t,
-	                                                std::shared_ptr<curve::Discrete<int64_t>>>;
+	                                                std::shared_ptr<curve::Segmented<attribute_value_t>>>;
 
 	/**
 	 * Map of attribute values by attribute type.
 	 */
-	attribute_storage_t attribute_values;
+	attribute_storage_t attributes;
 };
 
-} // namespace openage::gamestate::component
+} // namespace gamestate::component
+} // namespace openage

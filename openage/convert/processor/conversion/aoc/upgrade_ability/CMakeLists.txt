@@ -1,0 +1,18 @@
+add_py_modules(
+    __init__.py
+    apply_continuous_effect.py
+    apply_discrete_effect.py
+    attribute_change_tracker.py
+    death.py
+    despawn.py
+    idle.py
+    line_of_sight.py
+    live.py
+    move.py
+    named.py
+    resistance.py
+    selectable.py
+    shoot_projectile.py
+    turn.py
+    util.py
+)

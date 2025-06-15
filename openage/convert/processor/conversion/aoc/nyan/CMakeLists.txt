@@ -1,0 +1,11 @@
+add_py_modules(
+	__init__.py
+    ambient.py
+    building.py
+    civ.py
+    projectile.py
+    tech.py
+    terrain.py
+    unit.py
+    variant.py
+)

@@ -26,6 +26,7 @@
 #include "gamestate/game_entity.h"
 #include "gamestate/game_state.h"
 #include "gamestate/map.h"
+#include "gamestate/system/property.h"
 #include "pathfinding/path.h"
 #include "pathfinding/pathfinder.h"
 #include "util/fixed_point.h"
@@ -80,8 +81,8 @@ const time::time_t Move::move_command(const std::shared_ptr<gamestate::GameEntit
                                       const time::time_t &start_time) {
 	auto command_queue = std::dynamic_pointer_cast<component::CommandQueue>(
 		entity->get_component(component::component_t::COMMANDQUEUE));
-	auto command = std::dynamic_pointer_cast<component::command::MoveCommand>(
-		command_queue->pop_command(start_time));
+	auto command = std::dynamic_pointer_cast<component::command::Move>(
+		command_queue->pop(start_time));
 
 	if (not command) [[unlikely]] {
 		log::log(MSG(warn) << "Command is not a move command.");
@@ -89,6 +90,38 @@ const time::time_t Move::move_command(const std::shared_ptr<gamestate::GameEntit
 	}
 
 	return Move::move_default(entity, state, command->get_target(), start_time);
+}
+
+const time::time_t Move::move_target(const std::shared_ptr<gamestate::GameEntity> &entity,
+                                     const std::shared_ptr<openage::gamestate::GameState> &state,
+                                     const time::time_t &start_time) {
+	auto command_queue = std::dynamic_pointer_cast<component::CommandQueue>(
+		entity->get_component(component::component_t::COMMANDQUEUE));
+	auto target = command_queue->get_target(start_time);
+
+	if (not target.has_value()) [[unlikely]] {
+		log::log(WARN << "Entity " << entity->get_id() << " has no target at time " << start_time);
+		return time::time_t::from_int(0);
+	}
+
+	if (std::holds_alternative<gamestate::entity_id_t>(target.value())) {
+		auto target_id = std::get<gamestate::entity_id_t>(target.value());
+		auto target_entity = state->get_game_entity(target_id);
+
+		auto position = std::dynamic_pointer_cast<component::Position>(
+			target_entity->get_component(component::component_t::POSITION));
+
+		auto target_pos = position->get_positions().get(start_time);
+
+		return Move::move_default(entity, state, target_pos, start_time);
+	}
+	else if (std::holds_alternative<coord::phys3>(target.value())) {
+		auto target_pos = std::get<coord::phys3>(target.value());
+		return Move::move_default(entity, state, target_pos, start_time);
+	}
+
+	log::log(WARN << "Entity " << entity->get_id() << " has an invalid target at time " << start_time);
+	return time::time_t::from_int(0);
 }
 
 
@@ -173,15 +206,7 @@ const time::time_t Move::move_default(const std::shared_ptr<gamestate::GameEntit
 
 	// properties
 	auto ability = move_component->get_ability();
-	if (api::APIAbility::check_property(ability, api::ability_property_t::ANIMATED)) {
-		auto property = api::APIAbility::get_property(ability, api::ability_property_t::ANIMATED);
-		auto animations = api::APIAbilityProperty::get_animations(property);
-		auto animation_paths = api::APIAnimation::get_animation_paths(animations);
-
-		if (animation_paths.size() > 0) [[likely]] {
-			entity->render_update(start_time, animation_paths[0]);
-		}
-	}
+	handle_animated(entity, ability, start_time);
 
 	return total_time;
 }

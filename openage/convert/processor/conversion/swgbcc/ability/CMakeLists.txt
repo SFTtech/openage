@@ -1,0 +1,28 @@
+add_py_modules(
+    __init__.py
+    active_transform_to.py
+    apply_continuous_effect.py
+    apply_discrete_effect.py
+    attribute_change_tracker.py
+    collision.py
+    constructable.py
+    death.py
+    exchange_resources.py
+    gather.py
+    harvestable.py
+    idle.py
+    line_of_sight.py
+    live.py
+    move.py
+    named.py
+    provide_contingent.py
+    regenerate_attribute.py
+    resource_storage.py
+    restock.py
+    selectable.py
+    send_back_to_task.py
+    shoot_projectile.py
+    trade_post.py
+    trade.py
+    turn.py
+)
