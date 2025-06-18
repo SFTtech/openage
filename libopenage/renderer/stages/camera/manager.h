@@ -6,6 +6,7 @@
 #include <utility>
 
 #include "renderer/camera/camera.h"
+#include "renderer/stages/camera/render_entity.h"
 
 namespace openage::renderer {
 class UniformBufferInput;
@@ -114,6 +115,9 @@ public:
 	 */
 	void set_camera_boundaries(const CameraBoundaries &camera_boundaries);
 
+
+	void poll_render_entity();
+
 private:
 	/**
 	 * Update the camera parameters.
@@ -159,6 +163,8 @@ private:
 	 * Camera boundaries for X and Z movement. Contains minimum and maximum values for each axes.
 	 */
 	CameraBoundaries camera_boundaries;
+
+	std::shared_ptr<RenderEntity> render_entity;
 };
 
 } // namespace camera
