@@ -19,7 +19,7 @@ namespace tests {
 
 void flow_field() {
 	// Create initial cost grid
-	auto cost_field = std::make_shared<CostField>(3);
+	auto cost_field = std::make_shared<CostField<100>>(3);
 
 	// | 1 | 1 | 1 |
 	// | 1 | X | 1 |
