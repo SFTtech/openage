@@ -1,4 +1,4 @@
-# Copyright 2014-2023 the openage authors. See copying.md for legal info.
+# Copyright 2014-2025 the openage authors. See copying.md for legal info.
 #
 # TODO pylint: disable=C,R,abstract-method
 
@@ -265,14 +265,12 @@ class EnumMember(RefMember):
     def __init__(
         self,
         type_name: str,
-        values: dict[typing.Any, typing.Any],
-        file_name: str = None
+        values: list[str]
     ):
-        super().__init__(type_name, file_name)
+        super().__init__(type_name, None)  # external xrefs unsupported
         self.values = values
-        self.resolved = True    # TODO, xrefs not supported yet.
 
-    def validate_value(self, value: typing.Any) -> bool:
+    def validate_value(self, value: str) -> bool:
         return value in self.values
 
     def __repr__(self):
@@ -281,36 +279,36 @@ class EnumMember(RefMember):
 
 class EnumLookupMember(EnumMember):
     """
-    enum definition, does lookup of raw datfile data => enum value
+    enum definition, does lookup of raw datfile data => human-readable enum value
     """
 
     def __init__(
         self,
         type_name: str,
-        lookup_dict: dict[typing.Any, typing.Any],
-        raw_type: str,
-        file_name: str = None
+        lookup_dict: dict[int, str],
+        raw_type: str
     ):
         super().__init__(
             type_name,
-            [v for k, v in sorted(lookup_dict.items())],
-            file_name
+            sorted(list(lookup_dict.values()))
         )
         self.lookup_dict = lookup_dict
         self.raw_type = raw_type
 
-    def entry_hook(self, data: typing.Any) -> typing.Any:
+    def entry_hook(self, data: int) -> str:
         """
         perform lookup of raw data -> enum member name
         """
-
         try:
             return self.lookup_dict[data]
+
         except KeyError:
             try:
                 h = f" = {hex(data)}"
+
             except TypeError:
                 h = ""
+
             raise KeyError("failed to find %s%s in lookup dict %s!" %
                            (str(data), h, self.type_name)) from None
 
