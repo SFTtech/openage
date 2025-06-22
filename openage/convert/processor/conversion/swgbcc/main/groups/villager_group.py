@@ -18,8 +18,8 @@ def create_villager_groups(full_data_set: GenieObjectContainer) -> None:
     villager group.
 
     :param full_data_set: GenieObjectContainer instance that
-                            contains all relevant data for the conversion
-                            process.
+                          contains all relevant data for the conversion
+                          process.
     """
     units = full_data_set.genie_units
     task_group_ids = set()
@@ -61,8 +61,6 @@ def create_villager_groups(full_data_set: GenieObjectContainer) -> None:
     # Create the villager task group
     villager = GenieVillagerGroup(118, (1,), full_data_set)
     full_data_set.unit_lines.update({villager.get_id(): villager})
-    # TODO: Find the line id elsewhere
-    full_data_set.unit_lines_vertical_ref.update({36: villager})
     full_data_set.villager_groups.update({villager.get_id(): villager})
     for unit_id in unit_ids:
         full_data_set.unit_ref.update({unit_id: villager})
