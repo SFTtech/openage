@@ -42,13 +42,9 @@ def create_villager_groups(full_data_set: GenieObjectContainer) -> None:
             task_group.add_unit(unit)
 
         else:
-            if task_group_id == 1:
-                # SWGB uses the same IDs as AoC
-                line_id = GenieUnitTaskGroup.male_line_id
-
-            elif task_group_id == 2:
-                # No differences to task group 1; probably unused
-                continue
+            if task_group_id in GenieUnitTaskGroup.line_id_assignments:
+                # SWGB uses the same IDs as AoC for lines
+                line_id = GenieUnitTaskGroup.line_id_assignments[task_group_id]
 
             else:
                 raise ValueError(
@@ -63,7 +59,7 @@ def create_villager_groups(full_data_set: GenieObjectContainer) -> None:
         unit_ids.add(unit["id0"].value)
 
     # Create the villager task group
-    villager = GenieVillagerGroup(118, task_group_ids, full_data_set)
+    villager = GenieVillagerGroup(118, (1,), full_data_set)
     full_data_set.unit_lines.update({villager.get_id(): villager})
     # TODO: Find the line id elsewhere
     full_data_set.unit_lines_vertical_ref.update({36: villager})

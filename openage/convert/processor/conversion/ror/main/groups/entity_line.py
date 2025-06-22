@@ -51,8 +51,8 @@ def create_entity_lines(gamespec: ArrayMember, full_data_set: GenieObjectContain
                     task_group.add_unit(entity)
 
                 else:
-                    if task_group_id == 1:
-                        line_id = RoRUnitTaskGroup.male_line_id
+                    if task_group_id in RoRUnitTaskGroup.line_id_assignments:
+                        line_id = RoRUnitTaskGroup.line_id_assignments[task_group_id]
 
                     task_group = RoRUnitTaskGroup(line_id, task_group_id, -1, full_data_set)
                     task_group.add_unit(entity)
@@ -72,7 +72,7 @@ def create_entity_lines(gamespec: ArrayMember, full_data_set: GenieObjectContain
             full_data_set.unit_ref.update({unit_id: building_line})
 
     # Create the villager task group
-    villager = RoRVillagerGroup(118, task_group_ids, full_data_set)
+    villager = RoRVillagerGroup(118, (1,), full_data_set)
     full_data_set.unit_lines.update({villager.get_id(): villager})
     full_data_set.villager_groups.update({villager.get_id(): villager})
     for unit_id in villager_unit_ids:
