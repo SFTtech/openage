@@ -36,7 +36,7 @@ def extract_genie_units(gamespec: ArrayMember, full_data_set: GenieObjectContain
         # Turn attack and armor into containers to make diffing work
         if "attacks" in unit_members.keys():
             attacks_member = unit_members.pop("attacks")
-            attacks_member = attacks_member.get_container("type_id")
+            attacks_member = attacks_member.get_container("type_id", ignore_duplicates=True)
             armors_member = unit_members.pop("armors")
             armors_member = armors_member.get_container("type_id")
 
