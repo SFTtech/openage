@@ -7,6 +7,8 @@ import typing
 
 from enum import Enum
 
+from ....log import warn
+
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.read.genie_structure import GenieStructure
@@ -286,7 +288,8 @@ class EnumLookupMember(EnumMember):
         self,
         type_name: str,
         lookup_dict: dict[int, str],
-        raw_type: str
+        raw_type: str,
+        unknown_lookup_prefix: str = None,
     ):
         super().__init__(
             type_name,
@@ -295,14 +298,24 @@ class EnumLookupMember(EnumMember):
         self.lookup_dict = lookup_dict
         self.raw_type = raw_type
 
+        self.unknown_lookup_prefix = unknown_lookup_prefix
+
     def entry_hook(self, data: int) -> str:
         """
         perform lookup of raw data -> enum member name
+
+        Throws an error if the lookup fails and no unknown lookup prefix is defined.
         """
-        try:
+        if data in self.lookup_dict:
             return self.lookup_dict[data]
 
-        except KeyError:
+        elif self.unknown_lookup_prefix is not None:
+            unknown_string = f"{self.unknown_lookup_prefix}_{data:#X}"
+            warn("Could not find enum string for value %s, using '%s'",
+                 str(data), unknown_string)
+            return unknown_string
+
+        else:
             try:
                 h = f" = {hex(data)}"
 
