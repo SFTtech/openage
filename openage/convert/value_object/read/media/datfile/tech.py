@@ -1,4 +1,4 @@
-# Copyright 2013-2024 the openage authors. See copying.md for legal info.
+# Copyright 2013-2025 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 from __future__ import annotations
@@ -33,7 +33,8 @@ class Effect(GenieStructure):
             (READ_GEN, "type_id", StorageType.ID_MEMBER, EnumLookupMember(
                 raw_type="uint8_t",
                 type_name="effect_apply_type",
-                lookup_dict=EFFECT_APPLY_TYPE
+                lookup_dict=EFFECT_APPLY_TYPE,
+                unknown_lookup_prefix="UNKNOWN_EFFECT_APPLY_TYPE"
             )),
             (READ_GEN, "attr_a", StorageType.INT_MEMBER, "int16_t"),
             (READ_GEN, "attr_b", StorageType.INT_MEMBER, "int16_t"),
@@ -93,7 +94,8 @@ class OtherConnection(GenieStructure):
             (READ_GEN, "other_connection", StorageType.ID_MEMBER, EnumLookupMember(  # mode for unit_or_research0
                 raw_type="int32_t",
                 type_name="connection_mode",
-                lookup_dict=CONNECTION_MODE
+                lookup_dict=CONNECTION_MODE,
+                unknown_lookup_prefix="UNKNOWN_CONNECTION_MODE"
             )),
         ]
 

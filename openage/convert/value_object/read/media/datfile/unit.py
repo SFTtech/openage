@@ -1,4 +1,4 @@
-# Copyright 2013-2024 the openage authors. See copying.md for legal info.
+# Copyright 2013-2025 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R,too-many-lines
 from __future__ import annotations
@@ -46,7 +46,8 @@ class UnitCommand(GenieStructure):
             (READ_GEN, "type", StorageType.ID_MEMBER, EnumLookupMember(
                 raw_type="int16_t",
                 type_name="command_ability",
-                lookup_dict=COMMAND_ABILITY
+                lookup_dict=COMMAND_ABILITY,
+                unknown_lookup_prefix="UNKNOWN_COMBAT_ABILITY"
             )),
             (READ_GEN, "class_id", StorageType.ID_MEMBER, "int16_t"),
             (READ_GEN, "unit_id", StorageType.ID_MEMBER, "int16_t"),
@@ -69,7 +70,8 @@ class UnitCommand(GenieStructure):
                 # what can be selected as a target for the unit command?
                 raw_type="int8_t",
                 type_name="selection_type",
-                lookup_dict=OWNER_TYPE
+                lookup_dict=OWNER_TYPE,
+                unknown_lookup_prefix="UNKNOWN_OWNER_TYPE"
             )),
             # checks if the targeted unit has > 0 resources
             (SKIP, "carry_check", StorageType.BOOLEAN_MEMBER, "int8_t"),
@@ -161,7 +163,8 @@ class ResourceStorage(GenieStructure):
             (SKIP, "used_mode", StorageType.ID_MEMBER, EnumLookupMember(
                 raw_type="int8_t",
                 type_name="resource_handling",
-                lookup_dict=RESOURCE_HANDLING
+                lookup_dict=RESOURCE_HANDLING,
+                unknown_lookup_prefix="UNKNOWN_RESOURCE_HANDLING"
             )),
         ]
 
@@ -187,7 +190,8 @@ class DamageGraphic(GenieStructure):
             (SKIP, "apply_mode", StorageType.ID_MEMBER, EnumLookupMember(
                 raw_type="int8_t",
                 type_name="damage_draw_type",
-                lookup_dict=DAMAGE_DRAW_TYPE
+                lookup_dict=DAMAGE_DRAW_TYPE,
+                unknown_lookup_prefix="UNKNOWN_DAMAGE_DRAW_TYPE"
             )),
         ]
 
@@ -209,7 +213,8 @@ class HitType(GenieStructure):
             (READ_GEN, "type_id", StorageType.ID_MEMBER, EnumLookupMember(
                 raw_type="int16_t",
                 type_name="hit_class",
-                lookup_dict=ARMOR_CLASS
+                lookup_dict=ARMOR_CLASS,
+                unknown_lookup_prefix="UNKNOWN_ARMOR_CLASS"
             )),
             (READ_GEN, "amount", StorageType.INT_MEMBER, "int16_t"),
         ]
@@ -232,7 +237,8 @@ class ResourceCost(GenieStructure):
             (READ_GEN, "type_id", StorageType.ID_MEMBER, EnumLookupMember(
                 raw_type="int16_t",
                 type_name="resource_types",
-                lookup_dict=RESOURCE_TYPES
+                lookup_dict=RESOURCE_TYPES,
+                unknown_lookup_prefix="UNKNOWN_RESOURCE_TYPE"
             )),
             (READ_GEN, "amount", StorageType.INT_MEMBER, "int16_t"),
             (READ_GEN, "enabled", StorageType.BOOLEAN_MEMBER, "int16_t"),
@@ -301,7 +307,8 @@ class UnitObject(GenieStructure):
             (READ_GEN, "unit_class", StorageType.ID_MEMBER, EnumLookupMember(
                 raw_type="int16_t",
                 type_name="unit_classes",
-                lookup_dict=UNIT_CLASSES
+                lookup_dict=UNIT_CLASSES,
+                unknown_lookup_prefix="UNKNOWN_UNIT_CLASS"
             )),
             (READ_GEN, "idle_graphic0", StorageType.ID_MEMBER, "int16_t"),
         ])
@@ -372,17 +379,20 @@ class UnitObject(GenieStructure):
             (READ_GEN, "elevation_mode", StorageType.ID_MEMBER, EnumLookupMember(
                 raw_type="int8_t",
                 type_name="elevation_modes",
-                lookup_dict=ELEVATION_MODES
+                lookup_dict=ELEVATION_MODES,
+                unknown_lookup_prefix="UNKNOWN_ELEVATION_MODE"
             )),
             (READ_GEN, "visible_in_fog", StorageType.ID_MEMBER, EnumLookupMember(
                 raw_type="int8_t",
                 type_name="fog_visibility",
-                lookup_dict=FOG_VISIBILITY
+                lookup_dict=FOG_VISIBILITY,
+                unknown_lookup_prefix="UNKNOWN_FOG_VISIBILITY"
             )),
             (READ_GEN, "terrain_restriction", StorageType.ID_MEMBER, EnumLookupMember(
                 raw_type="int16_t",      # determines on what type of ground the unit can be placed/walk
                 type_name="ground_type",  # is actually the id of the terrain_restriction entry!
-                lookup_dict=TERRAIN_RESTRICTIONS
+                lookup_dict=TERRAIN_RESTRICTIONS,
+                unknown_lookup_prefix="UNKNOWN_TERRAIN_RESTRICTION"
             )),
             # determines whether the unit can fly
             (READ_GEN, "fly_mode", StorageType.BOOLEAN_MEMBER, "int8_t"),
@@ -394,30 +404,35 @@ class UnitObject(GenieStructure):
                 # blast_attack_level.
                 raw_type="int8_t",
                 type_name="blast_types",
-                lookup_dict=BLAST_DEFENSE_TYPES
+                lookup_dict=BLAST_DEFENSE_TYPES,
+                unknown_lookup_prefix="UNKNOWN_BLAST_DEFENSE_TYPE"
             )),
             (SKIP, "combat_level", StorageType.ID_MEMBER, EnumLookupMember(
                 raw_type="int8_t",
                 type_name="combat_levels",
-                lookup_dict=COMBAT_LEVELS
+                lookup_dict=COMBAT_LEVELS,
+                unknown_lookup_prefix="UNKNOWN_COMBAT_LEVEL"
             )),
             (READ_GEN, "interaction_mode", StorageType.ID_MEMBER, EnumLookupMember(
                 # what can be done with this unit?
                 raw_type="int8_t",
                 type_name="interaction_modes",
-                lookup_dict=INTERACTION_MODES
+                lookup_dict=INTERACTION_MODES,
+                unknown_lookup_prefix="UNKNOWN_INTERACTION_MODE"
             )),
             (SKIP, "map_draw_level", StorageType.ID_MEMBER, EnumLookupMember(
                 # how does the unit show up on the minimap?
                 raw_type="int8_t",
                 type_name="minimap_modes",
-                lookup_dict=MINIMAP_MODES
+                lookup_dict=MINIMAP_MODES,
+                unknown_lookup_prefix="UNKNOWN_MINIMAP_MODE"
             )),
             (SKIP, "unit_level", StorageType.ID_MEMBER, EnumLookupMember(
                 # selects the available ui command buttons for the unit
                 raw_type="int8_t",
                 type_name="command_attributes",
-                lookup_dict=UNIT_LEVELS
+                lookup_dict=UNIT_LEVELS,
+                unknown_lookup_prefix="UNKNOWN_UNIT_LEVEL"
             )),
             (SKIP, "attack_reaction", StorageType.FLOAT_MEMBER, "float"),
             # palette color id for the minimap
@@ -443,7 +458,8 @@ class UnitObject(GenieStructure):
                 (READ_GEN, "obstruction_type", StorageType.ID_MEMBER, EnumLookupMember(
                     raw_type="int8_t",
                     type_name="obstruction_types",
-                    lookup_dict=OBSTRUCTION_TYPES
+                    lookup_dict=OBSTRUCTION_TYPES,
+                    unknown_lookup_prefix="UNKNOWN_OBSTRUCTION_TYPE"
                 )),
                 (READ_GEN, "obstruction_class", StorageType.ID_MEMBER, "int8_t"),
 
@@ -466,7 +482,8 @@ class UnitObject(GenieStructure):
                 (READ_GEN, "obstruction_type", StorageType.ID_MEMBER, EnumLookupMember(
                     raw_type="int8_t",
                     type_name="obstruction_types",
-                    lookup_dict=OBSTRUCTION_TYPES
+                    lookup_dict=OBSTRUCTION_TYPES,
+                    unknown_lookup_prefix="UNKNOWN_OBSTRUCTION_TYPE"
                 )),
                 (READ_GEN, "obstruction_class", StorageType.ID_MEMBER, "int8_t"),
             ])
@@ -476,7 +493,8 @@ class UnitObject(GenieStructure):
                 # things that happen when the unit was selected
                 raw_type="int8_t",
                 type_name="selection_effects",
-                lookup_dict=SELECTION_EFFECTS
+                lookup_dict=SELECTION_EFFECTS,
+                unknown_lookup_prefix="UNKNOWN_SELECTION_EFFECT"
             )),
             # 0: default, -16: fish trap, farm, 52: deadfarm, OLD-*, 116: flare,
             # whale, dolphin -123: fish
@@ -518,7 +536,8 @@ class UnitObject(GenieStructure):
             (SKIP, "old_attack_mode", StorageType.ID_MEMBER, EnumLookupMember(  # obsolete, as it's copied when converting the unit
                 raw_type="int8_t",     # things that happen when the unit was selected
                 type_name="attack_modes",
-                lookup_dict=ATTACK_MODES
+                lookup_dict=ATTACK_MODES,
+                unknown_lookup_prefix="UNKNOWN_ATTACK_MODE"
             )),
             # leftover from alpha. would et units change terrain under them
             (SKIP, "convert_terrain", StorageType.INT_MEMBER, "int8_t"),
@@ -781,7 +800,8 @@ class ProjectileUnit(ActionUnit):
                 # the accessible values on the specified terrain restriction
                 raw_type="int16_t",
                 type_name="boundary_ids",
-                lookup_dict=BOUNDARY_IDS
+                lookup_dict=BOUNDARY_IDS,
+                unknown_lookup_prefix="UNKNOWN_BOUNDARY_ID"
             )),
         ])
 
@@ -807,7 +827,8 @@ class ProjectileUnit(ActionUnit):
                 # blasts damage units that have higher or same blast_defense_level
                 raw_type="uint8_t",
                 type_name="range_damage_type",
-                lookup_dict=BLAST_OFFENSE_TYPES
+                lookup_dict=BLAST_OFFENSE_TYPES,
+                unknown_lookup_prefix="UNKNOWN_BLAST_OFFENSE_TYPE"
             )),
             # minimum range that this projectile requests for display
             (READ_GEN, "weapon_range_min", StorageType.FLOAT_MEMBER, "float"),
@@ -825,7 +846,14 @@ class ProjectileUnit(ActionUnit):
         ])
 
         if game_version.edition.game_id == "AOE2DE":
-            data_format.append((READ_GEN, "blast_damage", StorageType.FLOAT_MEMBER, "float"))
+            data_format.extend([
+                (READ_GEN, "blast_damage", StorageType.FLOAT_MEMBER, "float"),
+                (SKIP, "damage_reflect", StorageType.FLOAT_MEMBER, "float"),
+                (SKIP, "friendly_fire_damage", StorageType.FLOAT_MEMBER, "float"),
+                (SKIP, "interrupt_frame", StorageType.INT_MEMBER, "int16_t"),
+                (SKIP, "garrison_firepower", StorageType.FLOAT_MEMBER, "float"),
+                (SKIP, "attack_graphic1", StorageType.ID_MEMBER, "int16_t"),
+            ])
 
         return data_format
 
@@ -923,7 +951,8 @@ class LivingUnit(ProjectileUnit):
                 (READ_GEN, "creatable_type", StorageType.ID_MEMBER, EnumLookupMember(
                     raw_type="uint8_t",
                     type_name="creatable_types",
-                    lookup_dict=CREATABLE_TYPES
+                    lookup_dict=CREATABLE_TYPES,
+                    unknown_lookup_prefix="UNKNOWN_CREATABLE_TYPE"
                 )),
                 # if building: "others" tab in editor, if living unit: "heroes" tab,
                 # regenerate health + monk immunity
@@ -939,10 +968,24 @@ class LivingUnit(ProjectileUnit):
                     (READ_GEN, "spawn_graphic_id", StorageType.ID_MEMBER, "int16_t"),
                     (READ_GEN, "upgrade_graphic_id", StorageType.ID_MEMBER, "int16_t"),
                     (READ_GEN, "hero_glow_graphic_id", StorageType.ID_MEMBER, "int16_t"),
+                    (READ_GEN, "idle_attack_graphic_id", StorageType.ID_MEMBER, "int16_t"),
                     (READ_GEN, "max_charge", StorageType.FLOAT_MEMBER, "float"),
                     (READ_GEN, "charge_regen_rate", StorageType.FLOAT_MEMBER, "float"),
                     (READ_GEN, "charge_cost", StorageType.ID_MEMBER, "int16_t"),
                     (READ_GEN, "charge_type", StorageType.ID_MEMBER, "int16_t"),
+
+                    (READ_GEN, "charge_target", StorageType.ID_MEMBER, "int16_t"),
+                    (READ_GEN, "charge_projectile_id", StorageType.ID_MEMBER, "int32_t"),
+                    (READ_GEN, "attack_priority", StorageType.ID_MEMBER, "int8_t"),
+                    (READ_GEN, "invulnerability_level", StorageType.FLOAT_MEMBER, "float"),
+
+                    (READ_GEN, "button_icon_id", StorageType.ID_MEMBER, "int16_t"),
+                    # Short tooltip
+                    (READ_GEN, "button_tooltip_id0", StorageType.ID_MEMBER, "int32_t"),
+                    # Extended tooltip
+                    (READ_GEN, "button_tooltip_id1", StorageType.ID_MEMBER, "int32_t"),
+                    (READ_GEN, "button_hotkey_action", StorageType.ID_MEMBER, "int16_t"),
+
                     (READ_GEN, "min_convert_mod", StorageType.FLOAT_MEMBER, "float"),
                     (READ_GEN, "max_convert_mod", StorageType.FLOAT_MEMBER, "float"),
                     (READ_GEN, "convert_chance_mod", StorageType.FLOAT_MEMBER, "float"),
@@ -1054,7 +1097,8 @@ class BuildingUnit(LivingUnit):
                 (READ_GEN, "garrison_type", StorageType.BITFIELD_MEMBER, EnumLookupMember(
                     raw_type="int8_t",
                     type_name="garrison_types",
-                    lookup_dict=GARRISON_TYPES
+                    lookup_dict=GARRISON_TYPES,
+                    unknown_lookup_prefix="UNKNOWN_GARRISON_TYPE"
                 )),
                 (READ_GEN, "garrison_heal_rate", StorageType.FLOAT_MEMBER, "float"),
                 (SKIP, "garrison_repair_rate", StorageType.FLOAT_MEMBER, "float"),
