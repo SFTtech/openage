@@ -1,4 +1,4 @@
-# Copyright 2019-2023 the openage authors. See copying.md for legal info.
+# Copyright 2019-2025 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-public-methods,too-many-instance-attributes,consider-iterating-dictionary
 
@@ -1041,11 +1041,12 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
 
     __slots__ = ('task_group_id',)
 
-    # From unit connection
-    male_line_id = 83   # male villager (with combat task)
-
-    # Female villagers have no line obj_id, so we use the combat unit
-    female_line_id = 293  # female villager (with combat task)
+    # Maps task group ID to the line ID of the first unit in the group.
+    line_id_assignments = {
+        1: 83,   # male villager (with combat task)
+        2: 293,  # female villager (with combat task)
+        3: 13,   # fishing ship (in DE2)
+    }
 
     def __init__(
         self,
@@ -1074,8 +1075,7 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
         after: GenieUnitObject = None
     ) -> None:
         # Force the idle/combat units at the beginning of the line
-        if genie_unit["id0"].value in (GenieUnitTaskGroup.male_line_id,
-                                       GenieUnitTaskGroup.female_line_id):
+        if genie_unit["id0"].value in self.line_id_assignments.values():
             super().add_unit(genie_unit, 0, after)
 
         else:

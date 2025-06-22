@@ -1,4 +1,4 @@
-# Copyright 2019-2023 the openage authors. See copying.md for legal info.
+# Copyright 2019-2025 the openage authors. See copying.md for legal info.
 # TODO pylint: disable=C,R,abstract-method
 
 """
@@ -30,6 +30,7 @@ from math import isclose
 from abc import ABC, abstractmethod
 
 from .dynamic_loader import DynamicLoader
+from ....log import warn
 
 
 class ValueMember(ABC):
@@ -432,22 +433,24 @@ class ArrayMember(ValueMember):
 
     def get_container(
         self,
-        key_member_name: str,
-        force_not_found: bool = False,
-        force_duplicate: bool = False
+        key_member_id: str,
+        /,
+        ignore_not_found: bool = False,
+        ignore_duplicates: bool = False
     ) -> ContainerMember:
         """
-        Returns a ContainerMember generated from an array with type ARRAY_CONTAINER.
+        Get a ContainerMember generated from an array with type ARRAY_CONTAINER.
         It uses the values of the members with the specified name as keys.
+
         By default, this method raises an exception if a member with this
         name does not exist or the same key is used twice.
 
-        :param key_member_name: A member in the containers whos value is used as the key.
-        :type key_member_name: str
-        :param force_not_found: Do not raise an exception if the member is not found.
-        :type force_not_found: bool
-        :param force_duplicate: Do not raise an exception if the same key value is used twice.
-        :type force_duplicate: bool
+        :param key_member_id: A member in the containers whos value is used as the key.
+        :param ignore_not_found: Warn instead of raise if \p key_member_id is not found in
+                                 a container.
+        :param ignore_duplicates: Warn instead of raise if \p key_member_id is present
+                                  multiple times. In that case, only the first value is used.
+        :return: ContainerMember with the keys as values of the specified member.
         """
         if self.get_type() is not StorageType.ARRAY_CONTAINER:
             raise TypeError("%s: Container can only be generated from arrays with"
@@ -456,21 +459,25 @@ class ArrayMember(ValueMember):
 
         member_dict = {}
         for container in self.value:
-            if key_member_name not in container.value.keys():
-                if force_not_found:
+            if key_member_id not in container.value.keys():
+                if ignore_not_found:
+                    warn("%s: Container %s has no member called %s"
+                         % (self, container, key_member_id))
                     continue
 
                 raise KeyError("%s: Container %s has no member called %s"
-                               % (self, container, key_member_name))
+                               % (self, container, key_member_id))
 
-            key_member_value = container[key_member_name].value
+            key_member_value = container[key_member_id].value
 
             if key_member_value in member_dict.keys():
-                if force_duplicate:
+                if ignore_duplicates:
+                    warn("%s: Duplicate key %s for container member %s"
+                         % (self, key_member_value, key_member_id))
                     continue
 
                 raise KeyError("%s: Duplicate key %s for container member %s"
-                               % (self, key_member_value, key_member_name))
+                               % (self, key_member_value, key_member_id))
 
             member_dict.update({key_member_value: container})
 

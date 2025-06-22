@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #include "xor_gate.h"
 
@@ -17,7 +17,7 @@ XorGate::XorGate(node_id_t id,
 XorGate::XorGate(node_id_t id,
                  node_label_t label,
                  const std::vector<std::shared_ptr<Node>> &outputs,
-                 const std::vector<condition_t> &conditions,
+                 const std::vector<condition> &conditions,
                  const std::shared_ptr<Node> &default_node) :
 	Node{id, label, outputs},
 	conditions{},
@@ -33,12 +33,12 @@ XorGate::XorGate(node_id_t id,
 }
 
 void XorGate::add_output(const std::shared_ptr<Node> &output,
-                         const condition_t condition_func) {
+                         const condition condition) {
 	this->outputs.emplace(output->get_id(), output);
-	this->conditions.emplace(output->get_id(), condition_func);
+	this->conditions.emplace(output->get_id(), condition);
 }
 
-const std::map<node_id_t, condition_t> &XorGate::get_conditions() const {
+const std::map<node_id_t, condition> &XorGate::get_conditions() const {
 	return this->conditions;
 }
 

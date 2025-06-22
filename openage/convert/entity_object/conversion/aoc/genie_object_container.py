@@ -1,4 +1,4 @@
-# Copyright 2019-2024 the openage authors. See copying.md for legal info.
+# Copyright 2019-2025 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-instance-attributes,too-few-public-methods
 
@@ -84,8 +84,6 @@ class GenieObjectContainer(ConverterObjectContainer):
 
         # Keys are the ID of the first unit in line
         self.unit_lines: dict[int, GenieUnitLineGroup] = {}
-        # Keys are the line ID of the unit connection
-        self.unit_lines_vertical_ref: dict[int, GenieUnitLineGroup] = {}
         self.building_lines: dict[int, GenieBuildingLineGroup] = {}
         self.task_groups: dict[int, GenieUnitTaskGroup] = {}
         self.transform_groups: dict[int, GenieUnitTransformGroup] = {}

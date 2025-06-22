@@ -1,4 +1,4 @@
-# Copyright 2013-2023 the openage authors. See copying.md for legal info.
+# Copyright 2013-2025 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 from __future__ import annotations
@@ -173,7 +173,8 @@ class Graphic(GenieStructure):
             (READ_GEN, "layer", StorageType.ID_MEMBER, EnumLookupMember(       # originally 40 layers, higher -> drawn on top
                 raw_type    = "int8_t",  # -> same layer -> order according to map position.
                 type_name   = "graphics_layer",
-                lookup_dict = GRAPHICS_LAYER
+                lookup_dict = GRAPHICS_LAYER,
+                unknown_lookup_prefix="UNKNOWN_GRAPHICS_LAYER"
             )),
             (SKIP, "player_color_force_id", StorageType.ID_MEMBER,
              "int8_t"),    # force given player color

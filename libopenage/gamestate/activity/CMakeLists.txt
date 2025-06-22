@@ -9,7 +9,9 @@ add_sources(libopenage
     types.cpp
     xor_event_gate.cpp
     xor_gate.cpp
+    xor_switch_gate.cpp
 )
 
 add_subdirectory("event")
 add_subdirectory("condition")
+add_subdirectory("tests")

@@ -1,4 +1,4 @@
-# Copyright 2013-2023 the openage authors. See copying.md for legal info.
+# Copyright 2013-2025 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 from __future__ import annotations
@@ -71,9 +71,10 @@ class Civ(GenieStructure):
             (READ_GEN, "units", StorageType.ARRAY_CONTAINER, MultisubtypeMember(
                 type_name          = "unit_types",
                 subtype_definition = (READ_GEN, "unit_type", StorageType.ID_MEMBER, EnumLookupMember(
-                    type_name      = "unit_type_id",
-                    lookup_dict    = unit.unit_type_lookup,
-                    raw_type       = "int8_t",
+                    raw_type              = "int8_t",
+                    type_name             = "unit_type_id",
+                    lookup_dict           = unit.unit_type_lookup,
+                    unknown_lookup_prefix = "UNKNOWN_UNIT_TYPE"
                 )),
                 class_lookup       = unit.unit_type_class_lookup,
                 length             = "unit_count",

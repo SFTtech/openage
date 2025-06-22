@@ -1,4 +1,4 @@
-# Copyright 2014-2024 the openage authors. See copying.md for legal info.
+# Copyright 2014-2025 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 
@@ -405,7 +405,7 @@ class GenieStructure:
                 f"unknown data member definition {var_type} for member '{var_name}'")
 
         if data_count < 0:
-            raise SyntaxError("invalid length %d < 0 in %s for member '%s'" % (
+            raise ValueError("invalid length %d < 0 in %s for member '%s'" % (
                 data_count, var_type, var_name))
 
         if struct_type not in STRUCT_TYPE_LOOKUP:
@@ -420,182 +420,204 @@ class GenieStructure:
         # lookup c type to python struct scan type
         symbol = STRUCT_TYPE_LOOKUP[struct_type]
 
-        # read that stuff!!11
+        # figure out the data format
         struct_format = "< %d%s" % (data_count, symbol)
 
-        if export != SKIP:
-            result = struct.unpack_from(struct_format, raw, offset)
+        if export == SKIP:
+            # just calculate the offset and skip the reading process
+            offset += struct.calcsize(struct_format)
 
-            if is_custom_member:
-                if not var_type.verify_read_data(self, result):
-                    raise SyntaxError("invalid data when reading %s "
-                                      "at offset %# 08x" % (var_name, offset))
+            return offset, [], False
 
-            # TODO: move these into a read entry hook/verification method
-            if symbol == "s":
-                # stringify char array
-                result = decode_until_null(result[0])
+        # else, read that stuff!!11
+        unpacked = struct.unpack_from(struct_format, raw, offset)
 
-                if export == READ_GEN:
-                    if storage_type is StorageType.STRING_MEMBER:
-                        gen_member = StringMember(var_name, result)
+        if is_custom_member:
+            if not var_type.verify_read_data(self, unpacked):
+                raise ValueError("invalid data when reading %s "
+                                 "at offset %# 08x" % (var_name, offset))
+
+        # TODO: move these into a read entry hook/verification method
+        if symbol == "s":
+            # stringify char array
+            result = decode_until_null(unpacked[0])
+
+            if export == READ_GEN:
+                if storage_type is StorageType.STRING_MEMBER:
+                    gen_member = StringMember(var_name, result)
+
+                else:
+                    raise SyntaxError("%s at offset %# 08x: Data read via %s "
+                                      "cannot be stored as %s;"
+                                      " expected %s"
+                                      % (var_name, offset, var_type, storage_type,
+                                         StorageType.STRING_MEMBER))
+
+                generated_value_members.append(gen_member)
+
+        elif is_array:
+            result = unpacked
+
+            if export == READ_GEN:
+                # Turn every element of result into a member
+                # and put them into an array
+                array_members = []
+                allowed_member_type = None
+
+                if storage_type is StorageType.ARRAY_INT:
+                    allowed_member_type = StorageType.INT_MEMBER
+
+                elif storage_type is StorageType.ARRAY_FLOAT:
+                    allowed_member_type = StorageType.FLOAT_MEMBER
+
+                elif storage_type is StorageType.ARRAY_BOOL:
+                    allowed_member_type = StorageType.BOOLEAN_MEMBER
+
+                elif storage_type is StorageType.ARRAY_ID:
+                    allowed_member_type = StorageType.ID_MEMBER
+
+                elif storage_type is StorageType.ARRAY_STRING:
+                    allowed_member_type = StorageType.STRING_MEMBER
+
+                for elem in unpacked:
+                    if storage_type is StorageType.ARRAY_INT:
+                        gen_member = IntMember(var_name, elem)
+                        array_members.append(gen_member)
+
+                    elif storage_type is StorageType.ARRAY_FLOAT:
+                        gen_member = FloatMember(var_name, elem)
+                        array_members.append(gen_member)
+
+                    elif storage_type is StorageType.ARRAY_BOOL:
+                        gen_member = BooleanMember(var_name, elem)
+                        array_members.append(gen_member)
+
+                    elif storage_type is StorageType.ARRAY_ID:
+                        gen_member = IDMember(var_name, elem)
+                        array_members.append(gen_member)
+
+                    elif storage_type is StorageType.ARRAY_STRING:
+                        gen_member = StringMember(var_name, elem)
+                        array_members.append(gen_member)
 
                     else:
                         raise SyntaxError("%s at offset %# 08x: Data read via %s "
                                           "cannot be stored as %s;"
-                                          " expected %s"
+                                          " expected %s, %s, %s, %s or %s"
                                           % (var_name, offset, var_type, storage_type,
-                                              StorageType.STRING_MEMBER))
+                                             StorageType.ARRAY_INT,
+                                             StorageType.ARRAY_FLOAT,
+                                             StorageType.ARRAY_BOOL,
+                                             StorageType.ARRAY_ID,
+                                             StorageType.ARRAY_STRING))
 
-                    generated_value_members.append(gen_member)
+                # Create the array
+                array = ArrayMember(var_name, allowed_member_type, array_members)
+                generated_value_members.append(array)
 
-            elif is_array:
-                if export == READ_GEN:
-                    # Turn every element of result into a member
-                    # and put them into an array
-                    array_members = []
-                    allowed_member_type = None
+        elif data_count == 1:
+            # store first tuple element
+            result = unpacked[0]
 
-                    if storage_type is StorageType.ARRAY_INT:
-                        allowed_member_type = StorageType.INT_MEMBER
+            if symbol == "f":
+                if not math.isfinite(result):
+                    raise SyntaxError("invalid float when "
+                                      "reading %s at offset %# 08x" % (
+                                          var_name, offset))
 
-                    elif storage_type is StorageType.ARRAY_FLOAT:
-                        allowed_member_type = StorageType.FLOAT_MEMBER
+            if is_custom_member:
+                # save the lookup key / plain value (used for some storage types)
+                lookup_key = result
 
-                    elif storage_type is StorageType.ARRAY_BOOL:
-                        allowed_member_type = StorageType.BOOLEAN_MEMBER
+                # do an additional lookup to get the stored enum value
+                result = var_type.entry_hook(result)
 
-                    elif storage_type is StorageType.ARRAY_ID:
-                        allowed_member_type = StorageType.ID_MEMBER
-
-                    elif storage_type is StorageType.ARRAY_STRING:
-                        allowed_member_type = StorageType.STRING_MEMBER
-
-                    for elem in result:
-                        if storage_type is StorageType.ARRAY_INT:
-                            gen_member = IntMember(var_name, elem)
-                            array_members.append(gen_member)
-
-                        elif storage_type is StorageType.ARRAY_FLOAT:
-                            gen_member = FloatMember(var_name, elem)
-                            array_members.append(gen_member)
-
-                        elif storage_type is StorageType.ARRAY_BOOL:
-                            gen_member = BooleanMember(var_name, elem)
-                            array_members.append(gen_member)
-
-                        elif storage_type is StorageType.ARRAY_ID:
-                            gen_member = IDMember(var_name, elem)
-                            array_members.append(gen_member)
-
-                        elif storage_type is StorageType.ARRAY_STRING:
-                            gen_member = StringMember(var_name, elem)
-                            array_members.append(gen_member)
-
-                        else:
-                            raise SyntaxError("%s at offset %# 08x: Data read via %s "
-                                              "cannot be stored as %s;"
-                                              " expected %s, %s, %s, %s or %s"
-                                              % (var_name, offset, var_type, storage_type,
-                                                  StorageType.ARRAY_INT,
-                                                  StorageType.ARRAY_FLOAT,
-                                                  StorageType.ARRAY_BOOL,
-                                                  StorageType.ARRAY_ID,
-                                                  StorageType.ARRAY_STRING))
-
-                    # Create the array
-                    array = ArrayMember(var_name, allowed_member_type, array_members)
-                    generated_value_members.append(array)
-
-            elif data_count == 1:
-                # store first tuple element
-                result = result[0]
-
-                if symbol == "f":
-                    if not math.isfinite(result):
-                        raise SyntaxError("invalid float when "
-                                          "reading %s at offset %# 08x" % (
-                                              var_name, offset))
-
-                if export == READ_GEN:
-                    # Store the member as ValueMember
-                    if is_custom_member:
-                        lookup_result = var_type.entry_hook(result)
-
-                        if isinstance(var_type, EnumLookupMember):
-                            # store differently depending on storage type
-                            if storage_type is StorageType.INT_MEMBER:
-                                # store as plain integer value
-                                gen_member = IntMember(var_name, result)
-
-                            elif storage_type is StorageType.ID_MEMBER:
-                                # store as plain integer value
-                                gen_member = IDMember(var_name, result)
-
-                            elif storage_type is StorageType.BITFIELD_MEMBER:
-                                # store as plain integer value
-                                gen_member = BitfieldMember(var_name, result)
-
-                            elif storage_type is StorageType.STRING_MEMBER:
-                                # store by looking up value from dict
-                                gen_member = StringMember(var_name, lookup_result)
-
-                            else:
-                                raise SyntaxError("%s at offset %# 08x: Data read via %s "
-                                                  "cannot be stored as %s;"
-                                                  " expected %s, %s, %s or %s"
-                                                  % (var_name, offset, var_type, storage_type,
-                                                      StorageType.INT_MEMBER,
-                                                      StorageType.ID_MEMBER,
-                                                      StorageType.BITFIELD_MEMBER,
-                                                      StorageType.STRING_MEMBER))
-
-                        elif isinstance(var_type, ContinueReadMember):
-                            if storage_type is StorageType.BOOLEAN_MEMBER:
-                                gen_member = StringMember(var_name, lookup_result)
-
-                            else:
-                                raise SyntaxError("%s at offset %# 08x: Data read via %s "
-                                                  "cannot be stored as %s;"
-                                                  " expected %s"
-                                                  % (var_name, offset, var_type, storage_type,
-                                                      StorageType.BOOLEAN_MEMBER))
-
-                    else:
+                if isinstance(var_type, EnumLookupMember):
+                    if export == READ_GEN:
+                        # store differently depending on storage type
                         if storage_type is StorageType.INT_MEMBER:
-                            gen_member = IntMember(var_name, result)
-
-                        elif storage_type is StorageType.FLOAT_MEMBER:
-                            gen_member = FloatMember(var_name, result)
-
-                        elif storage_type is StorageType.BOOLEAN_MEMBER:
-                            gen_member = BooleanMember(var_name, result)
+                            # store as plain integer value
+                            gen_member = IntMember(var_name, lookup_key)
 
                         elif storage_type is StorageType.ID_MEMBER:
-                            gen_member = IDMember(var_name, result)
+                            # store as plain integer value
+                            gen_member = IDMember(var_name, lookup_key)
+
+                        elif storage_type is StorageType.BITFIELD_MEMBER:
+                            # store as plain integer value
+                            gen_member = BitfieldMember(var_name, lookup_key)
+
+                        elif storage_type is StorageType.STRING_MEMBER:
+                            # store by looking up value from dict
+                            gen_member = StringMember(var_name, result)
 
                         else:
                             raise SyntaxError("%s at offset %# 08x: Data read via %s "
                                               "cannot be stored as %s;"
                                               " expected %s, %s, %s or %s"
                                               % (var_name, offset, var_type, storage_type,
-                                                  StorageType.INT_MEMBER,
-                                                  StorageType.FLOAT_MEMBER,
-                                                  StorageType.BOOLEAN_MEMBER,
-                                                  StorageType.ID_MEMBER))
+                                                 StorageType.INT_MEMBER,
+                                                 StorageType.ID_MEMBER,
+                                                 StorageType.BITFIELD_MEMBER,
+                                                 StorageType.STRING_MEMBER))
+
+                        generated_value_members.append(gen_member)
+
+                elif isinstance(var_type, ContinueReadMember):
+                    if result == ContinueReadMember.result.ABORT:
+                        # don't go through all other members of this class!
+                        stop_reading_members = True
+
+                    if export == READ_GEN:
+                        if storage_type is StorageType.BOOLEAN_MEMBER:
+                            gen_member = StringMember(var_name, result)
+
+                        else:
+                            raise SyntaxError("%s at offset %# 08x: Data read via %s "
+                                              "cannot be stored as %s;"
+                                              " expected %s"
+                                              % (var_name, offset, var_type, storage_type,
+                                                 StorageType.BOOLEAN_MEMBER))
+
+                        generated_value_members.append(gen_member)
+
+            else:
+                if export == READ_GEN:
+                    if storage_type is StorageType.INT_MEMBER:
+                        gen_member = IntMember(var_name, result)
+
+                    elif storage_type is StorageType.FLOAT_MEMBER:
+                        gen_member = FloatMember(var_name, result)
+
+                    elif storage_type is StorageType.BOOLEAN_MEMBER:
+                        gen_member = BooleanMember(var_name, result)
+
+                    elif storage_type is StorageType.ID_MEMBER:
+                        gen_member = IDMember(var_name, result)
+
+                    else:
+                        raise SyntaxError("%s at offset %# 08x: Data read via %s "
+                                          "cannot be stored as %s;"
+                                          " expected %s, %s, %s or %s"
+                                          % (var_name, offset, var_type, storage_type,
+                                             StorageType.INT_MEMBER,
+                                             StorageType.FLOAT_MEMBER,
+                                             StorageType.BOOLEAN_MEMBER,
+                                             StorageType.ID_MEMBER))
 
                     generated_value_members.append(gen_member)
 
-            # run entry hook for non-primitive members
-            if is_custom_member:
-                result = var_type.entry_hook(result)
+        # run entry hook for non-primitive members
+        # if isinstance(var_type, ContinueReadMember) and is_custom_member:
+        # if is_custom_member:
+        #     result = var_type.entry_hook(unpacked)
 
-                if result == ContinueReadMember.result.ABORT:
-                    # don't go through all other members of this class!
-                    stop_reading_members = True
+        #     if result == ContinueReadMember.result.ABORT:
+        #         # don't go through all other members of this class!
+        #         stop_reading_members = True
 
-            # store member's data value
-            setattr(self, var_name, result)
+        # store member's data value
+        setattr(self, var_name, result)
 
         # increase the current file position by the size we just read
         offset += struct.calcsize(struct_format)

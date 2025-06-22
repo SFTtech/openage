@@ -1,0 +1,18 @@
+add_py_modules(
+	__init__.py
+	activity.py
+	attribute.py
+	condition.py
+	diplomatic.py
+	effect.py
+	entity.py
+	exchange.py
+	formation.py
+	language.py
+	misc.py
+	modifier.py
+	path.py
+	resource.py
+	team_property.py
+	terrain.py
+)

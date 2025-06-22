@@ -8,7 +8,6 @@ import typing
 
 
 from .....log import info
-from ....entity_object.conversion.aoc.genie_graphic import GenieGraphic
 from ....entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
 from ....service.debug_info import debug_converter_objects, \
     debug_converter_object_groups
@@ -19,13 +18,14 @@ from ..ror.pregen_subprocessor import RoRPregenSubprocessor
 from ..ror.processor import RoRProcessor
 from .media_subprocessor import DE1MediaSubprocessor
 from .modpack_subprocessor import DE1ModpackSubprocessor
+from .main.extract.graphics import extract_genie_graphics
 
 if typing.TYPE_CHECKING:
     from argparse import Namespace
-    from openage.convert.entity_object.conversion.stringresource import StringResource
-    from openage.convert.entity_object.conversion.modpack import Modpack
-    from openage.convert.value_object.read.value_members import ArrayMember
-    from openage.convert.value_object.init.game_version import GameVersion
+    from ....entity_object.conversion.stringresource import StringResource
+    from ....entity_object.conversion.modpack import Modpack
+    from ....value_object.read.value_members import ArrayMember
+    from ....value_object.init.game_version import GameVersion
 
 
 class DE1Processor:
@@ -47,9 +47,7 @@ class DE1Processor:
 
         :param gamespec: Gamedata from empires.dat read in by the
                          reader functions.
-        :type gamespec: class: ...dataformat.value_members.ArrayMember
         :returns: A list of modpacks.
-        :rtype: list
         """
 
         info("Starting conversion...")
@@ -84,11 +82,9 @@ class DE1Processor:
         Store data from the reader in a conversion container.
 
         :param gamespec: Gamedata from empires.dat file.
-        :type gamespec: class: ...dataformat.value_members.ArrayMember
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
                               process.
-        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         """
         dataset = GenieObjectContainer()
 
@@ -104,12 +100,14 @@ class DE1Processor:
         AoCProcessor.extract_genie_effect_bundles(gamespec, dataset)
         AoCProcessor.sanitize_effect_bundles(dataset)
         AoCProcessor.extract_genie_civs(gamespec, dataset)
-        cls.extract_genie_graphics(gamespec, dataset)
+        extract_genie_graphics(gamespec, dataset)
         RoRProcessor.extract_genie_sounds(gamespec, dataset)
         AoCProcessor.extract_genie_terrains(gamespec, dataset)
         AoCProcessor.extract_genie_restrictions(gamespec, dataset)
 
         return dataset
+
+    extract_genie_graphics = staticmethod(extract_genie_graphics)
 
     @classmethod
     def _processor(
@@ -122,11 +120,9 @@ class DE1Processor:
         Python objects.
 
         :param gamespec: Gamedata from empires.dat file.
-        :type gamespec: class: ...dataformat.value_members.ArrayMember
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
                               process.
-        :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         """
 
         info("Creating API-like objects...")
@@ -161,7 +157,6 @@ class DE1Processor:
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
                               process.
-        :type full_data_set: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         """
         info("Creating nyan objects...")
 
@@ -172,41 +167,3 @@ class DE1Processor:
         DE1MediaSubprocessor.convert(full_data_set)
 
         return DE1ModpackSubprocessor.get_modpacks(full_data_set)
-
-    @staticmethod
-    def extract_genie_graphics(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
-        """
-        Extract graphic definitions from the game data.
-
-        :param gamespec: Gamedata from empires.dat file.
-        :type gamespec: class: ...dataformat.value_members.ArrayMember
-        """
-        # call hierarchy: wrapper[0]->graphics
-        raw_graphics = gamespec[0]["graphics"].value
-
-        for raw_graphic in raw_graphics:
-            # Can be ignored if there is no filename associated
-            filename = raw_graphic["filename"].value
-            if not filename:
-                continue
-
-            # DE1 stores most graphics filenames as 'whatever_<x#>'
-            # where '<x#>' must be replaced by x1, x2 or x4
-            # which corresponds to the graphics resolution variant
-            #
-            # we look for the x1 variant
-            if filename.endswith("<x#>"):
-                filename = f"{filename[:-4]}x1"
-
-            graphic_id = raw_graphic["graphic_id"].value
-            graphic_members = raw_graphic.value
-
-            graphic = GenieGraphic(graphic_id, full_data_set, members=graphic_members)
-            if filename.lower() not in full_data_set.existing_graphics:
-                graphic.exists = False
-
-            full_data_set.genie_graphics.update({graphic.get_id(): graphic})
-
-        # Detect subgraphics
-        for genie_graphic in full_data_set.genie_graphics.values():
-            genie_graphic.detect_subgraphics()

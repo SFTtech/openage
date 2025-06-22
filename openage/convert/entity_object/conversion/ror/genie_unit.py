@@ -1,4 +1,4 @@
-# Copyright 2020-2023 the openage authors. See copying.md for legal info.
+# Copyright 2020-2025 the openage authors. See copying.md for legal info.
 
 """
 Contains structures and API-like objects for game entities from RoR.
@@ -199,9 +199,6 @@ class RoRUnitTaskGroup(GenieUnitTaskGroup):
 
     Example: Villager
     """
-
-    # Female villagers do not exist in RoR
-    female_line_id = -1
 
     __slots__ = ('enabling_research_id',)
 

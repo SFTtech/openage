@@ -1,4 +1,4 @@
-# Copyright 2015-2024 the openage authors. See copying.md for legal info.
+# Copyright 2015-2025 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals
 
@@ -93,6 +93,7 @@ def main(args, error):
     # ensure that the openage API is present
     if api_export_required(asset_path):
         # export to assets folder
+        info("Updating outdated nyan API modpack")
         converted_path = asset_path / "converted"
         converted_path.mkdirs()
         export_api(converted_path)

@@ -1,4 +1,4 @@
-// Copyright 2022-2024 the openage authors. See copying.md for legal info.
+// Copyright 2022-2025 the openage authors. See copying.md for legal info.
 
 #include "render_stage.h"
 
@@ -10,9 +10,11 @@
 #include "renderer/resources/shader_source.h"
 #include "renderer/resources/texture_info.h"
 #include "renderer/shader_program.h"
+#include "renderer/texture.h"
 #include "renderer/uniform_input.h"
 #include "renderer/window.h"
 #include "util/path.h"
+
 
 namespace openage::renderer::skybox {
 
@@ -67,7 +69,7 @@ void SkyboxRenderStage::set_color(float r, float g, float b, float a) {
 }
 
 void SkyboxRenderStage::resize(size_t width, size_t height) {
-	this->output_texture = renderer->add_texture(resources::Texture2dInfo(width, height, resources::pixel_format::rgba8));
+	this->output_texture->resize(width, height);
 
 	auto fbo = this->renderer->create_texture_target({this->output_texture});
 	this->render_pass->set_target(fbo);

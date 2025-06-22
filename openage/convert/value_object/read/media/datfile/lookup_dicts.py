@@ -1,4 +1,4 @@
-# Copyright 2021-2024 the openage authors. See copying.md for legal info.
+# Copyright 2021-2025 the openage authors. See copying.md for legal info.
 
 """
 Lookup dicts for the EnumLookupMember instances.
@@ -341,9 +341,13 @@ EFFECT_APPLY_TYPE = {
     103: "TECH_TIME_MODIFY",  # a == research_id, if c == 0: d==absval else d==relval
 
     # unknown; used in DE2 BfG
-    199: "UNKNOWN",
-    200: "UNKNOWN",
-    201: "UNKNOWN",
+    # used in DE2: BfG and specific to the unique town center upgrades
+    # same as 0
+    200: "DE2_TOWN_CENTER_ATTRIBUTE_ABSSET",
+    # same as 4
+    201: "DE2_TOWN_CENTER_ATTRIBUTE_RELSET",
+    # same as 5
+    202: "DE2_TOWN_CENTER_ATTRIBUTE_MUL",
 
     # attribute_id:
     # 0: hit points
@@ -441,6 +445,8 @@ COMMAND_ABILITY = {
     153: "RESOURCE_FOLLOW",
     154: "LOOT",         # Chieftains tech; looting on killing villagers, monks, trade carts
     155: "BOOST_MOVE_AND_ATTACK",
+    157: "DE2_CHARGE",
+    158: "DE2_JIAN_SHIELD",  # Jian swordsman unique ability; when HP is low: change stats
     768: "UNKNOWN_768",
     1024: "UNKNOWN_1024",
 }
@@ -635,6 +641,7 @@ TERRAIN_RESTRICTIONS = {
     0x1E: "DE2_UNKNOWN",
     0x1F: "SWGB_WATER2",
     0x20: "SWGB_ROCK4",
+    0x31: "DE2_ROCKET_CART_PROJECTILE",  # probably created for projectiles to decay properly
 }
 
 BLAST_DEFENSE_TYPES = {
@@ -699,6 +706,7 @@ OBSTRUCTION_TYPES = {
     3: "BERSERK",
     5: "UNIT",
     10: "MOUNTAIN",  # mountain (matches occlusion_mask)
+    13: "DE2_PASTURE",  # pasture construction site (from DE2: TTK)
 }
 
 SELECTION_EFFECTS = {
@@ -736,6 +744,7 @@ BLAST_OFFENSE_TYPES = {
     3: "TARGET_ONLY",
     6: "UNKNOWN_6",
     10: "UNKNOWN_10",
+    11: "DE2_GRENADIER",
     18: "UNKNOWN_18",
     34: "UNKNOWN_34",
     66: "UNKNOWN_66",

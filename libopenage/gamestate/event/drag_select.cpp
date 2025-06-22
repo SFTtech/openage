@@ -1,4 +1,4 @@
-// Copyright 2023-2023 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #include "drag_select.h"
 
@@ -32,7 +32,7 @@ void DragSelectHandler::invoke(openage::event::EventLoop & /* loop */,
                                const param_map &params) {
 	auto gstate = std::dynamic_pointer_cast<openage::gamestate::GameState>(state);
 
-	size_t controlled_id = params.get("controlled", 0);
+	auto controlled_id = params.get<player_id_t>("controlled", 0);
 
 	Eigen::Matrix4f id_matrix = Eigen::Matrix4f::Identity();
 	Eigen::Matrix4f cam_matrix = params.get("camera_matrix", id_matrix);
