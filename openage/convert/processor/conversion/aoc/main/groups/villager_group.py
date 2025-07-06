@@ -53,6 +53,7 @@ def create_villager_groups(full_data_set: GenieObjectContainer) -> None:
             task_group = GenieUnitTaskGroup(line_id, task_group_id, full_data_set)
             task_group.add_unit(unit)
             full_data_set.task_groups.update({task_group_id: task_group})
+            full_data_set.unit_lines.update({task_group.get_id(): task_group})
 
         task_group_ids.add(task_group_id)
         unit_ids.add(unit["id0"].value)
