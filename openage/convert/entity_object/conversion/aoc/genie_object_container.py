@@ -32,7 +32,7 @@ if typing.TYPE_CHECKING:
     from openage.convert.entity_object.conversion.aoc.genie_unit import GenieUnitObject, \
         GenieAmbientGroup, GenieBuildingLineGroup, GenieMonkGroup, GenieUnitLineGroup, \
         GenieUnitTaskGroup, GenieUnitTransformGroup, GenieVariantGroup, GenieVillagerGroup, \
-        GenieGameEntityGroup
+        GenieGameEntityGroup, GenieStackBuildingGroup
     from openage.convert.entity_object.export.media_export_request import MediaExportRequest
     from openage.convert.entity_object.export.metadata_export import MetadataExport
     from openage.convert.value_object.init.game_version import GameVersion
@@ -85,6 +85,7 @@ class GenieObjectContainer(ConverterObjectContainer):
         # Keys are the ID of the first unit in line
         self.unit_lines: dict[int, GenieUnitLineGroup] = {}
         self.building_lines: dict[int, GenieBuildingLineGroup] = {}
+        self.stack_building_groups: dict[int, GenieStackBuildingGroup] = {}
         self.task_groups: dict[int, GenieUnitTaskGroup] = {}
         self.transform_groups: dict[int, GenieUnitTransformGroup] = {}
         self.villager_groups: dict[int, GenieVillagerGroup] = {}

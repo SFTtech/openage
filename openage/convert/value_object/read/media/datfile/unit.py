@@ -259,7 +259,7 @@ class BuildingAnnex(GenieStructure):
         Return the members in this struct.
         """
         data_format = [
-            (SKIP, "unit_id", StorageType.ID_MEMBER, "int16_t"),
+            (READ_GEN, "unit_id", StorageType.ID_MEMBER, "int16_t"),
             (SKIP, "misplaced0", StorageType.FLOAT_MEMBER, "float"),
             (SKIP, "misplaced1", StorageType.FLOAT_MEMBER, "float"),
         ]
@@ -1073,7 +1073,7 @@ class BuildingUnit(LivingUnit):
         if game_version.edition.game_id not in ("ROR", "AOE1DE"):
             data_format.extend([
                 (SKIP, "can_burn", StorageType.BOOLEAN_MEMBER, "int8_t"),
-                (SKIP, "building_annex", StorageType.ARRAY_CONTAINER, SubdataMember(
+                (READ_GEN, "building_annex", StorageType.ARRAY_CONTAINER, SubdataMember(
                     ref_type=BuildingAnnex,
                     length=4
                 )),

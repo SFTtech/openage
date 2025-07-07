@@ -31,5 +31,15 @@ def link_gatherers_to_dropsites(full_data_set: GenieObjectContainer) -> None:
                 drop_site_id = drop_site_member.value
 
                 if drop_site_id > -1:
-                    drop_site = full_data_set.building_lines[drop_site_id]
+                    if drop_site_id in full_data_set.building_lines:
+                        # the drop site is a normal building line
+                        drop_site = full_data_set.building_lines[drop_site_id]
+
+                    else:
+                        # the drop site is an annex or head of a stack building
+                        for stack_building in full_data_set.stack_building_groups.values():
+                            if drop_site_id in stack_building.get_stack_annex_ids():
+                                drop_site = stack_building
+                                break
+
                     drop_site.add_gatherer_id(unit_id)

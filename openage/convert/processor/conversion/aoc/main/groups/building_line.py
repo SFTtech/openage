@@ -31,7 +31,11 @@ def create_building_lines(full_data_set: GenieObjectContainer) -> None:
         building_id = connection["id"].value
         building = full_data_set.genie_units[building_id]
         previous_building_id = None
-        stack_building = False
+
+        # Building is the head of a stack building
+        stack_building_head = False
+        # Building is an annex of a stack building
+        stack_building_annex = False
 
         # Buildings have no actual lines, so we use
         # their unit ID as the line ID.
@@ -40,13 +44,11 @@ def create_building_lines(full_data_set: GenieObjectContainer) -> None:
         # Check if we have to create a GenieStackBuildingGroup
         if building.has_member("stack_unit_id") and \
                 building["stack_unit_id"].value > -1:
-            stack_building = True
+            stack_building_head = True
 
         if building.has_member("head_unit_id") and \
                 building["head_unit_id"].value > -1:
-            # we don't care about head units because we process
-            # them with their stack unit
-            continue
+            stack_building_annex = True
 
         # Check if the building is part of an existing line.
         # To do this, we look for connected techs and
@@ -104,9 +106,21 @@ def create_building_lines(full_data_set: GenieObjectContainer) -> None:
 
         if line_id == building_id:
             # First building in line
-            if stack_building:
+
+            # Check if the unit is only a building _part_, e.g. a
+            # head or an annex of a stack building
+            if stack_building_head:
                 stack_unit_id = building["stack_unit_id"].value
                 building_line = GenieStackBuildingGroup(stack_unit_id, line_id, full_data_set)
+                full_data_set.stack_building_groups.update({stack_unit_id: building_line})
+
+            elif stack_building_annex:
+                head_unit_id = building["head_unit_id"].value
+                head_building = full_data_set.genie_units[head_unit_id]
+
+                stack_unit_id = head_building["stack_unit_id"].value
+                building_line = GenieStackBuildingGroup(stack_unit_id, head_unit_id, full_data_set)
+                full_data_set.stack_building_groups.update({stack_unit_id: building_line})
 
             else:
                 building_line = GenieBuildingLineGroup(line_id, full_data_set)

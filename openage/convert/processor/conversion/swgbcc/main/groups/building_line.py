@@ -105,6 +105,7 @@ def create_building_lines(full_data_set: GenieObjectContainer) -> None:
                 building["head_unit_id"].value > -1:
             head_unit_id = building["head_unit_id"].value
             building_line = SWGBStackBuildingGroup(building_id, head_unit_id, full_data_set)
+            full_data_set.stack_building_groups.update({building_id: building_line})
 
         else:
             building_line = GenieBuildingLineGroup(building_id, full_data_set)

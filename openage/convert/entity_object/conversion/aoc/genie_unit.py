@@ -750,21 +750,21 @@ class GenieStackBuildingGroup(GenieBuildingLineGroup):
     def __init__(
         self,
         stack_unit_id: int,
-        head_building_id: int,
+        head_unit_id: int,
         full_data_set: GenieObjectContainer,
     ):
         """
         Creates a new Genie building line.
 
         :param stack_unit_id: "Actual" building that appears when constructed.
-        :param head_building_id: The building used during construction.
+        :param head_unit_id: The building used during construction.
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
                               process.
         """
         super().__init__(stack_unit_id, full_data_set)
 
-        self.head = self.data.genie_units[head_building_id]
+        self.head = self.data.genie_units[head_unit_id]
         self.stack = self.data.genie_units[stack_unit_id]
 
     def is_creatable(self, civ_id: int = -1) -> bool:
@@ -826,6 +826,28 @@ class GenieStackBuildingGroup(GenieBuildingLineGroup):
             return self.head["train_location_id"].value
 
         return None
+
+    def get_head_annex_ids(self) -> list[int]:
+        """
+        Returns the unit IDs of annexes for the head building.
+        """
+        annexes = self.head["building_annex"].value
+        annex_ids = []
+        for annex in annexes:
+            annex_ids.append(annex["unit_id"].value)
+
+        return annex_ids
+
+    def get_stack_annex_ids(self) -> list[int]:
+        """
+        Returns the unit IDs of annexes for the stack unit.
+        """
+        annexes = self.stack["building_annex"].value
+        annex_ids = []
+        for annex in annexes:
+            annex_ids.append(annex["unit_id"].value)
+
+        return annex_ids
 
     def __repr__(self):
         return f"GenieStackBuildingGroup<{self.get_id()}>"
