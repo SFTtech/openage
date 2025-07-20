@@ -1,0 +1,30 @@
+add_py_modules(
+	__init__.py
+    bengali_conversion_resistance.py
+    burgundian_vineyards.py
+    chieftains.py
+    cliff.py
+    convert_adjust.py
+    convert_building.py
+    convert_range.py
+    cuman_tc.py
+    current_resource_amount.py
+    doi_paper_money.py
+    elevation.py
+    feitoria_gold.py
+    first_crusade.py
+    fish_trap_amount.py
+    folwark.py
+    forager_wood_gather.py
+    free_kipchaks.py
+    herdable_garrison.py
+    relic_food_production.py
+    resource_decay.py
+    reveal_enemy_tcs.py
+    sheep_food_amount.py
+    stone_gold_gen.py
+    tech_reward.py
+    trade_food_bonus.py
+    unknown.py
+    workshop_gen.py
+)

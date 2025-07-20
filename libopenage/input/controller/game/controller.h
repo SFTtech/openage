@@ -1,4 +1,4 @@
-// Copyright 2021-2023 the openage authors. See copying.md for legal info.
+// Copyright 2021-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -14,6 +14,10 @@
 
 
 namespace openage {
+
+namespace renderer {
+class Texture2d;
+} // namespace renderer
 
 namespace gamestate {
 class GameSimulation;
@@ -36,8 +40,14 @@ class BindingContext;
  */
 class Controller : public std::enable_shared_from_this<Controller> {
 public:
-	Controller(const std::unordered_set<size_t> &controlled_factions,
-	           size_t active_faction_id);
+	/**
+	 * Create a new game controller.
+	 *
+	 * @param controlled_factions Factions that can be managed by the controller.
+	 * @param active_faction_id Current active faction ID.
+	 */
+	Controller(const std::unordered_set<gamestate::player_id_t> &controlled_factions,
+	           gamestate::player_id_t active_faction_id);
 
 	~Controller() = default;
 
@@ -47,7 +57,7 @@ public:
 	 *
 	 * @param faction_id ID of the new active faction.
 	 */
-	void set_control(size_t faction_id);
+	void set_control(gamestate::player_id_t faction_id);
 
 	/**
 	 * Get the ID of the faction actively controlled by the controller.
@@ -81,6 +91,26 @@ public:
 	bool process(const event_arguments &ev_args, const std::shared_ptr<BindingContext> &ctx);
 
 	/**
+	 * Get the texture that maps pixels to entity IDs.
+	 *
+	 * Each pixel value in the texture corresponds to an entity ID. This
+	 * mapping may be used for interacting with entities in the game world.
+	 *
+	 * @return ID texture.
+	 */
+	const std::shared_ptr<renderer::Texture2d> &get_id_texture() const;
+
+	/**
+	 * Set the texture that maps pixels to entity IDs.
+	 *
+	 * Each pixel value in the texture corresponds to an entity ID. This
+	 * mapping may be used for interacting with entities in the game world.
+	 *
+	 * @param id_texture ID texture.
+	 */
+	void set_id_texture(const std::shared_ptr<renderer::Texture2d> &id_texture);
+
+	/**
 	 * Set the start position of a drag selection.
 	 *
 	 * @param start Start position of the drag selection.
@@ -103,12 +133,12 @@ private:
 	/**
 	 * Factions controllable by this controller.
 	 */
-	std::unordered_set<size_t> controlled_factions;
+	std::unordered_set<gamestate::player_id_t> controlled_factions;
 
 	/**
 	 * ID of the currently active faction.
 	 */
-	size_t active_faction_id;
+	gamestate::player_id_t active_faction_id;
 
 	/**
 	 * Currently selected entities.
@@ -119,6 +149,11 @@ private:
 	 * Queue for gamestate events generated from inputs.
 	 */
 	std::vector<std::shared_ptr<event::Event>> outqueue;
+
+	/**
+	 * ID texture for interacting with game entities.
+	 */
+	std::shared_ptr<renderer::Texture2d> id_texture;
 
 	/**
 	 * Start position of a drag selection.

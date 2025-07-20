@@ -18,6 +18,7 @@ Curves are an integral part of openage's event-based game simulation.
       1. [Queue](#queue)
       2. [Unordered Map](#unordered-map)
       3. [Array](#array)
+4. [Compression](#compression)
 
 
 ## Motivation
@@ -133,6 +134,9 @@ Modify operations insert values for a specific point in time.
 | `set_insert(t, value)`  | Insert a new keyframe value at time `t`                                           |
 | `set_last(t, value)`    | Insert a new keyframe value at time `t`; delete all keyframes after time `t`      |
 | `set_replace(t, value)` | Insert a new keyframe value at time `t`; remove all other keyframes with time `t` |
+| `compress(t)`           | Remove redundant keyframes at and after time `t`; see [Compression] for more info |
+
+[Compression]: #compression
 
 **Copy**
 
@@ -292,3 +296,28 @@ Modify operations insert values for a specific point in time.
 | Method           | Description                                                                                      |
 | ---------------- | ------------------------------------------------------------------------------------------------ |
 | `sync(Curve, t)` | Replace all keyframes from self after time `t` with keyframes from source `Curve` after time `t` |
+
+
+## Compression
+
+Curves support basic lossless compression by removing redundant keyframes from the curve.
+Keyframes are considered redundant if they do not change any interpolation results, i.e.
+the result of `get(t)` does not change.
+
+The most straight-forward way to use compression with primitive curves is the `compress(t)`
+method. `compress(t)` iterates over the curve and removes all redundant keyframes after
+or at time `t`. The runtime has linear complexity `O(n)` based on the number of elements
+in the keyframe container.
+
+Furthermore, primitive curves support incremental compression during insertion for the
+`set_insert(t, value)`  and `set_last(t, value)` methods via their `compress` argument.
+If compression is active, `(t, value)` is only inserted when it is not a redundant
+keyframe. `sync(Curve, t)` also supports compression with a flag `compress` passed as
+an argument.
+
+Compression may be used in cases where the size should be kept small, e.g. when the curve
+is transferred via network or recorded in a replay file. Another application of compression
+is in the [renderer](/doc/code/renderer/README.md) for the discrete curves storing an object's
+animations. Since compression removes redundant animation entries, the renderer can determine
+when the current animation has started much easier as this is then returned by the keyframe
+time in `frame(t)`.

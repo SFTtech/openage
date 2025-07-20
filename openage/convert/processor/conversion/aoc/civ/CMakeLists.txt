@@ -1,0 +1,10 @@
+add_py_modules(
+    __init__.py
+    civ_bonus.py
+    modifiers.py
+    starting_resources.py
+    tech_tree.py
+    unique_techs.py
+    unique_units.py
+    util.py
+)

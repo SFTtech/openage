@@ -1,4 +1,4 @@
-# Copyright 2019-2023 the openage authors. See copying.md for legal info.
+# Copyright 2019-2025 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-public-methods,too-many-instance-attributes,consider-iterating-dictionary
 
@@ -750,21 +750,21 @@ class GenieStackBuildingGroup(GenieBuildingLineGroup):
     def __init__(
         self,
         stack_unit_id: int,
-        head_building_id: int,
+        head_unit_id: int,
         full_data_set: GenieObjectContainer,
     ):
         """
         Creates a new Genie building line.
 
         :param stack_unit_id: "Actual" building that appears when constructed.
-        :param head_building_id: The building used during construction.
+        :param head_unit_id: The building used during construction.
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
                               process.
         """
         super().__init__(stack_unit_id, full_data_set)
 
-        self.head = self.data.genie_units[head_building_id]
+        self.head = self.data.genie_units[head_unit_id]
         self.stack = self.data.genie_units[stack_unit_id]
 
     def is_creatable(self, civ_id: int = -1) -> bool:
@@ -826,6 +826,28 @@ class GenieStackBuildingGroup(GenieBuildingLineGroup):
             return self.head["train_location_id"].value
 
         return None
+
+    def get_head_annex_ids(self) -> list[int]:
+        """
+        Returns the unit IDs of annexes for the head building.
+        """
+        annexes = self.head["building_annex"].value
+        annex_ids = []
+        for annex in annexes:
+            annex_ids.append(annex["unit_id"].value)
+
+        return annex_ids
+
+    def get_stack_annex_ids(self) -> list[int]:
+        """
+        Returns the unit IDs of annexes for the stack unit.
+        """
+        annexes = self.stack["building_annex"].value
+        annex_ids = []
+        for annex in annexes:
+            annex_ids.append(annex["unit_id"].value)
+
+        return annex_ids
 
     def __repr__(self):
         return f"GenieStackBuildingGroup<{self.get_id()}>"
@@ -1041,11 +1063,12 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
 
     __slots__ = ('task_group_id',)
 
-    # From unit connection
-    male_line_id = 83   # male villager (with combat task)
-
-    # Female villagers have no line obj_id, so we use the combat unit
-    female_line_id = 293  # female villager (with combat task)
+    # Maps task group ID to the line ID of the first unit in the group.
+    line_id_assignments = {
+        1: 83,   # male villager (with combat task)
+        2: 293,  # female villager (with combat task)
+        3: 13,   # fishing ship (in DE2)
+    }
 
     def __init__(
         self,
@@ -1074,8 +1097,7 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
         after: GenieUnitObject = None
     ) -> None:
         # Force the idle/combat units at the beginning of the line
-        if genie_unit["id0"].value in (GenieUnitTaskGroup.male_line_id,
-                                       GenieUnitTaskGroup.female_line_id):
+        if genie_unit["id0"].value in self.line_id_assignments.values():
             super().add_unit(genie_unit, 0, after)
 
         else:

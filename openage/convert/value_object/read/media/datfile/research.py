@@ -1,4 +1,4 @@
-# Copyright 2013-2023 the openage authors. See copying.md for legal info.
+# Copyright 2013-2025 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 from __future__ import annotations
@@ -33,7 +33,8 @@ class TechResourceCost(GenieStructure):
             (READ_GEN, "type_id", StorageType.ID_MEMBER, EnumLookupMember(
                 raw_type="int16_t",
                 type_name="resource_types",
-                lookup_dict=RESOURCE_TYPES
+                lookup_dict=RESOURCE_TYPES,
+                unknown_lookup_prefix="UNKNOWN_RESOURCE_TYPE"
             )),  # see unit/resource_cost
             (READ_GEN, "amount", StorageType.INT_MEMBER, "int16_t"),
             (READ_GEN, "enabled", StorageType.BOOLEAN_MEMBER, "int8_t"),

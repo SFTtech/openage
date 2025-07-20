@@ -1,4 +1,4 @@
-# Copyright 2020-2024 the openage authors. See copying.md for legal info.
+# Copyright 2020-2025 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=line-too-long
 
@@ -72,35 +72,69 @@ UNIT_LINE_LOOKUPS = {
     1805: ("EliteMonaspa", "elite_monaspa"),
 
     # BfG
-    2101: ("BfGUnkown_2101", "bfg_unkown_2101"),
-    2102: ("BfGUnkown_2102", "bfg_unkown_2102"),
-    2104: ("BfGUnkown_2104", "bfg_unkown_2104"),
-    2105: ("BfGUnkown_2105", "bfg_unkown_2105"),
-    2107: ("BfGUnkown_2107", "bfg_unkown_2107"),
-    2108: ("BfGUnkown_2108", "bfg_unkown_2108"),
-    2110: ("BfGUnkown_2110", "bfg_unkown_2110"),
-    2111: ("BfGUnkown_2111", "bfg_unkown_2111"),
-    2123: ("BfGUnkown_2123", "bfg_unkown_2123"),
-    2124: ("BfGUnkown_2124", "bfg_unkown_2124"),
-    2125: ("BfGUnkown_2125", "bfg_unkown_2125"),
-    2126: ("BfGUnkown_2126", "bfg_unkown_2126"),
-    2127: ("BfGUnkown_2127", "bfg_unkown_2127"),
-    2128: ("BfGUnkown_2128", "bfg_unkown_2128"),
-    2129: ("BfGUnkown_2129", "bfg_unkown_2129"),
-    2130: ("BfGUnkown_2130", "bfg_unkown_2130"),
-    2131: ("BfGUnkown_2131", "bfg_unkown_2131"),
-    2132: ("BfGUnkown_2132", "bfg_unkown_2132"),
-    2133: ("BfGUnkown_2133", "bfg_unkown_2133"),
-    2134: ("BfGUnkown_2134", "bfg_unkown_2134"),
-    2135: ("BfGUnkown_2135", "bfg_unkown_2135"),
-    2138: ("BfGUnkown_2138", "bfg_unkown_2138"),
-    2139: ("BfGUnkown_2139", "bfg_unkown_2139"),
-    2140: ("BfGUnkown_2140", "bfg_unkown_2140"),
-    2148: ("BfGUnkown_2148", "bfg_unkown_2148"),
-    2149: ("BfGUnkown_2149", "bfg_unkown_2149"),
-    2150: ("BfGUnkown_2150", "bfg_unkown_2150"),
-    2151: ("BfGUnkown_2151", "bfg_unkown_2151"),
-    2162: ("BfGUnkown_2162", "bfg_unkown_2162"),
+    2101: ("Immortal", "immortal"),
+    2104: ("Strategos", "strategos"),
+    2107: ("Hippeus", "hippeus"),
+    2110: ("Hoplite", "hoplite"),
+    2123: ("Lembos", "lembos"),
+    2127: ("Monoreme", "monoreme"),
+    2130: ("AntiqueGalley", "antique_galley"),
+    2133: ("IncendiaryRaft", "incendiary_raft"),
+    2138: ("CatapultShip", "catapult_ship"),
+    2148: ("AntiqueTransportShip", "antique_transport_ship"),
+    2149: ("MerchantShip", "merchant_ship"),
+    2150: ("WarChariot", "war_chariot"),
+    2162: ("Polemarch", "polemarch"),
+
+    # TODO: These are upgrades
+    2102: ("EliteImmortal", "elite_immortal"),
+    2105: ("EliteStrategos", "elite_strategos"),
+    2108: ("EliteHippeus", "elite_hippeus"),
+    2111: ("EliteHoplite", "elite_hoplite"),
+    2124: ("WarLembos", "war_lembos"),
+    2125: ("HeavyLembos", "heavy_lembos"),
+    2126: ("EliteLembos", "elite_lembos"),
+    2128: ("Bireme", "bireme"),
+    2129: ("Trieme", "trireme"),
+    2131: ("AntiqueWarGalley", "antique_war_galley"),
+    2132: ("AntiqueEliteGalley", "antique_elite_galley"),
+    2134: ("IncendiaryShip", "incendiary_ship"),
+    2135: ("HeavyIncendiaryShip", "heavy_incendiary_ship"),
+    2139: ("OnagerShip", "onager_ship"),
+    2140: ("Leviathan", "leviathan"),
+    2151: ("EliteWarChariot", "elite_war_chariot"),
+
+    # TTK
+    1302: ("DragonShip", "dragon_ship"),
+    1901: ("FireLancer", "fire_lancer"),
+    1904: ("RocketCart", "rocket_cart"),
+    1908: ("IronPagoda", "iron_pagoda"),
+    1911: ("Grenadier", "grenadier"),
+    1920: ("LiaoDao", "liao_dao"),
+    1923: ("MountedTrebuchet", "mounted_trebuchet"),
+    1942: ("TractionTrebuchet", "traction_trebuchet"),
+    1944: ("HeiGuangCavalry", "hei_guang_cavalry"),
+    1948: ("LouChuan", "lou_chuan"),
+    1949: ("TigerCavalry", "tiger_cavalry"),
+    1952: ("XianbeiRaider", "xianbei_raider"),
+    1954: ("CaoCao", "cao_cao"),
+    1959: ("WhiteFeatherGuard", "white_feather_guard"),
+    1962: ("WarChariotFocusFire", "war_chariot_focus_fire"),
+    1966: ("LiuBei", "liu_bei"),
+    1968: ("FireArcher", "fire_archer"),
+    1974: ("JianSwordsman", "jian_swordsman"),
+    1978: ("SunJian", "sun_jian"),
+    1980: ("WarChariotBarrage", "war_chariot_barrage"),
+
+    # TODO: These are upgrades
+    1903: ("EliteFireLancer", "elite_fire_lancer"),
+    1907: ("HeavyRocketCart", "heavy_rocket_cart"),
+    1910: ("EliteIronPagoda", "elite_iron_pagoda"),
+    1922: ("EliteLiaoDao", "elite_liao_dao"),
+    1946: ("HeavyHeiGuangCavalry", "heavy_hei_guang_cavalry"),
+    1951: ("EliteTigerCavalry", "elite_tiger_cavalry"),
+    1961: ("EliteWhiteFeatherGuard", "elite_white_feather_guard"),
+    1970: ("EliteFireArcher", "elite_fire_archer"),
 }
 
 # key: head unit id; value: (nyan object name, filename prefix)
@@ -121,8 +155,11 @@ BUILDING_LINE_LOOKUPS = {
     1808: ("MuleCart", "mule_cart"),
 
     # BfG
-    2119: ("BfGUnkown_2119", "bfg_unkown_2119"),
-    2172: ("BfGUnkown_2172", "bfg_unkown_2172"),
+    2119: ("Shipyard", "shipyard"),
+    2172: ("Port", "port"),
+
+    # TTK
+    1897: ("Pasture", "pasture"),
 }
 
 # key: (head) unit id; value: (nyan object name, filename prefix)
@@ -208,31 +245,45 @@ TECH_GROUP_LOOKUPS = {
     967: ("EliteQizilbashWarrior", "elite_qizilbash_warrior"),
 
     # BfG
-    1110: ("BfGUnkown_1110", "bfg_unkown_1110"),
-    1111: ("BfGUnkown_1111", "bfg_unkown_1111"),
-    1112: ("BfGUnkown_1112", "bfg_unkown_1112"),
-    1113: ("BfGUnkown_1113", "bfg_unkown_1113"),
-    1120: ("BfGUnkown_1120", "bfg_unkown_1120"),
-    1121: ("BfGUnkown_1121", "bfg_unkown_1121"),
-    1122: ("BfGUnkown_1122", "bfg_unkown_1122"),
-    1123: ("BfGUnkown_1123", "bfg_unkown_1123"),
-    1130: ("BfGUnkown_1130", "bfg_unkown_1130"),
-    1131: ("BfGUnkown_1131", "bfg_unkown_1131"),
-    1132: ("BfGUnkown_1132", "bfg_unkown_1132"),
-    1133: ("BfGUnkown_1133", "bfg_unkown_1133"),
-    1161: ("BfGUnkown_1161", "bfg_unkown_1161"),
-    1162: ("BfGUnkown_1162", "bfg_unkown_1162"),
-    1165: ("BfGUnkown_1165", "bfg_unkown_1165"),
-    1167: ("BfGUnkown_1167", "bfg_unkown_1167"),
-    1173: ("BfGUnkown_1173", "bfg_unkown_1173"),
-    1198: ("BfGUnkown_1198", "bfg_unkown_1198"),
-    1202: ("BfGUnkown_1202", "bfg_unkown_1202"),
-    1203: ("BfGUnkown_1203", "bfg_unkown_1203"),
-    1204: ("BfGUnkown_1204", "bfg_unkown_1204"),
-    1223: ("BfGUnkown_1223", "bfg_unkown_1223"),
-    1224: ("BfGUnkown_1224", "bfg_unkown_1224"),
-    1225: ("BfGUnkown_1225", "bfg_unkown_1225"),
-    1226: ("BfGUnkown_1226", "bfg_unkown_1226"),
+    1110: ("Sparabaras", "sparabaras"),
+    1111: ("Satrapies", "satrapies"),
+    1112: ("ScythedChariots", "scythed_chariots"),
+    1113: ("Palta", "palta"),
+    1120: ("Dekate", "dekate"),
+    1121: ("Taxiarchs", "taxiarchs"),
+    1122: ("Eisphora", "eisphora"),
+    1123: ("MinesOfLaurion", "mines_of_laurion"),
+    1130: ("HelotLevies", "helot_levies"),
+    1131: ("Xyphos", "xyphos"),
+    1132: ("Krypteia", "krypteia"),
+    1133: ("PeloponnesianLeague", "peloponnesian_league"),
+    1161: ("ScoopNets", "scoop_nets"),
+    1162: ("Drums", "drums"),
+    1165: ("Hypozomata", "hypozomata"),
+    1167: ("Shipwright", "shipwright"),
+    1173: ("TwoHandedSwordsman", "two_handed_swordsman"),
+    1198: ("SpawnLembosFromPort", "spawn_lembos_from_port"),
+    1202: ("Oligarchy", "oligarchy"),
+    1203: ("Democracy", "democracy"),
+    1204: ("Tyranny", "tyranny"),
+    1223: ("Ephorate", "ephorate"),
+    1224: ("Morai", "morai"),
+    1225: ("Skeuophoroi", "skeuophoroi"),
+    1226: ("Hippagretai", "hippagretai"),
+
+    # TTK
+    980: ("HeavyRocketCart", "heavy_rocket_cart"),
+    982: ("EliteFireLancer", "elite_fire_lancer"),
+    991: ("EliteIronPagoda", "elite_iron_pagoda"),
+    996: ("FortifiedBastions", "fortified_bastions"),
+    997: ("ThunderclapBombs", "thunderclap_bombs"),
+    1002: ("EliteLiaoDao", "elite_liao_dao"),
+    1006: ("LamellarArmor", "lamellar_armor"),
+    1007: ("OrdoCavalry", "ordo_cavalry"),
+    1010: ("DragonShip", "dragon_ship"),
+    1012: ("Transhumance", "transhumance"),
+    1013: ("Pastoralism", "pastoralism"),
+    1014: ("Domestication", "domestication"),
 }
 
 # key: civ index; value: (nyan object name, filename prefix)
@@ -265,15 +316,23 @@ CIV_GROUP_LOOKUPS = {
     45: ("Georgians", "georgians"),
 
     # BfG
-    46: ("BfGUnkown_46", "bfg_unkown_46"),
-    47: ("BfGUnkown_47", "bfg_unkown_47"),
-    48: ("BfGUnkown_48", "bfg_unkown_48"),
+    46: ("Achaemenids", "achaemenids"),
+    47: ("Athenians", "athenians"),
+    48: ("Spartans", "spartans"),
+
+    # TTK
+    49: ("Shu", "shu"),
+    50: ("Wu", "wu"),
+    51: ("Wei", "wei"),
+    52: ("Jurchens", "jurchens"),
+    53: ("Khitans", "khitans"),
 }
 
 # key: civ index; value: (civ ids, nyan object name, filename prefix)
 # contains only new/changed graphic sets of DE2
 GRAPHICS_SET_LOOKUPS = {
     0: ((0, 1, 2, 13, 14, 36), "WesternEuropean", "western_european"),
+    2: ((5, 6, 12, 18, 31, 49, 50, 51, 52, 53), "EastAsian", "east_asian"),
     4: ((7, 37), "Byzantine", "byzantine"),
     6: ((19, 24, 43, 44, 45, 46, 47, 48), "Mediterranean", "mediterranean"),
     7: ((20, 40, 41, 42), "Indian", "indian"),

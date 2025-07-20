@@ -4,3 +4,6 @@ add_py_modules(
     modpack_subprocessor.py
 	processor.py
 )
+
+add_subdirectory(main)
+add_subdirectory(media)

@@ -1,0 +1,30 @@
+add_py_modules(
+	__init__.py
+    berserk_heal_rate.py
+    bonus_population.py
+    building_conversion.py
+    chinese_tech_discount.py
+    construction_speed.py
+    conversion_resistance.py
+    crenellations.py
+    faith_recharge_rate.py
+    farm_food.py
+    gather_efficiency.py
+    heal_range.py
+    heal_rate.py
+    herding_dominance.py
+    heresy.py
+    monk_conversion.py
+    relic_gold_bonus.py
+    research_time.py
+    reveal_ally.py
+    reveal_enemy.py
+    ship_conversion.py
+    siege_conversion.py
+    spies_discount.py
+    starting_resources.py
+    theocracy.py
+    trade_penalty.py
+    tribute_inefficiency.py
+    wonder_time.py
+)

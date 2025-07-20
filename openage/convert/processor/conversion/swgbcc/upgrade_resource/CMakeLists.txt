@@ -1,0 +1,15 @@
+add_py_modules(
+	__init__.py
+    assault_mech_anti_air.py
+    berserk_heal_rate.py
+    cloak.py
+    concentration.py
+    convert_building.py
+    convert_monk.py
+    convert_range.py
+    faith_recharge_rate.py
+    heal_range.py
+    __init__.py
+    shield.py
+    submarine_detect.py
+)

@@ -1,4 +1,4 @@
-// Copyright 2023-2024 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #include "game_state.h"
 
@@ -61,6 +61,14 @@ const std::shared_ptr<Player> &GameState::get_player(player_id_t id) const {
 
 const std::shared_ptr<Map> &GameState::get_map() const {
 	return this->map;
+}
+
+bool GameState::has_game_entity(entity_id_t id) const {
+	return this->game_entities.contains(id);
+}
+
+bool GameState::has_player(player_id_t id) const {
+	return this->players.contains(id);
 }
 
 const std::shared_ptr<assets::ModManager> &GameState::get_mod_manager() const {

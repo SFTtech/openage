@@ -1,0 +1,88 @@
+# Copyright 2025-2025 the openage authors. See copying.md for legal info.
+
+"""
+Mappings of SWGB upgrade IDs to their respective subprocessor functions.
+"""
+from ...aoc.upgrade_attribute_subprocessor import AoCUpgradeAttributeSubprocessor
+from ...aoc.upgrade_resource_subprocessor import AoCUpgradeResourceSubprocessor
+from ..upgrade_attribute_subprocessor import SWGBCCUpgradeAttributeSubprocessor
+from ..upgrade_resource_subprocessor import SWGBCCUpgradeResourceSubprocessor
+
+
+UPGRADE_ATTRIBUTE_FUNCS = {
+    0: AoCUpgradeAttributeSubprocessor.hp_upgrade,
+    1: AoCUpgradeAttributeSubprocessor.los_upgrade,
+    2: AoCUpgradeAttributeSubprocessor.garrison_capacity_upgrade,
+    3: AoCUpgradeAttributeSubprocessor.unit_size_x_upgrade,
+    4: AoCUpgradeAttributeSubprocessor.unit_size_y_upgrade,
+    5: AoCUpgradeAttributeSubprocessor.move_speed_upgrade,
+    6: AoCUpgradeAttributeSubprocessor.rotation_speed_upgrade,
+    8: AoCUpgradeAttributeSubprocessor.armor_upgrade,
+    9: AoCUpgradeAttributeSubprocessor.attack_upgrade,
+    10: AoCUpgradeAttributeSubprocessor.reload_time_upgrade,
+    11: AoCUpgradeAttributeSubprocessor.accuracy_upgrade,
+    12: AoCUpgradeAttributeSubprocessor.max_range_upgrade,
+    13: AoCUpgradeAttributeSubprocessor.work_rate_upgrade,
+    14: AoCUpgradeAttributeSubprocessor.carry_capacity_upgrade,
+    16: AoCUpgradeAttributeSubprocessor.projectile_unit_upgrade,
+    17: AoCUpgradeAttributeSubprocessor.graphics_angle_upgrade,
+    18: AoCUpgradeAttributeSubprocessor.terrain_defense_upgrade,
+    19: AoCUpgradeAttributeSubprocessor.ballistics_upgrade,
+    20: AoCUpgradeAttributeSubprocessor.min_range_upgrade,
+    21: AoCUpgradeAttributeSubprocessor.resource_storage_1_upgrade,
+    22: AoCUpgradeAttributeSubprocessor.blast_radius_upgrade,
+    23: AoCUpgradeAttributeSubprocessor.search_radius_upgrade,
+    100: SWGBCCUpgradeAttributeSubprocessor.resource_cost_upgrade,
+    101: AoCUpgradeAttributeSubprocessor.creation_time_upgrade,
+    102: AoCUpgradeAttributeSubprocessor.min_projectiles_upgrade,
+    103: AoCUpgradeAttributeSubprocessor.cost_food_upgrade,
+    104: SWGBCCUpgradeAttributeSubprocessor.cost_carbon_upgrade,
+    105: SWGBCCUpgradeAttributeSubprocessor.cost_nova_upgrade,
+    106: SWGBCCUpgradeAttributeSubprocessor.cost_ore_upgrade,
+    107: AoCUpgradeAttributeSubprocessor.max_projectiles_upgrade,
+    108: AoCUpgradeAttributeSubprocessor.garrison_heal_upgrade,
+}
+
+UPGRADE_RESOURCE_FUNCS = {
+    4: AoCUpgradeResourceSubprocessor.starting_population_space_upgrade,
+    5: SWGBCCUpgradeResourceSubprocessor.conversion_range_upgrade,
+    10: SWGBCCUpgradeResourceSubprocessor.shield_recharge_rate_upgrade,
+    23: SWGBCCUpgradeResourceSubprocessor.submarine_detect_upgrade,
+    26: SWGBCCUpgradeResourceSubprocessor.shield_dropoff_time_upgrade,
+    27: SWGBCCUpgradeResourceSubprocessor.monk_conversion_upgrade,
+    28: SWGBCCUpgradeResourceSubprocessor.building_conversion_upgrade,
+    31: SWGBCCUpgradeResourceSubprocessor.assault_mech_anti_air_upgrade,
+    32: AoCUpgradeResourceSubprocessor.bonus_population_upgrade,
+    33: SWGBCCUpgradeResourceSubprocessor.shield_power_core_upgrade,
+    35: SWGBCCUpgradeResourceSubprocessor.faith_recharge_rate_upgrade,
+    36: AoCUpgradeResourceSubprocessor.farm_food_upgrade,
+    38: SWGBCCUpgradeResourceSubprocessor.shield_air_units_upgrade,
+    46: AoCUpgradeResourceSubprocessor.tribute_inefficiency_upgrade,
+    47: AoCUpgradeResourceSubprocessor.gather_gold_efficiency_upgrade,
+    50: AoCUpgradeResourceSubprocessor.reveal_ally_upgrade,
+    56: SWGBCCUpgradeResourceSubprocessor.cloak_upgrade,
+    58: SWGBCCUpgradeResourceSubprocessor.detect_cloak_upgrade,
+    77: AoCUpgradeResourceSubprocessor.conversion_resistance_upgrade,
+    78: AoCUpgradeResourceSubprocessor.trade_penalty_upgrade,
+    79: AoCUpgradeResourceSubprocessor.gather_stone_efficiency_upgrade,
+    84: AoCUpgradeResourceSubprocessor.starting_villagers_upgrade,
+    85: AoCUpgradeResourceSubprocessor.chinese_tech_discount_upgrade,
+    87: SWGBCCUpgradeResourceSubprocessor.concentration_upgrade,
+    89: AoCUpgradeResourceSubprocessor.heal_rate_upgrade,
+    90: SWGBCCUpgradeResourceSubprocessor.heal_range_upgrade,
+    91: AoCUpgradeResourceSubprocessor.starting_food_upgrade,
+    92: AoCUpgradeResourceSubprocessor.starting_wood_upgrade,
+    96: SWGBCCUpgradeResourceSubprocessor.berserk_heal_rate_upgrade,
+    97: AoCUpgradeResourceSubprocessor.herding_dominance_upgrade,
+    178: AoCUpgradeResourceSubprocessor.conversion_resistance_min_rounds_upgrade,
+    179: AoCUpgradeResourceSubprocessor.conversion_resistance_max_rounds_upgrade,
+    183: AoCUpgradeResourceSubprocessor.reveal_enemy_upgrade,
+    189: AoCUpgradeResourceSubprocessor.gather_wood_efficiency_upgrade,
+    190: AoCUpgradeResourceSubprocessor.gather_food_efficiency_upgrade,
+    191: AoCUpgradeResourceSubprocessor.relic_gold_bonus_upgrade,
+    192: AoCUpgradeResourceSubprocessor.heresy_upgrade,
+    193: AoCUpgradeResourceSubprocessor.theocracy_upgrade,
+    194: AoCUpgradeResourceSubprocessor.crenellations_upgrade,
+    196: AoCUpgradeResourceSubprocessor.wonder_time_increase_upgrade,
+    197: AoCUpgradeResourceSubprocessor.spies_discount_upgrade,
+}

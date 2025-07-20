@@ -1,4 +1,4 @@
-# Copyright 2019-2024 the openage authors. See copying.md for legal info.
+# Copyright 2019-2025 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-instance-attributes,too-few-public-methods
 
@@ -32,7 +32,7 @@ if typing.TYPE_CHECKING:
     from openage.convert.entity_object.conversion.aoc.genie_unit import GenieUnitObject, \
         GenieAmbientGroup, GenieBuildingLineGroup, GenieMonkGroup, GenieUnitLineGroup, \
         GenieUnitTaskGroup, GenieUnitTransformGroup, GenieVariantGroup, GenieVillagerGroup, \
-        GenieGameEntityGroup
+        GenieGameEntityGroup, GenieStackBuildingGroup
     from openage.convert.entity_object.export.media_export_request import MediaExportRequest
     from openage.convert.entity_object.export.metadata_export import MetadataExport
     from openage.convert.value_object.init.game_version import GameVersion
@@ -84,9 +84,8 @@ class GenieObjectContainer(ConverterObjectContainer):
 
         # Keys are the ID of the first unit in line
         self.unit_lines: dict[int, GenieUnitLineGroup] = {}
-        # Keys are the line ID of the unit connection
-        self.unit_lines_vertical_ref: dict[int, GenieUnitLineGroup] = {}
         self.building_lines: dict[int, GenieBuildingLineGroup] = {}
+        self.stack_building_groups: dict[int, GenieStackBuildingGroup] = {}
         self.task_groups: dict[int, GenieUnitTaskGroup] = {}
         self.transform_groups: dict[int, GenieUnitTransformGroup] = {}
         self.villager_groups: dict[int, GenieVillagerGroup] = {}

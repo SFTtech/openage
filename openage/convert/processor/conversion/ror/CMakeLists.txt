@@ -13,3 +13,13 @@ add_py_modules(
 	upgrade_attribute_subprocessor.py
 	upgrade_resource_subprocessor.py
 )
+
+add_subdirectory(ability)
+add_subdirectory(auxiliary)
+add_subdirectory(civ)
+add_subdirectory(main)
+add_subdirectory(nyan)
+add_subdirectory(tech)
+add_subdirectory(upgrade_ability)
+add_subdirectory(upgrade_attribute)
+add_subdirectory(upgrade_resource)
