@@ -330,28 +330,28 @@ public:
 
 	/**
 	 * Erase all elements after the given element.
-     *
-     * @param last_valid Location of the last element to keep.
-     *
-     * @return Location (index) of the last element that was kept.
+	 *
+	 * @param last_valid Location of the last element to keep.
+	 *
+	 * @return Location (index) of the last element that was kept.
 	 */
 	elem_ptr erase_after(elem_ptr last_valid);
 
 	/**
 	 * Erase a single element from the container.
-     *
-     * @param it Location of the element to erase.
-     *
-     * @return Location (index) of the next element after the erased one.
+	 *
+	 * @param it Location of the element to erase.
+	 *
+	 * @return Location (index) of the next element after the erased one.
 	 */
 	elem_ptr erase(elem_ptr it);
 
 	/**
 	 * Erase all elements with given time. Starts the search at the end of the container.
 	 *
-     * @param time Time of the elements to erase.
-     *
-     * @return Location (index) of the next element after the erased one.
+	 * @param time Time of the elements to erase.
+	 *
+	 * @return Location (index) of the next element after the erased one.
 	 */
 	elem_ptr erase(const time::time_t &time) {
 		return this->erase(time, this->container.size());
@@ -361,9 +361,9 @@ public:
 	 * Erase all element with given time. Include a hint where to start the search.
 	 *
 	 * @param time Time of the elements to erase.
-     * @param hint Index of the approximate element location.
-     *
-     * @return Location (index) of the next element after the erased one.
+	 * @param hint Index of the approximate element location.
+	 *
+	 * @return Location (index) of the next element after the erased one.
 	 */
 	elem_ptr erase(const time::time_t &time,
 	               const elem_ptr &hint) {
@@ -633,7 +633,7 @@ KeyframeContainer<T>::sync(const KeyframeContainer<O> &other,
                            const std::function<T(const O &)> &converter,
                            const time::time_t &start) {
 	// Delete elements after start time
-	elem_ptr at = this->last_before(start, this->container.size());
+	elem_ptr at = this->last_before(start);
 	at = this->erase_after(at);
 
 	// Find the last element before the start time in the other container
