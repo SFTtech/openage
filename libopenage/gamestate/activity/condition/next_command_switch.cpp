@@ -16,7 +16,7 @@ int next_command_switch(const time::time_t &time,
 		entity->get_component(component::component_t::COMMANDQUEUE));
 
 	if (command_queue->get_commands().empty(time)) {
-		return -1;
+		return static_cast<int>(component::command::command_t::NONE);
 	}
 
 	auto command = command_queue->get_commands().front(time);
