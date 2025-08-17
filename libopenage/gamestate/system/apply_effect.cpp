@@ -67,15 +67,11 @@ const time::time_t ApplyEffect::apply_effect(const std::shared_ptr<gamestate::Ga
 	auto path_angle = path_vector.to_angle();
 
 	if (not turn_speed->is_infinite_positive()) {
-		auto angle_diff = path_angle - effector_angle;
-		if (angle_diff < 0) {
-			// get the positive difference
-			angle_diff = angle_diff * -1;
-		}
+		auto angle_diff = path_angle.abs_diff(effector_angle);
+
 		if (angle_diff > 180) {
 			// always use the smaller angle
-			angle_diff = angle_diff - 360;
-			angle_diff = angle_diff * -1;
+			angle_diff = coord::phys_angle_t::same_type_but_unsigned{360} - angle_diff;
 		}
 
 		double turn_time = angle_diff.to_double() / turn_speed->get();

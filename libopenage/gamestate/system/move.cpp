@@ -171,15 +171,11 @@ const time::time_t Move::move_default(const std::shared_ptr<gamestate::GameEntit
 
 		// rotation
 		if (not turn_speed->is_infinite_positive()) {
-			auto angle_diff = path_angle - current_angle;
-			if (angle_diff < 0) {
-				// get the positive difference
-				angle_diff = angle_diff * -1;
-			}
+			auto angle_diff = path_angle.abs_diff(current_angle);
+
 			if (angle_diff > 180) {
 				// always use the smaller angle
-				angle_diff = angle_diff - 360;
-				angle_diff = angle_diff * -1;
+				angle_diff = coord::phys_angle_t::same_type_but_unsigned{360} - angle_diff;
 			}
 
 			// Set an intermediate position keyframe to halt the game entity
