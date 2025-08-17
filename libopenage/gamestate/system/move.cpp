@@ -34,6 +34,12 @@
 
 namespace openage::gamestate::system {
 
+// helper type for the visitor processing the move_target
+template <class... Ts>
+struct overloaded : Ts... {
+	using Ts::operator()...;
+};
+
 
 std::vector<coord::phys3> find_path(const std::shared_ptr<path::Pathfinder> &pathfinder,
                                     path::grid_id_t grid_id,
@@ -104,24 +110,26 @@ const time::time_t Move::move_target(const std::shared_ptr<gamestate::GameEntity
 		return time::time_t::from_int(0);
 	}
 
-	if (std::holds_alternative<gamestate::entity_id_t>(target.value())) {
-		auto target_id = std::get<gamestate::entity_id_t>(target.value());
-		auto target_entity = state->get_game_entity(target_id);
+	return std::visit(
+		overloaded{
+			[&](const gamestate::entity_id_t &target_id) {
+				auto target_entity = state->get_game_entity(target_id);
 
-		auto position = std::dynamic_pointer_cast<component::Position>(
-			target_entity->get_component(component::component_t::POSITION));
+				auto position = std::dynamic_pointer_cast<component::Position>(
+					target_entity->get_component(component::component_t::POSITION));
 
-		auto target_pos = position->get_positions().get(start_time);
+				auto target_pos = position->get_positions().get(start_time);
 
-		return Move::move_default(entity, state, target_pos, start_time);
-	}
-	else if (std::holds_alternative<coord::phys3>(target.value())) {
-		auto target_pos = std::get<coord::phys3>(target.value());
-		return Move::move_default(entity, state, target_pos, start_time);
-	}
-
-	log::log(WARN << "Entity " << entity->get_id() << " has an invalid target at time " << start_time);
-	return time::time_t::from_int(0);
+				return Move::move_default(entity, state, target_pos, start_time);
+			},
+			[&](const coord::phys3 &target_pos) {
+				return Move::move_default(entity, state, target_pos, start_time);
+			},
+			[&](const auto &target) {
+			log::log(WARN << "Entity " << entity->get_id() << " has an invalid target type: "
+			              << typeid(target).name() << " at time " << start_time);
+			return time::time_t::from_int(0); }},
+		target.value());
 }
 
 
