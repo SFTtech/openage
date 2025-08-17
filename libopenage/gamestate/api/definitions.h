@@ -311,7 +311,7 @@ static const auto ACTIVITY_TASK_SYSTEM_LOOKUP = datastructure::create_const_map<
 /**
  * Maps API activity condition types to engine condition types.
  */
-static const auto ACTIVITY_CONDITION_LOOKUP = datastructure::create_const_map<std::string, activity::condition_t>(
+static const auto ACTIVITY_CONDITION_LOOKUP = datastructure::create_const_map<std::string, activity::condition_function_t>(
 	std::pair("engine.util.activity.condition.type.CommandInQueue",
               std::function(gamestate::activity::command_in_queue)),
 	std::pair("engine.util.activity.condition.type.NextCommand",

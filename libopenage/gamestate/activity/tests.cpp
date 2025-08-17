@@ -233,10 +233,10 @@ void activity_demo() {
 
 	// Conditional branch
 	static size_t counter = 0;
-	activity::condition_t branch_task1 = [&](const time::time_t & /* time */,
-	                                         const std::shared_ptr<gamestate::GameEntity> & /* entity */,
-	                                         const std::shared_ptr<gamestate::GameState> & /* state */,
-	                                         const std::shared_ptr<nyan::Object> & /* api_object */) {
+	activity::condition_function_t branch_task1 = [&](const time::time_t & /* time */,
+	                                                  const std::shared_ptr<gamestate::GameEntity> & /* entity */,
+	                                                  const std::shared_ptr<gamestate::GameState> & /* state */,
+	                                                  const std::shared_ptr<nyan::Object> & /* api_object */) {
 		log::log(INFO << "Checking condition (counter < 4): counter=" << counter);
 		if (counter < 4) {
 			log::log(INFO << "Selecting path 1 (back to task node " << task1->get_id() << ")");
@@ -249,10 +249,10 @@ void activity_demo() {
 	xor_node->add_output(task1,
 	                     {nullptr, // API object set to nullptr as it's never used by condition func
 	                      branch_task1});
-	activity::condition_t branch_event = [&](const time::time_t & /* time */,
-	                                         const std::shared_ptr<gamestate::GameEntity> & /* entity */,
-	                                         const std::shared_ptr<gamestate::GameState> & /* state */,
-	                                         const std::shared_ptr<nyan::Object> & /* api_object */) {
+	activity::condition_function_t branch_event = [&](const time::time_t & /* time */,
+	                                                  const std::shared_ptr<gamestate::GameEntity> & /* entity */,
+	                                                  const std::shared_ptr<gamestate::GameState> & /* state */,
+	                                                  const std::shared_ptr<nyan::Object> & /* api_object */) {
 		// No check needed here, the event node is always selected
 		log::log(INFO << "Selecting path 2 (to event node " << event_node->get_id() << ")");
 		return true;

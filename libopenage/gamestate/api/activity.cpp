@@ -151,7 +151,7 @@ bool APIActivityCondition::is_condition(const nyan::Object &obj) {
 	return api_parent == "engine.util.activity.condition.Condition";
 }
 
-activity::condition_t APIActivityCondition::get_condition(const nyan::Object &condition) {
+activity::condition_function_t APIActivityCondition::get_condition(const nyan::Object &condition) {
 	nyan::fqon_t api_parent = get_api_parent(condition);
 
 	return ACTIVITY_CONDITION_LOOKUP.get(api_parent);

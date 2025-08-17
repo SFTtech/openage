@@ -68,10 +68,10 @@ using event_primer_t = std::function<std::shared_ptr<openage::event::Event>(cons
  *
  * @return true if the output node is chosen, false otherwise.
  */
-using condition_t = std::function<bool(const time::time_t &time,
-                                       const std::shared_ptr<gamestate::GameEntity> &entity,
-                                       const std::shared_ptr<gamestate::GameState> &state,
-                                       const std::shared_ptr<nyan::Object> &api_object)>;
+using condition_function_t = std::function<bool(const time::time_t &time,
+                                                const std::shared_ptr<gamestate::GameEntity> &entity,
+                                                const std::shared_ptr<gamestate::GameState> &state,
+                                                const std::shared_ptr<nyan::Object> &api_object)>;
 
 /**
  * Condition used to determine if an output node is chosen.
@@ -81,7 +81,7 @@ struct condition {
 	std::shared_ptr<nyan::Object> api_object;
 	/// Checks whether the condition is true.
 	/// TODO: We could look this function up at runtime.
-	condition_t function;
+	condition_function_t function;
 };
 
 /**

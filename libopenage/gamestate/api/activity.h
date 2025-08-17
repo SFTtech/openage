@@ -107,7 +107,7 @@ public:
 	 *
 	 * @return Condition function.
 	 */
-	static activity::condition_t get_condition(const nyan::Object &condition);
+	static activity::condition_function_t get_condition(const nyan::Object &condition);
 };
 
 /**

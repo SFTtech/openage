@@ -80,10 +80,10 @@ std::shared_ptr<activity::Activity> create_test_activity() {
 	idle->set_system_id(system::system_id_t::IDLE);
 
 	// branch 1: check if the entity is moveable
-	activity::condition_t command_branch = [&](const time::time_t & /* time */,
-	                                           const std::shared_ptr<gamestate::GameEntity> &entity,
-	                                           const std::shared_ptr<gamestate::GameState> & /* state */,
-	                                           const std::shared_ptr<nyan::Object> & /* api_object */) {
+	activity::condition_function_t command_branch = [&](const time::time_t & /* time */,
+	                                                    const std::shared_ptr<gamestate::GameEntity> &entity,
+	                                                    const std::shared_ptr<gamestate::GameState> & /* state */,
+	                                                    const std::shared_ptr<nyan::Object> & /* api_object */) {
 		return entity->has_component(component::component_t::MOVE);
 	};
 	condition_moveable->add_output(condition_command,
