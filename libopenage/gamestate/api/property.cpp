@@ -13,13 +13,7 @@
 namespace openage::gamestate::api {
 
 bool APIAbilityProperty::is_property(const nyan::Object &obj) {
-	for (auto &parent : obj.get_parents()) {
-		if (parent == "engine.ability.property.Property") {
-			return true;
-		}
-	}
-
-	return false;
+	return obj.extends("engine.ability.property.Property");
 }
 
 const std::vector<nyan::Object> APIAbilityProperty::get_animations(const nyan::Object &property) {

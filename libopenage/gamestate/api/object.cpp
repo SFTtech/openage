@@ -8,13 +8,7 @@
 namespace openage::gamestate::api {
 
 bool APIObject::is_object(const nyan::Object &obj) {
-    for (const auto &parent : obj.get_parents()) {
-        if (parent == "engine.root.Object") {
-            return true;
-        }
-    }
-
-    return false;
+	return obj.extends("engine.root.Object");
 }
 
-} // namespace
+} // namespace openage::gamestate::api

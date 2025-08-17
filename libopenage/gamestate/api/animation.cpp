@@ -10,13 +10,7 @@
 namespace openage::gamestate::api {
 
 bool APIAnimation::is_animation(nyan::Object &obj) {
-	for (auto &parent : obj.get_parents()) {
-		if (parent == "engine.util.animation.Animation") {
-			return true;
-		}
-	}
-
-	return false;
+	return obj.extends("engine.util.animation.Animation");
 }
 
 const std::string APIAnimation::get_animation_path(const nyan::Object &animation) {

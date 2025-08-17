@@ -9,13 +9,7 @@
 namespace openage::gamestate::api {
 
 bool APIEffect::is_effect(const nyan::Object &obj) {
-	for (auto &parent : obj.get_parents()) {
-		if (parent == "engine.effect.Effect") {
-			return true;
-		}
-	}
-
-	return false;
+	return obj.extends("engine.effect.Effect");
 }
 
 bool APIEffect::check_type(const nyan::Object &effect,

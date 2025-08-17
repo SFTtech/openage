@@ -9,13 +9,7 @@
 namespace openage::gamestate::api {
 
 bool APIResistance::is_resistance(const nyan::Object &obj) {
-	for (auto &parent : obj.get_parents()) {
-		if (parent == "engine.resistance.Resistance") {
-			return true;
-		}
-	}
-
-	return false;
+	return obj.extends("engine.resistance.Resistance");
 }
 
 bool APIResistance::check_effect_type(const nyan::Object &resistance,

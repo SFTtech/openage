@@ -13,13 +13,7 @@
 namespace openage::gamestate::api {
 
 bool APIPlayerSetup::is_player_setup(const nyan::Object &obj) {
-	for (auto &parent : obj.get_parents()) {
-		if (parent == "engine.util.setup.PlayerSetup") {
-			return true;
-		}
-	}
-
-	return false;
+	return obj.extends("engine.util.setup.PlayerSetup");
 }
 
 const std::vector<nyan::Object> APIPlayerSetup::get_modifiers(const nyan::Object &player_setup) {

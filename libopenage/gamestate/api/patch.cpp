@@ -16,13 +16,7 @@
 namespace openage::gamestate::api {
 
 bool APIPatch::is_patch(const nyan::Object &obj) {
-	for (auto &parent : obj.get_parents()) {
-		if (parent == "engine.util.patch.Patch") {
-			return true;
-		}
-	}
-
-	return false;
+	return obj.extends("engine.util.patch.Patch");
 }
 
 bool APIPatch::check_property(const nyan::Object &patch,

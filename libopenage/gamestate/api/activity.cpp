@@ -9,13 +9,7 @@
 namespace openage::gamestate::api {
 
 bool APIActivity::is_activity(const nyan::Object &obj) {
-	for (auto &parent : obj.get_parents()) {
-		if (parent == "engine.util.activity.Activity") {
-			return true;
-		}
-	}
-
-	return false;
+	return obj.extends("engine.util.activity.Activity");
 }
 
 nyan::Object APIActivity::get_start(const nyan::Object &activity) {
@@ -27,13 +21,7 @@ nyan::Object APIActivity::get_start(const nyan::Object &activity) {
 
 
 bool APIActivityNode::is_node(const nyan::Object &obj) {
-	for (auto &parent : obj.get_parents()) {
-		if (parent == "engine.util.activity.node.Node") {
-			return true;
-		}
-	}
-
-	return false;
+	return obj.extends("engine.util.activity.node.Node");
 }
 
 activity::node_t APIActivityNode::get_type(const nyan::Object &node) {

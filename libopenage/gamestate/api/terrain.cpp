@@ -10,13 +10,7 @@
 namespace openage::gamestate::api {
 
 bool APITerrain::is_terrain(const nyan::Object &obj) {
-	for (auto &parent : obj.get_parents()) {
-		if (parent == "engine.util.terrain.Terrain") {
-			return true;
-		}
-	}
-
-	return false;
+	return obj.extends("engine.util.terrain.Terrain");
 }
 
 const std::string APITerrain::get_terrain_path(const nyan::Object &terrain) {

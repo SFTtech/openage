@@ -12,13 +12,7 @@
 namespace openage::gamestate::api {
 
 bool APISound::is_sound(const nyan::Object &obj) {
-	for (auto &parent : obj.get_parents()) {
-		if (parent == "engine.util.sound.Sound") {
-			return true;
-		}
-	}
-
-	return false;
+	return obj.extends("engine.util.sound.Sound");
 }
 
 const std::string APISound::get_sound_path(const nyan::Object &sound) {
