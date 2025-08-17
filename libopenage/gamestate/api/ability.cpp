@@ -25,8 +25,7 @@ bool APIAbility::check_type(const nyan::Object &ability,
 	nyan::fqon_t api_parent = get_api_parent(ability);
 	nyan::ValueHolder ability_type = ABILITY_DEFS.get(type);
 
-	std::shared_ptr<nyan::ObjectValue> ability_val = std::dynamic_pointer_cast<nyan::ObjectValue>(
-		ability_type.get_ptr());
+	auto ability_val = ability_type.get_value_ptr<nyan::ObjectValue>();
 
 	return ability_val->get_name() == api_parent;
 }
@@ -61,8 +60,7 @@ const nyan::Object APIAbility::get_property(const nyan::Object &ability, const a
 	nyan::ValueHolder property_type = ABILITY_PROPERTY_DEFS.get(property);
 
 	std::shared_ptr<nyan::View> db_view = ability.get_view();
-	std::shared_ptr<nyan::ObjectValue> property_val = std::dynamic_pointer_cast<nyan::ObjectValue>(
-		properties->get().at(property_type).get_ptr());
+	auto property_val = properties->get().at(property_type).get_value_ptr<nyan::ObjectValue>();
 
 	return db_view->get_object(property_val->get_name());
 }

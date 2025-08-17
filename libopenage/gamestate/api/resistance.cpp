@@ -17,8 +17,7 @@ bool APIResistance::check_effect_type(const nyan::Object &resistance,
 	nyan::fqon_t api_parent = get_api_parent(resistance);
 	nyan::ValueHolder effect_type = RESISTANCE_DEFS.get(type);
 
-	std::shared_ptr<nyan::ObjectValue> effect_val = std::dynamic_pointer_cast<nyan::ObjectValue>(
-		effect_type.get_ptr());
+	auto effect_val = effect_type.get_value_ptr<nyan::ObjectValue>();
 
 	return effect_val->get_name() == api_parent;
 }
@@ -43,8 +42,7 @@ const nyan::Object APIResistance::get_property(const nyan::Object &resistance,
 	nyan::ValueHolder property_type = RESISTANCE_PROPERTY_DEFS.get(property);
 
 	std::shared_ptr<nyan::View> db_view = resistance.get_view();
-	std::shared_ptr<nyan::ObjectValue> property_val = std::dynamic_pointer_cast<nyan::ObjectValue>(
-		properties->get().at(property_type).get_ptr());
+	auto property_val = properties->get().at(property_type).get_value_ptr<nyan::ObjectValue>();
 
 	return db_view->get_object(property_val->get_name());
 }

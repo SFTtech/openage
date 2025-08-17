@@ -173,7 +173,7 @@ void EntityFactory::init_components(const std::shared_ptr<openage::event::EventL
 
 	std::optional<nyan::Object> activity_ability;
 	for (const auto &ability_val : abilities) {
-		auto ability_fqon = std::dynamic_pointer_cast<nyan::ObjectValue>(ability_val.get_ptr())->get_name();
+		auto ability_fqon = ability_val.get_value_ptr<nyan::ObjectValue>()->get_name();
 		auto ability_obj = owner_db_view->get_object(ability_fqon);
 
 		auto ability_parent = api::get_api_parent(ability_obj);
@@ -200,7 +200,7 @@ void EntityFactory::init_components(const std::shared_ptr<openage::event::EventL
 
 			auto attr_settings = ability_obj.get_set("Live.attributes");
 			for (auto &setting : attr_settings) {
-				auto setting_obj_val = std::dynamic_pointer_cast<nyan::ObjectValue>(setting.get_ptr());
+				auto setting_obj_val = setting.get_value_ptr<nyan::ObjectValue>();
 				auto setting_obj = owner_db_view->get_object(setting_obj_val->get_name());
 				auto attribute = setting_obj.get_object("AttributeSetting.attribute");
 				auto start_value = setting_obj.get_int("AttributeSetting.starting_value");
@@ -367,7 +367,7 @@ void EntityFactory::init_activity(const std::shared_ptr<openage::event::EventLoo
 			auto xor_gate = std::static_pointer_cast<activity::XorGate>(activity_node);
 			auto conditions = nyan_node.get<nyan::OrderedSet>("XORGate.next");
 			for (auto &condition : conditions->get()) {
-				auto condition_value = std::dynamic_pointer_cast<nyan::ObjectValue>(condition.get_ptr());
+				auto condition_value = condition.get_value_ptr<nyan::ObjectValue>();
 				auto condition_obj = owner_db_view->get_object_ptr(condition_value->get_name());
 
 				auto output_value = condition_obj->get<nyan::ObjectValue>("Condition.next")->get_name();
@@ -389,10 +389,10 @@ void EntityFactory::init_activity(const std::shared_ptr<openage::event::EventLoo
 			auto xor_event_gate = std::static_pointer_cast<activity::XorEventGate>(activity_node);
 			auto next = nyan_node.get<nyan::Dict>("XOREventGate.next");
 			for (auto &next_node : next->get()) {
-				auto event_value = std::dynamic_pointer_cast<nyan::ObjectValue>(next_node.first.get_ptr());
+				auto event_value = next_node.first.get_value_ptr<nyan::ObjectValue>();
 				auto event_obj = owner_db_view->get_object(event_value->get_name());
 
-				auto next_node_value = std::dynamic_pointer_cast<nyan::ObjectValue>(next_node.second.get_ptr());
+				auto next_node_value = next_node.second.get_value_ptr<nyan::ObjectValue>();
 				auto next_node_obj = owner_db_view->get_object(next_node_value->get_name());
 
 				auto output_id = visited[next_node_obj.get_name()];

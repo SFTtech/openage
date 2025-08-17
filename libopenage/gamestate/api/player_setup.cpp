@@ -22,7 +22,7 @@ const std::vector<nyan::Object> APIPlayerSetup::get_modifiers(const nyan::Object
 	auto db_view = player_setup.get_view();
 	auto modifiers = player_setup.get_set("PlayerSetup.modifiers");
 	for (auto &modifier_val : modifiers) {
-		auto modifier_obj_val = std::dynamic_pointer_cast<nyan::ObjectValue>(modifier_val.get_ptr());
+		auto modifier_obj_val = modifier_val.get_value_ptr<nyan::ObjectValue>();
 		auto modifier_obj = db_view->get_object(modifier_obj_val->get_name());
 		result.push_back(modifier_obj);
 	}
@@ -36,7 +36,7 @@ const std::vector<nyan::Object> APIPlayerSetup::get_start_resources(const nyan::
 	auto db_view = player_setup.get_view();
 	auto start_resources = player_setup.get_set("PlayerSetup.starting_resources");
 	for (auto &resource_val : start_resources) {
-		auto resource_obj_val = std::dynamic_pointer_cast<nyan::ObjectValue>(resource_val.get_ptr());
+		auto resource_obj_val = resource_val.get_value_ptr<nyan::ObjectValue>();
 		auto resource_obj = db_view->get_object(resource_obj_val->get_name());
 		result.push_back(resource_obj);
 	}
@@ -50,7 +50,7 @@ const std::vector<nyan::Object> APIPlayerSetup::get_patches(const nyan::Object &
 	auto db_view = player_setup.get_view();
 	auto patches = player_setup.get_set("PlayerSetup.game_setup");
 	for (auto &patch_val : patches) {
-		auto patch_obj_val = std::dynamic_pointer_cast<nyan::ObjectValue>(patch_val.get_ptr());
+		auto patch_obj_val = patch_val.get_value_ptr<nyan::ObjectValue>();
 		auto patch_obj = db_view->get_object(patch_obj_val->get_name());
 		result.push_back(patch_obj);
 	}

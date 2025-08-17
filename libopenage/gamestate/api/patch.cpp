@@ -37,8 +37,7 @@ const nyan::Object APIPatch::get_property(const nyan::Object &patch,
 	nyan::ValueHolder property_type = PATCH_PROPERTY_DEFS.get(property);
 
 	std::shared_ptr<nyan::View> db_view = patch.get_view();
-	std::shared_ptr<nyan::ObjectValue> property_val = std::dynamic_pointer_cast<nyan::ObjectValue>(
-		properties->get().at(property_type).get_ptr());
+	auto property_val = properties->get().at(property_type).get_value_ptr<nyan::ObjectValue>();
 
 	return db_view->get_object(property_val->get_name());
 }

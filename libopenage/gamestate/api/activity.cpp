@@ -67,7 +67,7 @@ std::vector<nyan::Object> APIActivityNode::get_next(const nyan::Object &node) {
 
 		std::vector<nyan::Object> next_nodes;
 		for (auto &condition : conditions->get()) {
-			auto condition_value = std::dynamic_pointer_cast<nyan::ObjectValue>(condition.get_ptr());
+			auto condition_value = condition.get_value_ptr<nyan::ObjectValue>();
 			auto condition_obj = db_view->get_object(condition_value->get_name());
 
 			auto next_node_value = condition_obj.get<nyan::ObjectValue>("Condition.next");
@@ -85,7 +85,7 @@ std::vector<nyan::Object> APIActivityNode::get_next(const nyan::Object &node) {
 
 		std::vector<nyan::Object> next_nodes;
 		for (auto &next_node : next->get()) {
-			auto next_node_value = std::dynamic_pointer_cast<nyan::ObjectValue>(next_node.second.get_ptr());
+			auto next_node_value = next_node.second.get_value_ptr<nyan::ObjectValue>();
 			next_nodes.push_back(db_view->get_object(next_node_value->get_name()));
 		}
 
@@ -104,7 +104,7 @@ std::vector<nyan::Object> APIActivityNode::get_next(const nyan::Object &node) {
 			auto next = switch_condition_obj.get_dict("NextCommand.next");
 			std::vector<nyan::Object> next_nodes;
 			for (auto next_node : next) {
-				auto next_node_value = std::dynamic_pointer_cast<nyan::ObjectValue>(next_node.second.get_ptr());
+				auto next_node_value = next_node.second.get_value_ptr<nyan::ObjectValue>();
 				next_nodes.push_back(db_view->get_object(next_node_value->get_name()));
 			}
 
@@ -179,14 +179,14 @@ APIActivitySwitchCondition::lookup_map_t APIActivitySwitchCondition::get_lookup_
 		auto next = condition.get<nyan::Dict>("NextCommand.next");
 		lookup_map_t lookup_map{};
 		for (auto next_node : next->get()) {
-			auto key_value = std::dynamic_pointer_cast<nyan::ObjectValue>(next_node.first.get_ptr());
+			auto key_value = next_node.first.get_value_ptr<nyan::ObjectValue>();
 			auto key_obj = condition.get_view()->get_object(key_value->get_name());
 
 			// Get engine lookup key value
 			auto key = static_cast<activity::switch_key_t>(COMMAND_LOOKUP.get(key_obj.get_name()));
 
 			// Get node ID
-			auto next_node_value = std::dynamic_pointer_cast<nyan::ObjectValue>(next_node.second.get_ptr());
+			auto next_node_value = next_node.second.get_value_ptr<nyan::ObjectValue>();
 			auto next_node_id = next_node_value->get_name();
 
 			lookup_map[key] = next_node_id;

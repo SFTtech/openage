@@ -98,12 +98,12 @@ const time::time_t ApplyEffect::apply_effect(const std::shared_ptr<gamestate::Ga
 	// Extract the effects from the ability
 	std::unordered_map<api::effect_t, std::vector<nyan::Object>> effects{};
 	for (auto &batch : batches) {
-		std::shared_ptr<nyan::ObjectValue> batch_obj_val = std::dynamic_pointer_cast<nyan::ObjectValue>(batch.get_ptr());
+		auto batch_obj_val = batch.get_value_ptr<nyan::ObjectValue>();
 		auto batch_obj = effect_ability.get_view()->get_object(batch_obj_val->get_name());
 		auto batch_effects = batch_obj.get_set("EffectBatch.effects");
 
 		for (auto &batch_effect : batch_effects) {
-			std::shared_ptr<nyan::ObjectValue> effect_obj_val = std::dynamic_pointer_cast<nyan::ObjectValue>(batch_effect.get_ptr());
+			auto effect_obj_val = batch_effect.get_value_ptr<nyan::ObjectValue>();
 			auto effect_obj = effect_ability.get_view()->get_object(effect_obj_val->get_name());
 			auto effect_type = api::APIEffect::get_type(effect_obj);
 
@@ -118,7 +118,7 @@ const time::time_t ApplyEffect::apply_effect(const std::shared_ptr<gamestate::Ga
 	// Extract the resistances from the ability
 	std::unordered_map<api::effect_t, std::vector<nyan::Object>> resistances{};
 	for (auto &resistance : resistances_set) {
-		std::shared_ptr<nyan::ObjectValue> resistance_obj_val = std::dynamic_pointer_cast<nyan::ObjectValue>(resistance.get_ptr());
+		auto resistance_obj_val = resistance.get_value_ptr<nyan::ObjectValue>();
 		auto resistance_obj = resistance_ability.get_view()->get_object(resistance_obj_val->get_name());
 		auto resistance_type = api::APIResistance::get_effect_type(resistance_obj);
 
