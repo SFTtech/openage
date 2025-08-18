@@ -94,11 +94,11 @@ public:
 	 * Target type with several possible representations.
 	 *
 	 * Can be:
+	 * - std::monostate: No target.
 	 * - coord::phys3: Position in the game world.
 	 * - entity_id_t: ID of another entity.
-	 * - std::nullopt: Nothing.
 	 */
-	using optional_target_t = std::optional<std::variant<coord::phys3, entity_id_t>>;
+	using optional_target_t = std::variant<std::monostate, coord::phys3, entity_id_t>;
 
 	/**
 	 * Get the target of the entity at the given time.

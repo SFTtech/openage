@@ -56,7 +56,7 @@ const std::shared_ptr<command::Command> CommandQueue::front(const time::time_t &
 
 CommandQueue::optional_target_t CommandQueue::get_target(const time::time_t &time) const {
 	if (this->command_queue.empty(time)) {
-		return std::nullopt;
+		return std::monostate{};
 	}
 
 	auto command = this->command_queue.front(time);
@@ -68,7 +68,7 @@ CommandQueue::optional_target_t CommandQueue::get_target(const time::time_t &tim
 	case command::command_t::APPLY_EFFECT:
 		return std::dynamic_pointer_cast<command::ApplyEffect>(command)->get_target();
 	default:
-		return std::nullopt;
+		return std::monostate{};
 	}
 }
 

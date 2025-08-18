@@ -105,11 +105,6 @@ const time::time_t Move::move_target(const std::shared_ptr<gamestate::GameEntity
 		entity->get_component(component::component_t::COMMANDQUEUE));
 	auto target = command_queue->get_target(start_time);
 
-	if (not target.has_value()) [[unlikely]] {
-		log::log(WARN << "Entity " << entity->get_id() << " has no target at time " << start_time);
-		return time::time_t::from_int(0);
-	}
-
 	return std::visit(
 		overloaded{
 			[&](const gamestate::entity_id_t &target_id) {
@@ -125,11 +120,11 @@ const time::time_t Move::move_target(const std::shared_ptr<gamestate::GameEntity
 			[&](const coord::phys3 &target_pos) {
 				return Move::move_default(entity, state, target_pos, start_time);
 			},
-			[&](const auto &target) {
-			log::log(WARN << "Entity " << entity->get_id() << " has an invalid target type: "
-			              << typeid(target).name() << " at time " << start_time);
-			return time::time_t::from_int(0); }},
-		target.value());
+			[&](const std::monostate &) {
+				log::log(WARN << "Entity " << entity->get_id() << " has no target at time " << start_time);
+				return time::time_t::from_int(0);
+			}},
+		target);
 }
 
 

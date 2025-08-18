@@ -27,7 +27,7 @@ bool target_in_range(const time::time_t &time,
 		entity->get_component(component::component_t::COMMANDQUEUE));
 	auto target = command_queue->get_target(time);
 
-	if (not target.has_value()) {
+	if (std::holds_alternative<std::monostate>(target)) {
 		// No target exists, exit early
 		log::log(DBG << "Target for entity " << entity->get_id() << " is not set");
 		return false;
@@ -69,11 +69,11 @@ bool target_in_range(const time::time_t &time,
 		entity->get_component(component::component_t::POSITION));
 	auto current_pos = position->get_positions().get(time);
 
-	if (std::holds_alternative<coord::phys3>(target.value())) {
+	if (std::holds_alternative<coord::phys3>(target)) {
 		// Target is a position
 		log::log(DBG << "Target is a position");
 
-		auto target_pos = std::get<coord::phys3>(target.value());
+		auto target_pos = std::get<coord::phys3>(target);
 		log::log(DBG << "Target position: " << target_pos);
 
 		auto distance = (target_pos - current_pos).length();
@@ -83,7 +83,7 @@ bool target_in_range(const time::time_t &time,
 	}
 
 	// Target is a game entity
-	auto target_entity_id = std::get<entity_id_t>(target.value());
+	auto target_entity_id = std::get<entity_id_t>(target);
 	log::log(DBG << "Target is a game entity with ID " << target_entity_id);
 	if (not state->has_game_entity(target_entity_id)) {
 		// Target entity does not exist
