@@ -1,4 +1,4 @@
-// Copyright 2023-2024 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #include "spawn_entity.h"
 
@@ -11,6 +11,7 @@
 #include "coord/phys.h"
 #include "gamestate/component/internal/activity.h"
 #include "gamestate/component/internal/command_queue.h"
+#include "gamestate/component/internal/commands/apply_effect.h"
 #include "gamestate/component/internal/ownership.h"
 #include "gamestate/component/internal/position.h"
 #include "gamestate/component/types.h"
@@ -192,7 +193,7 @@ void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
 	}
 
 	// Create entity
-	player_id_t owner_id = params.get("owner", 0);
+	auto owner_id = params.get<player_id_t>("owner", 0);
 	auto entity = this->factory->add_game_entity(this->loop, gstate, owner_id, nyan_entity);
 
 	// Setup components
@@ -209,6 +210,8 @@ void SpawnEntityHandler::invoke(openage::event::EventLoop & /* loop */,
 	auto activity = std::dynamic_pointer_cast<component::Activity>(
 		entity->get_component(component::component_t::ACTIVITY));
 	activity->init(time);
+
+	// Important: Running the activity system must be done AFTER all components are initialized
 	entity->get_manager()->run_activity_system(time);
 
 	gstate->add_game_entity(entity);

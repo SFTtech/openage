@@ -26,12 +26,19 @@
 #include "gamestate/game_entity.h"
 #include "gamestate/game_state.h"
 #include "gamestate/map.h"
+#include "gamestate/system/property.h"
 #include "pathfinding/path.h"
 #include "pathfinding/pathfinder.h"
 #include "util/fixed_point.h"
 
 
 namespace openage::gamestate::system {
+
+// helper type for the visitor processing the move_target
+template <class... Ts>
+struct overloaded : Ts... {
+	using Ts::operator()...;
+};
 
 
 std::vector<coord::phys3> find_path(const std::shared_ptr<path::Pathfinder> &pathfinder,
@@ -80,8 +87,8 @@ const time::time_t Move::move_command(const std::shared_ptr<gamestate::GameEntit
                                       const time::time_t &start_time) {
 	auto command_queue = std::dynamic_pointer_cast<component::CommandQueue>(
 		entity->get_component(component::component_t::COMMANDQUEUE));
-	auto command = std::dynamic_pointer_cast<component::command::MoveCommand>(
-		command_queue->pop_command(start_time));
+	auto command = std::dynamic_pointer_cast<component::command::Move>(
+		command_queue->pop(start_time));
 
 	if (not command) [[unlikely]] {
 		log::log(MSG(warn) << "Command is not a move command.");
@@ -89,6 +96,35 @@ const time::time_t Move::move_command(const std::shared_ptr<gamestate::GameEntit
 	}
 
 	return Move::move_default(entity, state, command->get_target(), start_time);
+}
+
+const time::time_t Move::move_target(const std::shared_ptr<gamestate::GameEntity> &entity,
+                                     const std::shared_ptr<openage::gamestate::GameState> &state,
+                                     const time::time_t &start_time) {
+	auto command_queue = std::dynamic_pointer_cast<component::CommandQueue>(
+		entity->get_component(component::component_t::COMMANDQUEUE));
+	auto target = command_queue->get_target(start_time);
+
+	return std::visit(
+		overloaded{
+			[&](const gamestate::entity_id_t &target_id) {
+				auto target_entity = state->get_game_entity(target_id);
+
+				auto position = std::dynamic_pointer_cast<component::Position>(
+					target_entity->get_component(component::component_t::POSITION));
+
+				auto target_pos = position->get_positions().get(start_time);
+
+				return Move::move_default(entity, state, target_pos, start_time);
+			},
+			[&](const coord::phys3 &target_pos) {
+				return Move::move_default(entity, state, target_pos, start_time);
+			},
+			[&](const std::monostate &) {
+				log::log(WARN << "Entity " << entity->get_id() << " has no target at time " << start_time);
+				return time::time_t::from_int(0);
+			}},
+		target);
 }
 
 
@@ -138,15 +174,11 @@ const time::time_t Move::move_default(const std::shared_ptr<gamestate::GameEntit
 
 		// rotation
 		if (not turn_speed->is_infinite_positive()) {
-			auto angle_diff = path_angle - current_angle;
-			if (angle_diff < 0) {
-				// get the positive difference
-				angle_diff = angle_diff * -1;
-			}
+			auto angle_diff = path_angle.abs_diff(current_angle);
+
 			if (angle_diff > 180) {
 				// always use the smaller angle
-				angle_diff = angle_diff - 360;
-				angle_diff = angle_diff * -1;
+				angle_diff = coord::phys_angle_t::same_type_but_unsigned{360} - angle_diff;
 			}
 
 			// Set an intermediate position keyframe to halt the game entity
@@ -173,15 +205,7 @@ const time::time_t Move::move_default(const std::shared_ptr<gamestate::GameEntit
 
 	// properties
 	auto ability = move_component->get_ability();
-	if (api::APIAbility::check_property(ability, api::ability_property_t::ANIMATED)) {
-		auto property = api::APIAbility::get_property(ability, api::ability_property_t::ANIMATED);
-		auto animations = api::APIAbilityProperty::get_animations(property);
-		auto animation_paths = api::APIAnimation::get_animation_paths(animations);
-
-		if (animation_paths.size() > 0) [[likely]] {
-			entity->render_update(start_time, animation_paths[0]);
-		}
-	}
+	handle_animated(entity, ability, start_time);
 
 	return total_time;
 }

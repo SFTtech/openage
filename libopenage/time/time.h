@@ -1,4 +1,4 @@
-// Copyright 2017-2023 the openage authors. See copying.md for legal info.
+// Copyright 2017-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -14,6 +14,12 @@ namespace openage::time {
  * it has to implement all basic mathematically operations.
  */
 using time_t = util::FixedPoint<int64_t, 16>;
+
+/**
+ * Defines the type that is used for time durations.
+ * Same as time_t, but unsigned to cover the whole range of time_t.
+ */
+using time_duration_t = util::FixedPoint<uint64_t, 16>;
 
 /**
  * Minimum time value.

@@ -1,4 +1,4 @@
-// Copyright 2017-2023 the openage authors. See copying.md for legal info.
+// Copyright 2017-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -12,46 +12,72 @@
 
 #include "texture_info.h"
 
-
 namespace openage {
 namespace util {
 class Path;
 }
 namespace renderer::resources {
 
-/// Stores 2D texture data in a CPU-accessible byte buffer. Provides methods for loading from
-/// and storing onto disk, as well as sending to and receiving from graphics hardware.
+/**
+ * Stores 2D texture data in a CPU-accessible byte buffer. Provides methods for loading from
+ * and storing onto disk, as well as sending to and receiving from graphics hardware.
+ */
 class Texture2dData {
 public:
-	/// Create a texture from an image file.
-	/// @param path Path to the image file.
-	///
-	/// Uses QImage internally.
+	/**
+	 * Create a texture from an image file.
+	 *
+	 * Uses QImage internally. For supported image file types,
+	 * see the QImage initialization in the engine.
+	 *
+	 * @param path Path to the image file.
+	 */
 	Texture2dData(const util::Path &path);
 
-	/// Create a texture from info.
-	///
-	/// Uses QImage internally. For supported image file types,
-	/// see the QImage initialization in the engine.
+	/**
+	 * Create a texture from info.
+	 *
+	 * Uses QImage internally. For supported image file types,
+	 * see the QImage initialization in the engine.
+	 */
 	Texture2dData(Texture2dInfo const &info);
 
-	/// Construct by moving the information and raw texture data from somewhere else.
+	/**
+	 * Construct by moving the information and raw texture data from somewhere else.
+	 */
 	Texture2dData(Texture2dInfo const &info, std::vector<uint8_t> &&data);
 
-	/// Flips the texture along the Y-axis and returns the flipped data with the same info.
-	/// Sometimes necessary when converting between storage modes.
+	/**
+	 * Flips the texture along the Y-axis and returns the flipped data with the same info.
+	 * Sometimes necessary when converting between storage modes.
+	 */
 	Texture2dData flip_y();
 
-	/// Returns the information describing this texture data.
+	/**
+	 * Returns the information describing this texture data.
+	 */
 	const Texture2dInfo &get_info() const;
 
-	/// Returns a pointer to the raw texture data, in row-major order.
+	/**
+	 * Returns a pointer to the raw texture data, in row-major order.
+	 */
 	const uint8_t *get_data() const;
 
-	/// Reads the pixel at the given position and casts it to the given type.
-	/// The texture is _not_ read as if it consisted of pixels of the given type,
-	/// but rather according to its original pixel format, so the coordinates
-	/// have to be specified according to that.
+	/**
+	 * Reads the pixel at the given position and casts it to the given type.
+	 * The texture is _not_ read as if it consisted of pixels of the given type,
+	 * but rather according to its original pixel format, so the coordinates
+	 * have to be specified according to that.
+	 *
+	 * @tparam T The type to cast the pixel to.
+	 *
+	 * @param x The x-coordinate of the pixel.
+	 * @param y The y-coordinate of the pixel.
+	 *
+	 * @return The pixel value cast to the given type.
+	 *
+	 * @throws Error if the pixel position is outside the texture.
+	 */
 	template <typename T>
 	T read_pixel(size_t x, size_t y) const {
 		const uint8_t *data = this->data.data();
@@ -66,14 +92,22 @@ public:
 		return *reinterpret_cast<const T *>(data + off);
 	}
 
-	/// Stores this texture data in the given file in the PNG format.
+	/**
+	 * Stores this texture data in the given file in the PNG format.
+	 *
+	 * @param file The file path to store the texture data.
+	 */
 	void store(const util::Path &file) const;
 
 private:
-	/// Information about this texture data.
+	/**
+	 * Information about this texture data.
+	 */
 	Texture2dInfo info;
 
-	/// The raw texture data.
+	/**
+	 * The raw texture data.
+	 */
 	std::vector<uint8_t> data;
 };
 

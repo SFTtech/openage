@@ -1,4 +1,4 @@
-// Copyright 2017-2023 the openage authors. See copying.md for legal info.
+// Copyright 2017-2025 the openage authors. See copying.md for legal info.
 
 #include "texture_info.h"
 
@@ -69,6 +69,10 @@ const std::optional<util::Path> &Texture2dInfo::get_image_path() const {
 
 size_t Texture2dInfo::get_subtex_count() const {
 	return this->subtextures.size();
+}
+
+const std::vector<Texture2dSubInfo> &Texture2dInfo::get_subtextures() const {
+	return this->subtextures;
 }
 
 const Texture2dSubInfo &Texture2dInfo::get_subtex_info(size_t subidx) const {

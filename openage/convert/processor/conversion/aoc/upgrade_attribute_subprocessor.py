@@ -1,4 +1,4 @@
-# Copyright 2020-2023 the openage authors. See copying.md for legal info.
+# Copyright 2020-2025 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-lines,too-many-statements,too-many-public-methods
 #
@@ -379,6 +379,7 @@ class AoCUpgradeAttributeSubprocessor:
 
         patches = []
 
+        target_mode = None
         if value == 0:
             target_mode = dataset.nyan_api_objects["engine.util.target_mode.type.CurrentPosition"]
 
@@ -1786,25 +1787,23 @@ class AoCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
+        patch_target_parent = "engine.ability.property.type.Ranged"
         if line.is_projectile_shooter():
-            patch_target_ref = f"{game_entity_name}.Attack"
+            patch_target_ref = f"{game_entity_name}.Attack.Ranged"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
-            patch_target_parent = "engine.ability.type.ShootProjectile"
 
         elif line.is_melee():
             if line.is_ranged():
-                patch_target_ref = f"{game_entity_name}.Attack"
+                patch_target_ref = f"{game_entity_name}.Attack.Ranged"
                 patch_target_forward_ref = ForwardRef(line, patch_target_ref)
-                patch_target_parent = "engine.ability.type.RangedDiscreteEffect"
 
             else:
                 # excludes ram upgrades
                 return patches
 
         elif line.has_command(104):
-            patch_target_ref = f"{game_entity_name}.Convert"
+            patch_target_ref = f"{game_entity_name}.Convert.Ranged"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
-            patch_target_parent = "engine.ability.type.RangedDiscreteEffect"
 
         else:
             # no matching ability
@@ -1899,20 +1898,18 @@ class AoCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
+        patch_target_parent = "engine.ability.property.type.Ranged"
         if line.is_projectile_shooter():
-            patch_target_ref = f"{game_entity_name}.Attack"
+            patch_target_ref = f"{game_entity_name}.Attack.Ranged"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
-            patch_target_parent = "engine.ability.type.ShootProjectile"
 
         elif line.is_melee():
-            patch_target_ref = f"{game_entity_name}.Attack"
+            patch_target_ref = f"{game_entity_name}.Attack.Ranged"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
-            patch_target_parent = "engine.ability.type.RangedDiscreteEffect"
 
         elif line.has_command(104):
-            patch_target_ref = f"{game_entity_name}.Convert"
+            patch_target_ref = f"{game_entity_name}.Convert.Ranged"
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
-            patch_target_parent = "engine.ability.type.RangedDiscreteEffect"
 
         else:
             return []

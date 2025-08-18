@@ -12,15 +12,15 @@ namespace openage::gamestate::component::command {
 /**
  * Command for moving to a target position.
  */
-class MoveCommand : public Command {
+class Move final : public Command {
 public:
 	/**
 	 * Creates a new move command.
 	 *
 	 * @param target Target position coordinates.
 	 */
-	MoveCommand(const coord::phys3 &target);
-	virtual ~MoveCommand() = default;
+	Move(const coord::phys3 &target);
+	virtual ~Move() = default;
 
 	inline command_t get_type() const override {
 		return command_t::MOVE;

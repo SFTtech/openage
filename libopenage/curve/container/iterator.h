@@ -1,7 +1,8 @@
-// Copyright 2017-2025 the openage authors. See copying.md for legal info.
+// Copyright 2017-2024 the openage authors. See copying.md for legal info.
 
 #pragma once
 
+#include "curve/concept.h"
 #include "time/time.h"
 #include "util/fixed_point.h"
 
@@ -11,7 +12,7 @@ namespace openage::curve {
 /**
  * Default interface for curve containers
  */
-template <typename val_t,
+template <KeyframeValueLike val_t,
           typename container_t,
           typename iterator_t = typename container_t::const_iterator>
 class CurveIterator {

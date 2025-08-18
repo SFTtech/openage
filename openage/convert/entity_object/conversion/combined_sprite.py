@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2025 the openage authors. See copying.md for legal info.
 
 """
 References a graphic in the game that has to be converted.
@@ -94,7 +94,7 @@ class CombinedSprite:
         is expected to be in the modpack.
         """
         if len(self._refs) > 1:
-            return f"../shared/graphics/{self.filename}.sprite"
+            return f"../../shared/graphics/{self.filename}.sprite"
 
         if len(self._refs) == 1:
             return f"./graphics/{self.filename}.sprite"

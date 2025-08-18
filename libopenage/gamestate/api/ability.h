@@ -1,10 +1,12 @@
-// Copyright 2023-2024 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <nyan/nyan.h>
 
 #include "gamestate/api/types.h"
+#include "gamestate/component/types.h"
+
 
 namespace openage::gamestate::api {
 
@@ -21,6 +23,35 @@ public:
 	 * @return true if the object is an ability, else false.
 	 */
 	static bool is_ability(const nyan::Object &obj);
+
+	/**
+	 * Check if an ability is of a given type.
+	 *
+	 * @param ability \p Ability nyan object (type == \p engine.ability.Ability).
+	 * @param type Ability type.
+	 *
+	 * @return true if the ability is of the given type, else false.
+	 */
+	static bool check_type(const nyan::Object &ability,
+	                       const ability_t &type);
+
+	/**
+	 * Get the internal ability type from a nyan ability.
+	 *
+	 * @param ability \p Ability nyan object (type == \p engine.ability.Ability).
+	 *
+	 * @return Internal ability type.
+	 */
+	static ability_t get_type(const nyan::Object &ability);
+
+	/**
+	 * Get the internal component type from a nyan ability.
+	 *
+	 * @param ability \p Ability nyan object (type == \p engine.ability.Ability).
+	 *
+	 * @return Internal component type.
+	 */
+	static component::component_t get_component_type(const nyan::Object &ability);
 
 	/**
 	 * Check if an ability has a given property.

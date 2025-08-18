@@ -1,4 +1,4 @@
-// Copyright 2023-2024 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #include "terrain.h"
 
@@ -10,8 +10,7 @@
 namespace openage::gamestate::api {
 
 bool APITerrain::is_terrain(const nyan::Object &obj) {
-	nyan::fqon_t immediate_parent = obj.get_parents()[0];
-	return immediate_parent == "engine.util.terrain.Terrain";
+	return obj.extends("engine.util.terrain.Terrain");
 }
 
 const std::string APITerrain::get_terrain_path(const nyan::Object &terrain) {
@@ -26,8 +25,8 @@ const std::unordered_map<nyan::fqon_t, int> APITerrain::get_path_costs(const nya
 
 	nyan::dict_t path_costs = terrain.get_dict("Terrain.path_costs");
 	for (const auto &pair : path_costs) {
-		auto key = std::dynamic_pointer_cast<nyan::ObjectValue>(pair.first.get_ptr());
-		auto value = std::dynamic_pointer_cast<nyan::Int>(pair.second.get_ptr());
+		auto key = pair.first.get_value_ptr<nyan::ObjectValue>();
+		auto value = pair.second.get_value_ptr<nyan::Int>();
 
 		result.emplace(key->get_name(), value->get());
 	}

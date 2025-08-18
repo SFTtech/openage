@@ -1,4 +1,4 @@
-// Copyright 2015-2024 the openage authors. See copying.md for legal info.
+// Copyright 2015-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -16,7 +16,9 @@ namespace qtgui {
 class GuiInput;
 }
 
-namespace openage::input {
+namespace openage {
+
+namespace input {
 
 namespace camera {
 class Controller;
@@ -149,7 +151,6 @@ public:
 	 */
 	bool process(const QEvent &ev);
 
-
 private:
 	/**
 	 * Process the (default) action for an input event.
@@ -222,4 +223,5 @@ private:
  */
 void setup_defaults(const std::shared_ptr<InputContext> &ctx);
 
-} // namespace openage::input
+} // namespace input
+} // namespace openage

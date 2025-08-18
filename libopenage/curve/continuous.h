@@ -5,6 +5,7 @@
 #include <sstream>
 #include <string>
 
+#include "curve/concept.h"
 #include "curve/interpolated.h"
 #include "time/time.h"
 
@@ -22,7 +23,7 @@ namespace openage::curve {
  * The bound template type T has to implement `operator+(T)` and
  * `operator*(time::time_t)`.
  */
-template <typename T>
+template <KeyframeValueLike T>
 class Continuous : public Interpolated<T> {
 public:
 	using Interpolated<T>::Interpolated;
@@ -33,18 +34,24 @@ public:
 	 * If multiple elements exist at the given time,
 	 * overwrite all of them.
 	 */
-	void set_last(const time::time_t &t, const T &value) override;
+	void set_last(const time::time_t &t,
+	              const T &value,
+	              bool compress = false) override;
 
 	/** This just calls set_replace in order to guarantee the continuity. */
-	void set_insert(const time::time_t &t, const T &value) override;
+	void set_insert(const time::time_t &t,
+	                const T &value,
+	                bool compress = false) override;
 
 	/** human readable identifier */
 	std::string idstr() const override;
 };
 
 
-template <typename T>
-void Continuous<T>::set_last(const time::time_t &at, const T &value) {
+template <KeyframeValueLike T>
+void Continuous<T>::set_last(const time::time_t &at,
+                             const T &value,
+                             bool compress) {
 	auto hint = this->container.last(at, this->last_element);
 
 	// erase all same-time entries
@@ -54,6 +61,13 @@ void Continuous<T>::set_last(const time::time_t &at, const T &value) {
 
 	hint = this->container.erase_after(hint);
 
+	if (compress and this->get(at) == value) {
+		// skip insertion if the value is the same as the last one
+		// erasure still happened, so we need to notify about the change
+		this->changes(at);
+		return;
+	}
+
 	this->container.insert_before(at, value, hint);
 	this->last_element = hint;
 
@@ -61,13 +75,15 @@ void Continuous<T>::set_last(const time::time_t &at, const T &value) {
 }
 
 
-template <typename T>
-void Continuous<T>::set_insert(const time::time_t &t, const T &value) {
+template <KeyframeValueLike T>
+void Continuous<T>::set_insert(const time::time_t &t,
+                               const T &value,
+                               bool /* compress */) {
 	this->set_replace(t, value);
 }
 
 
-template <typename T>
+template <KeyframeValueLike T>
 std::string Continuous<T>::idstr() const {
 	std::stringstream ss;
 	ss << "ContinuousCurve[";

@@ -25,6 +25,9 @@ void RenderEntity::update(const uint32_t ref_id,
                           const time::time_t time) {
 	std::unique_lock lock{this->mutex};
 
+	// Sync the data curves using the earliest time of last update and time
+	auto sync_time = std::min(this->last_update, time);
+
 	this->ref_id = ref_id;
 	std::function<coord::scene3(const coord::phys3 &)> to_scene3 = [](const coord::phys3 &pos) {
 		return pos.to_scene3();
@@ -33,11 +36,17 @@ void RenderEntity::update(const uint32_t ref_id,
 	                    std::function<coord::scene3(const coord::phys3 &)>([](const coord::phys3 &pos) {
 							return pos.to_scene3();
 						}),
-	                    this->last_update);
-	this->angle.sync(angle, this->last_update);
+	                    sync_time);
+	this->angle.sync(angle, sync_time);
 	this->animation_path.set_last(time, animation_path);
-	this->changed = true;
+
+	// Record time of last update
 	this->last_update = time;
+
+	// Record when the render update should fetch data from the entity
+	this->fetch_time = std::min(this->fetch_time, time);
+
+	this->changed = true;
 }
 
 void RenderEntity::update(const uint32_t ref_id,
@@ -49,31 +58,26 @@ void RenderEntity::update(const uint32_t ref_id,
 	this->ref_id = ref_id;
 	this->position.set_last(time, position.to_scene3());
 	this->animation_path.set_last(time, animation_path);
-	this->changed = true;
+
 	this->last_update = time;
+	this->fetch_time = std::min(this->fetch_time, time);
+
+	this->changed = true;
 }
 
 uint32_t RenderEntity::get_id() {
-	std::shared_lock lock{this->mutex};
-
 	return this->ref_id;
 }
 
 const curve::Continuous<coord::scene3> &RenderEntity::get_position() {
-	std::shared_lock lock{this->mutex};
-
 	return this->position;
 }
 
 const curve::Segmented<coord::phys_angle_t> &RenderEntity::get_angle() {
-	std::shared_lock lock{this->mutex};
-
 	return this->angle;
 }
 
 const curve::Discrete<std::string> &RenderEntity::get_animation_path() {
-	std::shared_lock lock{this->mutex};
-
 	return this->animation_path;
 }
 

@@ -61,16 +61,12 @@ public:
 	/**
 	 * Get the vertices of the terrain.
 	 *
-	 * Accessing the terrain vertices is thread-safe.
-	 *
 	 * @return Vector of vertex coordinates.
 	 */
 	const std::vector<coord::scene3> get_vertices();
 
 	/**
 	 * Get the tiles of the terrain.
-	 *
-	 * Accessing the terrain tiles is thread-safe.
 	 *
 	 * @return Terrain tiles.
 	 */
@@ -79,8 +75,6 @@ public:
 	/**
 	 * Get the terrain paths used in the terrain.
 	 *
-	 * Accessing the terrain paths is thread-safe.
-	 *
 	 * @return Terrain paths.
 	 */
 	const std::unordered_set<std::string> get_terrain_paths();
@@ -88,9 +82,7 @@ public:
 	/**
 	 * Get the number of vertices on each side of the terrain.
 	 *
-	 * Accessing the vertices size is thread-safe.
-	 *
-	 * @return Vector with width as first element and height as second element.
+	 * @return Number of vertices on each side (width x height).
 	 */
 	const util::Vector2s get_size();
 

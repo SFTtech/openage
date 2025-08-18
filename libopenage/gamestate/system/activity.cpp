@@ -1,4 +1,4 @@
-// Copyright 2023-2024 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #include "activity.h"
 
@@ -16,9 +16,12 @@
 #include "gamestate/activity/types.h"
 #include "gamestate/activity/xor_event_gate.h"
 #include "gamestate/activity/xor_gate.h"
+#include "gamestate/activity/xor_switch_gate.h"
 #include "gamestate/component/internal/activity.h"
 #include "gamestate/component/types.h"
 #include "gamestate/game_entity.h"
+#include "gamestate/system/apply_effect.h"
+#include "gamestate/system/command_queue.h"
 #include "gamestate/system/idle.h"
 #include "gamestate/system/move.h"
 #include "util/fixed_point.h"
@@ -87,8 +90,9 @@ void Activity::advance(const time::time_t &start_time,
 			auto node = std::static_pointer_cast<activity::XorGate>(current_node);
 			auto next_id = node->get_default()->get_id();
 			for (auto &condition : node->get_conditions()) {
-				auto condition_func = condition.second;
-				if (condition_func(start_time, entity)) {
+				auto condition_obj = condition.second.api_object;
+				auto condition_func = condition.second.function;
+				if (condition_func(start_time, entity, state, condition_obj)) {
 					next_id = condition.first;
 					break;
 				}
@@ -111,6 +115,18 @@ void Activity::advance(const time::time_t &start_time,
 			event_wait_time = 0;
 			stop = true;
 		} break;
+		case activity::node_t::XOR_SWITCH_GATE: {
+			auto node = std::dynamic_pointer_cast<activity::XorSwitchGate>(current_node);
+			auto next_id = node->get_default()->get_id();
+
+			auto switch_condition_obj = node->get_switch_func().api_object;
+			auto switch_condition_func = node->get_switch_func().function;
+			auto key = switch_condition_func(start_time, entity, state, switch_condition_obj);
+			if (node->get_lookup_dict().contains(key)) {
+				next_id = node->get_lookup_dict().at(key)->get_id();
+			}
+			current_node = node->next(next_id);
+		} break;
 		default:
 			throw Error{ERR << "Unhandled node type for node " << current_node->str()};
 		}
@@ -125,15 +141,23 @@ const time::time_t Activity::handle_subsystem(const time::time_t &start_time,
                                               const std::shared_ptr<openage::gamestate::GameState> &state,
                                               system_id_t system_id) {
 	switch (system_id) {
+	case system_id_t::APPLY_EFFECT:
+		return ApplyEffect::apply_effect_command(entity, state, start_time);
+		break;
 	case system_id_t::IDLE:
 		return Idle::idle(entity, start_time);
 		break;
 	case system_id_t::MOVE_COMMAND:
 		return Move::move_command(entity, state, start_time);
 		break;
-	case system_id_t::MOVE_DEFAULT:
-		// TODO: replace destination value with a parameter
-		return Move::move_default(entity, state, {1, 1, 1}, start_time);
+	case system_id_t::MOVE_TARGET:
+		return Move::move_target(entity, state, start_time);
+		break;
+	case system_id_t::CLEAR_COMMAND_QUEUE:
+		return CommandQueue::clear_queue(entity, start_time);
+		break;
+	case system_id_t::POP_COMMAND_QUEUE:
+		return CommandQueue::pop_command(entity, start_time);
 		break;
 	default:
 		throw Error{ERR << "Unhandled subsystem " << static_cast<int>(system_id)};
