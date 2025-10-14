@@ -3,6 +3,7 @@
 #include "render_factory.h"
 
 #include "coord/phys.h"
+#include "renderer/stages/camera/manager.h"
 #include "renderer/stages/terrain/render_entity.h"
 #include "renderer/stages/terrain/render_stage.h"
 #include "renderer/stages/world/render_entity.h"
@@ -27,6 +28,12 @@ std::shared_ptr<world::RenderEntity> RenderFactory::add_world_render_entity() {
 	auto entity = std::make_shared<world::RenderEntity>();
 	this->world_renderer->add_render_entity(entity);
 
+	return entity;
+}
+
+std::shared_ptr<camera::RenderEntity> RenderFactory::add_camera_render_entity() {
+	auto entity = std::make_shared<camera::RenderEntity>();
+	this->camera_manager->add_render_entity(entity);
 	return entity;
 }
 
