@@ -16,16 +16,16 @@ struct tile_delta;
 
 namespace path {
 
-template <size_t N>
+template <size_t SECTOR_SIDE_LENGTH>
 class IntegrationField;
 
-template <size_t N>
+template <size_t SECTOR_SIDE_LENGTH>
 class FlowField;
 
 /**
  * Cache to store already calculated flow and integration fields for the pathfinding algorithm.
  */
-template <size_t N>
+template <size_t SECTOR_SIDE_LENGTH>
 class FieldCache {
 public:
 	FieldCache() = default;
@@ -38,7 +38,7 @@ public:
 	 * @param cache_entry Field entry (integration field, flow field).
 	 */
 	void add(const cache_key_t cache_key,
-	         const field_cache_t<N> cache_entry);
+	         const field_cache_t<SECTOR_SIDE_LENGTH> cache_entry);
 
 	/**
 	 * Evict field entry from the cache.
@@ -65,7 +65,7 @@ public:
 	 *
 	 * @return Integration field.
 	 */
-	std::shared_ptr<IntegrationField<N>> get_integration_field(const cache_key_t cache_key) const;
+	std::shared_ptr<IntegrationField<SECTOR_SIDE_LENGTH>> get_integration_field(const cache_key_t cache_key) const;
 
 	/**
 	 * Get a cached flow field.
@@ -74,7 +74,7 @@ public:
 	 *
 	 * @return Flow field.
 	 */
-	std::shared_ptr<FlowField<N>> get_flow_field(const cache_key_t cache_key) const;
+	std::shared_ptr<FlowField<SECTOR_SIDE_LENGTH>> get_flow_field(const cache_key_t cache_key) const;
 
 	/**
 	 * Get a cached field entry.
@@ -85,7 +85,7 @@ public:
 	 *
 	 * @return Field entry (integration field, flow field).
 	 */
-	field_cache_t<N> get(const cache_key_t cache_key) const;
+	field_cache_t<SECTOR_SIDE_LENGTH> get(const cache_key_t cache_key) const;
 
 private:
 	/**
@@ -106,38 +106,38 @@ private:
 	 * when the field is reused.
 	 */
 	std::unordered_map<cache_key_t,
-	                   field_cache_t<N>,
+	                   field_cache_t<SECTOR_SIDE_LENGTH>,
 	                   pair_hash>
 		cache;
 };
 
-template <size_t N>
-void FieldCache<N>::add(const cache_key_t cache_key,
-                        const field_cache_t<N> cache_entry) {
+template <size_t SECTOR_SIDE_LENGTH>
+void FieldCache<SECTOR_SIDE_LENGTH>::add(const cache_key_t cache_key,
+                                         const field_cache_t<SECTOR_SIDE_LENGTH> cache_entry) {
 	this->cache[cache_key] = cache_entry;
 }
 
-template <size_t N>
-bool FieldCache<N>::evict(const cache_key_t cache_key) {
+template <size_t SECTOR_SIDE_LENGTH>
+bool FieldCache<SECTOR_SIDE_LENGTH>::evict(const cache_key_t cache_key) {
 	return this->cache.erase(cache_key) != 0;
 }
-template <size_t N>
-bool FieldCache<N>::is_cached(const cache_key_t cache_key) const {
+template <size_t SECTOR_SIDE_LENGTH>
+bool FieldCache<SECTOR_SIDE_LENGTH>::is_cached(const cache_key_t cache_key) const {
 	return this->cache.contains(cache_key);
 }
 
-template <size_t N>
-std::shared_ptr<IntegrationField<N>> FieldCache<N>::get_integration_field(const cache_key_t cache_key) const {
+template <size_t SECTOR_SIDE_LENGTH>
+std::shared_ptr<IntegrationField<SECTOR_SIDE_LENGTH>> FieldCache<SECTOR_SIDE_LENGTH>::get_integration_field(const cache_key_t cache_key) const {
 	return this->cache.at(cache_key).first;
 }
 
-template <size_t N>
-std::shared_ptr<FlowField<N>> FieldCache<N>::get_flow_field(const cache_key_t cache_key) const {
+template <size_t SECTOR_SIDE_LENGTH>
+std::shared_ptr<FlowField<SECTOR_SIDE_LENGTH>> FieldCache<SECTOR_SIDE_LENGTH>::get_flow_field(const cache_key_t cache_key) const {
 	return this->cache.at(cache_key).second;
 }
 
-template <size_t N>
-field_cache_t<N> FieldCache<N>::get(const cache_key_t cache_key) const {
+template <size_t SECTOR_SIDE_LENGTH>
+field_cache_t<SECTOR_SIDE_LENGTH> FieldCache<SECTOR_SIDE_LENGTH>::get(const cache_key_t cache_key) const {
 	return this->cache.at(cache_key);
 }
 

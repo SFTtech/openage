@@ -78,7 +78,7 @@ public:
 	/**
 	 * init PortalNode::exits.
 	 */
-	template <size_t N>
+	template <size_t SECTOR_SIDE_LENGTH>
 	void init_exits(const nodemap_t &node_map);
 
 
@@ -165,7 +165,7 @@ public:
 
 int get_distance_cost(const coord::tile_delta &portal1_pos, const coord::tile_delta &portal2_pos);
 
-template <size_t N>
+template <size_t SECTOR_SIDE_LENGTH>
 void PortalNode::init_exits(const nodemap_t &node_map) {
 	auto exits = this->portal->get_exits(this->node_sector_0);
 	for (auto &exit : exits) {

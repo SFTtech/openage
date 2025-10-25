@@ -29,7 +29,7 @@ namespace path {
  * Cost field in the flow-field pathfinding algorithm.
  */
 
-template <size_t N>
+template <size_t SECTOR_SIDE_LENGTH>
 class CostField {
 public:
 	/**
@@ -106,7 +106,7 @@ public:
 	 *
 	 * @return Cost field values.
 	 */
-	const std::array<cost_t, N * N> &get_costs() const;
+	const std::array<cost_t, SECTOR_SIDE_LENGTH * SECTOR_SIDE_LENGTH> &get_costs() const;
 
 	/**
 	 * Set the cost field values.
@@ -114,7 +114,7 @@ public:
 	 * @param cells Cost field values.
 	 * @param valid_until Time at which the cost value expires.
 	 */
-	void set_costs(std::array<cost_t, N * N> &&cells, const time::time_t &changed);
+	void set_costs(std::array<cost_t, SECTOR_SIDE_LENGTH * SECTOR_SIDE_LENGTH> &&cells, const time::time_t &changed);
 
 	/**
 	 * Stamp a cost field cell at a given time.
@@ -152,7 +152,7 @@ public:
 	void clear_dirty();
 
 
-	const curve::Array<cost_t, N> &get_cost_history() const;
+	const curve::Array<cost_t, SECTOR_SIDE_LENGTH> &get_cost_history() const;
 
 private:
 	/**
@@ -163,65 +163,65 @@ private:
 	/**
 	 * Cost field values.
 	 */
-	std::array<cost_t, N * N> cells;
+	std::array<cost_t, SECTOR_SIDE_LENGTH * SECTOR_SIDE_LENGTH> cells;
 
 	/**
 	 * Cost stamp vector.
 	 */
-	std::array<std::optional<cost_stamp_t>, N * N> cost_stamps;
+	std::array<std::optional<cost_stamp_t>, SECTOR_SIDE_LENGTH * SECTOR_SIDE_LENGTH> cost_stamps;
 
 
 	/**
 	 * Array curve recording cell cost history,
 	 */
-	curve::Array<cost_t, N * N> cell_cost_history;
+	curve::Array<cost_t, SECTOR_SIDE_LENGTH * SECTOR_SIDE_LENGTH> cell_cost_history;
 };
 
-template <size_t N>
-CostField<N>::CostField(const std::shared_ptr<event::EventLoop> &loop, size_t id) :
+template <size_t SECTOR_SIDE_LENGTH>
+CostField<SECTOR_SIDE_LENGTH>::CostField(const std::shared_ptr<event::EventLoop> &loop, size_t id) :
 	valid_until{time::TIME_MIN},
 	cell_cost_history(loop, id) {
 	cells.fill(COST_MIN);
-	log::log(DBG << "Created cost field with size " << N << "x" << N);
+	log::log(DBG << "Created cost field with size " << SECTOR_SIDE_LENGTH << "x" << SECTOR_SIDE_LENGTH);
 }
 
-template <size_t N>
-constexpr size_t CostField<N>::get_size() const {
-	return N;
+template <size_t SECTOR_SIDE_LENGTH>
+constexpr size_t CostField<SECTOR_SIDE_LENGTH>::get_size() const {
+	return SECTOR_SIDE_LENGTH;
 }
 
-template <size_t N>
-cost_t CostField<N>::get_cost(const coord::tile_delta &pos) const {
-	return this->cells.at(pos.ne + pos.se * N);
+template <size_t SECTOR_SIDE_LENGTH>
+cost_t CostField<SECTOR_SIDE_LENGTH>::get_cost(const coord::tile_delta &pos) const {
+	return this->cells.at(pos.ne + pos.se * SECTOR_SIDE_LENGTH);
 }
 
-template <size_t N>
-cost_t CostField<N>::get_cost(size_t x, size_t y) const {
-	return this->cells.at(x + y * N);
+template <size_t SECTOR_SIDE_LENGTH>
+cost_t CostField<SECTOR_SIDE_LENGTH>::get_cost(size_t x, size_t y) const {
+	return this->cells.at(x + y * SECTOR_SIDE_LENGTH);
 }
 
-template <size_t N>
-cost_t CostField<N>::get_cost(size_t idx) const {
+template <size_t SECTOR_SIDE_LENGTH>
+cost_t CostField<SECTOR_SIDE_LENGTH>::get_cost(size_t idx) const {
 	return this->cells.at(idx);
 }
 
-template <size_t N>
-void CostField<N>::set_cost(const coord::tile_delta &pos, cost_t cost, const time::time_t &valid_until) {
-	this->set_cost(pos.ne + pos.se * N, cost, valid_until);
+template <size_t SECTOR_SIDE_LENGTH>
+void CostField<SECTOR_SIDE_LENGTH>::set_cost(const coord::tile_delta &pos, cost_t cost, const time::time_t &valid_until) {
+	this->set_cost(pos.ne + pos.se * SECTOR_SIDE_LENGTH, cost, valid_until);
 }
 
-template <size_t N>
-void CostField<N>::set_cost(size_t x, size_t y, cost_t cost, const time::time_t &valid_until) {
-	this->set_cost(x + y * N, cost, valid_until);
+template <size_t SECTOR_SIDE_LENGTH>
+void CostField<SECTOR_SIDE_LENGTH>::set_cost(size_t x, size_t y, cost_t cost, const time::time_t &valid_until) {
+	this->set_cost(x + y * SECTOR_SIDE_LENGTH, cost, valid_until);
 }
 
-template <size_t N>
-const std::array<cost_t, N * N> &CostField<N>::get_costs() const {
+template <size_t SECTOR_SIDE_LENGTH>
+const std::array<cost_t, SECTOR_SIDE_LENGTH * SECTOR_SIDE_LENGTH> &CostField<SECTOR_SIDE_LENGTH>::get_costs() const {
 	return this->cells;
 }
 
-template <size_t N>
-void CostField<N>::set_costs(std::array<cost_t, N * N> &&cells, const time::time_t &valid_until) {
+template <size_t SECTOR_SIDE_LENGTH>
+void CostField<SECTOR_SIDE_LENGTH>::set_costs(std::array<cost_t, SECTOR_SIDE_LENGTH * SECTOR_SIDE_LENGTH> &&cells, const time::time_t &valid_until) {
 	ENSURE(cells.size() == this->cells.size(),
 	       "cells vector has wrong size: " << cells.size()
 	                                       << "; expected: "
@@ -232,8 +232,8 @@ void CostField<N>::set_costs(std::array<cost_t, N * N> &&cells, const time::time
 	this->cell_cost_history.set_insert_range(valid_until, this->cells.begin(), this->cells.end());
 }
 
-template <size_t N>
-bool CostField<N>::stamp(size_t idx, cost_t cost, const time::time_t &stamped_at) {
+template <size_t SECTOR_SIDE_LENGTH>
+bool CostField<SECTOR_SIDE_LENGTH>::stamp(size_t idx, cost_t cost, const time::time_t &stamped_at) {
 	if (this->cost_stamps[idx].has_value()) {
 		return false;
 	}
@@ -247,8 +247,8 @@ bool CostField<N>::stamp(size_t idx, cost_t cost, const time::time_t &stamped_at
 	return true;
 }
 
-template <size_t N>
-bool CostField<N>::unstamp(size_t idx, const time::time_t &unstamped_at) {
+template <size_t SECTOR_SIDE_LENGTH>
+bool CostField<SECTOR_SIDE_LENGTH>::unstamp(size_t idx, const time::time_t &unstamped_at) {
 	if (not this->cost_stamps[idx].has_value() or unstamped_at < this->cost_stamps[idx]->stamp_time) {
 		return false;
 	}
@@ -259,18 +259,18 @@ bool CostField<N>::unstamp(size_t idx, const time::time_t &unstamped_at) {
 	return true;
 }
 
-template <size_t N>
-bool CostField<N>::is_dirty(const time::time_t &time) const {
+template <size_t SECTOR_SIDE_LENGTH>
+bool CostField<SECTOR_SIDE_LENGTH>::is_dirty(const time::time_t &time) const {
 	return time >= this->valid_until;
 }
 
-template <size_t N>
-void CostField<N>::clear_dirty() {
+template <size_t SECTOR_SIDE_LENGTH>
+void CostField<SECTOR_SIDE_LENGTH>::clear_dirty() {
 	this->valid_until = time::TIME_MAX;
 }
 
-template <size_t N>
-const curve::Array<cost_t, N> &CostField<N>::get_cost_history() const {
+template <size_t SECTOR_SIDE_LENGTH>
+const curve::Array<cost_t, SECTOR_SIDE_LENGTH> &CostField<SECTOR_SIDE_LENGTH>::get_cost_history() const {
 	return this->cell_cost_history;
 };
 

@@ -21,7 +21,7 @@
 
 namespace openage::path {
 
-template <size_t N>
+template <size_t SECTOR_SIDE_LENGTH>
 class CostField;
 
 class Portal;
@@ -32,7 +32,7 @@ class Portal;
  * Sectors consist of a cost field and a list of portals connecting them to adjacent
  * sectors.
  */
-template <size_t N>
+template <size_t SECTOR_SIDE_LENGTH>
 class Sector {
 public:
 	/**
@@ -54,7 +54,7 @@ public:
 	 */
 	Sector(sector_id_t id,
 	       const coord::chunk &position,
-	       const std::shared_ptr<CostField<N>> &cost_field);
+	       const std::shared_ptr<CostField<SECTOR_SIDE_LENGTH>> &cost_field);
 
 	/**
 	 * Get the ID of this sector.
@@ -77,7 +77,7 @@ public:
 	 *
 	 * @return Cost field of this sector.
 	 */
-	const std::shared_ptr<CostField<N>> &get_cost_field() const;
+	const std::shared_ptr<CostField<SECTOR_SIDE_LENGTH>> &get_cost_field() const;
 
 	/**
 	 * Get the portals connecting this sector to other sectors.
@@ -128,7 +128,7 @@ private:
 	/**
 	 * Cost field of the sector.
 	 */
-	std::shared_ptr<CostField<N>> cost_field;
+	std::shared_ptr<CostField<SECTOR_SIDE_LENGTH>> cost_field;
 
 	/**
 	 * Portals of the sector.
@@ -137,49 +137,49 @@ private:
 };
 
 
-template <size_t N>
-Sector<N>::Sector(sector_id_t id, const coord::chunk &position) :
+template <size_t SECTOR_SIDE_LENGTH>
+Sector<SECTOR_SIDE_LENGTH>::Sector(sector_id_t id, const coord::chunk &position) :
 	id{id},
 	position{position},
-	cost_field{std::make_shared<CostField<N>>()} {
+	cost_field{std::make_shared<CostField<SECTOR_SIDE_LENGTH>>()} {
 }
 
-template <size_t N>
-Sector<N>::Sector(sector_id_t id, const coord::chunk &position, const std::shared_ptr<CostField<N>> &cost_field) :
+template <size_t SECTOR_SIDE_LENGTH>
+Sector<SECTOR_SIDE_LENGTH>::Sector(sector_id_t id, const coord::chunk &position, const std::shared_ptr<CostField<SECTOR_SIDE_LENGTH>> &cost_field) :
 	id{id},
 	position{position},
 	cost_field{cost_field} {
 }
 
-template <size_t N>
-const sector_id_t &Sector<N>::get_id() const {
+template <size_t SECTOR_SIDE_LENGTH>
+const sector_id_t &Sector<SECTOR_SIDE_LENGTH>::get_id() const {
 	return this->id;
 }
 
-template <size_t N>
-const coord::chunk &Sector<N>::get_position() const {
+template <size_t SECTOR_SIDE_LENGTH>
+const coord::chunk &Sector<SECTOR_SIDE_LENGTH>::get_position() const {
 	return this->position;
 }
 
-template <size_t N>
-const std::shared_ptr<CostField<N>> &Sector<N>::get_cost_field() const {
+template <size_t SECTOR_SIDE_LENGTH>
+const std::shared_ptr<CostField<SECTOR_SIDE_LENGTH>> &Sector<SECTOR_SIDE_LENGTH>::get_cost_field() const {
 	return this->cost_field;
 }
 
-template <size_t N>
-const std::vector<std::shared_ptr<Portal>> &Sector<N>::get_portals() const {
+template <size_t SECTOR_SIDE_LENGTH>
+const std::vector<std::shared_ptr<Portal>> &Sector<SECTOR_SIDE_LENGTH>::get_portals() const {
 	return this->portals;
 }
 
-template <size_t N>
-void Sector<N>::add_portal(const std::shared_ptr<Portal> &portal) {
+template <size_t SECTOR_SIDE_LENGTH>
+void Sector<SECTOR_SIDE_LENGTH>::add_portal(const std::shared_ptr<Portal> &portal) {
 	this->portals.push_back(portal);
 }
 
-template <size_t N>
-std::vector<std::shared_ptr<Portal>> Sector<N>::find_portals(const std::shared_ptr<Sector> &other,
-                                                             PortalDirection direction,
-                                                             portal_id_t next_id) const {
+template <size_t SECTOR_SIDE_LENGTH>
+std::vector<std::shared_ptr<Portal>> Sector<SECTOR_SIDE_LENGTH>::find_portals(const std::shared_ptr<Sector> &other,
+                                                                              PortalDirection direction,
+                                                                              portal_id_t next_id) const {
 	ENSURE(this->cost_field->get_size() == other->get_cost_field()->get_size(), "Sector size mismatch");
 
 	std::vector<std::shared_ptr<Portal>> result;
@@ -254,8 +254,8 @@ std::vector<std::shared_ptr<Portal>> Sector<N>::find_portals(const std::shared_p
 	return result;
 }
 
-template <size_t N>
-void Sector<N>::connect_exits() {
+template <size_t SECTOR_SIDE_LENGTH>
+void Sector<SECTOR_SIDE_LENGTH>::connect_exits() {
 	if (this->portals.empty()) {
 		return;
 	}

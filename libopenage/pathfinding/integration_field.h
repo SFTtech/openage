@@ -28,7 +28,7 @@ struct tile_delta;
 
 namespace path {
 
-template <size_t N>
+template <size_t SECTOR_SIDE_LENGTH>
 class CostField;
 
 class Portal;
@@ -36,7 +36,7 @@ class Portal;
 /**
  * Integration field in the flow-field pathfinding algorithm.
  */
-template <size_t N>
+template <size_t SECTOR_SIDE_LENGTH>
 class IntegrationField {
 public:
 	/**
@@ -89,7 +89,7 @@ public:
 	 *
 	 * @return Cells flagged as "wavefront blocked".
 	 */
-	std::vector<size_t> integrate_los(const std::shared_ptr<CostField<N>> &cost_field,
+	std::vector<size_t> integrate_los(const std::shared_ptr<CostField<SECTOR_SIDE_LENGTH>> &cost_field,
 	                                  const coord::tile_delta &target);
 
 	/**
@@ -107,8 +107,8 @@ public:
 	 *
 	 * @return Cells flagged as "wavefront blocked".
 	 */
-	std::vector<size_t> integrate_los(const std::shared_ptr<CostField<N>> &cost_field,
-	                                  const std::shared_ptr<IntegrationField<N>> &other,
+	std::vector<size_t> integrate_los(const std::shared_ptr<CostField<SECTOR_SIDE_LENGTH>> &cost_field,
+	                                  const std::shared_ptr<IntegrationField<SECTOR_SIDE_LENGTH>> &other,
 	                                  sector_id_t other_sector_id,
 	                                  const std::shared_ptr<Portal> &portal,
 	                                  const coord::tile_delta &target);
@@ -127,7 +127,7 @@ public:
 	 *
 	 * @return Cells flagged as "wavefront blocked".
 	 */
-	std::vector<size_t> integrate_los(const std::shared_ptr<CostField<N>> &cost_field,
+	std::vector<size_t> integrate_los(const std::shared_ptr<CostField<SECTOR_SIDE_LENGTH>> &cost_field,
 	                                  const coord::tile_delta &target,
 	                                  integrated_cost_t start_cost,
 	                                  std::vector<size_t> &&start_wave);
@@ -138,7 +138,7 @@ public:
 	 * @param cost_field Cost field to integrate.
 	 * @param target Coordinates of the target cell.
 	 */
-	void integrate_cost(const std::shared_ptr<CostField<N>> &cost_field,
+	void integrate_cost(const std::shared_ptr<CostField<SECTOR_SIDE_LENGTH>> &cost_field,
 	                    const coord::tile_delta &target);
 
 	/**
@@ -149,7 +149,7 @@ public:
 	 * @param other_sector_id Sector ID of the other integration field.
 	 * @param portal Portal connecting the two fields.
 	 */
-	void integrate_cost(const std::shared_ptr<CostField<N>> &cost_field,
+	void integrate_cost(const std::shared_ptr<CostField<SECTOR_SIDE_LENGTH>> &cost_field,
 	                    sector_id_t other_sector_id,
 	                    const std::shared_ptr<Portal> &portal);
 
@@ -159,7 +159,7 @@ public:
 	 * @param cost_field Cost field to integrate.
 	 * @param start_cells Cells flagged as "wavefront blocked" from a LOS pass.
 	 */
-	void integrate_cost(const std::shared_ptr<CostField<N>> &cost_field,
+	void integrate_cost(const std::shared_ptr<CostField<SECTOR_SIDE_LENGTH>> &cost_field,
 	                    std::vector<size_t> &&start_cells);
 
 	/**
@@ -167,7 +167,7 @@ public:
 	 *
 	 * @return Integration field values.
 	 */
-	const std::array<integrated_t, N * N> &get_cells() const;
+	const std::array<integrated_t, SECTOR_SIDE_LENGTH * SECTOR_SIDE_LENGTH> &get_cells() const;
 
 	/**
 	 * Reset the integration field for a new integration.
@@ -211,7 +211,7 @@ private:
 	 *
 	 * @return Field coordinates of the LOS corners.
 	 */
-	std::vector<std::pair<int, int>> get_los_corners(const std::shared_ptr<CostField<N>> &cost_field,
+	std::vector<std::pair<int, int>> get_los_corners(const std::shared_ptr<CostField<SECTOR_SIDE_LENGTH>> &cost_field,
 	                                                 const coord::tile_delta &target,
 	                                                 const coord::tile_delta &blocker);
 
@@ -236,37 +236,37 @@ private:
 	/**
 	 * Integration field values.
 	 */
-	std::array<integrated_t, N * N> cells;
+	std::array<integrated_t, SECTOR_SIDE_LENGTH * SECTOR_SIDE_LENGTH> cells;
 };
 
-template <size_t N>
-IntegrationField<N>::IntegrationField() {
+template <size_t SECTOR_SIDE_LENGTH>
+IntegrationField<SECTOR_SIDE_LENGTH>::IntegrationField() {
 	cells.fill(INTEGRATE_INIT);
-	log::log(DBG << "Created integration field with size " << N << "x" << N);
+	log::log(DBG << "Created integration field with size " << SECTOR_SIDE_LENGTH << "x" << SECTOR_SIDE_LENGTH);
 }
 
-template <size_t N>
-size_t IntegrationField<N>::get_size() const {
-	return N;
+template <size_t SECTOR_SIDE_LENGTH>
+size_t IntegrationField<SECTOR_SIDE_LENGTH>::get_size() const {
+	return SECTOR_SIDE_LENGTH;
 }
 
-template <size_t N>
-const integrated_t &IntegrationField<N>::get_cell(const coord::tile_delta &pos) const {
-	return this->cells.at(pos.ne + pos.se * N);
+template <size_t SECTOR_SIDE_LENGTH>
+const integrated_t &IntegrationField<SECTOR_SIDE_LENGTH>::get_cell(const coord::tile_delta &pos) const {
+	return this->cells.at(pos.ne + pos.se * SECTOR_SIDE_LENGTH);
 }
 
-template <size_t N>
-const integrated_t &IntegrationField<N>::get_cell(size_t x, size_t y) const {
-	return this->cells.at(x + y * N);
+template <size_t SECTOR_SIDE_LENGTH>
+const integrated_t &IntegrationField<SECTOR_SIDE_LENGTH>::get_cell(size_t x, size_t y) const {
+	return this->cells.at(x + y * SECTOR_SIDE_LENGTH);
 }
 
-template <size_t N>
-const integrated_t &IntegrationField<N>::get_cell(size_t idx) const {
+template <size_t SECTOR_SIDE_LENGTH>
+const integrated_t &IntegrationField<SECTOR_SIDE_LENGTH>::get_cell(size_t idx) const {
 	return this->cells.at(idx);
 }
 
-template <size_t N>
-std::vector<size_t> IntegrationField<N>::integrate_los(const std::shared_ptr<CostField<N>> &cost_field,
+template <size_t SECTOR_SIDE_LENGTH>
+std::vector<size_t> IntegrationField<SECTOR_SIDE_LENGTH>::integrate_los(const std::shared_ptr<CostField<SECTOR_SIDE_LENGTH>> &cost_field,
                                                        const coord::tile_delta &target) {
 	ENSURE(cost_field->get_size() == this->get_size(),
 	       "cost field size "
@@ -276,17 +276,17 @@ std::vector<size_t> IntegrationField<N>::integrate_los(const std::shared_ptr<Cos
 
 	ENSURE(target.ne >= 0
 	           and target.se >= 0
-	           and target.ne < static_cast<coord::tile_t>(N)
-	           and target.se < static_cast<coord::tile_t>(N),
+	           and target.ne < static_cast<coord::tile_t>(SECTOR_SIDE_LENGTH)
+	           and target.se < static_cast<coord::tile_t>(SECTOR_SIDE_LENGTH),
 	       "target cell (" << target.ne << ", " << target.se << ") "
 	                       << "is out of bounds for integration field of size "
-	                       << N << "x" << N);
+	                       << SECTOR_SIDE_LENGTH << "x" << SECTOR_SIDE_LENGTH);
 
 	std::vector<size_t> start_cells;
 	integrated_cost_t start_cost = INTEGRATED_COST_START;
 
 	// Target cell index
-	auto target_idx = target.ne + target.se * N;
+	auto target_idx = target.ne + target.se * SECTOR_SIDE_LENGTH;
 
 	this->cells[target_idx].cost = start_cost;
 	this->cells[target_idx].flags |= INTEGRATE_TARGET_MASK;
@@ -303,15 +303,15 @@ std::vector<size_t> IntegrationField<N>::integrate_los(const std::shared_ptr<Cos
 
 		// Add neighbors to current wave
 		if (target.se > 0) {
-			start_cells.push_back(target_idx - N);
+			start_cells.push_back(target_idx - SECTOR_SIDE_LENGTH);
 		}
 		if (target.ne > 0) {
 			start_cells.push_back(target_idx - 1);
 		}
-		if (target.se < static_cast<coord::tile_t>(N - 1)) {
-			start_cells.push_back(target_idx + N);
+		if (target.se < static_cast<coord::tile_t>(SECTOR_SIDE_LENGTH - 1)) {
+			start_cells.push_back(target_idx + SECTOR_SIDE_LENGTH);
 		}
-		if (target.ne < static_cast<coord::tile_t>(N - 1)) {
+		if (target.ne < static_cast<coord::tile_t>(SECTOR_SIDE_LENGTH - 1)) {
 			start_cells.push_back(target_idx + 1);
 		}
 
@@ -326,9 +326,9 @@ std::vector<size_t> IntegrationField<N>::integrate_los(const std::shared_ptr<Cos
 	return this->integrate_los(cost_field, target, start_cost, std::move(start_cells));
 }
 
-template <size_t N>
-std::vector<size_t> IntegrationField<N>::integrate_los(const std::shared_ptr<CostField<N>> &cost_field,
-                                                       const std::shared_ptr<IntegrationField<N>> &other,
+template <size_t SECTOR_SIDE_LENGTH>
+std::vector<size_t> IntegrationField<SECTOR_SIDE_LENGTH>::integrate_los(const std::shared_ptr<CostField<SECTOR_SIDE_LENGTH>> &cost_field,
+                                                       const std::shared_ptr<IntegrationField<SECTOR_SIDE_LENGTH>> &other,
                                                        sector_id_t other_sector_id,
                                                        const std::shared_ptr<Portal> &portal,
                                                        const coord::tile_delta &target) {
@@ -360,10 +360,10 @@ std::vector<size_t> IntegrationField<N>::integrate_los(const std::shared_ptr<Cos
 	for (auto y = exit_start.se; y <= exit_end.se; ++y) {
 		for (auto x = exit_start.ne; x <= exit_end.ne; ++x) {
 			// cell index on the exit side of the portal
-			auto target_idx = x + y * N;
+			auto target_idx = x + y * SECTOR_SIDE_LENGTH;
 
 			// cell index on the entry side of the portal
-			auto entry_idx = x - x_diff + (y - y_diff) * N;
+			auto entry_idx = x - x_diff + (y - y_diff) * SECTOR_SIDE_LENGTH;
 
 			// Set the cost of all target cells to the start value
 			this->cells[target_idx].cost = INTEGRATED_COST_START;
@@ -438,8 +438,8 @@ std::vector<size_t> IntegrationField<N>::integrate_los(const std::shared_ptr<Cos
 	return wavefront_blocked_main;
 }
 
-template <size_t N>
-std::vector<size_t> IntegrationField<N>::integrate_los(const std::shared_ptr<CostField<N>> &cost_field,
+template <size_t SECTOR_SIDE_LENGTH>
+std::vector<size_t> IntegrationField<SECTOR_SIDE_LENGTH>::integrate_los(const std::shared_ptr<CostField<SECTOR_SIDE_LENGTH>> &cost_field,
                                                        const coord::tile_delta &target,
                                                        integrated_cost_t start_cost,
                                                        std::vector<size_t> &&start_wave) {
@@ -461,8 +461,8 @@ std::vector<size_t> IntegrationField<N>::integrate_los(const std::shared_ptr<Cos
 	// Preallocate ~30% of the field size for the wavefront
 	// This reduces the number of reallocations on push_back operations
 	// TODO: Find "optimal" value for reserve
-	current_wave.reserve(N * 3);
-	next_wave.reserve(N * 3);
+	current_wave.reserve(SECTOR_SIDE_LENGTH * 3);
+	next_wave.reserve(SECTOR_SIDE_LENGTH * 3);
 
 	// Cost of the current wave
 	integrated_cost_t wave_cost = start_cost;
@@ -492,8 +492,8 @@ std::vector<size_t> IntegrationField<N>::integrate_los(const std::shared_ptr<Cos
 			cell.flags |= INTEGRATE_FOUND_MASK;
 
 			// Get the x and y coordinates of the current cell
-			auto x = idx % N;
-			auto y = idx / N;
+			auto x = idx % SECTOR_SIDE_LENGTH;
+			auto y = idx / SECTOR_SIDE_LENGTH;
 
 			// Get the cost of the current cell
 			auto cell_cost = cost_cells[idx];
@@ -538,18 +538,18 @@ std::vector<size_t> IntegrationField<N>::integrate_los(const std::shared_ptr<Cos
 
 			// Search the neighbors of the current cell
 			if (y > 0) {
-				auto neighbor_idx = idx - N;
+				auto neighbor_idx = idx - SECTOR_SIDE_LENGTH;
 				next_wave.push_back(neighbor_idx);
 			}
 			if (x > 0) {
 				auto neighbor_idx = idx - 1;
 				next_wave.push_back(neighbor_idx);
 			}
-			if (y < N - 1) {
-				auto neighbor_idx = idx + N;
+			if (y < SECTOR_SIDE_LENGTH - 1) {
+				auto neighbor_idx = idx + SECTOR_SIDE_LENGTH;
 				next_wave.push_back(neighbor_idx);
 			}
-			if (x < N - 1) {
+			if (x < SECTOR_SIDE_LENGTH - 1) {
 				auto neighbor_idx = idx + 1;
 				next_wave.push_back(neighbor_idx);
 			}
@@ -564,8 +564,8 @@ std::vector<size_t> IntegrationField<N>::integrate_los(const std::shared_ptr<Cos
 
 	return wavefront_blocked;
 }
-template <size_t N>
-void IntegrationField<N>::integrate_cost(const std::shared_ptr<CostField<N>> &cost_field,
+template <size_t SECTOR_SIDE_LENGTH>
+void IntegrationField<SECTOR_SIDE_LENGTH>::integrate_cost(const std::shared_ptr<CostField<SECTOR_SIDE_LENGTH>> &cost_field,
                                          const coord::tile_delta &target) {
 	ENSURE(cost_field->get_size() == this->get_size(),
 	       "cost field size "
@@ -574,7 +574,7 @@ void IntegrationField<N>::integrate_cost(const std::shared_ptr<CostField<N>> &co
 	           << this->get_size() << "x" << this->get_size());
 
 	// Target cell index
-	auto target_idx = target.ne + target.se * N;
+	auto target_idx = target.ne + target.se * SECTOR_SIDE_LENGTH;
 
 	// Move outwards from the target cell, updating the integration field
 	this->cells[target_idx].cost = INTEGRATED_COST_START;
@@ -582,8 +582,8 @@ void IntegrationField<N>::integrate_cost(const std::shared_ptr<CostField<N>> &co
 	this->integrate_cost(cost_field, {target_idx});
 }
 
-template <size_t N>
-void IntegrationField<N>::integrate_cost(const std::shared_ptr<CostField<N>> &cost_field,
+template <size_t SECTOR_SIDE_LENGTH>
+void IntegrationField<SECTOR_SIDE_LENGTH>::integrate_cost(const std::shared_ptr<CostField<SECTOR_SIDE_LENGTH>> &cost_field,
                                          sector_id_t other_sector_id,
                                          const std::shared_ptr<Portal> &portal) {
 	ENSURE(cost_field->get_size() == this->get_size(),
@@ -599,7 +599,7 @@ void IntegrationField<N>::integrate_cost(const std::shared_ptr<CostField<N>> &co
 	for (auto y = exit_start.se; y <= exit_end.se; ++y) {
 		for (auto x = exit_start.ne; x <= exit_end.ne; ++x) {
 			// every portal cell is a target cell
-			auto target_idx = x + y * N;
+			auto target_idx = x + y * SECTOR_SIDE_LENGTH;
 
 			// Set the cost of all target cells to the start value
 			this->cells[target_idx].cost = INTEGRATED_COST_START;
@@ -614,8 +614,8 @@ void IntegrationField<N>::integrate_cost(const std::shared_ptr<CostField<N>> &co
 	this->integrate_cost(cost_field, std::move(start_cells));
 }
 
-template <size_t N>
-void IntegrationField<N>::integrate_cost(const std::shared_ptr<CostField<N>> &cost_field,
+template <size_t SECTOR_SIDE_LENGTH>
+void IntegrationField<SECTOR_SIDE_LENGTH>::integrate_cost(const std::shared_ptr<CostField<SECTOR_SIDE_LENGTH>> &cost_field,
                                          std::vector<size_t> &&start_cells) {
 	// Cells that still have to be visited by the current wave
 	std::vector<size_t> current_wave = std::move(start_cells);
@@ -626,8 +626,8 @@ void IntegrationField<N>::integrate_cost(const std::shared_ptr<CostField<N>> &co
 	// Preallocate ~30% of the field size for the wavefront
 	// This reduces the number of reallocations on push_back operations
 	// TODO: Find "optimal" value for reserve
-	current_wave.reserve(N * 3);
-	next_wave.reserve(N * 3);
+	current_wave.reserve(SECTOR_SIDE_LENGTH * 3);
+	next_wave.reserve(SECTOR_SIDE_LENGTH * 3);
 
 	// Get the cost field values
 	auto &cost_cells = cost_field->get_costs();
@@ -638,14 +638,14 @@ void IntegrationField<N>::integrate_cost(const std::shared_ptr<CostField<N>> &co
 			auto idx = current_wave[i];
 
 			// Get the x and y coordinates of the current cell
-			auto x = idx % N;
-			auto y = idx / N;
+			auto x = idx % SECTOR_SIDE_LENGTH;
+			auto y = idx / SECTOR_SIDE_LENGTH;
 
 			auto integrated_current = this->cells[idx].cost;
 
 			// Get the neighbors of the current cell
 			if (y > 0) {
-				auto neighbor_idx = idx - N;
+				auto neighbor_idx = idx - SECTOR_SIDE_LENGTH;
 				this->update_neighbor(neighbor_idx,
 				                      cost_cells[neighbor_idx],
 				                      integrated_current,
@@ -658,14 +658,14 @@ void IntegrationField<N>::integrate_cost(const std::shared_ptr<CostField<N>> &co
 				                      integrated_current,
 				                      next_wave);
 			}
-			if (y < N - 1) {
-				auto neighbor_idx = idx + N;
+			if (y < SECTOR_SIDE_LENGTH - 1) {
+				auto neighbor_idx = idx + SECTOR_SIDE_LENGTH;
 				this->update_neighbor(neighbor_idx,
 				                      cost_cells[neighbor_idx],
 				                      integrated_current,
 				                      next_wave);
 			}
-			if (x < N - 1) {
+			if (x < SECTOR_SIDE_LENGTH - 1) {
 				auto neighbor_idx = idx + 1;
 				this->update_neighbor(neighbor_idx,
 				                      cost_cells[neighbor_idx],
@@ -678,20 +678,20 @@ void IntegrationField<N>::integrate_cost(const std::shared_ptr<CostField<N>> &co
 		next_wave.clear();
 	}
 }
-template <size_t N>
-const std::array<integrated_t, N * N> &IntegrationField<N>::get_cells() const {
+template <size_t SECTOR_SIDE_LENGTH>
+const std::array<integrated_t, SECTOR_SIDE_LENGTH * SECTOR_SIDE_LENGTH> &IntegrationField<SECTOR_SIDE_LENGTH>::get_cells() const {
 	return this->cells;
 }
 
-template <size_t N>
-void IntegrationField<N>::reset() {
+template <size_t SECTOR_SIDE_LENGTH>
+void IntegrationField<SECTOR_SIDE_LENGTH>::reset() {
 	std::fill(this->cells.begin(), this->cells.end(), INTEGRATE_INIT);
 
 	log::log(DBG << "Integration field has been reset");
 }
 
-template <size_t N>
-void IntegrationField<N>::reset_dynamic_flags() {
+template <size_t SECTOR_SIDE_LENGTH>
+void IntegrationField<SECTOR_SIDE_LENGTH>::reset_dynamic_flags() {
 	integrated_flags_t mask = 0xFF & ~(INTEGRATE_LOS_MASK | INTEGRATE_WAVEFRONT_BLOCKED_MASK | INTEGRATE_FOUND_MASK);
 	for (integrated_t &cell : this->cells) {
 		cell.flags = cell.flags & mask;
@@ -700,8 +700,8 @@ void IntegrationField<N>::reset_dynamic_flags() {
 	log::log(DBG << "Integration field dynamic flags have been reset");
 }
 
-template <size_t N>
-void IntegrationField<N>::update_neighbor(size_t idx,
+template <size_t SECTOR_SIDE_LENGTH>
+void IntegrationField<SECTOR_SIDE_LENGTH>::update_neighbor(size_t idx,
                                           cost_t cell_cost,
                                           integrated_cost_t integrated_cost,
                                           std::vector<size_t> &wave) {
@@ -723,8 +723,8 @@ void IntegrationField<N>::update_neighbor(size_t idx,
 	}
 }
 
-template <size_t N>
-std::vector<std::pair<int, int>> IntegrationField<N>::get_los_corners(const std::shared_ptr<CostField<N>> &cost_field,
+template <size_t SECTOR_SIDE_LENGTH>
+std::vector<std::pair<int, int>> IntegrationField<SECTOR_SIDE_LENGTH>::get_los_corners(const std::shared_ptr<CostField<SECTOR_SIDE_LENGTH>> &cost_field,
                                                                       const coord::tile_delta &target,
                                                                       const coord::tile_delta &blocker) {
 	std::vector<std::pair<int, int>> corners;
@@ -749,10 +749,10 @@ std::vector<std::pair<int, int>> IntegrationField<N>::get_los_corners(const std:
 	if (blocker.ne > 0) {
 		left_cost = cost_field->get_cost(blocker.ne - 1, blocker.se);
 	}
-	if (static_cast<size_t>(blocker.se) < N - 1) {
+	if (static_cast<size_t>(blocker.se) < SECTOR_SIDE_LENGTH - 1) {
 		bottom_cost = cost_field->get_cost(blocker.ne, blocker.se + 1);
 	}
-	if (static_cast<size_t>(blocker.ne) < N - 1) {
+	if (static_cast<size_t>(blocker.ne) < SECTOR_SIDE_LENGTH - 1) {
 		right_cost = cost_field->get_cost(blocker.ne + 1, blocker.se);
 	}
 
@@ -859,8 +859,8 @@ std::vector<std::pair<int, int>> IntegrationField<N>::get_los_corners(const std:
 	return corners;
 }
 
-template <size_t N>
-std::vector<size_t> IntegrationField<N>::bresenhams_line(const coord::tile_delta &target,
+template <size_t SECTOR_SIDE_LENGTH>
+std::vector<size_t> IntegrationField<SECTOR_SIDE_LENGTH>::bresenhams_line(const coord::tile_delta &target,
                                                          int corner_x,
                                                          int corner_y) {
 	std::vector<size_t> cells;
@@ -871,7 +871,7 @@ std::vector<size_t> IntegrationField<N>::bresenhams_line(const coord::tile_delta
 	auto cell_y = corner_y;
 
 	// field edge boundary
-	int boundary = N;
+	int boundary = SECTOR_SIDE_LENGTH;
 
 	// target coordinates
 	// offset by 0.5 to get the center of the cell
@@ -893,7 +893,7 @@ std::vector<size_t> IntegrationField<N>::bresenhams_line(const coord::tile_delta
 			cell_y -= 1;
 			cell_x -= 1;
 			while (cell_x >= 0 and cell_y >= 0) {
-				cells.push_back(cell_x + cell_y * N);
+				cells.push_back(cell_x + cell_y * SECTOR_SIDE_LENGTH);
 				if (error > 1.0) {
 					cell_y -= 1;
 					error -= 1.0;
@@ -908,7 +908,7 @@ std::vector<size_t> IntegrationField<N>::bresenhams_line(const coord::tile_delta
 		else { // left and down
 			cell_x -= 1;
 			while (cell_x >= 0 and cell_y < boundary) {
-				cells.push_back(cell_x + cell_y * N);
+				cells.push_back(cell_x + cell_y * SECTOR_SIDE_LENGTH);
 				if (error > 1.0) {
 					cell_y += 1;
 					error -= 1.0;
@@ -924,7 +924,7 @@ std::vector<size_t> IntegrationField<N>::bresenhams_line(const coord::tile_delta
 		if (corner_y < ty) { // right and up
 			cell_y -= 1;
 			while (cell_x < boundary and cell_y >= 0) {
-				cells.push_back(cell_x + cell_y * N);
+				cells.push_back(cell_x + cell_y * SECTOR_SIDE_LENGTH);
 				if (error > 1.0) {
 					cell_y -= 1;
 					error -= 1.0;
@@ -937,7 +937,7 @@ std::vector<size_t> IntegrationField<N>::bresenhams_line(const coord::tile_delta
 		}
 		else { // right and down
 			while (cell_x < boundary and cell_y < boundary) {
-				cells.push_back(cell_x + cell_y * N);
+				cells.push_back(cell_x + cell_y * SECTOR_SIDE_LENGTH);
 				if (error > 1.0) {
 					cell_y += 1;
 					error -= 1.0;

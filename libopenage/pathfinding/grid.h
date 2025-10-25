@@ -15,13 +15,13 @@
 
 namespace openage::path {
 
-template <size_t N>
+template <size_t SECTOR_SIDE_LENGTH>
 class Sector;
 
 /**
  * Grid for flow field pathfinding.
  */
-template <size_t N>
+template <size_t SECTOR_SIDE_LENGTH>
 class Grid {
 public:
 	/**
@@ -42,7 +42,7 @@ public:
 	 */
 	Grid(grid_id_t id,
 	     const util::Vector2s &size,
-	     std::vector<std::shared_ptr<Sector<N>>> &&sectors);
+	     std::vector<std::shared_ptr<Sector<SECTOR_SIDE_LENGTH>>> &&sectors);
 
 	/**
 	 * Get the ID of the grid.
@@ -67,7 +67,7 @@ public:
 	 *
 	 * @return Sector at the specified position.
 	 */
-	const std::shared_ptr<Sector<N>> &get_sector(size_t x, size_t y);
+	const std::shared_ptr<Sector<SECTOR_SIDE_LENGTH>> &get_sector(size_t x, size_t y);
 
 	/**
 	 * Get the sector with a specified ID
@@ -76,14 +76,14 @@ public:
 	 *
 	 * @return Sector with the specified ID.
 	 */
-	const std::shared_ptr<Sector<N>> &get_sector(sector_id_t id) const;
+	const std::shared_ptr<Sector<SECTOR_SIDE_LENGTH>> &get_sector(sector_id_t id) const;
 
 	/**
 	 * Get the sectors of the grid.
 	 *
 	 * @return Sectors of the grid.
 	 */
-	const std::vector<std::shared_ptr<Sector<N>>> &get_sectors() const;
+	const std::vector<std::shared_ptr<Sector<SECTOR_SIDE_LENGTH>>> &get_sectors() const;
 
 	/**
 	 * Initialize the portals of the sectors on the grid.
@@ -117,7 +117,7 @@ private:
 	/**
 	 * Sectors of the grid.
 	 */
-	std::vector<std::shared_ptr<Sector<N>>> sectors;
+	std::vector<std::shared_ptr<Sector<SECTOR_SIDE_LENGTH>>> sectors;
 
 	/**
 	 *	maps portal_ids to portal nodes, which store their neigbouring nodes and associated distance costs
@@ -127,24 +127,24 @@ private:
 	PortalNode::nodemap_t portal_nodes;
 };
 
-template <size_t N>
-Grid<N>::Grid(grid_id_t id,
-              const util::Vector2s &size) :
+template <size_t SECTOR_SIDE_LENGTH>
+Grid<SECTOR_SIDE_LENGTH>::Grid(grid_id_t id,
+                               const util::Vector2s &size) :
 	id{id},
 	size{size} {
 	for (size_t y = 0; y < size[1]; y++) {
 		for (size_t x = 0; x < size[0]; x++) {
 			this->sectors.push_back(
-				std::make_shared<Sector<N>>(x + y * this->size[0],
-			                                coord::chunk(x, y)));
+				std::make_shared<Sector<SECTOR_SIDE_LENGTH>>(x + y * this->size[0],
+			                                                 coord::chunk(x, y)));
 		}
 	}
 }
 
-template <size_t N>
-Grid<N>::Grid(grid_id_t id,
-              const util::Vector2s &size,
-              std::vector<std::shared_ptr<Sector<N>>> &&sectors) :
+template <size_t SECTOR_SIDE_LENGTH>
+Grid<SECTOR_SIDE_LENGTH>::Grid(grid_id_t id,
+                               const util::Vector2s &size,
+                               std::vector<std::shared_ptr<Sector<SECTOR_SIDE_LENGTH>>> &&sectors) :
 	id{id},
 	size{size},
 	sectors{std::move(sectors)} {
@@ -153,33 +153,33 @@ Grid<N>::Grid(grid_id_t id,
 	                        << "but only " << this->sectors.size() << " sectors were provided");
 }
 
-template <size_t N>
-grid_id_t Grid<N>::get_id() const {
+template <size_t SECTOR_SIDE_LENGTH>
+grid_id_t Grid<SECTOR_SIDE_LENGTH>::get_id() const {
 	return this->id;
 }
 
-template <size_t N>
-const util::Vector2s &Grid<N>::get_size() const {
+template <size_t SECTOR_SIDE_LENGTH>
+const util::Vector2s &Grid<SECTOR_SIDE_LENGTH>::get_size() const {
 	return this->size;
 }
 
-template <size_t N>
-const std::shared_ptr<Sector<N>> &Grid<N>::get_sector(size_t x, size_t y) {
+template <size_t SECTOR_SIDE_LENGTH>
+const std::shared_ptr<Sector<SECTOR_SIDE_LENGTH>> &Grid<SECTOR_SIDE_LENGTH>::get_sector(size_t x, size_t y) {
 	return this->sectors.at(x + y * this->size[0]);
 }
 
-template <size_t N>
-const std::shared_ptr<Sector<N>> &Grid<N>::get_sector(sector_id_t id) const {
+template <size_t SECTOR_SIDE_LENGTH>
+const std::shared_ptr<Sector<SECTOR_SIDE_LENGTH>> &Grid<SECTOR_SIDE_LENGTH>::get_sector(sector_id_t id) const {
 	return this->sectors.at(id);
 }
 
-template <size_t N>
-const std::vector<std::shared_ptr<Sector<N>>> &Grid<N>::get_sectors() const {
+template <size_t SECTOR_SIDE_LENGTH>
+const std::vector<std::shared_ptr<Sector<SECTOR_SIDE_LENGTH>>> &Grid<SECTOR_SIDE_LENGTH>::get_sectors() const {
 	return this->sectors;
 }
 
-template <size_t N>
-void Grid<N>::init_portals() {
+template <size_t SECTOR_SIDE_LENGTH>
+void Grid<SECTOR_SIDE_LENGTH>::init_portals() {
 	// Create portals between neighboring sectors.
 	portal_id_t portal_id = 0;
 	for (size_t y = 0; y < this->size[1]; y++) {
@@ -213,14 +213,14 @@ void Grid<N>::init_portals() {
 	}
 }
 
-template <size_t N>
-const PortalNode::nodemap_t &Grid<N>::get_portal_map() {
+template <size_t SECTOR_SIDE_LENGTH>
+const PortalNode::nodemap_t &Grid<SECTOR_SIDE_LENGTH>::get_portal_map() {
 	return portal_nodes;
 }
 
 
-template <size_t N>
-void Grid<N>::init_portal_nodes() {
+template <size_t SECTOR_SIDE_LENGTH>
+void Grid<SECTOR_SIDE_LENGTH>::init_portal_nodes() {
 	// create portal_nodes
 	for (auto &sector : this->sectors) {
 		for (auto &portal : sector->get_portals()) {
@@ -235,7 +235,7 @@ void Grid<N>::init_portal_nodes() {
 
 	// init portal_node exits
 	for (auto &[id, node] : this->portal_nodes) {
-		node->init_exits<N>(this->portal_nodes);
+		node->init_exits<SECTOR_SIDE_LENGTH>(this->portal_nodes);
 	}
 }
 

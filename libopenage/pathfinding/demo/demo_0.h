@@ -33,13 +33,13 @@ class MeshData;
 
 namespace path {
 
-template <size_t N>
+template <size_t SECTOR_SIDE_LENGTH>
 class CostField;
 
-template <size_t N>
+template <size_t SECTOR_SIDE_LENGTH>
 class IntegrationField;
 
-template <size_t N>
+template <size_t SECTOR_SIDE_LENGTH>
 class FlowField;
 
 

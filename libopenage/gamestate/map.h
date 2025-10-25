@@ -16,7 +16,7 @@
 namespace openage {
 namespace path {
 
-template <size_t N>
+template <size_t SECTOR_SIDE_LENGTH>
 class Pathfinder;
 } // namespace path
 

@@ -110,10 +110,10 @@ using sector_id_t = size_t;
  */
 using portal_id_t = size_t;
 
-template <size_t N>
+template <size_t SECTOR_SIDE_LENGTH>
 class FlowField;
 
-template <size_t N>
+template <size_t SECTOR_SIDE_LENGTH>
 class IntegrationField;
 
 /**
@@ -124,8 +124,8 @@ using cache_key_t = std::pair<portal_id_t, sector_id_t>;
 /**
  * Returnable field cache entry pair containing an integration field and a flow field.
  */
-template <size_t N>
-using field_cache_t = std::pair<std::shared_ptr<IntegrationField<N>>, std::shared_ptr<FlowField<N>>>;
+template <size_t SECTOR_SIDE_LENGTH>
+using field_cache_t = std::pair<std::shared_ptr<IntegrationField<SECTOR_SIDE_LENGTH>>, std::shared_ptr<FlowField<SECTOR_SIDE_LENGTH>>>;
 
 /**
  * Cost stamp for a cell on a cost field.

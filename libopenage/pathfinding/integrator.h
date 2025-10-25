@@ -24,13 +24,13 @@ struct tile_delta;
 
 namespace path {
 
-template <size_t N>
+template <size_t SECTOR_SIDE_LENGTH>
 class CostField;
 
-template <size_t N>
+template <size_t SECTOR_SIDE_LENGTH>
 class FlowField;
 
-template <size_t N>
+template <size_t SECTOR_SIDE_LENGTH>
 class IntegrationField;
 
 class Portal;
@@ -38,7 +38,7 @@ class Portal;
 /**
  * Integrator for the flow field pathfinding algorithm.
  */
-template <size_t N>
+template <size_t SECTOR_SIDE_LENGTH>
 class Integrator {
 public:
 	/**
@@ -60,9 +60,9 @@ public:
 	 *
 	 * @return Integration field.
 	 */
-	std::shared_ptr<IntegrationField<N>> integrate(const std::shared_ptr<CostField<N>> &cost_field,
-	                                               const coord::tile_delta &target,
-	                                               bool with_los = true);
+	std::shared_ptr<IntegrationField<SECTOR_SIDE_LENGTH>> integrate(const std::shared_ptr<CostField<SECTOR_SIDE_LENGTH>> &cost_field,
+	                                                                const coord::tile_delta &target,
+	                                                                bool with_los = true);
 
 	/**
 	 * Integrate the cost field from a portal.
@@ -80,13 +80,13 @@ public:
 	 *
 	 * @return Integration field.
 	 */
-	std::shared_ptr<IntegrationField<N>> integrate(const std::shared_ptr<CostField<N>> &cost_field,
-	                                               const std::shared_ptr<IntegrationField<N>> &other,
-	                                               sector_id_t other_sector_id,
-	                                               const std::shared_ptr<Portal> &portal,
-	                                               const coord::tile_delta &target,
-	                                               const time::time_t &time,
-	                                               bool with_los = true);
+	std::shared_ptr<IntegrationField<SECTOR_SIDE_LENGTH>> integrate(const std::shared_ptr<CostField<SECTOR_SIDE_LENGTH>> &cost_field,
+	                                                                const std::shared_ptr<IntegrationField<SECTOR_SIDE_LENGTH>> &other,
+	                                                                sector_id_t other_sector_id,
+	                                                                const std::shared_ptr<Portal> &portal,
+	                                                                const coord::tile_delta &target,
+	                                                                const time::time_t &time,
+	                                                                bool with_los = true);
 
 	/**
 	 * Build the flow field from an integration field.
@@ -95,7 +95,7 @@ public:
 	 *
 	 * @return Flow field.
 	 */
-	std::shared_ptr<FlowField<N>> build(const std::shared_ptr<IntegrationField<N>> &integration_field);
+	std::shared_ptr<FlowField<SECTOR_SIDE_LENGTH>> build(const std::shared_ptr<IntegrationField<SECTOR_SIDE_LENGTH>> &integration_field);
 
 	/**
 	 * Build the flow field from a portal.
@@ -108,13 +108,13 @@ public:
 	 *
 	 * @return Flow field.
 	 */
-	std::shared_ptr<FlowField<N>> build(const std::shared_ptr<IntegrationField<N>> &integration_field,
-	                                    const std::shared_ptr<IntegrationField<N>> &other,
-	                                    sector_id_t other_sector_id,
-	                                    const std::shared_ptr<Portal> &portal,
-	                                    bool with_los = true);
+	std::shared_ptr<FlowField<SECTOR_SIDE_LENGTH>> build(const std::shared_ptr<IntegrationField<SECTOR_SIDE_LENGTH>> &integration_field,
+	                                                     const std::shared_ptr<IntegrationField<SECTOR_SIDE_LENGTH>> &other,
+	                                                     sector_id_t other_sector_id,
+	                                                     const std::shared_ptr<Portal> &portal,
+	                                                     bool with_los = true);
 
-	using get_return_t = std::pair<std::shared_ptr<IntegrationField<N>>, std::shared_ptr<FlowField<N>>>;
+	using get_return_t = std::pair<std::shared_ptr<IntegrationField<SECTOR_SIDE_LENGTH>>, std::shared_ptr<FlowField<SECTOR_SIDE_LENGTH>>>;
 
 	/**
 	 * Get the integration field and flow field for a target.
@@ -124,7 +124,7 @@ public:
 	 *
 	 * @return Integration field and flow field.
 	 */
-	get_return_t get(const std::shared_ptr<CostField<N>> &cost_field,
+	get_return_t get(const std::shared_ptr<CostField<SECTOR_SIDE_LENGTH>> &cost_field,
 	                 const coord::tile_delta &target);
 
 	/**
@@ -140,8 +140,8 @@ public:
 	 *
 	 * @return Integration field and flow field.
 	 */
-	get_return_t get(const std::shared_ptr<CostField<N>> &cost_field,
-	                 const std::shared_ptr<IntegrationField<N>> &other,
+	get_return_t get(const std::shared_ptr<CostField<SECTOR_SIDE_LENGTH>> &cost_field,
+	                 const std::shared_ptr<IntegrationField<SECTOR_SIDE_LENGTH>> &other,
 	                 sector_id_t other_sector_id,
 	                 const std::shared_ptr<Portal> &portal,
 	                 const coord::tile_delta &target,
@@ -152,19 +152,19 @@ private:
 	/**
 	 * Cache for already computed fields.
 	 */
-	std::unique_ptr<FieldCache<N>> field_cache;
+	std::unique_ptr<FieldCache<SECTOR_SIDE_LENGTH>> field_cache;
 };
 
-template <size_t N>
-Integrator<N>::Integrator() :
-	field_cache{std::make_unique<FieldCache<N>>()} {
+template <size_t SECTOR_SIDE_LENGTH>
+Integrator<SECTOR_SIDE_LENGTH>::Integrator() :
+	field_cache{std::make_unique<FieldCache<SECTOR_SIDE_LENGTH>>()} {
 }
 
-template <size_t N>
-std::shared_ptr<IntegrationField<N>> Integrator<N>::integrate(const std::shared_ptr<CostField<N>> &cost_field,
-                                                              const coord::tile_delta &target,
-                                                              bool with_los) {
-	auto integration_field = std::make_shared<IntegrationField<N>>();
+template <size_t SECTOR_SIDE_LENGTH>
+std::shared_ptr<IntegrationField<SECTOR_SIDE_LENGTH>> Integrator<SECTOR_SIDE_LENGTH>::integrate(const std::shared_ptr<CostField<SECTOR_SIDE_LENGTH>> &cost_field,
+                                                                                                const coord::tile_delta &target,
+                                                                                                bool with_los) {
+	auto integration_field = std::make_shared<IntegrationField<SECTOR_SIDE_LENGTH>>();
 
 	log::log(DBG << "Integrating cost field for target coord " << target);
 	if (with_los) {
@@ -180,14 +180,14 @@ std::shared_ptr<IntegrationField<N>> Integrator<N>::integrate(const std::shared_
 	return integration_field;
 }
 
-template <size_t N>
-std::shared_ptr<IntegrationField<N>> Integrator<N>::integrate(const std::shared_ptr<CostField<N>> &cost_field,
-                                                              const std::shared_ptr<IntegrationField<N>> &other,
-                                                              sector_id_t other_sector_id,
-                                                              const std::shared_ptr<Portal> &portal,
-                                                              const coord::tile_delta &target,
-                                                              const time::time_t &time,
-                                                              bool with_los) {
+template <size_t SECTOR_SIDE_LENGTH>
+std::shared_ptr<IntegrationField<SECTOR_SIDE_LENGTH>> Integrator<SECTOR_SIDE_LENGTH>::integrate(const std::shared_ptr<CostField<SECTOR_SIDE_LENGTH>> &cost_field,
+                                                                                                const std::shared_ptr<IntegrationField<SECTOR_SIDE_LENGTH>> &other,
+                                                                                                sector_id_t other_sector_id,
+                                                                                                const std::shared_ptr<Portal> &portal,
+                                                                                                const coord::tile_delta &target,
+                                                                                                const time::time_t &time,
+                                                                                                bool with_los) {
 	auto cache_key = std::make_pair(portal->get_id(), other_sector_id);
 	if (cost_field->is_dirty(time)) {
 		log::log(DBG << "Evicting cached integration and flow fields for portal " << portal->get_id()
@@ -205,7 +205,7 @@ std::shared_ptr<IntegrationField<N>> Integrator<N>::integrate(const std::shared_
 			log::log(SPAM << "Performing LOS pass on cached field");
 
 			// Make a copy of the cached field to avoid modifying the cached field
-			auto integration_field = std::make_shared<IntegrationField<N>>(*cached_integration_field);
+			auto integration_field = std::make_shared<IntegrationField<SECTOR_SIDE_LENGTH>>(*cached_integration_field);
 
 			// Only integrate LOS; leave the rest of the field as is
 			integration_field->integrate_los(cost_field, other, other_sector_id, portal, target);
@@ -219,7 +219,7 @@ std::shared_ptr<IntegrationField<N>> Integrator<N>::integrate(const std::shared_
 	             << " from sector " << other_sector_id);
 
 	// Create a new integration field
-	auto integration_field = std::make_shared<IntegrationField<N>>();
+	auto integration_field = std::make_shared<IntegrationField<SECTOR_SIDE_LENGTH>>();
 
 	// LOS pass
 	std::vector<size_t> wavefront_blocked;
@@ -243,9 +243,9 @@ std::shared_ptr<IntegrationField<N>> Integrator<N>::integrate(const std::shared_
 	return integration_field;
 }
 
-template <size_t N>
-std::shared_ptr<FlowField<N>> Integrator<N>::build(const std::shared_ptr<IntegrationField<N>> &integration_field) {
-	auto flow_field = std::make_shared<FlowField<N>>();
+template <size_t SECTOR_SIDE_LENGTH>
+std::shared_ptr<FlowField<SECTOR_SIDE_LENGTH>> Integrator<SECTOR_SIDE_LENGTH>::build(const std::shared_ptr<IntegrationField<SECTOR_SIDE_LENGTH>> &integration_field) {
+	auto flow_field = std::make_shared<FlowField<SECTOR_SIDE_LENGTH>>();
 
 	log::log(DBG << "Building flow field from integration field");
 	flow_field->build(integration_field);
@@ -253,12 +253,12 @@ std::shared_ptr<FlowField<N>> Integrator<N>::build(const std::shared_ptr<Integra
 	return flow_field;
 }
 
-template <size_t N>
-std::shared_ptr<FlowField<N>> Integrator<N>::build(const std::shared_ptr<IntegrationField<N>> &integration_field,
-                                                   const std::shared_ptr<IntegrationField<N>> &other,
-                                                   sector_id_t other_sector_id,
-                                                   const std::shared_ptr<Portal> &portal,
-                                                   bool with_los) {
+template <size_t SECTOR_SIDE_LENGTH>
+std::shared_ptr<FlowField<SECTOR_SIDE_LENGTH>> Integrator<SECTOR_SIDE_LENGTH>::build(const std::shared_ptr<IntegrationField<SECTOR_SIDE_LENGTH>> &integration_field,
+                                                                                     const std::shared_ptr<IntegrationField<SECTOR_SIDE_LENGTH>> &other,
+                                                                                     sector_id_t other_sector_id,
+                                                                                     const std::shared_ptr<Portal> &portal,
+                                                                                     bool with_los) {
 	auto cache_key = std::make_pair(portal->get_id(), other_sector_id);
 	if (this->field_cache->is_cached(cache_key)) {
 		log::log(DBG << "Using cached flow field for portal " << portal->get_id()
@@ -271,7 +271,7 @@ std::shared_ptr<FlowField<N>> Integrator<N>::build(const std::shared_ptr<Integra
 			log::log(SPAM << "Transferring LOS flags to cached flow field");
 
 			// Make a copy of the cached flow field
-			auto flow_field = std::make_shared<FlowField<N>>(*cached_flow_field);
+			auto flow_field = std::make_shared<FlowField<SECTOR_SIDE_LENGTH>>(*cached_flow_field);
 
 			// Transfer the LOS flags to the flow field
 			flow_field->transfer_dynamic_flags(integration_field);
@@ -285,29 +285,29 @@ std::shared_ptr<FlowField<N>> Integrator<N>::build(const std::shared_ptr<Integra
 	log::log(DBG << "Building flow field for portal " << portal->get_id()
 	             << " from sector " << other_sector_id);
 
-	auto flow_field = std::make_shared<FlowField<N>>();
+	auto flow_field = std::make_shared<FlowField<SECTOR_SIDE_LENGTH>>();
 	flow_field->build(integration_field, other, other_sector_id, portal);
 
 	return flow_field;
 }
 
-template <size_t N>
-Integrator<N>::get_return_t Integrator<N>::get(const std::shared_ptr<CostField<N>> &cost_field,
-                                               const coord::tile_delta &target) {
+template <size_t SECTOR_SIDE_LENGTH>
+Integrator<SECTOR_SIDE_LENGTH>::get_return_t Integrator<SECTOR_SIDE_LENGTH>::get(const std::shared_ptr<CostField<SECTOR_SIDE_LENGTH>> &cost_field,
+                                                                                 const coord::tile_delta &target) {
 	auto integration_field = this->integrate(cost_field, target);
 	auto flow_field = this->build(integration_field);
 
 	return std::make_pair(integration_field, flow_field);
 }
 
-template <size_t N>
-Integrator<N>::get_return_t Integrator<N>::get(const std::shared_ptr<CostField<N>> &cost_field,
-                                               const std::shared_ptr<IntegrationField<N>> &other,
-                                               sector_id_t other_sector_id,
-                                               const std::shared_ptr<Portal> &portal,
-                                               const coord::tile_delta &target,
-                                               const time::time_t &time,
-                                               bool with_los) {
+template <size_t SECTOR_SIDE_LENGTH>
+Integrator<SECTOR_SIDE_LENGTH>::get_return_t Integrator<SECTOR_SIDE_LENGTH>::get(const std::shared_ptr<CostField<SECTOR_SIDE_LENGTH>> &cost_field,
+                                                                                 const std::shared_ptr<IntegrationField<SECTOR_SIDE_LENGTH>> &other,
+                                                                                 sector_id_t other_sector_id,
+                                                                                 const std::shared_ptr<Portal> &portal,
+                                                                                 const coord::tile_delta &target,
+                                                                                 const time::time_t &time,
+                                                                                 bool with_los) {
 	auto cache_key = std::make_pair(portal->get_id(), other_sector_id);
 	if (cost_field->is_dirty(time)) {
 		log::log(DBG << "Evicting cached integration and flow fields for portal " << portal->get_id()
@@ -327,7 +327,7 @@ Integrator<N>::get_return_t Integrator<N>::get(const std::shared_ptr<CostField<N
 			log::log(SPAM << "Performing LOS pass on cached field");
 
 			// Make a copy of the cached integration field
-			auto integration_field = std::make_shared<IntegrationField<N>>();
+			auto integration_field = std::make_shared<IntegrationField<SECTOR_SIDE_LENGTH>>();
 
 			// Only integrate LOS; leave the rest of the field as is
 			integration_field->integrate_los(cost_field, other, other_sector_id, portal, target);
@@ -335,7 +335,7 @@ Integrator<N>::get_return_t Integrator<N>::get(const std::shared_ptr<CostField<N
 			log::log(SPAM << "Transferring LOS flags to cached flow field");
 
 			// Make a copy of the cached flow field
-			auto flow_field = std::make_shared<FlowField<N>>(*cached_flow_field);
+			auto flow_field = std::make_shared<FlowField<SECTOR_SIDE_LENGTH>>(*cached_flow_field);
 
 			// Transfer the LOS flags to the flow field
 			flow_field->transfer_dynamic_flags(integration_field);
@@ -353,13 +353,13 @@ Integrator<N>::get_return_t Integrator<N>::get(const std::shared_ptr<CostField<N
 	             << ", sector ID: " << other_sector_id);
 
 	// Copy the fields to the cache.
-	std::shared_ptr<IntegrationField<N>> cached_integration_field = std::make_shared<IntegrationField<N>>();
+	std::shared_ptr<IntegrationField<SECTOR_SIDE_LENGTH>> cached_integration_field = std::make_shared<IntegrationField<SECTOR_SIDE_LENGTH>>();
 	cached_integration_field->reset_dynamic_flags();
 
-	std::shared_ptr<FlowField<N>> cached_flow_field = std::make_shared<FlowField<N>>(*flow_field);
+	std::shared_ptr<FlowField<SECTOR_SIDE_LENGTH>> cached_flow_field = std::make_shared<FlowField<SECTOR_SIDE_LENGTH>>(*flow_field);
 	cached_flow_field->reset_dynamic_flags();
 
-	field_cache_t field_cache = field_cache_t(cached_integration_field, cached_flow_field);
+	field_cache_t<SECTOR_SIDE_LENGTH> field_cache = std::make_pair(cached_integration_field, cached_flow_field);
 
 	this->field_cache->add(cache_key, field_cache);
 
