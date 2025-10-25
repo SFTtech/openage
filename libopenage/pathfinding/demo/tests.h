@@ -5,7 +5,6 @@
 #include "../../util/compiler.h"
 // pxd: from libopenage.util.path cimport Path
 
-
 namespace openage {
 namespace util {
 class Path;

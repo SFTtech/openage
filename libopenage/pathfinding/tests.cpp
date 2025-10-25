@@ -17,9 +17,14 @@ namespace openage {
 namespace path {
 namespace tests {
 
+/**
+ * size of sectors.
+ */
+static constexpr size_t SECTOR_SIZE = 3;
+
 void flow_field() {
 	// Create initial cost grid
-	auto cost_field = std::make_shared<CostField>(3);
+	auto cost_field = std::make_shared<CostField<SECTOR_SIZE>>();
 
 	// | 1 | 1 | 1 |
 	// | 1 | X | 1 |
@@ -29,7 +34,7 @@ void flow_field() {
 
 	// Test the different field types
 	{
-		auto integration_field = std::make_shared<IntegrationField>(3);
+		auto integration_field = std::make_shared<IntegrationField<SECTOR_SIZE>>();
 		integration_field->integrate_cost(cost_field, coord::tile_delta{2, 2});
 		auto &int_cells = integration_field->get_cells();
 
@@ -71,7 +76,7 @@ void flow_field() {
 		}
 
 		// Build the flow field
-		auto flow_field = std::make_shared<FlowField>(3);
+		auto flow_field = std::make_shared<FlowField<SECTOR_SIZE>>();
 		flow_field->build(integration_field);
 		auto ff_cells = flow_field->get_cells();
 
@@ -84,7 +89,7 @@ void flow_field() {
 	// Integrator test
 	{
 		// Integrator for managing the flow field
-		auto integrator = std::make_shared<Integrator>();
+		auto integrator = std::make_shared<Integrator<SECTOR_SIZE>>();
 
 		// Build the flow field
 		auto flow_field = integrator->get(cost_field, coord::tile_delta{2, 2}).second;
