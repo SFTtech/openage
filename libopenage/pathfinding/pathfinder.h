@@ -31,17 +31,16 @@
 
 namespace openage::path {
 
-
 template <size_t N>
 class Grid;
 
 template <size_t N>
 class Integrator;
 
-class Portal;
-
 template <size_t N>
 class FlowField;
+
+class Portal;
 
 /**
  * Pathfinder for flow field pathfinding.

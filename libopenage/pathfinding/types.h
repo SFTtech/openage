@@ -26,8 +26,6 @@ enum class PathResult {
 /**
  * Movement cost in the cost field.
  *
- * TODO: Cost stamps
- *
  * 0: uninitialized
  * 1-254: normal cost
  * 255: impassable
