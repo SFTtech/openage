@@ -11,6 +11,7 @@ def doctest_modules():
     yield "openage.util.math"
     yield "openage.util.strings"
     yield "openage.util.system"
+    yield "openage.util.version"
 
 
 def tests_py():
