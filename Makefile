@@ -104,6 +104,7 @@ cleaninsourcebuild:
 	@find . -not -path "./.bin/*" -type f -name CMakeCache.txt                   -print -delete
 	@find . -not -path "./.bin/*" -type f -name Makefile -not -path "./Makefile" -print -delete
 	@find . -not -path "./.bin/*" -type d -name CMakeFiles                       -print -exec rm -r {} +
+	@find . -not -path "./.bin/*" -type d -name __pycache__                       -print -exec rm -r {} +
 
 .PHONY: cleanbuilddirs
 cleanbuilddirs: cleaninsourcebuild
