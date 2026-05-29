@@ -44,8 +44,6 @@ jobs:
         run: brew install --cask font-dejavu
       - name: Install environment helpers with homebrew
         run: brew install --force ccache
-      - name: Install LLVM with homebrew
-        run: brew install --force llvm
       - name: Install openage dependencies with homebrew
         run: brew install --force cmake python3 libepoxy freetype fontconfig harfbuzz opus opusfile qt6 libogg libpng toml11 eigen
       - name: Install nyan dependencies with homebrew
@@ -56,7 +54,7 @@ jobs:
         # numpy pulls gcc as dep? and pygments doesn't work.
         run: pip3 install --upgrade --break-system-packages cython numpy mako lz4 pillow pygments setuptools toml
       - name: Configure
-        run: ./configure --compiler="$(brew --prefix llvm)/bin/clang++" --mode=release --ccache --download-nyan
+        run: ./configure --compiler=clang --mode=release --ccache --download-nyan
       - name: Build
         run: make -j$(sysctl -n hw.logicalcpu) VERBOSE=1
       - name: Test
