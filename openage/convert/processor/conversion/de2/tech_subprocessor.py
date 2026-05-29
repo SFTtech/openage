@@ -1,4 +1,4 @@
-# Copyright 2020-2024 the openage authors. See copying.md for legal info.
+# Copyright 2020-2026 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-branches
 
@@ -303,7 +303,13 @@ class DE2TechSubprocessor:
         else:
             return patches
 
-        upgrade_func = DE2TechSubprocessor.upgrade_attribute_funcs[attribute_type]
+        try:
+            upgrade_func = DE2TechSubprocessor.upgrade_attribute_funcs[attribute_type]
+        except KeyError as exc:
+            raise KeyError(
+                f"No DE2 subprocessor function found for handling upgrade of "
+                f"unit attribute: {attribute_type}"
+            ) from exc
         for affected_entity in affected_entities:
             patches.extend(upgrade_func(converter_group, affected_entity, value, operator, team))
 
@@ -346,7 +352,13 @@ class DE2TechSubprocessor:
             # 21 = tech count (unused)
             return patches
 
-        upgrade_func = DE2TechSubprocessor.upgrade_resource_funcs[resource_id]
+        try:
+            upgrade_func = DE2TechSubprocessor.upgrade_resource_funcs[resource_id]
+        except KeyError as exc:
+            raise KeyError(
+                f"No DE2 subprocessor function found for handling upgrade of "
+                f"civ resource: {resource_id}"
+            ) from exc
         patches.extend(upgrade_func(converter_group, value, operator, team))
 
         return patches
