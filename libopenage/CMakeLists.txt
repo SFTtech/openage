@@ -1,4 +1,4 @@
-# Copyright 2014-2025 the openage authors. See copying.md for legal info.
+# Copyright 2014-2026 the openage authors. See copying.md for legal info.
 
 # main C++ library definitions.
 # dependency and source file setup for the resulting library.
@@ -56,7 +56,12 @@ find_package(PNG REQUIRED)
 find_package(Opusfile REQUIRED)
 find_package(Epoxy REQUIRED)
 find_package(HarfBuzz 1.0.0 REQUIRED)
-find_package(Eigen3 3.3 REQUIRED NO_MODULE)
+# Eigen dropped strict config-version compatibility across its 3 to 5 major
+# bump, so pinning "3.3" here makes find_package reject Eigen 5 (shipped by
+# Arch and Homebrew) even though openage only uses the stable core/geometry
+# API. A version range would need cmake 3.19; our floor is 3.16, so require
+# any Eigen3 config instead.
+find_package(Eigen3 REQUIRED NO_MODULE)
 
 set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
 find_package(Threads REQUIRED)
