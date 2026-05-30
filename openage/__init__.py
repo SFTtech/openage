@@ -1,4 +1,4 @@
-# Copyright 2013-2023 the openage authors. See copying.md for legal info.
+# Copyright 2013-2026 the openage authors. See copying.md for legal info.
 
 """
 The Python part of openage, a free engine re-write of
@@ -41,9 +41,7 @@ else:
         f"Mako          {config.MAKOVERSION}\n"
         f"NumPy         {config.NUMPYVERSION}\n"
         f"Pillow        {config.PILVERSION}\n"
-        f"Pygments      {config.PYGMENTSVERSION}\n"
-        "\n"
-        "== C++ =="
+        f"Pygments      {config.PYGMENTSVERSION}"
     )
 
 

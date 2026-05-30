@@ -1,4 +1,4 @@
-# Copyright 2015-2024 the openage authors. See copying.md for legal info.
+# Copyright 2015-2026 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-statements
 """
@@ -22,12 +22,33 @@ def print_version():
     The default version printer, unfortunately, inserts newlines.
     This is the easiest way around.
     """
+    import platform
+
     from . import LONGVERSION
     print(LONGVERSION)
-    from .versions.versions import get_version_numbers
-    version_numbers = get_version_numbers()
-    for key in version_numbers:
-        print(key.decode("utf8") + " " + version_numbers[key].decode("utf8"))
+
+    print()
+    print("== Platform ==")
+    print(f"System        {platform.system()} {platform.release()}")
+    print(f"Version       {platform.version()}")
+    print(f"Architecture  {platform.machine()}")
+    print(f"Python impl   {platform.python_implementation()} {platform.python_version()}")
+    print(f"Executable    {sys.executable}")
+    print(f"openage path  {os.path.dirname(os.path.realpath(__file__))}")
+    libc_lib, libc_ver = platform.libc_ver()
+    if libc_lib:
+        print(f"libc (probe)  {libc_lib} {libc_ver}")
+
+    print()
+    print("== C++ ==")
+    try:
+        from .versions.versions import get_version_numbers
+    except ImportError:
+        print("(unavailable; openage.versions Cython module not built)")
+    else:
+        version_numbers = get_version_numbers()
+        for key in version_numbers:
+            print(key.decode("utf8") + " " + version_numbers[key].decode("utf8"))
     sys.exit(0)
 
 
