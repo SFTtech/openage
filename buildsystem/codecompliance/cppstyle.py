@@ -1,4 +1,4 @@
-# Copyright 2015-2017 the openage authors. See copying.md for legal info.
+# Copyright 2015-2026 the openage authors. See copying.md for legal info.
 
 """
 Checks some code style rules for cpp files.
@@ -47,6 +47,33 @@ INDENT_FAIL_LINE_RE = re.compile(
     r")"
 )
 
+# Compound-assignment and comparison operators that must be surrounded by spaces.
+# Ordered longest-first; < and >-based ops use lookbehind/lookahead to avoid
+# matching the shorter pattern inside a longer one (e.g. >= inside >>=,
+# <= inside <<= or the C++20 <=> spaceship operator).
+_SPACED_OPS_ALT = (
+    r'<<=|>>=|'
+    r'\+=|-=|\*=|%=|\^=|\|=|&=|~=|'
+    r'(?<!<)<=(?!>)|(?<!>)>=|'
+    r'==|!='
+)
+
+OPERATOR_SPACING_RE = re.compile(
+    r'(?<!\s)(?:' + _SPACED_OPS_ALT + r')'
+    r'|'
+    r'(?:' + _SPACED_OPS_ALT + r')(?!\s)'
+)
+
+# Strips // comments, inline /* */ comments, and double-quoted string literals
+# by replacing each with equal-length spaces (preserves column offsets).
+_CLEAN_LINE_RE = re.compile(r'//.*|/\*.*?\*/|"(?:[^"\\]|\\.)*"')
+
+# Matches the start of a block-comment continuation line (e.g. " * text").
+_BLOCK_CMT_CONT_RE = re.compile(r'^\s*\*')
+
+# Matches the 'operator' keyword (used to skip operator-overload declarations).
+_OPERATOR_KW_RE = re.compile(r'\boperator\b')
+
 
 def filter_file_list(check_files, dirnames):
     """
@@ -81,7 +108,8 @@ def find_issues(check_files, dirnames):
 
         if MISSING_SPACES_RE.search(data) or\
            EXTRA_SPACES_RE.search(data) or\
-           INDENT_FAIL_RE.search(data):
+           INDENT_FAIL_RE.search(data) or\
+           OPERATOR_SPACING_RE.search(data):
 
             analyse_each_line = True
 
@@ -116,3 +144,16 @@ def find_issues_with_lines(data, filename):
             yield issue_str_line("Wrong indentation",
                                  filename, line, num,
                                  (match.start(1), match.end(1)))
+
+        # Check that compound-assignment and comparison operators have spaces
+        # on both sides. Operate on a cleaned copy of the line (comments and
+        # string literals blanked out) to avoid false positives; also skip
+        # block-comment continuation lines and operator-overload declarations.
+        check_line = _CLEAN_LINE_RE.sub(lambda m: ' ' * len(m.group()), line)
+        if (not _BLOCK_CMT_CONT_RE.match(check_line) and
+                not _OPERATOR_KW_RE.search(check_line)):
+            match = OPERATOR_SPACING_RE.search(check_line)
+            if match:
+                yield issue_str_line("Missing space around operator",
+                                     filename, line, num,
+                                     (match.start(), match.end()))
