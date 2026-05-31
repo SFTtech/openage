@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# Copyright 2015-2025 the openage authors. See copying.md for legal info.
+# Copyright 2015-2026 the openage authors. See copying.md for legal info.
 
 """
 Runs Cython on all modules that were listed via add_cython_module.
@@ -12,6 +12,19 @@ import sys
 from contextlib import redirect_stdout
 from multiprocessing import cpu_count
 from pathlib import Path
+
+# Python 3.12 removed distutils from the standard library, but Cython's build
+# dependency machinery still does `from distutils...`. setuptools bundles a
+# replacement and installs the import shim when imported, so pull it in before
+# Cython goes looking. We do it explicitly rather than rely on the site-startup
+# shim, which isn't always active depending on how setuptools got installed
+# (see issue #1769).
+try:
+    import setuptools  # noqa: F401  pylint: disable=unused-import
+except ModuleNotFoundError:
+    sys.exit("openage's build needs the 'setuptools' package (it provides "
+             "'distutils' for Cython on Python 3.12+). "
+             "Install it with: pip install setuptools")
 
 from Cython.Build import cythonize
 
