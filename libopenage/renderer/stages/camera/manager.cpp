@@ -28,6 +28,7 @@ CameraManager::CameraManager(const std::shared_ptr<renderer::camera::Camera> &ca
 void CameraManager::update() {
 	this->update_motion();
 	this->update_uniforms();
+	this->poll_render_entity(); // should we need to this every update?
 }
 
 void CameraManager::move_frame(MoveDirection direction, float speed) {
@@ -70,6 +71,13 @@ void CameraManager::zoom_frame(ZoomDirection direction, float speed) {
 
 void CameraManager::set_camera_boundaries(const CameraBoundaries &camera_boundaries) {
 	this->camera_boundaries = camera_boundaries;
+}
+
+void CameraManager::poll_render_entity() {
+	if (this->render_entity->is_changed()) [[unlikely]] {
+		this->set_camera_boundaries(this->render_entity->get_camera_boundaries());
+		this->render_entity->clear_changed_flag();
+	}
 }
 
 void CameraManager::update_motion() {
@@ -140,5 +148,11 @@ void CameraManager::set_move_motion_speed(float speed) {
 void CameraManager::set_zoom_motion_speed(float speed) {
 	this->zoom_motion_speed = speed;
 }
+
+void CameraManager::add_render_entity(const std::shared_ptr<RenderEntity> entity) {
+	// std::unique_lock lock{this->mutex};
+	this->render_entity = entity;
+}
+
 
 } // namespace openage::renderer::camera
