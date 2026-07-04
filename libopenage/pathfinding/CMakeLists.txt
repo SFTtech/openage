@@ -9,6 +9,7 @@ add_sources(libopenage
 	path.cpp
 	pathfinder.cpp
 	portal.cpp
+	portal_node.cpp
 	sector.cpp
 	tests.cpp
     types.cpp
