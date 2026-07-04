@@ -168,6 +168,7 @@ _the openage authors_ are:
 | Daniel Wieczorek            | Danio                       | danielwieczorek96 à gmail dawt com                |
 |                             | bytegrrrl                   | bytegrrrl à proton dawt me                        |
 | Nicolas Sanchez             | nicolassanchez02            | nicolasjpsanchez à gmail dawt com                 |
+| Manas Pradhan               | manas-maker                 | manasmpradhan5 à gmail dawt com                   |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
