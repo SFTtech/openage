@@ -14,9 +14,10 @@ namespace openage::path {
 CostField::CostField(size_t size) :
 	size{size},
 	valid_until{time::TIME_MIN},
-	cells(this->size * this->size, COST_MIN) {
-	log::log(DBG << "Created cost field with size " << this->size << "x" << this->size);
-}
+	cells(this->size * this->size, COST_MIN),
+	cost_stamps(this->size * this->size, std::nullopt) {
+		log::log(DBG << "Created cost field with size " << this->size << "x" << this->size);
+	}
 
 size_t CostField::get_size() const {
 	return this->size;
@@ -54,6 +55,33 @@ void CostField::set_costs(std::vector<cost_t> &&cells, const time::time_t &valid
 
 	this->cells = std::move(cells);
 	this->valid_until = valid_until;
+}
+
+bool CostField::stamp(size_t idx, cost_t cost, const time::time_t &stamped_at) {
+	if (this->cost_stamps[idx].has_value()) {
+	    return false;
+	}
+
+	cost_t original_cost = this->get_cost(idx);
+	this->cost_stamps[idx] = cost_stamp_t{
+		original_cost,
+		stamped_at,
+	};
+
+	this->set_cost(idx, cost, stamped_at);
+	return true;
+}
+
+bool CostField::unstamp(size_t idx, const time::time_t &unstamped_at) {
+	if (not this->cost_stamps[idx].has_value() or unstamped_at < this->cost_stamps[idx]->stamp_time) {
+	    return false;
+	}
+
+	cost_t original_cost = cost_stamps[idx]->original_cost;
+
+	this->set_cost(idx, original_cost, unstamped_at);
+	this->cost_stamps[idx].reset();
+	return true;
 }
 
 bool CostField::is_dirty(const time::time_t &time) const {
