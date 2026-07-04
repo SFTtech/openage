@@ -196,6 +196,7 @@ if __name__ == '__main__':
     multiprocessing.freeze_support()
 
     # openage is complicated and multithreaded; better not use fork.
-    multiprocessing.set_start_method('spawn')
+    if mmultiprocessing.get_start_method(allow_none=True) is None:
+        mmultiprocessing.set_start_method('spawn')
 
     sys.exit(main())
