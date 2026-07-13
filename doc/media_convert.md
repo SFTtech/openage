@@ -10,7 +10,7 @@ Currently we *support* conversion for these games:
 * **SWGB**: Star Wars: Galactic Battlegrounds + Clone Campaigns
 * **HD**: Age of Empires 2 (2013) (formerly: Age of Empires 2: HD Edition)
 * **DE1**: Age of Empires 1: Definitive Edition
-* **DE2**: Age of Empires 2: Definitve Edition
+* **DE2**: Age of Empires 2: Definitive Edition
 
 On Linux, you may have to use additional measures to download DE2 versions from Steam:
 

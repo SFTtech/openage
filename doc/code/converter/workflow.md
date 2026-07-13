@@ -104,7 +104,7 @@ a Python object type used for storing the attribute.
 or can be skipped (e.g. `SKIP`).
 
 The Reader parses attributes one by one and stores them in a `ValueMember` subclass
-that is associated with a value type. Its output is a list of `ValueMember` intances.
+that is associated with a value type. Its output is a list of `ValueMember` instances.
 
 ## Processor
 

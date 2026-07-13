@@ -91,7 +91,7 @@ make the game logic maintanable and extensible.
 For a description of the available systems, check the [system reference](systems.md).
 
 A *system* in openage is basically a function that operates on game entity
-components. They are explicitely separated from game entity and component objects
+components. They are explicitly separated from game entity and component objects
 to allow for more flexible implementation. In practice, systems are implemented as static
 functions inside the `gamestate::system` namespace.
 

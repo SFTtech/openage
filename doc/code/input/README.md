@@ -1,6 +1,6 @@
 # Input Management
 
-Input managment concerns the handling external input sources that are used to interact with the engine.
+Input management concerns the handling external input sources that are used to interact with the engine.
 The most common example for such input sources are probably **keyboard and mouse**, but other things like the **GUI**,
 **networking** and **scripting** also fall under this umbrella.
 
@@ -154,7 +154,7 @@ of what's going on inside the gamestate than the low-level input manager.
 A controller receives input event data (as an `event_arguments` struct) as well as a `BindingContext`
 from the input manager. It uses the provided information to create a game event that can then be attached
 to the gamestate event loop. To do this, the controller looks up a `binding_action` struct from
-in binding context using the input event signature or class (similiar to how its works in the low level
+in binding context using the input event signature or class (similar to how its works in the low level
 interface).
 
 `binding_action` contains the following information:

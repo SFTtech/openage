@@ -5,7 +5,7 @@ vscode can be used to launch build, edit, run and debug C++ code.
 There are two different versions of vscode that you can use:
 
 * The official *vscode* release from Microsoft for which you can get an installer on the the Visual Studio Code website.
-* The inofficial fork *vscodium* that removes all proprietary components and disables telemetry. You can find it [here](https://vscodium.com/).
+* The unofficial fork *vscodium* that removes all proprietary components and disables telemetry. You can find it [here](https://vscodium.com/).
 
 
 ## Setting up vscode for openage
