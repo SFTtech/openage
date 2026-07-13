@@ -259,7 +259,7 @@ private:
 /**
  * A interaface variable which gets monitored by an
  * option node allowing reflection, while also
- * being directly accessable as a typed member
+ * being directly accessible as a typed member
  */
 template <class T>
 class Var : public util::Variable<T> {

@@ -63,7 +63,7 @@ private:
 	 *
 	 * Called during initialization of the screen renderer.
 	 *
-	 * @param shaderdir Directory containg the shader source files.
+	 * @param shaderdir Directory containing the shader source files.
 	 */
 	void initialize_render_pass(const util::Path &shaderdir);
 

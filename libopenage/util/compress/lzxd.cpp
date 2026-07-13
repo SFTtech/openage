@@ -170,7 +170,7 @@ public:
 	// IO buffering
 	BitStream<4096> bits;
 
-	// huffman code lenghts
+	// huffman code lengths
 	HuffmanTable<LZX_PRETREE_MAXSYMBOLS, LZX_PRETREE_TABLEBITS> htpre;
 	HuffmanTable<LZX_MAINTREE_MAXSYMBOLS, LZX_MAINTREE_TABLEBITS> htmain;
 	HuffmanTable<LZX_LENGTH_MAXSYMBOLS, LZX_LENGTH_TABLEBITS, true> htlength;
@@ -879,7 +879,7 @@ void LZXDStream::postprocess_intel_e8(unsigned char *buf, int frame_size) {
 		return;
 	}
 
-	// search the block for occurances of '0xe8'
+	// search the block for occurrences of '0xe8'
 	// the last 10 bytes of the frame are not e8-handled, because reasons.
 	for (int pos = 0; pos < frame_size - 10; pos++) {
 		bool is_e8 = (buf[pos] == 0xe8);

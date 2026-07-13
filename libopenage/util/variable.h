@@ -44,7 +44,7 @@ public:
 	}
 
 	/**
-	 * accessable typed value
+	 * accessible typed value
 	 */
 	T value;
 };

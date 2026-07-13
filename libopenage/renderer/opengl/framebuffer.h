@@ -49,7 +49,7 @@ public:
 	 *
 	 * @param context OpenGL context used for drawing.
 	 * @param textures Textures targeted by the framebuffer. They are automatically
-	 *                 attached to the correct attachement points depending on their type.
+	 *                 attached to the correct attachment points depending on their type.
 	 */
 	GlFramebuffer(const std::shared_ptr<GlContext> &context,
 	              std::vector<std::shared_ptr<GlTexture2d>> const &textures);

@@ -289,7 +289,7 @@ Eigen::Vector3f Camera::calc_look_at(Eigen::Vector3f target) {
 	// get x and z offsets
 	// the camera is pointed diagonally to the negative x and z axis
 	// a is the length of the diagonal from camera.xz to scene_pos.xz
-	// so the x and z offest are sides of a square with the same diagonal
+	// so the x and z offset are sides of a square with the same diagonal
 	auto side_length = xz_distance / std::numbers::sqrt2;
 	return Eigen::Vector3f(
 		target[0] + side_length,

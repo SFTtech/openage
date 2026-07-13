@@ -176,7 +176,7 @@ public:
 
 private:
 	/**
-	 * Update a neigbor cell during the cost integration process.
+	 * Update a neighbor cell during the cost integration process.
 	 *
 	 * @param idx Index of the neighbor cell that is updated.
 	 * @param cell_cost Cost of the neighbor cell from the cost field.

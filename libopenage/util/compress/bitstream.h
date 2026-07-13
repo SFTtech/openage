@@ -420,7 +420,7 @@ public:
 	}
 
 	/**
-	 * Aligns the bitstream - that is, _if_ we're currenlty in bitstream mode.
+	 * Aligns the bitstream - that is, _if_ we're currently in bitstream mode.
 	 *
 	 * Otherwise, a no-op.
 	 */

@@ -23,7 +23,7 @@ class Path;
 
 /**
  * Generic File implementation, used in our filesystem-like and file-like
- * abtraction system. Can be created from Python :)
+ * abstraction system. Can be created from Python :)
  *
  * TODO: maybe inherit from std::iostream so we can use it the c++-way
  *
