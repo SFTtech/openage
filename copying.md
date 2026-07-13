@@ -169,6 +169,7 @@ _the openage authors_ are:
 |                             | bytegrrrl                   | bytegrrrl à proton dawt me                        |
 | Nicolas Sanchez             | nicolassanchez02            | nicolasjpsanchez à gmail dawt com                 |
 | Manas Pradhan               | manas-maker                 | manasmpradhan5 à gmail dawt com                   |
+| Erwan Billard               | iacker                      | 82095453+iacker à users dawt noreply dawt github dawt com |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
