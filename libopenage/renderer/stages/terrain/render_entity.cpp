@@ -28,7 +28,7 @@ void RenderEntity::update_tile(const util::Vector2s size,
 		throw Error(MSG(err) << "Cannot update tile: Vertices have not been initialized yet.");
 	}
 
-	// find the postion of the tile in the vertex array
+	// find the position of the tile in the vertex array
 	auto left_corner = pos.ne * size[0] + pos.se;
 
 	// update the 4 vertices of the tile

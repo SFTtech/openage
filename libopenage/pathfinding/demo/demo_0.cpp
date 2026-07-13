@@ -771,7 +771,7 @@ renderer::resources::MeshData RenderManager0::get_flow_field_mesh(const std::sha
 				auto int_flags = int_field->get_cell(i / resolution, (j - 1) / resolution).flags;
 				int_surround.push_back(int_flags);
 			}
-			// combine the flags of the sorrounding tiles
+			// combine the flags of the surrounding tiles
 			auto ff_max_flags = 0;
 			for (auto &val : ff_surround) {
 				ff_max_flags |= val & 0xF0;

@@ -25,7 +25,7 @@ namespace util {
 std::string demangle(const char *symbol) {
 #ifdef _WIN32
 	//  MSVC's typeid(T).name() already returns a demangled name
-	// unlike clang and gcc the MSVC demangled name is prefixed with "class " or "stuct "
+	// unlike clang and gcc the MSVC demangled name is prefixed with "class " or "struct "
 	// we remove the prefix to match the format of clang and gcc
 	return strchr(symbol, ' ') + 1;
 #else
@@ -65,7 +65,7 @@ std::optional<std::string> symbol_name_win(const void *addr) {
 	std::lock_guard<std::mutex> sym_lock_guard{sym_mutex};
 
 	// Initialize symbol handler for process, if it has not yet been initialized
-	// If we are not succesful on the first try, leave it, since MSDN says that searching for symbol files is very time consuming
+	// If we are not successful on the first try, leave it, since MSDN says that searching for symbol files is very time consuming
 	if (!initialized_symbol_handler) {
 		initialized_symbol_handler = true;
 

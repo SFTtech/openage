@@ -76,7 +76,7 @@ private:
 	 *
 	 * @param width Width of the GUI.
 	 * @param height Height of the GUI.
-	 * @param shaderdir Directory containg the shader source files.
+	 * @param shaderdir Directory containing the shader source files.
 	 */
 	void initialize_render_pass(size_t width,
 	                            size_t height,

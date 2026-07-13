@@ -120,7 +120,7 @@ bool string_matches_pattern(const char *str, const char *pattern) {
 		}
 
 		if (*pattern == '\0') {
-			// comparision done
+			// comparison done
 			return true;
 		}
 

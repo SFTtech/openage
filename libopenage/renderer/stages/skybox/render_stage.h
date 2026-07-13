@@ -80,7 +80,7 @@ private:
 	 *
 	 * @param width Width of the FBO.
 	 * @param height Height of the FBO.
-	 * @param shaderdir Directory containg the shader source files.
+	 * @param shaderdir Directory containing the shader source files.
 	 */
 	void initialize_render_pass(size_t width,
 	                            size_t height,

@@ -31,7 +31,7 @@ enum class gl_render_target_t {
 
 /**
  * Represents an OpenGL target that can be drawn into.
- * It can be either a framebuffer with texture attachements or the display (the window).
+ * It can be either a framebuffer with texture attachments or the display (the window).
  */
 class GlRenderTarget final : public RenderTarget {
 public:
@@ -52,7 +52,7 @@ public:
 	 * e.g. a depth texture will be set as the depth target.
 	 *
 	 * @param context OpenGL context used for drawing.
-	 * @param textures Texture attachements.
+	 * @param textures Texture attachments.
 	 */
 	GlRenderTarget(const std::shared_ptr<GlContext> &context,
 	               std::vector<std::shared_ptr<GlTexture2d>> const &textures);

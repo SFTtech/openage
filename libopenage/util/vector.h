@@ -165,7 +165,7 @@ public:
 	}
 
 	/**
-	 * Euclidian norm aka length
+	 * Euclidean norm aka length
 	 */
 	T norm() const {
 		return std::sqrt(this->dot(*this));
