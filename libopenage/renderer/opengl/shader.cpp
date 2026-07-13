@@ -36,7 +36,7 @@ GlShader::GlShader(const std::shared_ptr<GlContext> &context,
 	// compile shader source
 	glCompileShader(handle);
 
-	// check compiliation result
+	// check compilation result
 	GLint status;
 	glGetShaderiv(handle, GL_COMPILE_STATUS, &status);
 

@@ -212,7 +212,7 @@ void GlContext::check_error() {
 		}();
 
 		throw Error(
-			MSG(err) << "An OpenGL error has occured.\n\t"
+			MSG(err) << "An OpenGL error has occurred.\n\t"
 					 << "(" << error_state << "): " << msg);
 	}
 }

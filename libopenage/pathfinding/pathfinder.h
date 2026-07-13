@@ -188,7 +188,7 @@ public:
 
 
 	/**
-	 * maps node_t of a neigbhour portal to the distance cost to travel between the portals
+	 * maps node_t of a neighbour portal to the distance cost to travel between the portals
 	 */
 	using exits_t = std::map<const node_t, int>;
 

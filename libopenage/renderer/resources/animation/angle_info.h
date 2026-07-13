@@ -29,7 +29,7 @@ public:
 	/**
 	 * Create a 2D Angle Info.
 	 *
-	 * @param angle_start Rotation in degress at which the frames are displayed.
+	 * @param angle_start Rotation in degrees at which the frames are displayed.
 	 * @param frames Frame information.
 	 * @param mirror_from Mirror frames from another angle instead of using uniquely
 	 *                    defined frames.
@@ -88,7 +88,7 @@ public:
 
 private:
 	/**
-	 * Starting rotation in degress at which the frames are displayed.
+	 * Starting rotation in degrees at which the frames are displayed.
 	 */
 	float angle_start;
 
