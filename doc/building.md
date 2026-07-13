@@ -168,7 +168,7 @@ The reference package is [created for Gentoo](https://github.com/SFTtech/gentoo-
 - My `Qt`/`Python`/whatever is installed somewhere, but `cmake` can't find it!
   - Run `ccmake` or `cmake-gui` in the build directory to see and change config variables.
   - You can manually tell `cmake` where to look. Try something along the lines of
-    - `./configure -- -DPYTHON_INCLUDE_DIRS=/whereever/python/include/`
+    - `./configure -- -DPYTHON_INCLUDE_DIRS=/wherever/python/include/`
     - `-DPython3_EXECUTABLE=/your/py3/directory/`
 
 - I get compiler errors about missing header files

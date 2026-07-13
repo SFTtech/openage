@@ -14,7 +14,7 @@ This documents describes the purpose of each demo and contains instructions on h
 
 ### Demo 0
 
-This demo shows the creation of a minmal renderer setup and the rendering of a simple mesh.
+This demo shows the creation of a minimal renderer setup and the rendering of a simple mesh.
 
 The demo initializes a GUI application, a window, a renderer object, and a render pass.
 It then loads a shader program and creates a single mesh object which is then rendered to the screen
