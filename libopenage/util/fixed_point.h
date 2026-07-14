@@ -176,6 +176,13 @@ public:
 	}
 
 	/**
+	 * FixedPoint value that is preinitialized to one.
+	 */
+	static constexpr FixedPoint one() {
+		return FixedPoint::from_int(1);
+	}
+
+	/**
 	 * Math constants represented in FixedPoint
 	 */
 	// naming, definition and value are kept compatible with `math_constants.h`
@@ -366,6 +373,26 @@ public:
 			static_cast<FixedPoint::unsigned_int_type>(this->raw_value) & std::integral_constant<int_type, FixedPoint::fractional_part_bitmask()>::value);
 	}
 
+	/**
+	 * Converter to retrieve the integral (pre-decimal) part of the number.
+	 */
+	constexpr FixedPoint get_integral_part() const {
+		// similar to the get_fractional_part() implementation, but the opposite bits.
+		return FixedPoint::from_raw_value(this->raw_value & ~std::integral_constant<int_type, FixedPoint::fractional_part_bitmask()>::value);
+	}
+
+	/**
+	 * Round to the nearest integer.
+	 */
+	constexpr FixedPoint round() const {
+		if (this->get_fractional_part() < same_type_but_unsigned(0.5)) {
+			return this->get_integral_part();
+		}
+		else {
+			return this->get_integral_part() + one();
+		}
+	}
+
 	// Comparison operators for comparison with other
 	constexpr auto operator<=>(const FixedPoint &o) const = default;
 
@@ -410,6 +437,18 @@ public:
 	template <typename N>
 	typename std::enable_if<std::is_arithmetic<N>::value, FixedPoint &>::type constexpr operator*=(const N &rhs) {
 		this->raw_value *= rhs;
+		return *this;
+	}
+
+	/**
+	 * FixedPoint *= FixedPoint
+	 *
+	 * This shares the same caveats as FixedPint * FixedPoint.
+	 *
+	 * Use a larger intermediate type to avoid overflow.
+	 */
+	constexpr FixedPoint operator*=(const FixedPoint &rhs) {
+		*this = *this *rhs;
 		return *this;
 	}
 
@@ -499,16 +538,111 @@ public:
 		return std::atan2(this->to_double(), n.to_double());
 	}
 
-	constexpr double sin() {
-		return std::sin(this->to_double());
+	/**
+	 * Calculate pure FixedPoint sine using a power series approximation.
+	 *
+	 * This may lose absolute precision when the fractional part is small. Because trig functions are
+	 * cyclic, we don't lose precision for large integer values. For best results, you would want
+	 * intermediate_size to be twice the size of raw_type.
+	 */
+	constexpr FixedPoint sin() {
+		size_t order = this->approx_decimal_places;
+		FixedPoint x = *this;
+
+		// Sine is an odd function, so we can pull out the sign.
+		bool negative = x < 0;
+		if (negative) {
+			x = -x;
+		}
+
+		// Ensure we're in the interval (-pi, pi)
+		// Since this is a series expansion approximation around 0, this interval is where we are most accurate
+		if (x > FixedPoint::pi()) {
+			int_type n = (x / FixedPoint::tau()).round().to_int();
+			x -= FixedPoint::tau() * n;
+		}
+
+		FixedPoint pow_x = x;
+		FixedPoint sin_x = 0;
+		size_t factorial = 1;
+		bool term_sign = 0;
+		for (size_t i = 0; i < order; i++) {
+			sin_x += pow_x * (-2 * term_sign + 1) / factorial;
+			term_sign = !term_sign;
+			pow_x *= x * x;
+			factorial *= (2 * i + 2) * (2 * i + 3);
+		}
+
+		return negative ? -sin_x : sin_x;
 	}
 
-	constexpr double cos() {
-		return std::cos(this->to_double());
+	/**
+	 * Calculate pure FixedPoint cosine using a power series approximation.
+	 *
+	 * This may lose absolute precision when the fractional part is small. Because trig functions are
+	 * cyclic, we don't lose precision for large integer values. For best results, you would want
+	 * intermediate_size to be twice the size of raw_type.
+	 */
+	constexpr FixedPoint cos() {
+		size_t order = this->approx_decimal_places;
+		FixedPoint x = *this;
+
+		// Cosine is an even function so we can drop the sign
+		if (x < 0) {
+			x = -x;
+		}
+
+		// Ensure we're in the interval (-pi, pi)
+		// Since this is a series expansion approximation around 0, this interval is where we are most accurate
+		if (x > FixedPoint::pi()) {
+			int_type n = (x / FixedPoint::tau()).round().to_int();
+			x -= FixedPoint::tau() * n;
+		}
+
+		FixedPoint pow_x = 1;
+		FixedPoint cos_x = 0;
+		size_t factorial = 1;
+		bool term_sign = 0;
+		for (size_t i = 0; i < order; i++) {
+			cos_x += pow_x * (-2 * term_sign + 1) / factorial;
+			term_sign = !term_sign;
+			pow_x *= x * x;
+			factorial *= (2 * i + 1) * (2 * i + 2);
+		}
+
+		return cos_x;
 	}
 
-	constexpr double tan() {
-		return std::tan(this->to_double());
+	/**
+	 * Calculate pure FixedPoint tangent using sin() and cos().
+	 *
+	 * This may lose absolute precision when the fractional part is small. Because trig functions are
+	 * cyclic, we don't lose precision for large integer values. For best results, you would want
+	 * intermediate_size to be twice the size of raw_type.
+	 * This is guaranteed to lose precision when approaching its asymptotes (k * pi/2 for odd k).
+	 */
+	constexpr FixedPoint tan() {
+		FixedPoint x = *this;
+
+		// Tangent is odd, we can pull out the sign
+		bool negative = x < 0;
+		if (negative) {
+			x = -x;
+		}
+
+		// Ensure we are in the interval (-pi/2, pi/2) for maximum accuracy
+		if (x > FixedPoint::pi_2()) {
+			int_type n = (x / FixedPoint::pi()).round().to_int();
+			x -= FixedPoint::pi() * n;
+		}
+
+		FixedPoint cos_x = x.cos();
+
+		// Raise an exception when too near an asymptote.
+		ENSURE(cos_x != std::clamp(cos_x.to_double(), -1e-7, 1e-7), "FixedPoint::tan() approaches +/- infinity for this value.");
+		FixedPoint tan_x = x.sin() / cos_x;
+
+		return negative ? -tan_x : tan_x;
 	}
 };
 
@@ -575,10 +709,56 @@ typename std::enable_if<std::is_arithmetic<N>::value, FixedPoint<I, F, Inter>>::
  */
 template <typename I, unsigned int F, typename Inter>
 constexpr FixedPoint<I, F, Inter> operator*(const FixedPoint<I, F, Inter> lhs, const FixedPoint<I, F, Inter> rhs) {
-	Inter ret = static_cast<Inter>(lhs.get_raw_value()) * static_cast<Inter>(rhs.get_raw_value());
-	ret >>= F;
+	using uInter = typename std::make_unsigned<Inter>::type;
 
-	return FixedPoint<I, F, Inter>::from_raw_value(static_cast<I>(ret));
+	// An optimization that can prevent overflows.
+	// This only helps overflows from the actual operations happening here, but not an ordinary overflow of int_type
+	// This is essentially just Karatsuba
+	if constexpr (sizeof(I) == sizeof(Inter)) {
+		constexpr int hwidth = sizeof(Inter) * 4;
+		uInter lower_mask = ~static_cast<uInter>(0) >> hwidth;
+
+		// Store half of each value in each variable
+		bool l_pos = lhs > 0;
+		uInter lhs_lower = static_cast<uInter>(std::abs(lhs.get_raw_value()));
+		Inter lhs_upper = lhs_lower >> hwidth;
+		lhs_lower = lhs_lower & lower_mask;
+
+		bool r_pos = rhs > 0;
+		uInter rhs_lower = static_cast<uInter>(std::abs(rhs.get_raw_value()));
+		Inter rhs_upper = rhs_lower >> hwidth;
+		rhs_lower = rhs_lower & lower_mask;
+
+		// Calculate the multiplication piecewise
+		uInter result_lower = lhs_lower * rhs_lower;
+		Inter result_mid = lhs_lower * rhs_upper + lhs_upper * rhs_lower;
+		Inter result_upper = lhs_upper * rhs_upper;
+
+		// And recombine.
+		I result = result_lower >> F;
+		if constexpr (F > hwidth) {
+			result += result_mid >> (F - hwidth);
+		}
+		else {
+			result += result_mid << (hwidth - F);
+		}
+		if constexpr (F > 2 * hwidth) {
+			result += result_upper >> (F - 2 * hwidth);
+		}
+		else {
+			// These are the bits that would have been lost. We still may lose some, but there are some we save
+			result += result_upper << (2 * hwidth - F);
+		}
+		result = l_pos ^ r_pos ? -result : result;
+
+		return FixedPoint<I, F, Inter>::from_raw_value(result);
+	}
+	else {
+		Inter ret = static_cast<Inter>(lhs.get_raw_value()) * static_cast<Inter>(rhs.get_raw_value());
+		ret >>= F;
+
+		return FixedPoint<I, F, Inter>::from_raw_value(static_cast<I>(ret));
+	}
 }
 
 
@@ -587,8 +767,53 @@ constexpr FixedPoint<I, F, Inter> operator*(const FixedPoint<I, F, Inter> lhs, c
  */
 template <typename I, unsigned int F, typename Inter>
 constexpr FixedPoint<I, F, Inter> operator/(const FixedPoint<I, F, Inter> lhs, const FixedPoint<I, F, Inter> rhs) {
-	Inter ret = div((static_cast<Inter>(lhs.get_raw_value()) << F), static_cast<Inter>(rhs.get_raw_value()));
-	return FixedPoint<I, F, Inter>::from_raw_value(static_cast<I>(ret));
+	using uInter = typename std::make_unsigned<Inter>::type;
+	using FP = FixedPoint<I, F, Inter>;
+
+	// Implementation that doesn't lose bits using small intermediate values.
+	if constexpr (sizeof(I) == sizeof(Inter)) {
+		constexpr uInter lower_mask = ~static_cast<uInter>(0) >> (sizeof(Inter) * 8 - F);
+
+		// Store the integral and fractional parts in the upper and lower "halves"
+		bool l_pos = lhs > 0;
+		uInter lhs_lower = static_cast<uInter>(std::abs(lhs.get_raw_value()));
+		Inter lhs_upper = lhs_lower >> F;
+		lhs_lower = lhs_lower & lower_mask;
+
+		bool r_pos = rhs > 0;
+		uInter rhs_lower = static_cast<uInter>(std::abs(rhs.get_raw_value()));
+		Inter rhs_upper = rhs_lower >> F;
+		rhs_lower = rhs_lower & lower_mask;
+
+		// special case when integeral part of rhs is 0
+		if (rhs_upper == 0) {
+			// It's very likely this upper term is zero, but we should consider it regardless.
+			FP upper_term = FP::from_raw_value((lhs_upper << (2 * F)) / rhs_lower);
+			FP lower_term = FP::from_raw_value((lhs_lower << F) / rhs_lower);
+			FP result = upper_term + lower_term;
+			return l_pos ^ r_pos ? -result : result;
+		}
+
+		// Calculate the multiplication piecewise
+		FP upper_term = FixedPoint<I, F, Inter>::from_raw_value((lhs_upper << F) / rhs_upper);
+		FP lower_term = FP::from_raw_value(((lhs_lower << F) / rhs_upper) >> F);
+		FP mixed_term = FixedPoint<I, F, Inter>::from_raw_value((rhs_lower) / rhs_upper);
+
+		// Basically doing a power series expansion here for (lhs_upper + lhs_lower) / (rhs_upper + rhs_lower)
+		FP result = FP::zero();
+		FP term = FP::one();
+		for (size_t i = 0; i < 8; i++) {
+			result += term * upper_term;
+			result += term * lower_term;
+			term *= -mixed_term;
+		}
+
+		return l_pos ^ r_pos ? -result : result;
+	}
+	else {
+		Inter ret = div((static_cast<Inter>(lhs.get_raw_value()) << F), static_cast<Inter>(rhs.get_raw_value()));
+		return FixedPoint<I, F, Inter>::from_raw_value(static_cast<I>(ret));
+	}
 }
 
 
@@ -629,17 +854,17 @@ constexpr double atan2(openage::util::FixedPoint<I, F, Inter> x, openage::util::
 
 template <typename I, unsigned F, typename Inter>
 constexpr double sin(openage::util::FixedPoint<I, F, Inter> n) {
-	return n.sin();
+	return static_cast<double>(n.sin());
 }
 
 template <typename I, unsigned F, typename Inter>
 constexpr double cos(openage::util::FixedPoint<I, F, Inter> n) {
-	return n.cos();
+	return static_cast<double>(n.cos());
 }
 
 template <typename I, unsigned F, typename Inter>
 constexpr double tan(openage::util::FixedPoint<I, F, Inter> n) {
-	return n.tan();
+	return static_cast<double>(n.tan());
 }
 
 template <typename I, unsigned F, typename Inter>
