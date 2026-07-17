@@ -167,6 +167,7 @@ _the openage authors_ are:
 | Jordan Sutton               | jsutCodes                   | jsutcodes à gmail dawt com                        |
 | Daniel Wieczorek            | Danio                       | danielwieczorek96 à gmail dawt com                |
 |                             | bytegrrrl                   | bytegrrrl à proton dawt me                        |
+|                             | hellvoid                    | hell à void dawt lan                              |
 | Nicolas Sanchez             | nicolassanchez02            | nicolasjpsanchez à gmail dawt com                 |
 | Manas Pradhan               | manas-maker                 | manasmpradhan5 à gmail dawt com                   |
 
