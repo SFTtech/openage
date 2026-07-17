@@ -297,11 +297,11 @@ class AoCCivSubprocessor:
             train_location_id = unique_line.get_train_location_id()
             if isinstance(unique_line, GenieBuildingLineGroup):
                 train_location = dataset.unit_lines[train_location_id]
-                train_location_name = name_lookup_dict[train_location_id][0]
+                train_location_name = name_lookup_dict[train_location.get_head_unit_id()][0]
 
             else:
                 train_location = dataset.building_lines[train_location_id]
-                train_location_name = name_lookup_dict[train_location_id][0]
+                train_location_name = name_lookup_dict[train_location.get_head_unit_id()][0]
 
             patch_target_ref = f"{train_location_name}.Create"
             patch_target_forward_ref = ForwardRef(train_location, patch_target_ref)
