@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# Copyright 2015-2025 the openage authors. See copying.md for legal info.
+# Copyright 2015-2026 the openage authors. See copying.md for legal info.
 
 """
 Runs Cython on all modules that were listed via add_cython_module.
@@ -12,6 +12,15 @@ import sys
 from contextlib import redirect_stdout
 from multiprocessing import cpu_count
 from pathlib import Path
+
+# setuptools 60+ ships a distutils shim that re-exports the legacy distutils
+# APIs (Extension, etc.). Importing setuptools before Cython registers the
+# shim in sys.modules, which is what Cython 3.x's Build.Dependencies needs
+# on the first cythonize() call. Without this, the import in Cython's
+# 'from distutils.extension import Extension' fails on Python 3.12+ because
+# distutils was removed from the stdlib. This is the official recommended
+# workaround; see https://github.com/cython/cython/issues/4610
+import setuptools  # noqa: F401  # pylint: disable=unused-import
 
 from Cython.Build import cythonize
 

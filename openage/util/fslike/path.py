@@ -1,4 +1,4 @@
-# Copyright 2015-2023 the openage authors. See copying.md for legal info.
+# Copyright 2015-2026 the openage authors. See copying.md for legal info.
 
 """
 Provides Path, which is analogous to pathlib.Path,
@@ -240,12 +240,12 @@ class Path:
         else:
             self.unlink()
 
-    @ property
+    @property
     def mtime(self):
         """ Returns the time of last modification of the file or directory. """
         return self.fsobj.mtime(self.parts)
 
-    @ property
+    @property
     def filesize(self):
         """ Returns the file size. """
         return self.fsobj.filesize(self.parts)
@@ -265,17 +265,17 @@ class Path:
         """ Polls the installed watches for the entire file-system. """
         self.fsobj.poll_watches()
 
-    @ property
+    @property
     def parent(self):
         """ Parent path object. The parent of root is root. """
         return type(self)(self.fsobj, self.parts[:-1])
 
-    @ property
+    @property
     def name(self):
         """ The name of the topmost component (str). """
         return self.parts[-1].decode()
 
-    @ property
+    @property
     def suffix(self):
         """ The last suffix of the name of the topmost component (str). """
         name = self.name
@@ -284,7 +284,7 @@ class Path:
             return ""
         return name[pos:]
 
-    @ property
+    @property
     def suffixes(self):
         """ The suffixes of the name of the topmost component (str list). """
         name = self.name
@@ -292,7 +292,7 @@ class Path:
             name = name[1:]
         return ['.' + suffix for suffix in name.split('.')[1:]]
 
-    @ property
+    @property
     def stem(self):
         """ Name without suffix (such that stem + suffix == name). """
         name = self.name

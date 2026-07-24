@@ -196,6 +196,8 @@ if __name__ == '__main__':
     multiprocessing.freeze_support()
 
     # openage is complicated and multithreaded; better not use fork.
-    multiprocessing.set_start_method('spawn')
+    # force=True: Python >= 3.13 raises if the start method was already
+    # implicitly fixed (e.g. by freeze_support() calling get_start_method()).
+    multiprocessing.set_start_method('spawn', force=True)
 
     sys.exit(main())

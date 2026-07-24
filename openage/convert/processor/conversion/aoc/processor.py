@@ -1,4 +1,4 @@
-# Copyright 2019-2024 the openage authors. See copying.md for legal info.
+# Copyright 2019-2026 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-branches,too-many-statements
 # pylint: disable=too-many-locals,too-many-public-methods
@@ -996,6 +996,10 @@ class AoCProcessor:
 
                 elif task_group_id == 2:
                     line_id = GenieUnitTaskGroup.female_line_id
+
+                else:
+                    # Unknown task group id; skip this unit.
+                    continue
 
                 task_group = GenieUnitTaskGroup(line_id, task_group_id, full_data_set)
                 task_group.add_unit(unit)

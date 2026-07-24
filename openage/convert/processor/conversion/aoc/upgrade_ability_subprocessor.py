@@ -1,4 +1,4 @@
-# Copyright 2020-2023 the openage authors. See copying.md for legal info.
+# Copyright 2020-2026 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-lines,too-many-statements,invalid-name
 # pylint: disable=too-many-public-methods,too-many-branches,too-many-arguments
@@ -1465,7 +1465,7 @@ class AoCUpgradeAbilitySubprocessor:
             )):
                 data_changed = True
 
-        if not isinstance(diff_animation, NoDiffMember):
+        if not isinstance(diff_animation, NoDiffMember):  # pylint: disable=possibly-used-before-assignment
             diff_animation_id = diff_animation.value
 
             # Nyan patch
@@ -1490,7 +1490,7 @@ class AoCUpgradeAbilitySubprocessor:
                                       f"{name_lookup_dict[head_unit_id][1]}/"))
                 wrapper.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
-        if not isinstance(diff_comm_sound, NoDiffMember):
+        if not isinstance(diff_comm_sound, NoDiffMember):  # pylint: disable=possibly-used-before-assignment
             diff_comm_sound_id = diff_comm_sound.value
 
             # Nyan patch
