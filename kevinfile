@@ -14,6 +14,10 @@ sanity_check:
 configure:
 	- env: mode=debug   compiler=gcc            (? if job == "debian" ?)
 	- env: mode=debug   compiler=clang          (? if job == "debian-clang" ?)
+	# Debian trixie's cython3 (3.0.x) is incompatible with Python 3.13's
+	# removal of distutils. Pull a newer Cython (3.1+) via pip before
+	# configure so FindCython picks the working version. Idempotent.
+	python3 -m pip install --break-system-packages "cython>=3.1.0,<4.0.0"
 	./configure --mode=${mode} --compiler=${compiler} --ccache --download-nyan
 	# TODO: once all warnings are gone again, set --flags="-Werror"
 
