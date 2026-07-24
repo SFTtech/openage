@@ -7,6 +7,14 @@ Runs Cython on all modules that were listed via add_cython_module.
 """
 
 import argparse
+# Importing setuptools before Cython registers setuptools' distutils shim in
+# sys.modules. Cython 3.x's Build.Dependencies does
+# 'from distutils.extension import Extension' on first cythonize() call, which
+# fails on Python 3.12+ because distutils was removed from the stdlib.
+# setuptools 60+ ships a distutils shim that re-exports the legacy distutils
+# APIs (Extension, etc.) so Cython's import keeps working. This is the
+# official recommended workaround; see https://github.com/cython/cython/issues/4610
+import setuptools  # noqa: F401  # imported for side effect (distutils shim)
 import os
 import sys
 from contextlib import redirect_stdout
