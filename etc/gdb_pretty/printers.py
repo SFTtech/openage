@@ -1,4 +1,4 @@
-# Copyright 2024-2025 the openage authors. See copying.md for legal info.
+# Copyright 2024-2026 the openage authors. See copying.md for legal info.
 
 """
 Pretty printers for GDB.
@@ -59,8 +59,8 @@ class PrinterControl(gdb.printing.PrettyPrinter):
         return None
 
 
-pp = PrinterControl('openage')
-gdb.printing.register_pretty_printer(None, pp)
+OPENAGE_PRINTER = PrinterControl('openage')
+gdb.printing.register_pretty_printer(None, OPENAGE_PRINTER)
 
 
 def printer_typedef(type_name: str):
@@ -74,7 +74,7 @@ def printer_typedef(type_name: str):
         """
         Registers the printer with GDB.
         """
-        pp.add_printer(type_name, printer)
+        OPENAGE_PRINTER.add_printer(type_name, printer)
 
     return _register_printer
 
@@ -90,7 +90,7 @@ def printer_regex(regex: str):
         """
         Registers the printer with GDB.
         """
-        pp.add_printer_regex(regex, printer)
+        OPENAGE_PRINTER.add_printer_regex(regex, printer)
 
     return _register_printer
 

@@ -1,4 +1,4 @@
-# Copyright 2020-2024 the openage authors. See copying.md for legal info.
+# Copyright 2020-2026 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-arguments,too-many-locals,too-many-branches
 """
@@ -235,4 +235,4 @@ def create_game_obj(
 
     return GameEdition(game_name, game_id, support, game_version_info,
                        game_mediapaths, game_installpaths, modpacks,
-                       expansions, **flags)
+                       expansions, **flags)  # pylint: disable=possibly-used-before-assignment

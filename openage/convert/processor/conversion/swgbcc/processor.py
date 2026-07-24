@@ -1,4 +1,4 @@
-# Copyright 2020-2024 the openage authors. See copying.md for legal info.
+# Copyright 2020-2026 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-branches,too-many-statements,too-many-locals
 #
@@ -549,6 +549,10 @@ class SWGBCCProcessor:
 
                 elif task_group_id == 2:
                     # No differences to task group 1; probably unused
+                    continue
+
+                else:
+                    # Unknown task group id; skip this unit.
                     continue
 
                 task_group = GenieUnitTaskGroup(line_id, task_group_id, full_data_set)

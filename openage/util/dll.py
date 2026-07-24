@@ -1,4 +1,4 @@
-# Copyright 2024-2024 the openage authors. See copying.md for legal info.
+# Copyright 2024-2026 the openage authors. See copying.md for legal info.
 
 """
 Windows-specific loading of compiled Python modules and DLLs.
@@ -12,7 +12,7 @@ import sys
 DEFAULT_PYTHON_DLL_DIR = os.path.dirname(sys.executable)
 
 # openage.dll locations (relative to this file)
-DEFAULT_OPENAGE_DLL_DIRs = [
+DEFAULT_OPENAGE_DLL_DIRS = [
     "../../libopenage/Debug",
     "../../libopenage/Release",
     "../../libopenage/RelWithDebInfo",
@@ -108,7 +108,7 @@ def default_paths() -> list[str]:
     file_dir = os.path.dirname(os.path.abspath(inspect.getsourcefile(lambda: 0)))
 
     # Add openage DLL search paths
-    for candidate in DEFAULT_OPENAGE_DLL_DIRs:
+    for candidate in DEFAULT_OPENAGE_DLL_DIRS:
         path = os.path.join(file_dir, candidate)
         if os.path.exists(path):
             directory_paths.append(path)

@@ -1,4 +1,4 @@
-# Copyright 2013-2023 the openage authors. See copying.md for legal info.
+# Copyright 2013-2026 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=too-many-function-args
 
@@ -197,8 +197,7 @@ class BlendingMode:
             padding = [-1] * space_count
             pixels = padding + pixels + padding
 
-            if len(pixels) > max_width:
-                max_width = len(pixels)
+            max_width = max(max_width, len(pixels))
 
             read_so_far += read_values
             tilerows.append(pixels)

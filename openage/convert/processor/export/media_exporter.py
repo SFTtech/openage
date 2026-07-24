@@ -77,6 +77,12 @@ class MediaExporter:
             handle_outqueue_func = None
 
             kwargs = {}
+            # `itargs` and `handle_outqueue_func` are set per MediaType below;
+            # pre-initialise so the later _export_singlethreaded /
+            # _export_multithreaded calls are valid for any new MediaType that
+            # gets added without a corresponding branch here.
+            itargs = ()
+            handle_outqueue_func = None
             if media_type is MediaType.BLEND:
                 read_data_func = MediaExporter._get_blend_data
                 export_func = _export_blend
@@ -724,7 +730,10 @@ def _export_terrain(
 
     elif file_ext == "dds":
         # TODO: Implement
-        pass
+        raise NotImplementedError(
+            f"DDS source file {source_filename} is not yet supported by the "
+            "media exporter."
+        )
 
     elif file_ext == "png":
         with target_path.open("wb") as imagefile:

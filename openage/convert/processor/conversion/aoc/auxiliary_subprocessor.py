@@ -1,4 +1,4 @@
-# Copyright 2020-2023 the openage authors. See copying.md for legal info.
+# Copyright 2020-2026 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=line-too-long,too-many-locals,too-many-branches,too-many-statements,no-else-return
 

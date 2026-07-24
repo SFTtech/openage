@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2026 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-statements,too-many-branches
 
@@ -44,7 +44,7 @@ class AoCCivSubprocessor:
 
         return patches
 
-    @ classmethod
+    @classmethod
     def get_modifiers(cls, civ_group: GenieCivilizationGroup) -> list[ForwardRef]:
         """
         Returns global modifiers of a civ.
@@ -58,7 +58,7 @@ class AoCCivSubprocessor:
 
         return modifiers
 
-    @ staticmethod
+    @staticmethod
     def get_starting_resources(civ_group: GenieCivilizationGroup) -> list[ForwardRef]:
         """
         Returns the starting resources of a civ.
@@ -183,7 +183,7 @@ class AoCCivSubprocessor:
 
         return resource_amounts
 
-    @ classmethod
+    @classmethod
     def setup_civ_bonus(cls, civ_group: GenieCivilizationGroup) -> list[ForwardRef]:
         """
         Returns global modifiers of a civ.
@@ -274,7 +274,7 @@ class AoCCivSubprocessor:
 
         return patches
 
-    @ staticmethod
+    @staticmethod
     def setup_unique_units(civ_group: GenieCivilizationGroup) -> list[ForwardRef]:
         """
         Patches the unique units into their train location.
@@ -348,7 +348,7 @@ class AoCCivSubprocessor:
 
         return patches
 
-    @ staticmethod
+    @staticmethod
     def setup_unique_techs(civ_group: GenieCivilizationGroup) -> list[ForwardRef]:
         """
         Patches the unique techs into their research location.
@@ -418,7 +418,7 @@ class AoCCivSubprocessor:
 
         return patches
 
-    @ staticmethod
+    @staticmethod
     def setup_tech_tree(civ_group: GenieCivilizationGroup) -> list[ForwardRef]:
         """
         Patches standard techs and units out of Research and Create.
@@ -600,7 +600,7 @@ class AoCCivSubprocessor:
 
         return patches
 
-    @ staticmethod
+    @staticmethod
     def create_animation(
         line: GenieGameEntityGroup,
         animation_id: int,

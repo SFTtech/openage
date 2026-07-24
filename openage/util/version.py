@@ -59,13 +59,17 @@ class SemanticVersion:
         self.buildmetadata = match.group("buildmetadata")
 
     def _precedence_key(self) -> tuple:
-        # A version with no prerelease ranks higher than one with a
-        # prerelease at the same MAJOR.MINOR.PATCH (semver 11.3). We
-        # encode that by giving "no prerelease" a 1 and any prerelease
-        # a 0 as the next tuple element. The prerelease string itself
-        # is included so two prereleases compare stably, but note this
-        # is a lexicographic fallback, not the full semver 11.4
-        # identifier comparison.
+        """
+        Build the comparison key used by the version ordering protocol.
+
+        A version with no prerelease ranks higher than one with a
+        prerelease at the same MAJOR.MINOR.PATCH (semver 11.3). We
+        encode that by giving "no prerelease" a 1 and any prerelease
+        a 0 as the next tuple element. The prerelease string itself
+        is included so two prereleases compare stably, but note this
+        is a lexicographic fallback, not the full semver 11.4
+        identifier comparison.
+        """
         return (
             self.major,
             self.minor,

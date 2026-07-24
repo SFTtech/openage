@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2026 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-lines,too-many-statements,too-many-public-methods
 #
@@ -60,6 +60,10 @@ class RoRUpgradeAttributeSubprocessor:
 
         elif value == 1:
             target_mode = dataset.nyan_api_objects["engine.util.target_mode.type.ExpectedPosition"]
+
+        else:
+            # Unknown ballistics value: nothing to patch up.
+            return patches
 
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
