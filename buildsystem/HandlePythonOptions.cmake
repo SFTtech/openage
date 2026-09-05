@@ -41,13 +41,6 @@ else()
 	endif()
 endif()
 
-# silence cython+python3.8 tp_print deprecation warning
-# https://github.com/cython/cython/pull/3201
-# https://github.com/cython/cython/issues/3474
-if(PYTHON_VER VERSION_GREATER_EQUAL 3.8 AND PYTHON_VERSION VERSION_LESS 3.9)
-	set(PYEXT_CXXCLAGS "${PYEXT_CXXCLAGS}" "-Wno-deprecated-declarations")
-endif()
-
 set(PYEXT_LIBRARY "${PYTHON_LIBRARIES}")
 message("PYTHON_LIBRARIES: " "${PYTHON_LIBRARIES}")
 #Windows always uses optimized version of Python lib

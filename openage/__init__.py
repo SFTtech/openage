@@ -6,15 +6,15 @@ Age of Empires II.
 
 See https://openage.dev and http://github.com/SFTtech/openage
 
-Requires Python 3.6.
+Requires Python 3.12.
 """
 
 from sys import version_info as py_version
 
 from .log import setup_logging
 
-if py_version < (3, 9):
-    raise RuntimeError("openage requires python 3.9 or higher.")
+if py_version < (3, 12):
+    raise RuntimeError("openage requires python 3.12 or higher.")
 
 
 try:

@@ -1,4 +1,4 @@
-# Copyright 2021-2022 the openage authors. See copying.md for legal info.
+# Copyright 2021-2026 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-arguments
 
@@ -8,7 +8,7 @@ Create a media cache file for a game version.
 from __future__ import annotations
 import typing
 
-import toml
+from openage.util.toml import dumps as toml_dumps
 
 from ..data_definition import DataDefinition
 
@@ -53,7 +53,7 @@ class MediaCacheFile(DataDefinition):
                 }
 
         output_str = "# openage media cache file\n\n"
-        output_str += toml.dumps(output_dict)
+        output_str += toml_dumps(output_dict)
 
         return output_str
 

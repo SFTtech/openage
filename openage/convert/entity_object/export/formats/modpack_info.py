@@ -1,11 +1,11 @@
-# Copyright 2020-2024 the openage authors. See copying.md for legal info.
+# Copyright 2020-2026 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-instance-attributes,too-many-arguments
 
 """
 Modpack definition file.
 """
-import toml
+from openage.util.toml import dumps as toml_dumps
 
 from ..data_definition import DataDefinition
 
@@ -277,7 +277,7 @@ class ModpackInfo(DataDefinition):
 
         output_dict.update(authorgroups_table)
 
-        output_str += toml.dumps(output_dict)
+        output_str += toml_dumps(output_dict)
 
         return output_str
 
