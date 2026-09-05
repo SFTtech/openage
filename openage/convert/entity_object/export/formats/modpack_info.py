@@ -5,7 +5,7 @@
 """
 Modpack definition file.
 """
-import toml
+from openage.util.toml import dumps as toml_dumps
 
 from ..data_definition import DataDefinition
 
@@ -277,7 +277,7 @@ class ModpackInfo(DataDefinition):
 
         output_dict.update(authorgroups_table)
 
-        output_str += toml.dumps(output_dict)
+        output_str += toml_dumps(output_dict)
 
         return output_str
 

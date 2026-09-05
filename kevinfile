@@ -15,7 +15,6 @@ configure:
 	- env: mode=debug   compiler=gcc            (? if job == "debian" ?)
 	- env: mode=debug   compiler=clang          (? if job == "debian-clang" ?)
 	./configure --mode=${mode} --compiler=${compiler} --ccache --download-nyan
-	# TODO: once all warnings are gone again, set --flags="-Werror"
 
 build: configure
 	make -j$(nproc) build
