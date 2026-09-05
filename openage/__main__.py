@@ -9,7 +9,6 @@ Subparsers are initialized by their respective modules.
 """
 
 import argparse
-# TODO remove this once all multiprocessing has been eliminated:
 import multiprocessing
 import os
 import sys
@@ -194,8 +193,5 @@ if __name__ == '__main__':
     # https://docs.python.org/3/library/multiprocessing.html#multiprocessing.freeze_support
     # https://pyinstaller.org/en/latest/common-issues-and-pitfalls.html#multi-processing
     multiprocessing.freeze_support()
-
-    # openage is complicated and multithreaded; better not use fork.
-    multiprocessing.set_start_method('spawn')
 
     sys.exit(main())
