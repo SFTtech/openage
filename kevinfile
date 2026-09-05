@@ -22,7 +22,6 @@ configure:
 	# working Cython and the cythonize step has its shim. Idempotent.
 	python3 -m pip install --break-system-packages "cython>=3.1.0,<4.0.0" "setuptools>=68"
 	./configure --mode=${mode} --compiler=${compiler} --ccache --download-nyan
-	# TODO: once all warnings are gone again, set --flags="-Werror"
 
 build: configure
 	make -j$(nproc) build

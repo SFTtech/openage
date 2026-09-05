@@ -28,14 +28,14 @@ Dependencies are needed for:
 Dependency list:
 
     C     gcc >=10 or clang >=10
-    CRA   python >=3.9
+    CRA   python >=3.12
     C     cython >=3.0.10 OR (>=0.29.31 AND <=3.0.7)
     C     cmake >=3.16
       A   numpy
       A   lz4
       A   python imaging library (PIL) -> pillow
-     RA   setuptools (for python>=3.12 and cython<3.1)
-      A   toml
+     RA   setuptools (for cython<3.1)
+      A   tomli_w
     CR    opengl >=3.3
     CR    libepoxy
     CR    libpng

@@ -16,6 +16,7 @@ add_py_modules(
 	struct.py
 	system.py
 	threading.py
+	toml.py
 	version.py
 )
 
