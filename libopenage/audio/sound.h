@@ -1,7 +1,8 @@
-// Copyright 2014-2024 the openage authors. See copying.md for legal info.
+// Copyright 2014-2026 the openage authors. See copying.md for legal info.
 
 #pragma once
 
+#include <cstdint>
 #include <memory>
 
 #include "category.h"
