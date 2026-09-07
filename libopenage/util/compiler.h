@@ -9,7 +9,7 @@
  * May contain some platform-dependent code.
  */
 
-#include <ciso646>
+#include <iso646.h> // alternative operator spellings
 // pxd: from libcpp.string cimport string
 #include <string>
 #include <typeinfo>

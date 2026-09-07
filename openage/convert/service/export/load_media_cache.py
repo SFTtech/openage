@@ -6,7 +6,7 @@ Load data of media cache files.
 from __future__ import annotations
 import typing
 
-import toml
+from openage.util.toml import loads as toml_loads
 
 if typing.TYPE_CHECKING:
     from openage.util.fslike.path import Path
@@ -19,7 +19,7 @@ def load_media_cache(filepath: Path) -> dict[str, dict[str, tuple]]:
     output_dict = {}
 
     with filepath.open() as infile:
-        cache_file = toml.loads(infile.read())
+        cache_file = toml_loads(infile.read())
 
     cache_file.pop("file_version")
     cache_file.pop("hash_algo")

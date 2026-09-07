@@ -14,7 +14,7 @@ from sys import version_info as py_version
 from .log import setup_logging
 
 if py_version < (3, 9):
-    raise RuntimeError("openage requires python 3.9 or higher.")
+    raise RuntimeError("openage requires python 3.11 or higher.")
 
 
 try:

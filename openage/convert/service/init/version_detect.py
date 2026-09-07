@@ -9,11 +9,10 @@ from __future__ import annotations
 
 import typing
 
-import toml
 
-
-from ....log import info, warn, dbg
-from ....util.hash import hash_file
+from openage.log import info, warn, dbg
+from openage.util.toml import loads as toml_loads
+from openage.util.hash import hash_file
 from ...value_object.init.game_version import GameEdition, GameExpansion, GameVersion, Support
 
 if typing.TYPE_CHECKING:
@@ -143,10 +142,10 @@ def create_version_objects(srcdir: Directory) -> tuple[list[GameEdition], list[G
 
     # load toml config files to a dictionary variable
     with game_edition_path.open() as game_edition_toml:
-        game_editions = toml.loads(game_edition_toml.read())
+        game_editions = toml_loads(game_edition_toml.read())
 
     with game_expansion_path.open() as game_expansion_toml:
-        game_expansions = toml.loads(game_expansion_toml.read())
+        game_expansions = toml_loads(game_expansion_toml.read())
 
     # create and list GameEdition objects
     game_editions.pop("file_version")
@@ -200,7 +199,7 @@ def create_game_obj(
     # add version hashes from the auxiliary file specific for the game
     game_hash_path = aux_path["version_hashes.toml"]
     with game_hash_path.open() as game_hash_toml:
-        game_hashes = toml.loads(game_hash_toml.read())
+        game_hashes = toml_loads(game_hash_toml.read())
 
     file_version = game_hashes.pop("file_version")
     hash_algo = game_hashes.pop("hash_algo")
