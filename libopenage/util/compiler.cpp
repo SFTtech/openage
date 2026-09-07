@@ -9,14 +9,14 @@
 	#define WIN32_LEAN_AND_MEAN
 	#include <Windows.h>
 	#include <DbgHelp.h>
+
+	#include <array>
+	#include <iostream>
+	#include <mutex>
+	#include <optional>
 #endif
 
 #include "strings.h"
-
-#include <array>
-#include <iostream>
-#include <mutex>
-#include <optional>
 
 namespace openage {
 namespace util {
