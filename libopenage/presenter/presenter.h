@@ -79,19 +79,19 @@ public:
 	 * @param path Root directory path.
 	 * @param simulation Game simulation. Can be set later with \p set_engine()
 	 * @param time_loop Time loop which controls simulation time. Can be set later with \p set_time_loop()
+	 * @param window_settings The settings to customize the display window (e.g. size, display mode, vsync).
 	 */
 	Presenter(const util::Path &path,
 	          const std::shared_ptr<gamestate::GameSimulation> &simulation = nullptr,
-	          const std::shared_ptr<time::TimeLoop> &time_loop = nullptr);
+	          const std::shared_ptr<time::TimeLoop> &time_loop = nullptr,
+	          const renderer::window_settings &window_settings = {});
 
 	~Presenter() = default;
 
 	/**
 	 * Start the presenter and initialize subsystems.
-	 *
-	 * @param window_settings The settings to customize the display window (e.g. size, display mode, vsync).
 	 */
-	void run(const renderer::window_settings window_settings = {});
+	void run();
 
 	/**
 	 * Set the game simulation controlled by this presenter.
@@ -122,7 +122,7 @@ protected:
 	 *     - main renderer
 	 *     - component renderers (Terrain, Game Entities, GUI)
 	 */
-	void init_graphics(const renderer::window_settings &window_settings = {});
+	void init_graphics();
 
 	/**
 	 * Initialize the GUI.
@@ -149,6 +149,12 @@ protected:
 
 	// TODO: remove and move into our config/settings system
 	util::Path root_dir;
+
+	/**
+	 * The settings to customize the display window (e.g. size, display mode, vsync).
+	 * Stored in the presenter because the presenter owns the window.
+	 */
+	const renderer::window_settings window_settings;
 
 	// graphis components
 	/**

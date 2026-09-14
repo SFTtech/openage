@@ -1,4 +1,4 @@
-// Copyright 2015-2024 the openage authors. See copying.md for legal info.
+// Copyright 2015-2025 the openage authors. See copying.md for legal info.
 
 #include "gui.h"
 
@@ -15,7 +15,6 @@
 #include "renderer/shader_program.h"
 #include "renderer/window.h"
 #include "util/path.h"
-
 
 namespace openage::renderer::gui {
 
@@ -87,7 +86,7 @@ void GUI::initialize_render_pass(size_t width,
 		resources::Texture2dInfo(width, height, resources::pixel_format::rgba8));
 	auto fbo = this->renderer->create_texture_target({output_texture});
 
-	this->texture_unif = maptex_shader->new_uniform_input("texture", this->texture);
+	this->texture_unif = maptex_shader->new_uniform_input("tex", this->texture);
 	Renderable display_obj{
 		this->texture_unif,
 		quad,
@@ -119,7 +118,7 @@ void GUI::resize(size_t width, size_t height) {
 		auto fbo = renderer->create_texture_target({output_texture});
 
 		// pass the new texture to shader uniform
-		this->texture_unif->update("texture", this->texture);
+		this->texture_unif->update("tex", this->texture);
 
 		this->render_pass->set_target(fbo);
 	}
