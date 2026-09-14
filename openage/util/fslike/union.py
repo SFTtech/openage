@@ -1,4 +1,4 @@
-# Copyright 2015-2023 the openage authors. See copying.md for legal info.
+# Copyright 2015-2026 the openage authors. See copying.md for legal info.
 
 """
 Provides Union, a utility class for combining multiple FSLikeObjects to a
@@ -39,7 +39,7 @@ class Union(FSLikeObject):
                              for pnt in self.mounts])
         return f"Union({content})"
 
-    @ property
+    @property
     def root(self):
         return UnionPath(self, [])
 

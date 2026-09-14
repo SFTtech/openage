@@ -14,6 +14,13 @@ sanity_check:
 configure:
 	- env: mode=debug   compiler=gcc            (? if job == "debian" ?)
 	- env: mode=debug   compiler=clang          (? if job == "debian-clang" ?)
+	# Debian trixie's cython3 (3.0.x) and bare Python 3.13 are both
+	# incompatible with how Cython 3.x reaches into distutils (removed
+	# from the stdlib in 3.12). Pull a newer Cython (3.1+) and a
+	# current setuptools (provides the distutils shim Cython 3.x
+	# needs) via pip before configure. FindCython then picks the
+	# working Cython and the cythonize step has its shim. Idempotent.
+	python3 -m pip install --break-system-packages "cython>=3.1.0,<4.0.0" "setuptools>=68"
 	./configure --mode=${mode} --compiler=${compiler} --ccache --download-nyan
 	# TODO: once all warnings are gone again, set --flags="-Werror"
 

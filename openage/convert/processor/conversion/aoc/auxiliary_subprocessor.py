@@ -1,4 +1,4 @@
-# Copyright 2020-2023 the openage authors. See copying.md for legal info.
+# Copyright 2020-2026 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=line-too-long,too-many-locals,too-many-branches,too-many-statements,no-else-return
 
@@ -59,11 +59,15 @@ class AoCAuxiliarySubprocessor:
         train_location_id = line.get_train_location_id()
         if isinstance(line, GenieBuildingLineGroup):
             train_location = dataset.unit_lines[train_location_id]
-            train_location_name = name_lookup_dict[train_location_id][0]
 
         else:
             train_location = dataset.building_lines[train_location_id]
-            train_location_name = name_lookup_dict[train_location_id][0]
+
+        # Derive the game-entity name from the train_location's head unit,
+        # not from train_location_id: the latter may not be a head unit (it
+        # can be a non-head member of a line), in which case the id-based
+        # lookup would not match the resolved group's actual game entity.
+        train_location_name = name_lookup_dict[train_location.get_head_unit_id()][0]
 
         # Location of the object depends on whether it'a a unique unit or a normal unit
         if line.is_unique():
@@ -415,7 +419,7 @@ class AoCAuxiliarySubprocessor:
         tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
         civ_lookup_dict = internal_name_lookups.get_civ_lookups(dataset.game_version)
 
-        research_location_name = name_lookup_dict[research_location_id][0]
+        research_location_name = name_lookup_dict[research_location.get_head_unit_id()][0]
         tech_name = tech_lookup_dict[tech_group.get_id()][0]
 
         obj_ref = f"{tech_name}.ResearchableTech"

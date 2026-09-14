@@ -1,4 +1,4 @@
-# Copyright 2019-2023 the openage authors. See copying.md for legal info.
+# Copyright 2019-2026 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-arguments,too-many-return-statements,too-many-locals
 
@@ -950,7 +950,7 @@ class NyanMember:
         """
         return self.value is not None
 
-    @ staticmethod
+    @staticmethod
     def is_inherited() -> bool:
         """
         Returns True if the member is inherited from another object.

@@ -1,4 +1,4 @@
-# Copyright 2015-2022 the openage authors. See copying.md for legal info.
+# Copyright 2015-2026 the openage authors. See copying.md for legal info.
 
 """ Processes the raw test lists from the testlist module. """
 
@@ -55,15 +55,13 @@ def list_targets(test_lister: Callable, demo_lister: Callable, benchmark_lister:
 def list_targets_py():
     """ Invokes list_targets() with the py-specific listers. """
     from .testlist import tests_py, demos_py, benchmark_py
-    for val in list_targets(tests_py, demos_py, benchmark_py):
-        yield val
+    yield from list_targets(tests_py, demos_py, benchmark_py)
 
 
 def list_targets_cpp():
     """ Invokes list_targets() with the C++-specific listers. """
     from .testlist import tests_cpp, demos_cpp, benchmark_cpp
-    for val in list_targets(tests_cpp, demos_cpp, benchmark_cpp):
-        yield val
+    yield from list_targets(tests_cpp, demos_cpp, benchmark_cpp)
 
 
 def get_all_targets() -> OrderedDict:

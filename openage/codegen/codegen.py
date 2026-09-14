@@ -1,4 +1,4 @@
-# Copyright 2014-2022 the openage authors. See copying.md for legal info.
+# Copyright 2014-2026 the openage authors. See copying.md for legal info.
 
 """
 Utility and driver module for C++ code generation.
@@ -86,8 +86,7 @@ class CodegenDirWrapper(Wrapper):
         Returns an iterable of all path component tuples for files that have
         been read.
         """
-        for parts in self.reads:
-            yield parts
+        yield from self.reads
 
         self.reads.clear()
 

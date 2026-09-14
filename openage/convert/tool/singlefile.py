@@ -1,4 +1,4 @@
-# Copyright 2015-2024 the openage authors. See copying.md for legal info.
+# Copyright 2015-2026 the openage authors. See copying.md for legal info.
 
 """
 Convert a single slp/wav file from some drs archive to a png/opus file.
@@ -65,6 +65,10 @@ def main(args, error):
         dll_manager = DllDirectoryManager(default_paths())
         dll_manager.add_directories()
 
+    # `palettes` is only required for the SLP/SMP/SMX file types. The sld,
+    # drs-wav, and wav paths don't read it, so we pre-declare it as None and
+    # only populate it when one of the palette-based paths is taken.
+    palettes = None
     if not (args.mode in ("sld", "drs-wav", "wav") or file_extension in ("sld", "wav")):
         if not args.palettes_path:
             raise RuntimeError("palettes-path needs to be specified for "

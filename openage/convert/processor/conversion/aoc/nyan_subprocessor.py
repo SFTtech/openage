@@ -1,4 +1,4 @@
-# Copyright 2019-2024 the openage authors. See copying.md for legal info.
+# Copyright 2019-2026 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-locals,too-many-statements,too-many-branches
 #
@@ -720,6 +720,12 @@ class AoCNyanSubprocessor:
 
             elif variant_type == "misc":
                 variant_type_ref = "engine.util.variant.type.MiscVariant"
+
+            else:
+                # Unknown variant_type; skip this variant rather than produce
+                # an object with an undefined parent.
+                index += 1
+                continue
 
             variant_name = f"Variant{str(index)}"
             variant_ref = f"{game_entity_name}.{variant_name}"

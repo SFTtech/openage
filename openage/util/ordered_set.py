@@ -1,4 +1,4 @@
-# Copyright 2019-2022 the openage authors. See copying.md for legal info.
+# Copyright 2019-2026 the openage authors. See copying.md for legal info.
 
 """
 Provides a very simple implementation of an ordered set. We use the
@@ -7,7 +7,8 @@ be ordered since Python 3.6.
 """
 
 
-from typing import Generic, Hashable, TypeVar
+from collections.abc import Hashable
+from typing import Generic, TypeVar
 
 OrderedSetItem = TypeVar("OrderedSetItem")
 

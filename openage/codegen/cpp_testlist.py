@@ -1,4 +1,4 @@
-# Copyright 2015-2022 the openage authors. See copying.md for legal info.
+# Copyright 2015-2026 the openage authors. See copying.md for legal info.
 
 """
 Generates code for C++ testing, mostly the table to look up symbols from test
@@ -44,8 +44,7 @@ class Namespace:
 
         for namespacename, namespace in sorted(self.namespaces.items()):
             yield f"namespace {namespacename} {{\n"
-            for line in namespace.gen_prototypes():
-                yield line
+            yield from namespace.gen_prototypes()
             yield f"}} // {namespacename}\n\n"
 
     def get_functionnames(self):
@@ -53,8 +52,7 @@ class Namespace:
         Yields all function names in this namespace,
         as well as all subnamespaces.
         """
-        for name in self.functions:
-            yield name
+        yield from self.functions
 
         for namespacename, namespace in sorted(self.namespaces.items()):
             for name in namespace.get_functionnames():

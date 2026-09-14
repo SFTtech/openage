@@ -269,8 +269,14 @@ int-import-graph=
 
 [DESIGN]
 
-# Maximum number of arguments for function / method
-max-args=5
+# Maximum number of positional arguments for function / method.
+# openage's convert subprocessor functions routinely need 6-11 positional
+# args (converter_group, line, container_obj_ref, command_id, ranged,
+# diff, ...). The codebase already opts out of the sister R0913
+# (too-many-arguments) per-function; raising the R0917
+# (too-many-positional-arguments) threshold to 12 lets those functions
+# through without a refactor that would have no real side benefit.
+max-positional-arguments=12
 
 # Argument names that match this expression will be ignored. Default to name
 # with leading underscore

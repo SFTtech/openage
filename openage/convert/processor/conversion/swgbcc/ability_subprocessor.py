@@ -1,4 +1,4 @@
-# Copyright 2020-2024 the openage authors. See copying.md for legal info.
+# Copyright 2020-2026 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-public-methods,too-many-lines,too-many-locals
 # pylint: disable=too-many-branches,too-many-statements,too-many-arguments
@@ -291,6 +291,10 @@ class SWGBCCAbilitySubprocessor:
         line.add_raw_api_object(batch_raw_api_object)
 
         # Effects
+        # `effects` is set inside the per-command branches below; pre-initialise
+        # so the later add_raw_member is valid for command_ids we don't yet
+        # handle.
+        effects = None
         if command_id == 7:
             # Attack
             if projectile != 1:
@@ -1505,6 +1509,9 @@ class SWGBCCAbilitySubprocessor:
                 # The unit uses no gathering command or we don't recognize it
                 continue
 
+            # `container_name` and `resource` are set by the gathering/trade
+            # branches below. If the unit neither gathers nor trades, skip it
+            # rather than fall through with undefined values.
             if line.is_gatherer():
                 gatherer_unit_id = gatherer.get_id()
                 if gatherer_unit_id not in gather_lookup_dict:
@@ -1516,6 +1523,9 @@ class SWGBCCAbilitySubprocessor:
             elif used_command["type"].value == 111:
                 # Trading
                 container_name = "TradeContainer"
+
+            else:
+                continue
 
             container_ref = f"{ability_ref}.{container_name}"
             container_raw_api_object = RawAPIObject(
