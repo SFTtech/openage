@@ -102,7 +102,7 @@ public:
 	const nodemap_t &get_portal_map();
 
 	/**
-	 * Initialize the portal nodes of the grid with neigbouring nodes and distance costs.
+	 * Initialize the portal nodes of the grid with neighbouring nodes and distance costs.
 	 */
 	void init_portal_nodes();
 
@@ -128,7 +128,7 @@ private:
 	std::vector<std::shared_ptr<Sector>> sectors;
 
 	/**
-	 *	maps portal_ids to portal nodes, which store their neigbouring nodes and associated distance costs
+	 *	maps portal_ids to portal nodes, which store their neighbouring nodes and associated distance costs
 	 *  for pathfinding
 	 */
 

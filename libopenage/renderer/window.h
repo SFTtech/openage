@@ -138,7 +138,7 @@ public:
 
 	/**
 	 * Force this window to the given size. It's generally not a good idea to use this,
-	 * as it makes the window jump around wierdly.
+	 * as it makes the window jump around weirdly.
 	 *
 	 * @param width Width in pixels.
 	 * @param height Height in pixels.

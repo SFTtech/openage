@@ -425,7 +425,7 @@ void GlShaderProgram::update_uniforms(std::shared_ptr<GlUniformInput> const &uni
 			// TODO: maybe call this at a more appropriate position
 			glUniform1i(loc, tex_unit_id);
 			ENSURE(tex_unit_id < this->textures_per_texunits.size(),
-			       "Tried to assign texture to non-existant texture unit at index "
+			       "Tried to assign texture to non-existent texture unit at index "
 			           << tex_unit_id
 			           << " (max: " << this->textures_per_texunits.size() << ").");
 			this->textures_per_texunits[tex_unit_id] = tex;

@@ -53,7 +53,7 @@ std::string ScreenshotManager::gen_next_filename() {
 
 
 void ScreenshotManager::save_screenshot() {
-	// get screenshot image from scren renderer
+	// get screenshot image from screen renderer
 	auto pass = this->renderer->get_render_pass();
 	auto target = pass->get_target();
 	auto image = target->into_data();

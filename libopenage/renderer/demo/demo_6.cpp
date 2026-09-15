@@ -364,7 +364,7 @@ void RenderManagerDemo6::load_shaders() {
 		frame_fshader_file.read());
 	frame_fshader_file.close();
 
-	/* Shader for frustrum frame */
+	/* Shader for frustum frame */
 	auto frustum_vshader_file = (shaderdir / "demo_6_2d_frustum_frame.vert.glsl").open();
 	auto frustum_vshader_src = resources::ShaderSource(
 		resources::shader_lang_t::glsl,
