@@ -1,4 +1,4 @@
-// Copyright 2018-2024 the openage authors. See copying.md for legal info.
+// Copyright 2018-2026 the openage authors. See copying.md for legal info.
 
 #include "window.h"
 
@@ -82,6 +82,14 @@ GlWindow::GlWindow(const std::string &title,
 	this->window->installEventFilter(this->event_handler.get());
 
 	this->window->setVisible(true);
+
+	// macOS never delivers the first expose event unless the event loop runs
+	// before the first frame is drawn. Without it Qt skips every buffer flush
+	// ("exposed size does not match geometry") and the window stays 0x0.
+	for (int attempt = 0; attempt < 500 and not this->window->isExposed(); ++attempt) {
+		QGuiApplication::processEvents();
+	}
+
 	log::log(MSG(info) << "Created Qt window with OpenGL context.");
 
 	// Scaling factor if highDPI
