@@ -19,25 +19,23 @@ vec2 uv = vec2(
 void main() {
 	vec4 tex_val = texture(tex, uv);
 	int alpha = int(round(tex_val.a * 255));
-	switch (alpha) {
-		case 0:
-			col = tex_val;
-			discard;
-
-			// do not save the ID
-			return;
-		case 254:
-			col = vec4(1.0f, 0.0f, 0.0f, 1.0f);
-			break;
-		case 252:
-			col = vec4(0.0f, 1.0f, 0.0f, 1.0f);
-			break;
-		case 250:
-			col = vec4(0.0f, 0.0f, 1.0f, 1.0f);
-			break;
-		default:
-			col = tex_val;
-			break;
+	// Apple's OpenGL shader compiler crashes on the switch statement that
+	// used to be here (glpLLVMCGSwitchStatement), so use if/else instead.
+	if (alpha == 0) {
+		col = tex_val;
+		discard;
+	}
+	else if (alpha == 254) {
+		col = vec4(1.0f, 0.0f, 0.0f, 1.0f);
+	}
+	else if (alpha == 252) {
+		col = vec4(0.0f, 1.0f, 0.0f, 1.0f);
+	}
+	else if (alpha == 250) {
+		col = vec4(0.0f, 0.0f, 1.0f, 1.0f);
+	}
+	else {
+		col = tex_val;
 	}
 	id = u_id;
 }

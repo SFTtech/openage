@@ -170,6 +170,7 @@ _the openage authors_ are:
 | Nicolas Sanchez             | nicolassanchez02            | nicolasjpsanchez à gmail dawt com                 |
 | Manas Pradhan               | manas-maker                 | manasmpradhan5 à gmail dawt com                   |
 | Jason Lu                    | jasonlu, lugt               | lu.gt à 163 dawt com                               |
+| Rana Waqas                  | ranawaqas-ai                | waqaskhan137 à gmail dawt com                     |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
