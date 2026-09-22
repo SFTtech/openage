@@ -1,4 +1,4 @@
-# Copyright 2022-2023 the openage authors. See copying.md for legal info.
+# Copyright 2022-2026 the openage authors. See copying.md for legal info.
 #
 # cython: infer_types=True
 
@@ -57,10 +57,14 @@ cdef class SLD:
     #   unsigned short version;
     #   unsigned short frame_count;
     #   unsigned short unknown1;
-    #   unsigned short unknown2;
-    #   unsigned int   unknown3;
+    #   unsigned short header_size;
+    #   unsigned short unknown3;
     # };
-    sld_header = Struct(endianness + "4s 4H I")
+    #
+    # header_size is where the first frame header starts. Most files use 16,
+    # but some (e.g. shadow-only graphics) use 14, so it must not be assumed
+    # to be the size of this struct.
+    sld_header = Struct(endianness + "4s 5H")
 
     # struct sld_frame_header {
     #   unsigned short canvas_width;
@@ -113,7 +117,7 @@ cdef class SLD:
 
         sld_header = SLD.sld_header.unpack_from(data)
         self.sld_type = sld_header[0]
-        version, frame_count, _, _, _ = sld_header[1:]
+        version, frame_count, _, header_size, _ = sld_header[1:]
 
         dbg("SLD")
         dbg(" version:     %s",   version)
@@ -134,11 +138,13 @@ cdef class SLD:
         cdef (unsigned short, unsigned short) previous_size = (0, 0)
         cdef (unsigned short, unsigned short) previous_offset = (0, 0)
         cdef vector[vector[pixel]] *previous_layer = NULL
-        cdef SLDLayer previous_main
-        cdef SLDLayer previous_shadow
-        cdef SLDLayer previous_outline
-        cdef SLDLayer previous_dmg_mask
-        cdef SLDLayer previous_playercolor
+        # a layer can reuse the pixels of the same layer type in the previous
+        # frame; these stay None until such a layer has actually been seen
+        cdef SLDLayer previous_main = None
+        cdef SLDLayer previous_shadow = None
+        cdef SLDLayer previous_outline = None
+        cdef SLDLayer previous_dmg_mask = None
+        cdef SLDLayer previous_playercolor = None
 
         # Header info
         cdef SLDLayerHeader layer_header
@@ -156,7 +162,7 @@ cdef class SLD:
 
         # SLD files have no offsets, we have to calculate them
         # from length fields
-        current_offset = SLD.sld_header.size
+        current_offset = header_size
         for _ in range(frame_count):
 
             canvas_width, canvas_height, canvas_hotspot_x, canvas_hotspot_y,\
@@ -195,6 +201,8 @@ cdef class SLD:
             main_height = 0
             main_hotspot_x = 0
             main_hotspot_y = 0
+            main_offset_x1 = 0
+            main_offset_y1 = 0
             for layer_type in layer_types:
                 layer_length = SLD.sld_layer_length.unpack_from(data, current_offset)[0]
                 start_offset = current_offset
@@ -205,8 +213,10 @@ cdef class SLD:
                     offset_x1, offset_y1, offset_x2, offset_y2, flag0, flag1 = \
                         SLD.sld_layer_header_graphics.unpack_from(data, current_offset)
 
-                    layer_width = offset_x2 - offset_x1
-                    layer_height = offset_y2 - offset_y1
+                    # empty layers can store an end offset before the start
+                    # offset, which would make the size negative
+                    layer_width = max(0, offset_x2 - offset_x1)
+                    layer_height = max(0, offset_y2 - offset_y1)
                     layer_hotspot_x = canvas_hotspot_x - offset_x1
                     layer_hotspot_y = canvas_hotspot_y - offset_y1
                     if layer_type is SLDLayerType.MAIN:
@@ -214,12 +224,19 @@ cdef class SLD:
                         main_height = layer_height
                         main_hotspot_x = layer_hotspot_x
                         main_hotspot_y = layer_hotspot_y
+                        main_offset_x1 = offset_x1
+                        main_offset_y1 = offset_y1
 
                     current_offset += SLD.sld_layer_header_graphics.size
 
                 elif layer_type in (SLDLayerType.OUTLINE, ):
-                    # TODO
-                    pass
+                    # Outline layers are not decoded yet. Their header is not
+                    # parsed either, so skip the whole layer instead of reading
+                    # the command array at the wrong offset, which would yield
+                    # a bogus command count and read far past the file end.
+                    current_offset = start_offset + layer_length
+                    current_offset += (4 - (current_offset - header_size)) % 4
+                    continue
 
                 elif layer_type in (SLDLayerType.DAMAGE, SLDLayerType.PLAYERCOLOR):
                     flag0, flag1 = SLD.sld_layer_header_mask.unpack_from(data, current_offset)
@@ -228,6 +245,10 @@ cdef class SLD:
                     layer_height = main_height
                     layer_hotspot_x = main_hotspot_x
                     layer_hotspot_y = main_hotspot_y
+                    # mask layers have no offsets of their own; they cover the
+                    # same area as the main layer
+                    offset_x1 = main_offset_x1
+                    offset_y1 = main_offset_y1
 
                     current_offset += SLD.sld_layer_header_mask.size
 
@@ -255,7 +276,7 @@ cdef class SLD:
                     layer_def = SLDLayerBC1(frame_header, layer_header)
                     self.main_frames.append(layer_def)
 
-                    if flag0 & 0x80 and frame_index > 0:
+                    if flag0 & 0x80 and frame_index > 0 and previous_main is not None:
                         previous = previous_main
                         previous_layer = previous.get_pcolor()
                         previous_size = previous.layer_info.size
@@ -275,7 +296,7 @@ cdef class SLD:
                     layer_def = SLDLayerBC4(frame_header, layer_header)
                     self.shadow_frames.append(layer_def)
 
-                    if flag0 & 0x80 and frame_index > 0:
+                    if flag0 & 0x80 and frame_index > 0 and previous_shadow is not None:
                         previous = previous_shadow
                         previous_layer = previous.get_pcolor()
                         previous_size = previous.layer_info.size
@@ -299,7 +320,7 @@ cdef class SLD:
                     layer_def = SLDLayerBC1(frame_header, layer_header)
                     self.dmg_mask_frames.append(layer_def)
 
-                    if flag0 & 0x80 and frame_index > 0:
+                    if flag0 & 0x80 and frame_index > 0 and previous_dmg_mask is not None:
                         previous = previous_dmg_mask
                         previous_layer = previous.get_pcolor()
                         previous_size = previous.layer_info.size
@@ -319,7 +340,7 @@ cdef class SLD:
                     layer_def = SLDLayerBC4(frame_header, layer_header)
                     self.playercolor_mask_frames.append(layer_def)
 
-                    if flag0 & 0x80 and frame_index > 0:
+                    if flag0 & 0x80 and frame_index > 0 and previous_playercolor is not None:
                         previous = previous_playercolor
                         previous_layer = previous.get_pcolor()
                         previous_size = previous.layer_info.size
@@ -337,8 +358,9 @@ cdef class SLD:
 
                 # Jump to next layer offset
                 current_offset = start_offset + layer_length
-                # padding to size % 4
-                current_offset += (4 - current_offset) % 4
+                # padding to 4 bytes, relative to where the frame data starts:
+                # files with a 14 byte header are not aligned absolutely
+                current_offset += (4 - (current_offset - header_size)) % 4
 
     cpdef get_frames(self, layer: int = 0):
         """
