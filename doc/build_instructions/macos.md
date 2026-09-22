@@ -7,9 +7,8 @@
 ```
 brew update-reset && brew update
 brew install --cask font-dejavu
-brew install cmake python3 libepoxy freetype fontconfig harfbuzz opus opusfile qt6 libogg libpng toml11 eigen
-brew install llvm
-pip3 install --upgrade --break-system-packages cython numpy mako lz4 pillow pygments setuptools toml
+brew install cmake python3 libepoxy freetype fontconfig harfbuzz opus opusfile libogg libpng toml11 eigen
+brew install qtbase qtdeclarative qtmultimedia
 ```
 
 You will also need [nyan](https://github.com/SFTtech/nyan/blob/master/doc/building.md) and its dependencies:
@@ -31,14 +30,30 @@ git clone https://github.com/SFTtech/openage
 cd openage
 ```
 
-## Building
+## Python dependencies
 
-We advise against using the clang version that comes with macOS (Apple Clang) as it notoriously out of date and often causes compilation errors. Use homebrew's clang if you don't want any trouble. You can pass the path of homebrew clang to the openage `configure` script which will generate the CMake files for building:
+Install the Python packages into a virtual environment inside the repository:
 
 ```
-# on Intel macOS, llvm is by default in /usr/local/Cellar/llvm/bin/
-# on ARM macOS, llvm is by default in /opt/homebrew/Cellar/llvm/bin/
-./configure --compiler="$(brew --prefix llvm)/bin/clang++" --download-nyan
+python3 -m venv .venv
+.venv/bin/pip install --upgrade cython numpy mako lz4 pillow pygments setuptools toml
+```
+
+## Building
+
+Recent versions of Apple Clang support the C++20 features openage uses, so the
+compiler shipped with Xcode is normally fine:
+
+```
+./configure --download-nyan -- -DPython3_EXECUTABLE="$PWD/.venv/bin/python"
+```
+
+Older Apple Clang releases are missing parts of C++20 and will fail to build.
+If you hit compiler errors, install Homebrew's LLVM and point `configure` at it instead:
+
+```
+brew install llvm
+./configure --compiler="$(brew --prefix llvm)/bin/clang++" --download-nyan -- -DPython3_EXECUTABLE="$PWD/.venv/bin/python"
 ```
 
 Afterwards, trigger the build using `make`:
