@@ -4,7 +4,11 @@ file_version = "2.0"
 hash_algo = "SHA3-256"
 
 [AoE2DE_s]
-paths = ["AoE2DE_s.exe", "AoE2DE.exe"]
+paths = [
+  "AoE2DE_s.exe",
+  "AoE2DE.exe",
+  "Age Of Empires II.app/Contents/MacOS/Age Of Empires II",
+]
 
   [AoE2DE_s.map]
   01ff7cc7819e4f77be059c8efc6c07472dd1a58f429621e937328750 = "36906"

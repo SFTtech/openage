@@ -1,4 +1,4 @@
-# Copyright 2015-2024 the openage authors. See copying.md for legal info.
+# Copyright 2015-2026 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-branches
 """
@@ -11,7 +11,6 @@ import typing
 
 from ..log import info, warn
 
-from ..util.fslike.directory import CaseIgnoringDirectory
 from ..util.fslike.wrapper import (DirectoryCreator,
                                    Synchronizer as AccessSynchronizer)
 from .service.debug_info import debug_cli_args, debug_game_version, debug_mounts
@@ -20,7 +19,8 @@ from .service.init.modpack_search import enumerate_modpacks
 from .service.init.mount_asset_dirs import mount_asset_dirs
 from .service.init.version_detect import create_version_objects
 from .tool.interactive import interactive_browser
-from .tool.subtool.acquire_sourcedir import acquire_conversion_source_dir, wanna_convert, \
+from .tool.subtool.acquire_sourcedir import acquire_conversion_source_dir, \
+    mount_source_dir, wanna_convert, \
     wanna_check_updates
 from .tool.subtool.version_select import get_game_version
 
@@ -261,7 +261,7 @@ def main(args, error):
 
     # conversion source
     if args.source_dir is not None:
-        srcdir = CaseIgnoringDirectory(args.source_dir).root
+        srcdir = mount_source_dir(args.source_dir)
     else:
         srcdir = None
 
