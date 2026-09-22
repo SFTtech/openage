@@ -1,4 +1,4 @@
-// Copyright 2024-2024 the openage authors. See copying.md for legal info.
+// Copyright 2024-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -7,6 +7,7 @@
 #include <memory>
 #include <utility>
 
+#include "time/time.h"
 
 namespace openage::path {
 
@@ -24,8 +25,6 @@ enum class PathResult {
 
 /**
  * Movement cost in the cost field.
- *
- * TODO: Cost stamps
  *
  * 0: uninitialized
  * 1-254: normal cost
@@ -111,7 +110,10 @@ using sector_id_t = size_t;
  */
 using portal_id_t = size_t;
 
+template <size_t SECTOR_SIDE_LENGTH>
 class FlowField;
+
+template <size_t SECTOR_SIDE_LENGTH>
 class IntegrationField;
 
 /**
@@ -122,6 +124,26 @@ using cache_key_t = std::pair<portal_id_t, sector_id_t>;
 /**
  * Returnable field cache entry pair containing an integration field and a flow field.
  */
-using field_cache_t = std::pair<std::shared_ptr<IntegrationField>, std::shared_ptr<FlowField>>;
+template <size_t SECTOR_SIDE_LENGTH>
+using field_cache_t = std::pair<std::shared_ptr<IntegrationField<SECTOR_SIDE_LENGTH>>, std::shared_ptr<FlowField<SECTOR_SIDE_LENGTH>>>;
+
+/**
+ * Cost stamp for a cell on a cost field.
+ *
+ * Stamps are used when cell costs are temporarily overwritten, e.g. when placing a game object
+ * as an obstacle over terrain. Once the obstacle is removed, the cell can be reset to its original
+ * value recorded by the stamp.
+ */
+struct cost_stamp_t {
+	/**
+	 * Original cost of the stamped cell.
+	 */
+	cost_t original_cost;
+
+	/**
+	 * Time the cost field cell was stamped.
+	 */
+	time::time_t stamp_time;
+};
 
 } // namespace openage::path

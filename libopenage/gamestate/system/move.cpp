@@ -26,6 +26,7 @@
 #include "gamestate/game_entity.h"
 #include "gamestate/game_state.h"
 #include "gamestate/map.h"
+#include "pathfinding/definitions.h"
 #include "pathfinding/path.h"
 #include "pathfinding/pathfinder.h"
 #include "util/fixed_point.h"
@@ -33,8 +34,7 @@
 
 namespace openage::gamestate::system {
 
-
-std::vector<coord::phys3> find_path(const std::shared_ptr<path::Pathfinder> &pathfinder,
+std::vector<coord::phys3> find_path(const std::shared_ptr<path::Pathfinder<path::SECTOR_SIZE>> &pathfinder,
                                     path::grid_id_t grid_id,
                                     const coord::phys3 &start,
                                     const coord::phys3 &end,

@@ -33,6 +33,12 @@ constexpr cost_t COST_IMPASSABLE = 255;
 
 
 /**
+ * size of sectors.
+ */
+constexpr size_t SECTOR_SIZE = 100;
+
+
+/**
  * Start value for goal cells.
  */
 constexpr integrated_cost_t INTEGRATED_COST_START = 0;

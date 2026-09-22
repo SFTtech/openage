@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "definitions.h"
 #include "pathfinding/definitions.h"
 #include "pathfinding/path.h"
 #include "renderer/resources/mesh_data.h"
@@ -22,10 +23,11 @@ class GuiApplicationWithLogger;
 } // namespace renderer
 
 namespace path {
+
+template <size_t SECTOR_SIDE_LENGTH>
 class Grid;
 
 namespace tests {
-
 
 /**
  * Show the functionality of the high-level pathfinder:
@@ -55,7 +57,7 @@ public:
 	RenderManager1(const std::shared_ptr<renderer::gui::GuiApplicationWithLogger> &app,
 	               const std::shared_ptr<renderer::Window> &window,
 	               const util::Path &path,
-	               const std::shared_ptr<path::Grid> &grid);
+	               const std::shared_ptr<path::Grid<SECTOR_SIZE>> &grid);
 	~RenderManager1() = default;
 
 	/**
@@ -92,21 +94,21 @@ private:
 	 *
 	 * @return Mesh data for the grid.
 	 */
-	static renderer::resources::MeshData get_grid_mesh(const std::shared_ptr<path::Grid> &grid);
+	static renderer::resources::MeshData get_grid_mesh(const std::shared_ptr<path::Grid<SECTOR_SIZE>> &grid);
 
 	/**
 	 * Create renderables for the impassible tiles in the grid.
 	 *
 	 * @param grid Pathing grid.
 	 */
-	void create_impassible_tiles(const std::shared_ptr<path::Grid> &grid);
+	void create_impassible_tiles(const std::shared_ptr<path::Grid<SECTOR_SIZE>> &grid);
 
 	/**
 	 * Create renderables for the portal tiles in the grid.
 	 *
 	 * @param grid Pathing grid.
 	 */
-	void create_portal_tiles(const std::shared_ptr<path::Grid> &grid);
+	void create_portal_tiles(const std::shared_ptr<path::Grid<SECTOR_SIZE>> &grid);
 
 	/**
 	 * Path to the project rootdir.
@@ -116,7 +118,7 @@ private:
 	/**
 	 * Pathing grid of the demo.
 	 */
-	std::shared_ptr<path::Grid> grid;
+	std::shared_ptr<path::Grid<SECTOR_SIZE>> grid;
 
 	/* Renderer objects */
 
@@ -182,7 +184,7 @@ private:
 
 // Cost for the sectors in the grid
 // taken from Figure 23.1 in "Crowd Pathfinding and Steering Using Flow Field Tiles"
-const std::vector<std::vector<cost_t>> SECTORS_COST = {
+const std::vector<std::array<cost_t, 100>> SECTORS_COST = {
 	{
 		// clang-format off
           1,   1,   1,   1,   1,   1,   1,   1,   1,   1,

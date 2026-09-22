@@ -7,12 +7,16 @@
 
 #include <nyan/nyan.h>
 
+#include "pathfinding/definitions.h"
 #include "pathfinding/types.h"
+
 #include "util/vector.h"
 
 
 namespace openage {
 namespace path {
+
+template <size_t SECTOR_SIDE_LENGTH>
 class Pathfinder;
 } // namespace path
 
@@ -54,7 +58,7 @@ public:
 	 *
 	 * @return Pathfinder.
 	 */
-	const std::shared_ptr<path::Pathfinder> &get_pathfinder() const;
+	const std::shared_ptr<path::Pathfinder<path::SECTOR_SIZE>> &get_pathfinder() const;
 
 	/**
 	 * Get the grid ID associated with a nyan path grid object.
@@ -74,7 +78,7 @@ private:
 	/**
 	 * Pathfinder.
 	 */
-	std::shared_ptr<path::Pathfinder> pathfinder;
+	std::shared_ptr<path::Pathfinder<path::SECTOR_SIZE>> pathfinder;
 
 	/**
 	 * Lookup table for mapping path grid objects in nyan to grid indices.

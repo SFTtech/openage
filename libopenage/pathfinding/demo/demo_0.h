@@ -4,6 +4,10 @@
 
 #include <memory>
 
+#include "definitions.h"
+#include "pathfinding/definitions.h"
+
+
 #include "util/path.h"
 
 
@@ -28,11 +32,19 @@ class MeshData;
 } // namespace renderer
 
 namespace path {
+
+template <size_t SECTOR_SIDE_LENGTH>
 class CostField;
+
+template <size_t SECTOR_SIDE_LENGTH>
 class IntegrationField;
+
+template <size_t SECTOR_SIDE_LENGTH>
 class FlowField;
 
+
 namespace tests {
+
 
 /**
  * Show the functionality of the different flowfield types:
@@ -80,14 +92,14 @@ public:
 	 *
 	 * @param field Cost field.
 	 */
-	void show_cost_field(const std::shared_ptr<path::CostField> &field);
+	void show_cost_field(const std::shared_ptr<path::CostField<SECTOR_SIZE>> &field);
 
 	/**
 	 * Draw an integration field to the screen.
 	 *
 	 * @param field Integration field.
 	 */
-	void show_integration_field(const std::shared_ptr<path::IntegrationField> &field);
+	void show_integration_field(const std::shared_ptr<path::IntegrationField<SECTOR_SIZE>> &field);
 
 	/**
 	 * Draw a flow field to the screen.
@@ -95,15 +107,15 @@ public:
 	 * @param flow_field Flow field.
 	 * @param int_field Integration field.
 	 */
-	void show_flow_field(const std::shared_ptr<path::FlowField> &flow_field,
-	                     const std::shared_ptr<path::IntegrationField> &int_field);
+	void show_flow_field(const std::shared_ptr<path::FlowField<SECTOR_SIZE>> &flow_field,
+	                     const std::shared_ptr<path::IntegrationField<SECTOR_SIZE>> &int_field);
 
 	/**
 	 * Draw the steering vectors of a flow field to the screen.
 	 *
 	 * @param field Flow field.
 	 */
-	void show_vectors(const std::shared_ptr<path::FlowField> &field);
+	void show_vectors(const std::shared_ptr<path::FlowField<SECTOR_SIZE>> &field);
 
 	/**
 	 * Hide drawn steering vectors.
@@ -144,7 +156,7 @@ private:
 	 *
 	 * @return Mesh data for the cost field.
 	 */
-	static renderer::resources::MeshData get_cost_field_mesh(const std::shared_ptr<path::CostField> &field,
+	static renderer::resources::MeshData get_cost_field_mesh(const std::shared_ptr<path::CostField<SECTOR_SIZE>> &field,
 	                                                         size_t resolution = 2);
 
 	/**
@@ -156,7 +168,7 @@ private:
 	 *
 	 * @return Mesh data for the integration field.
 	 */
-	static renderer::resources::MeshData get_integration_field_mesh(const std::shared_ptr<path::IntegrationField> &field,
+	static renderer::resources::MeshData get_integration_field_mesh(const std::shared_ptr<path::IntegrationField<SECTOR_SIZE>> &field,
 	                                                                size_t resolution = 2);
 
 	/**
@@ -165,8 +177,8 @@ private:
 	 * @param flow_field Flow field to visualize.
 	 * @param int_field Integration field.
 	 */
-	static renderer::resources::MeshData get_flow_field_mesh(const std::shared_ptr<path::FlowField> &flow_field,
-	                                                         const std::shared_ptr<path::IntegrationField> &int_field,
+	static renderer::resources::MeshData get_flow_field_mesh(const std::shared_ptr<path::FlowField<SECTOR_SIZE>> &flow_field,
+	                                                         const std::shared_ptr<path::IntegrationField<SECTOR_SIZE>> &int_field,
 	                                                         size_t resolution = 2);
 
 	/**
