@@ -9,6 +9,7 @@ from __future__ import annotations
 import typing
 
 
+from .....log import warn
 from .....nyan.nyan_structs import MemberOperator
 from ....entity_object.conversion.aoc.genie_tech import CivTeamBonus, CivBonus
 from ..aoc.tech_subprocessor import AoCTechSubprocessor
@@ -305,11 +306,12 @@ class DE2TechSubprocessor:
 
         try:
             upgrade_func = DE2TechSubprocessor.upgrade_attribute_funcs[attribute_type]
-        except KeyError as exc:
-            raise KeyError(
-                f"No DE2 subprocessor function found for handling upgrade of "
-                f"unit attribute: {attribute_type}"
-            ) from exc
+        except KeyError:
+            # recent DE2 builds modify unit attributes that the converter has
+            # no upgrade handler for; skip them instead of aborting
+            warn(f"No DE2 subprocessor function found for handling upgrade of "
+                 f"unit attribute: {attribute_type}; skipping effect")
+            return patches
         for affected_entity in affected_entities:
             patches.extend(upgrade_func(converter_group, affected_entity, value, operator, team))
 
@@ -354,11 +356,12 @@ class DE2TechSubprocessor:
 
         try:
             upgrade_func = DE2TechSubprocessor.upgrade_resource_funcs[resource_id]
-        except KeyError as exc:
-            raise KeyError(
-                f"No DE2 subprocessor function found for handling upgrade of "
-                f"civ resource: {resource_id}"
-            ) from exc
+        except KeyError:
+            # recent DE2 builds modify civ resources that the converter has no
+            # upgrade handler for; skip them instead of aborting
+            warn(f"No DE2 subprocessor function found for handling upgrade of "
+                 f"civ resource: {resource_id}; skipping effect")
+            return patches
         patches.extend(upgrade_func(converter_group, value, operator, team))
 
         return patches

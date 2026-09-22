@@ -1,4 +1,4 @@
-# Copyright 2020-2024 the openage authors. See copying.md for legal info.
+# Copyright 2020-2026 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=line-too-long,too-many-lines,too-many-branches,too-many-statements
 """
@@ -204,9 +204,13 @@ class DE2Processor:
             # Turn attack and armor into containers to make diffing work
             if "attacks" in unit_members.keys():
                 attacks_member = unit_members.pop("attacks")
-                attacks_member = attacks_member.get_container("type_id")
+                # recent DE2 builds ship units (mostly heroes) that list the
+                # same attack class twice; keep the first of each
+                attacks_member = attacks_member.get_container("type_id",
+                                                              force_duplicate=True)
                 armors_member = unit_members.pop("armors")
-                armors_member = armors_member.get_container("type_id")
+                armors_member = armors_member.get_container("type_id",
+                                                            force_duplicate=True)
 
                 unit_members.update({"attacks": attacks_member})
                 unit_members.update({"armors": armors_member})

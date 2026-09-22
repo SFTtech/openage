@@ -440,7 +440,9 @@ class AoCTechSubprocessor:
             resource_name = "Gold"
 
         else:
-            raise ValueError("no valid resource ID found")
+            # recent DE2 builds modify tech costs in resources that are not
+            # one of the four basic ones; nothing to patch for those
+            return patches
 
         # Check if the tech actually costs an amount of the defined resource
         for resource_amount in tech_group.tech["research_resource_costs"].value:

@@ -545,9 +545,12 @@ class AoCProcessor:
                 full_data_set.monk_groups.update({unit_line.get_id(): unit_line})
 
             elif unit.has_member("task_group")\
-                    and unit["task_group"].value > 0:
+                    and unit["task_group"].value in (1, 2):
                 # Villager
                 # done somewhere else because they are special^TM
+                # only the male (1) and female (2) task groups form the villager
+                # group; recent DE2 builds use further task groups for units
+                # that are ordinary unit lines (e.g. the fishing ship)
                 continue
 
             else:
@@ -867,11 +870,15 @@ class AoCProcessor:
             required_research_id = connection["required_research"].value
             enabling_research_id = connection["enabling_research"].value
             line_mode = connection["line_mode"].value
-            line_id = full_data_set.unit_ref[unit_id].get_id()
 
             if required_research_id == -1 and enabling_research_id == -1:
                 # Unit is unlocked from the start
                 continue
+
+            # only units that are unlocked or upgraded by a tech need a line
+            # reference; looking it up earlier breaks on connections for units
+            # that are not part of any line (e.g. the fishing ship in DE2)
+            line_id = full_data_set.unit_ref[unit_id].get_id()
 
             if line_mode == 2:
                 # Unit is first in line, there should be an unlock tech id
@@ -1224,7 +1231,13 @@ class AoCProcessor:
                     drop_site_id = drop_site_member.value
 
                     if drop_site_id > -1:
-                        drop_site = full_data_set.building_lines[drop_site_id]
+                        # recent DE2 builds ship drop sites that are not part of
+                        # any building line (e.g. campaign-only buildings), so
+                        # there is nothing to link them to
+                        drop_site = full_data_set.building_lines.get(drop_site_id)
+                        if drop_site is None:
+                            continue
+
                         drop_site.add_gatherer_id(unit_id)
 
     @staticmethod

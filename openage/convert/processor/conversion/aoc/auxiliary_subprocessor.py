@@ -719,6 +719,12 @@ class AoCAuxiliarySubprocessor:
                     required_tech_count -= 1
                     continue
 
+                if required_tech_id == tech_id:
+                    # placeholder techs in recent DE2 builds reference
+                    # themselves, which would recurse forever
+                    required_tech_count -= 1
+                    continue
+
                 if required_tech_id in dataset.civ_boni.keys():
                     continue
 
