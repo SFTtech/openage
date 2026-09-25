@@ -40,17 +40,19 @@ namespace openage::presenter {
 
 Presenter::Presenter(const util::Path &root_dir,
                      const std::shared_ptr<gamestate::GameSimulation> &simulation,
-                     const std::shared_ptr<time::TimeLoop> &time_loop) :
+                     const std::shared_ptr<time::TimeLoop> &time_loop,
+                     const renderer::window_settings &window_settings) :
 	root_dir{root_dir},
+	window_settings{window_settings},
 	render_passes{},
 	simulation{simulation},
 	time_loop{time_loop} {}
 
 
-void Presenter::run(const renderer::window_settings window_settings) {
+void Presenter::run() {
 	log::log(INFO << "Presenter: Launching subsystems...");
 
-	this->init_graphics(window_settings);
+	this->init_graphics();
 
 	this->init_input();
 
@@ -92,14 +94,14 @@ std::shared_ptr<qtgui::GuiApplication> Presenter::init_window_system() {
 	return std::make_shared<renderer::gui::GuiApplicationWithLogger>();
 }
 
-void Presenter::init_graphics(const renderer::window_settings &window_settings) {
+void Presenter::init_graphics() {
 	log::log(INFO << "Presenter: Initializing graphics subsystems...");
 
 	// Start up rendering framework
 	this->gui_app = this->init_window_system();
 
 	// Window and renderer
-	this->window = renderer::Window::create("openage presenter test", window_settings);
+	this->window = renderer::Window::create("openage presenter test", this->window_settings);
 	this->renderer = this->window->make_renderer();
 
 	// Asset mangement
