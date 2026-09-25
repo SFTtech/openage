@@ -347,8 +347,6 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         if civ_id != -1:
             head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
 
-        # recent DE2 builds no longer store the trait bitfield with the unit;
-        # fall back to "no traits" so that the remaining checks still apply
         if head_unit.has_member("trait"):
             trait = head_unit["trait"].value
         else:
@@ -521,8 +519,6 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         if civ_id != -1:
             head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
 
-        # recent DE2 builds no longer store the trait bitfield with the unit;
-        # fall back to "no traits" so that the remaining checks still apply
         if head_unit.has_member("trait"):
             trait = head_unit["trait"].value
         else:

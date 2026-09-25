@@ -876,10 +876,7 @@ class MissileUnit(ProjectileUnit):
 
 class UnitVariantDE2(GenieStructure):
     """
-    Trailing per-unit record found in recent AoE2: DE builds.
-
-    The number of records is one less than the counter stored in front of the
-    unit's resource costs. The meaning of the members is unknown.
+    Per-unit record of unknown meaning; there are variant_count_de2 - 1 of them.
     """
 
     @classmethod

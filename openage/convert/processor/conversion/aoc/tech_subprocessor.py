@@ -440,8 +440,7 @@ class AoCTechSubprocessor:
             resource_name = "Gold"
 
         else:
-            # recent DE2 builds modify tech costs in resources that are not
-            # one of the four basic ones; nothing to patch for those
+            # only the four basic resources are supported
             return patches
 
         # Check if the tech actually costs an amount of the defined resource

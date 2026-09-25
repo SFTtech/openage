@@ -720,8 +720,7 @@ class AoCAuxiliarySubprocessor:
                     continue
 
                 if required_tech_id == tech_id:
-                    # placeholder techs in recent DE2 builds reference
-                    # themselves, which would recurse forever
+                    # a tech requiring itself would recurse forever
                     required_tech_count -= 1
                     continue
 

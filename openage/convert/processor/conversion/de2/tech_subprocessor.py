@@ -307,8 +307,6 @@ class DE2TechSubprocessor:
         try:
             upgrade_func = DE2TechSubprocessor.upgrade_attribute_funcs[attribute_type]
         except KeyError:
-            # recent DE2 builds modify unit attributes that the converter has
-            # no upgrade handler for; skip them instead of aborting
             warn(f"No DE2 subprocessor function found for handling upgrade of "
                  f"unit attribute: {attribute_type}; skipping effect")
             return patches
@@ -357,8 +355,6 @@ class DE2TechSubprocessor:
         try:
             upgrade_func = DE2TechSubprocessor.upgrade_resource_funcs[resource_id]
         except KeyError:
-            # recent DE2 builds modify civ resources that the converter has no
-            # upgrade handler for; skip them instead of aborting
             warn(f"No DE2 subprocessor function found for handling upgrade of "
                  f"civ resource: {resource_id}; skipping effect")
             return patches

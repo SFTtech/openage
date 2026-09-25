@@ -62,9 +62,7 @@ def get_armor_class_lookups(game_version: GameVersion) -> dict[int, str]:
         armor_lookup_dict.update(raj_internal.ARMOR_CLASS_LOOKUPS)
         armor_lookup_dict.update(de2_internal.ARMOR_CLASS_LOOKUPS)
 
-        # armor classes used by recent DE2 builds that have no name yet; they
-        # have to be present up front so that the pregen processor creates the
-        # matching attribute change types
+        # unnamed armor classes must exist up front for the pregen processor
         for unnamed_class in (41,):
             armor_lookup_dict.setdefault(unnamed_class, f"ArmorClass{unnamed_class}")
 
@@ -169,8 +167,6 @@ def get_command_lookups(game_version: GameVersion) -> dict[int, tuple[str, str]]
 class GeneratedLabels(dict):
     """
     Single-string name lookup that generates a label for unknown ids.
-
-    Used for the lookups that map an id to one name instead of a name pair.
     """
 
     def __init__(self, *args, prefix: str = "Class"):
@@ -186,10 +182,6 @@ class GeneratedLabels(dict):
 class GeneratedNames(dict):
     """
     Name lookup that generates a placeholder name for unknown ids.
-
-    Recent AoE2: DE builds contain game entities and civs that the converter
-    has no curated nyan name for yet. Generating a placeholder keeps the
-    conversion going instead of aborting on the first unknown id.
     """
 
     def __init__(self, *args, prefix: str = "GameEntity", snake: str = "game_entity"):
@@ -350,9 +342,7 @@ def get_graphic_set_lookups(
         graphic_set_lookup_dict.update(raj_internal.GRAPHICS_SET_LOOKUPS)
         graphic_set_lookup_dict.update(de2_internal.GRAPHICS_SET_LOOKUPS)
 
-        # civs introduced by recent DE2 expansions are not assigned to an
-        # architecture set yet; collect them in a generic set instead of
-        # aborting the conversion
+        # civs without an architecture set
         mapped_civs = set()
         for items in graphic_set_lookup_dict.values():
             mapped_civs.update(items[0])

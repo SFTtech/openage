@@ -61,9 +61,7 @@ cdef class SLD:
     #   unsigned short unknown3;
     # };
     #
-    # header_size is where the first frame header starts. Most files use 16,
-    # but some (e.g. shadow-only graphics) use 14, so it must not be assumed
-    # to be the size of this struct.
+    # header_size is the offset of the first frame header (not always 16)
     sld_header = Struct(endianness + "4s 5H")
 
     # struct sld_frame_header {
@@ -138,8 +136,6 @@ cdef class SLD:
         cdef (unsigned short, unsigned short) previous_size = (0, 0)
         cdef (unsigned short, unsigned short) previous_offset = (0, 0)
         cdef vector[vector[pixel]] *previous_layer = NULL
-        # a layer can reuse the pixels of the same layer type in the previous
-        # frame; these stay None until such a layer has actually been seen
         cdef SLDLayer previous_main = None
         cdef SLDLayer previous_shadow = None
         cdef SLDLayer previous_outline = None
@@ -213,8 +209,7 @@ cdef class SLD:
                     offset_x1, offset_y1, offset_x2, offset_y2, flag0, flag1 = \
                         SLD.sld_layer_header_graphics.unpack_from(data, current_offset)
 
-                    # empty layers can store an end offset before the start
-                    # offset, which would make the size negative
+                    # empty layers may store an end offset before the start
                     layer_width = max(0, offset_x2 - offset_x1)
                     layer_height = max(0, offset_y2 - offset_y1)
                     layer_hotspot_x = canvas_hotspot_x - offset_x1
@@ -230,10 +225,7 @@ cdef class SLD:
                     current_offset += SLD.sld_layer_header_graphics.size
 
                 elif layer_type in (SLDLayerType.OUTLINE, ):
-                    # Outline layers are not decoded yet. Their header is not
-                    # parsed either, so skip the whole layer instead of reading
-                    # the command array at the wrong offset, which would yield
-                    # a bogus command count and read far past the file end.
+                    # TODO: outline layers are not decoded, skip them entirely
                     current_offset = start_offset + layer_length
                     current_offset += (4 - (current_offset - header_size)) % 4
                     continue
@@ -245,8 +237,7 @@ cdef class SLD:
                     layer_height = main_height
                     layer_hotspot_x = main_hotspot_x
                     layer_hotspot_y = main_hotspot_y
-                    # mask layers have no offsets of their own; they cover the
-                    # same area as the main layer
+                    # mask layers cover the same area as the main layer
                     offset_x1 = main_offset_x1
                     offset_y1 = main_offset_y1
 
@@ -358,8 +349,7 @@ cdef class SLD:
 
                 # Jump to next layer offset
                 current_offset = start_offset + layer_length
-                # padding to 4 bytes, relative to where the frame data starts:
-                # files with a 14 byte header are not aligned absolutely
+                # padding to size % 4, relative to the first frame header
                 current_offset += (4 - (current_offset - header_size)) % 4
 
     cpdef get_frames(self, layer: int = 0):

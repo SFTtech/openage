@@ -204,8 +204,7 @@ class DE2Processor:
             # Turn attack and armor into containers to make diffing work
             if "attacks" in unit_members.keys():
                 attacks_member = unit_members.pop("attacks")
-                # recent DE2 builds ship units (mostly heroes) that list the
-                # same attack class twice; keep the first of each
+                # some units list the same class twice; keep the first
                 attacks_member = attacks_member.get_container("type_id",
                                                               force_duplicate=True)
                 armors_member = unit_members.pop("armors")

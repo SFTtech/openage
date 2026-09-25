@@ -281,11 +281,9 @@ RESOURCE_TYPES = {
     250: "DE2_UNKNOWN_250",
     501: "DE2_UNKNOWN_501",
     506: "DE2_UNKNOWN_506",
-
-    # unknown; used in recent DE2 builds
-    514: "UNKNOWN",
     508: "UNKNOWN",
     513: "UNKNOWN",
+    514: "UNKNOWN",
 }
 
 EFFECT_APPLY_TYPE = {
@@ -349,7 +347,8 @@ EFFECT_APPLY_TYPE = {
     199: "UNKNOWN",
     200: "UNKNOWN",
     201: "UNKNOWN",
-    # unknown; used in recent DE2 builds
+
+    # unknown
     40: "UNKNOWN",
     202: "UNKNOWN",
     204: "UNKNOWN",
@@ -452,8 +451,6 @@ COMMAND_ABILITY = {
     155: "BOOST_MOVE_AND_ATTACK",
     768: "UNKNOWN_768",
     1024: "UNKNOWN_1024",
-
-    # unknown; used in recent DE2 builds
     156: "UNKNOWN",
     157: "UNKNOWN",
     158: "UNKNOWN",
@@ -479,8 +476,6 @@ RESOURCE_HANDLING = {
     4: "RESET_ON_DEATH_WHEN_COMPLETED",
     8: "DE2_UNKNOWN_8",
     32: "DE2_UNKNOWN_32",
-
-    # unknown; used in recent DE2 builds
     16: "UNKNOWN",
     64: "UNKNOWN",
 }
@@ -535,8 +530,6 @@ ARMOR_CLASS = {
     39: "DE2_CAMEL_RIDER",
     40: "DE2_UNKNOWN_40",
     60: "DE2_UNKNOWN_60",
-
-    # unknown; used in recent DE2 builds
     41: "UNKNOWN",
 }
 
@@ -607,8 +600,6 @@ UNIT_CLASSES = {
     62: "SWGB_AIR_CRUISER",
     63: "SWGB_GEONOSIAN",
     64: "SWGB_JEDI_STARFIGHTER",
-
-    # unknown; used in recent DE2 builds
     65: "UNKNOWN",
 }
 
@@ -661,8 +652,6 @@ TERRAIN_RESTRICTIONS = {
     0x1E: "DE2_UNKNOWN",
     0x1F: "SWGB_WATER2",
     0x20: "SWGB_ROCK4",
-
-    # unknown; used in recent DE2 builds
     49: "UNKNOWN",
     50: "UNKNOWN",
     51: "UNKNOWN",
@@ -731,8 +720,6 @@ OBSTRUCTION_TYPES = {
     3: "BERSERK",
     5: "UNIT",
     10: "MOUNTAIN",  # mountain (matches occlusion_mask)
-
-    # unknown; observed in recent DE2 builds
     -127: "UNKNOWN",
     -93: "UNKNOWN",
     -92: "UNKNOWN",
@@ -800,8 +787,6 @@ BLAST_OFFENSE_TYPES = {
     66: "UNKNOWN_66",
     130: "DE2_PIERCE",  # attack units behind target (Ghulam); used since Return of Rome
     138: "DE2_PIERCE",  # attack units behind target (Ghulam); unused since Return of Rome
-
-    # unknown; used in recent DE2 builds
     11: "UNKNOWN",
     162: "UNKNOWN",
 }

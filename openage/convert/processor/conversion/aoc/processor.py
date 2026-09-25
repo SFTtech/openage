@@ -546,11 +546,8 @@ class AoCProcessor:
 
             elif unit.has_member("task_group")\
                     and unit["task_group"].value in (1, 2):
-                # Villager
+                # Villager (male and female task groups)
                 # done somewhere else because they are special^TM
-                # only the male (1) and female (2) task groups form the villager
-                # group; recent DE2 builds use further task groups for units
-                # that are ordinary unit lines (e.g. the fishing ship)
                 continue
 
             else:
@@ -875,9 +872,6 @@ class AoCProcessor:
                 # Unit is unlocked from the start
                 continue
 
-            # only units that are unlocked or upgraded by a tech need a line
-            # reference; looking it up earlier breaks on connections for units
-            # that are not part of any line (e.g. the fishing ship in DE2)
             line_id = full_data_set.unit_ref[unit_id].get_id()
 
             if line_mode == 2:
@@ -1231,9 +1225,7 @@ class AoCProcessor:
                     drop_site_id = drop_site_member.value
 
                     if drop_site_id > -1:
-                        # recent DE2 builds ship drop sites that are not part of
-                        # any building line (e.g. campaign-only buildings), so
-                        # there is nothing to link them to
+                        # drop sites are not necessarily part of a building line
                         drop_site = full_data_set.building_lines.get(drop_site_id)
                         if drop_site is None:
                             continue

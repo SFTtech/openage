@@ -45,9 +45,6 @@ class TechResourceCost(GenieStructure):
 class ResearchLocationDE2(GenieStructure):
     """
     A place where a tech can be researched.
-
-    Recent AoE2: DE builds allow more than one research location per tech,
-    e.g. farm upgrades that are researched at the Mill or at the Folwark.
     """
 
     @classmethod
@@ -129,8 +126,7 @@ class Tech(GenieStructure):
             ])
 
         if game_version.edition.game_id == "AOE2DE":
-            # recent DE2 builds moved research_location_id, research_time,
-            # button_id and hotkey behind the tech name
+            # research location, time, button and hotkey follow the name
             data_format.extend([
                 # techage id that actually contains the research effect information
                 (READ_GEN, "tech_effect_id", StorageType.ID_MEMBER, "int16_t"),
@@ -171,10 +167,7 @@ class Tech(GenieStructure):
             if game_version.edition.game_id == "AOE2DE":
                 data_format.extend([
                     (READ_GEN, "repeatable", StorageType.INT_MEMBER, "int8_t"),
-                    # recent DE2 builds allow a tech to be researched in more
-                    # than one building (e.g. farm upgrades at the Mill and at
-                    # the Folwark). The first location stays in the members the
-                    # rest of the converter expects, any further ones follow.
+                    # first research location; any further ones follow below
                     (READ, "research_location_count", StorageType.INT_MEMBER, "int16_t"),
                     # unit id, where the tech will appear to be researched
                     (READ_GEN, "research_location_id", StorageType.ID_MEMBER, "int16_t"),
