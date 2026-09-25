@@ -1,4 +1,4 @@
-# Copyright 2019-2023 the openage authors. See copying.md for legal info.
+# Copyright 2019-2026 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-public-methods,too-many-instance-attributes,consider-iterating-dictionary
 
@@ -347,7 +347,10 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         if civ_id != -1:
             head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
 
-        trait = head_unit["trait"].value
+        if head_unit.has_member("trait"):
+            trait = head_unit["trait"].value
+        else:
+            trait = 0
 
         # Transport ship/ram
         if trait & 0x01:
@@ -516,7 +519,10 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         if civ_id != -1:
             head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
 
-        trait = head_unit["trait"].value
+        if head_unit.has_member("trait"):
+            trait = head_unit["trait"].value
+        else:
+            trait = 0
 
         # Ram
         if trait == 1:

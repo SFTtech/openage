@@ -440,7 +440,8 @@ class AoCTechSubprocessor:
             resource_name = "Gold"
 
         else:
-            raise ValueError("no valid resource ID found")
+            # only the four basic resources are supported
+            return patches
 
         # Check if the tech actually costs an amount of the defined resource
         for resource_amount in tech_group.tech["research_resource_costs"].value:

@@ -1,4 +1,4 @@
-# Copyright 2013-2023 the openage authors. See copying.md for legal info.
+# Copyright 2013-2026 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 from __future__ import annotations
@@ -311,7 +311,7 @@ class EmpiresDat(GenieStructure):
                 (READ, "building_connection_count", StorageType.INT_MEMBER, "uint8_t"),
             ])
 
-            if game_version.edition.game_id == "SWGB":
+            if game_version.edition.game_id in ("SWGB", "AOE2DE"):
                 data_format.append((READ, "unit_connection_count",
                                    StorageType.INT_MEMBER, "uint16_t"))
 

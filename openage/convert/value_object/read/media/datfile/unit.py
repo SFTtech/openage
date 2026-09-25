@@ -1,4 +1,4 @@
-# Copyright 2013-2024 the openage authors. See copying.md for legal info.
+# Copyright 2013-2026 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R,too-many-lines
 from __future__ import annotations
@@ -93,6 +93,7 @@ class UnitCommand(GenieStructure):
                 (READ_GEN, "wwise_resource_gather_sound_id", StorageType.ID_MEMBER, "uint32_t"),
                 # sound to play on resource drop
                 (READ_GEN, "wwise_resource_deposit_sound_id", StorageType.ID_MEMBER, "uint32_t"),
+                (READ_GEN, "unknown_de2", StorageType.ID_MEMBER, "int16_t"),
             ])
 
         return data_format
@@ -446,7 +447,9 @@ class UnitObject(GenieStructure):
                     lookup_dict=OBSTRUCTION_TYPES
                 )),
                 (READ_GEN, "obstruction_class", StorageType.ID_MEMBER, "int8_t"),
+            ])
 
+            if game_version.edition.game_id != "AOE2DE":
                 # bitfield of unit attributes:
                 # bit 0: allow garrison,
                 # bit 1: don't join formation,
@@ -456,11 +459,12 @@ class UnitObject(GenieStructure):
                 # bit 5: biological unit,
                 # bit 6: self-shielding unit,
                 # bit 7: invisible unit
-                (READ_GEN, "trait", StorageType.ID_MEMBER, "uint8_t"),
-                (READ_GEN, "civilization_id", StorageType.ID_MEMBER, "int8_t"),
-                # leftover from trait+civ variable
-                (SKIP, "attribute_piece", StorageType.INT_MEMBER, "int16_t"),
-            ])
+                data_format.extend([
+                    (READ_GEN, "trait", StorageType.ID_MEMBER, "uint8_t"),
+                    (READ_GEN, "civilization_id", StorageType.ID_MEMBER, "int8_t"),
+                    # leftover from trait+civ variable
+                    (SKIP, "attribute_piece", StorageType.INT_MEMBER, "int16_t"),
+                ])
         elif game_version.edition.game_id == "AOE1DE":
             data_format.extend([
                 (READ_GEN, "obstruction_type", StorageType.ID_MEMBER, EnumLookupMember(
@@ -825,7 +829,14 @@ class ProjectileUnit(ActionUnit):
         ])
 
         if game_version.edition.game_id == "AOE2DE":
-            data_format.append((READ_GEN, "blast_damage", StorageType.FLOAT_MEMBER, "float"))
+            data_format.extend([
+                (READ_GEN, "blast_damage", StorageType.FLOAT_MEMBER, "float"),
+                (SKIP, "unknown_de2_0", StorageType.FLOAT_MEMBER, "float"),
+                (SKIP, "unknown_de2_1", StorageType.FLOAT_MEMBER, "float"),
+                (SKIP, "unknown_de2_2", StorageType.INT_MEMBER, "int16_t"),
+                (SKIP, "unknown_de2_3", StorageType.FLOAT_MEMBER, "float"),
+                (SKIP, "unknown_de2_4", StorageType.INT_MEMBER, "int16_t"),
+            ])
 
         return data_format
 
@@ -863,6 +874,29 @@ class MissileUnit(ProjectileUnit):
         return data_format
 
 
+class UnitVariantDE2(GenieStructure):
+    """
+    Per-unit record of unknown meaning; there are variant_count_de2 - 1 of them.
+    """
+
+    @classmethod
+    @cache
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+        """
+        Return the members in this struct.
+        """
+        return [
+            (SKIP, "unknown_de2_0", StorageType.ID_MEMBER, "int16_t"),
+            (SKIP, "unknown_de2_1", StorageType.INT_MEMBER, "int16_t"),
+            (SKIP, "unknown_de2_2", StorageType.INT_MEMBER, "int16_t"),
+            (SKIP, "unknown_de2_3", StorageType.ID_MEMBER, "int16_t"),
+            (SKIP, "unknown_de2_4", StorageType.INT_MEMBER, "int8_t"),
+        ]
+
+
 class LivingUnit(ProjectileUnit):
     """
     type_id >= 70
@@ -879,10 +913,20 @@ class LivingUnit(ProjectileUnit):
         """
         data_format = [
             (READ_GEN, None, None, IncludeMembers(cls=ProjectileUnit)),
+        ]
+
+        data_format.extend([
             (READ_GEN, "resource_cost", StorageType.ARRAY_CONTAINER, SubdataMember(
                 ref_type=ResourceCost,
                 length=3,
             )),
+        ])
+
+        if game_version.edition.game_id == "AOE2DE":
+            data_format.append(
+                (READ, "variant_count_de2", StorageType.INT_MEMBER, "int16_t"))
+
+        data_format.extend([
             (READ_GEN, "creation_time", StorageType.INT_MEMBER, "int16_t"),     # in seconds
             (READ_GEN, "train_location_id", StorageType.ID_MEMBER,
              "int16_t"),  # e.g. 118 = villager builder
@@ -906,11 +950,17 @@ class LivingUnit(ProjectileUnit):
             # | 31 | 32 | 33 | 34 | 35 |
             # +------------------------+
             (READ, "creation_button_id", StorageType.ID_MEMBER, "int8_t"),
-        ]
+        ])
 
         if game_version.edition.game_id not in ("ROR", "AOE1DE"):
             if game_version.edition.game_id == "AOE2DE":
                 data_format.extend([
+                    (SKIP, "variants_de2", StorageType.ARRAY_CONTAINER, SubdataMember(
+                        ref_type=UnitVariantDE2,
+                        length=lambda o: max(0, o.variant_count_de2 - 1),
+                    )),
+                    (SKIP, "unknown_de2_6", StorageType.INT_MEMBER, "int16_t"),
+                    (SKIP, "unknown_de2_7", StorageType.INT_MEMBER, "int16_t"),
                     (READ_GEN, "heal_timer", StorageType.FLOAT_MEMBER, "float"),
                 ])
             else:
@@ -939,10 +989,18 @@ class LivingUnit(ProjectileUnit):
                     (READ_GEN, "spawn_graphic_id", StorageType.ID_MEMBER, "int16_t"),
                     (READ_GEN, "upgrade_graphic_id", StorageType.ID_MEMBER, "int16_t"),
                     (READ_GEN, "hero_glow_graphic_id", StorageType.ID_MEMBER, "int16_t"),
+                    (SKIP, "unknown_de2_8", StorageType.INT_MEMBER, "int16_t"),
                     (READ_GEN, "max_charge", StorageType.FLOAT_MEMBER, "float"),
                     (READ_GEN, "charge_regen_rate", StorageType.FLOAT_MEMBER, "float"),
                     (READ_GEN, "charge_cost", StorageType.ID_MEMBER, "int16_t"),
                     (READ_GEN, "charge_type", StorageType.ID_MEMBER, "int16_t"),
+                    (SKIP, "unknown_de2_9", StorageType.INT_MEMBER, "int16_t"),
+                    (SKIP, "unknown_de2_10", StorageType.ID_MEMBER, "int32_t"),
+                    (SKIP, "unknown_de2_11", StorageType.INT_MEMBER, "int8_t"),
+                    (SKIP, "unknown_de2_12", StorageType.ID_MEMBER, "int32_t"),
+                    (SKIP, "unknown_de2_13", StorageType.ID_MEMBER, "int32_t"),
+                    (SKIP, "unknown_de2_14", StorageType.ID_MEMBER, "int32_t"),
+                    (SKIP, "unknown_de2_15", StorageType.ID_MEMBER, "int32_t"),
                     (READ_GEN, "min_convert_mod", StorageType.FLOAT_MEMBER, "float"),
                     (READ_GEN, "max_convert_mod", StorageType.FLOAT_MEMBER, "float"),
                     (READ_GEN, "convert_chance_mod", StorageType.FLOAT_MEMBER, "float"),

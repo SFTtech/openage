@@ -1,4 +1,4 @@
-# Copyright 2013-2023 the openage authors. See copying.md for legal info.
+# Copyright 2013-2026 the openage authors. See copying.md for legal info.
 
 # TODO pylint: disable=C,R
 from __future__ import annotations
@@ -42,6 +42,31 @@ class TechResourceCost(GenieStructure):
         return data_format
 
 
+class ResearchLocationDE2(GenieStructure):
+    """
+    A place where a tech can be researched.
+    """
+
+    @classmethod
+    @cache
+    def get_data_format_members(
+        cls,
+        game_version: GameVersion
+    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+        """
+        Return the members in this struct.
+        """
+        return [
+            # unit id, where the tech will appear to be researched
+            (READ_GEN, "research_location_id", StorageType.ID_MEMBER, "int16_t"),
+            # time in seconds that are needed to finish this research
+            (READ_GEN, "research_time", StorageType.INT_MEMBER, "int16_t"),
+            # button id as defined in the unit.py button matrix
+            (READ_GEN, "button_id", StorageType.ID_MEMBER, "int8_t"),
+            (READ_GEN, "hotkey", StorageType.ID_MEMBER, "int32_t"),
+        ]
+
+
 class Tech(GenieStructure):
 
     dynamic_load = True
@@ -83,10 +108,11 @@ class Tech(GenieStructure):
                 (READ_GEN, "full_tech_mode", StorageType.BOOLEAN_MEMBER, "int16_t"),
             ])
 
-        data_format.extend([
-            # unit id, where the tech will appear to be researched
-            (READ_GEN, "research_location_id", StorageType.ID_MEMBER, "int16_t"),
-        ])
+        if game_version.edition.game_id != "AOE2DE":
+            data_format.extend([
+                # unit id, where the tech will appear to be researched
+                (READ_GEN, "research_location_id", StorageType.ID_MEMBER, "int16_t"),
+            ])
 
         if game_version.edition.game_id == "AOE2DE":
             data_format.extend([
@@ -99,23 +125,37 @@ class Tech(GenieStructure):
                 (READ_GEN, "language_dll_description", StorageType.ID_MEMBER, "uint16_t"),
             ])
 
-        data_format.extend([
-            # time in seconds that are needed to finish this research
-            (READ_GEN, "research_time", StorageType.INT_MEMBER, "int16_t"),
-            # techage id that actually contains the research effect information
-            (READ_GEN, "tech_effect_id", StorageType.ID_MEMBER, "int16_t"),
-            # 0: normal tech, 2: show in Age progress bar
-            (READ_GEN, "tech_type", StorageType.ID_MEMBER, "int16_t"),
-            # frame id - 1 in icon slp (57029)
-            (SKIP, "icon_id", StorageType.ID_MEMBER, "int16_t"),
-            # button id as defined in the unit.py button matrix
-            (READ_GEN, "button_id", StorageType.ID_MEMBER, "int8_t"),
-            # 100000 + the language file id for the name/description
-            (SKIP, "language_dll_help", StorageType.ID_MEMBER, "int32_t"),
-            (READ_GEN, "language_dll_techtree", StorageType.ID_MEMBER,
-             "int32_t"),     # 149000 + lang_dll_description
-            (READ_GEN, "hotkey", StorageType.ID_MEMBER, "int32_t"),                    # -1 for every tech
-        ])
+        if game_version.edition.game_id == "AOE2DE":
+            # research location, time, button and hotkey follow the name
+            data_format.extend([
+                # techage id that actually contains the research effect information
+                (READ_GEN, "tech_effect_id", StorageType.ID_MEMBER, "int16_t"),
+                # 0: normal tech, 2: show in Age progress bar
+                (READ_GEN, "tech_type", StorageType.ID_MEMBER, "int16_t"),
+                # frame id - 1 in icon slp (57029)
+                (SKIP, "icon_id", StorageType.ID_MEMBER, "int16_t"),
+                # 100000 + the language file id for the name/description
+                (SKIP, "language_dll_help", StorageType.ID_MEMBER, "int32_t"),
+                (READ_GEN, "language_dll_techtree", StorageType.ID_MEMBER, "int32_t"),
+            ])
+        else:
+            data_format.extend([
+                # time in seconds that are needed to finish this research
+                (READ_GEN, "research_time", StorageType.INT_MEMBER, "int16_t"),
+                # techage id that actually contains the research effect information
+                (READ_GEN, "tech_effect_id", StorageType.ID_MEMBER, "int16_t"),
+                # 0: normal tech, 2: show in Age progress bar
+                (READ_GEN, "tech_type", StorageType.ID_MEMBER, "int16_t"),
+                # frame id - 1 in icon slp (57029)
+                (SKIP, "icon_id", StorageType.ID_MEMBER, "int16_t"),
+                # button id as defined in the unit.py button matrix
+                (READ_GEN, "button_id", StorageType.ID_MEMBER, "int8_t"),
+                # 100000 + the language file id for the name/description
+                (SKIP, "language_dll_help", StorageType.ID_MEMBER, "int32_t"),
+                (READ_GEN, "language_dll_techtree", StorageType.ID_MEMBER,
+                 "int32_t"),     # 149000 + lang_dll_description
+                (READ_GEN, "hotkey", StorageType.ID_MEMBER, "int32_t"),
+            ])
 
         if game_version.edition.game_id in ("AOE1DE", "AOE2DE"):
             data_format.extend([
@@ -127,6 +167,20 @@ class Tech(GenieStructure):
             if game_version.edition.game_id == "AOE2DE":
                 data_format.extend([
                     (READ_GEN, "repeatable", StorageType.INT_MEMBER, "int8_t"),
+                    # first research location; any further ones follow below
+                    (READ, "research_location_count", StorageType.INT_MEMBER, "int16_t"),
+                    # unit id, where the tech will appear to be researched
+                    (READ_GEN, "research_location_id", StorageType.ID_MEMBER, "int16_t"),
+                    # time in seconds that are needed to finish this research
+                    (READ_GEN, "research_time", StorageType.INT_MEMBER, "int16_t"),
+                    # button id as defined in the unit.py button matrix
+                    (READ_GEN, "button_id", StorageType.ID_MEMBER, "int8_t"),
+                    (READ_GEN, "hotkey", StorageType.ID_MEMBER, "int32_t"),
+                    (READ_GEN, "extra_research_locations", StorageType.ARRAY_CONTAINER,
+                     SubdataMember(
+                         ref_type=ResearchLocationDE2,
+                         length=lambda o: max(0, o.research_location_count - 1),
+                     )),
                 ])
 
         else:

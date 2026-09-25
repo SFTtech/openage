@@ -1,4 +1,4 @@
-# Copyright 2021-2024 the openage authors. See copying.md for legal info.
+# Copyright 2021-2026 the openage authors. See copying.md for legal info.
 
 """
 Lookup dicts for the EnumLookupMember instances.
@@ -281,6 +281,9 @@ RESOURCE_TYPES = {
     250: "DE2_UNKNOWN_250",
     501: "DE2_UNKNOWN_501",
     506: "DE2_UNKNOWN_506",
+    508: "UNKNOWN",
+    513: "UNKNOWN",
+    514: "UNKNOWN",
 }
 
 EFFECT_APPLY_TYPE = {
@@ -344,6 +347,11 @@ EFFECT_APPLY_TYPE = {
     199: "UNKNOWN",
     200: "UNKNOWN",
     201: "UNKNOWN",
+
+    # unknown
+    40: "UNKNOWN",
+    202: "UNKNOWN",
+    204: "UNKNOWN",
 
     # attribute_id:
     # 0: hit points
@@ -443,6 +451,11 @@ COMMAND_ABILITY = {
     155: "BOOST_MOVE_AND_ATTACK",
     768: "UNKNOWN_768",
     1024: "UNKNOWN_1024",
+    156: "UNKNOWN",
+    157: "UNKNOWN",
+    158: "UNKNOWN",
+    159: "UNKNOWN",
+    160: "UNKNOWN",
 }
 
 OWNER_TYPE = {
@@ -463,6 +476,8 @@ RESOURCE_HANDLING = {
     4: "RESET_ON_DEATH_WHEN_COMPLETED",
     8: "DE2_UNKNOWN_8",
     32: "DE2_UNKNOWN_32",
+    16: "UNKNOWN",
+    64: "UNKNOWN",
 }
 
 DAMAGE_DRAW_TYPE = {
@@ -515,6 +530,7 @@ ARMOR_CLASS = {
     39: "DE2_CAMEL_RIDER",
     40: "DE2_UNKNOWN_40",
     60: "DE2_UNKNOWN_60",
+    41: "UNKNOWN",
 }
 
 UNIT_CLASSES = {
@@ -584,6 +600,7 @@ UNIT_CLASSES = {
     62: "SWGB_AIR_CRUISER",
     63: "SWGB_GEONOSIAN",
     64: "SWGB_JEDI_STARFIGHTER",
+    65: "UNKNOWN",
 }
 
 ELEVATION_MODES = {
@@ -635,6 +652,10 @@ TERRAIN_RESTRICTIONS = {
     0x1E: "DE2_UNKNOWN",
     0x1F: "SWGB_WATER2",
     0x20: "SWGB_ROCK4",
+    49: "UNKNOWN",
+    50: "UNKNOWN",
+    51: "UNKNOWN",
+    52: "UNKNOWN",
 }
 
 BLAST_DEFENSE_TYPES = {
@@ -699,6 +720,31 @@ OBSTRUCTION_TYPES = {
     3: "BERSERK",
     5: "UNIT",
     10: "MOUNTAIN",  # mountain (matches occlusion_mask)
+    -127: "UNKNOWN",
+    -93: "UNKNOWN",
+    -92: "UNKNOWN",
+    -86: "UNKNOWN",
+    -74: "UNKNOWN",
+    -72: "UNKNOWN",
+    -68: "UNKNOWN",
+    -54: "UNKNOWN",
+    -52: "UNKNOWN",
+    -33: "UNKNOWN",
+    -31: "UNKNOWN",
+    -1: "UNKNOWN",
+    13: "UNKNOWN",
+    15: "UNKNOWN",
+    16: "UNKNOWN",
+    17: "UNKNOWN",
+    18: "UNKNOWN",
+    20: "UNKNOWN",
+    53: "UNKNOWN",
+    54: "UNKNOWN",
+    81: "UNKNOWN",
+    82: "UNKNOWN",
+    86: "UNKNOWN",
+    126: "UNKNOWN",
+    127: "UNKNOWN",
 }
 
 SELECTION_EFFECTS = {
@@ -741,6 +787,8 @@ BLAST_OFFENSE_TYPES = {
     66: "UNKNOWN_66",
     130: "DE2_PIERCE",  # attack units behind target (Ghulam); used since Return of Rome
     138: "DE2_PIERCE",  # attack units behind target (Ghulam); unused since Return of Rome
+    11: "UNKNOWN",
+    162: "UNKNOWN",
 }
 
 CREATABLE_TYPES = {

@@ -545,8 +545,8 @@ class AoCProcessor:
                 full_data_set.monk_groups.update({unit_line.get_id(): unit_line})
 
             elif unit.has_member("task_group")\
-                    and unit["task_group"].value > 0:
-                # Villager
+                    and unit["task_group"].value in (1, 2):
+                # Villager (male and female task groups)
                 # done somewhere else because they are special^TM
                 continue
 
@@ -867,11 +867,12 @@ class AoCProcessor:
             required_research_id = connection["required_research"].value
             enabling_research_id = connection["enabling_research"].value
             line_mode = connection["line_mode"].value
-            line_id = full_data_set.unit_ref[unit_id].get_id()
 
             if required_research_id == -1 and enabling_research_id == -1:
                 # Unit is unlocked from the start
                 continue
+
+            line_id = full_data_set.unit_ref[unit_id].get_id()
 
             if line_mode == 2:
                 # Unit is first in line, there should be an unlock tech id
@@ -1224,7 +1225,11 @@ class AoCProcessor:
                     drop_site_id = drop_site_member.value
 
                     if drop_site_id > -1:
-                        drop_site = full_data_set.building_lines[drop_site_id]
+                        # drop sites are not necessarily part of a building line
+                        drop_site = full_data_set.building_lines.get(drop_site_id)
+                        if drop_site is None:
+                            continue
+
                         drop_site.add_gatherer_id(unit_id)
 
     @staticmethod

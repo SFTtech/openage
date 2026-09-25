@@ -1,4 +1,4 @@
-# Copyright 2020-2023 the openage authors. See copying.md for legal info.
+# Copyright 2020-2026 the openage authors. See copying.md for legal info.
 
 """
 Provides functions that retrieve name lookup dicts for internal nyan object
@@ -62,7 +62,11 @@ def get_armor_class_lookups(game_version: GameVersion) -> dict[int, str]:
         armor_lookup_dict.update(raj_internal.ARMOR_CLASS_LOOKUPS)
         armor_lookup_dict.update(de2_internal.ARMOR_CLASS_LOOKUPS)
 
-        return armor_lookup_dict
+        # unnamed armor classes must exist up front for the pregen processor
+        for unnamed_class in (41,):
+            armor_lookup_dict.setdefault(unnamed_class, f"ArmorClass{unnamed_class}")
+
+        return GeneratedLabels(armor_lookup_dict, prefix="ArmorClass")
 
     if game_edition.game_id == "SWGB":
         return swgb_internal.ARMOR_CLASS_LOOKUPS
@@ -106,7 +110,7 @@ def get_civ_lookups(game_version: GameVersion) -> dict[int, tuple[str, str]]:
         civ_lookup_dict.update(raj_internal.CIV_GROUP_LOOKUPS)
         civ_lookup_dict.update(de2_internal.CIV_GROUP_LOOKUPS)
 
-        return civ_lookup_dict
+        return GeneratedNames(civ_lookup_dict, prefix="Civ", snake="civ")
 
     if game_edition.game_id == "SWGB":
         return swgb_internal.CIV_GROUP_LOOKUPS
@@ -158,6 +162,37 @@ def get_command_lookups(game_version: GameVersion) -> dict[int, tuple[str, str]]
         return swgb_internal.COMMAND_TYPE_LOOKUPS
 
     raise RuntimeError(f"No lookup dict found for game version {game_edition.edition_name}")
+
+
+class GeneratedLabels(dict):
+    """
+    Single-string name lookup that generates a label for unknown ids.
+    """
+
+    def __init__(self, *args, prefix: str = "Class"):
+        super().__init__(*args)
+        self.prefix = prefix
+
+    def __missing__(self, key: int) -> str:
+        generated = f"{self.prefix}{key}"
+        self[key] = generated
+        return generated
+
+
+class GeneratedNames(dict):
+    """
+    Name lookup that generates a placeholder name for unknown ids.
+    """
+
+    def __init__(self, *args, prefix: str = "GameEntity", snake: str = "game_entity"):
+        super().__init__(*args)
+        self.prefix = prefix
+        self.snake = snake
+
+    def __missing__(self, key: int) -> tuple[str, str]:
+        generated = (f"{self.prefix}{key}", f"{self.snake}_{key}")
+        self[key] = generated
+        return generated
 
 
 @cache
@@ -233,7 +268,7 @@ def get_entity_lookups(game_version: GameVersion) -> dict[int, tuple[str, str]]:
         entity_lookup_dict.update(de2_internal.AMBIENT_GROUP_LOOKUPS)
         entity_lookup_dict.update(de2_internal.VARIANT_GROUP_LOOKUPS)
 
-        return entity_lookup_dict
+        return GeneratedNames(entity_lookup_dict)
 
     if game_edition.game_id == "SWGB":
         entity_lookup_dict.update(swgb_internal.UNIT_LINE_LOOKUPS)
@@ -307,6 +342,15 @@ def get_graphic_set_lookups(
         graphic_set_lookup_dict.update(raj_internal.GRAPHICS_SET_LOOKUPS)
         graphic_set_lookup_dict.update(de2_internal.GRAPHICS_SET_LOOKUPS)
 
+        # civs without an architecture set
+        mapped_civs = set()
+        for items in graphic_set_lookup_dict.values():
+            mapped_civs.update(items[0])
+
+        unmapped_civs = tuple(civ_id for civ_id in range(256)
+                              if civ_id not in mapped_civs)
+        graphic_set_lookup_dict[-1] = (unmapped_civs, "Generic", "generic")
+
         return graphic_set_lookup_dict
 
     if game_edition.game_id == "SWGB":
@@ -378,7 +422,7 @@ def get_tech_lookups(game_version: GameVersion) -> dict[int, tuple[str, str]]:
         tech_lookup_dict.update(raj_internal.TECH_GROUP_LOOKUPS)
         tech_lookup_dict.update(de2_internal.TECH_GROUP_LOOKUPS)
 
-        return tech_lookup_dict
+        return GeneratedNames(tech_lookup_dict, prefix="Tech", snake="tech")
 
     if game_edition.game_id == "SWGB":
         return swgb_internal.TECH_GROUP_LOOKUPS
