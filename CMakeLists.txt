@@ -33,6 +33,13 @@ If it doesn't, consider reporting the issue, or ask for help:
 # main buildsystem setup entry point
 project(openage CXX)
 
+# Objective-C++ is needed on Apple platforms to build the .mm files that
+# interoperate with Foundation (e.g. dumping NSException details from the
+# terminate handler). Enabled only on Apple so other platforms are unaffected.
+if(APPLE)
+	enable_language(OBJCXX)
+endif()
+
 # C++ standard requirement
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
