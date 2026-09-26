@@ -1,4 +1,4 @@
-// Copyright 2015-2019 the openage authors. See copying.md for legal info.
+// Copyright 2015-2026 the openage authors. See copying.md for legal info.
 
 #include "font_manager.h"
 
@@ -27,7 +27,7 @@ std::string FontManager::get_font_filename(const char *family, const char *style
 	FcResult font_match_result;
 	FcPattern *font_match = FcFontMatch(nullptr, font_pattern, &font_match_result);
 
-	// get attibute FC_FILE (= filename) of best-matched font
+	// get attribute FC_FILE (= filename) of best-matched font
 	FcChar8 *font_filename_tmp;
 	if (FcPatternGetString(font_match, FC_FILE, 0, &font_filename_tmp) != FcResultMatch) {
 		throw Error(ERR << "Fontconfig could not provide font " << family << " " << style);

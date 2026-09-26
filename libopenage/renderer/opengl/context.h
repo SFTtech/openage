@@ -1,4 +1,4 @@
-// Copyright 2015-2024 the openage authors. See copying.md for legal info.
+// Copyright 2015-2026 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -116,7 +116,7 @@ public:
 	 * Store the currently active shader program for this context.
 	 *
 	 * Note that this method does not load the shader in OpenGL. It is merely
-	 * a conveniance function so that the renderer can check which program
+	 * a convenience function so that the renderer can check which program
 	 * is currently used.
 	 *
 	 * @param prog Currently active shader program.

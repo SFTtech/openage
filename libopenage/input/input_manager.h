@@ -1,4 +1,4 @@
-// Copyright 2015-2024 the openage authors. See copying.md for legal info.
+// Copyright 2015-2026 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -174,7 +174,7 @@ private:
 	std::vector<std::shared_ptr<InputContext>> active_contexts;
 
 	/**
-	 * Map of all available contexts, referencable by an ID.
+	 * Map of all available contexts, referenceable by an ID.
 	 *
 	 * TODO: Move this to cvar manager?
 	 */
