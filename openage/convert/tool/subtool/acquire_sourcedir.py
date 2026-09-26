@@ -1,4 +1,4 @@
-# Copyright 2020-2024 the openage authors. See copying.md for legal info.
+# Copyright 2020-2026 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-branches
 
@@ -22,6 +22,7 @@ from urllib.request import urlopen
 
 from ....log import warn, info, dbg
 from ....util.fslike.directory import CaseIgnoringDirectory, Directory
+from ....util.fslike.union import Union
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.init.game_version import GameEdition
@@ -37,6 +38,7 @@ REGISTRY_KEY = \
     "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Microsoft Games\\"
 REGISTRY_SUFFIX_AOK = "Age of Empires\\2.0"
 REGISTRY_SUFFIX_TC = "Age of Empires II: The Conquerors Expansion\\1.0"
+MACOS_DATA_SUBDIR = "AgeOfEmpires2Data"
 
 TRIAL_URL = 'https://archive.org/download/AgeOfEmpiresIiTheConquerorsDemo/Age2XTrial.exe'
 
@@ -121,6 +123,27 @@ def query_source_dir(proposals: set[str]) -> AnyStr:
     return sourcedir
 
 
+def mount_source_dir(sourcedir: AnyStr) -> Path:
+    """
+    Wraps a source directory path in a file system-like object.
+
+    The macOS port of AoE2: DE keeps the game data in a subfolder next to the
+    .app bundle. That subfolder is overlaid onto the installation root, so the
+    data is found at the same paths as in the Windows layout.
+    """
+    root = CaseIgnoringDirectory(sourcedir).root
+
+    data_dir = root[MACOS_DATA_SUBDIR]
+    if not data_dir.is_dir():
+        return root
+
+    union = Union().root
+    union.mount(root)
+    union.mount(data_dir)
+
+    return union
+
+
 def acquire_conversion_source_dir(
     avail_game_eds: list[GameEdition],
     prev_srcdir_paths: set[str] = None
@@ -185,7 +208,7 @@ def acquire_conversion_source_dir(
 
     print(f"converting from '{sourcedir}'")
 
-    return CaseIgnoringDirectory(sourcedir).root
+    return mount_source_dir(sourcedir)
 
 
 def download_trial() -> AnyStr:
