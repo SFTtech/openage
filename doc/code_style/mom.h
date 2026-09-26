@@ -9,7 +9,8 @@
 //
 // To make the code look nice and be readable:
 //  * Sort things alphabetically
-//  * Align things beautifully!
+//  * Align continuation lines with spaces, but don't pad consecutive lines
+//    into columns: realigning them on every change causes noisy diffs.
 //  * If you write documentation correctly, then:
 //    * It's parsable by Doxygen!
 //    * -> Cool generated docs!
