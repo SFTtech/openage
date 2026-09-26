@@ -208,11 +208,9 @@ include a header.
 _the openage authors_, require the following one-line header, preferably in
 the first line, as a comment:
 
-    Copyright 20XX-20YY the openage authors. See copying.md for legal info.
+    Copyright 20XX the openage authors. See copying.md for legal info.
 
-`20XX` is the year when the file was created, and `20YY` is the year when the
-file was last edited. When editing a file, make sure the last-modification year
-is still correct.
+`20XX` is the year when the file was created.
 
 **3rd-party** source files, that is, files that were taken from other open-
 source projects, require the following, longer header:
@@ -224,7 +222,7 @@ source projects, require the following, longer header:
       such as a reference to a copy of the $PROJECT's README or AUTHORS file >
     < if third-party files from more than the one project were used in this
       file, copy the above any number of times >
-    (Modifications|Other (data|code)|Everything else) Copyright 2014-2014 the openage authors.
+    (Modifications|Other (data|code)|Everything else) Copyright 20XX the openage authors.
     See copying.md for further legal info.
 
 For even more details, see the [regular expressions](buildsystem/codecompliance/legal.py).

@@ -4,18 +4,14 @@
 Checks the legal headers of all files.
 """
 
-from datetime import date
 import re
-from subprocess import Popen, PIPE
 
-from .util import findfiles, readfile, writefile, has_ext, SHEBANG
+from .util import findfiles, readfile, has_ext, SHEBANG
 
 
+# The last-modification year is optional; only the creation year is required.
 OPENAGE_AUTHORS = (
-    "Copyright (?P<crstart>\\d{4})-(?P<crend>\\d{4}) the openage authors\\."
-)
-OPENAGE_AUTHORTEMPLATE = (
-    "Copyright {crstart}-{crend} the openage authors."
+    "Copyright (?P<crstart>\\d{4})(-(?P<crend>\\d{4}))? the openage authors\\."
 )
 
 NATIVELEGALHEADER = re.compile(
@@ -57,24 +53,6 @@ EXTENSIONS_REQUIRING_LEGAL_HEADERS = {
 }
 
 
-def get_git_change_year(filename):
-    """ Returns git-log's opinion on when the file was last changed. """
-
-    invocation = [
-        'git', 'log', '-1', '--format=%ad', '--date=short', '--no-merges', '--',
-        filename
-    ]
-
-    with Popen(invocation, stdout=PIPE) as proc:
-        output = proc.communicate()[0].decode('utf-8', errors='ignore').strip()
-
-        if proc.returncode != 0 or not output:
-            # git doesn't know about the file
-            return None
-
-    return int(output[:4])
-
-
 def match_legalheader(data):
     """
     Tests whether data matches any of the regular expressions,
@@ -92,56 +70,12 @@ def match_legalheader(data):
     raise ValueError("no match found")
 
 
-def create_year_fix(filename, file_content, expected_end_year,
-                    found_start_year, headertype):
-    """
-    Create a function that, when called, fixes the copyright header.
-    """
-
-    # check if a fix can be created
-    if headertype not in {NATIVELEGALHEADER, THIRDPARTYLEGALHEADER}:
-        return None
-
-    def year_fix_function():
-        """
-        Store the file with correct copyright years.
-        """
-
-        fixed_file, success = re.subn(
-            OPENAGE_AUTHORS,
-            OPENAGE_AUTHORTEMPLATE.format(crstart=found_start_year,
-                                          crend=expected_end_year),
-            file_content
-        )
-
-        if not success:
-            raise ValueError("copyright year fix did not suceeed")
-
-        writefile(filename, fixed_file)
-
-        return f"Copyright for {filename} was fixed."
-
-    return year_fix_function
-
-
-def test_headers(check_files, paths, git_change_years, third_party_files):
+def test_headers(paths, third_party_files):
     """ Tests all in-sourcefile legal headers. """
-
-    if not git_change_years:
-        print("warning: I won't check if the copyright matches the git history.")
-        print("         Run with --test-git-change-years to enable the check.")
-
-    # determine all uncommited files from git.
-    # those definitely need the current year in the copyright message.
-    with Popen(['git', 'diff', '--name-only', 'HEAD'], stdout=PIPE) as proc:
-        uncommited = set(proc.communicate()[0].decode('ascii').strip().split('\n'))
-
-    current_calendar_year = date.today().year
 
     for filename in findfiles(paths, EXTENSIONS_REQUIRING_LEGAL_HEADERS):
         try:
-            file_content = readfile(filename)
-            headertype, match = match_legalheader(file_content)
+            headertype, _ = match_legalheader(readfile(filename))
         except ValueError:
             yield (
                 "Legal header missing or invalid",
@@ -153,52 +87,15 @@ def test_headers(check_files, paths, git_change_years, third_party_files):
         if headertype is THIRDPARTYLEGALHEADER:
             third_party_files.add(filename)
 
-        try:
-            found_start_year = int(match.group('crstart'))
-            found_end_year = int(match.group('crend'))
-        except IndexError:
-            # this header type has/needs no copyright years
-            # (e.g. empty file)
-            continue
 
-        expected_end_year = None
-        if filename in uncommited:
-            expected_end_year = current_calendar_year
-        elif git_change_years:
-            if check_files is None or filename in check_files:
-                expected_end_year = get_git_change_year(filename)
-
-        if expected_end_year is None:
-            continue
-
-        if found_end_year != expected_end_year:
-
-            fix = create_year_fix(
-                filename,
-                file_content,
-                expected_end_year,
-                found_start_year,
-                headertype
-            )
-
-            yield (
-                "Bad copyright year",
-                (filename + "\n" +
-                 f"\tExpected {expected_end_year}\n" +
-                 f"\tFound    {found_end_year}"),
-                fix
-            )
-
-
-def find_issues(check_files, paths, git_change_years=False):
+def find_issues(paths):
     """
     Tests all source files for the required legal headers.
     """
 
     third_party_files = set()
 
-    yield from test_headers(
-        check_files, paths, git_change_years, third_party_files)
+    yield from test_headers(paths, third_party_files)
 
     # test whether all third-party files are listed in copying.md
     listed_files = set()
