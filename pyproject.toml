@@ -1,21 +1,30 @@
+# Python project metadata, used by the development tools (uv, ruff, ty, ...).
+#
+# The openage python modules are built and installed by the CMake buildsystem,
+# so this project is not installable and declares no build backend. The
+# dependencies here are the python modules the CMake build requires anyway;
+# `uv sync` resolves them into .venv/ where the CMake build can pick them up.
+
 [project]
 name = "openage"
-dynamic = ["version"]
-description = "openage game engine"
-license = "GPL-3.0"
-license-files = ["LICENSE"]
+version = "0.6.0"
+description = "free (as in freedom) open source reimplementation of the Genie engine"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "GPL-3.0-or-later"
 maintainers = [
     { name = "SFTtech", email = "openage@sft.lol" },
 ]
-readme = "README.md"
-requires-python = ">=3.12"
+
 dependencies = [
-    TODO
+    "cython",
+    "lz4",
+    "mako",
+    "numpy",
+    "pillow",
+    "pygments",
+    "tomli-w",
 ]
-
-
-[project.scripts]
-openage = "openage.__main__:main"
 
 [project.urls]
 homepage = "https://github.com/SFTtech/openage"
@@ -23,25 +32,16 @@ source = "https://github.com/SFTtech/openage"
 issues = "https://github.com/SFTtech/openage/issues"
 releasenotes = "https://github.com/SFTtech/openage/releases"
 
-[build-system]
-requires = ["setuptools", "setuptools-scm"]
-build-backend = "setuptools.build_meta"
-
-[tool.setuptools]
-packages = {find = {where = ["."]}}
-package-data = {"openage" = ["data/*.toml", "data/*.md"]}
-
-[tool.setuptools_scm]
-version_scheme = "only-version"
-
 [dependency-groups]
 dev = [
-    "pytest>=9",
-    "pytest-cov>=6",
-    "pytest-asyncio>=0.24",
     "ruff",
     "ty",
 ]
+
+[tool.uv]
+# the python modules live in the source tree, CMake compiles the C++ and Cython
+# parts; there is nothing to build into a wheel here
+package = false
 
 [tool.ruff]
 line-length = 110
@@ -61,7 +61,3 @@ select = ["E", "W", "B", "F", "I", "C", "N", "PL", "RUF", "PYI", "I001"]
 ignore = ["E722", "PLR2004", "PLR0912", "PLR5501", "PLC0415", "PLR0911", "C408", "PLR0915"]
 mccabe.max-complexity = 25
 pylint.max-args = 10
-
-[tool.pytest.ini_options]
-xfail_strict = true
-testpaths = ["tests"]

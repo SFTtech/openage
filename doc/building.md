@@ -88,6 +88,25 @@ described below for some of the most common ones:
 - [Nix/NixOS](build_instructions/nix.md)
 - [Microsoft Windows](build_instructions/windows_msvc.md)
 
+#### Python environment via uv
+
+The python dependencies are declared in [pyproject.toml](/pyproject.toml), so
+[`uv`](https://docs.astral.sh/uv/) can set up a python environment for you:
+
+```
+uv sync
+```
+
+This creates a `.venv/` with all required python modules, and the CMake build
+will pick it up when you point it at the interpreter:
+
+```
+./configure -- -DPython3_EXECUTABLE=$PWD/.venv/bin/python
+```
+
+If you manage python packages with the system package manager instead, that
+works too; then just ignore the pyproject.toml.
+
 ### nyan installation
 
 `openage` depends on [`nyan`](https://github.com/SFTtech/nyan), which is the
