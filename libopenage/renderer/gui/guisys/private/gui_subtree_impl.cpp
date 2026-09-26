@@ -1,10 +1,10 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2026 the openage authors. See copying.md for legal info.
 
 #include "gui_subtree_impl.h"
 #include "gui_renderer_impl.h"
 
 #include <cassert>
-#include <ciso646>
+#include <iso646.h>
 
 #include <QCoreApplication>
 #include <QDebug>

@@ -30,7 +30,7 @@ RUN apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get install -y sudo \
     python3-pil \
     python3-pip \
     python3-pygments \
-    python3-toml \
+    python3-tomli-w \
     qml6-module-qtquick-controls \
     qt6-declarative-dev \
     qt6-multimedia-dev \

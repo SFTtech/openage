@@ -54,10 +54,6 @@ def parse_args():
                            "(a selected subset of) pep8."))
     cli.add_argument("--textfiles", action="store_true",
                      help="check text files for whitespace issues")
-    cli.add_argument("--test-git-change-years", action="store_true",
-                     help=("when doing legal checks, test whether the "
-                           "copyright year matches the git history."))
-
     cli.add_argument("--fix", action="store_true",
                      help="try to automatically fix the found issues")
 
@@ -98,15 +94,14 @@ def process_args(args, error):
         # enable tests that are required before merging to master
         args.pystyle = True
         args.pylint = True
-        args.test_git_change_years = True
 
     if args.all:
         # enable tests that take a bit longer
         args.clang_tidy = True
 
     if not any((args.headerguards, args.legal, args.authors, args.pystyle,
-                args.cppstyle, args.cython, args.test_git_change_years,
-                args.pylint, args.filemodes, args.textfiles, args.clang_tidy)):
+                args.cppstyle, args.cython, args.pylint, args.filemodes,
+                args.textfiles, args.clang_tidy)):
         error("no checks were specified")
 
     has_git = bool(shutil.which('git'))
@@ -120,13 +115,6 @@ def process_args(args, error):
             # non-fatal fail
             print("can not check author list for compliance: git is required")
             args.authors = False
-
-    if args.test_git_change_years:
-        if not args.legal:
-            error("--test-git-change-years may only be passed with --legal")
-
-        if not all((has_git, is_git_repo)):
-            error("--test-git-change-years requires git")
 
     if args.pystyle:
         if not importlib.util.find_spec('pep8') and \
@@ -271,9 +259,8 @@ def find_all_issues(args, check_files=None):
 
     if args.legal:
         from .legal import find_issues
-        yield from find_issues(check_files,
-                               ('openage', 'buildsystem', 'libopenage', 'etc/gdb_pretty'),
-                               args.test_git_change_years)
+        yield from find_issues(('openage', 'buildsystem', 'libopenage',
+                                'etc/gdb_pretty'))
 
     if args.filemodes:
         from .modes import find_issues
