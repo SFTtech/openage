@@ -35,7 +35,7 @@ earliest to latest invoke time. During execution, events may trigger the resched
 other events if there are dependencies between the events.
 
 Both the creation and execution of events require passing a `State` object that functions
-as a persistant global storage for values that are not linked to a specific event executions.
+as a persistent global storage for values that are not linked to a specific event executions.
 In practice, `State` is primarily used to pass the state of the [game simulation](/doc/code/game_simulation/)
 to the event system via an object of the derived `GameState` class. This object allows
 access to the indexing structures of the current game that can be used to retrieve
