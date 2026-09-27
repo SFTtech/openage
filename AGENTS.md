@@ -30,7 +30,7 @@ make doc # doxygen → bin/doc/html/index.html
 
 - Single test: `bin/run test NAME`, e.g. `openage::curve::tests::container`; `-l` lists all, `-d NAME ARGS` runs a demo, `-b NAME` a benchmark, `-a --have-assets` includes tests needing game assets
 - Checks on changed files only: `make checkuncommited` (sic; vs `HEAD`, new files count once `git add`ed) or `make checkchanged` (vs `origin/master`)
-- `checkfast`: authors, cppstyle, cython, headerguards, legal, filemodes, textfiles; `checkmerge` adds pystyle and pylint ([etc/pylintrc](etc/pylintrc)); `checkall` adds clang-tidy
+- `checkfast`: authors, cppstyle, cython, headerguards, legal, filemodes, textfiles; `checkmerge` adds ruff (lint + format) and ty (type check), run through `uv run` (venv from pyproject.toml/uv.lock); `checkall` adds clang-tidy
 - Memory or threading changes: also run the tests in a build configured with `--sanitize=yes` (ASan+UBSan) or `--sanitize=thread`
 - CI also builds on macOS and Windows ([.github/workflows/](.github/workflows/)): keep code portable
 
@@ -97,7 +97,7 @@ Non-obvious traps; add new ones here, verified and in one line
 - Declare C++ functions `except +` in their `pxd:` annotation unless they are `noexcept`, otherwise a C++ exception crashes the interpreter ([pyinterface.md](doc/code/pyinterface.md))
 - Diagnostics via `openage.log` (`dbg`, `info`, `warn`, ...), not `print`
 - Type-annotate new functions like the surrounding code
-- Keep pylint clean; a `# pylint: disable=...` needs a reason and the narrowest scope
+- Keep ruff clean; a `# noqa: ...` needs a reason and the narrowest scope
 
 ## Tests
 

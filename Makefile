@@ -135,19 +135,19 @@ checkfast:
 
 .PHONY: checkmerge
 checkmerge:
-	python3 -m buildsystem.codecompliance --merge
+	uv run --no-sync python3 -m buildsystem.codecompliance --merge
 
 .PHONY: checkchanged
 checkchanged:
-	python3 -m buildsystem.codecompliance --merge --only-changed-files=origin/master
+	uv run --no-sync python3 -m buildsystem.codecompliance --merge --only-changed-files=origin/master
 
 .PHONY: checkuncommited
 checkuncommited:
-	python3 -m buildsystem.codecompliance --merge --only-changed-files=HEAD
+	uv run --no-sync python3 -m buildsystem.codecompliance --merge --only-changed-files=HEAD
 
 .PHONY: checkpy
 checkpy:
-	python3 -m buildsystem.codecompliance --pystyle --pylint
+	uv run --no-sync python3 -m buildsystem.codecompliance --ruff --ty
 
 .PHONY: checkall
 checkall:

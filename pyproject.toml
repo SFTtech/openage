@@ -1,9 +1,8 @@
 # Python project metadata, used by the development tools (uv, ruff, ty, ...).
 #
 # The openage python modules are built and installed by the CMake buildsystem,
-# so this project is not installable and declares no build backend. The
-# dependencies here are the python modules the CMake build requires anyway;
-# `uv sync` resolves them into .venv/ where the CMake build can pick them up.
+# so this project is not installable and declares no build backend.
+# Dependencies used in the CMake build system are then picked up from the venv.
 
 [project]
 name = "openage"

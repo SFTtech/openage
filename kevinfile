@@ -6,6 +6,7 @@
 
 sanity_check:
 	- skip              (? if job != "debian" ?)
+	uv sync             # linter dependencies
 	make checkmerge
 
 # Various optimisation options can affect warnings compiler generates.

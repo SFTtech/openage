@@ -52,9 +52,9 @@ Dependency list:
     CR    opusfile
     CRA   opus
     CRA   ogg
-       S  pycodestyle
+       S  ruff
     C     pygments
-       S  pylint
+       S  ty
     CR    qt6 >=6.2 (Core, Quick, QuickControls, Multimedia modules)
     CR    toml11
     CR  O vulkan
@@ -91,13 +91,13 @@ described below for some of the most common ones:
 #### Python environment via uv
 
 The python dependencies are declared in [pyproject.toml](/pyproject.toml), so
-[`uv`](https://docs.astral.sh/uv/) can set up a python environment for you:
+[`uv`](https://docs.astral.sh/uv/) can set up a Python environment for you:
 
 ```
 uv sync
 ```
 
-This creates a `.venv/` with all required python modules, and the CMake build
+This creates a `.venv/` with all required Python modules, and the CMake build
 will pick it up when you point it at the interpreter:
 
 ```
@@ -105,7 +105,8 @@ will pick it up when you point it at the interpreter:
 ```
 
 If you manage python packages with the system package manager instead, that
-works too; then just ignore the pyproject.toml.
+works too: the linters are then taken from the system PATH. In that case just
+ignore the pyproject.toml.
 
 ### nyan installation
 

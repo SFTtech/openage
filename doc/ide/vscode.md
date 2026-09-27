@@ -63,19 +63,14 @@ If you use a C/C++ language support extension, you need to add the path to the *
 ]
 ```
 
-**Python > Formatting: Autopep8 Args**
+**Python linting and formatting: ruff**
 
-If you use a Python language support extension with `autopep8` formatting, you should add these settings to get the openage Python code style. Add these entries to the list of passed arguments:
+Install the [ruff extension](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff).
+It picks up the configuration from [pyproject.toml](/pyproject.toml) and uses
+the ruff binary from the project venv (`.venv/bin/ruff`, created by `uv sync`)
+when one exists.
 
-* `--ignore`
-* `E221,E241,E251,E501`
-
-Ignoring the `E221,E241,E251` errors allows placing multiple spaces around commas and before comments for alignment, while ignoring `E501` disables auto-formatting of overlong lines.
-
-If you don't want to ignore `E501`, you should add this argument which increases the maximum line length to 100:
-
-* `--max-line-length`
-* `100`
+For type checking, install the [ty extension](https://marketplace.visualstudio.com/items?itemName=astral-sh.ty).
 
 
 ## Add openage configure and build tasks

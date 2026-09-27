@@ -5,7 +5,6 @@ Entry point for the code compliance checker.
 """
 
 import argparse
-import importlib
 import os
 import shutil
 import subprocess
@@ -47,11 +46,10 @@ def parse_args():
     cli.add_argument("--filemodes", action="store_true",
                      help=("check whether files in the repo have the "
                            "correct access bits (-> 0644) "))
-    cli.add_argument("--pylint", action="store_true",
-                     help="run pylint on the python code")
-    cli.add_argument("--pystyle", action="store_true",
-                     help=("check whether the python code complies with "
-                           "(a selected subset of) pep8."))
+    cli.add_argument("--ruff", action="store_true",
+                     help="run ruff (linting and formatting) on the python code")
+    cli.add_argument("--ty", action="store_true",
+                     help="run ty (type checking) on the python code")
     cli.add_argument("--textfiles", action="store_true",
                      help="check text files for whitespace issues")
     cli.add_argument("--fix", action="store_true",
@@ -74,8 +72,6 @@ def process_args(args, error):
 
     Calls error (with a string argument) in case of errors.
     """
-    # this method is very flat; artificially nesting it would be bullshit.
-    # pylint: disable=too-many-branches
 
     # set up log level
     log_setup(args.verbose - args.quiet)
@@ -92,15 +88,15 @@ def process_args(args, error):
 
     if args.merge or args.all:
         # enable tests that are required before merging to master
-        args.pystyle = True
-        args.pylint = True
+        args.ruff = True
+        args.ty = True
 
     if args.all:
         # enable tests that take a bit longer
         args.clang_tidy = True
 
-    if not any((args.headerguards, args.legal, args.authors, args.pystyle,
-                args.cppstyle, args.cython, args.pylint, args.filemodes,
+    if not any((args.headerguards, args.legal, args.authors, args.ruff,
+                args.cppstyle, args.cython, args.ty, args.filemodes,
                 args.textfiles, args.clang_tidy)):
         error("no checks were specified")
 
@@ -116,16 +112,13 @@ def process_args(args, error):
             print("can not check author list for compliance: git is required")
             args.authors = False
 
-    if args.pystyle:
-        if not importlib.util.find_spec('pep8') and \
-           not importlib.util.find_spec('pycodestyle'):
+    if args.ruff:
+        if not shutil.which('ruff'):
+            error("ruff not found in PATH; run 'uv sync' or install ruff")
 
-            error("pep8 or pycodestyle python module "
-                  "required for style checking")
-
-    if args.pylint:
-        if not importlib.util.find_spec('pylint'):
-            error("pylint python module required for linting")
+    if args.ty:
+        if not shutil.which('ty'):
+            error("ty not found in PATH; run 'uv sync' or install ty")
 
     if args.clang_tidy:
         if not shutil.which('clang-tidy'):
@@ -221,9 +214,6 @@ def find_all_issues(args, check_files=None):
     Yields tuples of (title, text) that are displayed as warnings.
     """
 
-    # pylint: disable=too-many-function-args, no-value-for-parameter
-    # no-value-for-parameter has to be used because pylint is dumb
-
     if args.headerguards:
         from .headerguards import find_issues
         yield from find_issues('libopenage')
@@ -232,8 +222,12 @@ def find_all_issues(args, check_files=None):
         from .authors import find_issues
         yield from find_issues()
 
-    if args.pystyle:
-        from .pystyle import find_issues
+    if args.ruff:
+        from .ruff import find_issues
+        yield from find_issues(check_files, ('openage', 'buildsystem', 'etc/gdb_pretty'))
+
+    if args.ty:
+        from .ty import find_issues
         yield from find_issues(check_files, ('openage', 'buildsystem', 'etc/gdb_pretty'))
 
     if args.cython:
@@ -243,10 +237,6 @@ def find_all_issues(args, check_files=None):
     if args.cppstyle:
         from .cppstyle import find_issues
         yield from find_issues(check_files, ('libopenage',))
-
-    if args.pylint:
-        from .pylint import find_issues
-        yield from find_issues(check_files, ('openage', 'buildsystem', 'etc/gdb_pretty'))
 
     if args.textfiles:
         from .textfiles import find_issues
