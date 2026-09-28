@@ -1,4 +1,4 @@
-// Copyright 2013-2024 the openage authors. See copying.md for legal info.
+// Copyright 2013-2026 the openage authors. See copying.md for legal info.
 
 #include "strings.h"
 
@@ -120,7 +120,7 @@ bool string_matches_pattern(const char *str, const char *pattern) {
 		}
 
 		if (*pattern == '\0') {
-			// comparision done
+			// comparison done
 			return true;
 		}
 

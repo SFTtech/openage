@@ -1,4 +1,4 @@
-// Copyright 2015-2024 the openage authors. See copying.md for legal info.
+// Copyright 2015-2026 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -420,7 +420,7 @@ public:
 	}
 
 	/**
-	 * Aligns the bitstream - that is, _if_ we're currenlty in bitstream mode.
+	 * Aligns the bitstream - that is, _if_ we're currently in bitstream mode.
 	 *
 	 * Otherwise, a no-op.
 	 */

@@ -1,4 +1,4 @@
-// Copyright 2015-2023 the openage authors. See copying.md for legal info.
+// Copyright 2015-2026 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -259,7 +259,7 @@ private:
 /**
  * A interaface variable which gets monitored by an
  * option node allowing reflection, while also
- * being directly accessable as a typed member
+ * being directly accessible as a typed member
  */
 template <class T>
 class Var : public util::Variable<T> {

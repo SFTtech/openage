@@ -1,4 +1,4 @@
-// Copyright 2013-2024 the openage authors. See copying.md for legal info.
+// Copyright 2013-2026 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -23,7 +23,7 @@ class Path;
 
 /**
  * Generic File implementation, used in our filesystem-like and file-like
- * abtraction system. Can be created from Python :)
+ * abstraction system. Can be created from Python :)
  *
  * TODO: maybe inherit from std::iostream so we can use it the c++-way
  *

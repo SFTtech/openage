@@ -1,4 +1,4 @@
-// Copyright 2016-2016 the openage authors. See copying.md for legal info.
+// Copyright 2016-2026 the openage authors. See copying.md for legal info.
 
 #include "coord_xy.gen.h"
 
@@ -34,7 +34,7 @@ struct TestCoordsRelative : CoordXYRelative<int, TestCoordsAbsolute, TestCoordsR
  * test method for the base CoordXY* classes.
  */
 void coord() {
-    // test comparision
+    // test comparison
     TESTEQUALS(TestCoordsAbsolute(3, 4) == TestCoordsAbsolute(3, 4), true);
     TESTEQUALS(TestCoordsAbsolute(3, 4) != TestCoordsAbsolute(3, 4), false);
     TESTEQUALS(TestCoordsAbsolute(3, 4) == TestCoordsAbsolute(3, 5), false);

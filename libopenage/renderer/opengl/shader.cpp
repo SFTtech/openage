@@ -1,4 +1,4 @@
-// Copyright 2017-2023 the openage authors. See copying.md for legal info.
+// Copyright 2017-2026 the openage authors. See copying.md for legal info.
 
 #include "shader.h"
 
@@ -36,7 +36,7 @@ GlShader::GlShader(const std::shared_ptr<GlContext> &context,
 	// compile shader source
 	glCompileShader(handle);
 
-	// check compiliation result
+	// check compilation result
 	GLint status;
 	glGetShaderiv(handle, GL_COMPILE_STATUS, &status);
 

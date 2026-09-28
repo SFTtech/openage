@@ -1,4 +1,4 @@
-// Copyright 2015-2024 the openage authors. See copying.md for legal info.
+// Copyright 2015-2026 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -76,7 +76,7 @@ private:
 	 *
 	 * @param width Width of the GUI.
 	 * @param height Height of the GUI.
-	 * @param shaderdir Directory containg the shader source files.
+	 * @param shaderdir Directory containing the shader source files.
 	 */
 	void initialize_render_pass(size_t width,
 	                            size_t height,
