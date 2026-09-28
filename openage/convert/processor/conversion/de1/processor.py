@@ -3,15 +3,15 @@
 """
 Convert data from DE1 to openage formats.
 """
-from __future__ import annotations
-import typing
 
+from __future__ import annotations
+
+import typing
 
 from .....log import info
 from ....entity_object.conversion.aoc.genie_graphic import GenieGraphic
 from ....entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
-from ....service.debug_info import debug_converter_objects, \
-    debug_converter_object_groups
+from ....service.debug_info import debug_converter_object_groups, debug_converter_objects
 from ....service.read.nyan_api_loader import load_api
 from ..aoc.processor import AoCProcessor
 from ..ror.nyan_subprocessor import RoRNyanSubprocessor
@@ -22,10 +22,11 @@ from .modpack_subprocessor import DE1ModpackSubprocessor
 
 if typing.TYPE_CHECKING:
     from argparse import Namespace
-    from openage.convert.entity_object.conversion.stringresource import StringResource
+
     from openage.convert.entity_object.conversion.modpack import Modpack
-    from openage.convert.value_object.read.value_members import ArrayMember
+    from openage.convert.entity_object.conversion.stringresource import StringResource
     from openage.convert.value_object.init.game_version import GameVersion
+    from openage.convert.value_object.read.value_members import ArrayMember
 
 
 class DE1Processor:
@@ -39,7 +40,7 @@ class DE1Processor:
         gamespec: ArrayMember,
         args: Namespace,
         string_resources: StringResource,
-        existing_graphics: list[str]
+        existing_graphics: list[str],
     ) -> list[Modpack]:
         """
         Input game specification and media here and get a set of
@@ -55,12 +56,7 @@ class DE1Processor:
         info("Starting conversion...")
 
         # Create a new container for the conversion process
-        dataset = cls._pre_processor(
-            gamespec,
-            args.game_version,
-            string_resources,
-            existing_graphics
-        )
+        dataset = cls._pre_processor(gamespec, args.game_version, string_resources, existing_graphics)
         debug_converter_objects(args.debugdir, args.debug_info, dataset)
 
         # Create the custom openage formats (nyan, sprite, terrain)
@@ -78,7 +74,7 @@ class DE1Processor:
         gamespec: ArrayMember,
         game_version: GameVersion,
         string_resources: StringResource,
-        existing_graphics: list[str]
+        existing_graphics: list[str],
     ) -> GenieObjectContainer:
         """
         Store data from the reader in a conversion container.
@@ -112,11 +108,7 @@ class DE1Processor:
         return dataset
 
     @classmethod
-    def _processor(
-        cls,
-        gamespec: ArrayMember,
-        full_data_set: GenieObjectContainer
-    ) -> GenieObjectContainer:
+    def _processor(cls, gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> GenieObjectContainer:
         """
         Transfer structures used in Genie games to more openage-friendly
         Python objects.

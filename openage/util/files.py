@@ -5,8 +5,8 @@ Some file handling utilities
 
 from __future__ import annotations
 
-import typing
 import os
+import typing
 from typing import Union
 
 if typing.TYPE_CHECKING:

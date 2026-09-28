@@ -3,7 +3,9 @@
 """
 Load data of media cache files.
 """
+
 from __future__ import annotations
+
 import typing
 
 from openage.util.toml import loads as toml_loads
@@ -30,7 +32,7 @@ def load_media_cache(filepath: Path) -> dict[str, dict[str, tuple]]:
             {
                 cache["filepath"]: {
                     "compr_settings": cache["compression_settings"],
-                    "packer_settings": cache["packer_settings"]
+                    "packer_settings": cache["packer_settings"],
                 }
             }
         )

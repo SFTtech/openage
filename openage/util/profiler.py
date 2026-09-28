@@ -44,7 +44,7 @@ class Profiler:
         """
         self.disable()
 
-    def write_report(self, sortby: str = 'calls') -> None:
+    def write_report(self, sortby: str = "calls") -> None:
         """
         Write the profile stats to profile_stream's file.
         """
@@ -52,7 +52,7 @@ class Profiler:
         self.profile_stats.sort_stats(sortby)
         self.profile_stats.print_stats()
 
-    def report(self, sortby: str = 'calls'):
+    def report(self, sortby: str = "calls"):
         """
         Return the profile_stats to the console.
         """
@@ -123,12 +123,7 @@ class Tracemalloc:
             self.snapshot0 = self.snapshot1
             self.snapshot1 = tracemalloc.take_snapshot()
 
-    def report(
-        self,
-        sortby: str = 'lineno',
-        cumulative: bool = False,
-        limit: int = 100
-    ) -> None:
+    def report(self, sortby: str = "lineno", cumulative: bool = False, limit: int = 100) -> None:
         """
         Return the snapshot statistics to the console.
         """

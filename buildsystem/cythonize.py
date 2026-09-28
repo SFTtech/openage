@@ -13,20 +13,12 @@ from contextlib import redirect_stdout
 from multiprocessing import cpu_count
 from pathlib import Path
 
-# setuptools 60+ ships a distutils shim that re-exports the legacy distutils
-# APIs (Extension, etc.). Importing setuptools before Cython registers the
-# shim in sys.modules, which is what Cython 3.x's Build.Dependencies needs
-# on the first cythonize() call. Without this, the import in Cython's
-# 'from distutils.extension import Extension' fails on Python 3.12+ because
-# distutils was removed from the stdlib. This is the official recommended
-# workaround; see https://github.com/cython/cython/issues/4610
-import setuptools  # noqa: F401  # pylint: disable=unused-import
-
 from Cython.Build import cythonize
 
 
 class LineFilter:
-    """ Proxy for a stream (default stdout) to filter out whole unwanted lines """
+    """Proxy for a stream (default stdout) to filter out whole unwanted lines"""
+
     # pylint: disable=too-few-public-methods
     def __init__(self, stream=None, filters=None):
         self.stream = stream or sys.stdout
@@ -49,42 +41,43 @@ class LineFilter:
         omitting lines given in to constructor in filter
         """
         self.buf += data
-        lines = self.buf.split('\n')
+        lines = self.buf.split("\n")
         for line in lines[:-1]:
             if not any(f(line) for f in self.filters):
-                self.stream.write(line + '\n')
+                self.stream.write(line + "\n")
         self.buf = lines[-1]
 
 
 class CythonFilter(LineFilter):
-    """ Filters output of cythonize for useless warnings """
+    """Filters output of cythonize for useless warnings"""
+
     # pylint: disable=too-few-public-methods
     def __init__(self):
         filters = [
             lambda x: 'put "# distutils: language=c++" in your .pyx or .pxd file(s)' in x,
-            lambda x: x.startswith('Compiling ') and x.endswith(' because it changed.')
+            lambda x: x.startswith("Compiling ") and x.endswith(" because it changed."),
         ]
         super().__init__(filters=filters)
 
 
 def read_list_from_file(filename):
-    """ Reads a semicolon-separated list of file entires """
-    with open(filename, encoding='utf8') as fileobj:
+    """Reads a semicolon-separated list of file entires"""
+    with open(filename, encoding="utf8") as fileobj:
         data = fileobj.read().strip()
 
-    return [Path(filename).resolve() for filename in data.split(';')]
+    return [Path(filename).resolve() for filename in data.split(";")]
 
 
 def remove_if_exists(filename):
-    """ Deletes the file (if it exists) """
+    """Deletes the file (if it exists)"""
     if filename.is_file():
         print(filename.relative_to(os.getcwd()))
         filename.unlink()
 
 
-def cythonize_wrapper(modules, force_optimized_lib = False, **kwargs):
-    """ Calls cythonize, filtering useless warnings """
-    bin_dir, bin_modules = kwargs['build_dir'], []
+def cythonize_wrapper(modules, force_optimized_lib=False, **kwargs):
+    """Calls cythonize, filtering useless warnings"""
+    bin_dir, bin_modules = kwargs["build_dir"], []
     src_dir, src_modules = Path.cwd(), []
 
     for module in modules:
@@ -97,13 +90,13 @@ def cythonize_wrapper(modules, force_optimized_lib = False, **kwargs):
         with redirect_stdout(cython_filter):
             if src_modules:
                 cythonize(src_modules, **kwargs)
-                if sys.platform == 'win32' and force_optimized_lib:
+                if sys.platform == "win32" and force_optimized_lib:
                     win_use_optimized_lib_python(src_modules, bin_dir)
 
             if bin_modules:
                 os.chdir(bin_dir)
                 cythonize(bin_modules, **kwargs)
-                if sys.platform == 'win32' and force_optimized_lib:
+                if sys.platform == "win32" and force_optimized_lib:
                     win_use_optimized_lib_python(bin_modules, bin_dir)
                 os.chdir(src_dir)
 
@@ -126,7 +119,7 @@ def win_use_optimized_lib_python(modules, path):
             module = path + "\\" + module
         module = module.removesuffix(".py").removesuffix(".pyx")
         module = module + ".cpp"
-        with open(module, "r", encoding='utf8') as file:
+        with open(module, "r", encoding="utf8") as file:
             text = file.read()
             if not text.count("OPENAGE: UNDEF_DEBUG_INSERTED"):
                 text = text.replace(
@@ -137,51 +130,63 @@ def win_use_optimized_lib_python(modules, path):
                         "#ifdef _DEBUG\n"
                         "#define _DEBUG_WAS_DEFINED\n"
                         "#undef _DEBUG\n#endif\n"
-                        "#include \"Python.h\"\n"
+                        '#include "Python.h"\n'
                         "#ifdef _DEBUG_WAS_DEFINED\n"
                         "#define _DEBUG\n"
                         "#undef _DEBUG_WAS_DEFINED\n"
                         "#endif\n\n"
                         "// OPENAGE: UNDEF_DEBUG_INSERTED\n\n"
                     ),
-                    1
+                    1,
                 )
-        with open(module, "w", encoding='utf8') as file:
+        with open(module, "w", encoding="utf8") as file:
             file.write(text)
 
 
 def main():
-    """ CLI entry point """
+    """CLI entry point"""
     cli = argparse.ArgumentParser()
-    cli.add_argument("module_list", help=(
-        "Module list file (semicolon-separated)."
-    ))
-    cli.add_argument("embedded_module_list", help=(
-        "Embedded module list file (semicolon-separated).\n"
-        "Modules in this list are compiled with the --embed option."
-    ))
-    cli.add_argument("depends_list", help=(
-        "Dependency list file (semicolon-separated).\n"
-        "Contains all .pxd and other files that may get included.\n"
-        "Used to verify that all dependencies are properly listed "
-        "in the CMake build configuration."
-    ))
-    cli.add_argument("--clean", action="store_true", help=(
-        "Clean compilation results and exit."
-    ))
-    cli.add_argument("--build-dir", help=(
-        "Build output directory to generate the cpp files in."
-        "note: this is also added for module search path."
-    ))
-    cli.add_argument("--memcleanup", type=int, default=0, help=(
-        "Generate memory cleanup code to make valgrind happy:\n"
-        "0: nothing, 1+: interned objects,\n"
-        "2+: cdef globals, 3+: types objects"
-    ))
-    cli.add_argument("--threads", type=int, default=cpu_count(),
-                     help="number of compilation threads to use")
-    cli.add_argument("--force_optimized_lib", action="store_true",
-                     help= "edit compiled .cpp files to link to optimized version of python libary")
+    cli.add_argument("module_list", help=("Module list file (semicolon-separated)."))
+    cli.add_argument(
+        "embedded_module_list",
+        help=(
+            "Embedded module list file (semicolon-separated).\n"
+            "Modules in this list are compiled with the --embed option."
+        ),
+    )
+    cli.add_argument(
+        "depends_list",
+        help=(
+            "Dependency list file (semicolon-separated).\n"
+            "Contains all .pxd and other files that may get included.\n"
+            "Used to verify that all dependencies are properly listed "
+            "in the CMake build configuration."
+        ),
+    )
+    cli.add_argument("--clean", action="store_true", help=("Clean compilation results and exit."))
+    cli.add_argument(
+        "--build-dir",
+        help=(
+            "Build output directory to generate the cpp files in."
+            "note: this is also added for module search path."
+        ),
+    )
+    cli.add_argument(
+        "--memcleanup",
+        type=int,
+        default=0,
+        help=(
+            "Generate memory cleanup code to make valgrind happy:\n"
+            "0: nothing, 1+: interned objects,\n"
+            "2+: cdef globals, 3+: types objects"
+        ),
+    )
+    cli.add_argument("--threads", type=int, default=cpu_count(), help="number of compilation threads to use")
+    cli.add_argument(
+        "--force_optimized_lib",
+        action="store_true",
+        help="edit compiled .cpp files to link to optimized version of python libary",
+    )
     args = cli.parse_args()
 
     # cython emits warnings on using absolute paths to modules
@@ -194,44 +199,46 @@ def main():
         for module in modules + embedded_modules:
             rel_module = module.relative_to(Path.cwd())
             build_module = args.build_dir / rel_module
-            remove_if_exists(build_module.with_suffix('.cpp'))
-            remove_if_exists(build_module.with_suffix('.html'))
+            remove_if_exists(build_module.with_suffix(".cpp"))
+            remove_if_exists(build_module.with_suffix(".html"))
         sys.exit(0)
 
     from Cython.Compiler import Options
-    Options.annotate = True
-    Options.fast_fail = True
+
+    Options.annotate = True  # ty: ignore[invalid-assignment] Cython types its config globals from their initial values
+    Options.fast_fail = True  # ty: ignore[invalid-assignment] Cython types its config globals from their initial values
     Options.generate_cleanup_code = args.memcleanup
-    Options.cplus = 1
 
     # build cython modules (emits shared libraries)
     cythonize_args = {
-        'compiler_directives': {'language_level': 3},
-        'build_dir': args.build_dir,
-        'include_path': [args.build_dir],
-        'nthreads': args.threads
+        "compiler_directives": {"language_level": 3},
+        "build_dir": args.build_dir,
+        "include_path": [args.build_dir],
+        "nthreads": args.threads,
     }
 
     # this is deprecated, but still better than
     # writing funny lines at the head of each file.
-    cythonize_args['language'] = 'c++'
+    cythonize_args["language"] = "c++"
 
     cythonize_wrapper(modules, args.force_optimized_lib, **cythonize_args)
 
     # build standalone executables that embed the py interpreter
-    Options.embed = "main"
+    Options.embed = "main"  # ty: ignore[invalid-assignment] the compiler reads the global at emit time
 
     cythonize_wrapper(embedded_modules, args.force_optimized_lib, **cythonize_args)
 
     # verify depends
     from Cython.Build.Dependencies import _dep_tree
 
+    assert _dep_tree is not None
+
     depend_failed = False
     # TODO figure out a less hacky way of getting the depends out of Cython
     # pylint: disable=no-member, protected-access
-    for module, files in _dep_tree.__cimported_files_cache.items():
+    for _module, files in _dep_tree.__cimported_files_cache.items():  # ty: ignore[unresolved-attribute]
         for filename in files:
-            if not filename.startswith('.'):
+            if not filename.startswith("."):
                 # system include starts with /
                 continue
 
@@ -243,5 +250,5 @@ def main():
         sys.exit(1)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

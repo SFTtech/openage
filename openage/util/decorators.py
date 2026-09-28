@@ -4,7 +4,6 @@
 Some utility function decorators
 """
 
-
 from typing import Callable
 
 
@@ -16,7 +15,7 @@ def run_once(func: Callable) -> Callable:
     """
 
     def wrapper(*args, **kwargs):
-        """ Returned function wrapper. """
+        """Returned function wrapper."""
         if wrapper.has_run:
             return None
 

@@ -9,7 +9,9 @@
 """
 Creates upgrade patches for abilities.
 """
+
 from __future__ import annotations
+
 import typing
 
 from .....nyan.nyan_structs import MemberOperator
@@ -21,9 +23,11 @@ from ....value_object.read.value_members import NoDiffMember
 from ..aoc.upgrade_ability_subprocessor import AoCUpgradeAbilitySubprocessor
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.converter_object import ConverterObject, \
-        ConverterObjectGroup
     from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup
+    from openage.convert.entity_object.conversion.converter_object import (
+        ConverterObject,
+        ConverterObjectGroup,
+    )
 
 
 class RoRUpgradeAbilitySubprocessor:
@@ -37,7 +41,7 @@ class RoRUpgradeAbilitySubprocessor:
         line: GenieGameEntityGroup,
         container_obj_ref: str,
         command_id: int,
-        diff: ConverterObject = None
+        diff: ConverterObject = None,
     ) -> list[ForwardRef]:
         """
         Creates a patch for the Selectable ability of a line.
@@ -77,11 +81,16 @@ class RoRUpgradeAbilitySubprocessor:
             diff_spawn_delay = diff["frame_delay"]
             diff_spawn_area_offsets = diff["weapon_offset"]
 
-            if any(not isinstance(value, NoDiffMember) for value in (diff_min_range,
-                                                                     diff_max_range,
-                                                                     diff_reload_time,
-                                                                     diff_spawn_delay,
-                                                                     diff_spawn_area_offsets)):
+            if any(
+                not isinstance(value, NoDiffMember)
+                for value in (
+                    diff_min_range,
+                    diff_max_range,
+                    diff_reload_time,
+                    diff_spawn_delay,
+                    diff_spawn_area_offsets,
+                )
+            ):
                 data_changed = True
 
         if not isinstance(diff_animation, NoDiffMember):  # pylint: disable=possibly-used-before-assignment
@@ -98,15 +107,14 @@ class RoRUpgradeAbilitySubprocessor:
                 container_obj_ref,
                 ability_name,
                 f"{command_lookup_dict[command_id][1]}_",
-                [diff_animation_id]
+                [diff_animation_id],
             )
             patches.append(anim_patch_forward_ref)
 
             if isinstance(line, GenieBuildingLineGroup):
                 # Store building upgrades next to their game entity definition,
                 # not in the Age up techs.
-                wrapper.set_location(("data/game_entity/generic/"
-                                      f"{name_lookup_dict[head_unit_id][1]}/"))
+                wrapper.set_location((f"data/game_entity/generic/{name_lookup_dict[head_unit_id][1]}/"))
                 wrapper.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
         if not isinstance(diff_comm_sound, NoDiffMember):  # pylint: disable=possibly-used-before-assignment
@@ -123,15 +131,14 @@ class RoRUpgradeAbilitySubprocessor:
                 container_obj_ref,
                 ability_name,
                 f"{command_lookup_dict[command_id][1]}_",
-                [diff_comm_sound_id]
+                [diff_comm_sound_id],
             )
             patches.append(sound_patch_forward_ref)
 
             if isinstance(line, GenieBuildingLineGroup):
                 # Store building upgrades next to their game entity definition,
                 # not in the Age up techs.
-                wrapper.set_location(("data/game_entity/generic/"
-                                      f"{name_lookup_dict[head_unit_id][1]}/"))
+                wrapper.set_location((f"data/game_entity/generic/{name_lookup_dict[head_unit_id][1]}/"))
                 wrapper.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
         if data_changed:
@@ -141,16 +148,15 @@ class RoRUpgradeAbilitySubprocessor:
             # Wrapper
             wrapper_name = f"Change{game_entity_name}{ability_name}Wrapper"
             wrapper_ref = f"{container_obj_ref}.{wrapper_name}"
-            wrapper_raw_api_object = RawAPIObject(wrapper_ref,
-                                                  wrapper_name,
-                                                  dataset.nyan_api_objects)
+            wrapper_raw_api_object = RawAPIObject(wrapper_ref, wrapper_name, dataset.nyan_api_objects)
             wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
             if isinstance(line, GenieBuildingLineGroup):
                 # Store building upgrades next to their game entity definition,
                 # not in the Age up techs.
-                wrapper_raw_api_object.set_location(("data/game_entity/generic/"
-                                                     f"{name_lookup_dict[head_unit_id][1]}/"))
+                wrapper_raw_api_object.set_location(
+                    (f"data/game_entity/generic/{name_lookup_dict[head_unit_id][1]}/")
+                )
                 wrapper_raw_api_object.set_filename(f"{tech_lookup_dict[tech_id][1]}_upgrade")
 
             else:
@@ -160,36 +166,32 @@ class RoRUpgradeAbilitySubprocessor:
             nyan_patch_name = f"Change{game_entity_name}{ability_name}"
             nyan_patch_ref = f"{container_obj_ref}.{wrapper_name}.{nyan_patch_name}"
             nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
-            nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                     nyan_patch_name,
-                                                     dataset.nyan_api_objects,
-                                                     nyan_patch_location)
+            nyan_patch_raw_api_object = RawAPIObject(
+                nyan_patch_ref, nyan_patch_name, dataset.nyan_api_objects, nyan_patch_location
+            )
             nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             if not isinstance(diff_min_range, NoDiffMember):
                 min_range = diff_min_range.value
 
-                nyan_patch_raw_api_object.add_raw_patch_member("min_range",
-                                                               min_range,
-                                                               "engine.ability.type.ShootProjectile",
-                                                               MemberOperator.ADD)
+                nyan_patch_raw_api_object.add_raw_patch_member(
+                    "min_range", min_range, "engine.ability.type.ShootProjectile", MemberOperator.ADD
+                )
 
             if not isinstance(diff_max_range, NoDiffMember):
                 max_range = diff_max_range.value
 
-                nyan_patch_raw_api_object.add_raw_patch_member("max_range",
-                                                               max_range,
-                                                               "engine.ability.type.ShootProjectile",
-                                                               MemberOperator.ADD)
+                nyan_patch_raw_api_object.add_raw_patch_member(
+                    "max_range", max_range, "engine.ability.type.ShootProjectile", MemberOperator.ADD
+                )
 
             if not isinstance(diff_reload_time, NoDiffMember):
                 reload_time = diff_reload_time.value
 
-                nyan_patch_raw_api_object.add_raw_patch_member("reload_time",
-                                                               reload_time,
-                                                               "engine.ability.type.ShootProjectile",
-                                                               MemberOperator.ADD)
+                nyan_patch_raw_api_object.add_raw_patch_member(
+                    "reload_time", reload_time, "engine.ability.type.ShootProjectile", MemberOperator.ADD
+                )
 
             if not isinstance(diff_spawn_delay, NoDiffMember):
                 if not isinstance(diff_animation, NoDiffMember):
@@ -203,10 +205,9 @@ class RoRUpgradeAbilitySubprocessor:
                 frame_delay = diff_spawn_delay.value
                 spawn_delay = frame_rate * frame_delay
 
-                nyan_patch_raw_api_object.add_raw_patch_member("spawn_delay",
-                                                               spawn_delay,
-                                                               "engine.ability.type.ShootProjectile",
-                                                               MemberOperator.ASSIGN)
+                nyan_patch_raw_api_object.add_raw_patch_member(
+                    "spawn_delay", spawn_delay, "engine.ability.type.ShootProjectile", MemberOperator.ASSIGN
+                )
 
             if not isinstance(diff_spawn_area_offsets, NoDiffMember):
                 diff_spawn_area_x = diff_spawn_area_offsets[0]
@@ -216,31 +217,35 @@ class RoRUpgradeAbilitySubprocessor:
                 if not isinstance(diff_spawn_area_x, NoDiffMember):
                     spawn_area_x = diff_spawn_area_x.value
 
-                    nyan_patch_raw_api_object.add_raw_patch_member("spawning_area_offset_x",
-                                                                   spawn_area_x,
-                                                                   "engine.ability.type.ShootProjectile",
-                                                                   MemberOperator.ADD)
+                    nyan_patch_raw_api_object.add_raw_patch_member(
+                        "spawning_area_offset_x",
+                        spawn_area_x,
+                        "engine.ability.type.ShootProjectile",
+                        MemberOperator.ADD,
+                    )
 
                 if not isinstance(diff_spawn_area_y, NoDiffMember):
                     spawn_area_y = diff_spawn_area_y.value
 
-                    nyan_patch_raw_api_object.add_raw_patch_member("spawning_area_offset_y",
-                                                                   spawn_area_y,
-                                                                   "engine.ability.type.ShootProjectile",
-                                                                   MemberOperator.ADD)
+                    nyan_patch_raw_api_object.add_raw_patch_member(
+                        "spawning_area_offset_y",
+                        spawn_area_y,
+                        "engine.ability.type.ShootProjectile",
+                        MemberOperator.ADD,
+                    )
 
                 if not isinstance(diff_spawn_area_z, NoDiffMember):
                     spawn_area_z = diff_spawn_area_z.value
 
-                    nyan_patch_raw_api_object.add_raw_patch_member("spawning_area_offset_z",
-                                                                   spawn_area_z,
-                                                                   "engine.ability.type.ShootProjectile",
-                                                                   MemberOperator.ADD)
+                    nyan_patch_raw_api_object.add_raw_patch_member(
+                        "spawning_area_offset_z",
+                        spawn_area_z,
+                        "engine.ability.type.ShootProjectile",
+                        MemberOperator.ADD,
+                    )
 
             patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
-            wrapper_raw_api_object.add_raw_member("patch",
-                                                  patch_forward_ref,
-                                                  "engine.util.patch.Patch")
+            wrapper_raw_api_object.add_raw_member("patch", patch_forward_ref, "engine.util.patch.Patch")
 
             converter_group.add_raw_api_object(wrapper_raw_api_object)
             converter_group.add_raw_api_object(nyan_patch_raw_api_object)

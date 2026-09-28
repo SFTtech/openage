@@ -5,13 +5,14 @@
 """
 Creates patches for technologies.
 """
-from __future__ import annotations
-import typing
 
+from __future__ import annotations
+
+import typing
 
 from .....log import warn
 from .....nyan.nyan_structs import MemberOperator
-from ....entity_object.conversion.aoc.genie_tech import CivTeamBonus, CivBonus
+from ....entity_object.conversion.aoc.genie_tech import CivBonus, CivTeamBonus
 from ..aoc.tech_subprocessor import AoCTechSubprocessor
 from ..aoc.upgrade_attribute_subprocessor import AoCUpgradeAttributeSubprocessor
 from ..aoc.upgrade_resource_subprocessor import AoCUpgradeResourceSubprocessor
@@ -19,8 +20,8 @@ from .upgrade_attribute_subprocessor import DE2UpgradeAttributeSubprocessor
 from .upgrade_resource_subprocessor import DE2UpgradeResourceSubprocessor
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.converter_object import ConverterObjectGroup
     from openage.convert.entity_object.conversion.aoc.genie_effect import GenieEffectObject
+    from openage.convert.entity_object.conversion.converter_object import ConverterObjectGroup
     from openage.convert.value_object.conversion.forward_ref import ForwardRef
 
 
@@ -29,7 +30,7 @@ class DE2TechSubprocessor:
     Creates raw API objects and patches for techs and civ setups in DE2.
     """
 
-    upgrade_attribute_funcs = {
+    upgrade_attribute_funcs: typing.ClassVar[dict[int, typing.Callable[..., list[ForwardRef]]]] = {
         0: AoCUpgradeAttributeSubprocessor.hp_upgrade,
         1: AoCUpgradeAttributeSubprocessor.los_upgrade,
         2: AoCUpgradeAttributeSubprocessor.garrison_capacity_upgrade,
@@ -52,7 +53,6 @@ class DE2TechSubprocessor:
         21: AoCUpgradeAttributeSubprocessor.resource_storage_1_upgrade,
         22: AoCUpgradeAttributeSubprocessor.blast_radius_upgrade,
         23: AoCUpgradeAttributeSubprocessor.search_radius_upgrade,
-
         # TODO: These refer to different atributes in DE2
         24: AoCUpgradeAttributeSubprocessor.imperial_tech_id_upgrade,
         26: AoCUpgradeAttributeSubprocessor.attack_warning_sound_upgrade,
@@ -62,7 +62,6 @@ class DE2TechSubprocessor:
         48: AoCUpgradeAttributeSubprocessor.tc_available_upgrade,
         49: AoCUpgradeAttributeSubprocessor.gold_counter_upgrade,
         57: AoCUpgradeAttributeSubprocessor.kidnap_storage_upgrade,
-
         30: DE2UpgradeAttributeSubprocessor.herdable_capacity_upgrade,
         51: DE2UpgradeAttributeSubprocessor.bfg_unknown_51_upgrade,
         59: DE2UpgradeAttributeSubprocessor.charge_attack_upgrade,
@@ -88,7 +87,7 @@ class DE2TechSubprocessor:
         113: DE2UpgradeAttributeSubprocessor.convert_chance_upgrade,
     }
 
-    upgrade_resource_funcs = {
+    upgrade_resource_funcs: typing.ClassVar[dict[int, typing.Callable[..., list[ForwardRef]]]] = {
         0: DE2UpgradeResourceSubprocessor.current_food_amount_upgrade,
         1: DE2UpgradeResourceSubprocessor.current_wood_amount_upgrade,
         2: DE2UpgradeResourceSubprocessor.current_stone_amount_upgrade,
@@ -207,36 +206,31 @@ class DE2TechSubprocessor:
                 type_id -= 10
 
             if type_id in (0, 4, 5):
-                patches.extend(cls.attribute_modify_effect(converter_group,
-                                                           effect,
-                                                           team=team_effect))
+                patches.extend(cls.attribute_modify_effect(converter_group, effect, team=team_effect))
 
             elif type_id in (1, 6):
-                patches.extend(cls.resource_modify_effect(converter_group,
-                                                          effect,
-                                                          team=team_effect))
+                patches.extend(cls.resource_modify_effect(converter_group, effect, team=team_effect))
 
             elif type_id == 2:
                 # Enabling/disabling units: Handled in creatable conditions
                 pass
 
             elif type_id == 3:
-                patches.extend(AoCTechSubprocessor.upgrade_unit_effect(converter_group,
-                                                                       effect))
+                patches.extend(AoCTechSubprocessor.upgrade_unit_effect(converter_group, effect))
 
             elif type_id == 101:
-                patches.extend(AoCTechSubprocessor.tech_cost_modify_effect(converter_group,
-                                                                           effect,
-                                                                           team=team_effect))
+                patches.extend(
+                    AoCTechSubprocessor.tech_cost_modify_effect(converter_group, effect, team=team_effect)
+                )
 
             elif type_id == 102:
                 # Tech disable: Only used for civ tech tree
                 pass
 
             elif type_id == 103:
-                patches.extend(AoCTechSubprocessor.tech_time_modify_effect(converter_group,
-                                                                           effect,
-                                                                           team=team_effect))
+                patches.extend(
+                    AoCTechSubprocessor.tech_time_modify_effect(converter_group, effect, team=team_effect)
+                )
 
             team_effect = False
 
@@ -244,9 +238,7 @@ class DE2TechSubprocessor:
 
     @staticmethod
     def attribute_modify_effect(
-        converter_group: ConverterObjectGroup,
-        effect: GenieEffectObject,
-        team: bool = False
+        converter_group: ConverterObjectGroup, effect: GenieEffectObject, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates the patches for modifying attributes of entities.
@@ -307,8 +299,10 @@ class DE2TechSubprocessor:
         try:
             upgrade_func = DE2TechSubprocessor.upgrade_attribute_funcs[attribute_type]
         except KeyError:
-            warn(f"No DE2 subprocessor function found for handling upgrade of "
-                 f"unit attribute: {attribute_type}; skipping effect")
+            warn(
+                f"No DE2 subprocessor function found for handling upgrade of "
+                f"unit attribute: {attribute_type}; skipping effect"
+            )
             return patches
         for affected_entity in affected_entities:
             patches.extend(upgrade_func(converter_group, affected_entity, value, operator, team))
@@ -317,9 +311,7 @@ class DE2TechSubprocessor:
 
     @staticmethod
     def resource_modify_effect(
-        converter_group: ConverterObjectGroup,
-        effect: GenieEffectObject,
-        team: bool = False
+        converter_group: ConverterObjectGroup, effect: GenieEffectObject, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates the patches for modifying resources.
@@ -355,8 +347,10 @@ class DE2TechSubprocessor:
         try:
             upgrade_func = DE2TechSubprocessor.upgrade_resource_funcs[resource_id]
         except KeyError:
-            warn(f"No DE2 subprocessor function found for handling upgrade of "
-                 f"civ resource: {resource_id}; skipping effect")
+            warn(
+                f"No DE2 subprocessor function found for handling upgrade of "
+                f"civ resource: {resource_id}; skipping effect"
+            )
             return patches
         patches.extend(upgrade_func(converter_group, value, operator, team))
 

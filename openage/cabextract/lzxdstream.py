@@ -8,10 +8,9 @@ import os
 from io import UnsupportedOperation
 from typing import NoReturn
 
-from ..util.filelike.readonly import ReadOnlyFileLikeObject
 from ..util.bytequeue import ByteQueue
+from ..util.filelike.readonly import ReadOnlyFileLikeObject
 from ..util.math import INF
-
 from .lzxd import LZXDecompressor
 
 
@@ -58,9 +57,7 @@ class LZXDStream(ReadOnlyFileLikeObject):
         """
         self.sourcestream.seek(0)
 
-        self.decompressor = LZXDecompressor(self.sourcestream.read,
-                                            self.window_bits,
-                                            self.reset_interval)
+        self.decompressor = LZXDecompressor(self.sourcestream.read, self.window_bits, self.reset_interval)
 
         self.pos = 0
         self.buf = ByteQueue()

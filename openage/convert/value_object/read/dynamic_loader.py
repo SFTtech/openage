@@ -7,11 +7,12 @@ Dynamically load and unload data from a file at runtime.
 """
 
 from __future__ import annotations
+
 import typing
 
 if typing.TYPE_CHECKING:
-    from openage.convert.value_object.read.genie_structure import GenieStructure
     from openage.convert.value_object.init.game_version import GameVersion
+    from openage.convert.value_object.read.genie_structure import GenieStructure
     from openage.convert.value_object.read.value_members import ValueMember
 
 
@@ -21,15 +22,10 @@ class DynamicLoader:
     memory in the process.
     """
 
-    __slots__ = ('name', 'datacls', 'game_version', 'srcdata', 'offset', 'members', '_loaded')
+    __slots__ = ("_loaded", "datacls", "game_version", "members", "name", "offset", "srcdata")
 
     def __init__(
-        self,
-        name: str,
-        datacls: type[GenieStructure],
-        game_version: GameVersion,
-        srcdata: bytes,
-        offset: int
+        self, name: str, datacls: type[GenieStructure], game_version: GameVersion, srcdata: bytes, offset: int
     ):
         self.datacls = datacls
         self.game_version = game_version

@@ -18,7 +18,7 @@ from ...log import info
 
 
 def init_subparser(cli):
-    """ Initializes the parser for convert-specific args. """
+    """Initializes the parser for convert-specific args."""
 
     cli.set_defaults(entrypoint=main)
 

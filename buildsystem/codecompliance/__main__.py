@@ -14,51 +14,55 @@ from .util import log_setup
 
 
 def parse_args():
-    """ Returns the raw argument namespace. """
+    """Returns the raw argument namespace."""
 
     cli = argparse.ArgumentParser()
     check_types = cli.add_mutually_exclusive_group()
-    check_types.add_argument("--fast", action="store_true",
-                             help="do all checks that can be performed quickly")
-    check_types.add_argument("--merge", action="store_true",
-                             help="do all checks that are required before merges to master")
-    check_types.add_argument("--all", action="store_true",
-                             help="do all checks, even the really slow ones")
+    check_types.add_argument(
+        "--fast", action="store_true", help="do all checks that can be performed quickly"
+    )
+    check_types.add_argument(
+        "--merge", action="store_true", help="do all checks that are required before merges to master"
+    )
+    check_types.add_argument("--all", action="store_true", help="do all checks, even the really slow ones")
 
-    cli.add_argument("--only-changed-files", metavar='GITREF',
-                     help=("slow checks are only done on files that have "
-                           "changed since GITREF."))
-    cli.add_argument("--authors", action="store_true",
-                     help=("check whether all git authors are in copying.md. "
-                           "repo must be a git repository."))
-    cli.add_argument("--clang-tidy", action="store_true",
-                     help=("Check the C++ code with clang-tidy. Make sure you have build the "
-                           "project with ./configure --clang-tidy or have set "
-                           "CMAKE_CXX_CLANG_TIDY for your CMake build."))
-    cli.add_argument("--cppstyle", action="store_true",
-                     help="check the cpp code style")
-    cli.add_argument("--cython", action="store_true",
-                     help="check if cython is turned off")
-    cli.add_argument("--headerguards", action="store_true",
-                     help="check all header guards")
-    cli.add_argument("--legal", action="store_true",
-                     help="check whether all sourcefiles have legal headers")
-    cli.add_argument("--filemodes", action="store_true",
-                     help=("check whether files in the repo have the "
-                           "correct access bits (-> 0644) "))
-    cli.add_argument("--ruff", action="store_true",
-                     help="run ruff (linting and formatting) on the python code")
-    cli.add_argument("--ty", action="store_true",
-                     help="run ty (type checking) on the python code")
-    cli.add_argument("--textfiles", action="store_true",
-                     help="check text files for whitespace issues")
-    cli.add_argument("--fix", action="store_true",
-                     help="try to automatically fix the found issues")
+    cli.add_argument(
+        "--only-changed-files",
+        metavar="GITREF",
+        help=("slow checks are only done on files that have changed since GITREF."),
+    )
+    cli.add_argument(
+        "--authors",
+        action="store_true",
+        help=("check whether all git authors are in copying.md. repo must be a git repository."),
+    )
+    cli.add_argument(
+        "--clang-tidy",
+        action="store_true",
+        help=(
+            "Check the C++ code with clang-tidy. Make sure you have build the "
+            "project with ./configure --clang-tidy or have set "
+            "CMAKE_CXX_CLANG_TIDY for your CMake build."
+        ),
+    )
+    cli.add_argument("--cppstyle", action="store_true", help="check the cpp code style")
+    cli.add_argument("--cython", action="store_true", help="check if cython is turned off")
+    cli.add_argument("--headerguards", action="store_true", help="check all header guards")
+    cli.add_argument("--legal", action="store_true", help="check whether all sourcefiles have legal headers")
+    cli.add_argument(
+        "--filemodes",
+        action="store_true",
+        help=("check whether files in the repo have the correct access bits (-> 0644) "),
+    )
+    cli.add_argument(
+        "--ruff", action="store_true", help="run ruff (linting and formatting) on the python code"
+    )
+    cli.add_argument("--ty", action="store_true", help="run ty (type checking) on the python code")
+    cli.add_argument("--textfiles", action="store_true", help="check text files for whitespace issues")
+    cli.add_argument("--fix", action="store_true", help="try to automatically fix the found issues")
 
-    cli.add_argument("-v", "--verbose", action="count", default=0,
-                     help="increase program verbosity")
-    cli.add_argument("-q", "--quiet", action="count", default=0,
-                     help="decrease program verbosity")
+    cli.add_argument("-v", "--verbose", action="count", default=0, help="increase program verbosity")
+    cli.add_argument("-q", "--quiet", action="count", default=0, help="decrease program verbosity")
 
     args = cli.parse_args()
     process_args(args, cli.error)
@@ -95,13 +99,24 @@ def process_args(args, error):
         # enable tests that take a bit longer
         args.clang_tidy = True
 
-    if not any((args.headerguards, args.legal, args.authors, args.ruff,
-                args.cppstyle, args.cython, args.ty, args.filemodes,
-                args.textfiles, args.clang_tidy)):
+    if not any(
+        (
+            args.headerguards,
+            args.legal,
+            args.authors,
+            args.ruff,
+            args.cppstyle,
+            args.cython,
+            args.ty,
+            args.filemodes,
+            args.textfiles,
+            args.clang_tidy,
+        )
+    ):
         error("no checks were specified")
 
-    has_git = bool(shutil.which('git'))
-    is_git_repo = os.path.exists('.git')
+    has_git = bool(shutil.which("git"))
+    is_git_repo = os.path.exists(".git")
 
     if args.only_changed_files and not all((has_git, is_git_repo)):
         error("can not check only changed files: git is required")
@@ -113,15 +128,15 @@ def process_args(args, error):
             args.authors = False
 
     if args.ruff:
-        if not shutil.which('ruff'):
+        if not shutil.which("ruff"):
             error("ruff not found in PATH; run 'uv sync' or install ruff")
 
     if args.ty:
-        if not shutil.which('ty'):
+        if not shutil.which("ty"):
             error("ty not found in PATH; run 'uv sync' or install ty")
 
     if args.clang_tidy:
-        if not shutil.which('clang-tidy'):
+        if not shutil.which("clang-tidy"):
             error("--clang-tidy requires clang-tidy to be installed")
 
 
@@ -129,18 +144,15 @@ def get_changed_files(gitref):
     """
     return a list of changed files
     """
-    invocation = ['git', 'diff', '--name-only', '--diff-filter=ACMRTUXB',
-                  gitref]
+    invocation = ["git", "diff", "--name-only", "--diff-filter=ACMRTUXB", gitref]
 
     try:
         file_list = subprocess.check_output(invocation)
 
     except subprocess.CalledProcessError as exc:
-        raise RuntimeError(
-            "could not determine list of recently-changed files with git"
-        ) from exc
+        raise RuntimeError("could not determine list of recently-changed files with git") from exc
 
-    return set(file_list.decode('ascii').strip().split('\n'))
+    return set(file_list.decode("ascii").strip().split("\n"))
 
 
 def main(args):
@@ -196,8 +208,7 @@ def main(args):
         print(f"==> \x1b[33;1m{issues_count} issue{plural}\x1b[m {remainfound}.")
 
         if not args.fix and fixes_possible:
-            print("When invoked with --fix, I can try "
-                  "to automatically resolve some of the issues.\n")
+            print("When invoked with --fix, I can try to automatically resolve some of the issues.\n")
 
     return issues_count == 0
 
@@ -216,52 +227,75 @@ def find_all_issues(args, check_files=None):
 
     if args.headerguards:
         from .headerguards import find_issues
-        yield from find_issues('libopenage')
+
+        yield from find_issues("libopenage")
 
     if args.authors:
         from .authors import find_issues
+
         yield from find_issues()
 
     if args.ruff:
         from .ruff import find_issues
-        yield from find_issues(check_files, ('openage', 'buildsystem', 'etc/gdb_pretty'))
+
+        yield from find_issues(check_files, ("openage", "buildsystem", "etc/gdb_pretty"))
 
     if args.ty:
         from .ty import find_issues
-        yield from find_issues(check_files, ('openage', 'buildsystem', 'etc/gdb_pretty'))
+
+        yield from find_issues(check_files, ("openage", "buildsystem", "etc/gdb_pretty"))
 
     if args.cython:
         from buildsystem.codecompliance.cython import find_issues
-        yield from find_issues(check_files, ('openage',))
+
+        yield from find_issues(check_files, ("openage",))
 
     if args.cppstyle:
         from .cppstyle import find_issues
-        yield from find_issues(check_files, ('libopenage',))
+
+        yield from find_issues(check_files, ("libopenage",))
 
     if args.textfiles:
         from .textfiles import find_issues
+
         yield from find_issues(
-            ('openage', 'libopenage', 'buildsystem', 'doc', 'legal', 'etc/gdb_pretty'),
-            ('.pxd', '.pyx', '.pxi', '.py',
-             '.h', '.cpp', '.template',
-             '', '.txt', '.md', '.conf',
-             '.cmake', '.in', '.yml', '.supp', '.desktop'))
+            ("openage", "libopenage", "buildsystem", "doc", "legal", "etc/gdb_pretty"),
+            (
+                ".pxd",
+                ".pyx",
+                ".pxi",
+                ".py",
+                ".h",
+                ".cpp",
+                ".template",
+                "",
+                ".txt",
+                ".md",
+                ".conf",
+                ".cmake",
+                ".in",
+                ".yml",
+                ".supp",
+                ".desktop",
+            ),
+        )
 
     if args.legal:
         from .legal import find_issues
-        yield from find_issues(('openage', 'buildsystem', 'libopenage',
-                                'etc/gdb_pretty'))
+
+        yield from find_issues(("openage", "buildsystem", "libopenage", "etc/gdb_pretty"))
 
     if args.filemodes:
         from .modes import find_issues
-        yield from find_issues(check_files, ('openage', 'buildsystem',
-                                             'libopenage', 'etc/gdb_pretty'))
+
+        yield from find_issues(check_files, ("openage", "buildsystem", "libopenage", "etc/gdb_pretty"))
     if args.clang_tidy:
         from .clangtidy import find_issues
-        yield from find_issues(check_files, ('libopenage', ))
+
+        yield from find_issues(check_files, ("libopenage",))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     if main(parse_args()):
         sys.exit(0)
     else:

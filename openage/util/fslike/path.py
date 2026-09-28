@@ -4,12 +4,12 @@
 Provides Path, which is analogous to pathlib.Path,
 and the type of FSLikeObject.root.
 """
-from typing import NoReturn, Union
 
-from io import UnsupportedOperation, TextIOWrapper
 import os
 import pathlib
 import tempfile
+from io import TextIOWrapper, UnsupportedOperation
+from typing import NoReturn, Union
 
 
 class Path:
@@ -35,28 +35,27 @@ class Path:
     # lower.
     # pylint: disable=too-many-public-methods
 
-    def __init__(self, fsobj, parts: Union[str, bytes, bytearray, list, tuple] = None):
+    def __init__(self, fsobj, parts: Union[str, bytes, bytearray, list, tuple] | None = None):
         if isinstance(parts, str):
             parts = parts.encode()
 
         if isinstance(parts, (bytes, bytearray)):
-            parts = parts.split(b'/')
+            parts = parts.split(b"/")
 
         if parts is None:
             parts = []
 
         if not isinstance(parts, (list, tuple)):
-            raise ValueError("path parts must be str, bytes, list or tuple, "
-                             f"but not: {type(parts)}")
+            raise ValueError(f"path parts must be str, bytes, list or tuple, but not: {type(parts)}")
 
         result = []
         for part in parts:
             if isinstance(part, str):
                 part = part.encode()
 
-            if part in (b'.', b''):
+            if part in (b".", b""):
                 pass
-            elif part == b'..':
+            elif part == b"..":
                 try:
                     result.pop()
                 except IndexError:
@@ -79,39 +78,39 @@ class Path:
         if not self.parts:
             return repr(self.fsobj) + ".root"
 
-        return f"Path({repr(self.fsobj)}, {repr(self.parts)})"
+        return f"Path({self.fsobj!r}, {self.parts!r})"
 
     def exists(self) -> bool:
-        """ True if path exists """
+        """True if path exists"""
         return self.fsobj.exists(self.parts)
 
     def is_dir(self) -> bool:
-        """ True if path points to dir (or symlink to one) """
+        """True if path points to dir (or symlink to one)"""
         return self.fsobj.is_dir(self.parts)
 
     def is_file(self) -> bool:
-        """ True if path points to file (or symlink to one) """
+        """True if path points to file (or symlink to one)"""
         return self.fsobj.is_file(self.parts)
 
     def writable(self) -> bool:
-        """ True if path is probably writable """
+        """True if path is probably writable"""
         return self.fsobj.writable(self.parts)
 
     def list(self):
-        """ Yields path names for all members of this dir """
+        """Yields path names for all members of this dir"""
         yield from self.fsobj.list(self.parts)
 
     def iterdir(self):
-        """ Yields path objects for all members of this dir """
+        """Yields path objects for all members of this dir"""
         for name in self.fsobj.list(self.parts):
-            yield type(self)(self.fsobj, self.parts + (name,))
+            yield type(self)(self.fsobj, (*self.parts, name))
 
     def mkdirs(self) -> None:
-        """ Creates this path (including parents). No-op if path exists. """
+        """Creates this path (including parents). No-op if path exists."""
         return self.fsobj.mkdirs(self.parts)
 
     def open(self, mode="r"):
-        """ Opens the file at this path; returns a file-like object. """
+        """Opens the file at this path; returns a file-like object."""
 
         dmode = mode.replace("b", "")
 
@@ -142,15 +141,15 @@ class Path:
         return TextIOWrapper(handle)
 
     def open_r(self):
-        """ open with mode='rb' """
+        """open with mode='rb'"""
         return self.fsobj.open_r(self.parts)
 
     def open_w(self):
-        """ open with mode='wb' """
+        """open with mode='wb'"""
         return self.fsobj.open_w(self.parts)
 
     def open_a(self):
-        """ open with mode='ab' """
+        """open with mode='ab'"""
         return self.fsobj.open_a(self.parts)
 
     def _get_native_path(self):
@@ -214,25 +213,25 @@ class Path:
         return None
 
     def rename(self, targetpath):
-        """ renames to targetpath """
+        """renames to targetpath"""
         if self.fsobj != targetpath.fsobj:
             raise UnsupportedOperation("can't rename across two FSLikeObjects")
         return self.fsobj.rename(self.parts, targetpath.parts)
 
     def rmdir(self):
-        """ Removes the empty directory at this path. """
+        """Removes the empty directory at this path."""
         return self.fsobj.rmdir(self.parts)
 
     def touch(self):
-        """ Creates the file at this path, or updates the timestamp. """
+        """Creates the file at this path, or updates the timestamp."""
         return self.fsobj.touch(self.parts)
 
     def unlink(self):
-        """ Removes the file at this path. """
+        """Removes the file at this path."""
         return self.fsobj.unlink(self.parts)
 
     def removerecursive(self):
-        """ Recursively deletes this file or directory. """
+        """Recursively deletes this file or directory."""
         if self.is_dir():
             for path in self.iterdir():
                 path.removerecursive()
@@ -242,12 +241,12 @@ class Path:
 
     @property
     def mtime(self):
-        """ Returns the time of last modification of the file or directory. """
+        """Returns the time of last modification of the file or directory."""
         return self.fsobj.mtime(self.parts)
 
     @property
     def filesize(self):
-        """ Returns the file size. """
+        """Returns the file size."""
         return self.fsobj.filesize(self.parts)
 
     def watch(self, callback):
@@ -262,74 +261,78 @@ class Path:
         return self.fsobj.watch(self.parts, callback)
 
     def poll_fs_watches(self):
-        """ Polls the installed watches for the entire file-system. """
+        """Polls the installed watches for the entire file-system."""
         self.fsobj.poll_watches()
 
     @property
     def parent(self):
-        """ Parent path object. The parent of root is root. """
+        """Parent path object. The parent of root is root."""
         return type(self)(self.fsobj, self.parts[:-1])
 
     @property
     def name(self):
-        """ The name of the topmost component (str). """
+        """The name of the topmost component (str)."""
         return self.parts[-1].decode()
 
     @property
     def suffix(self):
-        """ The last suffix of the name of the topmost component (str). """
+        """The last suffix of the name of the topmost component (str)."""
         name = self.name
-        pos = name.rfind('.')
+        pos = name.rfind(".")
         if pos <= 0:
             return ""
         return name[pos:]
 
     @property
     def suffixes(self):
-        """ The suffixes of the name of the topmost component (str list). """
+        """The suffixes of the name of the topmost component (str list)."""
         name = self.name
-        if name.startswith('.'):
+        if name.startswith("."):
             name = name[1:]
-        return ['.' + suffix for suffix in name.split('.')[1:]]
+        return ["." + suffix for suffix in name.split(".")[1:]]
 
     @property
     def stem(self):
-        """ Name without suffix (such that stem + suffix == name). """
+        """Name without suffix (such that stem + suffix == name)."""
         name = self.name
-        pos = name.rfind('.')
+        pos = name.rfind(".")
         if pos <= 0:
             return name
 
         return name[:pos]
 
     def joinpath(self, subpath):
-        """ Returns path for the given subpath. """
+        """Returns path for the given subpath."""
         if isinstance(subpath, str):
             subpath = subpath.encode()
 
         if isinstance(subpath, bytes):
-            subpath = subpath.split(b'/')
+            subpath = subpath.split(b"/")
 
         return type(self)(self.fsobj, self.parts + tuple(subpath))
 
     def __getitem__(self, subpath):
-        """ Like joinpath. """
+        """Like joinpath."""
         return self.joinpath(subpath)
 
     def __truediv__(self, subpath):
-        """ Like joinpath. """
+        """Like joinpath."""
         return self.joinpath(subpath)
 
     def __eq__(self, other):
-        """ comparison by fslike and parts """
+        """comparison by fslike and parts"""
         return (self.fsobj == other.fsobj) and (self.parts == other.parts)
 
+    def __hash__(self):
+        """hash consistent with __eq__"""
+        return hash((self.fsobj, tuple(self.parts)))
+
     def with_name(self, name):
-        """ Returns path for differing name (same parent). """
+        """Returns path for differing name (same parent)."""
         return self.parent.joinpath(name)
 
     def with_suffix(self, suffix):
-        """ Returns path for different suffix (same parent and stem). """
+        """Returns path for different suffix (same parent and stem)."""
         if isinstance(suffix, bytes):
             suffix = suffix.decode()
 

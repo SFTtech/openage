@@ -1,20 +1,19 @@
 # Copyright 2015-2018 the openage authors. See copying.md for legal info.
 
-""" Testing code for the openage.log package. """
+"""Testing code for the openage.log package."""
 
 import argparse
 from multiprocessing.pool import ThreadPool
 
-from . import spam, dbg, info, warn, err, crit, \
-    set_loglevel, ENV_VERBOSITY, verbosity_to_level
+from . import ENV_VERBOSITY, crit, dbg, err, info, set_loglevel, spam, verbosity_to_level, warn
 
 
 def demo(args):
-    """ Demonstrates the Python logging facility. """
+    """Demonstrates the Python logging facility."""
 
     cli = argparse.ArgumentParser()
-    cli.add_argument("--verbose", "-v", action='count', default=ENV_VERBOSITY)
-    cli.add_argument("--quiet", "-q", action='count', default=0)
+    cli.add_argument("--verbose", "-v", action="count", default=ENV_VERBOSITY)
+    cli.add_argument("--quiet", "-q", action="count", default=0)
     args = cli.parse_args(args)
 
     level = verbosity_to_level(args.verbose - args.quiet)

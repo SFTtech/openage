@@ -4,9 +4,10 @@
 """
 Mount asset dirs of a game version into the conversion folder.
 """
-from __future__ import annotations
-import typing
 
+from __future__ import annotations
+
+import typing
 
 from ....util.fslike.union import Union
 from ...value_object.read.media.drs import DRS
@@ -16,10 +17,7 @@ if typing.TYPE_CHECKING:
     from openage.util.fslike.directory import Directory
 
 
-def mount_asset_dirs(
-    srcdir: Directory,
-    game_version: GameVersion
-) -> Union:
+def mount_asset_dirs(srcdir: Directory, game_version: GameVersion) -> Union:
     """
     Returns a Union path where srcdir is mounted at /,
     and all the asset files are mounted in subfolders.
@@ -33,7 +31,7 @@ def mount_asset_dirs(
         Mounts the DRS file from srcdir's filename at result's target.
         """
         drspath = srcdir[filename]
-        result[target].mount(DRS(drspath.open('rb'), game_version).root)
+        result[target].mount(DRS(drspath.open("rb"), game_version).root)
 
     # Mount the media sources of the game edition
     for media_type, media_paths in game_version.edition.media_paths.items():

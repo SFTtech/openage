@@ -6,13 +6,14 @@ Provides CABFile, an extractor for the MSCAB format.
 Struct definitions are according to the documentation at
 https://msdn.microsoft.com/en-us/library/bb417343.aspx.
 """
-from __future__ import annotations
-import typing
 
+from __future__ import annotations
+
+import typing
 from bisect import bisect
 from calendar import timegm
 from collections import OrderedDict
-from typing import Generator, NoReturn, Union
+from typing import Generator
 
 from ..log import dbg
 from ..util.filelike.readonly import PosSavingReadOnlyFileLikeObject
@@ -21,7 +22,7 @@ from ..util.files import read_guaranteed, read_nullterminated_string
 from ..util.fslike.filecollection import FileCollection, FileEntry
 from ..util.math import INF
 from ..util.strings import try_decode
-from ..util.struct import NamedStruct, Flags
+from ..util.struct import Flags, NamedStruct
 from .cabchecksum import mscab_csum
 
 if typing.TYPE_CHECKING:
@@ -29,19 +30,19 @@ if typing.TYPE_CHECKING:
 
 
 class CFHeaderFlags(Flags):
-    """ Cabinet file option indicators. Found in the header. """
+    """Cabinet file option indicators. Found in the header."""
 
     # pylint: disable=too-few-public-methods
 
-    specstr         = "H"
+    specstr = "H"
 
     # this cabfile is not the first of the set.
     # prev_cab and prev_disk are present after the header.
-    prev_cabinet    = 0
+    prev_cabinet = 0
 
     # this cabfile is not the last of the set.
     # next_cab and next_disk are present after the header.
-    next_cabinet    = 1
+    next_cabinet = 1
 
     # this cabinet file has reserved fields.
     # cbCFHeader, cbCFFolder, and cbCFData are present after the header,
@@ -51,37 +52,37 @@ class CFHeaderFlags(Flags):
 
 
 class CFHeader(NamedStruct):
-    """ Global CAB file header; found at the very beginning of the file. """
+    """Global CAB file header; found at the very beginning of the file."""
 
     # pylint: disable=too-few-public-methods
 
-    endianness      = "<"
+    endianness = "<"
 
-    signature       = "4s"  # magic number: MSCF
-    reserved1       = "I"   #
-    cbCabinet       = "I"   # size of this cabinet file in bytes
-    reserved2       = "I"   #
-    coffFiles       = "I"   # absolute offset of the first CFFILE entry
-    reserved3       = "I"   #
-    versionMinor    = "B"   # cab file format version (minor)
-    versionMajor    = "B"   # cab file format version (major)
-    cFolders        = "H"   # number of CFFOLDER entries in this cabinet
-    cFiles          = "H"   # number of CFFILES entries in this cabinet
-    flags           = CFHeaderFlags
-    setID           = "H"   # must be same in all cabinets of a set
-    iCabinet        = "H"   # number of this cabinet file in the set
+    signature = "4s"  # magic number: MSCF
+    reserved1 = "I"
+    cbCabinet = "I"  # size of this cabinet file in bytes
+    reserved2 = "I"
+    coffFiles = "I"  # absolute offset of the first CFFILE entry
+    reserved3 = "I"
+    versionMinor = "B"  # cab file format version (minor)
+    versionMajor = "B"  # cab file format version (major)
+    cFolders = "H"  # number of CFFOLDER entries in this cabinet
+    cFiles = "H"  # number of CFFILES entries in this cabinet
+    flags = CFHeaderFlags
+    setID = "H"  # must be same in all cabinets of a set
+    iCabinet = "H"  # number of this cabinet file in the set
 
     # those fields are set manually later.
-    reserved_data   = None  # CFHeaderReservedFields
+    reserved_data = None  # CFHeaderReservedFields
 
-    reserved        = None  # bytes object of size reserved_data.cbCFHeader
+    reserved = None  # bytes object of size reserved_data.cbCFHeader
 
     # strings that hold the disk labels/file names where to find the prev/next
     # CAB files.
-    prev_cab        = None
-    prev_disk       = None
-    next_cab        = None
-    next_disk       = None
+    prev_cab = None
+    prev_disk = None
+    next_cab = None
+    next_disk = None
 
 
 class CFHeaderReservedFields(NamedStruct):
@@ -93,11 +94,11 @@ class CFHeaderReservedFields(NamedStruct):
 
     # pylint: disable=too-few-public-methods
 
-    endianness      = "<"
+    endianness = "<"
 
-    cbCFHeader      = "H"   # size of per-cabinet reserved area
-    cbCFFolder      = "B"   # size of per-folder reserved area
-    cbCFData        = "B"   # size of per-datablock reserved area
+    cbCFHeader = "H"  # size of per-cabinet reserved area
+    cbCFFolder = "B"  # size of per-folder reserved area
+    cbCFData = "B"  # size of per-datablock reserved area
 
 
 class CFFolder(NamedStruct):
@@ -108,18 +109,18 @@ class CFFolder(NamedStruct):
 
     # pylint: disable=too-few-public-methods
 
-    endianness      = "<"
+    endianness = "<"
 
-    coffCabStart    = "I"   # offset of first CFDATA block of this folder.
-    cCFData         = "H"   # number of CFDATA blocks.
+    coffCabStart = "I"  # offset of first CFDATA block of this folder.
+    cCFData = "H"  # number of CFDATA blocks.
 
-    typeCompress    = "H"   # compression algorithm for this folder.
+    typeCompress = "H"  # compression algorithm for this folder.
 
     # filled in later manually
-    reserved        = None  # bytes object of size reserved_data.cbCFFolder
+    reserved = None  # bytes object of size reserved_data.cbCFFolder
 
-    comp_name       = None  # human-readable compression name
-    plain_stream    = None  # file-like object for decompressed folder.
+    comp_name = None  # human-readable compression name
+    plain_stream = None  # file-like object for decompressed folder.
 
 
 class CFFileAttributes(Flags):
@@ -129,14 +130,14 @@ class CFFileAttributes(Flags):
 
     # pylint: disable=too-few-public-methods
 
-    specstr         = "H"
+    specstr = "H"
 
-    rdonly          = 0     # read-only
-    hidden          = 1     # hidden
-    system          = 2     # system file
-    arch            = 5     # archive flag: modified since last backup
-    exec            = 6     # run file after extraction (lol, we won't.)
-    name_is_utf     = 7     # name is UTF-8, not "current locale" (8859-1)
+    rdonly = 0  # read-only
+    hidden = 1  # hidden
+    system = 2  # system file
+    arch = 5  # archive flag: modified since last backup
+    exec = 6  # run file after extraction (lol, we won't.)
+    name_is_utf = 7  # name is UTF-8, not "current locale" (8859-1)
 
 
 class CFFile(NamedStruct):
@@ -149,10 +150,10 @@ class CFFile(NamedStruct):
 
     # pylint: disable=too-few-public-methods
 
-    endianness      = "<"
+    endianness = "<"
 
-    size            = "I"   # uncompressed filesize
-    pos             = "I"   # offset of file in uncompressed folder
+    size = "I"  # uncompressed filesize
+    pos = "I"  # offset of file in uncompressed folder
 
     # index of the folder that contains this file.
     # there are several reserved indices with special meanings:
@@ -160,21 +161,21 @@ class CFFile(NamedStruct):
     #  0xFFFD continued_from_prev       (acutal id: 0)
     #  0xFFFE continued_to_next         (acutal id: last)
     #  0xFFFF continued_prev_and_next:  (actual id: 0)
-    folderid        = "H"
+    folderid = "H"
 
-    date            = "H"   # date stamp ((y–1980) << 9)+(m << 5)+(d) wtf.
-    time            = "H"   # time stamp (h << 11)+(m << 5)+(s >> 1) røfl.
-    attribs         = CFFileAttributes
+    date = "H"  # date stamp ((y-1980) << 9)+(m << 5)+(d) wtf.
+    time = "H"  # time stamp (h << 11)+(m << 5)+(s >> 1) røfl.
+    attribs = CFFileAttributes
 
     # filled in later manually
-    path            = None  # array of path parts
+    path = None  # array of path parts
 
-    continued       = None  # file continued from previous CAB file
-    continues       = None  # file continues in next CAB file
+    continued = None  # file continued from previous CAB file
+    continues = None  # file continues in next CAB file
 
-    folder          = None  # CFFolder object for folderid
+    folder = None  # CFFolder object for folderid
 
-    timestamp       = None  # UNIX timestamp
+    timestamp = None  # UNIX timestamp
 
 
 class CFData(NamedStruct):
@@ -185,17 +186,17 @@ class CFData(NamedStruct):
 
     # pylint: disable=too-few-public-methods
 
-    endianness      = "<"
+    endianness = "<"
 
-    csum            = "I"   # checksum of this block (cbData through payload)
-    cbData          = "H"   # number of compressed bytes
-    cbUncomp        = "H"   # number of uncompressed bytes
+    csum = "I"  # checksum of this block (cbData through payload)
+    cbData = "H"  # number of compressed bytes
+    cbUncomp = "H"  # number of uncompressed bytes
 
     # filled in later manually
-    reserved        = None  # bytes object of size reserved_data.cbCFData
-    payload         = None  # compressed folder stream data block
+    reserved = None  # bytes object of size reserved_data.cbCFData
+    payload = None  # compressed folder stream data block
 
-    def verify_checksum(self) -> Union[None, NoReturn]:
+    def verify_checksum(self) -> None:
         """
         Checks whether csum contains the correct checksum for the block.
         Raises ValueError otherwise.
@@ -225,11 +226,7 @@ class CABEntry(FileEntry):
         self.fileobj = fileobj
 
     def open_r(self):
-        return StreamFragment(
-            self.fileobj.folder.plain_stream,
-            self.fileobj.pos,
-            self.fileobj.size
-        )
+        return StreamFragment(self.fileobj.folder.plain_stream, self.fileobj.pos, self.fileobj.size)
 
     def size(self) -> int:
         return self.fileobj.size
@@ -261,8 +258,7 @@ class CABFile(FileCollection):
 
         # verify magic number
         if header.signature != b"MSCF":
-            raise SyntaxError("invalid CAB file signature: " +
-                              repr(header.signature))
+            raise SyntaxError("invalid CAB file signature: " + repr(header.signature))
 
         # read reserve header, if present
         if header.flags.reserve_present:
@@ -294,8 +290,8 @@ class CABFile(FileCollection):
         for fileobj in self.read_file_headers(cab, offset):
             if self.is_file(fileobj.path) or self.is_dir(fileobj.path):
                 raise ValueError(
-                    "CABFile has multiple entries with the same path: " +
-                    b'/'.join(fileobj.path).decode())
+                    "CABFile has multiple entries with the same path: " + b"/".join(fileobj.path).decode()
+                )
 
             file_entry = CABEntry(fileobj)
 
@@ -304,11 +300,7 @@ class CABFile(FileCollection):
     def __repr__(self):
         return "CABFile"
 
-    def read_folder_headers(
-        self,
-        cab: FileLikeObject,
-        offset: int
-    ) -> Generator[CFFolder, None, None]:
+    def read_folder_headers(self, cab: FileLikeObject, offset: int) -> Generator[CFFolder, None, None]:
         """
         Called during the constructor run.
 
@@ -322,19 +314,15 @@ class CABFile(FileCollection):
             folder = CFFolder.read(cab)
 
             # read reserved
-            folder.reserved = read_guaranteed(
-                cab,
-                self.header.reserved_data.cbCFFolder)
+            folder.reserved = read_guaranteed(cab, self.header.reserved_data.cbCFFolder)
 
             # create compressed data stream
             compressed_data_stream = CABFolderStream(
-                cab,
-                folder.coffCabStart + offset,
-                folder.cCFData,
-                self.header.reserved_data.cbCFData)
+                cab, folder.coffCabStart + offset, folder.cCFData, self.header.reserved_data.cbCFData
+            )
 
             # determine compression type and create plain data stream
-            compression_type = folder.typeCompress & 0x000f
+            compression_type = folder.typeCompress & 0x000F
 
             if compression_type == 0:
                 folder.comp_name = "Plain"
@@ -347,16 +335,15 @@ class CABFile(FileCollection):
                 raise SyntaxError("Quantum compression is unsupported")
 
             elif compression_type == 3:
-                window_bits = (folder.typeCompress >> 8) & 0x1f
+                window_bits = (folder.typeCompress >> 8) & 0x1F
                 folder.comp_name = f"LZX (window_bits = {window_bits:d})"
 
-                from .lzxdstream import LZXDStream
                 from ..util.filelike.stream import StreamSeekBuffer
+                from .lzxdstream import LZXDStream
 
                 unseekable_plain_stream = LZXDStream(
-                    compressed_data_stream,
-                    window_bits=window_bits,
-                    reset_interval=0)
+                    compressed_data_stream, window_bits=window_bits, reset_interval=0
+                )
 
                 folder.plain_stream = StreamSeekBuffer(unseekable_plain_stream)
 
@@ -385,11 +372,11 @@ class CABFile(FileCollection):
 
             # decode filename according to flags
             if fileobj.attribs.name_is_utf:
-                path = rpath.decode('utf-8')
+                path = rpath.decode("utf-8")
             else:
-                path = rpath.decode('iso-8859-1')
+                path = rpath.decode("iso-8859-1")
 
-            fileobj.path = path.replace('\\', '/').lower().encode().split(b'/')
+            fileobj.path = path.replace("\\", "/").lower().encode().split(b"/")
 
             # interpret the special values of folderid
             if fileobj.folderid == 0xFFFD:
@@ -408,13 +395,13 @@ class CABFile(FileCollection):
             # decode file timestamp
             # beware: reading this may give you internal bleedings.
             year = (fileobj.date >> 9) + 1980
-            month = (fileobj.date >> 5) & 0x000f
-            day = (fileobj.date >> 0) & 0x001f
+            month = (fileobj.date >> 5) & 0x000F
+            day = (fileobj.date >> 0) & 0x001F
 
             # it's sort of sad that there's no bit for AM/PM.
             hour = fileobj.time >> 11
-            minute = (fileobj.time >> 5) & 0x003f
-            sec = (fileobj.time << 1) & 0x003f
+            minute = (fileobj.time >> 5) & 0x003F
+            sec = (fileobj.time << 1) & 0x003F
 
             # CAB files have no timezone info; assume UTC.
             fileobj.timestamp = timegm((year, month, day, hour, minute, sec))
@@ -447,13 +434,7 @@ class CABFolderStream(PosSavingReadOnlyFileLikeObject):
         Number of data blocks in the folder.
     """
 
-    def __init__(
-        self,
-        fileobj: FileLikeObject,
-        offset: int,
-        blockcount: int,
-        blockreserved: int
-    ):
+    def __init__(self, fileobj: FileLikeObject, offset: int, blockcount: int, blockreserved: int):
         super().__init__()
 
         self.fileobj = fileobj
@@ -470,9 +451,7 @@ class CABFolderStream(PosSavingReadOnlyFileLikeObject):
         """
         adds metadata for the next block
         """
-        self.blockoffsets.append(self.blockoffsets[-1] +
-                                 CFData.size() + self.blockreserved +
-                                 payloadsize)
+        self.blockoffsets.append(self.blockoffsets[-1] + CFData.size() + self.blockreserved + payloadsize)
 
         self.streamindex.append(self.streamindex[-1] + payloadsize)
 

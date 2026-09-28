@@ -5,7 +5,9 @@
 """
 Create a media cache file for a game version.
 """
+
 from __future__ import annotations
+
 import typing
 
 from openage.util.toml import dumps as toml_dumps
@@ -15,8 +17,8 @@ from ..data_definition import DataDefinition
 FILE_VERSION = "1.0"
 
 if typing.TYPE_CHECKING:
-    from openage.convert.value_object.read.media_types import MediaType
     from openage.convert.value_object.init.game_version import GameVersion
+    from openage.convert.value_object.read.media_types import MediaType
 
 
 class MediaCacheFile(DataDefinition):
@@ -49,7 +51,7 @@ class MediaCacheFile(DataDefinition):
                     "filepath": cache[0],
                     "hash": cache[1],
                     "compression_settings": cache[2],
-                    "packer_settings": cache[3]
+                    "packer_settings": cache[3],
                 }
 
         output_str = "# openage media cache file\n\n"
@@ -63,7 +65,7 @@ class MediaCacheFile(DataDefinition):
         filepath: str,
         filehash: str,
         compr_settings: tuple,
-        packer_settings: tuple
+        packer_settings: tuple,
     ) -> None:
         """
         Add cache data for a file.
@@ -83,9 +85,7 @@ class MediaCacheFile(DataDefinition):
         if media_type not in self.cache:
             self.cache[media_type] = []
 
-        self.cache[media_type].append(
-            (filepath, filehash, compr_settings, packer_settings)
-        )
+        self.cache[media_type].append((filepath, filehash, compr_settings, packer_settings))
 
     def set_hash_func(self, hash_func: str) -> None:
         """

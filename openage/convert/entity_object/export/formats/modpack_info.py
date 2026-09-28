@@ -5,10 +5,10 @@
 """
 Modpack definition file.
 """
+
 from openage.util.toml import dumps as toml_dumps
 
 from ..data_definition import DataDefinition
-
 
 FILE_VERSION = "2"
 
@@ -47,11 +47,11 @@ class ModpackInfo(DataDefinition):
     def add_author(
         self,
         name: str,
-        fullname: str = None,
-        since: str = None,
-        until: str = None,
-        roles: str = None,
-        contact: str = None
+        fullname: str | None = None,
+        since: str | None = None,
+        until: str | None = None,
+        roles: str | None = None,
+        contact: str | None = None,
     ) -> None:
         """
         Adds an author with optional contact info.
@@ -89,12 +89,7 @@ class ModpackInfo(DataDefinition):
 
         self.authors[name] = author
 
-    def add_author_group(
-        self,
-        name: str,
-        authors: list[str],
-        description: str = None
-    ) -> None:
+    def add_author_group(self, name: str, authors: list[str], description: str | None = None) -> None:
         """
         Adds an author with optional contact info.
 
@@ -154,14 +149,14 @@ class ModpackInfo(DataDefinition):
         self,
         packagename: str,
         modpack_version: str,
-        versionstr: str = None,
-        repo: str = None,
-        alias: str = None,
-        title: str = None,
-        description: str = None,
-        long_description: str = None,
-        url: str = None,
-        licenses: str = None
+        versionstr: str | None = None,
+        repo: str | None = None,
+        alias: str | None = None,
+        title: str | None = None,
+        description: str | None = None,
+        long_description: str | None = None,
+        url: str | None = None,
+        licenses: str | None = None,
     ) -> None:
         """
         Set the general information about the modpack.
@@ -232,24 +227,14 @@ class ModpackInfo(DataDefinition):
             raise RuntimeError(f"{self}: version needs to be defined before dumping.")
 
         info_table = {"info": {}}
-        info_table["info"].update(
-            {
-                "name": self.packagename,
-                "version": self.version
-            }
-        )
+        info_table["info"].update({"name": self.packagename, "version": self.version})
         info_table["info"].update(self.extra_info)
 
         output_dict.update(info_table)
 
         # assets table
         assets_table = {"assets": {}}
-        assets_table["assets"].update(
-            {
-                "include": self.includes,
-                "exclude": self.excludes
-            }
-        )
+        assets_table["assets"].update({"include": self.includes, "exclude": self.excludes})
 
         output_dict.update(assets_table)
 

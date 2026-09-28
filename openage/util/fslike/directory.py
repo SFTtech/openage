@@ -8,11 +8,10 @@ FSLikeObjects that represent actual file system paths:
 """
 
 from __future__ import annotations
-import typing
 
 import os
 import pathlib
-
+import typing
 from typing import Union
 
 from .abstract import FSLikeObject
@@ -50,23 +49,23 @@ class Directory(FSLikeObject):
         return f"Directory({self.path.decode(errors='replace')})"
 
     def resolve(self, parts) -> Union[str, bytes]:
-        """ resolves parts to an actual path name. """
+        """resolves parts to an actual path name."""
         return os.path.join(self.path, *parts)
 
     def open_r(self, parts) -> BufferedReader:
-        return open(self.resolve(parts), 'rb')
+        return open(self.resolve(parts), "rb")
 
     def open_w(self, parts) -> BufferedReader:
-        return open(self.resolve(parts), 'wb')
+        return open(self.resolve(parts), "wb")
 
     def open_rw(self, parts) -> BufferedReader:
-        return open(self.resolve(parts), 'r+b')
+        return open(self.resolve(parts), "r+b")
 
     def open_a(self, parts) -> BufferedReader:
-        return open(self.resolve(parts), 'ab')
+        return open(self.resolve(parts), "ab")
 
     def open_ar(self, parts) -> BufferedReader:
-        return open(self.resolve(parts), 'a+b')
+        return open(self.resolve(parts), "a+b")
 
     def get_native_path(self, parts) -> Union[str, bytes]:
         return self.resolve(parts)
@@ -94,7 +93,7 @@ class Directory(FSLikeObject):
         try:
             os.utime(self.resolve(parts))
         except FileNotFoundError:
-            with open(self.resolve(parts), 'ab') as directory:
+            with open(self.resolve(parts), "ab") as directory:
                 directory.close()
 
     def rename(self, srcparts, tgtparts) -> None:
@@ -187,7 +186,7 @@ class CaseIgnoringDirectory(Directory):
         # we need to append the path for parts[i:].
         for part in parts[i:]:
             result.append(self.actual_name(result, part))
-            self.cache[tuple(parts[:len(result)])] = tuple(result)
+            self.cache[tuple(parts[: len(result)])] = tuple(result)
 
         return os.path.join(self.path, *result)
 

@@ -3,17 +3,20 @@
 """
 Search for and enumerate openage modpacks.
 """
+
 from __future__ import annotations
+
 import typing
 
-from openage.log import info, dbg
-from openage.util.toml import TomlDecodeError, loads as toml_loads
+from openage.log import dbg, info
+from openage.util.toml import TomlDecodeError
+from openage.util.toml import loads as toml_loads
 
 if typing.TYPE_CHECKING:
     from openage.util.fslike.union import UnionPath
 
 
-def enumerate_modpacks(modpacks_dir: UnionPath, exclude: set[str] = None) -> dict[str, str]:
+def enumerate_modpacks(modpacks_dir: UnionPath, exclude: set[str] | None = None) -> dict[str, str]:
     """
     Enumerate openage modpacks in a directory.
 
@@ -83,8 +86,7 @@ def get_modpack_info(modpack_dir: UnionPath) -> dict[str, typing.Any]:
         raise err
 
     except TomlDecodeError as err:
-        dbg("Cannot parse modpack definition file %s; content is not TOML or malformed",
-            modpack_def)
+        dbg("Cannot parse modpack definition file %s; content is not TOML or malformed", modpack_def)
         raise err
 
 

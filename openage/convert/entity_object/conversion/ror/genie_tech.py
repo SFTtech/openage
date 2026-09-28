@@ -5,11 +5,19 @@ Contains structures and API-like objects for techs from RoR.
 
 Based on the classes from the AoC converter.
 """
+
 from __future__ import annotations
+
 import typing
 
-from ..aoc.genie_tech import StatUpgrade, AgeUpgrade, UnitLineUpgrade, \
-    BuildingLineUpgrade, UnitUnlock, BuildingUnlock
+from ..aoc.genie_tech import (
+    AgeUpgrade,
+    BuildingLineUpgrade,
+    BuildingUnlock,
+    StatUpgrade,
+    UnitLineUpgrade,
+    UnitUnlock,
+)
 
 if typing.TYPE_CHECKING:
     from openage.convert.entity_object.conversion.ror.genie_unit import RoRUnitLineGroup

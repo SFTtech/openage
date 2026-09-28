@@ -22,6 +22,7 @@ dependencies = [
     "numpy",
     "pillow",
     "pygments",
+    "setuptools",
     "tomli-w",
 ]
 
@@ -33,6 +34,7 @@ releasenotes = "https://github.com/SFTtech/openage/releases"
 
 [dependency-groups]
 dev = [
+    "cython",
     "ruff",
     "ty",
 ]
@@ -57,6 +59,20 @@ extend-exclude = [
 
 [tool.ruff.lint]
 select = ["E", "W", "B", "F", "I", "C", "N", "PL", "RUF", "PYI", "I001"]
-ignore = ["E722", "PLR2004", "PLR0912", "PLR5501", "PLC0415", "PLR0911", "C408", "PLR0915"]
-mccabe.max-complexity = 25
+ignore = [
+    "E722",
+    "PLR2004",
+    "PLR0912",
+    "PLR5501",
+    "PLC0415",
+    "PLR0911",
+    "C408",
+    "PLR0915",
+    "PLW2901",
+    "C901",
+]
 pylint.max-args = 10
+
+[tool.ruff.lint.per-file-ignores]
+# CAB struct fields are named after the MS-CAB specification
+"openage/cabextract/cab.py" = ["N815"]

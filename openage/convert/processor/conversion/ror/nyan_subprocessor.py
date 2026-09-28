@@ -9,6 +9,7 @@
 Convert API-like objects to nyan objects. Subroutine of the
 main RoR processor. Reuses functionality from the AoC subprocessor.
 """
+
 from ....entity_object.conversion.aoc.genie_unit import GenieVillagerGroup
 from ....entity_object.conversion.combined_terrain import CombinedTerrain
 from ....entity_object.conversion.converter_object import RawAPIObject
@@ -173,8 +174,7 @@ class RoRNyanSubprocessor:
         # Start with the generic GameEntity
         game_entity_name = name_lookup_dict[current_unit_id][0]
         obj_location = f"data/game_entity/generic/{name_lookup_dict[current_unit_id][1]}/"
-        raw_api_object = RawAPIObject(game_entity_name, game_entity_name,
-                                      dataset.nyan_api_objects)
+        raw_api_object = RawAPIObject(game_entity_name, game_entity_name, dataset.nyan_api_objects)
         raw_api_object.add_raw_parent("engine.util.game_entity.GameEntity")
         raw_api_object.set_location(obj_location)
         raw_api_object.set_filename(name_lookup_dict[current_unit_id][1])
@@ -192,8 +192,7 @@ class RoRNyanSubprocessor:
         unit_type = current_unit["unit_type"].value
 
         if unit_type >= 70:
-            type_obj = dataset.pregen_nyan_objects["util.game_entity_type.types.Unit"].get_nyan_object(
-            )
+            type_obj = dataset.pregen_nyan_objects["util.game_entity_type.types.Unit"].get_nyan_object()
             types_set.append(type_obj)
 
         unit_class = current_unit["unit_class"].value
@@ -247,34 +246,42 @@ class RoRNyanSubprocessor:
         elif unit_line.is_melee() or unit_line.is_ranged():
             if unit_line.has_command(7):
                 # Attack
-                abilities_set.append(AoCAbilitySubprocessor.apply_discrete_effect_ability(unit_line,
-                                                                                          7,
-                                                                                          unit_line.is_ranged()))
+                abilities_set.append(
+                    AoCAbilitySubprocessor.apply_discrete_effect_ability(unit_line, 7, unit_line.is_ranged())
+                )
 
             if unit_line.has_command(101):
                 # Build
-                abilities_set.append(AoCAbilitySubprocessor.apply_continuous_effect_ability(unit_line,
-                                                                                            101,
-                                                                                            unit_line.is_ranged()))
+                abilities_set.append(
+                    AoCAbilitySubprocessor.apply_continuous_effect_ability(
+                        unit_line, 101, unit_line.is_ranged()
+                    )
+                )
 
             if unit_line.has_command(104):
                 # TODO: Success chance is not a resource in RoR
                 # Convert
-                abilities_set.append(RoRAbilitySubprocessor.apply_discrete_effect_ability(unit_line,
-                                                                                          104,
-                                                                                          unit_line.is_ranged()))
+                abilities_set.append(
+                    RoRAbilitySubprocessor.apply_discrete_effect_ability(
+                        unit_line, 104, unit_line.is_ranged()
+                    )
+                )
 
             if unit_line.has_command(105):
                 # Heal
-                abilities_set.append(AoCAbilitySubprocessor.apply_continuous_effect_ability(unit_line,
-                                                                                            105,
-                                                                                            unit_line.is_ranged()))
+                abilities_set.append(
+                    AoCAbilitySubprocessor.apply_continuous_effect_ability(
+                        unit_line, 105, unit_line.is_ranged()
+                    )
+                )
 
             if unit_line.has_command(106):
                 # Repair
-                abilities_set.append(AoCAbilitySubprocessor.apply_continuous_effect_ability(unit_line,
-                                                                                            106,
-                                                                                            unit_line.is_ranged()))
+                abilities_set.append(
+                    AoCAbilitySubprocessor.apply_continuous_effect_ability(
+                        unit_line, 106, unit_line.is_ranged()
+                    )
+                )
 
         # Formation/Stance
         if not isinstance(unit_line, GenieVillagerGroup):
@@ -310,8 +317,7 @@ class RoRNyanSubprocessor:
         if unit_line.has_command(111):
             abilities_set.append(AoCAbilitySubprocessor.trade_ability(unit_line))
 
-        raw_api_object.add_raw_member("abilities", abilities_set,
-                                      "engine.util.game_entity.GameEntity")
+        raw_api_object.add_raw_member("abilities", abilities_set, "engine.util.game_entity.GameEntity")
 
         # =======================================================================
         # Modifiers
@@ -323,16 +329,14 @@ class RoRNyanSubprocessor:
 
         # TODO: Other modifiers?
 
-        raw_api_object.add_raw_member("modifiers", modifiers_set,
-                                      "engine.util.game_entity.GameEntity")
+        raw_api_object.add_raw_member("modifiers", modifiers_set, "engine.util.game_entity.GameEntity")
 
         # =======================================================================
         # TODO: Variants
         # =======================================================================
         variants_set = []
 
-        raw_api_object.add_raw_member("variants", variants_set,
-                                      "engine.util.game_entity.GameEntity")
+        raw_api_object.add_raw_member("variants", variants_set, "engine.util.game_entity.GameEntity")
 
         # =======================================================================
         # Misc (Objects that are not used by the unit line itself, but use its values)
@@ -358,8 +362,7 @@ class RoRNyanSubprocessor:
         # Start with the generic GameEntity
         game_entity_name = name_lookup_dict[current_building_id][0]
         obj_location = f"data/game_entity/generic/{name_lookup_dict[current_building_id][1]}/"
-        raw_api_object = RawAPIObject(game_entity_name, game_entity_name,
-                                      dataset.nyan_api_objects)
+        raw_api_object = RawAPIObject(game_entity_name, game_entity_name, dataset.nyan_api_objects)
         raw_api_object.add_raw_parent("engine.util.game_entity.GameEntity")
         raw_api_object.set_location(obj_location)
         raw_api_object.set_filename(name_lookup_dict[current_building_id][1])
@@ -379,8 +382,7 @@ class RoRNyanSubprocessor:
         unit_type = current_building["unit_type"].value
 
         if unit_type >= 80:
-            type_obj = dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object(
-            )
+            type_obj = dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object()
             types_set.append(type_obj)
 
         unit_class = current_building["unit_class"].value
@@ -390,8 +392,7 @@ class RoRNyanSubprocessor:
         types_set.append(type_obj)
 
         if building_line.is_dropsite():
-            type_obj = dataset.pregen_nyan_objects["util.game_entity_type.types.DropSite"].get_nyan_object(
-            )
+            type_obj = dataset.pregen_nyan_objects["util.game_entity_type.types.DropSite"].get_nyan_object()
             types_set.append(type_obj)
 
         raw_api_object.add_raw_member("types", types_set, "engine.util.game_entity.GameEntity")
@@ -452,8 +453,7 @@ class RoRNyanSubprocessor:
         if building_line.is_trade_post():
             abilities_set.append(AoCAbilitySubprocessor.trade_post_ability(building_line))
 
-        raw_api_object.add_raw_member("abilities", abilities_set,
-                                      "engine.util.game_entity.GameEntity")
+        raw_api_object.add_raw_member("abilities", abilities_set, "engine.util.game_entity.GameEntity")
 
         # =======================================================================
         # Modifiers
@@ -490,8 +490,7 @@ class RoRNyanSubprocessor:
         # Start with the generic GameEntity
         game_entity_name = name_lookup_dict[ambient_id][0]
         obj_location = f"data/game_entity/generic/{name_lookup_dict[ambient_id][1]}/"
-        raw_api_object = RawAPIObject(game_entity_name, game_entity_name,
-                                      dataset.nyan_api_objects)
+        raw_api_object = RawAPIObject(game_entity_name, game_entity_name, dataset.nyan_api_objects)
         raw_api_object.add_raw_parent("engine.util.game_entity.GameEntity")
         raw_api_object.set_location(obj_location)
         raw_api_object.set_filename(name_lookup_dict[ambient_id][1])
@@ -506,8 +505,7 @@ class RoRNyanSubprocessor:
         # Create or use existing auxiliary types
         types_set = []
 
-        type_obj = dataset.pregen_nyan_objects["util.game_entity_type.types.Ambient"].get_nyan_object(
-        )
+        type_obj = dataset.pregen_nyan_objects["util.game_entity_type.types.Ambient"].get_nyan_object()
         types_set.append(type_obj)
 
         unit_class = ambient_unit["unit_class"].value
@@ -547,24 +545,21 @@ class RoRNyanSubprocessor:
         # =======================================================================
         # Abilities
         # =======================================================================
-        raw_api_object.add_raw_member("abilities", abilities_set,
-                                      "engine.util.game_entity.GameEntity")
+        raw_api_object.add_raw_member("abilities", abilities_set, "engine.util.game_entity.GameEntity")
 
         # =======================================================================
         # Modifiers
         # =======================================================================
         modifiers_set = []
 
-        raw_api_object.add_raw_member("modifiers", modifiers_set,
-                                      "engine.util.game_entity.GameEntity")
+        raw_api_object.add_raw_member("modifiers", modifiers_set, "engine.util.game_entity.GameEntity")
 
         # =======================================================================
         # TODO: Variants
         # =======================================================================
         variants_set = []
 
-        raw_api_object.add_raw_member("variants", variants_set,
-                                      "engine.util.game_entity.GameEntity")
+        raw_api_object.add_raw_member("variants", variants_set, "engine.util.game_entity.GameEntity")
 
     @staticmethod
     def tech_group_to_tech(tech_group):
@@ -587,8 +582,7 @@ class RoRNyanSubprocessor:
 
         # Start with the Tech object
         tech_name = tech_lookup_dict[tech_id][0]
-        raw_api_object = RawAPIObject(tech_name, tech_name,
-                                      dataset.nyan_api_objects)
+        raw_api_object = RawAPIObject(tech_name, tech_name, dataset.nyan_api_objects)
         raw_api_object.add_raw_parent("engine.util.tech.Tech")
 
         if isinstance(tech_group, RoRUnitLineUpgrade):
@@ -612,16 +606,14 @@ class RoRNyanSubprocessor:
         # Name
         # =======================================================================
         name_ref = f"{tech_name}.{tech_name}Name"
-        name_raw_api_object = RawAPIObject(name_ref,
-                                           f"{tech_name}Name",
-                                           dataset.nyan_api_objects)
+        name_raw_api_object = RawAPIObject(name_ref, f"{tech_name}Name", dataset.nyan_api_objects)
         name_raw_api_object.add_raw_parent("engine.util.language.translated.type.TranslatedString")
         name_location = ForwardRef(tech_group, tech_name)
         name_raw_api_object.set_location(name_location)
 
-        name_raw_api_object.add_raw_member("translations",
-                                           [],
-                                           "engine.util.language.translated.type.TranslatedString")
+        name_raw_api_object.add_raw_member(
+            "translations", [], "engine.util.language.translated.type.TranslatedString"
+        )
 
         name_forward_ref = ForwardRef(tech_group, name_ref)
         raw_api_object.add_raw_member("name", name_forward_ref, "engine.util.tech.Tech")
@@ -631,44 +623,42 @@ class RoRNyanSubprocessor:
         # Description
         # =======================================================================
         description_ref = f"{tech_name}.{tech_name}Description"
-        description_raw_api_object = RawAPIObject(description_ref,
-                                                  f"{tech_name}Description",
-                                                  dataset.nyan_api_objects)
-        description_raw_api_object.add_raw_parent(
-            "engine.util.language.translated.type.TranslatedMarkupFile")
+        description_raw_api_object = RawAPIObject(
+            description_ref, f"{tech_name}Description", dataset.nyan_api_objects
+        )
+        description_raw_api_object.add_raw_parent("engine.util.language.translated.type.TranslatedMarkupFile")
         description_location = ForwardRef(tech_group, tech_name)
         description_raw_api_object.set_location(description_location)
 
-        description_raw_api_object.add_raw_member("translations",
-                                                  [],
-                                                  "engine.util.language.translated.type.TranslatedMarkupFile")
+        description_raw_api_object.add_raw_member(
+            "translations", [], "engine.util.language.translated.type.TranslatedMarkupFile"
+        )
 
         description_forward_ref = ForwardRef(tech_group, description_ref)
-        raw_api_object.add_raw_member("description",
-                                      description_forward_ref,
-                                      "engine.util.tech.Tech")
+        raw_api_object.add_raw_member("description", description_forward_ref, "engine.util.tech.Tech")
         tech_group.add_raw_api_object(description_raw_api_object)
 
         # =======================================================================
         # Long description
         # =======================================================================
         long_description_ref = f"{tech_name}.{tech_name}LongDescription"
-        long_description_raw_api_object = RawAPIObject(long_description_ref,
-                                                       f"{tech_name}LongDescription",
-                                                       dataset.nyan_api_objects)
+        long_description_raw_api_object = RawAPIObject(
+            long_description_ref, f"{tech_name}LongDescription", dataset.nyan_api_objects
+        )
         long_description_raw_api_object.add_raw_parent(
-            "engine.util.language.translated.type.TranslatedMarkupFile")
+            "engine.util.language.translated.type.TranslatedMarkupFile"
+        )
         long_description_location = ForwardRef(tech_group, tech_name)
         long_description_raw_api_object.set_location(long_description_location)
 
-        long_description_raw_api_object.add_raw_member("translations",
-                                                       [],
-                                                       "engine.util.language.translated.type.TranslatedMarkupFile")
+        long_description_raw_api_object.add_raw_member(
+            "translations", [], "engine.util.language.translated.type.TranslatedMarkupFile"
+        )
 
         long_description_forward_ref = ForwardRef(tech_group, long_description_ref)
-        raw_api_object.add_raw_member("long_description",
-                                      long_description_forward_ref,
-                                      "engine.util.tech.Tech")
+        raw_api_object.add_raw_member(
+            "long_description", long_description_forward_ref, "engine.util.tech.Tech"
+        )
         tech_group.add_raw_api_object(long_description_raw_api_object)
 
         # =======================================================================
@@ -698,13 +688,11 @@ class RoRNyanSubprocessor:
 
         name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
         terrain_lookup_dict = internal_name_lookups.get_terrain_lookups(dataset.game_version)
-        terrain_type_lookup_dict = internal_name_lookups.get_terrain_type_lookups(
-            dataset.game_version)
+        terrain_type_lookup_dict = internal_name_lookups.get_terrain_type_lookups(dataset.game_version)
 
         # Start with the Terrain object
         terrain_name = terrain_lookup_dict[terrain_index][1]
-        raw_api_object = RawAPIObject(terrain_name, terrain_name,
-                                      dataset.nyan_api_objects)
+        raw_api_object = RawAPIObject(terrain_name, terrain_name, dataset.nyan_api_objects)
         raw_api_object.add_raw_parent("engine.util.terrain.Terrain")
         obj_location = f"data/terrain/{terrain_lookup_dict[terrain_index][2]}/"
         raw_api_object.set_location(obj_location)
@@ -728,16 +716,14 @@ class RoRNyanSubprocessor:
         # Name
         # =======================================================================
         name_ref = f"{terrain_name}.{terrain_name}Name"
-        name_raw_api_object = RawAPIObject(name_ref,
-                                           f"{terrain_name}Name",
-                                           dataset.nyan_api_objects)
+        name_raw_api_object = RawAPIObject(name_ref, f"{terrain_name}Name", dataset.nyan_api_objects)
         name_raw_api_object.add_raw_parent("engine.util.language.translated.type.TranslatedString")
         name_location = ForwardRef(terrain_group, terrain_name)
         name_raw_api_object.set_location(name_location)
 
-        name_raw_api_object.add_raw_member("translations",
-                                           [],
-                                           "engine.util.language.translated.type.TranslatedString")
+        name_raw_api_object.add_raw_member(
+            "translations", [], "engine.util.language.translated.type.TranslatedString"
+        )
 
         name_forward_ref = ForwardRef(terrain_group, name_ref)
         raw_api_object.add_raw_member("name", name_forward_ref, "engine.util.terrain.Terrain")
@@ -747,8 +733,7 @@ class RoRNyanSubprocessor:
         # Sound
         # =======================================================================
         sound_name = f"{terrain_name}.Sound"
-        sound_raw_api_object = RawAPIObject(sound_name, "Sound",
-                                            dataset.nyan_api_objects)
+        sound_raw_api_object = RawAPIObject(sound_name, "Sound", dataset.nyan_api_objects)
         sound_raw_api_object.add_raw_parent("engine.util.sound.Sound")
         sound_location = ForwardRef(terrain_group, terrain_name)
         sound_raw_api_object.set_location(sound_location)
@@ -756,17 +741,11 @@ class RoRNyanSubprocessor:
         # Sounds for terrains don't exist in AoC
         sounds = []
 
-        sound_raw_api_object.add_raw_member("play_delay",
-                                            0,
-                                            "engine.util.sound.Sound")
-        sound_raw_api_object.add_raw_member("sounds",
-                                            sounds,
-                                            "engine.util.sound.Sound")
+        sound_raw_api_object.add_raw_member("play_delay", 0, "engine.util.sound.Sound")
+        sound_raw_api_object.add_raw_member("sounds", sounds, "engine.util.sound.Sound")
 
         sound_forward_ref = ForwardRef(terrain_group, sound_name)
-        raw_api_object.add_raw_member("sound",
-                                      sound_forward_ref,
-                                      "engine.util.terrain.Terrain")
+        raw_api_object.add_raw_member("sound", sound_forward_ref, "engine.util.terrain.Terrain")
 
         terrain_group.add_raw_api_object(sound_raw_api_object)
 
@@ -787,25 +766,25 @@ class RoRNyanSubprocessor:
             ambient_line = dataset.unit_ref[ambient_id]
             ambient_name = name_lookup_dict[ambient_line.get_head_unit_id()][0]
 
-            ambient_ref = f"{terrain_name}.Ambient{str(ambient_index)}"
-            ambient_raw_api_object = RawAPIObject(ambient_ref,
-                                                  f"Ambient{str(ambient_index)}",
-                                                  dataset.nyan_api_objects)
+            ambient_ref = f"{terrain_name}.Ambient{ambient_index!s}"
+            ambient_raw_api_object = RawAPIObject(
+                ambient_ref, f"Ambient{ambient_index!s}", dataset.nyan_api_objects
+            )
             ambient_raw_api_object.add_raw_parent("engine.util.terrain.TerrainAmbient")
             ambient_location = ForwardRef(terrain_group, terrain_name)
             ambient_raw_api_object.set_location(ambient_location)
 
             # Game entity reference
             ambient_line_forward_ref = ForwardRef(ambient_line, ambient_name)
-            ambient_raw_api_object.add_raw_member("object",
-                                                  ambient_line_forward_ref,
-                                                  "engine.util.terrain.TerrainAmbient")
+            ambient_raw_api_object.add_raw_member(
+                "object", ambient_line_forward_ref, "engine.util.terrain.TerrainAmbient"
+            )
 
             # Max density
             max_density = terrain["terrain_unit_density"][ambient_index].value
-            ambient_raw_api_object.add_raw_member("max_density",
-                                                  max_density,
-                                                  "engine.util.terrain.TerrainAmbient")
+            ambient_raw_api_object.add_raw_member(
+                "max_density", max_density, "engine.util.terrain.TerrainAmbient"
+            )
 
             terrain_group.add_raw_api_object(ambient_raw_api_object)
             terrain_ambient_forward_ref = ForwardRef(terrain_group, ambient_ref)
@@ -855,8 +834,7 @@ class RoRNyanSubprocessor:
 
         # Create animation object
         graphic_name = f"{terrain_name}.TerrainTexture"
-        graphic_raw_api_object = RawAPIObject(graphic_name, "TerrainTexture",
-                                              dataset.nyan_api_objects)
+        graphic_raw_api_object = RawAPIObject(graphic_name, "TerrainTexture", dataset.nyan_api_objects)
         graphic_raw_api_object.add_raw_parent("engine.util.graphics.Terrain")
         graphic_location = ForwardRef(terrain_group, terrain_name)
         graphic_raw_api_object.set_location(graphic_location)
@@ -865,20 +843,18 @@ class RoRNyanSubprocessor:
             terrain_graphic = dataset.combined_terrains[terrain_id]
 
         else:
-            terrain_graphic = CombinedTerrain(terrain_id,
-                                              f"texture_{terrain_lookup_dict[terrain_index][2]}",
-                                              dataset)
+            terrain_graphic = CombinedTerrain(
+                terrain_id, f"texture_{terrain_lookup_dict[terrain_index][2]}", dataset
+            )
             dataset.combined_terrains.update({terrain_graphic.get_id(): terrain_graphic})
 
         terrain_graphic.add_reference(graphic_raw_api_object)
 
-        graphic_raw_api_object.add_raw_member("sprite", terrain_graphic,
-                                              "engine.util.graphics.Terrain")
+        graphic_raw_api_object.add_raw_member("sprite", terrain_graphic, "engine.util.graphics.Terrain")
 
         terrain_group.add_raw_api_object(graphic_raw_api_object)
         graphic_forward_ref = ForwardRef(terrain_group, graphic_name)
-        raw_api_object.add_raw_member("terrain_graphic", graphic_forward_ref,
-                                      "engine.util.terrain.Terrain")
+        raw_api_object.add_raw_member("terrain_graphic", graphic_forward_ref, "engine.util.terrain.Terrain")
 
     @staticmethod
     def civ_group_to_civ(civ_group):
@@ -896,8 +872,7 @@ class RoRNyanSubprocessor:
 
         # Start with the Tech object
         tech_name = civ_lookup_dict[civ_id][0]
-        raw_api_object = RawAPIObject(tech_name, tech_name,
-                                      dataset.nyan_api_objects)
+        raw_api_object = RawAPIObject(tech_name, tech_name, dataset.nyan_api_objects)
         raw_api_object.add_raw_parent("engine.util.setup.PlayerSetup")
 
         obj_location = f"data/civ/{civ_lookup_dict[civ_id][1]}/"
@@ -910,16 +885,14 @@ class RoRNyanSubprocessor:
         # Name
         # =======================================================================
         name_ref = f"{tech_name}.{tech_name}Name"
-        name_raw_api_object = RawAPIObject(name_ref,
-                                           f"{tech_name}Name",
-                                           dataset.nyan_api_objects)
+        name_raw_api_object = RawAPIObject(name_ref, f"{tech_name}Name", dataset.nyan_api_objects)
         name_raw_api_object.add_raw_parent("engine.util.language.translated.type.TranslatedString")
         name_location = ForwardRef(civ_group, tech_name)
         name_raw_api_object.set_location(name_location)
 
-        name_raw_api_object.add_raw_member("translations",
-                                           [],
-                                           "engine.util.language.translated.type.TranslatedString")
+        name_raw_api_object.add_raw_member(
+            "translations", [], "engine.util.language.translated.type.TranslatedString"
+        )
 
         name_forward_ref = ForwardRef(civ_group, name_ref)
         raw_api_object.add_raw_member("name", name_forward_ref, "engine.util.setup.PlayerSetup")
@@ -929,77 +902,67 @@ class RoRNyanSubprocessor:
         # Description
         # =======================================================================
         description_ref = f"{tech_name}.{tech_name}Description"
-        description_raw_api_object = RawAPIObject(description_ref,
-                                                  f"{tech_name}Description",
-                                                  dataset.nyan_api_objects)
-        description_raw_api_object.add_raw_parent(
-            "engine.util.language.translated.type.TranslatedMarkupFile")
+        description_raw_api_object = RawAPIObject(
+            description_ref, f"{tech_name}Description", dataset.nyan_api_objects
+        )
+        description_raw_api_object.add_raw_parent("engine.util.language.translated.type.TranslatedMarkupFile")
         description_location = ForwardRef(civ_group, tech_name)
         description_raw_api_object.set_location(description_location)
 
-        description_raw_api_object.add_raw_member("translations",
-                                                  [],
-                                                  "engine.util.language.translated.type.TranslatedMarkupFile")
+        description_raw_api_object.add_raw_member(
+            "translations", [], "engine.util.language.translated.type.TranslatedMarkupFile"
+        )
 
         description_forward_ref = ForwardRef(civ_group, description_ref)
-        raw_api_object.add_raw_member("description",
-                                      description_forward_ref,
-                                      "engine.util.setup.PlayerSetup")
+        raw_api_object.add_raw_member("description", description_forward_ref, "engine.util.setup.PlayerSetup")
         civ_group.add_raw_api_object(description_raw_api_object)
 
         # =======================================================================
         # Long description
         # =======================================================================
         long_description_ref = f"{tech_name}.{tech_name}LongDescription"
-        long_description_raw_api_object = RawAPIObject(long_description_ref,
-                                                       f"{tech_name}LongDescription",
-                                                       dataset.nyan_api_objects)
+        long_description_raw_api_object = RawAPIObject(
+            long_description_ref, f"{tech_name}LongDescription", dataset.nyan_api_objects
+        )
         long_description_raw_api_object.add_raw_parent(
-            "engine.util.language.translated.type.TranslatedMarkupFile")
+            "engine.util.language.translated.type.TranslatedMarkupFile"
+        )
         long_description_location = ForwardRef(civ_group, tech_name)
         long_description_raw_api_object.set_location(long_description_location)
 
-        long_description_raw_api_object.add_raw_member("translations",
-                                                       [],
-                                                       "engine.util.language.translated.type.TranslatedMarkupFile")
+        long_description_raw_api_object.add_raw_member(
+            "translations", [], "engine.util.language.translated.type.TranslatedMarkupFile"
+        )
 
         long_description_forward_ref = ForwardRef(civ_group, long_description_ref)
-        raw_api_object.add_raw_member("long_description",
-                                      long_description_forward_ref,
-                                      "engine.util.setup.PlayerSetup")
+        raw_api_object.add_raw_member(
+            "long_description", long_description_forward_ref, "engine.util.setup.PlayerSetup"
+        )
         civ_group.add_raw_api_object(long_description_raw_api_object)
 
         # =======================================================================
         # TODO: Leader names
         # =======================================================================
-        raw_api_object.add_raw_member("leader_names",
-                                      [],
-                                      "engine.util.setup.PlayerSetup")
+        raw_api_object.add_raw_member("leader_names", [], "engine.util.setup.PlayerSetup")
 
         # =======================================================================
         # Modifiers
         # =======================================================================
         modifiers = []
         # modifiers = AoCCivSubprocessor.get_civ_setup(civ_group)
-        raw_api_object.add_raw_member("modifiers",
-                                      modifiers,
-                                      "engine.util.setup.PlayerSetup")
+        raw_api_object.add_raw_member("modifiers", modifiers, "engine.util.setup.PlayerSetup")
 
         # =======================================================================
         # Starting resources
         # =======================================================================
         resource_amounts = RoRCivSubprocessor.get_starting_resources(civ_group)
-        raw_api_object.add_raw_member("starting_resources",
-                                      resource_amounts,
-                                      "engine.util.setup.PlayerSetup")
+        raw_api_object.add_raw_member("starting_resources", resource_amounts, "engine.util.setup.PlayerSetup")
 
         # =======================================================================
         # Game setup
         # =======================================================================
         game_setup = AoCCivSubprocessor.get_civ_setup(civ_group)
-        raw_api_object.add_raw_member("game_setup",
-                                      game_setup,
-                                      "engine.util.setup.PlayerSetup")
+        raw_api_object.add_raw_member("game_setup", game_setup, "engine.util.setup.PlayerSetup")
 
     @staticmethod
     def projectiles_from_line(line):
@@ -1037,23 +1000,25 @@ class RoRNyanSubprocessor:
             # Types
             # =======================================================================
             types_set = [
-                dataset.pregen_nyan_objects["util.game_entity_type.types.Projectile"].get_nyan_object()]
-            proj_raw_api_object.add_raw_member(
-                "types", types_set, "engine.util.game_entity.GameEntity")
+                dataset.pregen_nyan_objects["util.game_entity_type.types.Projectile"].get_nyan_object()
+            ]
+            proj_raw_api_object.add_raw_member("types", types_set, "engine.util.game_entity.GameEntity")
 
             # =======================================================================
             # Abilities
             # =======================================================================
             abilities_set = []
-            abilities_set.append(RoRAbilitySubprocessor.projectile_ability(
-                line, position=projectile_num))
-            abilities_set.append(AoCAbilitySubprocessor.move_projectile_ability(
-                line, position=projectile_num))
-            abilities_set.append(AoCAbilitySubprocessor.apply_discrete_effect_ability(
-                line, 7, False, projectile_num))
+            abilities_set.append(RoRAbilitySubprocessor.projectile_ability(line, position=projectile_num))
+            abilities_set.append(
+                AoCAbilitySubprocessor.move_projectile_ability(line, position=projectile_num)
+            )
+            abilities_set.append(
+                AoCAbilitySubprocessor.apply_discrete_effect_ability(line, 7, False, projectile_num)
+            )
             # TODO: Death, Despawn
             proj_raw_api_object.add_raw_member(
-                "abilities", abilities_set, "engine.util.game_entity.GameEntity")
+                "abilities", abilities_set, "engine.util.game_entity.GameEntity"
+            )
 
             # =======================================================================
             # Modifiers
@@ -1061,13 +1026,13 @@ class RoRNyanSubprocessor:
             modifiers_set = []
 
             proj_raw_api_object.add_raw_member(
-                "modifiers", modifiers_set, "engine.util.game_entity.GameEntity")
+                "modifiers", modifiers_set, "engine.util.game_entity.GameEntity"
+            )
 
             # =======================================================================
             # Variants
             # =======================================================================
             variants_set = []
-            proj_raw_api_object.add_raw_member(
-                "variants", variants_set, "engine.util.game_entity.GameEntity")
+            proj_raw_api_object.add_raw_member("variants", variants_set, "engine.util.game_entity.GameEntity")
 
             line.add_raw_api_object(proj_raw_api_object)

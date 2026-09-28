@@ -8,11 +8,12 @@ from __future__ import annotations
 
 import typing
 
-
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.converter_object import ConverterObjectContainer
-    from openage.convert.entity_object.conversion.converter_object import ConverterObject
     from openage.convert.entity_object.conversion.aoc.genie_terrain import GenieTerrainObject
+    from openage.convert.entity_object.conversion.converter_object import (
+        ConverterObject,
+        ConverterObjectContainer,
+    )
 
 
 class CombinedTerrain:
@@ -22,14 +23,9 @@ class CombinedTerrain:
     This will become a spritesheet texture with a terrain file.
     """
 
-    __slots__ = ('terrain_id', 'filename', 'data', 'metadata', '_refs')
+    __slots__ = ("_refs", "data", "filename", "metadata", "terrain_id")
 
-    def __init__(
-        self,
-        terrain_id: int,
-        filename: str,
-        full_data_set: ConverterObjectContainer
-    ):
+    def __init__(self, terrain_id: int, filename: str, full_data_set: ConverterObjectContainer):
         """
         Creates a new CombinedTerrain instance.
 

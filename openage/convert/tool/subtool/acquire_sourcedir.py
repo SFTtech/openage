@@ -5,22 +5,22 @@
 """
 Acquire the sourcedir for the game that is supposed to be converted.
 """
-from __future__ import annotations
-import platform
-import typing
 
-from configparser import ConfigParser
+from __future__ import annotations
+
 import os
-from pathlib import Path
+import platform
+import shutil
 import subprocess
 import sys
-from typing import AnyStr, Generator
-
-import shutil
 import tempfile
+import typing
+from configparser import ConfigParser
+from pathlib import Path
+from typing import AnyStr, Generator
 from urllib.request import urlopen
 
-from ....log import warn, info, dbg
+from ....log import dbg, info, warn
 from ....util.fslike.directory import CaseIgnoringDirectory, Directory
 from ....util.fslike.union import Union
 
@@ -28,19 +28,15 @@ if typing.TYPE_CHECKING:
     from openage.convert.value_object.init.game_version import GameEdition
 
 
-STANDARD_PATH_IN_32BIT_WINEPREFIX =\
-    "drive_c/Program Files/Microsoft Games/Age of Empires II/"
-STANDARD_PATH_IN_64BIT_WINEPREFIX =\
-    "drive_c/Program Files (x86)/Microsoft Games/Age of Empires II/"
-STANDARD_PATH_IN_WINEPREFIX_STEAM = \
-    "drive_c/Program Files (x86)/Steam/steamapps/common/Age2HD/"
-REGISTRY_KEY = \
-    "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Microsoft Games\\"
+STANDARD_PATH_IN_32BIT_WINEPREFIX = "drive_c/Program Files/Microsoft Games/Age of Empires II/"
+STANDARD_PATH_IN_64BIT_WINEPREFIX = "drive_c/Program Files (x86)/Microsoft Games/Age of Empires II/"
+STANDARD_PATH_IN_WINEPREFIX_STEAM = "drive_c/Program Files (x86)/Steam/steamapps/common/Age2HD/"
+REGISTRY_KEY = "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Microsoft Games\\"
 REGISTRY_SUFFIX_AOK = "Age of Empires\\2.0"
 REGISTRY_SUFFIX_TC = "Age of Empires II: The Conquerors Expansion\\1.0"
 MACOS_DATA_SUBDIR = "AgeOfEmpires2Data"
 
-TRIAL_URL = 'https://archive.org/download/AgeOfEmpiresIiTheConquerorsDemo/Age2XTrial.exe'
+TRIAL_URL = "https://archive.org/download/AgeOfEmpiresIiTheConquerorsDemo/Age2XTrial.exe"
 
 
 def expand_relative_path(path: str) -> AnyStr:
@@ -105,8 +101,7 @@ def query_source_dir(proposals: set[str]) -> AnyStr:
             print(f"({index}) {proposal}")
 
     else:
-        print("Could not find any installation directory "
-              "automatically.")
+        print("Could not find any installation directory automatically.")
         print("Please enter an AOE2 install path manually.")
 
     while True:
@@ -145,8 +140,7 @@ def mount_source_dir(sourcedir: AnyStr) -> Path:
 
 
 def acquire_conversion_source_dir(
-    avail_game_eds: list[GameEdition],
-    prev_srcdir_paths: set[str] = None
+    avail_game_eds: list[GameEdition], prev_srcdir_paths: set[str] | None = None
 ) -> Path:
     """
     Acquires source dir for the asset conversion.
@@ -169,13 +163,13 @@ def acquire_conversion_source_dir(
         for game_edition in avail_game_eds:
             install_paths = game_edition.install_paths
             candidates = []
-            if current_platform == 'Linux' and 'linux' in install_paths:
+            if current_platform == "Linux" and "linux" in install_paths:
                 candidates = install_paths["linux"]
 
-            elif current_platform == 'Darwin' and 'macos' in install_paths:
+            elif current_platform == "Darwin" and "macos" in install_paths:
                 candidates = install_paths["macos"]
 
-            elif current_platform == 'Windows' and 'windows' in install_paths:
+            elif current_platform == "Windows" and "windows" in install_paths:
                 candidates = install_paths["windows"]
 
             else:
@@ -260,12 +254,12 @@ def wine_to_real_path(path: str) -> str:
     """
     Turn a Wine file path (C:\\xyz) into a local filesystem path (~/.wine/xyz)
     """
-    return subprocess.check_output(('winepath', path)).strip().decode()
+    return subprocess.check_output(("winepath", path)).strip().decode()
 
 
 def unescape_winereg(value: str):
     """Remove quotes and escapes from a Wine registry value"""
-    return value.strip('"').replace(r'\\\\', '\\')
+    return value.strip('"').replace(r"\\\\", "\\")
 
 
 def wine_srcdir_proposals() -> Generator[str, None, None]:
@@ -281,33 +275,31 @@ def wine_srcdir_proposals() -> Generator[str, None, None]:
     try:
         info("using the wine registry to query an installation location...")
         # get wine registry key of the age installation
-        with tempfile.NamedTemporaryFile(mode='rb') as reg_file:
-            if not subprocess.call(('wine', 'regedit', '/E', reg_file.name,
-                                    REGISTRY_KEY)):
-
+        with tempfile.NamedTemporaryFile(mode="rb") as reg_file:
+            if not subprocess.call(("wine", "regedit", "/E", reg_file.name, REGISTRY_KEY)):
                 reg_raw_data = reg_file.read()
                 try:
-                    reg_data = reg_raw_data.decode('utf-16')
+                    reg_data = reg_raw_data.decode("utf-16")
                 except UnicodeDecodeError:
                     # this is hopefully enough.
                     # if it isn't, feel free to fight more encoding problems.
-                    reg_data = reg_raw_data.decode('utf-8', errors='replace')
+                    reg_data = reg_raw_data.decode("utf-8", errors="replace")
 
                 # strip the REGEDIT4 header, so it becomes a valid INI
                 lines = reg_data.splitlines()
                 del lines[0:2]
 
                 reg_parser = ConfigParser()
-                reg_parser.read_string(''.join(lines))
+                reg_parser.read_string("".join(lines))
                 for suffix in REGISTRY_SUFFIX_AOK, REGISTRY_SUFFIX_TC:
                     reg_key = REGISTRY_KEY + suffix
                     if reg_key in reg_parser:
                         if '"InstallationDirectory"' in reg_parser[reg_key]:
-                            yield wine_to_real_path(unescape_winereg(
-                                reg_parser[reg_key]['"InstallationDirectory"']))
+                            yield wine_to_real_path(
+                                unescape_winereg(reg_parser[reg_key]['"InstallationDirectory"'])
+                            )
                         if '"EXE Path"' in reg_parser[reg_key]:
-                            yield wine_to_real_path(unescape_winereg(
-                                reg_parser[reg_key]['"EXE Path"']))
+                            yield wine_to_real_path(unescape_winereg(reg_parser[reg_key]['"EXE Path"']))
 
     except OSError as error:
         dbg("wine registry extraction failed: %s", error)

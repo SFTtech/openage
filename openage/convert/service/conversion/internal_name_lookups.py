@@ -4,9 +4,10 @@
 Provides functions that retrieve name lookup dicts for internal nyan object
 names or filenames.
 """
-from __future__ import annotations
-import typing
 
+from __future__ import annotations
+
+import typing
 from functools import cache
 
 import openage.convert.value_object.conversion.aoc.internal_nyan_names as aoc_internal
@@ -305,9 +306,7 @@ def get_gather_lookups(game_version: GameVersion) -> dict[int, tuple[str, str]]:
 
 
 @cache
-def get_graphic_set_lookups(
-    game_version: GameVersion
-) -> dict[int, tuple[tuple[int, ...], str, str]]:
+def get_graphic_set_lookups(game_version: GameVersion) -> dict[int, tuple[tuple[int, ...], str, str]]:
     """
     Return the name lookup dicts for civ graphic sets.
 
@@ -347,8 +346,7 @@ def get_graphic_set_lookups(
         for items in graphic_set_lookup_dict.values():
             mapped_civs.update(items[0])
 
-        unmapped_civs = tuple(civ_id for civ_id in range(256)
-                              if civ_id not in mapped_civs)
+        unmapped_civs = tuple(civ_id for civ_id in range(256) if civ_id not in mapped_civs)
         graphic_set_lookup_dict[-1] = (unmapped_civs, "Generic", "generic")
 
         return graphic_set_lookup_dict
@@ -431,9 +429,7 @@ def get_tech_lookups(game_version: GameVersion) -> dict[int, tuple[str, str]]:
 
 
 @cache
-def get_terrain_lookups(
-    game_version: GameVersion
-) -> dict[int, tuple[tuple[int, ...], str, str]]:
+def get_terrain_lookups(game_version: GameVersion) -> dict[int, tuple[tuple[int, ...], str, str]]:
     """
     Return the name lookup dicts for terrain groups.
 

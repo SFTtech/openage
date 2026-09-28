@@ -48,25 +48,23 @@ def clone_file_to_dir(sourcefile, input_dir, output_dir):
 
 
 def main():
-    """ CLI entry point """
+    """CLI entry point"""
     cli = argparse.ArgumentParser()
-    cli.add_argument("pymodule_list_file", help=(
-        "semicolon-separated list of all modules that shall be compiled"
-    ))
-    cli.add_argument("input_dir", help=(
-        "base directory where files from the above list are in."
-    ))
-    cli.add_argument("output_dir", help=(
-        "base directory where output files will be created."
-    ))
-    cli.add_argument("--print-output-paths-only", action="store_true", help=(
-        "print the paths of the compiled output files and exit"
-    ))
+    cli.add_argument(
+        "pymodule_list_file", help=("semicolon-separated list of all modules that shall be compiled")
+    )
+    cli.add_argument("input_dir", help=("base directory where files from the above list are in."))
+    cli.add_argument("output_dir", help=("base directory where output files will be created."))
+    cli.add_argument(
+        "--print-output-paths-only",
+        action="store_true",
+        help=("print the paths of the compiled output files and exit"),
+    )
     args = cli.parse_args()
 
-    with open(args.pymodule_list_file, encoding='utf8') as fileobj:
-        modules = fileobj.read().strip().split(';')
-        if modules == ['']:
+    with open(args.pymodule_list_file, encoding="utf8") as fileobj:
+        modules = fileobj.read().strip().split(";")
+        if modules == [""]:
             modules = []
 
     if not os.path.isdir(args.output_dir):
@@ -90,14 +88,13 @@ def main():
         to_compile.append((sourcefile, outputfile))
 
     if args.print_output_paths_only:
-        print(';'.join(all_output_files))
+        print(";".join(all_output_files))
         sys.exit(0)
 
     maxwidth = len(str(len(to_compile)))
     for idx, (module, outputfile) in enumerate(to_compile):
         try:
-            print(f"[{idx + 1}:{maxwidth}/{len(to_compile)}] "
-                  f"Compiling {module} to {outputfile}")
+            print(f"[{idx + 1}:{maxwidth}/{len(to_compile)}] Compiling {module} to {outputfile}")
             py_compile.compile(module, cfile=outputfile, doraise=True)
 
         except py_compile.PyCompileError as exc:
@@ -106,5 +103,5 @@ def main():
             sys.exit(1)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -6,11 +6,12 @@ Code for reading Genie .DRS archives.
 Note that .DRS archives can't store file names; they just store the file
 extension, and a file number.
 """
+
 from __future__ import annotations
+
 import typing
 
-
-from .....log import spam, dbg
+from .....log import dbg, spam
 from .....util.filelike.stream import StreamFragment
 from .....util.fslike.filecollection import FileCollection, FileEntry
 from .....util.strings import decode_until_null
@@ -34,13 +35,13 @@ class DRSHeaderEnsemble(NamedStruct):
 
     # pylint: disable=too-few-public-methods
 
-    endianness       = "<"
+    endianness = "<"
 
-    copyright        = str(COPYRIGHT_SIZE_ENSEMBLE) + "s"
-    version          = "4s"
-    ftype            = "12s"
-    table_count      = "i"
-    file_offset      = "i"     # offset of the first file
+    copyright = str(COPYRIGHT_SIZE_ENSEMBLE) + "s"
+    version = "4s"
+    ftype = "12s"
+    table_count = "i"
+    file_offset = "i"  # offset of the first file
 
 
 class DRSHeaderLucasArts(NamedStruct):
@@ -50,13 +51,13 @@ class DRSHeaderLucasArts(NamedStruct):
 
     # pylint: disable=too-few-public-methods
 
-    endianness       = "<"
+    endianness = "<"
 
-    copyright        = str(COPYRIGHT_SIZE_LUCAS) + "s"
-    version          = "4s"
-    ftype            = "12s"
-    table_count      = "i"
-    file_offset      = "i"     # offset of the first file
+    copyright = str(COPYRIGHT_SIZE_LUCAS) + "s"
+    version = "4s"
+    ftype = "12s"
+    table_count = "i"
+    file_offset = "i"  # offset of the first file
 
 
 class DRSTableInfo(NamedStruct):
@@ -66,11 +67,11 @@ class DRSTableInfo(NamedStruct):
 
     # pylint: disable=too-few-public-methods
 
-    endianness       = "<"
+    endianness = "<"
 
-    file_extension   = "4s"    # reversed (for reasons) extension
-    file_info_offset = "i"     # table offset
-    file_count       = "i"     # number of files in table
+    file_extension = "4s"  # reversed (for reasons) extension
+    file_info_offset = "i"  # table offset
+    file_count = "i"  # number of files in table
 
 
 class DRSFileInfo(NamedStruct):
@@ -80,11 +81,11 @@ class DRSFileInfo(NamedStruct):
 
     # pylint: disable=too-few-public-methods
 
-    endianness       = "<"
+    endianness = "<"
 
-    file_id          = "i"
+    file_id = "i"
     file_data_offset = "i"
-    file_size        = "i"
+    file_size = "i"
 
 
 class DRSEntry(FileEntry):
@@ -143,7 +144,7 @@ class DRS(FileCollection):
             # decode and un-flip the file extension
             # see doc/media/drs-files.md
             fileext = table_header.file_extension
-            fileext = fileext.decode('latin-1').lower()[::-1].rstrip()
+            fileext = fileext.decode("latin-1").lower()[::-1].rstrip()
             table_header.file_extension = fileext
 
             dbg(table_header)
@@ -166,7 +167,7 @@ class DRS(FileCollection):
             for _ in range(header.file_count):
                 fileinfo = DRSFileInfo.read(self.fileobj)
 
-                file_name = str(fileinfo.file_id) + '.' + header.file_extension
+                file_name = str(fileinfo.file_id) + "." + header.file_extension
                 spam("%s: %s", file_name, fileinfo)
 
                 yield file_name, fileinfo.file_data_offset, fileinfo.file_size

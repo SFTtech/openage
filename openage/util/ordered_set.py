@@ -6,7 +6,6 @@ Python dictionaries as a basis because they are guaranteed to
 be ordered since Python 3.6.
 """
 
-
 from collections.abc import Hashable
 from typing import Generic, TypeVar
 
@@ -18,7 +17,7 @@ class OrderedSet(Generic[OrderedSetItem]):
     Set that saves the input order of elements.
     """
 
-    __slots__ = ('ordered_set',)
+    __slots__ = ("ordered_set",)
 
     def __init__(self, elements: Hashable = None):
         self.ordered_set = {}
@@ -121,7 +120,7 @@ class OrderedSet(Generic[OrderedSetItem]):
         return reversed(self.ordered_set.keys())
 
     def __str__(self):
-        return f'OrderedSet({list(self.ordered_set.keys())})'
+        return f"OrderedSet({list(self.ordered_set.keys())})"
 
     def __repr__(self):
         return str(self)

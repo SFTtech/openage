@@ -5,23 +5,23 @@ Lookup dicts for the EnumLookupMember instances.
 """
 
 GRAPHICS_LAYER = {
-    0: "TERRAIN",      # cliff
+    0: "TERRAIN",  # cliff
     1: "GRASS_PATCH",
     2: "DE2_CLIFF",
     3: "AOE1_DIRT",
     4: "DE1_DESTRUCTION",
-    5: "SHADOW",       # farm fields as well
+    5: "SHADOW",  # farm fields as well
     6: "RUBBLE",
     7: "PLANT",
     8: "DE2_BRIDGE",
     9: "SWGB_EFFECT",
-    10: "UNIT_LOW",    # constructions, dead units, tree stumps, flowers, paths
+    10: "UNIT_LOW",  # constructions, dead units, tree stumps, flowers, paths
     11: "FISH",
     18: "SWGB_LAYER1",
-    19: "CRATER",      # rugs
-    20: "UNIT",        # buildings, units, damage flames, animations (mill)
+    19: "CRATER",  # rugs
+    20: "UNIT",  # buildings, units, damage flames, animations (mill)
     21: "BLACKSMITH",  # blacksmith smoke
-    22: "BIRD",        # hawk
+    22: "BIRD",  # hawk
     30: "PROJECTILE",  # and explosions
     31: "SWGB_FLYING",
 }
@@ -39,45 +39,45 @@ RESOURCE_TYPES = {
     8: "TRADE_BONUS",
     9: "TRADE_GOODS",
     10: "TRADE_PRODUCTION",
-    11: "POPULATION",           # both current population and population headroom
+    11: "POPULATION",  # both current population and population headroom
     12: "CORPSE_DECAY_TIME",
     13: "DISCOVERY",
     14: "RUIN_MONUMENTS_CAPTURED",
     15: "MEAT_STORAGE",
     16: "BERRY_STORAGE",
     17: "FISH_STORAGE",
-    18: "UNKNOWN_18",           # in starwars: power core range
-    19: "TOTAL_UNITS_OWNED",    # or just military ones? used for counting losses
+    18: "UNKNOWN_18",  # in starwars: power core range
+    19: "TOTAL_UNITS_OWNED",  # or just military ones? used for counting losses
     20: "UNITS_KILLED",
     21: "RESEARCHED_TECHNOLOGIES_COUNT",
     22: "MAP_EXPLORED_PERCENTAGE",
-    23: "CASTLE_AGE_TECH_INDEX",      # default: 102
-    24: "IMPERIAL_AGE_TECH_INDEX",    # default: 103
-    25: "FEUDAL_AGE_TECH_INDEX",      # default: 101
+    23: "CASTLE_AGE_TECH_INDEX",  # default: 102
+    24: "IMPERIAL_AGE_TECH_INDEX",  # default: 103
+    25: "FEUDAL_AGE_TECH_INDEX",  # default: 101
     26: "ATTACK_WARNING_SOUND",
     27: "ENABLE_MONK_CONVERSION",
     28: "ENABLE_BUILDING_CONVERSION",
-    30: "BUILDING_COUNT",              # default: 500
+    30: "BUILDING_COUNT",  # default: 500
     31: "FOOD_COUNT",
     32: "BONUS_POPULATION",
     33: "MAINTENANCE",
     34: "FAITH",
     35: "FAITH_RECHARGE_RATE",  # default: 1.6
-    36: "FARM_FOOD_AMOUNT",     # default: 175
+    36: "FARM_FOOD_AMOUNT",  # default: 175
     37: "CIVILIAN_POPULATION",
-    38: "UNKNOWN_38",           # starwars: shields for bombers/fighters
-    39: "ALL_TECHS_ACHIEVED",   # default: 178
+    38: "UNKNOWN_38",  # starwars: shields for bombers/fighters
+    39: "ALL_TECHS_ACHIEVED",  # default: 178
     40: "MILITARY_POPULATION",  # -> largest army
-    41: "UNITS_CONVERTED",      # monk success count
+    41: "UNITS_CONVERTED",  # monk success count
     42: "WONDERS_STANDING",
     43: "BUILDINGS_RAZED",
     44: "KILL_RATIO",
-    45: "SURVIVAL_TO_FINISH",   # bool
-    46: "TRIBUTE_FEE",          # default: 0.3
+    45: "SURVIVAL_TO_FINISH",  # bool
+    46: "TRIBUTE_FEE",  # default: 0.3
     47: "GOLD_MINING_PRODUCTIVITY",  # default: 1
     48: "TOWN_CENTER_UNAVAILABLE",  # -> you may build a new one
     49: "GOLD_COUNTER",
-    50: "REVEAL_ALLY",          # bool, ==cartography discovered
+    50: "REVEAL_ALLY",  # bool, ==cartography discovered
     51: "HOUSES_COUNT",
     52: "MONASTERY_COUNT",
     53: "TRIBUTE_SENT",
@@ -86,46 +86,46 @@ RESOURCE_TYPES = {
     56: "ORE_STORAGE",
     57: "CAPTURED_UNITS",
     58: "DARK_AGE_TECH_INDEX",  # default: 104
-    59: "TRADE_GOOD_QUALITY",   # default: 1
+    59: "TRADE_GOOD_QUALITY",  # default: 1
     60: "TRADE_MARKET_LEVEL",
     61: "FORMATIONS",
     62: "BUILDING_HOUSING_RATE",  # default: 20
-    63: "GATHER_TAX_RATE",        # default: 32000
+    63: "GATHER_TAX_RATE",  # default: 32000
     64: "GATHER_ACCUMULATOR",
-    65: "SALVAGE_DECAY_RATE",     # default: 5
-    66: "ALLOW_FORMATION",        # bool, something with age?
-    67: "ALLOW_CONVERSIONS",      # bool
-    68: "HIT_POINTS_KILLED",      # unused
-    69: "KILLED_PLAYER_1",        # bool
-    70: "KILLED_PLAYER_2",        # bool
-    71: "KILLED_PLAYER_3",        # bool
-    72: "KILLED_PLAYER_4",        # bool
-    73: "KILLED_PLAYER_5",        # bool
-    74: "KILLED_PLAYER_6",        # bool
-    75: "KILLED_PLAYER_7",        # bool
-    76: "KILLED_PLAYER_8",        # bool
+    65: "SALVAGE_DECAY_RATE",  # default: 5
+    66: "ALLOW_FORMATION",  # bool, something with age?
+    67: "ALLOW_CONVERSIONS",  # bool
+    68: "HIT_POINTS_KILLED",  # unused
+    69: "KILLED_PLAYER_1",  # bool
+    70: "KILLED_PLAYER_2",  # bool
+    71: "KILLED_PLAYER_3",  # bool
+    72: "KILLED_PLAYER_4",  # bool
+    73: "KILLED_PLAYER_5",  # bool
+    74: "KILLED_PLAYER_6",  # bool
+    75: "KILLED_PLAYER_7",  # bool
+    76: "KILLED_PLAYER_8",  # bool
     77: "CONVERSION_RESISTANCE",
-    78: "TRADE_VIG_RATE",             # default: 0.3
+    78: "TRADE_VIG_RATE",  # default: 0.3
     79: "STONE_MINING_PRODUCTIVITY",  # default: 1
     80: "QUEUED_UNITS",
     81: "TRAINING_COUNT",
-    82: "START_PACKED_TOWNCENTER",   # or raider, default: 2
+    82: "START_PACKED_TOWNCENTER",  # or raider, default: 2
     83: "BOARDING_RECHARGE_RATE",
-    84: "STARTING_VILLAGERS",        # default: 3
+    84: "STARTING_VILLAGERS",  # default: 3
     85: "RESEARCH_COST_MULTIPLIER",
     86: "RESEARCH_TIME_MULTIPLIER",
-    87: "CONVERT_SHIPS_ALLOWED",     # bool
-    88: "FISH_TRAP_FOOD_AMOUNT",     # default: 700
+    87: "CONVERT_SHIPS_ALLOWED",  # bool
+    88: "FISH_TRAP_FOOD_AMOUNT",  # default: 700
     89: "HEALING_RATE_MULTIPLIER",
     90: "HEALING_RANGE",
     91: "STARTING_FOOD",
     92: "STARTING_WOOD",
     93: "STARTING_STONE",
     94: "STARTING_GOLD",
-    95: "TOWN_CENTER_PACKING",        # or raider, default: 3
-    96: "BERSERKER_HEAL_TIME",        # in seconds
+    95: "TOWN_CENTER_PACKING",  # or raider, default: 3
+    96: "BERSERKER_HEAL_TIME",  # in seconds
     97: "DOMINANT_ANIMAL_DISCOVERY",  # bool, sheep/turkey
-    98: "SCORE_OBJECT_COST",          # object cost summary, economy?
+    98: "SCORE_OBJECT_COST",  # object cost summary, economy?
     99: "SCORE_RESEARCH",
     100: "RELIC_GOLD_COLLECTED",
     101: "TRADE_PROFIT",
@@ -192,7 +192,7 @@ RESOURCE_TYPES = {
     162: "TRIBUTE_FROM_P7",
     163: "TRIBUTE_FROM_P8",
     164: "SCORE_UNITS_CURRENT",
-    165: "SCORE_BUILDINGS_CURRENT",         # default: 275
+    165: "SCORE_BUILDINGS_CURRENT",  # default: 275
     166: "COLLECTED_FOOD",
     167: "COLLECTED_WOOD",
     168: "COLLECTED_STONE",
@@ -208,24 +208,24 @@ RESOURCE_TYPES = {
     177: "CONVERT_ADJUSTMENT_MAX",
     178: "CONVERT_RESIST_ADJUSTMENT_MIN",
     179: "CONVERT_RESIST_ADJUSTMENT_MAX",
-    180: "CONVERT_BUILDIN_MIN",             # default: 15
-    181: "CONVERT_BUILDIN_MAX",             # default: 25
-    182: "CONVERT_BUILDIN_CHANCE",          # default: 25
+    180: "CONVERT_BUILDIN_MIN",  # default: 15
+    181: "CONVERT_BUILDIN_MAX",  # default: 25
+    182: "CONVERT_BUILDIN_CHANCE",  # default: 25
     183: "REVEAL_ENEMY",
-    184: "SCORE_SOCIETY",                   # wonders, castles
+    184: "SCORE_SOCIETY",  # wonders, castles
     185: "SCORE_FOOD",
     186: "SCORE_WOOD",
     187: "SCORE_STONE",
     188: "SCORE_GOLD",
-    189: "CHOPPING_PRODUCTIVITY",           # default: 1
-    190: "FOOD_GATHERING_PRODUCTIVITY",     # default: 1
-    191: "RELIC_GOLD_PRODUCTION_RATE",      # default: 30
-    192: "CONVERTED_UNITS_DIE",             # bool
-    193: "THEOCRACY_ACTIVE",                # bool
-    194: "CRENELLATIONS_ACTIVE",            # bool
-    195: "CONSTRUCTION_RATE_MULTIPLIER",    # except for wonders
+    189: "CHOPPING_PRODUCTIVITY",  # default: 1
+    190: "FOOD_GATHERING_PRODUCTIVITY",  # default: 1
+    191: "RELIC_GOLD_PRODUCTION_RATE",  # default: 30
+    192: "CONVERTED_UNITS_DIE",  # bool
+    193: "THEOCRACY_ACTIVE",  # bool
+    194: "CRENELLATIONS_ACTIVE",  # bool
+    195: "CONSTRUCTION_RATE_MULTIPLIER",  # except for wonders
     196: "HUN_WONDER_BONUS",
-    197: "SPIES_DISCOUNT",                  # or atheism_active?
+    197: "SPIES_DISCOUNT",  # or atheism_active?
     198: "AK_UNUSED_198",
     199: "AK_UNUSED_199",
     200: "AK_UNUSED_200",
@@ -308,13 +308,10 @@ EFFECT_APPLY_TYPE = {
     5: "ATTRIBUTE_MUL",
     # a == resource_id, d == factor
     6: "RESOURCE_MUL",
-
     # a == unit_id, b == building_id, c == amount
     7: "SPAWN_UNIT",
-
     # a == tech_id, b == action_id (5 = set?), c == amount
     8: "RESEARCH_TIME_MODIFY",
-
     # same as 0-6 but applied to team members
     10: "TEAM_ATTRIBUTE_ABSSET",
     11: "TEAM_RESOURCE_MODIFY",
@@ -325,7 +322,6 @@ EFFECT_APPLY_TYPE = {
     16: "TEAM_RESOURCE_MUL",
     17: "TEAM_SPAWN_UNIT",
     18: "TEAM_RESEARCH_TIME_MODIFY",
-
     # same as 0-6 but applied to enemies
     20: "ENEMY_ATTRIBUTE_ABSSET",
     21: "ENEMY_RESOURCE_MODIFY",
@@ -334,25 +330,21 @@ EFFECT_APPLY_TYPE = {
     24: "ENEMY_ATTRIBUTE_RELSET",
     25: "ENEMY_ATTRIBUTE_MUL",
     26: "ENEMY_RESOURCE_MUL",
-
     # these are only used in technology trees, 103 even requires
     # one
     # a == research_id, b == resource_id, if c == 0: d==absval
     # else: d == relval
     101: "TECHCOST_MODIFY",
-    102: "TECH_TOGGLE",       # d == research_id
+    102: "TECH_TOGGLE",  # d == research_id
     103: "TECH_TIME_MODIFY",  # a == research_id, if c == 0: d==absval else d==relval
-
     # unknown; used in DE2 BfG
     199: "UNKNOWN",
     200: "UNKNOWN",
     201: "UNKNOWN",
-
     # unknown
     40: "UNKNOWN",
     202: "UNKNOWN",
     204: "UNKNOWN",
-
     # attribute_id:
     # 0: hit points
     # 1: line of sight
@@ -408,11 +400,11 @@ COMMAND_ABILITY = {
     4: "EXPLORE",
     5: "GATHER",
     6: "NATURAL_WONDERS_CHEAT",  # also known as "Graze"
-    7: "COMBAT",       # this is converted to action-type 9 when once instanciated
-    8: "MISSILE",      # for projectiles
+    7: "COMBAT",  # this is converted to action-type 9 when once instanciated
+    8: "MISSILE",  # for projectiles
     9: "ATTACK",
-    10: "BIRD",        # flying.
-    11: "PREDATOR",    # scares other animals when hunting
+    10: "BIRD",  # flying.
+    11: "PREDATOR",  # scares other animals when hunting
     12: "TRANSPORT",
     13: "GUARD",
     14: "TRANSPORT_OVER_WALL",
@@ -447,7 +439,7 @@ COMMAND_ABILITY = {
     150: "REGENERATION",
     151: "FEITORIA",
     153: "RESOURCE_FOLLOW",
-    154: "LOOT",         # Chieftains tech; looting on killing villagers, monks, trade carts
+    154: "LOOT",  # Chieftains tech; looting on killing villagers, monks, trade carts
     155: "BOOST_MOVE_AND_ATTACK",
     768: "UNKNOWN_768",
     1024: "UNKNOWN_1024",
@@ -459,13 +451,13 @@ COMMAND_ABILITY = {
 }
 
 OWNER_TYPE = {
-    0: "ANY_0",               # select anything
-    1: "OWNED_UNITS",         # your own things
-    2: "NEUTRAL_ENEMY",       # enemy and neutral things (->attack)
+    0: "ANY_0",  # select anything
+    1: "OWNED_UNITS",  # your own things
+    2: "NEUTRAL_ENEMY",  # enemy and neutral things (->attack)
     3: "NOTHING",
-    4: "GAIA_OWNED_ALLY",     # any of gaia, owned or allied things
+    4: "GAIA_OWNED_ALLY",  # any of gaia, owned or allied things
     5: "GAYA_NEUTRAL_ENEMY",  # any of gaia, neutral or enemy things
-    6: "NOT_OWNED",           # all things that aren't yours
+    6: "NOT_OWNED",  # all things that aren't yours
     7: "ANY_7",
 }
 
@@ -481,8 +473,8 @@ RESOURCE_HANDLING = {
 }
 
 DAMAGE_DRAW_TYPE = {
-    0: "TOP",      # adds graphics on top (e.g. flames)
-    1: "RANDOM",   # adds graphics on top randomly
+    0: "TOP",  # adds graphics on top (e.g. flames)
+    1: "RANDOM",  # adds graphics on top randomly
     2: "REPLACE",  # replace original graphics (e.g. damaged walls)
 }
 
@@ -604,14 +596,14 @@ UNIT_CLASSES = {
 }
 
 ELEVATION_MODES = {
-    0: "NONE",                  # gates, farms, walls, towers
+    0: "NONE",  # gates, farms, walls, towers
     2: "ZERO_ELEV_DIFFERENCE",  # towncenter, port, trade workshop
-    3: "ONE_ELEV_DIFFERENCE",   # everything else
+    3: "ONE_ELEV_DIFFERENCE",  # everything else
 }
 
 FOG_VISIBILITY = {
-    0: "INVISIBLE",     # people etc
-    1: "VISIBLE",       # buildings
+    0: "INVISIBLE",  # people etc
+    1: "VISIBLE",  # buildings
     2: "VISIBLE_IF_ALIVE",
     3: "ONLY_IN_FOG",
     4: "DOPPELGANGER",
@@ -619,28 +611,28 @@ FOG_VISIBILITY = {
 
 TERRAIN_RESTRICTIONS = {
     -0x01: "NONE",
-    0x00: "ANY",                  # projectiles
-    0x01: "SHORELINE",            # boar, deer, wolf
-    0x02: "WATER",                # unused in AoC
-    0x03: "WATER_SHIP_0x03",      # warships
-    0x04: "FOUNDATION",           # buildings
-    0x05: "NOWHERE",              # can't place anywhere
-    0x06: "WATER_DOCK",           # shallow water for dock placement
-    0x07: "SOLID",                # moving land units
-    0x08: "NO_ICE_0x08",          # resource piles (gold, stone, berries)
+    0x00: "ANY",  # projectiles
+    0x01: "SHORELINE",  # boar, deer, wolf
+    0x02: "WATER",  # unused in AoC
+    0x03: "WATER_SHIP_0x03",  # warships
+    0x04: "FOUNDATION",  # buildings
+    0x05: "NOWHERE",  # can't place anywhere
+    0x06: "WATER_DOCK",  # shallow water for dock placement
+    0x07: "SOLID",  # moving land units
+    0x08: "NO_ICE_0x08",  # resource piles (gold, stone, berries)
     0x09: "SWGB_ONLY_WATER0",
-    0x0A: "NO_ICE_0x0A",          # gate, palisades, walls
-    0x0B: "FOREST",               # trees
-    0x0C: "UNKNOWN_0x0C",         # projectile explosions on bridge?
-    0x0D: "WATER_0x0D",           # great fish, fishtrap, fishing ship
-    0x0E: "UNKNOWN_0x0E",         # projectile decay on bridge?
-    0x0F: "WATER_SHIP_0x0F",      # transport ship, longboat
-    0x10: "GRASS_SHORELINE",      # for gates and walls
+    0x0A: "NO_ICE_0x0A",  # gate, palisades, walls
+    0x0B: "FOREST",  # trees
+    0x0C: "UNKNOWN_0x0C",  # projectile explosions on bridge?
+    0x0D: "WATER_0x0D",  # great fish, fishtrap, fishing ship
+    0x0E: "UNKNOWN_0x0E",  # projectile decay on bridge?
+    0x0F: "WATER_SHIP_0x0F",  # transport ship, longboat
+    0x10: "GRASS_SHORELINE",  # for gates and walls
     0x11: "WATER_ANY_0x11",
-    0x12: "UNKNOWN_0x12",         # projectile decay on bridge?
-    0x13: "WATER_ICE",            # small fish
-    0x14: "NO_WATER",             # siege units, trade cart
-    0x15: "WATER_SHALLOW",        # sea walls
+    0x12: "UNKNOWN_0x12",  # projectile decay on bridge?
+    0x13: "WATER_ICE",  # small fish
+    0x14: "NO_WATER",  # siege units, trade cart
+    0x15: "WATER_SHALLOW",  # sea walls
     0x16: "SWGB_GRASS_SHORE",
     0x17: "SWGB_ANY",
     0x18: "SWGB_ONLY_WATER1",
@@ -659,11 +651,11 @@ TERRAIN_RESTRICTIONS = {
 }
 
 BLAST_DEFENSE_TYPES = {
-    0: "UNIT_0",    # projectile, dead, fish, relic, tree, gate, towncenter
-    1: "OTHER",     # 'other' things with multiple rotations
+    0: "UNIT_0",  # projectile, dead, fish, relic, tree, gate, towncenter
+    1: "OTHER",  # 'other' things with multiple rotations
     2: "BUILDING",  # buildings, gates, walls, towncenter, fishtrap
-    3: "UNIT_3"     # boar, farm, fishingship, villager, tradecart, sheep, turkey,
-                    # archers, junk, ships, monk, siege
+    3: "UNIT_3",  # boar, farm, fishingship, villager, tradecart, sheep, turkey,
+    # archers, junk, ships, monk, siege
 }
 
 COMBAT_LEVELS = {
@@ -686,10 +678,10 @@ INTERACTION_MODES = {
 
 MINIMAP_MODES = {
     0: "NO_DOT_0",
-    1: "SQUARE_DOT",             # turns white when selected
-    2: "DIAMOND_DOT",            # dito
+    1: "SQUARE_DOT",  # turns white when selected
+    2: "DIAMOND_DOT",  # dito
     3: "DIAMOND_DOT_KEEPCOLOR",  # doesn't turn white when selected
-    4: "LARGEDOT",               # observable by all players, no attacked-blinking
+    4: "LARGEDOT",  # observable by all players, no attacked-blinking
     5: "NO_DOT_5",
     6: "NO_DOT_6",
     7: "NO_DOT_7",
@@ -699,23 +691,23 @@ MINIMAP_MODES = {
 }
 
 UNIT_LEVELS = {
-    0: "LIVING",                # commands: delete, garrison, stop, attributes: hit points
-    1: "ANIMAL",                # animal
+    0: "LIVING",  # commands: delete, garrison, stop, attributes: hit points
+    1: "ANIMAL",  # animal
     2: "NONMILITARY_BULIDING",  # civilian building (build page 1)
-    3: "VILLAGER",              # villager
-    4: "MILITARY_UNIT",         # military unit
-    5: "TRADING_UNIT",          # trading unit
-    6: "MONK_EMPTY",            # monk
-    7: "TRANSPORT_SHIP",        # transport ship
-    8: "RELIC",                 # relic / monk with relic
-    9: "FISHING_SHIP",          # fishing ship
-    10: "MILITARY_BUILDING",    # military building (build page 2)
-    11: "SHIELDED_BUILDING",    # shield building (build page 3)
+    3: "VILLAGER",  # villager
+    4: "MILITARY_UNIT",  # military unit
+    5: "TRADING_UNIT",  # trading unit
+    6: "MONK_EMPTY",  # monk
+    7: "TRANSPORT_SHIP",  # transport ship
+    8: "RELIC",  # relic / monk with relic
+    9: "FISHING_SHIP",  # fishing ship
+    10: "MILITARY_BUILDING",  # military building (build page 2)
+    11: "SHIELDED_BUILDING",  # shield building (build page 3)
     12: "UNKNOWN_12",
 }
 
 OBSTRUCTION_TYPES = {
-    0: "PASSABLE",   # farm, gate, dead bodies, town center
+    0: "PASSABLE",  # farm, gate, dead bodies, town center
     2: "BUILDING",
     3: "BERSERK",
     5: "UNIT",
@@ -761,9 +753,9 @@ SELECTION_EFFECTS = {
 }
 
 ATTACK_MODES = {
-    0: "NO",         # no attack
+    0: "NO",  # no attack
     1: "FOLLOWING",  # by following
-    2: "RUN",        # run when attacked
+    2: "RUN",  # run when attacked
     3: "UNKNOWN3",
     4: "ATTACK",
 }
@@ -794,13 +786,13 @@ BLAST_OFFENSE_TYPES = {
 CREATABLE_TYPES = {
     0: "NONHUMAN",  # animal, ship
     1: "VILLAGER",  # villager, king
-    2: "MELEE",     # soldier, siege, predator, trader
-    3: "MOUNTED",   # camel rider
+    2: "MELEE",  # soldier, siege, predator, trader
+    3: "MOUNTED",  # camel rider
     4: "RELIC",
     5: "RANGED_PROJECTILE",  # archer
-    6: "RANGED_MAGIC",       # monk
+    6: "RANGED_MAGIC",  # monk
     21: "TRANSPORT_SHIP",
-    255: "OTHER",    # building, relic
+    255: "OTHER",  # building, relic
 }
 
 GARRISON_TYPES = {
@@ -811,8 +803,8 @@ GARRISON_TYPES = {
     0x07: "SWGB_NO_JEDI",
     0x08: "MONK",
     0x09: "DE2_FORTIFIED_CHURCH",
-    0x0b: "NOCAVALRY",
-    0x0f: "ALL",
+    0x0B: "NOCAVALRY",
+    0x0F: "ALL",
     0x10: "SWGB_LIVESTOCK",
     0x40: "DE2_UNKNOWN_40",
 }

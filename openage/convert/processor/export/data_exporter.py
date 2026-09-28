@@ -6,12 +6,12 @@ Exports data formats from a modpack to files.
 """
 
 from __future__ import annotations
+
 import typing
 
-
 if typing.TYPE_CHECKING:
-    from openage.util.fslike.directory import Directory
     from openage.convert.entity_object.export.data_definition import DataDefinition
+    from openage.util.fslike.directory import Directory
 
 
 class DataExporter:
@@ -35,5 +35,5 @@ class DataExporter:
             output_content = data_file.dump()
 
             # generate human-readable file
-            with output_dir[data_file.filename].open('wb') as outfile:
-                outfile.write(output_content.encode('utf-8'))
+            with output_dir[data_file.filename].open("wb") as outfile:
+                outfile.write(output_content.encode("utf-8"))

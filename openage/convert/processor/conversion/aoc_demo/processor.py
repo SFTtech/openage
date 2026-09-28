@@ -5,25 +5,25 @@
 """
 Convert data from the AoC Demo to openage formats.
 """
+
 from __future__ import annotations
+
 import typing
 
 from .....log import info
-from ....service.debug_info import debug_converter_objects, \
-    debug_converter_object_groups
-from ..aoc.processor import AoCProcessor
-from ..aoc.nyan_subprocessor import AoCNyanSubprocessor
+from ....service.debug_info import debug_converter_object_groups, debug_converter_objects
 from ..aoc.media_subprocessor import AoCMediaSubprocessor
+from ..aoc.nyan_subprocessor import AoCNyanSubprocessor
+from ..aoc.processor import AoCProcessor
 from .modpack_subprocessor import DemoModpackSubprocessor
-
 
 if typing.TYPE_CHECKING:
     from argparse import Namespace
-    from openage.convert.entity_object.conversion.stringresource import StringResource
+
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
     from openage.convert.entity_object.conversion.modpack import Modpack
+    from openage.convert.entity_object.conversion.stringresource import StringResource
     from openage.convert.value_object.read.value_members import ArrayMember
-    from openage.convert.entity_object.conversion.aoc.genie_object_container \
-        import GenieObjectContainer
 
 
 class DemoProcessor:
@@ -37,7 +37,7 @@ class DemoProcessor:
         gamespec: ArrayMember,
         args: Namespace,
         string_resources: StringResource,
-        existing_graphics: list[str]
+        existing_graphics: list[str],
     ) -> list[Modpack]:
         """
         Input game speification and media here and get a set of
@@ -55,10 +55,7 @@ class DemoProcessor:
 
         # Create a new container for the conversion process
         dataset = AoCProcessor._pre_processor(
-            gamespec,
-            args.game_version,
-            string_resources,
-            existing_graphics
+            gamespec, args.game_version, string_resources, existing_graphics
         )
         debug_converter_objects(args.debugdir, args.debug_info, dataset)
 

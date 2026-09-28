@@ -4,14 +4,15 @@
 SWGB tech objects. These extend the normal Genie techs to reflect
 that SWGB techs can have unique variants for every civilization.
 """
+
 from __future__ import annotations
+
 import typing
 
-from ..aoc.genie_tech import UnitUnlock, UnitLineUpgrade
+from ..aoc.genie_tech import UnitLineUpgrade, UnitUnlock
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.aoc.genie_object_container\
-        import GenieObjectContainer
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
 
 
 class SWGBUnitLineUpgrade(UnitLineUpgrade):
@@ -19,7 +20,7 @@ class SWGBUnitLineUpgrade(UnitLineUpgrade):
     Upgrades attributes of units/buildings or other stats in the game.
     """
 
-    __slots__ = ('civ_unlocks',)
+    __slots__ = ("civ_unlocks",)
 
     def __init__(
         self,
@@ -66,14 +67,9 @@ class SWGBUnitUnlock(UnitUnlock):
     Upgrades attributes of units/buildings or other stats in the game.
     """
 
-    __slots__ = ('civ_unlocks',)
+    __slots__ = ("civ_unlocks",)
 
-    def __init__(
-        self,
-        tech_id: int,
-        line_id: int,
-        full_data_set: GenieObjectContainer
-    ):
+    def __init__(self, tech_id: int, line_id: int, full_data_set: GenieObjectContainer):
         """
         Creates a new SWGB unit unlock object.
 

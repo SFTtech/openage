@@ -4,7 +4,9 @@
 Nyan file struct that stores a bunch of objects and
 manages imports.
 """
+
 from __future__ import annotations
+
 import typing
 
 from .....nyan.nyan_structs import NyanObject
@@ -25,11 +27,7 @@ class NyanFile(DataDefinition):
     """
 
     def __init__(
-        self,
-        targetdir: str,
-        filename: str,
-        modpack_name: str,
-        nyan_objects: typing.Collection = None
+        self, targetdir: str, filename: str, modpack_name: str, nyan_objects: typing.Collection | None = None
     ):
         super().__init__(targetdir, filename)
 
@@ -46,9 +44,11 @@ class NyanFile(DataDefinition):
             self.fqon = (self.modpack_name, self.filename.split(".")[0])
 
         else:
-            self.fqon = (self.modpack_name,
-                         *self.targetdir.replace("/", ".")[:-1].split("."),
-                         self.filename.split(".")[0])
+            self.fqon = (
+                self.modpack_name,
+                *self.targetdir.replace("/", ".")[:-1].split("."),
+                self.filename.split(".")[0],
+            )
 
     def add_nyan_object(self, new_object: NyanObject) -> None:
         """
@@ -151,6 +151,8 @@ class NyanFile(DataDefinition):
 
             nyan_object.set_fqon(new_fqon)
 
-        self.fqon = (self.modpack_name,
-                     *self.targetdir.replace("/", ".")[:-1].split("."),
-                     self.filename.split(".")[0])
+        self.fqon = (
+            self.modpack_name,
+            *self.targetdir.replace("/", ".")[:-1].split("."),
+            self.filename.split(".")[0],
+        )

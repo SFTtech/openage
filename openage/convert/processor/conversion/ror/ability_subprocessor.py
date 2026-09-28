@@ -9,13 +9,17 @@
 Derives and adds abilities to lines. Reimplements only
 abilities that are different from AoC.
 """
-from __future__ import annotations
-import typing
 
+from __future__ import annotations
+
+import typing
 from math import degrees
 
-from ....entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup, \
-    GenieVillagerGroup, GenieUnitLineGroup
+from ....entity_object.conversion.aoc.genie_unit import (
+    GenieBuildingLineGroup,
+    GenieUnitLineGroup,
+    GenieVillagerGroup,
+)
 from ....entity_object.conversion.converter_object import RawAPIObject
 from ....service.conversion import internal_name_lookups
 from ....value_object.conversion.forward_ref import ForwardRef
@@ -33,10 +37,7 @@ class RoRAbilitySubprocessor:
 
     @staticmethod
     def apply_discrete_effect_ability(
-        line: GenieGameEntityGroup,
-        command_id: int,
-        ranged: bool = False,
-        projectile: int = -1
+        line: GenieGameEntityGroup, command_id: int, ranged: bool = False, projectile: int = -1
     ) -> ForwardRef:
         """
         Adds the ApplyDiscreteEffect ability to a line.
@@ -74,9 +75,7 @@ class RoRAbilitySubprocessor:
 
         if projectile == -1:
             ability_ref = f"{game_entity_name}.{ability_name}"
-            ability_raw_api_object = RawAPIObject(ability_ref,
-                                                  ability_name,
-                                                  dataset.nyan_api_objects)
+            ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
             ability_raw_api_object.add_raw_parent(ability_parent)
             ability_location = ForwardRef(line, game_entity_name)
             ability_raw_api_object.set_location(ability_location)
@@ -100,15 +99,12 @@ class RoRAbilitySubprocessor:
                 ability_animation_id = current_unit["attack_sprite_id"].value
 
         else:
-            ability_ref = (f"{game_entity_name}.ShootProjectile."
-                           f"Projectile{projectile}.{ability_name}")
-            ability_raw_api_object = RawAPIObject(ability_ref,
-                                                  ability_name,
-                                                  dataset.nyan_api_objects)
+            ability_ref = f"{game_entity_name}.ShootProjectile.Projectile{projectile}.{ability_name}"
+            ability_raw_api_object = RawAPIObject(ability_ref, ability_name, dataset.nyan_api_objects)
             ability_raw_api_object.add_raw_parent(ability_parent)
-            ability_location = ForwardRef(line,
-                                          (f"{game_entity_name}.ShootProjectile."
-                                           f"Projectile{projectile}"))
+            ability_location = ForwardRef(
+                line, (f"{game_entity_name}.ShootProjectile.Projectile{projectile}")
+            )
             ability_raw_api_object.set_location(ability_location)
 
             ability_animation_id = -1
@@ -119,9 +115,7 @@ class RoRAbilitySubprocessor:
         # Animated
         if ability_animation_id > -1:
             property_ref = f"{ability_ref}.Animated"
-            property_raw_api_object = RawAPIObject(property_ref,
-                                                   "Animated",
-                                                   dataset.nyan_api_objects)
+            property_raw_api_object = RawAPIObject(property_ref, "Animated", dataset.nyan_api_objects)
             property_raw_api_object.add_raw_parent("engine.ability.property.type.Animated")
             property_location = ForwardRef(line, ability_ref)
             property_raw_api_object.set_location(property_location)
@@ -134,16 +128,15 @@ class RoRAbilitySubprocessor:
                 ability_animation_id,
                 property_ref,
                 ability_name,
-                f"{command_lookup_dict[command_id][1]}_"
+                f"{command_lookup_dict[command_id][1]}_",
             )
             animations_set.append(animation_forward_ref)
-            property_raw_api_object.add_raw_member("animations", animations_set,
-                                                   "engine.ability.property.type.Animated")
+            property_raw_api_object.add_raw_member(
+                "animations", animations_set, "engine.ability.property.type.Animated"
+            )
 
             property_forward_ref = ForwardRef(line, property_ref)
-            properties.update({
-                api_objects["engine.ability.property.type.Animated"]: property_forward_ref
-            })
+            properties.update({api_objects["engine.ability.property.type.Animated"]: property_forward_ref})
 
             # Create custom civ graphics
             handled_graphics_set_ids = set()
@@ -171,15 +164,18 @@ class RoRAbilitySubprocessor:
                         handled_graphics_set_ids.add(graphics_set_id)
 
                     obj_prefix = f"{gset_lookup_dict[graphics_set_id][1]}{ability_name}"
-                    filename_prefix = (f"{command_lookup_dict[command_id][1]}_"
-                                       f"{gset_lookup_dict[graphics_set_id][2]}_")
-                    AoCAbilitySubprocessor.create_civ_animation(line,
-                                                                civ_group,
-                                                                civ_animation_id,
-                                                                f"{ability_ref}.Animated",
-                                                                obj_prefix,
-                                                                filename_prefix,
-                                                                obj_exists)
+                    filename_prefix = (
+                        f"{command_lookup_dict[command_id][1]}_{gset_lookup_dict[graphics_set_id][2]}_"
+                    )
+                    AoCAbilitySubprocessor.create_civ_animation(
+                        line,
+                        civ_group,
+                        civ_animation_id,
+                        f"{ability_ref}.Animated",
+                        obj_prefix,
+                        filename_prefix,
+                        obj_exists,
+                    )
 
         # Command Sound
         if projectile == -1:
@@ -190,9 +186,7 @@ class RoRAbilitySubprocessor:
 
         if ability_comm_sound_id > -1:
             property_ref = f"{ability_ref}.CommandSound"
-            property_raw_api_object = RawAPIObject(property_ref,
-                                                   "CommandSound",
-                                                   dataset.nyan_api_objects)
+            property_raw_api_object = RawAPIObject(property_ref, "CommandSound", dataset.nyan_api_objects)
             property_raw_api_object.add_raw_parent("engine.ability.property.type.CommandSound")
             property_location = ForwardRef(line, ability_ref)
             property_raw_api_object.set_location(property_location)
@@ -207,24 +201,21 @@ class RoRAbilitySubprocessor:
             else:
                 sound_obj_prefix = "ProjectileAttack"
 
-            sound_forward_ref = AoCAbilitySubprocessor.create_sound(line,
-                                                                    ability_comm_sound_id,
-                                                                    property_ref,
-                                                                    sound_obj_prefix,
-                                                                    "command_")
+            sound_forward_ref = AoCAbilitySubprocessor.create_sound(
+                line, ability_comm_sound_id, property_ref, sound_obj_prefix, "command_"
+            )
             sounds_set.append(sound_forward_ref)
-            property_raw_api_object.add_raw_member("sounds", sounds_set,
-                                                   "engine.ability.property.type.CommandSound")
+            property_raw_api_object.add_raw_member(
+                "sounds", sounds_set, "engine.ability.property.type.CommandSound"
+            )
             property_forward_ref = ForwardRef(line, property_ref)
-            properties.update({
-                api_objects["engine.ability.property.type.CommandSound"]: property_forward_ref
-            })
+            properties.update(
+                {api_objects["engine.ability.property.type.CommandSound"]: property_forward_ref}
+            )
 
         # Diplomacy settings
         property_ref = f"{ability_ref}.Diplomatic"
-        property_raw_api_object = RawAPIObject(property_ref,
-                                               "Diplomatic",
-                                               dataset.nyan_api_objects)
+        property_raw_api_object = RawAPIObject(property_ref, "Diplomatic", dataset.nyan_api_objects)
         property_raw_api_object.add_raw_parent("engine.ability.property.type.Diplomatic")
         property_location = ForwardRef(line, ability_ref)
         property_raw_api_object.set_location(property_location)
@@ -232,30 +223,27 @@ class RoRAbilitySubprocessor:
         line.add_raw_api_object(property_raw_api_object)
 
         diplomatic_stances = [dataset.nyan_api_objects["engine.util.diplomatic_stance.type.Self"]]
-        property_raw_api_object.add_raw_member("stances", diplomatic_stances,
-                                               "engine.ability.property.type.Diplomatic")
+        property_raw_api_object.add_raw_member(
+            "stances", diplomatic_stances, "engine.ability.property.type.Diplomatic"
+        )
 
         property_forward_ref = ForwardRef(line, property_ref)
-        properties.update({
-            api_objects["engine.ability.property.type.Diplomatic"]: property_forward_ref
-        })
+        properties.update({api_objects["engine.ability.property.type.Diplomatic"]: property_forward_ref})
 
-        ability_raw_api_object.add_raw_member("properties",
-                                              properties,
-                                              "engine.ability.Ability")
+        ability_raw_api_object.add_raw_member("properties", properties, "engine.ability.Ability")
 
         if ranged:
             # Min range
             min_range = current_unit["weapon_range_min"].value
-            ability_raw_api_object.add_raw_member("min_range",
-                                                  min_range,
-                                                  "engine.ability.type.RangedDiscreteEffect")
+            ability_raw_api_object.add_raw_member(
+                "min_range", min_range, "engine.ability.type.RangedDiscreteEffect"
+            )
 
             # Max range
             max_range = current_unit["weapon_range_max"].value
-            ability_raw_api_object.add_raw_member("max_range",
-                                                  max_range,
-                                                  "engine.ability.type.RangedDiscreteEffect")
+            ability_raw_api_object.add_raw_member(
+                "max_range", max_range, "engine.ability.type.RangedDiscreteEffect"
+            )
 
         # Effects
         batch_ref = f"{ability_ref}.Batch"
@@ -281,14 +269,12 @@ class RoRAbilitySubprocessor:
             # effects = AoCEffectSubprocessor.get_convert_effects(line, ability_ref)
             pass
 
-        batch_raw_api_object.add_raw_member("effects",
-                                            effects,
-                                            "engine.util.effect_batch.EffectBatch")
+        batch_raw_api_object.add_raw_member("effects", effects, "engine.util.effect_batch.EffectBatch")
 
         batch_forward_ref = ForwardRef(line, batch_ref)
-        ability_raw_api_object.add_raw_member("batches",
-                                              [batch_forward_ref],
-                                              "engine.ability.type.ApplyDiscreteEffect")
+        ability_raw_api_object.add_raw_member(
+            "batches", [batch_forward_ref], "engine.ability.type.ApplyDiscreteEffect"
+        )
 
         # Reload time
         if projectile == -1:
@@ -297,9 +283,9 @@ class RoRAbilitySubprocessor:
         else:
             reload_time = 0
 
-        ability_raw_api_object.add_raw_member("reload_time",
-                                              reload_time,
-                                              "engine.ability.type.ApplyDiscreteEffect")
+        ability_raw_api_object.add_raw_member(
+            "reload_time", reload_time, "engine.ability.type.ApplyDiscreteEffect"
+        )
 
         # Application delay
         if projectile == -1:
@@ -311,9 +297,9 @@ class RoRAbilitySubprocessor:
         else:
             application_delay = 0
 
-        ability_raw_api_object.add_raw_member("application_delay",
-                                              application_delay,
-                                              "engine.ability.type.ApplyDiscreteEffect")
+        ability_raw_api_object.add_raw_member(
+            "application_delay", application_delay, "engine.ability.type.ApplyDiscreteEffect"
+        )
 
         # Allowed types (all buildings/units)
         if command_id == 104:
@@ -325,13 +311,12 @@ class RoRAbilitySubprocessor:
         else:
             allowed_types = [
                 dataset.pregen_nyan_objects["util.game_entity_type.types.Unit"].get_nyan_object(),
-                dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object(
-                )
+                dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object(),
             ]
 
-        ability_raw_api_object.add_raw_member("allowed_types",
-                                              allowed_types,
-                                              "engine.ability.type.ApplyDiscreteEffect")
+        ability_raw_api_object.add_raw_member(
+            "allowed_types", allowed_types, "engine.ability.type.ApplyDiscreteEffect"
+        )
 
         if command_id == 104:
             # Convert
@@ -346,9 +331,9 @@ class RoRAbilitySubprocessor:
         else:
             blacklisted_entities = []
 
-        ability_raw_api_object.add_raw_member("blacklisted_entities",
-                                              blacklisted_entities,
-                                              "engine.ability.type.ApplyDiscreteEffect")
+        ability_raw_api_object.add_raw_member(
+            "blacklisted_entities", blacklisted_entities, "engine.ability.type.ApplyDiscreteEffect"
+        )
 
         line.add_raw_api_object(ability_raw_api_object)
 
@@ -375,9 +360,7 @@ class RoRAbilitySubprocessor:
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
         ability_ref = f"{game_entity_name}.GameEntityStance"
-        ability_raw_api_object = RawAPIObject(ability_ref,
-                                              "GameEntityStance",
-                                              dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(ability_ref, "GameEntityStance", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.GameEntityStance")
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -415,27 +398,25 @@ class RoRAbilitySubprocessor:
             stance_raw_api_object.set_location(stance_location)
 
             # Search range
-            stance_raw_api_object.add_raw_member("search_range",
-                                                 search_range,
-                                                 "engine.util.game_entity_stance.GameEntityStance")
+            stance_raw_api_object.add_raw_member(
+                "search_range", search_range, "engine.util.game_entity_stance.GameEntityStance"
+            )
 
             # Ability preferences
-            stance_raw_api_object.add_raw_member("ability_preference",
-                                                 ability_preferences,
-                                                 "engine.util.game_entity_stance.GameEntityStance")
+            stance_raw_api_object.add_raw_member(
+                "ability_preference", ability_preferences, "engine.util.game_entity_stance.GameEntityStance"
+            )
 
             # Type preferences
-            stance_raw_api_object.add_raw_member("type_preference",
-                                                 type_preferences,
-                                                 "engine.util.game_entity_stance.GameEntityStance")
+            stance_raw_api_object.add_raw_member(
+                "type_preference", type_preferences, "engine.util.game_entity_stance.GameEntityStance"
+            )
 
             line.add_raw_api_object(stance_raw_api_object)
             stance_forward_ref = ForwardRef(line, stance_ref)
             stances.append(stance_forward_ref)
 
-        ability_raw_api_object.add_raw_member("stances",
-                                              stances,
-                                              "engine.ability.type.GameEntityStance")
+        ability_raw_api_object.add_raw_member("stances", stances, "engine.ability.type.GameEntityStance")
 
         line.add_raw_api_object(ability_raw_api_object)
 
@@ -461,9 +442,7 @@ class RoRAbilitySubprocessor:
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
         ability_ref = f"{game_entity_name}.ProductionQueue"
-        ability_raw_api_object = RawAPIObject(ability_ref,
-                                              "ProductionQueue",
-                                              dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(ability_ref, "ProductionQueue", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.ProductionQueue")
         ability_location = ForwardRef(line, game_entity_name)
         ability_raw_api_object.set_location(ability_location)
@@ -483,16 +462,14 @@ class RoRAbilitySubprocessor:
         mode_raw_api_object.set_location(mode_location)
 
         # RoR allows all creatables in production queue
-        mode_raw_api_object.add_raw_member("exclude",
-                                           [],
-                                           "engine.util.production_mode.type.Creatables")
+        mode_raw_api_object.add_raw_member("exclude", [], "engine.util.production_mode.type.Creatables")
 
         mode_forward_ref = ForwardRef(line, mode_name)
         modes.append(mode_forward_ref)
 
-        ability_raw_api_object.add_raw_member("production_modes",
-                                              modes,
-                                              "engine.ability.type.ProductionQueue")
+        ability_raw_api_object.add_raw_member(
+            "production_modes", modes, "engine.ability.type.ProductionQueue"
+        )
 
         line.add_raw_api_object(mode_raw_api_object)
         line.add_raw_api_object(ability_raw_api_object)
@@ -525,9 +502,7 @@ class RoRAbilitySubprocessor:
         # First projectile is mandatory
         obj_ref = f"{game_entity_name}.ShootProjectile.Projectile{position}"
         ability_ref = f"{game_entity_name}.ShootProjectile.Projectile{position}.Projectile"
-        ability_raw_api_object = RawAPIObject(ability_ref,
-                                              "Projectile",
-                                              dataset.nyan_api_objects)
+        ability_raw_api_object = RawAPIObject(ability_ref, "Projectile", dataset.nyan_api_objects)
         ability_raw_api_object.add_raw_parent("engine.ability.type.Projectile")
         ability_location = ForwardRef(line, obj_ref)
         ability_raw_api_object.set_location(ability_location)
@@ -541,65 +516,52 @@ class RoRAbilitySubprocessor:
 
         projectile = dataset.genie_units[projectile_id]
         arc = degrees(projectile["projectile_arc"].value)
-        ability_raw_api_object.add_raw_member("arc",
-                                              arc,
-                                              "engine.ability.type.Projectile")
+        ability_raw_api_object.add_raw_member("arc", arc, "engine.ability.type.Projectile")
 
         # Accuracy
-        accuracy_name = (f"{game_entity_name}.ShootProjectile."
-                         f"Projectile{position}.Projectile.Accuracy")
+        accuracy_name = f"{game_entity_name}.ShootProjectile.Projectile{position}.Projectile.Accuracy"
         accuracy_raw_api_object = RawAPIObject(accuracy_name, "Accuracy", dataset.nyan_api_objects)
         accuracy_raw_api_object.add_raw_parent("engine.util.accuracy.Accuracy")
         accuracy_location = ForwardRef(line, ability_ref)
         accuracy_raw_api_object.set_location(accuracy_location)
 
         accuracy_value = current_unit["accuracy"].value
-        accuracy_raw_api_object.add_raw_member("accuracy",
-                                               accuracy_value,
-                                               "engine.util.accuracy.Accuracy")
+        accuracy_raw_api_object.add_raw_member("accuracy", accuracy_value, "engine.util.accuracy.Accuracy")
 
         accuracy_dispersion = 0
-        accuracy_raw_api_object.add_raw_member("accuracy_dispersion",
-                                               accuracy_dispersion,
-                                               "engine.util.accuracy.Accuracy")
+        accuracy_raw_api_object.add_raw_member(
+            "accuracy_dispersion", accuracy_dispersion, "engine.util.accuracy.Accuracy"
+        )
         dropoff_type = dataset.nyan_api_objects["engine.util.dropoff_type.type.NoDropoff"]
-        accuracy_raw_api_object.add_raw_member("dispersion_dropoff",
-                                               dropoff_type,
-                                               "engine.util.accuracy.Accuracy")
+        accuracy_raw_api_object.add_raw_member(
+            "dispersion_dropoff", dropoff_type, "engine.util.accuracy.Accuracy"
+        )
 
         allowed_types = [
             dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object(),
-            dataset.pregen_nyan_objects["util.game_entity_type.types.Unit"].get_nyan_object()
+            dataset.pregen_nyan_objects["util.game_entity_type.types.Unit"].get_nyan_object(),
         ]
-        accuracy_raw_api_object.add_raw_member("target_types",
-                                               allowed_types,
-                                               "engine.util.accuracy.Accuracy")
-        accuracy_raw_api_object.add_raw_member("blacklisted_entities",
-                                               [],
-                                               "engine.util.accuracy.Accuracy")
+        accuracy_raw_api_object.add_raw_member("target_types", allowed_types, "engine.util.accuracy.Accuracy")
+        accuracy_raw_api_object.add_raw_member("blacklisted_entities", [], "engine.util.accuracy.Accuracy")
 
         line.add_raw_api_object(accuracy_raw_api_object)
         accuracy_forward_ref = ForwardRef(line, accuracy_name)
-        ability_raw_api_object.add_raw_member("accuracy",
-                                              [accuracy_forward_ref],
-                                              "engine.ability.type.Projectile")
+        ability_raw_api_object.add_raw_member(
+            "accuracy", [accuracy_forward_ref], "engine.ability.type.Projectile"
+        )
 
         # Target mode
         target_mode = dataset.nyan_api_objects["engine.util.target_mode.type.CurrentPosition"]
-        ability_raw_api_object.add_raw_member("target_mode",
-                                              target_mode,
-                                              "engine.ability.type.Projectile")
+        ability_raw_api_object.add_raw_member("target_mode", target_mode, "engine.ability.type.Projectile")
 
         # Ingore types; buildings are ignored unless targeted
         ignore_forward_refs = [
             dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object()
         ]
-        ability_raw_api_object.add_raw_member("ignored_types",
-                                              ignore_forward_refs,
-                                              "engine.ability.type.Projectile")
-        ability_raw_api_object.add_raw_member("unignored_entities",
-                                              [],
-                                              "engine.ability.type.Projectile")
+        ability_raw_api_object.add_raw_member(
+            "ignored_types", ignore_forward_refs, "engine.ability.type.Projectile"
+        )
+        ability_raw_api_object.add_raw_member("unignored_entities", [], "engine.ability.type.Projectile")
 
         line.add_raw_api_object(ability_raw_api_object)
 
@@ -631,28 +593,22 @@ class RoRAbilitySubprocessor:
 
         # Resistances
         resistances = []
-        resistances.extend(AoCEffectSubprocessor.get_attack_resistances(line,
-                                                                        ability_ref))
+        resistances.extend(AoCEffectSubprocessor.get_attack_resistances(line, ability_ref))
         if isinstance(line, (GenieUnitLineGroup, GenieBuildingLineGroup)):
             # TODO: Conversion resistance
             # resistances.extend(RoREffectSubprocessor.get_convert_resistances(line,
             #                                                                  ability_ref))
 
             if isinstance(line, GenieUnitLineGroup) and not line.is_repairable():
-                resistances.extend(AoCEffectSubprocessor.get_heal_resistances(line,
-                                                                              ability_ref))
+                resistances.extend(AoCEffectSubprocessor.get_heal_resistances(line, ability_ref))
 
             if isinstance(line, GenieBuildingLineGroup):
-                resistances.extend(AoCEffectSubprocessor.get_construct_resistances(line,
-                                                                                   ability_ref))
+                resistances.extend(AoCEffectSubprocessor.get_construct_resistances(line, ability_ref))
 
             if line.is_repairable():
-                resistances.extend(AoCEffectSubprocessor.get_repair_resistances(line,
-                                                                                ability_ref))
+                resistances.extend(AoCEffectSubprocessor.get_repair_resistances(line, ability_ref))
 
-        ability_raw_api_object.add_raw_member("resistances",
-                                              resistances,
-                                              "engine.ability.type.Resistance")
+        ability_raw_api_object.add_raw_member("resistances", resistances, "engine.ability.type.Resistance")
 
         line.add_raw_api_object(ability_raw_api_object)
 
@@ -694,9 +650,7 @@ class RoRAbilitySubprocessor:
         ability_animation_id = current_unit["attack_sprite_id"].value
         if ability_animation_id > -1:
             property_ref = f"{ability_ref}.Animated"
-            property_raw_api_object = RawAPIObject(property_ref,
-                                                   "Animated",
-                                                   dataset.nyan_api_objects)
+            property_raw_api_object = RawAPIObject(property_ref, "Animated", dataset.nyan_api_objects)
             property_raw_api_object.add_raw_parent("engine.ability.property.type.Animated")
             property_location = ForwardRef(line, ability_ref)
             property_raw_api_object.set_location(property_location)
@@ -709,25 +663,21 @@ class RoRAbilitySubprocessor:
                 ability_animation_id,
                 property_ref,
                 ability_name,
-                f"{command_lookup_dict[command_id][1]}_"
+                f"{command_lookup_dict[command_id][1]}_",
             )
             animations_set.append(animation_forward_ref)
-            property_raw_api_object.add_raw_member("animations",
-                                                   animations_set,
-                                                   "engine.ability.property.type.Animated")
+            property_raw_api_object.add_raw_member(
+                "animations", animations_set, "engine.ability.property.type.Animated"
+            )
 
             property_forward_ref = ForwardRef(line, property_ref)
-            properties.update({
-                api_objects["engine.ability.property.type.Animated"]: property_forward_ref
-            })
+            properties.update({api_objects["engine.ability.property.type.Animated"]: property_forward_ref})
 
         # Command Sound
         ability_comm_sound_id = current_unit["command_sound_id"].value
         if ability_comm_sound_id > -1:
             property_ref = f"{ability_ref}.CommandSound"
-            property_raw_api_object = RawAPIObject(property_ref,
-                                                   "CommandSound",
-                                                   dataset.nyan_api_objects)
+            property_raw_api_object = RawAPIObject(property_ref, "CommandSound", dataset.nyan_api_objects)
             property_raw_api_object.add_raw_parent("engine.ability.property.type.CommandSound")
             property_location = ForwardRef(line, ability_ref)
             property_raw_api_object.set_location(property_location)
@@ -735,26 +685,22 @@ class RoRAbilitySubprocessor:
             line.add_raw_api_object(property_raw_api_object)
 
             sounds_set = []
-            sound_forward_ref = AoCAbilitySubprocessor.create_sound(line,
-                                                                    ability_comm_sound_id,
-                                                                    property_ref,
-                                                                    ability_name,
-                                                                    "command_")
+            sound_forward_ref = AoCAbilitySubprocessor.create_sound(
+                line, ability_comm_sound_id, property_ref, ability_name, "command_"
+            )
             sounds_set.append(sound_forward_ref)
-            property_raw_api_object.add_raw_member("sounds",
-                                                   sounds_set,
-                                                   "engine.ability.property.type.CommandSound")
+            property_raw_api_object.add_raw_member(
+                "sounds", sounds_set, "engine.ability.property.type.CommandSound"
+            )
 
             property_forward_ref = ForwardRef(line, property_ref)
-            properties.update({
-                api_objects["engine.ability.property.type.CommandSound"]: property_forward_ref
-            })
+            properties.update(
+                {api_objects["engine.ability.property.type.CommandSound"]: property_forward_ref}
+            )
 
         # Diplomacy settings
         property_ref = f"{ability_ref}.Diplomatic"
-        property_raw_api_object = RawAPIObject(property_ref,
-                                               "Diplomatic",
-                                               dataset.nyan_api_objects)
+        property_raw_api_object = RawAPIObject(property_ref, "Diplomatic", dataset.nyan_api_objects)
         property_raw_api_object.add_raw_parent("engine.ability.property.type.Diplomatic")
         property_location = ForwardRef(line, ability_ref)
         property_raw_api_object.set_location(property_location)
@@ -762,56 +708,48 @@ class RoRAbilitySubprocessor:
         line.add_raw_api_object(property_raw_api_object)
 
         diplomatic_stances = [dataset.nyan_api_objects["engine.util.diplomatic_stance.type.Self"]]
-        property_raw_api_object.add_raw_member("stances", diplomatic_stances,
-                                               "engine.ability.property.type.Diplomatic")
+        property_raw_api_object.add_raw_member(
+            "stances", diplomatic_stances, "engine.ability.property.type.Diplomatic"
+        )
 
         property_forward_ref = ForwardRef(line, property_ref)
-        properties.update({
-            api_objects["engine.ability.property.type.Diplomatic"]: property_forward_ref
-        })
+        properties.update({api_objects["engine.ability.property.type.Diplomatic"]: property_forward_ref})
 
-        ability_raw_api_object.add_raw_member("properties",
-                                              properties,
-                                              "engine.ability.Ability")
+        ability_raw_api_object.add_raw_member("properties", properties, "engine.ability.Ability")
 
         # Projectile
         projectiles = []
         projectile_primary = current_unit["projectile_id0"].value
         if projectile_primary > -1:
-            projectiles.append(ForwardRef(line,
-                                          f"{game_entity_name}.ShootProjectile.Projectile0"))
+            projectiles.append(ForwardRef(line, f"{game_entity_name}.ShootProjectile.Projectile0"))
 
-        ability_raw_api_object.add_raw_member("projectiles",
-                                              projectiles,
-                                              "engine.ability.type.ShootProjectile")
+        ability_raw_api_object.add_raw_member(
+            "projectiles", projectiles, "engine.ability.type.ShootProjectile"
+        )
 
         # Projectile count (does not exist in RoR)
         min_projectiles = 1
         max_projectiles = 1
 
-        ability_raw_api_object.add_raw_member("min_projectiles",
-                                              min_projectiles,
-                                              "engine.ability.type.ShootProjectile")
-        ability_raw_api_object.add_raw_member("max_projectiles",
-                                              max_projectiles,
-                                              "engine.ability.type.ShootProjectile")
+        ability_raw_api_object.add_raw_member(
+            "min_projectiles", min_projectiles, "engine.ability.type.ShootProjectile"
+        )
+        ability_raw_api_object.add_raw_member(
+            "max_projectiles", max_projectiles, "engine.ability.type.ShootProjectile"
+        )
 
         # Range
         min_range = current_unit["weapon_range_min"].value
-        ability_raw_api_object.add_raw_member("min_range",
-                                              min_range,
-                                              "engine.ability.type.ShootProjectile")
+        ability_raw_api_object.add_raw_member("min_range", min_range, "engine.ability.type.ShootProjectile")
 
         max_range = current_unit["weapon_range_max"].value
-        ability_raw_api_object.add_raw_member("max_range",
-                                              max_range,
-                                              "engine.ability.type.ShootProjectile")
+        ability_raw_api_object.add_raw_member("max_range", max_range, "engine.ability.type.ShootProjectile")
 
         # Reload time and delay
         reload_time = current_unit["attack_speed"].value
-        ability_raw_api_object.add_raw_member("reload_time",
-                                              reload_time,
-                                              "engine.ability.type.ShootProjectile")
+        ability_raw_api_object.add_raw_member(
+            "reload_time", reload_time, "engine.ability.type.ShootProjectile"
+        )
 
         if ability_animation_id > -1:
             animation = dataset.genie_graphics[ability_animation_id]
@@ -822,14 +760,12 @@ class RoRAbilitySubprocessor:
 
         spawn_delay_frames = current_unit["frame_delay"].value
         spawn_delay = frame_rate * spawn_delay_frames
-        ability_raw_api_object.add_raw_member("spawn_delay",
-                                              spawn_delay,
-                                              "engine.ability.type.ShootProjectile")
+        ability_raw_api_object.add_raw_member(
+            "spawn_delay", spawn_delay, "engine.ability.type.ShootProjectile"
+        )
 
         # Projectile delay (unused because RoR has no multiple projectiles)
-        ability_raw_api_object.add_raw_member("projectile_delay",
-                                              0.0,
-                                              "engine.ability.type.ShootProjectile")
+        ability_raw_api_object.add_raw_member("projectile_delay", 0.0, "engine.ability.type.ShootProjectile")
 
         # Turning
         if isinstance(line, GenieBuildingLineGroup):
@@ -838,57 +774,57 @@ class RoRAbilitySubprocessor:
         else:
             require_turning = True
 
-        ability_raw_api_object.add_raw_member("require_turning",
-                                              require_turning,
-                                              "engine.ability.type.ShootProjectile")
+        ability_raw_api_object.add_raw_member(
+            "require_turning", require_turning, "engine.ability.type.ShootProjectile"
+        )
 
         # Manual aiming
         manual_aiming_allowed = line.get_head_unit_id() in (35, 250)
-        ability_raw_api_object.add_raw_member("manual_aiming_allowed",
-                                              manual_aiming_allowed,
-                                              "engine.ability.type.ShootProjectile")
+        ability_raw_api_object.add_raw_member(
+            "manual_aiming_allowed", manual_aiming_allowed, "engine.ability.type.ShootProjectile"
+        )
 
         # Spawning area
         spawning_area_offset_x = current_unit["weapon_offset"][0].value
         spawning_area_offset_y = current_unit["weapon_offset"][1].value
         spawning_area_offset_z = current_unit["weapon_offset"][2].value
 
-        ability_raw_api_object.add_raw_member("spawning_area_offset_x",
-                                              spawning_area_offset_x,
-                                              "engine.ability.type.ShootProjectile")
-        ability_raw_api_object.add_raw_member("spawning_area_offset_y",
-                                              spawning_area_offset_y,
-                                              "engine.ability.type.ShootProjectile")
-        ability_raw_api_object.add_raw_member("spawning_area_offset_z",
-                                              spawning_area_offset_z,
-                                              "engine.ability.type.ShootProjectile")
+        ability_raw_api_object.add_raw_member(
+            "spawning_area_offset_x", spawning_area_offset_x, "engine.ability.type.ShootProjectile"
+        )
+        ability_raw_api_object.add_raw_member(
+            "spawning_area_offset_y", spawning_area_offset_y, "engine.ability.type.ShootProjectile"
+        )
+        ability_raw_api_object.add_raw_member(
+            "spawning_area_offset_z", spawning_area_offset_z, "engine.ability.type.ShootProjectile"
+        )
 
         # Spawn Area (does not exist in RoR)
         spawning_area_width = 0
         spawning_area_height = 0
         spawning_area_randomness = 0
 
-        ability_raw_api_object.add_raw_member("spawning_area_width",
-                                              spawning_area_width,
-                                              "engine.ability.type.ShootProjectile")
-        ability_raw_api_object.add_raw_member("spawning_area_height",
-                                              spawning_area_height,
-                                              "engine.ability.type.ShootProjectile")
-        ability_raw_api_object.add_raw_member("spawning_area_randomness",
-                                              spawning_area_randomness,
-                                              "engine.ability.type.ShootProjectile")
+        ability_raw_api_object.add_raw_member(
+            "spawning_area_width", spawning_area_width, "engine.ability.type.ShootProjectile"
+        )
+        ability_raw_api_object.add_raw_member(
+            "spawning_area_height", spawning_area_height, "engine.ability.type.ShootProjectile"
+        )
+        ability_raw_api_object.add_raw_member(
+            "spawning_area_randomness", spawning_area_randomness, "engine.ability.type.ShootProjectile"
+        )
 
         # Restrictions on targets (only units and buildings allowed)
         allowed_types = [
             dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object(),
-            dataset.pregen_nyan_objects["util.game_entity_type.types.Unit"].get_nyan_object()
+            dataset.pregen_nyan_objects["util.game_entity_type.types.Unit"].get_nyan_object(),
         ]
-        ability_raw_api_object.add_raw_member("allowed_types",
-                                              allowed_types,
-                                              "engine.ability.type.ShootProjectile")
-        ability_raw_api_object.add_raw_member("blacklisted_entities",
-                                              [],
-                                              "engine.ability.type.ShootProjectile")
+        ability_raw_api_object.add_raw_member(
+            "allowed_types", allowed_types, "engine.ability.type.ShootProjectile"
+        )
+        ability_raw_api_object.add_raw_member(
+            "blacklisted_entities", [], "engine.ability.type.ShootProjectile"
+        )
 
         line.add_raw_api_object(ability_raw_api_object)
 

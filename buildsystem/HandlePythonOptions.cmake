@@ -5,15 +5,9 @@
 # the Python version number requirement is in modules/FindPython_test.cpp
 find_package(Python ${PYTHON_MIN_VERSION} REQUIRED)
 
-find_package(Cython ${CYTHON_MIN_VERSION})
+find_package(Cython ${CYTHON_MIN_VERSION} REQUIRED)
 if(NOT CYTHON_FOUND)
-	message("Checking for alternative Cython fallback version (>=${CYTHON_MIN_VERSION_FALLBACK} AND <=${CYTHON_MAX_VERSION_FALLBACK})")
-	find_package(Cython ${CYTHON_MIN_VERSION_FALLBACK} QUIET)
-	if(CYTHON_VERSION VERSION_LESS ${CYTHON_MIN_VERSION} AND CYTHON_VERSION VERSION_GREATER ${CYTHON_MAX_VERSION_FALLBACK})
-		message(FATAL_ERROR "Cython version ${CYTHON_VERSION} is not compatible")
-	else()
-		message("Compatible Cython version ${CYTHON_VERSION} found")
-	endif()
+        message(FATAL_ERROR "Cython version >=${CYTHON_MIN_VERSION} is required")
 endif()
 
 py_get_config_var(EXT_SUFFIX PYEXT_SUFFIX)

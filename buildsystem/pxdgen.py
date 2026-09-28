@@ -8,13 +8,12 @@ Invoked via cmake during the regular build process.
 
 import argparse
 import os
-from pathlib import Path
 import re
 import sys
+from pathlib import Path
 
-from pygments.token import Token
 from pygments.lexers import get_lexer_for_filename
-
+from pygments.token import Token
 
 CWD = os.getcwd()
 
@@ -72,15 +71,15 @@ class PXDGenerator:
         # we're using the pygments lexer (mainly because that was the first
         # google hit for 'python c++ lexer', and it's fairly awesome to use)
 
-        lexer = get_lexer_for_filename('.cpp')
+        lexer = get_lexer_for_filename(".cpp")
 
-        with open(self.filename, encoding='utf8') as infile:
+        with open(self.filename, encoding="utf8") as infile:
             code = infile.read()
 
         for token, val in lexer.get_tokens(code):
             # ignore whitespaces
             yield token, val
-            self.lineno += val.count('\n')
+            self.lineno += val.count("\n")
 
     def handle_singleline_comment(self, val):
         """
@@ -91,7 +90,7 @@ class PXDGenerator:
             the comment text, as string, including the '//'
         """
         try:
-            val = re.match('^// (.*)$', val).group(1)
+            val = re.match("^// (.*)$", val).group(1)
         except AttributeError as ex:
             raise self.parser_error("invalid single-line comment") from ex
 
@@ -113,23 +112,22 @@ class PXDGenerator:
 
         # for a comment '/* foo\n * bar\n */', val is now 'foo\n * bar\n '
         # however, we'd prefer ' * foo\n * bar'
-        val = ' * ' + val.rstrip()
+        val = " * " + val.rstrip()
         # actually, we'd prefer [' * foo', ' * bar'].
-        lines = val.split('\n')
+        lines = val.split("\n")
 
         comment_lines = []
         for idx, line in enumerate(lines):
             try:
-                line = re.match(r'^ \*( (.*))?$', line).group(2) or ""
+                line = re.match(r"^ \*( (.*))?$", line).group(2) or ""
             except AttributeError as ex:
-                raise self.parser_error("invalid multi-line comment line",
-                                        idx + self.lineno) from ex
+                raise self.parser_error("invalid multi-line comment line", idx + self.lineno) from ex
 
             # if comment is still empty, don't append anything
             if comment_lines or line.strip() != "":
                 comment_lines.append(line)
 
-        self.handle_comment('\n'.join(comment_lines).rstrip())
+        self.handle_comment("\n".join(comment_lines).rstrip())
 
     def handle_comment(self, val):
         """
@@ -137,8 +135,7 @@ class PXDGenerator:
         extracting the pxd annotation
         """
 
-        annotations = re.findall(r"pxd:\s(.*?)(:pxd|$)",
-                                 val, re.DOTALL)   # pylint: disable=no-member
+        annotations = re.findall(r"pxd:\s(.*?)(:pxd|$)", val, re.DOTALL)  # pylint: disable=no-member
         annotations = [annotation[0] for annotation in annotations]
 
         if not annotations:
@@ -148,7 +145,7 @@ class PXDGenerator:
             # remove empty lines at end
             annotation = annotation.rstrip()
 
-            annotation_lines = annotation.split('\n')
+            annotation_lines = annotation.split("\n")
             for idx, line in enumerate(annotation_lines):
                 if line.strip() != "":
                     # we've found the first non-empty annotation line
@@ -177,25 +174,25 @@ class PXDGenerator:
         Returns the new state integer.
         """
         # accept any token here
-        if token == Token.Keyword and val == 'namespace':
+        if token == Token.Keyword and val == "namespace":
             # advance to next state on 'namespace'
             return 1
 
-        if (token, val) == (Token.Punctuation, '{'):
+        if (token, val) == (Token.Punctuation, "{"):
             # we're in a struct/class/...
-            self.stack.append('{')
+            self.stack.append("{")
 
-        elif (token, val) == (Token.Punctuation, '}'):
+        elif (token, val) == (Token.Punctuation, "}"):
             try:
                 # leave the struct/class/...
                 self.stack.pop()
             except IndexError as ex:
                 raise self.parser_error("unmatched '}'") from ex
 
-        elif token == Token.Comment.Single and 'pxd:' in val:
+        elif token == Token.Comment.Single and "pxd:" in val:
             self.handle_singleline_comment(val)
 
-        elif token == Token.Comment.Multiline and 'pxd:' in val:
+        elif token == Token.Comment.Multiline and "pxd:" in val:
             self.handle_multiline_comment(val)
 
         else:
@@ -223,8 +220,7 @@ class PXDGenerator:
             # TODO: pygments 2.9 correctly reports Token.Name.Namespace
             #       we can require this version eventually and change the condition
             if token not in Token.Name:
-                raise self.parser_error(
-                    "expected identifier after 'namespace'")
+                raise self.parser_error("expected identifier after 'namespace'")
             namespace_parts.append(val)
             return 2
 
@@ -232,30 +228,25 @@ class PXDGenerator:
             # either :: or {
             # the former is for nested namespaces,
             # the latter ends the namespace
-            if (token, val) == (Token.Operator, ':'):
+            if (token, val) == (Token.Operator, ":"):
                 return 3
 
-            if (token, val) != (Token.Punctuation, '{'):
-                raise self.parser_error("expected '{' or '::' after "
-                                        f"'namespace {self.stack[-1]}'")
+            if (token, val) != (Token.Punctuation, "{"):
+                raise self.parser_error(f"expected '{{' or '::' after 'namespace {self.stack[-1]}'")
             # { found, so fill the stack
-            self.stack.append('::'.join(namespace_parts))
+            self.stack.append("::".join(namespace_parts))
             namespace_parts.clear()
             return 0
 
         def handle_state_3(self, token, val, namespace_parts):
             del namespace_parts
-            if (token, val) == (Token.Operator, ':'):
+            if (token, val) == (Token.Operator, ":"):
                 # now, a name must follow
                 return 1
 
-            raise self.parser_error("nested namespaces are separated "
-                                    "with '::'")
+            raise self.parser_error("nested namespaces are separated with '::'")
 
-        transitions = {0: handle_state_0,
-                       1: handle_state_1,
-                       2: handle_state_2,
-                       3: handle_state_3}
+        transitions = {0: handle_state_0, 1: handle_state_1, 2: handle_state_2, 3: handle_state_3}
 
         self.annotations = []
         state = 0
@@ -283,14 +274,13 @@ class PXDGenerator:
         """
 
         from datetime import datetime
+
         year = datetime.now().year
-        yield (f"# Copyright 2013-{year} the openage authors. "
-               "See copying.md for legal info.")
+        yield (f"# Copyright 2013-{year} the openage authors. See copying.md for legal info.")
 
         yield ""
 
-        yield ("# Auto-generated from annotations in " +
-               self.filename.name)
+        yield ("# Auto-generated from annotations in " + self.filename.name)
 
         yield "# " + str(self.filename)
 
@@ -311,8 +301,8 @@ class PXDGenerator:
                 if namespace != previous_namespace:
                     yield (
                         "cdef extern "
-                        "from r\"" + self.filename.as_posix() + "\" "
-                        "namespace \"" + namespace + "\" "
+                        'from r"' + self.filename.as_posix() + '" '
+                        'namespace "' + namespace + '" '
                         "nogil"
                         ":"
                     )
@@ -341,23 +331,17 @@ class PXDGenerator:
         hacks.
         """
         annotation = annotation.rstrip()
-        if annotation.endswith(';'):
-            self.warnings.append(
-                "cython declaration ends in ';', "
-                "what have you done?")
+        if annotation.endswith(";"):
+            self.warnings.append("cython declaration ends in ';', what have you done?")
 
-        if annotation.endswith(')'):
-            self.warnings.append(
-                "mark the function as 'except +' or "
-                "'noexcept':\n" + annotation)
+        if annotation.endswith(")"):
+            self.warnings.append("mark the function as 'except +' or 'noexcept':\n" + annotation)
 
-        elif annotation.endswith('noexcept'):
+        elif annotation.endswith("noexcept"):
             annotation = annotation[:-8].rstrip()
 
-        if 'cdef ' in annotation:
-            self.warnings.append(
-                "there's no need to use 'cdef' in PXD annotations:\n" +
-                annotation)
+        if "cdef " in annotation:
+            self.warnings.append("there's no need to use 'cdef' in PXD annotations:\n" + annotation)
 
         return annotation
 
@@ -376,7 +360,7 @@ class PXDGenerator:
         result = "\n".join(self.get_pxd_lines())
 
         if os.path.exists(pxdfile):
-            with open(pxdfile, encoding='utf8') as outfile:
+            with open(pxdfile, encoding="utf8") as outfile:
                 if outfile.read() == result:
                     # don't write the file if the content is up to date
                     return False
@@ -384,7 +368,7 @@ class PXDGenerator:
         if not pxdfile.parent.is_dir():
             pxdfile.parent.mkdir()
 
-        with pxdfile.open('w', encoding='utf8') as outfile:
+        with pxdfile.open("w", encoding="utf8") as outfile:
             if pxdfile.is_absolute():
                 printpath = pxdfile
             else:
@@ -409,36 +393,35 @@ def parse_args():
     """
     cli = argparse.ArgumentParser()
 
-    cli.add_argument('files', nargs='*', metavar='HEADERFILE',
-                     help="input files (usually cpp .h files).")
-    cli.add_argument('--file-list',
-                     help=("a file containing a semicolon-separated "
-                           "list of input files."))
-    cli.add_argument('--ignore-timestamps', action='store_true',
-                     help=("force generating even if the output file is already"
-                           " up to date"))
-    cli.add_argument('--output-dir',
-                     help=("build directory corresponding to the CWD to write"
-                           " the generated file(s) in."))
-    cli.add_argument('-v', '--verbose', action="store_true",
-                     help="increase logging verbosity")
+    cli.add_argument("files", nargs="*", metavar="HEADERFILE", help="input files (usually cpp .h files).")
+    cli.add_argument("--file-list", help=("a file containing a semicolon-separated list of input files."))
+    cli.add_argument(
+        "--ignore-timestamps",
+        action="store_true",
+        help=("force generating even if the output file is already up to date"),
+    )
+    cli.add_argument(
+        "--output-dir", help=("build directory corresponding to the CWD to write the generated file(s) in.")
+    )
+    cli.add_argument("-v", "--verbose", action="store_true", help="increase logging verbosity")
 
     args = cli.parse_args()
 
     if args.file_list:
-        with open(args.file_list, encoding='utf8') as flist:
-            file_list = flist.read().strip().split(';')
+        with open(args.file_list, encoding="utf8") as flist:
+            file_list = flist.read().strip().split(";")
     else:
         file_list = []
 
     from itertools import chain
+
     args.all_files = list(chain(args.files, file_list))
 
     return args
 
 
 def main():
-    """ CLI entry point """
+    """CLI entry point"""
     args = parse_args()
     cppname = "libopenage"
     cppdir = Path(cppname).absolute()
@@ -457,7 +440,7 @@ def main():
             sys.exit(1)
 
         # join out_cppdir with relative path from cppdir
-        pxdfile_relpath = filename.with_suffix('.pxd').relative_to(cppdir)
+        pxdfile_relpath = filename.with_suffix(".pxd").relative_to(cppdir)
         pxdfile = out_cppdir / pxdfile_relpath
 
         if args.verbose:
@@ -465,11 +448,7 @@ def main():
 
         generator = PXDGenerator(filename)
 
-        result = generator.generate(
-            pxdfile,
-            ignore_timestamps=args.ignore_timestamps,
-            print_warnings=True
-        )
+        result = generator.generate(pxdfile, ignore_timestamps=args.ignore_timestamps, print_warnings=True)
 
         if args.verbose and not result:
             print("nothing done.")
@@ -481,11 +460,12 @@ def main():
             for extension in ("py", "pxd"):
                 initfile = template.with_suffix("." + extension)
                 if not initfile.exists():
-                    print("\x1b[36mpxdgen: create package index "
-                          f"{initfile.relative_to(args.output_dir)}\x1b[0m")
+                    print(
+                        f"\x1b[36mpxdgen: create package index {initfile.relative_to(args.output_dir)}\x1b[0m"
+                    )
 
                     initfile.touch()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

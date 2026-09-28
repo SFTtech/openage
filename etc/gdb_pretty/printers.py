@@ -5,6 +5,8 @@ Pretty printers for GDB.
 """
 
 import re
+import typing
+
 import gdb  # type: ignore
 import gdb.printing  # type: ignore
 
@@ -59,7 +61,7 @@ class PrinterControl(gdb.printing.PrettyPrinter):
         return None
 
 
-OPENAGE_PRINTER = PrinterControl('openage')
+OPENAGE_PRINTER = PrinterControl("openage")
 gdb.printing.register_pretty_printer(None, OPENAGE_PRINTER)
 
 
@@ -70,6 +72,7 @@ def printer_typedef(type_name: str):
     :param type_name: The name of the type to register the printer for.
     :type type_name: str
     """
+
     def _register_printer(printer):
         """
         Registers the printer with GDB.
@@ -86,6 +89,7 @@ def printer_regex(regex: str):
     :param regex: The regex to match the type name.
     :type regex: str
     """
+
     def _register_printer(printer):
         """
         Registers the printer with GDB.
@@ -108,7 +112,7 @@ def format_fixed_point(value: int, fractional_bits: int) -> float:
     return float(value) * to_double_factor
 
 
-@printer_regex('^openage::coord::(camhud|chunk|input|phys|scene|term|tile|viewport)(2|3)?(_delta)?')
+@printer_regex("^openage::coord::(camhud|chunk|input|phys|scene|term|tile|viewport)(2|3)?(_delta)?")
 class CoordPrinter:
     """
     Pretty printer for openage::coord types (CoordNeSe, CoordNeSeUp, CoordXY, CoordXYZ).
@@ -130,10 +134,7 @@ class CoordPrinter:
         for child in self._parent_type.fields():
             # Include the fixed point coordinates in the summary
             val = self.__val[child.name]
-            num = format_fixed_point(
-                int(val['raw_value']),
-                int(val.type.template_argument(1))
-            )
+            num = format_fixed_point(int(val["raw_value"]), int(val.type.template_argument(1)))
             field_vals.append(f"{num:.5f}")
 
         # Example: phys3[1.00000, 2.00000, 3.00000]
@@ -147,7 +148,7 @@ class CoordPrinter:
             yield (child.name, self.__val[child.name])
 
 
-@printer_typedef('openage::time::time_t')
+@printer_typedef("openage::time::time_t")
 class TimePrinter:
     """
     Pretty printer for openage::time::time_t.
@@ -162,22 +163,19 @@ class TimePrinter:
 
         Format: SS.sss (e.g. 12.345s)
         """
-        seconds = format_fixed_point(
-            int(self.__val['raw_value']),
-            int(self.__val.type.template_argument(1))
-        )
+        seconds = format_fixed_point(int(self.__val["raw_value"]), int(self.__val.type.template_argument(1)))
 
         # show as seconds with millisecond precision
-        return f'{seconds:.3f}s'
+        return f"{seconds:.3f}s"
 
     def children(self):
         """
         Get the displayed children of the time value.
         """
-        yield ('raw_value', self.__val['raw_value'])
+        yield ("raw_value", self.__val["raw_value"])
 
 
-@printer_regex('^openage::util::FixedPoint<.*>')
+@printer_regex("^openage::util::FixedPoint<.*>")
 class FixedPointPrinter:
     """
     Pretty printer for openage::util::FixedPoint.
@@ -192,17 +190,14 @@ class FixedPointPrinter:
 
         Format: 0.12345
         """
-        num = format_fixed_point(
-            int(self.__val['raw_value']),
-            int(self.__val.type.template_argument(1))
-        )
-        return f'{num:.5f}'
+        num = format_fixed_point(int(self.__val["raw_value"]), int(self.__val.type.template_argument(1)))
+        return f"{num:.5f}"
 
     def children(self):
         """
         Get the displayed children of the fixed point value.
         """
-        yield ('raw_value', self.__val['raw_value'])
+        yield ("raw_value", self.__val["raw_value"])
 
         # calculate the precision of the fixed point value
         # 16 * log10(2) = 16 * 0.30103 = 4.81648
@@ -210,10 +205,10 @@ class FixedPointPrinter:
         fractional_bits = int(self.__val.type.template_argument(1))
 
         precision = int(fractional_bits * 0.30103 + 1)
-        yield ('approx_precision', precision)
+        yield ("approx_precision", precision)
 
 
-@printer_regex('^openage::util::Vector<.*>')
+@printer_regex("^openage::util::Vector<.*>")
 class VectorPrinter:
     """
     Pretty printer for openage::util::Vector.
@@ -228,7 +223,7 @@ class VectorPrinter:
         """
         size = self.__val.type.template_argument(0)
         int_type = self.__val.type.template_argument(1)
-        return f'openage::util::Vector<{size}, {int_type}>'
+        return f"openage::util::Vector<{size}, {int_type}>"
 
     def children(self):
         """
@@ -236,13 +231,13 @@ class VectorPrinter:
         """
         size = self.__val.type.template_argument(0)
         for i in range(size):
-            yield (str(i), self.__val['_M_elems'][i])
+            yield (str(i), self.__val["_M_elems"][i])
 
     def child(self, index):
         """
         Get the child at the given index.
         """
-        return self.__val['_M_elems'][index]
+        return self.__val["_M_elems"][index]
 
     def num_children(self):
         """
@@ -255,10 +250,10 @@ class VectorPrinter:
         """
         Get the display hint for the vector.
         """
-        return 'array'
+        return "array"
 
 
-@printer_regex('^openage::curve::Keyframe<.*>')
+@printer_regex("^openage::curve::Keyframe<.*>")
 class KeyframePrinter:
     """
     Pretty printer for openage::curve::Keyframe.
@@ -271,17 +266,17 @@ class KeyframePrinter:
         """
         Get the keyframe as a string.
         """
-        return f'openage::curve::Keyframe<{self.__val.type.template_argument(0)}>'
+        return f"openage::curve::Keyframe<{self.__val.type.template_argument(0)}>"
 
     def children(self):
         """
         Get the displayed children of the keyframe.
         """
-        yield ('time', self.__val['timestamp'])
-        yield ('value', self.__val['value'])
+        yield ("time", self.__val["timestamp"])
+        yield ("value", self.__val["value"])
 
 
-@printer_typedef('openage::path::flow_t')
+@printer_typedef("openage::path::flow_t")
 class PathFlowTypePrinter:
     """
     Pretty printer for openage::path::flow_t.
@@ -289,22 +284,22 @@ class PathFlowTypePrinter:
     TODO: Inherit from gdb.ValuePrinter when gdb 14.1 is available in all distros.
     """
 
-    FLOW_FLAGS: dict = {
-        0x10: 'PATHABLE',
-        0x20: 'LOS',
-        0x40: 'TARGET',
-        0x80: 'UNUSED',
+    FLOW_FLAGS: typing.ClassVar[dict] = {
+        0x10: "PATHABLE",
+        0x20: "LOS",
+        0x40: "TARGET",
+        0x80: "UNUSED",
     }
 
-    FLOW_DIRECTION: dict = {
-        0x00: 'NORTH',
-        0x01: 'NORTHEAST',
-        0x02: 'EAST',
-        0x03: 'SOUTHEAST',
-        0x04: 'SOUTH',
-        0x05: 'SOUTHWEST',
-        0x06: 'WEST',
-        0x07: 'NORTHWEST',
+    FLOW_DIRECTION: typing.ClassVar[dict] = {
+        0x00: "NORTH",
+        0x01: "NORTHEAST",
+        0x02: "EAST",
+        0x03: "SOUTHEAST",
+        0x04: "SOUTH",
+        0x05: "SOUTHWEST",
+        0x06: "WEST",
+        0x07: "NORTHWEST",
     }
 
     def __init__(self, val: gdb.Value):
@@ -317,8 +312,10 @@ class PathFlowTypePrinter:
         flow = int(self.__val)
         flags = flow & 0xF0
         direction = flow & 0x0F
-        return (f"{self.FLOW_DIRECTION.get(direction, 'INVALID')} ("
-                f"{', '.join([flag for mask, flag in self.FLOW_FLAGS.items() if mask & flags])})")
+        return (
+            f"{self.FLOW_DIRECTION.get(direction, 'INVALID')} ("
+            f"{', '.join([flag for mask, flag in self.FLOW_FLAGS.items() if mask & flags])})"
+        )
 
     def children(self):
         """
@@ -327,21 +324,21 @@ class PathFlowTypePrinter:
         flow = int(self.__val)
         flags = flow & 0xF0
         direction = flow & 0x0F
-        yield ('direction', self.FLOW_DIRECTION[direction])
+        yield ("direction", self.FLOW_DIRECTION[direction])
         for mask, flag in self.FLOW_FLAGS.items():
             yield (flag, bool(flags & mask))
 
 
 # Integrated flags
 INTEGRATED_FLAGS: dict = {
-    0x01: 'UNUSED',
-    0x02: 'FOUND',
-    0x04: 'WAVEFRONT_BLOCKED',
-    0x08: 'UNUSED',
-    0x10: 'UNUSED',
-    0x20: 'LOS',
-    0x40: 'TARGET',
-    0x80: 'UNUSED',
+    0x01: "UNUSED",
+    0x02: "FOUND",
+    0x04: "WAVEFRONT_BLOCKED",
+    0x08: "UNUSED",
+    0x10: "UNUSED",
+    0x20: "LOS",
+    0x40: "TARGET",
+    0x80: "UNUSED",
 }
 
 
@@ -357,10 +354,10 @@ def get_integrated_flags_list(value: int) -> str:
         if value & mask:
             flags.append(flag)
 
-    return ' | '.join(flags)
+    return " | ".join(flags)
 
 
-@printer_typedef('openage::path::integrated_flags_t')
+@printer_typedef("openage::path::integrated_flags_t")
 class PathIntegratedFlagsTypePrinter:
     """
     Pretty printer for openage::path::integrated_flags_t.
@@ -387,7 +384,7 @@ class PathIntegratedFlagsTypePrinter:
             yield (flag, bool(integrate & mask))
 
 
-@printer_typedef('openage::path::integrated_t')
+@printer_typedef("openage::path::integrated_t")
 class PathIntegratedTypePrinter:
     """
     Pretty printer for openage::path::integrated_t.
@@ -402,18 +399,18 @@ class PathIntegratedTypePrinter:
         """
         Get the integrate type as a string.
         """
-        output_str = f'cost = {self.__val["cost"]}'
-        flags = get_integrated_flags_list(int(self.__val['flags']))
+        output_str = f"cost = {self.__val['cost']}"
+        flags = get_integrated_flags_list(int(self.__val["flags"]))
         if len(flags) > 0:
-            output_str += f' ({flags})'
+            output_str += f" ({flags})"
         return output_str
 
     def children(self):
         """
         Get the displayed children of the integrate type.
         """
-        yield ('cost', self.__val['cost'])
-        yield ('flags', self.__val['flags'])
+        yield ("cost", self.__val["cost"])
+        yield ("flags", self.__val["flags"])
 
 
 # TODO: curve types

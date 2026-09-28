@@ -3,14 +3,15 @@
 """
 Contains structures and API-like objects for terrain from AoC.
 """
+
 from __future__ import annotations
+
 import typing
 
 from ..converter_object import ConverterObject, ConverterObjectGroup
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.aoc.genie_object_container\
-        import GenieObjectContainer
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
     from openage.convert.value_object.read.value_members import ValueMember
 
 
@@ -19,13 +20,13 @@ class GenieTerrainObject(ConverterObject):
     Terrain definition from a .dat file.
     """
 
-    __slots__ = ('data',)
+    __slots__ = ("data",)
 
     def __init__(
         self,
         terrain_id: int,
         full_data_set: GenieObjectContainer,
-        members: dict[str, ValueMember] = None
+        members: dict[str, ValueMember] | None = None,
     ):
         """
         Creates a new Genie terrain object.
@@ -51,7 +52,7 @@ class GenieTerrainGroup(ConverterObjectGroup):
     A terrain from AoE that will become an openage Terrain object.
     """
 
-    __slots__ = ('data', 'terrain')
+    __slots__ = ("data", "terrain")
 
     def __init__(
         self,
@@ -101,13 +102,13 @@ class GenieTerrainRestriction(ConverterObject):
     Terrain restriction definition from a .dat file.
     """
 
-    __slots__ = ('data',)
+    __slots__ = ("data",)
 
     def __init__(
         self,
         restriction_id: int,
         full_data_set: GenieObjectContainer,
-        members: dict[str, ValueMember] = None
+        members: dict[str, ValueMember] | None = None,
     ):
         """
         Creates a new Genie terrain restriction object.

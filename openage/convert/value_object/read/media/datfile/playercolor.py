@@ -2,13 +2,13 @@
 
 # TODO pylint: disable=C,R
 from __future__ import annotations
-import typing
 
+import typing
 from functools import cache
 
-from ...genie_structure import GenieStructure
 from ....read.member_access import READ_GEN, SKIP
 from ....read.value_members import StorageType
+from ...genie_structure import GenieStructure
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.init.game_version import GameVersion
@@ -17,14 +17,12 @@ if typing.TYPE_CHECKING:
 
 
 class PlayerColor(GenieStructure):
-
     dynamic_load = True
 
     @classmethod
     @cache
     def get_data_format_members(
-        cls,
-        game_version: GameVersion
+        cls, game_version: GameVersion
     ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.

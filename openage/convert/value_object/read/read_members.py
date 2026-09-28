@@ -3,10 +3,9 @@
 # TODO pylint: disable=C,R,abstract-method
 
 from __future__ import annotations
+
 import typing
-
 from enum import Enum
-
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.read.genie_structure import GenieStructure
@@ -53,8 +52,7 @@ class ReadMember:
         return True
 
     def __repr__(self):
-        raise NotImplementedError(
-            f"return short description of the member type {type(self)}")
+        raise NotImplementedError(f"return short description of the member type {type(self)}")
 
 
 class GroupMember(ReadMember):
@@ -70,7 +68,7 @@ class GroupMember(ReadMember):
         self.cls = cls
 
     def __repr__(self):
-        return f"GroupMember<{repr(self.cls)}>"
+        return f"GroupMember<{self.cls!r}>"
 
 
 class IncludeMembers(GroupMember):
@@ -84,7 +82,7 @@ class IncludeMembers(GroupMember):
     """
 
     def __repr__(self):
-        return f"IncludeMember<{repr(self.cls)}>"
+        return f"IncludeMember<{self.cls!r}>"
 
 
 class DynLengthMember(ReadMember):
@@ -94,7 +92,7 @@ class DynLengthMember(ReadMember):
 
     any_length = "any_length"
 
-    def __init__(self, length: typing.Union[typing.Callable, int, str, typing.Literal["any_length"]]):
+    def __init__(self, length: typing.Union[typing.Callable, int, str]):
         super().__init__()
 
         type_ok = False
@@ -106,8 +104,7 @@ class DynLengthMember(ReadMember):
             type_ok = True
 
         if not type_ok:
-            raise TypeError("invalid length type passed to %s: %s<%s>" % (
-                type(self), length, type(length)))
+            raise TypeError("invalid length type passed to %s: %s<%s>" % (type(self), length, type(length)))
 
         self.length = length
 
@@ -137,8 +134,9 @@ class DynLengthMember(ReadMember):
 
             # look up the given member name and return the value.
             if not isinstance(length_def, str):
-                raise TypeError("length lookup definition is not str: %s<%s>" % (
-                    length_def, type(length_def)))
+                raise TypeError(
+                    "length lookup definition is not str: %s<%s>" % (length_def, type(length_def))
+                )
 
             return getattr(obj, length_def)
 
@@ -146,10 +144,7 @@ class DynLengthMember(ReadMember):
             # non-dynamic length (aka plain number) gets returned directly
             return self.length
 
-    def is_dynamic_length(
-        self,
-        target: typing.Union[typing.Callable, int, str, typing.Literal["any_length"]] = None
-    ):
+    def is_dynamic_length(self, target: typing.Union[typing.Callable, int, str] | None = None):
         if target is None:
             target = self.length
 
@@ -186,24 +181,23 @@ class NumberMember(ReadMember):
     """
 
     # primitive types, directly parsable by sscanf
-    type_scan_lookup = {
-        "char":          "hhd",
-        "int8_t":        "hhd",
-        "uint8_t":       "hhu",
-        "int16_t":       "hd",
-        "uint16_t":      "hu",
-        "int":           "d",
-        "int32_t":       "d",
-        "uint":          "u",
-        "uint32_t":      "u",
-        "float":         "f",
+    type_scan_lookup: typing.ClassVar[dict[str, str]] = {
+        "char": "hhd",
+        "int8_t": "hhd",
+        "uint8_t": "hhu",
+        "int16_t": "hd",
+        "uint16_t": "hu",
+        "int": "d",
+        "int32_t": "d",
+        "uint": "u",
+        "uint32_t": "u",
+        "float": "f",
     }
 
     def __init__(self, number_def: str):
         super().__init__()
         if number_def not in self.type_scan_lookup:
-            raise TypeError(
-                f"created number column from unknown type {number_def}")
+            raise TypeError(f"created number column from unknown type {number_def}")
 
         # type used for the output struct
         self.number_type = number_def
@@ -262,15 +256,10 @@ class EnumMember(RefMember):
     this struct member/data column is a enum.
     """
 
-    def __init__(
-        self,
-        type_name: str,
-        values: dict[typing.Any, typing.Any],
-        file_name: str = None
-    ):
+    def __init__(self, type_name: str, values: dict[typing.Any, typing.Any], file_name: str | None = None):
         super().__init__(type_name, file_name)
         self.values = values
-        self.resolved = True    # TODO, xrefs not supported yet.
+        self.resolved = True  # TODO, xrefs not supported yet.
 
     def validate_value(self, value: typing.Any) -> bool:
         return value in self.values
@@ -289,13 +278,9 @@ class EnumLookupMember(EnumMember):
         type_name: str,
         lookup_dict: dict[typing.Any, typing.Any],
         raw_type: str,
-        file_name: str = None
+        file_name: str | None = None,
     ):
-        super().__init__(
-            type_name,
-            [v for k, v in sorted(lookup_dict.items())],
-            file_name
-        )
+        super().__init__(type_name, [v for k, v in sorted(lookup_dict.items())], file_name)
         self.lookup_dict = lookup_dict
         self.raw_type = raw_type
 
@@ -311,8 +296,9 @@ class EnumLookupMember(EnumMember):
                 h = f" = {hex(data)}"
             except TypeError:
                 h = ""
-            raise KeyError("failed to find %s%s in lookup dict %s!" %
-                           (str(data), h, self.type_name)) from None
+            raise KeyError(
+                "failed to find %s%s in lookup dict %s!" % (str(data), h, self.type_name)
+            ) from None
 
 
 class CharArrayMember(DynLengthMember):
@@ -351,12 +337,12 @@ class MultisubtypeMember(RefMember, DynLengthMember):
         type_name: str,
         subtype_definition: tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]],
         class_lookup: dict[typing.Any, GenieStructure],
-        length: typing.Union[typing.Callable, int, str, typing.Literal["any_length"]],
-        passed_args: list[str] = None,
-        ref_to: str = None,
-        offset_to: tuple[str, typing.Callable] = None,
-        file_name: str = None,
-        ref_type_params=None
+        length: typing.Union[typing.Callable, int, str],
+        passed_args: list[str] | None = None,
+        ref_to: str | None = None,
+        offset_to: tuple[str, typing.Callable] | None = None,
+        file_name: str | None = None,
+        ref_type_params=None,
     ):
 
         RefMember.__init__(self, type_name, file_name)
@@ -388,10 +374,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
         return list()
 
     def get_contained_types(self):
-        return {
-            contained_type.get_effective_type()
-            for contained_type in self.class_lookup.values()
-        }
+        return {contained_type.get_effective_type() for contained_type in self.class_lookup.values()}
 
     def __repr__(self):
         return f"MultisubtypeMember<{self.type_name}:len={self.length}>"
@@ -406,11 +389,11 @@ class SubdataMember(MultisubtypeMember):
     def __init__(
         self,
         ref_type: GenieStructure,
-        length: typing.Union[typing.Callable, int, str, typing.Literal["any_length"]],
-        offset_to: tuple[str, typing.Callable] = None,
-        ref_to: str = None,
+        length: typing.Union[typing.Callable, int, str],
+        offset_to: tuple[str, typing.Callable] | None = None,
+        ref_to: str | None = None,
         ref_type_params=None,
-        passed_args=None
+        passed_args=None,
     ):
         super().__init__(
             type_name=None,

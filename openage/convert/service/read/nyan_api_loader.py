@@ -7,11 +7,17 @@ Loads the API into the converter.
 TODO: Implement a parser instead of hardcoded
 object creation.
 """
+
 from __future__ import annotations
 
-from ....nyan.nyan_structs import NyanMemberType
-from ....nyan.nyan_structs import NyanObject, NyanMember, MemberType, MemberSpecialValue, \
-    MemberOperator
+from ....nyan.nyan_structs import (
+    MemberOperator,
+    MemberSpecialValue,
+    MemberType,
+    NyanMember,
+    NyanMemberType,
+    NyanObject,
+)
 
 # Common primitive types
 # We can use these so we don't have to create them every single time
@@ -2138,14 +2144,18 @@ def _create_objects(api_objects: dict[str, NyanObject]) -> None:
     api_objects.update({fqon: nyan_object})
 
     # engine.resistance.continuous.time_relative_attribute.type.TimeRelativeAttributeDecrease
-    parents = [api_objects["engine.resistance.continuous.time_relative_attribute.TimeRelativeAttributeChange"]]
+    parents = [
+        api_objects["engine.resistance.continuous.time_relative_attribute.TimeRelativeAttributeChange"]
+    ]
     nyan_object = NyanObject("TimeRelativeAttributeDecrease", parents)
     fqon = "engine.resistance.continuous.time_relative_attribute.type.TimeRelativeAttributeDecrease"
     nyan_object.set_fqon(fqon)
     api_objects.update({fqon: nyan_object})
 
     # engine.resistance.continuous.time_relative_attribute.type.TimeRelativeAttributeIncrease
-    parents = [api_objects["engine.resistance.continuous.time_relative_attribute.TimeRelativeAttributeChange"]]
+    parents = [
+        api_objects["engine.resistance.continuous.time_relative_attribute.TimeRelativeAttributeChange"]
+    ]
     nyan_object = NyanObject("TimeRelativeAttributeIncrease", parents)
     fqon = "engine.resistance.continuous.time_relative_attribute.type.TimeRelativeAttributeIncrease"
     nyan_object.set_fqon(fqon)
@@ -2706,8 +2716,7 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     api_object.add_member(member)
     elem_type = NyanMemberType(api_objects["engine.util.state_machine.StateChanger"])
     member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
-    member = NyanMember("state_change", member_type, MemberSpecialValue.NYAN_NONE,
-                        MemberOperator.ASSIGN, 0)
+    member = NyanMember("state_change", member_type, MemberSpecialValue.NYAN_NONE, MemberOperator.ASSIGN, 0)
     api_object.add_member(member)
 
     # engine.ability.type.DetectCloak
@@ -2925,16 +2934,13 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     # engine.ability.type.Named
     api_object = api_objects["engine.ability.type.Named"]
 
-    member_type = NyanMemberType(
-        api_objects["engine.util.language.translated.type.TranslatedString"])
+    member_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedString"])
     member = NyanMember("name", member_type, None, None, 0)
     api_object.add_member(member)
-    member_type = NyanMemberType(
-        api_objects["engine.util.language.translated.type.TranslatedMarkupFile"])
+    member_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedMarkupFile"])
     member = NyanMember("description", member_type, None, None, 0)
     api_object.add_member(member)
-    member_type = NyanMemberType(
-        api_objects["engine.util.language.translated.type.TranslatedMarkupFile"])
+    member_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedMarkupFile"])
     member = NyanMember("long_description", member_type, None, None, 0)
     api_object.add_member(member)
 
@@ -3350,12 +3356,10 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     # engine.util.attribute.Attribute
     api_object = api_objects["engine.util.attribute.Attribute"]
 
-    member_type = NyanMemberType(
-        api_objects["engine.util.language.translated.type.TranslatedString"])
+    member_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedString"])
     member = NyanMember("name", member_type, None, None, 0)
     api_object.add_member(member)
-    member_type = NyanMemberType(
-        api_objects["engine.util.language.translated.type.TranslatedString"])
+    member_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedString"])
     member = NyanMember("abbreviation", member_type, None, None, 0)
     api_object.add_member(member)
 
@@ -3519,14 +3523,12 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     value_type = NyanMemberType(api_objects["engine.util.price_mode.PriceMode"])
     elem_type = NyanMemberType(MemberType.DICT, (abstract_key, value_type))
     member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
-    member = NyanMember("price_adjust", member_type, MemberSpecialValue.NYAN_NONE,
-                        MemberOperator.ASSIGN, 0)
+    member = NyanMember("price_adjust", member_type, MemberSpecialValue.NYAN_NONE, MemberOperator.ASSIGN, 0)
     api_object.add_member(member)
     subtype = NyanMemberType(api_objects["engine.util.price_pool.PricePool"])
     elem_type = NyanMemberType(MemberType.CHILDREN, (subtype,))
     member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
-    member = NyanMember("price_pool", member_type, MemberSpecialValue.NYAN_NONE,
-                        MemberOperator.ASSIGN, 0)
+    member = NyanMember("price_pool", member_type, MemberSpecialValue.NYAN_NONE, MemberOperator.ASSIGN, 0)
     api_object.add_member(member)
 
     # engine.util.formation.Formation
@@ -4005,8 +4007,7 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     # engine.util.resource.Resource
     api_object = api_objects["engine.util.resource.Resource"]
 
-    member_type = NyanMemberType(
-        api_objects["engine.util.language.translated.type.TranslatedString"])
+    member_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedString"])
     member = NyanMember("name", member_type, None, None, 0)
     api_object.add_member(member)
     member = NyanMember("max_storage", N_INT, None, None, 0)
@@ -4062,16 +4063,13 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     # engine.util.setup.PlayerSetup
     api_object = api_objects["engine.util.setup.PlayerSetup"]
 
-    member_type = NyanMemberType(
-        api_objects["engine.util.language.translated.type.TranslatedString"])
+    member_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedString"])
     member = NyanMember("name", member_type, None, None, 0)
     api_object.add_member(member)
-    member_type = NyanMemberType(
-        api_objects["engine.util.language.translated.type.TranslatedMarkupFile"])
+    member_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedMarkupFile"])
     member = NyanMember("description", member_type, None, None, 0)
     api_object.add_member(member)
-    member_type = NyanMemberType(
-        api_objects["engine.util.language.translated.type.TranslatedMarkupFile"])
+    member_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedMarkupFile"])
     member = NyanMember("long_description", member_type, None, None, 0)
     api_object.add_member(member)
     elem_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedString"])
@@ -4126,8 +4124,7 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     api_object.add_member(member)
     elem_type = NyanMemberType(api_objects["engine.util.transform_pool.TransformPool"])
     member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
-    member = NyanMember("transform_pool", member_type, MemberSpecialValue.NYAN_NONE,
-                        MemberOperator.ASSIGN, 0)
+    member = NyanMember("transform_pool", member_type, MemberSpecialValue.NYAN_NONE, MemberOperator.ASSIGN, 0)
     api_object.add_member(member)
     member = NyanMember("priority", N_INT, None, None, 0)
     api_object.add_member(member)
@@ -4203,8 +4200,7 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     api_object.add_member(member)
     elem_type = NyanMemberType(api_objects["engine.util.state_machine.StateChanger"])
     member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
-    member = NyanMember("state_change", member_type, MemberSpecialValue.NYAN_NONE,
-                        MemberOperator.ASSIGN, 0)
+    member = NyanMember("state_change", member_type, MemberSpecialValue.NYAN_NONE, MemberOperator.ASSIGN, 0)
     api_object.add_member(member)
 
     # engine.util.taunt.Taunt
@@ -4212,8 +4208,7 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
 
     member = NyanMember("activation_message", N_TEXT, None, None, 0)
     api_object.add_member(member)
-    member_type = NyanMemberType(
-        api_objects["engine.util.language.translated.type.TranslatedString"])
+    member_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedString"])
     member = NyanMember("display_message", member_type, None, None, 0)
     api_object.add_member(member)
     member_type = NyanMemberType(api_objects["engine.util.sound.Sound"])
@@ -4228,16 +4223,13 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("types", member_type, None, None, 0)
     api_object.add_member(member)
-    member_type = NyanMemberType(
-        api_objects["engine.util.language.translated.type.TranslatedString"])
+    member_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedString"])
     member = NyanMember("name", member_type, None, None, 0)
     api_object.add_member(member)
-    member_type = NyanMemberType(
-        api_objects["engine.util.language.translated.type.TranslatedMarkupFile"])
+    member_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedMarkupFile"])
     member = NyanMember("description", member_type, None, None, 0)
     api_object.add_member(member)
-    member_type = NyanMemberType(
-        api_objects["engine.util.language.translated.type.TranslatedMarkupFile"])
+    member_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedMarkupFile"])
     member = NyanMember("long_description", member_type, None, None, 0)
     api_object.add_member(member)
     elem_type = NyanMemberType(api_objects["engine.util.patch.Patch"])
@@ -4253,8 +4245,7 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     member_type = NyanMemberType(MemberType.SET, (elem_type,))
     member = NyanMember("types", member_type, None, None, 0)
     api_object.add_member(member)
-    member_type = NyanMemberType(
-        api_objects["engine.util.language.translated.type.TranslatedString"])
+    member_type = NyanMemberType(api_objects["engine.util.language.translated.type.TranslatedString"])
     member = NyanMember("name", member_type, None, None, 0)
     api_object.add_member(member)
     member_type = NyanMemberType(api_objects["engine.util.graphics.Terrain"])
@@ -4414,13 +4405,15 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     api_object.add_member(member)
     elem_type = NyanMemberType(api_objects["engine.util.attribute.AttributeRate"])
     member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
-    member = NyanMember("min_change_rate", member_type, MemberSpecialValue.NYAN_NONE,
-                        MemberOperator.ASSIGN, 0)
+    member = NyanMember(
+        "min_change_rate", member_type, MemberSpecialValue.NYAN_NONE, MemberOperator.ASSIGN, 0
+    )
     api_object.add_member(member)
     elem_type = NyanMemberType(api_objects["engine.util.attribute.AttributeRate"])
     member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
-    member = NyanMember("max_change_rate", member_type, MemberSpecialValue.NYAN_NONE,
-                        MemberOperator.ASSIGN, 0)
+    member = NyanMember(
+        "max_change_rate", member_type, MemberSpecialValue.NYAN_NONE, MemberOperator.ASSIGN, 0
+    )
     api_object.add_member(member)
     member_type = NyanMemberType(api_objects["engine.util.attribute.AttributeRate"])
     member = NyanMember("change_rate", member_type, None, None, 0)
@@ -4477,20 +4470,21 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     api_object.add_member(member)
     elem_type = N_FLOAT
     member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
-    member = NyanMember("min_chance_success", member_type, MemberSpecialValue.NYAN_NONE,
-                        MemberOperator.ASSIGN, 0)
+    member = NyanMember(
+        "min_chance_success", member_type, MemberSpecialValue.NYAN_NONE, MemberOperator.ASSIGN, 0
+    )
     api_object.add_member(member)
     elem_type = N_FLOAT
     member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
-    member = NyanMember("max_chance_success", member_type, MemberSpecialValue.NYAN_NONE,
-                        MemberOperator.ASSIGN, 0)
+    member = NyanMember(
+        "max_chance_success", member_type, MemberSpecialValue.NYAN_NONE, MemberOperator.ASSIGN, 0
+    )
     api_object.add_member(member)
     member = NyanMember("chance_success", N_FLOAT, None, None, 0)
     api_object.add_member(member)
     elem_type = NyanMemberType(api_objects["engine.util.cost.Cost"])
     member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
-    member = NyanMember("cost_fail", member_type, MemberSpecialValue.NYAN_NONE,
-                        MemberOperator.ASSIGN, 0)
+    member = NyanMember("cost_fail", member_type, MemberSpecialValue.NYAN_NONE, MemberOperator.ASSIGN, 0)
     api_object.add_member(member)
 
     # engine.effect.discrete.convert.type.AoE2Convert
@@ -4510,13 +4504,15 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     api_object.add_member(member)
     elem_type = NyanMemberType(api_objects["engine.util.attribute.AttributeAmount"])
     member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
-    member = NyanMember("min_change_value", member_type, MemberSpecialValue.NYAN_NONE,
-                        MemberOperator.ASSIGN, 0)
+    member = NyanMember(
+        "min_change_value", member_type, MemberSpecialValue.NYAN_NONE, MemberOperator.ASSIGN, 0
+    )
     api_object.add_member(member)
     elem_type = NyanMemberType(api_objects["engine.util.attribute.AttributeAmount"])
     member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
-    member = NyanMember("max_change_value", member_type, MemberSpecialValue.NYAN_NONE,
-                        MemberOperator.ASSIGN, 0)
+    member = NyanMember(
+        "max_change_value", member_type, MemberSpecialValue.NYAN_NONE, MemberOperator.ASSIGN, 0
+    )
     api_object.add_member(member)
     member_type = NyanMemberType(api_objects["engine.util.attribute.AttributeAmount"])
     member = NyanMember("change_value", member_type, None, None, 0)
@@ -4594,7 +4590,9 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     api_object.add_member(member)
 
     # engine.resistance.continuous.time_relative_attribute.TimeRelativeAttributeChange
-    api_object = api_objects["engine.resistance.continuous.time_relative_attribute.TimeRelativeAttributeChange"]
+    api_object = api_objects[
+        "engine.resistance.continuous.time_relative_attribute.TimeRelativeAttributeChange"
+    ]
 
     elem_type = NyanMemberType(api_objects["engine.util.attribute_change_type.AttributeChangeType"])
     member_type = NyanMemberType(MemberType.CHILDREN, (elem_type,))
@@ -4700,8 +4698,9 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
 
     elem_type = N_FLOAT
     member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
-    member = NyanMember("min_elevation_difference", member_type, MemberSpecialValue.NYAN_NONE,
-                        MemberOperator.ASSIGN, 0)
+    member = NyanMember(
+        "min_elevation_difference", member_type, MemberSpecialValue.NYAN_NONE, MemberOperator.ASSIGN, 0
+    )
     api_object.add_member(member)
 
     # engine.modifier.effect.flat_attribute_change.type.ElevationDifferenceLow
@@ -4709,8 +4708,9 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
 
     elem_type = N_FLOAT
     member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
-    member = NyanMember("min_elevation_difference", member_type, MemberSpecialValue.NYAN_NONE,
-                        MemberOperator.ASSIGN, 0)
+    member = NyanMember(
+        "min_elevation_difference", member_type, MemberSpecialValue.NYAN_NONE, MemberOperator.ASSIGN, 0
+    )
     api_object.add_member(member)
 
     # engine.modifier.effect.flat_attribute_change.type.Flyover
@@ -4740,8 +4740,9 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
 
     elem_type = N_FLOAT
     member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
-    member = NyanMember("min_elevation_difference", member_type, MemberSpecialValue.NYAN_NONE,
-                        MemberOperator.ASSIGN, 0)
+    member = NyanMember(
+        "min_elevation_difference", member_type, MemberSpecialValue.NYAN_NONE, MemberOperator.ASSIGN, 0
+    )
     api_object.add_member(member)
 
     # engine.modifier.resistance.flat_attribute_change.type.ElevationDifferenceLow
@@ -4749,8 +4750,9 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
 
     elem_type = N_FLOAT
     member_type = NyanMemberType(MemberType.OPTIONAL, (elem_type,))
-    member = NyanMember("min_elevation_difference", member_type, MemberSpecialValue.NYAN_NONE,
-                        MemberOperator.ASSIGN, 0)
+    member = NyanMember(
+        "min_elevation_difference", member_type, MemberSpecialValue.NYAN_NONE, MemberOperator.ASSIGN, 0
+    )
     api_object.add_member(member)
 
     # engine.modifier.resistance.flat_attribute_change.type.Terrain

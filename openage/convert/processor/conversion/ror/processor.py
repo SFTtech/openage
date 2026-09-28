@@ -4,7 +4,9 @@
 """
 Convert data from RoR to openage formats.
 """
+
 from __future__ import annotations
+
 import typing
 
 from .....log import info
@@ -12,17 +14,25 @@ from ....entity_object.conversion.aoc.genie_object_container import GenieObjectC
 from ....entity_object.conversion.aoc.genie_tech import InitiatedTech
 from ....entity_object.conversion.aoc.genie_unit import GenieUnitObject
 from ....entity_object.conversion.ror.genie_sound import RoRSound
-from ....entity_object.conversion.ror.genie_tech import RoRStatUpgrade, \
-    RoRBuildingLineUpgrade, RoRUnitLineUpgrade, RoRBuildingUnlock, RoRUnitUnlock, \
-    RoRAgeUpgrade
-from ....entity_object.conversion.ror.genie_unit import RoRUnitTaskGroup, \
-    RoRUnitLineGroup, RoRBuildingLineGroup, RoRVillagerGroup, RoRAmbientGroup, \
-    RoRVariantGroup
-from ....service.debug_info import debug_converter_objects, \
-    debug_converter_object_groups
+from ....entity_object.conversion.ror.genie_tech import (
+    RoRAgeUpgrade,
+    RoRBuildingLineUpgrade,
+    RoRBuildingUnlock,
+    RoRStatUpgrade,
+    RoRUnitLineUpgrade,
+    RoRUnitUnlock,
+)
+from ....entity_object.conversion.ror.genie_unit import (
+    RoRAmbientGroup,
+    RoRBuildingLineGroup,
+    RoRUnitLineGroup,
+    RoRUnitTaskGroup,
+    RoRVariantGroup,
+    RoRVillagerGroup,
+)
+from ....service.debug_info import debug_converter_object_groups, debug_converter_objects
 from ....service.read.nyan_api_loader import load_api
-from ....value_object.conversion.ror.internal_nyan_names import AMBIENT_GROUP_LOOKUPS, \
-    VARIANT_GROUP_LOOKUPS
+from ....value_object.conversion.ror.internal_nyan_names import AMBIENT_GROUP_LOOKUPS, VARIANT_GROUP_LOOKUPS
 from ..aoc.processor import AoCProcessor
 from .media_subprocessor import RoRMediaSubprocessor
 from .modpack_subprocessor import RoRModpackSubprocessor
@@ -31,10 +41,11 @@ from .pregen_subprocessor import RoRPregenSubprocessor
 
 if typing.TYPE_CHECKING:
     from argparse import Namespace
-    from openage.convert.entity_object.conversion.stringresource import StringResource
+
     from openage.convert.entity_object.conversion.modpack import Modpack
-    from openage.convert.value_object.read.value_members import ArrayMember
+    from openage.convert.entity_object.conversion.stringresource import StringResource
     from openage.convert.value_object.init.game_version import GameVersion
+    from openage.convert.value_object.read.value_members import ArrayMember
 
 
 class RoRProcessor:
@@ -48,7 +59,7 @@ class RoRProcessor:
         gamespec: ArrayMember,
         args: Namespace,
         string_resources: StringResource,
-        existing_graphics: list[str]
+        existing_graphics: list[str],
     ) -> list[Modpack]:
         """
         Input game specification and media here and get a set of
@@ -64,12 +75,7 @@ class RoRProcessor:
         info("Starting conversion...")
 
         # Create a new container for the conversion process
-        dataset = cls._pre_processor(
-            gamespec,
-            args.game_version,
-            string_resources,
-            existing_graphics
-        )
+        dataset = cls._pre_processor(gamespec, args.game_version, string_resources, existing_graphics)
         debug_converter_objects(args.debugdir, args.debug_info, dataset)
 
         # Create the custom openage formats (nyan, sprite, terrain)
@@ -87,7 +93,7 @@ class RoRProcessor:
         gamespec: ArrayMember,
         game_version: GameVersion,
         string_resources: StringResource,
-        existing_graphics: list[str]
+        existing_graphics: list[str],
     ) -> GenieObjectContainer:
         """
         Store data from the reader in a conversion container.
@@ -266,8 +272,7 @@ class RoRProcessor:
             unit_type = entity["unit_type"].value
 
             if unit_type == 70:
-                if entity.has_member("task_group") and\
-                        entity["task_group"].value > 0:
+                if entity.has_member("task_group") and entity["task_group"].value > 0:
                     task_group_id = entity["task_group"].value
                     villager_unit_ids.add(unit_id)
 
@@ -343,8 +348,7 @@ class RoRProcessor:
                     break
 
                 if required_tech_id in full_data_set.unit_upgrades.keys():
-                    source_id = full_data_set.unit_upgrades[required_tech_id].get_upgrade_target_id(
-                    )
+                    source_id = full_data_set.unit_upgrades[required_tech_id].get_upgrade_target_id()
                     break
 
             unit_line = full_data_set.unit_lines[line_id]
@@ -378,8 +382,7 @@ class RoRProcessor:
                     break
 
                 if required_tech_id in full_data_set.building_upgrades.keys():
-                    source_id = full_data_set.building_upgrades[required_tech_id].get_upgrade_target_id(
-                    )
+                    source_id = full_data_set.building_upgrades[required_tech_id].get_upgrade_target_id()
                     break
 
             building_line = full_data_set.building_lines[line_id]
@@ -503,22 +506,14 @@ class RoRProcessor:
 
                         if unit_type == 70:
                             unit_unlock = RoRUnitUnlock(tech_id, unit_id, full_data_set)
-                            full_data_set.tech_groups.update(
-                                {unit_unlock.get_id(): unit_unlock}
-                            )
-                            full_data_set.unit_unlocks.update(
-                                {unit_unlock.get_id(): unit_unlock}
-                            )
+                            full_data_set.tech_groups.update({unit_unlock.get_id(): unit_unlock})
+                            full_data_set.unit_unlocks.update({unit_unlock.get_id(): unit_unlock})
                             break
 
                         if unit_type == 80:
                             building_unlock = RoRBuildingUnlock(tech_id, unit_id, full_data_set)
-                            full_data_set.tech_groups.update(
-                                {building_unlock.get_id(): building_unlock}
-                            )
-                            full_data_set.building_unlocks.update(
-                                {building_unlock.get_id(): building_unlock}
-                            )
+                            full_data_set.tech_groups.update({building_unlock.get_id(): building_unlock})
+                            full_data_set.building_unlocks.update({building_unlock.get_id(): building_unlock})
                             break
 
                     # Upgrades
@@ -529,26 +524,18 @@ class RoRProcessor:
                         unit_type = unit["unit_type"].value
 
                         if unit_type == 70:
-                            unit_upgrade = RoRUnitLineUpgrade(tech_id,
-                                                              source_unit_id,
-                                                              target_unit_id,
-                                                              full_data_set)
-                            full_data_set.tech_groups.update(
-                                {unit_upgrade.get_id(): unit_upgrade}
+                            unit_upgrade = RoRUnitLineUpgrade(
+                                tech_id, source_unit_id, target_unit_id, full_data_set
                             )
-                            full_data_set.unit_upgrades.update(
-                                {unit_upgrade.get_id(): unit_upgrade}
-                            )
+                            full_data_set.tech_groups.update({unit_upgrade.get_id(): unit_upgrade})
+                            full_data_set.unit_upgrades.update({unit_upgrade.get_id(): unit_upgrade})
                             break
 
                         if unit_type == 80:
-                            building_upgrade = RoRBuildingLineUpgrade(tech_id,
-                                                                      source_unit_id,
-                                                                      target_unit_id,
-                                                                      full_data_set)
-                            full_data_set.tech_groups.update(
-                                {building_upgrade.get_id(): building_upgrade}
+                            building_upgrade = RoRBuildingLineUpgrade(
+                                tech_id, source_unit_id, target_unit_id, full_data_set
                             )
+                            full_data_set.tech_groups.update({building_upgrade.get_id(): building_upgrade})
                             full_data_set.building_upgrades.update(
                                 {building_upgrade.get_id(): building_upgrade}
                             )

@@ -34,9 +34,9 @@ class ManifestFile(DataDefinition):
 
         # write the hash values and the relative paths
         # of the items in the exported directory
-        hash_values_table = {'hash-values': {}}
+        hash_values_table = {"hash-values": {}}
         for hash_val, item_path in self.hash_values:
-            hash_values_table['hash-values'].update({hash_val: item_path})
+            hash_values_table["hash-values"].update({hash_val: item_path})
 
         output_dict.update(hash_values_table)
 
@@ -55,7 +55,12 @@ class ManifestFile(DataDefinition):
         :param item_path: relative path of item to the exported path
         :type item_path: str
         """
-        self.hash_values.append((hash_val, item_path,))
+        self.hash_values.append(
+            (
+                hash_val,
+                item_path,
+            )
+        )
 
     def set_hashing_func(self, hashing_func: str) -> None:
         """

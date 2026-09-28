@@ -35,8 +35,7 @@ class Union(FSLikeObject):
         self.dirstructure = {}
 
     def __str__(self):
-        content = ", ".join([f"{repr(pnt[1])} @ {repr(pnt[0])}"
-                             for pnt in self.mounts])
+        content = ", ".join([f"{pnt[1]!r} @ {pnt[0]!r}" for pnt in self.mounts])
         return f"Union({content})"
 
     @property
@@ -77,13 +76,13 @@ class Union(FSLikeObject):
 
         for idx, (mountpoint, pathobj, _) in enumerate(self.mounts):
             # cut the search so prefixes can be matched.
-            if mountpoint == tuple(search_mountpoint[:len(mountpoint)]):
+            if mountpoint == tuple(search_mountpoint[: len(mountpoint)]):
                 if not source_pathobj or source_pathobj == pathobj:
                     unmount.append(idx)
 
         if unmount:
             # reverse the order so that the indices never shift.
-            for idx in reversed(sorted(unmount)):
+            for idx in sorted(unmount, reverse=True):
                 del self.mounts[idx]
 
         else:
@@ -98,31 +97,43 @@ class Union(FSLikeObject):
         """
 
         for mountpoint, pathobj, _ in self.mounts:
-            cut_parts = tuple(parts[:len(mountpoint)])
+            cut_parts = tuple(parts[: len(mountpoint)])
             if mountpoint == cut_parts:
-                yield pathobj.joinpath(parts[len(mountpoint):])
+                yield pathobj.joinpath(parts[len(mountpoint) :])
 
     def open_r(self, parts):
         for path in self.candidate_paths(parts):
             if path.is_file():
                 return path.open_r()
-        raise FileNotFoundError(b'/'.join(parts))
+        raise FileNotFoundError(b"/".join(parts))
 
     def open_w(self, parts):
         for path in self.candidate_paths(parts):
             if path.writable():
                 return path.open_w()
 
-        raise UnsupportedOperation(
-            "not writable: " + b'/'.join(parts).decode(errors='replace'))
+        raise UnsupportedOperation("not writable: " + b"/".join(parts).decode(errors="replace"))
 
     def open_a(self, parts):
         for path in self.candidate_paths(parts):
             if path.writable():
                 return path.open_a()
 
-        raise UnsupportedOperation(
-            "not appendable: " + b'/'.join(parts).decode(errors='replace'))
+        raise UnsupportedOperation("not appendable: " + b"/".join(parts).decode(errors="replace"))
+
+    def open_rw(self, parts):
+        for path in self.candidate_paths(parts):
+            if path.writable():
+                return path.open_rw()
+
+        raise UnsupportedOperation("not writable: " + b"/".join(parts).decode(errors="replace"))
+
+    def open_ar(self, parts):
+        for path in self.candidate_paths(parts):
+            if path.writable():
+                return path.open_ar()
+
+        raise UnsupportedOperation("not appendable: " + b"/".join(parts).decode(errors="replace"))
 
     def resolve_r(self, parts):
         for path in self.candidate_paths(parts):
@@ -172,21 +183,21 @@ class Union(FSLikeObject):
                     duplicates.add(name)
 
         if not dir_exists:
-            raise FileNotFoundError(b'/'.join(parts))
+            raise FileNotFoundError(b"/".join(parts))
 
     def filesize(self, parts) -> int:
         for path in self.candidate_paths(parts):
             if path.is_file():
                 return path.filesize
 
-        raise FileNotFoundError(b'/'.join(parts))
+        raise FileNotFoundError(b"/".join(parts))
 
     def mtime(self, parts) -> float:
         for path in self.candidate_paths(parts):
             if path.exists():
                 return path.mtime
 
-        raise FileNotFoundError(b'/'.join(parts))
+        raise FileNotFoundError(b"/".join(parts))
 
     def mkdirs(self, parts) -> None:
         for path in self.candidate_paths(parts):
@@ -204,7 +215,7 @@ class Union(FSLikeObject):
                 found = True
 
         if not found:
-            raise FileNotFoundError(b'/'.join(parts))
+            raise FileNotFoundError(b"/".join(parts))
 
     def unlink(self, parts) -> None:
         found = False
@@ -216,14 +227,14 @@ class Union(FSLikeObject):
                 found = True
 
         if not found:
-            raise FileNotFoundError(b'/'.join(parts))
+            raise FileNotFoundError(b"/".join(parts))
 
     def touch(self, parts) -> None:
         for path in self.candidate_paths(parts):
             if path.writable():
                 return path.touch()
 
-        raise FileNotFoundError(b'/'.join(parts))
+        raise FileNotFoundError(b"/".join(parts))
 
     def rename(self, srcparts, tgtparts) -> None:
         found = False
@@ -238,10 +249,12 @@ class Union(FSLikeObject):
 
         if found:
             raise UnsupportedOperation(
-                "read-only rename: " +
-                b'/'.join(srcparts).decode(errors='replace') + ' to ' +
-                b'/'.join(tgtparts).decode(errors='replace'))
-        raise FileNotFoundError(b'/'.join(srcparts))
+                "read-only rename: "
+                + b"/".join(srcparts).decode(errors="replace")
+                + " to "
+                + b"/".join(tgtparts).decode(errors="replace")
+            )
+        raise FileNotFoundError(b"/".join(srcparts))
 
     def is_file(self, parts) -> bool:
         for path in self.candidate_paths(parts):

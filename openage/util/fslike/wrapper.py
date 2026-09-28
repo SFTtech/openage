@@ -16,7 +16,6 @@ from threading import Lock
 
 from ..context import DummyGuard
 from ..filelike.abstract import FileLikeObject
-
 from .abstract import FSLikeObject, ReadOnlyFSLikeObject
 from .path import Path
 
@@ -29,7 +28,7 @@ class Wrapper(FSLikeObject):
     Pass a context guard to protect calls.
     """
 
-    def __init__(self, obj: Path, contextguard = None):
+    def __init__(self, obj: Path, contextguard=None):
         if not isinstance(obj, Path):
             raise TypeError(f"Path expected as obj, got '{type(obj)}'")
 
@@ -41,9 +40,9 @@ class Wrapper(FSLikeObject):
 
     def __repr__(self):
         if isinstance(self.contextguard, DummyGuard):
-            return f"{type(self).__name__}({repr(self.obj)})"
+            return f"{type(self).__name__}({self.obj!r})"
 
-        return f"{type(self).__name__}({repr(self.obj)}, {repr(self.contextguard)})"
+        return f"{type(self).__name__}({self.obj!r}, {self.contextguard!r})"
 
     def open_r(self, parts):
         with self.contextguard:
@@ -102,8 +101,7 @@ class Wrapper(FSLikeObject):
 
     def rename(self, srcparts, tgtparts) -> None:
         with self.contextguard:
-            return self.obj.joinpath(srcparts).rename(
-                self.obj.joinpath(tgtparts))
+            return self.obj.joinpath(srcparts).rename(self.obj.joinpath(tgtparts))
 
     def is_file(self, parts) -> bool:
         with self.contextguard:
@@ -134,7 +132,7 @@ class WriteBlocker(ReadOnlyFSLikeObject, Wrapper):
     """
 
     def __repr__(self):
-        return f"WriteBlocker({repr(self.obj)})"
+        return f"WriteBlocker({self.obj!r})"
 
 
 class Synchronizer(Wrapper):
@@ -149,7 +147,7 @@ class Synchronizer(Wrapper):
     def __repr__(self):
         # TODO: remove override once pylint is fixed.
         with self.lock:  # pylint: disable=not-context-manager
-            return f"Synchronizer({repr(self.obj)})"
+            return f"Synchronizer({self.obj!r})"
 
 
 class GuardedFile(FileLikeObject):
@@ -205,7 +203,7 @@ class GuardedFile(FileLikeObject):
 
     def __repr__(self):
         with self.guard:
-            return f"GuardedFile({repr(self.obj)}, {repr(self.guard)})"
+            return f"GuardedFile({self.obj!r}, {self.guard!r})"
 
 
 class DirectoryCreator(Wrapper):

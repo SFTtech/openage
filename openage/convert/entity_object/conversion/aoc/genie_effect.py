@@ -5,13 +5,13 @@ Contains structures and API-like objects for effects from AoC.
 """
 
 from __future__ import annotations
+
 import typing
 
 from ..converter_object import ConverterObject
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.aoc.genie_object_container\
-        import GenieObjectContainer
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
     from openage.convert.value_object.read.value_members import ValueMember
 
 
@@ -20,14 +20,14 @@ class GenieEffectObject(ConverterObject):
     Single effect contained in GenieEffectBundle.
     """
 
-    __slots__ = ('bundle_id', 'data')
+    __slots__ = ("bundle_id", "data")
 
     def __init__(
         self,
         effect_id: int,
         bundle_id: int,
         full_data_set: GenieObjectContainer,
-        members: dict[str, ValueMember] = None
+        members: dict[str, ValueMember] | None = None,
     ):
         """
         Creates a new Genie effect object.
@@ -61,14 +61,14 @@ class GenieEffectBundle(ConverterObject):
     A set of effects of a tech.
     """
 
-    __slots__ = ('effects', 'sanitized', 'data')
+    __slots__ = ("data", "effects", "sanitized")
 
     def __init__(
         self,
         bundle_id: int,
         effects: list[GenieEffectObject],
         full_data_set: GenieObjectContainer,
-        members: dict[str, ValueMember] = None
+        members: dict[str, ValueMember] | None = None,
     ):
         """
         Creates a new Genie effect bundle.
@@ -94,7 +94,7 @@ class GenieEffectBundle(ConverterObject):
 
         self.data = full_data_set
 
-    def get_effects(self, effect_type: int = None) -> list[GenieEffectObject]:
+    def get_effects(self, effect_type: int | None = None) -> list[GenieEffectObject]:
         """
         Returns the effects in the bundle, optionally only effects with a specific
         type.

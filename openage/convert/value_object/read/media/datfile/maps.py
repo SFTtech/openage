@@ -2,14 +2,14 @@
 
 # TODO pylint: disable=C,R
 from __future__ import annotations
-import typing
 
+import typing
 from functools import cache
 
-from ...genie_structure import GenieStructure
 from ....read.member_access import READ, SKIP
 from ....read.read_members import SubdataMember
 from ....read.value_members import StorageType
+from ...genie_structure import GenieStructure
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.init.game_version import GameVersion
@@ -18,12 +18,10 @@ if typing.TYPE_CHECKING:
 
 
 class MapInfo(GenieStructure):
-
     @classmethod
     @cache
     def get_data_format_members(
-        cls,
-        game_version: GameVersion
+        cls, game_version: GameVersion
     ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
@@ -53,12 +51,10 @@ class MapInfo(GenieStructure):
 
 
 class MapLand(GenieStructure):
-
     @classmethod
     @cache
     def get_data_format_members(
-        cls,
-        game_version: GameVersion
+        cls, game_version: GameVersion
     ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
@@ -85,12 +81,10 @@ class MapLand(GenieStructure):
 
 
 class MapTerrain(GenieStructure):
-
     @classmethod
     @cache
     def get_data_format_members(
-        cls,
-        game_version: GameVersion
+        cls, game_version: GameVersion
     ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
@@ -108,20 +102,18 @@ class MapTerrain(GenieStructure):
 
 
 class MapUnit(GenieStructure):
-
     @classmethod
     @cache
     def get_data_format_members(
-        cls,
-        game_version: GameVersion
+        cls, game_version: GameVersion
     ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
         """
         data_format = [
             (READ, "unit_id", StorageType.ID_MEMBER, "int32_t"),
-            (READ, "host_terrain", StorageType.ID_MEMBER, "int32_t"),   # -1 = land; 1 = water
-            (READ, "group_placing", StorageType.ID_MEMBER, "int8_t"),   # 0 =
+            (READ, "host_terrain", StorageType.ID_MEMBER, "int32_t"),  # -1 = land; 1 = water
+            (READ, "group_placing", StorageType.ID_MEMBER, "int8_t"),  # 0 =
             (READ, "scale_flag", StorageType.BOOLEAN_MEMBER, "int8_t"),
             (SKIP, "padding1", StorageType.INT_MEMBER, "int16_t"),
             (READ, "objects_per_group", StorageType.INT_MEMBER, "int32_t"),
@@ -138,12 +130,10 @@ class MapUnit(GenieStructure):
 
 
 class MapElevation(GenieStructure):
-
     @classmethod
     @cache
     def get_data_format_members(
-        cls,
-        game_version: GameVersion
+        cls, game_version: GameVersion
     ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
@@ -161,12 +151,10 @@ class MapElevation(GenieStructure):
 
 
 class Map(GenieStructure):
-
     @classmethod
     @cache
     def get_data_format_members(
-        cls,
-        game_version: GameVersion
+        cls, game_version: GameVersion
     ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
         """
         Return the members in this struct.
@@ -181,34 +169,50 @@ class Map(GenieStructure):
             (READ, "base_terrain", StorageType.INT_MEMBER, "int32_t"),
             (READ, "land_coverage", StorageType.INT_MEMBER, "int32_t"),
             (SKIP, "unused_id", StorageType.ID_MEMBER, "int32_t"),
-
             (READ, "base_zone_count", StorageType.INT_MEMBER, "uint32_t"),
             (READ, "base_zone_ptr", StorageType.ID_MEMBER, "int32_t"),
-            (READ, "base_zones", StorageType.ARRAY_CONTAINER, SubdataMember(
-                ref_type=MapLand,
-                length="base_zone_count",
-            )),
-
+            (
+                READ,
+                "base_zones",
+                StorageType.ARRAY_CONTAINER,
+                SubdataMember(
+                    ref_type=MapLand,
+                    length="base_zone_count",
+                ),
+            ),
             (READ, "map_terrain_count", StorageType.INT_MEMBER, "uint32_t"),
             (READ, "map_terrain_ptr", StorageType.ID_MEMBER, "int32_t"),
-            (READ, "map_terrains", StorageType.ARRAY_CONTAINER, SubdataMember(
-                ref_type=MapTerrain,
-                length="map_terrain_count",
-            )),
-
+            (
+                READ,
+                "map_terrains",
+                StorageType.ARRAY_CONTAINER,
+                SubdataMember(
+                    ref_type=MapTerrain,
+                    length="map_terrain_count",
+                ),
+            ),
             (READ, "map_unit_count", StorageType.INT_MEMBER, "uint32_t"),
             (READ, "map_unit_ptr", StorageType.ID_MEMBER, "int32_t"),
-            (READ, "map_units", StorageType.ARRAY_CONTAINER, SubdataMember(
-                ref_type=MapUnit,
-                length="map_unit_count",
-            )),
-
+            (
+                READ,
+                "map_units",
+                StorageType.ARRAY_CONTAINER,
+                SubdataMember(
+                    ref_type=MapUnit,
+                    length="map_unit_count",
+                ),
+            ),
             (READ, "map_elevation_count", StorageType.INT_MEMBER, "uint32_t"),
             (READ, "map_elevation_ptr", StorageType.ID_MEMBER, "int32_t"),
-            (READ, "map_elevations", StorageType.ARRAY_CONTAINER, SubdataMember(
-                ref_type=MapElevation,
-                length="map_elevation_count",
-            )),
+            (
+                READ,
+                "map_elevations",
+                StorageType.ARRAY_CONTAINER,
+                SubdataMember(
+                    ref_type=MapElevation,
+                    length="map_elevation_count",
+                ),
+            ),
         ]
 
         return data_format

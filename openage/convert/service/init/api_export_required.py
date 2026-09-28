@@ -3,10 +3,12 @@
 """
 Test whether the openage nyan API modpack is present.
 """
+
 from __future__ import annotations
+
 import typing
 
-from openage.log import info, dbg
+from openage.log import dbg, info
 from openage.util.toml import TomlDecodeError
 
 from .modpack_search import get_modpack_info

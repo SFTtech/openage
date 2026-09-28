@@ -4,21 +4,20 @@
 """
 Export requests for media metadata.
 """
-from __future__ import annotations
-import typing
 
+from __future__ import annotations
+
+import typing
 
 from ....util.observer import Observer
 from .formats.sprite_metadata import SpriteMetadata
-from .formats.texture_metadata import TextureMetadata
 from .formats.terrain_metadata import TerrainMetadata
+from .formats.texture_metadata import TextureMetadata
 
 if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.export.formats.sprite_metadata import LayerMode as SpriteLayerMode
+    from openage.convert.entity_object.export.formats.terrain_metadata import LayerMode as TerrainLayerMode
     from openage.util.observer import Observable
-    from openage.convert.entity_object.export.formats.sprite_metadata import LayerMode\
-        as SpriteLayerMode
-    from openage.convert.entity_object.export.formats.terrain_metadata import LayerMode\
-        as TerrainLayerMode
 
 
 class MetadataExport(Observer):
@@ -86,7 +85,7 @@ class SpriteMetadataExport(MetadataExport):
             frame_count,
             angle_count,
             mirror_mode,
-            start_angle
+            start_angle,
         )
 
     def dump(self) -> str:
@@ -137,13 +136,7 @@ class SpriteMetadataExport(MetadataExport):
                             # TODO: Can happen for some death and projectile animations. Why?
                             break
 
-                        sprite_file.add_frame(
-                            frame_idx,
-                            int(degree),
-                            tex_index,
-                            tex_index,
-                            subtex_index
-                        )
+                        sprite_file.add_frame(frame_idx, int(degree), tex_index, tex_index, subtex_index)
 
                 degree = (degree + degree_step) % 360
 
@@ -200,7 +193,7 @@ class TextureMetadataExport(MetadataExport):
 
         return texture_file.dump()
 
-    def update(self, observable: Observable, message: dict = None):
+    def update(self, observable: Observable, message: dict | None = None):
         """
         Receive metdata from the graphics file export.
 
@@ -251,7 +244,7 @@ class TerrainMetadataExport(MetadataExport):
             layer_pos,
             frame_rate,
             replay_delay,
-            frame_count
+            frame_count,
         )
 
     def dump(self) -> str:
@@ -270,12 +263,7 @@ class TerrainMetadataExport(MetadataExport):
 
             for frame_idx in range(frame_count):
                 subtex_index = frame_idx
-                terrain_file.add_frame(
-                    frame_idx,
-                    tex_index,
-                    tex_index,
-                    subtex_index
-                )
+                terrain_file.add_frame(frame_idx, tex_index, tex_index, subtex_index)
 
             tex_index += 1
 

@@ -5,16 +5,23 @@ Contains structures and API-like objects for game entities from RoR.
 
 Based on the classes from the AoC converter.
 """
+
 from __future__ import annotations
+
 import typing
 
-from ..aoc.genie_unit import GenieUnitLineGroup, GenieBuildingLineGroup, \
-    GenieAmbientGroup, GenieVariantGroup, GenieUnitTaskGroup, \
-    GenieVillagerGroup, GenieGarrisonMode
+from ..aoc.genie_unit import (
+    GenieAmbientGroup,
+    GenieBuildingLineGroup,
+    GenieGarrisonMode,
+    GenieUnitLineGroup,
+    GenieUnitTaskGroup,
+    GenieVariantGroup,
+    GenieVillagerGroup,
+)
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.aoc.genie_object_container\
-        import GenieObjectContainer
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
 
 
 class RoRUnitLineGroup(GenieUnitLineGroup):
@@ -26,14 +33,9 @@ class RoRUnitLineGroup(GenieUnitLineGroup):
     Example: Clubman-> Axeman
     """
 
-    __slots__ = ('enabling_research_id',)
+    __slots__ = ("enabling_research_id",)
 
-    def __init__(
-        self,
-        line_id: int,
-        enabling_research_id: int,
-        full_data_set: GenieObjectContainer
-    ):
+    def __init__(self, line_id: int, enabling_research_id: int, full_data_set: GenieObjectContainer):
         """
         Creates a new RoR game entity line.
 
@@ -93,14 +95,9 @@ class RoRBuildingLineGroup(GenieBuildingLineGroup):
     Example2: WatchTower->SentryTower->GuardTower->BallistaTower
     """
 
-    __slots__ = ('enabling_research_id',)
+    __slots__ = ("enabling_research_id",)
 
-    def __init__(
-        self,
-        line_id: int,
-        enabling_research_id: int,
-        full_data_set: GenieObjectContainer
-    ):
+    def __init__(self, line_id: int, enabling_research_id: int, full_data_set: GenieObjectContainer):
         """
         Creates a new RoR game entity line.
 
@@ -203,14 +200,10 @@ class RoRUnitTaskGroup(GenieUnitTaskGroup):
     # Female villagers do not exist in RoR
     female_line_id = -1
 
-    __slots__ = ('enabling_research_id',)
+    __slots__ = ("enabling_research_id",)
 
     def __init__(
-        self,
-        line_id: int,
-        task_group_id: int,
-        enabling_research_id: int,
-        full_data_set: GenieObjectContainer
+        self, line_id: int, task_group_id: int, enabling_research_id: int, full_data_set: GenieObjectContainer
     ):
         """
         Creates a new RoR task group.

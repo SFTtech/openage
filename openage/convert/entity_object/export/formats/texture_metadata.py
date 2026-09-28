@@ -10,16 +10,17 @@ from enum import Enum
 
 from ..data_definition import DataDefinition
 
-FORMAT_VERSION = '1'
+FORMAT_VERSION = "1"
 
 
 class LayerMode(Enum):
     """
     Possible values for the mode of a layer.
     """
-    OFF = 'off'     # layer is not animated
-    ONCE = 'once'   # animation plays once
-    LOOP = 'loop'   # animation loops indefinitely
+
+    OFF = "off"  # layer is not animated
+    ONCE = "once"  # animation plays once
+    LOOP = "loop"  # animation loops indefinitely
 
 
 class TextureMetadata(DataDefinition):
@@ -82,10 +83,7 @@ class TextureMetadata(DataDefinition):
         :param height: Height of the exported PNG in pixels.
         :type height: int
         """
-        self.size = {
-            "width": width,
-            "height": height
-        }
+        self.size = {"width": width, "height": height}
 
     def set_pxformat(self, pxformat="rgba8", cbits=True):
         """
@@ -111,7 +109,7 @@ class TextureMetadata(DataDefinition):
         output_str += f"version {FORMAT_VERSION}\n\n"
 
         # image file
-        output_str += f"imagefile \"{self.image_file}\"\n"
+        output_str += f'imagefile "{self.image_file}"\n'
 
         output_str += "\n"
 
@@ -130,9 +128,9 @@ class TextureMetadata(DataDefinition):
 
         # subtex definitions
         for subtex in self.subtexs:
-            output_str += f'subtex {" ".join(str(param) for param in subtex.values())}\n'
+            output_str += f"subtex {' '.join(str(param) for param in subtex.values())}\n"
 
         return output_str
 
     def __repr__(self):
-        return f'TextureMetadata<{self.filename}>'
+        return f"TextureMetadata<{self.filename}>"

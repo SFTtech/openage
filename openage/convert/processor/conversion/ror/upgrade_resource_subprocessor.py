@@ -8,7 +8,9 @@
 """
 Creates upgrade patches for resource modification effects in RoR.
 """
+
 from __future__ import annotations
+
 import typing
 
 from .....nyan.nyan_structs import MemberOperator
@@ -29,10 +31,7 @@ class RoRUpgradeResourceSubprocessor:
 
     @staticmethod
     def building_conversion_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the building conversion effect (ID: 28).
@@ -74,20 +73,18 @@ class RoRUpgradeResourceSubprocessor:
         wrapper_name = "EnableBuildingConversionWrapper"
         wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
-        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
-                                              wrapper_name,
-                                              dataset.nyan_api_objects,
-                                              wrapper_location)
+        wrapper_raw_api_object = RawAPIObject(
+            wrapper_ref, wrapper_name, dataset.nyan_api_objects, wrapper_location
+        )
         wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         # Nyan patch
         nyan_patch_name = "EnableBuildingConversion"
         nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
-        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                 nyan_patch_name,
-                                                 dataset.nyan_api_objects,
-                                                 nyan_patch_location)
+        nyan_patch_raw_api_object = RawAPIObject(
+            nyan_patch_ref, nyan_patch_name, dataset.nyan_api_objects, nyan_patch_location
+        )
         nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
@@ -95,10 +92,9 @@ class RoRUpgradeResourceSubprocessor:
         allowed_types = [
             dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object()
         ]
-        nyan_patch_raw_api_object.add_raw_patch_member("allowed_types",
-                                                       allowed_types,
-                                                       "engine.ability.type.ApplyDiscreteEffect",
-                                                       MemberOperator.ADD)
+        nyan_patch_raw_api_object.add_raw_patch_member(
+            "allowed_types", allowed_types, "engine.ability.type.ApplyDiscreteEffect", MemberOperator.ADD
+        )
 
         # Blacklisted buildings
         tc_line = dataset.building_lines[109]
@@ -106,20 +102,21 @@ class RoRUpgradeResourceSubprocessor:
         monastery_line = dataset.building_lines[104]
         wonder_line = dataset.building_lines[276]
 
-        blacklisted_forward_refs = [ForwardRef(tc_line, "TownCenter"),
-                                    ForwardRef(farm_line, "Farm"),
-                                    ForwardRef(monastery_line, "Temple"),
-                                    ForwardRef(wonder_line, "Wonder"),
-                                    ]
-        nyan_patch_raw_api_object.add_raw_patch_member("blacklisted_entities",
-                                                       blacklisted_forward_refs,
-                                                       "engine.ability.type.ApplyDiscreteEffect",
-                                                       MemberOperator.ADD)
+        blacklisted_forward_refs = [
+            ForwardRef(tc_line, "TownCenter"),
+            ForwardRef(farm_line, "Farm"),
+            ForwardRef(monastery_line, "Temple"),
+            ForwardRef(wonder_line, "Wonder"),
+        ]
+        nyan_patch_raw_api_object.add_raw_patch_member(
+            "blacklisted_entities",
+            blacklisted_forward_refs,
+            "engine.ability.type.ApplyDiscreteEffect",
+            MemberOperator.ADD,
+        )
 
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
-        wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_forward_ref,
-                                              "engine.util.patch.Patch")
+        wrapper_raw_api_object.add_raw_member("patch", patch_forward_ref, "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -131,10 +128,7 @@ class RoRUpgradeResourceSubprocessor:
 
     @staticmethod
     def heal_bonus_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the AoE1 heal bonus effect (ID: 56).
@@ -156,10 +150,7 @@ class RoRUpgradeResourceSubprocessor:
 
     @staticmethod
     def martyrdom_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the martyrdom effect (ID: 57).

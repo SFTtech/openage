@@ -1,27 +1,27 @@
 # Copyright 2014-2024 the openage authors. See copying.md for legal info.
 
-""" Routines for texture generation etc """
+"""Routines for texture generation etc"""
 
 # TODO pylint: disable=C,R
 
 from __future__ import annotations
+
 import typing
 
-from PIL import Image
-
 import numpy
+from PIL import Image
 
 from ....log import spam
 from ...value_object.read.media.blendomatic import BlendingMode
 from ...value_object.read.media.hardcoded.terrain_tile_size import TILE_HALFSIZE
 
 if typing.TYPE_CHECKING:
-    from openage.convert.value_object.read.media.colortable import ColorTable
     from openage.convert.service.export.interface.cutter import InterfaceCutter
+    from openage.convert.value_object.read.media.colortable import ColorTable
+    from openage.convert.value_object.read.media.sld import SLD
     from openage.convert.value_object.read.media.slp import SLP, SLPFrame
     from openage.convert.value_object.read.media.smp import SMP, SMPLayer
     from openage.convert.value_object.read.media.smx import SMX, SMXLayer
-    from openage.convert.value_object.read.media.sld import SLD, SLDLayer
 
 
 class TextureImage:
@@ -30,20 +30,19 @@ class TextureImage:
     """
 
     def __init__(
-        self,
-        picture_data: typing.Union[Image.Image, numpy.ndarray],
-        hotspot: tuple[int, int] = None
+        self, picture_data: typing.Union[Image.Image, numpy.ndarray], hotspot: tuple[int, int] | None = None
     ):
 
         if isinstance(picture_data, Image.Image):
-            if picture_data.mode != 'RGBA':
-                picture_data = picture_data.convert('RGBA')
+            if picture_data.mode != "RGBA":
+                picture_data = picture_data.convert("RGBA")
 
             picture_data = numpy.array(picture_data)
 
         if not isinstance(picture_data, numpy.ndarray):
-            raise ValueError("Texture image must be created from PIL Image "
-                             "or numpy array, not '%s'" % type(picture_data))
+            raise ValueError(
+                "Texture image must be created from PIL Image or numpy array, not '%s'" % type(picture_data)
+            )
 
         self.width: int = picture_data.shape[1]
         self.height: int = picture_data.shape[0]
@@ -75,9 +74,9 @@ class Texture:
     def __init__(
         self,
         input_data: typing.Union[SLP, SMP, SMX, SLD, BlendingMode],
-        palettes: dict[int, ColorTable] = None,
+        palettes: dict[int, ColorTable] | None = None,
         custom_cutter: InterfaceCutter = None,
-        layer: int = 0
+        layer: int = 0,
     ):
         super().__init__()
 
@@ -92,10 +91,10 @@ class Texture:
 
         spam("creating Texture from %s", repr(input_data))
 
+        from ...value_object.read.media.sld import SLD
         from ...value_object.read.media.slp import SLP
         from ...value_object.read.media.smp import SMP
         from ...value_object.read.media.smx import SMX
-        from ...value_object.read.media.sld import SLD
 
         self.frames = []
         if isinstance(input_data, (SLP, SMP, SMX)):
@@ -110,9 +109,7 @@ class Texture:
                 else:
                     main_palette = palettes[palette_number].array
 
-                for subtex in self._to_subtextures(frame,
-                                                   main_palette,
-                                                   custom_cutter):
+                for subtex in self._to_subtextures(frame, main_palette, custom_cutter):
                     self.frames.append(subtex)
 
         elif isinstance(input_data, SLD):
@@ -122,38 +119,28 @@ class Texture:
                 input_frames = input_data.get_frames(layer=1)
 
             for frame in input_frames:
-                subtex = TextureImage(
-                    frame.get_picture_data(),
-                    hotspot=frame.get_hotspot()
-                )
+                subtex = TextureImage(frame.get_picture_data(), hotspot=frame.get_hotspot())
                 self.frames.append(subtex)
 
         elif isinstance(input_data, BlendingMode):
             self.frames = [
                 # the hotspot is in the west corner of a tile.
-                TextureImage(
-                    tile.get_picture_data(),
-                    hotspot=(0, TILE_HALFSIZE["y"])
-                )
+                TextureImage(tile.get_picture_data(), hotspot=(0, TILE_HALFSIZE["y"]))
                 for tile in input_data.alphamasks
             ]
         else:
-            raise TypeError("cannot create Texture "
-                            "from unknown source type: %s" % (type(input_data)))
+            raise TypeError("cannot create Texture from unknown source type: %s" % (type(input_data)))
 
     def _to_subtextures(
         self,
         frame: typing.Union[SLPFrame, SMPLayer, SMXLayer],
         main_palette: ColorTable,
-        custom_cutter: InterfaceCutter = None
+        custom_cutter: InterfaceCutter = None,
     ):
         """
         convert slp to subtexture or subtextures, using a palette.
         """
-        subtex = TextureImage(
-            frame.get_picture_data(main_palette),
-            hotspot=frame.get_hotspot()
-        )
+        subtex = TextureImage(frame.get_picture_data(main_palette), hotspot=frame.get_hotspot())
 
         if custom_cutter:
             # this may cut the texture into some parts

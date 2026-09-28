@@ -3,9 +3,11 @@
 """
 Tree structure for resolving imports.
 """
+
 from __future__ import annotations
-from enum import Enum
+
 import typing
+from enum import Enum
 
 from openage.log import warn
 
@@ -18,10 +20,11 @@ class NodeType(Enum):
     """
     Types for nodes.
     """
-    ROOT      = "r"     # tree root
-    FILESYS   = "f"     # directory or file
-    OBJECT    = "o"     # object in file (top level)
-    NESTED    = "no"    # nested object
+
+    ROOT = "r"  # tree root
+    FILESYS = "f"  # directory or file
+    OBJECT = "o"  # object in file (top level)
+    NESTED = "no"  # nested object
 
 
 class Node:
@@ -30,7 +33,7 @@ class Node:
     or an object.
     """
 
-    __slots__ = ('name', 'node_type', 'parent', 'depth', 'children', 'alias')
+    __slots__ = ("alias", "children", "depth", "name", "node_type", "parent")
 
     def __init__(self, name: str, node_type: NodeType, parent):
         """
@@ -137,7 +140,7 @@ class ImportTree:
     Tree for storing nyan object references.
     """
 
-    __slots__ = ('root', 'alias_nodes', 'import_nodes')
+    __slots__ = ("alias_nodes", "import_nodes", "root")
 
     def __init__(self):
         self.root = Node("", NodeType.ROOT, None)
@@ -164,8 +167,7 @@ class ImportTree:
 
             except KeyError:  # as err:
                 # TODO: Fail when the fqon is not found in the tree
-                warn(f"fqon '{'.'.join(fqon)}' "
-                     "could not be found in import tree")
+                warn(f"fqon '{'.'.join(fqon)}' could not be found in import tree")
                 return
                 # raise KeyError(f"fqon '{'.'.join(fqon)}' "
                 #               "could not be found in import tree") from err
@@ -331,7 +333,7 @@ class ImportTree:
 
         return imports
 
-    def get_alias_fqon(self, fqon: tuple[str], namespace: tuple[str] = None) -> tuple[str]:
+    def get_alias_fqon(self, fqon: tuple[str], namespace: tuple[str] | None = None) -> tuple[str]:
         """
         Find the (shortened) fqon by traversing the tree to the fqon node and
         then going upwards until an alias is found.

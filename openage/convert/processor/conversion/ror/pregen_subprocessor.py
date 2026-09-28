@@ -6,17 +6,17 @@
 Creates nyan objects for things that are hardcoded into the Genie Engine,
 but configurable in openage. E.g. HP.
 """
+
 from __future__ import annotations
+
 import typing
 
-from ....entity_object.conversion.converter_object import ConverterObjectGroup, \
-    RawAPIObject
+from ....entity_object.conversion.converter_object import ConverterObjectGroup, RawAPIObject
 from ....value_object.conversion.forward_ref import ForwardRef
 from ..aoc.pregen_processor import AoCPregenSubprocessor
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.aoc.genie_object_container\
-        import GenieObjectContainer
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
 
 
 class RoRPregenSubprocessor:
@@ -56,13 +56,14 @@ class RoRPregenSubprocessor:
             pregen_object.create_nyan_members()
 
             if not pregen_object.is_ready():
-                raise RuntimeError(f"{repr(pregen_object)}: Pregenerated object is not ready "
-                                   "for export. Member or object not initialized.")
+                raise RuntimeError(
+                    f"{pregen_object!r}: Pregenerated object is not ready "
+                    "for export. Member or object not initialized."
+                )
 
     @staticmethod
     def generate_death_condition(
-        full_data_set: GenieObjectContainer,
-        pregen_converter_group: ConverterObjectGroup
+        full_data_set: GenieObjectContainer, pregen_converter_group: ConverterObjectGroup
     ) -> None:
         """
         Generate DeathCondition objects.
@@ -88,10 +89,9 @@ class RoRPregenSubprocessor:
         literal_location = "data/util/logic/death/"
 
         death_ref_in_modpack = "util.logic.literal.death.StandardHealthDeathLiteral"
-        literal_raw_api_object = RawAPIObject(death_ref_in_modpack,
-                                              "StandardHealthDeathLiteral",
-                                              api_objects,
-                                              literal_location)
+        literal_raw_api_object = RawAPIObject(
+            death_ref_in_modpack, "StandardHealthDeathLiteral", api_objects, literal_location
+        )
         literal_raw_api_object.set_filename("death")
         literal_raw_api_object.add_raw_parent(interval_parent)
 
@@ -99,24 +99,18 @@ class RoRPregenSubprocessor:
         literal_raw_api_object.add_raw_member("only_once", False, logic_parent)
 
         # Scope
-        scope_forward_ref = ForwardRef(pregen_converter_group,
-                                       "util.logic.literal_scope.death.StandardHealthDeathScope")
-        literal_raw_api_object.add_raw_member("scope",
-                                              scope_forward_ref,
-                                              literal_parent)
+        scope_forward_ref = ForwardRef(
+            pregen_converter_group, "util.logic.literal_scope.death.StandardHealthDeathScope"
+        )
+        literal_raw_api_object.add_raw_member("scope", scope_forward_ref, literal_parent)
 
         # Attribute
-        health_forward_ref = ForwardRef(pregen_converter_group,
-                                        "util.attribute.types.Health")
-        literal_raw_api_object.add_raw_member("attribute",
-                                              health_forward_ref,
-                                              interval_parent)
+        health_forward_ref = ForwardRef(pregen_converter_group, "util.attribute.types.Health")
+        literal_raw_api_object.add_raw_member("attribute", health_forward_ref, interval_parent)
 
         # sidenote: Apparently this is actually HP<1 in Genie
         # (https://youtu.be/FdBk8zGbE7U?t=7m16s)
-        literal_raw_api_object.add_raw_member("threshold",
-                                              1,
-                                              interval_parent)
+        literal_raw_api_object.add_raw_member("threshold", 1, interval_parent)
 
         pregen_converter_group.add_raw_api_object(literal_raw_api_object)
         pregen_nyan_objects.update({death_ref_in_modpack: literal_raw_api_object})
@@ -126,17 +120,15 @@ class RoRPregenSubprocessor:
         self_scope_parent = "engine.util.logic.literal_scope.type.Self"
 
         death_scope_ref_in_modpack = "util.logic.literal_scope.death.StandardHealthDeathScope"
-        scope_raw_api_object = RawAPIObject(death_scope_ref_in_modpack,
-                                            "StandardHealthDeathScope",
-                                            api_objects)
+        scope_raw_api_object = RawAPIObject(
+            death_scope_ref_in_modpack, "StandardHealthDeathScope", api_objects
+        )
         scope_location = ForwardRef(pregen_converter_group, death_ref_in_modpack)
         scope_raw_api_object.set_location(scope_location)
         scope_raw_api_object.add_raw_parent(self_scope_parent)
 
         scope_diplomatic_stances = [api_objects["engine.util.diplomatic_stance.type.Self"]]
-        scope_raw_api_object.add_raw_member("stances",
-                                            scope_diplomatic_stances,
-                                            scope_parent)
+        scope_raw_api_object.add_raw_member("stances", scope_diplomatic_stances, scope_parent)
 
         pregen_converter_group.add_raw_api_object(scope_raw_api_object)
         pregen_nyan_objects.update({death_scope_ref_in_modpack: scope_raw_api_object})

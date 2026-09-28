@@ -8,8 +8,8 @@ import os
 from io import UnsupportedOperation
 from typing import NoReturn
 
-from .abstract import FileLikeObject
 from ..bytequeue import ByteQueue
+from .abstract import FileLikeObject
 
 
 class FIFO(FileLikeObject):

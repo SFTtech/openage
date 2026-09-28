@@ -9,8 +9,8 @@ from __future__ import annotations
 import typing
 from collections import OrderedDict
 
-from .strings import colorize
 from .math import INF
+from .strings import colorize
 
 RULE_CACHE = OrderedDict()
 
@@ -28,17 +28,17 @@ def get_color_rules() -> OrderedDict[str, str]:
     from os import environ
 
     try:
-        rules = environ['LS_COLORS']
+        rules = environ["LS_COLORS"]
     except KeyError:
         return {}
 
-    for rule in rules.split(':'):
+    for rule in rules.split(":"):
         rule = rule.strip()
         if not rule:
             continue
 
         try:
-            pattern, colorcode = rule.split('=', maxsplit=1)
+            pattern, colorcode = rule.split("=", maxsplit=1)
         except ValueError:
             # Your LS_COLORS are broken. Go fix them.
             # I shouldn't even be catching the error for you.
@@ -61,22 +61,17 @@ def colorize_filename(filename: str) -> str:
         if fnmatch(filename, pattern):
             return colorize(filename, colorcode)
 
-    return colorize(filename, rules.get('fi'))
+    return colorize(filename, rules.get("fi"))
 
 
 def colorize_dirname(dirname: str) -> str:
     """
     Colorizes the dirname, using the 'di' rule from LS_COLORS.
     """
-    return colorize(dirname, get_color_rules().get('di'))
+    return colorize(dirname, get_color_rules().get("di"))
 
 
-def print_tree(
-    obj: FSLikeObject,
-    path: str = "",
-    prefix: str = "",
-    max_entries: str = INF
-) -> None:
+def print_tree(obj: FSLikeObject, path: str = "", prefix: str = "", max_entries: str = INF) -> None:
     """
     Obj is a filesystem-like object; path must be a string.
 
@@ -97,23 +92,24 @@ def print_tree(
 
     if len(entries) > max_entries:
         omit = len(entries) - max_entries + 1
-        entries = entries[:-omit] + [(f"[{omit} omitted]", False, True)]
+        entries = [*entries[:-omit], (f"[{omit} omitted]", False, True)]
 
     from .iterators import denote_last
+
     for (name, isdir, is_meta), is_last in denote_last(entries):
         if is_last:
-            treesymbol, nextindent = '\u2514', '   '
+            treesymbol, nextindent = "\u2514", "   "
         else:
-            treesymbol, nextindent = '\u251c', '\u2502  '
+            treesymbol, nextindent = "\u251c", "\u2502  "
 
         if is_meta:
-            entryindent = '\u257c '
+            entryindent = "\u257c "
         else:
-            entryindent = '\u2500 '
+            entryindent = "\u2500 "
 
         if isdir:
             print(prefix + treesymbol + entryindent + colorize_dirname(name))
-            obj.print_tree(path + '/' + name, prefix + nextindent, max_entries)
+            obj.print_tree(path + "/" + name, prefix + nextindent, max_entries)
             print(prefix + nextindent)
         else:
             print(prefix + treesymbol + entryindent + colorize_filename(name))

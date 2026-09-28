@@ -4,10 +4,10 @@
 Threading utilities.
 """
 
-from concurrent.futures import ThreadPoolExecutor
-from enum import Enum
 import itertools
 import os
+from concurrent.futures import ThreadPoolExecutor
+from enum import Enum
 from queue import Queue
 
 
@@ -91,6 +91,7 @@ class GeneratorEvent(Enum):
     For use by concurrent_chain.
     Represents any event that a generator may cause.
     """
+
     VALUE = 0
     EXCEPTION = 1
     STOP_ITERATION = 2
@@ -113,11 +114,11 @@ def generator_to_queue(generator, queue: ClosableQueue) -> None:
 
 
 def test_concurrent_chain() -> None:
-    """ Tests concurrent_chain """
-    from ..testing.testing import assert_value, assert_raises, result
+    """Tests concurrent_chain"""
+    from ..testing.testing import assert_raises, assert_value, result
 
     def errorgen():
-        """ Test generator that raises an exception """
+        """Test generator that raises an exception"""
         yield "errorgen"
         raise ValueError()
 
@@ -126,8 +127,8 @@ def test_concurrent_chain() -> None:
     assert_value(list(concurrent_chain([range(10)], 2)), list(range(10)))
 
     assert_value(
-        sorted(list(concurrent_chain([range(10), range(20)], 2))),
-        sorted(list(itertools.chain(range(10), range(20))))
+        sorted(concurrent_chain([range(10), range(20)], 2)),
+        sorted(itertools.chain(range(10), range(20))),
     )
 
     chain = concurrent_chain([range(10), range(20), errorgen(), range(30)], 2)

@@ -4,8 +4,8 @@
 Provides ByteQueue, a high-performance queue for bytes objects.
 """
 
-from collections import deque
 from bisect import bisect
+from collections import deque
 from typing import Generator
 
 
@@ -205,7 +205,7 @@ class ByteBuffer:
         # cut off superfluous parts at the left of the first buffer.
         # the negative index is intentional.
         # pylint: disable=unsubscriptable-object
-        buf = buf[start - self.index[idx]:]
+        buf = buf[start - self.index[idx] :]
 
         remaining = end - start
         while remaining > len(buf):

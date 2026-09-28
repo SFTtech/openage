@@ -8,7 +8,9 @@
 """
 Creates upgrade patches for resource modification effects in SWGB.
 """
+
 from __future__ import annotations
+
 import typing
 
 from .....nyan.nyan_structs import MemberOperator
@@ -29,10 +31,7 @@ class SWGBCCUpgradeResourceSubprocessor:
 
     @staticmethod
     def assault_mech_anti_air_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the assault mech anti air effect (ID: 31).
@@ -54,10 +53,7 @@ class SWGBCCUpgradeResourceSubprocessor:
 
     @staticmethod
     def berserk_heal_rate_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Union[int, float],
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: float, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the berserk heal rate modify effect (ID: 96).
@@ -97,44 +93,36 @@ class SWGBCCUpgradeResourceSubprocessor:
         wrapper_name = f"Change{game_entity_name}HealthRegenerationWrapper"
         wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
-        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
-                                              wrapper_name,
-                                              dataset.nyan_api_objects,
-                                              wrapper_location)
+        wrapper_raw_api_object = RawAPIObject(
+            wrapper_ref, wrapper_name, dataset.nyan_api_objects, wrapper_location
+        )
         wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         # Nyan patch
         nyan_patch_name = f"Change{game_entity_name}HealthRegeneration"
         nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
-        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                 nyan_patch_name,
-                                                 dataset.nyan_api_objects,
-                                                 nyan_patch_location)
+        nyan_patch_raw_api_object = RawAPIObject(
+            nyan_patch_ref, nyan_patch_name, dataset.nyan_api_objects, nyan_patch_location
+        )
         nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         # Regeneration is on a counter, so we have to invert the value
         value = 1 / value
-        nyan_patch_raw_api_object.add_raw_patch_member("rate",
-                                                       value,
-                                                       "engine.util.attribute.AttributeRate",
-                                                       operator)
+        nyan_patch_raw_api_object.add_raw_patch_member(
+            "rate", value, "engine.util.attribute.AttributeRate", operator
+        )
 
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
-        wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_forward_ref,
-                                              "engine.util.patch.Patch")
+        wrapper_raw_api_object.add_raw_member("patch", patch_forward_ref, "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
-            )
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
-            wrapper_raw_api_object.add_raw_member("properties",
-                                                  properties,
-                                                  "engine.util.patch.Patch")
+            wrapper_raw_api_object.add_raw_member("properties", properties, "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -146,10 +134,7 @@ class SWGBCCUpgradeResourceSubprocessor:
 
     @staticmethod
     def building_conversion_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the building conversion effect (ID: 28).
@@ -193,32 +178,28 @@ class SWGBCCUpgradeResourceSubprocessor:
             wrapper_name = "EnableBuildingConversionWrapper"
             wrapper_ref = f"{obj_name}.{wrapper_name}"
             wrapper_location = ForwardRef(converter_group, obj_name)
-            wrapper_raw_api_object = RawAPIObject(wrapper_ref,
-                                                  wrapper_name,
-                                                  dataset.nyan_api_objects,
-                                                  wrapper_location)
+            wrapper_raw_api_object = RawAPIObject(
+                wrapper_ref, wrapper_name, dataset.nyan_api_objects, wrapper_location
+            )
             wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
             # Nyan patch
             nyan_patch_name = "EnableBuildingConversion"
             nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
             nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
-            nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                     nyan_patch_name,
-                                                     dataset.nyan_api_objects,
-                                                     nyan_patch_location)
+            nyan_patch_raw_api_object = RawAPIObject(
+                nyan_patch_ref, nyan_patch_name, dataset.nyan_api_objects, nyan_patch_location
+            )
             nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             # New allowed types
             allowed_types = [
-                dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object(
-                )
+                dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object()
             ]
-            nyan_patch_raw_api_object.add_raw_patch_member("allowed_types",
-                                                           allowed_types,
-                                                           "engine.ability.type.ApplyDiscreteEffect",
-                                                           MemberOperator.ADD)
+            nyan_patch_raw_api_object.add_raw_patch_member(
+                "allowed_types", allowed_types, "engine.ability.type.ApplyDiscreteEffect", MemberOperator.ADD
+            )
 
             # Blacklisted buildings
             tc_line = dataset.building_lines[109]
@@ -226,20 +207,21 @@ class SWGBCCUpgradeResourceSubprocessor:
             temple_line = dataset.building_lines[104]
             wonder_line = dataset.building_lines[276]
 
-            blacklisted_forward_refs = [ForwardRef(tc_line, "CommandCenter"),
-                                        ForwardRef(farm_line, "Farm"),
-                                        ForwardRef(temple_line, "Temple"),
-                                        ForwardRef(wonder_line, "Monument"),
-                                        ]
-            nyan_patch_raw_api_object.add_raw_patch_member("blacklisted_entities",
-                                                           blacklisted_forward_refs,
-                                                           "engine.ability.type.ApplyDiscreteEffect",
-                                                           MemberOperator.ADD)
+            blacklisted_forward_refs = [
+                ForwardRef(tc_line, "CommandCenter"),
+                ForwardRef(farm_line, "Farm"),
+                ForwardRef(temple_line, "Temple"),
+                ForwardRef(wonder_line, "Monument"),
+            ]
+            nyan_patch_raw_api_object.add_raw_patch_member(
+                "blacklisted_entities",
+                blacklisted_forward_refs,
+                "engine.ability.type.ApplyDiscreteEffect",
+                MemberOperator.ADD,
+            )
 
             patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
-            wrapper_raw_api_object.add_raw_member("patch",
-                                                  patch_forward_ref,
-                                                  "engine.util.patch.Patch")
+            wrapper_raw_api_object.add_raw_member("patch", patch_forward_ref, "engine.util.patch.Patch")
 
             converter_group.add_raw_api_object(wrapper_raw_api_object)
             converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -251,10 +233,7 @@ class SWGBCCUpgradeResourceSubprocessor:
 
     @staticmethod
     def cloak_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the force cloak effect (ID: 56).
@@ -276,10 +255,7 @@ class SWGBCCUpgradeResourceSubprocessor:
 
     @staticmethod
     def concentration_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the concentration effect (ID: 87).
@@ -301,10 +277,7 @@ class SWGBCCUpgradeResourceSubprocessor:
 
     @staticmethod
     def conversion_range_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Union[int, float],
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: float, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the conversion range modify effect (ID: 5).
@@ -326,10 +299,7 @@ class SWGBCCUpgradeResourceSubprocessor:
 
     @staticmethod
     def detect_cloak_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the force detect cloak effect (ID: 58).
@@ -351,10 +321,7 @@ class SWGBCCUpgradeResourceSubprocessor:
 
     @staticmethod
     def faith_recharge_rate_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Union[int, float],
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: float, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the faith_recharge_rate modify effect (ID: 35).
@@ -396,42 +363,36 @@ class SWGBCCUpgradeResourceSubprocessor:
             wrapper_name = f"Change{game_entity_name}FaithRegenerationWrapper"
             wrapper_ref = f"{obj_name}.{wrapper_name}"
             wrapper_location = ForwardRef(converter_group, obj_name)
-            wrapper_raw_api_object = RawAPIObject(wrapper_ref,
-                                                  wrapper_name,
-                                                  dataset.nyan_api_objects,
-                                                  wrapper_location)
+            wrapper_raw_api_object = RawAPIObject(
+                wrapper_ref, wrapper_name, dataset.nyan_api_objects, wrapper_location
+            )
             wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
             # Nyan patch
             nyan_patch_name = f"Change{game_entity_name}FaithRegeneration"
             nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
             nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
-            nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                     nyan_patch_name,
-                                                     dataset.nyan_api_objects,
-                                                     nyan_patch_location)
+            nyan_patch_raw_api_object = RawAPIObject(
+                nyan_patch_ref, nyan_patch_name, dataset.nyan_api_objects, nyan_patch_location
+            )
             nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
-            nyan_patch_raw_api_object.add_raw_patch_member("rate",
-                                                           value,
-                                                           "engine.util.attribute.AttributeRate",
-                                                           operator)
+            nyan_patch_raw_api_object.add_raw_patch_member(
+                "rate", value, "engine.util.attribute.AttributeRate", operator
+            )
 
             patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
-            wrapper_raw_api_object.add_raw_member("patch",
-                                                  patch_forward_ref,
-                                                  "engine.util.patch.Patch")
+            wrapper_raw_api_object.add_raw_member("patch", patch_forward_ref, "engine.util.patch.Patch")
 
             if team:
-                team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
-                )
+                team_property = dataset.pregen_nyan_objects[
+                    "util.patch.property.types.Team"
+                ].get_nyan_object()
                 properties = {
                     dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
                 }
-                wrapper_raw_api_object.add_raw_member("properties",
-                                                      properties,
-                                                      "engine.util.patch.Patch")
+                wrapper_raw_api_object.add_raw_member("properties", properties, "engine.util.patch.Patch")
 
             converter_group.add_raw_api_object(wrapper_raw_api_object)
             converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -443,10 +404,7 @@ class SWGBCCUpgradeResourceSubprocessor:
 
     @staticmethod
     def heal_range_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Union[int, float],
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: float, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the heal range modify effect (ID: 90).
@@ -487,42 +445,34 @@ class SWGBCCUpgradeResourceSubprocessor:
         wrapper_name = f"Change{game_entity_name}HealRangeWrapper"
         wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
-        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
-                                              wrapper_name,
-                                              dataset.nyan_api_objects,
-                                              wrapper_location)
+        wrapper_raw_api_object = RawAPIObject(
+            wrapper_ref, wrapper_name, dataset.nyan_api_objects, wrapper_location
+        )
         wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         # Nyan patch
         nyan_patch_name = f"Change{game_entity_name}HealRange"
         nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
-        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                 nyan_patch_name,
-                                                 dataset.nyan_api_objects,
-                                                 nyan_patch_location)
+        nyan_patch_raw_api_object = RawAPIObject(
+            nyan_patch_ref, nyan_patch_name, dataset.nyan_api_objects, nyan_patch_location
+        )
         nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
-        nyan_patch_raw_api_object.add_raw_patch_member("max_range",
-                                                       value,
-                                                       "engine.ability.type.RangedContinuousEffect",
-                                                       operator)
+        nyan_patch_raw_api_object.add_raw_patch_member(
+            "max_range", value, "engine.ability.type.RangedContinuousEffect", operator
+        )
 
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
-        wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_forward_ref,
-                                              "engine.util.patch.Patch")
+        wrapper_raw_api_object.add_raw_member("patch", patch_forward_ref, "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
-            )
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
-            wrapper_raw_api_object.add_raw_member("properties",
-                                                  properties,
-                                                  "engine.util.patch.Patch")
+            wrapper_raw_api_object.add_raw_member("properties", properties, "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -534,10 +484,7 @@ class SWGBCCUpgradeResourceSubprocessor:
 
     @staticmethod
     def monk_conversion_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the monk conversion effect (ID: 27).
@@ -579,43 +526,40 @@ class SWGBCCUpgradeResourceSubprocessor:
             wrapper_name = f"Enable{game_entity_name}ConversionWrapper"
             wrapper_ref = f"{obj_name}.{wrapper_name}"
             wrapper_location = ForwardRef(converter_group, obj_name)
-            wrapper_raw_api_object = RawAPIObject(wrapper_ref,
-                                                  wrapper_name,
-                                                  dataset.nyan_api_objects,
-                                                  wrapper_location)
+            wrapper_raw_api_object = RawAPIObject(
+                wrapper_ref, wrapper_name, dataset.nyan_api_objects, wrapper_location
+            )
             wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
             # Nyan patch
             nyan_patch_name = f"Enable{game_entity_name}Conversion"
             nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
             nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
-            nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                     nyan_patch_name,
-                                                     dataset.nyan_api_objects,
-                                                     nyan_patch_location)
+            nyan_patch_raw_api_object = RawAPIObject(
+                nyan_patch_ref, nyan_patch_name, dataset.nyan_api_objects, nyan_patch_location
+            )
             nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             monk_forward_ref = ForwardRef(line, game_entity_name)
-            nyan_patch_raw_api_object.add_raw_patch_member("blacklisted_entities",
-                                                           [monk_forward_ref],
-                                                           "engine.ability.type.ApplyDiscreteEffect",
-                                                           MemberOperator.SUBTRACT)
+            nyan_patch_raw_api_object.add_raw_patch_member(
+                "blacklisted_entities",
+                [monk_forward_ref],
+                "engine.ability.type.ApplyDiscreteEffect",
+                MemberOperator.SUBTRACT,
+            )
 
             patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
-            wrapper_raw_api_object.add_raw_member("patch",
-                                                  patch_forward_ref,
-                                                  "engine.util.patch.Patch")
+            wrapper_raw_api_object.add_raw_member("patch", patch_forward_ref, "engine.util.patch.Patch")
 
             if team:
-                team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
-                )
+                team_property = dataset.pregen_nyan_objects[
+                    "util.patch.property.types.Team"
+                ].get_nyan_object()
                 properties = {
                     dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
                 }
-                wrapper_raw_api_object.add_raw_member("properties",
-                                                      properties,
-                                                      "engine.util.patch.Patch")
+                wrapper_raw_api_object.add_raw_member("properties", properties, "engine.util.patch.Patch")
 
             converter_group.add_raw_api_object(wrapper_raw_api_object)
             converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -627,10 +571,7 @@ class SWGBCCUpgradeResourceSubprocessor:
 
     @staticmethod
     def shield_air_units_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the shield bomber/fighter effect (ID: 38).
@@ -652,10 +593,7 @@ class SWGBCCUpgradeResourceSubprocessor:
 
     @staticmethod
     def shield_dropoff_time_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Union[int, float],
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: float, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the shield dropoff time modify effect (ID: 26).
@@ -677,10 +615,7 @@ class SWGBCCUpgradeResourceSubprocessor:
 
     @staticmethod
     def shield_power_core_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the shield power core effect (ID: 33).
@@ -702,10 +637,7 @@ class SWGBCCUpgradeResourceSubprocessor:
 
     @staticmethod
     def shield_recharge_rate_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Union[int, float],
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: float, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the shield recharge rate modify effect (ID: 10).
@@ -727,10 +659,7 @@ class SWGBCCUpgradeResourceSubprocessor:
 
     @staticmethod
     def submarine_detect_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the submarine detect effect (ID: 23).

@@ -3,9 +3,10 @@
 """
 Module for registering media files.
 """
-from __future__ import annotations
-import typing
 
+from __future__ import annotations
+
+import typing
 
 from ...value_object.read.media_types import MediaType
 

@@ -4,10 +4,9 @@
 Provides FileLikeObject for binary stream interaction.
 """
 
-from ..math import INF, clamp
-
-from .readonly import PosSavingReadOnlyFileLikeObject
 from ..bytequeue import ByteBuffer
+from ..math import INF, clamp
+from .readonly import PosSavingReadOnlyFileLikeObject
 
 
 class StreamSeekBuffer(PosSavingReadOnlyFileLikeObject):
@@ -82,7 +81,7 @@ class StreamSeekBuffer(PosSavingReadOnlyFileLikeObject):
                 # wrapped stream has EOFed.
                 break
 
-        data = self.buf[self.pos: self.pos + size]
+        data = self.buf[self.pos : self.pos + size]
         self.pos += len(data)
         return data
 
@@ -139,8 +138,7 @@ class StreamFragment(PosSavingReadOnlyFileLikeObject):
         data = self.stream.read(size)
 
         if len(data) != size:
-            raise EOFError("unexpected EOF in stream when attempting to read "
-                           "stream fragment")
+            raise EOFError("unexpected EOF in stream when attempting to read stream fragment")
 
         self.pos += len(data)
         return data

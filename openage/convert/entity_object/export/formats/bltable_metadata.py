@@ -3,12 +3,14 @@
 """
 Blendtable definition file.
 """
+
 from __future__ import annotations
+
 import typing
 
 from ..data_definition import DataDefinition
 
-FORMAT_VERSION = '1'
+FORMAT_VERSION = "1"
 
 
 class BlendtableMetadata(DataDefinition):
@@ -32,10 +34,7 @@ class BlendtableMetadata(DataDefinition):
         :param filename: Path to the pattern file.
         :type filename: str
         """
-        self.patterns[pattern_id] = {
-            "pattern_id": pattern_id,
-            "filename": filename
-        }
+        self.patterns[pattern_id] = {"pattern_id": pattern_id, "filename": filename}
 
     def set_blendtabe(self, table: tuple) -> None:
         """
@@ -63,8 +62,8 @@ class BlendtableMetadata(DataDefinition):
         # table entries
         table_width = self._get_table_width()
         for idx in range(table_width):
-            row_entries = self.blendtable[idx * table_width:(idx + 1) * table_width]
-            output_str += f'{" ".join(row_entries)}\n'
+            row_entries = self.blendtable[idx * table_width : (idx + 1) * table_width]
+            output_str += f"{' '.join(row_entries)}\n"
 
         output_str += "]\n\n"
 
@@ -91,15 +90,14 @@ class BlendtableMetadata(DataDefinition):
 
         return left
 
-    def _check_table(self) -> typing.Union[None, typing.NoReturn]:
+    def _check_table(self) -> None:
         """
         Check if the blending table is a nxn matrix.
         """
         table_width = self._get_table_width()
 
         if table_width * table_width != len(self.blendtable):
-            raise ValueError(f"blendtable entries malformed: "
-                             f"{len(self.blendtable)} is not an integer square")
+            raise ValueError(f"blendtable entries malformed: {len(self.blendtable)} is not an integer square")
 
     def __repr__(self):
-        return f'BlendtableMetadata<{self.filename}>'
+        return f"BlendtableMetadata<{self.filename}>"

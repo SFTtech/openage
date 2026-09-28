@@ -2,7 +2,7 @@
 
 This command should provide required packages for FreeBSD installation:
 
-`sudo pkg install cmake cython eigen3 harfbuzz opus-tools opusfile png py-mako py-numpy py-lz4 py-pillow py-pygments py-toml python py-uv qt6 toml11`
+`sudo pkg install cmake cython eigen3 py-setuptools harfbuzz opus-tools opusfile png py-mako py-numpy py-lz4 py-pillow py-pygments py-toml python py-uv qt6 toml11`
 
 You will also need [nyan](https://github.com/SFTtech/nyan/blob/master/doc/building.md) and its dependencies.
 

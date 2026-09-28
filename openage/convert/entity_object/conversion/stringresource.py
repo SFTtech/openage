@@ -3,8 +3,8 @@
 # TODO pylint: disable=C,too-many-function-args
 
 from __future__ import annotations
-import typing
 
+import typing
 from collections import defaultdict
 
 from ...value_object.read.genie_structure import GenieStructure
@@ -14,7 +14,6 @@ if typing.TYPE_CHECKING:
 
 
 class StringResource(GenieStructure):
-
     def __init__(self):
         super().__init__()
         self.strings = defaultdict(lambda: {})
@@ -38,7 +37,7 @@ class StringResource(GenieStructure):
         Return the members in this struct.
         """
         data_format = (
-            (True, "id", None,   "int32_t"),
+            (True, "id", None, "int32_t"),
             (True, "lang", None, "char[16]"),
             (True, "text", None, "std::string"),
         )

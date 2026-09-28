@@ -9,27 +9,24 @@ from __future__ import annotations
 
 import typing
 
-
-from openage.log import info, warn, dbg
-from openage.util.toml import loads as toml_loads
+from openage.log import dbg, info, warn
 from openage.util.hash import hash_file
+from openage.util.toml import loads as toml_loads
+
 from ...value_object.init.game_version import GameEdition, GameExpansion, GameVersion, Support
 
 if typing.TYPE_CHECKING:
-    from openage.util.fslike.directory import Directory
     from openage.util.fslike.path import Path
 
 
 def iterate_game_versions(
-    srcdir: Directory,
-    avail_game_eds: list[GameEdition],
-    avail_game_exps: list[GameExpansion]
+    srcdir: Path, avail_game_eds: list[GameEdition], avail_game_exps: list[GameExpansion]
 ) -> GameVersion:
     """
     Determine what editions and expansions of a game are installed in srcdir
     by iterating through all versions the converter knows about.
     """
-    best_edition = None
+    best_edition: GameEdition | None = None
     expansions = []
 
     for game_edition in avail_game_eds:
@@ -43,17 +40,20 @@ def iterate_game_versions(
                 required_file = srcdir.joinpath(required_path)
 
                 if required_file.is_file():
-                    hash_val = hash_file(required_file,
-                                         hash_algo=detection_hints.hash_algo)
+                    hash_val = hash_file(required_file, hash_algo=detection_hints.hash_algo)
 
                     if hash_val not in detection_hints.get_hashes():
-                        dbg(f"Found required file {required_file.resolve_native_path()} "
-                            "but could not determine version number")
+                        dbg(
+                            f"Found required file {required_file.resolve_native_path()} "
+                            "but could not determine version number"
+                        )
 
                     else:
                         version_no = detection_hints.get_hashes()[hash_val]
-                        dbg(f"Found required file {required_file.resolve_native_path()} "
-                            f"for version {version_no}")
+                        dbg(
+                            f"Found required file {required_file.resolve_native_path()} "
+                            f"for version {version_no}"
+                        )
 
                     found_file = True
                     break
@@ -89,12 +89,12 @@ def iterate_game_versions(
     else:
         # Either no version or an unsupported or broken was found
         # Return the last detected edition
+        assert best_edition is not None
         return GameVersion(edition=best_edition)
 
-    for game_expansion in best_edition.expansions:
-        for existing_game_expansion in avail_game_exps:
-            if game_expansion == existing_game_expansion.game_id:
-                game_expansion = existing_game_expansion
+    avail_exps_by_id = {expansion.game_id: expansion for expansion in avail_game_exps}
+    for expansion_id in best_edition.expansions:
+        game_expansion = avail_exps_by_id[expansion_id]
 
         # Check for files that we know exist in the game expansion's folder
         for detection_hints in game_expansion.game_file_versions:
@@ -128,13 +128,13 @@ def iterate_game_versions(
     return GameVersion(edition=best_edition, expansions=tuple(expansions))
 
 
-def create_version_objects(srcdir: Directory) -> tuple[list[GameEdition], list[GameExpansion]]:
+def create_version_objects(srcdir: Path) -> tuple[list[GameEdition], list[GameExpansion]]:
     """
     Create GameEdition and GameExpansion objects from auxiliary
     config files.
     """
-    game_expansion_list = []
-    game_edition_list = []
+    game_expansion_list: list[GameExpansion] = []
+    game_edition_list: list[GameEdition] = []
 
     # initiliaze necessary paths
     game_edition_path = srcdir.joinpath("game_editions.toml")
@@ -152,6 +152,7 @@ def create_version_objects(srcdir: Directory) -> tuple[list[GameEdition], list[G
     for game in game_editions:
         aux_path = srcdir[game_editions[game]["subfolder"]]
         game_obj = create_game_obj(game_editions[game], aux_path)
+        assert isinstance(game_obj, GameEdition)
         game_edition_list.append(game_obj)
 
     # create and list GameExpansion objects
@@ -159,16 +160,13 @@ def create_version_objects(srcdir: Directory) -> tuple[list[GameEdition], list[G
     for game in game_expansions:
         aux_path = srcdir[game_expansions[game]["subfolder"]]
         game_obj = create_game_obj(game_expansions[game], aux_path, True)
+        assert isinstance(game_obj, GameExpansion)
         game_expansion_list.append(game_obj)
 
     return game_edition_list, game_expansion_list
 
 
-def create_game_obj(
-    game_info: dict[str, str],
-    aux_path: Path,
-    expansion: bool = False
-) -> typing.Union[GameEdition, GameExpansion]:
+def create_game_obj(game_info: dict, aux_path: Path, expansion: bool = False) -> GameEdition | GameExpansion:
     """
     Create a GameEdition or GameExpansion object from the contents
     of the game_info dictionary and its version hash file.
@@ -176,25 +174,24 @@ def create_game_obj(
     is needed to be created or GameExpansion.
     """
     # initialize necessary parameters
-    game_name = game_info['name']
-    game_id = game_info['game_edition_id']
-    support = game_info['support']
-    modpacks = game_info['targetmods']
+    game_name = game_info["name"]
+    game_id = game_info["game_edition_id"]
+    support = game_info["support"]
+    modpacks = game_info["targetmods"]
     if not expansion:
-        expansions = game_info['expansions']
+        expansions = game_info["expansions"]
 
     flags = {}
 
     # add mediapaths for the game
     game_mediapaths = []
-    for media_type in game_info['mediapaths']:
-        game_mediapaths.append(
-            (media_type, game_info['mediapaths'][media_type]))
+    for media_type in game_info["mediapaths"]:
+        game_mediapaths.append((media_type, game_info["mediapaths"][media_type]))
 
     # add install dirs for the game
     game_installpaths = {}
-    if 'installpaths' in game_info:
-        game_installpaths = game_info['installpaths']
+    if "installpaths" in game_info:
+        game_installpaths = game_info["installpaths"]
 
     # add version hashes from the auxiliary file specific for the game
     game_hash_path = aux_path["version_hashes.toml"]
@@ -209,29 +206,31 @@ def create_game_obj(
     game_version_info = []
     for item in game_hashes.items():
         if file_version == "1.0":
-            game_version_info.append((
-                [item[1]['path']],
-                item[1]['map']
-            ))
+            game_version_info.append(([item[1]["path"]], item[1]["map"]))
 
         elif file_version == "2.0":
-            game_version_info.append((
-                item[1]['paths'],
-                item[1]['map']
-            ))
+            game_version_info.append((item[1]["paths"], item[1]["map"]))
 
         else:
-            raise SyntaxError(
-                f"{game_hash_path}: Unrecognized file version: '{file_version}'")
+            raise SyntaxError(f"{game_hash_path}: Unrecognized file version: '{file_version}'")
 
     # Check if there is a media cache file and save the path if it exists
     if aux_path["media_cache.toml"].is_file():
         flags["media_cache"] = aux_path["media_cache.toml"]
 
     if expansion:
-        return GameExpansion(game_name, game_id, support, game_version_info,
-                             game_mediapaths, modpacks, **flags)
+        return GameExpansion(
+            game_name, game_id, support, game_version_info, game_mediapaths, modpacks, **flags
+        )
 
-    return GameEdition(game_name, game_id, support, game_version_info,
-                       game_mediapaths, game_installpaths, modpacks,
-                       expansions, **flags)  # pylint: disable=possibly-used-before-assignment
+    return GameEdition(
+        game_name,
+        game_id,
+        support,
+        game_version_info,
+        game_mediapaths,
+        game_installpaths,
+        modpacks,
+        expansions,
+        **flags,
+    )  # pylint: disable=possibly-used-before-assignment

@@ -5,7 +5,9 @@
 """
 Creates patches and modifiers for civs.
 """
+
 from __future__ import annotations
+
 import typing
 
 from .....nyan.nyan_structs import MemberOperator
@@ -94,8 +96,10 @@ class DE2CivSubprocessor:
                         # Skip Dark Age; it is not a tech in openage
                         patches.extend(bonus_patches)
 
-                    if tech_id not in dataset.tech_groups.keys() or\
-                            not dataset.tech_groups[tech_id].is_researchable():
+                    if (
+                        tech_id not in dataset.tech_groups.keys()
+                        or not dataset.tech_groups[tech_id].is_researchable()
+                    ):
                         # TODO: Bonus unlocked by something else
                         continue
 
@@ -119,32 +123,27 @@ class DE2CivSubprocessor:
             wrapper_name = f"{tech_name}CivBonusWrapper"
             wrapper_ref = f"{civ_name}.{wrapper_name}"
             wrapper_location = ForwardRef(civ_group, civ_name)
-            wrapper_raw_api_object = RawAPIObject(wrapper_ref,
-                                                  wrapper_name,
-                                                  dataset.nyan_api_objects,
-                                                  wrapper_location)
+            wrapper_raw_api_object = RawAPIObject(
+                wrapper_ref, wrapper_name, dataset.nyan_api_objects, wrapper_location
+            )
             wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
             # Nyan patch
             nyan_patch_name = f"{tech_name}CivBonus"
             nyan_patch_ref = f"{civ_name}.{wrapper_name}.{nyan_patch_name}"
             nyan_patch_location = ForwardRef(civ_group, wrapper_ref)
-            nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                     nyan_patch_name,
-                                                     dataset.nyan_api_objects,
-                                                     nyan_patch_location)
+            nyan_patch_raw_api_object = RawAPIObject(
+                nyan_patch_ref, nyan_patch_name, dataset.nyan_api_objects, nyan_patch_location
+            )
             nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
-            nyan_patch_raw_api_object.add_raw_patch_member("updates",
-                                                           patches,
-                                                           "engine.util.tech.Tech",
-                                                           MemberOperator.ADD)
+            nyan_patch_raw_api_object.add_raw_patch_member(
+                "updates", patches, "engine.util.tech.Tech", MemberOperator.ADD
+            )
 
             patch_forward_ref = ForwardRef(civ_group, nyan_patch_ref)
-            wrapper_raw_api_object.add_raw_member("patch",
-                                                  patch_forward_ref,
-                                                  "engine.util.patch.Patch")
+            wrapper_raw_api_object.add_raw_member("patch", patch_forward_ref, "engine.util.patch.Patch")
 
             civ_group.add_raw_api_object(wrapper_raw_api_object)
             civ_group.add_raw_api_object(nyan_patch_raw_api_object)

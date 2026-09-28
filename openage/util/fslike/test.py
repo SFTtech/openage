@@ -4,15 +4,14 @@ Tests for the filesystem-like abstraction.
 """
 
 import os
-
 from io import UnsupportedOperation
-from tempfile import gettempdir, NamedTemporaryFile
+from tempfile import NamedTemporaryFile, gettempdir
 
-from openage.testing.testing import assert_value, assert_raises, result
+from openage.testing.testing import assert_raises, assert_value, result
 
-from .directory import Directory, CaseIgnoringDirectory
+from .directory import CaseIgnoringDirectory, Directory
 from .union import Union
-from .wrapper import WriteBlocker, DirectoryCreator
+from .wrapper import DirectoryCreator, WriteBlocker
 
 
 def test_path(root_path, root_dir):
@@ -25,8 +24,7 @@ def test_path(root_path, root_dir):
     assert_value(deeper.parent, root_path["let's go"])
     deeper.mkdirs()
     assert_value(deeper.is_dir(), True)
-    assert_value(deeper.resolve_native_path().decode(),
-                 os.path.join(root_dir, "let's go", "deeper"))
+    assert_value(deeper.resolve_native_path().decode(), os.path.join(root_dir, "let's go", "deeper"))
 
     insert = deeper["insertion.stuff.test"]
     insert.touch()
@@ -58,9 +56,7 @@ def test_union(root_path, root_dir):
     test_dir_r = os.path.join(root_dir, "r")
 
     # automated directory creation:
-    path_w = DirectoryCreator(
-        Directory(test_dir_w, create_if_missing=True).root
-    ).root
+    path_w = DirectoryCreator(Directory(test_dir_w, create_if_missing=True).root).root
     path_r = Directory(test_dir_r, create_if_missing=True).root
 
     assert_value(path_r["some_file"].is_file(), False)
@@ -82,7 +78,7 @@ def test_union(root_path, root_dir):
     assert_value(path_protected.writable(), False)
 
     with assert_raises(UnsupportedOperation):
-        result(path_protected.open('wb'))
+        result(path_protected.open("wb"))
 
     # mount the above into one virtual file system
     target = Union().root

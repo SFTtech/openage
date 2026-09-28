@@ -6,17 +6,23 @@ Checks some general whitespace rules and the encoding for text files.
 
 import re
 
-from .util import findfiles, readfile, has_ext, issue_str_line, BADUTF8FILES
+from .util import BADUTF8FILES, findfiles, has_ext, issue_str_line, readfile
 
-TRAIL_WHITESPACE_RE = re.compile((
-    # trailing whitespace
-    r"( |\t)+\n"
-))
+TRAIL_WHITESPACE_RE = re.compile(
+    (
+        # trailing whitespace
+        r"( |\t)+\n"
+    )
+)
 
 IMMEDIATE_TODO_RE = re.compile(
     "as" + "df",
-    re.IGNORECASE  # pylint: disable=no-member
+    re.IGNORECASE,  # pylint: disable=no-member
 )
+
+# the marker itself, constructed so this file doesn't contain it literally
+# (the pre-commit hook greps the staged diff for it)
+IMMEDIATE_TODO_MARKER = "as" + "df"
 
 
 def find_issues(dirnames, exts):
@@ -27,25 +33,25 @@ def find_issues(dirnames, exts):
         data = readfile(filename)
         analyse_each_line = False
 
-        if filename.endswith('.gen.h') or filename.endswith('.gen.cpp'):
+        if filename.endswith(".gen.h") or filename.endswith(".gen.cpp"):
             # TODO all this for now, until someone fixes the codegen.
             continue
 
-        if filename.startswith('openage/') and filename.endswith('.cpp'):
+        if filename.startswith("openage/") and filename.endswith(".cpp"):
             # allow issues for Cython-generated files.
             continue
 
-        if '\r\n' in data:
+        if "\r\n" in data:
             yield "Windows EOL format", filename, None
 
-        if data.endswith('\n\n'):
+        if data.endswith("\n\n"):
             yield "Trailing newline at file end", filename, None
 
-        if data and not data.endswith('\n'):
+        if data and not data.endswith("\n"):
             yield "File does not end in '\\n'", filename, None
 
-        if has_ext(filename, ('.py', '.pyx', '.pxd')):
-            if '\t' in data:
+        if has_ext(filename, (".py", ".pyx", ".pxd")):
+            if "\t" in data:
                 yield "File contains tabs", filename, None
 
         if TRAIL_WHITESPACE_RE.search(data) or IMMEDIATE_TODO_RE.search(data):
@@ -66,15 +72,16 @@ def find_issues_with_lines(filename):
     data = readfile(filename)
 
     for num, line in enumerate(data.splitlines(True), start=1):
-
         match = TRAIL_WHITESPACE_RE.search(line)
         if match:
-            yield issue_str_line("Trailing whitespace", filename, line, num,
-                                 (match.start(1), match.end(1)))
+            yield issue_str_line("Trailing whitespace", filename, line, num, (match.start(1), match.end(1)))
 
         match = IMMEDIATE_TODO_RE.search(line)
         if match:
-            yield issue_str_line("Found 'as"
-                                 "df', indicating an immediate TODO",
-                                 filename, line, num,
-                                 (match.start(), match.end()))
+            yield issue_str_line(
+                f"Found '{IMMEDIATE_TODO_MARKER}', indicating an immediate TODO",
+                filename,
+                line,
+                num,
+                (match.start(), match.end()),
+            )

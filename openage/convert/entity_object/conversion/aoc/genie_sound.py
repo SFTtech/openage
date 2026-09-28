@@ -3,14 +3,15 @@
 """
 Contains structures and API-like objects for sounds from AoC.
 """
+
 from __future__ import annotations
+
 import typing
 
 from ..converter_object import ConverterObject
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.aoc.genie_object_container\
-        import GenieObjectContainer
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
     from openage.convert.value_object.read.value_members import ValueMember
 
 
@@ -19,13 +20,13 @@ class GenieSound(ConverterObject):
     Sound definition from a .dat file.
     """
 
-    __slots__ = ('data',)
+    __slots__ = ("data",)
 
     def __init__(
         self,
         sound_id: int,
         full_data_set: GenieObjectContainer,
-        members: dict[str, ValueMember] = None
+        members: dict[str, ValueMember] | None = None,
     ):
         """
         Creates a new Genie sound object.

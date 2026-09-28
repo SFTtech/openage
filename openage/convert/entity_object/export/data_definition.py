@@ -5,6 +5,7 @@ Output format specification for data to write.
 """
 
 from __future__ import annotations
+
 import typing
 
 

@@ -8,11 +8,12 @@ from __future__ import annotations
 
 import typing
 
-
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.converter_object import ConverterObjectContainer
-    from openage.convert.entity_object.conversion.converter_object import ConverterObject
     from openage.convert.entity_object.conversion.aoc.genie_graphic import GenieGraphic
+    from openage.convert.entity_object.conversion.converter_object import (
+        ConverterObject,
+        ConverterObjectContainer,
+    )
 
 
 class CombinedSprite:
@@ -22,14 +23,9 @@ class CombinedSprite:
     This will become a spritesheet texture with a sprite file.
     """
 
-    __slots__ = ('head_sprite_id', 'filename', 'data', 'metadata', '_refs')
+    __slots__ = ("_refs", "data", "filename", "head_sprite_id", "metadata")
 
-    def __init__(
-        self,
-        head_sprite_id: int,
-        filename: str,
-        full_data_set: ConverterObjectContainer
-    ):
+    def __init__(self, head_sprite_id: int, filename: str, full_data_set: ConverterObjectContainer):
         """
         Creates a new CombinedSprite instance.
 

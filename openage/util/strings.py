@@ -7,7 +7,7 @@ manipulation, ...
 from sys import stdout
 
 
-def decode_until_null(data: bytes, encoding: str = 'utf-8') -> str:
+def decode_until_null(data: bytes, encoding: str = "utf-8") -> str:
     """
     decodes a bytes object, aborting at the first \\0 character.
 
@@ -26,14 +26,14 @@ def try_decode(data: bytes) -> str:
     does its best to attempt decoding the given string of unknown encoding.
     """
     try:
-        return data.decode('utf-8')
+        return data.decode("utf-8")
     except UnicodeDecodeError:
         pass
 
-    return data.decode('iso-8859-1')
+    return data.decode("iso-8859-1")
 
 
-def binstr(num: int, bits: int = None, group: int = 8) -> str:
+def binstr(num: int, bits: int | None = None, group: int = 8) -> str:
     """
     Similar to the built-in bin(), but optionally takes
     the number of bits as an argument, and prints underscores instead of
@@ -45,13 +45,13 @@ def binstr(num: int, bits: int = None, group: int = 8) -> str:
     result = bin(num)[2:]
 
     if bits is not None:
-        result = result.rjust(bits, '0')
+        result = result.rjust(bits, "0")
 
-    result = result.replace('0', '_')
+    result = result.replace("0", "_")
 
     if group is not None:
-        grouped = [result[i:i + group] for i in range(0, len(result), group)]
-        result = ' '.join(grouped)
+        grouped = [result[i : i + group] for i in range(0, len(result), group)]
+        result = " ".join(grouped)
 
     return result
 
@@ -64,7 +64,7 @@ def colorize(string: str, colorcode: str) -> str:
     '\\x1b[31;1mfoo\\x1b[m'
     """
     if colorcode:
-        colorized = f'\x1b[{colorcode}m{string}\x1b[m'
+        colorized = f"\x1b[{colorcode}m{string}\x1b[m"
     else:
         colorized = string
 
@@ -82,9 +82,9 @@ def lstrip_once(string: str, substr: str) -> str:
     ValueError: 'libopenage.test' doesn't start with 'openage.'
     """
     if not string.startswith(substr):
-        raise ValueError(f"{repr(string)} doesn't start with {repr(substr)}")
+        raise ValueError(f"{string!r} doesn't start with {substr!r}")
 
-    return string[len(substr):]
+    return string[len(substr) :]
 
 
 def rstrip_once(string: str, substr: str) -> str:
@@ -95,10 +95,9 @@ def rstrip_once(string: str, substr: str) -> str:
     'test'
     """
     if not string.endswith(substr):
-        raise ValueError(
-            f"{repr(string)} doesn't end with {repr(substr)}")
+        raise ValueError(f"{string!r} doesn't end with {substr!r}")
 
-    return string[:-len(substr)]
+    return string[: -len(substr)]
 
 
 def format_progress(progress: int, total: int) -> str:
