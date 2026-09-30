@@ -152,7 +152,7 @@ def get_prev_srcdir_paths(asset_location_path: Path) -> set[str] | None:
     :return: Previously used source directories.
     :rtype: set[str] | None
     """
-    prev_source_dirs: set[str] = set()
+    prev_source_dirs: set[str] | None = set()
     try:
         with asset_location_path.open("r") as file_obj:
             prev_source_dirs.update(file_obj.read().split("\n"))

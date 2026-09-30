@@ -16,15 +16,15 @@ from ...log import info, warn
 from ...util.fslike.directory import Directory
 from ..service.init.mount_asset_dirs import mount_asset_dirs
 from ..service.init.version_detect import create_version_objects
+from .subtool.acquire_sourcedir import acquire_conversion_source_dir
 from .subtool.version_select import get_game_version
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.read.media.colortable import ColorTable
-    from openage.util.fslike.directory import Directory
     from openage.util.fslike.path import Path
 
 
-def interactive_browser(cfg: Path, srcdir: Path | None = None) -> typing.NoReturn:
+def interactive_browser(cfg: Path, srcdir: Path | None = None) -> None:
     """
     launch an interactive view for browsing the original
     archives.
@@ -42,6 +42,9 @@ def interactive_browser(cfg: Path, srcdir: Path | None = None) -> typing.NoRetur
     auxiliary_files_dir = cfg / "converter" / "games"
     avail_game_eds, avail_game_exps = create_version_objects(auxiliary_files_dir)
 
+    if srcdir is None:
+        srcdir = acquire_conversion_source_dir(avail_game_eds)
+
     # Acquire game version info
     game_version = get_game_version(srcdir, avail_game_eds, avail_game_exps)
     if not game_version.edition:
@@ -54,15 +57,15 @@ def interactive_browser(cfg: Path, srcdir: Path | None = None) -> typing.NoRetur
         warn("cannot launch browser as no valid input assets were found.")
         return
 
-    def save(path: Path, target: Path) -> None:
+    def save(path: Path, target: str) -> None:
         """
         save a path to a custom target
         """
         with path.open("rb") as infile:
-            with open(target, "rb") as outfile:
+            with open(target, "wb") as outfile:
                 outfile.write(infile.read())
 
-    def save_slp(path: Path, target: Path, palette: ColorTable | None = None) -> None:
+    def save_slp(path: Path, target: str, palette: dict[int, ColorTable] | None = None) -> None:
         """
         save a slp as png.
         """
@@ -83,7 +86,7 @@ def interactive_browser(cfg: Path, srcdir: Path | None = None) -> typing.NoRetur
             out_path, filename = os.path.split(target)
             MediaExporter.save_png(tex, Directory(out_path).root, filename)
 
-    def save_smx(path: Path, target: Path, palette: ColorTable | None = None) -> None:
+    def save_smx(path: Path, target: str, palette: dict[int, ColorTable] | None = None) -> None:
         """
         save a smx as png.
         """

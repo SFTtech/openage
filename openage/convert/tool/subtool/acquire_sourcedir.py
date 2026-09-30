@@ -17,7 +17,7 @@ import tempfile
 import typing
 from configparser import ConfigParser
 from pathlib import Path
-from typing import AnyStr, Generator
+from typing import Generator
 from urllib.request import urlopen
 
 from ....log import dbg, info, warn
@@ -26,6 +26,7 @@ from ....util.fslike.union import Union
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.init.game_version import GameEdition
+    from openage.util.fslike.path import Path as FSPath
 
 
 STANDARD_PATH_IN_32BIT_WINEPREFIX = "drive_c/Program Files/Microsoft Games/Age of Empires II/"
@@ -39,7 +40,7 @@ MACOS_DATA_SUBDIR = "AgeOfEmpires2Data"
 TRIAL_URL = "https://archive.org/download/AgeOfEmpiresIiTheConquerorsDemo/Age2XTrial.exe"
 
 
-def expand_relative_path(path: str) -> AnyStr:
+def expand_relative_path(path: str) -> str:
     """Expand relative path to an absolute one, including abbreviations like
     ~ and environment variables"""
     return os.path.realpath(os.path.expandvars(os.path.expanduser(path)))
@@ -86,7 +87,7 @@ def wanna_download_trial(answer: bool | None = None) -> bool:
     return prompt("Do you want to download the AoC trial version?", answer=answer)
 
 
-def query_source_dir(proposals: set[str]) -> AnyStr:
+def query_source_dir(proposals: set[str]) -> str:
     """
     Query interactively for a conversion source directory.
     Lists proposals and allows selection if some were found.
@@ -118,7 +119,7 @@ def query_source_dir(proposals: set[str]) -> AnyStr:
     return sourcedir
 
 
-def mount_source_dir(sourcedir: AnyStr) -> Path:
+def mount_source_dir(sourcedir: str) -> FSPath:
     """
     Wraps a source directory path in a file system-like object.
 
@@ -141,7 +142,7 @@ def mount_source_dir(sourcedir: AnyStr) -> Path:
 
 def acquire_conversion_source_dir(
     avail_game_eds: list[GameEdition], prev_srcdir_paths: set[str] | None = None
-) -> Path:
+) -> FSPath:
     """
     Acquires source dir for the asset conversion.
 
@@ -205,7 +206,7 @@ def acquire_conversion_source_dir(
     return mount_source_dir(sourcedir)
 
 
-def download_trial() -> AnyStr:
+def download_trial() -> str:
     """
     Download and extract the AoC trial version.
 

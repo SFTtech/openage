@@ -17,7 +17,7 @@ if typing.TYPE_CHECKING:
     from openage.util.fslike.path import Path
 
 
-def mount_asset_dirs(srcdir: Path, game_version: GameVersion) -> Union:
+def mount_asset_dirs(srcdir: Path, game_version: GameVersion) -> Path:
     """
     Returns a Union path where srcdir is mounted at /,
     and all the asset files are mounted in subfolders.
