@@ -498,7 +498,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         return self.get_head_unit()["unit_class"].value
 
-    def get_garrison_mode(self, civ_id: int = -1) -> GenieGarrisonMode:
+    def get_garrison_mode(self, civ_id: int = -1) -> GenieGarrisonMode | None:
         """
         Returns the mode the garrison operates in. This is used by the
         converter to determine which storage abilities the line will get.
@@ -815,7 +815,7 @@ class GenieStackBuildingGroup(GenieBuildingLineGroup):
         """
         return self.stack["id0"].value
 
-    def get_train_location_id(self) -> int:
+    def get_train_location_id(self) -> int | None:
         """
         Stack buildings are creatable when their head building is creatable.
 
@@ -1090,7 +1090,7 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
 
         return False
 
-    def get_train_location_id(self) -> int:
+    def get_train_location_id(self) -> int | None:
         """
         Returns the group_id for building line if the task group is
         creatable, otherwise return None.
@@ -1239,7 +1239,7 @@ class GenieVillagerGroup(GenieUnitLineGroup):
 
         return matching_units
 
-    def get_train_location_id(self) -> int:
+    def get_train_location_id(self) -> int | None:
         """
         Returns the group_id for building line if the task group is
         creatable, otherwise return None.

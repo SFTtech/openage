@@ -78,7 +78,7 @@ class CombinedSound:
         """
         return self.head_sound_id
 
-    def get_relative_file_location(self) -> str:
+    def get_relative_file_location(self) -> str | None:
         """
         Return the sound file location relative to where the file
         is expected to be in the modpack.
@@ -91,7 +91,7 @@ class CombinedSound:
 
         return None
 
-    def resolve_sound_location(self) -> str:
+    def resolve_sound_location(self) -> str | None:
         """
         Returns the planned location of the sound file in the modpack.
         """

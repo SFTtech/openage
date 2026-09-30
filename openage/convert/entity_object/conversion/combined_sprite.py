@@ -85,7 +85,7 @@ class CombinedSprite:
         """
         return self.head_sprite_id
 
-    def get_relative_sprite_location(self) -> str:
+    def get_relative_sprite_location(self) -> str | None:
         """
         Return the sprite file location relative to where the file
         is expected to be in the modpack.
@@ -120,7 +120,7 @@ class CombinedSprite:
 
         return location_dict
 
-    def resolve_sprite_location(self) -> str:
+    def resolve_sprite_location(self) -> str | None:
         """
         Returns the planned location of the definition file in the modpack.
         """

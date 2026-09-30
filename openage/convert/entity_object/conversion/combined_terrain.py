@@ -75,7 +75,7 @@ class CombinedTerrain:
         """
         return self.terrain_id
 
-    def get_relative_terrain_location(self) -> str:
+    def get_relative_terrain_location(self) -> str | None:
         """
         Return the terrain file location relative to where the file
         is expected to be in the modpack.
@@ -98,7 +98,7 @@ class CombinedTerrain:
         """
         return self.resolve_terrain_location()
 
-    def resolve_terrain_location(self) -> str:
+    def resolve_terrain_location(self) -> str | None:
         """
         Returns the planned location of the definition file in the modpack.
         """

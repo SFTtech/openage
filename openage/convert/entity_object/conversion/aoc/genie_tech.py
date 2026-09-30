@@ -153,7 +153,7 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
         """
         return self.tech["required_tech_count"].value
 
-    def get_research_location_id(self) -> int:
+    def get_research_location_id(self) -> int | None:
         """
         Returns the group_id for a building line if the tech is
         researchable, otherwise return None.
