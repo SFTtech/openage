@@ -77,7 +77,7 @@ class Tech(GenieStructure):
         Return the members in this struct.
         """
         if game_version.edition.game_id not in ("ROR", "AOE1DE"):
-            data_format = [
+            data_format: list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]] = [
                 # research ids of techs that are required for activating the possible research
                 (READ_GEN, "required_techs", StorageType.ARRAY_ID, "int16_t[6]"),
             ]

@@ -275,10 +275,6 @@ class SWGBCCAbilitySubprocessor:
         line.add_raw_api_object(batch_raw_api_object)
 
         # Effects
-        # `effects` is set inside the per-command branches below; pre-initialise
-        # so the later add_raw_member is valid for command_ids we don't yet
-        # handle.
-        effects = None
         if command_id == 7:
             # Attack
             if projectile != 1:
@@ -290,6 +286,9 @@ class SWGBCCAbilitySubprocessor:
         elif command_id == 104:
             # Convert
             effects = AoCEffectSubprocessor.get_convert_effects(line, batch_ref)
+
+        else:
+            raise ValueError(f"no effects for command id {command_id}")
 
         batch_raw_api_object.add_raw_member("effects", effects, "engine.util.effect_batch.EffectBatch")
 

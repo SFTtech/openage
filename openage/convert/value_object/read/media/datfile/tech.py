@@ -55,7 +55,7 @@ class EffectBundle(GenieStructure):  # also called techage in some other tools
         Return the members in this struct.
         """
         if game_version.edition.game_id in ("AOE1DE", "AOE2DE"):
-            data_format = [
+            data_format: list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]] = [
                 (SKIP, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ, "name_len", StorageType.INT_MEMBER, "uint16_t"),
                 (SKIP, "name", StorageType.STRING_MEMBER, "char[name_len]"),

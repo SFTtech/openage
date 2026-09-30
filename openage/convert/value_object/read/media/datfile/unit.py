@@ -302,7 +302,7 @@ class UnitObject(GenieStructure):
         Return the members in this struct.
         """
         if game_version.edition.game_id not in ("AOE1DE", "AOE2DE"):
-            data_format = [
+            data_format: list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]] = [
                 (READ, "name_length", StorageType.INT_MEMBER, "uint16_t"),
             ]
         else:

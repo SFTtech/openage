@@ -25,6 +25,21 @@ from .combined_terrain import CombinedTerrain
 if typing.TYPE_CHECKING:
     from .aoc.genie_object_container import GenieObjectContainer
 
+# Values that get resolved to nyan values when the raw API object is converted.
+RawMemberValue = (
+    float
+    | bool
+    | str
+    | list
+    | dict
+    | MemberSpecialValue
+    | NyanObject
+    | ForwardRef
+    | CombinedSprite
+    | CombinedTerrain
+    | CombinedSound
+)
+
 
 class ConverterObject:
     """
@@ -349,7 +364,7 @@ class RawAPIObject:
     def add_raw_member(
         self,
         name: str,
-        value: float | bool | str | list | dict | MemberSpecialValue | NyanObject | ForwardRef,
+        value: RawMemberValue,
         origin: str,
     ) -> None:
         """
@@ -367,7 +382,7 @@ class RawAPIObject:
     def add_raw_patch_member(
         self,
         name: str,
-        value: float | bool | str | list | dict | MemberSpecialValue | NyanObject | ForwardRef,
+        value: RawMemberValue,
         origin: str,
         operator: MemberOperator,
     ) -> None:
