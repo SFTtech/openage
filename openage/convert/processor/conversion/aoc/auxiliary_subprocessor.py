@@ -24,7 +24,6 @@ from ....value_object.conversion.forward_ref import ForwardRef
 
 if typing.TYPE_CHECKING:
     from openage.convert.entity_object.conversion.aoc.genie_tech import GenieTechEffectBundleGroup
-    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup
 
 
 class AoCAuxiliarySubprocessor:
@@ -33,7 +32,7 @@ class AoCAuxiliarySubprocessor:
     """
 
     @staticmethod
-    def get_creatable_game_entity(line: GenieGameEntityGroup) -> None:
+    def get_creatable_game_entity(line: GenieUnitLineGroup | GenieBuildingLineGroup) -> None:
         """
         Creates the CreatableGameEntity object for a unit/building line.
 

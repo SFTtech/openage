@@ -25,7 +25,7 @@ from ....value_object.conversion.forward_ref import ForwardRef
 from ..aoc.auxiliary_subprocessor import AoCAuxiliarySubprocessor
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup
+    pass
 
 
 class RoRAuxiliarySubprocessor:
@@ -34,7 +34,7 @@ class RoRAuxiliarySubprocessor:
     """
 
     @staticmethod
-    def get_creatable_game_entity(line: GenieGameEntityGroup) -> None:
+    def get_creatable_game_entity(line: GenieUnitLineGroup | GenieBuildingLineGroup) -> None:
         """
         Creates the CreatableGameEntity object for a unit/building line. In comparison
         to the AoC version, ths replaces some unit class IDs and removes garrison

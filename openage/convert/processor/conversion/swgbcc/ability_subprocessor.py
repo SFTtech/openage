@@ -21,7 +21,11 @@ import typing
 
 from .....nyan.nyan_structs import MemberSpecialValue
 from .....util.ordered_set import OrderedSet
-from ....entity_object.conversion.aoc.genie_unit import GenieStackBuildingGroup, GenieVillagerGroup
+from ....entity_object.conversion.aoc.genie_unit import (
+    GenieBuildingLineGroup,
+    GenieStackBuildingGroup,
+    GenieVillagerGroup,
+)
 from ....entity_object.conversion.converter_object import RawAPIObject
 from ....service.conversion import internal_name_lookups
 from ....value_object.conversion.forward_ref import ForwardRef
@@ -493,7 +497,7 @@ class SWGBCCAbilitySubprocessor:
         return ability_forward_ref
 
     @staticmethod
-    def constructable_ability(line: GenieGameEntityGroup) -> ForwardRef:
+    def constructable_ability(line: GenieBuildingLineGroup) -> ForwardRef:
         """
         Adds the Constructable ability to a line.
 
