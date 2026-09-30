@@ -14,16 +14,13 @@ from .lookup_dicts import RESOURCE_TYPES
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.init.game_version import GameVersion
-    from openage.convert.value_object.read.member_access import MemberAccess
-    from openage.convert.value_object.read.read_members import ReadMember
+    from openage.convert.value_object.read.genie_structure import DataFormatMember
 
 
 class TechResourceCost(GenieStructure):
     @classmethod
     @cache
-    def get_data_format_members(
-        cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
+    def get_data_format_members(cls, game_version: GameVersion) -> list[DataFormatMember]:
         """
         Return the members in this struct.
         """
@@ -48,9 +45,7 @@ class ResearchLocationDE2(GenieStructure):
 
     @classmethod
     @cache
-    def get_data_format_members(
-        cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
+    def get_data_format_members(cls, game_version: GameVersion) -> list[DataFormatMember]:
         """
         Return the members in this struct.
         """
@@ -70,14 +65,12 @@ class Tech(GenieStructure):
 
     @classmethod
     @cache
-    def get_data_format_members(
-        cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
+    def get_data_format_members(cls, game_version: GameVersion) -> list[DataFormatMember]:
         """
         Return the members in this struct.
         """
         if game_version.edition.game_id not in ("ROR", "AOE1DE"):
-            data_format: list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]] = [
+            data_format: list[DataFormatMember] = [
                 # research ids of techs that are required for activating the possible research
                 (READ_GEN, "required_techs", StorageType.ARRAY_ID, "int16_t[6]"),
             ]

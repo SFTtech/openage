@@ -15,9 +15,7 @@ if typing.TYPE_CHECKING:
     from PIL import Image
 
     from openage.convert.value_object.init.game_version import GameVersion
-    from openage.convert.value_object.read.member_access import MemberAccess
-    from openage.convert.value_object.read.read_members import ReadMember
-    from openage.convert.value_object.read.value_members import StorageType
+    from openage.convert.value_object.read.genie_structure import DataFormatMember
     from openage.util.fslike.wrapper import GuardedFile
 
 
@@ -158,9 +156,7 @@ class ColorTable(GenieStructure):
         self.gen_image().save(fileobj, "png")
 
     @classmethod
-    def get_data_format_members(
-        cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
+    def get_data_format_members(cls, game_version: GameVersion) -> list[DataFormatMember]:
         """
         Return the members in this struct.
         """
@@ -205,9 +201,7 @@ class PlayerColorTable(GenieStructure):
                 self.palette.append((r, g, b))
 
     @classmethod
-    def get_data_format_members(
-        cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
+    def get_data_format_members(cls, game_version: GameVersion) -> list[DataFormatMember]:
         """
         Return the members in this struct.
         """

@@ -14,8 +14,7 @@ from . import civ, graphic, maps, playercolor, research, sound, tech, terrain, u
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.init.game_version import GameVersion
-    from openage.convert.value_object.read.member_access import MemberAccess
-    from openage.convert.value_object.read.read_members import ReadMember
+    from openage.convert.value_object.read.genie_structure import DataFormatMember
 
 
 # this file can parse and represent the empires2_x1_p1.dat file.
@@ -34,9 +33,7 @@ class EmpiresDat(GenieStructure):
 
     @classmethod
     @cache
-    def get_data_format_members(
-        cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
+    def get_data_format_members(cls, game_version: GameVersion) -> list[DataFormatMember]:
         """
         Return the members in this struct.
         """
@@ -506,9 +503,7 @@ class EmpiresDatWrapper(GenieStructure):
 
     @classmethod
     @cache
-    def get_data_format_members(
-        cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
+    def get_data_format_members(cls, game_version: GameVersion) -> list[DataFormatMember]:
         """
         Return the members in this struct.
         """

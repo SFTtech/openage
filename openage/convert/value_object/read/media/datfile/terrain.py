@@ -13,16 +13,13 @@ from ...genie_structure import GenieStructure
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.init.game_version import GameVersion
-    from openage.convert.value_object.read.member_access import MemberAccess
-    from openage.convert.value_object.read.read_members import ReadMember
+    from openage.convert.value_object.read.genie_structure import DataFormatMember
 
 
 class FrameData(GenieStructure):
     @classmethod
     @cache
-    def get_data_format_members(
-        cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
+    def get_data_format_members(cls, game_version: GameVersion) -> list[DataFormatMember]:
         """
         Return the members in this struct.
         """
@@ -38,9 +35,7 @@ class FrameData(GenieStructure):
 class TerrainPassGraphic(GenieStructure):
     @classmethod
     @cache
-    def get_data_format_members(
-        cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
+    def get_data_format_members(cls, game_version: GameVersion) -> list[DataFormatMember]:
         """
         Return the members in this struct.
         """
@@ -67,9 +62,7 @@ class TerrainRestriction(GenieStructure):
 
     @classmethod
     @cache
-    def get_data_format_members(
-        cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
+    def get_data_format_members(cls, game_version: GameVersion) -> list[DataFormatMember]:
         """
         Return the members in this struct.
         """
@@ -103,9 +96,7 @@ class TerrainRestriction(GenieStructure):
 class TerrainAnimation(GenieStructure):
     @classmethod
     @cache
-    def get_data_format_members(
-        cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
+    def get_data_format_members(cls, game_version: GameVersion) -> list[DataFormatMember]:
         """
         Return the members in this struct.
         """
@@ -138,9 +129,7 @@ class Terrain(GenieStructure):
 
     @classmethod
     @cache
-    def get_data_format_members(
-        cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
+    def get_data_format_members(cls, game_version: GameVersion) -> list[DataFormatMember]:
         """
         Return the members in this struct.
         """
@@ -300,9 +289,7 @@ class TerrainBorder(GenieStructure):
 
     @classmethod
     @cache
-    def get_data_format_members(
-        cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
+    def get_data_format_members(cls, game_version: GameVersion) -> list[DataFormatMember]:
         """
         Return the members in this struct.
         """
@@ -336,9 +323,7 @@ class TerrainBorder(GenieStructure):
 class TileSize(GenieStructure):
     @classmethod
     @cache
-    def get_data_format_members(
-        cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
+    def get_data_format_members(cls, game_version: GameVersion) -> list[DataFormatMember]:
         """
         Return the members in this struct.
         """

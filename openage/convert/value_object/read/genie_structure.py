@@ -39,6 +39,11 @@ if typing.TYPE_CHECKING:
     from openage.convert.value_object.init.game_version import GameVersion
 
 
+# One entry of a struct definition: (read mode, variable name, storage type, read type).
+# Entries that include the members of another struct have no name and no storage type.
+type DataFormatMember = tuple[MemberAccess, str | None, StorageType | None, str | ReadMember]
+
+
 # regex for matching type array definitions like int[1337]
 # group 1: type name, group 2: length
 VARARRAY_MATCH = re.compile("([{0}]+) *\\[([{0}]+)\\] *;?".format("a-zA-Z0-9_"))
@@ -710,9 +715,7 @@ class GenieStructure:
             yield member_entry
 
     @classmethod
-    def get_data_format_members(
-        cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
+    def get_data_format_members(cls, game_version: GameVersion) -> list[DataFormatMember]:
         """
         Return the members in this struct.
 

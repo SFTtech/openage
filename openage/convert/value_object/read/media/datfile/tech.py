@@ -14,16 +14,13 @@ from .lookup_dicts import CONNECTION_MODE, EFFECT_APPLY_TYPE
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.init.game_version import GameVersion
-    from openage.convert.value_object.read.member_access import MemberAccess
-    from openage.convert.value_object.read.read_members import ReadMember
+    from openage.convert.value_object.read.genie_structure import DataFormatMember
 
 
 class Effect(GenieStructure):
     @classmethod
     @cache
-    def get_data_format_members(
-        cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
+    def get_data_format_members(cls, game_version: GameVersion) -> list[DataFormatMember]:
         """
         Return the members in this struct.
         """
@@ -48,14 +45,12 @@ class Effect(GenieStructure):
 class EffectBundle(GenieStructure):  # also called techage in some other tools
     @classmethod
     @cache
-    def get_data_format_members(
-        cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
+    def get_data_format_members(cls, game_version: GameVersion) -> list[DataFormatMember]:
         """
         Return the members in this struct.
         """
         if game_version.edition.game_id in ("AOE1DE", "AOE2DE"):
-            data_format: list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]] = [
+            data_format: list[DataFormatMember] = [
                 (SKIP, "name_len_debug", StorageType.INT_MEMBER, "uint16_t"),
                 (READ, "name_len", StorageType.INT_MEMBER, "uint16_t"),
                 (SKIP, "name", StorageType.STRING_MEMBER, "char[name_len]"),
@@ -87,9 +82,7 @@ class EffectBundle(GenieStructure):  # also called techage in some other tools
 class OtherConnection(GenieStructure):
     @classmethod
     @cache
-    def get_data_format_members(
-        cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
+    def get_data_format_members(cls, game_version: GameVersion) -> list[DataFormatMember]:
         """
         Return the members in this struct.
         """
@@ -112,9 +105,7 @@ class AgeTechTree(GenieStructure):
 
     @classmethod
     @cache
-    def get_data_format_members(
-        cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
+    def get_data_format_members(cls, game_version: GameVersion) -> list[DataFormatMember]:
         """
         Return the members in this struct.
         """
@@ -248,9 +239,7 @@ class BuildingConnection(GenieStructure):
 
     @classmethod
     @cache
-    def get_data_format_members(
-        cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
+    def get_data_format_members(cls, game_version: GameVersion) -> list[DataFormatMember]:
         """
         Return the members in this struct.
         """
@@ -368,9 +357,7 @@ class UnitConnection(GenieStructure):
 
     @classmethod
     @cache
-    def get_data_format_members(
-        cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
+    def get_data_format_members(cls, game_version: GameVersion) -> list[DataFormatMember]:
         """
         Return the members in this struct.
         """
@@ -481,9 +468,7 @@ class ResearchConnection(GenieStructure):
 
     @classmethod
     @cache
-    def get_data_format_members(
-        cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
+    def get_data_format_members(cls, game_version: GameVersion) -> list[DataFormatMember]:
         """
         Return the members in this struct.
         """
