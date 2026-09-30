@@ -135,7 +135,7 @@ class SWGBUnitTransformGroup(GenieUnitTransformGroup):
         # References to alternative lines from other civs
         self.civ_lines: dict[int, SWGBUnitTransformGroup] = {}
 
-    def add_civ_line(self, other_line: SWGBUnitLineGroup) -> None:
+    def add_civ_line(self, other_line: SWGBUnitTransformGroup) -> None:
         """
         Adds a reference to an alternative line from another civ
         to this line.

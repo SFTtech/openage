@@ -127,9 +127,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         if not self.contains_researchable(tech_group.get_id()):
             self.researches.append(tech_group)
 
-    def add_unit(
-        self, genie_unit: GenieUnitObject, position: int = -1, after: GenieUnitObject | None = None
-    ) -> None:
+    def add_unit(self, genie_unit: GenieUnitObject, position: int = -1, after: int | None = None) -> None:
         """
         Adds a unit/building to the line.
 
@@ -246,7 +244,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         head_unit = self.get_head_unit()
         if civ_id != -1:
-            head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
+            head_unit = self.data.civ_groups[civ_id].civ["units"][self.get_head_unit_id()]
 
         commands = head_unit["unit_commands"].value
         for command in commands:
@@ -270,7 +268,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         head_unit = self.get_head_unit()
         if civ_id != -1:
-            head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
+            head_unit = self.data.civ_groups[civ_id].civ["units"][self.get_head_unit_id()]
 
         projectile_id_0 = head_unit["projectile_id0"].value
         projectile_id_1 = -2
@@ -291,7 +289,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         # Get the train location obj_id for the first unit in the line
         head_unit = self.get_head_unit()
         if civ_id != -1:
-            head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
+            head_unit = self.data.civ_groups[civ_id].civ["units"][self.get_head_unit_id()]
 
         train_location_id = head_unit["train_location_id"].value
 
@@ -310,7 +308,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         head_unit = self.get_head_unit()
         if civ_id != -1:
-            head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
+            head_unit = self.data.civ_groups[civ_id].civ["units"][self.get_head_unit_id()]
 
         for resource_storage in head_unit["resource_storage"].value:
             type_id = resource_storage["type"].value
@@ -339,7 +337,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         head_unit = self.get_head_unit()
         if civ_id != -1:
-            head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
+            head_unit = self.data.civ_groups[civ_id].civ["units"][self.get_head_unit_id()]
 
         if head_unit.has_member("trait"):
             trait = head_unit["trait"].value
@@ -386,7 +384,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         head_unit = self.get_head_unit()
         if civ_id != -1:
-            head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
+            head_unit = self.data.civ_groups[civ_id].civ["units"][self.get_head_unit_id()]
 
         return head_unit["obstruction_type"].value == 0
 
@@ -401,7 +399,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         head_unit = self.get_head_unit()
         if civ_id != -1:
-            head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
+            head_unit = self.data.civ_groups[civ_id].civ["units"][self.get_head_unit_id()]
 
         if not head_unit.has_member("projectile_id0"):
             return False
@@ -428,7 +426,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         head_unit = self.get_head_unit()
         if civ_id != -1:
-            head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
+            head_unit = self.data.civ_groups[civ_id].civ["units"][self.get_head_unit_id()]
 
         return head_unit["weapon_range_max"].value > 0
 
@@ -511,7 +509,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         head_unit = self.get_head_unit()
         if civ_id != -1:
-            head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
+            head_unit = self.data.civ_groups[civ_id].civ["units"][self.get_head_unit_id()]
 
         if head_unit.has_member("trait"):
             trait = head_unit["trait"].value
@@ -662,7 +660,7 @@ class GenieBuildingLineGroup(GenieGameEntityGroup):
         self.gatherer_ids: set[int] = set()
 
         # Unit lines that this building trades with
-        self.trades_with: set[GenieGameEntityGroup] = []
+        self.trades_with: list[GenieGameEntityGroup] = []
 
     def add_gatherer_id(self, unit_id: int) -> None:
         """
@@ -864,7 +862,7 @@ class GenieUnitTransformGroup(GenieUnitLineGroup):
         transform_id = self.head_unit["transform_unit_id"].value
         self.transform_unit = self.data.genie_units[transform_id]
 
-    def is_projectile_shooter(self, civ_id: int = -1) -> int:
+    def is_projectile_shooter(self, civ_id: int = -1) -> bool:
         """
         Transform groups are projectile shooters if their head or transform units
         have assigned a projectile ID.
@@ -1066,9 +1064,7 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
 
         self.task_group_id = task_group_id
 
-    def add_unit(
-        self, genie_unit: GenieUnitObject, position: int = -1, after: GenieUnitObject | None = None
-    ) -> None:
+    def add_unit(self, genie_unit: GenieUnitObject, position: int = -1, after: int | None = None) -> None:
         # Force the idle/combat units at the beginning of the line
         if genie_unit["id0"].value in (GenieUnitTaskGroup.male_line_id, GenieUnitTaskGroup.female_line_id):
             super().add_unit(genie_unit, 0, after)
@@ -1206,7 +1202,7 @@ class GenieVillagerGroup(GenieUnitLineGroup):
     def is_projectile_shooter(self, civ_id: int = -1) -> bool:
         return False
 
-    def get_garrison_mode(self, civ_id: int = -1) -> bool:
+    def get_garrison_mode(self, civ_id: int = -1) -> GenieGarrisonMode | None:
         return None
 
     def get_head_unit_id(self) -> int:
@@ -1221,7 +1217,7 @@ class GenieVillagerGroup(GenieUnitLineGroup):
         """
         return self.variants[0].line[0]
 
-    def get_units_with_command(self, command_id: int) -> GenieUnitObject:
+    def get_units_with_command(self, command_id: int) -> list[GenieUnitObject]:
         """
         Returns all genie units which have the specified command.
         """
