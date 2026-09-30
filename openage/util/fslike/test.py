@@ -223,6 +223,7 @@ def test_filecollection():
     collection = FileCollection()
     collection.add_fileentry([b"file"], FileEntry())
     path = collection.root["file"]
+    assert_value(path.writable(), False)
 
     for mode in ("wb", "ab", "arb", "rwb"):
         with assert_raises(UnsupportedOperation):

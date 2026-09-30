@@ -68,9 +68,6 @@ class FileCollection(FSLikeObject):
     def add_fileentry(self, parts, fileentry: FileEntry):
         """
         Adds a file entry (and parent directory entries, if needed).
-
-        This method should not be called directly; instead, use the
-        add_file method of Path objects that were obtained from this.
         """
         if not parts:
             raise IsADirectoryError("FileCollection.root is a directory")
@@ -207,8 +204,8 @@ class FileCollection(FSLikeObject):
 
     def writable(self, parts) -> bool:
         try:
-            _, open_w, _, _ = self.get_fileentry(parts)
-            return open_w is not None
+            entry = self.get_fileentry(parts)
+            return type(entry).open_w is not FileEntry.open_w
         except IOError:
             # generally, directories are not writable,
             # though some of the existing files inside might be.
@@ -224,30 +221,8 @@ class FileCollection(FSLikeObject):
 
 class FileCollectionPath(Path):
     """
-    Provides an additional method for adding a file at this path.
+    Path into a FileCollection.
     """
-
-    def add_file(
-        self, open_r=None, open_w=None, filesize: int | None = None, mtime: float | None = None
-    ) -> bool:
-        """
-        All parent directories are 'created', if needed.
-
-        Any arguments may be None, and shall be callable otherwise.
-        If open_r/open_w are None, the file will write-/read-only.
-        """
-        return self.fsobj.add_fileentry(self.parts, (open_r, open_w, filesize, mtime))
-
-    def add_file_from_path(self, path: Path) -> None:
-        """
-        Like add_file, but uses a Path object instead of callables.
-        """
-        if path.writable():
-            open_w = path.open_w
-        else:
-            open_w = None
-
-        self.add_file(path.open_r, open_w, path.filesize, path.mtime)
 
 
 class FileEntry:
@@ -271,7 +246,7 @@ class FileEntry:
 
     def size(self) -> int:
         """
-        Returns the size of the entr<.
+        Returns the size of the entry.
         """
         raise UnsupportedOperation("FileEntry.size")
 
