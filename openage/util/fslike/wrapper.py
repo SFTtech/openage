@@ -44,23 +44,29 @@ class Wrapper(FSLikeObject):
 
         return f"{type(self).__name__}({self.obj!r}, {self.contextguard!r})"
 
-    def open_r(self, parts):
+    def _open(self, parts, mode: str):
         with self.contextguard:
-            fileobj = self.obj.joinpath(parts).open_r()
+            fileobj = self.obj.joinpath(parts).open(mode)
 
         if isinstance(self.contextguard, DummyGuard):
             return fileobj
 
         return GuardedFile(fileobj, self.contextguard)
+
+    def open_r(self, parts):
+        return self._open(parts, "rb")
 
     def open_w(self, parts):
-        with self.contextguard:
-            fileobj = self.obj.joinpath(parts).open_w()
+        return self._open(parts, "wb")
 
-        if isinstance(self.contextguard, DummyGuard):
-            return fileobj
+    def open_rw(self, parts):
+        return self._open(parts, "r+b")
 
-        return GuardedFile(fileobj, self.contextguard)
+    def open_a(self, parts):
+        return self._open(parts, "ab")
+
+    def open_ar(self, parts):
+        return self._open(parts, "a+b")
 
     def resolve_r(self, parts):
         return self.obj.joinpath(parts) if self.exists(parts) else None
