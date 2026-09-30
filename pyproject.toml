@@ -44,6 +44,35 @@ dev = [
 # parts; there is nothing to build into a wheel here
 package = false
 
+[tool.ty.analysis]
+# Cython extension modules and the generated config module only exist in a
+# build tree, so they cannot be resolved from the sources.
+allowed-unresolved-imports = [
+    "**.cabchecksum",
+    "**.config",
+    "**.cpp",
+    "**.cpp_testing",
+    "**.cvar",
+    "**.cython_check",
+    "**.exctranslate",
+    "**.exctranslate_tests",
+    "**.log_cpp",
+    "**.lzxd",
+    "**.main_cpp",
+    "**.opusenc",
+    "**.png_create",
+    "**.pyobject",
+    "**.setup_checker",
+    "**.sld",
+    "**.slp",
+    "**.smp",
+    "**.smx",
+    "**.terrain_merge",
+    "**.texture_merge",
+    "**.versions",
+    "**.visgrep",
+]
+
 [tool.ruff]
 line-length = 110
 target-version = "py312"
