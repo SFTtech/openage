@@ -83,6 +83,7 @@ class GenieStructure:
         # store passed arguments as members
         self.__dict__.update(args)
 
+    @typing.overload
     def read(
         self,
         raw: bytes,
@@ -90,17 +91,35 @@ class GenieStructure:
         game_version: GameVersion,
         cls: type[GenieStructure] | None = None,
         members: tuple | None = None,
-        dynamic_load=False,
-    ) -> tuple[int, list[ValueMember]]:
+        dynamic_load: typing.Literal[False] = False,
+    ) -> tuple[int, list[ValueMember]]: ...
+
+    @typing.overload
+    def read(
+        self,
+        raw: bytes,
+        offset: int,
+        game_version: GameVersion,
+        cls: type[GenieStructure] | None = None,
+        members: tuple | None = None,
+        dynamic_load: bool = False,
+    ) -> tuple[int, list[ValueMember] | DynamicLoader]: ...
+
+    def read(
+        self,
+        raw: bytes,
+        offset: int,
+        game_version: GameVersion,
+        cls: type[GenieStructure] | None = None,
+        members: tuple | None = None,
+        dynamic_load: bool = False,
+    ) -> tuple[int, list[ValueMember] | DynamicLoader]:
         """
         recursively read defined binary data from raw at given offset.
 
         this is used to fill the python classes with data from the binary input.
         """
-        if cls:
-            target_class = cls
-        else:
-            target_class = self
+        target_class = cls if cls else type(self)
 
         # Members are returned at the end
         generated_value_members = []
@@ -243,10 +262,11 @@ class GenieStructure:
         # arguments passed to the next-level constructor.
         varargs = dict()
 
-        if var_type.passed_args:
-            if isinstance(var_type.passed_args, str):
-                var_type.passed_args = set(var_type.passed_args)
-            for passed_member_name in var_type.passed_args:
+        passed_args = var_type.passed_args
+        if passed_args:
+            if isinstance(passed_args, str):
+                passed_args = (passed_args,)
+            for passed_member_name in passed_args:
                 varargs[passed_member_name] = getattr(self, passed_member_name)
 
         # subdata list length has to be defined beforehand as a
@@ -269,8 +289,9 @@ class GenieStructure:
         allowed_member_type = StorageType.CONTAINER_MEMBER
 
         # check if entries need offset checking
-        if var_type.offset_to:
-            offset_lookup = getattr(self, var_type.offset_to[0])
+        offset_to = var_type.offset_to
+        if offset_to:
+            offset_lookup = getattr(self, offset_to[0])
         else:
             offset_lookup = None
 
@@ -279,8 +300,8 @@ class GenieStructure:
             sub_members = []
 
             # if datfile offset == 0, entry has to be skipped.
-            if offset_lookup:
-                if not var_type.offset_to[1](offset_lookup[i]):
+            if offset_to and offset_lookup:
+                if not offset_to[1](offset_lookup[i]):
                     continue
                 # TODO: don't read sequentially, use the lookup as
                 #       new offset?
@@ -289,6 +310,10 @@ class GenieStructure:
                 # append single data entry to the subdata object list
                 new_data_class = var_type.class_lookup[None]
             else:
+                subtype_definition = var_type.subtype_definition
+                if subtype_definition is None:
+                    raise TypeError(f"{var_name}: multisubtype member has no subtype definition")
+
                 # to determine the subtype class, read the binary
                 # definition. this utilizes an on-the-fly definition
                 # of the data to be read.
@@ -297,13 +322,13 @@ class GenieStructure:
                     offset,
                     game_version,
                     cls=target_class,
-                    members=(((False, *var_type.subtype_definition)),),
+                    members=(((False, *subtype_definition)),),
                 )
 
                 # read the variable set by the above read call to
                 # use the read data to determine the denominaton of
                 # the member type
-                subtype_name = getattr(self, var_type.subtype_definition[1])
+                subtype_name = getattr(self, subtype_definition[1])
 
                 # look up the subtype class
                 new_data_class = var_type.class_lookup[subtype_name]
@@ -468,7 +493,6 @@ class GenieStructure:
                     # Turn every element of result into a member
                     # and put them into an array
                     array_members = []
-                    allowed_member_type = None
 
                     if storage_type is StorageType.ARRAY_INT:
                         allowed_member_type = StorageType.INT_MEMBER
@@ -484,6 +508,11 @@ class GenieStructure:
 
                     elif storage_type is StorageType.ARRAY_STRING:
                         allowed_member_type = StorageType.STRING_MEMBER
+
+                    else:
+                        raise SyntaxError(
+                            f"{var_name}: data read via {var_type} cannot be stored as {storage_type}"
+                        )
 
                     for elem in result:
                         if storage_type is StorageType.ARRAY_INT:

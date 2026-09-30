@@ -8,6 +8,8 @@ import typing
 from enum import Enum
 
 if typing.TYPE_CHECKING:
+    from collections.abc import Collection
+
     from openage.convert.value_object.read.genie_structure import GenieStructure
     from openage.convert.value_object.read.member_access import MemberAccess
     from openage.convert.value_object.read.value_members import StorageType
@@ -319,7 +321,7 @@ class MultisubtypeMember(RefMember, DynLengthMember):
         subtype_definition: tuple[MemberAccess, str, StorageType, str | ReadMember] | None,
         class_lookup: dict[typing.Any, type[GenieStructure]],
         length: typing.Callable | int | str,
-        passed_args: list[str] | None = None,
+        passed_args: Collection[str] | str | None = None,
         ref_to: str | None = None,
         offset_to: tuple[str, typing.Callable] | None = None,
         file_name: str | None = None,

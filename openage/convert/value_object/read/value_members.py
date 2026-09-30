@@ -229,7 +229,7 @@ class StringMember(ValueMember):
     Stores string values.
     """
 
-    def __init__(self, name: str, value: StringMember):
+    def __init__(self, name: str, value: str):
         super().__init__(name)
 
         self._value = str(value)
