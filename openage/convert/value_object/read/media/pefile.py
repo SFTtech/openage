@@ -189,7 +189,7 @@ class PEFile:
             opthdr.data_directories.append(PEDataDirectory.read(fileobj))
 
         # read section headers
-        sections: dict[str, tuple] = {}
+        sections: dict[str, PESection] = {}
 
         for _ in range(coffhdr.number_of_sections):
             section = PESection.read(fileobj)
@@ -209,7 +209,7 @@ class PEFile:
 
         self.sections = sections
 
-    def open_section(self, section_name: str) -> StreamFragment:
+    def open_section(self, section_name: str) -> tuple[StreamFragment, int]:
         """
         Returns a tuple of data, va for the given section.
 

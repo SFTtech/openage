@@ -156,7 +156,7 @@ class DRS(FileCollection):
 
             self.add_fileentry([filename.encode()], file_entry)
 
-    def read_tables(self) -> typing.Generator[tuple[str, str, str], None, None]:
+    def read_tables(self) -> typing.Generator[tuple[str, int, int], None, None]:
         """
         Reads the tables from self.tables, and yields tuples of
         filename, offset, size.
