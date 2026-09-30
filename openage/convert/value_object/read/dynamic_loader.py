@@ -35,7 +35,7 @@ class DynamicLoader:
         self._loaded = False
 
         self.name = name
-        self.members = None
+        self.members: dict[str, ValueMember] = {}
 
     def load(self) -> dict[str, ValueMember]:
         """

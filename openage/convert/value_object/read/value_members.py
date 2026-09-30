@@ -26,6 +26,7 @@ from __future__ import annotations
 
 import typing
 from abc import ABC, abstractmethod
+from collections.abc import Sequence
 from enum import Enum
 from math import isclose
 
@@ -41,7 +42,7 @@ class ValueMember(ABC):
 
     def __init__(self, name: str):
         self._name = name
-        self._value = None
+        self._value: typing.Any = None
 
     @property
     def name(self) -> str:
@@ -64,7 +65,7 @@ class ValueMember(ABC):
         """
 
     @abstractmethod
-    def diff(self, other: ValueMember) -> ValueMember:
+    def diff(self, other: typing.Self) -> ValueMember:
         """
         Returns a new member object that contains the diff between
         self's and other's values.
@@ -262,20 +263,10 @@ class ContainerMember(ValueMember):
     def __init__(
         self,
         name: str,
-        submembers: list[
-            IntMember
-            | FloatMember
-            | BooleanMember
-            | IDMember
-            | BitfieldMember
-            | StringMember
-            | ArrayMember
-            | ContainerMember
-        ],
+        submembers: Sequence[ValueMember] | dict[str, ValueMember] | DynamicLoader,
     ):
         """
-        :param submembers: Stored members as a list or dict
-        :type submembers: list, dict
+        :param submembers: Stored members as a list, a dict or a dynamic loader.
         """
         super().__init__(name)
 
@@ -324,16 +315,7 @@ class ContainerMember(ValueMember):
 
     def _create_dict(
         self,
-        member_list: list[
-            IntMember
-            | FloatMember
-            | BooleanMember
-            | IDMember
-            | BitfieldMember
-            | StringMember
-            | ArrayMember
-            | ContainerMember
-        ],
+        member_list: Sequence[ValueMember],
     ) -> None:
         """
         Creates the dict from the member list passed to __init__.
@@ -362,16 +344,7 @@ class ArrayMember(ValueMember):
         self,
         name: str,
         allowed_member_type: StorageType,
-        members: list[
-            IntMember
-            | FloatMember
-            | BooleanMember
-            | IDMember
-            | BitfieldMember
-            | StringMember
-            | ArrayMember
-            | ContainerMember
-        ],
+        members: Sequence[ValueMember],
     ):
         super().__init__(name)
 
