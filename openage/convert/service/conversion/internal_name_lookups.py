@@ -20,6 +20,8 @@ import openage.convert.value_object.conversion.ror.internal_nyan_names as ror_in
 import openage.convert.value_object.conversion.swgb.internal_nyan_names as swgb_internal
 
 if typing.TYPE_CHECKING:
+    from collections.abc import Mapping
+
     from openage.convert.value_object.init.game_version import GameVersion
 
 
@@ -197,7 +199,9 @@ class GeneratedNames(dict):
 
 
 @cache
-def get_entity_lookups(game_version: GameVersion) -> dict[int, tuple[str, str]]:
+def get_entity_lookups(
+    game_version: GameVersion,
+) -> Mapping[int, tuple[str, str] | tuple[str, str, tuple[int, ...], str]]:
     """
     Return the name lookup dicts for game entities.
 
@@ -306,7 +310,7 @@ def get_gather_lookups(game_version: GameVersion) -> dict[int, tuple[str, str]]:
 
 
 @cache
-def get_graphic_set_lookups(game_version: GameVersion) -> dict[int, tuple[tuple[int, ...], str, str]]:
+def get_graphic_set_lookups(game_version: GameVersion) -> Mapping[int, tuple[tuple[int, ...], str, str]]:
     """
     Return the name lookup dicts for civ graphic sets.
 
@@ -358,7 +362,7 @@ def get_graphic_set_lookups(game_version: GameVersion) -> dict[int, tuple[tuple[
 
 
 @cache
-def get_restock_lookups(game_version: GameVersion) -> dict[int, tuple[str, str]]:
+def get_restock_lookups(game_version: GameVersion) -> Mapping[int, tuple[str, str]]:
     """
     Return the name lookup dicts for restock targets.
 
@@ -369,14 +373,14 @@ def get_restock_lookups(game_version: GameVersion) -> dict[int, tuple[str, str]]
     # game_expansions = game_version.expansions
 
     if game_edition.game_id == "ROR":
-        return None
+        raise RuntimeError("RoR has no restock targets")
 
     if game_edition.game_id in ("AOC", "HDEDITION", "AOE2DE"):
         return aoc_internal.RESTOCK_TARGET_LOOKUPS
 
     if game_edition.game_id == "AOE1DE":
         # TODO: Farms
-        return None
+        raise RuntimeError("AoE1 DE restock targets are not implemented")
 
     if game_edition.game_id == "SWGB":
         return swgb_internal.RESTOCK_TARGET_LOOKUPS
@@ -429,7 +433,7 @@ def get_tech_lookups(game_version: GameVersion) -> dict[int, tuple[str, str]]:
 
 
 @cache
-def get_terrain_lookups(game_version: GameVersion) -> dict[int, tuple[tuple[int, ...], str, str]]:
+def get_terrain_lookups(game_version: GameVersion) -> Mapping[int, tuple[tuple[int, ...], str, str]]:
     """
     Return the name lookup dicts for terrain groups.
 
@@ -446,7 +450,7 @@ def get_terrain_lookups(game_version: GameVersion) -> dict[int, tuple[tuple[int,
         return aoc_internal.TERRAIN_GROUP_LOOKUPS
 
     if game_edition.game_id == "HDEDITION":
-        terrain_lookup_dict = {}
+        terrain_lookup_dict: dict[int, tuple[tuple[int, ...], str, str]] = {}
         terrain_lookup_dict.update(aoc_internal.TERRAIN_GROUP_LOOKUPS)
 
         # TODO: Include expansion lookups
@@ -457,7 +461,7 @@ def get_terrain_lookups(game_version: GameVersion) -> dict[int, tuple[tuple[int,
         return ror_internal.TERRAIN_GROUP_LOOKUPS
 
     if game_edition.game_id == "AOE2DE":
-        terrain_lookup_dict = {}
+        terrain_lookup_dict: dict[int, tuple[tuple[int, ...], str, str]] = {}
         terrain_lookup_dict.update(aoc_internal.TERRAIN_GROUP_LOOKUPS)
         terrain_lookup_dict.update(fgt_internal.TERRAIN_GROUP_LOOKUPS)
         terrain_lookup_dict.update(ak_internal.TERRAIN_GROUP_LOOKUPS)

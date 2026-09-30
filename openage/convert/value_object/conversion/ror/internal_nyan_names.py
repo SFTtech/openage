@@ -379,7 +379,7 @@ TERRAIN_GROUP_LOOKUPS = {
         "Beach",
         "beach",
     ),
-    3: (((),), "ThinRiver", "thin_river"),
+    3: ((), "ThinRiver", "thin_river"),
     4: (
         (
             0,
@@ -416,9 +416,9 @@ TERRAIN_GROUP_LOOKUPS = {
         "Desert",
         "desert",
     ),
-    7: (((),), "Crop", "crop"),
-    8: (((),), "Rows", "rows"),
-    9: (((),), "Wheat", "wheat"),
+    7: ((), "Crop", "crop"),
+    8: ((), "Rows", "rows"),
+    9: ((), "Wheat", "wheat"),
     10: (
         (
             0,
@@ -441,7 +441,7 @@ TERRAIN_GROUP_LOOKUPS = {
         "Dirt",
         "dirt",
     ),
-    12: (((),), "Grass2", "grass2"),
+    12: ((), "Grass2", "grass2"),
     13: (
         (
             0,
@@ -454,10 +454,10 @@ TERRAIN_GROUP_LOOKUPS = {
         "DesertPalm",
         "desert_palm",
     ),
-    14: (((),), "DesertImpassable", "desert_impassable"),
-    15: (((),), "WaterImpassable", "water_impassable"),
-    16: (((),), "GrassImpassable", "grass_impassable"),
-    17: (((),), "Fog", "fog"),
+    14: ((), "DesertImpassable", "desert_impassable"),
+    15: ((), "WaterImpassable", "water_impassable"),
+    16: ((), "GrassImpassable", "grass_impassable"),
+    17: ((), "Fog", "fog"),
     18: (
         (
             0,
