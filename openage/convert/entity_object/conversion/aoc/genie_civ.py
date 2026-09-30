@@ -83,7 +83,7 @@ class GenieCivilizationGroup(ConverterObjectGroup):
 
         self.civ: GenieCivilizationObject = self.data.genie_civs[civ_id]
 
-        self.team_bonus: CivTeamBonus = None
+        self.team_bonus: CivTeamBonus | None = None
         if self.civ.has_member("team_bonus_id"):
             team_bonus_id = self.civ["team_bonus_id"].value
             if team_bonus_id == -1:

@@ -18,7 +18,7 @@ class ManifestFile(DataDefinition):
         super().__init__(targetdir, filename)
 
         self.hash_values: list[tuple[str, str]] = []
-        self.hashing_func: str = None
+        self.hashing_func: str | None = None
 
     def dump(self) -> str:
         """

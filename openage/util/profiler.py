@@ -23,8 +23,8 @@ class Profiler:
     p.enable() and p.disable().
     """
 
-    profile: cProfile.Profile = None
-    profile_stats: pstats.Stats = None
+    profile: cProfile.Profile | None = None
+    profile_stats: pstats.Stats | None = None
     profile_stream = None
 
     def __init__(self, o_stream=None):

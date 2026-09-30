@@ -22,7 +22,7 @@ class BlendtableMetadata(DataDefinition):
     def __init__(self, targetdir: str, filename: str):
         super().__init__(targetdir, filename)
 
-        self.blendtable: tuple = None
+        self.blendtable: tuple | None = None
         self.patterns: dict[int, dict[str, typing.Any]] = {}
 
     def add_pattern(self, pattern_id: int, filename: str) -> None:

@@ -134,7 +134,7 @@ class StringLiteral(NamedStruct):
     length = "H"
 
     # filled later by read_content()
-    value: str = None
+    value: str | None = None
 
     @classmethod
     def readall(cls, fileobj: GuardedFile) -> StringLiteral:

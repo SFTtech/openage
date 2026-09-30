@@ -83,7 +83,7 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
         # Effects of the tech
         effect_bundle_id: int = self.tech["tech_effect_id"].value
 
-        self.effects: GenieEffectBundle = None
+        self.effects: GenieEffectBundle | None = None
         if effect_bundle_id > -1:
             self.effects = self.data.genie_effect_bundles[effect_bundle_id]
 
@@ -592,7 +592,7 @@ class CivTechTree(ConverterObjectGroup):
         self.data = full_data_set
         self.civ_id = civ_id
 
-        self.effects: GenieEffectBundle = None
+        self.effects: GenieEffectBundle | None = None
         if effect_bundle_id > -1:
             self.effects = self.data.genie_effect_bundles[effect_bundle_id]
 

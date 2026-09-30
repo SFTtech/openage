@@ -36,7 +36,7 @@ class TerrainMetadata(DataDefinition):
 
         self.texture_files: dict[int, dict[str, typing.Any]] = {}
         self.scalefactor = 1.0
-        self.blendtable: dict[str, typing.Any] = None
+        self.blendtable: dict[str, typing.Any] | None = None
         self.layers: dict[int, dict[str, typing.Any]] = {}
         self.frames: list[dict[str, int]] = []
 

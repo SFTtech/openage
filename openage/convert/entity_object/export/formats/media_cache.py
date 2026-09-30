@@ -30,7 +30,7 @@ class MediaCacheFile(DataDefinition):
         super().__init__(targetdir, filename)
 
         self.game_version = game_version
-        self.hash_func: str = None
+        self.hash_func: str | None = None
         self.cache = {}
 
     def dump(self) -> str:

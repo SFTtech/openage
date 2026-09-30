@@ -79,12 +79,12 @@ class Texture:
         super().__init__()
 
         # Compression setting values for libpng
-        self.best_compr: tuple = None
+        self.best_compr: tuple | None = None
 
         # Best packer hints (positions of sprites in texture)
-        self.best_packer_hints: tuple = None
+        self.best_packer_hints: tuple | None = None
 
-        self.image_data: TextureImage = None
+        self.image_data: TextureImage | None = None
         self.image_metadata: list[dict[str, int]] = {}
 
         spam("creating Texture from %s", repr(input_data))

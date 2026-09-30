@@ -23,9 +23,9 @@ class ModpackInfo(DataDefinition):
         super().__init__(targetdir, filename)
 
         # Info
-        self.packagename: str = None
-        self.version: str = None
-        self.versionstr: str = None
+        self.packagename: str | None = None
+        self.version: str | None = None
+        self.versionstr: str | None = None
         self.extra_info: dict[str, str] = {}
 
         # Assets
