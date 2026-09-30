@@ -49,8 +49,8 @@ class AoCUpgradeAbilitySubprocessor:
         line: GenieGameEntityGroup,
         container_obj_ref: str,
         command_id: int,
-        ranged: bool = False,
-        diff: ConverterObject | None = None,
+        ranged: bool,
+        diff: ConverterObject,
     ) -> list[ForwardRef]:
         """
         Creates a patch for the ApplyContinuousEffect ability of a line.
@@ -195,7 +195,7 @@ class AoCUpgradeAbilitySubprocessor:
                 )
 
             if ranged:
-                if not isinstance(diff_min_range, NoDiffMember):
+                if diff_min_range is not None and not isinstance(diff_min_range, NoDiffMember):
                     min_range = diff_min_range.value
 
                     nyan_patch_raw_api_object.add_raw_patch_member(
@@ -205,7 +205,7 @@ class AoCUpgradeAbilitySubprocessor:
                         MemberOperator.ADD,
                     )
 
-                if not isinstance(diff_max_range, NoDiffMember):
+                if diff_max_range is not None and not isinstance(diff_max_range, NoDiffMember):
                     max_range = diff_max_range.value
 
                     nyan_patch_raw_api_object.add_raw_patch_member(
@@ -232,8 +232,8 @@ class AoCUpgradeAbilitySubprocessor:
         line: GenieGameEntityGroup,
         container_obj_ref: str,
         command_id: int,
-        ranged: bool = False,
-        diff: ConverterObject | None = None,
+        ranged: bool,
+        diff: ConverterObject,
     ) -> list[ForwardRef]:
         """
         Creates a patch for the ApplyDiscreteEffect ability of a line.
@@ -384,7 +384,7 @@ class AoCUpgradeAbilitySubprocessor:
                 )
 
             if ranged:
-                if not isinstance(diff_min_range, NoDiffMember):
+                if diff_min_range is not None and not isinstance(diff_min_range, NoDiffMember):
                     min_range = diff_min_range.value
 
                     nyan_patch_raw_api_object.add_raw_patch_member(
@@ -394,7 +394,7 @@ class AoCUpgradeAbilitySubprocessor:
                         MemberOperator.ADD,
                     )
 
-                if not isinstance(diff_max_range, NoDiffMember):
+                if diff_max_range is not None and not isinstance(diff_max_range, NoDiffMember):
                     max_range = diff_max_range.value
 
                     nyan_patch_raw_api_object.add_raw_patch_member(
@@ -965,7 +965,7 @@ class AoCUpgradeAbilitySubprocessor:
         converter_group: ConverterObjectGroup,
         line: GenieGameEntityGroup,
         container_obj_ref: str,
-        diff: ConverterObject | None = None,
+        diff: ConverterObject,
     ) -> list[ForwardRef]:
         """
         Creates a patch for the Move ability of a line.
@@ -1101,7 +1101,7 @@ class AoCUpgradeAbilitySubprocessor:
         converter_group: ConverterObjectGroup,
         line: GenieGameEntityGroup,
         container_obj_ref: str,
-        diff: ConverterObject | None = None,
+        diff: ConverterObject,
     ) -> list[ForwardRef]:
         """
         Creates a patch for the Named ability of a line.
@@ -1192,7 +1192,7 @@ class AoCUpgradeAbilitySubprocessor:
         converter_group: ConverterObjectGroup,
         line: GenieGameEntityGroup,
         container_obj_ref: str,
-        diff: ConverterObject | None = None,
+        diff: ConverterObject,
     ) -> list[ForwardRef]:
         """
         Creates a patch for the Resistance ability of a line.

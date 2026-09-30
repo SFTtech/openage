@@ -10,6 +10,8 @@ These are simple containers that can be processed by the converter.
 
 from __future__ import annotations
 
+import typing
+
 from openage.convert.value_object.read.dynamic_loader import DynamicLoader
 
 from ....nyan.nyan_structs import MemberOperator, MemberSpecialValue, NyanObject, NyanPatch, NyanPatchMember
@@ -19,6 +21,9 @@ from ...value_object.read.value_members import NoDiffMember, ValueMember
 from .combined_sound import CombinedSound
 from .combined_sprite import CombinedSprite
 from .combined_terrain import CombinedTerrain
+
+if typing.TYPE_CHECKING:
+    from .aoc.genie_object_container import GenieObjectContainer
 
 
 class ConverterObject:
@@ -143,6 +148,9 @@ class ConverterObjectGroup:
     """
 
     __slots__ = ("group_id", "raw_api_objects", "raw_member_pushs")
+
+    # Provided by the groups built from game data; the plain pregen group has none.
+    data: GenieObjectContainer
 
     def __init__(self, group_id: int, raw_api_objects: list[RawAPIObject] | None = None):
         """
