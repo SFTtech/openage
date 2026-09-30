@@ -10,11 +10,10 @@ These are simple containers that can be processed by the converter.
 
 from __future__ import annotations
 
-import typing
-
 from openage.convert.value_object.read.dynamic_loader import DynamicLoader
 
-from ....nyan.nyan_structs import MemberOperator, NyanObject, NyanPatch, NyanPatchMember
+from ....nyan.nyan_structs import MemberOperator, MemberSpecialValue, NyanObject, NyanPatch, NyanPatchMember
+from ....util.ordered_set import OrderedSet
 from ...value_object.conversion.forward_ref import ForwardRef
 from ...value_object.read.value_members import NoDiffMember, ValueMember
 from .combined_sound import CombinedSound
@@ -29,7 +28,7 @@ class ConverterObject:
 
     __slots__ = ("members", "obj_id")
 
-    def __init__(self, obj_id: typing.Union[str, int], members: dict[str, ValueMember] | None = None):
+    def __init__(self, obj_id: int | str, members: dict[str, ValueMember] | None = None):
         """
         Creates a new ConverterObject.
 
@@ -52,7 +51,7 @@ class ConverterObject:
             else:
                 raise TypeError("members must be an instance of ValueMember")
 
-    def get_id(self) -> typing.Union[str, int]:
+    def get_id(self) -> int | str:
         """
         Returns the object's ID.
         """
@@ -145,7 +144,7 @@ class ConverterObjectGroup:
 
     __slots__ = ("group_id", "raw_api_objects", "raw_member_pushs")
 
-    def __init__(self, group_id: typing.Union[str, int], raw_api_objects: list[RawAPIObject] | None = None):
+    def __init__(self, group_id: int, raw_api_objects: list[RawAPIObject] | None = None):
         """
         Creates a new ConverterObjectGroup.
 
@@ -165,7 +164,7 @@ class ConverterObjectGroup:
         if raw_api_objects:
             self._create_raw_api_object_dict(raw_api_objects)
 
-    def get_id(self) -> typing.Union[str, int]:
+    def get_id(self) -> int:
         """
         Returns the object group's ID.
         """
@@ -259,13 +258,13 @@ class ConverterObjectGroup:
         """
         return self.raw_api_objects
 
-    def has_raw_api_object(self, obj_id: typing.Union[str, int]) -> bool:
+    def has_raw_api_object(self, obj_id: str | int) -> bool:
         """
         Returns True if the object has a subobject with the specified ID.
         """
         return obj_id in self.raw_api_objects
 
-    def remove_raw_api_object(self, obj_id: typing.Union[str, int]) -> None:
+    def remove_raw_api_object(self, obj_id: str | int) -> None:
         """
         Removes a subobject from the object.
         """
@@ -306,10 +305,10 @@ class RawAPIObject:
 
     def __init__(
         self,
-        obj_id: typing.Union[str, int],
+        obj_id: str,
         name: str,
         api_ref: dict[str, NyanObject],
-        location: typing.Union[str, ForwardRef] = "",
+        location: str | ForwardRef = "",
     ):
         """
         Creates a raw API object.
@@ -340,7 +339,10 @@ class RawAPIObject:
         self._patch_target = None
 
     def add_raw_member(
-        self, name: str, value: typing.Union[float, bool, str, list, dict, ForwardRef], origin: str
+        self,
+        name: str,
+        value: float | bool | str | list | dict | MemberSpecialValue | NyanObject | ForwardRef,
+        origin: str,
     ) -> None:
         """
         Adds a raw member to the object.
@@ -357,7 +359,7 @@ class RawAPIObject:
     def add_raw_patch_member(
         self,
         name: str,
-        value: typing.Union[float, bool, str, list, dict, ForwardRef],
+        value: float | bool | str | list | dict | MemberSpecialValue | NyanObject | ForwardRef,
         origin: str,
         operator: MemberOperator,
     ) -> None:
@@ -422,9 +424,9 @@ class RawAPIObject:
         """
         Create the nyan object for this raw API object. Members have to be created separately.
         """
-        parents = []
+        parents = OrderedSet()
         for raw_parent in self.raw_parents:
-            parents.append(self.api_ref[raw_parent])
+            parents.add(self.api_ref[raw_parent])
 
         if self.is_patch():
             self.nyan_object = NyanPatch(self.name, parents)
@@ -508,13 +510,13 @@ class RawAPIObject:
 
         return (self._location, self._filename)
 
-    def get_id(self) -> typing.Union[str, int]:
+    def get_id(self) -> str:
         """
         Returns the ID of the raw API object.
         """
         return self.obj_id
 
-    def get_location(self) -> typing.Union[str, ForwardRef]:
+    def get_location(self) -> str | ForwardRef:
         """
         Returns the relative path to a directory or an ForwardRef
         to another RawAPIObject.
@@ -553,7 +555,7 @@ class RawAPIObject:
         """
         self._filename = f"{filename}.{suffix}"
 
-    def set_location(self, location: typing.Union[str, ForwardRef]) -> None:
+    def set_location(self, location: str | ForwardRef) -> None:
         """
         Set the relative location of the object in a modpack. This must
         be a path to a nyan file or an ForwardRef to a nyan object.
@@ -564,7 +566,7 @@ class RawAPIObject:
         """
         self._location = location
 
-    def set_patch_target(self, target: typing.Union[ForwardRef, NyanObject]):
+    def set_patch_target(self, target: ForwardRef | NyanObject):
         """
         Set an ForwardRef as a target for this object. If this
         is done, the RawAPIObject will be converted to a patch.
@@ -575,7 +577,7 @@ class RawAPIObject:
         self._patch_target = target
 
     @staticmethod
-    def _resolve_raw_value(value) -> typing.Union[NyanObject, str, float]:
+    def _resolve_raw_value(value) -> NyanObject | str | float:
         """
         Check if a raw member value contains a reference to a resource (nyan
         objects or asset files), resolve the reference to a nyan-compatible value

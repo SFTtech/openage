@@ -41,7 +41,7 @@ class RoRUpgradeAbilitySubprocessor:
         line: GenieGameEntityGroup,
         container_obj_ref: str,
         command_id: int,
-        diff: ConverterObject = None,
+        diff: ConverterObject | None = None,
     ) -> list[ForwardRef]:
         """
         Creates a patch for the Selectable ability of a line.

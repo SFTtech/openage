@@ -117,4 +117,4 @@ class FIFO(FileLikeObject):
 
     def close(self) -> None:
         self.closed = True
-        self.queue = None
+        del self.queue

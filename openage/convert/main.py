@@ -19,18 +19,22 @@ from .service.init.modpack_search import enumerate_modpacks
 from .service.init.mount_asset_dirs import mount_asset_dirs
 from .service.init.version_detect import create_version_objects
 from .tool.interactive import interactive_browser
-from .tool.subtool.acquire_sourcedir import acquire_conversion_source_dir, wanna_check_updates, wanna_convert
+from .tool.subtool.acquire_sourcedir import (
+    acquire_conversion_source_dir,
+    mount_source_dir,
+    wanna_check_updates,
+    wanna_convert,
+)
 from .tool.subtool.version_select import get_game_version
 
 if typing.TYPE_CHECKING:
     from argparse import ArgumentParser, Namespace
 
-    from openage.util.fslike.directory import Directory
     from openage.util.fslike.path import Path
     from openage.util.fslike.union import UnionPath
 
 
-def convert_assets(assets: UnionPath, args: Namespace, srcdir: Directory | None = None) -> None:
+def convert_assets(assets: UnionPath, args: Namespace, srcdir: Path | None = None) -> None:
     """
     Perform asset conversion.
 
@@ -80,7 +84,7 @@ def convert_assets(assets: UnionPath, args: Namespace, srcdir: Directory | None 
 
     # acquire conversion source directory
     if srcdir is None:
-        srcdir = Directory(acquire_conversion_source_dir(args.avail_game_eds, prev_srcdirs))
+        srcdir = acquire_conversion_source_dir(args.avail_game_eds, prev_srcdirs)
 
     # Acquire game version info
     args.game_version = get_game_version(srcdir, args.avail_game_eds, args.avail_game_exps)

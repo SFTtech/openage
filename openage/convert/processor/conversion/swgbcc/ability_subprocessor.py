@@ -526,7 +526,7 @@ class SWGBCCAbilitySubprocessor:
         return ability_forward_ref
 
     @staticmethod
-    def exchange_resources_ability(line: GenieGameEntityGroup) -> ForwardRef:
+    def exchange_resources_ability(line: GenieGameEntityGroup) -> list[ForwardRef]:
         """
         Adds the ExchangeResources ability to a line.
 
@@ -590,7 +590,7 @@ class SWGBCCAbilitySubprocessor:
         return abilities
 
     @staticmethod
-    def gather_ability(line: GenieGameEntityGroup) -> ForwardRef:
+    def gather_ability(line: GenieGameEntityGroup) -> list[ForwardRef]:
         """
         Adds the Gather abilities to a line. Unlike the other methods, this
         creates multiple abilities.
@@ -665,6 +665,10 @@ class SWGBCCAbilitySubprocessor:
 
                 else:
                     ability_animation_id = command["proceed_sprite_id"].value
+
+            if resource is None:
+                # No gather command with a known resource type
+                continue
 
             # Look for the harvestable groups that match the class IDs and unit IDs
             check_groups = []
@@ -1266,7 +1270,7 @@ class SWGBCCAbilitySubprocessor:
         return ability_forward_ref
 
     @staticmethod
-    def regenerate_attribute_ability(line: GenieGameEntityGroup) -> ForwardRef:
+    def regenerate_attribute_ability(line: GenieGameEntityGroup) -> list[ForwardRef]:
         """
         Adds the RegenerateAttribute ability to a line.
 
@@ -1420,7 +1424,7 @@ class SWGBCCAbilitySubprocessor:
 
                 used_command = command
 
-            if not used_command:
+            if not used_command or resource is None:
                 # The unit uses no gathering command or we don't recognize it
                 continue
 
@@ -1586,7 +1590,7 @@ class SWGBCCAbilitySubprocessor:
         return ability_forward_ref
 
     @staticmethod
-    def selectable_ability(line: GenieGameEntityGroup) -> ForwardRef:
+    def selectable_ability(line: GenieGameEntityGroup) -> list[ForwardRef]:
         """
         Adds Selectable abilities to a line. Units will get two of these,
         one Rectangle box for the Self stance and one MatchToSprite box

@@ -89,7 +89,7 @@ class IntMember(ValueMember):
     def get_type(self) -> StorageType:
         return StorageType.INT_MEMBER
 
-    def diff(self, other: IntMember) -> typing.Union[NoDiffMember, IntMember]:
+    def diff(self, other: IntMember) -> NoDiffMember | IntMember:
         if self.get_type() is other.get_type():
             if self.value == other.value:
                 return NoDiffMember(self.name, self)
@@ -116,7 +116,7 @@ class FloatMember(ValueMember):
     def get_type(self) -> StorageType:
         return StorageType.FLOAT_MEMBER
 
-    def diff(self, other: FloatMember) -> typing.Union[NoDiffMember, FloatMember]:
+    def diff(self, other: FloatMember) -> NoDiffMember | FloatMember:
         if self.get_type() is other.get_type():
             # Float must have the last 6 digits in common
             if isclose(self.value, other.value, rel_tol=1e-7):
@@ -144,7 +144,7 @@ class BooleanMember(ValueMember):
     def get_type(self) -> StorageType:
         return StorageType.BOOLEAN_MEMBER
 
-    def diff(self, other: BooleanMember) -> typing.Union[NoDiffMember, BooleanMember]:
+    def diff(self, other: BooleanMember) -> NoDiffMember | BooleanMember:
         if self.get_type() is other.get_type():
             if self.value == other.value:
                 return NoDiffMember(self.name, self)
@@ -169,7 +169,7 @@ class IDMember(ValueMember):
     def get_type(self) -> StorageType:
         return StorageType.ID_MEMBER
 
-    def diff(self, other: IDMember) -> typing.Union[NoDiffMember, IDMember]:
+    def diff(self, other: IDMember) -> NoDiffMember | IDMember:
         if self.get_type() is other.get_type():
             if self.value == other.value:
                 return NoDiffMember(self.name, self)
@@ -204,7 +204,7 @@ class BitfieldMember(ValueMember):
     def get_type(self) -> StorageType:
         return StorageType.BITFIELD_MEMBER
 
-    def diff(self, other: BitfieldMember) -> typing.Union[NoDiffMember, BitfieldMember]:
+    def diff(self, other: BitfieldMember) -> NoDiffMember | BitfieldMember:
         """
         Uses XOR to determine which bits are different in 'other'.
         """
@@ -236,7 +236,7 @@ class StringMember(ValueMember):
     def get_type(self) -> StorageType:
         return StorageType.STRING_MEMBER
 
-    def diff(self, other: StringMember) -> typing.Union[NoDiffMember, StringMember]:
+    def diff(self, other: StringMember) -> NoDiffMember | StringMember:
         if self.get_type() is other.get_type():
             if self.value == other.value:
                 return NoDiffMember(self.name, self)
@@ -263,16 +263,14 @@ class ContainerMember(ValueMember):
         self,
         name: str,
         submembers: list[
-            typing.Union[
-                IntMember,
-                FloatMember,
-                BooleanMember,
-                IDMember,
-                BitfieldMember,
-                StringMember,
-                ArrayMember,
-                ContainerMember,
-            ]
+            IntMember
+            | FloatMember
+            | BooleanMember
+            | IDMember
+            | BitfieldMember
+            | StringMember
+            | ArrayMember
+            | ContainerMember
         ],
     ):
         """
@@ -294,7 +292,7 @@ class ContainerMember(ValueMember):
     def get_type(self) -> StorageType:
         return StorageType.CONTAINER_MEMBER
 
-    def diff(self, other: ContainerMember) -> typing.Union[NoDiffMember, ContainerMember]:
+    def diff(self, other: ContainerMember) -> NoDiffMember | ContainerMember:
         if self.get_type() is other.get_type():
             diff_dict = {}
 
@@ -327,16 +325,14 @@ class ContainerMember(ValueMember):
     def _create_dict(
         self,
         member_list: list[
-            typing.Union[
-                IntMember,
-                FloatMember,
-                BooleanMember,
-                IDMember,
-                BitfieldMember,
-                StringMember,
-                ArrayMember,
-                ContainerMember,
-            ]
+            IntMember
+            | FloatMember
+            | BooleanMember
+            | IDMember
+            | BitfieldMember
+            | StringMember
+            | ArrayMember
+            | ContainerMember
         ],
     ) -> None:
         """
@@ -367,16 +363,14 @@ class ArrayMember(ValueMember):
         name: str,
         allowed_member_type: StorageType,
         members: list[
-            typing.Union[
-                IntMember,
-                FloatMember,
-                BooleanMember,
-                IDMember,
-                BitfieldMember,
-                StringMember,
-                ArrayMember,
-                ContainerMember,
-            ]
+            IntMember
+            | FloatMember
+            | BooleanMember
+            | IDMember
+            | BitfieldMember
+            | StringMember
+            | ArrayMember
+            | ContainerMember
         ],
     ):
         super().__init__(name)
@@ -464,7 +458,7 @@ class ArrayMember(ValueMember):
 
         return ContainerMember(self.name, member_dict)
 
-    def diff(self, other: ArrayMember) -> typing.Union[NoDiffMember, ArrayMember]:
+    def diff(self, other: ArrayMember) -> NoDiffMember | ArrayMember:
         if self.get_type() == other.get_type():
             diff_list = []
             other_list = other.value

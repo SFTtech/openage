@@ -24,7 +24,7 @@ if typing.TYPE_CHECKING:
     from openage.util.fslike.path import Path
 
 
-def interactive_browser(cfg: Path, srcdir: Directory = None) -> typing.NoReturn:
+def interactive_browser(cfg: Path, srcdir: Path | None = None) -> typing.NoReturn:
     """
     launch an interactive view for browsing the original
     archives.
@@ -62,7 +62,7 @@ def interactive_browser(cfg: Path, srcdir: Directory = None) -> typing.NoReturn:
             with open(target, "rb") as outfile:
                 outfile.write(infile.read())
 
-    def save_slp(path: Path, target: Path, palette: ColorTable = None) -> None:
+    def save_slp(path: Path, target: Path, palette: ColorTable | None = None) -> None:
         """
         save a slp as png.
         """
@@ -83,7 +83,7 @@ def interactive_browser(cfg: Path, srcdir: Directory = None) -> typing.NoReturn:
             out_path, filename = os.path.split(target)
             MediaExporter.save_png(tex, Directory(out_path).root, filename)
 
-    def save_smx(path: Path, target: Path, palette: ColorTable = None) -> None:
+    def save_smx(path: Path, target: Path, palette: ColorTable | None = None) -> None:
         """
         save a smx as png.
         """

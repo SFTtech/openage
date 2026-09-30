@@ -219,7 +219,7 @@ class MediaExporter:
         itargs: tuple,
         kwargs: dict,
         job_count: int | None = None,
-        dll_manager: DllDirectoryManager = None,
+        dll_manager: DllDirectoryManager | None = None,
     ):
         """
         Export media files in multiple threads.

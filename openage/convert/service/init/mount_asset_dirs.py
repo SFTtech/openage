@@ -14,10 +14,10 @@ from ...value_object.read.media.drs import DRS
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.init.game_version import GameVersion
-    from openage.util.fslike.directory import Directory
+    from openage.util.fslike.path import Path
 
 
-def mount_asset_dirs(srcdir: Directory, game_version: GameVersion) -> Union:
+def mount_asset_dirs(srcdir: Path, game_version: GameVersion) -> Union:
     """
     Returns a Union path where srcdir is mounted at /,
     and all the asset files are mounted in subfolders.

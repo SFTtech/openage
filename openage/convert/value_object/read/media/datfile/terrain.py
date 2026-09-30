@@ -22,7 +22,7 @@ class FrameData(GenieStructure):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -40,7 +40,7 @@ class TerrainPassGraphic(GenieStructure):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -69,7 +69,7 @@ class TerrainRestriction(GenieStructure):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -105,7 +105,7 @@ class TerrainAnimation(GenieStructure):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -140,7 +140,7 @@ class Terrain(GenieStructure):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -302,7 +302,7 @@ class TerrainBorder(GenieStructure):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -338,7 +338,7 @@ class TileSize(GenieStructure):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """

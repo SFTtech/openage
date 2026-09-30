@@ -37,7 +37,7 @@ class DemoProcessor:
         gamespec: ArrayMember,
         args: Namespace,
         string_resources: StringResource,
-        existing_graphics: list[str],
+        existing_graphics: set[str],
     ) -> list[Modpack]:
         """
         Input game speification and media here and get a set of

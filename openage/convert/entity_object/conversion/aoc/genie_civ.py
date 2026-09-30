@@ -81,7 +81,7 @@ class GenieCivilizationGroup(ConverterObjectGroup):
         # Reference to everything else in the gamedata
         self.data = full_data_set
 
-        self.civ: dict[int, GenieCivilizationObject] = self.data.genie_civs[civ_id]
+        self.civ: GenieCivilizationObject = self.data.genie_civs[civ_id]
 
         self.team_bonus: CivTeamBonus = None
         if self.civ.has_member("team_bonus_id"):

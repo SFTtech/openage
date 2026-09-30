@@ -50,7 +50,7 @@ class DE2Processor:
         gamespec: ArrayMember,
         args: Namespace,
         string_resources: StringResource,
-        existing_graphics: list[str],
+        existing_graphics: set[str],
     ) -> list[Modpack]:
         """
         Input game speification and media here and get a set of
@@ -84,7 +84,7 @@ class DE2Processor:
         gamespec: ArrayMember,
         game_version: GameVersion,
         string_resources: StringResource,
-        existing_graphics: list[str],
+        existing_graphics: set[str],
     ) -> GenieObjectContainer:
         """
         Store data from the reader in a conversion container.

@@ -43,15 +43,14 @@ if typing.TYPE_CHECKING:
     from openage.convert.entity_object.conversion.modpack import Modpack
     from openage.convert.entity_object.conversion.stringresource import StringResource
     from openage.convert.value_object.init.game_version import GameVersion
-    from openage.util.fslike.directory import Directory
 
 
-def debug_cli_args(debugdir: Directory, loglevel: int, args: Namespace) -> None:
+def debug_cli_args(debugdir: Path, loglevel: int, args: Namespace) -> None:
     """
     Create debug output for the converter CLI args.
 
     :param debugdir: Output directory for the debug info.
-    :type debugdir: Directory
+    :type debugdir: Path
     :param loglevel: Determines how detailed the output is.
     :type loglevel: int
     :param args: CLI arguments.
@@ -78,12 +77,12 @@ def debug_cli_args(debugdir: Directory, loglevel: int, args: Namespace) -> None:
         log.write(logtext)
 
 
-def debug_game_version(debugdir: Directory, loglevel: int, args: Namespace) -> None:
+def debug_game_version(debugdir: Path, loglevel: int, args: Namespace) -> None:
     """
     Create debug output for the detected game version.
 
     :param debugdir: Output directory for the debug info.
-    :type debugdir: Directory
+    :type debugdir: Path
     :param loglevel: Determines how detailed the output is.
     :type loglevel: int
     :param args: CLI arguments.
@@ -110,12 +109,12 @@ def debug_game_version(debugdir: Directory, loglevel: int, args: Namespace) -> N
         log.write(logtext)
 
 
-def debug_mounts(debugdir: Directory, loglevel: int, args: Namespace) -> None:
+def debug_mounts(debugdir: Path, loglevel: int, args: Namespace) -> None:
     """
     Create debug output for the mounted files and folders.
 
     :param debugdir: Output directory for the debug info.
-    :type debugdir: Directory
+    :type debugdir: Path
     :param loglevel: Determines how detailed the output is.
     :type loglevel: int
     :param args: CLI arguments.
@@ -175,12 +174,12 @@ def debug_mounts(debugdir: Directory, loglevel: int, args: Namespace) -> None:
         log.write(logtext)
 
 
-def debug_gamedata_format(debugdir: Directory, loglevel: int, game_version: GameVersion) -> None:
+def debug_gamedata_format(debugdir: Path, loglevel: int, game_version: GameVersion) -> None:
     """
     Create debug output for the converted .dat format.
 
     :param debugdir: Output directory for the debug info.
-    :type debugdir: Directory
+    :type debugdir: Path
     :param loglevel: Determines how detailed the output is.
     :type loglevel: int
     :param game_version: Game version the .dat file comes with.
@@ -234,12 +233,12 @@ def debug_gamedata_format(debugdir: Directory, loglevel: int, game_version: Game
         log.write(logtext)
 
 
-def debug_string_resources(debugdir: Directory, loglevel: int, string_resources: StringResource) -> None:
+def debug_string_resources(debugdir: Path, loglevel: int, string_resources: StringResource) -> None:
     """
     Create debug output for found string resources.
 
     :param debugdir: Output directory for the debug info.
-    :type debugdir: Directory
+    :type debugdir: Path
     :param loglevel: Determines how detailed the output is.
     :type loglevel: int
     :param string_resources: Language and string information.
@@ -262,12 +261,12 @@ def debug_string_resources(debugdir: Directory, loglevel: int, string_resources:
         log.write(logtext)
 
 
-def debug_registered_graphics(debugdir: Directory, loglevel: int, existing_graphics: list[str]) -> None:
+def debug_registered_graphics(debugdir: Path, loglevel: int, existing_graphics: list[str]) -> None:
     """
     Create debug output for found graphics files.
 
     :param debugdir: Output directory for the debug info.
-    :type debugdir: Directory
+    :type debugdir: Path
     :param loglevel: Determines how detailed the output is.
     :type loglevel: int
     :param existing_graphics: List of graphic ids of graphic files.
@@ -288,13 +287,13 @@ def debug_registered_graphics(debugdir: Directory, loglevel: int, existing_graph
         log.write(logtext)
 
 
-def debug_converter_objects(debugdir: Directory, loglevel: int, dataset: GenieObjectContainer) -> None:
+def debug_converter_objects(debugdir: Path, loglevel: int, dataset: GenieObjectContainer) -> None:
     """
     Create debug output for ConverterObject instances from the
     conversion preprocessor.
 
     :param debugdir: Output directory for the debug info.
-    :type debugdir: Directory
+    :type debugdir: Path
     :param loglevel: Determines how detailed the output is.
     :type loglevel: int
     :param dataset: Dataset containing converter objects from pre-processing.
@@ -324,13 +323,13 @@ def debug_converter_objects(debugdir: Directory, loglevel: int, dataset: GenieOb
         log.write(logtext)
 
 
-def debug_converter_object_groups(debugdir: Directory, loglevel: int, dataset: GenieObjectContainer) -> None:
+def debug_converter_object_groups(debugdir: Path, loglevel: int, dataset: GenieObjectContainer) -> None:
     """
     Create debug output for ConverterObjectGroup instances from the
     conversion preprocessor.
 
     :param debugdir: Output directory for the debug info.
-    :type debugdir: Directory
+    :type debugdir: Path
     :param loglevel: Determines how detailed the output is.
     :type loglevel: int
     :param dataset: Dataset containing converter object groups from processing.
@@ -545,12 +544,12 @@ def debug_converter_object_groups(debugdir: Directory, loglevel: int, dataset: G
             log.write(logtext)
 
 
-def debug_modpack(debugdir: Directory, loglevel: int, modpack: Modpack) -> None:
+def debug_modpack(debugdir: Path, loglevel: int, modpack: Modpack) -> None:
     """
     Create debug output for a modpack.
 
     :param debugdir: Output directory for the debug info.
-    :type debugdir: Directory
+    :type debugdir: Path
     :param loglevel: Determines how detailed the output is.
     :type loglevel: int
     :param modpack: Modpack container.
@@ -601,18 +600,18 @@ def debug_modpack(debugdir: Directory, loglevel: int, modpack: Modpack) -> None:
 
 
 def debug_media_cache(
-    debugdir: Directory, loglevel: int, sourcedir: Directory, cachedata: dict, game_version: GameVersion
+    debugdir: Path, loglevel: int, sourcedir: Path, cachedata: dict, game_version: GameVersion
 ) -> None:
     """
     Create media cache data for graphics files. This allows using deterministic
     packer and compression settings for graphics file conversion.
 
     :param debugdir: Output directory for the debug info.
-    :type debugdir: Directory
+    :type debugdir: Path
     :param loglevel: Determines how detailed the output is.
     :type loglevel: int
     :param sourcedir: Sourcedir where the graphics files are mounted.
-    :type sourcedir: Directory
+    :type sourcedir: Path
     :param cachedata: Dict with cache data.
     :type cachedata: dict
     :param game_version: Game version.
@@ -641,12 +640,12 @@ def debug_media_cache(
         log.write(logtext)
 
 
-def debug_execution_time(debugdir: Directory, loglevel: int, stages_time: dict[str, float]) -> None:
+def debug_execution_time(debugdir: Path, loglevel: int, stages_time: dict[str, float]) -> None:
     """
     Create debug output for execution time for each stage
 
     :param debugdir: Output directory for the debug info.
-    :type debugdir: Directory
+    :type debugdir: Path
     :param loglevel: Determines how detailed the output is.
     :type loglevel: int
     :param stages_time: Dict with execution time for each stage.
@@ -662,12 +661,12 @@ def debug_execution_time(debugdir: Directory, loglevel: int, stages_time: dict[s
         log.write(logtext)
 
 
-def debug_not_found_sounds(debugdir: Directory, loglevel: int, sound: Path) -> None:
+def debug_not_found_sounds(debugdir: Path, loglevel: int, sound: Path) -> None:
     """
     Create debug output for sounds not found
 
     :param debugdir: Output directory for the debug info.
-    :type debugdir: Directory
+    :type debugdir: Path
     :param loglevel: Determines how detailed the output is.
     :type loglevel: int
     :param sound: Sound object with path and name values.

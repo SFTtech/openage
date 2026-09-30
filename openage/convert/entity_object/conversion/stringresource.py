@@ -18,14 +18,14 @@ class StringResource(GenieStructure):
         super().__init__()
         self.strings = defaultdict(lambda: {})
 
-    def fill_from(self, stringtable: dict[str, dict[str, str]]) -> None:
+    def fill_from(self, stringtable: dict[str, dict[str | int, str]]) -> None:
         """
         stringtable is a dict {langcode: {id: string}}
         """
         for lang, langstrings in stringtable.items():
             self.strings[lang].update(langstrings)
 
-    def get_tables(self) -> dict[str, dict[str, str]]:
+    def get_tables(self) -> dict[str, dict[str | int, str]]:
         """
         Returns the stringtable.
         """

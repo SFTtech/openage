@@ -29,9 +29,7 @@ class TextureImage:
     represents a image created from a (r,g,b,a) matrix.
     """
 
-    def __init__(
-        self, picture_data: typing.Union[Image.Image, numpy.ndarray], hotspot: tuple[int, int] | None = None
-    ):
+    def __init__(self, picture_data: Image.Image | numpy.ndarray, hotspot: tuple[int, int] | None = None):
 
         if isinstance(picture_data, Image.Image):
             if picture_data.mode != "RGBA":
@@ -73,9 +71,9 @@ class Texture:
 
     def __init__(
         self,
-        input_data: typing.Union[SLP, SMP, SMX, SLD, BlendingMode],
+        input_data: SLP | SMP | SMX | SLD | BlendingMode,
         palettes: dict[int, ColorTable] | None = None,
-        custom_cutter: InterfaceCutter = None,
+        custom_cutter: InterfaceCutter | None = None,
         layer: int = 0,
     ):
         super().__init__()
@@ -133,9 +131,9 @@ class Texture:
 
     def _to_subtextures(
         self,
-        frame: typing.Union[SLPFrame, SMPLayer, SMXLayer],
+        frame: SLPFrame | SMPLayer | SMXLayer,
         main_palette: ColorTable,
-        custom_cutter: InterfaceCutter = None,
+        custom_cutter: InterfaceCutter | None = None,
     ):
         """
         convert slp to subtexture or subtextures, using a palette.

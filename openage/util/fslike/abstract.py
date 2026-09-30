@@ -81,7 +81,7 @@ class FSLikeObject(ABC):
         """Test if the parts are a file or a directory"""
         return self.is_file(parts) or self.is_dir(parts)
 
-    def resolve_r(self, parts) -> typing.Union[Path, None]:
+    def resolve_r(self, parts) -> Path | None:
         """
         Returns a new, flattened, Path if the target exists.
         The fslike parts in between may be skipped,
@@ -91,7 +91,7 @@ class FSLikeObject(ABC):
         """
         return Path(self, parts) if self.exists(parts) else None
 
-    def resolve_w(self, parts) -> typing.Union[Path, None]:
+    def resolve_w(self, parts) -> Path | None:
         """
         Returns a new flattened path. This skips funny mounts in between.
 
@@ -120,7 +120,7 @@ class FSLikeObject(ABC):
         """
 
     @abstractmethod
-    def mtime(self, parts) -> typing.Union[float, None]:
+    def mtime(self, parts) -> float | None:
         """
         Shall determine the last modification time (UNIX timestamp),
         and return None if unknown.

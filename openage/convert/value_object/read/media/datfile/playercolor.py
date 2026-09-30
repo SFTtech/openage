@@ -23,7 +23,7 @@ class PlayerColor(GenieStructure):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """

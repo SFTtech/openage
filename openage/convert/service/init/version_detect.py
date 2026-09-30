@@ -26,7 +26,7 @@ def iterate_game_versions(
     Determine what editions and expansions of a game are installed in srcdir
     by iterating through all versions the converter knows about.
     """
-    best_edition: GameEdition | None = None
+    best_edition = None
     expansions = []
 
     for game_edition in avail_game_eds:
@@ -89,7 +89,6 @@ def iterate_game_versions(
     else:
         # Either no version or an unsupported or broken was found
         # Return the last detected edition
-        assert best_edition is not None
         return GameVersion(edition=best_edition)
 
     avail_exps_by_id = {expansion.game_id: expansion for expansion in avail_game_exps}
@@ -133,8 +132,8 @@ def create_version_objects(srcdir: Path) -> tuple[list[GameEdition], list[GameEx
     Create GameEdition and GameExpansion objects from auxiliary
     config files.
     """
-    game_expansion_list: list[GameExpansion] = []
-    game_edition_list: list[GameEdition] = []
+    game_expansion_list = []
+    game_edition_list = []
 
     # initiliaze necessary paths
     game_edition_path = srcdir.joinpath("game_editions.toml")
@@ -152,7 +151,6 @@ def create_version_objects(srcdir: Path) -> tuple[list[GameEdition], list[GameEx
     for game in game_editions:
         aux_path = srcdir[game_editions[game]["subfolder"]]
         game_obj = create_game_obj(game_editions[game], aux_path)
-        assert isinstance(game_obj, GameEdition)
         game_edition_list.append(game_obj)
 
     # create and list GameExpansion objects
@@ -160,13 +158,14 @@ def create_version_objects(srcdir: Path) -> tuple[list[GameEdition], list[GameEx
     for game in game_expansions:
         aux_path = srcdir[game_expansions[game]["subfolder"]]
         game_obj = create_game_obj(game_expansions[game], aux_path, True)
-        assert isinstance(game_obj, GameExpansion)
         game_expansion_list.append(game_obj)
 
     return game_edition_list, game_expansion_list
 
 
-def create_game_obj(game_info: dict, aux_path: Path, expansion: bool = False) -> GameEdition | GameExpansion:
+def create_game_obj(
+    game_info: dict[str, str], aux_path: Path, expansion: bool = False
+) -> GameEdition | GameExpansion:
     """
     Create a GameEdition or GameExpansion object from the contents
     of the game_info dictionary and its version hash file.

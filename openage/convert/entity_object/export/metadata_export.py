@@ -55,8 +55,8 @@ class SpriteMetadataExport(MetadataExport):
         tex_filename: str,
         layer_mode: SpriteLayerMode,
         layer_pos: int,
-        frame_rate: float,
-        replay_delay: float,
+        frame_rate: float | None,
+        replay_delay: float | None,
         frame_count: int,
         angle_count: int,
         mirror_mode: int,
@@ -223,8 +223,8 @@ class TerrainMetadataExport(MetadataExport):
         tex_filename: str,
         layer_mode: TerrainLayerMode,
         layer_pos: int,
-        frame_rate: float,
-        replay_delay: float,
+        frame_rate: float | None,
+        replay_delay: float | None,
         frame_count: int,
     ):
         """

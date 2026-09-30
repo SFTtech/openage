@@ -51,7 +51,7 @@ class UnitCommand(GenieStructure):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -131,7 +131,7 @@ class UnitHeader(GenieStructure):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -158,7 +158,7 @@ class UnitLine(GenieStructure):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -178,7 +178,7 @@ class ResourceStorage(GenieStructure):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -203,7 +203,7 @@ class DamageGraphic(GenieStructure):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -230,7 +230,7 @@ class HitType(GenieStructure):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -252,7 +252,7 @@ class ResourceCost(GenieStructure):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -275,7 +275,7 @@ class BuildingAnnex(GenieStructure):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -297,7 +297,7 @@ class UnitObject(GenieStructure):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -693,7 +693,7 @@ class TreeUnit(UnitObject):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -714,7 +714,7 @@ class AnimatedUnit(UnitObject):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -735,7 +735,7 @@ class DoppelgangerUnit(AnimatedUnit):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -756,7 +756,7 @@ class MovingUnit(DoppelgangerUnit):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -807,7 +807,7 @@ class ActionUnit(MovingUnit):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -897,7 +897,7 @@ class ProjectileUnit(ActionUnit):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -1019,7 +1019,7 @@ class MissileUnit(ProjectileUnit):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -1051,7 +1051,7 @@ class UnitVariantDE2(GenieStructure):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -1073,7 +1073,7 @@ class LivingUnit(ProjectileUnit):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -1243,7 +1243,7 @@ class BuildingUnit(LivingUnit):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """

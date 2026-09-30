@@ -58,7 +58,7 @@ class SpriteMetadata(DataDefinition):
     def add_layer(
         self,
         layer_id: int,
-        mode: LayerMode = None,
+        mode: LayerMode | None = None,
         position: int | None = None,
         time_per_frame: float | None = None,
         replay_delay: float | None = None,

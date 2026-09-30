@@ -65,7 +65,7 @@ class Union(FSLikeObject):
         for subdir in mountpoint:
             dirstructure = dirstructure.setdefault(subdir, {})
 
-    def remove_mount(self, search_mountpoint, source_pathobj: Path = None) -> None:
+    def remove_mount(self, search_mountpoint, source_pathobj: Path | None = None) -> None:
         """
         Remove a mount from the union by searching for the source
         that provides the given mountpoint.
@@ -309,7 +309,7 @@ class UnionPath(Path):
         """
         return self.fsobj.add_mount(pathobj, self.parts, priority)
 
-    def unmount(self, pathobj: Path = None) -> None:
+    def unmount(self, pathobj: Path | None = None) -> None:
         """
         Unmount a path from the union described by this path.
         This is like "unmounting /home", no matter what the source was.

@@ -50,7 +50,7 @@ class AoCUpgradeAbilitySubprocessor:
         container_obj_ref: str,
         command_id: int,
         ranged: bool = False,
-        diff: ConverterObject = None,
+        diff: ConverterObject | None = None,
     ) -> list[ForwardRef]:
         """
         Creates a patch for the ApplyContinuousEffect ability of a line.
@@ -233,7 +233,7 @@ class AoCUpgradeAbilitySubprocessor:
         container_obj_ref: str,
         command_id: int,
         ranged: bool = False,
-        diff: ConverterObject = None,
+        diff: ConverterObject | None = None,
     ) -> list[ForwardRef]:
         """
         Creates a patch for the ApplyDiscreteEffect ability of a line.
@@ -437,7 +437,7 @@ class AoCUpgradeAbilitySubprocessor:
         converter_group: ConverterObjectGroup,
         line: GenieGameEntityGroup,
         container_obj_ref: str,
-        diff: ConverterObject = None,
+        diff: ConverterObject | None = None,
     ) -> list[ForwardRef]:
         """
         Creates a patch for the AttributeChangeTracker ability of a line.
@@ -553,7 +553,7 @@ class AoCUpgradeAbilitySubprocessor:
         converter_group: ConverterObjectGroup,
         line: GenieGameEntityGroup,
         container_obj_ref: str,
-        diff: ConverterObject = None,
+        diff: ConverterObject | None = None,
     ) -> list[ForwardRef]:
         """
         Creates a patch for the Death ability of a line.
@@ -628,7 +628,7 @@ class AoCUpgradeAbilitySubprocessor:
         converter_group: ConverterObjectGroup,
         line: GenieGameEntityGroup,
         container_obj_ref: str,
-        diff: ConverterObject = None,
+        diff: ConverterObject | None = None,
     ) -> list[ForwardRef]:
         """
         Creates a patch for the Despawn ability of a line.
@@ -709,7 +709,7 @@ class AoCUpgradeAbilitySubprocessor:
         converter_group: ConverterObjectGroup,
         line: GenieGameEntityGroup,
         container_obj_ref: str,
-        diff: ConverterObject = None,
+        diff: ConverterObject | None = None,
     ) -> list[ForwardRef]:
         """
         Creates a patch for the Idle ability of a line.
@@ -784,7 +784,7 @@ class AoCUpgradeAbilitySubprocessor:
         converter_group: ConverterObjectGroup,
         line: GenieGameEntityGroup,
         container_obj_ref: str,
-        diff: ConverterObject = None,
+        diff: ConverterObject | None = None,
     ) -> list[ForwardRef]:
         """
         Creates a patch for the Live ability of a line.
@@ -877,7 +877,7 @@ class AoCUpgradeAbilitySubprocessor:
         converter_group: ConverterObjectGroup,
         line: GenieGameEntityGroup,
         container_obj_ref: str,
-        diff: ConverterObject = None,
+        diff: ConverterObject | None = None,
     ) -> list[ForwardRef]:
         """
         Creates a patch for the LineOfSight ability of a line.
@@ -965,7 +965,7 @@ class AoCUpgradeAbilitySubprocessor:
         converter_group: ConverterObjectGroup,
         line: GenieGameEntityGroup,
         container_obj_ref: str,
-        diff: ConverterObject = None,
+        diff: ConverterObject | None = None,
     ) -> list[ForwardRef]:
         """
         Creates a patch for the Move ability of a line.
@@ -1101,7 +1101,7 @@ class AoCUpgradeAbilitySubprocessor:
         converter_group: ConverterObjectGroup,
         line: GenieGameEntityGroup,
         container_obj_ref: str,
-        diff: ConverterObject = None,
+        diff: ConverterObject | None = None,
     ) -> list[ForwardRef]:
         """
         Creates a patch for the Named ability of a line.
@@ -1192,7 +1192,7 @@ class AoCUpgradeAbilitySubprocessor:
         converter_group: ConverterObjectGroup,
         line: GenieGameEntityGroup,
         container_obj_ref: str,
-        diff: ConverterObject = None,
+        diff: ConverterObject | None = None,
     ) -> list[ForwardRef]:
         """
         Creates a patch for the Resistance ability of a line.
@@ -1235,7 +1235,7 @@ class AoCUpgradeAbilitySubprocessor:
         converter_group: ConverterObjectGroup,
         line: GenieGameEntityGroup,
         container_obj_ref: str,
-        diff: ConverterObject = None,
+        diff: ConverterObject | None = None,
     ) -> list[ForwardRef]:
         """
         Creates a patch for the Selectable ability of a line.
@@ -1375,7 +1375,7 @@ class AoCUpgradeAbilitySubprocessor:
         upgrade_source: GenieUnitObject,
         upgrade_target: GenieUnitObject,
         command_id: int,
-        diff: ConverterObject = None,
+        diff: ConverterObject | None = None,
     ) -> list[ForwardRef]:
         """
         Creates a patch for the Selectable ability of a line.
@@ -1679,7 +1679,7 @@ class AoCUpgradeAbilitySubprocessor:
         converter_group: ConverterObjectGroup,
         line: GenieGameEntityGroup,
         container_obj_ref: str,
-        diff: ConverterObject = None,
+        diff: ConverterObject | None = None,
     ) -> list[ForwardRef]:
         """
         Creates a patch for the Turn ability of a line.

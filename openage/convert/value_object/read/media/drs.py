@@ -19,6 +19,7 @@ from .....util.struct import NamedStruct
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.init.game_version import GameVersion
+    from openage.util.filelike.abstract import FileLikeObject
     from openage.util.fslike.wrapper import GuardedFile
 
 
@@ -110,7 +111,7 @@ class DRS(FileCollection):
     represents a file archive in DRS format.
     """
 
-    def __init__(self, fileobj: GuardedFile, game_version: GameVersion):
+    def __init__(self, fileobj: FileLikeObject, game_version: GameVersion):
         super().__init__()
 
         # queried from the outside

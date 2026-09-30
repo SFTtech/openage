@@ -69,16 +69,8 @@ def level_colorcode(lvl):
 SPAM = 5
 
 
-def _spam(self, msg, *args, **kwargs):
-    """Log 'msg % args' with severity 'SPAM'."""
-    if self.isEnabledFor(SPAM):
-        self._log(SPAM, msg, args, **kwargs)  # pylint: disable=W0212
-
-
 def setup_logging():
     """setup the logging system"""
-    logging.Logger.spam = _spam
-
     # do not overwrite any of the predefined levels
     # https://docs.python.org/3/library/logging.html#logging-levels
     logging.addLevelName(1, "MIN")
@@ -87,7 +79,6 @@ def setup_logging():
 
     root = logging.getLogger()
     root.addHandler(CPP_HANDLER)
-    logging.spam = root.spam
 
 
 def set_loglevel(level):
@@ -105,7 +96,7 @@ def get_loglevel():
 
 def spam(msg, *args, **kwargs):
     """spam message"""
-    logging.spam(msg, *args, **kwargs)
+    logging.log(SPAM, msg, *args, **kwargs)
 
 
 def dbg(msg, *args, **kwargs):

@@ -88,7 +88,7 @@ class GenieStructure:
         raw: bytes,
         offset: int,
         game_version: GameVersion,
-        cls: GenieStructure = None,
+        cls: type[GenieStructure] | None = None,
         members: tuple | None = None,
         dynamic_load=False,
     ) -> tuple[int, list[ValueMember]]:
@@ -232,8 +232,8 @@ class GenieStructure:
         export: MemberAccess,
         var_name: str,
         storage_type: StorageType,
-        var_type: GroupMember,
-        target_class: type,
+        var_type: MultisubtypeMember,
+        target_class: type[GenieStructure],
     ) -> tuple[int, list[ValueMember]]:
         generated_value_members = []
 
@@ -642,7 +642,7 @@ class GenieStructure:
     def get_data_format(
         cls,
         game_version: GameVersion,
-        allowed_modes: tuple[MemberAccess] | None = None,
+        allowed_modes: tuple[MemberAccess | bool, ...] | None = None,
         flatten_includes: bool = False,
         is_parent: bool = False,
     ):
@@ -683,7 +683,7 @@ class GenieStructure:
     @classmethod
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
 

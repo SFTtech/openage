@@ -22,7 +22,7 @@ class MapInfo(GenieStructure):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -55,7 +55,7 @@ class MapLand(GenieStructure):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -85,7 +85,7 @@ class MapTerrain(GenieStructure):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -106,7 +106,7 @@ class MapUnit(GenieStructure):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -134,7 +134,7 @@ class MapElevation(GenieStructure):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -155,7 +155,7 @@ class Map(GenieStructure):
     @cache
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """

@@ -67,7 +67,7 @@ class RoRUnitLineGroup(GenieUnitLineGroup):
         head_unit = self.get_head_unit()
         return head_unit["unit_class"].value == 10
 
-    def get_garrison_mode(self, civ_id: int = -1) -> typing.Union[GenieGarrisonMode, None]:
+    def get_garrison_mode(self, civ_id: int = -1) -> GenieGarrisonMode | None:
         """
         Checks only for transport boat commands.
 
@@ -237,7 +237,7 @@ class RoRUnitTaskGroup(GenieUnitTaskGroup):
         head_unit = self.get_head_unit()
         return head_unit["unit_class"].value == 10
 
-    def get_garrison_mode(self, civ_id: int = -1) -> typing.Union[GenieGarrisonMode, None]:
+    def get_garrison_mode(self, civ_id: int = -1) -> GenieGarrisonMode | None:
         """
         Checks only for transport boat commands.
 

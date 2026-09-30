@@ -45,7 +45,7 @@ def expand_relative_path(path: str) -> AnyStr:
     return os.path.realpath(os.path.expandvars(os.path.expanduser(path)))
 
 
-def prompt(msg: str, answer: typing.Union[bool, None] = None) -> bool:
+def prompt(msg: str, answer: bool | None = None) -> bool:
     """
     Ask the user a yes/no question.
 
@@ -65,21 +65,21 @@ def prompt(msg: str, answer: typing.Union[bool, None] = None) -> bool:
     return answer
 
 
-def wanna_convert(answer: typing.Union[bool, None] = None) -> bool:
+def wanna_convert(answer: bool | None = None) -> bool:
     """
     Ask the user if assets should be converted.
     """
     return prompt("Do you want to convert assets?", answer=answer)
 
 
-def wanna_check_updates(answer: typing.Union[bool, None] = None) -> bool:
+def wanna_check_updates(answer: bool | None = None) -> bool:
     """
     Ask the user if they want to check for updates.
     """
     return prompt("Do you want to check for updates?", answer=answer)
 
 
-def wanna_download_trial(answer: typing.Union[bool, None] = None) -> bool:
+def wanna_download_trial(answer: bool | None = None) -> bool:
     """
     Ask the user if the AoC trial should be downloaded.
     """

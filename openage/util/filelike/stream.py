@@ -33,7 +33,7 @@ class StreamSeekBuffer(PosSavingReadOnlyFileLikeObject):
         By default, entire megabytes are read at once.
     """
 
-    def __init__(self, wrappee, keepbuffered: int = INF, minread: int = 1048576):
+    def __init__(self, wrappee, keepbuffered: float = INF, minread: int = 1048576):
         super().__init__()
 
         self.wrapped = wrappee

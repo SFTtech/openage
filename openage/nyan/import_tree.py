@@ -110,7 +110,7 @@ class Node:
         """
         return self.children[name]
 
-    def get_fqon(self) -> tuple[str]:
+    def get_fqon(self) -> tuple[str, ...]:
         """
         Get the fqon that is associated with this node by traversing the tree upwards.
         """
@@ -151,12 +151,12 @@ class ImportTree:
         # Saves nodes for the import dict that don't have an alias
         self.import_nodes: set[Node] = set()
 
-    def add_alias(self, fqon: tuple[str], alias: str) -> None:
+    def add_alias(self, fqon: tuple[str, ...], alias: str) -> None:
         """
         Adds an alias to the node with the specified fqon.
 
         :param fqon: Identifier of the node.
-        :type fqon: tuple[str]
+        :type fqon: tuple[str, ...]
         :param alias: Alias for the node.
         :type alias: str
         """
@@ -294,7 +294,7 @@ class ImportTree:
                     current_node.add_child(new_node)
                     current_node = new_node
 
-    def get_alias_dict(self) -> dict[str, tuple[str]]:
+    def get_alias_dict(self) -> dict[str, tuple[str, ...]]:
         """
         Get the fqons of the nodes that are used for aliases, i.e. fqons of all
         nodes in self.alias_nodes. The dict can be used for creating imports
@@ -315,7 +315,7 @@ class ImportTree:
 
         return aliases
 
-    def get_import_list(self) -> list[tuple[str]]:
+    def get_import_list(self) -> list[tuple[str, ...]]:
         """
         Get the fqons of the nodes that are plain imports, i.e. fqons of all
         nodes in self.import_nodes. The dict can be used for creating imports
@@ -333,17 +333,19 @@ class ImportTree:
 
         return imports
 
-    def get_alias_fqon(self, fqon: tuple[str], namespace: tuple[str] | None = None) -> tuple[str]:
+    def get_alias_fqon(
+        self, fqon: tuple[str, ...], namespace: tuple[str, ...] | None = None
+    ) -> tuple[str, ...]:
         """
         Find the (shortened) fqon by traversing the tree to the fqon node and
         then going upwards until an alias is found.
 
         :param fqon: Object reference for which an alias should be found.
-        :type fqon: tuple[str]
+        :type fqon: tuple[str, ...]
         :param namespace: Identifier of a namespace. If this is a (nested) object,
                           we check if the fqon is in the namespace before
                           searching for an alias.
-        :type namespace: tuple[str]
+        :type namespace: tuple[str, ...]
         """
         if namespace:
             current_node = self.root

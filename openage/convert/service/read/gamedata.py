@@ -19,11 +19,11 @@ from ...value_object.read.media_types import MediaType
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.init.game_version import GameVersion
     from openage.convert.value_object.read.read_members import ArrayMember
-    from openage.util.fslike.directory import Directory
+    from openage.util.fslike.path import Path
     from openage.util.fslike.wrapper import GuardedFile
 
 
-def get_gamespec(srcdir: Directory, game_version: GameVersion, pickle_cache: bool) -> ArrayMember:
+def get_gamespec(srcdir: Path, game_version: GameVersion, pickle_cache: bool) -> ArrayMember:
     """
     Reads empires.dat file.
     """

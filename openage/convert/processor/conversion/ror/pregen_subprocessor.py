@@ -30,7 +30,7 @@ class RoRPregenSubprocessor:
         Create nyan objects for hardcoded properties.
         """
         # Stores pregenerated raw API objects as a container
-        pregen_converter_group = ConverterObjectGroup("pregen")
+        pregen_converter_group = ConverterObjectGroup(-1)
 
         AoCPregenSubprocessor.generate_activities(full_data_set, pregen_converter_group)
         AoCPregenSubprocessor.generate_attributes(full_data_set, pregen_converter_group)

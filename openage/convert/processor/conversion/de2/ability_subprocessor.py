@@ -25,7 +25,7 @@ class DE2AbilitySubprocessor:
     """
 
     @staticmethod
-    def regenerate_attribute_ability(line: GenieGameEntityGroup) -> ForwardRef:
+    def regenerate_attribute_ability(line: GenieGameEntityGroup) -> list[ForwardRef]:
         """
         Adds the RegenerateAttribute ability to a line.
 

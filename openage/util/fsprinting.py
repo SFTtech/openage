@@ -71,7 +71,7 @@ def colorize_dirname(dirname: str) -> str:
     return colorize(dirname, get_color_rules().get("di"))
 
 
-def print_tree(obj: FSLikeObject, path: str = "", prefix: str = "", max_entries: str = INF) -> None:
+def print_tree(obj: FSLikeObject, path: str = "", prefix: str = "", max_entries: float = INF) -> None:
     """
     Obj is a filesystem-like object; path must be a string.
 

@@ -6,7 +6,7 @@ Python dictionaries as a basis because they are guaranteed to
 be ordered since Python 3.6.
 """
 
-from collections.abc import Hashable
+from collections.abc import Hashable, Iterable
 from typing import Generic, TypeVar
 
 OrderedSetItem = TypeVar("OrderedSetItem")
@@ -19,7 +19,7 @@ class OrderedSet(Generic[OrderedSetItem]):
 
     __slots__ = ("ordered_set",)
 
-    def __init__(self, elements: Hashable = None):
+    def __init__(self, elements: Iterable[OrderedSetItem] | None = None):
         self.ordered_set = {}
 
         if elements:
@@ -99,7 +99,7 @@ class OrderedSet(Generic[OrderedSetItem]):
         element_list = self.get_list() + other.get_list()
         return OrderedSet(element_list)
 
-    def update(self, other) -> None:
+    def update(self, other: Iterable[OrderedSetItem]) -> None:
         """
         Append the elements of another iterable to the right of the
         ordered set.

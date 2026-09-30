@@ -34,7 +34,7 @@ class AoCPregenSubprocessor:
         Create nyan objects for hardcoded properties.
         """
         # Stores pregenerated raw API objects as a container
-        pregen_converter_group = ConverterObjectGroup("pregen")
+        pregen_converter_group = ConverterObjectGroup(-1)
 
         cls.generate_activities(full_data_set, pregen_converter_group)
         cls.generate_attributes(full_data_set, pregen_converter_group)

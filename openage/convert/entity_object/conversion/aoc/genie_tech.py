@@ -112,7 +112,7 @@ class GenieTechEffectBundleGroup(ConverterObjectGroup):
         # -1 = no train location
         return civilization_id > -1
 
-    def get_civilization(self) -> typing.Union[int, None]:
+    def get_civilization(self) -> int | None:
         """
         Returns the civilization id if the tech is unique, otherwise return None.
         """
@@ -494,7 +494,7 @@ class CivBonus(GenieTechEffectBundleGroup):
         """
         return self.civ_id
 
-    def replaces_researchable_tech(self) -> typing.Union[GenieTechEffectBundleGroup, None]:
+    def replaces_researchable_tech(self) -> GenieTechEffectBundleGroup | None:
         """
         Checks if this bonus replaces a researchable Tech and returns the tech group
         if thats the case. Otherwise None is returned.

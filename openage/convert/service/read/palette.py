@@ -15,12 +15,10 @@ from ...value_object.read.media_types import MediaType
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.init.game_version import GameVersion
-    from openage.util.fslike.directory import Directory
+    from openage.util.fslike.path import Path
 
 
-def get_palettes(
-    srcdir: Directory, game_version: GameVersion, index: int | None = None
-) -> dict[int, ColorTable]:
+def get_palettes(srcdir: Path, game_version: GameVersion, index: int | None = None) -> dict[int, ColorTable]:
     """
     Read and create the color palettes.
     """

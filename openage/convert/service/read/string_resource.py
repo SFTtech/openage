@@ -18,7 +18,6 @@ from ...value_object.read.media_types import MediaType
 if typing.TYPE_CHECKING:
     from argparse import Namespace
 
-    from openage.util.fslike.directory import Directory
     from openage.util.fslike.path import Path
     from openage.util.fslike.wrapper import GuardedFile
 
@@ -97,7 +96,7 @@ def read_age2_hd_fe_stringresources(stringres: StringResource, path: Path) -> in
     return count
 
 
-def read_age2_hd_3x_stringresources(stringres: StringResource, srcdir: Directory) -> int:
+def read_age2_hd_3x_stringresources(stringres: StringResource, srcdir: Path) -> int:
     """
     HD Edition 3.x and below store language .txt files
     in the Bin/ folder.
@@ -139,7 +138,7 @@ def read_age2_hd_3x_stringresources(stringres: StringResource, srcdir: Directory
 
 def read_hd_language_file_old(
     fileobj: GuardedFile, langcode: str, enc: str = "utf-8"
-) -> dict[str, StringResource]:
+) -> dict[str, dict[str | int, str]]:
     """
     Takes a file object, and the file's language code.
     """
@@ -168,8 +167,8 @@ def read_hd_language_file_old(
 
 
 def read_hd_language_file(
-    srcdir: Directory, language_file: GuardedFile, enc: str = "utf-8"
-) -> dict[str, StringResource]:
+    srcdir: Path, language_file: GuardedFile, enc: str = "utf-8"
+) -> dict[str, dict[str | int, str]]:
     """
     HD Edition stores language .txt files in the resources/ folder.
     Specific language strings are in resources/$LANG/strings/key-value/*.txt.
@@ -205,7 +204,7 @@ def read_hd_language_file(
     return {lang: strings}
 
 
-def read_de1_language_file(srcdir: Directory, language_file: GuardedFile) -> dict[str, StringResource]:
+def read_de1_language_file(srcdir: Path, language_file: GuardedFile) -> dict[str, dict[str | int, str]]:
     """
     Definitve Edition stores language .txt files in the Localization folder.
     Specific language strings are in Data/Localization/$LANG/strings.txt.
@@ -242,7 +241,7 @@ def read_de1_language_file(srcdir: Directory, language_file: GuardedFile) -> dic
     return {lang: strings}
 
 
-def read_de2_language_file(srcdir: Directory, language_file: GuardedFile) -> dict[str, StringResource]:
+def read_de2_language_file(srcdir: Path, language_file: GuardedFile) -> dict[str, dict[str | int, str]]:
     """
     Definitve Edition stores language .txt files in the resources/ folder.
     Specific language strings are in resources/$LANG/strings/key-value/*.txt.

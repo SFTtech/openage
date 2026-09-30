@@ -109,12 +109,12 @@ class NamedStruct(metaclass=NamedStructMeta):
     """
 
     # those values are set by the metaclass.
-    _postprocessors = None
-    _struct = None
-    _attributes = None
+    _postprocessors: dict
+    _struct: Struct
+    _attributes: list[str]
 
     def __init__(self, data):
-        if not self._struct:
+        if getattr(self, "_struct", None) is None:
             raise NotImplementedError("Abstract NamedStruct can not be instantiated")
 
         values = self._struct.unpack(data)
@@ -264,7 +264,7 @@ class Flags(metaclass=FlagsMeta):
     """
 
     # set by the metaclass
-    _flags = None
+    _flags: dict
 
     def __init__(self, val):
         for flagvalue, flagname in self._flags.items():

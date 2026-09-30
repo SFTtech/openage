@@ -13,6 +13,7 @@ if typing.TYPE_CHECKING:
     from openage.convert.entity_object.conversion.converter_object import (
         ConverterObject,
         ConverterObjectContainer,
+        RawAPIObject,
     )
 
 
@@ -50,7 +51,7 @@ class CombinedTerrain:
         # >=1 = store with first occuring Terrain;
         self._refs = []
 
-    def add_reference(self, referer: ConverterObject) -> None:
+    def add_reference(self, referer: RawAPIObject) -> None:
         """
         Add an object that is referencing this terrain.
         """

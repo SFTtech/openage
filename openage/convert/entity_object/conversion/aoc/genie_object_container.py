@@ -86,7 +86,7 @@ class GenieObjectContainer(ConverterObjectContainer):
 
         # Auxiliary
         self.strings: StringResource = None
-        self.existing_graphics: set[str] = None
+        self.existing_graphics: set[str] = set()
 
         # Phase 1: Genie-like objects
         # ConverterObject types (the data from the game)

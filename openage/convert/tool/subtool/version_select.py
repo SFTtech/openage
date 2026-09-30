@@ -15,11 +15,11 @@ from ...value_object.init.game_version import GameVersion, Support
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.init.game_version import GameEdition, GameExpansion, GameVersion
-    from openage.util.fslike.directory import Directory
+    from openage.util.fslike.path import Path
 
 
 def get_game_version(
-    srcdir: Directory, avail_game_eds: list[GameEdition], avail_game_exps: list[GameExpansion]
+    srcdir: Path, avail_game_eds: list[GameEdition], avail_game_exps: list[GameExpansion]
 ) -> GameVersion:
     """
     Mount the input folders for conversion.

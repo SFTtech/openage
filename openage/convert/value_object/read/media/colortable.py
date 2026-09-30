@@ -25,7 +25,7 @@ if typing.TYPE_CHECKING:
 class ColorTable(GenieStructure):
     __slots__ = ("header", "palette", "version")
 
-    def __init__(self, data: typing.Union[list, tuple, bytes]):
+    def __init__(self, data: list | tuple | bytes):
         super().__init__()
 
         if isinstance(data, list) or isinstance(data, tuple):
@@ -36,7 +36,7 @@ class ColorTable(GenieStructure):
         # Fast access for media conversion
         self.array = self.get_ndarray()
 
-    def fill_from_array(self, ar: typing.Union[list, tuple]) -> None:
+    def fill_from_array(self, ar: list | tuple) -> None:
         self.palette = [tuple(e) for e in ar]
 
     def fill(self, data: bytes) -> None:
@@ -160,7 +160,7 @@ class ColorTable(GenieStructure):
     @classmethod
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """
@@ -207,7 +207,7 @@ class PlayerColorTable(GenieStructure):
     @classmethod
     def get_data_format_members(
         cls, game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    ) -> list[tuple[MemberAccess, str | None, StorageType, str | ReadMember]]:
         """
         Return the members in this struct.
         """

@@ -46,8 +46,8 @@ class LZXDStream(ReadOnlyFileLikeObject):
         self.reset_interval = reset_interval
 
         # position in the decompressed output stream.
-        self.pos = None
-        self.buf = None
+        self.pos = 0
+        self.buf = ByteQueue()
 
         self.reset()
 

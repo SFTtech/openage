@@ -128,7 +128,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
             self.researches.append(tech_group)
 
     def add_unit(
-        self, genie_unit: GenieUnitObject, position: int = -1, after: GenieUnitObject = None
+        self, genie_unit: GenieUnitObject, position: int = -1, after: GenieUnitObject | None = None
     ) -> None:
         """
         Adds a unit/building to the line.
@@ -559,7 +559,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         return self.line_positions[unit_id]
 
-    def get_train_location_id(self) -> typing.Union[int, None]:
+    def get_train_location_id(self) -> int | None:
         """
         Returns the group_id for building line if the unit is
         creatable, otherwise return None.
@@ -591,7 +591,7 @@ class GenieUnitLineGroup(GenieGameEntityGroup):
         """
         return self.contains_entity(unit_id)
 
-    def get_civ_id(self) -> typing.Union[int, None]:
+    def get_civ_id(self) -> int | None:
         """
         Returns the enabling civ obj_id if the unit is unique,
         otherwise return None.
@@ -1067,7 +1067,7 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
         self.task_group_id = task_group_id
 
     def add_unit(
-        self, genie_unit: GenieUnitObject, position: int = -1, after: GenieUnitObject = None
+        self, genie_unit: GenieUnitObject, position: int = -1, after: GenieUnitObject | None = None
     ) -> None:
         # Force the idle/combat units at the beginning of the line
         if genie_unit["id0"].value in (GenieUnitTaskGroup.male_line_id, GenieUnitTaskGroup.female_line_id):

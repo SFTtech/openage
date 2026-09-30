@@ -83,7 +83,7 @@ def main(args, error):
     # `palettes` is only required for the SLP/SMP/SMX file types. The sld,
     # drs-wav, and wav paths don't read it, so we pre-declare it as None and
     # only populate it when one of the palette-based paths is taken.
-    palettes = None
+    palettes: dict[int, ColorTable] | None = None
     if not (args.mode in ("sld", "drs-wav", "wav") or file_extension in ("sld", "wav")):
         if not args.palettes_path:
             raise RuntimeError(f"palettes-path needs to be specified for file type '{file_extension}'")
@@ -118,7 +118,7 @@ def main(args, error):
         raise SyntaxError("format could not be determined")
 
 
-def read_palettes(palettes_path: Path) -> dict[str, ColorTable]:
+def read_palettes(palettes_path: Path) -> dict[int, ColorTable]:
     """
     Reads the palettes from the palettes folder/archive.
     """
@@ -171,7 +171,7 @@ def read_palettes(palettes_path: Path) -> dict[str, ColorTable]:
 
 
 def read_slp_file(
-    slp_path: Path, output_path: Path, palettes: dict[str, ColorTable], compression_level: int
+    slp_path: Path, output_path: Path, palettes: dict[int, ColorTable] | None, compression_level: int
 ) -> None:
     """
     Reads a single SLP file.
@@ -208,7 +208,11 @@ def read_slp_file(
 
 
 def read_slp_in_drs_file(
-    drs: Path, slp_path: Path, output_path: Path, palettes: dict[str, ColorTable], compression_level: int
+    drs: Path,
+    slp_path: Path,
+    output_path: Path,
+    palettes: dict[int, ColorTable] | None,
+    compression_level: int,
 ) -> None:
     """
     Reads a SLP file from a DRS archive.
@@ -248,7 +252,11 @@ def read_slp_in_drs_file(
 
 
 def read_smp_file(
-    smp_path: Path, output_path: Path, palettes: dict[str, ColorTable], compression_level: int, layer: int
+    smp_path: Path,
+    output_path: Path,
+    palettes: dict[int, ColorTable] | None,
+    compression_level: int,
+    layer: int,
 ) -> None:
     """
     Reads a single SMP file.
@@ -285,7 +293,11 @@ def read_smp_file(
 
 
 def read_smx_file(
-    smx_path: Path, output_path: Path, palettes: dict[str, ColorTable], compression_level: int, layer: int
+    smx_path: Path,
+    output_path: Path,
+    palettes: dict[int, ColorTable] | None,
+    compression_level: int,
+    layer: int,
 ) -> None:
     """
     Reads a single SMX (compressed SMP) file.
