@@ -122,6 +122,15 @@ class FileCollection(FSLikeObject):
 
         return open_w
 
+    def open_rw(self, parts: list[bytes]) -> NoReturn:
+        raise UnsupportedOperation("FileCollection.open_rw")
+
+    def open_a(self, parts: list[bytes]) -> NoReturn:
+        raise UnsupportedOperation("FileCollection.open_a")
+
+    def open_ar(self, parts: list[bytes]) -> NoReturn:
+        raise UnsupportedOperation("FileCollection.open_ar")
+
     def list(self, parts):
         fileentries, subdirs = self.get_direntries(parts)
 

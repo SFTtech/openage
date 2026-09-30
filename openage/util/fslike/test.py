@@ -10,6 +10,7 @@ from tempfile import NamedTemporaryFile, gettempdir
 from openage.testing.testing import assert_raises, assert_value, result
 
 from .directory import CaseIgnoringDirectory, Directory
+from .filecollection import FileCollection, FileEntry
 from .union import Union
 from .wrapper import DirectoryCreator, WriteBlocker
 
@@ -215,6 +216,19 @@ def test_append(root_path):
         assert_value(fil.read(), b"overwrittenest")
 
 
+def test_filecollection():
+    """
+    A FileCollection is read-only and must reject every write mode.
+    """
+    collection = FileCollection()
+    collection.add_fileentry([b"file"], FileEntry())
+    path = collection.root["file"]
+
+    for mode in ("wb", "ab", "arb", "rwb"):
+        with assert_raises(UnsupportedOperation):
+            path.open(mode)
+
+
 def test():
     """
     Perform functionality tests for the filesystem abstraction interface.
@@ -236,6 +250,9 @@ def test():
 
     # test appending content
     test_append(root_path)
+
+    # test the read-only file collection
+    test_filecollection()
 
     # and remove all the things we just created
     assert_value(root_path.is_dir(), True)
