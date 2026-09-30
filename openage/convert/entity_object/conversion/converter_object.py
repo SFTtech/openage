@@ -41,14 +41,16 @@ RawMemberValue = (
 )
 
 
-class ConverterObject:
+class ConverterObject[IdT: (int, str)]:
     """
     Storage object for data objects in the to-be-converted games.
+
+    Objects read from game data have int IDs, diffs between two objects have str IDs.
     """
 
     __slots__ = ("members", "obj_id")
 
-    def __init__(self, obj_id: int | str, members: dict[str, ValueMember] | None = None):
+    def __init__(self, obj_id: IdT, members: dict[str, ValueMember] | None = None):
         """
         Creates a new ConverterObject.
 
@@ -71,7 +73,7 @@ class ConverterObject:
             else:
                 raise TypeError("members must be an instance of ValueMember")
 
-    def get_id(self) -> int | str:
+    def get_id(self) -> IdT:
         """
         Returns the object's ID.
         """
@@ -111,7 +113,7 @@ class ConverterObject:
         """
         self.members.pop(member_id, None)
 
-    def short_diff(self, other: ConverterObject) -> ConverterObject:
+    def short_diff(self, other: ConverterObject[IdT]) -> ConverterObject[str]:
         """
         Returns the obj_diff between two objects as another ConverterObject.
 
@@ -131,7 +133,7 @@ class ConverterObject:
 
         return ConverterObject(f"{self.obj_id}-{other.get_id()}-sdiff", members=obj_diff)
 
-    def diff(self, other: ConverterObject) -> ConverterObject:
+    def diff(self, other: ConverterObject[IdT]) -> ConverterObject[str]:
         """
         Returns the obj_diff between two objects as another ConverterObject.
         """

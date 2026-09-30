@@ -15,7 +15,7 @@ if typing.TYPE_CHECKING:
     from openage.convert.value_object.read.value_members import ValueMember
 
 
-class GenieSound(ConverterObject):
+class GenieSound(ConverterObject[int]):
     """
     Sound definition from a .dat file.
     """

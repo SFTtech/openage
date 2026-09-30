@@ -15,7 +15,7 @@ if typing.TYPE_CHECKING:
     from openage.convert.value_object.read.value_members import ValueMember
 
 
-class GenieGraphic(ConverterObject):
+class GenieGraphic(ConverterObject[int]):
     """
     Graphic definition from a .dat file.
     """

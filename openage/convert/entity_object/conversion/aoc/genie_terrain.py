@@ -15,7 +15,7 @@ if typing.TYPE_CHECKING:
     from openage.convert.value_object.read.value_members import ValueMember
 
 
-class GenieTerrainObject(ConverterObject):
+class GenieTerrainObject(ConverterObject[int]):
     """
     Terrain definition from a .dat file.
     """
@@ -97,7 +97,7 @@ class GenieTerrainGroup(ConverterObjectGroup):
         return f"GenieTerrainGroup<{self.get_id()}>"
 
 
-class GenieTerrainRestriction(ConverterObject):
+class GenieTerrainRestriction(ConverterObject[int]):
     """
     Terrain restriction definition from a .dat file.
     """

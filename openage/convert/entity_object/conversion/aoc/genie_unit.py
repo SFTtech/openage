@@ -19,7 +19,7 @@ if typing.TYPE_CHECKING:
     from openage.convert.value_object.read.value_members import ValueMember
 
 
-class GenieUnitObject(ConverterObject):
+class GenieUnitObject(ConverterObject[int]):
     """
     Ingame object in AoE2.
     """

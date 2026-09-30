@@ -19,7 +19,7 @@ if typing.TYPE_CHECKING:
     from openage.convert.value_object.read.value_members import ValueMember
 
 
-class GenieCivilizationObject(ConverterObject):
+class GenieCivilizationObject(ConverterObject[int]):
     """
     Civilization in AoE2.
     """

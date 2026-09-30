@@ -15,7 +15,7 @@ if typing.TYPE_CHECKING:
     from openage.convert.value_object.read.value_members import ValueMember
 
 
-class GenieEffectObject(ConverterObject):
+class GenieEffectObject(ConverterObject[int]):
     """
     Single effect contained in GenieEffectBundle.
     """
@@ -56,7 +56,7 @@ class GenieEffectObject(ConverterObject):
         return f"GenieEffectObject<{self.get_id()}>"
 
 
-class GenieEffectBundle(ConverterObject):
+class GenieEffectBundle(ConverterObject[int]):
     """
     A set of effects of a tech.
     """

@@ -15,7 +15,7 @@ if typing.TYPE_CHECKING:
     from openage.convert.value_object.read.value_members import ValueMember
 
 
-class GenieAgeConnection(ConverterObject):
+class GenieAgeConnection(ConverterObject[int]):
     """
     A relation between an Age and buildings/techs/units in AoE.
     """
@@ -43,7 +43,7 @@ class GenieAgeConnection(ConverterObject):
         return f"GenieAgeConnection<{self.get_id()}>"
 
 
-class GenieBuildingConnection(ConverterObject):
+class GenieBuildingConnection(ConverterObject[int]):
     """
     A relation between a building and other buildings/techs/units in AoE.
     """
@@ -74,7 +74,7 @@ class GenieBuildingConnection(ConverterObject):
         return f"GenieBuildingConnection<{self.get_id()}>"
 
 
-class GenieTechConnection(ConverterObject):
+class GenieTechConnection(ConverterObject[int]):
     """
     A relation between a tech and other buildings/techs/units in AoE.
     """
@@ -102,7 +102,7 @@ class GenieTechConnection(ConverterObject):
         return f"GenieTechConnection<{self.get_id()}>"
 
 
-class GenieUnitConnection(ConverterObject):
+class GenieUnitConnection(ConverterObject[int]):
     """
     A relation between a unit and other buildings/techs/units in AoE.
     """

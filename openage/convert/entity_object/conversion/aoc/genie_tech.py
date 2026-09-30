@@ -20,7 +20,7 @@ if typing.TYPE_CHECKING:
     from openage.convert.value_object.read.value_members import ValueMember
 
 
-class GenieTechObject(ConverterObject):
+class GenieTechObject(ConverterObject[int]):
     """
     Technology in AoE2.
 
