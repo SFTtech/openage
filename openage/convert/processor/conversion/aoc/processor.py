@@ -1103,6 +1103,7 @@ class AoCProcessor:
         for unit_line in unit_lines.values():
             if unit_line.is_creatable():
                 train_location_id = unit_line.get_train_location_id()
+                assert train_location_id is not None
                 full_data_set.building_lines[train_location_id].add_creatable(unit_line)
 
         # Link buildings to villagers and fishing ships
@@ -1111,6 +1112,7 @@ class AoCProcessor:
         for building_line in building_lines.values():
             if building_line.is_creatable():
                 train_location_id = building_line.get_train_location_id()
+                assert train_location_id is not None
 
                 if train_location_id in full_data_set.villager_groups.keys():
                     full_data_set.villager_groups[train_location_id].add_creatable(building_line)
@@ -1135,6 +1137,7 @@ class AoCProcessor:
         for tech in tech_groups.values():
             if tech.is_researchable():
                 research_location_id = tech.get_research_location_id()
+                assert research_location_id is not None
                 full_data_set.building_lines[research_location_id].add_researchable(tech)
 
     @staticmethod
@@ -1149,6 +1152,7 @@ class AoCProcessor:
         """
         for bonus in full_data_set.civ_boni.values():
             civ_id = bonus.get_civilization()
+            assert civ_id is not None
             full_data_set.civ_groups[civ_id].add_civ_bonus(bonus)
 
         for unit_line in full_data_set.unit_lines.values():
@@ -1174,6 +1178,7 @@ class AoCProcessor:
         for tech_group in full_data_set.tech_groups.values():
             if tech_group.is_unique() and tech_group.is_researchable():
                 civ_id = tech_group.get_civilization()
+                assert civ_id is not None
                 full_data_set.civ_groups[civ_id].add_unique_tech(tech_group)
 
     @staticmethod

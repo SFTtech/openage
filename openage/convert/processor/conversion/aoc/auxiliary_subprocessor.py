@@ -61,6 +61,7 @@ class AoCAuxiliarySubprocessor:
 
         # Get train location of line
         train_location_id = line.get_train_location_id()
+        assert train_location_id is not None
         if isinstance(line, GenieBuildingLineGroup):
             train_location = dataset.unit_lines[train_location_id]
 
@@ -384,6 +385,7 @@ class AoCAuxiliarySubprocessor:
         """
         dataset = tech_group.data
         research_location_id = tech_group.get_research_location_id()
+        assert research_location_id is not None
         research_location = dataset.building_lines[research_location_id]
 
         name_lookup_dict = internal_name_lookups.get_entity_lookups(dataset.game_version)
@@ -402,6 +404,7 @@ class AoCAuxiliarySubprocessor:
         if tech_group.is_unique():
             # Add object to the Civ object
             civ_id = tech_group.get_civilization()
+            assert civ_id is not None
             civ = dataset.civ_groups[civ_id]
             civ_name = civ_lookup_dict[civ_id][0]
 

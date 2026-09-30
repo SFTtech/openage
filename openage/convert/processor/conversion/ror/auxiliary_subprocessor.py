@@ -63,6 +63,7 @@ class RoRAuxiliarySubprocessor:
 
         # Get train location of line
         train_location_id = line.get_train_location_id()
+        assert train_location_id is not None
         if isinstance(line, GenieBuildingLineGroup):
             train_location = dataset.unit_lines[train_location_id]
             train_location_name = name_lookup_dict[train_location_id][0]

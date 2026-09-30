@@ -272,6 +272,7 @@ class AoCCivSubprocessor:
 
             # Get train location of line
             train_location_id = unique_line.get_train_location_id()
+            assert train_location_id is not None
             if isinstance(unique_line, GenieBuildingLineGroup):
                 train_location = dataset.unit_lines[train_location_id]
                 train_location_name = name_lookup_dict[train_location.get_head_unit_id()][0]
@@ -430,6 +431,7 @@ class AoCCivSubprocessor:
                 unlock_tech = dataset.unit_unlocks[tech_id]
                 unlocked_line = unlock_tech.get_unlocked_line()
                 train_location_id = unlocked_line.get_train_location_id()
+                assert train_location_id is not None
 
                 if isinstance(unlocked_line, GenieBuildingLineGroup):
                     train_location = dataset.unit_lines[train_location_id]
@@ -451,6 +453,7 @@ class AoCCivSubprocessor:
                 tech_group = dataset.tech_groups[tech_id]
                 if tech_group.is_researchable():
                     research_location_id = tech_group.get_research_location_id()
+                    assert research_location_id is not None
                     research_location = dataset.building_lines[research_location_id]
 
                     if research_location in disabled_techs:
