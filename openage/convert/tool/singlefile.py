@@ -13,18 +13,18 @@ from openage.convert.processor.export.media_exporter import MediaExporter
 from openage.convert.value_object.init.game_version import GameEdition, GameVersion
 
 from ...log import info
+from ...util.filelike.stream import PythonStream
 from ...util.fslike.directory import Directory
 from ..entity_object.export.texture import Texture
 from ..value_object.read.media.colortable import ColorTable
 from ..value_object.read.media.drs import DRS
 
-AOC_GAME_VERSION = GameVersion(edition=GameEdition("Dummy AOC", "AOC", "YES", [], [], {}, [], []))
-SWGB_GAME_VERSION = GameVersion(edition=GameEdition("Dummy SWGB", "SWGB", "YES", [], [], {}, [], []))
+AOC_GAME_VERSION = GameVersion(edition=GameEdition("Dummy AOC", "AOC", "YES", [], [], {}, {}, []))
+SWGB_GAME_VERSION = GameVersion(edition=GameEdition("Dummy SWGB", "SWGB", "YES", [], [], {}, {}, []))
 
 
 def init_subparser(cli):
     """Initializes the parser for convert-specific args."""
-    import argparse
 
     cli.set_defaults(entrypoint=main)
 
@@ -37,7 +37,6 @@ def init_subparser(cli):
     )
     cli.add_argument(
         "--drs",
-        type=argparse.FileType("rb"),
         help=("drs archive filename that contains an slp or wav e.g. path ~/games/aoe/graphics.drs"),
     )
     cli.add_argument(
@@ -97,7 +96,7 @@ def main(args, error):
         read_slp_file(args.filename, args.output, palettes, compression_level)
 
     elif args.mode == "drs-slp" or (file_extension == "slp" and args.drs):
-        read_slp_in_drs_file(args.drs, args.filename, args.output, palettes, compression_level)
+        read_slp_in_drs_file(Path(args.drs), args.filename, args.output, palettes, compression_level)
 
     elif args.mode == "smp" or file_extension == "smp":
         read_smp_file(args.filename, args.output, palettes, compression_level, layer)
@@ -112,7 +111,7 @@ def main(args, error):
         read_wav_file(args.filename, args.output)
 
     elif args.mode == "drs-wav" or (file_extension == "wav" and args.drs):
-        read_wav_in_drs_file(args.drs, args.filename, args.output)
+        read_wav_in_drs_file(Path(args.drs), args.filename, args.output)
 
     else:
         raise SyntaxError("format could not be determined")
@@ -156,7 +155,7 @@ def read_palettes(palettes_path: Path) -> dict[int, ColorTable]:
         # open from drs archive
         with Path(palettes_path).open("rb") as palette_file:
             game_version = AOC_GAME_VERSION
-            palette_dir = DRS(palette_file, game_version)
+            palette_dir = DRS(PythonStream(palette_file), game_version)
 
             info("parsing palette data...")
             for palette_file in palette_dir.root.iterdir():
@@ -221,17 +220,18 @@ def read_slp_in_drs_file(
 
     # open from drs archive
     game_version = AOC_GAME_VERSION
-    drs_file = DRS(drs, game_version)
+    with drs.open("rb") as drs_fileobj:
+        drs_file = DRS(PythonStream(drs_fileobj), game_version)
 
-    info("opening slp in drs '%s:%s'...", drs.name, slp_path)
-    with drs_file.root[slp_path].open("rb") as slp_file:
-        # import here to prevent that the __main__ depends on SLP
-        # just by importing this singlefile.py.
-        from ..value_object.read.media.slp import SLP
+        info("opening slp in drs '%s:%s'...", drs.name, slp_path)
+        with drs_file.root[slp_path].open("rb") as slp_file:
+            # import here to prevent that the __main__ depends on SLP
+            # just by importing this singlefile.py.
+            from ..value_object.read.media.slp import SLP
 
-        # parse the slp image
-        info("parsing slp image...")
-        slp_image = SLP(slp_file.read())
+            # parse the slp image
+            info("parsing slp image...")
+            slp_image = SLP(slp_file.read())
 
     # create texture
     info("packing texture...")
@@ -399,18 +399,18 @@ def read_wav_in_drs_file(drs: Path, wav_path: Path, output_path: Path) -> None:
 
     # open from drs archive
     game_version = AOC_GAME_VERSION
-    drs_file = DRS(drs, game_version)
+    with drs.open("rb") as drs_fileobj:
+        drs_file = DRS(PythonStream(drs_fileobj), game_version)
 
-    info("opening wav in drs '%s:%s'...", drs.name, wav_path)
-    wav_file = drs_file.root[wav_path].open("rb")
+        info("opening wav in drs '%s:%s'...", drs.name, wav_path)
+        with drs_file.root[wav_path].open("rb") as wav_file:
+            # import here to prevent that the __main__ depends on opusenc
+            # just by importing this singlefile.py.
+            from ..service.export.opus.opusenc import encode
 
-    # import here to prevent that the __main__ depends on opusenc
-    # just by importing this singlefile.py.
-    from ..service.export.opus.opusenc import encode
-
-    # convert wav to opus
-    info("converting wav to opus...")
-    opus_data = encode(wav_file.read())
+            # convert wav to opus
+            info("converting wav to opus...")
+            opus_data = encode(wav_file.read())
 
     # save converted opus data to target directory
     info("saving opus file...")

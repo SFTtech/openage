@@ -4,11 +4,47 @@
 Provides FileLikeObject for binary stream interaction.
 """
 
+import os
 import sys
 
 from ..bytequeue import ByteBuffer
 from ..math import clamp
 from .readonly import PosSavingReadOnlyFileLikeObject
+
+
+class PythonStream(PosSavingReadOnlyFileLikeObject):
+    """
+    Adapts a standard Python binary stream (e.g. BufferedReader, BytesIO)
+    to the FileLikeObject interface, so it can be used by code that
+    requires FileLikeObject for transparent archive access.
+    """
+
+    def __init__(self, wrappee):
+        super().__init__()
+
+        if not wrappee.seekable():
+            raise ValueError("wrappee must be seekable")
+
+        self.wrapped = wrappee
+
+    def read(self, size: int = -1) -> bytes:
+        return self.wrapped.read(size)
+
+    def seek(self, offset: int, whence=os.SEEK_SET) -> None:
+        self.pos = self.seek_helper(offset, whence)
+        self.wrapped.seek(self.pos)
+
+    def get_size(self) -> int:
+        current = self.wrapped.tell()
+        self.wrapped.seek(0, os.SEEK_END)
+        size = self.wrapped.tell()
+        self.wrapped.seek(current)
+
+        return size
+
+    def close(self) -> None:
+        self.closed = True
+        self.wrapped.close()
 
 
 class StreamSeekBuffer(PosSavingReadOnlyFileLikeObject):
