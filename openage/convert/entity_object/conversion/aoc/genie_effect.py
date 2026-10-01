@@ -66,7 +66,7 @@ class GenieEffectBundle(ConverterObject[int]):
     def __init__(
         self,
         bundle_id: int,
-        effects: list[GenieEffectObject],
+        effects: dict[int, GenieEffectObject],
         full_data_set: GenieObjectContainer,
         members: dict[str, ValueMember] | None = None,
     ):
@@ -75,7 +75,7 @@ class GenieEffectBundle(ConverterObject[int]):
 
         :param bundle_id: The index of the effect in the .dat file's effect
                           block. (the index is referenced as tech_effect_id by techs)
-        :param effects: Effects of the bundle as list of GenieEffectObject.
+        :param effects: Effects of the bundle, mapped from effect id to GenieEffectObject.
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
                               process.

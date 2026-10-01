@@ -134,6 +134,9 @@ class AoCTechSubprocessor:
             converter_group = dataset.civ_groups[converter_group.get_civilization_id()]
 
         else:
+            # get_patches is only called with tech groups and the two civ
+            # group types above; everything else is a GenieTechEffectBundleGroup
+            assert isinstance(converter_group, GenieTechEffectBundleGroup)
             effects = converter_group.get_effects()
 
         team_effect = False

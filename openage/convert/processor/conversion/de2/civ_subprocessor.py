@@ -40,6 +40,7 @@ class DE2CivSubprocessor:
         patches.extend(cls.setup_civ_bonus(civ_group))
 
         if len(civ_group.get_team_bonus_effects()) > 0:
+            assert civ_group.team_bonus is not None
             patches.extend(DE2TechSubprocessor.get_patches(civ_group.team_bonus))
 
         return patches

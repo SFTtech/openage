@@ -42,6 +42,7 @@ class AoCCivSubprocessor:
         patches.extend(cls.setup_civ_bonus(civ_group))
 
         if len(civ_group.get_team_bonus_effects()) > 0:
+            assert civ_group.team_bonus is not None
             patches.extend(AoCTechSubprocessor.get_patches(civ_group.team_bonus))
 
         return patches
@@ -343,6 +344,9 @@ class AoCCivSubprocessor:
 
             # Get train location of line
             research_location_id = unique_tech.get_research_location_id()
+            # unique techs are only added when is_researchable(), which
+            # guarantees a valid research location
+            assert research_location_id is not None
             research_location = dataset.building_lines[research_location_id]
             research_location_name = name_lookup_dict[research_location_id][0]
 
