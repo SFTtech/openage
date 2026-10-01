@@ -66,6 +66,8 @@ class AoCUpgradeAbilitySubprocessor:
         :returns: The forward references for the generated patches.
         :rtype: list
         """
+        # only called with tech groups as converter_group
+        assert isinstance(converter_group, GenieTechEffectBundleGroup)
         head_unit_id = line.get_head_unit_id()
         tech_id = converter_group.get_id()
         dataset = line.data
@@ -249,6 +251,8 @@ class AoCUpgradeAbilitySubprocessor:
         :returns: The forward references for the generated patches.
         :rtype: list
         """
+        # only called with tech groups as converter_group
+        assert isinstance(converter_group, GenieTechEffectBundleGroup)
         head_unit_id = line.get_head_unit_id()
         tech_id = converter_group.get_id()
         dataset = line.data
@@ -1208,6 +1212,8 @@ class AoCUpgradeAbilitySubprocessor:
         :returns: The forward references for the generated patches.
         :rtype: list
         """
+        # only called with tech groups as converter_group
+        assert isinstance(converter_group, GenieTechEffectBundleGroup)
         head_unit_id = line.get_head_unit_id()
         dataset = line.data
 
@@ -1913,7 +1919,7 @@ class AoCUpgradeAbilitySubprocessor:
     @staticmethod
     def create_animation_patch(
         converter_group: ConverterObjectGroup,
-        line: ConverterObjectGroup,
+        line: GenieGameEntityGroup,
         ability_ref: str,
         patch_name_prefix: str,
         container_obj_ref: str,
