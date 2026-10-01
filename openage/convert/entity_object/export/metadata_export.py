@@ -31,7 +31,7 @@ class MetadataExport(DataDefinition, Observer):
 
         DataDefinition.__init__(self, targetdir, target_filename)
 
-    def update(self, observable: Observable, message=None):
+    def update(self, observable: Observable | None, message=None):
         return NotImplementedError("Interface does not implement update()")
 
     def __repr__(self):
@@ -194,7 +194,7 @@ class TextureMetadataExport(MetadataExport):
 
         return texture_file.dump()
 
-    def update(self, observable: Observable, message: dict | None = None):
+    def update(self, observable: Observable | None, message: dict | None = None):
         """
         Receive metdata from the graphics file export.
 

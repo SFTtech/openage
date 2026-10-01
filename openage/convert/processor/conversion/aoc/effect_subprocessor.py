@@ -21,6 +21,7 @@ from ....value_object.conversion.forward_ref import ForwardRef
 
 if typing.TYPE_CHECKING:
     from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup
+    from openage.nyan.nyan_structs import NyanObject
 
 
 class AoCEffectSubprocessor:
@@ -31,7 +32,7 @@ class AoCEffectSubprocessor:
     @staticmethod
     def get_attack_effects(
         line: GenieGameEntityGroup, location_ref: str, projectile: int = -1
-    ) -> list[ForwardRef]:
+    ) -> list[ForwardRef | NyanObject]:
         """
         Creates effects that are used for attacking (unit command: 7)
 
@@ -51,7 +52,7 @@ class AoCEffectSubprocessor:
             projectile_id = line.get_head_unit()["projectile_id1"].value
             current_unit = dataset.genie_units[projectile_id]
 
-        effects = []
+        effects: list[ForwardRef | NyanObject] = []
 
         armor_lookup_dict = internal_name_lookups.get_armor_class_lookups(dataset.game_version)
 
@@ -134,7 +135,7 @@ class AoCEffectSubprocessor:
         current_unit = line.get_head_unit()
         dataset = line.data
 
-        effects = []
+        effects: list[ForwardRef] = []
 
         effect_parent = "engine.effect.discrete.convert.Convert"
         convert_parent = "engine.effect.discrete.convert.type.AoE2Convert"
@@ -496,7 +497,7 @@ class AoCEffectSubprocessor:
         return effects
 
     @staticmethod
-    def get_attack_resistances(line: GenieGameEntityGroup, ability_ref: str) -> list[ForwardRef]:
+    def get_attack_resistances(line: GenieGameEntityGroup, ability_ref: str) -> list[ForwardRef | NyanObject]:
         """
         Creates resistances that are used for attacking (unit command: 7)
 
@@ -512,7 +513,7 @@ class AoCEffectSubprocessor:
 
         armor_lookup_dict = internal_name_lookups.get_armor_class_lookups(dataset.game_version)
 
-        resistances = []
+        resistances: list[ForwardRef | NyanObject] = []
 
         # FlatAttributeChangeDecrease
         resistance_parent = "engine.resistance.discrete.flat_attribute_change.FlatAttributeChange"

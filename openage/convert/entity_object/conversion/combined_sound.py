@@ -91,7 +91,7 @@ class CombinedSound:
 
         return None
 
-    def resolve_sound_location(self) -> str | None:
+    def resolve_sound_location(self) -> str:
         """
         Returns the planned location of the sound file in the modpack.
         """
@@ -101,7 +101,7 @@ class CombinedSound:
         if len(self._refs) == 1:
             return f"{self._refs[0].get_file_location()[0]}{'sounds/'}"
 
-        return None
+        raise ValueError(f"{self!r}: sound has no referencing objects")
 
     def remove_reference(self, referer: ConverterObject) -> None:
         """

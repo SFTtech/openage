@@ -26,7 +26,7 @@ class Observer:
     Implements a Java 8-like Observer interface.
     """
 
-    def update(self, observable: Observable, message: Optional[Any] = None):
+    def update(self, observable: Observable | None, message: Optional[Any] = None):
         """
         Called by an Observable object that has registered this observer
         whenever it changes.
