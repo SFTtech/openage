@@ -129,14 +129,14 @@ def verbosity_to_level(verbosity):
     Translates an integer verbosity to a log level.
     """
     levels = [
-        logging.getLevelName("MIN"),
-        logging.getLevelName("SPAM"),
+        logging.getLevelNamesMapping()["MIN"],
+        logging.getLevelNamesMapping()["SPAM"],
         logging.DEBUG,
         logging.INFO,
         logging.WARNING,
         logging.ERROR,
         logging.CRITICAL,
-        logging.getLevelName("MAX"),
+        logging.getLevelNamesMapping()["MAX"],
     ]
     # return INFO when verbosity is 0
     return levels[clamp(-verbosity + 3, 0, len(levels) - 1)]

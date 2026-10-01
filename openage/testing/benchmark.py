@@ -21,7 +21,7 @@ def benchmark(func: Callable) -> None:
 
     result = [(0, 1)]
     number = 1
-    total = [0, 0]
+    total = [0, 0.0]
     str_row_format = "{:10} {:12}  {:11}"
     row_format1 = "{:10} "
     row_format2 = "{:11.8f}s  {:10.8f}s"

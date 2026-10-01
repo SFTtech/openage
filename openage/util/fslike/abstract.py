@@ -21,7 +21,7 @@ from io import UnsupportedOperation
 from .path import Path
 
 if typing.TYPE_CHECKING:
-    from io import BufferedReader
+    from openage.util.filelike.abstract import FileLikeObject
 
 
 class FSLikeObject(ABC):
@@ -58,24 +58,24 @@ class FSLikeObject(ABC):
         return f"[{self!s}]:{b'/'.join(parts).decode(errors='replace')}"
 
     @abstractmethod
-    def open_r(self, parts) -> BufferedReader:
-        """Shall return a BufferedReader for the given file ("mode 'rb'")."""
+    def open_r(self, parts) -> typing.IO[bytes] | FileLikeObject:
+        """Shall return a binary reader for the given file ("mode 'rb'")."""
 
     @abstractmethod
-    def open_w(self, parts) -> BufferedReader:
-        """Shall return a BufferedWriter for the given file ("mode 'wb'")."""
+    def open_w(self, parts) -> typing.IO[bytes] | FileLikeObject:
+        """Shall return a binary writer for the given file ("mode 'wb'")."""
 
     @abstractmethod
-    def open_rw(self, parts) -> BufferedReader:
-        """Shall return a BufferedWriter for the given file ("mode 'r+'")."""
+    def open_rw(self, parts) -> typing.IO[bytes] | FileLikeObject:
+        """Shall return a binary random-access handle for the given file ("mode 'r+'")."""
 
     @abstractmethod
-    def open_a(self, parts) -> BufferedReader:
-        """Shall return a BufferedWriter for the given file ("mode 'a'")."""
+    def open_a(self, parts) -> typing.IO[bytes] | FileLikeObject:
+        """Shall return a binary append handle for the given file ("mode 'a'")."""
 
     @abstractmethod
-    def open_ar(self, parts) -> BufferedReader:
-        """Shall return a BufferedWriter for the given file ("mode 'a+'")."""
+    def open_ar(self, parts) -> typing.IO[bytes] | FileLikeObject:
+        """Shall return a binary random-access append handle for the given file ("mode 'a+'")."""
 
     def exists(self, parts):
         """Test if the parts are a file or a directory"""

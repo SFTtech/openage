@@ -110,7 +110,7 @@ def format_progress(progress: int, total: int) -> str:
     return f"{progress:>{len(str(total))}}/{total}"
 
 
-def print_progress(progress: int, total: int) -> str:
+def print_progress(progress: int, total: int) -> None:
     """
     Print an "x out of y" string with fixed width to stdout.
     The output overwrites itself.

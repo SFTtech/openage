@@ -126,7 +126,8 @@ def codegen(mode: CodegenMode, input_dir: str, output_dir: str) -> tuple[set[str
 
     for parts, data in wrapper.get_writes():
         # TODO: this assumes output_dir is a fslike.Directory!
-        generated.add(output_dir.fsobj.resolve(parts))
+        # resolve returns bytes; the generated list is written as text
+        generated.add(output_dir.fsobj.resolve(parts).decode())
 
         # now, actually perform the generation.
         # first, assemble the path for the current file

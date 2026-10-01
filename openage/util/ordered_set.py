@@ -6,7 +6,7 @@ Python dictionaries as a basis because they are guaranteed to
 be ordered since Python 3.6.
 """
 
-from collections.abc import Hashable, Iterable
+from collections.abc import Iterable
 from typing import Generic, TypeVar
 
 OrderedSetItem = TypeVar("OrderedSetItem")
@@ -25,13 +25,13 @@ class OrderedSet(Generic[OrderedSetItem]):
         if elements:
             self.update(elements)
 
-    def add(self, elem: Hashable) -> None:
+    def add(self, elem: OrderedSetItem) -> None:
         """
         Set-like add that calls append_right().
         """
         self.append_right(elem)
 
-    def append_left(self, elem: Hashable) -> None:
+    def append_left(self, elem: OrderedSetItem) -> None:
         """
         Add an element to the front of the set.
         """
@@ -45,14 +45,14 @@ class OrderedSet(Generic[OrderedSetItem]):
             temp_set.update(self.ordered_set)
             self.ordered_set = temp_set
 
-    def append_right(self, elem: Hashable) -> None:
+    def append_right(self, elem: OrderedSetItem) -> None:
         """
         Add an element to the back of the set.
         """
         if elem not in self.ordered_set:
             self.ordered_set[elem] = len(self)
 
-    def discard(self, elem: Hashable) -> None:
+    def discard(self, elem: OrderedSetItem) -> None:
         """
         Remove an element from the set.
         """
@@ -70,7 +70,7 @@ class OrderedSet(Generic[OrderedSetItem]):
         """
         return list(self.ordered_set.keys())
 
-    def index(self, elem: Hashable) -> int:
+    def index(self, elem: OrderedSetItem) -> int:
         """
         Returns the index of the element in the set or
         -1 if it is not in the set.

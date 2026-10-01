@@ -99,7 +99,7 @@ class FileCollection(FSLikeObject):
 
         return entries[0][name]
 
-    def open_r(self, parts: list[bytes]) -> StreamFragment:
+    def open_r(self, parts) -> StreamFragment:
         entry = self.get_fileentry(parts)
 
         open_r = entry.open_r()
@@ -109,7 +109,7 @@ class FileCollection(FSLikeObject):
 
         return open_r
 
-    def open_w(self, parts: list[bytes]):
+    def open_w(self, parts):
         entry = self.get_fileentry(parts)
 
         open_w = entry.open_w()
@@ -119,13 +119,13 @@ class FileCollection(FSLikeObject):
 
         return open_w
 
-    def open_rw(self, parts: list[bytes]) -> NoReturn:
+    def open_rw(self, parts) -> NoReturn:
         raise UnsupportedOperation("FileCollection.open_rw")
 
-    def open_a(self, parts: list[bytes]) -> NoReturn:
+    def open_a(self, parts) -> NoReturn:
         raise UnsupportedOperation("FileCollection.open_a")
 
-    def open_ar(self, parts: list[bytes]) -> NoReturn:
+    def open_ar(self, parts) -> NoReturn:
         raise UnsupportedOperation("FileCollection.open_ar")
 
     def list(self, parts):

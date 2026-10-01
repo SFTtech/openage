@@ -5,7 +5,28 @@ Some utility function decorators
 """
 
 from collections.abc import Callable
-from typing import Any
+from typing import Any, Generic, TypeVar
+
+T = TypeVar("T")
+
+
+class _RunOnce(Generic[T]):
+    """
+    Callable that only invokes its function on the first call.
+    """
+
+    has_run: bool
+
+    def __init__(self, func: Callable[..., T]):
+        self.func = func
+        self.has_run = False
+
+    def __call__(self, *args, **kwargs) -> T | None:
+        if self.has_run:
+            return None
+
+        self.has_run = True
+        return self.func(*args, **kwargs)
 
 
 def run_once(func: Callable[..., Any]) -> Callable[..., Any]:
@@ -15,13 +36,4 @@ def run_once(func: Callable[..., Any]) -> Callable[..., Any]:
     Set func.has_run to False to manually re-run.
     """
 
-    def wrapper(*args, **kwargs):
-        """Returned function wrapper."""
-        if wrapper.has_run:
-            return None
-
-        wrapper.has_run = True
-        return func(*args, **kwargs)
-
-    wrapper.has_run = False
-    return wrapper
+    return _RunOnce(func)

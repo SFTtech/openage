@@ -12,12 +12,11 @@ from __future__ import annotations
 import os
 import pathlib
 import typing
-from typing import Union
 
 from .abstract import FSLikeObject
 
 if typing.TYPE_CHECKING:
-    from io import BufferedReader
+    pass
 
 
 class Directory(FSLikeObject):
@@ -52,25 +51,25 @@ class Directory(FSLikeObject):
         """resolves parts to an actual path name."""
         return os.path.join(self.path, *parts)
 
-    def open_r(self, parts) -> BufferedReader:
+    def open_r(self, parts) -> typing.IO[bytes]:
         return open(self.resolve(parts), "rb")
 
-    def open_w(self, parts) -> BufferedReader:
+    def open_w(self, parts) -> typing.IO[bytes]:
         return open(self.resolve(parts), "wb")
 
-    def open_rw(self, parts) -> BufferedReader:
+    def open_rw(self, parts) -> typing.IO[bytes]:
         return open(self.resolve(parts), "r+b")
 
-    def open_a(self, parts) -> BufferedReader:
+    def open_a(self, parts) -> typing.IO[bytes]:
         return open(self.resolve(parts), "ab")
 
-    def open_ar(self, parts) -> BufferedReader:
+    def open_ar(self, parts) -> typing.IO[bytes]:
         return open(self.resolve(parts), "a+b")
 
-    def get_native_path(self, parts) -> Union[str, bytes]:
+    def get_native_path(self, parts) -> bytes:
         return self.resolve(parts)
 
-    def list(self, parts) -> typing.Generator[str | bytes, None, None]:
+    def list(self, parts) -> typing.Generator[bytes, None, None]:
         # TODO migrate to scandir, once we're on py 3.5.
         yield from os.listdir(self.resolve(parts))
 
@@ -118,9 +117,10 @@ class Directory(FSLikeObject):
 
         return os.access(path, os.W_OK)
 
-    def watch(self, parts, callback) -> None:
+    def watch(self, parts, callback) -> bool:
         # TODO
-        pass
+        del parts, callback
+        return False
 
     def poll_watches(self) -> None:
         # TODO
@@ -138,13 +138,13 @@ class CaseIgnoringDirectory(Directory):
 
     def __init__(self, path, create_if_missing=False):
         super().__init__(path, create_if_missing)
-        self.cache = {(): ()}
-        self.listings = {}
+        self.cache: dict[tuple[bytes, ...], tuple[bytes, ...]] = {(): ()}
+        self.listings: dict[tuple[bytes, ...], dict[bytes, bytes]] = {}
 
     def __repr__(self):
         return f"Directory({self.path.decode(errors='replace')})"
 
-    def actual_name(self, stem: list, name: str) -> str:
+    def actual_name(self, stem: typing.Sequence[bytes], name: bytes) -> bytes:
         """
         If the (lower-case) path that's given in stem exists,
         fetches the actual name for the given lower-case name.
@@ -190,7 +190,7 @@ class CaseIgnoringDirectory(Directory):
 
         return os.path.join(self.path, *result)
 
-    def list(self, parts) -> typing.Generator[str | bytes, None, None]:
+    def list(self, parts) -> typing.Generator[bytes, None, None]:
         for name in super().list(parts):
             yield name.lower()
 

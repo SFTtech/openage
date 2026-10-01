@@ -9,7 +9,7 @@ import os
 import pathlib
 import tempfile
 from io import TextIOWrapper, UnsupportedOperation
-from typing import NoReturn, Union
+from typing import Union
 
 
 class Path:
@@ -338,7 +338,7 @@ class Path:
 
         return self.parent.joinpath(self.stem + suffix)
 
-    def mount(self, pathobj, priority=0) -> NoReturn:
+    def mount(self, pathobj, priority=0) -> None:
         """This is only valid for UnionPath, don't call here"""
         # pylint: disable=no-self-use,unused-argument
         # TODO: https://github.com/PyCQA/pylint/issues/2329

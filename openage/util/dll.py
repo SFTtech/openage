@@ -57,8 +57,9 @@ class DllDirectoryManager:
         Add the manager's directories to Python's DLL search path.
         """
         for directory in self.directories:
-            handle = os.add_dll_directory(directory)
-            self.handles.append(handle)
+            if sys.platform == "win32":
+                handle = os.add_dll_directory(directory)
+                self.handles.append(handle)
 
     def remove_directories(self):
         """
@@ -105,7 +106,7 @@ def default_paths() -> list[str]:
     # Add Python DLL search path
     directory_paths.append(DEFAULT_PYTHON_DLL_DIR)
 
-    file_dir = os.path.dirname(os.path.abspath(inspect.getsourcefile(lambda: 0)))
+    file_dir = os.path.dirname(os.path.abspath(inspect.getsourcefile(lambda: 0) or __file__))
 
     # Add openage DLL search paths
     for candidate in DEFAULT_OPENAGE_DLL_DIRS:

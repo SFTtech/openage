@@ -127,7 +127,7 @@ class Wrapper(FSLikeObject):
 
     def poll_watches(self):
         with self.contextguard:
-            return self.obj.poll_watches()
+            return self.obj.poll_fs_watches()
 
 
 class WriteBlocker(ReadOnlyFSLikeObject, Wrapper):

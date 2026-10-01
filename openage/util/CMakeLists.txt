@@ -5,7 +5,6 @@ add_py_modules(
 	decorators.py
 	dll.py
 	files.py
-	fsprinting.py
 	hash.py
 	iterators.py
 	math.py
