@@ -474,18 +474,21 @@ class RawAPIObject:
             member_name = raw_member[0]
             member_value = raw_member[1]
             member_origin = self.api_ref[raw_member[2]]
-            member_operator = None
-            if self.is_patch():
-                member_operator = raw_member[3]
 
             # Resolve forward references to objects/assets and trim floats
             member_value = self._resolve_raw_values(member_value)
 
             if self.is_patch():
+                member_operator = raw_member[3]
+                assert isinstance(member_operator, MemberOperator)
+
+                nyan_object = self.nyan_object
+                assert isinstance(nyan_object, NyanPatch)
+
                 nyan_member = NyanPatchMember(
-                    member_name, self.nyan_object.get_target(), member_origin, member_value, member_operator
+                    member_name, nyan_object.get_target(), member_origin, member_value, member_operator
                 )
-                self.nyan_object.add_member(nyan_member)
+                nyan_object.add_member(nyan_member)
 
             else:
                 nyan_member = self.nyan_object.get_member_by_name(member_name, member_origin)
@@ -502,17 +505,21 @@ class RawAPIObject:
             target = self._patch_target.resolve()
 
         else:
+            assert self._patch_target is not None
             target = self._patch_target
 
-        self.nyan_object.set_target(target)
+        nyan_object = self.nyan_object
+        assert isinstance(nyan_object, NyanPatch)
+        nyan_object.set_target(target)
 
     def get_filename(self) -> str:
         """
         Returns the filename of the raw API object.
         """
+        assert self._filename is not None
         return self._filename
 
-    def get_file_location(self) -> str:
+    def get_file_location(self) -> tuple[str, str]:
         """
         Returns a tuple with
             1. the relative path to the directory
@@ -531,7 +538,12 @@ class RawAPIObject:
                 nesting_raw_api_object = nesting_location.resolve_raw()
                 nesting_location = nesting_raw_api_object.get_location()
 
+            assert isinstance(nesting_location, str)
+
             return (nesting_location, nesting_raw_api_object.get_filename())
+
+        assert isinstance(self._location, str)
+        assert self._filename is not None
 
         return (self._location, self._filename)
 

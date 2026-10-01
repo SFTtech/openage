@@ -10,9 +10,9 @@ import typing
 
 if typing.TYPE_CHECKING:
     from openage.convert.entity_object.conversion.aoc.genie_graphic import GenieGraphic
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
     from openage.convert.entity_object.conversion.converter_object import (
         ConverterObject,
-        ConverterObjectContainer,
         RawAPIObject,
     )
 
@@ -26,7 +26,7 @@ class CombinedSprite:
 
     __slots__ = ("_refs", "data", "filename", "head_sprite_id", "metadata")
 
-    def __init__(self, head_sprite_id: int, filename: str, full_data_set: ConverterObjectContainer):
+    def __init__(self, head_sprite_id: int, filename: str, full_data_set: GenieObjectContainer):
         """
         Creates a new CombinedSprite instance.
 
@@ -104,12 +104,12 @@ class CombinedSprite:
         """
         self._refs.remove(referer)
 
-    def resolve_graphics_location(self) -> str:
+    def resolve_graphics_location(self) -> dict[int, str]:
         """
         Returns the planned location in the modpack of all image files
         referenced by the sprite.
         """
-        location_dict = {}
+        location_dict: dict[int, str] = {}
 
         for graphic in self.get_graphics():
             if graphic.is_shared():
@@ -120,7 +120,7 @@ class CombinedSprite:
 
         return location_dict
 
-    def resolve_sprite_location(self) -> str | None:
+    def resolve_sprite_location(self) -> str:
         """
         Returns the planned location of the definition file in the modpack.
         """
@@ -130,7 +130,7 @@ class CombinedSprite:
         if len(self._refs) == 1:
             return f"{self._refs[0].get_file_location()[0]}{'graphics/'}"
 
-        return None
+        raise ValueError(f"{self!r}: sprite has no referencing objects")
 
     def __repr__(self):
         return f"CombinedSprite<{self.head_sprite_id}>"

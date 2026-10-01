@@ -9,10 +9,10 @@ from __future__ import annotations
 import typing
 
 if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
     from openage.convert.entity_object.conversion.aoc.genie_terrain import GenieTerrainObject
     from openage.convert.entity_object.conversion.converter_object import (
         ConverterObject,
-        ConverterObjectContainer,
         RawAPIObject,
     )
 
@@ -26,7 +26,7 @@ class CombinedTerrain:
 
     __slots__ = ("_refs", "data", "filename", "metadata", "terrain_id")
 
-    def __init__(self, terrain_id: int, filename: str, full_data_set: ConverterObjectContainer):
+    def __init__(self, terrain_id: int, filename: str, full_data_set: GenieObjectContainer):
         """
         Creates a new CombinedTerrain instance.
 
@@ -98,14 +98,14 @@ class CombinedTerrain:
         """
         return self.resolve_terrain_location()
 
-    def resolve_terrain_location(self) -> str | None:
+    def resolve_terrain_location(self) -> str:
         """
         Returns the planned location of the definition file in the modpack.
         """
         if len(self._refs) >= 1:
             return f"{self._refs[0].get_file_location()[0]}{'graphics/'}"
 
-        return None
+        raise ValueError(f"{self!r}: terrain has no referencing objects")
 
     def __repr__(self):
         return f"CombinedTerrain<{self.terrain_id}>"

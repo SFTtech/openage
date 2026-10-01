@@ -9,9 +9,9 @@ from __future__ import annotations
 import typing
 
 if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
     from openage.convert.entity_object.conversion.converter_object import (
         ConverterObject,
-        ConverterObjectContainer,
         RawAPIObject,
     )
 
@@ -24,7 +24,7 @@ class CombinedSound:
     __slots__ = ("_refs", "data", "file_id", "filename", "genie_sound", "head_sound_id")
 
     def __init__(
-        self, head_sound_id: int, file_id: int, filename: str, full_data_set: ConverterObjectContainer
+        self, head_sound_id: int, file_id: int, filename: str, full_data_set: GenieObjectContainer
     ):
         """
         Creates a new CombinedSound instance.
