@@ -14,6 +14,8 @@ if typing.TYPE_CHECKING:
     from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
     from openage.convert.value_object.read.value_members import ValueMember
 
+from openage.convert.value_object.read.value_members import ArrayMember
+
 
 class GenieTerrainObject(ConverterObject[int]):
     """
@@ -128,7 +130,11 @@ class GenieTerrainRestriction(ConverterObject[int]):
 
         :param terrain_index: Index of the terrain.
         """
-        multiplier = self.members["accessible_dmgmultiplier"][terrain_index].value
+        # the member is an ArrayMember; indexing yields the ValueMember
+        # for the given terrain
+        member = self.members["accessible_dmgmultiplier"]
+        assert isinstance(member, ArrayMember)
+        multiplier = member[terrain_index].value
 
         return multiplier > 0
 

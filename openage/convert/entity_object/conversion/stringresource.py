@@ -7,7 +7,8 @@ from __future__ import annotations
 import typing
 from collections import defaultdict
 
-from ...value_object.read.genie_structure import GenieStructure
+from ...value_object.read.genie_structure import DataFormatMember, GenieStructure
+from ...value_object.read.member_access import READ
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.init.game_version import GameVersion
@@ -32,14 +33,14 @@ class StringResource(GenieStructure):
         return self.strings
 
     @classmethod
-    def get_data_format_members(cls, game_version: GameVersion) -> tuple:
+    def get_data_format_members(cls, game_version: GameVersion) -> list[DataFormatMember]:
         """
         Return the members in this struct.
         """
-        data_format = (
-            (True, "id", None, "int32_t"),
-            (True, "lang", None, "char[16]"),
-            (True, "text", None, "std::string"),
-        )
+        data_format = [
+            (READ, "id", None, "int32_t"),
+            (READ, "lang", None, "char[16]"),
+            (READ, "text", None, "std::string"),
+        ]
 
         return data_format

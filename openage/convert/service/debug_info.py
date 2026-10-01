@@ -30,6 +30,7 @@ from openage.convert.service.conversion.internal_name_lookups import (
     get_tech_lookups,
     get_terrain_lookups,
 )
+from openage.convert.value_object.read.genie_structure import GenieStructure
 from openage.convert.value_object.read.media.datfile.empiresdat import EmpiresDatWrapper
 from openage.convert.value_object.read.read_members import IncludeMembers, MultisubtypeMember
 from openage.util.fslike.filecollection import FileCollectionPath
@@ -191,8 +192,8 @@ def debug_gamedata_format(debugdir: Path, loglevel: int, game_version: GameVersi
     logfile = debugdir.joinpath("read/")["data_format"]
     logtext = ""
 
-    discovered_structs = {EmpiresDatWrapper}
-    handled_structs = set()
+    discovered_structs: set[type[GenieStructure]] = {EmpiresDatWrapper}
+    handled_structs: set[type[GenieStructure]] = set()
 
     while discovered_structs:
         struct = discovered_structs.pop()

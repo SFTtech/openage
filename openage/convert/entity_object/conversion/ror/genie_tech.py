@@ -53,7 +53,9 @@ class RoRUnitLineUpgrade(UnitLineUpgrade):
     """
 
     def get_upgraded_line(self) -> RoRUnitLineGroup:
-        return self.data.unit_lines[self.unit_line_id]
+        line = self.data.unit_lines[self.unit_line_id]
+        assert isinstance(line, RoRUnitLineGroup)
+        return line
 
     def is_unique(self) -> bool:
         return False
@@ -86,7 +88,9 @@ class RoRUnitUnlock(UnitUnlock):
         """
         Returns the line that is unlocked by this tech.
         """
-        return self.data.unit_lines[self.line_id]
+        line = self.data.unit_lines[self.line_id]
+        assert isinstance(line, RoRUnitLineGroup)
+        return line
 
     def __repr__(self):
         return f"RoRUnitUnlock<{self.get_id()}>"
