@@ -31,7 +31,7 @@ def enumerate_modpacks(modpacks_dir: UnionPath, exclude: set[str] | None = None)
         info("openage modpack directory has not been created yet")
         raise FileNotFoundError("openage modpack directory not found")
 
-    modpacks: dict[str] = {}
+    modpacks: dict[str, str] = {}
     for check_dir in modpacks_dir.iterdir():
         if check_dir.is_dir():
             try:

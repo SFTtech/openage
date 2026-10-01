@@ -38,7 +38,7 @@ class NyanFile(DataDefinition):
             for nyan_object in nyan_objects:
                 self.add_nyan_object(nyan_object)
 
-        self.import_tree = None
+        self.import_tree: ImportTree | None = None
 
         if len(targetdir) == 0 or targetdir == "/":
             self.fqon = (self.modpack_name, self.filename.split(".")[0])
@@ -78,6 +78,8 @@ class NyanFile(DataDefinition):
         # Removes one empty newline at the end of the objects definition
         objects_str = objects_str[:-1]
 
+        # dump is only called after set_import_tree
+        assert self.import_tree is not None
         import_aliases = self.import_tree.get_alias_dict()
         import_files = self.import_tree.get_import_list()
         self.import_tree.clear_marks()
@@ -109,7 +111,7 @@ class NyanFile(DataDefinition):
 
         return output_str
 
-    def get_fqon(self) -> str:
+    def get_fqon(self) -> tuple[str, ...]:
         """
         Return the fqon of the nyan file
         """

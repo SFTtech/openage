@@ -61,6 +61,7 @@ class BlendtableMetadata(DataDefinition):
 
         # table entries
         table_width = self._get_table_width()
+        assert self.blendtable is not None
         for idx in range(table_width):
             row_entries = self.blendtable[idx * table_width : (idx + 1) * table_width]
             output_str += f"{' '.join(row_entries)}\n"
@@ -79,6 +80,7 @@ class BlendtableMetadata(DataDefinition):
         """
         Get the width of the blending table.
         """
+        assert self.blendtable is not None
         table_size = len(self.blendtable)
 
         # Newton's method
