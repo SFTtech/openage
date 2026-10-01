@@ -6,6 +6,7 @@ Defines a modpack that can be exported.
 
 from __future__ import annotations
 
+from ...value_object.read.media_types import MediaType
 from ..export.data_definition import DataDefinition
 from ..export.formats.modpack_info import ModpackInfo
 from ..export.formats.modpack_manifest import ManifestFile
@@ -30,7 +31,7 @@ class Modpack:
 
         # Data/media export
         self.data_export_files: list[DataDefinition] = []
-        self.media_export_files: list[MediaExportRequest] = {}
+        self.media_export_files: dict[MediaType, list[MediaExportRequest]] = {}
         self.metadata_files: list[MetadataExport] = []
 
     def add_data_export(self, export_file: DataDefinition) -> None:
@@ -78,7 +79,7 @@ class Modpack:
         """
         return self.data_export_files
 
-    def get_media_files(self) -> list[MediaExportRequest]:
+    def get_media_files(self) -> dict[MediaType, list[MediaExportRequest]]:
         """
         Returns the media requests for exporting.
         """

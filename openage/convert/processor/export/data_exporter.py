@@ -8,10 +8,11 @@ Exports data formats from a modpack to files.
 from __future__ import annotations
 
 import typing
+from collections.abc import Sequence
 
 if typing.TYPE_CHECKING:
     from openage.convert.entity_object.export.data_definition import DataDefinition
-    from openage.util.fslike.directory import Directory
+    from openage.util.fslike.path import Path
 
 
 class DataExporter:
@@ -20,14 +21,14 @@ class DataExporter:
     """
 
     @staticmethod
-    def export(data_files: list[DataDefinition], exportdir: Directory) -> None:
+    def export(data_files: Sequence[DataDefinition], exportdir: Path) -> None:
         """
         Exports data files.
 
         :param data_files: Data definitions for data files.
         :param exportdir: Directory the resulting file(s) will be exported to. Target subfolder
                           and target filename should be stored in the export request.
-        :type exportdir: Directory
+        :type exportdir: Path
         :type data_files: list
         """
         for data_file in data_files:

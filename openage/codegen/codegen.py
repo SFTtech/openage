@@ -80,7 +80,7 @@ class CodegenDirWrapper(Wrapper):
         self.writes.append((parts, intercept_obj))
         return intercept_obj
 
-    def get_reads(self) -> None:
+    def get_reads(self) -> Generator[tuple[bytes, ...], None, None]:
         """
         Returns an iterable of all path component tuples for files that have
         been read.
@@ -89,7 +89,7 @@ class CodegenDirWrapper(Wrapper):
 
         self.reads.clear()
 
-    def get_writes(self) -> None:
+    def get_writes(self) -> Generator[tuple[tuple[bytes, ...], bytes], None, None]:
         """
         Returns an iterable of all (path components, data_written) tuples for
         files that have been written.
@@ -103,7 +103,7 @@ class CodegenDirWrapper(Wrapper):
         return f"CodegenDirWrapper({self.obj!r})"
 
 
-def codegen(mode: CodegenMode, input_dir: str, output_dir: str) -> tuple[list[str], list[str]]:
+def codegen(mode: CodegenMode, input_dir: str, output_dir: str) -> tuple[set[str], set[str]]:
     """
     Calls .listing.generate_all(), and post-processes the generated
     data, checking them and adding a header.
@@ -122,7 +122,7 @@ def codegen(mode: CodegenMode, input_dir: str, output_dir: str) -> tuple[list[st
     generate_all(wrapper.root)
 
     # set of all generated filenames
-    generated = set()
+    generated: set[str] = set()
 
     for parts, data in wrapper.get_writes():
         # TODO: this assumes output_dir is a fslike.Directory!
@@ -161,7 +161,7 @@ def codegen(mode: CodegenMode, input_dir: str, output_dir: str) -> tuple[list[st
             err("unknown codegen mode: %s", mode)
             sys.exit(1)
 
-    generated = {os.path.realpath(path).decode() for path in generated}
+    generated = {os.path.realpath(path) for path in generated}
     depends = {os.path.realpath(path) for path in get_codegen_depends(wrapper)}
 
     return generated, depends
@@ -252,7 +252,7 @@ def get_header_lines() -> Generator[str, None, None]:
     yield ""
 
 
-def postprocess_write(parts, data: str) -> str:
+def postprocess_write(parts, data: bytes) -> bytes:
     """
     Post-processes a single write operation, as intercepted during codegen.
     """

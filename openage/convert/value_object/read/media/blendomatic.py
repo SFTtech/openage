@@ -12,6 +12,7 @@ For more information, see doc/media/blendomatic.md
 from __future__ import annotations
 
 import typing
+from io import BytesIO
 from math import sqrt
 from struct import Struct, unpack_from
 
@@ -19,12 +20,12 @@ import numpy
 
 from .....log import dbg
 from ..genie_structure import GenieStructure
+from ..member_access import READ
 
 if typing.TYPE_CHECKING:
     from openage.convert.entity_object.export.texture import Texture
     from openage.convert.value_object.init.game_version import GameVersion
     from openage.convert.value_object.read.genie_structure import DataFormatMember
-    from openage.util.fslike.wrapper import GuardedFile
 
 
 class BlendingTile:
@@ -40,7 +41,7 @@ class BlendingTile:
         self.width = width
         self.height = height
 
-    def get_picture_data(self) -> numpy.array:
+    def get_picture_data(self) -> numpy.ndarray:
         """
         Return a numpy array of image data for a blending tile.
         """
@@ -79,7 +80,7 @@ class BlendingMode:
 
     # pylint: disable=too-few-public-methods
 
-    def __init__(self, idx: int, data_file: GuardedFile, tile_count: int, header: tuple):
+    def __init__(self, idx: int, data_file: BytesIO, tile_count: int, header: tuple):
         """
         initialize one blending mode,
         consisting of multiple frames for all blending directions
@@ -138,7 +139,7 @@ class BlendingMode:
 
             self.bitmasks.append(self.get_tile_from_data(pixels))
 
-    def get_tile_from_data(self, data: list[int]) -> BlendingTile:
+    def get_tile_from_data(self, data: list[int] | tuple[int, ...]) -> BlendingTile:
         """
         get the data pixels, interprete them in isometric tile format
 
@@ -218,7 +219,7 @@ class Blendomatic(GenieStructure):
     # };
     blendomatic_header = Struct("< I I")
 
-    def __init__(self, fileobj: GuardedFile, custom_mode_count: int | None = None):
+    def __init__(self, fileobj: BytesIO, custom_mode_count: int | None = None):
         super().__init__()
 
         buf = fileobj.read(Blendomatic.blendomatic_header.size)
@@ -245,8 +246,6 @@ class Blendomatic(GenieStructure):
 
             self.blending_modes.append(new_mode)
 
-        fileobj.close()
-
     def get_textures(self) -> list[Texture]:
         """
         generate a list of textures.
@@ -263,7 +262,7 @@ class Blendomatic(GenieStructure):
         """
         Return the members in this struct.
         """
-        data_format = ((True, "blend_mode", None, "int32_t"),)
+        data_format = [(READ, "blend_mode", None, "int32_t")]
 
         return data_format
 

@@ -13,6 +13,7 @@ import os
 import queue
 import sys
 import typing
+from io import BytesIO
 
 from openage.convert.entity_object.export.texture import Texture
 from openage.convert.service import debug_info
@@ -66,15 +67,6 @@ class MediaExporter:
             cache_info = load_media_cache(args.game_version.edition.media_cache)
 
         for media_type, cur_export_requests in export_requests.items():
-            # Function for reading the source file data
-            read_data_func = None
-
-            # Multi-threaded function for exporting the source file data
-            export_func = None
-
-            # Optional function for handling data in the outqueue
-            handle_outqueue_func = None
-
             kwargs = {}
             # `itargs` and `handle_outqueue_func` are set per MediaType below;
             # pre-initialise so the later _export_singlethreaded /
@@ -242,7 +234,7 @@ class MediaExporter:
             # Small optimization that saves some time for small exports
             worker_count = min(multiprocessing.cpu_count(), len(requests))
 
-        def error_callback(exception: Exception):
+        def error_callback(exception: BaseException) -> typing.NoReturn:
             """
             Error callback for the worker pool.
             """
@@ -437,7 +429,7 @@ class MediaExporter:
         sourcedir: Path,
         palettes: dict[int, ColorTable],
         compression_level: int,
-    ) -> None:
+    ) -> tuple[tuple | None, tuple | None]:
         """
         Convert a media file and return the used settings. This performs
         a dry run, i.e. the graphics media is not saved on the filesystem.
@@ -506,8 +498,8 @@ class MediaExporter:
     @staticmethod
     def save_png(
         texture: Texture,
-        targetdir: Path,
-        filename: str,
+        targetdir: Path | None,
+        filename: str | None,
         compression_level: int = 1,
         cache: dict | None = None,
         dry_run: bool = False,
@@ -538,6 +530,7 @@ class MediaExporter:
         }
 
         if not dry_run:
+            assert targetdir is not None and filename is not None
             _, ext = os.path.splitext(filename)
 
             # only allow png
@@ -547,9 +540,11 @@ class MediaExporter:
         compression_method = compression_levels.get(
             compression_level, png_create.CompressionMethod.COMPR_DEFAULT
         )
+        assert texture.image_data is not None
         png_data, compr_params = png_create.save(texture.image_data.data, compression_method, cache)
 
         if not dry_run:
+            assert targetdir is not None and filename is not None
             with targetdir[filename].open("wb") as imagefile:
                 imagefile.write(png_data)
 
@@ -602,7 +597,7 @@ def _export_blend(
     if sys.platform == "win32" and dll_manager is not None:
         dll_manager.add_directories()
 
-    blend_data = Blendomatic(blendfile_data, blend_mode_count)
+    blend_data = Blendomatic(BytesIO(blendfile_data), blend_mode_count)
 
     from .texture_merge import merge_frames
 
@@ -817,6 +812,7 @@ def _save_png(
         if ext != ".png":
             raise ValueError(f"Filename invalid, a texture must be saved as '*.png', not '*{ext}'")
 
+    assert texture.image_data is not None
     compression_method = compression_levels.get(compression_level, png_create.CompressionMethod.COMPR_DEFAULT)
     png_data, compr_params = png_create.save(texture.image_data.data, compression_method, cache)
 

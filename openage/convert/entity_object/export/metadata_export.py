@@ -10,6 +10,7 @@ from __future__ import annotations
 import typing
 
 from ....util.observer import Observer
+from .data_definition import DataDefinition
 from .formats.sprite_metadata import SpriteMetadata
 from .formats.terrain_metadata import TerrainMetadata
 from .formats.texture_metadata import TextureMetadata
@@ -20,7 +21,7 @@ if typing.TYPE_CHECKING:
     from openage.util.observer import Observable
 
 
-class MetadataExport(Observer):
+class MetadataExport(DataDefinition, Observer):
     """
     A class for exporting metadata from another format. MetadataExports are
     observers so they can receive data from media conversion.
@@ -28,8 +29,7 @@ class MetadataExport(Observer):
 
     def __init__(self, targetdir: str, target_filename: str):
 
-        self.targetdir = targetdir
-        self.filename = target_filename
+        DataDefinition.__init__(self, targetdir, target_filename)
 
     def update(self, observable: Observable, message=None):
         return NotImplementedError("Interface does not implement update()")
@@ -46,7 +46,7 @@ class SpriteMetadataExport(MetadataExport):
     def __init__(self, targetdir, target_filename):
         super().__init__(targetdir, target_filename)
 
-        self.graphics_metadata: dict[int, tuple] = {}
+        self.graphics_metadata: dict[str, tuple] = {}
         self.subtex_count: dict[str, int] = {}
 
     def add_graphics_metadata(
@@ -164,11 +164,11 @@ class TextureMetadataExport(MetadataExport):
     def __init__(self, targetdir, target_filename):
         super().__init__(targetdir, target_filename)
 
-        self.imagefile = None
-        self.size = None
+        self.imagefile: str | None = None
+        self.size: tuple[int, int] | None = None
         self.pxformat = "rgba8"
         self.cbits = True
-        self.subtex_metadata = []
+        self.subtex_metadata: list[dict[str, int]] = []
 
     def add_imagefile(self, img_filename):
         """
@@ -178,12 +178,13 @@ class TextureMetadataExport(MetadataExport):
         """
         self.imagefile = img_filename
 
-    def dump(self):
+    def dump(self) -> str:
         """
         Creates a human-readable string that can be written to a file.
         """
         texture_file = TextureMetadata(self.targetdir, self.filename)
 
+        assert self.imagefile is not None and self.size is not None
         texture_file.set_imagefile(self.imagefile)
         texture_file.set_size(self.size[0], self.size[1])
         texture_file.set_pxformat(self.pxformat, self.cbits)
@@ -214,7 +215,7 @@ class TerrainMetadataExport(MetadataExport):
     def __init__(self, targetdir, target_filename):
         super().__init__(targetdir, target_filename)
 
-        self.graphics_metadata: dict[int, tuple] = {}
+        self.graphics_metadata: dict[str, tuple] = {}
         self.subtex_count: dict[str, int] = {}
 
     def add_graphics_metadata(

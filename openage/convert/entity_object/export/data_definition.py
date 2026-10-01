@@ -6,8 +6,6 @@ Output format specification for data to write.
 
 from __future__ import annotations
 
-import typing
-
 
 class DataDefinition:
     """
@@ -27,7 +25,7 @@ class DataDefinition:
         self.targetdir = targetdir
         self.filename = filename
 
-    def dump(self) -> typing.NoReturn:
+    def dump(self) -> str:
         """
         Creates a human-readable string that can be written to a file.
         """

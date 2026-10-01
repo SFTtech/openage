@@ -4,10 +4,11 @@
 Some utility function decorators
 """
 
-from typing import Callable
+from collections.abc import Callable
+from typing import Any
 
 
-def run_once(func: Callable) -> Callable:
+def run_once(func: Callable[..., Any]) -> Callable[..., Any]:
     """
     Decorator to run func only at its first invocation.
 

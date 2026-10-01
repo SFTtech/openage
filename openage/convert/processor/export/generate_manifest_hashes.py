@@ -13,7 +13,6 @@ from openage.util.hash import hash_file
 
 if typing.TYPE_CHECKING:
     from openage.convert.entity_object.conversion.modpack import Modpack
-    from openage.util.fslike.directory import Directory
     from openage.util.fslike.path import Path
 
 
@@ -44,7 +43,7 @@ def bfs_directory(root: Path) -> typing.Generator[Path, None, None]:
 
 
 def generate_hashes(
-    modpack: Modpack, exportdir: Directory, hash_algo: str = "sha3_256", bufsize: int = 32768
+    modpack: Modpack, exportdir: Path, hash_algo: str = "sha3_256", bufsize: int = 32768
 ) -> None:
     """
     Generate hashes for all the items in a

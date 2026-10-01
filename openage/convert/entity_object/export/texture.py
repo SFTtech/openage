@@ -153,7 +153,7 @@ class Texture:
         """
         return self.image_metadata
 
-    def get_cache_params(self) -> tuple[tuple, tuple]:
+    def get_cache_params(self) -> tuple[tuple | None, tuple | None]:
         """
         Get the parameters used for packing and saving the texture.
             - Packing hints (sprite index, (xpos, ypos) in the final texture)

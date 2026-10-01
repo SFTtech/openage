@@ -48,7 +48,7 @@ class Directory(FSLikeObject):
     def __repr__(self):
         return f"Directory({self.path.decode(errors='replace')})"
 
-    def resolve(self, parts) -> Union[str, bytes]:
+    def resolve(self, parts) -> bytes:
         """resolves parts to an actual path name."""
         return os.path.join(self.path, *parts)
 
@@ -169,7 +169,7 @@ class CaseIgnoringDirectory(Directory):
         except KeyError:
             return name
 
-    def resolve(self, parts) -> Union[str, bytes]:
+    def resolve(self, parts) -> bytes:
         parts = [part.lower() for part in parts]
 
         i = 0
