@@ -6,15 +6,13 @@ Downloads the SFT test cab archive and uses it to test the cabextract code.
 from __future__ import annotations
 
 import os
-import typing
 from hashlib import md5
 from tempfile import gettempdir
 from urllib.request import urlopen
 
+from ..util.filelike.abstract import FileLikeObject
+from ..util.fslike.directory import Directory
 from .cab import CABFile
-
-if typing.TYPE_CHECKING:
-    from io import BufferedReader
 
 # the test archive file has been generated using ./gen_test_arc.sh
 
@@ -37,17 +35,17 @@ TEST_FILES = {
 TEST_ARCHIVE_FILENAME = os.path.join(gettempdir(), "openage_testarc.cab")
 
 
-def open_cached_test_archive():
+def open_cached_test_archive() -> FileLikeObject:
     """
     Opens the cached test archive file.
     """
     if os.path.getsize(TEST_ARCHIVE_FILENAME) != TEST_ARCHIVE_SIZE:
         raise OSError("test archive has wrong size")
 
-    return open(TEST_ARCHIVE_FILENAME, "rb")
+    return Directory(gettempdir()).root[os.path.basename(TEST_ARCHIVE_FILENAME)].open("rb")
 
 
-def open_test_archive() -> BufferedReader:
+def open_test_archive() -> FileLikeObject:
     """
     Opens the cached test archive file, or downloads it if necessary.
     """

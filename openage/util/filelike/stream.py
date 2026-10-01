@@ -4,8 +4,10 @@
 Provides FileLikeObject for binary stream interaction.
 """
 
+import sys
+
 from ..bytequeue import ByteBuffer
-from ..math import INF, clamp
+from ..math import clamp
 from .readonly import PosSavingReadOnlyFileLikeObject
 
 
@@ -33,7 +35,7 @@ class StreamSeekBuffer(PosSavingReadOnlyFileLikeObject):
         By default, entire megabytes are read at once.
     """
 
-    def __init__(self, wrappee, keepbuffered: float = INF, minread: int = 1048576):
+    def __init__(self, wrappee, keepbuffered: int = sys.maxsize, minread: int = 1048576):
         super().__init__()
 
         self.wrapped = wrappee
@@ -52,7 +54,7 @@ class StreamSeekBuffer(PosSavingReadOnlyFileLikeObject):
 
     def read(self, size: int = -1) -> bytes:
         if size < 0:
-            size = INF
+            size = sys.maxsize
 
         # see if we have already discarded the requested data
         if self.buf.hasbeendiscarded(self.pos):
@@ -125,9 +127,9 @@ class StreamFragment(PosSavingReadOnlyFileLikeObject):
         if size < 0:
             raise ValueError("size must be positive")
 
-    def read(self, size: int = -1) -> None:
+    def read(self, size: int = -1) -> bytes:
         if size < 0:
-            size = INF
+            size = sys.maxsize
 
         size = clamp(size, 0, self.size - self.pos)
 

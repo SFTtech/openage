@@ -10,7 +10,7 @@ from sys import platform
 from .math import INF
 
 
-def free_memory() -> int:
+def free_memory() -> float:
     """
     Returns the amount of free bytes of memory.
     On failure, returns +inf.

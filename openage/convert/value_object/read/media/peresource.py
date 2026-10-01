@@ -15,7 +15,7 @@ from .langcodes import LANGCODES_AOC
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.read.media.pefile import PEFile
-    from openage.util.fslike.wrapper import GuardedFile
+    from openage.util.filelike.abstract import FileLikeObject
 
 
 # types for id in resource directory root node
@@ -60,19 +60,16 @@ class ResourceDirectory(NamedStruct):
 
     endianness = "<"
 
-    characteristics = "I"  # some irrelevant flags.
-    timestamp = "I"  # an irrelevant timestamp.
-    version_major = "H"
-    version_minor = "H"
+    characteristics: typing.Any = "I"  # some irrelevant flags.
+    timestamp: typing.Any = "I"  # an irrelevant timestamp.
+    version_major: typing.Any = "H"
+    version_minor: typing.Any = "H"
 
     # the number of named directory entries that follow immediately after.
-    named_entry_count = "H"
+    named_entry_count: typing.Any = "H"
 
     # the number of id directory entries that follow immediately after.
-    id_entry_count = "H"
-
-    subdirs = None
-    leaves = None
+    id_entry_count: typing.Any = "H"
 
 
 class ResourceDirectoryEntry(NamedStruct):
@@ -85,15 +82,15 @@ class ResourceDirectoryEntry(NamedStruct):
     endianness = "<"
 
     # if the high bit is set, the lower 31 bits point to the (utf-16-le) name.
-    name = "I"
+    name: typing.Any = "I"
 
     # if the high bit is set, the lower 31 bits point to an other directory.
     # if the high bit is cleared, they point to a leaf node.
-    data = "I"
+    data: typing.Any = "I"
 
     # set manually later
-    name_is_str = None
-    is_subdir = None
+    name_is_str: bool
+    is_subdir: bool
 
 
 class ResourceLeaf(NamedStruct):
@@ -105,14 +102,14 @@ class ResourceLeaf(NamedStruct):
 
     endianness = "<"
 
-    data_ptr = "I"
-    data_size = "I"
+    data_ptr: typing.Any = "I"
+    data_size: typing.Any = "I"
 
-    codepage = "I"  # code page id of the data.
-    reserved = "I"  # 0
+    codepage: typing.Any = "I"  # code page id of the data.
+    reserved: typing.Any = "I"  # 0
 
     # filled in later
-    fileobj = None  # used for open
+    fileobj: FileLikeObject  # used for open
 
     def open(self) -> StreamFragment:
         """
@@ -131,13 +128,13 @@ class StringLiteral(NamedStruct):
 
     endianness = "<"
 
-    length = "H"
+    length: typing.Any = "H"
 
     # filled later by read_content()
     value: str | None = None
 
     @classmethod
-    def readall(cls, fileobj: GuardedFile) -> StringLiteral:
+    def readall(cls, fileobj: FileLikeObject) -> StringLiteral:
         """
         In addition to the static data, reads the string.
         """
@@ -163,7 +160,7 @@ class PEResources:
     def __getitem__(self, key):
         return self.rootdir[key]
 
-    def read_directory(self) -> dict[str, typing.Any]:
+    def read_directory(self) -> dict[int | str, typing.Any]:
         """
         reads the directory that's currently pointed at by self.data.
 
@@ -174,7 +171,7 @@ class PEResources:
         """
         directory = ResourceDirectory.read(self.data)
 
-        result = {}
+        result: dict[int | str, typing.Any] = {}
 
         # read directory entries
         entry_count = directory.named_entry_count + directory.id_entry_count
@@ -196,6 +193,8 @@ class PEResources:
                 self.data.seek(entry.name - (1 << 31))
                 entry.name = StringLiteral.readall(self.data).value
                 self.data.seek(data_pos)
+
+            assert isinstance(entry.name, (int, str))
 
             # read the struct pointed at by entry.data
             entry.is_subdir = bool(entry.data & (1 << 31))

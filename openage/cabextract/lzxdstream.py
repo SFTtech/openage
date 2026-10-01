@@ -5,12 +5,12 @@ Wraps the LZXDecompressor in a file-like, read-only stream object.
 """
 
 import os
+import sys
 from io import UnsupportedOperation
 from typing import NoReturn
 
 from ..util.bytequeue import ByteQueue
 from ..util.filelike.readonly import ReadOnlyFileLikeObject
-from ..util.math import INF
 from .lzxd import LZXDecompressor
 
 
@@ -64,7 +64,7 @@ class LZXDStream(ReadOnlyFileLikeObject):
 
     def read(self, size: int = -1) -> bytes:
         if size < 0:
-            size = INF
+            size = sys.maxsize
 
         while len(self.buf) < size:
             data = self.decompressor.decompress_next_frame()

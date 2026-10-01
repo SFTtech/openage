@@ -9,6 +9,7 @@ https://msdn.microsoft.com/en-us/library/bb417343.aspx.
 
 from __future__ import annotations
 
+import sys
 import typing
 from bisect import bisect
 from calendar import timegm
@@ -20,7 +21,6 @@ from ..util.filelike.readonly import PosSavingReadOnlyFileLikeObject
 from ..util.filelike.stream import StreamFragment
 from ..util.files import read_guaranteed, read_nullterminated_string
 from ..util.fslike.filecollection import FileCollection, FileEntry
-from ..util.math import INF
 from ..util.strings import try_decode
 from ..util.struct import Flags, NamedStruct
 from .cabchecksum import mscab_csum
@@ -58,31 +58,32 @@ class CFHeader(NamedStruct):
 
     endianness = "<"
 
-    signature = "4s"  # magic number: MSCF
-    reserved1 = "I"
-    cbCabinet = "I"  # size of this cabinet file in bytes
-    reserved2 = "I"
-    coffFiles = "I"  # absolute offset of the first CFFILE entry
-    reserved3 = "I"
-    versionMinor = "B"  # cab file format version (minor)
-    versionMajor = "B"  # cab file format version (major)
-    cFolders = "H"  # number of CFFOLDER entries in this cabinet
-    cFiles = "H"  # number of CFFILES entries in this cabinet
-    flags = CFHeaderFlags
-    setID = "H"  # must be same in all cabinets of a set
-    iCabinet = "H"  # number of this cabinet file in the set
+    signature: typing.Any = "4s"  # magic number: MSCF
+    reserved1: typing.Any = "I"
+    cbCabinet: typing.Any = "I"  # size of this cabinet file in bytes
+    reserved2: typing.Any = "I"
+    coffFiles: typing.Any = "I"  # absolute offset of the first CFFILE entry
+    reserved3: typing.Any = "I"
+    versionMinor: typing.Any = "B"  # cab file format version (minor)
+    versionMajor: typing.Any = "B"  # cab file format version (major)
+    cFolders: typing.Any = "H"  # number of CFFOLDER entries in this cabinet
+    cFiles: typing.Any = "H"  # number of CFFILES entries in this cabinet
+    flags: typing.Any = CFHeaderFlags
+    setID: typing.Any = "H"  # must be same in all cabinets of a set
+    iCabinet: typing.Any = "H"  # number of this cabinet file in the set
 
     # those fields are set manually later.
-    reserved_data = None  # CFHeaderReservedFields
+    reserved_data: CFHeaderReservedFields
 
-    reserved = None  # bytes object of size reserved_data.cbCFHeader
+    # bytes object of size reserved_data.cbCFHeader
+    reserved: bytes
 
     # strings that hold the disk labels/file names where to find the prev/next
     # CAB files.
-    prev_cab = None
-    prev_disk = None
-    next_cab = None
-    next_disk = None
+    prev_cab: str | None = None
+    prev_disk: str | None = None
+    next_cab: str | None = None
+    next_disk: str | None = None
 
 
 class CFHeaderReservedFields(NamedStruct):
@@ -96,9 +97,9 @@ class CFHeaderReservedFields(NamedStruct):
 
     endianness = "<"
 
-    cbCFHeader = "H"  # size of per-cabinet reserved area
-    cbCFFolder = "B"  # size of per-folder reserved area
-    cbCFData = "B"  # size of per-datablock reserved area
+    cbCFHeader: typing.Any = "H"  # size of per-cabinet reserved area
+    cbCFFolder: typing.Any = "B"  # size of per-folder reserved area
+    cbCFData: typing.Any = "B"  # size of per-datablock reserved area
 
 
 class CFFolder(NamedStruct):
@@ -111,16 +112,20 @@ class CFFolder(NamedStruct):
 
     endianness = "<"
 
-    coffCabStart = "I"  # offset of first CFDATA block of this folder.
-    cCFData = "H"  # number of CFDATA blocks.
+    coffCabStart: typing.Any = "I"  # offset of first CFDATA block of this folder.
+    cCFData: typing.Any = "H"  # number of CFDATA blocks.
 
-    typeCompress = "H"  # compression algorithm for this folder.
+    typeCompress: typing.Any = "H"  # compression algorithm for this folder.
 
     # filled in later manually
-    reserved = None  # bytes object of size reserved_data.cbCFFolder
+    # bytes object of size reserved_data.cbCFFolder
+    reserved: bytes
 
-    comp_name = None  # human-readable compression name
-    plain_stream = None  # file-like object for decompressed folder.
+    # human-readable compression name
+    comp_name: str
+
+    # file-like object for decompressed folder.
+    plain_stream: FileLikeObject
 
 
 class CFFileAttributes(Flags):
@@ -152,8 +157,8 @@ class CFFile(NamedStruct):
 
     endianness = "<"
 
-    size = "I"  # uncompressed filesize
-    pos = "I"  # offset of file in uncompressed folder
+    size: typing.Any = "I"  # uncompressed filesize
+    pos: typing.Any = "I"  # offset of file in uncompressed folder
 
     # index of the folder that contains this file.
     # there are several reserved indices with special meanings:
@@ -161,21 +166,21 @@ class CFFile(NamedStruct):
     #  0xFFFD continued_from_prev       (acutal id: 0)
     #  0xFFFE continued_to_next         (acutal id: last)
     #  0xFFFF continued_prev_and_next:  (actual id: 0)
-    folderid = "H"
+    folderid: typing.Any = "H"
 
-    date = "H"  # date stamp ((y-1980) << 9)+(m << 5)+(d) wtf.
-    time = "H"  # time stamp (h << 11)+(m << 5)+(s >> 1) røfl.
-    attribs = CFFileAttributes
+    date: typing.Any = "H"  # date stamp ((y-1980) << 9)+(m << 5)+(d) wtf.
+    time: typing.Any = "H"  # time stamp (h << 11)+(m << 5)+(s >> 1) røfl.
+    attribs: typing.Any = CFFileAttributes
 
     # filled in later manually
-    path = None  # array of path parts
+    path: list[bytes]  # array of path parts
 
-    continued = None  # file continued from previous CAB file
-    continues = None  # file continues in next CAB file
+    continued: bool | None = None  # file continued from previous CAB file
+    continues: bool | None = None  # file continues in next CAB file
 
-    folder = None  # CFFolder object for folderid
+    folder: CFFolder  # folder for folderid
 
-    timestamp = None  # UNIX timestamp
+    timestamp: int  # UNIX timestamp
 
 
 class CFData(NamedStruct):
@@ -188,13 +193,13 @@ class CFData(NamedStruct):
 
     endianness = "<"
 
-    csum = "I"  # checksum of this block (cbData through payload)
-    cbData = "H"  # number of compressed bytes
-    cbUncomp = "H"  # number of uncompressed bytes
+    csum: typing.Any = "I"  # checksum of this block (cbData through payload)
+    cbData: typing.Any = "H"  # number of compressed bytes
+    cbUncomp: typing.Any = "H"  # number of uncompressed bytes
 
     # filled in later manually
-    reserved = None  # bytes object of size reserved_data.cbCFData
-    payload = None  # compressed folder stream data block
+    reserved: bytes  # bytes object of size reserved_data.cbCFData
+    payload: bytes  # compressed folder stream data block
 
     def verify_checksum(self) -> None:
         """
@@ -503,7 +508,7 @@ class CABFolderStream(PosSavingReadOnlyFileLikeObject):
         Used internally be read(), but you may use it directly.
         """
         if size < 0:
-            size = INF
+            size = sys.maxsize
 
         # use self.streamindex to determine the block id for pos.
         blockid = bisect(self.streamindex, self.pos) - 1

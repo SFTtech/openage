@@ -20,7 +20,6 @@ from .....util.struct import NamedStruct
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.init.game_version import GameVersion
     from openage.util.filelike.abstract import FileLikeObject
-    from openage.util.fslike.wrapper import GuardedFile
 
 
 # version of the drs files, hardcoded for now
@@ -38,11 +37,11 @@ class DRSHeaderEnsemble(NamedStruct):
 
     endianness = "<"
 
-    copyright = str(COPYRIGHT_SIZE_ENSEMBLE) + "s"
-    version = "4s"
-    ftype = "12s"
-    table_count = "i"
-    file_offset = "i"  # offset of the first file
+    copyright: typing.Any = str(COPYRIGHT_SIZE_ENSEMBLE) + "s"
+    version: typing.Any = "4s"
+    ftype: typing.Any = "12s"
+    table_count: typing.Any = "i"
+    file_offset: typing.Any = "i"  # offset of the first file
 
 
 class DRSHeaderLucasArts(NamedStruct):
@@ -54,11 +53,11 @@ class DRSHeaderLucasArts(NamedStruct):
 
     endianness = "<"
 
-    copyright = str(COPYRIGHT_SIZE_LUCAS) + "s"
-    version = "4s"
-    ftype = "12s"
-    table_count = "i"
-    file_offset = "i"  # offset of the first file
+    copyright: typing.Any = str(COPYRIGHT_SIZE_LUCAS) + "s"
+    version: typing.Any = "4s"
+    ftype: typing.Any = "12s"
+    table_count: typing.Any = "i"
+    file_offset: typing.Any = "i"  # offset of the first file
 
 
 class DRSTableInfo(NamedStruct):
@@ -70,9 +69,9 @@ class DRSTableInfo(NamedStruct):
 
     endianness = "<"
 
-    file_extension = "4s"  # reversed (for reasons) extension
-    file_info_offset = "i"  # table offset
-    file_count = "i"  # number of files in table
+    file_extension: typing.Any = "4s"  # reversed (for reasons) extension
+    file_info_offset: typing.Any = "i"  # table offset
+    file_count: typing.Any = "i"  # number of files in table
 
 
 class DRSFileInfo(NamedStruct):
@@ -84,9 +83,9 @@ class DRSFileInfo(NamedStruct):
 
     endianness = "<"
 
-    file_id = "i"
-    file_data_offset = "i"
-    file_size = "i"
+    file_id: typing.Any = "i"
+    file_data_offset: typing.Any = "i"
+    file_size: typing.Any = "i"
 
 
 class DRSEntry(FileEntry):
@@ -94,7 +93,7 @@ class DRSEntry(FileEntry):
     Entry in a DRS archive.
     """
 
-    def __init__(self, fileobj: GuardedFile, offset: int, size: int):
+    def __init__(self, fileobj: FileLikeObject, offset: int, size: int):
         self.fileobj = fileobj
         self.offset = offset
         self.entry_size = size
