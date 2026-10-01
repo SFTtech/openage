@@ -98,6 +98,7 @@ class BlendtableMetadata(DataDefinition):
         """
         table_width = self._get_table_width()
 
+        assert self.blendtable is not None
         if table_width * table_width != len(self.blendtable):
             raise ValueError(f"blendtable entries malformed: {len(self.blendtable)} is not an integer square")
 

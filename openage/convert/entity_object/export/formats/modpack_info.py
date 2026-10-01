@@ -39,10 +39,10 @@ class ModpackInfo(DataDefinition):
         self.conflicts: list[str] = []
 
         # Authors
-        self.authors: dict[str, str] = {}
+        self.authors: dict[str, dict[str, str | list[str]]] = {}
 
         # Author groups
-        self.author_groups: dict[str, str] = {}
+        self.author_groups: dict[str, dict[str, str | list[str]]] = {}
 
     def add_author(
         self,
@@ -70,7 +70,7 @@ class ModpackInfo(DataDefinition):
                         for available parameters.
         :type contact: dict
         """
-        author = {}
+        author: dict[str, str | list[str]] = {}
         author["name"] = name
         if fullname:
             author["fullname"] = fullname
@@ -101,7 +101,7 @@ class ModpackInfo(DataDefinition):
         :param description: Path to a file with a description of the team.
         :type description: str
         """
-        author_group = {}
+        author_group: dict[str, str | list[str]] = {}
         author_group["name"] = name
         author_group["authors"] = authors
         if description:

@@ -31,13 +31,13 @@ class MediaCacheFile(DataDefinition):
 
         self.game_version = game_version
         self.hash_func: str | None = None
-        self.cache = {}
+        self.cache: dict[MediaType, list[tuple]] = {}
 
     def dump(self) -> str:
         """
         Returns the media cache file content in TOML format.
         """
-        output_dict = {}
+        output_dict: dict[str, typing.Any] = {}
 
         output_dict["file_version"] = FILE_VERSION
         output_dict["hash_algo"] = self.hash_func

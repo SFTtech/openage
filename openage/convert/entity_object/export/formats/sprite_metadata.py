@@ -38,7 +38,7 @@ class SpriteMetadata(DataDefinition):
         self.texture_files: dict[int, dict[str, typing.Any]] = {}
         self.scalefactor = 1.0
         self.layers: dict[int, dict[str, typing.Any]] = {}
-        self.angles: dict[int, dict[str, int]] = {}
+        self.angles: dict[int, dict[str, int | None]] = {}
         self.frames: list[dict[str, int]] = []
 
     def add_texture(self, texture_id: int, filename: str) -> None:

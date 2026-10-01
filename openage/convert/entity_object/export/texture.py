@@ -85,7 +85,7 @@ class Texture:
         self.best_packer_hints: tuple | None = None
 
         self.image_data: TextureImage | None = None
-        self.image_metadata: list[dict[str, int]] = {}
+        self.image_metadata: list[dict[str, int]] = []
 
         spam("creating Texture from %s", repr(input_data))
 
@@ -96,6 +96,8 @@ class Texture:
 
         self.frames = []
         if isinstance(input_data, (SLP, SMP, SMX)):
+            # frames with palette indices need a palette to look up
+            assert palettes is not None
             input_frames = input_data.get_frames(layer)
             for frame in input_frames:
                 # Palette can be different for every frame
@@ -132,7 +134,7 @@ class Texture:
     def _to_subtextures(
         self,
         frame: SLPFrame | SMPLayer | SMXLayer,
-        main_palette: ColorTable,
+        main_palette: numpy.ndarray | None,
         custom_cutter: InterfaceCutter | None = None,
     ):
         """
