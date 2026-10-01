@@ -105,11 +105,8 @@ class RoRProcessor:
                               process.
         :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         """
-        dataset = GenieObjectContainer()
+        dataset = GenieObjectContainer(game_version, load_api(), string_resources)
 
-        dataset.game_version = game_version
-        dataset.nyan_api_objects = load_api()
-        dataset.strings = string_resources
         dataset.existing_graphics = existing_graphics
 
         info("Extracting Genie data...")

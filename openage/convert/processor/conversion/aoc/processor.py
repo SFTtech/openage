@@ -121,11 +121,8 @@ class AoCProcessor:
         :param gamespec: Gamedata from empires.dat file.
         :type gamespec: ...dataformat.value_members.ArrayMember
         """
-        dataset = GenieObjectContainer()
+        dataset = GenieObjectContainer(game_version, load_api(), string_resources)
 
-        dataset.game_version = game_version
-        dataset.nyan_api_objects = load_api()
-        dataset.strings = string_resources
         dataset.existing_graphics = existing_graphics
 
         info("Extracting Genie data...")

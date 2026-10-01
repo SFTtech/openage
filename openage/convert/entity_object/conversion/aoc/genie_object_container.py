@@ -72,20 +72,24 @@ class GenieObjectContainer(ConverterObjectContainer):
     categories.
     """
 
-    def __init__(self):
-
+    def __init__(
+        self,
+        game_version: GameVersion,
+        nyan_api_objects: dict[str, NyanObject],
+        strings: StringResource,
+    ):
         # Game version
-        self.game_version: GameVersion = None
+        self.game_version: GameVersion = game_version
 
         # API reference
-        self.nyan_api_objects: dict[str, NyanObject] = None
+        self.nyan_api_objects: dict[str, NyanObject] = nyan_api_objects
 
         # Things that don't exist in the game, e.g. Attributes
         # saved as RawAPIObjects
         self.pregen_nyan_objects: dict[str, RawAPIObject] = {}
 
         # Auxiliary
-        self.strings: StringResource = None
+        self.strings: StringResource = strings
         self.existing_graphics: set[str] = set()
 
         # Phase 1: Genie-like objects
