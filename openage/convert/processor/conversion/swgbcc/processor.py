@@ -570,7 +570,7 @@ class SWGBCCProcessor:
             unit_ids.add(unit["id0"].value)
 
         # Create the villager task group
-        villager = GenieVillagerGroup(118, task_group_ids, full_data_set)
+        villager = GenieVillagerGroup(118, sorted(task_group_ids), full_data_set)
         full_data_set.unit_lines.update({villager.get_id(): villager})
         # TODO: Find the line id elsewhere
         full_data_set.unit_lines_vertical_ref.update({36: villager})

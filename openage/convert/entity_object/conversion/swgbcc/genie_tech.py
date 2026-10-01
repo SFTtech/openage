@@ -43,9 +43,9 @@ class SWGBUnitLineUpgrade(UnitLineUpgrade):
         super().__init__(tech_id, unit_line_id, upgrade_target_id, full_data_set)
 
         # Unlocks for other civs
-        self.civ_unlocks: dict[int, SWGBUnitUnlock] = {}
+        self.civ_unlocks: dict[int, SWGBUnitLineUpgrade | SWGBUnitUnlock] = {}
 
-    def add_civ_upgrade(self, other_unlock: SWGBUnitUnlock) -> None:
+    def add_civ_upgrade(self, other_unlock: SWGBUnitLineUpgrade | SWGBUnitUnlock) -> None:
         """
         Adds a reference to an alternative unlock tech for another civ
         to this tech group.
