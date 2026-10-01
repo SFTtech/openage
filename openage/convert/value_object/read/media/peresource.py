@@ -214,12 +214,12 @@ class PEResources:
 
         return result
 
-    def read_strings(self) -> dict[str, dict[int, str]]:
+    def read_strings(self) -> dict[str, dict[str | int, str]]:
         """
         reads all ressource strings from self.root;
         returns a dict of dicts: {languageid: {stringid: str}}
         """
-        result = defaultdict(lambda: {})
+        result: dict[str, dict[str | int, str]] = defaultdict(lambda: {})
 
         try:
             string_dir = self.rootdir[RESOURCE_IDS["string"]]

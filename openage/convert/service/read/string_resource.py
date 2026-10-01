@@ -18,8 +18,8 @@ from ...value_object.read.media_types import MediaType
 if typing.TYPE_CHECKING:
     from argparse import Namespace
 
+    from openage.util.filelike.abstract import FileLikeObject
     from openage.util.fslike.path import Path
-    from openage.util.fslike.wrapper import GuardedFile
 
 
 def get_string_resources(args: Namespace) -> StringResource:
@@ -137,7 +137,7 @@ def read_age2_hd_3x_stringresources(stringres: StringResource, srcdir: Path) -> 
 
 
 def read_hd_language_file_old(
-    fileobj: GuardedFile, langcode: str, enc: str = "utf-8"
+    fileobj: typing.IO[bytes] | FileLikeObject, langcode: str, enc: str = "utf-8"
 ) -> dict[str, dict[str | int, str]]:
     """
     Takes a file object, and the file's language code.
@@ -167,7 +167,7 @@ def read_hd_language_file_old(
 
 
 def read_hd_language_file(
-    srcdir: Path, language_file: GuardedFile, enc: str = "utf-8"
+    srcdir: Path, language_file: str, enc: str = "utf-8"
 ) -> dict[str, dict[str | int, str]]:
     """
     HD Edition stores language .txt files in the resources/ folder.
@@ -204,7 +204,7 @@ def read_hd_language_file(
     return {lang: strings}
 
 
-def read_de1_language_file(srcdir: Path, language_file: GuardedFile) -> dict[str, dict[str | int, str]]:
+def read_de1_language_file(srcdir: Path, language_file: str) -> dict[str, dict[str | int, str]]:
     """
     Definitve Edition stores language .txt files in the Localization folder.
     Specific language strings are in Data/Localization/$LANG/strings.txt.
@@ -241,7 +241,7 @@ def read_de1_language_file(srcdir: Path, language_file: GuardedFile) -> dict[str
     return {lang: strings}
 
 
-def read_de2_language_file(srcdir: Path, language_file: GuardedFile) -> dict[str, dict[str | int, str]]:
+def read_de2_language_file(srcdir: Path, language_file: str) -> dict[str, dict[str | int, str]]:
     """
     Definitve Edition stores language .txt files in the resources/ folder.
     Specific language strings are in resources/$LANG/strings/key-value/*.txt.
