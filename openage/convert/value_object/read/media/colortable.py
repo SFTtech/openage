@@ -10,14 +10,13 @@ import numpy
 
 from .....log import dbg
 from ..genie_structure import GenieStructure
+from ..member_access import READ
 
 if typing.TYPE_CHECKING:
-    from PIL import Image
+    from PIL.Image import Image
 
     from openage.convert.value_object.init.game_version import GameVersion
     from openage.convert.value_object.read.genie_structure import DataFormatMember
-    from openage.util.fslike.wrapper import GuardedFile
-
 
 
 class ColorTable(GenieStructure):
@@ -149,10 +148,10 @@ class ColorTable(GenieStructure):
 
         return palette_image
 
-    def get_ndarray(self) -> numpy.array:
+    def get_ndarray(self) -> numpy.ndarray:
         return numpy.array(self.palette, dtype=numpy.uint8, order="C")
 
-    def save_visualization(self, fileobj: GuardedFile) -> None:
+    def save_visualization(self, fileobj: typing.IO[bytes]) -> None:
         self.gen_image().save(fileobj, "png")
 
     @classmethod
@@ -160,13 +159,13 @@ class ColorTable(GenieStructure):
         """
         Return the members in this struct.
         """
-        data_format = (
-            (True, "idx", None, "int32_t"),
-            (True, "r", None, "uint8_t"),
-            (True, "g", None, "uint8_t"),
-            (True, "b", None, "uint8_t"),
-            (True, "a", None, "uint8_t"),
-        )
+        data_format: list[DataFormatMember] = [
+            (READ, "idx", None, "int32_t"),
+            (READ, "r", None, "uint8_t"),
+            (READ, "g", None, "uint8_t"),
+            (READ, "b", None, "uint8_t"),
+            (READ, "a", None, "uint8_t"),
+        ]
 
         return data_format
 
@@ -205,13 +204,13 @@ class PlayerColorTable(GenieStructure):
         """
         Return the members in this struct.
         """
-        data_format = (
-            (True, "idx", None, "int32_t"),
-            (True, "r", None, "uint8_t"),
-            (True, "g", None, "uint8_t"),
-            (True, "b", None, "uint8_t"),
-            (True, "a", None, "uint8_t"),
-        )
+        data_format: list[DataFormatMember] = [
+            (READ, "idx", None, "int32_t"),
+            (READ, "r", None, "uint8_t"),
+            (READ, "g", None, "uint8_t"),
+            (READ, "b", None, "uint8_t"),
+            (READ, "a", None, "uint8_t"),
+        ]
 
         return data_format
 

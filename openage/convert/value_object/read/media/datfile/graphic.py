@@ -82,7 +82,7 @@ class GraphicAttackSound(GenieStructure):
         Return the members in this struct.
         """
         if game_version.edition.game_id == "AOE2DE":
-            data_format = [
+            data_format: list[DataFormatMember] = [
                 (
                     SKIP,
                     "sound_props",

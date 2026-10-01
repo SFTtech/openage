@@ -26,7 +26,7 @@ class PlayerColor(GenieStructure):
         """
 
         if game_version.edition.game_id not in ("ROR", "AOE1DE"):
-            data_format = [
+            data_format: list[DataFormatMember] = [
                 (READ_GEN, "id", StorageType.ID_MEMBER, "int32_t"),
                 # palette index offset, where the 8 player colors start
                 (READ_GEN, "player_color_base", StorageType.ID_MEMBER, "int32_t"),
