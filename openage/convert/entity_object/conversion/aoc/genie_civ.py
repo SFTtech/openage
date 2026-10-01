@@ -14,7 +14,10 @@ from .genie_tech import CivTeamBonus, CivTechTree
 if typing.TYPE_CHECKING:
     from openage.convert.entity_object.conversion.aoc.genie_effect import GenieEffectObject
     from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
-    from openage.convert.entity_object.conversion.aoc.genie_tech import CivBonus, GenieTechObject
+    from openage.convert.entity_object.conversion.aoc.genie_tech import (
+        CivBonus,
+        GenieTechEffectBundleGroup,
+    )
     from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup
     from openage.convert.value_object.read.value_members import ValueMember
 
@@ -106,7 +109,7 @@ class GenieCivilizationGroup(ConverterObjectGroup):
         self.unique_entities: dict[int, GenieGameEntityGroup] = {}
 
         # Unique techs
-        self.unique_techs: dict[int, GenieTechObject] = {}
+        self.unique_techs: dict[int, GenieTechEffectBundleGroup] = {}
 
     def add_civ_bonus(self, civ_bonus: CivBonus):
         """
@@ -120,7 +123,7 @@ class GenieCivilizationGroup(ConverterObjectGroup):
         """
         self.unique_entities.update({entity_group.get_head_unit_id(): entity_group})
 
-    def add_unique_tech(self, tech_group: GenieTechObject):
+    def add_unique_tech(self, tech_group: GenieTechEffectBundleGroup):
         """
         Adds a unique tech to the civilization.
         """

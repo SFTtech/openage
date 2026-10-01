@@ -983,7 +983,7 @@ class AoCProcessor:
             unit_ids.add(unit["id0"].value)
 
         # Create the villager task group
-        villager = GenieVillagerGroup(118, task_group_ids, full_data_set)
+        villager = GenieVillagerGroup(118, sorted(task_group_ids), full_data_set)
         full_data_set.unit_lines.update({villager.get_id(): villager})
         full_data_set.villager_groups.update({villager.get_id(): villager})
         for unit_id in unit_ids:
@@ -1068,6 +1068,8 @@ class AoCProcessor:
 
         # Order of age ups should be correct
         for age_up in age_ups.values():
+            assert age_up.effects is not None
+
             for effect in age_up.effects.get_effects():
                 type_id = effect.get_type()
 

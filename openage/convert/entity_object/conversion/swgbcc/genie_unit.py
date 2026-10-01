@@ -46,9 +46,9 @@ class SWGBUnitLineGroup(GenieUnitLineGroup):
         super().__init__(line_id, full_data_set)
 
         # References to alternative lines from other civs
-        self.civ_lines: dict[int, SWGBUnitLineGroup] = {}
+        self.civ_lines: dict[int, GenieUnitLineGroup] = {}
 
-    def add_civ_line(self, other_line: SWGBUnitLineGroup) -> None:
+    def add_civ_line(self, other_line: SWGBUnitLineGroup | SWGBUnitTransformGroup | SWGBMonkGroup) -> None:
         """
         Adds a reference to an alternative line from another civ
         to this line.
@@ -133,9 +133,9 @@ class SWGBUnitTransformGroup(GenieUnitTransformGroup):
         super().__init__(line_id, head_unit_id, full_data_set)
 
         # References to alternative lines from other civs
-        self.civ_lines: dict[int, SWGBUnitTransformGroup] = {}
+        self.civ_lines: dict[int, GenieUnitLineGroup] = {}
 
-    def add_civ_line(self, other_line: SWGBUnitTransformGroup) -> None:
+    def add_civ_line(self, other_line: SWGBUnitLineGroup | SWGBUnitTransformGroup | SWGBMonkGroup) -> None:
         """
         Adds a reference to an alternative line from another civ
         to this line.
@@ -212,9 +212,9 @@ class SWGBMonkGroup(GenieMonkGroup):
         super().__init__(line_id, head_unit_id, switch_unit_id, full_data_set)
 
         # References to alternative lines from other civs
-        self.civ_lines: dict[int, SWGBMonkGroup] = {}
+        self.civ_lines: dict[int, GenieUnitLineGroup] = {}
 
-    def add_civ_line(self, other_line: SWGBMonkGroup) -> None:
+    def add_civ_line(self, other_line: SWGBUnitLineGroup | SWGBUnitTransformGroup | SWGBMonkGroup) -> None:
         """
         Adds a reference to an alternative line from another civ
         to this line.
