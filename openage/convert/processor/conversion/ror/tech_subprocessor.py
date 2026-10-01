@@ -14,6 +14,7 @@ from __future__ import annotations
 import typing
 
 from .....nyan.nyan_structs import MemberOperator
+from ....entity_object.conversion.aoc.genie_tech import GenieTechEffectBundleGroup
 from ....entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup, GenieUnitLineGroup
 from ....service.conversion import internal_name_lookups
 from ..aoc.upgrade_ability_subprocessor import AoCUpgradeAbilitySubprocessor
@@ -78,6 +79,8 @@ class RoRTechSubprocessor:
         of its effects.
         """
         patches = []
+        # get_patches is only called with tech groups
+        assert isinstance(converter_group, GenieTechEffectBundleGroup)
         effects = converter_group.get_effects()
         for effect in effects:
             type_id = effect.get_type()

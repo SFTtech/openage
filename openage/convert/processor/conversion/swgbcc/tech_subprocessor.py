@@ -14,7 +14,7 @@ from __future__ import annotations
 import typing
 
 from .....nyan.nyan_structs import MemberOperator
-from ....entity_object.conversion.aoc.genie_tech import CivBonus, CivTeamBonus
+from ....entity_object.conversion.aoc.genie_tech import CivBonus, CivTeamBonus, GenieTechEffectBundleGroup
 from ..aoc.tech_subprocessor import AoCTechSubprocessor
 from ..aoc.upgrade_attribute_subprocessor import AoCUpgradeAttributeSubprocessor
 from ..aoc.upgrade_resource_subprocessor import AoCUpgradeResourceSubprocessor
@@ -134,6 +134,9 @@ class SWGBCCTechSubprocessor:
             converter_group = dataset.civ_groups[converter_group.get_civilization_id()]
 
         else:
+            # get_patches is only called with tech groups and the two civ
+            # group types above; everything else is a GenieTechEffectBundleGroup
+            assert isinstance(converter_group, GenieTechEffectBundleGroup)
             effects = converter_group.get_effects()
 
         team_effect = False
