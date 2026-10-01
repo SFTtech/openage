@@ -454,10 +454,10 @@ class NyanPatch(NyanObject):
         self,
         name: str,
         parents: OrderedSet[NyanObject] | None = None,
-        members: OrderedSet[NyanObject] | None = None,
+        members: OrderedSet[NyanMember] | None = None,
         nested_objects: OrderedSet[NyanObject] | None = None,
         target: NyanObject | None = None,
-        add_inheritance: OrderedSet[NyanObject] | None = None,
+        add_inheritance: OrderedSet[tuple[str, NyanObject]] | None = None,
     ):
 
         self._target = target  # patch target (can be added later)
@@ -471,6 +471,9 @@ class NyanPatch(NyanObject):
         """
         Returns the target of the patch.
         """
+        if self._target is None:
+            raise ValueError(f"{self!r}: patch target is not set")
+
         return self._target
 
     def is_abstract(self) -> bool:
@@ -487,14 +490,11 @@ class NyanPatch(NyanObject):
         """
         return True
 
-    def set_target(self, target: NyanObject) -> NyanObject:
+    def set_target(self, target: NyanObject) -> None:
         """
         Set the target of the patch.
         """
         self._target = target
-
-        if not isinstance(self._target, NyanObject):
-            raise TypeError(f"{self!r}: '_target' must have NyanObject type")
 
     def dump(self, indent_depth: int = 0, import_tree: ImportTree | None = None) -> str:
         """
@@ -503,11 +503,13 @@ class NyanPatch(NyanObject):
         # Header
         output_str = f"{self.get_name()}"
 
+        target = self.get_target()
+
         if import_tree:
-            sfqon = ".".join(import_tree.get_alias_fqon(self._target.get_fqon()))
+            sfqon = ".".join(import_tree.get_alias_fqon(target.get_fqon()))
 
         else:
-            sfqon = ".".join(self._target.get_fqon())
+            sfqon = ".".join(target.get_fqon())
 
         output_str += f"<{sfqon}>"
 
@@ -542,20 +544,12 @@ class NyanPatch(NyanObject):
         """
         super()._sanity_check()
 
-        # Target must be a nyan object
-        if self._target:
-            if not isinstance(self._target, NyanObject):
-                raise TypeError(f"{self!r}: '_target' must have NyanObject type")
-
         # Added inheritance must be tuples of "FRONT"/"BACK"
         # and a nyan object
         if len(self._add_inheritance) > 0:
             for inherit in self._add_inheritance:
-                if not isinstance(inherit, tuple):
-                    raise TypeError(f"{self!r}: '_add_inheritance' must be a tuple")
-
-                if len(inherit) != 2:
-                    raise SyntaxError(f"{self!r}: '_add_inheritance' tuples must have length 2")
+                if not isinstance(inherit, tuple) or len(inherit) != 2:
+                    raise TypeError(f"{self!r}: '_add_inheritance' must be a (mode, object) tuple")
 
                 if inherit[0] not in ("FRONT", "BACK"):
                     raise ValueError(f"{self!r}: added inheritance must be FRONT or BACK mode")
@@ -564,7 +558,8 @@ class NyanPatch(NyanObject):
                     raise ValueError(f"{self!r}: added inheritance must contain NyanObject")
 
     def __repr__(self):
-        return f"NyanPatch<{self.name}<{self._target.name}>>"
+        target_name = self._target.name if self._target is not None else None
+        return f"NyanPatch<{self.name}<{target_name}>>"
 
 
 class NyanMemberType:
@@ -608,6 +603,9 @@ class NyanMemberType:
         """
         if self.is_modifier():
             return self._element_types[0].get_real_type()
+
+        if not isinstance(self._member_type, MemberType):
+            raise TypeError(f"{self!r}: member type is not a primitive or collection type")
 
         return self._member_type
 
@@ -802,9 +800,11 @@ class NyanMemberType:
         Returns the nyan string representation of the member type.
         """
         if self.is_primitive():
+            assert isinstance(self._member_type, MemberType)
             return self._member_type.value
 
         if self.is_object():
+            assert isinstance(self._member_type, NyanObject)
             if import_tree:
                 sfqon = ".".join(import_tree.get_alias_fqon(self._member_type.get_fqon(), namespace))
 
@@ -814,6 +814,7 @@ class NyanMemberType:
             return sfqon
 
         # Composite types
+        assert isinstance(self._member_type, MemberType)
         return (
             f"{self._member_type.value}("
             f"{', '.join(elem_type.dump(import_tree) for elem_type in self._element_types)})"
@@ -859,7 +860,7 @@ class NyanMember:
         if operator:
             operator = MemberOperator(operator)  # operator type
 
-        self.value = None  # value
+        self.value: typing.Any = None  # value
         if value is not None:
             # Needs to check for None because 0 is also False
             self.set_value(value, operator)
