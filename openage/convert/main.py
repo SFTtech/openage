@@ -90,9 +90,6 @@ def convert_assets(assets: UnionPath, args: Namespace, srcdir: Path | None = Non
     args.game_version = get_game_version(srcdir, args.avail_game_eds, args.avail_game_exps)
     debug_game_version(args.debugdir, args.debug_info, args)
 
-    if not args.game_version.edition:
-        return None
-
     # Mount assets into conversion folder
     data_dir = mount_asset_dirs(srcdir, args.game_version)
     if not data_dir:

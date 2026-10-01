@@ -93,12 +93,13 @@ def query_source_dir(proposals: set[str]) -> str:
     Lists proposals and allows selection if some were found.
     """
 
-    if proposals:
+    sorted_proposals = sorted(proposals)
+
+    if sorted_proposals:
         print("\nPlease select an Age of Empires installation directory.")
         print("Insert the index of one of the proposals, or any path:")
 
-        proposals = sorted(proposals)
-        for index, proposal in enumerate(proposals):
+        for index, proposal in enumerate(sorted_proposals):
             print(f"({index}) {proposal}")
 
     else:
@@ -107,8 +108,8 @@ def query_source_dir(proposals: set[str]) -> str:
 
     while True:
         user_selection = input("> ")
-        if user_selection.isdecimal() and int(user_selection) < len(proposals):
-            sourcedir = proposals[int(user_selection)]
+        if user_selection.isdecimal() and int(user_selection) < len(sorted_proposals):
+            sourcedir = sorted_proposals[int(user_selection)]
         else:
             sourcedir = user_selection
         sourcedir = expand_relative_path(sourcedir)
@@ -220,8 +221,9 @@ def download_trial() -> str:
             shutil.copyfileobj(response, tmp_file)
 
             from ....cabextract.cab import CABFile
+            from ....util.filelike.stream import PythonStream
 
-            cab = CABFile(tmp_file, 0x65678)
+            cab = CABFile(PythonStream(tmp_file), 0x65678)
 
             sourcedir = Directory(tempdir).root
             print(f"Extracting game files to {sourcedir}...")

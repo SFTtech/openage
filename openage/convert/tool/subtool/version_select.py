@@ -62,7 +62,7 @@ def get_game_version(
             if edition.support == Support.YES:
                 warn(" * \x1b[34m%s\x1b[m", edition)
 
-        return GameVersion(edition=None)
+        raise RuntimeError("no compatible game edition found")
 
     info("Compatible game edition detected:")
     info(" * %s", game_version.edition.edition_name)
