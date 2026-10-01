@@ -99,10 +99,13 @@ class GameBase:
         """
         self.media_paths[MediaType[media_type.upper()]] = paths
 
-    def __eq__(self, other: GameBase) -> bool:
+    def __eq__(self, other: object) -> bool:
         """
         Compare equality by comparing IDs.
         """
+        if not isinstance(other, GameBase):
+            return NotImplemented
+
         return self.game_id == other.game_id
 
     def __hash__(self) -> int:
@@ -124,7 +127,7 @@ class GameExpansion(GameBase):
         support: str,
         game_version_info: list[tuple[list[str], dict[str, str]]],
         media_paths: list[tuple[str, list[str]]],
-        modpacks: list[str],
+        modpacks: dict[str, dict[str, str]],
         **flags,
     ):
         """
@@ -159,7 +162,7 @@ class GameEdition(GameBase):
         game_version_info: list[tuple[list[str], dict[str, str]]],
         media_paths: list[tuple[str, list[str]]],
         install_paths: dict[str, list[str]],
-        modpacks: list[str],
+        modpacks: dict[str, dict[str, str]],
         expansions: list[str],
         **flags,
     ):
