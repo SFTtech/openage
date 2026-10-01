@@ -34,7 +34,7 @@ def load_api() -> dict[str, NyanObject]:
     Returns a dict with the API object's fqon as keys
     and the API objects as values.
     """
-    api_objects = {}
+    api_objects: dict[str, NyanObject] = {}
 
     api_objects = _create_objects(api_objects)
     _insert_members(api_objects)
@@ -42,7 +42,7 @@ def load_api() -> dict[str, NyanObject]:
     return api_objects
 
 
-def _create_objects(api_objects: dict[str, NyanObject]) -> None:
+def _create_objects(api_objects: dict[str, NyanObject]) -> dict[str, NyanObject]:
     """
     Creates the API objects.
     """
