@@ -262,7 +262,9 @@ def debug_string_resources(debugdir: Path, loglevel: int, string_resources: Stri
         log.write(logtext)
 
 
-def debug_registered_graphics(debugdir: Path, loglevel: int, existing_graphics: typing.Collection[str]) -> None:
+def debug_registered_graphics(
+    debugdir: Path, loglevel: int, existing_graphics: typing.Collection[str]
+) -> None:
     """
     Create debug output for found graphics files.
 
