@@ -299,7 +299,7 @@ class RoRProcessor:
                 full_data_set.unit_ref.update({unit_id: building_line})
 
         # Create the villager task group
-        villager = RoRVillagerGroup(118, task_group_ids, full_data_set)
+        villager = RoRVillagerGroup(118, sorted(task_group_ids), full_data_set)
         full_data_set.unit_lines.update({villager.get_id(): villager})
         full_data_set.villager_groups.update({villager.get_id(): villager})
         for unit_id in villager_unit_ids:

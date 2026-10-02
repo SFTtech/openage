@@ -18,7 +18,7 @@ from ...value_object.read.media_types import MediaType
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.init.game_version import GameVersion
-    from openage.convert.value_object.read.read_members import ArrayMember
+    from openage.convert.value_object.read.value_members import ArrayMember
     from openage.util.fslike.path import Path
     from openage.util.fslike.wrapper import GuardedFile
 

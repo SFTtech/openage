@@ -32,7 +32,7 @@ class InterfaceCutter:
     def __init__(self, idx: int):
         self.idx = idx
 
-    def cut(self, image: TextureImage) -> TextureImage:
+    def cut(self, image: TextureImage) -> typing.Iterator[TextureImage]:
         """
         Create subtextures by searching for patterns at hardcoded positions.
         """

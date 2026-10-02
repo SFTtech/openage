@@ -55,6 +55,7 @@ class SWGBCCAbilitySubprocessor:
 
         # TODO: Implement diffing of civ lines
 
+        assert ability_forward_ref is not None
         return ability_forward_ref
 
     @staticmethod
@@ -1270,6 +1271,7 @@ class SWGBCCAbilitySubprocessor:
 
         # TODO: Implement diffing of civ lines
 
+        assert ability_forward_ref is not None
         return ability_forward_ref
 
     @staticmethod

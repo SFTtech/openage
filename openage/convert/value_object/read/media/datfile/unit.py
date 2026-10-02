@@ -1311,7 +1311,7 @@ unit_type_lookup = {
 
 
 # name => attribute class
-unit_type_class_lookup = {
+unit_type_class_lookup: dict[str, type[GenieStructure]] = {
     "object": UnitObject,
     "animated": AnimatedUnit,
     "doppelganger": DoppelgangerUnit,

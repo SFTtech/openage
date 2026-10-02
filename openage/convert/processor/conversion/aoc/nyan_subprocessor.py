@@ -703,7 +703,10 @@ class AoCNyanSubprocessor:
         # =======================================================================
         variants_set = []
 
-        variant_type = name_lookup_dict[variant_id][3]
+        # variant group lookups always store the 4-tuple form
+        variant_lookup = name_lookup_dict[variant_id]
+        assert isinstance(variant_lookup, tuple) and len(variant_lookup) == 4
+        variant_type = variant_lookup[3]
 
         index = 0
         for variant in variant_group.line:

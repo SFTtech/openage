@@ -144,7 +144,7 @@ class Texture:
 
         if custom_cutter:
             # this may cut the texture into some parts
-            return custom_cutter.cut(subtex)
+            return list(custom_cutter.cut(subtex))
 
         else:
             return [subtex]
