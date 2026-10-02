@@ -4,7 +4,6 @@
 Additional hardcoded information about AoC user interface assets
 """
 
-
 INGAME_HUD_BACKGROUNDS = [
     51141,
     51142,
@@ -28,9 +27,7 @@ INGAME_HUD_BACKGROUNDS = [
 
 INGAME_HUD_BACKGROUNDS_SET = set(INGAME_HUD_BACKGROUNDS)
 
-ASSETS = {
-    '50721': 'hudactions'
-}
+ASSETS = {"50721": "hudactions"}
 
 TOP_STRIP_PATTERN_CORNERS = (400, 0, 464, 32)
 TOP_STRIP_PATTERN_SEARCH_AREA_CORNERS = (400, 0, 1024, 32)

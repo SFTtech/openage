@@ -6,12 +6,18 @@
 Derives and adds abilities to lines or civ groups. Subroutine of the
 nyan subprocessor.
 """
+
 from __future__ import annotations
+
 import typing
 
-from ....entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup, \
-    GenieBuildingLineGroup, GenieVillagerGroup, GenieAmbientGroup, \
-    GenieVariantGroup
+from ....entity_object.conversion.aoc.genie_unit import (
+    GenieAmbientGroup,
+    GenieBuildingLineGroup,
+    GenieGameEntityGroup,
+    GenieVariantGroup,
+    GenieVillagerGroup,
+)
 from ....entity_object.conversion.converter_object import RawAPIObject
 from ....service.conversion import internal_name_lookups
 from ....value_object.conversion.forward_ref import ForwardRef
@@ -37,12 +43,8 @@ class AoCModifierSubprocessor:
         """
         dataset = converter_obj_group.data
         modifiers = [
-            dataset.pregen_nyan_objects[
-                "util.modifier.elevation_difference.AttackHigh"
-            ].get_nyan_object(),
-            dataset.pregen_nyan_objects[
-                "util.modifier.elevation_difference.AttackLow"
-            ].get_nyan_object()
+            dataset.pregen_nyan_objects["util.modifier.elevation_difference.AttackHigh"].get_nyan_object(),
+            dataset.pregen_nyan_objects["util.modifier.elevation_difference.AttackLow"].get_nyan_object(),
         ]
 
         return modifiers
@@ -58,9 +60,7 @@ class AoCModifierSubprocessor:
         :rtype: ...dataformat.forward_ref.ForwardRef
         """
         dataset = converter_obj_group.data
-        modifier = dataset.pregen_nyan_objects[
-            "util.modifier.flyover_cliff.AttackFlyover"
-        ].get_nyan_object()
+        modifier = dataset.pregen_nyan_objects["util.modifier.flyover_cliff.AttackFlyover"].get_nyan_object()
 
         return modifier
 
@@ -98,8 +98,7 @@ class AoCModifierSubprocessor:
                     # Find a gather ability.
                     type_id = command["type"].value
 
-                    gather_task_ids = internal_name_lookups.get_gather_lookups(
-                        dataset.game_version).keys()
+                    gather_task_ids = internal_name_lookups.get_gather_lookups(dataset.game_version).keys()
                     if type_id not in gather_task_ids:
                         continue
 
@@ -145,34 +144,31 @@ class AoCModifierSubprocessor:
                             resource_line_name = name_lookup_dict[head_unit_id][1]
 
                         modifier_ref = f"{target_obj_name}.{resource_line_name}GatheringRate"
-                        modifier_raw_api_object = RawAPIObject(modifier_ref,
-                                                               "%sGatheringRate",
-                                                               dataset.nyan_api_objects)
+                        modifier_raw_api_object = RawAPIObject(
+                            modifier_ref, "%sGatheringRate", dataset.nyan_api_objects
+                        )
                         modifier_raw_api_object.add_raw_parent(
-                            "engine.modifier.multiplier.type.GatheringRate")
+                            "engine.modifier.multiplier.type.GatheringRate"
+                        )
                         modifier_location = ForwardRef(converter_obj_group, target_obj_name)
                         modifier_raw_api_object.set_location(modifier_location)
 
                         # Multiplier
                         modifier_raw_api_object.add_raw_member(
-                            "multiplier",
-                            work_value,
-                            "engine.modifier.multiplier.MultiplierModifier"
+                            "multiplier", work_value, "engine.modifier.multiplier.MultiplierModifier"
                         )
 
                         # Resource spot
-                        spot_ref = (f"{resource_line_name}.Harvestable."
-                                    f"{resource_line_name}ResourceSpot")
+                        spot_ref = f"{resource_line_name}.Harvestable.{resource_line_name}ResourceSpot"
                         spot_forward_ref = ForwardRef(resource_line, spot_ref)
                         modifier_raw_api_object.add_raw_member(
-                            "resource_spot",
-                            spot_forward_ref,
-                            "engine.modifier.multiplier.type.GatheringRate"
+                            "resource_spot", spot_forward_ref, "engine.modifier.multiplier.type.GatheringRate"
                         )
 
                         converter_obj_group.add_raw_api_object(modifier_raw_api_object)
-                        modifier_forward_ref = ForwardRef(converter_obj_group,
-                                                          modifier_raw_api_object.get_id())
+                        modifier_forward_ref = ForwardRef(
+                            converter_obj_group, modifier_raw_api_object.get_id()
+                        )
                         modifiers.append(modifier_forward_ref)
 
         return modifiers
@@ -204,9 +200,9 @@ class AoCModifierSubprocessor:
         modifier_location = ForwardRef(converter_obj_group, target_obj_name)
         modifier_raw_api_object.set_location(modifier_location)
 
-        modifier_raw_api_object.add_raw_member("multiplier",
-                                               value,
-                                               "engine.modifier.multiplier.MultiplierModifier")
+        modifier_raw_api_object.add_raw_member(
+            "multiplier", value, "engine.modifier.multiplier.MultiplierModifier"
+        )
 
         converter_obj_group.add_raw_api_object(modifier_raw_api_object)
 

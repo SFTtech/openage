@@ -35,8 +35,12 @@ cd openage
 Install the Python packages into a virtual environment inside the repository:
 
 ```
+uv sync
+```
+or, to create the venv manually:
+```
 python3 -m venv .venv
-.venv/bin/pip install --upgrade cython numpy mako lz4 pillow pygments setuptools toml
+.venv/bin/pip install --upgrade cython setuptools numpy mako lz4 pillow pygments tomli-w
 ```
 
 ## Building

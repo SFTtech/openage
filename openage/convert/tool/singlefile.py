@@ -3,51 +3,64 @@
 """
 Convert a single slp/wav file from some drs archive to a png/opus file.
 """
+
 from __future__ import annotations
 
 import sys
-
 from pathlib import Path
 
 from openage.convert.processor.export.media_exporter import MediaExporter
 from openage.convert.value_object.init.game_version import GameEdition, GameVersion
 
 from ...log import info
+from ...util.filelike.stream import PythonStream
 from ...util.fslike.directory import Directory
 from ..entity_object.export.texture import Texture
 from ..value_object.read.media.colortable import ColorTable
 from ..value_object.read.media.drs import DRS
 
-AOC_GAME_VERSION = GameVersion(
-    edition=GameEdition("Dummy AOC", "AOC", "YES", [], [], {}, [], [])
-)
-SWGB_GAME_VERSION = GameVersion(
-    edition=GameEdition("Dummy SWGB", "SWGB", "YES", [], [], {}, [], [])
-)
+AOC_GAME_VERSION = GameVersion(edition=GameEdition("Dummy AOC", "AOC", "YES", [], [], {}, {}, []))
+SWGB_GAME_VERSION = GameVersion(edition=GameEdition("Dummy SWGB", "SWGB", "YES", [], [], {}, {}, []))
 
 
 def init_subparser(cli):
-    """ Initializes the parser for convert-specific args. """
-    import argparse
+    """Initializes the parser for convert-specific args."""
 
     cli.set_defaults(entrypoint=main)
 
-    cli.add_argument("--palettes-path",
-                     help=("path to the folder containing the palettes.conf file "
-                           "OR an interfac.drs archive that contains palette files"))
-    cli.add_argument("--drs", type=argparse.FileType('rb'),
-                     help=("drs archive filename that contains an slp or wav "
-                           "e.g. path ~/games/aoe/graphics.drs"))
-    cli.add_argument("--mode", choices=['drs-slp', 'drs-wav', 'sld', 'slp', 'smp', 'smx', 'wav'],
-                     help=("choose between drs-slp, drs-wav, sld, slp, smp, smx or wav; "
-                           "otherwise, this is determined by the file extension"))
-    cli.add_argument("--compression-level", type=int, default=2, choices=[0, 1, 2, 3, 4],
-                     help="set PNG compression level")
-    cli.add_argument("--layer", type=int, default=0, choices=[0, 1, 2, 3, 4],
-                     help="ID of SLD/SMP/SMX layer that should be exported to image file")
-    cli.add_argument("filename", help=("filename or, if inside a drs archive "
-                                       "given by --drs, the filename within "
-                                       "the drs archive"))
+    cli.add_argument(
+        "--palettes-path",
+        help=(
+            "path to the folder containing the palettes.conf file "
+            "OR an interfac.drs archive that contains palette files"
+        ),
+    )
+    cli.add_argument(
+        "--drs",
+        help=("drs archive filename that contains an slp or wav e.g. path ~/games/aoe/graphics.drs"),
+    )
+    cli.add_argument(
+        "--mode",
+        choices=["drs-slp", "drs-wav", "sld", "slp", "smp", "smx", "wav"],
+        help=(
+            "choose between drs-slp, drs-wav, sld, slp, smp, smx or wav; "
+            "otherwise, this is determined by the file extension"
+        ),
+    )
+    cli.add_argument(
+        "--compression-level", type=int, default=2, choices=[0, 1, 2, 3, 4], help="set PNG compression level"
+    )
+    cli.add_argument(
+        "--layer",
+        type=int,
+        default=0,
+        choices=[0, 1, 2, 3, 4],
+        help="ID of SLD/SMP/SMX layer that should be exported to image file",
+    )
+    cli.add_argument(
+        "filename",
+        help=("filename or, if inside a drs archive given by --drs, the filename within the drs archive"),
+    )
     cli.add_argument("output", help="output path")
 
 
@@ -62,17 +75,17 @@ def main(args, error):
 
     if sys.platform == "win32":
         from openage.util.dll import DllDirectoryManager, default_paths
+
         dll_manager = DllDirectoryManager(default_paths())
         dll_manager.add_directories()
 
     # `palettes` is only required for the SLP/SMP/SMX file types. The sld,
     # drs-wav, and wav paths don't read it, so we pre-declare it as None and
     # only populate it when one of the palette-based paths is taken.
-    palettes = None
+    palettes: dict[int, ColorTable] | None = None
     if not (args.mode in ("sld", "drs-wav", "wav") or file_extension in ("sld", "wav")):
         if not args.palettes_path:
-            raise RuntimeError("palettes-path needs to be specified for "
-                               f"file type '{file_extension}'")
+            raise RuntimeError(f"palettes-path needs to be specified for file type '{file_extension}'")
 
         palettes_path = Path(args.palettes_path)
         palettes = read_palettes(palettes_path)
@@ -83,7 +96,7 @@ def main(args, error):
         read_slp_file(args.filename, args.output, palettes, compression_level)
 
     elif args.mode == "drs-slp" or (file_extension == "slp" and args.drs):
-        read_slp_in_drs_file(args.drs, args.filename, args.output, palettes, compression_level)
+        read_slp_in_drs_file(Path(args.drs), args.filename, args.output, palettes, compression_level)
 
     elif args.mode == "smp" or file_extension == "smp":
         read_smp_file(args.filename, args.output, palettes, compression_level, layer)
@@ -98,13 +111,13 @@ def main(args, error):
         read_wav_file(args.filename, args.output)
 
     elif args.mode == "drs-wav" or (file_extension == "wav" and args.drs):
-        read_wav_in_drs_file(args.drs, args.filename, args.output)
+        read_wav_in_drs_file(Path(args.drs), args.filename, args.output)
 
     else:
         raise SyntaxError("format could not be determined")
 
 
-def read_palettes(palettes_path: Path) -> dict[str, ColorTable]:
+def read_palettes(palettes_path: Path) -> dict[int, ColorTable]:
     """
     Reads the palettes from the palettes folder/archive.
     """
@@ -115,18 +128,18 @@ def read_palettes(palettes_path: Path) -> dict[str, ColorTable]:
 
         palette_dir = Directory(palettes_path)
         conf_filepath = "palettes.conf"
-        conf_file = palette_dir.root[conf_filepath].open('rb')
+        conf_file = palette_dir.root[conf_filepath].open("rb")
         palette_paths = {}
 
         info("parsing palette data...")
-        for line in conf_file.read().decode('utf-8').split('\n'):
+        for line in conf_file.read().decode("utf-8").split("\n"):
             line = line.strip()
 
             # skip comments and empty lines
-            if not line or line.startswith('//'):
+            if not line or line.startswith("//"):
                 continue
 
-            palette_id, filepath = line.split(',')
+            palette_id, filepath = line.split(",")
             palette_id = int(palette_id)
             palette_paths[palette_id] = filepath
 
@@ -142,7 +155,7 @@ def read_palettes(palettes_path: Path) -> dict[str, ColorTable]:
         # open from drs archive
         with Path(palettes_path).open("rb") as palette_file:
             game_version = AOC_GAME_VERSION
-            palette_dir = DRS(palette_file, game_version)
+            palette_dir = DRS(PythonStream(palette_file), game_version)
 
             info("parsing palette data...")
             for palette_file in palette_dir.root.iterdir():
@@ -157,10 +170,7 @@ def read_palettes(palettes_path: Path) -> dict[str, ColorTable]:
 
 
 def read_slp_file(
-    slp_path: Path,
-    output_path: Path,
-    palettes: dict[str, ColorTable],
-    compression_level: int
+    slp_path: Path, output_path: Path, palettes: dict[int, ColorTable] | None, compression_level: int
 ) -> None:
     """
     Reads a single SLP file.
@@ -183,6 +193,7 @@ def read_slp_file(
     tex = Texture(slp_image, palettes)
 
     from ..processor.export.texture_merge import merge_frames
+
     try:
         merge_frames(tex)
 
@@ -192,20 +203,15 @@ def read_slp_file(
 
     # save as png
     info("saving png file at '%s'", output_path)
-    MediaExporter.save_png(
-        tex,
-        Directory(output_file.parent).root,
-        output_file.name,
-        compression_level
-    )
+    MediaExporter.save_png(tex, Directory(output_file.parent).root, output_file.name, compression_level)
 
 
 def read_slp_in_drs_file(
     drs: Path,
     slp_path: Path,
     output_path: Path,
-    palettes: dict[str, ColorTable],
-    compression_level: int
+    palettes: dict[int, ColorTable] | None,
+    compression_level: int,
 ) -> None:
     """
     Reads a SLP file from a DRS archive.
@@ -214,23 +220,25 @@ def read_slp_in_drs_file(
 
     # open from drs archive
     game_version = AOC_GAME_VERSION
-    drs_file = DRS(drs, game_version)
+    with drs.open("rb") as drs_fileobj:
+        drs_file = DRS(PythonStream(drs_fileobj), game_version)
 
-    info("opening slp in drs '%s:%s'...", drs.name, slp_path)
-    with drs_file.root[slp_path].open("rb") as slp_file:
-        # import here to prevent that the __main__ depends on SLP
-        # just by importing this singlefile.py.
-        from ..value_object.read.media.slp import SLP
+        info("opening slp in drs '%s:%s'...", drs.name, slp_path)
+        with drs_file.root[slp_path].open("rb") as slp_file:
+            # import here to prevent that the __main__ depends on SLP
+            # just by importing this singlefile.py.
+            from ..value_object.read.media.slp import SLP
 
-        # parse the slp image
-        info("parsing slp image...")
-        slp_image = SLP(slp_file.read())
+            # parse the slp image
+            info("parsing slp image...")
+            slp_image = SLP(slp_file.read())
 
     # create texture
     info("packing texture...")
     tex = Texture(slp_image, palettes)
 
     from ..processor.export.texture_merge import merge_frames
+
     try:
         merge_frames(tex)
 
@@ -240,20 +248,15 @@ def read_slp_in_drs_file(
 
     # save as png
     info("saving png file at '%s'", output_path)
-    MediaExporter.save_png(
-        tex,
-        Directory(output_file.parent).root,
-        output_file.name,
-        compression_level
-    )
+    MediaExporter.save_png(tex, Directory(output_file.parent).root, output_file.name, compression_level)
 
 
 def read_smp_file(
     smp_path: Path,
     output_path: Path,
-    palettes: dict[str, ColorTable],
+    palettes: dict[int, ColorTable] | None,
     compression_level: int,
-    layer: int
+    layer: int,
 ) -> None:
     """
     Reads a single SMP file.
@@ -276,6 +279,7 @@ def read_smp_file(
     tex = Texture(smp_image, palettes)
 
     from ..processor.export.texture_merge import merge_frames
+
     try:
         merge_frames(tex)
 
@@ -285,20 +289,15 @@ def read_smp_file(
 
     # save as png
     info("saving png file at '%s'", output_path)
-    MediaExporter.save_png(
-        tex,
-        Directory(output_file.parent).root,
-        output_file.name,
-        compression_level
-    )
+    MediaExporter.save_png(tex, Directory(output_file.parent).root, output_file.name, compression_level)
 
 
 def read_smx_file(
     smx_path: Path,
     output_path: Path,
-    palettes: dict[str, ColorTable],
+    palettes: dict[int, ColorTable] | None,
     compression_level: int,
-    layer: int
+    layer: int,
 ) -> None:
     """
     Reads a single SMX (compressed SMP) file.
@@ -321,6 +320,7 @@ def read_smx_file(
     tex = Texture(smx_image, palettes, layer=layer)
 
     from ..processor.export.texture_merge import merge_frames
+
     try:
         merge_frames(tex)
 
@@ -330,20 +330,10 @@ def read_smx_file(
 
     # save as png
     info("saving png file at '%s'", output_path)
-    MediaExporter.save_png(
-        tex,
-        Directory(output_file.parent).root,
-        output_file.name,
-        compression_level
-    )
+    MediaExporter.save_png(tex, Directory(output_file.parent).root, output_file.name, compression_level)
 
 
-def read_sld_file(
-    sld_path: Path,
-    output_path: Path,
-    compression_level: int,
-    layer: int
-) -> None:
+def read_sld_file(sld_path: Path, output_path: Path, compression_level: int, layer: int) -> None:
     """
     Reads a single SMX (compressed SMP) file.
     """
@@ -365,6 +355,7 @@ def read_sld_file(
     tex = Texture(sld_image, layer=layer)
 
     from ..processor.export.texture_merge import merge_frames
+
     try:
         merge_frames(tex)
 
@@ -374,12 +365,7 @@ def read_sld_file(
 
     # save as png
     info("saving png file at '%s'", output_path)
-    MediaExporter.save_png(
-        tex,
-        Directory(output_file.parent).root,
-        output_file.name,
-        compression_level
-    )
+    MediaExporter.save_png(tex, Directory(output_file.parent).root, output_file.name, compression_level)
 
 
 def read_wav_file(wav_path: Path, output_path: Path) -> None:
@@ -413,18 +399,18 @@ def read_wav_in_drs_file(drs: Path, wav_path: Path, output_path: Path) -> None:
 
     # open from drs archive
     game_version = AOC_GAME_VERSION
-    drs_file = DRS(drs, game_version)
+    with drs.open("rb") as drs_fileobj:
+        drs_file = DRS(PythonStream(drs_fileobj), game_version)
 
-    info("opening wav in drs '%s:%s'...", drs.name, wav_path)
-    wav_file = drs_file.root[wav_path].open("rb")
+        info("opening wav in drs '%s:%s'...", drs.name, wav_path)
+        with drs_file.root[wav_path].open("rb") as wav_file:
+            # import here to prevent that the __main__ depends on opusenc
+            # just by importing this singlefile.py.
+            from ..service.export.opus.opusenc import encode
 
-    # import here to prevent that the __main__ depends on opusenc
-    # just by importing this singlefile.py.
-    from ..service.export.opus.opusenc import encode
-
-    # convert wav to opus
-    info("converting wav to opus...")
-    opus_data = encode(wav_file.read())
+            # convert wav to opus
+            info("converting wav to opus...")
+            opus_data = encode(wav_file.read())
 
     # save converted opus data to target directory
     info("saving opus file...")

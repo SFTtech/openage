@@ -4,24 +4,24 @@
 """
 Export requests for media metadata.
 """
+
 from __future__ import annotations
+
 import typing
 
-
 from ....util.observer import Observer
+from .data_definition import DataDefinition
 from .formats.sprite_metadata import SpriteMetadata
-from .formats.texture_metadata import TextureMetadata
 from .formats.terrain_metadata import TerrainMetadata
+from .formats.texture_metadata import TextureMetadata
 
 if typing.TYPE_CHECKING:
+    from openage.convert.entity_object.export.formats.sprite_metadata import LayerMode as SpriteLayerMode
+    from openage.convert.entity_object.export.formats.terrain_metadata import LayerMode as TerrainLayerMode
     from openage.util.observer import Observable
-    from openage.convert.entity_object.export.formats.sprite_metadata import LayerMode\
-        as SpriteLayerMode
-    from openage.convert.entity_object.export.formats.terrain_metadata import LayerMode\
-        as TerrainLayerMode
 
 
-class MetadataExport(Observer):
+class MetadataExport(DataDefinition, Observer):
     """
     A class for exporting metadata from another format. MetadataExports are
     observers so they can receive data from media conversion.
@@ -29,10 +29,9 @@ class MetadataExport(Observer):
 
     def __init__(self, targetdir: str, target_filename: str):
 
-        self.targetdir = targetdir
-        self.filename = target_filename
+        DataDefinition.__init__(self, targetdir, target_filename)
 
-    def update(self, observable: Observable, message=None):
+    def update(self, observable: Observable | None, message=None):
         return NotImplementedError("Interface does not implement update()")
 
     def __repr__(self):
@@ -47,7 +46,7 @@ class SpriteMetadataExport(MetadataExport):
     def __init__(self, targetdir, target_filename):
         super().__init__(targetdir, target_filename)
 
-        self.graphics_metadata: dict[int, tuple] = {}
+        self.graphics_metadata: dict[str, tuple] = {}
         self.subtex_count: dict[str, int] = {}
 
     def add_graphics_metadata(
@@ -56,8 +55,8 @@ class SpriteMetadataExport(MetadataExport):
         tex_filename: str,
         layer_mode: SpriteLayerMode,
         layer_pos: int,
-        frame_rate: float,
-        replay_delay: float,
+        frame_rate: float | None,
+        replay_delay: float | None,
         frame_count: int,
         angle_count: int,
         mirror_mode: int,
@@ -86,7 +85,7 @@ class SpriteMetadataExport(MetadataExport):
             frame_count,
             angle_count,
             mirror_mode,
-            start_angle
+            start_angle,
         )
 
     def dump(self) -> str:
@@ -137,13 +136,7 @@ class SpriteMetadataExport(MetadataExport):
                             # TODO: Can happen for some death and projectile animations. Why?
                             break
 
-                        sprite_file.add_frame(
-                            frame_idx,
-                            int(degree),
-                            tex_index,
-                            tex_index,
-                            subtex_index
-                        )
+                        sprite_file.add_frame(frame_idx, int(degree), tex_index, tex_index, subtex_index)
 
                 degree = (degree + degree_step) % 360
 
@@ -171,11 +164,11 @@ class TextureMetadataExport(MetadataExport):
     def __init__(self, targetdir, target_filename):
         super().__init__(targetdir, target_filename)
 
-        self.imagefile = None
-        self.size = None
+        self.imagefile: str | None = None
+        self.size: tuple[int, int] | None = None
         self.pxformat = "rgba8"
         self.cbits = True
-        self.subtex_metadata = []
+        self.subtex_metadata: list[dict[str, int]] = []
 
     def add_imagefile(self, img_filename):
         """
@@ -185,12 +178,13 @@ class TextureMetadataExport(MetadataExport):
         """
         self.imagefile = img_filename
 
-    def dump(self):
+    def dump(self) -> str:
         """
         Creates a human-readable string that can be written to a file.
         """
         texture_file = TextureMetadata(self.targetdir, self.filename)
 
+        assert self.imagefile is not None and self.size is not None
         texture_file.set_imagefile(self.imagefile)
         texture_file.set_size(self.size[0], self.size[1])
         texture_file.set_pxformat(self.pxformat, self.cbits)
@@ -200,7 +194,7 @@ class TextureMetadataExport(MetadataExport):
 
         return texture_file.dump()
 
-    def update(self, observable: Observable, message: dict = None):
+    def update(self, observable: Observable | None, message: dict | None = None):
         """
         Receive metdata from the graphics file export.
 
@@ -221,7 +215,7 @@ class TerrainMetadataExport(MetadataExport):
     def __init__(self, targetdir, target_filename):
         super().__init__(targetdir, target_filename)
 
-        self.graphics_metadata: dict[int, tuple] = {}
+        self.graphics_metadata: dict[str, tuple] = {}
         self.subtex_count: dict[str, int] = {}
 
     def add_graphics_metadata(
@@ -230,8 +224,8 @@ class TerrainMetadataExport(MetadataExport):
         tex_filename: str,
         layer_mode: TerrainLayerMode,
         layer_pos: int,
-        frame_rate: float,
-        replay_delay: float,
+        frame_rate: float | None,
+        replay_delay: float | None,
         frame_count: int,
     ):
         """
@@ -251,7 +245,7 @@ class TerrainMetadataExport(MetadataExport):
             layer_pos,
             frame_rate,
             replay_delay,
-            frame_count
+            frame_count,
         )
 
     def dump(self) -> str:
@@ -270,12 +264,7 @@ class TerrainMetadataExport(MetadataExport):
 
             for frame_idx in range(frame_count):
                 subtex_index = frame_idx
-                terrain_file.add_frame(
-                    frame_idx,
-                    tex_index,
-                    tex_index,
-                    subtex_index
-                )
+                terrain_file.add_frame(frame_idx, tex_index, tex_index, subtex_index)
 
             tex_index += 1
 

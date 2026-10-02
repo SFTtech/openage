@@ -5,51 +5,48 @@
 """
 Acquire the sourcedir for the game that is supposed to be converted.
 """
-from __future__ import annotations
-import platform
-import typing
 
-from configparser import ConfigParser
+from __future__ import annotations
+
 import os
-from pathlib import Path
+import platform
+import shutil
 import subprocess
 import sys
-from typing import AnyStr, Generator
-
-import shutil
 import tempfile
+import typing
+from configparser import ConfigParser
+from pathlib import Path
+from typing import Generator
 from urllib.request import urlopen
 
-from ....log import warn, info, dbg
+from ....log import dbg, info, warn
 from ....util.fslike.directory import CaseIgnoringDirectory, Directory
 from ....util.fslike.union import Union
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.init.game_version import GameEdition
+    from openage.util.fslike.path import Path as FSPath
 
 
-STANDARD_PATH_IN_32BIT_WINEPREFIX =\
-    "drive_c/Program Files/Microsoft Games/Age of Empires II/"
-STANDARD_PATH_IN_64BIT_WINEPREFIX =\
-    "drive_c/Program Files (x86)/Microsoft Games/Age of Empires II/"
-STANDARD_PATH_IN_WINEPREFIX_STEAM = \
-    "drive_c/Program Files (x86)/Steam/steamapps/common/Age2HD/"
-REGISTRY_KEY = \
-    "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Microsoft Games\\"
+STANDARD_PATH_IN_32BIT_WINEPREFIX = "drive_c/Program Files/Microsoft Games/Age of Empires II/"
+STANDARD_PATH_IN_64BIT_WINEPREFIX = "drive_c/Program Files (x86)/Microsoft Games/Age of Empires II/"
+STANDARD_PATH_IN_WINEPREFIX_STEAM = "drive_c/Program Files (x86)/Steam/steamapps/common/Age2HD/"
+REGISTRY_KEY = "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Microsoft Games\\"
 REGISTRY_SUFFIX_AOK = "Age of Empires\\2.0"
 REGISTRY_SUFFIX_TC = "Age of Empires II: The Conquerors Expansion\\1.0"
 MACOS_DATA_SUBDIR = "AgeOfEmpires2Data"
 
-TRIAL_URL = 'https://archive.org/download/AgeOfEmpiresIiTheConquerorsDemo/Age2XTrial.exe'
+TRIAL_URL = "https://archive.org/download/AgeOfEmpiresIiTheConquerorsDemo/Age2XTrial.exe"
 
 
-def expand_relative_path(path: str) -> AnyStr:
+def expand_relative_path(path: str) -> str:
     """Expand relative path to an absolute one, including abbreviations like
     ~ and environment variables"""
     return os.path.realpath(os.path.expandvars(os.path.expanduser(path)))
 
 
-def prompt(msg: str, answer: typing.Union[bool, None] = None) -> bool:
+def prompt(msg: str, answer: bool | None = None) -> bool:
     """
     Ask the user a yes/no question.
 
@@ -69,50 +66,50 @@ def prompt(msg: str, answer: typing.Union[bool, None] = None) -> bool:
     return answer
 
 
-def wanna_convert(answer: typing.Union[bool, None] = None) -> bool:
+def wanna_convert(answer: bool | None = None) -> bool:
     """
     Ask the user if assets should be converted.
     """
     return prompt("Do you want to convert assets?", answer=answer)
 
 
-def wanna_check_updates(answer: typing.Union[bool, None] = None) -> bool:
+def wanna_check_updates(answer: bool | None = None) -> bool:
     """
     Ask the user if they want to check for updates.
     """
     return prompt("Do you want to check for updates?", answer=answer)
 
 
-def wanna_download_trial(answer: typing.Union[bool, None] = None) -> bool:
+def wanna_download_trial(answer: bool | None = None) -> bool:
     """
     Ask the user if the AoC trial should be downloaded.
     """
     return prompt("Do you want to download the AoC trial version?", answer=answer)
 
 
-def query_source_dir(proposals: set[str]) -> AnyStr:
+def query_source_dir(proposals: set[str]) -> str:
     """
     Query interactively for a conversion source directory.
     Lists proposals and allows selection if some were found.
     """
 
-    if proposals:
+    sorted_proposals = sorted(proposals)
+
+    if sorted_proposals:
         print("\nPlease select an Age of Empires installation directory.")
         print("Insert the index of one of the proposals, or any path:")
 
-        proposals = sorted(proposals)
-        for index, proposal in enumerate(proposals):
+        for index, proposal in enumerate(sorted_proposals):
             print(f"({index}) {proposal}")
 
     else:
-        print("Could not find any installation directory "
-              "automatically.")
+        print("Could not find any installation directory automatically.")
         print("Please enter an AOE2 install path manually.")
 
     while True:
         user_selection = input("> ")
-        if user_selection.isdecimal() and int(user_selection) < len(proposals):
-            sourcedir = proposals[int(user_selection)]
+        if user_selection.isdecimal() and int(user_selection) < len(sorted_proposals):
+            sourcedir = sorted_proposals[int(user_selection)]
         else:
             sourcedir = user_selection
         sourcedir = expand_relative_path(sourcedir)
@@ -123,7 +120,7 @@ def query_source_dir(proposals: set[str]) -> AnyStr:
     return sourcedir
 
 
-def mount_source_dir(sourcedir: AnyStr) -> Path:
+def mount_source_dir(sourcedir: str) -> FSPath:
     """
     Wraps a source directory path in a file system-like object.
 
@@ -145,9 +142,8 @@ def mount_source_dir(sourcedir: AnyStr) -> Path:
 
 
 def acquire_conversion_source_dir(
-    avail_game_eds: list[GameEdition],
-    prev_srcdir_paths: set[str] = None
-) -> Path:
+    avail_game_eds: list[GameEdition], prev_srcdir_paths: set[str] | None = None
+) -> FSPath:
     """
     Acquires source dir for the asset conversion.
 
@@ -169,13 +165,13 @@ def acquire_conversion_source_dir(
         for game_edition in avail_game_eds:
             install_paths = game_edition.install_paths
             candidates = []
-            if current_platform == 'Linux' and 'linux' in install_paths:
+            if current_platform == "Linux" and "linux" in install_paths:
                 candidates = install_paths["linux"]
 
-            elif current_platform == 'Darwin' and 'macos' in install_paths:
+            elif current_platform == "Darwin" and "macos" in install_paths:
                 candidates = install_paths["macos"]
 
-            elif current_platform == 'Windows' and 'windows' in install_paths:
+            elif current_platform == "Windows" and "windows" in install_paths:
                 candidates = install_paths["windows"]
 
             else:
@@ -211,7 +207,7 @@ def acquire_conversion_source_dir(
     return mount_source_dir(sourcedir)
 
 
-def download_trial() -> AnyStr:
+def download_trial() -> str:
     """
     Download and extract the AoC trial version.
 
@@ -225,8 +221,9 @@ def download_trial() -> AnyStr:
             shutil.copyfileobj(response, tmp_file)
 
             from ....cabextract.cab import CABFile
+            from ....util.filelike.stream import PythonStream
 
-            cab = CABFile(tmp_file, 0x65678)
+            cab = CABFile(PythonStream(tmp_file), 0x65678)
 
             sourcedir = Directory(tempdir).root
             print(f"Extracting game files to {sourcedir}...")
@@ -260,12 +257,12 @@ def wine_to_real_path(path: str) -> str:
     """
     Turn a Wine file path (C:\\xyz) into a local filesystem path (~/.wine/xyz)
     """
-    return subprocess.check_output(('winepath', path)).strip().decode()
+    return subprocess.check_output(("winepath", path)).strip().decode()
 
 
 def unescape_winereg(value: str):
     """Remove quotes and escapes from a Wine registry value"""
-    return value.strip('"').replace(r'\\\\', '\\')
+    return value.strip('"').replace(r"\\\\", "\\")
 
 
 def wine_srcdir_proposals() -> Generator[str, None, None]:
@@ -281,33 +278,31 @@ def wine_srcdir_proposals() -> Generator[str, None, None]:
     try:
         info("using the wine registry to query an installation location...")
         # get wine registry key of the age installation
-        with tempfile.NamedTemporaryFile(mode='rb') as reg_file:
-            if not subprocess.call(('wine', 'regedit', '/E', reg_file.name,
-                                    REGISTRY_KEY)):
-
+        with tempfile.NamedTemporaryFile(mode="rb") as reg_file:
+            if not subprocess.call(("wine", "regedit", "/E", reg_file.name, REGISTRY_KEY)):
                 reg_raw_data = reg_file.read()
                 try:
-                    reg_data = reg_raw_data.decode('utf-16')
+                    reg_data = reg_raw_data.decode("utf-16")
                 except UnicodeDecodeError:
                     # this is hopefully enough.
                     # if it isn't, feel free to fight more encoding problems.
-                    reg_data = reg_raw_data.decode('utf-8', errors='replace')
+                    reg_data = reg_raw_data.decode("utf-8", errors="replace")
 
                 # strip the REGEDIT4 header, so it becomes a valid INI
                 lines = reg_data.splitlines()
                 del lines[0:2]
 
                 reg_parser = ConfigParser()
-                reg_parser.read_string(''.join(lines))
+                reg_parser.read_string("".join(lines))
                 for suffix in REGISTRY_SUFFIX_AOK, REGISTRY_SUFFIX_TC:
                     reg_key = REGISTRY_KEY + suffix
                     if reg_key in reg_parser:
                         if '"InstallationDirectory"' in reg_parser[reg_key]:
-                            yield wine_to_real_path(unescape_winereg(
-                                reg_parser[reg_key]['"InstallationDirectory"']))
+                            yield wine_to_real_path(
+                                unescape_winereg(reg_parser[reg_key]['"InstallationDirectory"'])
+                            )
                         if '"EXE Path"' in reg_parser[reg_key]:
-                            yield wine_to_real_path(unescape_winereg(
-                                reg_parser[reg_key]['"EXE Path"']))
+                            yield wine_to_real_path(unescape_winereg(reg_parser[reg_key]['"EXE Path"']))
 
     except OSError as error:
         dbg("wine registry extraction failed: %s", error)

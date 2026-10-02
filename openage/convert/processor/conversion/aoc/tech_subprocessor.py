@@ -8,16 +8,16 @@
 """
 Creates patches for technologies.
 """
+
 from __future__ import annotations
+
 import typing
 
-
 from openage.log import warn
+
 from .....nyan.nyan_structs import MemberOperator
-from ....entity_object.conversion.aoc.genie_tech import GenieTechEffectBundleGroup, \
-    CivTeamBonus, CivBonus
-from ....entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup, \
-    GenieBuildingLineGroup
+from ....entity_object.conversion.aoc.genie_tech import CivBonus, CivTeamBonus, GenieTechEffectBundleGroup
+from ....entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup, GenieUnitLineGroup
 from ....entity_object.conversion.converter_object import RawAPIObject
 from ....service.conversion import internal_name_lookups
 from ....value_object.conversion.forward_ref import ForwardRef
@@ -26,8 +26,8 @@ from .upgrade_attribute_subprocessor import AoCUpgradeAttributeSubprocessor
 from .upgrade_resource_subprocessor import AoCUpgradeResourceSubprocessor
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.converter_object import ConverterObjectGroup
     from openage.convert.entity_object.conversion.aoc.genie_effect import GenieEffectObject
+    from openage.convert.entity_object.conversion.converter_object import ConverterObjectGroup
 
 
 class AoCTechSubprocessor:
@@ -35,7 +35,7 @@ class AoCTechSubprocessor:
     Creates raw API objects and patches for techs and civ setups in AoC.
     """
 
-    upgrade_attribute_funcs = {
+    upgrade_attribute_funcs: typing.ClassVar[dict[int, typing.Callable[..., list[ForwardRef]]]] = {
         0: AoCUpgradeAttributeSubprocessor.hp_upgrade,
         1: AoCUpgradeAttributeSubprocessor.los_upgrade,
         2: AoCUpgradeAttributeSubprocessor.garrison_capacity_upgrade,
@@ -74,7 +74,7 @@ class AoCTechSubprocessor:
         108: AoCUpgradeAttributeSubprocessor.garrison_heal_upgrade,
     }
 
-    upgrade_resource_funcs = {
+    upgrade_resource_funcs: typing.ClassVar[dict[int, typing.Callable[..., list[ForwardRef]]]] = {
         4: AoCUpgradeResourceSubprocessor.starting_population_space_upgrade,
         27: AoCUpgradeResourceSubprocessor.monk_conversion_upgrade,
         28: AoCUpgradeResourceSubprocessor.building_conversion_upgrade,
@@ -134,6 +134,9 @@ class AoCTechSubprocessor:
             converter_group = dataset.civ_groups[converter_group.get_civilization_id()]
 
         else:
+            # get_patches is only called with tech groups and the two civ
+            # group types above; everything else is a GenieTechEffectBundleGroup
+            assert isinstance(converter_group, GenieTechEffectBundleGroup)
             effects = converter_group.get_effects()
 
         team_effect = False
@@ -145,14 +148,10 @@ class AoCTechSubprocessor:
                 type_id -= 10
 
             if type_id in (0, 4, 5):
-                patches.extend(cls.attribute_modify_effect(converter_group,
-                                                           effect,
-                                                           team=team_effect))
+                patches.extend(cls.attribute_modify_effect(converter_group, effect, team=team_effect))
 
             elif type_id in (1, 6):
-                patches.extend(cls.resource_modify_effect(converter_group,
-                                                          effect,
-                                                          team=team_effect))
+                patches.extend(cls.resource_modify_effect(converter_group, effect, team=team_effect))
 
             elif type_id == 2:
                 # Enabling/disabling units: Handled in creatable conditions
@@ -162,18 +161,14 @@ class AoCTechSubprocessor:
                 patches.extend(cls.upgrade_unit_effect(converter_group, effect))
 
             elif type_id == 101:
-                patches.extend(cls.tech_cost_modify_effect(converter_group,
-                                                           effect,
-                                                           team=team_effect))
+                patches.extend(cls.tech_cost_modify_effect(converter_group, effect, team=team_effect))
 
             elif type_id == 102:
                 # Tech disable: Only used for civ tech tree
                 pass
 
             elif type_id == 103:
-                patches.extend(cls.tech_time_modify_effect(converter_group,
-                                                           effect,
-                                                           team=team_effect))
+                patches.extend(cls.tech_time_modify_effect(converter_group, effect, team=team_effect))
 
             team_effect = False
 
@@ -181,9 +176,7 @@ class AoCTechSubprocessor:
 
     @staticmethod
     def attribute_modify_effect(
-        converter_group: ConverterObjectGroup,
-        effect: GenieEffectObject,
-        team: bool = False
+        converter_group: ConverterObjectGroup, effect: GenieEffectObject, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates the patches for modifying attributes of entities.
@@ -245,8 +238,7 @@ class AoCTechSubprocessor:
             upgrade_func = AoCTechSubprocessor.upgrade_attribute_funcs[attribute_type]
         except KeyError as exc:
             raise KeyError(
-                f"No subprocessor function found for handling upgrade of "
-                f"unit attribute: {attribute_type}"
+                f"No subprocessor function found for handling upgrade of unit attribute: {attribute_type}"
             ) from exc
         for affected_entity in affected_entities:
             patches.extend(upgrade_func(converter_group, affected_entity, value, operator, team))
@@ -255,9 +247,7 @@ class AoCTechSubprocessor:
 
     @staticmethod
     def resource_modify_effect(
-        converter_group: ConverterObjectGroup,
-        effect: GenieEffectObject,
-        team: bool = False
+        converter_group: ConverterObjectGroup, effect: GenieEffectObject, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates the patches for modifying resources.
@@ -294,8 +284,7 @@ class AoCTechSubprocessor:
             upgrade_func = AoCTechSubprocessor.upgrade_resource_funcs[resource_id]
         except KeyError as exc:
             raise KeyError(
-                f"No subprocessor function found for handling upgrade of "
-                f"resource: {resource_id}"
+                f"No subprocessor function found for handling upgrade of resource: {resource_id}"
             ) from exc
         patches.extend(upgrade_func(converter_group, value, operator, team))
 
@@ -303,8 +292,7 @@ class AoCTechSubprocessor:
 
     @staticmethod
     def upgrade_unit_effect(
-        converter_group: ConverterObjectGroup,
-        effect: GenieEffectObject
+        converter_group: ConverterObjectGroup, effect: GenieEffectObject
     ) -> list[ForwardRef]:
         """
         Creates the patches for upgrading entities in a line.
@@ -318,8 +306,10 @@ class AoCTechSubprocessor:
         upgrade_source_id = effect["attr_a"].value
         upgrade_target_id = effect["attr_b"].value
 
-        if upgrade_source_id not in dataset.unit_ref.keys() or\
-                upgrade_target_id not in dataset.unit_ref.keys():
+        if (
+            upgrade_source_id not in dataset.unit_ref.keys()
+            or upgrade_target_id not in dataset.unit_ref.keys()
+        ):
             # Skip annexes or transform units
             return patches
 
@@ -349,55 +339,50 @@ class AoCTechSubprocessor:
 
         diff = upgrade_source.diff(upgrade_target)
 
-        patches.extend(AoCUpgradeAbilitySubprocessor.death_ability(
-            converter_group, line, tech_name, diff))
-        patches.extend(AoCUpgradeAbilitySubprocessor.despawn_ability(
-            converter_group, line, tech_name, diff))
-        patches.extend(AoCUpgradeAbilitySubprocessor.idle_ability(
-            converter_group, line, tech_name, diff))
-        patches.extend(AoCUpgradeAbilitySubprocessor.live_ability(
-            converter_group, line, tech_name, diff))
-        patches.extend(AoCUpgradeAbilitySubprocessor.los_ability(
-            converter_group, line, tech_name, diff))
-        patches.extend(AoCUpgradeAbilitySubprocessor.named_ability(
-            converter_group, line, tech_name, diff))
-        patches.extend(AoCUpgradeAbilitySubprocessor.resistance_ability(
-            converter_group, line, tech_name, diff))
-        patches.extend(AoCUpgradeAbilitySubprocessor.selectable_ability(
-            converter_group, line, tech_name, diff))
-        patches.extend(AoCUpgradeAbilitySubprocessor.turn_ability(
-            converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.death_ability(converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.despawn_ability(converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.idle_ability(converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.live_ability(converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.los_ability(converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.named_ability(converter_group, line, tech_name, diff))
+        patches.extend(
+            AoCUpgradeAbilitySubprocessor.resistance_ability(converter_group, line, tech_name, diff)
+        )
+        patches.extend(
+            AoCUpgradeAbilitySubprocessor.selectable_ability(converter_group, line, tech_name, diff)
+        )
+        patches.extend(AoCUpgradeAbilitySubprocessor.turn_ability(converter_group, line, tech_name, diff))
 
         if line.is_projectile_shooter():
-            patches.extend(AoCUpgradeAbilitySubprocessor.shoot_projectile_ability(converter_group, line,
-                                                                                  tech_name,
-                                                                                  upgrade_source,
-                                                                                  upgrade_target,
-                                                                                  7, diff))
+            patches.extend(
+                AoCUpgradeAbilitySubprocessor.shoot_projectile_ability(
+                    converter_group, line, tech_name, upgrade_source, upgrade_target, 7, diff
+                )
+            )
         elif line.is_melee() or line.is_ranged():
             if line.has_command(7):
                 # Attack
-                patches.extend(AoCUpgradeAbilitySubprocessor.apply_discrete_effect_ability(converter_group,
-                                                                                           line, tech_name,
-                                                                                           7,
-                                                                                           line.is_ranged(),
-                                                                                           diff))
+                patches.extend(
+                    AoCUpgradeAbilitySubprocessor.apply_discrete_effect_ability(
+                        converter_group, line, tech_name, 7, line.is_ranged(), diff
+                    )
+                )
 
         if isinstance(line, GenieUnitLineGroup):
-            patches.extend(AoCUpgradeAbilitySubprocessor.move_ability(converter_group, line,
-                                                                      tech_name, diff))
+            patches.extend(AoCUpgradeAbilitySubprocessor.move_ability(converter_group, line, tech_name, diff))
 
         if isinstance(line, GenieBuildingLineGroup):
-            patches.extend(AoCUpgradeAbilitySubprocessor.attribute_change_tracker_ability(converter_group, line,
-                                                                                          tech_name, diff))
+            patches.extend(
+                AoCUpgradeAbilitySubprocessor.attribute_change_tracker_ability(
+                    converter_group, line, tech_name, diff
+                )
+            )
 
         return patches
 
     @staticmethod
     def tech_cost_modify_effect(
-        converter_group: ConverterObjectGroup,
-        effect: GenieEffectObject,
-        team: bool = False
+        converter_group: ConverterObjectGroup, effect: GenieEffectObject, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates the patches for modifying tech costs.
@@ -467,42 +452,34 @@ class AoCTechSubprocessor:
         wrapper_name = f"Change{tech_name}CostWrapper"
         wrapper_ref = f"{tech_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
-        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
-                                              wrapper_name,
-                                              dataset.nyan_api_objects,
-                                              wrapper_location)
+        wrapper_raw_api_object = RawAPIObject(
+            wrapper_ref, wrapper_name, dataset.nyan_api_objects, wrapper_location
+        )
         wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         # Nyan patch
         nyan_patch_name = f"Change{tech_name}Cost"
         nyan_patch_ref = f"{tech_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
-        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                 nyan_patch_name,
-                                                 dataset.nyan_api_objects,
-                                                 nyan_patch_location)
+        nyan_patch_raw_api_object = RawAPIObject(
+            nyan_patch_ref, nyan_patch_name, dataset.nyan_api_objects, nyan_patch_location
+        )
         nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
-        nyan_patch_raw_api_object.add_raw_patch_member("amount",
-                                                       amount,
-                                                       "engine.util.resource.ResourceAmount",
-                                                       operator)
+        nyan_patch_raw_api_object.add_raw_patch_member(
+            "amount", amount, "engine.util.resource.ResourceAmount", operator
+        )
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
-            )
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
-            wrapper_raw_api_object.add_raw_member("properties",
-                                                  properties,
-                                                  "engine.util.patch.Patch")
+            wrapper_raw_api_object.add_raw_member("properties", properties, "engine.util.patch.Patch")
 
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
-        wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_forward_ref,
-                                              "engine.util.patch.Patch")
+        wrapper_raw_api_object.add_raw_member("patch", patch_forward_ref, "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -514,9 +491,7 @@ class AoCTechSubprocessor:
 
     @staticmethod
     def tech_time_modify_effect(
-        converter_group: ConverterObjectGroup,
-        effect: GenieEffectObject,
-        team: bool = False
+        converter_group: ConverterObjectGroup, effect: GenieEffectObject, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates the patches for modifying tech research times.
@@ -558,42 +533,34 @@ class AoCTechSubprocessor:
         wrapper_name = f"Change{tech_name}ResearchTimeWrapper"
         wrapper_ref = f"{tech_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
-        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
-                                              wrapper_name,
-                                              dataset.nyan_api_objects,
-                                              wrapper_location)
+        wrapper_raw_api_object = RawAPIObject(
+            wrapper_ref, wrapper_name, dataset.nyan_api_objects, wrapper_location
+        )
         wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         # Nyan patch
         nyan_patch_name = f"Change{tech_name}ResearchTime"
         nyan_patch_ref = f"{tech_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
-        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                 nyan_patch_name,
-                                                 dataset.nyan_api_objects,
-                                                 nyan_patch_location)
+        nyan_patch_raw_api_object = RawAPIObject(
+            nyan_patch_ref, nyan_patch_name, dataset.nyan_api_objects, nyan_patch_location
+        )
         nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
-        nyan_patch_raw_api_object.add_raw_patch_member("research_time",
-                                                       research_time,
-                                                       "engine.util.research.ResearchableTech",
-                                                       operator)
+        nyan_patch_raw_api_object.add_raw_patch_member(
+            "research_time", research_time, "engine.util.research.ResearchableTech", operator
+        )
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
-            )
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
-            wrapper_raw_api_object.add_raw_member("properties",
-                                                  properties,
-                                                  "engine.util.patch.Patch")
+            wrapper_raw_api_object.add_raw_member("properties", properties, "engine.util.patch.Patch")
 
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
-        wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_forward_ref,
-                                              "engine.util.patch.Patch")
+        wrapper_raw_api_object.add_raw_member("patch", patch_forward_ref, "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)

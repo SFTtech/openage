@@ -5,23 +5,25 @@
 """
 Sprite definition file.
 """
-from __future__ import annotations
-import typing
 
+from __future__ import annotations
+
+import typing
 from enum import Enum
 
 from ..data_definition import DataDefinition
 
-FORMAT_VERSION = '2'
+FORMAT_VERSION = "2"
 
 
 class LayerMode(Enum):
     """
     Possible values for the mode of a layer.
     """
-    OFF = 'off'     # layer is not animated
-    ONCE = 'once'   # animation plays once
-    LOOP = 'loop'   # animation loops indefinitely
+
+    OFF = "off"  # layer is not animated
+    ONCE = "once"  # animation plays once
+    LOOP = "loop"  # animation loops indefinitely
 
 
 class SpriteMetadata(DataDefinition):
@@ -36,7 +38,7 @@ class SpriteMetadata(DataDefinition):
         self.texture_files: dict[int, dict[str, typing.Any]] = {}
         self.scalefactor = 1.0
         self.layers: dict[int, dict[str, typing.Any]] = {}
-        self.angles: dict[int, dict[str, int]] = {}
+        self.angles: dict[int, dict[str, int | None]] = {}
         self.frames: list[dict[str, int]] = []
 
     def add_texture(self, texture_id: int, filename: str) -> None:
@@ -56,10 +58,10 @@ class SpriteMetadata(DataDefinition):
     def add_layer(
         self,
         layer_id: int,
-        mode: LayerMode = None,
-        position: int = None,
-        time_per_frame: float = None,
-        replay_delay: float = None
+        mode: LayerMode | None = None,
+        position: int | None = None,
+        time_per_frame: float | None = None,
+        replay_delay: float | None = None,
     ) -> None:
         """
         Define a layer for the rendered sprite.
@@ -83,7 +85,7 @@ class SpriteMetadata(DataDefinition):
             "replay_delay": replay_delay,
         }
 
-    def add_angle(self, degree: int, mirror_from: int = None) -> None:
+    def add_angle(self, degree: int, mirror_from: int | None = None) -> None:
         """
         Specifies an angle that frames can get assigned to.
 
@@ -97,14 +99,7 @@ class SpriteMetadata(DataDefinition):
             "mirror_from": mirror_from,
         }
 
-    def add_frame(
-        self,
-        frame_idx: int,
-        angle: int,
-        layer_id: int,
-        texture_id: int,
-        subtex_id: int
-    ) -> None:
+    def add_frame(self, frame_idx: int, angle: int, layer_id: int, texture_id: int, subtex_id: int) -> None:
         """
         Add frame with all its spacial information.
 
@@ -129,7 +124,7 @@ class SpriteMetadata(DataDefinition):
             }
         )
 
-    def set_scalefactor(self, factor: typing.Union[int, float]) -> None:
+    def set_scalefactor(self, factor: float) -> None:
         """
         Set the scale factor of the animation.
 
@@ -149,7 +144,7 @@ class SpriteMetadata(DataDefinition):
 
         # texture files
         for texture in self.texture_files.values():
-            output_str += f"texture {texture['texture_id']} \"{texture['filename']}\"\n"
+            output_str += f'texture {texture["texture_id"]} "{texture["filename"]}"\n'
 
         output_str += "\n"
 
@@ -183,15 +178,15 @@ class SpriteMetadata(DataDefinition):
             if angle["mirror_from"]:
                 output_str += f" mirror_from={angle['mirror_from']}"
 
-            output_str += '\n'
+            output_str += "\n"
 
-        output_str += '\n'
+        output_str += "\n"
 
         # frame definitions
         for frame in self.frames:
-            output_str += f'frame {" ".join(str(param) for param in frame.values())}\n'
+            output_str += f"frame {' '.join(str(param) for param in frame.values())}\n"
 
         return output_str
 
     def __repr__(self):
-        return f'SpriteMetadata<{self.filename}>'
+        return f"SpriteMetadata<{self.filename}>"

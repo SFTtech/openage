@@ -8,7 +8,9 @@
 """
 Creates upgrade patches for attribute modification effects in SWGB.
 """
+
 from __future__ import annotations
+
 import typing
 
 from ....entity_object.conversion.aoc.genie_tech import GenieTechEffectBundleGroup
@@ -17,8 +19,8 @@ from ....service.conversion import internal_name_lookups
 from ....value_object.conversion.forward_ref import ForwardRef
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.converter_object import ConverterObjectGroup
     from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup
+    from openage.convert.entity_object.conversion.converter_object import ConverterObjectGroup
     from openage.nyan.nyan_structs import MemberOperator
 
 
@@ -31,9 +33,9 @@ class SWGBCCUpgradeAttributeSubprocessor:
     def cost_carbon_upgrade(
         converter_group: ConverterObjectGroup,
         line: GenieGameEntityGroup,
-        value: typing.Union[int, float],
+        value: float,
         operator: MemberOperator,
-        team: bool = False
+        team: bool = False,
     ) -> list[ForwardRef]:
         """
         Creates a patch for the carbon cost modify effect (ID: 104).
@@ -67,50 +69,41 @@ class SWGBCCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        patch_target_ref = (f"{game_entity_name}.CreatableGameEntity."
-                            f"{game_entity_name}Cost.CarbonAmount")
+        patch_target_ref = f"{game_entity_name}.CreatableGameEntity.{game_entity_name}Cost.CarbonAmount"
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
         wrapper_name = f"Change{game_entity_name}CarbonCostWrapper"
         wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
-        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
-                                              wrapper_name,
-                                              dataset.nyan_api_objects,
-                                              wrapper_location)
+        wrapper_raw_api_object = RawAPIObject(
+            wrapper_ref, wrapper_name, dataset.nyan_api_objects, wrapper_location
+        )
         wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         # Nyan patch
         nyan_patch_name = f"Change{game_entity_name}CarbonCost"
         nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
-        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                 nyan_patch_name,
-                                                 dataset.nyan_api_objects,
-                                                 nyan_patch_location)
+        nyan_patch_raw_api_object = RawAPIObject(
+            nyan_patch_ref, nyan_patch_name, dataset.nyan_api_objects, nyan_patch_location
+        )
         nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
-        nyan_patch_raw_api_object.add_raw_patch_member("amount",
-                                                       value,
-                                                       "engine.util.resource.ResourceAmount",
-                                                       operator)
+        nyan_patch_raw_api_object.add_raw_patch_member(
+            "amount", value, "engine.util.resource.ResourceAmount", operator
+        )
 
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
-        wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_forward_ref,
-                                              "engine.util.patch.Patch")
+        wrapper_raw_api_object.add_raw_member("patch", patch_forward_ref, "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
-            )
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
-            wrapper_raw_api_object.add_raw_member("properties",
-                                                  properties,
-                                                  "engine.util.patch.Patch")
+            wrapper_raw_api_object.add_raw_member("properties", properties, "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -124,9 +117,9 @@ class SWGBCCUpgradeAttributeSubprocessor:
     def cost_nova_upgrade(
         converter_group: ConverterObjectGroup,
         line: GenieGameEntityGroup,
-        value: typing.Union[int, float],
+        value: float,
         operator: MemberOperator,
-        team: bool = False
+        team: bool = False,
     ) -> list[ForwardRef]:
         """
         Creates a patch for the nova cost modify effect (ID: 105).
@@ -160,50 +153,41 @@ class SWGBCCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        patch_target_ref = (f"{game_entity_name}.CreatableGameEntity."
-                            f"{game_entity_name}Cost.NovaAmount")
+        patch_target_ref = f"{game_entity_name}.CreatableGameEntity.{game_entity_name}Cost.NovaAmount"
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
         wrapper_name = f"Change{game_entity_name}NovaCostWrapper"
         wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
-        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
-                                              wrapper_name,
-                                              dataset.nyan_api_objects,
-                                              wrapper_location)
+        wrapper_raw_api_object = RawAPIObject(
+            wrapper_ref, wrapper_name, dataset.nyan_api_objects, wrapper_location
+        )
         wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         # Nyan patch
         nyan_patch_name = f"Change{game_entity_name}NovaCost"
         nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
-        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                 nyan_patch_name,
-                                                 dataset.nyan_api_objects,
-                                                 nyan_patch_location)
+        nyan_patch_raw_api_object = RawAPIObject(
+            nyan_patch_ref, nyan_patch_name, dataset.nyan_api_objects, nyan_patch_location
+        )
         nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
-        nyan_patch_raw_api_object.add_raw_patch_member("amount",
-                                                       value,
-                                                       "engine.util.resource.ResourceAmount",
-                                                       operator)
+        nyan_patch_raw_api_object.add_raw_patch_member(
+            "amount", value, "engine.util.resource.ResourceAmount", operator
+        )
 
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
-        wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_forward_ref,
-                                              "engine.util.patch.Patch")
+        wrapper_raw_api_object.add_raw_member("patch", patch_forward_ref, "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
-            )
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
-            wrapper_raw_api_object.add_raw_member("properties",
-                                                  properties,
-                                                  "engine.util.patch.Patch")
+            wrapper_raw_api_object.add_raw_member("properties", properties, "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -217,9 +201,9 @@ class SWGBCCUpgradeAttributeSubprocessor:
     def cost_ore_upgrade(
         converter_group: ConverterObjectGroup,
         line: GenieGameEntityGroup,
-        value: typing.Union[int, float],
+        value: float,
         operator: MemberOperator,
-        team: bool = False
+        team: bool = False,
     ) -> list[ForwardRef]:
         """
         Creates a patch for the ore cost modify effect (ID: 106).
@@ -253,50 +237,41 @@ class SWGBCCUpgradeAttributeSubprocessor:
 
         game_entity_name = name_lookup_dict[head_unit_id][0]
 
-        patch_target_ref = (f"{game_entity_name}.CreatableGameEntity."
-                            f"{game_entity_name}Cost.OreAmount")
+        patch_target_ref = f"{game_entity_name}.CreatableGameEntity.{game_entity_name}Cost.OreAmount"
         patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
         # Wrapper
         wrapper_name = f"Change{game_entity_name}OreCostWrapper"
         wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
-        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
-                                              wrapper_name,
-                                              dataset.nyan_api_objects,
-                                              wrapper_location)
+        wrapper_raw_api_object = RawAPIObject(
+            wrapper_ref, wrapper_name, dataset.nyan_api_objects, wrapper_location
+        )
         wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         # Nyan patch
         nyan_patch_name = f"Change{game_entity_name}OreCost"
         nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
-        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                 nyan_patch_name,
-                                                 dataset.nyan_api_objects,
-                                                 nyan_patch_location)
+        nyan_patch_raw_api_object = RawAPIObject(
+            nyan_patch_ref, nyan_patch_name, dataset.nyan_api_objects, nyan_patch_location
+        )
         nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
-        nyan_patch_raw_api_object.add_raw_patch_member("amount",
-                                                       value,
-                                                       "engine.util.resource.ResourceAmount",
-                                                       operator)
+        nyan_patch_raw_api_object.add_raw_patch_member(
+            "amount", value, "engine.util.resource.ResourceAmount", operator
+        )
 
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
-        wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_forward_ref,
-                                              "engine.util.patch.Patch")
+        wrapper_raw_api_object.add_raw_member("patch", patch_forward_ref, "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
-            )
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
-            wrapper_raw_api_object.add_raw_member("properties",
-                                                  properties,
-                                                  "engine.util.patch.Patch")
+            wrapper_raw_api_object.add_raw_member("properties", properties, "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -310,9 +285,9 @@ class SWGBCCUpgradeAttributeSubprocessor:
     def resource_cost_upgrade(
         converter_group: ConverterObjectGroup,
         line: GenieGameEntityGroup,
-        value: typing.Union[int, float],
+        value: float,
         operator: MemberOperator,
-        team: bool = False
+        team: bool = False,
     ) -> list[ForwardRef]:
         """
         Creates a patch for the resource modify effect (ID: 100).
@@ -374,51 +349,45 @@ class SWGBCCUpgradeAttributeSubprocessor:
             if not resource_amount["enabled"].value:
                 continue
 
-            patch_target_ref = (f"{game_entity_name}.CreatableGameEntity."
-                                f"{game_entity_name}Cost."
-                                f"{resource_name}Amount")
+            patch_target_ref = (
+                f"{game_entity_name}.CreatableGameEntity.{game_entity_name}Cost.{resource_name}Amount"
+            )
             patch_target_forward_ref = ForwardRef(line, patch_target_ref)
 
             # Wrapper
             wrapper_name = f"Change{game_entity_name}{resource_name}CostWrapper"
             wrapper_ref = f"{obj_name}.{wrapper_name}"
             wrapper_location = ForwardRef(converter_group, obj_name)
-            wrapper_raw_api_object = RawAPIObject(wrapper_ref,
-                                                  wrapper_name,
-                                                  dataset.nyan_api_objects,
-                                                  wrapper_location)
+            wrapper_raw_api_object = RawAPIObject(
+                wrapper_ref, wrapper_name, dataset.nyan_api_objects, wrapper_location
+            )
             wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
             # Nyan patch
             nyan_patch_name = f"Change{game_entity_name}{resource_name}Cost"
             nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
             nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
-            nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                     nyan_patch_name,
-                                                     dataset.nyan_api_objects,
-                                                     nyan_patch_location)
+            nyan_patch_raw_api_object = RawAPIObject(
+                nyan_patch_ref, nyan_patch_name, dataset.nyan_api_objects, nyan_patch_location
+            )
             nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
-            nyan_patch_raw_api_object.add_raw_patch_member("amount",
-                                                           value,
-                                                           "engine.util.resource.ResourceAmount",
-                                                           operator)
+            nyan_patch_raw_api_object.add_raw_patch_member(
+                "amount", value, "engine.util.resource.ResourceAmount", operator
+            )
 
             patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
-            wrapper_raw_api_object.add_raw_member("patch",
-                                                  patch_forward_ref,
-                                                  "engine.util.patch.Patch")
+            wrapper_raw_api_object.add_raw_member("patch", patch_forward_ref, "engine.util.patch.Patch")
 
             if team:
-                team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
-                )
+                team_property = dataset.pregen_nyan_objects[
+                    "util.patch.property.types.Team"
+                ].get_nyan_object()
                 properties = {
                     dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
                 }
-                wrapper_raw_api_object.add_raw_member("properties",
-                                                      properties,
-                                                      "engine.util.patch.Patch")
+                wrapper_raw_api_object.add_raw_member("properties", properties, "engine.util.patch.Patch")
 
             converter_group.add_raw_api_object(wrapper_raw_api_object)
             converter_group.add_raw_api_object(nyan_patch_raw_api_object)

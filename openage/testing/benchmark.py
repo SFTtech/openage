@@ -1,15 +1,15 @@
 # Copyright 2017-2022 the openage authors. See copying.md for legal info.
 
-""" Benchmarking tools for the tests. """
+"""Benchmarking tools for the tests."""
 
-from timeit import timeit
 from sys import stdout
 from time import sleep
+from timeit import timeit
 from typing import Callable
 
 
 def benchmark_test_function() -> None:
-    """ Simple function to call in for benchmarking. """
+    """Simple function to call in for benchmarking."""
     sleep(0.1)
 
 
@@ -21,14 +21,14 @@ def benchmark(func: Callable) -> None:
 
     result = [(0, 1)]
     number = 1
-    total = [0, 0]
+    total = [0, 0.0]
     str_row_format = "{:10} {:12}  {:11}"
     row_format1 = "{:10} "
     row_format2 = "{:11.8f}s  {:10.8f}s"
     row_format = row_format1 + row_format2
 
     print(str_row_format.format("Iterations", "Total time", "Average time per execution"))
-    while number < 4 or result[-1][0] < 5 and number < 65537:
+    while number < 4 or (result[-1][0] < 5 and number < 65537):
         print(row_format1.format(number), end="")
         stdout.flush()
 

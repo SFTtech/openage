@@ -1,6 +1,6 @@
 # Copyright 2015-2026 the openage authors. See copying.md for legal info.
 
-""" Lists of all possible tests; enter your tests here. """
+"""Lists of all possible tests; enter your tests here."""
 
 
 def doctest_modules():
@@ -22,18 +22,16 @@ def tests_py():
     If no description is required, just the name may be yielded.
     """
 
-    yield ("openage.testing.doctest.test",
-           "doctest on all modules from DOCTEST_MODULES")
+    yield ("openage.testing.doctest.test", "doctest on all modules from DOCTEST_MODULES")
     yield "openage.assets.test"
-    yield ("openage.cabextract.test.test", "test CAB archive extraction",
-           lambda env: env["has_assets"])
+    yield ("openage.cabextract.test.test", "test CAB archive extraction", lambda env: env["has_assets"])
     yield "openage.cppinterface.exctranslate_tests.cpp_to_py"
-    yield ("openage.cppinterface.exctranslate_tests.cpp_to_py_bounce",
-           "translates the exception back and forth a few times")
-    yield ("openage.testing.misc_cpp.enum",
-           "tests the interface for C++'s util::Enum class")
-    yield ("openage.util.fslike.test.test",
-           "test the filesystem abstraction subsystem")
+    yield (
+        "openage.cppinterface.exctranslate_tests.cpp_to_py_bounce",
+        "translates the exception back and forth a few times",
+    )
+    yield ("openage.testing.misc_cpp.enum", "tests the interface for C++'s util::Enum class")
+    yield ("openage.util.fslike.test.test", "test the filesystem abstraction subsystem")
     yield "openage.util.threading.test_concurrent_chain"
 
 
@@ -42,24 +40,18 @@ def demos_py():
     Yields tuples of (name, description) for all Python demo methods.
     """
 
-    yield ("openage.cppinterface.exctranslate_tests.cpp_to_py_demo",
-           "translates a C++ exception and its causes to python")
-    yield ("openage.log.tests.demo",
-           "demonstrates the translation of Python log messages")
-    yield ("openage.convert.service.export.opus.demo.convert",
-           "encodes an opus file from a wave file")
-    yield ("openage.event.demo.curvepong",
-           "play pong on steroids through future prediction")
-    yield ("openage.gamestate.tests.simulation_demo",
-           "showcases the game simulation")
-    yield ("openage.pathfinding.tests.path_demo",
-           "showcases the pathfinding system")
-    yield ("openage.renderer.tests.renderer_demo",
-           "showcases the renderer")
-    yield ("openage.renderer.tests.renderer_stresstest",
-           "stresstests for the renderer")
-    yield ("openage.main.tests.engine_demo",
-           "showcases the engine features")
+    yield (
+        "openage.cppinterface.exctranslate_tests.cpp_to_py_demo",
+        "translates a C++ exception and its causes to python",
+    )
+    yield ("openage.log.tests.demo", "demonstrates the translation of Python log messages")
+    yield ("openage.convert.service.export.opus.demo.convert", "encodes an opus file from a wave file")
+    yield ("openage.event.demo.curvepong", "play pong on steroids through future prediction")
+    yield ("openage.gamestate.tests.simulation_demo", "showcases the game simulation")
+    yield ("openage.pathfinding.tests.path_demo", "showcases the pathfinding system")
+    yield ("openage.renderer.tests.renderer_demo", "showcases the renderer")
+    yield ("openage.renderer.tests.renderer_stresstest", "stresstests for the renderer")
+    yield ("openage.main.tests.engine_demo", "showcases the engine features")
 
 
 def benchmark_py():
@@ -69,8 +61,7 @@ def benchmark_py():
     """
 
     # TODO Add a real benchmark here, and remove this one
-    yield ("openage.testing.benchmark.benchmark_test_function",
-           "Benchmark yourself")
+    yield ("openage.testing.benchmark.benchmark_test_function", "Benchmark yourself")
 
 
 def tests_cpp():
@@ -112,22 +103,17 @@ def demos_cpp():
     Yields tuples of (name, description) for all C++ demo methods.
     """
 
-    yield ("openage::console::tests::render",
-           "prints a few test lines to a buffer, and renders it to stdout")
-    yield ("openage::console::tests::interactive",
-           "showcases console as an interactive terminal on your current tty")
-    yield ("openage::error::demo",
-           "showcases the openage exceptions, including backtraces")
-    yield ("openage::gamestate::tests::activity_demo",
-           "showcases the activity system in the gamestate")
-    yield ("openage::input::tests::action_demo",
-           "showcases the low-level input system")
-    yield ("openage::log::tests::demo",
-           "showcases the logging system")
-    yield ("openage::pyinterface::tests::err_py_to_cpp_demo",
-           "translates a Python exception to C++")
-    yield ("openage::pyinterface::tests::pyobject_demo",
-           "a tiny interactive interpreter using PyObjectRef")
+    yield ("openage::console::tests::render", "prints a few test lines to a buffer, and renders it to stdout")
+    yield (
+        "openage::console::tests::interactive",
+        "showcases console as an interactive terminal on your current tty",
+    )
+    yield ("openage::error::demo", "showcases the openage exceptions, including backtraces")
+    yield ("openage::gamestate::tests::activity_demo", "showcases the activity system in the gamestate")
+    yield ("openage::input::tests::action_demo", "showcases the low-level input system")
+    yield ("openage::log::tests::demo", "showcases the logging system")
+    yield ("openage::pyinterface::tests::err_py_to_cpp_demo", "translates a Python exception to C++")
+    yield ("openage::pyinterface::tests::pyobject_demo", "a tiny interactive interpreter using PyObjectRef")
 
 
 def benchmark_cpp():

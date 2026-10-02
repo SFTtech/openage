@@ -1,7 +1,6 @@
 # Copyright 2015-2026 the openage authors. See copying.md for legal info.
 
-""" Processes the raw test lists from the testlist module. """
-
+"""Processes the raw test lists from the testlist module."""
 
 from collections import OrderedDict
 from importlib import import_module
@@ -19,7 +18,7 @@ def list_targets(test_lister: Callable, demo_lister: Callable, benchmark_lister:
     """
 
     def default_cond(_):
-        """ default condition test to enable a test """
+        """default condition test to enable a test"""
         return True
 
     for test in test_lister():
@@ -41,26 +40,28 @@ def list_targets(test_lister: Callable, demo_lister: Callable, benchmark_lister:
 
         name = test[0]
 
-        yield name, 'test', desc, condfun
+        yield name, "test", desc, condfun
 
     for demo in demo_lister():
         name, desc = demo
-        yield name, 'demo', desc, default_cond
+        yield name, "demo", desc, default_cond
 
     for benchmark in benchmark_lister():
         name, desc = benchmark
-        yield name, 'benchmark', desc, default_cond
+        yield name, "benchmark", desc, default_cond
 
 
 def list_targets_py():
-    """ Invokes list_targets() with the py-specific listers. """
-    from .testlist import tests_py, demos_py, benchmark_py
+    """Invokes list_targets() with the py-specific listers."""
+    from .testlist import benchmark_py, demos_py, tests_py
+
     yield from list_targets(tests_py, demos_py, benchmark_py)
 
 
 def list_targets_cpp():
-    """ Invokes list_targets() with the C++-specific listers. """
-    from .testlist import tests_cpp, demos_cpp, benchmark_cpp
+    """Invokes list_targets() with the C++-specific listers."""
+    from .testlist import benchmark_cpp, demos_cpp, tests_cpp
+
     yield from list_targets(tests_cpp, demos_cpp, benchmark_cpp)
 
 
@@ -83,7 +84,7 @@ def get_all_targets() -> OrderedDict:
     result = OrderedDict()
 
     for name, type_, description, conditionfun in list_targets_py():
-        modulename, objectname = name.rsplit('.', maxsplit=1)
+        modulename, objectname = name.rsplit(".", maxsplit=1)
 
         try:
             module = import_module(modulename)
@@ -92,33 +93,37 @@ def get_all_targets() -> OrderedDict:
             raise ValueError("no such function: " + name) from exc
 
         try:
-            name = lstrip_once(name, 'openage.')
+            name = lstrip_once(name, "openage.")
         except ValueError as exc:
             raise ValueError("Unexpected Python test/demo name") from exc
 
-        result[name, type_] = conditionfun, 'py', description, func
+        result[name, type_] = conditionfun, "py", description, func
 
     for name, type_, description, conditionfun in list_targets_cpp():
-        if type_ == 'demo':
+        if type_ == "demo":
+
             def runner(args, name=name):
-                """ runs the demo func, and ensures that args is empty. """
+                """runs the demo func, and ensures that args is empty."""
                 if args:
-                    raise ValueError("C++ demos can't take arguments. "
-                                     "You should write a Python demo that "
-                                     "calls to C++ then, with arguments.")
+                    raise ValueError(
+                        "C++ demos can't take arguments. "
+                        "You should write a Python demo that "
+                        "calls to C++ then, with arguments."
+                    )
                 run_cpp_method(name)
-        elif type_ in ['test', 'benchmark']:
+        elif type_ in ["test", "benchmark"]:
+
             def runner(name=name):
-                """ simply runs the func. """
+                """simply runs the func."""
                 run_cpp_method(name)
         else:
             raise ValueError("Unknown type " + type_)
 
         try:
-            name = lstrip_once(name, 'openage::')
+            name = lstrip_once(name, "openage::")
         except ValueError as exc:
             raise ValueError("Unexpected C++ test/demo name") from exc
 
-        result[name, type_] = conditionfun, 'cpp', description, runner
+        result[name, type_] = conditionfun, "cpp", description, runner
 
     return result

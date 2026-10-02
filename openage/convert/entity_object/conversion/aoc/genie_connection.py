@@ -5,29 +5,25 @@ Contains structures and API-like objects for connections from AoC.
 """
 
 from __future__ import annotations
-import typing
 
+import typing
 
 from ..converter_object import ConverterObject
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.aoc.genie_object_container\
-        import GenieObjectContainer
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
     from openage.convert.value_object.read.value_members import ValueMember
 
 
-class GenieAgeConnection(ConverterObject):
+class GenieAgeConnection(ConverterObject[int]):
     """
     A relation between an Age and buildings/techs/units in AoE.
     """
 
-    __slots__ = ('data',)
+    __slots__ = ("data",)
 
     def __init__(
-        self,
-        age_id: int,
-        full_data_set: GenieObjectContainer,
-        members: dict[str, ValueMember] = None
+        self, age_id: int, full_data_set: GenieObjectContainer, members: dict[str, ValueMember] | None = None
     ):
         """
         Creates a new Genie age connection.
@@ -47,18 +43,18 @@ class GenieAgeConnection(ConverterObject):
         return f"GenieAgeConnection<{self.get_id()}>"
 
 
-class GenieBuildingConnection(ConverterObject):
+class GenieBuildingConnection(ConverterObject[int]):
     """
     A relation between a building and other buildings/techs/units in AoE.
     """
 
-    __slots__ = ('data',)
+    __slots__ = ("data",)
 
     def __init__(
         self,
         building_id: int,
         full_data_set: GenieObjectContainer,
-        members: dict[str, ValueMember] = None
+        members: dict[str, ValueMember] | None = None,
     ):
         """
         Creates a new Genie building connection.
@@ -78,18 +74,15 @@ class GenieBuildingConnection(ConverterObject):
         return f"GenieBuildingConnection<{self.get_id()}>"
 
 
-class GenieTechConnection(ConverterObject):
+class GenieTechConnection(ConverterObject[int]):
     """
     A relation between a tech and other buildings/techs/units in AoE.
     """
 
-    __slots__ = ('data',)
+    __slots__ = ("data",)
 
     def __init__(
-        self,
-        tech_id: int,
-        full_data_set: GenieObjectContainer,
-        members: dict[str, ValueMember] = None
+        self, tech_id: int, full_data_set: GenieObjectContainer, members: dict[str, ValueMember] | None = None
     ):
         """
         Creates a new Genie tech connection.
@@ -109,18 +102,15 @@ class GenieTechConnection(ConverterObject):
         return f"GenieTechConnection<{self.get_id()}>"
 
 
-class GenieUnitConnection(ConverterObject):
+class GenieUnitConnection(ConverterObject[int]):
     """
     A relation between a unit and other buildings/techs/units in AoE.
     """
 
-    __slots__ = ('data',)
+    __slots__ = ("data",)
 
     def __init__(
-        self,
-        unit_id: int,
-        full_data_set: GenieObjectContainer,
-        members: dict[str, ValueMember] = None
+        self, unit_id: int, full_data_set: GenieObjectContainer, members: dict[str, ValueMember] | None = None
     ):
         """
         Creates a new Genie unit connection.

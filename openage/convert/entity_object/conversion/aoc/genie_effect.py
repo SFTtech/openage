@@ -5,29 +5,29 @@ Contains structures and API-like objects for effects from AoC.
 """
 
 from __future__ import annotations
+
 import typing
 
 from ..converter_object import ConverterObject
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.aoc.genie_object_container\
-        import GenieObjectContainer
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
     from openage.convert.value_object.read.value_members import ValueMember
 
 
-class GenieEffectObject(ConverterObject):
+class GenieEffectObject(ConverterObject[int]):
     """
     Single effect contained in GenieEffectBundle.
     """
 
-    __slots__ = ('bundle_id', 'data')
+    __slots__ = ("bundle_id", "data")
 
     def __init__(
         self,
         effect_id: int,
         bundle_id: int,
         full_data_set: GenieObjectContainer,
-        members: dict[str, ValueMember] = None
+        members: dict[str, ValueMember] | None = None,
     ):
         """
         Creates a new Genie effect object.
@@ -56,26 +56,26 @@ class GenieEffectObject(ConverterObject):
         return f"GenieEffectObject<{self.get_id()}>"
 
 
-class GenieEffectBundle(ConverterObject):
+class GenieEffectBundle(ConverterObject[int]):
     """
     A set of effects of a tech.
     """
 
-    __slots__ = ('effects', 'sanitized', 'data')
+    __slots__ = ("data", "effects", "sanitized")
 
     def __init__(
         self,
         bundle_id: int,
-        effects: list[GenieEffectObject],
+        effects: dict[int, GenieEffectObject],
         full_data_set: GenieObjectContainer,
-        members: dict[str, ValueMember] = None
+        members: dict[str, ValueMember] | None = None,
     ):
         """
         Creates a new Genie effect bundle.
 
         :param bundle_id: The index of the effect in the .dat file's effect
                           block. (the index is referenced as tech_effect_id by techs)
-        :param effects: Effects of the bundle as list of GenieEffectObject.
+        :param effects: Effects of the bundle, mapped from effect id to GenieEffectObject.
         :param full_data_set: GenieObjectContainer instance that
                               contains all relevant data for the conversion
                               process.
@@ -94,7 +94,7 @@ class GenieEffectBundle(ConverterObject):
 
         self.data = full_data_set
 
-    def get_effects(self, effect_type: int = None) -> list[GenieEffectObject]:
+    def get_effects(self, effect_type: int | None = None) -> list[GenieEffectObject]:
         """
         Returns the effects in the bundle, optionally only effects with a specific
         type.

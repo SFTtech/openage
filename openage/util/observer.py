@@ -14,10 +14,11 @@ Observer references are weakrefs to prevent objects from being
 ignored the garbage collection. Weakrefs with dead references
 are removed during notification of the observers.
 """
+
 from __future__ import annotations
 
-from typing import Any, Optional
 import weakref
+from typing import Any, Optional
 
 
 class Observer:
@@ -25,7 +26,7 @@ class Observer:
     Implements a Java 8-like Observer interface.
     """
 
-    def update(self, observable: Observable, message: Optional[Any] = None):
+    def update(self, observable: Observable | None, message: Optional[Any] = None):
         """
         Called by an Observable object that has registered this observer
         whenever it changes.

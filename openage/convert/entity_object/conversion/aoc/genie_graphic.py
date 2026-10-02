@@ -3,29 +3,30 @@
 """
 Contains structures and API-like objects for graphics from AoC.
 """
+
 from __future__ import annotations
+
 import typing
 
 from ..converter_object import ConverterObject
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.aoc.genie_object_container\
-        import GenieObjectContainer
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
     from openage.convert.value_object.read.value_members import ValueMember
 
 
-class GenieGraphic(ConverterObject):
+class GenieGraphic(ConverterObject[int]):
     """
     Graphic definition from a .dat file.
     """
 
-    __slots__ = ('exists', 'subgraphics', '_refs', 'data')
+    __slots__ = ("_refs", "data", "exists", "subgraphics")
 
     def __init__(
         self,
         graphic_id: int,
         full_data_set: GenieObjectContainer,
-        members: dict[str, ValueMember] = None
+        members: dict[str, ValueMember] | None = None,
     ):
         """
         Creates a new Genie graphic object.

@@ -5,14 +5,14 @@
 """
 Convert data from AoE2:HD to openage formats.
 """
-from __future__ import annotations
-import typing
 
+from __future__ import annotations
+
+import typing
 
 from .....log import info
 from ....entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
-from ....service.debug_info import debug_converter_objects, \
-    debug_converter_object_groups
+from ....service.debug_info import debug_converter_object_groups, debug_converter_objects
 from ....service.read.nyan_api_loader import load_api
 from ..aoc.nyan_subprocessor import AoCNyanSubprocessor
 from ..aoc.pregen_processor import AoCPregenSubprocessor
@@ -22,10 +22,11 @@ from .modpack_subprocessor import HDModpackSubprocessor
 
 if typing.TYPE_CHECKING:
     from argparse import Namespace
-    from openage.convert.entity_object.conversion.stringresource import StringResource
+
     from openage.convert.entity_object.conversion.modpack import Modpack
-    from openage.convert.value_object.read.value_members import ArrayMember
+    from openage.convert.entity_object.conversion.stringresource import StringResource
     from openage.convert.value_object.init.game_version import GameVersion
+    from openage.convert.value_object.read.value_members import ArrayMember
 
 
 class HDProcessor:
@@ -39,7 +40,7 @@ class HDProcessor:
         gamespec: ArrayMember,
         args: Namespace,
         string_resources: StringResource,
-        existing_graphics: list[str]
+        existing_graphics: set[str],
     ) -> list[Modpack]:
         """
         Input game speification and media here and get a set of
@@ -55,12 +56,7 @@ class HDProcessor:
         info("Starting conversion...")
 
         # Create a new container for the conversion process
-        dataset = cls._pre_processor(
-            gamespec,
-            args.game_version,
-            string_resources,
-            existing_graphics
-        )
+        dataset = cls._pre_processor(gamespec, args.game_version, string_resources, existing_graphics)
         debug_converter_objects(args.debugdir, args.debug_info, dataset)
 
         # Create the custom openage formats (nyan, sprite, terrain, etc.)
@@ -78,7 +74,7 @@ class HDProcessor:
         gamespec: ArrayMember,
         game_version: GameVersion,
         string_resources: StringResource,
-        existing_graphics: list[str]
+        existing_graphics: set[str],
     ) -> GenieObjectContainer:
         """
         Store data from the reader in a conversion container.
@@ -86,11 +82,8 @@ class HDProcessor:
         :param gamespec: Gamedata from empires.dat file.
         :type gamespec: ...dataformat.value_members.ArrayMember
         """
-        dataset = GenieObjectContainer()
+        dataset = GenieObjectContainer(game_version, load_api(), string_resources)
 
-        dataset.game_version = game_version
-        dataset.nyan_api_objects = load_api()
-        dataset.strings = string_resources
         dataset.existing_graphics = existing_graphics
 
         info("Extracting Genie data...")

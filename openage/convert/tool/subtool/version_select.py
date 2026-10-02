@@ -4,37 +4,32 @@ Initial version detection based on user input.
 
 TODO: Version selection.
 """
+
 from __future__ import annotations
+
 import typing
 
-
-from ....log import warn, info
+from ....log import info, warn
 from ...service.init.version_detect import iterate_game_versions
-from ...value_object.init.game_version import Support
-from ...value_object.init.game_version import GameVersion
+from ...value_object.init.game_version import GameVersion, Support
 
 if typing.TYPE_CHECKING:
-    from openage.convert.value_object.init.game_version import GameEdition, \
-        GameExpansion, GameVersion
-    from openage.util.fslike.directory import Directory
+    from openage.convert.value_object.init.game_version import GameEdition, GameExpansion, GameVersion
+    from openage.util.fslike.path import Path
 
 
 def get_game_version(
-    srcdir: Directory,
-    avail_game_eds: list[GameEdition],
-    avail_game_exps: list[GameExpansion]
+    srcdir: Path, avail_game_eds: list[GameEdition], avail_game_exps: list[GameExpansion]
 ) -> GameVersion:
     """
     Mount the input folders for conversion.
     """
     info("Looking for compatible games to convert...")
-    game_version = iterate_game_versions(
-        srcdir, avail_game_eds, avail_game_exps)
+    game_version = iterate_game_versions(srcdir, avail_game_eds, avail_game_exps)
 
     no_support = False
     if not game_version.edition or game_version.edition.support == Support.NOPE:
-        warn("No valid game version(s) could not be detected "
-             f"in {srcdir.resolve_native_path()}")
+        warn(f"No valid game version(s) could not be detected in {srcdir.resolve_native_path()}")
 
         # no supported version was found
         no_support = True
@@ -67,7 +62,7 @@ def get_game_version(
             if edition.support == Support.YES:
                 warn(" * \x1b[34m%s\x1b[m", edition)
 
-        return GameVersion(edition=None)
+        raise RuntimeError("no compatible game edition found")
 
     info("Compatible game edition detected:")
     info(" * %s", game_version.edition.edition_name)

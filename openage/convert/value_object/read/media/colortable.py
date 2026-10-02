@@ -2,30 +2,27 @@
 
 # TODO pylint: disable=C,R,too-many-function-args
 from __future__ import annotations
-import typing
 
 import math
+import typing
 
 import numpy
 
-
 from .....log import dbg
 from ..genie_structure import GenieStructure
+from ..member_access import READ
 
 if typing.TYPE_CHECKING:
-    from PIL import Image
+    from PIL.Image import Image
 
     from openage.convert.value_object.init.game_version import GameVersion
-    from openage.convert.value_object.read.member_access import MemberAccess
-    from openage.convert.value_object.read.read_members import ReadMember
-    from openage.convert.value_object.read.value_members import StorageType
-    from openage.util.fslike.wrapper import GuardedFile
+    from openage.convert.value_object.read.genie_structure import DataFormatMember
 
 
 class ColorTable(GenieStructure):
-    __slots__ = ('header', 'version', 'palette')
+    __slots__ = ("header", "palette", "version")
 
-    def __init__(self, data: typing.Union[list, tuple, bytes]):
+    def __init__(self, data: list | tuple | bytes):
         super().__init__()
 
         if isinstance(data, list) or isinstance(data, tuple):
@@ -36,21 +33,20 @@ class ColorTable(GenieStructure):
         # Fast access for media conversion
         self.array = self.get_ndarray()
 
-    def fill_from_array(self, ar: typing.Union[list, tuple]) -> None:
+    def fill_from_array(self, ar: list | tuple) -> None:
         self.palette = [tuple(e) for e in ar]
 
     def fill(self, data: bytes) -> None:
         # split all lines of the input data
         # \r\n windows windows windows baby
-        lines = data.decode('ascii').split('\r\n')
+        lines = data.decode("ascii").split("\r\n")
 
         self.header = lines[0]
         self.version = lines[1]
 
         # check for palette header
-        if not (self.header == "JASC-PAL" or self.header == "JASC-PALX"):
-            raise SyntaxError("No palette header 'JASC-PAL' or 'JASC-PALX' found, "
-                              "instead: %r" % self.header)
+        if self.header not in {"JASC-PAL", "JASC-PALX"}:
+            raise SyntaxError("No palette header 'JASC-PAL' or 'JASC-PALX' found, instead: %r" % self.header)
 
         if self.version != "0100":
             raise SyntaxError(f"palette version mispatch, got {self.version}")
@@ -77,9 +73,7 @@ class ColorTable(GenieStructure):
             self.palette.append(tuple(int(val) for val in line.split()))
 
         if len(self.palette) != entry_count:
-            raise SyntaxError("read a %d palette entries "
-                              "but expected %d." % (
-                                  len(self.palette), entry_count))
+            raise SyntaxError("read a %d palette entries but expected %d." % (len(self.palette), entry_count))
 
     def __getitem__(self, index):
         return self.palette[index]
@@ -91,7 +85,7 @@ class ColorTable(GenieStructure):
         return "ColorTable<%d entries>" % len(self.palette)
 
     def __str__(self):
-        return f"{repr(self)}\n{self.palette}"
+        return f"{self!r}\n{self.palette}"
 
     def gen_image(self, draw_text: bool = True, squaresize: int = 100) -> Image:
         """
@@ -105,8 +99,7 @@ class ColorTable(GenieStructure):
 
         dbg("generating palette image with size %dx%d", imgsize, imgsize)
 
-        palette_image = Image.new('RGBA', (imgsize, imgsize),
-                                  (255, 255, 255, 0))
+        palette_image = Image.new("RGBA", (imgsize, imgsize), (255, 255, 255, 0))
         draw = ImageDraw.ImageDraw(palette_image)
 
         # dirty, i know...
@@ -146,8 +139,7 @@ class ColorTable(GenieStructure):
 
                             # draw the text
                             # TODO: use customsized font
-                            draw.text((sx + 3, sy + 1), ctext,
-                                      fill=tcolor, font=None)
+                            draw.text((sx + 3, sy + 1), ctext, fill=tcolor, font=None)
 
                         drawn = drawn + 1
 
@@ -156,27 +148,24 @@ class ColorTable(GenieStructure):
 
         return palette_image
 
-    def get_ndarray(self) -> numpy.array:
-        return numpy.array(self.palette, dtype=numpy.uint8, order='C')
+    def get_ndarray(self) -> numpy.ndarray:
+        return numpy.array(self.palette, dtype=numpy.uint8, order="C")
 
-    def save_visualization(self, fileobj: GuardedFile) -> None:
-        self.gen_image().save(fileobj, 'png')
+    def save_visualization(self, fileobj: typing.IO[bytes]) -> None:
+        self.gen_image().save(fileobj, "png")
 
     @classmethod
-    def get_data_format_members(
-        cls,
-        game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    def get_data_format_members(cls, game_version: GameVersion) -> list[DataFormatMember]:
         """
         Return the members in this struct.
         """
-        data_format = (
-            (True, "idx", None, "int32_t"),
-            (True, "r", None,   "uint8_t"),
-            (True, "g", None,   "uint8_t"),
-            (True, "b", None,   "uint8_t"),
-            (True, "a", None,   "uint8_t"),
-        )
+        data_format: list[DataFormatMember] = [
+            (READ, "idx", None, "int32_t"),
+            (READ, "r", None, "uint8_t"),
+            (READ, "g", None, "uint8_t"),
+            (READ, "b", None, "uint8_t"),
+            (READ, "a", None, "uint8_t"),
+        ]
 
         return data_format
 
@@ -188,7 +177,7 @@ class PlayerColorTable(GenieStructure):
     each player has 8 subcolors, where 0 is the darkest and 7 is the lightest
     """
 
-    __slots__ = ('header', 'version', 'palette')
+    __slots__ = ("header", "palette", "version")
 
     def __init__(self, base_table: ColorTable):
         super().__init__()
@@ -211,20 +200,17 @@ class PlayerColorTable(GenieStructure):
                 self.palette.append((r, g, b))
 
     @classmethod
-    def get_data_format_members(
-        cls,
-        game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    def get_data_format_members(cls, game_version: GameVersion) -> list[DataFormatMember]:
         """
         Return the members in this struct.
         """
-        data_format = (
-            (True, "idx", None, "int32_t"),
-            (True, "r", None,   "uint8_t"),
-            (True, "g", None,   "uint8_t"),
-            (True, "b", None,   "uint8_t"),
-            (True, "a", None,   "uint8_t"),
-        )
+        data_format: list[DataFormatMember] = [
+            (READ, "idx", None, "int32_t"),
+            (READ, "r", None, "uint8_t"),
+            (READ, "g", None, "uint8_t"),
+            (READ, "b", None, "uint8_t"),
+            (READ, "a", None, "uint8_t"),
+        ]
 
         return data_format
 

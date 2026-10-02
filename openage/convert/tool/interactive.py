@@ -3,28 +3,28 @@
 """
 Interactive browser for game asset files.
 """
-from __future__ import annotations
-import typing
 
+from __future__ import annotations
 
 import os
 import readline  # pylint: disable=unused-import
+import typing
 
 from openage.convert.processor.export.media_exporter import MediaExporter
 
-from ...log import warn, info
+from ...log import info, warn
 from ...util.fslike.directory import Directory
 from ..service.init.mount_asset_dirs import mount_asset_dirs
 from ..service.init.version_detect import create_version_objects
+from .subtool.acquire_sourcedir import acquire_conversion_source_dir
 from .subtool.version_select import get_game_version
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.read.media.colortable import ColorTable
-    from openage.util.fslike.directory import Directory
     from openage.util.fslike.path import Path
 
 
-def interactive_browser(cfg: Path, srcdir: Directory = None) -> typing.NoReturn:
+def interactive_browser(cfg: Path, srcdir: Path | None = None) -> None:
     """
     launch an interactive view for browsing the original
     archives.
@@ -42,11 +42,11 @@ def interactive_browser(cfg: Path, srcdir: Directory = None) -> typing.NoReturn:
     auxiliary_files_dir = cfg / "converter" / "games"
     avail_game_eds, avail_game_exps = create_version_objects(auxiliary_files_dir)
 
+    if srcdir is None:
+        srcdir = acquire_conversion_source_dir(avail_game_eds)
+
     # Acquire game version info
     game_version = get_game_version(srcdir, avail_game_eds, avail_game_exps)
-    if not game_version.edition:
-        warn("cannot launch browser as no valid game version was found.")
-        return
 
     data = mount_asset_dirs(srcdir, game_version)
 
@@ -54,27 +54,26 @@ def interactive_browser(cfg: Path, srcdir: Directory = None) -> typing.NoReturn:
         warn("cannot launch browser as no valid input assets were found.")
         return
 
-    def save(path: Path, target: Path) -> None:
+    def save(path: Path, target: str) -> None:
         """
         save a path to a custom target
         """
         with path.open("rb") as infile:
-            with open(target, "rb") as outfile:
+            with open(target, "wb") as outfile:
                 outfile.write(infile.read())
 
-    def save_slp(path: Path, target: Path, palette: ColorTable = None) -> None:
+    def save_slp(path: Path, target: str, palette: dict[int, ColorTable] | None = None) -> None:
         """
         save a slp as png.
         """
         from ..entity_object.export.texture import Texture
-        from ..value_object.read.media.slp import SLP
         from ..service.read.palette import get_palettes
+        from ..value_object.read.media.slp import SLP
 
         if not palette:
             palette = get_palettes(data, game_version)
 
         with path.open("rb") as slpfile:
-
             from ..processor.export.texture_merge import merge_frames
 
             tex = Texture(SLP(slpfile.read()), palette)
@@ -82,25 +81,20 @@ def interactive_browser(cfg: Path, srcdir: Directory = None) -> typing.NoReturn:
             merge_frames(tex)
 
             out_path, filename = os.path.split(target)
-            MediaExporter.save_png(
-                tex,
-                Directory(out_path).root,
-                filename
-            )
+            MediaExporter.save_png(tex, Directory(out_path).root, filename)
 
-    def save_smx(path: Path, target: Path, palette: ColorTable = None) -> None:
+    def save_smx(path: Path, target: str, palette: dict[int, ColorTable] | None = None) -> None:
         """
         save a smx as png.
         """
         from ..entity_object.export.texture import Texture
-        from ..value_object.read.media.smx import SMX
         from ..service.read.palette import get_palettes
+        from ..value_object.read.media.smx import SMX
 
         if not palette:
             palette = get_palettes(data, game_version)
 
         with path.open("rb") as smxfile:
-
             from ..processor.export.texture_merge import merge_frames
 
             tex = Texture(SMX(smxfile.read()), palette)
@@ -108,15 +102,9 @@ def interactive_browser(cfg: Path, srcdir: Directory = None) -> typing.NoReturn:
             merge_frames(tex)
 
             out_path, filename = os.path.split(target)
-            MediaExporter.save_png(
-                tex,
-                Directory(out_path).root,
-                filename
-            )
+            MediaExporter.save_png(tex, Directory(out_path).root, filename)
 
     import code
-    from pprint import pprint
-
     import rlcompleter
 
     completer = rlcompleter.Completer(locals())
@@ -125,13 +113,15 @@ def interactive_browser(cfg: Path, srcdir: Directory = None) -> typing.NoReturn:
     readline.set_completer(completer.complete)
 
     code.interact(
-        banner=("\nuse `pprint` for beautiful output!\n"
-                "you can access stuff by the `data` variable!\n"
-                "`data` is an openage.util.fslike.path.Path!\n\n"
-                "* version detection:   pprint(game_versions)\n"
-                "* list contents:       pprint(list(data['graphics'].list()))\n"
-                "* dump data:           save(data['file/path'], '/tmp/outputfile')\n"
-                "* save a slp as png:   save_slp(data['dir/123.slp'], '/tmp/pic.png')\n"
-                "* save a smx as png:   save_smx(data['dir/123.smx'], '/tmp/pic.png')\n"),
-        local=locals()
+        banner=(
+            "\nuse `pprint` for beautiful output!\n"
+            "you can access stuff by the `data` variable!\n"
+            "`data` is an openage.util.fslike.path.Path!\n\n"
+            "* version detection:   pprint(game_versions)\n"
+            "* list contents:       pprint(list(data['graphics'].list()))\n"
+            "* dump data:           save(data['file/path'], '/tmp/outputfile')\n"
+            "* save a slp as png:   save_slp(data['dir/123.slp'], '/tmp/pic.png')\n"
+            "* save a smx as png:   save_smx(data['dir/123.smx'], '/tmp/pic.png')\n"
+        ),
+        local=locals(),
     )

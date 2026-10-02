@@ -36,14 +36,10 @@ LINUX_DIRS = {
 
 # macOS-specific paths
 MACOS_DIRS = {
-    "config_home": ("XDG_CONFIG_HOME",
-                    ("{HOME}/Library/Application Support", {"HOME"})),
-    "data_home": ("XDG_DATA_HOME",
-                  ("{HOME}/Library/Application Support", {"HOME"})),
-    "data_dirs": ("XDG_DATA_DIRS",
-                  ("/Library/Application Support", {})),
-    "config_dirs": ("XDG_CONFIG_DIRS",
-                    ("/Library/Application Support", {})),
+    "config_home": ("XDG_CONFIG_HOME", ("{HOME}/Library/Application Support", {"HOME"})),
+    "data_home": ("XDG_DATA_HOME", ("{HOME}/Library/Application Support", {"HOME"})),
+    "data_dirs": ("XDG_DATA_DIRS", ("/Library/Application Support", {})),
+    "config_dirs": ("XDG_CONFIG_DIRS", ("/Library/Application Support", {})),
     "cache_home": ("XDG_CACHE_HOME", ("{HOME}/Library/Caches", {"HOME"})),
     "runtime_dir": ("XDG_RUNTIME_DIR", ("{HOME}/Library/Caches", {"HOME"})),
 }
@@ -93,10 +89,8 @@ def get_dir(which):
     elif default_template:
         env_vars = {var: os.environ.get(var) for var in required_envs}
         if not all(env_vars.values()):
-            env_var_str = ', '.join([var for (var, val) in env_vars.items()
-                                     if val is None])
-            raise RuntimeError(f"could not reconstruct {which}, "
-                               f"missing env variables: '{env_var_str}'")
+            env_var_str = ", ".join([var for (var, val) in env_vars.items() if val is None])
+            raise RuntimeError(f"could not reconstruct {which}, missing env variables: '{env_var_str}'")
 
         path = default_template.format(**env_vars)
 

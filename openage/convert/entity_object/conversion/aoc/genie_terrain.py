@@ -3,29 +3,32 @@
 """
 Contains structures and API-like objects for terrain from AoC.
 """
+
 from __future__ import annotations
+
 import typing
 
 from ..converter_object import ConverterObject, ConverterObjectGroup
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.aoc.genie_object_container\
-        import GenieObjectContainer
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
     from openage.convert.value_object.read.value_members import ValueMember
 
+from openage.convert.value_object.read.value_members import ArrayMember
 
-class GenieTerrainObject(ConverterObject):
+
+class GenieTerrainObject(ConverterObject[int]):
     """
     Terrain definition from a .dat file.
     """
 
-    __slots__ = ('data',)
+    __slots__ = ("data",)
 
     def __init__(
         self,
         terrain_id: int,
         full_data_set: GenieObjectContainer,
-        members: dict[str, ValueMember] = None
+        members: dict[str, ValueMember] | None = None,
     ):
         """
         Creates a new Genie terrain object.
@@ -51,7 +54,7 @@ class GenieTerrainGroup(ConverterObjectGroup):
     A terrain from AoE that will become an openage Terrain object.
     """
 
-    __slots__ = ('data', 'terrain')
+    __slots__ = ("data", "terrain")
 
     def __init__(
         self,
@@ -96,18 +99,18 @@ class GenieTerrainGroup(ConverterObjectGroup):
         return f"GenieTerrainGroup<{self.get_id()}>"
 
 
-class GenieTerrainRestriction(ConverterObject):
+class GenieTerrainRestriction(ConverterObject[int]):
     """
     Terrain restriction definition from a .dat file.
     """
 
-    __slots__ = ('data',)
+    __slots__ = ("data",)
 
     def __init__(
         self,
         restriction_id: int,
         full_data_set: GenieObjectContainer,
-        members: dict[str, ValueMember] = None
+        members: dict[str, ValueMember] | None = None,
     ):
         """
         Creates a new Genie terrain restriction object.
@@ -127,7 +130,11 @@ class GenieTerrainRestriction(ConverterObject):
 
         :param terrain_index: Index of the terrain.
         """
-        multiplier = self.members["accessible_dmgmultiplier"][terrain_index].value
+        # the member is an ArrayMember; indexing yields the ValueMember
+        # for the given terrain
+        member = self.members["accessible_dmgmultiplier"]
+        assert isinstance(member, ArrayMember)
+        multiplier = member[terrain_index].value
 
         return multiplier > 0
 

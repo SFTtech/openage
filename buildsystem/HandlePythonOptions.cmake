@@ -5,15 +5,9 @@
 # the Python version number requirement is in modules/FindPython_test.cpp
 find_package(Python ${PYTHON_MIN_VERSION} REQUIRED)
 
-find_package(Cython ${CYTHON_MIN_VERSION})
+find_package(Cython ${CYTHON_MIN_VERSION} REQUIRED)
 if(NOT CYTHON_FOUND)
-	message("Checking for alternative Cython fallback version (>=${CYTHON_MIN_VERSION_FALLBACK} AND <=${CYTHON_MAX_VERSION_FALLBACK})")
-	find_package(Cython ${CYTHON_MIN_VERSION_FALLBACK} QUIET)
-	if(CYTHON_VERSION VERSION_LESS ${CYTHON_MIN_VERSION} AND CYTHON_VERSION VERSION_GREATER ${CYTHON_MAX_VERSION_FALLBACK})
-		message(FATAL_ERROR "Cython version ${CYTHON_VERSION} is not compatible")
-	else()
-		message("Compatible Cython version ${CYTHON_VERSION} found")
-	endif()
+        message(FATAL_ERROR "Cython version >=${CYTHON_MIN_VERSION} is required")
 endif()
 
 py_get_config_var(EXT_SUFFIX PYEXT_SUFFIX)
@@ -39,13 +33,6 @@ else()
 	elseif("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
 		set(PYEXT_CXXFLAGS "${PYEXT_CXXFLAGS} -Wno-#warnings")
 	endif()
-endif()
-
-# silence cython+python3.8 tp_print deprecation warning
-# https://github.com/cython/cython/pull/3201
-# https://github.com/cython/cython/issues/3474
-if(PYTHON_VER VERSION_GREATER_EQUAL 3.8 AND PYTHON_VERSION VERSION_LESS 3.9)
-	set(PYEXT_CXXCLAGS "${PYEXT_CXXCLAGS}" "-Wno-deprecated-declarations")
 endif()
 
 set(PYEXT_LIBRARY "${PYTHON_LIBRARIES}")

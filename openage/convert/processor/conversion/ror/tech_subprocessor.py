@@ -8,12 +8,14 @@
 """
 Creates patches for technologies.
 """
+
 from __future__ import annotations
+
 import typing
 
 from .....nyan.nyan_structs import MemberOperator
-from ....entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup, \
-    GenieUnitLineGroup
+from ....entity_object.conversion.aoc.genie_tech import GenieTechEffectBundleGroup
+from ....entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup, GenieUnitLineGroup
 from ....service.conversion import internal_name_lookups
 from ..aoc.upgrade_ability_subprocessor import AoCUpgradeAbilitySubprocessor
 from ..aoc.upgrade_attribute_subprocessor import AoCUpgradeAttributeSubprocessor
@@ -23,8 +25,8 @@ from .upgrade_attribute_subprocessor import RoRUpgradeAttributeSubprocessor
 from .upgrade_resource_subprocessor import RoRUpgradeResourceSubprocessor
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.converter_object import ConverterObjectGroup
     from openage.convert.entity_object.conversion.aoc.genie_effect import GenieEffectObject
+    from openage.convert.entity_object.conversion.converter_object import ConverterObjectGroup
     from openage.convert.value_object.conversion.forward_ref import ForwardRef
 
 
@@ -33,7 +35,7 @@ class RoRTechSubprocessor:
     Creates raw API objects and patches for techs and civ setups in RoR.
     """
 
-    upgrade_attribute_funcs = {
+    upgrade_attribute_funcs: typing.ClassVar[dict[int, typing.Callable[..., list[ForwardRef]]]] = {
         0: AoCUpgradeAttributeSubprocessor.hp_upgrade,
         1: AoCUpgradeAttributeSubprocessor.los_upgrade,
         2: AoCUpgradeAttributeSubprocessor.garrison_capacity_upgrade,
@@ -56,7 +58,7 @@ class RoRTechSubprocessor:
         101: RoRUpgradeAttributeSubprocessor.population_upgrade,
     }
 
-    upgrade_resource_funcs = {
+    upgrade_resource_funcs: typing.ClassVar[dict[int, typing.Callable[..., list[ForwardRef]]]] = {
         4: AoCUpgradeResourceSubprocessor.starting_population_space_upgrade,
         27: AoCUpgradeResourceSubprocessor.monk_conversion_upgrade,
         28: RoRUpgradeResourceSubprocessor.building_conversion_upgrade,
@@ -77,6 +79,8 @@ class RoRTechSubprocessor:
         of its effects.
         """
         patches = []
+        # get_patches is only called with tech groups
+        assert isinstance(converter_group, GenieTechEffectBundleGroup)
         effects = converter_group.get_effects()
         for effect in effects:
             type_id = effect.get_type()
@@ -98,9 +102,7 @@ class RoRTechSubprocessor:
 
     @staticmethod
     def attribute_modify_effect(
-        converter_group: ConverterObjectGroup,
-        effect: GenieEffectObject,
-        team: bool = False
+        converter_group: ConverterObjectGroup, effect: GenieEffectObject, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates the patches for modifying attributes of entities.
@@ -162,8 +164,7 @@ class RoRTechSubprocessor:
             upgrade_func = RoRTechSubprocessor.upgrade_attribute_funcs[attribute_type]
         except KeyError as exc:
             raise KeyError(
-                f"No subprocessor function found for handling upgrade of "
-                f"unit attribute: {attribute_type}"
+                f"No subprocessor function found for handling upgrade of unit attribute: {attribute_type}"
             ) from exc
         for affected_entity in affected_entities:
             patches.extend(upgrade_func(converter_group, affected_entity, value, operator, team))
@@ -172,9 +173,7 @@ class RoRTechSubprocessor:
 
     @staticmethod
     def resource_modify_effect(
-        converter_group: ConverterObjectGroup,
-        effect: GenieEffectObject,
-        team: bool = False
+        converter_group: ConverterObjectGroup, effect: GenieEffectObject, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates the patches for modifying resources.
@@ -212,8 +211,7 @@ class RoRTechSubprocessor:
             upgrade_func = RoRTechSubprocessor.upgrade_resource_funcs[resource_id]
         except KeyError as exc:
             raise KeyError(
-                f"No subprocessor function found for handling upgrade of "
-                f"resource: {resource_id}"
+                f"No subprocessor function found for handling upgrade of resource: {resource_id}"
             ) from exc
         patches.extend(upgrade_func(converter_group, value, operator, team))
 
@@ -221,8 +219,7 @@ class RoRTechSubprocessor:
 
     @staticmethod
     def upgrade_unit_effect(
-        converter_group: ConverterObjectGroup,
-        effect: GenieEffectObject
+        converter_group: ConverterObjectGroup, effect: GenieEffectObject
     ) -> list[ForwardRef]:
         """
         Creates the patches for upgrading entities in a line.
@@ -236,8 +233,7 @@ class RoRTechSubprocessor:
         head_unit_id = effect["attr_a"].value
         upgrade_target_id = effect["attr_b"].value
 
-        if head_unit_id not in dataset.unit_ref.keys() or\
-                upgrade_target_id not in dataset.unit_ref.keys():
+        if head_unit_id not in dataset.unit_ref.keys() or upgrade_target_id not in dataset.unit_ref.keys():
             # Skip annexes or transform units
             return patches
 
@@ -251,46 +247,42 @@ class RoRTechSubprocessor:
 
         diff = upgrade_source.diff(upgrade_target)
 
-        patches.extend(AoCUpgradeAbilitySubprocessor.death_ability(
-            converter_group, line, tech_name, diff))
-        patches.extend(AoCUpgradeAbilitySubprocessor.despawn_ability(
-            converter_group, line, tech_name, diff))
-        patches.extend(AoCUpgradeAbilitySubprocessor.idle_ability(
-            converter_group, line, tech_name, diff))
-        patches.extend(AoCUpgradeAbilitySubprocessor.live_ability(
-            converter_group, line, tech_name, diff))
-        patches.extend(AoCUpgradeAbilitySubprocessor.los_ability(
-            converter_group, line, tech_name, diff))
-        patches.extend(AoCUpgradeAbilitySubprocessor.named_ability(
-            converter_group, line, tech_name, diff))
-        # patches.extend(AoCUpgradeAbilitySubprocessor.resistance_ability(converter_group, line, tech_name, diff))
-        patches.extend(AoCUpgradeAbilitySubprocessor.selectable_ability(
-            converter_group, line, tech_name, diff))
-        patches.extend(AoCUpgradeAbilitySubprocessor.turn_ability(
-            converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.death_ability(converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.despawn_ability(converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.idle_ability(converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.live_ability(converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.los_ability(converter_group, line, tech_name, diff))
+        patches.extend(AoCUpgradeAbilitySubprocessor.named_ability(converter_group, line, tech_name, diff))
+        # patches.extend(AoCUpgradeAbilitySubprocessor.resistance_ability(
+        #     converter_group, line, tech_name, diff))
+        patches.extend(
+            AoCUpgradeAbilitySubprocessor.selectable_ability(converter_group, line, tech_name, diff)
+        )
+        patches.extend(AoCUpgradeAbilitySubprocessor.turn_ability(converter_group, line, tech_name, diff))
 
         if line.is_projectile_shooter():
-            patches.extend(RoRUpgradeAbilitySubprocessor.shoot_projectile_ability(converter_group, line,
-                                                                                  tech_name,
-                                                                                  7, diff))
+            patches.extend(
+                RoRUpgradeAbilitySubprocessor.shoot_projectile_ability(
+                    converter_group, line, tech_name, 7, diff
+                )
+            )
 
         elif line.is_melee() or line.is_ranged():
             if line.has_command(7):
                 # Attack
-                patches.extend(AoCUpgradeAbilitySubprocessor.apply_discrete_effect_ability(converter_group,
-                                                                                           line, tech_name,
-                                                                                           7,
-                                                                                           line.is_ranged(),
-                                                                                           diff))
+                patches.extend(
+                    AoCUpgradeAbilitySubprocessor.apply_discrete_effect_ability(
+                        converter_group, line, tech_name, 7, line.is_ranged(), diff
+                    )
+                )
 
         if isinstance(line, GenieUnitLineGroup):
-            patches.extend(AoCUpgradeAbilitySubprocessor.move_ability(converter_group, line,
-                                                                      tech_name, diff))
+            patches.extend(AoCUpgradeAbilitySubprocessor.move_ability(converter_group, line, tech_name, diff))
 
         if isinstance(line, GenieBuildingLineGroup):
             # TODO: Damage percentages change
-            # patches.extend(AoCUpgradeAbilitySubprocessor.attribute_change_tracker_ability(converter_group, line,
-            #                                                                               tech_name, diff))
+            # patches.extend(AoCUpgradeAbilitySubprocessor.attribute_change_tracker_ability(
+            #     converter_group, line, tech_name, diff))
             pass
 
         return patches

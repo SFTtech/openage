@@ -8,26 +8,24 @@ Those originate from blendomatic.dat.
 
 For more information, see doc/media/blendomatic.md
 """
+
 from __future__ import annotations
+
 import typing
-
-
+from io import BytesIO
 from math import sqrt
 from struct import Struct, unpack_from
-import numpy
 
+import numpy
 
 from .....log import dbg
 from ..genie_structure import GenieStructure
-
+from ..member_access import READ
 
 if typing.TYPE_CHECKING:
     from openage.convert.entity_object.export.texture import Texture
     from openage.convert.value_object.init.game_version import GameVersion
-    from openage.convert.value_object.read.member_access import MemberAccess
-    from openage.convert.value_object.read.read_members import ReadMember
-    from openage.convert.value_object.read.value_members import StorageType
-    from openage.util.fslike.wrapper import GuardedFile
+    from openage.convert.value_object.read.genie_structure import DataFormatMember
 
 
 class BlendingTile:
@@ -43,7 +41,7 @@ class BlendingTile:
         self.width = width
         self.height = height
 
-    def get_picture_data(self) -> numpy.array:
+    def get_picture_data(self) -> numpy.ndarray:
         """
         Return a numpy array of image data for a blending tile.
         """
@@ -53,7 +51,6 @@ class BlendingTile:
             tile_row_data = []
 
             for alpha_data in picture_row:
-
                 if alpha_data == -1:
                     # draw full transparency
                     alpha = 0
@@ -65,7 +62,7 @@ class BlendingTile:
                     else:
                         # original data contains 7-bit values only
                         alpha = 128
-                        val = (127 - (alpha_data & 0x7f)) * 2
+                        val = (127 - (alpha_data & 0x7F)) * 2
 
                 tile_row_data.append((val, val, val, alpha))
 
@@ -83,13 +80,7 @@ class BlendingMode:
 
     # pylint: disable=too-few-public-methods
 
-    def __init__(
-        self,
-        idx: int,
-        data_file: GuardedFile,
-        tile_count: int,
-        header: tuple
-    ):
+    def __init__(self, idx: int, data_file: BytesIO, tile_count: int, header: tuple):
         """
         initialize one blending mode,
         consisting of multiple frames for all blending directions
@@ -122,23 +113,21 @@ class BlendingMode:
         # each of these images gets 2353 bit as data.
         # TODO: why 32 images? isn't that depending on tile_count?
 
-        alpha_masks_raw = unpack_from(f"{self.pxcount * 4:d}B",
-                                      data_file.read(self.pxcount * 4))
+        alpha_masks_raw = unpack_from(f"{self.pxcount * 4:d}B", data_file.read(self.pxcount * 4))
 
         # list of alpha-mask tiles
         self.alphamasks = []
 
         # draw mask tiles for this blending mode
         for _ in range(tile_count):
-            pixels = unpack_from(f"{self.pxcount:d}B",
-                                 data_file.read(self.pxcount))
+            pixels = unpack_from(f"{self.pxcount:d}B", data_file.read(self.pxcount))
             self.alphamasks.append(self.get_tile_from_data(pixels))
 
         bitvalues = []
         for i in alpha_masks_raw:
             for b_id in range(7, -1, -1):
                 # bitmask from 0b00000001 to 0b10000000
-                bit_mask = 2 ** b_id
+                bit_mask = 2**b_id
                 bitvalues.append(i & bit_mask)
 
         # list of bit-mask tiles
@@ -146,11 +135,11 @@ class BlendingMode:
 
         # TODO: is 32 really hardcoded?
         for i in range(32):
-            pixels = bitvalues[i * self.pxcount:(i + 1) * self.pxcount]
+            pixels = bitvalues[i * self.pxcount : (i + 1) * self.pxcount]
 
             self.bitmasks.append(self.get_tile_from_data(pixels))
 
-    def get_tile_from_data(self, data: list[int]) -> BlendingTile:
+    def get_tile_from_data(self, data: list[int] | tuple[int, ...]) -> BlendingTile:
         """
         get the data pixels, interprete them in isometric tile format
 
@@ -179,8 +168,7 @@ class BlendingMode:
                 read_values = 1 + (4 * y_pos)
             else:
                 # lower half of tile
-                read_values = (((self.row_count * 2) - 1) -
-                               (4 * (y_pos - half_row_count)))
+                read_values = ((self.row_count * 2) - 1) - (4 * (y_pos - half_row_count))
 
             if read_values > (tile_size - read_so_far):
                 raise SyntaxError("reading more bytes than tile has left")
@@ -188,7 +176,7 @@ class BlendingMode:
                 raise SyntaxError(f"reading negative count: {read_values:d}")
 
             # grab the pixels out of the big list
-            pixels = list(data[read_so_far:(read_so_far + read_values)])
+            pixels = list(data[read_so_far : (read_so_far + read_values)])
 
             # how many empty pixels on the left before the real data begins
             space_count = self.row_count - 1 - (read_values // 2)
@@ -221,9 +209,9 @@ class Blendomatic(GenieStructure):
 
     name_struct = "blending_mode"
     name_struct_file = "blending_mode"
-    struct_description = ("describes one blending mode, "
-                          "a blending transition shape "
-                          "between two different terrain types.")
+    struct_description = (
+        "describes one blending mode, a blending transition shape between two different terrain types."
+    )
 
     # struct blendomatic_header {
     #   unsigned int nr_blending_modes;
@@ -231,7 +219,7 @@ class Blendomatic(GenieStructure):
     # };
     blendomatic_header = Struct("< I I")
 
-    def __init__(self, fileobj: GuardedFile, custom_mode_count: int = None):
+    def __init__(self, fileobj: BytesIO, custom_mode_count: int | None = None):
         super().__init__()
 
         buf = fileobj.read(Blendomatic.blendomatic_header.size)
@@ -239,14 +227,12 @@ class Blendomatic(GenieStructure):
 
         blending_mode_count, tile_count = self.header
 
-        dbg("%d blending modes, each %d tiles",
-            blending_mode_count, tile_count)
+        dbg("%d blending modes, each %d tiles", blending_mode_count, tile_count)
 
         if custom_mode_count:
             blending_mode_count = custom_mode_count
 
-            dbg("reading only the first %d blending modes",
-                custom_mode_count)
+            dbg("reading only the first %d blending modes", custom_mode_count)
 
         blending_mode = Struct(f"< I {tile_count:d}B")
 
@@ -260,8 +246,6 @@ class Blendomatic(GenieStructure):
 
             self.blending_modes.append(new_mode)
 
-        fileobj.close()
-
     def get_textures(self) -> list[Texture]:
         """
         generate a list of textures.
@@ -270,19 +254,15 @@ class Blendomatic(GenieStructure):
         each atlas contains all blending masks merged on one texture
         """
         from ....entity_object.export.texture import Texture
+
         return [Texture(b_mode) for b_mode in self.blending_modes]
 
     @classmethod
-    def get_data_format_members(
-        cls,
-        game_version: GameVersion
-    ) -> list[tuple[MemberAccess, str, StorageType, typing.Union[str, ReadMember]]]:
+    def get_data_format_members(cls, game_version: GameVersion) -> list[DataFormatMember]:
         """
         Return the members in this struct.
         """
-        data_format = (
-            (True, "blend_mode", None, "int32_t"),
-        )
+        data_format = [(READ, "blend_mode", None, "int32_t")]
 
         return data_format
 

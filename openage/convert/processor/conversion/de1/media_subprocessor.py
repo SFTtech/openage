@@ -5,19 +5,19 @@
 Convert media information to metadata definitions and export
 requests. Subroutine of the main DE1 processor.
 """
+
 from __future__ import annotations
+
 import typing
 
 from ....entity_object.export.formats.sprite_metadata import LayerMode
 from ....entity_object.export.media_export_request import MediaExportRequest
-from ....entity_object.export.metadata_export import SpriteMetadataExport
-from ....entity_object.export.metadata_export import TextureMetadataExport
+from ....entity_object.export.metadata_export import SpriteMetadataExport, TextureMetadataExport
 from ....value_object.read.media_types import MediaType
 from ..aoc.media_subprocessor import AoCMediaSubprocessor
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.aoc.genie_object_container\
-        import GenieObjectContainer
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
 
 
 class DE1MediaSubprocessor:
@@ -47,8 +47,7 @@ class DE1MediaSubprocessor:
 
             # Animation metadata file definiton
             sprite_meta_filename = f"{sprite.get_filename()}.sprite"
-            sprite_meta_export = SpriteMetadataExport(sprite.resolve_sprite_location(),
-                                                      sprite_meta_filename)
+            sprite_meta_export = SpriteMetadataExport(sprite.resolve_sprite_location(), sprite_meta_filename)
             full_data_set.metadata_exports.append(sprite_meta_export)
 
             for graphic in ref_graphics:
@@ -61,23 +60,21 @@ class DE1MediaSubprocessor:
                 # DE1 stores most graphics filenames as 'whatever_<x#>'
                 # where '<x#>' must be replaced by x1, x2 or x4
                 # which corresponds to the graphics resolution variant
-                source_str = graphic['filename'].value[:-4]
+                source_str = graphic["filename"].value[:-4]
 
                 # TODO: Also convert x2 and x4 variants
                 source_filename = f"{source_str}x1.slp"
-                target_filename = f"{sprite.get_filename()}_{str(graphic['slp_id'].value)}.png"
+                target_filename = f"{sprite.get_filename()}_{graphic['slp_id'].value!s}.png"
 
-                export_request = MediaExportRequest(MediaType.GRAPHICS,
-                                                    targetdir,
-                                                    source_filename,
-                                                    target_filename)
+                export_request = MediaExportRequest(
+                    MediaType.GRAPHICS, targetdir, source_filename, target_filename
+                )
                 full_data_set.graphics_exports.update({graphic_id: export_request})
 
                 # Texture metadata file definiton
                 # Same file stem as the image file and same targetdir
                 texture_meta_filename = f"{target_filename[:-4]}.texture"
-                texture_meta_export = TextureMetadataExport(targetdir,
-                                                            texture_meta_filename)
+                texture_meta_export = TextureMetadataExport(targetdir, texture_meta_filename)
                 full_data_set.metadata_exports.append(texture_meta_export)
 
                 # Add texture image filename to texture metadata
@@ -106,16 +103,18 @@ class DE1MediaSubprocessor:
                 frame_count = graphic["frame_count"].value
                 angle_count = graphic["angle_count"].value
                 # mirror_mode = graphic["mirroring_mode"].value
-                sprite_meta_export.add_graphics_metadata(target_filename,
-                                                         texture_meta_filename,
-                                                         layer_mode,
-                                                         layer_pos,
-                                                         frame_rate,
-                                                         replay_delay,
-                                                         frame_count,
-                                                         angle_count,
-                                                         mirror_mode=0,
-                                                         start_angle=270)
+                sprite_meta_export.add_graphics_metadata(
+                    target_filename,
+                    texture_meta_filename,
+                    layer_mode,
+                    layer_pos,
+                    frame_rate,
+                    replay_delay,
+                    frame_count,
+                    angle_count,
+                    mirror_mode=0,
+                    start_angle=270,
+                )
 
                 # Notify metadata export about SLP metadata when the file is exported
                 export_request.add_observer(texture_meta_export)

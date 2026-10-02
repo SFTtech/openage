@@ -3,25 +3,23 @@
 """
 Code for locating the game assets.
 """
+
 from __future__ import annotations
 
-
-import typing
 import os
+import typing
 from pathlib import Path
 
+from . import config, default_dirs
 from .util.fslike.directory import Directory
 from .util.fslike.union import Union
 from .util.fslike.wrapper import WriteBlocker
-
-from . import config
-from . import default_dirs
 
 if typing.TYPE_CHECKING:
     from openage.util.fslike.union import UnionPath
 
 
-def get_asset_path(custom_asset_dir: str = None) -> UnionPath:
+def get_asset_path(custom_asset_dir: str | None = None) -> UnionPath:
     """
     Returns a Path object for the game assets.
 
@@ -52,12 +50,7 @@ def get_asset_path(custom_asset_dir: str = None) -> UnionPath:
     # and platform standards
     # we always create this!
     home_data = default_dirs.get_dir("data_home") / "openage"
-    result.mount(
-        Directory(
-            home_data,
-            create_if_missing=True
-        ).root / "assets"
-    )
+    result.mount(Directory(home_data, create_if_missing=True).root / "assets")
 
     # the program argument overrides it all
     if custom_asset_dir:
@@ -70,11 +63,12 @@ def test():
     """
     Tests whether a specific asset exists.
     """
-    from .testing.testing import assert_value
     import argparse
+
+    from .testing.testing import assert_value
 
     fakecli = argparse.ArgumentParser()
     fakecli.add_argument("--asset-dir", default=None)
     args = fakecli.parse_args([])
 
-    assert_value(get_asset_path(args.asset_dir)['test']['textures']['missing.png'].filesize, 580)
+    assert_value(get_asset_path(args.asset_dir)["test"]["textures"]["missing.png"].filesize, 580)

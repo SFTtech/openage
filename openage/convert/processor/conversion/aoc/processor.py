@@ -5,43 +5,55 @@
 """
 Convert data from AoC to openage formats.
 """
+
 from __future__ import annotations
+
 import typing
 
-
 from .....log import info
-from ....entity_object.conversion.aoc.genie_civ import GenieCivilizationGroup
-from ....entity_object.conversion.aoc.genie_civ import GenieCivilizationObject
-from ....entity_object.conversion.aoc.genie_connection import GenieAgeConnection, \
-    GenieBuildingConnection, GenieUnitConnection, GenieTechConnection
-from ....entity_object.conversion.aoc.genie_effect import GenieEffectObject, \
-    GenieEffectBundle
+from ....entity_object.conversion.aoc.genie_civ import GenieCivilizationGroup, GenieCivilizationObject
+from ....entity_object.conversion.aoc.genie_connection import (
+    GenieAgeConnection,
+    GenieBuildingConnection,
+    GenieTechConnection,
+    GenieUnitConnection,
+)
+from ....entity_object.conversion.aoc.genie_effect import GenieEffectBundle, GenieEffectObject
 from ....entity_object.conversion.aoc.genie_graphic import GenieGraphic
 from ....entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
 from ....entity_object.conversion.aoc.genie_sound import GenieSound
-from ....entity_object.conversion.aoc.genie_tech import AgeUpgrade, \
-    UnitUnlock, UnitLineUpgrade, CivBonus
-from ....entity_object.conversion.aoc.genie_tech import BuildingLineUpgrade
-from ....entity_object.conversion.aoc.genie_tech import GenieTechObject
-from ....entity_object.conversion.aoc.genie_tech import StatUpgrade, InitiatedTech, \
-    BuildingUnlock
-from ....entity_object.conversion.aoc.genie_terrain import GenieTerrainGroup, \
-    GenieTerrainObject, GenieTerrainRestriction
-from ....entity_object.conversion.aoc.genie_unit import GenieAmbientGroup, \
-    GenieGarrisonMode
-from ....entity_object.conversion.aoc.genie_unit import GenieStackBuildingGroup, \
-    GenieBuildingLineGroup
-from ....entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup, \
-    GenieUnitTransformGroup, GenieMonkGroup
-from ....entity_object.conversion.aoc.genie_unit import GenieUnitObject
-from ....entity_object.conversion.aoc.genie_unit import GenieUnitTaskGroup, \
-    GenieVillagerGroup
-from ....entity_object.conversion.aoc.genie_unit import GenieVariantGroup
-from ....service.debug_info import debug_converter_objects, \
-    debug_converter_object_groups
+from ....entity_object.conversion.aoc.genie_tech import (
+    AgeUpgrade,
+    BuildingLineUpgrade,
+    BuildingUnlock,
+    CivBonus,
+    GenieTechObject,
+    InitiatedTech,
+    StatUpgrade,
+    UnitLineUpgrade,
+    UnitUnlock,
+)
+from ....entity_object.conversion.aoc.genie_terrain import (
+    GenieTerrainGroup,
+    GenieTerrainObject,
+    GenieTerrainRestriction,
+)
+from ....entity_object.conversion.aoc.genie_unit import (
+    GenieAmbientGroup,
+    GenieBuildingLineGroup,
+    GenieGarrisonMode,
+    GenieMonkGroup,
+    GenieStackBuildingGroup,
+    GenieUnitLineGroup,
+    GenieUnitObject,
+    GenieUnitTaskGroup,
+    GenieUnitTransformGroup,
+    GenieVariantGroup,
+    GenieVillagerGroup,
+)
+from ....service.debug_info import debug_converter_object_groups, debug_converter_objects
 from ....service.read.nyan_api_loader import load_api
-from ....value_object.conversion.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS, \
-    VARIANT_GROUP_LOOKUPS
+from ....value_object.conversion.aoc.internal_nyan_names import AMBIENT_GROUP_LOOKUPS, VARIANT_GROUP_LOOKUPS
 from .media_subprocessor import AoCMediaSubprocessor
 from .modpack_subprocessor import AoCModpackSubprocessor
 from .nyan_subprocessor import AoCNyanSubprocessor
@@ -49,10 +61,11 @@ from .pregen_processor import AoCPregenSubprocessor
 
 if typing.TYPE_CHECKING:
     from argparse import Namespace
-    from openage.convert.entity_object.conversion.stringresource import StringResource
+
     from openage.convert.entity_object.conversion.modpack import Modpack
-    from openage.convert.value_object.read.value_members import ArrayMember
+    from openage.convert.entity_object.conversion.stringresource import StringResource
     from openage.convert.value_object.init.game_version import GameVersion
+    from openage.convert.value_object.read.value_members import ArrayMember
 
 
 class AoCProcessor:
@@ -66,7 +79,7 @@ class AoCProcessor:
         gamespec: ArrayMember,
         args: Namespace,
         string_resources: StringResource,
-        existing_graphics: list[str]
+        existing_graphics: set[str],
     ) -> list[Modpack]:
         """
         Input game speification and media here and get a set of
@@ -82,12 +95,7 @@ class AoCProcessor:
         info("Starting conversion...")
 
         # Create a new container for the conversion process
-        dataset = cls._pre_processor(
-            gamespec,
-            args.game_version,
-            string_resources,
-            existing_graphics
-        )
+        dataset = cls._pre_processor(gamespec, args.game_version, string_resources, existing_graphics)
         debug_converter_objects(args.debugdir, args.debug_info, dataset)
 
         # Create the custom openae formats (nyan, sprite, terrain)
@@ -105,7 +113,7 @@ class AoCProcessor:
         gamespec: ArrayMember,
         game_version: GameVersion,
         string_resources: StringResource,
-        existing_graphics: list[str]
+        existing_graphics: set[str],
     ) -> GenieObjectContainer:
         """
         Store data from the reader in a conversion container.
@@ -113,11 +121,8 @@ class AoCProcessor:
         :param gamespec: Gamedata from empires.dat file.
         :type gamespec: ...dataformat.value_members.ArrayMember
         """
-        dataset = GenieObjectContainer()
+        dataset = GenieObjectContainer(game_version, load_api(), string_resources)
 
-        dataset.game_version = game_version
-        dataset.nyan_api_objects = load_api()
-        dataset.strings = string_resources
         dataset.existing_graphics = existing_graphics
 
         info("Extracting Genie data...")
@@ -263,10 +268,7 @@ class AoCProcessor:
             index += 1
 
     @staticmethod
-    def extract_genie_effect_bundles(
-        gamespec: ArrayMember,
-        full_data_set: GenieObjectContainer
-    ) -> None:
+    def extract_genie_effect_bundles(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
         """
         Extract effects and effect bundles from the game data.
 
@@ -290,8 +292,7 @@ class AoCProcessor:
                 effect_id = index_effect
                 effect_members = raw_effect.value
 
-                effect = GenieEffectObject(effect_id, bundle_id, full_data_set,
-                                           members=effect_members)
+                effect = GenieEffectObject(effect_id, bundle_id, full_data_set, members=effect_members)
 
                 effects.update({effect_id: effect})
 
@@ -302,17 +303,13 @@ class AoCProcessor:
             # Remove effects we store them as separate objects
             effect_bundle_members.pop("effects")
 
-            bundle = GenieEffectBundle(bundle_id, effects, full_data_set,
-                                       members=effect_bundle_members)
+            bundle = GenieEffectBundle(bundle_id, effects, full_data_set, members=effect_bundle_members)
             full_data_set.genie_effect_bundles.update({bundle.get_id(): bundle})
 
             index_bundle += 1
 
     @staticmethod
-    def extract_genie_civs(
-        gamespec: ArrayMember,
-        full_data_set: GenieObjectContainer
-    ) -> None:
+    def extract_genie_civs(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
         """
         Extract civs from the game data.
 
@@ -356,10 +353,7 @@ class AoCProcessor:
             full_data_set.age_connections.update({connection.get_id(): connection})
 
     @staticmethod
-    def extract_building_connections(
-        gamespec: ArrayMember,
-        full_data_set: GenieObjectContainer
-    ) -> None:
+    def extract_building_connections(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
         """
         Extract building connections from the game data.
 
@@ -373,15 +367,11 @@ class AoCProcessor:
             building_id = raw_connection["id"].value
             connection_members = raw_connection.value
 
-            connection = GenieBuildingConnection(building_id, full_data_set,
-                                                 members=connection_members)
+            connection = GenieBuildingConnection(building_id, full_data_set, members=connection_members)
             full_data_set.building_connections.update({connection.get_id(): connection})
 
     @staticmethod
-    def extract_unit_connections(
-        gamespec: ArrayMember,
-        full_data_set: GenieObjectContainer
-    ) -> None:
+    def extract_unit_connections(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
         """
         Extract unit connections from the game data.
 
@@ -399,10 +389,7 @@ class AoCProcessor:
             full_data_set.unit_connections.update({connection.get_id(): connection})
 
     @staticmethod
-    def extract_tech_connections(
-        gamespec: ArrayMember,
-        full_data_set: GenieObjectContainer
-    ) -> None:
+    def extract_tech_connections(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
         """
         Extract tech connections from the game data.
 
@@ -487,10 +474,7 @@ class AoCProcessor:
             full_data_set.genie_terrains.update({terrain.get_id(): terrain})
 
     @staticmethod
-    def extract_genie_restrictions(
-        gamespec: ArrayMember,
-        full_data_set: GenieObjectContainer
-    ) -> None:
+    def extract_genie_restrictions(gamespec: ArrayMember, full_data_set: GenieObjectContainer) -> None:
         """
         Extract terrain restrictions from the game data.
 
@@ -504,9 +488,9 @@ class AoCProcessor:
             restriction_index = index
             restriction_members = raw_restriction.value
 
-            restriction = GenieTerrainRestriction(restriction_index,
-                                                  full_data_set,
-                                                  members=restriction_members)
+            restriction = GenieTerrainRestriction(
+                restriction_index, full_data_set, members=restriction_members
+            )
             full_data_set.genie_terrain_restrictions.update({restriction.get_id(): restriction})
 
     @staticmethod
@@ -532,8 +516,7 @@ class AoCProcessor:
                 continue
 
             # Check for special cases first
-            if unit.has_member("transform_unit_id")\
-                    and unit["transform_unit_id"].value > -1:
+            if unit.has_member("transform_unit_id") and unit["transform_unit_id"].value > -1:
                 # Trebuchet
                 unit_line = GenieUnitTransformGroup(unit_id, unit_id, full_data_set)
                 full_data_set.transform_groups.update({unit_line.get_id(): unit_line})
@@ -544,8 +527,7 @@ class AoCProcessor:
                 unit_line = GenieMonkGroup(unit_id, unit_id, 286, full_data_set)
                 full_data_set.monk_groups.update({unit_line.get_id(): unit_line})
 
-            elif unit.has_member("task_group")\
-                    and unit["task_group"].value in (1, 2):
+            elif unit.has_member("task_group") and unit["task_group"].value in (1, 2):
                 # Villager (male and female task groups)
                 # done somewhere else because they are special^TM
                 continue
@@ -578,8 +560,10 @@ class AoCProcessor:
                     break
 
             else:
-                raise RuntimeError(f"Unit {unit_id} is not first in line, but no previous "
-                                   "unit can be found in other_connections")
+                raise RuntimeError(
+                    f"Unit {unit_id} is not first in line, but no previous "
+                    "unit can be found in other_connections"
+                )
 
             connected_ids = connection["other_connected_ids"].value
             previous_unit_id = connected_ids[connected_index].value
@@ -653,12 +637,10 @@ class AoCProcessor:
             line_id = building_id
 
             # Check if we have to create a GenieStackBuildingGroup
-            if building.has_member("stack_unit_id") and \
-                    building["stack_unit_id"].value > -1:
+            if building.has_member("stack_unit_id") and building["stack_unit_id"].value > -1:
                 stack_building = True
 
-            if building.has_member("head_unit_id") and \
-                    building["head_unit_id"].value > -1:
+            if building.has_member("head_unit_id") and building["head_unit_id"].value > -1:
                 # we don't care about head units because we process
                 # them with their stack unit
                 continue
@@ -711,8 +693,10 @@ class AoCProcessor:
                         break
 
                 else:
-                    raise RuntimeError(f"Building {building_id} is not first in line, but no "
-                                       "previous building could be found in other_connections")
+                    raise RuntimeError(
+                        f"Building {building_id} is not first in line, but no "
+                        "previous building could be found in other_connections"
+                    )
 
                 previous_building_id = connected_ids[connected_index].value
                 break
@@ -828,12 +812,8 @@ class AoCProcessor:
                     unlock_id = unlock["attr_a"].value
 
                     building_unlock = BuildingUnlock(tech_id, unlock_id, full_data_set)
-                    full_data_set.tech_groups.update(
-                        {building_unlock.get_id(): building_unlock}
-                    )
-                    full_data_set.building_unlocks.update(
-                        {building_unlock.get_id(): building_unlock}
-                    )
+                    full_data_set.tech_groups.update({building_unlock.get_id(): building_unlock})
+                    full_data_set.building_unlocks.update({building_unlock.get_id(): building_unlock})
                     continue
 
                 if len(upgrade_effects) > 0:
@@ -841,18 +821,9 @@ class AoCProcessor:
                     line_id = upgrade["attr_a"].value
                     upgrade_id = upgrade["attr_b"].value
 
-                    building_upgrade = BuildingLineUpgrade(
-                        tech_id,
-                        line_id,
-                        upgrade_id,
-                        full_data_set
-                    )
-                    full_data_set.tech_groups.update(
-                        {building_upgrade.get_id(): building_upgrade}
-                    )
-                    full_data_set.building_upgrades.update(
-                        {building_upgrade.get_id(): building_upgrade}
-                    )
+                    building_upgrade = BuildingLineUpgrade(tech_id, line_id, upgrade_id, full_data_set)
+                    full_data_set.tech_groups.update({building_upgrade.get_id(): building_upgrade})
+                    full_data_set.building_upgrades.update({building_upgrade.get_id(): building_upgrade})
                     continue
 
             # Create a stat upgrade for other techs
@@ -888,8 +859,7 @@ class AoCProcessor:
 
             elif line_mode == 3:
                 # Units further down the line receive line upgrades
-                unit_upgrade = UnitLineUpgrade(required_research_id, line_id,
-                                               unit_id, full_data_set)
+                unit_upgrade = UnitLineUpgrade(required_research_id, line_id, unit_id, full_data_set)
                 full_data_set.tech_groups.update({unit_upgrade.get_id(): unit_upgrade})
                 full_data_set.unit_upgrades.update({unit_upgrade.get_id(): unit_upgrade})
 
@@ -1010,7 +980,7 @@ class AoCProcessor:
             unit_ids.add(unit["id0"].value)
 
         # Create the villager task group
-        villager = GenieVillagerGroup(118, task_group_ids, full_data_set)
+        villager = GenieVillagerGroup(118, sorted(task_group_ids), full_data_set)
         full_data_set.unit_lines.update({villager.get_id(): villager})
         full_data_set.villager_groups.update({villager.get_id(): villager})
         for unit_id in unit_ids:
@@ -1095,6 +1065,8 @@ class AoCProcessor:
 
         # Order of age ups should be correct
         for age_up in age_ups.values():
+            assert age_up.effects is not None
+
             for effect in age_up.effects.get_effects():
                 type_id = effect.get_type()
 
@@ -1130,6 +1102,7 @@ class AoCProcessor:
         for unit_line in unit_lines.values():
             if unit_line.is_creatable():
                 train_location_id = unit_line.get_train_location_id()
+                assert train_location_id is not None
                 full_data_set.building_lines[train_location_id].add_creatable(unit_line)
 
         # Link buildings to villagers and fishing ships
@@ -1138,6 +1111,7 @@ class AoCProcessor:
         for building_line in building_lines.values():
             if building_line.is_creatable():
                 train_location_id = building_line.get_train_location_id()
+                assert train_location_id is not None
 
                 if train_location_id in full_data_set.villager_groups.keys():
                     full_data_set.villager_groups[train_location_id].add_creatable(building_line)
@@ -1162,6 +1136,7 @@ class AoCProcessor:
         for tech in tech_groups.values():
             if tech.is_researchable():
                 research_location_id = tech.get_research_location_id()
+                assert research_location_id is not None
                 full_data_set.building_lines[research_location_id].add_researchable(tech)
 
     @staticmethod
@@ -1176,6 +1151,7 @@ class AoCProcessor:
         """
         for bonus in full_data_set.civ_boni.values():
             civ_id = bonus.get_civilization()
+            assert civ_id is not None
             full_data_set.civ_groups[civ_id].add_civ_bonus(bonus)
 
         for unit_line in full_data_set.unit_lines.values():
@@ -1201,6 +1177,7 @@ class AoCProcessor:
         for tech_group in full_data_set.tech_groups.values():
             if tech_group.is_unique() and tech_group.is_researchable():
                 civ_id = tech_group.get_civilization()
+                assert civ_id is not None
                 full_data_set.civ_groups[civ_id].add_unique_tech(tech_group)
 
     @staticmethod
@@ -1318,8 +1295,7 @@ class AoCProcessor:
                         continue
 
                 # Transports/ unit garrisons (no conditions)
-                elif garrison_mode in (GenieGarrisonMode.TRANSPORT,
-                                       GenieGarrisonMode.UNIT_GARRISON):
+                elif garrison_mode in (GenieGarrisonMode.TRANSPORT, GenieGarrisonMode.UNIT_GARRISON):
                     if garrison_line.get_class_id() in garrison_classes:
                         unit_line.garrison_locations.append(garrison_line)
                         garrison_line.garrison_entities.append(unit_line)

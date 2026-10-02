@@ -62,10 +62,10 @@
  * Will be parsed by Doxygen.
  */
 struct another_stupid_type {
-	rofl_t blergh_gnampf;  //!< variables and functions in lowercase
-	                       //   with _ as word separator.
-	epictype42_t løl;      //!< no question, we use UTF-8 encoding.
-	ub0rtype røfëlkøptør;  //!< proper documentation is Doxygen parsable.
+	//! variables and functions in lowercase with _ as word separator
+	rofl_t blergh_gnampf;
+	//! no question, we use UTF-8 encoding.
+	epictype42_t løl;
 };
 
 
@@ -83,7 +83,6 @@ public:
 
 		// ^ you can insert a empty line here to make it more readable.
 
-		// http://www.abstrusegoose.com/440
 		auto gaben = team.get_human("gaben");
 		auto min_quality = gaben.get_quality_requirement(Engine::type);
 

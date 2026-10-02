@@ -3,12 +3,11 @@
 """
 Module for reading plaintext-based language files.
 """
-from __future__ import annotations
-import typing
 
+from __future__ import annotations
 
 import re
-
+import typing
 
 from ....log import dbg
 from ...entity_object.conversion.stringresource import StringResource
@@ -19,13 +18,12 @@ from ...value_object.read.media_types import MediaType
 if typing.TYPE_CHECKING:
     from argparse import Namespace
 
-    from openage.util.fslike.directory import Directory
+    from openage.util.filelike.abstract import FileLikeObject
     from openage.util.fslike.path import Path
-    from openage.util.fslike.wrapper import GuardedFile
 
 
 def get_string_resources(args: Namespace) -> StringResource:
-    """ reads the (language) string resources """
+    """reads the (language) string resources"""
 
     stringres = StringResource()
 
@@ -37,7 +35,7 @@ def get_string_resources(args: Namespace) -> StringResource:
     for language_file in language_files:
         if game_edition.game_id in ("ROR", "AOC", "SWGB"):
             # AoC/RoR use .DLL PE files for their string resources
-            pefile = PEFile(srcdir[language_file].open('rb'))
+            pefile = PEFile(srcdir[language_file].open("rb"))
             stringres.fill_from(pefile.resources().strings)
 
         elif game_edition.game_id == "HDEDITION":
@@ -53,8 +51,7 @@ def get_string_resources(args: Namespace) -> StringResource:
             stringres.fill_from(strings)
 
         else:
-            raise KeyError("No service found for parsing language files "
-                           f"of version {game_edition.game_id}")
+            raise KeyError(f"No service found for parsing language files of version {game_edition.game_id}")
 
         # TODO: Other game versions
 
@@ -78,18 +75,16 @@ def read_age2_hd_fe_stringresources(stringres: StringResource, path: Path) -> in
     # multiple string files in the program source dir
     for lang in path.list():
         try:
-            if lang == b'_common':
+            if lang == b"_common":
                 continue
-            if lang == b'_packages':
+            if lang == b"_packages":
                 continue
-            if lang.lower() == b'.ds_store'.lower():
+            if lang.lower() == b".ds_store".lower():
                 continue
 
-            langfilename = [lang.decode(),
-                            "strings", "key-value",
-                            "key-value-strings-utf8.txt"]
+            langfilename = [lang.decode(), "strings", "key-value", "key-value-strings-utf8.txt"]
 
-            with path[langfilename].open('rb') as langfile:
+            with path[langfilename].open("rb") as langfile:
                 stringres.fill_from(read_hd_language_file_old(langfile, lang))
 
             count += 1
@@ -101,7 +96,7 @@ def read_age2_hd_fe_stringresources(stringres: StringResource, path: Path) -> in
     return count
 
 
-def read_age2_hd_3x_stringresources(stringres: StringResource, srcdir: Directory) -> int:
+def read_age2_hd_3x_stringresources(stringres: StringResource, srcdir: Path) -> int:
     """
     HD Edition 3.x and below store language .txt files
     in the Bin/ folder.
@@ -126,42 +121,35 @@ def read_age2_hd_3x_stringresources(stringres: StringResource, srcdir: Directory
         # so first check explicitly
 
         if lang_path["language.dll"].is_file():
-            for name in ["language.dll",
-                         "language_x1.dll",
-                         "language_x1_p1.dll"]:
-
-                pefile = PEFile(lang_path[name].open('rb'))
+            for name in ["language.dll", "language_x1.dll", "language_x1_p1.dll"]:
+                pefile = PEFile(lang_path[name].open("rb"))
                 stringres.fill_from(pefile.resources().strings)
                 count += 1
 
         else:
             for basename in lang_path.list():
-                with lang_path[basename].open('rb') as langfile:
+                with lang_path[basename].open("rb") as langfile:
                     # No utf-8 :(
-                    stringres.fill_from(
-                        read_hd_language_file_old(
-                            langfile, lang, enc='iso-8859-1'))
+                    stringres.fill_from(read_hd_language_file_old(langfile, lang, enc="iso-8859-1"))
                 count += 1
 
     return count
 
 
 def read_hd_language_file_old(
-    fileobj: GuardedFile,
-    langcode: str,
-    enc: str = 'utf-8'
-) -> dict[str, StringResource]:
+    fileobj: typing.IO[bytes] | FileLikeObject, langcode: str, enc: str = "utf-8"
+) -> dict[str, dict[str | int, str]]:
     """
     Takes a file object, and the file's language code.
     """
     dbg("parse HD Language file %s", langcode)
     strings = {}
 
-    for line in fileobj.read().decode(enc).split('\n'):
+    for line in fileobj.read().decode(enc).split("\n"):
         line = line.strip()
 
         # skip comments & empty lines
-        if not line or line.startswith('//'):
+        if not line or line.startswith("//"):
             continue
 
         string_id, string = line.split(None, 1)
@@ -179,10 +167,8 @@ def read_hd_language_file_old(
 
 
 def read_hd_language_file(
-    srcdir: Directory,
-    language_file: GuardedFile,
-    enc: str = 'utf-8'
-) -> dict[str, StringResource]:
+    srcdir: Path, language_file: str, enc: str = "utf-8"
+) -> dict[str, dict[str | int, str]]:
     """
     HD Edition stores language .txt files in the resources/ folder.
     Specific language strings are in resources/$LANG/strings/key-value/*.txt.
@@ -195,13 +181,13 @@ def read_hd_language_file(
     dbg("parse HD Language file %s", langcode)
     strings = {}
 
-    fileobj = srcdir[language_file].open('rb')
+    fileobj = srcdir[language_file].open("rb")
 
-    for line in fileobj.read().decode(enc).split('\n'):
+    for line in fileobj.read().decode(enc).split("\n"):
         line = line.strip()
 
         # skip comments & empty lines
-        if not line or line.startswith('//'):
+        if not line or line.startswith("//"):
             continue
 
         string_id, string = line.split(None, 1)
@@ -218,10 +204,7 @@ def read_hd_language_file(
     return {lang: strings}
 
 
-def read_de1_language_file(
-    srcdir: Directory,
-    language_file: GuardedFile
-) -> dict[str, StringResource]:
+def read_de1_language_file(srcdir: Path, language_file: str) -> dict[str, dict[str | int, str]]:
     """
     Definitve Edition stores language .txt files in the Localization folder.
     Specific language strings are in Data/Localization/$LANG/strings.txt.
@@ -234,13 +217,13 @@ def read_de1_language_file(
     dbg("parse DE1 Language file %s", langcode)
     strings = {}
 
-    fileobj = srcdir[language_file].open('rb')
+    fileobj = srcdir[language_file].open("rb")
 
-    for line in fileobj.read().decode('utf-8').split('\n'):
+    for line in fileobj.read().decode("utf-8").split("\n"):
         line = line.strip()
 
         # skip comments & empty lines
-        if not line or line.startswith('//'):
+        if not line or line.startswith("//"):
             continue
 
         # Brilliant idea to split by command AND space!!
@@ -258,10 +241,7 @@ def read_de1_language_file(
     return {lang: strings}
 
 
-def read_de2_language_file(
-    srcdir: Directory,
-    language_file: GuardedFile
-) -> dict[str, StringResource]:
+def read_de2_language_file(srcdir: Path, language_file: str) -> dict[str, dict[str | int, str]]:
     """
     Definitve Edition stores language .txt files in the resources/ folder.
     Specific language strings are in resources/$LANG/strings/key-value/*.txt.
@@ -274,13 +254,13 @@ def read_de2_language_file(
     dbg("parse DE2 Language file %s", langcode)
     strings = {}
 
-    fileobj = srcdir[language_file].open('rb')
+    fileobj = srcdir[language_file].open("rb")
 
-    for line in fileobj.read().decode('utf-8').split('\n'):
+    for line in fileobj.read().decode("utf-8").split("\n"):
         line = line.strip()
 
         # skip comments & empty lines
-        if not line or line.startswith('//'):
+        if not line or line.startswith("//"):
             continue
 
         string_id, string = line.split(None, 1)

@@ -5,6 +5,7 @@ Contains structures and API-like objects for civilization from AoC.
 """
 
 from __future__ import annotations
+
 import typing
 
 from ..converter_object import ConverterObject, ConverterObjectGroup
@@ -12,25 +13,24 @@ from .genie_tech import CivTeamBonus, CivTechTree
 
 if typing.TYPE_CHECKING:
     from openage.convert.entity_object.conversion.aoc.genie_effect import GenieEffectObject
-    from openage.convert.entity_object.conversion.aoc.genie_object_container\
-        import GenieObjectContainer
-    from openage.convert.entity_object.conversion.aoc.genie_tech import CivBonus, GenieTechObject
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
+    from openage.convert.entity_object.conversion.aoc.genie_tech import (
+        CivBonus,
+        GenieTechEffectBundleGroup,
+    )
     from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup
     from openage.convert.value_object.read.value_members import ValueMember
 
 
-class GenieCivilizationObject(ConverterObject):
+class GenieCivilizationObject(ConverterObject[int]):
     """
     Civilization in AoE2.
     """
 
-    __slots__ = ('data',)
+    __slots__ = ("data",)
 
     def __init__(
-        self,
-        civ_id: int,
-        full_data_set: GenieObjectContainer,
-        members: dict[str, ValueMember] = None
+        self, civ_id: int, full_data_set: GenieObjectContainer, members: dict[str, ValueMember] | None = None
     ):
         """
         Creates a new Genie civilization object.
@@ -58,14 +58,17 @@ class GenieCivilizationGroup(ConverterObjectGroup):
     This will become a Civilization API object.
     """
 
-    __slots__ = ('data', 'civ', 'team_bonus', 'tech_tree', 'civ_boni',
-                 'unique_entities', 'unique_techs')
+    __slots__ = (
+        "civ",
+        "civ_boni",
+        "data",
+        "team_bonus",
+        "tech_tree",
+        "unique_entities",
+        "unique_techs",
+    )
 
-    def __init__(
-        self,
-        civ_id: int,
-        full_data_set: GenieObjectContainer
-    ):
+    def __init__(self, civ_id: int, full_data_set: GenieObjectContainer):
         """
         Creates a new Genie civ group line.
 
@@ -81,9 +84,9 @@ class GenieCivilizationGroup(ConverterObjectGroup):
         # Reference to everything else in the gamedata
         self.data = full_data_set
 
-        self.civ: dict[int, GenieCivilizationObject] = self.data.genie_civs[civ_id]
+        self.civ: GenieCivilizationObject = self.data.genie_civs[civ_id]
 
-        self.team_bonus: CivTeamBonus = None
+        self.team_bonus: CivTeamBonus | None = None
         if self.civ.has_member("team_bonus_id"):
             team_bonus_id = self.civ["team_bonus_id"].value
             if team_bonus_id == -1:
@@ -92,14 +95,12 @@ class GenieCivilizationGroup(ConverterObjectGroup):
             else:
                 # Create an object for the team bonus. We use the effect ID + 10000 to avoid
                 # conflicts with techs or effects
-                self.team_bonus = CivTeamBonus(10000 + team_bonus_id, civ_id,
-                                               team_bonus_id, full_data_set)
+                self.team_bonus = CivTeamBonus(10000 + team_bonus_id, civ_id, team_bonus_id, full_data_set)
 
         # Create an object for the tech tree bonus. We use the effect ID + 10000 to avoid
         # conflicts with techs or effects
-        tech_tree_id: int  = self.civ["tech_tree_id"].value
-        self.tech_tree = CivTechTree(10000 + tech_tree_id, civ_id,
-                                     tech_tree_id, full_data_set)
+        tech_tree_id: int = self.civ["tech_tree_id"].value
+        self.tech_tree = CivTechTree(10000 + tech_tree_id, civ_id, tech_tree_id, full_data_set)
 
         # Civ boni (without team bonus)
         self.civ_boni: dict[int, CivBonus] = {}
@@ -108,7 +109,7 @@ class GenieCivilizationGroup(ConverterObjectGroup):
         self.unique_entities: dict[int, GenieGameEntityGroup] = {}
 
         # Unique techs
-        self.unique_techs: dict[int, GenieTechObject] = {}
+        self.unique_techs: dict[int, GenieTechEffectBundleGroup] = {}
 
     def add_civ_bonus(self, civ_bonus: CivBonus):
         """
@@ -122,7 +123,7 @@ class GenieCivilizationGroup(ConverterObjectGroup):
         """
         self.unique_entities.update({entity_group.get_head_unit_id(): entity_group})
 
-    def add_unique_tech(self, tech_group: GenieTechObject):
+    def add_unique_tech(self, tech_group: GenieTechEffectBundleGroup):
         """
         Adds a unique tech to the civilization.
         """

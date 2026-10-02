@@ -70,21 +70,20 @@ def generate_testlist(projectdir):
     from ..testing.list_processor import list_targets_cpp
 
     for testname, _, _, _ in list_targets_cpp():
-        root_namespace.add_functionname(testname.split('::'))
+        root_namespace.add_functionname(testname.split("::"))
 
     func_prototypes = list(root_namespace.gen_prototypes())
 
     method_mappings = [
-        f"{{\"{functionname}\", ::{functionname}}}"
-        for functionname in root_namespace.get_functionnames()
+        f'{{"{functionname}", ::{functionname}}}' for functionname in root_namespace.get_functionnames()
     ]
 
     tmpl_path = projectdir.joinpath("libopenage/testing/testlist.cpp.template")
     with tmpl_path.open() as tmpl:
         content = tmpl.read()
 
-    content = content.replace('FUNCTION_PROTOTYPES', "".join(func_prototypes))
-    content = content.replace('METHOD_MAPPINGS', ",\n\t".join(method_mappings))
+    content = content.replace("FUNCTION_PROTOTYPES", "".join(func_prototypes))
+    content = content.replace("METHOD_MAPPINGS", ",\n\t".join(method_mappings))
 
     gen_path = projectdir.joinpath("libopenage/testing/testlist.gen.cpp")
     with gen_path.open("w") as gen:

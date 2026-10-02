@@ -7,28 +7,46 @@
 """
 Convert data from SWGB:CC to openage formats.
 """
+
 from __future__ import annotations
+
 import typing
 
-
 from openage.convert.entity_object.conversion.aoc.genie_tech import BuildingUnlock
+
 from .....log import info
 from ....entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
-from ....entity_object.conversion.aoc.genie_tech import BuildingLineUpgrade, \
-    AgeUpgrade, StatUpgrade, InitiatedTech, CivBonus
-from ....entity_object.conversion.aoc.genie_unit import GenieUnitTaskGroup, \
-    GenieVillagerGroup, GenieAmbientGroup, GenieVariantGroup, \
-    GenieBuildingLineGroup, GenieGarrisonMode
-from ....entity_object.conversion.swgbcc.genie_tech import SWGBUnitUnlock, \
-    SWGBUnitLineUpgrade
-from ....entity_object.conversion.swgbcc.genie_unit import SWGBUnitTransformGroup, \
-    SWGBMonkGroup, SWGBUnitLineGroup, SWGBStackBuildingGroup
-from ....service.debug_info import debug_converter_objects, \
-    debug_converter_object_groups
+from ....entity_object.conversion.aoc.genie_tech import (
+    AgeUpgrade,
+    BuildingLineUpgrade,
+    CivBonus,
+    InitiatedTech,
+    StatUpgrade,
+)
+from ....entity_object.conversion.aoc.genie_unit import (
+    GenieAmbientGroup,
+    GenieBuildingLineGroup,
+    GenieGarrisonMode,
+    GenieUnitTaskGroup,
+    GenieVariantGroup,
+    GenieVillagerGroup,
+)
+from ....entity_object.conversion.swgbcc.genie_tech import SWGBUnitLineUpgrade, SWGBUnitUnlock
+from ....entity_object.conversion.swgbcc.genie_unit import (
+    SWGBMonkGroup,
+    SWGBStackBuildingGroup,
+    SWGBUnitLineGroup,
+    SWGBUnitTransformGroup,
+)
+from ....service.debug_info import debug_converter_object_groups, debug_converter_objects
 from ....service.read.nyan_api_loader import load_api
-from ....value_object.conversion.swgb.internal_nyan_names import MONK_GROUP_ASSOCS, \
-    CIV_LINE_ASSOCS, AMBIENT_GROUP_LOOKUPS, VARIANT_GROUP_LOOKUPS, \
-    CIV_TECH_ASSOCS
+from ....value_object.conversion.swgb.internal_nyan_names import (
+    AMBIENT_GROUP_LOOKUPS,
+    CIV_LINE_ASSOCS,
+    CIV_TECH_ASSOCS,
+    MONK_GROUP_ASSOCS,
+    VARIANT_GROUP_LOOKUPS,
+)
 from ..aoc.media_subprocessor import AoCMediaSubprocessor
 from ..aoc.processor import AoCProcessor
 from .modpack_subprocessor import SWGBCCModpackSubprocessor
@@ -37,10 +55,11 @@ from .pregen_subprocessor import SWGBCCPregenSubprocessor
 
 if typing.TYPE_CHECKING:
     from argparse import Namespace
-    from openage.convert.entity_object.conversion.stringresource import StringResource
+
     from openage.convert.entity_object.conversion.modpack import Modpack
-    from openage.convert.value_object.read.value_members import ArrayMember
+    from openage.convert.entity_object.conversion.stringresource import StringResource
     from openage.convert.value_object.init.game_version import GameVersion
+    from openage.convert.value_object.read.value_members import ArrayMember
 
 
 class SWGBCCProcessor:
@@ -54,7 +73,7 @@ class SWGBCCProcessor:
         gamespec: ArrayMember,
         args: Namespace,
         string_resources: StringResource,
-        existing_graphics: list[str]
+        existing_graphics: set[str],
     ) -> list[Modpack]:
         """
         Input game specification and media here and get a set of
@@ -70,12 +89,7 @@ class SWGBCCProcessor:
         info("Starting conversion...")
 
         # Create a new container for the conversion process
-        dataset = cls._pre_processor(
-            gamespec,
-            args.game_version,
-            string_resources,
-            existing_graphics
-        )
+        dataset = cls._pre_processor(gamespec, args.game_version, string_resources, existing_graphics)
         debug_converter_objects(args.debugdir, args.debug_info, dataset)
 
         # Create the custom openae formats (nyan, sprite, terrain)
@@ -93,7 +107,7 @@ class SWGBCCProcessor:
         gamespec: ArrayMember,
         game_version: GameVersion,
         string_resources: StringResource,
-        existing_graphics: list[str]
+        existing_graphics: set[str],
     ) -> GenieObjectContainer:
         """
         Store data from the reader in a conversion container.
@@ -105,11 +119,8 @@ class SWGBCCProcessor:
                               process.
         :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         """
-        dataset = GenieObjectContainer()
+        dataset = GenieObjectContainer(game_version, load_api(), string_resources)
 
-        dataset.game_version = game_version
-        dataset.nyan_api_objects = load_api()
-        dataset.strings = string_resources
         dataset.existing_graphics = existing_graphics
 
         info("Extracting Genie data...")
@@ -217,8 +228,7 @@ class SWGBCCProcessor:
                 continue
 
             # Check for special cases first
-            if unit.has_member("transform_unit_id")\
-                    and unit["transform_unit_id"].value > -1:
+            if unit.has_member("transform_unit_id") and unit["transform_unit_id"].value > -1:
                 # Cannon
                 # SWGB stores the deployed cannon in the connections, but we
                 # want the undeployed cannon
@@ -232,8 +242,7 @@ class SWGBCCProcessor:
                 switch_unit_id = MONK_GROUP_ASSOCS[unit_id]
                 unit_line = SWGBMonkGroup(unit_id, unit_id, switch_unit_id, full_data_set)
 
-            elif unit.has_member("task_group")\
-                    and unit["task_group"].value > 0:
+            elif unit.has_member("task_group") and unit["task_group"].value > 0:
                 # Villager
                 # done somewhere else because they are special^TM
                 continue
@@ -266,8 +275,10 @@ class SWGBCCProcessor:
                     break
 
             else:
-                raise ValueError(f"Unit {unit_id} is not first in line, but no previous "
-                                 "unit can be found in other_connections")
+                raise ValueError(
+                    f"Unit {unit_id} is not first in line, but no previous "
+                    "unit can be found in other_connections"
+                )
 
             connected_ids = connection["other_connected_ids"].value
             previous_unit_id = connected_ids[connected_index].value
@@ -342,8 +353,7 @@ class SWGBCCProcessor:
         :type full_data_set: class: ...dataformat.aoc.genie_object_container.GenieObjectContainer
         """
         # Wildlife
-        extra_units = (48, 594, 822, 833, 1203, 1249, 1363, 1364,
-                       1365, 1366, 1367, 1469, 1471, 1473, 1475)
+        extra_units = (48, 594, 822, 833, 1203, 1249, 1363, 1364, 1365, 1366, 1367, 1469, 1471, 1473, 1475)
 
         for unit_id in extra_units:
             unit_line = SWGBUnitLineGroup(unit_id, full_data_set)
@@ -401,23 +411,20 @@ class SWGBCCProcessor:
                     if not age_up:
                         # Add an unlock tech group to the data set
                         building_unlock = BuildingUnlock(tech_id, unit_id_a, full_data_set)
-                        full_data_set.building_unlocks.update(
-                            {building_unlock.get_id(): building_unlock})
+                        full_data_set.building_unlocks.update({building_unlock.get_id(): building_unlock})
 
                 elif effect_type == 2 and unit_id_a in full_data_set.genie_units.keys():
                     # Check if this is a stacked unit (gate or command center)
                     # for these units, we needs the stack_unit_id
                     building = full_data_set.genie_units[unit_id_a]
 
-                    if building.has_member("stack_unit_id") and \
-                            building["stack_unit_id"].value > -1:
+                    if building.has_member("stack_unit_id") and building["stack_unit_id"].value > -1:
                         unit_id_a = building["stack_unit_id"].value
                         unlocked_by_tech.add(unit_id_a)
 
                         if not age_up:
                             building_unlock = BuildingUnlock(tech_id, unit_id_a, full_data_set)
-                            full_data_set.building_unlocks.update(
-                                {building_unlock.get_id(): building_unlock})
+                            full_data_set.building_unlocks.update({building_unlock.get_id(): building_unlock})
 
                 if effect_type == 3 and unit_id_b in building_connections.keys():
                     # Upgrades
@@ -433,14 +440,12 @@ class SWGBCCProcessor:
             building = full_data_set.genie_units[building_id]
 
             # Check if we have to create a GenieStackBuildingGroup
-            if building.has_member("stack_unit_id") and \
-                    building["stack_unit_id"].value > -1:
+            if building.has_member("stack_unit_id") and building["stack_unit_id"].value > -1:
                 # we don't care about head units because we process
                 # them with their stack unit
                 continue
 
-            if building.has_member("head_unit_id") and \
-                    building["head_unit_id"].value > -1:
+            if building.has_member("head_unit_id") and building["head_unit_id"].value > -1:
                 head_unit_id = building["head_unit_id"].value
                 building_line = SWGBStackBuildingGroup(building_id, head_unit_id, full_data_set)
 
@@ -470,8 +475,10 @@ class SWGBCCProcessor:
                     break
 
             else:
-                raise ValueError(f"Building {building_id} is not first in line, but no previous "
-                                 "building can be found in other_connections")
+                raise ValueError(
+                    f"Building {building_id} is not first in line, but no previous "
+                    "building can be found in other_connections"
+                )
 
             connected_ids = connection["other_connected_ids"].value
             previous_unit_id = connected_ids[connected_index].value
@@ -503,10 +510,7 @@ class SWGBCCProcessor:
 
             # Also add the building upgrade tech here
             building_upgrade = BuildingLineUpgrade(
-                upgraded_by_tech[building_id],
-                building_line.get_id(),
-                building_id,
-                full_data_set
+                upgraded_by_tech[building_id], building_line.get_id(), building_id, full_data_set
             )
             full_data_set.tech_groups.update({building_upgrade.get_id(): building_upgrade})
             full_data_set.building_upgrades.update({building_upgrade.get_id(): building_upgrade})
@@ -563,7 +567,7 @@ class SWGBCCProcessor:
             unit_ids.add(unit["id0"].value)
 
         # Create the villager task group
-        villager = GenieVillagerGroup(118, task_group_ids, full_data_set)
+        villager = GenieVillagerGroup(118, sorted(task_group_ids), full_data_set)
         full_data_set.unit_lines.update({villager.get_id(): villager})
         # TODO: Find the line id elsewhere
         full_data_set.unit_lines_vertical_ref.update({36: villager})
@@ -680,8 +684,7 @@ class SWGBCCProcessor:
 
             elif line_mode == 3:
                 # Units further down the line receive line upgrades
-                unit_upgrade = SWGBUnitLineUpgrade(required_research_id, line_id,
-                                                   unit_id, full_data_set)
+                unit_upgrade = SWGBUnitLineUpgrade(required_research_id, line_id, unit_id, full_data_set)
                 unit_upgrades.update({required_research_id: unit_upgrade})
 
         # Unit unlocks for civ lines
@@ -855,8 +858,7 @@ class SWGBCCProcessor:
                     if creatable_type == 6 and not garrison_type & 0x08:
                         continue
 
-                    if (creatable_type == 0 and unit_line.get_class_id() == 1) and not\
-                            garrison_type & 0x10:
+                    if (creatable_type == 0 and unit_line.get_class_id() == 1) and not garrison_type & 0x10:
                         # Bantha/Nerf
                         continue
 
@@ -871,8 +873,7 @@ class SWGBCCProcessor:
                         continue
 
                 # Transports/ unit garrisons (no conditions)
-                elif garrison_mode in (GenieGarrisonMode.TRANSPORT,
-                                       GenieGarrisonMode.UNIT_GARRISON):
+                elif garrison_mode in (GenieGarrisonMode.TRANSPORT, GenieGarrisonMode.UNIT_GARRISON):
                     if garrison_line.get_class_id() in garrison_classes:
                         unit_line.garrison_locations.append(garrison_line)
                         garrison_line.garrison_entities.append(unit_line)

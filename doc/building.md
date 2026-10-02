@@ -28,14 +28,14 @@ Dependencies are needed for:
 Dependency list:
 
     C     gcc >=10 or clang >=10
-    CRA   python >=3.9
-    C     cython >=3.0.10 OR (>=0.29.31 AND <=3.0.7)
+    CRA   python >=3.12
+    C     cython >=3.1
+    C     setuptools
     C     cmake >=3.16
       A   numpy
       A   lz4
       A   python imaging library (PIL) -> pillow
-     RA   setuptools (for python>=3.12 and cython<3.1)
-      A   toml
+      A   tomli_w
     CR    opengl >=3.3
     CR    libepoxy
     CR    libpng
@@ -52,9 +52,9 @@ Dependency list:
     CR    opusfile
     CRA   opus
     CRA   ogg
-       S  pycodestyle
+       S  ruff
     C     pygments
-       S  pylint
+       S  ty
     CR    qt6 >=6.2 (Core, Quick, QuickControls, Multimedia modules)
     CR    toml11
     CR  O vulkan
@@ -88,6 +88,26 @@ described below for some of the most common ones:
 - [Nix/NixOS](build_instructions/nix.md)
 - [Microsoft Windows](build_instructions/windows_msvc.md)
 
+#### Python environment via uv
+
+The python dependencies are declared in [pyproject.toml](/pyproject.toml), so
+[`uv`](https://docs.astral.sh/uv/) can set up a Python environment for you:
+
+```
+uv sync
+```
+
+This creates a `.venv/` with all required Python modules, and the CMake build
+will pick it up when you point it at the interpreter:
+
+```
+./configure -- -DPython3_EXECUTABLE=$PWD/.venv/bin/python
+```
+
+If you manage python packages with the system package manager instead, that
+works too: the linters are then taken from the system PATH. In that case just
+ignore the pyproject.toml.
+
 ### nyan installation
 
 `openage` depends on [`nyan`](https://github.com/SFTtech/nyan), which is the
@@ -95,8 +115,9 @@ engine configuration language.
 
 
 * For development, `nyan` can be built and used **without installation**
-(-> no "`make install`", since it can be found using [`cmake` user package registry](https://cmake.org/cmake/help/latest/manual/cmake-packages.7.html#user-package-registry)).
-Just clone the repo somewhere and [follow the `nyan` build instructions](https://github.com/SFTtech/nyan/blob/master/doc/building.md)).
+  (-> no "`make install`", since it can be found using [`cmake` user package registry](https://cmake.org/cmake/help/latest/manual/cmake-packages.7.html#user-package-registry)).
+  Just clone the repo somewhere and [follow the `nyan` build instructions](https://github.com/SFTtech/nyan/blob/master/doc/building.md)).
+  Then `./configure ... -- -Dnyan_DIR=/directory/where/nyanConfig/is/in/`.
 
 * Alternatively, `openage` can download `nyan` automatically. This is
   activated with `./configure --download-nyan ...` or `cmake

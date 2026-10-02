@@ -5,12 +5,14 @@
 """
 Blendmask definition file.
 """
+
 from __future__ import annotations
+
 import typing
 
 from ..data_definition import DataDefinition
 
-FORMAT_VERSION = '1'
+FORMAT_VERSION = "1"
 
 
 class BlendmaskMetadata(DataDefinition):
@@ -40,15 +42,7 @@ class BlendmaskMetadata(DataDefinition):
             "filename": filename,
         }
 
-    def add_mask(
-        self,
-        directions: int,
-        img_id: int,
-        xpos: int,
-        ypos: int,
-        xsize: int,
-        ysize: int
-    ) -> None:
+    def add_mask(self, directions: int, img_id: int, xpos: int, ypos: int, xsize: int, ysize: int) -> None:
         """
         Add a mask for directions.
 
@@ -74,7 +68,7 @@ class BlendmaskMetadata(DataDefinition):
             "ysize": ysize,
         }
 
-    def set_scalefactor(self, factor: typing.Union[int, float]) -> None:
+    def set_scalefactor(self, factor: float) -> None:
         """
         Set the scale factor of the animation.
 
@@ -103,9 +97,9 @@ class BlendmaskMetadata(DataDefinition):
 
         # mask definitions
         for mask in self.masks.values():
-            output_str += f'mask {" ".join(str(param) for param in mask.values())}\n'
+            output_str += f"mask {' '.join(str(param) for param in mask.values())}\n"
 
         return output_str
 
     def __repr__(self):
-        return f'BlendmaskMetadata<{self.filename}>'
+        return f"BlendmaskMetadata<{self.filename}>"

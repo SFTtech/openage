@@ -8,7 +8,6 @@ translation. Therefore, we use the strings in this file to
 figure out the names for a nyan object.
 """
 
-
 # key: head unit id; value: (nyan object name, filename prefix)
 # For unit lines with different graphics per civ only the unit line of
 # the first civ (Empire) is stored
@@ -116,7 +115,6 @@ MONK_GROUP_ASSOCS = {
     239: 178,
     647: 648,
     652: 649,
-
     # Jedi/sith Master
     89: 33,
     115: 98,
@@ -310,7 +308,6 @@ TECH_GROUP_LOOKUPS = {
     581: ("SightBeyondSight", "sight_beyond_sight"),
     582: ("KaminoanRefit", "kaminoan_refit"),
     583: ("AirCruiserBoost", "air_cruiser_boost"),
-
     # Unit/Building upgrades
     113: ("HeavyDestroyerDroid", "heavy_destroyer_droid"),
     222: ("ForceKnightUpgrade", "force_knight_upgrade"),
@@ -403,16 +400,16 @@ GRAPHICS_SET_LOOKUPS = {
 # key: terrain index; value: (unit terrain restrictions (manual), nyan object name, filename prefix)
 # TODO: Use terrain restrictions from .dat
 TERRAIN_GROUP_LOOKUPS = {
-    0:  ((0,), "Grass0", "grass0"),
-    1:  ((0,), "Water0", "water0"),
-    2:  ((0,), "Shore", "shore"),
-    3:  ((0,), "Dirt0", "dirt0"),
-    4:  ((0,), "Swamp", "swamp"),
-    5:  ((0,), "Leaves", "leaves"),
-    6:  ((0,), "Dirt1", "dirt1"),
-    7:  ((0,), "FarmCrops", "farm_crops"),
-    8:  ((0,), "FarmHarvested", "farm_harvested"),
-    9:  ((0,), "Grass1", "grass1"),
+    0: ((0,), "Grass0", "grass0"),
+    1: ((0,), "Water0", "water0"),
+    2: ((0,), "Shore", "shore"),
+    3: ((0,), "Dirt0", "dirt0"),
+    4: ((0,), "Swamp", "swamp"),
+    5: ((0,), "Leaves", "leaves"),
+    6: ((0,), "Dirt1", "dirt1"),
+    7: ((0,), "FarmCrops", "farm_crops"),
+    8: ((0,), "FarmHarvested", "farm_harvested"),
+    9: ((0,), "Grass1", "grass1"),
     10: ((0,), "Forest0", "forest0"),
     11: ((0,), "Dirt2", "dirt2"),
     12: ((0,), "Grass2", "grass2"),
@@ -460,8 +457,7 @@ TERRAIN_GROUP_LOOKUPS = {
 
 # key: not relevant; value: (terrain indices, unit terrain restrictions (manual), nyan object name)
 # TODO: Use terrain restrictions from .dat
-TERRAIN_TYPE_LOOKUPS = {
-}
+TERRAIN_TYPE_LOOKUPS = {}
 
 
 CLASS_ID_LOOKUPS = {
@@ -482,8 +478,8 @@ CLASS_ID_LOOKUPS = {
     17: "TransportShip",
     18: "BuildingMisc",
     19: "Doppelganger",
-    20: "DeadOrProjectile",     # do not use this as GameEntityType
-    21: "HOLDTHIS",             # something from a scenario
+    20: "DeadOrProjectile",  # do not use this as GameEntityType
+    21: "HOLDTHIS",  # something from a scenario
     22: "Cliff",
     23: "OceanFish",
     25: "ShoreFish",
@@ -504,7 +500,7 @@ CLASS_ID_LOOKUPS = {
     43: "Bomber",
     44: "BountyHunter",
     45: "CargoHovercraft",
-    46: "ScenarioUnit",                  # should not be present in final modpack
+    46: "ScenarioUnit",  # should not be present in final modpack
     47: "Scout",
     48: "Fighter",
     49: "GrenadeTrooper",

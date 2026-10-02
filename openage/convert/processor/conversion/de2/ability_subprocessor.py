@@ -6,9 +6,10 @@
 Derives and adds abilities to lines. Subroutine of the
 nyan subprocessor.
 """
-from __future__ import annotations
-import typing
 
+from __future__ import annotations
+
+import typing
 
 from ....entity_object.conversion.converter_object import RawAPIObject
 from ....service.conversion import internal_name_lookups
@@ -24,7 +25,7 @@ class DE2AbilitySubprocessor:
     """
 
     @staticmethod
-    def regenerate_attribute_ability(line: GenieGameEntityGroup) -> ForwardRef:
+    def regenerate_attribute_ability(line: GenieGameEntityGroup) -> list[ForwardRef]:
         """
         Adds the RegenerateAttribute ability to a line.
 
@@ -73,9 +74,7 @@ class DE2AbilitySubprocessor:
         rate_raw_api_object.set_location(rate_location)
 
         # Attribute
-        rate_raw_api_object.add_raw_member("type",
-                                           attribute,
-                                           "engine.util.attribute.AttributeRate")
+        rate_raw_api_object.add_raw_member("type", attribute, "engine.util.attribute.AttributeRate")
 
         # Rate
         attribute_rate = 0
@@ -88,16 +87,14 @@ class DE2AbilitySubprocessor:
             heal_timer = current_unit["heal_timer"].value
             attribute_rate = 1 / heal_timer
 
-        rate_raw_api_object.add_raw_member("rate",
-                                           attribute_rate,
-                                           "engine.util.attribute.AttributeRate")
+        rate_raw_api_object.add_raw_member("rate", attribute_rate, "engine.util.attribute.AttributeRate")
 
         line.add_raw_api_object(rate_raw_api_object)
         # ===============================================================================
         rate_forward_ref = ForwardRef(line, rate_ref)
-        ability_raw_api_object.add_raw_member("rate",
-                                              rate_forward_ref,
-                                              "engine.ability.type.RegenerateAttribute")
+        ability_raw_api_object.add_raw_member(
+            "rate", rate_forward_ref, "engine.ability.type.RegenerateAttribute"
+        )
 
         line.add_raw_api_object(ability_raw_api_object)
 

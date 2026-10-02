@@ -6,11 +6,12 @@ Code for reading Genie .DRS archives.
 Note that .DRS archives can't store file names; they just store the file
 extension, and a file number.
 """
+
 from __future__ import annotations
+
 import typing
 
-
-from .....log import spam, dbg
+from .....log import dbg, spam
 from .....util.filelike.stream import StreamFragment
 from .....util.fslike.filecollection import FileCollection, FileEntry
 from .....util.strings import decode_until_null
@@ -18,7 +19,7 @@ from .....util.struct import NamedStruct
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.init.game_version import GameVersion
-    from openage.util.fslike.wrapper import GuardedFile
+    from openage.util.filelike.abstract import FileLikeObject
 
 
 # version of the drs files, hardcoded for now
@@ -34,13 +35,13 @@ class DRSHeaderEnsemble(NamedStruct):
 
     # pylint: disable=too-few-public-methods
 
-    endianness       = "<"
+    endianness = "<"
 
-    copyright        = str(COPYRIGHT_SIZE_ENSEMBLE) + "s"
-    version          = "4s"
-    ftype            = "12s"
-    table_count      = "i"
-    file_offset      = "i"     # offset of the first file
+    copyright: typing.Any = str(COPYRIGHT_SIZE_ENSEMBLE) + "s"
+    version: typing.Any = "4s"
+    ftype: typing.Any = "12s"
+    table_count: typing.Any = "i"
+    file_offset: typing.Any = "i"  # offset of the first file
 
 
 class DRSHeaderLucasArts(NamedStruct):
@@ -50,13 +51,13 @@ class DRSHeaderLucasArts(NamedStruct):
 
     # pylint: disable=too-few-public-methods
 
-    endianness       = "<"
+    endianness = "<"
 
-    copyright        = str(COPYRIGHT_SIZE_LUCAS) + "s"
-    version          = "4s"
-    ftype            = "12s"
-    table_count      = "i"
-    file_offset      = "i"     # offset of the first file
+    copyright: typing.Any = str(COPYRIGHT_SIZE_LUCAS) + "s"
+    version: typing.Any = "4s"
+    ftype: typing.Any = "12s"
+    table_count: typing.Any = "i"
+    file_offset: typing.Any = "i"  # offset of the first file
 
 
 class DRSTableInfo(NamedStruct):
@@ -66,11 +67,11 @@ class DRSTableInfo(NamedStruct):
 
     # pylint: disable=too-few-public-methods
 
-    endianness       = "<"
+    endianness = "<"
 
-    file_extension   = "4s"    # reversed (for reasons) extension
-    file_info_offset = "i"     # table offset
-    file_count       = "i"     # number of files in table
+    file_extension: typing.Any = "4s"  # reversed (for reasons) extension
+    file_info_offset: typing.Any = "i"  # table offset
+    file_count: typing.Any = "i"  # number of files in table
 
 
 class DRSFileInfo(NamedStruct):
@@ -80,11 +81,11 @@ class DRSFileInfo(NamedStruct):
 
     # pylint: disable=too-few-public-methods
 
-    endianness       = "<"
+    endianness = "<"
 
-    file_id          = "i"
-    file_data_offset = "i"
-    file_size        = "i"
+    file_id: typing.Any = "i"
+    file_data_offset: typing.Any = "i"
+    file_size: typing.Any = "i"
 
 
 class DRSEntry(FileEntry):
@@ -92,7 +93,7 @@ class DRSEntry(FileEntry):
     Entry in a DRS archive.
     """
 
-    def __init__(self, fileobj: GuardedFile, offset: int, size: int):
+    def __init__(self, fileobj: FileLikeObject, offset: int, size: int):
         self.fileobj = fileobj
         self.offset = offset
         self.entry_size = size
@@ -109,7 +110,7 @@ class DRS(FileCollection):
     represents a file archive in DRS format.
     """
 
-    def __init__(self, fileobj: GuardedFile, game_version: GameVersion):
+    def __init__(self, fileobj: FileLikeObject, game_version: GameVersion):
         super().__init__()
 
         # queried from the outside
@@ -143,7 +144,7 @@ class DRS(FileCollection):
             # decode and un-flip the file extension
             # see doc/media/drs-files.md
             fileext = table_header.file_extension
-            fileext = fileext.decode('latin-1').lower()[::-1].rstrip()
+            fileext = fileext.decode("latin-1").lower()[::-1].rstrip()
             table_header.file_extension = fileext
 
             dbg(table_header)
@@ -154,7 +155,7 @@ class DRS(FileCollection):
 
             self.add_fileentry([filename.encode()], file_entry)
 
-    def read_tables(self) -> typing.Generator[tuple[str, str, str], None, None]:
+    def read_tables(self) -> typing.Generator[tuple[str, int, int], None, None]:
         """
         Reads the tables from self.tables, and yields tuples of
         filename, offset, size.
@@ -166,7 +167,7 @@ class DRS(FileCollection):
             for _ in range(header.file_count):
                 fileinfo = DRSFileInfo.read(self.fileobj)
 
-                file_name = str(fileinfo.file_id) + '.' + header.file_extension
+                file_name = str(fileinfo.file_id) + "." + header.file_extension
                 spam("%s: %s", file_name, fileinfo)
 
                 yield file_name, fileinfo.file_data_offset, fileinfo.file_size

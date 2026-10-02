@@ -83,7 +83,7 @@ See [doc/README.md](/doc/README.md) for documentation guidelines.
 
 ### etc/
 
-Additional resources for development tools, e.g. pylint and valgrind configs.
+Additional resources for development tools, e.g. ruff/ty configs (in pyproject.toml) and valgrind configs.
 
 
 ### legal/

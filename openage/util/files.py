@@ -5,15 +5,15 @@ Some file handling utilities
 
 from __future__ import annotations
 
-import typing
 import os
+import typing
 from typing import Union
 
 if typing.TYPE_CHECKING:
-    from openage.util.fslike.abstract import FSLikeObject
+    from openage.util.filelike.abstract import FileLikeObject
 
 
-def read_guaranteed(fileobj: FSLikeObject, size: int) -> bytes:
+def read_guaranteed(fileobj: FileLikeObject, size: int) -> bytes:
     """
     As regular fileobj.read(size), but raises EOFError if fewer bytes
     than requested are returned.
@@ -32,7 +32,7 @@ def read_guaranteed(fileobj: FSLikeObject, size: int) -> bytes:
     return b"".join(result)
 
 
-def read_nullterminated_string(fileobj: FSLikeObject, maxlen: int = 255) -> bytes:
+def read_nullterminated_string(fileobj: FileLikeObject, maxlen: int = 255) -> bytes:
     """
     Reads bytes until a null terminator is reached.
     """

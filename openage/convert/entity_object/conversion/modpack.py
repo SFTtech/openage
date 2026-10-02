@@ -6,6 +6,7 @@ Defines a modpack that can be exported.
 
 from __future__ import annotations
 
+from ...value_object.read.media_types import MediaType
 from ..export.data_definition import DataDefinition
 from ..export.formats.modpack_info import ModpackInfo
 from ..export.formats.modpack_manifest import ManifestFile
@@ -30,7 +31,7 @@ class Modpack:
 
         # Data/media export
         self.data_export_files: list[DataDefinition] = []
-        self.media_export_files: list[MediaExportRequest] = {}
+        self.media_export_files: dict[MediaType, list[MediaExportRequest]] = {}
         self.metadata_files: list[MetadataExport] = []
 
     def add_data_export(self, export_file: DataDefinition) -> None:
@@ -38,8 +39,7 @@ class Modpack:
         Add a data file to the modpack for exporting.
         """
         if not isinstance(export_file, DataDefinition):
-            raise TypeError(f"{repr(self)}: export file must be of type DataDefinition "
-                            f"not {type(export_file)}")
+            raise TypeError(f"{self!r}: export file must be of type DataDefinition not {type(export_file)}")
 
         self.data_export_files.append(export_file)
 
@@ -48,8 +48,9 @@ class Modpack:
         Add a media export request to the modpack.
         """
         if not isinstance(export_request, MediaExportRequest):
-            raise TypeError(f"{repr(self)}: export file must be of type MediaExportRequest "
-                            f"not {type(export_request)}")
+            raise TypeError(
+                f"{self!r}: export file must be of type MediaExportRequest not {type(export_request)}"
+            )
 
         if export_request.get_type() in self.media_export_files:
             self.media_export_files[export_request.get_type()].append(export_request)
@@ -62,8 +63,7 @@ class Modpack:
         Add a metadata file to the modpack for exporting.
         """
         if not isinstance(export_file, MetadataExport):
-            raise TypeError(f"{repr(self)}: export file must be of type MetadataExport "
-                            f"not {type(export_file)}")
+            raise TypeError(f"{self!r}: export file must be of type MetadataExport not {type(export_file)}")
 
         self.metadata_files.append(export_file)
 
@@ -79,7 +79,7 @@ class Modpack:
         """
         return self.data_export_files
 
-    def get_media_files(self) -> list[MediaExportRequest]:
+    def get_media_files(self) -> dict[MediaType, list[MediaExportRequest]]:
         """
         Returns the media requests for exporting.
         """

@@ -4,10 +4,47 @@
 Provides FileLikeObject for binary stream interaction.
 """
 
-from ..math import INF, clamp
+import os
+import sys
 
-from .readonly import PosSavingReadOnlyFileLikeObject
 from ..bytequeue import ByteBuffer
+from ..math import clamp
+from .readonly import PosSavingReadOnlyFileLikeObject
+
+
+class PythonStream(PosSavingReadOnlyFileLikeObject):
+    """
+    Adapts a standard Python binary stream (e.g. BufferedReader, BytesIO)
+    to the FileLikeObject interface, so it can be used by code that
+    requires FileLikeObject for transparent archive access.
+    """
+
+    def __init__(self, wrappee):
+        super().__init__()
+
+        if not wrappee.seekable():
+            raise ValueError("wrappee must be seekable")
+
+        self.wrapped = wrappee
+
+    def read(self, size: int = -1) -> bytes:
+        return self.wrapped.read(size)
+
+    def seek(self, offset: int, whence=os.SEEK_SET) -> None:
+        self.pos = self.seek_helper(offset, whence)
+        self.wrapped.seek(self.pos)
+
+    def get_size(self) -> int:
+        current = self.wrapped.tell()
+        self.wrapped.seek(0, os.SEEK_END)
+        size = self.wrapped.tell()
+        self.wrapped.seek(current)
+
+        return size
+
+    def close(self) -> None:
+        self.closed = True
+        self.wrapped.close()
 
 
 class StreamSeekBuffer(PosSavingReadOnlyFileLikeObject):
@@ -34,7 +71,7 @@ class StreamSeekBuffer(PosSavingReadOnlyFileLikeObject):
         By default, entire megabytes are read at once.
     """
 
-    def __init__(self, wrappee, keepbuffered: int = INF, minread: int = 1048576):
+    def __init__(self, wrappee, keepbuffered: int = sys.maxsize, minread: int = 1048576):
         super().__init__()
 
         self.wrapped = wrappee
@@ -53,7 +90,7 @@ class StreamSeekBuffer(PosSavingReadOnlyFileLikeObject):
 
     def read(self, size: int = -1) -> bytes:
         if size < 0:
-            size = INF
+            size = sys.maxsize
 
         # see if we have already discarded the requested data
         if self.buf.hasbeendiscarded(self.pos):
@@ -82,7 +119,7 @@ class StreamSeekBuffer(PosSavingReadOnlyFileLikeObject):
                 # wrapped stream has EOFed.
                 break
 
-        data = self.buf[self.pos: self.pos + size]
+        data = self.buf[self.pos : self.pos + size]
         self.pos += len(data)
         return data
 
@@ -126,9 +163,9 @@ class StreamFragment(PosSavingReadOnlyFileLikeObject):
         if size < 0:
             raise ValueError("size must be positive")
 
-    def read(self, size: int = -1) -> None:
+    def read(self, size: int = -1) -> bytes:
         if size < 0:
-            size = INF
+            size = sys.maxsize
 
         size = clamp(size, 0, self.size - self.pos)
 
@@ -139,8 +176,7 @@ class StreamFragment(PosSavingReadOnlyFileLikeObject):
         data = self.stream.read(size)
 
         if len(data) != size:
-            raise EOFError("unexpected EOF in stream when attempting to read "
-                           "stream fragment")
+            raise EOFError("unexpected EOF in stream when attempting to read stream fragment")
 
         self.pos += len(data)
         return data

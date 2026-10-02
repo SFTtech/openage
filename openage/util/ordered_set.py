@@ -6,8 +6,7 @@ Python dictionaries as a basis because they are guaranteed to
 be ordered since Python 3.6.
 """
 
-
-from collections.abc import Hashable
+from collections.abc import Iterable
 from typing import Generic, TypeVar
 
 OrderedSetItem = TypeVar("OrderedSetItem")
@@ -18,21 +17,21 @@ class OrderedSet(Generic[OrderedSetItem]):
     Set that saves the input order of elements.
     """
 
-    __slots__ = ('ordered_set',)
+    __slots__ = ("ordered_set",)
 
-    def __init__(self, elements: Hashable = None):
+    def __init__(self, elements: Iterable[OrderedSetItem] | None = None):
         self.ordered_set = {}
 
         if elements:
             self.update(elements)
 
-    def add(self, elem: Hashable) -> None:
+    def add(self, elem: OrderedSetItem) -> None:
         """
         Set-like add that calls append_right().
         """
         self.append_right(elem)
 
-    def append_left(self, elem: Hashable) -> None:
+    def append_left(self, elem: OrderedSetItem) -> None:
         """
         Add an element to the front of the set.
         """
@@ -46,14 +45,14 @@ class OrderedSet(Generic[OrderedSetItem]):
             temp_set.update(self.ordered_set)
             self.ordered_set = temp_set
 
-    def append_right(self, elem: Hashable) -> None:
+    def append_right(self, elem: OrderedSetItem) -> None:
         """
         Add an element to the back of the set.
         """
         if elem not in self.ordered_set:
             self.ordered_set[elem] = len(self)
 
-    def discard(self, elem: Hashable) -> None:
+    def discard(self, elem: OrderedSetItem) -> None:
         """
         Remove an element from the set.
         """
@@ -71,7 +70,7 @@ class OrderedSet(Generic[OrderedSetItem]):
         """
         return list(self.ordered_set.keys())
 
-    def index(self, elem: Hashable) -> int:
+    def index(self, elem: OrderedSetItem) -> int:
         """
         Returns the index of the element in the set or
         -1 if it is not in the set.
@@ -100,7 +99,7 @@ class OrderedSet(Generic[OrderedSetItem]):
         element_list = self.get_list() + other.get_list()
         return OrderedSet(element_list)
 
-    def update(self, other) -> None:
+    def update(self, other: Iterable[OrderedSetItem]) -> None:
         """
         Append the elements of another iterable to the right of the
         ordered set.
@@ -121,7 +120,7 @@ class OrderedSet(Generic[OrderedSetItem]):
         return reversed(self.ordered_set.keys())
 
     def __str__(self):
-        return f'OrderedSet({list(self.ordered_set.keys())})'
+        return f"OrderedSet({list(self.ordered_set.keys())})"
 
     def __repr__(self):
         return str(self)

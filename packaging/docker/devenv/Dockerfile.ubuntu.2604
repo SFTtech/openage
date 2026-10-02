@@ -1,4 +1,4 @@
-FROM ubuntu:24.04
+FROM ubuntu:26.04
 
 RUN apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get install -y sudo \
     && sudo apt-get update \
@@ -30,7 +30,7 @@ RUN apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get install -y sudo \
     python3-pil \
     python3-pip \
     python3-pygments \
-    python3-toml \
+    python3-tomli-w \
     qml6-module-qtquick-controls \
     qt6-declarative-dev \
     qt6-multimedia-dev \
@@ -38,6 +38,4 @@ RUN apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get install -y sudo \
     && sudo apt-get clean \
     && truncate -s 0 ~/.bash_history
 
-# At least cython >= 3.0.10 < 4.0.0 is required to avoid runtime errors
-# TODO: Remove this line once cython is upgraded in Ubuntu 24.04.3 (expected around August 2025)
-RUN pip install "cython>=3.0.10,<4.0.0" --break-system-packages
+RUN snap install astral-uv

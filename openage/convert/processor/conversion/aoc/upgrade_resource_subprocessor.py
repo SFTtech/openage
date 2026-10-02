@@ -8,7 +8,9 @@
 """
 Creates upgrade patches for resource modification effects in AoC.
 """
+
 from __future__ import annotations
+
 import typing
 
 from .....nyan.nyan_structs import MemberOperator
@@ -29,10 +31,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def berserk_heal_rate_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Union[int, float],
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: float, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the berserk heal rate modify effect (ID: 96).
@@ -72,44 +71,36 @@ class AoCUpgradeResourceSubprocessor:
         wrapper_name = f"Change{game_entity_name}HealthRegenerationWrapper"
         wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
-        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
-                                              wrapper_name,
-                                              dataset.nyan_api_objects,
-                                              wrapper_location)
+        wrapper_raw_api_object = RawAPIObject(
+            wrapper_ref, wrapper_name, dataset.nyan_api_objects, wrapper_location
+        )
         wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         # Nyan patch
         nyan_patch_name = f"Change{game_entity_name}HealthRegeneration"
         nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
-        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                 nyan_patch_name,
-                                                 dataset.nyan_api_objects,
-                                                 nyan_patch_location)
+        nyan_patch_raw_api_object = RawAPIObject(
+            nyan_patch_ref, nyan_patch_name, dataset.nyan_api_objects, nyan_patch_location
+        )
         nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         # Regeneration is on a counter, so we have to invert the value
         value = 1 / value
-        nyan_patch_raw_api_object.add_raw_patch_member("rate",
-                                                       value,
-                                                       "engine.util.attribute.AttributeRate",
-                                                       operator)
+        nyan_patch_raw_api_object.add_raw_patch_member(
+            "rate", value, "engine.util.attribute.AttributeRate", operator
+        )
 
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
-        wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_forward_ref,
-                                              "engine.util.patch.Patch")
+        wrapper_raw_api_object.add_raw_member("patch", patch_forward_ref, "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
-            )
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
-            wrapper_raw_api_object.add_raw_member("properties",
-                                                  properties,
-                                                  "engine.util.patch.Patch")
+            wrapper_raw_api_object.add_raw_member("properties", properties, "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -121,10 +112,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def bonus_population_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Union[int, float],
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: float, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the bonus population effect (ID: 32).
@@ -158,42 +146,34 @@ class AoCUpgradeResourceSubprocessor:
         wrapper_name = "ChangePopulationCapWrapper"
         wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
-        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
-                                              wrapper_name,
-                                              dataset.nyan_api_objects,
-                                              wrapper_location)
+        wrapper_raw_api_object = RawAPIObject(
+            wrapper_ref, wrapper_name, dataset.nyan_api_objects, wrapper_location
+        )
         wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         # Nyan patch
         nyan_patch_name = "ChangePopulationCap"
         nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
-        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                 nyan_patch_name,
-                                                 dataset.nyan_api_objects,
-                                                 nyan_patch_location)
+        nyan_patch_raw_api_object = RawAPIObject(
+            nyan_patch_ref, nyan_patch_name, dataset.nyan_api_objects, nyan_patch_location
+        )
         nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target)
 
-        nyan_patch_raw_api_object.add_raw_patch_member("max_amount",
-                                                       value,
-                                                       "engine.util.resource.ResourceContingent",
-                                                       operator)
+        nyan_patch_raw_api_object.add_raw_patch_member(
+            "max_amount", value, "engine.util.resource.ResourceContingent", operator
+        )
 
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
-        wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_forward_ref,
-                                              "engine.util.patch.Patch")
+        wrapper_raw_api_object.add_raw_member("patch", patch_forward_ref, "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
-            )
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
-            wrapper_raw_api_object.add_raw_member("properties",
-                                                  properties,
-                                                  "engine.util.patch.Patch")
+            wrapper_raw_api_object.add_raw_member("properties", properties, "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -205,10 +185,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def building_conversion_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the building conversion effect (ID: 28).
@@ -250,30 +227,28 @@ class AoCUpgradeResourceSubprocessor:
         wrapper_name = "EnableBuildingConversionWrapper"
         wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
-        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
-                                              wrapper_name,
-                                              dataset.nyan_api_objects,
-                                              wrapper_location)
+        wrapper_raw_api_object = RawAPIObject(
+            wrapper_ref, wrapper_name, dataset.nyan_api_objects, wrapper_location
+        )
         wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         # Nyan patch
         nyan_patch_name = "EnableBuildingConversion"
         nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
-        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                 nyan_patch_name,
-                                                 dataset.nyan_api_objects,
-                                                 nyan_patch_location)
+        nyan_patch_raw_api_object = RawAPIObject(
+            nyan_patch_ref, nyan_patch_name, dataset.nyan_api_objects, nyan_patch_location
+        )
         nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         # New allowed types
         allowed_types = [
-            dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object()]
-        nyan_patch_raw_api_object.add_raw_patch_member("allowed_types",
-                                                       allowed_types,
-                                                       "engine.ability.type.ApplyDiscreteEffect",
-                                                       MemberOperator.ADD)
+            dataset.pregen_nyan_objects["util.game_entity_type.types.Building"].get_nyan_object()
+        ]
+        nyan_patch_raw_api_object.add_raw_patch_member(
+            "allowed_types", allowed_types, "engine.ability.type.ApplyDiscreteEffect", MemberOperator.ADD
+        )
 
         # Blacklisted buildings
         tc_line = dataset.building_lines[109]
@@ -286,25 +261,26 @@ class AoCUpgradeResourceSubprocessor:
         stone_gate_line = dataset.building_lines[64]
         wonder_line = dataset.building_lines[276]
 
-        blacklisted_forward_refs = [ForwardRef(tc_line, "TownCenter"),
-                                    ForwardRef(farm_line, "Farm"),
-                                    ForwardRef(fish_trap_line, "FishingTrap"),
-                                    ForwardRef(monastery_line, "Monastery"),
-                                    ForwardRef(castle_line, "Castle"),
-                                    ForwardRef(palisade_line, "PalisadeWall"),
-                                    ForwardRef(stone_wall_line, "StoneWall"),
-                                    ForwardRef(stone_gate_line, "StoneGate"),
-                                    ForwardRef(wonder_line, "Wonder"),
-                                    ]
-        nyan_patch_raw_api_object.add_raw_patch_member("blacklisted_entities",
-                                                       blacklisted_forward_refs,
-                                                       "engine.ability.type.ApplyDiscreteEffect",
-                                                       MemberOperator.ADD)
+        blacklisted_forward_refs = [
+            ForwardRef(tc_line, "TownCenter"),
+            ForwardRef(farm_line, "Farm"),
+            ForwardRef(fish_trap_line, "FishingTrap"),
+            ForwardRef(monastery_line, "Monastery"),
+            ForwardRef(castle_line, "Castle"),
+            ForwardRef(palisade_line, "PalisadeWall"),
+            ForwardRef(stone_wall_line, "StoneWall"),
+            ForwardRef(stone_gate_line, "StoneGate"),
+            ForwardRef(wonder_line, "Wonder"),
+        ]
+        nyan_patch_raw_api_object.add_raw_patch_member(
+            "blacklisted_entities",
+            blacklisted_forward_refs,
+            "engine.ability.type.ApplyDiscreteEffect",
+            MemberOperator.ADD,
+        )
 
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
-        wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_forward_ref,
-                                              "engine.util.patch.Patch")
+        wrapper_raw_api_object.add_raw_member("patch", patch_forward_ref, "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -318,20 +294,18 @@ class AoCUpgradeResourceSubprocessor:
         wrapper_name = "EnableSiegeUnitConversionWrapper"
         wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
-        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
-                                              wrapper_name,
-                                              dataset.nyan_api_objects,
-                                              wrapper_location)
+        wrapper_raw_api_object = RawAPIObject(
+            wrapper_ref, wrapper_name, dataset.nyan_api_objects, wrapper_location
+        )
         wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         # Nyan patch
         nyan_patch_name = "EnableSiegeUnitConversion"
         nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
-        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                 nyan_patch_name,
-                                                 dataset.nyan_api_objects,
-                                                 nyan_patch_location)
+        nyan_patch_raw_api_object = RawAPIObject(
+            nyan_patch_ref, nyan_patch_name, dataset.nyan_api_objects, nyan_patch_location
+        )
         nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
@@ -343,25 +317,22 @@ class AoCUpgradeResourceSubprocessor:
                 blacklisted_name = name_lookup_dict[unit_line.get_head_unit_id()][0]
                 blacklisted_entities.append(ForwardRef(unit_line, blacklisted_name))
 
-        nyan_patch_raw_api_object.add_raw_patch_member("blacklisted_entities",
-                                                       blacklisted_entities,
-                                                       "engine.ability.type.ApplyDiscreteEffect",
-                                                       MemberOperator.SUBTRACT)
+        nyan_patch_raw_api_object.add_raw_patch_member(
+            "blacklisted_entities",
+            blacklisted_entities,
+            "engine.ability.type.ApplyDiscreteEffect",
+            MemberOperator.SUBTRACT,
+        )
 
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
-        wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_forward_ref,
-                                              "engine.util.patch.Patch")
+        wrapper_raw_api_object.add_raw_member("patch", patch_forward_ref, "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
-            )
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
-            wrapper_raw_api_object.add_raw_member("properties",
-                                                  properties,
-                                                  "engine.util.patch.Patch")
+            wrapper_raw_api_object.add_raw_member("properties", properties, "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -373,10 +344,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def chinese_tech_discount_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the chinese tech discount effect (ID: 85).
@@ -398,10 +366,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def construction_speed_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the construction speed modify effect (ID: 195).
@@ -423,10 +388,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def conversion_resistance_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the conversion resistance modify effect (ID: 77).
@@ -448,10 +410,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def conversion_resistance_min_rounds_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the conversion resistance modify effect (ID: 178).
@@ -473,10 +432,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def conversion_resistance_max_rounds_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the conversion resistance modify effect (ID: 179).
@@ -498,10 +454,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def crenellations_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the crenellations effect (ID: 194).
@@ -523,10 +476,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def faith_recharge_rate_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Union[int, float],
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: float, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the faith_recharge_rate modify effect (ID: 35).
@@ -566,42 +516,34 @@ class AoCUpgradeResourceSubprocessor:
         wrapper_name = f"Change{game_entity_name}FaithRegenerationWrapper"
         wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
-        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
-                                              wrapper_name,
-                                              dataset.nyan_api_objects,
-                                              wrapper_location)
+        wrapper_raw_api_object = RawAPIObject(
+            wrapper_ref, wrapper_name, dataset.nyan_api_objects, wrapper_location
+        )
         wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         # Nyan patch
         nyan_patch_name = f"Change{game_entity_name}FaithRegeneration"
         nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
-        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                 nyan_patch_name,
-                                                 dataset.nyan_api_objects,
-                                                 nyan_patch_location)
+        nyan_patch_raw_api_object = RawAPIObject(
+            nyan_patch_ref, nyan_patch_name, dataset.nyan_api_objects, nyan_patch_location
+        )
         nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
-        nyan_patch_raw_api_object.add_raw_patch_member("rate",
-                                                       value,
-                                                       "engine.util.attribute.AttributeRate",
-                                                       operator)
+        nyan_patch_raw_api_object.add_raw_patch_member(
+            "rate", value, "engine.util.attribute.AttributeRate", operator
+        )
 
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
-        wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_forward_ref,
-                                              "engine.util.patch.Patch")
+        wrapper_raw_api_object.add_raw_member("patch", patch_forward_ref, "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
-            )
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
-            wrapper_raw_api_object.add_raw_member("properties",
-                                                  properties,
-                                                  "engine.util.patch.Patch")
+            wrapper_raw_api_object.add_raw_member("properties", properties, "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -613,10 +555,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def farm_food_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Union[int, float],
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: float, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the farm food modify effect (ID: 36).
@@ -656,42 +595,34 @@ class AoCUpgradeResourceSubprocessor:
         wrapper_name = f"Change{game_entity_name}FoodAmountWrapper"
         wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
-        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
-                                              wrapper_name,
-                                              dataset.nyan_api_objects,
-                                              wrapper_location)
+        wrapper_raw_api_object = RawAPIObject(
+            wrapper_ref, wrapper_name, dataset.nyan_api_objects, wrapper_location
+        )
         wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         # Nyan patch
         nyan_patch_name = f"Change{game_entity_name}FoodAmount"
         nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
-        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                 nyan_patch_name,
-                                                 dataset.nyan_api_objects,
-                                                 nyan_patch_location)
+        nyan_patch_raw_api_object = RawAPIObject(
+            nyan_patch_ref, nyan_patch_name, dataset.nyan_api_objects, nyan_patch_location
+        )
         nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
-        nyan_patch_raw_api_object.add_raw_patch_member("max_amount",
-                                                       value,
-                                                       "engine.util.resource_spot.ResourceSpot",
-                                                       operator)
+        nyan_patch_raw_api_object.add_raw_patch_member(
+            "max_amount", value, "engine.util.resource_spot.ResourceSpot", operator
+        )
 
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
-        wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_forward_ref,
-                                              "engine.util.patch.Patch")
+        wrapper_raw_api_object.add_raw_member("patch", patch_forward_ref, "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
-            )
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
-            wrapper_raw_api_object.add_raw_member("properties",
-                                                  properties,
-                                                  "engine.util.patch.Patch")
+            wrapper_raw_api_object.add_raw_member("properties", properties, "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -703,10 +634,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def gather_food_efficiency_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the food gathering efficiency modify effect (ID: 190).
@@ -728,10 +656,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def gather_wood_efficiency_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the wood gathering efficiency modify effect (ID: 189).
@@ -753,10 +678,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def gather_gold_efficiency_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the gold gathering efficiency modify effect (ID: 47).
@@ -778,10 +700,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def gather_stone_efficiency_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the stone gathering efficiency modify effect (ID: 79).
@@ -803,10 +722,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def heal_range_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Union[int, float],
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: float, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the heal range modify effect (ID: 90).
@@ -846,42 +762,34 @@ class AoCUpgradeResourceSubprocessor:
         wrapper_name = f"Change{game_entity_name}HealRangeWrapper"
         wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
-        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
-                                              wrapper_name,
-                                              dataset.nyan_api_objects,
-                                              wrapper_location)
+        wrapper_raw_api_object = RawAPIObject(
+            wrapper_ref, wrapper_name, dataset.nyan_api_objects, wrapper_location
+        )
         wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         # Nyan patch
         nyan_patch_name = f"Change{game_entity_name}HealRange"
         nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
-        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                 nyan_patch_name,
-                                                 dataset.nyan_api_objects,
-                                                 nyan_patch_location)
+        nyan_patch_raw_api_object = RawAPIObject(
+            nyan_patch_ref, nyan_patch_name, dataset.nyan_api_objects, nyan_patch_location
+        )
         nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
-        nyan_patch_raw_api_object.add_raw_patch_member("max_range",
-                                                       value,
-                                                       "engine.ability.type.RangedContinuousEffect",
-                                                       operator)
+        nyan_patch_raw_api_object.add_raw_patch_member(
+            "max_range", value, "engine.ability.type.RangedContinuousEffect", operator
+        )
 
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
-        wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_forward_ref,
-                                              "engine.util.patch.Patch")
+        wrapper_raw_api_object.add_raw_member("patch", patch_forward_ref, "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
-            )
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
-            wrapper_raw_api_object.add_raw_member("properties",
-                                                  properties,
-                                                  "engine.util.patch.Patch")
+            wrapper_raw_api_object.add_raw_member("properties", properties, "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -893,10 +801,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def heal_rate_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the heal rate modify effect (ID: 89).
@@ -918,10 +823,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def herding_dominance_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the herding dominance effect (ID: 97).
@@ -943,10 +845,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def heresy_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the heresy effect (ID: 192).
@@ -968,10 +867,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def monk_conversion_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the monk conversion effect (ID: 27).
@@ -1011,43 +907,38 @@ class AoCUpgradeResourceSubprocessor:
         wrapper_name = f"Enable{game_entity_name}ConversionWrapper"
         wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
-        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
-                                              wrapper_name,
-                                              dataset.nyan_api_objects,
-                                              wrapper_location)
+        wrapper_raw_api_object = RawAPIObject(
+            wrapper_ref, wrapper_name, dataset.nyan_api_objects, wrapper_location
+        )
         wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         # Nyan patch
         nyan_patch_name = f"Enable{game_entity_name}Conversion"
         nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
-        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                 nyan_patch_name,
-                                                 dataset.nyan_api_objects,
-                                                 nyan_patch_location)
+        nyan_patch_raw_api_object = RawAPIObject(
+            nyan_patch_ref, nyan_patch_name, dataset.nyan_api_objects, nyan_patch_location
+        )
         nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
         monk_forward_ref = ForwardRef(line, game_entity_name)
-        nyan_patch_raw_api_object.add_raw_patch_member("blacklisted_entities",
-                                                       [monk_forward_ref],
-                                                       "engine.ability.type.ApplyDiscreteEffect",
-                                                       MemberOperator.SUBTRACT)
+        nyan_patch_raw_api_object.add_raw_patch_member(
+            "blacklisted_entities",
+            [monk_forward_ref],
+            "engine.ability.type.ApplyDiscreteEffect",
+            MemberOperator.SUBTRACT,
+        )
 
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
-        wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_forward_ref,
-                                              "engine.util.patch.Patch")
+        wrapper_raw_api_object.add_raw_member("patch", patch_forward_ref, "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
-            )
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
-            wrapper_raw_api_object.add_raw_member("properties",
-                                                  properties,
-                                                  "engine.util.patch.Patch")
+            wrapper_raw_api_object.add_raw_member("properties", properties, "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -1059,10 +950,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def relic_gold_bonus_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the relic gold bonus modify effect (ID: 191).
@@ -1082,10 +970,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def research_time_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the research time modify effect (ID: 86).
@@ -1107,10 +992,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def reveal_ally_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the reveal ally modify effect (ID: 50).
@@ -1132,10 +1014,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def reveal_enemy_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the reveal enemy modify effect (ID: 183).
@@ -1157,10 +1036,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def siege_conversion_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the siege conversion effect (ID: 29).
@@ -1182,10 +1058,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def ship_conversion_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the ship conversion effect (ID: 87).
@@ -1207,10 +1080,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def spies_discount_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the spies discount effect (ID: 197).
@@ -1232,10 +1102,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def starting_food_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the starting food modify effect (ID: 91).
@@ -1257,10 +1124,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def starting_wood_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the starting wood modify effect (ID: 92).
@@ -1282,10 +1146,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def starting_stone_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the starting stone modify effect (ID: 93).
@@ -1307,10 +1168,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def starting_gold_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the starting gold modify effect (ID: 94).
@@ -1332,10 +1190,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def starting_villagers_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the starting villagers modify effect (ID: 84).
@@ -1357,10 +1212,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def starting_population_space_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Union[int, float],
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: float, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the starting popspace modify effect (ID: 4).
@@ -1394,42 +1246,34 @@ class AoCUpgradeResourceSubprocessor:
         wrapper_name = "ChangeInitialPopulationLimitWrapper"
         wrapper_ref = f"{obj_name}.{wrapper_name}"
         wrapper_location = ForwardRef(converter_group, obj_name)
-        wrapper_raw_api_object = RawAPIObject(wrapper_ref,
-                                              wrapper_name,
-                                              dataset.nyan_api_objects,
-                                              wrapper_location)
+        wrapper_raw_api_object = RawAPIObject(
+            wrapper_ref, wrapper_name, dataset.nyan_api_objects, wrapper_location
+        )
         wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
         # Nyan patch
         nyan_patch_name = "ChangeInitialPopulationLimit"
         nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
         nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
-        nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                 nyan_patch_name,
-                                                 dataset.nyan_api_objects,
-                                                 nyan_patch_location)
+        nyan_patch_raw_api_object = RawAPIObject(
+            nyan_patch_ref, nyan_patch_name, dataset.nyan_api_objects, nyan_patch_location
+        )
         nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
         nyan_patch_raw_api_object.set_patch_target(patch_target)
 
-        nyan_patch_raw_api_object.add_raw_patch_member("min_amount",
-                                                       value,
-                                                       "engine.util.resource.ResourceContingent",
-                                                       operator)
+        nyan_patch_raw_api_object.add_raw_patch_member(
+            "min_amount", value, "engine.util.resource.ResourceContingent", operator
+        )
 
         patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
-        wrapper_raw_api_object.add_raw_member("patch",
-                                              patch_forward_ref,
-                                              "engine.util.patch.Patch")
+        wrapper_raw_api_object.add_raw_member("patch", patch_forward_ref, "engine.util.patch.Patch")
 
         if team:
-            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
-            )
+            team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object()
             properties = {
                 dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
             }
-            wrapper_raw_api_object.add_raw_member("properties",
-                                                  properties,
-                                                  "engine.util.patch.Patch")
+            wrapper_raw_api_object.add_raw_member("properties", properties, "engine.util.patch.Patch")
 
         converter_group.add_raw_api_object(wrapper_raw_api_object)
         converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -1441,10 +1285,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def theocracy_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the theocracy effect (ID: 193).
@@ -1466,10 +1307,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def trade_penalty_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the trade penalty modify effect (ID: 78).
@@ -1491,10 +1329,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def tribute_inefficiency_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the tribute inefficiency modify effect (ID: 46).
@@ -1516,10 +1351,7 @@ class AoCUpgradeResourceSubprocessor:
 
     @staticmethod
     def wonder_time_increase_upgrade(
-        converter_group: ConverterObjectGroup,
-        value: typing.Any,
-        operator: MemberOperator,
-        team: bool = False
+        converter_group: ConverterObjectGroup, value: typing.Any, operator: MemberOperator, team: bool = False
     ) -> list[ForwardRef]:
         """
         Creates a patch for the wonder time modify effect (ID: 196).

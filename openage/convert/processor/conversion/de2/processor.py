@@ -4,22 +4,26 @@
 """
 Convert data from DE2 to openage formats.
 """
+
 from __future__ import annotations
+
 import typing
 
-
-from openage.convert.value_object.read.value_members import ArrayMember, StorageType
 import openage.convert.value_object.conversion.aoc.internal_nyan_names as aoc_internal
 import openage.convert.value_object.conversion.de2.internal_nyan_names as de2_internal
+from openage.convert.value_object.read.value_members import ArrayMember, StorageType
 
 from .....log import info
 from .....util.ordered_set import OrderedSet
 from ....entity_object.conversion.aoc.genie_graphic import GenieGraphic
 from ....entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
-from ....entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup, GenieUnitObject, GenieAmbientGroup, \
-    GenieVariantGroup
-from ....service.debug_info import debug_converter_objects, \
-    debug_converter_object_groups
+from ....entity_object.conversion.aoc.genie_unit import (
+    GenieAmbientGroup,
+    GenieBuildingLineGroup,
+    GenieUnitObject,
+    GenieVariantGroup,
+)
+from ....service.debug_info import debug_converter_object_groups, debug_converter_objects
 from ....service.read.nyan_api_loader import load_api
 from ..aoc.pregen_processor import AoCPregenSubprocessor
 from ..aoc.processor import AoCProcessor
@@ -29,8 +33,9 @@ from .nyan_subprocessor import DE2NyanSubprocessor
 
 if typing.TYPE_CHECKING:
     from argparse import Namespace
-    from openage.convert.entity_object.conversion.stringresource import StringResource
+
     from openage.convert.entity_object.conversion.modpack import Modpack
+    from openage.convert.entity_object.conversion.stringresource import StringResource
     from openage.convert.value_object.init.game_version import GameVersion
 
 
@@ -45,7 +50,7 @@ class DE2Processor:
         gamespec: ArrayMember,
         args: Namespace,
         string_resources: StringResource,
-        existing_graphics: list[str]
+        existing_graphics: set[str],
     ) -> list[Modpack]:
         """
         Input game speification and media here and get a set of
@@ -61,12 +66,7 @@ class DE2Processor:
         info("Starting conversion...")
 
         # Create a new container for the conversion process
-        dataset = cls._pre_processor(
-            gamespec,
-            args.game_version,
-            string_resources,
-            existing_graphics
-        )
+        dataset = cls._pre_processor(gamespec, args.game_version, string_resources, existing_graphics)
         debug_converter_objects(args.debugdir, args.debug_info, dataset)
 
         # Create the custom openae formats (nyan, sprite, terrain)
@@ -84,7 +84,7 @@ class DE2Processor:
         gamespec: ArrayMember,
         game_version: GameVersion,
         string_resources: StringResource,
-        existing_graphics: list[str]
+        existing_graphics: set[str],
     ) -> GenieObjectContainer:
         """
         Store data from the reader in a conversion container.
@@ -92,11 +92,8 @@ class DE2Processor:
         :param gamespec: Gamedata from empires.dat file.
         :type gamespec: class: ...dataformat.value_members.ArrayMember
         """
-        dataset = GenieObjectContainer()
+        dataset = GenieObjectContainer(game_version, load_api(), string_resources)
 
-        dataset.game_version = game_version
-        dataset.nyan_api_objects = load_api()
-        dataset.strings = string_resources
         dataset.existing_graphics = existing_graphics
 
         info("Extracting Genie data...")
@@ -205,11 +202,9 @@ class DE2Processor:
             if "attacks" in unit_members.keys():
                 attacks_member = unit_members.pop("attacks")
                 # some units list the same class twice; keep the first
-                attacks_member = attacks_member.get_container("type_id",
-                                                              force_duplicate=True)
+                attacks_member = attacks_member.get_container("type_id", force_duplicate=True)
                 armors_member = unit_members.pop("armors")
-                armors_member = armors_member.get_container("type_id",
-                                                            force_duplicate=True)
+                armors_member = armors_member.get_container("type_id", force_duplicate=True)
 
                 unit_members.update({"attacks": attacks_member})
                 unit_members.update({"armors": armors_member})
@@ -227,9 +222,7 @@ class DE2Processor:
 
                 else:
                     # Create empty member if no headers are present
-                    unit_commands = ArrayMember("unit_commands",
-                                                StorageType.CONTAINER_MEMBER,
-                                                members=[])
+                    unit_commands = ArrayMember("unit_commands", StorageType.CONTAINER_MEMBER, members=[])
                     unit.add_member(unit_commands)
 
     @staticmethod
