@@ -16,7 +16,11 @@ import sys
 
 def copy_module(name, destination):
     """Copy the importable module 'name' to the 'destination' directory"""
-    loader = importlib.util.find_spec(name).loader
+    spec = importlib.util.find_spec(name)
+    if spec is None or spec.loader is None:
+        sys.exit(f"Module {name} could not be found")
+
+    loader = spec.loader
     if not isinstance(loader, importlib.abc.FileLoader):
         sys.exit(f"Loader for module {name} is not handled")
 

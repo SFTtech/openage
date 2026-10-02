@@ -46,8 +46,12 @@ def _python_files(check_files: Iterable[str] | None, dirnames: tuple[str, ...]) 
 
 
 def _run_tool(
-    tool: str, args: list[str], filenames: list[str], title: str, fix_args: list[str] | None = None
-) -> Generator[tuple[str, str, None]]:
+    tool: str,
+    args: list[str],
+    filenames: list[str],
+    title: str,
+    fix_args: list[str] | None = None,
+) -> Generator[tuple[str, str, Callable[[], str] | None]]:
     """
     Invokes a tool on the given files.
 
@@ -116,7 +120,7 @@ def _create_fix(tool: str, fix_args: list[str], filenames: list[str]) -> Callabl
 
 def find_issues(
     check_files: Iterable[str] | None, dirnames: tuple[str, ...]
-) -> Generator[tuple[str, str, None]]:
+) -> Generator[tuple[str, str, Callable[[], str] | None]]:
     """Invokes the external utilities."""
 
     ruff = find_tool("ruff")

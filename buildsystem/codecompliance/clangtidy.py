@@ -41,6 +41,9 @@ def find_issues(check_files, dirnames):
             with subprocess.Popen(
                 [*invocation, filename], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
             ) as process:
+                if process.stdout is None or process.stderr is None:
+                    raise RuntimeError("clang-tidy pipes were not created")
+
                 # Stream output in real-time
                 while True:
                     output = process.stdout.readline()

@@ -8,14 +8,14 @@ The tool is looked up in PATH. When the checker is run through
 uv.lock; otherwise the system-installed tool is used.
 """
 
-from collections.abc import Generator, Iterable
+from collections.abc import Callable, Generator, Iterable
 
 from .ruff import _python_files, _run_tool, find_tool
 
 
 def find_issues(
     check_files: Iterable[str] | None, dirnames: tuple[str, ...]
-) -> Generator[tuple[str, str, None]]:
+) -> Generator[tuple[str, str, Callable[[], str] | None]]:
     """Invokes the external utility."""
 
     ty = find_tool("ty")
