@@ -43,7 +43,9 @@ class PXDGenerator:
         self.warnings = []
 
         # current parsing state (not valid until self.parse() is called)
-        self.stack, self.lineno, self.annotations = None, None, None
+        self.stack: list[str] = []
+        self.lineno: int = 0
+        self.annotations: list[tuple[str | None, list[str]]] = []
 
     def parser_error(self, message, lineno=None):
         """
@@ -89,12 +91,11 @@ class PXDGenerator:
         @param val:
             the comment text, as string, including the '//'
         """
-        try:
-            val = re.match("^// (.*)$", val).group(1)
-        except AttributeError as ex:
-            raise self.parser_error("invalid single-line comment") from ex
+        match = re.match("^// (.*)$", val)
+        if match is None:
+            raise self.parser_error("invalid single-line comment")
 
-        self.handle_comment(val)
+        self.handle_comment(match.group(1))
 
     def handle_multiline_comment(self, val):
         """
@@ -104,11 +105,11 @@ class PXDGenerator:
         @param val:
             the comment text, as string, including the '/*' and '*/'
         """
-        try:
-            # pylint: disable=no-member
-            val = re.match(r"^/\*(.*)\*/$", val, re.DOTALL).group(1)
-        except AttributeError as ex:
-            raise self.parser_error("invalid multi-line comment") from ex
+        match = re.match(r"^/\*(.*)\*/$", val, re.DOTALL)
+        if match is None:
+            raise self.parser_error("invalid multi-line comment")
+
+        val = match.group(1)
 
         # for a comment '/* foo\n * bar\n */', val is now 'foo\n * bar\n '
         # however, we'd prefer ' * foo\n * bar'
@@ -118,10 +119,11 @@ class PXDGenerator:
 
         comment_lines = []
         for idx, line in enumerate(lines):
-            try:
-                line = re.match(r"^ \*( (.*))?$", line).group(2) or ""
-            except AttributeError as ex:
-                raise self.parser_error("invalid multi-line comment line", idx + self.lineno) from ex
+            match = re.match(r"^ \*( (.*))?$", line)
+            if match is None:
+                raise self.parser_error("invalid multi-line comment line", idx + self.lineno)
+
+            line = match.group(2) or ""
 
             # if comment is still empty, don't append anything
             if comment_lines or line.strip() != "":
