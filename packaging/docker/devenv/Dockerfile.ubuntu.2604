@@ -6,6 +6,7 @@ RUN apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get install -y sudo \
     apt-utils \
     build-essential \
     cmake \
+    curl \
     cython3 \
     flex \
     gcc \
@@ -38,4 +39,5 @@ RUN apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get install -y sudo \
     && sudo apt-get clean \
     && truncate -s 0 ~/.bash_history
 
-RUN snap install astral-uv
+# snapd is unavailable in containers
+RUN curl -LsSf https://astral.sh/uv/install.sh | env UV_INSTALL_DIR=/usr/local/bin UV_NO_MODIFY_PATH=1 sh
