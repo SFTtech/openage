@@ -115,8 +115,9 @@ engine configuration language.
 
 
 * For development, `nyan` can be built and used **without installation**
-(-> no "`make install`", since it can be found using [`cmake` user package registry](https://cmake.org/cmake/help/latest/manual/cmake-packages.7.html#user-package-registry)).
-Just clone the repo somewhere and [follow the `nyan` build instructions](https://github.com/SFTtech/nyan/blob/master/doc/building.md)).
+  (-> no "`make install`", since it can be found using [`cmake` user package registry](https://cmake.org/cmake/help/latest/manual/cmake-packages.7.html#user-package-registry)).
+  Just clone the repo somewhere and [follow the `nyan` build instructions](https://github.com/SFTtech/nyan/blob/master/doc/building.md)).
+  Then `./configure ... -- -Dnyan_DIR=/directory/where/nyanConfig/is/in/`.
 
 * Alternatively, `openage` can download `nyan` automatically. This is
   activated with `./configure --download-nyan ...` or `cmake
