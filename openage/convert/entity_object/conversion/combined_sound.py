@@ -23,9 +23,7 @@ class CombinedSound:
 
     __slots__ = ("_refs", "data", "file_id", "filename", "genie_sound", "head_sound_id")
 
-    def __init__(
-        self, head_sound_id: int, file_id: int, filename: str, full_data_set: GenieObjectContainer
-    ):
+    def __init__(self, head_sound_id: int, file_id: int, filename: str, full_data_set: GenieObjectContainer):
         """
         Creates a new CombinedSound instance.
 

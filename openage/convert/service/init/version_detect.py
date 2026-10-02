@@ -166,9 +166,7 @@ def create_version_objects(srcdir: Path) -> tuple[list[GameEdition], list[GameEx
     return game_edition_list, game_expansion_list
 
 
-def create_game_obj(
-    game_info: dict, aux_path: Path, expansion: bool = False
-) -> GameEdition | GameExpansion:
+def create_game_obj(game_info: dict, aux_path: Path, expansion: bool = False) -> GameEdition | GameExpansion:
     """
     Create a GameEdition or GameExpansion object from the contents
     of the game_info dictionary and its version hash file.
