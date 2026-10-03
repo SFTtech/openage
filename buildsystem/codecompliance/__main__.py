@@ -90,11 +90,8 @@ def process_args(args, error):
         args.legal = True
         args.filemodes = True
         args.textfiles = True
-
-    if args.merge or args.all:
-        # enable tests that are required before merging to master
-        args.ruff = True
         args.ty = True
+        args.ruff = True
 
     if args.all:
         # enable tests that take a bit longer
