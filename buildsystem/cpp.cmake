@@ -11,6 +11,10 @@ function(declare_binary target_name output_name type)
 		add_library("${target_name}" SHARED ${sources})
 	endif()
 
+	# C++ module sources added via 'add_sources(... MODULE ...)' go here;
+	# the file set must exist before the first module source is added.
+	target_sources("${target_name}" PRIVATE FILE_SET CXX_MODULES FILES)
+
 	set_target_properties("${target_name}" PROPERTIES OUTPUT_NAME "${output_name}")
 
 	set_property(GLOBAL APPEND PROPERTY SFT_BINARIES "${target_name}")
@@ -45,8 +49,11 @@ endfunction()
 # to specify absolute filenames, write ABSOLUTE
 # to specify a file that will be auto-generated, write GENERATED, all files after
 # this modifier are marked as generated.
+# to specify a C++ module unit, write MODULE, all files after this modifier
+# are added to the target's CXX_MODULES file set.
 function(add_sources target_name)
 	set(generated FALSE)
+	set(module FALSE)
 
 	get_property(binary_list GLOBAL PROPERTY SFT_BINARIES)
 	list(FIND binary_list "${target_name}" index)
@@ -57,16 +64,26 @@ function(add_sources target_name)
 	foreach(source ${ARGN})
 		if(source STREQUAL GENERATED)
 			set(generated TRUE)
+		elseif(source STREQUAL MODULE)
+			set(module TRUE)
 		else()
 			if(NOT IS_ABSOLUTE "${source}")
 				set(source "${CMAKE_CURRENT_SOURCE_DIR}/${source}")
 			endif()
 			file(TO_CMAKE_PATH "${source}" source)
 
-			# add all sources as private, otherwise _ALL SOURCES_
-			# would be compiled again for each library that links against
-			# the $target_name
-			target_sources("${target_name}" PRIVATE "${source}")
+			if(module)
+				# module units are compiled from the scanned file set;
+				# they must not also be listed as regular sources.
+				target_sources("${target_name}" PRIVATE
+					FILE_SET CXX_MODULES FILES "${source}"
+				)
+			else()
+				# add all sources as private, otherwise _ALL SOURCES_
+				# would be compiled again for each library that links against
+				# the $target_name
+				target_sources("${target_name}" PRIVATE "${source}")
+			endif()
 
 			if(generated)
 				set_source_files_properties("${source}" PROPERTIES GENERATED ON)
