@@ -10,14 +10,16 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v4
 
-      # caching dependencies and ccache
-      # https://docs.github.com/en/actions/configuring-and-managing-workflows/caching-dependencies-to-speed-up-workflows
-      - name: Get timestamp
-        id: timestamp
-        shell: cmake -P {0}
-        run: |
-          string(TIMESTAMP current_date "%Y-%m-%d-%H:%M:%S" UTC)
-          message("timestamp=${current_date}" >> $GITHUB_OUTPUT)
+      # ccache is incremental, so restore the newest entry and save an updated one per commit
+      - name: Cache ccache dir
+        uses: actions/cache@v4
+        id: cache-ccache
+        with:
+          path: ~/Library/Caches/ccache
+          key: macos-ccache-${{ github.sha }}
+          restore-keys: macos-ccache-
+      # exact key on the workflow file: changes when the package list changes,
+      # prefix fallback keeps the old downloads until then
       - name: Cache dependencies
         uses: actions/cache@v4
         id: cache-deps
@@ -25,17 +27,8 @@ jobs:
           path: |
             ~/Library/Caches/pip
             ~/Library/Caches/Homebrew
-          key: '${{ runner.os }}-deps-${{ steps.timestamp.outputs.timestamp }}'
-          restore-keys: |
-            ${{ runner.os }}-deps-
-      - name: Cache ccache dir
-        uses: actions/cache@v4
-        id: cache-ccache
-        with:
-          path: ~/Library/Caches/ccache
-          key: '${{ runner.os }}-ccache-${{ steps.timestamp.outputs.timestamp }}'
-          restore-keys: |
-            ${{ runner.os }}-ccache-
+          key: macos-deps-${{ hashFiles('.github/workflows/macosx-ci.yml') }}
+          restore-keys: macos-deps-
       - name: Brew update-reset
         run: brew update-reset
       - name: Brew update
@@ -43,11 +36,11 @@ jobs:
       - name: Brew install DeJaVu fonts
         run: brew install --cask font-dejavu
       - name: Install environment helpers with homebrew
-        run: brew install --force ccache
+        run: brew install ccache
       - name: Install openage dependencies with homebrew
-        run: brew install --force cmake python3 libepoxy freetype fontconfig harfbuzz opus opusfile qt6 libogg libpng toml11 eigen
+        run: brew install cmake python3 libepoxy freetype fontconfig harfbuzz opus opusfile qt6 libogg libpng toml11 eigen
       - name: Install nyan dependencies with homebrew
-        run: brew install --force flex make
+        run: brew install flex make
       - name: Install python3 packages
         # cython, numpy and pygments are in homebrew,
         # but "cython is keg-only, which means it was not symlinked into /usr/local"

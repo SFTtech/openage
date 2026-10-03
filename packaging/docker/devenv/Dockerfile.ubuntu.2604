@@ -5,6 +5,7 @@ RUN apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get install -y sudo \
     && sudo DEBIAN_FRONTEND="noninteractive" apt-get install -y \
     apt-utils \
     build-essential \
+    ccache \
     cmake \
     curl \
     cython3 \
