@@ -6,7 +6,7 @@ Checks some general whitespace rules and the encoding for text files.
 
 import re
 
-from .util import BADUTF8FILES, findfiles, has_ext, issue_str_line, readfile
+from .util import BADUTF8FILES, has_ext, issue_str_line, readfile, select_files
 
 TRAIL_WHITESPACE_RE = re.compile(
     (
@@ -29,15 +29,15 @@ def find_issues(dirnames, exts):
     """
     Checks all files ending in exts in dirnames.
     """
-    for filename in findfiles(dirnames, exts):
+    for filename in select_files(None, dirnames, exts):
         data = readfile(filename)
         analyse_each_line = False
 
-        if filename.endswith(".gen.h") or filename.endswith(".gen.cpp"):
+        if filename.name.endswith((".gen.h", ".gen.cpp")):
             # TODO all this for now, until someone fixes the codegen.
             continue
 
-        if filename.startswith("openage/") and filename.endswith(".cpp"):
+        if filename.parts[0] == "openage" and filename.suffix == ".cpp":
             # allow issues for Cython-generated files.
             continue
 

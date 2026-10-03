@@ -9,6 +9,7 @@ import os
 import shutil
 import subprocess
 import sys
+from pathlib import Path
 
 from .util import log_setup
 
@@ -140,6 +141,16 @@ def process_args(args, error):
             error("--clang-tidy requires clang-tidy to be installed")
 
 
+def get_project_root():
+    """
+    Returns the path of the project root directory.
+
+    The checker relies on running from there: all locations are relative
+    paths, and the tools it invokes resolve their config from the cwd.
+    """
+    return Path(__file__).parents[2]
+
+
 def get_changed_files(gitref):
     """
     return a list of changed files
@@ -152,7 +163,7 @@ def get_changed_files(gitref):
     except subprocess.CalledProcessError as exc:
         raise RuntimeError("could not determine list of recently-changed files with git") from exc
 
-    return set(file_list.decode("ascii").strip().split("\n"))
+    return {Path(name) for name in file_list.decode("ascii").strip().split("\n")}
 
 
 def main(args):
@@ -163,6 +174,8 @@ def main(args):
 
     Returns True if no issues were found.
     """
+    os.chdir(get_project_root())
+
     if args.only_changed_files:
         check_files = get_changed_files(args.only_changed_files)
     else:
@@ -225,10 +238,13 @@ def find_all_issues(args, check_files=None):
     Yields tuples of (title, text) that are displayed as warnings.
     """
 
+    python_locations = [Path("openage"), Path("buildsystem"), Path("etc/gdb_pretty"), Path("configure")]
+    cpp_locations = [Path("libopenage")]
+
     if args.headerguards:
         from .headerguards import find_issues
 
-        yield from find_issues("libopenage")
+        yield from find_issues(cpp_locations[0])
 
     if args.authors:
         from .authors import find_issues
@@ -238,28 +254,28 @@ def find_all_issues(args, check_files=None):
     if args.ruff:
         from .ruff import find_issues
 
-        yield from find_issues(check_files, ("openage", "buildsystem", "etc/gdb_pretty"))
+        yield from find_issues(check_files, python_locations)
 
     if args.ty:
         from .ty import find_issues
 
-        yield from find_issues(check_files, ("openage", "buildsystem", "etc/gdb_pretty"))
+        yield from find_issues(check_files, python_locations)
 
     if args.cython:
         from buildsystem.codecompliance.cython import find_issues
 
-        yield from find_issues(check_files, ("openage",))
+        yield from find_issues(check_files, [Path("openage")])
 
     if args.cppstyle:
         from .cppstyle import find_issues
 
-        yield from find_issues(check_files, ("libopenage",))
+        yield from find_issues(check_files, cpp_locations)
 
     if args.textfiles:
         from .textfiles import find_issues
 
         yield from find_issues(
-            ("openage", "libopenage", "buildsystem", "doc", "legal", "etc/gdb_pretty"),
+            [Path("libopenage"), *python_locations, Path("doc"), Path("legal")],
             (
                 ".pxd",
                 ".pyx",
@@ -283,16 +299,17 @@ def find_all_issues(args, check_files=None):
     if args.legal:
         from .legal import find_issues
 
-        yield from find_issues(("openage", "buildsystem", "libopenage", "etc/gdb_pretty"))
+        yield from find_issues([*python_locations, *cpp_locations])
 
     if args.filemodes:
         from .modes import find_issues
 
-        yield from find_issues(check_files, ("openage", "buildsystem", "libopenage", "etc/gdb_pretty"))
+        yield from find_issues(check_files, [*python_locations, *cpp_locations])
+
     if args.clang_tidy:
         from .clangtidy import find_issues
 
-        yield from find_issues(check_files, ("libopenage",))
+        yield from find_issues(check_files, cpp_locations)
 
 
 if __name__ == "__main__":

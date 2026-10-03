@@ -5,11 +5,12 @@ Checks the legal headers of all files.
 """
 
 import re
+from pathlib import Path
 
-from .util import SHEBANG, findfiles, has_ext, readfile
+from .util import SHEBANG, has_ext, readfile, select_files
 
 # The last-modification year is optional; only the creation year is required.
-OPENAGE_AUTHORS = "Copyright (?P<crstart>\\d{4})(-(?P<crend>\\d{4}))? the openage authors\\."
+OPENAGE_AUTHORS = "Copyright (?P<crstart>\\d{4})(\\+|-(?P<crend>\\d{4}))? the openage authors\\."
 
 NATIVELEGALHEADER = re.compile(
     "^"
@@ -73,11 +74,15 @@ def match_legalheader(data):
 def test_headers(paths, third_party_files):
     """Tests all in-sourcefile legal headers."""
 
-    for filename in findfiles(paths, EXTENSIONS_REQUIRING_LEGAL_HEADERS):
+    for filename in select_files(None, paths, EXTENSIONS_REQUIRING_LEGAL_HEADERS):
         try:
             headertype, _ = match_legalheader(readfile(filename))
         except ValueError:
-            yield ("Legal header missing or invalid", (filename + "\nSee copying.md for a template"), None)
+            yield (
+                "Legal header missing or invalid",
+                (f"{filename}\nSee copying.md for a template"),
+                None,
+            )
             continue
 
         if headertype is THIRDPARTYLEGALHEADER:
@@ -95,7 +100,7 @@ def find_issues(paths):
 
     # test whether all third-party files are listed in copying.md
     listed_files = set()
-    for line in readfile("copying.md").split("\n"):
+    for line in readfile(Path("copying.md")).split("\n"):
         match = re.match("^ - `([^`]+)`.*$", line)
         if not match:
             continue
@@ -105,7 +110,7 @@ def find_issues(paths):
 
     # file listed, but has no 3rd-party header?
     for filename in sorted(listed_files - third_party_files):
-        if has_ext(filename, EXTENSIONS_REQUIRING_LEGAL_HEADERS):
+        if has_ext(Path(filename), EXTENSIONS_REQUIRING_LEGAL_HEADERS):
             yield (
                 "third-party file listing issue",
                 (f"{filename}\n\tlisted in copying.md, but has no third-party license header."),

@@ -10,9 +10,10 @@ uv.lock; otherwise the system-installed tools are used.
 
 import shutil
 import subprocess
-from collections.abc import Callable, Generator, Iterable, Iterator
+from collections.abc import Callable, Generator, Iterable
+from pathlib import Path
 
-from .util import findfiles
+from .util import select_files
 
 
 def find_tool(name: str) -> str | None:
@@ -22,33 +23,20 @@ def find_tool(name: str) -> str | None:
     return shutil.which(name)
 
 
-def filter_file_list(check_files: Iterable[str], dirnames: tuple[str, ...]) -> Iterator[str]:
-    """
-    Yields all those files in check_files that are in one of the directories
-    and end in '.py'.
-    """
-    for filename in check_files:
-        if not filename.endswith(".py"):
-            continue
-
-        if any(filename.startswith(dirname) for dirname in dirnames):
-            yield filename
-
-
-def _python_files(check_files: Iterable[str] | None, dirnames: tuple[str, ...]) -> list[str]:
+def _python_files(check_files: Iterable[Path] | None, locations: list[Path]) -> list[Path]:
     """
     Returns the list of python files to check.
-    """
-    if check_files is None:
-        return list(filter_file_list(findfiles(dirnames), dirnames))
 
-    return list(filter_file_list(check_files, dirnames))
+    Direct-file locations (e.g. the 'configure' script) are checked
+    regardless of their extension.
+    """
+    return list(select_files(check_files, locations, (".py",)))
 
 
 def _run_tool(
     tool: str,
     args: list[str],
-    filenames: list[str],
+    filenames: list[Path],
     title: str,
     fix_args: list[str] | None = None,
 ) -> Generator[tuple[str, str, Callable[[], str] | None]]:
@@ -83,7 +71,7 @@ def _run_tool(
 
         fix = None
         if fix_args is not None:
-            fix = _create_fix(tool, fix_args, [filename])
+            fix = _create_fix(tool, fix_args, [Path(filename)])
 
         yield (title, f"{filename}\n\tline: {lineno}\n\t{message}", fix)
 
@@ -96,7 +84,7 @@ def _run_tool(
         )
 
 
-def _create_fix(tool: str, fix_args: list[str], filenames: list[str]) -> Callable[[], str]:
+def _create_fix(tool: str, fix_args: list[str], filenames: list[Path]) -> Callable[[], str]:
     """
     Create a function that, when called, runs the tool's fix mode on the
     files and returns a report.
@@ -119,7 +107,7 @@ def _create_fix(tool: str, fix_args: list[str], filenames: list[str]) -> Callabl
 
 
 def find_issues(
-    check_files: Iterable[str] | None, dirnames: tuple[str, ...]
+    check_files: Iterable[Path] | None, locations: list[Path]
 ) -> Generator[tuple[str, str, Callable[[], str] | None]]:
     """Invokes the external utilities."""
 
@@ -128,7 +116,7 @@ def find_issues(
         yield ("ruff missing", "no ruff found in PATH; run 'uv run <command>' or install ruff", None)
         return
 
-    filenames = _python_files(check_files, dirnames)
+    filenames = _python_files(check_files, locations)
 
     yield from _run_tool(
         ruff,

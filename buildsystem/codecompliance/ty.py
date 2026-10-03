@@ -9,12 +9,13 @@ uv.lock; otherwise the system-installed tool is used.
 """
 
 from collections.abc import Callable, Generator, Iterable
+from pathlib import Path
 
 from .ruff import _python_files, _run_tool, find_tool
 
 
 def find_issues(
-    check_files: Iterable[str] | None, dirnames: tuple[str, ...]
+    check_files: Iterable[Path] | None, dirnames: list[Path]
 ) -> Generator[tuple[str, str, Callable[[], str] | None]]:
     """Invokes the external utility."""
 

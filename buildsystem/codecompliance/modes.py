@@ -4,11 +4,11 @@
 Checks the mode of all files and prevents executable source files.
 """
 
-import pathlib
 import re
 import stat
+from pathlib import Path
 
-from .util import SHEBANG, findfiles
+from .util import SHEBANG, select_files
 
 SHEBANG_RE = re.compile("^" + SHEBANG)
 
@@ -28,24 +28,24 @@ EXTENSIONS_NO_X_BIT = {
     ".qml",
 }
 
-EXTENSIONS_SHEBANG_XBIT = {".sh", ".py"}
+# extensionless scripts (e.g. 'configure') may carry a shebang and x-bit, too
+EXTENSIONS_SHEBANG_XBIT = {"", ".sh", ".py"}
 
 
-def check_mode(filename):
+def check_mode(filename: Path) -> None:
     """
     Test if the the file has no executable bit set.
     """
 
-    path = pathlib.Path(filename)
-    filemode = path.stat().st_mode
+    filemode = filename.stat().st_mode
 
     x_ok = False
 
     if filemode & (stat.S_IXGRP | stat.S_IXOTH | stat.S_IXUSR):
-        if path.suffix in EXTENSIONS_SHEBANG_XBIT:
+        if filename.suffix in EXTENSIONS_SHEBANG_XBIT:
             # if the file is allowed to have a shebang,
             # allow its executable bit if it actually has a shebang
-            with path.open(encoding="utf-8") as file:
+            with filename.open(encoding="utf-8") as file:
                 firstline = file.readline()
 
                 if SHEBANG_RE.match(firstline):
@@ -60,10 +60,7 @@ def find_issues(check_files, paths):
     Check all source files for their required filesystem bits.
     """
 
-    for filename in findfiles(paths, EXTENSIONS_NO_X_BIT):
-        if check_files and filename not in check_files:
-            continue
-
+    for filename in select_files(check_files, paths, EXTENSIONS_NO_X_BIT):
         try:
             check_mode(filename)
         except ValueError as exc:

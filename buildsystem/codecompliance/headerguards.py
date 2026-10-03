@@ -5,6 +5,7 @@ Verifies the guard macros of all C++ header files.
 """
 
 import re
+from pathlib import Path
 
 from .util import findfiles, readfile
 
@@ -36,7 +37,7 @@ def find_issues(dirname):
     """
     checks all headerguards in header files in the cpp folders.
     """
-    for fname in findfiles((dirname,), (".h",)):
+    for fname in findfiles((Path(dirname),), (".h",)):
         try:
             data = readfile(fname)
 

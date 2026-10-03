@@ -6,7 +6,7 @@ Checks some code style rules for cpp files.
 
 import re
 
-from .util import findfiles, issue_str_line, readfile
+from .util import issue_str_line, readfile, select_files
 
 # spaces missing in `if () {` and `for`, `while`, ...
 MISSING_SPACES_RE = re.compile(
@@ -53,16 +53,12 @@ def filter_file_list(check_files, dirnames):
     Yields all those files in check_files that are in one of the directories
     and end in '.cpp' or '.h' and some other conditions.
     """
-    for filename in check_files:
-        if not (filename.endswith(".cpp") or filename.endswith(".h")):
-            continue
-
-        if filename.endswith(".gen.h") or filename.endswith(".gen.cpp"):
+    for filename in select_files(check_files, dirnames, (".cpp", ".h")):
+        if filename.name.endswith((".gen.h", ".gen.cpp")):
             # TODO all this for now, until someone fixes the codegen.
             continue
 
-        if any(filename.startswith(dirname) for dirname in dirnames):
-            yield filename
+        yield filename
 
 
 def find_issues(check_files, dirnames):
@@ -70,10 +66,7 @@ def find_issues(check_files, dirnames):
     Finds all issues in the given directories (filtered by check_files).
     """
 
-    if check_files is not None:
-        filenames = filter_file_list(check_files, dirnames)
-    else:
-        filenames = filter_file_list(findfiles(dirnames), dirnames)
+    filenames = filter_file_list(check_files, dirnames)
 
     for filename in filenames:
         data = readfile(filename)
