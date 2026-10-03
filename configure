@@ -271,7 +271,9 @@ def invoke_cmake(
 
         invocation.append("-DCMAKE_%s=%s" % (key.upper(), shlex.quote(val)))
 
-    if args.ninja:
+    # C++ modules need the ninja generator's dependency scanning;
+    # the Makefile generator cannot build FILE_SET CXX_MODULES sources.
+    if not args.makefile_generator:
         invocation.extend(["-G", "Ninja"])
 
     if args.ccache:
@@ -437,7 +439,11 @@ def parse_args() -> tuple[argparse.Namespace, argparse.ArgumentParser]:
         "--dry-run", action="store_true", help="just print the cmake invocation without calling it"
     )
     cli.add_argument("--cmake-binary", default="cmake", help="path to the cmake binary")
-    cli.add_argument("--ninja", action="store_true", help="use ninja instead of GNU make")
+    cli.add_argument(
+        "--makefile-generator",
+        action="store_true",
+        help="use GNU make instead of ninja; ninja is required for C++ modules",
+    )
     cli.add_argument("--ccache", action="store_true", help="activate using the ccache compiler cache")
     cli.add_argument("--clang-tidy", action="store_true", help="emit clang-tidy analysis messages")
     cli.add_argument(
