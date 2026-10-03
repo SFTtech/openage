@@ -254,12 +254,12 @@ def find_all_issues(args, check_files=None):
     if args.ruff:
         from .ruff import find_issues
 
-        yield from find_issues(check_files, python_locations)
+        yield from find_issues(python_locations)
 
     if args.ty:
         from .ty import find_issues
 
-        yield from find_issues(check_files, python_locations)
+        yield from find_issues(python_locations)
 
     if args.cython:
         from buildsystem.codecompliance.cython import find_issues
