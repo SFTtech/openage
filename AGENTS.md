@@ -66,7 +66,7 @@ Non-obvious traps; add new ones here, verified and in one line
 - Fail hard: throw/raise on unexpected state instead of skipping, logging and continuing, or returning a default
 - Trust the code over comments and docs; fix stale comments in code you touch
 - Done means it builds, the relevant tests pass and `make checkmerge` is clean; state what you could not verify, e.g. without game assets or GPU
-- Scratch files go to `/tmp`, never into the tree
+- Scratch files go to `/tmp/openage-agent`, never into the tree
 
 ## Code
 
@@ -128,7 +128,7 @@ Mechanics ([testing.md](doc/code/testing.md)):
 
 - Message `subsystem: summary`, e.g. `convert: ...`, `renderer: ...`; the body explains what and why, concisely
 - One logical change per commit; squash fixups before review ([contributing.md](doc/contributing.md#rebasing))
-- New source files start with `// Copyright <year> the openage authors. See copying.md for legal info.` (`#` in Python and CMake) and have mode 0644; don't bump years in existing headers
+- New source files start with `// Copyright <year>+ the openage authors. See copying.md for legal info.` (`#` in Python and CMake) and have mode 0644; don't bump years in existing headers
 - Commit authors must be listed in [copying.md](copying.md) (authors check)
 - Never commit generated files, build output, converted assets or scratch files
 - Never push, force-push, open or comment on PRs without explicit consent
