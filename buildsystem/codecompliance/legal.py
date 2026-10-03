@@ -105,8 +105,7 @@ def find_issues(paths):
         if not match:
             continue
 
-        filename = match.group(1)
-        listed_files.add(filename)
+        listed_files.add(Path(match.group(1)))
 
     # file listed, but has no 3rd-party header?
     for filename in sorted(listed_files - third_party_files):
