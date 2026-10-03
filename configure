@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Copyright 2013-2021 the openage authors. See copying.md for legal info.
+# Copyright 2013+ the openage authors. See copying.md for legal info.
 
 """
 openage autocancer-like cmake frontend.
@@ -15,10 +15,12 @@ import shlex
 import shutil
 import subprocess
 import sys
+from pathlib import Path
+from typing import Iterator
 
 if sys.version_info < (3, 12):
     print("openage requires Python 3.12 or higher")
-    exit(1)
+    sys.exit(1)
 
 
 # argparsing
@@ -71,13 +73,13 @@ OPTIONS = {
     "inotify": "if_available",
     "opengl": "if_available",
     "vulkan": "if_available",
-    "gperftools-tcmalloc": False,
+    "gperftools-tcmalloc": "False",
     "gperftools-profiler": "if_available",
-    "ncurses": "if_available"
+    "ncurses": "if_available",
 }
 
 
-def features(args, parser):
+def features(args, parser) -> dict[str, str]:
     """
     Enable or disable optional features.
     If a feature is not explicitly enabled/disabled,
@@ -85,45 +87,43 @@ def features(args, parser):
     """
 
     def sanitize_option_name(option):
-        """ Check if the given feature exists """
+        """Check if the given feature exists"""
         if option not in OPTIONS:
-            parser.error("unknown feature: '{}'.\n"
-                         "available features:\n   {}".format(
-                             option, '\n   '.join(OPTIONS)))
+            parser.error(
+                "unknown feature: '{}'.\navailable features:\n   {}".format(option, "\n   ".join(OPTIONS))
+            )
 
     options = OPTIONS.copy()
 
     if args.with_:
         for arg in args.with_:
             sanitize_option_name(arg)
-            options[arg] = True
+            options[arg] = "True"
 
     if args.without:
         for arg in args.without:
             sanitize_option_name(arg)
-            options[arg] = False
+            options[arg] = "False"
 
     return options
 
 
-def build_type(args):
-    """ Set the cmake build type """
+def build_type(args) -> dict[str, str]:
+    """Set the cmake build type"""
     mode = args.mode
-    if mode == 'debug':
-        ret = 'Debug'
-    elif mode == 'release':
-        ret = 'Release'
-    elif mode == 'relwithdebinfo':
-        ret = 'RelWithDebInfo'
-    elif mode == 'minsizerel':
-        ret = 'MinSizeRel'
+    if mode == "debug":
+        ret = "Debug"
+    elif mode == "release":
+        ret = "Release"
+    elif mode == "relwithdebinfo":
+        ret = "RelWithDebInfo"
+    elif mode == "minsizerel":
+        ret = "MinSizeRel"
 
-    return {
-        "build_type": ret
-    }
+    return {"build_type": ret}
 
 
-def get_compiler(args, parser):
+def get_compiler(args, parser) -> dict[str, str]:
     """
     Compute the compiler executable name
     """
@@ -136,7 +136,7 @@ def get_compiler(args, parser):
             "gcc": "g++",
         }
 
-        cxxver = args.compiler.split('-', maxsplit=1)
+        cxxver = args.compiler.split("-", maxsplit=1)
         cxx = cxxver[0]
 
         # try to replace aliases
@@ -149,15 +149,15 @@ def get_compiler(args, parser):
 
     else:
         # CXX has not been specified
-        if sys.platform.startswith('darwin'):
-            cxx = 'clang++'
+        if sys.platform.startswith("darwin"):
+            cxx = "clang++"
         else:
             # default to gnu compiler suite
-            cxx = 'g++'
+            cxx = "g++"
 
     # test whether the specified compiler actually exists
     if not shutil.which(cxx):
-        parser.error('could not find c++ compiler executable: %s' % cxx)
+        parser.error("could not find c++ compiler executable: %s" % cxx)
 
     return {
         "cxx_compiler": cxx,
@@ -168,7 +168,7 @@ def get_compiler(args, parser):
     }
 
 
-def get_install_prefixes(args):
+def get_install_prefixes(args) -> dict[str, str]:
     """
     Determine the install prefix configuration.
     """
@@ -183,18 +183,25 @@ def get_install_prefixes(args):
     return ret
 
 
-def bindir_creation(args, defines):
+def create_cachedir_tag(cachedir: Path) -> None:
+    tagfile = cachedir / "CACHEDIR.TAG"
+
+    with open(tagfile, "w") as f:
+        f.write("Signature: 8a477f597d28d172789f06886806bc55\n# This is a cache directory.\n")
+
+
+def bindir_creation(args, defines: dict[str, str]) -> Path:
     """
     configuration for the sanitizer addons for gcc and clang.
     """
 
-    def sanitize_for_filename(txt, fallback='-'):
+    def sanitize_for_filename(txt, fallback="-") -> str:
         """
         sanitizes a string for safe usage in a filename
         """
 
-        def yieldsanitizedchars():
-            """ generator for sanitizing the output folder name """
+        def yieldsanitizedchars() -> Iterator[str]:
+            """generator for sanitizing the output folder name"""
             # False if the previous char was regular.
             fallingback = True
             for char in txt:
@@ -209,17 +216,23 @@ def bindir_creation(args, defines):
 
         return "".join(yieldsanitizedchars())
 
-    bindir = ".bin/%s-%s-%s" % (
-        sanitize_for_filename(defines["cxx_compiler"]),
-        sanitize_for_filename(args.mode),
-        sanitize_for_filename("-O%s -sanitize=%s" % (
-            args.optimize, args.sanitize)))
+    bindir = Path(".bin")
+    builddir = bindir / (
+        "%s-%s-%s"
+        % (
+            sanitize_for_filename(defines["cxx_compiler"]),
+            sanitize_for_filename(args.mode),
+            sanitize_for_filename("-O%s -sanitize=%s" % (args.optimize, args.sanitize)),
+        )
+    )
 
     if not args.dry_run:
-        os.makedirs(bindir, exist_ok=True)
+        builddir.mkdir(parents=True, exist_ok=True)
+        create_cachedir_tag(bindir)
+        create_cachedir_tag(builddir)
 
-    def forcesymlink(linkto, name):
-        """ similar in function to ln -sf """
+    def forcesymlink(linkto, name) -> None:
+        """similar in function to ln -sf"""
         if args.dry_run:
             return
 
@@ -231,42 +244,41 @@ def bindir_creation(args, defines):
         os.symlink(linkto, name)
 
     # create the build dir and symlink it to 'bin'
-    forcesymlink(bindir, 'bin')
+    forcesymlink(builddir, "bin")
 
-    return bindir
+    return builddir
 
 
-def invoke_cmake(args, bindir, defines, options):
+def invoke_cmake(
+    args, project_root: Path, bindir: Path, defines: dict[str, str], options: dict[str, str]
+) -> None:
     """
     run cmake.
     """
-
-    # the project root directory contains this configure file.
-    project_root = os.path.dirname(os.path.realpath(__file__))
 
     # calculate cmake invocation from defines dict
     invocation = [args.cmake_binary]
     maxkeylen = max(len(k) for k in defines)
     for key, val in sorted(defines.items()):
-        print('%s | %s' % (key.rjust(maxkeylen), val))
+        print("%s | %s" % (key.rjust(maxkeylen), val))
 
-        if key in ('cxx_compiler', ):
+        if key in ("cxx_compiler",):
             # work around this cmake 'feature':
             # when run in an existing build directory, if CXX is given,
             # all other arguments are ignored... this is retarded.
-            if os.path.exists(os.path.join(bindir, 'CMakeCache.txt')):
+            if os.path.exists(os.path.join(bindir, "CMakeCache.txt")):
                 continue
 
-        invocation.append('-DCMAKE_%s=%s' % (key.upper(), shlex.quote(val)))
+        invocation.append("-DCMAKE_%s=%s" % (key.upper(), shlex.quote(val)))
 
     if args.ninja:
-        invocation.extend(['-G', 'Ninja'])
+        invocation.extend(["-G", "Ninja"])
 
     if args.ccache:
-        invocation.append('-DENABLE_CCACHE=ON')
+        invocation.append("-DENABLE_CCACHE=ON")
 
     if args.clang_tidy:
-        invocation.append('-DENABLE_CLANG_TIDY=ON')
+        invocation.append("-DENABLE_CLANG_TIDY=ON")
 
     if args.download_nyan:
         invocation.append("-DDOWNLOAD_NYAN=YES")
@@ -275,22 +287,21 @@ def invoke_cmake(args, bindir, defines, options):
     if args.iwyu:
         cxx_options["CXX_INCLUDE_WHAT_YOU_USE"] = args.iwyu
 
-        invocation.append('-DWANT_IWYU=true')
+        invocation.append("-DWANT_IWYU=true")
 
     cxx_options["CXX_OPTIMIZATION_LEVEL"] = args.optimize
     cxx_options["CXX_SANITIZE_MODE"] = args.sanitize
     cxx_options["CXX_SANITIZE_FATAL"] = args.sanitize_fatal
     for key, val in sorted(cxx_options.items()):
-        invocation.append('-D%s=%s' % (key, val))
+        invocation.append("-D%s=%s" % (key, val))
 
     print("\nconfig options:\n")
 
     maxkeylen = max(len(k) for k in options)
     for key, val in sorted(options.items()):
-        print('%s | %s' % (key.rjust(maxkeylen), val))
+        print("%s | %s" % (key.rjust(maxkeylen), val))
 
-        invocation.append('-DWANT_%s=%s' % (
-            key.upper().replace('-', '_'), val))
+        invocation.append("-DWANT_%s=%s" % (key.upper().replace("-", "_"), val))
 
     for raw_cmake_arg in args.raw_cmake_args:
         if raw_cmake_arg == "--":
@@ -298,42 +309,44 @@ def invoke_cmake(args, bindir, defines, options):
 
         invocation.append(raw_cmake_arg)
 
-    invocation.append(project_root)
+    invocation.append(str(project_root.resolve()))
 
     # look for traces of an in-source build
 
-    if os.path.isfile('CMakeCache.txt'):
+    if os.path.isfile("CMakeCache.txt"):
         print("\nwarning: found traces of an in-source build.")
         print("CMakeCache.txt was deleted to make building possible.")
         print("run 'make cleaninsourcebuild' to fully wipe the traces.")
-        os.remove('CMakeCache.txt')
+        os.remove("CMakeCache.txt")
 
     # switch to build directory
-    print('\nbindir:\n%s/\n' % os.path.join(project_root, bindir))
+    print("\nbindir:\n%s/\n" % (project_root / bindir))
     if not args.dry_run:
         os.chdir(bindir)
 
     # invoke cmake
     try:
-        print('invocation:\n%s\n' % ' '.join(invocation))
+        print("invocation:\n%s\n" % " ".join(invocation))
         if args.dry_run:
-            exit(0)
+            sys.exit(0)
         else:
             print("(now running cmake:)\n")
-            exit(subprocess.call(invocation))
+            sys.exit(subprocess.call(invocation))
     except FileNotFoundError:
         print("cmake was not found")
-        exit(1)
+        sys.exit(1)
 
 
-def main(args, parser):
+def main():
     """
     Compose the cmake invocation.
     Basically does what many distro package managers do as well.
     """
 
+    args, parser = parse_args()
+
     try:
-        subprocess.call(['cowsay', '--', DESCRIPTION])
+        subprocess.call(["cowsay", "--", DESCRIPTION])
         print("")
     except (FileNotFoundError, PermissionError):
         print(DESCRIPTION)
@@ -346,98 +359,114 @@ def main(args, parser):
     defines.update(get_compiler(args, parser))
     defines.update(get_install_prefixes(args))
 
+    project_root = Path(__file__).resolve().parent
+
     bindir = bindir_creation(args, defines)
-    invoke_cmake(args, bindir, defines, options)
+    invoke_cmake(args, project_root, bindir, defines, options)
 
 
-def parse_args():
-    """ argument parsing """
+def parse_args() -> tuple[argparse.Namespace, argparse.ArgumentParser]:
+    """argument parsing"""
 
     cli = argparse.ArgumentParser(
-        description=DESCRIPTION,
-        epilog=EPILOG,
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+        description=DESCRIPTION, epilog=EPILOG, formatter_class=argparse.ArgumentDefaultsHelpFormatter
+    )
 
-    cli.add_argument("--mode", "-m",
-                     choices=["debug", "release", "relwithdebinfo", "minsizerel"],
-                     default=getenv("BUILDMODE", default="debug"),
-                     help="controls cmake build mode")
-    cli.add_argument("--optimize", "-O",
-                     choices=["auto", "0", "1", "g", "2", "3", "max"],
-                     default=getenv("OPTIMIZE", default="auto"),
-                     help=("controls optimization-related flags. " +
-                           "is set according to mode if 'auto'. " +
-                           "conflicts with --flags"))
-    cli.add_argument("--sanitize",
-                     choices=["none", "yes", "mem", "thread"],
-                     default=getenv("SANITIZER", default="none"),
-                     help=("enable one of those (run-time) code sanitizers."
-                           "'yes' enables the address and "
-                           "undefined sanitizers."))
-    cli.add_argument("--sanitize-fatal", action='store_true',
-                     default=getenv_bool("SANITIZER_FATAL"),
-                     help="With --sanitize, stop execution on first problem.")
-    cli.add_argument("--compiler", "-c",
-                     default=getenv("CXX"),
-                     help="c++ compiler executable, default=$ENV[CXX]")
-    cli.add_argument("--iwyu",
-                     choices=["warn", "error"],
-                     default=None,
-                     help="use include-what-you-use tool to check "
-                          "for unnecessary imports")
-    cli.add_argument("--with", action='append', dest='with_', metavar='OPTION',
-                     help="enable optional functionality. "
-                          "for a list of available features, "
-                          "use --list-options")
-    cli.add_argument("--without", action='append', metavar='OPTION',
-                     help="disable optional functionality. "
-                          "for a list of available features, "
-                          "use --list-options")
-    cli.add_argument("--list-options", action="store_true",
-                     help="list available optional feature switches")
-    cli.add_argument("--flags", "-f",
-                     default=getenv("CXXFLAGS", "CCFLAGS", "CFLAGS"),
-                     help="compiler flags")
-    cli.add_argument("--ldflags", "-l",
-                     default=getenv("LDFLAGS"),
-                     help="linker flags")
-    cli.add_argument("--prefix", "-p", default="/usr/local",
-                     help="installation directory prefix")
-    cli.add_argument("--py-prefix", default=None,
-                     help="python module installation directory prefix")
-    cli.add_argument("--dry-run", action='store_true',
-                     help="just print the cmake invocation without calling it")
-    cli.add_argument("--cmake-binary", default="cmake",
-                     help="path to the cmake binary")
-    cli.add_argument("--ninja", action="store_true",
-                     help="use ninja instead of GNU make")
-    cli.add_argument("--ccache", action="store_true",
-                     help="activate using the ccache compiler cache")
-    cli.add_argument("--clang-tidy", action="store_true",
-                     help="emit clang-tidy analysis messages")
-    cli.add_argument("--download-nyan", action="store_true",
-                     help="enable automatic download of the nyan project")
+    cli.add_argument(
+        "--mode",
+        "-m",
+        choices=["debug", "release", "relwithdebinfo", "minsizerel"],
+        default=getenv("BUILDMODE", default="debug"),
+        help="controls cmake build mode",
+    )
+    cli.add_argument(
+        "--optimize",
+        "-O",
+        choices=["auto", "0", "1", "g", "2", "3", "max"],
+        default=getenv("OPTIMIZE", default="auto"),
+        help=(
+            "controls optimization-related flags. "
+            + "is set according to mode if 'auto'. "
+            + "conflicts with --flags"
+        ),
+    )
+    cli.add_argument(
+        "--sanitize",
+        choices=["none", "yes", "mem", "thread"],
+        default=getenv("SANITIZER", default="none"),
+        help=(
+            "enable one of those (run-time) code sanitizers."
+            "'yes' enables the address and "
+            "undefined sanitizers."
+        ),
+    )
+    cli.add_argument(
+        "--sanitize-fatal",
+        action="store_true",
+        default=getenv_bool("SANITIZER_FATAL"),
+        help="With --sanitize, stop execution on first problem.",
+    )
+    cli.add_argument(
+        "--compiler", "-c", default=getenv("CXX"), help="c++ compiler executable, default=$ENV[CXX]"
+    )
+    cli.add_argument(
+        "--iwyu",
+        choices=["warn", "error"],
+        default=None,
+        help="use include-what-you-use tool to check for unnecessary imports",
+    )
+    cli.add_argument(
+        "--with",
+        action="append",
+        dest="with_",
+        metavar="OPTION",
+        help="enable optional functionality. for a list of available features, use --list-options",
+    )
+    cli.add_argument(
+        "--without",
+        action="append",
+        metavar="OPTION",
+        help="disable optional functionality. for a list of available features, use --list-options",
+    )
+    cli.add_argument("--list-options", action="store_true", help="list available optional feature switches")
+    cli.add_argument("--flags", "-f", default=getenv("CXXFLAGS", "CCFLAGS", "CFLAGS"), help="compiler flags")
+    cli.add_argument("--ldflags", "-l", default=getenv("LDFLAGS"), help="linker flags")
+    cli.add_argument("--prefix", "-p", default="/usr/local", help="installation directory prefix")
+    cli.add_argument("--py-prefix", default=None, help="python module installation directory prefix")
+    cli.add_argument(
+        "--dry-run", action="store_true", help="just print the cmake invocation without calling it"
+    )
+    cli.add_argument("--cmake-binary", default="cmake", help="path to the cmake binary")
+    cli.add_argument("--ninja", action="store_true", help="use ninja instead of GNU make")
+    cli.add_argument("--ccache", action="store_true", help="activate using the ccache compiler cache")
+    cli.add_argument("--clang-tidy", action="store_true", help="emit clang-tidy analysis messages")
+    cli.add_argument(
+        "--download-nyan", action="store_true", help="enable automatic download of the nyan project"
+    )
 
     # arguments after -- are used as raw cmake args
-    cli.add_argument('raw_cmake_args', nargs=argparse.REMAINDER, default=[],
-                     help="all args after ' -- ' are passed directly to cmake")
+    cli.add_argument(
+        "raw_cmake_args",
+        nargs=argparse.REMAINDER,
+        default=[],
+        help="all args after ' -- ' are passed directly to cmake",
+    )
 
     args = cli.parse_args()
 
-    if args.sanitize == 'none' and args.sanitize_fatal:
-        cli.error('--sanitize-fatal only valid with --sanitize')
+    if args.sanitize == "none" and args.sanitize_fatal:
+        cli.error("--sanitize-fatal only valid with --sanitize")
 
     if args.list_options:
         header = "{} | Default state".format("Optional features:".ljust(25))
         print("{}\n{}".format(header, "-" * len(header)))
         for option, state in sorted(OPTIONS.items()):
-            state_str = (state if not isinstance(state, bool)
-                         else ("on" if state else "off"))
+            state_str = state if not isinstance(state, bool) else ("on" if state else "off")
             print("{} | {}".format(option.ljust(25), state_str))
-        exit(0)
+        sys.exit(0)
 
     return args, cli
 
 
 if __name__ == "__main__":
-    main(*parse_args())
+    main()
