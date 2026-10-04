@@ -1,4 +1,4 @@
-// Copyright 2023-2024 the openage authors. See copying.md for legal info.
+// Copyright 2023-2025 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -100,6 +100,18 @@ public:
 	bool running;
 
 private:
+
+	/**
+	 * Run the time loop. Executed in a worker thread.
+	 */
+	void run_time_loop();
+
+	/**
+	 * Run the simulation loop. Executed in a worker thread in FULL mode and on
+	 * the main thread in headless mode.
+	 */
+	void run_simulation();
+
 	/**
 	 * The run mode to use.
 	 */
