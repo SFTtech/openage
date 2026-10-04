@@ -1,6 +1,6 @@
 # AGENTS.md
 
-openage is a free-software RTS engine recreating Age of Empires II: `libopenage/` is the C++20 engine, `openage/` the Python package (converter, codegen, nyan integration), glued together by Cython
+openage is a free-software RTS engine recreating Age of Empires II: `libopenage/` is the C++26 engine, `openage/` the Python package (converter, codegen, nyan integration), glued together by Cython
 
 ## Reference docs
 
@@ -17,19 +17,19 @@ Read the docs of the subsystem you touch; link to them instead of duplicating th
 
 ## Build and verify
 
-`./configure` creates the build dir in `.bin/`, symlinked as `bin/`; the root `Makefile` forwards there
+`./configure` creates the build dir in `.bin/`, symlinked as `bin/`; the root `justfile` forwards there
 
 ```sh
 ./configure # e.g. --compiler=clang --mode=release --ccache --download-nyan
-make -j$(nproc) # build
-make run # run the game
-make tests # all C++/Python tests and doctests, as CI runs them
-make checkmerge # compliance checks, as CI runs them
-make doc # doxygen → bin/doc/html/index.html
+just build # build everything
+just run # run the game
+just tests # all C++/Python tests and doctests, as CI runs them
+just checkmerge # compliance checks, as CI runs them
+just doc # doxygen → bin/doc/html/index.html
 ```
 
 - Single test: `bin/run test NAME`, e.g. `openage::curve::tests::container`; `-l` lists all, `-d NAME ARGS` runs a demo, `-b NAME` a benchmark, `-a --have-assets` includes tests needing game assets
-- Checks on changed files only: `make checkuncommited` (sic; vs `HEAD`, new files count once `git add`ed) or `make checkchanged` (vs `origin/master`)
+- Checks on changed files only: `just checkuncommited` (sic; vs `HEAD`, new files count once `git add`ed) or `just checkchanged` (vs `origin/master`)
 - `checkfast`: authors, cppstyle, cython, headerguards, legal, filemodes, textfiles; `checkmerge` adds ruff (lint + format) and ty (type check), run through `uv run` (venv from pyproject.toml/uv.lock); `checkall` adds clang-tidy
 - Memory or threading changes: also run the tests in a build configured with `--sanitize=yes` (ASan+UBSan) or `--sanitize=thread`
 - CI also builds on macOS and Windows ([.github/workflows/](.github/workflows/)): keep code portable
@@ -48,11 +48,10 @@ make doc # doxygen → bin/doc/html/index.html
 
 Non-obvious traps; add new ones here, verified and in one line
 
-- In-source builds are forbidden and poison the tree; `make cleaninsourcebuild` removes the traces
-- Run Python only via `bin/run ...` or `make run`, never `python3 -m openage` in the source tree: compiled Cython modules and `openage/config.py` live in `bin/`
-- Never edit files in `bin/`, they are generated: `config.*` from `*.in`, `*.gen.{h,cpp}` from `openage/codegen/` and `*.template`, `libopenage` `.pxd` files from `pxd:` annotations in C++ headers; codegen trouble: `make cleancodegen`
-- nyan is a separate project: either point to it with `-Dnyan_DIR=`, or `./configure --download-nyan`
-- C++20, but the minimum compilers are gcc/clang 10 and MSVC 16.8 (`buildsystem/CheckCompilerFeatures.cmake`): check support before using newer library features like `std::format`
+- In-source builds are forbidden and poison the tree; `just cleaninsourcebuild` removes the traces
+- Run Python only via `bin/run ...` or `just run`, never `python3 -m openage` in the source tree: compiled Cython modules and `openage/config.py` live in `bin/`
+- Never edit files in `bin/`, they are generated: `config.*` from `*.in`, `*.gen.{h,cpp}` from `openage/codegen/` and `*.template`, `libopenage` `.pxd` files from `pxd:` annotations in C++ headers; codegen trouble: `just cleancodegen`
+- C++26, but the minimum compilers are gcc 16 and clang 21 (`buildsystem/CheckCompilerFeatures.cmake`): check support before using newer library features like `std::format`
 
 ## Working
 
@@ -65,7 +64,7 @@ Non-obvious traps; add new ones here, verified and in one line
 - Keep diffs focused: no drive-by refactors, reformatting, renames or "improvements" outside the task
 - Fail hard: throw/raise on unexpected state instead of skipping, logging and continuing, or returning a default
 - Trust the code over comments and docs; fix stale comments in code you touch
-- Done means it builds, the relevant tests pass and `make checkmerge` is clean; state what you could not verify, e.g. without game assets or GPU
+- Done means it builds, the relevant tests pass and `just checkmerge` is clean; state what you could not verify, e.g. without game assets or GPU
 - Scratch files go to `/tmp/openage-agent`, never into the tree
 
 ## Code
@@ -106,7 +105,7 @@ Write tests where they catch real bugs; the right kind depends on the subject:
 - Data structures, algorithms, math, curves, events, pathfinding: unit tests of invariants and edge cases (empty, boundaries, overflow, equal timestamps, queries exactly at, before and after keyframes)
 - Parsers and converter logic: small hand-made inputs; gate tests needing game assets on `has_assets` in the test list
 - Small pure Python functions: doctests, which double as documentation
-- Rendering, GUI, input wiring and other interactive code: usually no automated test; verify with a demo or `make run` and say so
+- Rendering, GUI, input wiring and other interactive code: usually no automated test; verify with a demo or `just run` and say so
 - Performance claims: measure with a benchmark (`bin/run test -b NAME`)
 - Bug fixes: a regression test that fails without the fix, where the subject is testable as above
 - Test observable behavior and contracts, not implementation details; no tests that restate the code or depend on timing, network or user interaction
