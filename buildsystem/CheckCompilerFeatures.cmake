@@ -47,10 +47,10 @@ if(NOT HAVE_REQUIRED_CXX20_SUPPORT)
 The compiler doesn't support required C++20 features:
   * Concepts
   * Default comparisons
-The following versions support these features:
-  * clang++ >= 10
-  * g++ >= 10
-  * Microsoft Visual Studio 2019 >= 16.8
+The minimum supported compiler versions are:
+  * clang++ >= 21
+  * g++ >= 16
+  * Microsoft Visual Studio 2022 >= 17.4
 Please upgrade your compiler to build openage.
 
 ")

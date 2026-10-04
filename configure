@@ -318,7 +318,7 @@ def invoke_cmake(
     if os.path.isfile("CMakeCache.txt"):
         print("\nwarning: found traces of an in-source build.")
         print("CMakeCache.txt was deleted to make building possible.")
-        print("run 'make cleaninsourcebuild' to fully wipe the traces.")
+        print("run 'just cleaninsourcebuild' to fully wipe the traces.")
         os.remove("CMakeCache.txt")
 
     # switch to build directory

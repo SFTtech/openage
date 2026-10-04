@@ -1,10 +1,14 @@
 # openage build wrapper; forwards recipes to the build dir (ninja by default)
-# run `just --list` to list the recipes; see ./configure for build dir setup
+# run `just` to list the recipes; see ./configure for build dir setup
 
 builddir := "bin"
 
 # forward to ninja; make is only relevant for --makefile-generator build dirs
 buildcmd := `test -f bin/build.ninja && echo "ninja -C bin" || echo "make --no-print-directory -C bin"`
+
+# list the available recipes
+help:
+	@just --list
 
 # build the entire project
 build:

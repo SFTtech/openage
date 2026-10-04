@@ -7,7 +7,7 @@
 sanity_check:
 	- skip              (? if job != "debian" ?)
 	uv sync             # linter dependencies
-	make checkmerge
+	just checkmerge
 
 # Various optimisation options can affect warnings compiler generates.
 # Make sure both release and debug are tested. Arch job has more checks,
@@ -18,10 +18,10 @@ configure:
 	./configure --mode=${mode} --compiler=${compiler} --ccache --download-nyan
 
 build: configure
-	make -j$(nproc) build
+	just build
 
 test: build
-	make tests
+	just tests
 
 install: build
-	make install DESTDIR=/tmp/openage
+	DESTDIR=/tmp/openage just install
