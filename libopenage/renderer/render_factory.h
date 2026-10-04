@@ -19,6 +19,12 @@ class WorldRenderStage;
 class RenderEntity;
 } // namespace world
 
+namespace camera {
+class CameraManager;
+class RenderEntity;
+} // namespace camera
+
+
 /**
  * Creates render entities that push animation updates from the
  * engine to the renderer. Also registers the render entities with
@@ -57,6 +63,10 @@ public:
 	 */
 	std::shared_ptr<world::RenderEntity> add_world_render_entity();
 
+
+	std::shared_ptr<camera::RenderEntity> add_camera_render_entity();
+
+
 private:
 	/**
 	 * Render stage for terrain drawing.
@@ -67,6 +77,12 @@ private:
 	 * Render stage for game entity drawing.
 	 */
 	std::shared_ptr<world::WorldRenderStage> world_renderer;
+
+
+	/**
+	 * Render stage for camera entity drawing.
+	 */
+	std::shared_ptr<camera::CameraManager> camera_manager;
 };
 
 } // namespace openage::renderer

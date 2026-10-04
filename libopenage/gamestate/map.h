@@ -3,12 +3,16 @@
 #pragma once
 
 #include <memory>
+#include <optional>
 #include <unordered_map>
 
 #include <nyan/nyan.h>
 
 #include "pathfinding/types.h"
 #include "util/vector.h"
+
+#include "renderer/render_factory.h"
+#include "renderer/stages/camera/render_entity.h"
 
 
 namespace openage {
@@ -65,6 +69,12 @@ public:
 	 */
 	path::grid_id_t get_grid_id(const nyan::fqon_t &path_grid) const;
 
+	const void set_camera_render_entity(std::shared_ptr<renderer::camera::RenderEntity> renderer_entity,
+	                                    const std::optional<renderer::camera::CameraBoundaries> &boundaries = std::nullopt,
+	                                    const time::time_t time = time::TIME_ZERO);
+
+	const void upadate_camera_render_entity(const std::optional<renderer::camera::CameraBoundaries> &boundaries, const time::time_t time);
+
 private:
 	/**
 	 * Terrain.
@@ -80,6 +90,8 @@ private:
 	 * Lookup table for mapping path grid objects in nyan to grid indices.
 	 */
 	std::unordered_map<nyan::fqon_t, path::grid_id_t> grid_lookup;
+
+	std::shared_ptr<renderer::camera::RenderEntity> camera_render_entity;
 };
 
 } // namespace gamestate

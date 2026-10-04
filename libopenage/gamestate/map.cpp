@@ -5,6 +5,7 @@
 #include <nyan/nyan.h>
 
 #include "gamestate/api/terrain.h"
+#include "gamestate/definitions.h"
 #include "gamestate/game_state.h"
 #include "gamestate/terrain.h"
 #include "gamestate/terrain_chunk.h"
@@ -13,6 +14,7 @@
 #include "pathfinding/pathfinder.h"
 #include "pathfinding/sector.h"
 
+#include "renderer/camera/definitions.h"
 
 namespace openage::gamestate {
 Map::Map(const std::shared_ptr<GameState> &state,
@@ -77,5 +79,23 @@ const std::shared_ptr<path::Pathfinder> &Map::get_pathfinder() const {
 path::grid_id_t Map::get_grid_id(const nyan::fqon_t &path_grid) const {
 	return this->grid_lookup.at(path_grid);
 }
+
+
+const void Map::set_camera_render_entity(std::shared_ptr<renderer::camera::RenderEntity> renderer_entity,
+                                         const std::optional<renderer::camera::CameraBoundaries> &boundaries,
+                                         const time::time_t time) {
+	this->camera_render_entity = renderer_entity;
+	this->upadate_camera_render_entity(boundaries, time);
+}
+
+const void Map::upadate_camera_render_entity(const std::optional<renderer::camera::CameraBoundaries> &boundaries, const time::time_t time) {
+	if (this->camera_render_entity) {
+		if (boundaries.has_value())
+			this->camera_render_entity->update(boundaries.value(), time);
+		else
+			this->camera_render_entity->update(openage::renderer::camera::DEFAULT_CAM_BOUNDARIES, time); // TODO: caluclate bounds, from origin and map size
+	}
+}
+
 
 } // namespace openage::gamestate
