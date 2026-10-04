@@ -121,6 +121,7 @@ Mechanics ([testing.md](doc/code/testing.md)):
 ## Writing docs
 
 - Update `doc/` when behavior, interfaces or file formats change
+- Write token-lean docs => write concisely and avoid verbosity
 - Write for the reader, not as a record of decisions or attempts
 - Markdown: one sentence per line
 
