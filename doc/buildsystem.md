@@ -37,7 +37,7 @@ Steps in building openage:
 
 Additional recipes:
 
- - see `make help`
+ - see `just --list`
  - `install`
  - `doc` (generate docs via Doxygen)
  - `test` (runs the various tests)
@@ -51,26 +51,26 @@ Phases
 CMake-time: `./configure`
 ------------------------
 
-cmake reads and interprets all cmake modules and `CMakeLists.txt` files, populating the build directory with Makefiles and generating `config.py`, `config.h` and `config.cpp`. In addition, the codegen script is invoked to determine the list of files it will generate, and the list of (python) files it depends on.
+cmake reads and interprets all cmake modules and `CMakeLists.txt` files, populating the build directory with build files and generating `config.py`, `config.h` and `config.cpp`. In addition, the codegen script is invoked to determine the list of files it will generate, and the list of (python) files it depends on.
 
-The `./configure` cmake-wrapper script may be used to achieve a pleasant build experience. `./configure` automatically creates the build directory and symlinks it to `bin`, which makes the root Makefile work.
+The `./configure` cmake-wrapper script may be used to achieve a pleasant build experience. `./configure` automatically creates the build directory and symlinks it to `bin`, which makes the root `justfile` work.
 
 For each compiler invocation (gcc -Og, clang -O3, etc...), `./configure` creates its own build directory. This allows you to quickly switch compilers and flags (e.g. via `./configure -c clang -O2`) without having to re-build all object files when switching back.
 
 
-Build time: `make`
+Build time: `ninja`
 ------------------
 
 `cmake` supports many backends: Project files for various IDEs and more.
 
-By default, `GNU make` is used to interpret the cmake-generated Makefiles at build time. It will detect changes in the relevant `cmake` source files, and re-trigger a cmake execution if necessary (just your standard CMake features; pretty cool stuff).
+By default, `ninja` interprets the generated `build.ninja` at build time; C++ modules need its dependency scanning. It will detect changes in the relevant `cmake` source files, and re-trigger a cmake execution if necessary (just your standard CMake features; pretty cool stuff).
 
 The recipes `codegen`, `libopenage`, `pxdgen`, `cythonize`, `compilepy` and `inplacemodules` are then run as needed.
 
-The `Makefile` in the project root directory may be used to invoke `GNU make` in the build directory (`make -C bin/` would be the manual way of doing this).
+The `justfile` in the project root directory may be used to invoke `ninja` in the build directory (`ninja -C bin/` would be the manual way of doing this).
 
 
-Install time `make install`
+Install time `just install`
 --------------------------
 
 At install time, the openage library, python modules, Cython extension

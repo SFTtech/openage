@@ -7,7 +7,7 @@
 ```
 brew update-reset && brew update
 brew install --cask font-dejavu
-brew install cmake python3 libepoxy freetype fontconfig harfbuzz opus opusfile libogg libpng toml11 eigen
+brew install cmake just ninja python3 libepoxy freetype fontconfig harfbuzz opus opusfile libogg libpng toml11 eigen
 brew install qtbase qtdeclarative qtmultimedia
 ```
 
@@ -45,35 +45,27 @@ python3 -m venv .venv
 
 ## Building
 
-Recent versions of Apple Clang support the C++20 features openage uses, so the
-compiler shipped with Xcode is normally fine:
-
-```
-./configure --download-nyan -- -DPython3_EXECUTABLE="$PWD/.venv/bin/python"
-```
-
-Older Apple Clang releases are missing parts of C++20 and will fail to build.
-If you hit compiler errors, install Homebrew's LLVM and point `configure` at it instead:
+openage needs C++26 with module support, which Apple Clang does not provide yet.
+Install Homebrew's LLVM and point `configure` at it:
 
 ```
 brew install llvm
 ./configure --compiler="$(brew --prefix llvm)/bin/clang++" --download-nyan -- -DPython3_EXECUTABLE="$PWD/.venv/bin/python"
 ```
 
-Afterwards, trigger the build using `make`:
+Afterwards, trigger the build using `just build`:
 
 ```
-make -j$(sysctl -n hw.ncpu)
+just build
 ```
 
 ## Testing
-`make test` runs the built-in tests.
+`just test` runs the built-in tests.
 
 
 ## Running
-`make run` or `cd bin && ./run` launches the game. Try `./run --help` if you don't know what to do!
+`just run` or `cd bin && ./run` launches the game. Try `./run --help` if you don't know what to do!
 
 
 ## To create the documentation
-`make doc`
-For more options and details, refer to [doc/README.md][/doc/README.md]
+`just doc`
