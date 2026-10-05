@@ -7,8 +7,32 @@ single one.
 
 from io import UnsupportedOperation
 
-from .abstract import FSLikeObject
+from .abstract import FSLikeObject, Subpath
 from .path import Path
+
+
+class UnionPath(Path):
+    """
+    Provides an additional method for mounting an other path at this path.
+    """
+
+    def mount(self, pathobj: Path, priority: int = 0) -> None:
+        """
+        Mounts pathobj here. All parent directories are 'created', if needed.
+        """
+        assert isinstance(self.fsobj, Union)
+        return self.fsobj.add_mount(pathobj, self.subpath, priority)
+
+    def unmount(self, pathobj: Path | None = None) -> None:
+        """
+        Unmount a path from the union described by this path.
+        This is like "unmounting /home", no matter what the source was.
+        If you provide `pathobj`, that source is checked, additionally.
+
+        It will error if that path was not mounted.
+        """
+        assert isinstance(self.fsobj, Union)
+        self.fsobj.remove_mount(self.subpath, pathobj)
 
 
 class Union(FSLikeObject):
@@ -21,9 +45,6 @@ class Union(FSLikeObject):
     In case of equal priorities, later mounts are preferred.
     """
 
-    # we can hardly reduce the method amount...
-    # pylint: disable=too-many-public-methods
-
     def __init__(self):
         super().__init__()
 
@@ -35,14 +56,14 @@ class Union(FSLikeObject):
         self.dirstructure = {}
 
     def __str__(self):
-        content = ", ".join([f"{pnt[1]!r} @ {pnt[0]!r}" for pnt in self.mounts])
+        content = ", ".join([f"{pnt[1]!s} @ {pnt[0]!s}" for pnt in self.mounts])
         return f"Union({content})"
 
     @property
-    def root(self):
-        return UnionPath(self, [])
+    def root(self) -> UnionPath:
+        return UnionPath(path=[], fsobj=self)
 
-    def add_mount(self, pathobj: Path, mountpoint, priority: int) -> None:
+    def add_mount(self, pathobj: Path, mountpoint: Subpath, priority: int) -> None:
         """
         This method should not be called directly; instead, use the mount
         method of Path objects that were obtained from this.
@@ -65,7 +86,7 @@ class Union(FSLikeObject):
         for subdir in mountpoint:
             dirstructure = dirstructure.setdefault(subdir, {})
 
-    def remove_mount(self, search_mountpoint, source_pathobj: Path | None = None) -> None:
+    def remove_mount(self, search_mountpoint: Subpath, source_pathobj: Path | None = None) -> None:
         """
         Remove a mount from the union by searching for the source
         that provides the given mountpoint.
@@ -88,68 +109,68 @@ class Union(FSLikeObject):
         else:
             raise ValueError("could not find mounted source")
 
-    def candidate_paths(self, parts):
+    def candidate_paths(self, subpath: Subpath):
         """
         Helper method.
 
-        Yields path objects from all mounts that match parts, in the order of
+        Yields path objects from all mounts that match subpath, in the order of
         their priorities.
         """
 
         for mountpoint, pathobj, _ in self.mounts:
-            cut_parts = tuple(parts[: len(mountpoint)])
-            if mountpoint == cut_parts:
-                yield pathobj.joinpath(parts[len(mountpoint) :])
+            cut_subpath = tuple(subpath[: len(mountpoint)])
+            if mountpoint == cut_subpath:
+                yield pathobj.joinpath(subpath[len(mountpoint) :])
 
-    def open_r(self, parts):
-        for path in self.candidate_paths(parts):
+    def open_r(self, subpath: Subpath):
+        for path in self.candidate_paths(subpath):
             if path.is_file():
                 return path.open_r()
-        raise FileNotFoundError(b"/".join(parts))
+        raise FileNotFoundError("/".join(subpath))
 
-    def open_w(self, parts):
-        for path in self.candidate_paths(parts):
+    def open_w(self, subpath: Subpath):
+        for path in self.candidate_paths(subpath):
             if path.writable():
                 return path.open_w()
 
-        raise UnsupportedOperation("not writable: " + b"/".join(parts).decode(errors="replace"))
+        raise UnsupportedOperation("not writable: " + "/".join(subpath))
 
-    def open_a(self, parts):
-        for path in self.candidate_paths(parts):
+    def open_a(self, subpath: Subpath):
+        for path in self.candidate_paths(subpath):
             if path.writable():
                 return path.open_a()
 
-        raise UnsupportedOperation("not appendable: " + b"/".join(parts).decode(errors="replace"))
+        raise UnsupportedOperation("not appendable: " + "/".join(subpath))
 
-    def open_rw(self, parts):
-        for path in self.candidate_paths(parts):
+    def open_rw(self, subpath: Subpath):
+        for path in self.candidate_paths(subpath):
             if path.writable():
                 return path.open_rw()
 
-        raise UnsupportedOperation("not writable: " + b"/".join(parts).decode(errors="replace"))
+        raise UnsupportedOperation("not writable: " + "/".join(subpath))
 
-    def open_ar(self, parts):
-        for path in self.candidate_paths(parts):
+    def open_ar(self, subpath: Subpath):
+        for path in self.candidate_paths(subpath):
             if path.writable():
                 return path.open_ar()
 
-        raise UnsupportedOperation("not appendable: " + b"/".join(parts).decode(errors="replace"))
+        raise UnsupportedOperation("not appendable: " + "/".join(subpath))
 
-    def resolve_r(self, parts):
-        for path in self.candidate_paths(parts):
+    def resolve_r(self, subpath: Subpath):
+        for path in self.candidate_paths(subpath):
             if path.is_file() or path.is_dir():
                 # pylint: disable=protected-access
                 return path._resolve_r()
         return None
 
-    def resolve_w(self, parts):
-        for path in self.candidate_paths(parts):
+    def resolve_w(self, subpath: Subpath):
+        for path in self.candidate_paths(subpath):
             if path.writable():
                 # pylint: disable=protected-access
                 return path._resolve_w()
         return None
 
-    def list(self, parts):
+    def list(self, subpath: Subpath):
         duplicates = set()
 
         dir_exists = False
@@ -157,7 +178,7 @@ class Union(FSLikeObject):
         dirstructure = self.dirstructure
         try:
             # "cd" into the virtual dirstructure
-            for subdir in parts:
+            for subdir in subpath:
                 dirstructure = dirstructure[subdir]
 
             dir_exists = True
@@ -169,7 +190,7 @@ class Union(FSLikeObject):
         except KeyError:
             dir_exists = False
 
-        for path in self.candidate_paths(parts):
+        for path in self.candidate_paths(subpath):
             if path.is_file():
                 raise NotADirectoryError(repr(path))
             if not path.is_dir():
@@ -183,111 +204,108 @@ class Union(FSLikeObject):
                     duplicates.add(name)
 
         if not dir_exists:
-            raise FileNotFoundError(b"/".join(parts))
+            raise FileNotFoundError("/".join(subpath))
 
-    def filesize(self, parts) -> int:
-        for path in self.candidate_paths(parts):
+    def filesize(self, subpath: Subpath) -> int:
+        for path in self.candidate_paths(subpath):
             if path.is_file():
                 return path.filesize
 
-        raise FileNotFoundError(b"/".join(parts))
+        raise FileNotFoundError("/".join(subpath))
 
-    def mtime(self, parts) -> float:
-        for path in self.candidate_paths(parts):
+    def mtime(self, subpath: Subpath) -> float:
+        for path in self.candidate_paths(subpath):
             if path.exists():
                 return path.mtime
 
-        raise FileNotFoundError(b"/".join(parts))
+        raise FileNotFoundError("/".join(subpath))
 
-    def mkdirs(self, parts) -> None:
-        for path in self.candidate_paths(parts):
+    def mkdirs(self, subpath: Subpath) -> None:
+        for path in self.candidate_paths(subpath):
             if path.writable():
                 return path.mkdirs()
         return None
 
-    def rmdir(self, parts) -> None:
+    def rmdir(self, subpath: Subpath) -> None:
         found = False
 
         # remove the directory in all mounts where it exists
-        for path in self.candidate_paths(parts):
+        for path in self.candidate_paths(subpath):
             if path.is_dir():
                 path.rmdir()
                 found = True
 
         if not found:
-            raise FileNotFoundError(b"/".join(parts))
+            raise FileNotFoundError("/".join(subpath))
 
-    def unlink(self, parts) -> None:
+    def unlink(self, subpath: Subpath) -> None:
         found = False
 
         # remove the file in all mounts where it exists
-        for path in self.candidate_paths(parts):
+        for path in self.candidate_paths(subpath):
             if path.is_file():
                 path.unlink()
                 found = True
 
         if not found:
-            raise FileNotFoundError(b"/".join(parts))
+            raise FileNotFoundError("/".join(subpath))
 
-    def touch(self, parts) -> None:
-        for path in self.candidate_paths(parts):
+    def touch(self, subpath: Subpath) -> None:
+        for path in self.candidate_paths(subpath):
             if path.writable():
                 return path.touch()
 
-        raise FileNotFoundError(b"/".join(parts))
+        raise FileNotFoundError("/".join(subpath))
 
-    def rename(self, srcparts, tgtparts) -> None:
+    def rename(self, srcsubpath: Subpath, tgtsubpath: Subpath) -> None:
         found = False
 
-        for srcpath in self.candidate_paths(srcparts):
+        for srcpath in self.candidate_paths(srcsubpath):
             if srcpath.exists():
                 found = True
                 if srcpath.writable():
-                    for tgtpath in self.candidate_paths(tgtparts):
+                    for tgtpath in self.candidate_paths(tgtsubpath):
                         if tgtpath.writable():
                             return srcpath.rename(tgtpath)
 
         if found:
             raise UnsupportedOperation(
-                "read-only rename: "
-                + b"/".join(srcparts).decode(errors="replace")
-                + " to "
-                + b"/".join(tgtparts).decode(errors="replace")
+                "read-only rename: " + "/".join(srcsubpath) + " to " + "/".join(tgtsubpath)
             )
-        raise FileNotFoundError(b"/".join(srcparts))
+        raise FileNotFoundError("/".join(srcsubpath))
 
-    def is_file(self, parts) -> bool:
-        for path in self.candidate_paths(parts):
+    def is_file(self, subpath: Subpath) -> bool:
+        for path in self.candidate_paths(subpath):
             if path.is_file():
                 return True
 
         return False
 
-    def is_dir(self, parts) -> bool:
+    def is_dir(self, subpath: Subpath) -> bool:
         try:
             dirstructure = self.dirstructure
-            for part in parts:
+            for part in subpath:
                 dirstructure = dirstructure[part]
             return True
         except KeyError:
             pass
 
-        for path in self.candidate_paths(parts):
+        for path in self.candidate_paths(subpath):
             if path.is_dir():
                 return True
 
         return False
 
-    def writable(self, parts) -> bool:
-        for path in self.candidate_paths(parts):
+    def writable(self, subpath: Subpath) -> bool:
+        for path in self.candidate_paths(subpath):
             if path.writable():
                 return True
 
         return False
 
-    def watch(self, parts, callback) -> bool:
+    def watch(self, subpath: Subpath, callback) -> bool:
         watching = False
-        for path in self.candidate_paths(parts):
+        for path in self.candidate_paths(subpath):
             if path.exists():
                 watching = watching or path.watch(callback)
 
@@ -296,25 +314,3 @@ class Union(FSLikeObject):
     def poll_watches(self):
         for _, pathobj, _ in self.mounts:
             pathobj.poll_fs_watches()
-
-
-class UnionPath(Path):
-    """
-    Provides an additional method for mounting an other path at this path.
-    """
-
-    def mount(self, pathobj: Path, priority: int = 0) -> None:
-        """
-        Mounts pathobj here. All parent directories are 'created', if needed.
-        """
-        return self.fsobj.add_mount(pathobj, self.parts, priority)
-
-    def unmount(self, pathobj: Path | None = None) -> None:
-        """
-        Unmount a path from the union described by this path.
-        This is like "unmounting /home", no matter what the source was.
-        If you provide `pathobj`, that source is checked, additionally.
-
-        It will error if that path was not mounted.
-        """
-        self.fsobj.remove_mount(self.parts, pathobj)

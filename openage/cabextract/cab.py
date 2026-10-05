@@ -173,7 +173,7 @@ class CFFile(NamedStruct):
     attribs: typing.Any = CFFileAttributes
 
     # filled in later manually
-    path: list[bytes]  # array of path parts
+    path: list[str]  # array of path parts
 
     continued: bool | None = None  # file continued from previous CAB file
     continues: bool | None = None  # file continues in next CAB file
@@ -230,7 +230,7 @@ class CABEntry(FileEntry):
     def __init__(self, fileobj: CFFile):
         self.fileobj = fileobj
 
-    def open_r(self):
+    def open_r(self) -> StreamFragment:
         return StreamFragment(self.fileobj.folder.plain_stream, self.fileobj.pos, self.fileobj.size)
 
     def size(self) -> int:
@@ -294,9 +294,7 @@ class CABFile(FileCollection):
 
         for fileobj in self.read_file_headers(cab, offset):
             if self.is_file(fileobj.path) or self.is_dir(fileobj.path):
-                raise ValueError(
-                    "CABFile has multiple entries with the same path: " + b"/".join(fileobj.path).decode()
-                )
+                raise ValueError("CABFile has multiple entries with the same path: " + "/".join(fileobj.path))
 
             file_entry = CABEntry(fileobj)
 
@@ -381,7 +379,7 @@ class CABFile(FileCollection):
             else:
                 path = rpath.decode("iso-8859-1")
 
-            fileobj.path = path.replace("\\", "/").lower().encode().split(b"/")
+            fileobj.path = path.replace("\\", "/").lower().split("/")
 
             # interpret the special values of folderid
             if fileobj.folderid == 0xFFFD:

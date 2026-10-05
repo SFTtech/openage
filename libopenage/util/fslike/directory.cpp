@@ -54,9 +54,9 @@ Directory::Directory(std::string basepath, bool create_if_missing) :
 // If the underlying fslike system is a Directory (i.e. this.)
 // then we don't have any overlay possibility!
 // -> Always resolve just the real system filename.
-std::string Directory::resolve(const Path::parts_t &parts) const {
+std::string Directory::resolve(const Path::subpath_t &subpath) const {
 	std::string ret = this->basepath;
-	for (auto &part : parts) {
+	for (auto &part : subpath) {
 		ret += PATHSEP + part;
 	}
 	return ret;
@@ -64,8 +64,8 @@ std::string Directory::resolve(const Path::parts_t &parts) const {
 
 
 // TODO: use std::optional when available
-std::tuple<struct stat, int> Directory::do_stat(const Path::parts_t &parts) const {
-	const std::string path = this->resolve(parts);
+std::tuple<struct stat, int> Directory::do_stat(const Path::subpath_t &subpath) const {
+	const std::string path = this->resolve(subpath);
 	struct stat buf;
 	int result = stat(path.c_str(), &buf);
 
@@ -73,8 +73,8 @@ std::tuple<struct stat, int> Directory::do_stat(const Path::parts_t &parts) cons
 }
 
 
-bool Directory::is_file(const Path::parts_t &parts) {
-	auto stat_result = this->do_stat(parts);
+bool Directory::is_file(const Path::subpath_t &subpath) {
+	auto stat_result = this->do_stat(subpath);
 
 	// test for regular file
 	if (std::get<1>(stat_result) == 0 and S_ISREG(std::get<0>(stat_result).st_mode)) {
@@ -85,8 +85,8 @@ bool Directory::is_file(const Path::parts_t &parts) {
 }
 
 
-bool Directory::is_dir(const Path::parts_t &parts) {
-	auto stat_result = this->do_stat(parts);
+bool Directory::is_dir(const Path::subpath_t &subpath) {
+	auto stat_result = this->do_stat(subpath);
 
 	// test for regular file
 	if (std::get<1>(stat_result) == 0 and S_ISDIR(std::get<0>(stat_result).st_mode)) {
@@ -97,26 +97,26 @@ bool Directory::is_dir(const Path::parts_t &parts) {
 }
 
 
-bool Directory::writable(const Path::parts_t &parts) {
-	Path::parts_t parts_test = parts;
+bool Directory::writable(const Path::subpath_t &subpath) {
+	Path::subpath_t subpath_test = subpath;
 
 	// try to find the first existing path-part
-	while (not(this->is_dir(parts_test) or this->is_file(parts_test))) {
-		if (parts_test.size() == 0) {
+	while (not(this->is_dir(subpath_test) or this->is_file(subpath_test))) {
+		if (subpath_test.size() == 0) {
 			throw Error{ERR << "file not found"};
 		}
 
-		parts_test.pop_back();
+		subpath_test.pop_back();
 	}
-	const std::string path = this->resolve(parts_test);
+	const std::string path = this->resolve(subpath_test);
 
 	return access(path.c_str(), W_OK);
 }
 
 
-std::vector<Path::part_t> Directory::list(const Path::parts_t &parts) {
-	const std::string path = this->resolve(parts);
-	std::vector<Path::part_t> ret;
+std::vector<Path::path_elem_t> Directory::list(const Path::subpath_t &subpath) {
+	const std::string path = this->resolve(subpath);
+	std::vector<Path::path_elem_t> ret;
 
 	DIR *dir;
 	struct dirent *ent;
@@ -138,14 +138,14 @@ std::vector<Path::part_t> Directory::list(const Path::parts_t &parts) {
 }
 
 
-bool Directory::mkdirs(const Path::parts_t &parts) {
-	Path::parts_t all_parts = util::split(this->basepath, PATHSEP);
+bool Directory::mkdirs(const Path::subpath_t &subpath) {
+	Path::subpath_t all_subpath = util::split(this->basepath, PATHSEP);
 
-	vector_extend(all_parts, parts);
+	vector_extend(all_subpath, subpath);
 
 	std::string dirpath;
 
-	for (auto &part : all_parts) {
+	for (auto &part : all_subpath) {
 		dirpath += PATHSEP + part;
 
 		struct stat buf;
@@ -172,61 +172,61 @@ bool Directory::mkdirs(const Path::parts_t &parts) {
 }
 
 
-File Directory::open_r(const Path::parts_t &parts) {
+File Directory::open_r(const Path::subpath_t &subpath) {
 	return File{
-		std::make_shared<filelike::Native>(this->resolve(parts),
+		std::make_shared<filelike::Native>(this->resolve(subpath),
 	                                       filelike::Native::mode_t::R)};
 }
 
 
-File Directory::open_w(const Path::parts_t &parts) {
+File Directory::open_w(const Path::subpath_t &subpath) {
 	return File{
-		std::make_shared<filelike::Native>(this->resolve(parts),
+		std::make_shared<filelike::Native>(this->resolve(subpath),
 	                                       filelike::Native::mode_t::W)};
 }
 
 
-File Directory::open_rw(const Path::parts_t &parts) {
+File Directory::open_rw(const Path::subpath_t &subpath) {
 	return File{
-		std::make_shared<filelike::Native>(this->resolve(parts),
+		std::make_shared<filelike::Native>(this->resolve(subpath),
 	                                       filelike::Native::mode_t::RW)};
 }
 
 
-File Directory::open_a(const Path::parts_t &parts) {
+File Directory::open_a(const Path::subpath_t &subpath) {
 	return File{
-		std::make_shared<filelike::Native>(this->resolve(parts),
+		std::make_shared<filelike::Native>(this->resolve(subpath),
 	                                       filelike::Native::mode_t::A)};
 }
 
 
-File Directory::open_ar(const Path::parts_t &parts) {
+File Directory::open_ar(const Path::subpath_t &subpath) {
 	return File{
-		std::make_shared<filelike::Native>(this->resolve(parts),
+		std::make_shared<filelike::Native>(this->resolve(subpath),
 	                                       filelike::Native::mode_t::AR)};
 }
 
 
-std::string Directory::get_native_path(const Path::parts_t &parts) {
-	return this->resolve(parts);
+std::string Directory::get_native_path(const Path::subpath_t &subpath) {
+	return this->resolve(subpath);
 }
 
 
-bool Directory::rename(const Path::parts_t &parts,
-                       const Path::parts_t &target_parts) {
-	return std::rename(this->resolve(parts).c_str(),
-	                   this->resolve(target_parts).c_str())
+bool Directory::rename(const Path::subpath_t &subpath,
+                       const Path::subpath_t &target_subpath) {
+	return std::rename(this->resolve(subpath).c_str(),
+	                   this->resolve(target_subpath).c_str())
 	       == 0;
 }
 
 
-bool Directory::rmdir(const Path::parts_t &parts) {
-	return ::rmdir(this->resolve(parts).c_str()) == 0;
+bool Directory::rmdir(const Path::subpath_t &subpath) {
+	return ::rmdir(this->resolve(subpath).c_str()) == 0;
 }
 
 
-bool Directory::touch(const Path::parts_t &parts) {
-	const std::string path = this->resolve(parts);
+bool Directory::touch(const Path::subpath_t &subpath) {
+	const std::string path = this->resolve(subpath);
 
 	// create the file if missing
 	int fd = open(
@@ -253,13 +253,13 @@ bool Directory::touch(const Path::parts_t &parts) {
 }
 
 
-bool Directory::unlink(const Path::parts_t &parts) {
-	return std::remove(this->resolve(parts).c_str()) == 0;
+bool Directory::unlink(const Path::subpath_t &subpath) {
+	return std::remove(this->resolve(subpath).c_str()) == 0;
 }
 
 
-int Directory::get_mtime(const Path::parts_t &parts) {
-	auto stat_result = this->do_stat(parts);
+int Directory::get_mtime(const Path::subpath_t &subpath) {
+	auto stat_result = this->do_stat(subpath);
 
 	// return the mtime
 	if (std::get<1>(stat_result) == 0) {
@@ -276,8 +276,8 @@ int Directory::get_mtime(const Path::parts_t &parts) {
 }
 
 
-uint64_t Directory::get_filesize(const Path::parts_t &parts) {
-	auto stat_result = this->do_stat(parts);
+uint64_t Directory::get_filesize(const Path::subpath_t &subpath) {
+	auto stat_result = this->do_stat(subpath);
 
 	// return the mtime
 	if (std::get<1>(stat_result) == 0) {

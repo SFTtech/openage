@@ -98,7 +98,7 @@ class DRSEntry(FileEntry):
         self.offset = offset
         self.entry_size = size
 
-    def open_r(self):
+    def open_r(self) -> StreamFragment:
         return StreamFragment(self.fileobj, self.offset, self.entry_size)
 
     def size(self) -> int:
@@ -153,7 +153,7 @@ class DRS(FileCollection):
         for filename, offset, size in self.read_tables():
             file_entry = DRSEntry(self.fileobj, offset, size)
 
-            self.add_fileentry([filename.encode()], file_entry)
+            self.add_fileentry([filename], file_entry)
 
     def read_tables(self) -> typing.Generator[tuple[str, int, int], None, None]:
         """
