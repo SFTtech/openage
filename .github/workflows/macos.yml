@@ -27,7 +27,7 @@ jobs:
           path: |
             ~/Library/Caches/pip
             ~/Library/Caches/Homebrew
-          key: macos-deps-${{ hashFiles('.github/workflows/macosx-ci.yml') }}
+          key: macos-deps-${{ hashFiles('.github/workflows/macos.yml') }}
           restore-keys: macos-deps-
       - name: Brew update-reset
         run: brew update-reset
@@ -35,19 +35,24 @@ jobs:
         run: brew update
       - name: Brew install DeJaVu fonts
         run: brew install --cask font-dejavu
-      - name: Install environment helpers with homebrew
+      - name: Install environment helpers
         run: brew install ccache
-      - name: Install openage dependencies with homebrew
+      - name: Install openage dependencies
         run: brew install cmake python3 libepoxy freetype fontconfig harfbuzz opus opusfile qt6 libogg libpng toml11 eigen
-      - name: Install nyan dependencies with homebrew
+      - name: Install nyan dependencies
         run: brew install flex make
+      - name: Install LLVM
+        # AppleClang is installed by default, but lacks C++ module support, see doc/build_instructions/macos.md
+        run: brew install llvm
       - name: Install python3 packages
         # cython, numpy and pygments are in homebrew,
         # but "cython is keg-only, which means it was not symlinked into /usr/local"
         # numpy pulls gcc as dep? and pygments doesn't work.
         run: pip3 install --upgrade --break-system-packages cython numpy mako lz4 pillow pygments setuptools toml tomli-w
       - name: Configure
-        run: ./configure --compiler=clang --mode=release --ccache --download-nyan
+        # switch back to AppleClang once it supports C++ modules:
+        # run: ./configure --compiler=clang --mode=release --ccache --download-nyan
+        run: ./configure --compiler="$(brew --prefix llvm)/bin/clang++" --mode=release --ccache --download-nyan
       - name: Build
         run: make -j$(sysctl -n hw.logicalcpu) VERBOSE=1
       - name: Test
