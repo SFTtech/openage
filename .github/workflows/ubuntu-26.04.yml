@@ -35,10 +35,12 @@ jobs:
       run: sudo docker load --input /tmp/staging/devenv.tar.zst
       shell: bash
     - name: Build openage
+      shell: bash
       run: |
         # the image may come from cache, so refresh its packages before building;
-        # /tmp/ccache is mounted in so compilations are cached across runs
-        sudo docker run --rm -v "$(pwd)":/mnt/openage -v /tmp/ccache:/ccache -e CCACHE_DIR=/ccache -w /mnt/openage openage-devenv:latest bash <<'EOF'
+        # /tmp/ccache is mounted in so compilations are cached across runs;
+        # -i feeds the heredoc to the container's bash (without it, stdin is not attached)
+        sudo docker run --rm -i -v "$(pwd)":/mnt/openage -v /tmp/ccache:/ccache -e CCACHE_DIR=/ccache -w /mnt/openage openage-devenv:latest bash <<'EOF'
         set -e
 
         apt-get update
