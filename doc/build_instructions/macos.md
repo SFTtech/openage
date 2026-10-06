@@ -50,8 +50,10 @@ Install Homebrew's LLVM and point `configure` at it:
 
 ```
 brew install llvm
-./configure --compiler="$(brew --prefix llvm)/bin/clang++" --download-nyan -- -DPython3_EXECUTABLE="$PWD/.venv/bin/python"
+./configure --compiler="$(brew --prefix llvm)/bin/clang++" --download-nyan -- -DCMAKE_OSX_SYSROOT=macosx -DPython3_EXECUTABLE="$PWD/.venv/bin/python"
 ```
+
+Select the SDK explicitly so CMake and the compiler use the same system headers.
 
 Afterwards, trigger the build using `just build`:
 

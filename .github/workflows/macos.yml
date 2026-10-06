@@ -6,6 +6,8 @@ jobs:
   # we install stuff not already there
   macos-build:
     runs-on: macos-latest
+    env:
+      UV_CACHE_DIR: ${{ github.workspace }}/../uv-cache
     steps:
       - name: Checkout sources
         uses: actions/checkout@v7
@@ -25,38 +27,29 @@ jobs:
         id: cache-deps
         with:
           path: |
-            ~/Library/Caches/pip
+            ${{ env.UV_CACHE_DIR }}
             ~/Library/Caches/Homebrew
-          key: macos-deps-${{ hashFiles('.github/workflows/macos.yml') }}
+          key: macos-deps-${{ hashFiles('.github/workflows/macos.yml', 'uv.lock') }}
           restore-keys: macos-deps-
       - name: Brew update-reset
         run: brew update-reset
       - name: Brew update
         run: brew update
-      - name: Brew install DeJaVu fonts
-        run: brew install --cask font-dejavu
-      - name: Install environment helpers
-        run: brew install ccache
-      - name: Install openage dependencies
-        run: brew install cmake python3 libepoxy freetype fontconfig harfbuzz opus opusfile qt6 libogg libpng toml11 eigen
-      - name: Install nyan dependencies
-        run: brew install flex make
-      - name: Install LLVM
+      - name: Install dependencies
         # AppleClang is installed by default, but lacks C++ module support, see doc/build_instructions/macos.md
-        run: brew install llvm
-      - name: Install python3 packages
-        # cython, numpy and pygments are in homebrew,
-        # but "cython is keg-only, which means it was not symlinked into /usr/local"
-        # numpy pulls gcc as dep? and pygments doesn't work.
-        run: pip3 install --upgrade --break-system-packages cython numpy mako lz4 pillow pygments setuptools toml tomli-w
+        run: |
+          brew install --cask font-dejavu
+          brew install ccache cmake eigen flex fontconfig freetype harfbuzz just libepoxy libogg libpng llvm make ninja opus opusfile python3 qt6 toml11 uv
+      - name: Install Python dependencies
+        run: uv sync --locked --python "$(brew --prefix)/bin/python3"
       - name: Configure
         # switch back to AppleClang once it supports C++ modules:
         # run: ./configure --compiler=clang --mode=release --ccache --download-nyan
-        run: ./configure --compiler="$(brew --prefix llvm)/bin/clang++" --mode=release --ccache --download-nyan
+        run: ./configure --compiler="$(brew --prefix llvm)/bin/clang++" --mode=release --ccache --download-nyan -- -DCMAKE_OSX_SYSROOT=macosx -DPython3_EXECUTABLE="$PWD/.venv/bin/python"
       - name: Build
-        run: make -j$(sysctl -n hw.logicalcpu) VERBOSE=1
+        run: just build
       - name: Test
-        run: make test
+        run: just test
       # keep the caches even when the build or tests fail: the work done so far
       # is exactly what the next run wants to reuse
       - name: Save ccache dir
@@ -70,6 +63,6 @@ jobs:
         uses: actions/cache/save@v6
         with:
           path: |
-            ~/Library/Caches/pip
+            ${{ env.UV_CACHE_DIR }}
             ~/Library/Caches/Homebrew
           key: ${{ steps.cache-deps.outputs.cache-primary-key }}
