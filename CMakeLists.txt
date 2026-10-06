@@ -51,6 +51,7 @@ foreach(pol
         CMP0094  # take the first satisfying Python version
         CMP0082  # run add_subdirectory() in the declaration order
         CMP0102  # Don't create empty cache entries
+        CMP0177  # normalize install() destination paths
        )
 	if (POLICY ${pol})
 		cmake_policy(SET ${pol} NEW)
