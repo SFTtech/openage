@@ -8,11 +8,11 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       # ccache is incremental, so restore the newest entry and save an updated one per commit
-      - name: Cache ccache dir
-        uses: actions/cache@v4
+      - name: Restore ccache dir
+        uses: actions/cache/restore@v6
         id: cache-ccache
         with:
           path: ~/Library/Caches/ccache
@@ -20,8 +20,8 @@ jobs:
           restore-keys: macos-ccache-
       # exact key on the workflow file: changes when the package list changes,
       # prefix fallback keeps the old downloads until then
-      - name: Cache dependencies
-        uses: actions/cache@v4
+      - name: Restore dependencies cache
+        uses: actions/cache/restore@v6
         id: cache-deps
         with:
           path: |
@@ -57,3 +57,19 @@ jobs:
         run: make -j$(sysctl -n hw.logicalcpu) VERBOSE=1
       - name: Test
         run: make test
+      # keep the caches even when the build or tests fail: the work done so far
+      # is exactly what the next run wants to reuse
+      - name: Save ccache dir
+        if: always()
+        uses: actions/cache/save@v6
+        with:
+          path: ~/Library/Caches/ccache
+          key: ${{ steps.cache-ccache.outputs.cache-primary-key }}
+      - name: Save dependencies cache
+        if: always()
+        uses: actions/cache/save@v6
+        with:
+          path: |
+            ~/Library/Caches/pip
+            ~/Library/Caches/Homebrew
+          key: ${{ steps.cache-deps.outputs.cache-primary-key }}

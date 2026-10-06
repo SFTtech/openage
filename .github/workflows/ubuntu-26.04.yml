@@ -6,16 +6,17 @@ jobs:
   build:
     runs-on: ubuntu-26.04
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
     - name: Restore ccache
-      uses: actions/cache@v4
+      id: ccache-cache
+      uses: actions/cache/restore@v6
       with:
         path: /tmp/ccache
         key: ccache-ubuntu-${{ github.sha }}
         restore-keys: ccache-ubuntu-
     - name: Restore devenv image
       id: devenv-cache
-      uses: actions/cache@v4
+      uses: actions/cache@v6
       with:
         path: /tmp/staging/devenv.tar.zst
         # rebuild the image only when its recipe changes
@@ -78,3 +79,11 @@ jobs:
 
         ./run test -a
         EOF
+    - name: Save ccache
+      # keep the cache even when the build or tests fail: the objects
+      # compiled so far are exactly what the next run wants to reuse
+      if: always()
+      uses: actions/cache/save@v6
+      with:
+        path: /tmp/ccache
+        key: ${{ steps.ccache-cache.outputs.cache-primary-key }}
