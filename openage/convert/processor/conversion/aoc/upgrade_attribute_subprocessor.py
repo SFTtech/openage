@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import typing
 
+from .....nyan.nyan_structs import MemberOperator
 from ....entity_object.conversion.aoc.genie_tech import GenieTechEffectBundleGroup
 from ....entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup
 from ....entity_object.conversion.converter_object import RawAPIObject
@@ -22,7 +23,6 @@ from ....value_object.conversion.forward_ref import ForwardRef
 if typing.TYPE_CHECKING:
     from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup
     from openage.convert.entity_object.conversion.converter_object import ConverterObjectGroup
-    from openage.nyan.nyan_structs import MemberOperator
 
 
 class AoCUpgradeAttributeSubprocessor:
@@ -414,7 +414,7 @@ class AoCUpgradeAttributeSubprocessor:
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             nyan_patch_raw_api_object.add_raw_patch_member(
-                "target_mode", target_mode, "engine.ability.type.Projectile", operator
+                "target_mode", target_mode, "engine.ability.type.Projectile", MemberOperator.ASSIGN
             )
 
             patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
@@ -459,7 +459,7 @@ class AoCUpgradeAttributeSubprocessor:
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
             nyan_patch_raw_api_object.add_raw_patch_member(
-                "target_mode", target_mode, "engine.ability.type.Projectile", operator
+                "target_mode", target_mode, "engine.ability.type.Projectile", MemberOperator.ASSIGN
             )
 
             patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
