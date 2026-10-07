@@ -9,6 +9,8 @@
 #include "rng/global_rng.h"
 #include "util/stringformatter.h"
 
+import nyan;
+
 
 namespace openage::main::tests::pong {
 

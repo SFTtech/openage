@@ -5,8 +5,10 @@
 #include <string>
 #include <vector>
 
-#include <nyan/nyan.h>
 
+namespace nyan {
+class Object;
+} // namespace nyan
 
 namespace openage::gamestate::api {
 

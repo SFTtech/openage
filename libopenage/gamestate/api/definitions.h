@@ -5,7 +5,7 @@
 #include <memory>
 #include <utility>
 
-#include <nyan/nyan.h>
+#include <nyan/config.h>
 
 #include "datastructure/constexpr_map.h"
 #include "gamestate/activity/condition/command_in_queue.h"
@@ -17,6 +17,8 @@
 #include "gamestate/activity/xor_gate.h"
 #include "gamestate/api/types.h"
 #include "gamestate/system/types.h"
+
+import nyan;
 
 
 namespace openage::gamestate::api {

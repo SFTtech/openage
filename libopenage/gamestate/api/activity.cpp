@@ -4,6 +4,8 @@
 
 #include "gamestate/api/definitions.h"
 
+import nyan;
+
 
 namespace openage::gamestate::api {
 

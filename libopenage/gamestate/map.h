@@ -5,7 +5,7 @@
 #include <memory>
 #include <unordered_map>
 
-#include <nyan/nyan.h>
+#include <nyan/config.h>
 
 #include "pathfinding/types.h"
 #include "util/vector.h"

@@ -9,6 +9,8 @@
 #include "curve/discrete.h"
 #include "gamestate/component/types.h"
 
+import nyan;
+
 
 namespace openage::gamestate::component {
 

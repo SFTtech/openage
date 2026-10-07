@@ -5,10 +5,10 @@
 #include <regex>
 #include <vector>
 
-#include <nyan/nyan.h>
-
 #include "error/error.h"
 #include "log/message.h"
+
+import nyan;
 
 
 namespace openage::gamestate::api {

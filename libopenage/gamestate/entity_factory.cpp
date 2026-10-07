@@ -43,6 +43,8 @@
 #include "time/time.h"
 #include "util/fixed_point.h"
 
+import nyan;
+
 namespace openage::gamestate {
 
 /**

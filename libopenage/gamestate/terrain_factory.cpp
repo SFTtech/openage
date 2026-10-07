@@ -4,8 +4,6 @@
 
 #include <mutex>
 
-#include <nyan/nyan.h>
-
 #include "gamestate/api/terrain.h"
 #include "gamestate/terrain.h"
 #include "gamestate/terrain_chunk.h"
@@ -16,6 +14,8 @@
 
 #include "assets/mod_manager.h"
 #include "gamestate/game_state.h"
+
+import nyan;
 
 
 namespace openage::gamestate {
