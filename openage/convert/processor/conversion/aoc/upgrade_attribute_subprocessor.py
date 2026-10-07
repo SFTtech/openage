@@ -1489,6 +1489,9 @@ class AoCUpgradeAttributeSubprocessor:
 
         patches = []
 
+        if not line.is_projectile_shooter():
+            return patches
+
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
             tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
@@ -1572,6 +1575,9 @@ class AoCUpgradeAttributeSubprocessor:
         dataset = line.data
 
         patches = []
+
+        if not line.is_projectile_shooter():
+            return patches
 
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
