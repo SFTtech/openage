@@ -85,7 +85,7 @@ class Texture:
         self.best_packer_hints: tuple | None = None
 
         self.image_data: TextureImage | None = None
-        self.image_metadata: list[dict[str, int]] = []
+        self.image_metadata: dict[str, typing.Any] = {}
 
         spam("creating Texture from %s", repr(input_data))
 
@@ -149,7 +149,7 @@ class Texture:
         else:
             return [subtex]
 
-    def get_metadata(self) -> list[dict[str, int]]:
+    def get_metadata(self) -> dict[str, typing.Any]:
         """
         Get the image metadata information.
         """
