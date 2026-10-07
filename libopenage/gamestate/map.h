@@ -5,10 +5,10 @@
 #include <memory>
 #include <unordered_map>
 
-#include <nyan/nyan.h>
-
 #include "pathfinding/types.h"
 #include "util/vector.h"
+
+import nyan;
 
 
 namespace openage {

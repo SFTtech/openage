@@ -5,12 +5,12 @@
 #include <cstdint>
 #include <memory>
 
-#include <nyan/nyan.h>
-
 #include "curve/container/map.h"
 #include "gamestate/component/api_component.h"
 #include "gamestate/component/types.h"
 #include "time/time.h"
+
+import nyan;
 
 
 namespace openage::gamestate::component {

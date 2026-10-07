@@ -4,7 +4,7 @@
 
 #include <string>
 
-#include <nyan/nyan.h>
+import nyan;
 
 
 namespace openage::gamestate::api {

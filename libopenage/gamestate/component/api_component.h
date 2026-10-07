@@ -4,11 +4,11 @@
 
 #include <memory>
 
-#include <nyan/nyan.h>
-
 #include "curve/discrete.h"
 #include "gamestate/component/base_component.h"
 #include "time/time.h"
+
+import nyan;
 
 
 namespace openage {
