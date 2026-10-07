@@ -11,7 +11,7 @@ Read the docs of the subsystem you touch; link to them instead of duplicating th
 - [doc/buildsystem.md](doc/buildsystem.md) — codegen → pxdgen → cythonize pipeline
 - [doc/code/architecture.md](doc/code/architecture.md) — subsystems and data flow, details in its sibling dirs (`event/`, `game_simulation/`, `input/`, `renderer/`, `pathfinding/`, `converter/`)
 - [doc/code/](doc/code/) — [curves](doc/code/curves.md), [exceptions](doc/code/exceptions.md), [logger](doc/code/logger.md), [pyinterface](doc/code/pyinterface.md), [testing](doc/code/testing.md)
-- [doc/code_style/](doc/code_style/) — C++ by example in [mom.h](doc/code_style/mom.h) and [mom.cpp](doc/code_style/mom.cpp), tabs indent and spaces align; Python is a PEP8 subset
+- [doc/code_style/](doc/code_style/) — C++ by example in [cat.h](doc/code_style/cat.h) and [cat.cpp](doc/code_style/cat.cpp), tabs indent and spaces align; Python is a PEP8 subset
 - [doc/nyan/](doc/nyan/), [doc/convert/](doc/convert/), [doc/media_convert.md](doc/media_convert.md) — game data and converter
 - [doc/development.md](doc/development.md) — code philosophy; [doc/contributing.md](doc/contributing.md) — PR workflow
 
@@ -82,7 +82,7 @@ Non-obvious traps; add new ones here, verified and in one line
 
 ## C++
 
-- Style by example ([mom.h](doc/code_style/mom.h), [mom.cpp](doc/code_style/mom.cpp)): `this->` for members, `{}` initialization, braces on every block, Doxygen API docs in the header, forward declarations in headers, sorted include groups
+- Style by example ([cat.h](doc/code_style/cat.h), [cat.cpp](doc/code_style/cat.cpp)): `this->` for members, `{}` initialization, braces on every block, Doxygen API docs in the header, forward declarations in headers, sorted include groups
 - Every `.h` has a `.cpp` that includes it first, even if otherwise empty; header guard `#pragma once`
 - Register new `.cpp` files and directories in the local `CMakeLists.txt` (`add_sources(libopenage ...)`, `add_subdirectory`)
 - Integer types per [inttypes.md](doc/code_style/inttypes.md)
