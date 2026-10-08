@@ -1,4 +1,4 @@
-// Copyright 2022-2024 the openage authors. See copying.md for legal info.
+// Copyright 2022-2026 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -63,7 +63,7 @@ private:
 	 *
 	 * Called during initialization of the screen renderer.
 	 *
-	 * @param shaderdir Directory containg the shader source files.
+	 * @param shaderdir Directory containing the shader source files.
 	 */
 	void initialize_render_pass(const util::Path &shaderdir);
 

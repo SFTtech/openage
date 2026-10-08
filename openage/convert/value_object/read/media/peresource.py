@@ -3,12 +3,11 @@
 """
 Provides PEResources, which reads the resource section from a PEFile.
 """
+
 from __future__ import annotations
+
 import typing
-
-
 from collections import defaultdict
-
 
 from .....util.filelike.stream import StreamFragment
 from .....util.struct import NamedStruct
@@ -16,33 +15,33 @@ from .langcodes import LANGCODES_AOC
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.read.media.pefile import PEFile
-    from openage.util.fslike.wrapper import GuardedFile
+    from openage.util.filelike.abstract import FileLikeObject
 
 
 # types for id in resource directory root node
 RESOURCE_TYPES = {
-    0: 'unknown',
-    1: 'cursor',
-    2: 'bitmap',
-    3: 'icon',
-    4: 'menu',
-    5: 'dialog',
-    6: 'string',
-    7: 'fontdir',
-    8: 'font',
-    9: 'accelerator',
-    10: 'rcdata',
-    11: 'messagetable',
-    12: 'group_cursor',
-    14: 'group_icon',
-    16: 'version',
-    17: 'dlginclude',
-    19: 'plugplay',
-    20: 'vxd',
-    21: 'anicursor',
-    22: 'aniicon',
-    23: 'html',
-    24: 'manifest'
+    0: "unknown",
+    1: "cursor",
+    2: "bitmap",
+    3: "icon",
+    4: "menu",
+    5: "dialog",
+    6: "string",
+    7: "fontdir",
+    8: "font",
+    9: "accelerator",
+    10: "rcdata",
+    11: "messagetable",
+    12: "group_cursor",
+    14: "group_icon",
+    16: "version",
+    17: "dlginclude",
+    19: "plugplay",
+    20: "vxd",
+    21: "anicursor",
+    22: "aniicon",
+    23: "html",
+    24: "manifest",
 }
 
 # reverse look-up table
@@ -61,19 +60,16 @@ class ResourceDirectory(NamedStruct):
 
     endianness = "<"
 
-    characteristics       = "I"     # some irrelevant flags.
-    timestamp             = "I"     # an irrelevant timestamp.
-    version_major         = "H"
-    version_minor         = "H"
+    characteristics: typing.Any = "I"  # some irrelevant flags.
+    timestamp: typing.Any = "I"  # an irrelevant timestamp.
+    version_major: typing.Any = "H"
+    version_minor: typing.Any = "H"
 
     # the number of named directory entries that follow immediately after.
-    named_entry_count     = "H"
+    named_entry_count: typing.Any = "H"
 
     # the number of id directory entries that follow immediately after.
-    id_entry_count        = "H"
-
-    subdirs               = None
-    leaves                = None
+    id_entry_count: typing.Any = "H"
 
 
 class ResourceDirectoryEntry(NamedStruct):
@@ -86,15 +82,15 @@ class ResourceDirectoryEntry(NamedStruct):
     endianness = "<"
 
     # if the high bit is set, the lower 31 bits point to the (utf-16-le) name.
-    name                  = "I"
+    name: typing.Any = "I"
 
     # if the high bit is set, the lower 31 bits point to an other directory.
     # if the high bit is cleared, they point to a leaf node.
-    data                  = "I"
+    data: typing.Any = "I"
 
     # set manually later
-    name_is_str           = None
-    is_subdir             = None
+    name_is_str: bool
+    is_subdir: bool
 
 
 class ResourceLeaf(NamedStruct):
@@ -106,14 +102,14 @@ class ResourceLeaf(NamedStruct):
 
     endianness = "<"
 
-    data_ptr              = "I"
-    data_size             = "I"
+    data_ptr: typing.Any = "I"
+    data_size: typing.Any = "I"
 
-    codepage              = "I"     # code page id of the data.
-    reserved              = "I"     # 0
+    codepage: typing.Any = "I"  # code page id of the data.
+    reserved: typing.Any = "I"  # 0
 
     # filled in later
-    fileobj               = None    # used for open
+    fileobj: FileLikeObject  # used for open
 
     def open(self) -> StreamFragment:
         """
@@ -132,18 +128,18 @@ class StringLiteral(NamedStruct):
 
     endianness = "<"
 
-    length             = "H"
+    length: typing.Any = "H"
 
     # filled later by read_content()
-    value: str         = None
+    value: str | None = None
 
     @classmethod
-    def readall(cls, fileobj: GuardedFile) -> StringLiteral:
+    def readall(cls, fileobj: FileLikeObject) -> StringLiteral:
         """
         In addition to the static data, reads the string.
         """
         result = cls.read(fileobj)
-        result.value = fileobj.read(result.length * 2).decode('utf-16-le')
+        result.value = fileobj.read(result.length * 2).decode("utf-16-le")
         return result
 
 
@@ -155,7 +151,7 @@ class PEResources:
     """
 
     def __init__(self, pefile: PEFile):
-        self.data, self.datava = pefile.open_section('.rsrc')
+        self.data, self.datava = pefile.open_section(".rsrc")
 
         # self.data is at position 0 (i.e. it points at the root directory).
         self.rootdir = self.read_directory()
@@ -164,7 +160,7 @@ class PEResources:
     def __getitem__(self, key):
         return self.rootdir[key]
 
-    def read_directory(self) -> dict[str, typing.Any]:
+    def read_directory(self) -> dict[int | str, typing.Any]:
         """
         reads the directory that's currently pointed at by self.data.
 
@@ -175,7 +171,7 @@ class PEResources:
         """
         directory = ResourceDirectory.read(self.data)
 
-        result = {}
+        result: dict[int | str, typing.Any] = {}
 
         # read directory entries
         entry_count = directory.named_entry_count + directory.id_entry_count
@@ -198,6 +194,8 @@ class PEResources:
                 entry.name = StringLiteral.readall(self.data).value
                 self.data.seek(data_pos)
 
+            assert isinstance(entry.name, (int, str))
+
             # read the struct pointed at by entry.data
             entry.is_subdir = bool(entry.data & (1 << 31))
             data_pos = self.data.tell()
@@ -216,15 +214,15 @@ class PEResources:
 
         return result
 
-    def read_strings(self) -> dict[str, dict[int, str]]:
+    def read_strings(self) -> dict[str, dict[str | int, str]]:
         """
         reads all ressource strings from self.root;
         returns a dict of dicts: {languageid: {stringid: str}}
         """
-        result = defaultdict(lambda: {})
+        result: dict[str, dict[str | int, str]] = defaultdict(lambda: {})
 
         try:
-            string_dir = self.rootdir[RESOURCE_IDS['string']]
+            string_dir = self.rootdir[RESOURCE_IDS["string"]]
         except KeyError:
             return result
 
@@ -243,7 +241,6 @@ class PEResources:
                         result[langcode][base_string_id + idx] = string
 
                 if sum(string_table_resource.read()) > 0:
-                    raise SyntaxError("string table invalid: the padding "
-                                      "contains data.")
+                    raise SyntaxError("string table invalid: the padding contains data.")
 
         return result

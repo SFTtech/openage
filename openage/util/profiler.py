@@ -23,8 +23,8 @@ class Profiler:
     p.enable() and p.disable().
     """
 
-    profile: cProfile.Profile = None
-    profile_stats: pstats.Stats = None
+    profile: cProfile.Profile
+    profile_stats: pstats.Stats | None = None
     profile_stream = None
 
     def __init__(self, o_stream=None):
@@ -44,7 +44,7 @@ class Profiler:
         """
         self.disable()
 
-    def write_report(self, sortby: str = 'calls') -> None:
+    def write_report(self, sortby: str = "calls") -> None:
         """
         Write the profile stats to profile_stream's file.
         """
@@ -52,14 +52,15 @@ class Profiler:
         self.profile_stats.sort_stats(sortby)
         self.profile_stats.print_stats()
 
-    def report(self, sortby: str = 'calls'):
+    def report(self, sortby: str = "calls") -> str:
         """
         Return the profile_stats to the console.
         """
-        self.profile_stats = pstats.Stats(self.profile, stream=io.StringIO())
+        stream = io.StringIO()
+        self.profile_stats = pstats.Stats(self.profile, stream=stream)
         self.profile_stats.sort_stats(sortby)
         self.profile_stats.print_stats()
-        return self.profile_stats.stream.getvalue()
+        return stream.getvalue()
 
     def enable(self):
         """
@@ -123,19 +124,16 @@ class Tracemalloc:
             self.snapshot0 = self.snapshot1
             self.snapshot1 = tracemalloc.take_snapshot()
 
-    def report(
-        self,
-        sortby: str = 'lineno',
-        cumulative: bool = False,
-        limit: int = 100
-    ) -> None:
+    def report(self, sortby: str = "lineno", cumulative: bool = False, limit: int = 100) -> None:
         """
         Return the snapshot statistics to the console.
         """
         if self.snapshot1:
+            assert self.snapshot0 is not None
             stats = self.snapshot1.compare_to(self.snapshot0, sortby, cumulative)[:limit]
 
         else:
+            assert self.snapshot0 is not None
             stats = self.snapshot0.statistics(sortby, cumulative)[:limit]
 
         for stat in stats:

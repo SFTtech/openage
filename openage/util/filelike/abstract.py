@@ -5,9 +5,9 @@ Provides the FileLikeObject abstract base class, which specifies a file-like
 interface, and various classes that implement the interface.
 """
 
+import os
 from abc import ABC, abstractmethod
 from io import UnsupportedOperation
-import os
 
 
 class FileLikeObject(ABC):
@@ -132,8 +132,7 @@ class FileLikeObject(ABC):
         elif whence == os.SEEK_END:
             size = self.get_size()
             if size < 0:
-                raise UnsupportedOperation(
-                    "can only seek relative to file start or cursor")
+                raise UnsupportedOperation("can only seek relative to file start or cursor")
             target = offset + size
         else:
             raise UnsupportedOperation("unsupported seek mode")

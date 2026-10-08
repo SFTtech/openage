@@ -4,15 +4,20 @@
 Converter objects for SWGB. Reimplements the ConverterObjectGroup
 instances from AoC.
 """
+
 from __future__ import annotations
+
 import typing
 
-from ..aoc.genie_unit import GenieUnitLineGroup, GenieUnitTransformGroup, \
-    GenieMonkGroup, GenieStackBuildingGroup
+from ..aoc.genie_unit import (
+    GenieMonkGroup,
+    GenieStackBuildingGroup,
+    GenieUnitLineGroup,
+    GenieUnitTransformGroup,
+)
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.aoc.genie_object_container\
-        import GenieObjectContainer
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
 
 
 class SWGBUnitLineGroup(GenieUnitLineGroup):
@@ -27,13 +32,9 @@ class SWGBUnitLineGroup(GenieUnitLineGroup):
     with have their differences patched in by the civ.
     """
 
-    __slots__ = ('civ_lines',)
+    __slots__ = ("civ_lines",)
 
-    def __init__(
-        self,
-        line_id: int,
-        full_data_set: GenieObjectContainer
-    ):
+    def __init__(self, line_id: int, full_data_set: GenieObjectContainer):
         """
         Creates a new SWGBUnitLineGroup.
 
@@ -45,9 +46,9 @@ class SWGBUnitLineGroup(GenieUnitLineGroup):
         super().__init__(line_id, full_data_set)
 
         # References to alternative lines from other civs
-        self.civ_lines: dict[int, SWGBUnitLineGroup] = {}
+        self.civ_lines: dict[int, GenieUnitLineGroup] = {}
 
-    def add_civ_line(self, other_line: SWGBUnitLineGroup) -> None:
+    def add_civ_line(self, other_line: SWGBUnitLineGroup | SWGBUnitTransformGroup | SWGBMonkGroup) -> None:
         """
         Adds a reference to an alternative line from another civ
         to this line.
@@ -77,9 +78,7 @@ class SWGBUnitLineGroup(GenieUnitLineGroup):
         :returns: True if the civ id is not Gaia's and no alternative lines
                   for this unit line exist.
         """
-        return (self.get_civ_id() != 0 and
-                len(self.civ_lines) == 0 and
-                self.get_enabling_research_id() > -1)
+        return self.get_civ_id() != 0 and len(self.civ_lines) == 0 and self.get_enabling_research_id() > -1
 
     def __repr__(self):
         return f"SWGBUnitLineGroup<{self.get_id()}>"
@@ -119,14 +118,9 @@ class SWGBUnitTransformGroup(GenieUnitTransformGroup):
     with have their differences patched in by the civ.
     """
 
-    __slots__ = ('civ_lines',)
+    __slots__ = ("civ_lines",)
 
-    def __init__(
-        self,
-        line_id: int,
-        head_unit_id: int,
-        full_data_set: GenieObjectContainer
-    ):
+    def __init__(self, line_id: int, head_unit_id: int, full_data_set: GenieObjectContainer):
         """
         Creates a new SWGB transform group.
 
@@ -139,9 +133,9 @@ class SWGBUnitTransformGroup(GenieUnitTransformGroup):
         super().__init__(line_id, head_unit_id, full_data_set)
 
         # References to alternative lines from other civs
-        self.civ_lines: dict[int, SWGBUnitTransformGroup] = {}
+        self.civ_lines: dict[int, GenieUnitLineGroup] = {}
 
-    def add_civ_line(self, other_line: SWGBUnitLineGroup) -> None:
+    def add_civ_line(self, other_line: SWGBUnitLineGroup | SWGBUnitTransformGroup | SWGBMonkGroup) -> None:
         """
         Adds a reference to an alternative line from another civ
         to this line.
@@ -195,7 +189,7 @@ class SWGBMonkGroup(GenieMonkGroup):
     with have their differences patched in by the civ.
     """
 
-    __slots__ = ('civ_lines',)
+    __slots__ = ("civ_lines",)
 
     def __init__(
         self,
@@ -218,9 +212,9 @@ class SWGBMonkGroup(GenieMonkGroup):
         super().__init__(line_id, head_unit_id, switch_unit_id, full_data_set)
 
         # References to alternative lines from other civs
-        self.civ_lines: dict[int, SWGBMonkGroup] = {}
+        self.civ_lines: dict[int, GenieUnitLineGroup] = {}
 
-    def add_civ_line(self, other_line: SWGBMonkGroup) -> None:
+    def add_civ_line(self, other_line: SWGBUnitLineGroup | SWGBUnitTransformGroup | SWGBMonkGroup) -> None:
         """
         Adds a reference to an alternative line from another civ
         to this line.

@@ -16,7 +16,6 @@ from threading import Lock
 
 from ..context import DummyGuard
 from ..filelike.abstract import FileLikeObject
-
 from .abstract import FSLikeObject, ReadOnlyFSLikeObject
 from .path import Path
 
@@ -29,7 +28,7 @@ class Wrapper(FSLikeObject):
     Pass a context guard to protect calls.
     """
 
-    def __init__(self, obj: Path, contextguard = None):
+    def __init__(self, obj: Path, contextguard=None):
         if not isinstance(obj, Path):
             raise TypeError(f"Path expected as obj, got '{type(obj)}'")
 
@@ -41,27 +40,33 @@ class Wrapper(FSLikeObject):
 
     def __repr__(self):
         if isinstance(self.contextguard, DummyGuard):
-            return f"{type(self).__name__}({repr(self.obj)})"
+            return f"{type(self).__name__}({self.obj!r})"
 
-        return f"{type(self).__name__}({repr(self.obj)}, {repr(self.contextguard)})"
+        return f"{type(self).__name__}({self.obj!r}, {self.contextguard!r})"
+
+    def _open(self, parts, mode: str):
+        with self.contextguard:
+            fileobj = self.obj.joinpath(parts).open(mode)
+
+        if isinstance(self.contextguard, DummyGuard):
+            return fileobj
+
+        return GuardedFile(fileobj, self.contextguard)
 
     def open_r(self, parts):
-        with self.contextguard:
-            fileobj = self.obj.joinpath(parts).open_r()
-
-        if isinstance(self.contextguard, DummyGuard):
-            return fileobj
-
-        return GuardedFile(fileobj, self.contextguard)
+        return self._open(parts, "rb")
 
     def open_w(self, parts):
-        with self.contextguard:
-            fileobj = self.obj.joinpath(parts).open_w()
+        return self._open(parts, "wb")
 
-        if isinstance(self.contextguard, DummyGuard):
-            return fileobj
+    def open_rw(self, parts):
+        return self._open(parts, "r+b")
 
-        return GuardedFile(fileobj, self.contextguard)
+    def open_a(self, parts):
+        return self._open(parts, "ab")
+
+    def open_ar(self, parts):
+        return self._open(parts, "a+b")
 
     def resolve_r(self, parts):
         return self.obj.joinpath(parts) if self.exists(parts) else None
@@ -102,8 +107,7 @@ class Wrapper(FSLikeObject):
 
     def rename(self, srcparts, tgtparts) -> None:
         with self.contextguard:
-            return self.obj.joinpath(srcparts).rename(
-                self.obj.joinpath(tgtparts))
+            return self.obj.joinpath(srcparts).rename(self.obj.joinpath(tgtparts))
 
     def is_file(self, parts) -> bool:
         with self.contextguard:
@@ -123,7 +127,7 @@ class Wrapper(FSLikeObject):
 
     def poll_watches(self):
         with self.contextguard:
-            return self.obj.poll_watches()
+            return self.obj.poll_fs_watches()
 
 
 class WriteBlocker(ReadOnlyFSLikeObject, Wrapper):
@@ -134,7 +138,7 @@ class WriteBlocker(ReadOnlyFSLikeObject, Wrapper):
     """
 
     def __repr__(self):
-        return f"WriteBlocker({repr(self.obj)})"
+        return f"WriteBlocker({self.obj!r})"
 
 
 class Synchronizer(Wrapper):
@@ -149,7 +153,7 @@ class Synchronizer(Wrapper):
     def __repr__(self):
         # TODO: remove override once pylint is fixed.
         with self.lock:  # pylint: disable=not-context-manager
-            return f"Synchronizer({repr(self.obj)})"
+            return f"Synchronizer({self.obj!r})"
 
 
 class GuardedFile(FileLikeObject):
@@ -205,7 +209,7 @@ class GuardedFile(FileLikeObject):
 
     def __repr__(self):
         with self.guard:
-            return f"GuardedFile({repr(self.obj)}, {repr(self.guard)})"
+            return f"GuardedFile({self.obj!r}, {self.guard!r})"
 
 
 class DirectoryCreator(Wrapper):

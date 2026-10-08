@@ -5,9 +5,10 @@
 """
 Holds the game entry point for openage.
 """
-from __future__ import annotations
-import typing
 
+from __future__ import annotations
+
+import typing
 
 from ..log import info
 
@@ -16,38 +17,36 @@ if typing.TYPE_CHECKING:
 
 
 def init_subparser(cli: ArgumentParser) -> None:
-    """ Initializes the parser for game-specific args. """
+    """Initializes the parser for game-specific args."""
     cli.set_defaults(entrypoint=main)
 
     cli.add_argument(
-        "--gl-debug", action='store_true',
-        help="throw exceptions directly from the OpenGL calls")
-
-    cli.add_argument(
-        "--headless", action='store_true',
-        help="run without displaying graphics")
-
-    cli.add_argument(
-        "--modpacks", nargs="+", required=True, type=str,
-        help="list of modpacks to load")
-
-    cli.add_argument(
-        "--check-updates", action='store_true',
-        help="Check if the assets are up to date"
+        "--gl-debug", action="store_true", help="throw exceptions directly from the OpenGL calls"
     )
 
-    cli.add_argument(
-        "--window-size", nargs=2, type=int, default=[1024, 768],
-        metavar=('WIDTH', 'HEIGHT'),
-        help="Initial window size in pixels")
+    cli.add_argument("--headless", action="store_true", help="run without displaying graphics")
+
+    cli.add_argument("--modpacks", nargs="+", required=True, type=str, help="list of modpacks to load")
+
+    cli.add_argument("--check-updates", action="store_true", help="Check if the assets are up to date")
 
     cli.add_argument(
-        "--vsync", action='store_true',
-        help="Enable vertical synchronization")
+        "--window-size",
+        nargs=2,
+        type=int,
+        default=[1024, 768],
+        metavar=("WIDTH", "HEIGHT"),
+        help="Initial window size in pixels",
+    )
+
+    cli.add_argument("--vsync", action="store_true", help="Enable vertical synchronization")
 
     cli.add_argument(
-        "--window-mode", choices=["fullscreen", "borderless", "windowed"], default="windowed",
-        help="Set the window mode")
+        "--window-mode",
+        choices=["fullscreen", "borderless", "windowed"],
+        default="windowed",
+        help="Set the window mode",
+    )
 
 
 def main(args, error):
@@ -59,16 +58,16 @@ def main(args, error):
 
     # we have to import stuff inside the function
     # as it depends on generated/compiled code
-    from .main_cpp import run_game
     from .. import config
     from ..assets import get_asset_path
-    from ..convert.tool.api_export import export_api
     from ..convert.service.init.api_export_required import api_export_required
     from ..convert.service.init.changelog import check_updates
     from ..convert.service.init.modpack_search import enumerate_modpacks
+    from ..convert.tool.api_export import export_api
     from ..cppinterface.setup import setup as cpp_interface_setup
     from ..cvar.location import get_config_path
     from ..util.fslike.union import Union
+    from .main_cpp import run_game
 
     # initialize libopenage
     cpp_interface_setup(args)
@@ -109,7 +108,7 @@ def main(args, error):
         check_updates(available_modpacks, args.cfg_dir / "converter" / "games")
 
     # encode modpacks as bytes for the C++ interface
-    args.modpacks = [modpack.encode('utf-8') for modpack in args.modpacks]
+    args.modpacks = [modpack.encode("utf-8") for modpack in args.modpacks]
 
     # Pass window parameters to engine
     args.window_args = {

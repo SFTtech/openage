@@ -8,11 +8,13 @@ from __future__ import annotations
 
 import typing
 
-
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.converter_object import ConverterObjectContainer
-    from openage.convert.entity_object.conversion.converter_object import ConverterObject
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
     from openage.convert.entity_object.conversion.aoc.genie_terrain import GenieTerrainObject
+    from openage.convert.entity_object.conversion.converter_object import (
+        ConverterObject,
+        RawAPIObject,
+    )
 
 
 class CombinedTerrain:
@@ -22,14 +24,9 @@ class CombinedTerrain:
     This will become a spritesheet texture with a terrain file.
     """
 
-    __slots__ = ('terrain_id', 'filename', 'data', 'metadata', '_refs')
+    __slots__ = ("_refs", "data", "filename", "metadata", "terrain_id")
 
-    def __init__(
-        self,
-        terrain_id: int,
-        filename: str,
-        full_data_set: ConverterObjectContainer
-    ):
+    def __init__(self, terrain_id: int, filename: str, full_data_set: GenieObjectContainer):
         """
         Creates a new CombinedTerrain instance.
 
@@ -54,7 +51,7 @@ class CombinedTerrain:
         # >=1 = store with first occuring Terrain;
         self._refs = []
 
-    def add_reference(self, referer: ConverterObject) -> None:
+    def add_reference(self, referer: RawAPIObject) -> None:
         """
         Add an object that is referencing this terrain.
         """
@@ -78,7 +75,7 @@ class CombinedTerrain:
         """
         return self.terrain_id
 
-    def get_relative_terrain_location(self) -> str:
+    def get_relative_terrain_location(self) -> str | None:
         """
         Return the terrain file location relative to where the file
         is expected to be in the modpack.
@@ -108,7 +105,7 @@ class CombinedTerrain:
         if len(self._refs) >= 1:
             return f"{self._refs[0].get_file_location()[0]}{'graphics/'}"
 
-        return None
+        raise ValueError(f"{self!r}: terrain has no referencing objects")
 
     def __repr__(self):
         return f"CombinedTerrain<{self.terrain_id}>"

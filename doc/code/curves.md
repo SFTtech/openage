@@ -61,7 +61,7 @@ The usable types are explained in more detail in the [Curve Types](#curve-types)
 
 Keyframes are implemented as time-value pairs by the `Keyframe` class. `KeyframeContainer`
 is used by all curves to manage their keyframe storage. It also provides functionality to
-efficiently access and insert keyframes as wel as sorting them by time. For the time
+efficiently access and insert keyframes as well as sorting them by time. For the time
 type, the [simulation time type](/doc/code/time.md) from the `openage::time` namespace is
 used.
 
@@ -95,11 +95,11 @@ Primitive curves are intended for members with single value types. These include
 the primitive C++ types (e.g. `int`, `float`, `std::string`), simple structs and data classes,
 and shared pointers.
 
-On contruction of a primitive curve object, a keyframe with time `t = time::time_t::min_value()`
-and the value's type is instanciated with its default constructor. This is done to ensure that for any
+On construction of a primitive curve object, a keyframe with time `t = time::time_t::min_value()`
+and the value's type is instantiated with its default constructor. This is done to ensure that for any
 requested time `t`, there is always a valid value to be returned. This mirrors the expected
 behaviour from declaring primitive values in C++ where members may be auto-initialized without
-explicit assignment to a default value. The default value for curves can also be explicitely
+explicit assignment to a default value. The default value for curves can also be explicitly
 assigned in the constructor. Types that don't have a default constructor require that a
 default value is passed to the curve constructor.
 
@@ -167,7 +167,7 @@ the value of the previous keyframe is used (like on discrete curves).
 Value types on continuous curves need to implement methods for the `operator*(..)` and
 `operator-(..)` operations to support linear interpolation. In particular, `operator*(..)`
 must support multiplication with `time::time_t` and `operator-(..)` must support
-substraction for values of the same type.
+subtraction for values of the same type.
 
 Continuous curves do not allow jumps between keyframe values (hence "continuous").
 Therefore, there cannot be two keyframes inserted for the same time `t`.

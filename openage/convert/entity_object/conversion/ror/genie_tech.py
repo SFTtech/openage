@@ -5,11 +5,19 @@ Contains structures and API-like objects for techs from RoR.
 
 Based on the classes from the AoC converter.
 """
+
 from __future__ import annotations
+
 import typing
 
-from ..aoc.genie_tech import StatUpgrade, AgeUpgrade, UnitLineUpgrade, \
-    BuildingLineUpgrade, UnitUnlock, BuildingUnlock
+from ..aoc.genie_tech import (
+    AgeUpgrade,
+    BuildingLineUpgrade,
+    BuildingUnlock,
+    StatUpgrade,
+    UnitLineUpgrade,
+    UnitUnlock,
+)
 
 if typing.TYPE_CHECKING:
     from openage.convert.entity_object.conversion.ror.genie_unit import RoRUnitLineGroup
@@ -45,7 +53,9 @@ class RoRUnitLineUpgrade(UnitLineUpgrade):
     """
 
     def get_upgraded_line(self) -> RoRUnitLineGroup:
-        return self.data.unit_lines[self.unit_line_id]
+        line = self.data.unit_lines[self.unit_line_id]
+        assert isinstance(line, RoRUnitLineGroup)
+        return line
 
     def is_unique(self) -> bool:
         return False
@@ -78,7 +88,9 @@ class RoRUnitUnlock(UnitUnlock):
         """
         Returns the line that is unlocked by this tech.
         """
-        return self.data.unit_lines[self.line_id]
+        line = self.data.unit_lines[self.line_id]
+        assert isinstance(line, RoRUnitLineGroup)
+        return line
 
     def __repr__(self):
         return f"RoRUnitUnlock<{self.get_id()}>"

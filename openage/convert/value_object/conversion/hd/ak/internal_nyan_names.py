@@ -12,7 +12,7 @@ figure out the names for a nyan object.
 # contains only new units of AK
 UNIT_LINE_LOOKUPS = {
     583: ("Genitour", "genitour"),
-    885: ("SiegeTower", "siege_tower"),             # old version of ID 1105 with combat
+    885: ("SiegeTower", "siege_tower"),  # old version of ID 1105 with combat
     936: ("Elephant", "elephant"),
     1001: ("OrganGun", "organ_gun"),
     1004: ("Caravel", "caravel"),
@@ -38,13 +38,11 @@ BUILDING_LINE_LOOKUPS = {
 
 # key: (head) unit id; value: (nyan object name, filename prefix)
 # contains only new/changed ambience of AK
-AMBIENT_GROUP_LOOKUPS = {
-}
+AMBIENT_GROUP_LOOKUPS = {}
 
 # key: index; value: (nyan object name, filename prefix, units belonging to group, variant type)
 # contains only new/changed variants of AK
-VARIANT_GROUP_LOOKUPS = {
-}
+VARIANT_GROUP_LOOKUPS = {}
 
 # key: head unit id; value: (nyan object name, filename prefix)
 # contains only new techs of AK
@@ -101,12 +99,11 @@ TERRAIN_GROUP_LOOKUPS = {
 # key: not relevant; value: (terrain indices, unit terrain restrictions (manual), nyan object name)
 # TODO: Use terrain restrictions from .dat
 # contains only new/changed terrain types of DE2
-TERRAIN_TYPE_LOOKUPS = {
-}
+TERRAIN_TYPE_LOOKUPS = {}
 
 # key: armor class; value: Gather ability name
 # contains only new armors of AK
 ARMOR_CLASS_LOOKUPS = {
     30: "Camel",
-    33: "AntiGunpowder",    # TODO: Should not be used as it is a hacky workaround for minimum damage
+    33: "AntiGunpowder",  # TODO: Should not be used as it is a hacky workaround for minimum damage
 }

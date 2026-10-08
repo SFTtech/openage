@@ -8,10 +8,12 @@ from __future__ import annotations
 
 import typing
 
-
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.converter_object import ConverterObjectContainer
-    from openage.convert.entity_object.conversion.converter_object import ConverterObject
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
+    from openage.convert.entity_object.conversion.converter_object import (
+        ConverterObject,
+        RawAPIObject,
+    )
 
 
 class CombinedSound:
@@ -19,15 +21,9 @@ class CombinedSound:
     Collection of sound information for openage files.
     """
 
-    __slots__ = ('head_sound_id', 'file_id', 'filename', 'data', 'genie_sound', '_refs')
+    __slots__ = ("_refs", "data", "file_id", "filename", "genie_sound", "head_sound_id")
 
-    def __init__(
-        self,
-        head_sound_id: int,
-        file_id: int,
-        filename: str,
-        full_data_set: ConverterObjectContainer
-    ):
+    def __init__(self, head_sound_id: int, file_id: int, filename: str, full_data_set: GenieObjectContainer):
         """
         Creates a new CombinedSound instance.
 
@@ -56,7 +52,7 @@ class CombinedSound:
         # >1 = store in 'shared' resources;
         self._refs = []
 
-    def add_reference(self, referer: ConverterObject) -> None:
+    def add_reference(self, referer: RawAPIObject) -> None:
         """
         Add an object that is referencing this sound.
         """
@@ -80,7 +76,7 @@ class CombinedSound:
         """
         return self.head_sound_id
 
-    def get_relative_file_location(self) -> str:
+    def get_relative_file_location(self) -> str | None:
         """
         Return the sound file location relative to where the file
         is expected to be in the modpack.
@@ -103,7 +99,7 @@ class CombinedSound:
         if len(self._refs) == 1:
             return f"{self._refs[0].get_file_location()[0]}{'sounds/'}"
 
-        return None
+        raise ValueError(f"{self!r}: sound has no referencing objects")
 
     def remove_reference(self, referer: ConverterObject) -> None:
         """

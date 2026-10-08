@@ -125,6 +125,6 @@ The component stores no runtime data.
 **nyan API object:** [`engine.ability.type.Turn`](/doc/nyan/api_reference/reference_ability.md#abilitytypeturn)
 
 The `Turn` component represents the game entity's ability to change directions in the game world.
-Turning is implicitely required for moving but it also works on its own.
+Turning is implicitly required for moving but it also works on its own.
 
 The component stores no runtime data.

@@ -4,7 +4,6 @@
 Provides all sorts of iterator-related stuff.
 """
 
-
 from typing import Iterable
 
 

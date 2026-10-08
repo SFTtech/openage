@@ -138,7 +138,7 @@ expansions      = []
 
   [AOE1DE.installpaths]
   linux = ["~/.steam/steam/steamapps/common/AoEDE"]
-  macos = ["~/.steam/steam/steamapps/common/AoEDE"]
+  macos = ["~/Library/Application Support/Steam/steamapps/common/AoEDE"]
   windows = [
     "C:/Program Files/Steam/steamapps/common/AoEDE",
     "C:/Program Files (x86)/Steam/steamapps/common/AoEDE",
@@ -222,7 +222,7 @@ expansions      = []
 
   [HDEDITION.installpaths]
   linux = ["~/.steam/steam/steamapps/common/Age2HD"]
-  macos = ["~/.steam/steam/steamapps/common/Age2HD"]
+  macos = ["~/Library/Application Support/Steam/steamapps/common/Age2HD"]
   windows = [
     "C:/Program Files/Steam/steamapps/common/Age2HD",
     "C:/Program Files (x86)/Steam/steamapps/common/Age2HD",
@@ -271,7 +271,7 @@ expansions      = []
 
   [AOE2DE.installpaths]
   linux = ["~/.steam/steam/steamapps/common/AoE2DE"]
-  macos = ["~/.steam/steam/steamapps/common/AoE2DE"]
+  macos = ["~/Library/Application Support/Steam/steamapps/common/AoE2DE"]
   windows = [
     "C:/Program Files/Steam/steamapps/common/AoE2DE",
     "C:/Program Files (x86)/Steam/steamapps/common/AoE2DE",
@@ -311,7 +311,7 @@ expansions      = ["SWGB_CC"]
   ]
   macos = [
     "~/.wine/drive_c/GOG Games/Star Wars - Galactic Battlegrounds",
-    "~/.steam/steam/steamapps/common/STAR WARS - Galactic Battlegrounds Saga",
+    "~/Library/Application Support/Steam/steamapps/common/STAR WARS - Galactic Battlegrounds Saga",
   ]
   windows = [
     "C:/GOG Games/Star Wars - Galactic Battlegrounds",

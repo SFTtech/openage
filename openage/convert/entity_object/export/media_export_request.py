@@ -5,7 +5,9 @@
 Specifies a request for a media resource that should be
 converted and exported into a modpack.
 """
+
 from __future__ import annotations
+
 import typing
 
 from ....util.observer import Observable
@@ -19,15 +21,9 @@ class MediaExportRequest(Observable):
     Generic superclass for export requests.
     """
 
-    __slots__ = ("media_type", "targetdir", "source_filename", "target_filename")
+    __slots__ = ("media_type", "source_filename", "target_filename", "targetdir")
 
-    def __init__(
-        self,
-        media_type: MediaType,
-        targetdir: str,
-        source_filename: str,
-        target_filename: str
-    ):
+    def __init__(self, media_type: MediaType, targetdir: str, source_filename: str, target_filename: str):
         """
         Create a request for a media file.
 

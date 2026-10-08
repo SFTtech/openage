@@ -1,4 +1,4 @@
-# Copyright 2020-2022 the openage authors. See copying.md for legal info.
+# Copyright 2020-2026 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-locals,too-many-lines,too-many-statements,too-many-public-methods
 #
@@ -8,7 +8,9 @@
 """
 Creates upgrade patches for attribute modification effects in RoR.
 """
+
 from __future__ import annotations
+
 import typing
 
 from ....entity_object.conversion.aoc.genie_tech import GenieTechEffectBundleGroup
@@ -17,8 +19,8 @@ from ....service.conversion import internal_name_lookups
 from ....value_object.conversion.forward_ref import ForwardRef
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.converter_object import ConverterObjectGroup
     from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup
+    from openage.convert.entity_object.conversion.converter_object import ConverterObjectGroup
     from openage.nyan.nyan_structs import MemberOperator
 
 
@@ -33,7 +35,7 @@ class RoRUpgradeAttributeSubprocessor:
         line: GenieGameEntityGroup,
         value: typing.Any,
         operator: MemberOperator,
-        team: bool = False
+        team: bool = False,
     ) -> list[ForwardRef]:
         """
         Creates a patch for the ballistics modify effect (ID: 19).
@@ -61,6 +63,10 @@ class RoRUpgradeAttributeSubprocessor:
         elif value == 1:
             target_mode = dataset.nyan_api_objects["engine.util.target_mode.type.ExpectedPosition"]
 
+        else:
+            # Unknown ballistics value: nothing to patch up.
+            return patches
+
         obj_id = converter_group.get_id()
         if isinstance(converter_group, GenieTechEffectBundleGroup):
             tech_lookup_dict = internal_name_lookups.get_tech_lookups(dataset.game_version)
@@ -83,42 +89,36 @@ class RoRUpgradeAttributeSubprocessor:
             wrapper_name = f"Change{game_entity_name}Projectile0TargetModeWrapper"
             wrapper_ref = f"{obj_name}.{wrapper_name}"
             wrapper_location = ForwardRef(converter_group, obj_name)
-            wrapper_raw_api_object = RawAPIObject(wrapper_ref,
-                                                  wrapper_name,
-                                                  dataset.nyan_api_objects,
-                                                  wrapper_location)
+            wrapper_raw_api_object = RawAPIObject(
+                wrapper_ref, wrapper_name, dataset.nyan_api_objects, wrapper_location
+            )
             wrapper_raw_api_object.add_raw_parent("engine.util.patch.Patch")
 
             # Nyan patch
             nyan_patch_name = f"Change{game_entity_name}Projectile0TargetMode"
             nyan_patch_ref = f"{obj_name}.{wrapper_name}.{nyan_patch_name}"
             nyan_patch_location = ForwardRef(converter_group, wrapper_ref)
-            nyan_patch_raw_api_object = RawAPIObject(nyan_patch_ref,
-                                                     nyan_patch_name,
-                                                     dataset.nyan_api_objects,
-                                                     nyan_patch_location)
+            nyan_patch_raw_api_object = RawAPIObject(
+                nyan_patch_ref, nyan_patch_name, dataset.nyan_api_objects, nyan_patch_location
+            )
             nyan_patch_raw_api_object.add_raw_parent("engine.util.patch.NyanPatch")
             nyan_patch_raw_api_object.set_patch_target(patch_target_forward_ref)
 
-            nyan_patch_raw_api_object.add_raw_patch_member("target_mode",
-                                                           target_mode,
-                                                           "engine.ability.type.Projectile",
-                                                           operator)
+            nyan_patch_raw_api_object.add_raw_patch_member(
+                "target_mode", target_mode, "engine.ability.type.Projectile", operator
+            )
 
             patch_forward_ref = ForwardRef(converter_group, nyan_patch_ref)
-            wrapper_raw_api_object.add_raw_member("patch",
-                                                  patch_forward_ref,
-                                                  "engine.util.patch.Patch")
+            wrapper_raw_api_object.add_raw_member("patch", patch_forward_ref, "engine.util.patch.Patch")
 
             if team:
-                team_property = dataset.pregen_nyan_objects["util.patch.property.types.Team"].get_nyan_object(
-                )
+                team_property = dataset.pregen_nyan_objects[
+                    "util.patch.property.types.Team"
+                ].get_nyan_object()
                 properties = {
                     dataset.nyan_api_objects["engine.util.patch.property.type.Diplomatic"]: team_property
                 }
-                wrapper_raw_api_object.add_raw_member("properties",
-                                                      properties,
-                                                      "engine.util.patch.Patch")
+                wrapper_raw_api_object.add_raw_member("properties", properties, "engine.util.patch.Patch")
 
             converter_group.add_raw_api_object(wrapper_raw_api_object)
             converter_group.add_raw_api_object(nyan_patch_raw_api_object)
@@ -132,9 +132,9 @@ class RoRUpgradeAttributeSubprocessor:
     def population_upgrade(
         converter_group: ConverterObjectGroup,
         line: GenieGameEntityGroup,
-        value: typing.Union[int, float],
+        value: float,
         operator: MemberOperator,
-        team: bool = False
+        team: bool = False,
     ) -> list[ForwardRef]:
         """
         Creates a patch for the population effect (ID: 101).

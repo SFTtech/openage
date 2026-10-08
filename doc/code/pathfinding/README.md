@@ -62,7 +62,7 @@ pathfinder to preselect the sectors that flow fields need to be generated for (s
 
 The individual movement cost of each cell in a sector are recorded in a `CostField` object.
 The cost of a cell can range from 1 (minimum cost) to 254 (maximum cost), while a cost of 255
-makes a cell impassible. For Age of Empires, usually only the minimum and impassable cost
+makes a cell impassable. For Age of Empires, usually only the minimum and impassable cost
 values are relevant. The cost field is built when the grid is first initialized and
 individual cost of cells can be altered during gameplay events.
 

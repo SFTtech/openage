@@ -14,7 +14,7 @@ Handles idle actions for game entities.
 
 `idle(..)` updates the animation of the game entity. This requires the game
 entity to have the `Idle` component. The function returns a time of 0 since
-no actionsconsuming simulation time are taken.
+no actions consuming simulation time are taken.
 
 
 ## Move

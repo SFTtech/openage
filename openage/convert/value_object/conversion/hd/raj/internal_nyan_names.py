@@ -30,13 +30,11 @@ BUILDING_LINE_LOOKUPS = {
 
 # key: (head) unit id; value: (nyan object name, filename prefix)
 # contains only new/changed ambience of Rajas
-AMBIENT_GROUP_LOOKUPS = {
-}
+AMBIENT_GROUP_LOOKUPS = {}
 
 # key: index; value: (nyan object name, filename prefix, units belonging to group, variant type)
 # contains only new/changed variants of Rajas
-VARIANT_GROUP_LOOKUPS = {
-}
+VARIANT_GROUP_LOOKUPS = {}
 
 # key: head unit id; value: (nyan object name, filename prefix)
 # contains only new techs of Rajas
@@ -98,8 +96,7 @@ TERRAIN_GROUP_LOOKUPS = {
 # key: not relevant; value: (terrain indices, unit terrain restrictions (manual), nyan object name)
 # TODO: Use terrain restrictions from .dat
 # contains only new/changed terrain types of DE2
-TERRAIN_TYPE_LOOKUPS = {
-}
+TERRAIN_TYPE_LOOKUPS = {}
 
 # key: armor class; value: Gather ability name
 # contains only new armors of Rajas

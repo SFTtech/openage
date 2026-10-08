@@ -6,16 +6,21 @@
 Receives cleaned-up srcdir and targetdir objects from .main, and drives the
 actual conversion process.
 """
+
 from __future__ import annotations
-import typing
+
 import timeit
+import typing
 
-
-from ...log import info, dbg
+from ...log import dbg, info
 from ..processor.export.modpack_exporter import ModpackExporter
-from ..service.debug_info import debug_gamedata_format
-from ..service.debug_info import debug_string_resources, \
-    debug_registered_graphics, debug_modpack, debug_execution_time
+from ..service.debug_info import (
+    debug_execution_time,
+    debug_gamedata_format,
+    debug_modpack,
+    debug_registered_graphics,
+    debug_string_resources,
+)
 from ..service.read.gamedata import get_gamespec
 from ..service.read.palette import get_palettes
 from ..service.read.register_media import get_existing_graphics
@@ -59,7 +64,7 @@ def convert_metadata(args: Namespace) -> None:
     if args.flag("no_metadata"):
         return
 
-    gamedata_path = args.targetdir.joinpath('gamedata')
+    gamedata_path = args.targetdir.joinpath("gamedata")
     if gamedata_path.exists():
         gamedata_path.removerecursive()
 
@@ -92,10 +97,7 @@ def convert_metadata(args: Namespace) -> None:
 
     # nyan conversion
     stage_start = timeit.default_timer()
-    modpacks = args.converter.convert(gamespec,
-                                      args,
-                                      string_resources,
-                                      existing_graphics)
+    modpacks = args.converter.convert(gamespec, args, string_resources, existing_graphics)
 
     stage_end = timeit.default_timer()
     info("Finished data conversion (%.2f seconds)", stage_end - stage_start)
@@ -109,10 +111,12 @@ def convert_metadata(args: Namespace) -> None:
         debug_modpack(args.debugdir, args.debug_info, modpack)
 
         mod_export_end = timeit.default_timer()
-        info("Finished export of modpack '%s' v%s (%.2f seconds)",
-             modpack.info.packagename,
-             modpack.info.version,
-             mod_export_end - mod_export_start)
+        info(
+            "Finished export of modpack '%s' v%s (%.2f seconds)",
+            modpack.info.packagename,
+            modpack.info.version,
+            mod_export_end - mod_export_start,
+        )
 
     stage_end = timeit.default_timer()
     info("Finished export (%.2f seconds)", stage_end - stage_start)
@@ -131,7 +135,7 @@ def convert_metadata(args: Namespace) -> None:
     # TODO: gamespec files
     # data_formatter.export(args.targetdir, ("csv",))
 
-    if args.flag('gen_extra_files'):
+    if args.flag("gen_extra_files"):
         dbg("generating extra files for visualization")
         # tgt = args.targetdir
         # with tgt['info/colortable.pal.png'].open_w() as outfile:
@@ -150,14 +154,17 @@ def get_converter(game_version: GameVersion):
 
     if game_edition.game_id == "ROR":
         from ..processor.conversion.ror.processor import RoRProcessor
+
         return RoRProcessor
 
     if game_edition.game_id == "AOE1DE":
         from ..processor.conversion.de1.processor import DE1Processor
+
         return DE1Processor
 
     if game_edition.game_id == "AOC":
         from ..processor.conversion.aoc.processor import AoCProcessor
+
         return AoCProcessor
 
     if game_edition.game_id == "AOCDEMO":
@@ -165,19 +172,23 @@ def get_converter(game_version: GameVersion):
         # TODO: maybe introduce a config parameter for this purpose?
         game_edition.game_id = "AOC"
         from ..processor.conversion.aoc_demo.processor import DemoProcessor
+
         return DemoProcessor
 
     if game_edition.game_id == "HDEDITION":
         from ..processor.conversion.hd.processor import HDProcessor
+
         return HDProcessor
 
     if game_edition.game_id == "AOE2DE":
         from ..processor.conversion.de2.processor import DE2Processor
+
         return DE2Processor
 
     if game_edition.game_id == "SWGB":
         if "SWGB_CC" in [expansion.game_id for expansion in game_expansions]:
             from ..processor.conversion.swgbcc.processor import SWGBCCProcessor
+
             return SWGBCCProcessor
 
     raise RuntimeError(f"no valid converter found for game edition {game_edition.edition_name}")

@@ -1,22 +1,24 @@
-# Copyright 2021-2022 the openage authors. See copying.md for legal info.
+# Copyright 2021-2026 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-arguments
 
 """
 Create a media cache file for a game version.
 """
+
 from __future__ import annotations
+
 import typing
 
-import toml
+from openage.util.toml import dumps as toml_dumps
 
 from ..data_definition import DataDefinition
 
 FILE_VERSION = "1.0"
 
 if typing.TYPE_CHECKING:
-    from openage.convert.value_object.read.media_types import MediaType
     from openage.convert.value_object.init.game_version import GameVersion
+    from openage.convert.value_object.read.media_types import MediaType
 
 
 class MediaCacheFile(DataDefinition):
@@ -28,14 +30,14 @@ class MediaCacheFile(DataDefinition):
         super().__init__(targetdir, filename)
 
         self.game_version = game_version
-        self.hash_func: str = None
-        self.cache = {}
+        self.hash_func: str | None = None
+        self.cache: dict[MediaType, list[tuple]] = {}
 
     def dump(self) -> str:
         """
         Returns the media cache file content in TOML format.
         """
-        output_dict = {}
+        output_dict: dict[str, typing.Any] = {}
 
         output_dict["file_version"] = FILE_VERSION
         output_dict["hash_algo"] = self.hash_func
@@ -49,11 +51,11 @@ class MediaCacheFile(DataDefinition):
                     "filepath": cache[0],
                     "hash": cache[1],
                     "compression_settings": cache[2],
-                    "packer_settings": cache[3]
+                    "packer_settings": cache[3],
                 }
 
         output_str = "# openage media cache file\n\n"
-        output_str += toml.dumps(output_dict)
+        output_str += toml_dumps(output_dict)
 
         return output_str
 
@@ -63,7 +65,7 @@ class MediaCacheFile(DataDefinition):
         filepath: str,
         filehash: str,
         compr_settings: tuple,
-        packer_settings: tuple
+        packer_settings: tuple,
     ) -> None:
         """
         Add cache data for a file.
@@ -83,9 +85,7 @@ class MediaCacheFile(DataDefinition):
         if media_type not in self.cache:
             self.cache[media_type] = []
 
-        self.cache[media_type].append(
-            (filepath, filehash, compr_settings, packer_settings)
-        )
+        self.cache[media_type].append((filepath, filehash, compr_settings, packer_settings))
 
     def set_hash_func(self, hash_func: str) -> None:
         """

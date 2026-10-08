@@ -6,7 +6,7 @@ Palette definition file.
 
 from ..data_definition import DataDefinition
 
-FORMAT_VERSION = '1'
+FORMAT_VERSION = "1"
 
 
 class PaletteMetadata(DataDefinition):
@@ -55,11 +55,11 @@ class PaletteMetadata(DataDefinition):
 
         # frame definitions
         for colour in self.colours:
-            output_str += f'{" ".join(str(param) for param in colour)}\n'
+            output_str += f"{' '.join(str(param) for param in colour)}\n"
 
         output_str += "]\n"
 
         return output_str
 
     def __repr__(self):
-        return f'PaletteMetadata<{self.filename}>'
+        return f"PaletteMetadata<{self.filename}>"

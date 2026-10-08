@@ -37,7 +37,6 @@ let
     ps.lz4
     ps.pygments
     ps.cython
-    ps.pylint
     ps.toml
   ]);
 in

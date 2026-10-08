@@ -1,14 +1,15 @@
-# Copyright 2023-2024 the openage authors. See copying.md for legal info.
+# Copyright 2023-2026 the openage authors. See copying.md for legal info.
 
 """
 Test whether the openage nyan API modpack is present.
 """
+
 from __future__ import annotations
+
 import typing
 
-import toml
-
-from ....log import info, dbg
+from openage.log import dbg, info
+from openage.util.toml import TomlDecodeError
 
 from .modpack_search import get_modpack_info
 
@@ -43,7 +44,7 @@ def api_export_required(asset_dir: UnionPath) -> bool:
         info("openage nyan API modpack is up to date")
         return False
 
-    except (FileNotFoundError, TypeError, toml.TomlDecodeError):
+    except (FileNotFoundError, TypeError, TomlDecodeError):
         info("openage nyan API modpack not found")
 
     return True

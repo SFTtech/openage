@@ -1,6 +1,6 @@
 # Copyright 2014-2022 the openage authors. See copying.md for legal info.
 
-""" Testing utilities, such as TestError, assert_value, assert_raises. """
+"""Testing utilities, such as TestError, assert_value, assert_raises."""
 
 from contextlib import contextmanager
 from typing import NoReturn

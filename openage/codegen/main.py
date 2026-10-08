@@ -48,10 +48,10 @@ depending on the specified invocation commands,
 """
 
 from __future__ import annotations
-import typing
 
 import os
 import sys
+import typing
 
 from .codegen import CodegenMode, codegen
 
@@ -60,58 +60,82 @@ if typing.TYPE_CHECKING:
 
 
 def init_subparser(cli: ArgumentParser):
-    """ Codegen-specific CLI. """
+    """Codegen-specific CLI."""
     cli.set_defaults(entrypoint=main)
 
     cli.add_argument(
-        "--input-dir", required=True,
-        help=("the directory to read inputs from."
-              "this is the usually the repository root."))
+        "--input-dir",
+        required=True,
+        help=("the directory to read inputs from.this is the usually the repository root."),
+    )
 
     cli.add_argument(
-        "--output-dir", required=True,
-        help=("the directory to produce outputs in."
-              "this is the directory corresponding to the repository root "
-              "which is inferred using current working directory."))
+        "--output-dir",
+        required=True,
+        help=(
+            "the directory to produce outputs in."
+            "this is the directory corresponding to the repository root "
+            "which is inferred using current working directory."
+        ),
+    )
 
     cli.add_argument(
-        "--generated-list-file", required=True,
-        help=("filename for target cache. a list of all generated sources "
-              "is written there during each invocation. "
-              "if the list changes, --touch-file-on-cache-change and "
-              "--force-rerun-on-generated-list-change trigger cmake re-runs."))
+        "--generated-list-file",
+        required=True,
+        help=(
+            "filename for target cache. a list of all generated sources "
+            "is written there during each invocation. "
+            "if the list changes, --touch-file-on-cache-change and "
+            "--force-rerun-on-generated-list-change trigger cmake re-runs."
+        ),
+    )
 
     cli.add_argument(
-        "--depend-list-file", required=True,
-        help=("filename for dependency cache. a list of all python files and "
-              "other resources that were used during source generation is "
-              "stored here. "
-              "if the list changes, --touch-file-on-cache-change will trigger "
-              "cmake re-runs"))
+        "--depend-list-file",
+        required=True,
+        help=(
+            "filename for dependency cache. a list of all python files and "
+            "other resources that were used during source generation is "
+            "stored here. "
+            "if the list changes, --touch-file-on-cache-change will trigger "
+            "cmake re-runs"
+        ),
+    )
 
     cli.add_argument(
-        "--mode", required=True,
-        help=("operating mode; must be one of {'codegen', 'dryrun', 'clean'}. "
-              "in dry run mode, only the caches are updated. "
-              "in codegen mode, all source files are created. "
-              "in clean mode, the source files are deleted instead."))
+        "--mode",
+        required=True,
+        help=(
+            "operating mode; must be one of {'codegen', 'dryrun', 'clean'}. "
+            "in dry run mode, only the caches are updated. "
+            "in codegen mode, all source files are created. "
+            "in clean mode, the source files are deleted instead."
+        ),
+    )
 
     cli.add_argument(
-        "--touch-file-on-cache-change", dest="file_to_touch",
-        help=("the file passed here is touched if one of the caches changes. "
-              "designed for use with a CMakeLists.txt file, to trigger cmake "
-              "re-runs."))
+        "--touch-file-on-cache-change",
+        dest="file_to_touch",
+        help=(
+            "the file passed here is touched if one of the caches changes. "
+            "designed for use with a CMakeLists.txt file, to trigger cmake "
+            "re-runs."
+        ),
+    )
 
     cli.add_argument(
         "--force-rerun-on-generated-list-change",
         action="store_true",
-        help=("more drastic than --touch-file-on-cache-change, this causes "
-              "codegen to abort with an error message if the target cache has "
-              "changed."))
+        help=(
+            "more drastic than --touch-file-on-cache-change, this causes "
+            "codegen to abort with an error message if the target cache has "
+            "changed."
+        ),
+    )
 
 
 def main(args, error):
-    """ Codegen CLI entry point. """
+    """Codegen CLI entry point."""
 
     if args.file_to_touch and not os.path.isfile(args.file_to_touch):
         error("file doesn't exist: " + args.file_to_touch)
@@ -122,15 +146,14 @@ def main(args, error):
         If the file doesn't exist, a warning is printed.
         """
         try:
-            with open(filename, encoding='utf8') as fileobj:
+            with open(filename, encoding="utf8") as fileobj:
                 for line in fileobj:
                     line = line.strip()
                     if line:
                         yield line
         except FileNotFoundError:
             if args.file_to_touch or args.force_rerun_on_generated_list_change:
-                print("warning: cache actions were requested, " +
-                      "but the target cache could not be read!")
+                print("warning: cache actions were requested, " + "but the target cache could not be read!")
 
     old_generated = set(read_cache_file_lines(args.generated_list_file))
     old_depends = set(read_cache_file_lines(args.depend_list_file))
@@ -146,23 +169,21 @@ def main(args, error):
     generated, depends = codegen(mode, args.input_dir, args.output_dir)
 
     def print_set_differences(old, new, name):
-        """ Prints the difference between old and new. """
+        """Prints the difference between old and new."""
         if old - new:
-            print("codegen: removed from " + name + ":\n"
-                  "\t" + "\n\t".join(old - new) + "\n")
+            print("codegen: removed from " + name + ":\n\t" + "\n\t".join(old - new) + "\n")
 
         if new - old and old:
-            print("codegen: new " + name + ":\n"
-                  "\t" + "\n\t".join(new - old) + "\n")
+            print("codegen: new " + name + ":\n\t" + "\n\t".join(new - old) + "\n")
 
     print_set_differences(old_generated, generated, "generated files")
     print_set_differences(old_depends, depends, "dependencies")
 
-    with open(args.generated_list_file, 'w', encoding='utf8') as fileobj:
-        fileobj.write('\n'.join(generated))
+    with open(args.generated_list_file, "w", encoding="utf8") as fileobj:
+        fileobj.write("\n".join(generated))
 
-    with open(args.depend_list_file, 'w', encoding='utf8') as fileobj:
-        fileobj.write('\n'.join(depends))
+    with open(args.depend_list_file, "w", encoding="utf8") as fileobj:
+        fileobj.write("\n".join(depends))
 
     if args.file_to_touch:
         if old_generated != generated or old_depends != depends:
@@ -170,11 +191,13 @@ def main(args, error):
 
     if args.force_rerun_on_generated_list_change:
         if old_generated != generated:
-            print("\n\n\n\n"
-                  "The list of generated source files has changed.\n"
-                  "A build update has been triggered; you need to build "
-                  "again.\n"
-                  "\n\n\n")
+            print(
+                "\n\n\n\n"
+                "The list of generated source files has changed.\n"
+                "A build update has been triggered; you need to build "
+                "again.\n"
+                "\n\n\n"
+            )
 
             # fail
             sys.exit(1)

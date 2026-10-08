@@ -1,4 +1,4 @@
-// Copyright 2022-2024 the openage authors. See copying.md for legal info.
+// Copyright 2022-2026 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -80,7 +80,7 @@ private:
 	 *
 	 * @param width Width of the FBO.
 	 * @param height Height of the FBO.
-	 * @param shaderdir Directory containg the shader source files.
+	 * @param shaderdir Directory containing the shader source files.
 	 */
 	void initialize_render_pass(size_t width,
 	                            size_t height,

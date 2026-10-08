@@ -1,4 +1,4 @@
-// Copyright 2015-2024 the openage authors. See copying.md for legal info.
+// Copyright 2015-2026 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -138,7 +138,7 @@ public:
 
 	/**
 	 * Force this window to the given size. It's generally not a good idea to use this,
-	 * as it makes the window jump around wierdly.
+	 * as it makes the window jump around weirdly.
 	 *
 	 * @param width Width in pixels.
 	 * @param height Height in pixels.

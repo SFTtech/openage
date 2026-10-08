@@ -4,24 +4,31 @@
 Checks the mode of all files and prevents executable source files.
 """
 
-import re
 import pathlib
+import re
 import stat
 
-from .util import findfiles, SHEBANG
-
+from .util import SHEBANG, findfiles
 
 SHEBANG_RE = re.compile("^" + SHEBANG)
 
 EXTENSIONS_NO_X_BIT = {
-    '.h', '.cpp', '.py', '.pyx', '.pxi', '.cmake', '.h.in',
-    '.cpp.in', '.py.in', '.h.template', '.cpp.template',
-    '.py.template', '.qml'
+    ".h",
+    ".cpp",
+    ".py",
+    ".pyx",
+    ".pxi",
+    ".cmake",
+    ".h.in",
+    ".cpp.in",
+    ".py.in",
+    ".h.template",
+    ".cpp.template",
+    ".py.template",
+    ".qml",
 }
 
-EXTENSIONS_SHEBANG_XBIT = {
-    '.sh', '.py'
-}
+EXTENSIONS_SHEBANG_XBIT = {".sh", ".py"}
 
 
 def check_mode(filename):
@@ -35,18 +42,17 @@ def check_mode(filename):
     x_ok = False
 
     if filemode & (stat.S_IXGRP | stat.S_IXOTH | stat.S_IXUSR):
-
         if path.suffix in EXTENSIONS_SHEBANG_XBIT:
             # if the file is allowed to have a shebang,
             # allow its executable bit if it actually has a shebang
-            with path.open(encoding='utf-8') as file:
+            with path.open(encoding="utf-8") as file:
                 firstline = file.readline()
 
                 if SHEBANG_RE.match(firstline):
                     x_ok = True
 
         if not x_ok:
-            raise ValueError(f'file {filename} is executable')
+            raise ValueError(f"file {filename} is executable")
 
 
 def find_issues(check_files, paths):

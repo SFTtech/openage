@@ -1,4 +1,4 @@
-// Copyright 2015-2024 the openage authors. See copying.md for legal info.
+// Copyright 2015-2026 the openage authors. See copying.md for legal info.
 
 #include <array>
 #include <epoxy/gl.h>
@@ -212,7 +212,7 @@ void GlContext::check_error() {
 		}();
 
 		throw Error(
-			MSG(err) << "An OpenGL error has occured.\n\t"
+			MSG(err) << "An OpenGL error has occurred.\n\t"
 					 << "(" << error_state << "): " << msg);
 	}
 }

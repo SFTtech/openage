@@ -7,7 +7,6 @@ Some utilities.
 import logging
 import os
 
-
 SHEBANG = "#!/.*\n(#?\n)?"
 
 FILECACHE = {}
@@ -23,8 +22,7 @@ def log_setup(setting, default=1):
     else: setting + default is used.
     """
 
-    levels = (logging.ERROR, logging.WARNING, logging.INFO,
-              logging.DEBUG, logging.NOTSET)
+    levels = (logging.ERROR, logging.WARNING, logging.INFO, logging.DEBUG, logging.NOTSET)
 
     factor = clamp(default + setting, 0, len(levels) - 1)
     level = levels[factor]
@@ -34,7 +32,7 @@ def log_setup(setting, default=1):
 
 
 def clamp(number, smallest, largest):
-    """ return number but limit it to the inclusive given value range """
+    """return number but limit it to the inclusive given value range"""
     return max(smallest, min(number, largest))
 
 
@@ -45,6 +43,7 @@ class Strlazy:
     so do_something is only called when the debug message is actually printed
     do_something could also be an f-string.
     """
+
     def __init__(self, fun):
         self.fun = fun
 
@@ -57,8 +56,8 @@ def has_ext(fname, exts):
     Returns true if fname ends in any of the extensions in ext.
     """
     for ext in exts:
-        if ext == '':
-            if os.path.splitext(fname)[1] == '':
+        if ext == "":
+            if os.path.splitext(fname)[1] == "":
                 return True
         elif fname.endswith(ext):
             return True
@@ -74,13 +73,13 @@ def readfile(filename):
     returns it from the cache.
     """
     if filename not in FILECACHE:
-        with open(filename, 'rb') as fileobj:
+        with open(filename, "rb") as fileobj:
             data = fileobj.read()
 
         try:
-            data = data.decode('utf-8')
+            data = data.decode("utf-8")
         except UnicodeDecodeError:
-            data = data.decode('utf-8', errors='replace')
+            data = data.decode("utf-8", errors="replace")
             BADUTF8FILES.add(filename)
 
         FILECACHE[filename] = data
@@ -95,7 +94,7 @@ def writefile(filename, new_content):
     if filename in BADUTF8FILES:
         raise ValueError(f"{filename}: cannot write due to utf8-errors.")
 
-    with open(filename, 'w', encoding='utf8') as fileobj:
+    with open(filename, "w", encoding="utf8") as fileobj:
         fileobj.write(new_content)
 
     FILECACHE[filename] = new_content
@@ -111,7 +110,7 @@ def findfiles(paths, exts=None):
     """
     for path in paths:
         for filename in os.listdir(path):
-            if filename.startswith('.'):
+            if filename.startswith("."):
                 continue
 
             filename = os.path.join(path, filename)
@@ -155,10 +154,13 @@ def issue_str_line(title, filename, line, line_number, highlight, fix=None):
         title,
         (
             filename + "\n"
-            "\tline: " + str(line_number) + "\n"   # line number
-            "\tat:   '" + line + "'\n"             # line content
-            "\t      " + (' ' * start) +           # mark position with ^
-            "\x1b[32;1m^" + ("~" * (end - start)) + "\x1b[m"
+            "\tline: " + str(line_number) + "\n"  # line number
+            "\tat:   '" + line + "'\n"  # line content
+            "\t      "
+            + (" " * start)  # mark position with ^
+            + "\x1b[32;1m^"
+            + ("~" * (end - start))
+            + "\x1b[m"
         ),
-        fix
+        fix,
     )

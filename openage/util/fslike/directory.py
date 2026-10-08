@@ -8,17 +8,15 @@ FSLikeObjects that represent actual file system paths:
 """
 
 from __future__ import annotations
-import typing
 
 import os
 import pathlib
-
-from typing import Union
+import typing
 
 from .abstract import FSLikeObject
 
 if typing.TYPE_CHECKING:
-    from io import BufferedReader
+    pass
 
 
 class Directory(FSLikeObject):
@@ -49,29 +47,29 @@ class Directory(FSLikeObject):
     def __repr__(self):
         return f"Directory({self.path.decode(errors='replace')})"
 
-    def resolve(self, parts) -> Union[str, bytes]:
-        """ resolves parts to an actual path name. """
+    def resolve(self, parts) -> bytes:
+        """resolves parts to an actual path name."""
         return os.path.join(self.path, *parts)
 
-    def open_r(self, parts) -> BufferedReader:
-        return open(self.resolve(parts), 'rb')
+    def open_r(self, parts) -> typing.IO[bytes]:
+        return open(self.resolve(parts), "rb")
 
-    def open_w(self, parts) -> BufferedReader:
-        return open(self.resolve(parts), 'wb')
+    def open_w(self, parts) -> typing.IO[bytes]:
+        return open(self.resolve(parts), "wb")
 
-    def open_rw(self, parts) -> BufferedReader:
-        return open(self.resolve(parts), 'r+b')
+    def open_rw(self, parts) -> typing.IO[bytes]:
+        return open(self.resolve(parts), "r+b")
 
-    def open_a(self, parts) -> BufferedReader:
-        return open(self.resolve(parts), 'ab')
+    def open_a(self, parts) -> typing.IO[bytes]:
+        return open(self.resolve(parts), "ab")
 
-    def open_ar(self, parts) -> BufferedReader:
-        return open(self.resolve(parts), 'a+b')
+    def open_ar(self, parts) -> typing.IO[bytes]:
+        return open(self.resolve(parts), "a+b")
 
-    def get_native_path(self, parts) -> Union[str, bytes]:
+    def get_native_path(self, parts) -> bytes:
         return self.resolve(parts)
 
-    def list(self, parts) -> typing.Generator[str | bytes, None, None]:
+    def list(self, parts) -> typing.Generator[bytes, None, None]:
         # TODO migrate to scandir, once we're on py 3.5.
         yield from os.listdir(self.resolve(parts))
 
@@ -94,7 +92,7 @@ class Directory(FSLikeObject):
         try:
             os.utime(self.resolve(parts))
         except FileNotFoundError:
-            with open(self.resolve(parts), 'ab') as directory:
+            with open(self.resolve(parts), "ab") as directory:
                 directory.close()
 
     def rename(self, srcparts, tgtparts) -> None:
@@ -119,9 +117,10 @@ class Directory(FSLikeObject):
 
         return os.access(path, os.W_OK)
 
-    def watch(self, parts, callback) -> None:
+    def watch(self, parts, callback) -> bool:
         # TODO
-        pass
+        del parts, callback
+        return False
 
     def poll_watches(self) -> None:
         # TODO
@@ -139,13 +138,13 @@ class CaseIgnoringDirectory(Directory):
 
     def __init__(self, path, create_if_missing=False):
         super().__init__(path, create_if_missing)
-        self.cache = {(): ()}
-        self.listings = {}
+        self.cache: dict[tuple[bytes, ...], tuple[bytes, ...]] = {(): ()}
+        self.listings: dict[tuple[bytes, ...], dict[bytes, bytes]] = {}
 
     def __repr__(self):
         return f"Directory({self.path.decode(errors='replace')})"
 
-    def actual_name(self, stem: list, name: str) -> str:
+    def actual_name(self, stem: typing.Sequence[bytes], name: bytes) -> bytes:
         """
         If the (lower-case) path that's given in stem exists,
         fetches the actual name for the given lower-case name.
@@ -170,7 +169,7 @@ class CaseIgnoringDirectory(Directory):
         except KeyError:
             return name
 
-    def resolve(self, parts) -> Union[str, bytes]:
+    def resolve(self, parts) -> bytes:
         parts = [part.lower() for part in parts]
 
         i = 0
@@ -187,11 +186,11 @@ class CaseIgnoringDirectory(Directory):
         # we need to append the path for parts[i:].
         for part in parts[i:]:
             result.append(self.actual_name(result, part))
-            self.cache[tuple(parts[:len(result)])] = tuple(result)
+            self.cache[tuple(parts[: len(result)])] = tuple(result)
 
         return os.path.join(self.path, *result)
 
-    def list(self, parts) -> typing.Generator[str | bytes, None, None]:
+    def list(self, parts) -> typing.Generator[bytes, None, None]:
         for name in super().list(parts):
             yield name.lower()
 

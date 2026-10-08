@@ -8,12 +8,11 @@ once the object has been created.
 """
 
 from __future__ import annotations
+
 import typing
 
-
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.converter_object import ConverterObjectGroup, \
-        RawAPIObject
+    from openage.convert.entity_object.conversion.converter_object import ConverterObjectGroup, RawAPIObject
     from openage.nyan.nyan_structs import NyanObject
 
 
@@ -22,7 +21,7 @@ class ForwardRef:
     Declares a forward reference to a RawAPIObject.
     """
 
-    __slots__ = ('group_object', 'raw_api_object_ref')
+    __slots__ = ("group_object", "raw_api_object_ref")
 
     def __init__(self, converter_object_group: ConverterObjectGroup, raw_api_object_ref: str):
         """

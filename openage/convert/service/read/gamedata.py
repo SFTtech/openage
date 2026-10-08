@@ -3,26 +3,27 @@
 """
 Module for reading .dat files.
 """
+
 from __future__ import annotations
-import typing
 
 import os
 import pickle
+import typing
 from tempfile import gettempdir
 from zlib import decompress
 
-from ....log import spam, dbg, info, warn
+from ....log import dbg, info, spam, warn
 from ...value_object.read.media.datfile.empiresdat import EmpiresDatWrapper
 from ...value_object.read.media_types import MediaType
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.init.game_version import GameVersion
-    from openage.convert.value_object.read.read_members import ArrayMember
-    from openage.util.fslike.directory import Directory
+    from openage.convert.value_object.read.value_members import ArrayMember
+    from openage.util.fslike.path import Path
     from openage.util.fslike.wrapper import GuardedFile
 
 
-def get_gamespec(srcdir: Directory, game_version: GameVersion, pickle_cache: bool) -> ArrayMember:
+def get_gamespec(srcdir: Path, game_version: GameVersion, pickle_cache: bool) -> ArrayMember:
     """
     Reads empires.dat file.
     """
@@ -37,17 +38,14 @@ def get_gamespec(srcdir: Directory, game_version: GameVersion, pickle_cache: boo
             filepath = srcdir.joinpath(game_version.edition.media_paths[MediaType.DATFILE][0])
 
     else:
-        raise RuntimeError("No service found for reading data file of "
-                           f"version {game_version.edition.game_id}")
+        raise RuntimeError(
+            f"No service found for reading data file of version {game_version.edition.game_id}"
+        )
 
-    cache_file = os.path.join(
-        gettempdir(), f"{game_version.edition.game_id}_{filepath.name}.pickle")
+    cache_file = os.path.join(gettempdir(), f"{game_version.edition.game_id}_{filepath.name}.pickle")
 
-    with filepath.open('rb') as empiresdat_file:
-        gamespec = load_gamespec(empiresdat_file,
-                                 game_version,
-                                 cache_file,
-                                 pickle_cache)
+    with filepath.open("rb") as empiresdat_file:
+        gamespec = load_gamespec(empiresdat_file, game_version, cache_file, pickle_cache)
 
     return gamespec
 
@@ -55,9 +53,9 @@ def get_gamespec(srcdir: Directory, game_version: GameVersion, pickle_cache: boo
 def load_gamespec(
     fileobj: GuardedFile,
     game_version: GameVersion,
-    cachefile_name: str = None,
+    cachefile_name: str | None = None,
     pickle_cache: bool = False,
-    dynamic_load = False
+    dynamic_load=False,
 ) -> ArrayMember:
     """
     Helper method that loads the contents of a 'empires.dat' gzipped wrapper
@@ -79,6 +77,7 @@ def load_gamespec(
                 except Exception:
                     warn("could not use cached wrapper:")
                     import traceback
+
                     traceback.print_exc()
                     warn("we will just skip the cache, no worries.")
 

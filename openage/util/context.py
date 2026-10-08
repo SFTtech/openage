@@ -4,15 +4,19 @@
 Provides some utility context guards.
 """
 
+import types
+
 
 class DummyGuard:
-    """ Context guard that does nothing. """
-    # pylint: disable=too-few-public-methods
+    """Context guard that does nothing."""
 
-    @staticmethod
-    def __enter__():
+    def __enter__(self) -> None:
         pass
 
-    @staticmethod
-    def __exit__(exc_type, exc_value, traceback):
+    def __exit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc_value: BaseException | None,
+        traceback: types.TracebackType | None,
+    ) -> None:
         pass

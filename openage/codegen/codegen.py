@@ -1,16 +1,16 @@
-# Copyright 2014-2022 the openage authors. See copying.md for legal info.
+# Copyright 2014-2026 the openage authors. See copying.md for legal info.
 
 """
 Utility and driver module for C++ code generation.
 """
 
+import os
+import sys
 from datetime import datetime
 from enum import Enum
 from io import UnsupportedOperation
 from itertools import chain
-import os
 from sys import modules
-import sys
 from typing import Generator
 
 from ..log import err
@@ -49,8 +49,7 @@ class WriteCatcher(FIFO):
 
     def read(self, size: int = -1) -> bytes:
         if not self.eof:
-            raise UnsupportedOperation(
-                "can not read from WriteCatcher while not closed for writing")
+            raise UnsupportedOperation("can not read from WriteCatcher while not closed for writing")
         return super().read(size)
 
 
@@ -81,17 +80,16 @@ class CodegenDirWrapper(Wrapper):
         self.writes.append((parts, intercept_obj))
         return intercept_obj
 
-    def get_reads(self) -> None:
+    def get_reads(self) -> Generator[tuple[bytes, ...], None, None]:
         """
         Returns an iterable of all path component tuples for files that have
         been read.
         """
-        for parts in self.reads:
-            yield parts
+        yield from self.reads
 
         self.reads.clear()
 
-    def get_writes(self) -> None:
+    def get_writes(self) -> Generator[tuple[tuple[bytes, ...], bytes], None, None]:
         """
         Returns an iterable of all (path components, data_written) tuples for
         files that have been written.
@@ -102,10 +100,10 @@ class CodegenDirWrapper(Wrapper):
         self.writes.clear()
 
     def __repr__(self):
-        return f"CodegenDirWrapper({repr(self.obj)})"
+        return f"CodegenDirWrapper({self.obj!r})"
 
 
-def codegen(mode: CodegenMode, input_dir: str, output_dir: str) -> tuple[list[str], list[str]]:
+def codegen(mode: CodegenMode, input_dir: str, output_dir: str) -> tuple[set[str], set[str]]:
     """
     Calls .listing.generate_all(), and post-processes the generated
     data, checking them and adding a header.
@@ -124,11 +122,12 @@ def codegen(mode: CodegenMode, input_dir: str, output_dir: str) -> tuple[list[st
     generate_all(wrapper.root)
 
     # set of all generated filenames
-    generated = set()
+    generated: set[str] = set()
 
     for parts, data in wrapper.get_writes():
         # TODO: this assumes output_dir is a fslike.Directory!
-        generated.add(output_dir.fsobj.resolve(parts))
+        # resolve returns bytes; the generated list is written as text
+        generated.add(output_dir.fsobj.resolve(parts).decode())
 
         # now, actually perform the generation.
         # first, assemble the path for the current file
@@ -139,7 +138,7 @@ def codegen(mode: CodegenMode, input_dir: str, output_dir: str) -> tuple[list[st
         if mode == CodegenMode.CODEGEN:
             # skip writing if the file already has that exact content
             try:
-                with wpath.open('rb') as outfile:
+                with wpath.open("rb") as outfile:
                     if outfile.read() == data:
                         continue
             except FileNotFoundError:
@@ -147,7 +146,7 @@ def codegen(mode: CodegenMode, input_dir: str, output_dir: str) -> tuple[list[st
 
             # write new content to file
             wpath.parent.mkdirs()
-            with wpath.open('wb') as outfile:
+            with wpath.open("wb") as outfile:
                 print(f"\x1b[36mcodegen: {b'/'.join(parts).decode(errors='replace')}\x1b[0m")
                 outfile.write(data)
 
@@ -157,13 +156,13 @@ def codegen(mode: CodegenMode, input_dir: str, output_dir: str) -> tuple[list[st
 
         elif mode == CodegenMode.CLEAN:
             if wpath.is_file():
-                print(b'/'.join(parts).decode(errors='replace'))
+                print(b"/".join(parts).decode(errors="replace"))
                 wpath.unlink()
         else:
             err("unknown codegen mode: %s", mode)
             sys.exit(1)
 
-    generated = {os.path.realpath(path).decode() for path in generated}
+    generated = {os.path.realpath(path) for path in generated}
     depends = {os.path.realpath(path) for path in get_codegen_depends(wrapper)}
 
     return generated, depends
@@ -179,6 +178,7 @@ def depend_module_blacklist():
     # re-triggering cmake.
     try:
         import openage.config
+
         yield openage.config
     except ImportError:
         pass
@@ -186,6 +186,7 @@ def depend_module_blacklist():
     # devmode is imported by config, so the same reason as above applies.
     try:
         import openage.devmode
+
         yield openage.devmode
     except ImportError:
         pass
@@ -224,15 +225,15 @@ def get_codegen_depends(outputwrapper: CodegenDirWrapper) -> Generator[str, None
             # some modules have __file__ == None, we don't want those either.
             continue
 
-        if module.__package__ == '':
+        if module.__package__ == "":
             continue
 
-        if not filename.endswith('.py'):
+        if not filename.endswith(".py"):
             # This usually means that some .so file is imported as module.
             # This is not a problem as long as it's not "our" .so file.
             # => just handle non-openage non-.py files normally
 
-            if 'openage' in module.__name__:
+            if "openage" in module.__name__:
                 print("codegeneration depends on non-.py module " + filename)
                 sys.exit(1)
 
@@ -244,10 +245,7 @@ def get_header_lines() -> Generator[str, None, None]:
     Yields the lines for the automatically-added file header.
     """
 
-    yield (
-        f"Copyright 2013-{datetime.now().year} the openage authors. "
-        "See copying.md for legal info."
-    )
+    yield (f"Copyright 2013-{datetime.now().year} the openage authors. See copying.md for legal info.")
 
     yield ""
     yield "Warning: this file was auto-generated; manual changes are futile."
@@ -255,7 +253,7 @@ def get_header_lines() -> Generator[str, None, None]:
     yield ""
 
 
-def postprocess_write(parts, data: str) -> str:
+def postprocess_write(parts, data: bytes) -> bytes:
     """
     Post-processes a single write operation, as intercepted during codegen.
     """
@@ -265,17 +263,17 @@ def postprocess_write(parts, data: str) -> str:
 
     # test whether filename matches the pattern *.gen.*
     name, extension = os.path.splitext(parts[-1].decode())
-    if not name.endswith('.gen'):
+    if not name.endswith(".gen"):
         raise ValueError("Doesn't match required filename format .gen.SUFFIX")
 
     # check file extension, and use the appropriate comment prefix
-    if extension in {'.h', '.cpp'}:
-        comment_prefix = '//'
+    if extension in {".h", ".cpp"}:
+        comment_prefix = "//"
     else:
         raise ValueError("Extension not in {.h, .cpp}")
 
-    datalines = data.decode('ascii').split('\n')
-    if 'Copyright' in datalines[0]:
+    datalines = data.decode("ascii").split("\n")
+    if "Copyright" in datalines[0]:
         datalines = datalines[1:]
 
     headerlines = []
@@ -285,4 +283,4 @@ def postprocess_write(parts, data: str) -> str:
         else:
             headerlines.append("")
 
-    return '\n'.join(chain(headerlines, datalines)).encode('ascii')
+    return "\n".join(chain(headerlines, datalines)).encode("ascii")

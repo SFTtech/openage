@@ -6,17 +6,31 @@ Creates debug output from data in a conversion run.
 """
 
 from __future__ import annotations
+
 import typing
 
-
-from openage.convert.entity_object.conversion.aoc.genie_tech import AgeUpgrade, \
-    UnitLineUpgrade, BuildingLineUpgrade, UnitUnlock, BuildingUnlock
-from openage.convert.entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup, \
-    GenieBuildingLineGroup, GenieStackBuildingGroup, GenieUnitTransformGroup, \
-    GenieMonkGroup
+from openage.convert.entity_object.conversion.aoc.genie_tech import (
+    AgeUpgrade,
+    BuildingLineUpgrade,
+    BuildingUnlock,
+    UnitLineUpgrade,
+    UnitUnlock,
+)
+from openage.convert.entity_object.conversion.aoc.genie_unit import (
+    GenieBuildingLineGroup,
+    GenieMonkGroup,
+    GenieStackBuildingGroup,
+    GenieUnitLineGroup,
+    GenieUnitTransformGroup,
+)
 from openage.convert.entity_object.export.formats.media_cache import MediaCacheFile
-from openage.convert.service.conversion.internal_name_lookups import get_entity_lookups, \
-    get_tech_lookups, get_civ_lookups, get_terrain_lookups
+from openage.convert.service.conversion.internal_name_lookups import (
+    get_civ_lookups,
+    get_entity_lookups,
+    get_tech_lookups,
+    get_terrain_lookups,
+)
+from openage.convert.value_object.read.genie_structure import GenieStructure
 from openage.convert.value_object.read.media.datfile.empiresdat import EmpiresDatWrapper
 from openage.convert.value_object.read.read_members import IncludeMembers, MultisubtypeMember
 from openage.util.fslike.filecollection import FileCollectionPath
@@ -26,19 +40,18 @@ from openage.util.hash import hash_file
 if typing.TYPE_CHECKING:
     from argparse import Namespace
 
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
     from openage.convert.entity_object.conversion.modpack import Modpack
     from openage.convert.entity_object.conversion.stringresource import StringResource
-    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
     from openage.convert.value_object.init.game_version import GameVersion
-    from openage.util.fslike.directory import Directory
 
 
-def debug_cli_args(debugdir: Directory, loglevel: int, args: Namespace) -> None:
+def debug_cli_args(debugdir: Path, loglevel: int, args: Namespace) -> None:
     """
     Create debug output for the converter CLI args.
 
     :param debugdir: Output directory for the debug info.
-    :type debugdir: Directory
+    :type debugdir: Path
     :param loglevel: Determines how detailed the output is.
     :type loglevel: int
     :param args: CLI arguments.
@@ -65,12 +78,12 @@ def debug_cli_args(debugdir: Directory, loglevel: int, args: Namespace) -> None:
         log.write(logtext)
 
 
-def debug_game_version(debugdir: Directory, loglevel: int, args: Namespace) -> None:
+def debug_game_version(debugdir: Path, loglevel: int, args: Namespace) -> None:
     """
     Create debug output for the detected game version.
 
     :param debugdir: Output directory for the debug info.
-    :type debugdir: Directory
+    :type debugdir: Path
     :param loglevel: Determines how detailed the output is.
     :type loglevel: int
     :param args: CLI arguments.
@@ -83,10 +96,7 @@ def debug_game_version(debugdir: Directory, loglevel: int, args: Namespace) -> N
     logfile = debugdir.joinpath("init/")["game_version"]
     logtext = ""
 
-    logtext += (
-        f"game edition:\n"
-        f"    - {args.game_version.edition}\n"
-    )
+    logtext += f"game edition:\n    - {args.game_version.edition}\n"
 
     if len(args.game_version.expansions) > 0:
         logtext += "game expansions:\n"
@@ -100,12 +110,12 @@ def debug_game_version(debugdir: Directory, loglevel: int, args: Namespace) -> N
         log.write(logtext)
 
 
-def debug_mounts(debugdir: Directory, loglevel: int, args: Namespace) -> None:
+def debug_mounts(debugdir: Path, loglevel: int, args: Namespace) -> None:
     """
     Create debug output for the mounted files and folders.
 
     :param debugdir: Output directory for the debug info.
-    :type debugdir: Directory
+    :type debugdir: Path
     :param loglevel: Determines how detailed the output is.
     :type loglevel: int
     :param args: CLI arguments.
@@ -165,12 +175,12 @@ def debug_mounts(debugdir: Directory, loglevel: int, args: Namespace) -> None:
         log.write(logtext)
 
 
-def debug_gamedata_format(debugdir: Directory, loglevel: int, game_version: GameVersion) -> None:
+def debug_gamedata_format(debugdir: Path, loglevel: int, game_version: GameVersion) -> None:
     """
     Create debug output for the converted .dat format.
 
     :param debugdir: Output directory for the debug info.
-    :type debugdir: Directory
+    :type debugdir: Path
     :param loglevel: Determines how detailed the output is.
     :type loglevel: int
     :param game_version: Game version the .dat file comes with.
@@ -182,8 +192,8 @@ def debug_gamedata_format(debugdir: Directory, loglevel: int, game_version: Game
     logfile = debugdir.joinpath("read/")["data_format"]
     logtext = ""
 
-    discovered_structs = {EmpiresDatWrapper}
-    handled_structs = set()
+    discovered_structs: set[type[GenieStructure]] = {EmpiresDatWrapper}
+    handled_structs: set[type[GenieStructure]] = set()
 
     while discovered_structs:
         struct = discovered_structs.pop()
@@ -198,11 +208,9 @@ def debug_gamedata_format(debugdir: Directory, loglevel: int, game_version: Game
         max_vmemb_width = 1
         for member in members:
             # Find out width of columns for table formatting
-            if len(str(member[1])) > max_name_width:
-                max_name_width = len(str(member[1]))
+            max_name_width = max(max_name_width, len(str(member[1])))
 
-            if len(str(member[2])) > max_vmemb_width:
-                max_vmemb_width = len(str(member[2]))
+            max_vmemb_width = max(max_vmemb_width, len(str(member[2])))
 
             # Search for sub-structs
             if isinstance(member[3], IncludeMembers):
@@ -213,10 +221,10 @@ def debug_gamedata_format(debugdir: Directory, loglevel: int, game_version: Game
 
         for member in members:
             logtext += (
-                f"{str(member[0].value):8}  "
-                f"{str(member[1]):{max_name_width}}  "
-                f"{str(member[2]):{max_vmemb_width}}  "
-                f"{str(member[3])}\n"
+                f"{member[0].value!s:8}  "
+                f"{member[1]!s:{max_name_width}}  "
+                f"{member[2]!s:{max_vmemb_width}}  "
+                f"{member[3]!s}\n"
             )
 
         handled_structs.add(struct)
@@ -226,12 +234,12 @@ def debug_gamedata_format(debugdir: Directory, loglevel: int, game_version: Game
         log.write(logtext)
 
 
-def debug_string_resources(debugdir: Directory, loglevel: int, string_resources: StringResource) -> None:
+def debug_string_resources(debugdir: Path, loglevel: int, string_resources: StringResource) -> None:
     """
     Create debug output for found string resources.
 
     :param debugdir: Output directory for the debug info.
-    :type debugdir: Directory
+    :type debugdir: Path
     :param loglevel: Determines how detailed the output is.
     :type loglevel: int
     :param string_resources: Language and string information.
@@ -254,12 +262,14 @@ def debug_string_resources(debugdir: Directory, loglevel: int, string_resources:
         log.write(logtext)
 
 
-def debug_registered_graphics(debugdir: Directory, loglevel: int, existing_graphics: list[str]) -> None:
+def debug_registered_graphics(
+    debugdir: Path, loglevel: int, existing_graphics: typing.Collection[str]
+) -> None:
     """
     Create debug output for found graphics files.
 
     :param debugdir: Output directory for the debug info.
-    :type debugdir: Directory
+    :type debugdir: Path
     :param loglevel: Determines how detailed the output is.
     :type loglevel: int
     :param existing_graphics: List of graphic ids of graphic files.
@@ -273,20 +283,20 @@ def debug_registered_graphics(debugdir: Directory, loglevel: int, existing_graph
 
     logtext += f"file count: {len(existing_graphics)}\n\n"
 
-    sorted_graphics = list(sorted(existing_graphics))
+    sorted_graphics = sorted(existing_graphics)
     logtext += "\n".join(sorted_graphics)
 
     with logfile.open("w") as log:
         log.write(logtext)
 
 
-def debug_converter_objects(debugdir: Directory, loglevel: int, dataset: GenieObjectContainer) -> None:
+def debug_converter_objects(debugdir: Path, loglevel: int, dataset: GenieObjectContainer) -> None:
     """
     Create debug output for ConverterObject instances from the
     conversion preprocessor.
 
     :param debugdir: Output directory for the debug info.
-    :type debugdir: Directory
+    :type debugdir: Path
     :param loglevel: Determines how detailed the output is.
     :type loglevel: int
     :param dataset: Dataset containing converter objects from pre-processing.
@@ -316,13 +326,13 @@ def debug_converter_objects(debugdir: Directory, loglevel: int, dataset: GenieOb
         log.write(logtext)
 
 
-def debug_converter_object_groups(debugdir: Directory, loglevel: int, dataset: GenieObjectContainer) -> None:
+def debug_converter_object_groups(debugdir: Path, loglevel: int, dataset: GenieObjectContainer) -> None:
     """
     Create debug output for ConverterObjectGroup instances from the
     conversion preprocessor.
 
     :param debugdir: Output directory for the debug info.
-    :type debugdir: Directory
+    :type debugdir: Path
     :param loglevel: Determines how detailed the output is.
     :type loglevel: int
     :param dataset: Dataset containing converter object groups from processing.
@@ -350,10 +360,7 @@ def debug_converter_object_groups(debugdir: Directory, loglevel: int, dataset: G
         logtext = ""
 
         logtext += f"repr: {line}\n"
-        logtext += (
-            f"nyan name: "
-            f"{entity_name_lookup_dict.get(line.get_head_unit_id(), nnn)[0]}\n"
-        )
+        logtext += f"nyan name: {entity_name_lookup_dict.get(line.get_head_unit_id(), nnn)[0]}\n"
 
         logtext += f"is_creatable: {line.is_creatable()}\n"
         logtext += f"is_harvestable: {line.is_harvestable()}\n"
@@ -378,10 +385,7 @@ def debug_converter_object_groups(debugdir: Directory, loglevel: int, dataset: G
         if len(line.creates) > 0:
             logtext += "creates:\n"
             for unit in line.creates:
-                logtext += (
-                    f"    - {unit} "
-                    f"({entity_name_lookup_dict.get(unit.get_head_unit_id(), nnn)[0]})\n"
-                )
+                logtext += f"    - {unit} ({entity_name_lookup_dict.get(unit.get_head_unit_id(), nnn)[0]})\n"
 
         else:
             logtext += "creates: nothing\n"
@@ -389,10 +393,7 @@ def debug_converter_object_groups(debugdir: Directory, loglevel: int, dataset: G
         if len(line.researches) > 0:
             logtext += "researches:\n"
             for tech in line.researches:
-                logtext += (
-                    f"    - {tech} "
-                    f"({tech_name_lookup_dict.get(tech.get_id(), nnn)[0]})\n"
-                )
+                logtext += f"    - {tech} ({tech_name_lookup_dict.get(tech.get_id(), nnn)[0]})\n"
 
         else:
             logtext += "researches: nothing\n"
@@ -400,10 +401,7 @@ def debug_converter_object_groups(debugdir: Directory, loglevel: int, dataset: G
         if len(line.garrison_entities) > 0:
             logtext += "garrisons units:\n"
             for unit in line.garrison_entities:
-                logtext += (
-                    f"    - {unit} "
-                    f"({entity_name_lookup_dict.get(unit.get_head_unit_id(), nnn)[0]})\n"
-                )
+                logtext += f"    - {unit} ({entity_name_lookup_dict.get(unit.get_head_unit_id(), nnn)[0]})\n"
 
         else:
             logtext += "garrisons units: nothing\n"
@@ -411,10 +409,7 @@ def debug_converter_object_groups(debugdir: Directory, loglevel: int, dataset: G
         if len(line.garrison_locations) > 0:
             logtext += "garrisons in:\n"
             for unit in line.garrison_locations:
-                logtext += (
-                    f"    - {unit} "
-                    f"({entity_name_lookup_dict.get(unit.get_head_unit_id(), nnn)[0]})\n"
-                )
+                logtext += f"    - {unit} ({entity_name_lookup_dict.get(unit.get_head_unit_id(), nnn)[0]})\n"
 
         else:
             logtext += "garrisons in: nothing\n"
@@ -422,8 +417,7 @@ def debug_converter_object_groups(debugdir: Directory, loglevel: int, dataset: G
         if isinstance(line, GenieUnitLineGroup):
             logtext += "\n"
             logtext += (
-                f"civ id: {line.get_civ_id()} "
-                f"({civ_name_lookup_dict.get(line.get_civ_id(), nnn)[0]})\n"
+                f"civ id: {line.get_civ_id()} ({civ_name_lookup_dict.get(line.get_civ_id(), nnn)[0]})\n"
             )
             logtext += (
                 f"enabling research id: {line.get_enabling_research_id()} "
@@ -462,10 +456,7 @@ def debug_converter_object_groups(debugdir: Directory, loglevel: int, dataset: G
         logtext = ""
 
         logtext += f"repr: {civ}\n"
-        logtext += (
-            f"nyan name: "
-            f"{civ_name_lookup_dict.get(civ.get_id(), nnn)[0]}\n"
-        )
+        logtext += f"nyan name: {civ_name_lookup_dict.get(civ.get_id(), nnn)[0]}\n"
 
         logtext += f"team bonus: {civ.team_bonus}\n"
         logtext += f"tech tree: {civ.tech_tree}\n"
@@ -476,17 +467,11 @@ def debug_converter_object_groups(debugdir: Directory, loglevel: int, dataset: G
 
         logtext += "unique unit ids:\n"
         for unit in civ.unique_entities:
-            logtext += (
-                f"    - {unit} "
-                f"({entity_name_lookup_dict.get(unit, nnn)[0]})\n"
-            )
+            logtext += f"    - {unit} ({entity_name_lookup_dict.get(unit, nnn)[0]})\n"
 
         logtext += "unique tech ids:\n"
         for tech in civ.unique_techs:
-            logtext += (
-                f"    - {tech} "
-                f"({tech_name_lookup_dict.get(tech, nnn)[0]})\n"
-            )
+            logtext += f"    - {tech} ({tech_name_lookup_dict.get(tech, nnn)[0]})\n"
 
         with logfile.open("w") as log:
             log.write(logtext)
@@ -496,10 +481,7 @@ def debug_converter_object_groups(debugdir: Directory, loglevel: int, dataset: G
         logtext = ""
 
         logtext += f"repr: {tech}\n"
-        logtext += (
-            f"nyan name: "
-            f"{tech_name_lookup_dict.get(tech.get_id(), nnn)[0]}\n"
-        )
+        logtext += f"nyan name: {tech_name_lookup_dict.get(tech.get_id(), nnn)[0]}\n"
 
         logtext += f"is_researchable: {tech.is_researchable()}\n"
         logtext += f"is_unique: {tech.is_unique()}\n"
@@ -511,10 +493,7 @@ def debug_converter_object_groups(debugdir: Directory, loglevel: int, dataset: G
         logtext += f"required tech count: {tech.get_required_tech_count()}\n"
         logtext += "required techs:\n"
         for req_tech in tech.get_required_techs():
-            logtext += (
-                f"    - {req_tech} "
-                f"({tech_name_lookup_dict.get(req_tech, nnn)[0]})\n"
-            )
+            logtext += f"    - {req_tech} ({tech_name_lookup_dict.get(req_tech, nnn)[0]})\n"
 
         if isinstance(tech, AgeUpgrade):
             logtext += "\n"
@@ -560,10 +539,7 @@ def debug_converter_object_groups(debugdir: Directory, loglevel: int, dataset: G
         logtext = ""
 
         logtext += f"repr: {terrain}\n"
-        logtext += (
-            f"nyan name: "
-            f"{terrain_name_lookup_dict.get(terrain.get_id(), nnn)[1]}\n"
-        )
+        logtext += f"nyan name: {terrain_name_lookup_dict.get(terrain.get_id(), nnn)[1]}\n"
 
         logtext += f"has_subterrain: {terrain.has_subterrain()}\n"
 
@@ -571,12 +547,12 @@ def debug_converter_object_groups(debugdir: Directory, loglevel: int, dataset: G
             log.write(logtext)
 
 
-def debug_modpack(debugdir: Directory, loglevel: int, modpack: Modpack) -> None:
+def debug_modpack(debugdir: Path, loglevel: int, modpack: Modpack) -> None:
     """
     Create debug output for a modpack.
 
     :param debugdir: Output directory for the debug info.
-    :type debugdir: Directory
+    :type debugdir: Path
     :param loglevel: Determines how detailed the output is.
     :type loglevel: int
     :param modpack: Modpack container.
@@ -588,11 +564,11 @@ def debug_modpack(debugdir: Directory, loglevel: int, modpack: Modpack) -> None:
     # Export info and manifest file
     logdir = debugdir.joinpath(f"export/{modpack.name}")
 
-    with logdir[modpack.info.filename].open('wb') as outfile:
-        outfile.write(modpack.info.dump().encode('utf-8'))
+    with logdir[modpack.info.filename].open("wb") as outfile:
+        outfile.write(modpack.info.dump().encode("utf-8"))
 
-    with logdir[modpack.manifest.filename].open('wb') as outfile:
-        outfile.write(modpack.manifest.dump().encode('utf-8'))
+    with logdir[modpack.manifest.filename].open("wb") as outfile:
+        outfile.write(modpack.manifest.dump().encode("utf-8"))
 
     if loglevel < 2:
         return
@@ -603,9 +579,7 @@ def debug_modpack(debugdir: Directory, loglevel: int, modpack: Modpack) -> None:
     logtext += f"name: {modpack.name}\n"
 
     file_count = (
-        len(modpack.get_data_files()) +
-        len(modpack.get_media_files()) +
-        len(modpack.get_metadata_files())
+        len(modpack.get_data_files()) + len(modpack.get_media_files()) + len(modpack.get_metadata_files())
     )
     logtext += f"file count: {file_count}\n"
     logtext += f"    data: {len(modpack.get_data_files())}\n"
@@ -629,22 +603,18 @@ def debug_modpack(debugdir: Directory, loglevel: int, modpack: Modpack) -> None:
 
 
 def debug_media_cache(
-    debugdir: Directory,
-    loglevel: int,
-    sourcedir: Directory,
-    cachedata: dict,
-    game_version: GameVersion
+    debugdir: Path, loglevel: int, sourcedir: Path, cachedata: dict, game_version: GameVersion
 ) -> None:
     """
     Create media cache data for graphics files. This allows using deterministic
     packer and compression settings for graphics file conversion.
 
     :param debugdir: Output directory for the debug info.
-    :type debugdir: Directory
+    :type debugdir: Path
     :param loglevel: Determines how detailed the output is.
     :type loglevel: int
     :param sourcedir: Sourcedir where the graphics files are mounted.
-    :type sourcedir: Directory
+    :type sourcedir: Path
     :param cachedata: Dict with cache data.
     :type cachedata: dict
     :param game_version: Game version.
@@ -660,17 +630,11 @@ def debug_media_cache(
     cache_data = dict(sorted(cachedata.items(), key=lambda item: item[0].source_filename))
 
     for request, cache in cache_data.items():
-        filepath = sourcedir[
-            request.get_type().value,
-            request.source_filename
-        ]
+        filepath = sourcedir[request.get_type().value, request.source_filename]
 
         cache_file.add_cache_data(
-            request.get_type(),
-            request.source_filename,
-            hash_file(filepath),
-            cache[1],
-            cache[0])
+            request.get_type(), request.source_filename, hash_file(filepath), cache[1], cache[0]
+        )
 
     logfile = debugdir.joinpath("export/")["media_cache.toml"]
     logtext = cache_file.dump()
@@ -679,12 +643,12 @@ def debug_media_cache(
         log.write(logtext)
 
 
-def debug_execution_time(debugdir: Directory, loglevel: int, stages_time: dict[str, float]) -> None:
+def debug_execution_time(debugdir: Path, loglevel: int, stages_time: dict[str, float]) -> None:
     """
     Create debug output for execution time for each stage
 
     :param debugdir: Output directory for the debug info.
-    :type debugdir: Directory
+    :type debugdir: Path
     :param loglevel: Determines how detailed the output is.
     :type loglevel: int
     :param stages_time: Dict with execution time for each stage.
@@ -700,12 +664,12 @@ def debug_execution_time(debugdir: Directory, loglevel: int, stages_time: dict[s
         log.write(logtext)
 
 
-def debug_not_found_sounds(debugdir: Directory, loglevel: int, sound: Path) -> None:
+def debug_not_found_sounds(debugdir: Path, loglevel: int, sound: Path) -> None:
     """
     Create debug output for sounds not found
 
     :param debugdir: Output directory for the debug info.
-    :type debugdir: Directory
+    :type debugdir: Path
     :param loglevel: Determines how detailed the output is.
     :type loglevel: int
     :param sound: Sound object with path and name values.

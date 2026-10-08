@@ -1,14 +1,14 @@
-# Copyright 2020-2024 the openage authors. See copying.md for legal info.
+# Copyright 2020-2026 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-instance-attributes,too-many-arguments
 
 """
 Modpack definition file.
 """
-import toml
+
+from openage.util.toml import dumps as toml_dumps
 
 from ..data_definition import DataDefinition
-
 
 FILE_VERSION = "2"
 
@@ -23,9 +23,9 @@ class ModpackInfo(DataDefinition):
         super().__init__(targetdir, filename)
 
         # Info
-        self.packagename: str = None
-        self.version: str = None
-        self.versionstr: str = None
+        self.packagename: str | None = None
+        self.version: str | None = None
+        self.versionstr: str | None = None
         self.extra_info: dict[str, str] = {}
 
         # Assets
@@ -39,19 +39,19 @@ class ModpackInfo(DataDefinition):
         self.conflicts: list[str] = []
 
         # Authors
-        self.authors: dict[str, str] = {}
+        self.authors: dict[str, dict[str, str | list[str]]] = {}
 
         # Author groups
-        self.author_groups: dict[str, str] = {}
+        self.author_groups: dict[str, dict[str, str | list[str]]] = {}
 
     def add_author(
         self,
         name: str,
-        fullname: str = None,
-        since: str = None,
-        until: str = None,
-        roles: str = None,
-        contact: str = None
+        fullname: str | None = None,
+        since: str | None = None,
+        until: str | None = None,
+        roles: str | None = None,
+        contact: str | None = None,
     ) -> None:
         """
         Adds an author with optional contact info.
@@ -70,7 +70,7 @@ class ModpackInfo(DataDefinition):
                         for available parameters.
         :type contact: dict
         """
-        author = {}
+        author: dict[str, str | list[str]] = {}
         author["name"] = name
         if fullname:
             author["fullname"] = fullname
@@ -89,12 +89,7 @@ class ModpackInfo(DataDefinition):
 
         self.authors[name] = author
 
-    def add_author_group(
-        self,
-        name: str,
-        authors: list[str],
-        description: str = None
-    ) -> None:
+    def add_author_group(self, name: str, authors: list[str], description: str | None = None) -> None:
         """
         Adds an author with optional contact info.
 
@@ -106,7 +101,7 @@ class ModpackInfo(DataDefinition):
         :param description: Path to a file with a description of the team.
         :type description: str
         """
-        author_group = {}
+        author_group: dict[str, str | list[str]] = {}
         author_group["name"] = name
         author_group["authors"] = authors
         if description:
@@ -154,14 +149,14 @@ class ModpackInfo(DataDefinition):
         self,
         packagename: str,
         modpack_version: str,
-        versionstr: str = None,
-        repo: str = None,
-        alias: str = None,
-        title: str = None,
-        description: str = None,
-        long_description: str = None,
-        url: str = None,
-        licenses: str = None
+        versionstr: str | None = None,
+        repo: str | None = None,
+        alias: str | None = None,
+        title: str | None = None,
+        description: str | None = None,
+        long_description: str | None = None,
+        url: str | None = None,
+        licenses: str | None = None,
     ) -> None:
         """
         Set the general information about the modpack.
@@ -232,24 +227,14 @@ class ModpackInfo(DataDefinition):
             raise RuntimeError(f"{self}: version needs to be defined before dumping.")
 
         info_table = {"info": {}}
-        info_table["info"].update(
-            {
-                "name": self.packagename,
-                "version": self.version
-            }
-        )
+        info_table["info"].update({"name": self.packagename, "version": self.version})
         info_table["info"].update(self.extra_info)
 
         output_dict.update(info_table)
 
         # assets table
         assets_table = {"assets": {}}
-        assets_table["assets"].update(
-            {
-                "include": self.includes,
-                "exclude": self.excludes
-            }
-        )
+        assets_table["assets"].update({"include": self.includes, "exclude": self.excludes})
 
         output_dict.update(assets_table)
 
@@ -277,7 +262,7 @@ class ModpackInfo(DataDefinition):
 
         output_dict.update(authorgroups_table)
 
-        output_str += toml.dumps(output_dict)
+        output_str += toml_dumps(output_dict)
 
         return output_str
 

@@ -3,9 +3,10 @@
 """
 Renaming interface assets and splitting into directories.
 """
-from __future__ import annotations
-import typing
 
+from __future__ import annotations
+
+import typing
 
 from ....value_object.read.media.hardcoded.interface import ASSETS
 from .cutter import ingame_hud_background_index

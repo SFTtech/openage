@@ -1,36 +1,33 @@
-# Copyright 2019-2023 the openage authors. See copying.md for legal info.
+# Copyright 2019-2026 the openage authors. See copying.md for legal info.
 #
 # pylint: disable=too-many-lines,too-many-public-methods,too-many-instance-attributes,consider-iterating-dictionary
 
 """
 Contains structures and API-like objects for game entities from AoC.
 """
-from __future__ import annotations
-import typing
 
+from __future__ import annotations
+
+import typing
 from enum import Enum
 
 from ..converter_object import ConverterObject, ConverterObjectGroup
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.aoc.genie_object_container\
-        import GenieObjectContainer
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
     from openage.convert.entity_object.conversion.aoc.genie_tech import GenieTechEffectBundleGroup
     from openage.convert.value_object.read.value_members import ValueMember
 
 
-class GenieUnitObject(ConverterObject):
+class GenieUnitObject(ConverterObject[int]):
     """
     Ingame object in AoE2.
     """
 
-    __slots__ = ('data',)
+    __slots__ = ("data",)
 
     def __init__(
-        self,
-        unit_id: int,
-        full_data_set: GenieObjectContainer,
-        members: dict[str, ValueMember] = None
+        self, unit_id: int, full_data_set: GenieObjectContainer, members: dict[str, ValueMember] | None = None
     ):
         """
         Creates a new Genie unit object.
@@ -61,14 +58,14 @@ class GenieGameEntityGroup(ConverterObjectGroup):
     """
 
     __slots__ = (
-        'data',
-        'line',
-        'line_positions',
-        'creates',
-        'researches',
-        'garrison_entities',
-        'garrison_locations',
-        'repairable'
+        "creates",
+        "data",
+        "garrison_entities",
+        "garrison_locations",
+        "line",
+        "line_positions",
+        "repairable",
+        "researches",
     )
 
     def __init__(
@@ -130,12 +127,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         if not self.contains_researchable(tech_group.get_id()):
             self.researches.append(tech_group)
 
-    def add_unit(
-        self,
-        genie_unit: GenieUnitObject,
-        position: int = -1,
-        after: GenieUnitObject = None
-    ) -> None:
+    def add_unit(self, genie_unit: GenieUnitObject, position: int = -1, after: int | None = None) -> None:
         """
         Adds a unit/building to the line.
 
@@ -184,7 +176,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
             line = self.data.unit_lines[line_id]
 
         else:
-            raise ValueError(f"Unknown creatable line ID {line_id} for {repr(self)}")
+            raise ValueError(f"Unknown creatable line ID {line_id} for {self!r}")
 
         return line in self.creates
 
@@ -252,7 +244,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         head_unit = self.get_head_unit()
         if civ_id != -1:
-            head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
+            head_unit = self.data.civ_groups[civ_id].civ["units"][self.get_head_unit_id()]
 
         commands = head_unit["unit_commands"].value
         for command in commands:
@@ -276,7 +268,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         head_unit = self.get_head_unit()
         if civ_id != -1:
-            head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
+            head_unit = self.data.civ_groups[civ_id].civ["units"][self.get_head_unit_id()]
 
         projectile_id_0 = head_unit["projectile_id0"].value
         projectile_id_1 = -2
@@ -297,7 +289,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         # Get the train location obj_id for the first unit in the line
         head_unit = self.get_head_unit()
         if civ_id != -1:
-            head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
+            head_unit = self.data.civ_groups[civ_id].civ["units"][self.get_head_unit_id()]
 
         train_location_id = head_unit["train_location_id"].value
 
@@ -316,7 +308,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         head_unit = self.get_head_unit()
         if civ_id != -1:
-            head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
+            head_unit = self.data.civ_groups[civ_id].civ["units"][self.get_head_unit_id()]
 
         for resource_storage in head_unit["resource_storage"].value:
             type_id = resource_storage["type"].value
@@ -345,9 +337,12 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         head_unit = self.get_head_unit()
         if civ_id != -1:
-            head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
+            head_unit = self.data.civ_groups[civ_id].civ["units"][self.get_head_unit_id()]
 
-        trait = head_unit["trait"].value
+        if head_unit.has_member("trait"):
+            trait = head_unit["trait"].value
+        else:
+            trait = 0
 
         # Transport ship/ram
         if trait & 0x01:
@@ -389,7 +384,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         head_unit = self.get_head_unit()
         if civ_id != -1:
-            head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
+            head_unit = self.data.civ_groups[civ_id].civ["units"][self.get_head_unit_id()]
 
         return head_unit["obstruction_type"].value == 0
 
@@ -404,7 +399,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         head_unit = self.get_head_unit()
         if civ_id != -1:
-            head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
+            head_unit = self.data.civ_groups[civ_id].civ["units"][self.get_head_unit_id()]
 
         if not head_unit.has_member("projectile_id0"):
             return False
@@ -431,7 +426,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         head_unit = self.get_head_unit()
         if civ_id != -1:
-            head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
+            head_unit = self.data.civ_groups[civ_id].civ["units"][self.get_head_unit_id()]
 
         return head_unit["weapon_range_max"].value > 0
 
@@ -480,7 +475,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
                 # AoE1
                 return False
         else:
-            raise ValueError(f"Unknown group type for {repr(self)}")
+            raise ValueError(f"Unknown group type for {self!r}")
 
         enabling_research_id = head_unit_connection["enabling_research"].value
 
@@ -501,7 +496,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         return self.get_head_unit()["unit_class"].value
 
-    def get_garrison_mode(self, civ_id: int = -1) -> GenieGarrisonMode:
+    def get_garrison_mode(self, civ_id: int = -1) -> GenieGarrisonMode | None:
         """
         Returns the mode the garrison operates in. This is used by the
         converter to determine which storage abilities the line will get.
@@ -514,9 +509,12 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         head_unit = self.get_head_unit()
         if civ_id != -1:
-            head_unit = self.data.civ_groups[civ_id]["units"][self.get_head_unit_id()]
+            head_unit = self.data.civ_groups[civ_id].civ["units"][self.get_head_unit_id()]
 
-        trait = head_unit["trait"].value
+        if head_unit.has_member("trait"):
+            trait = head_unit["trait"].value
+        else:
+            trait = 0
 
         # Ram
         if trait == 1:
@@ -559,7 +557,7 @@ class GenieGameEntityGroup(ConverterObjectGroup):
         """
         return self.line_positions[unit_id]
 
-    def get_train_location_id(self) -> typing.Union[int, None]:
+    def get_train_location_id(self) -> int | None:
         """
         Returns the group_id for building line if the unit is
         creatable, otherwise return None.
@@ -591,7 +589,7 @@ class GenieUnitLineGroup(GenieGameEntityGroup):
         """
         return self.contains_entity(unit_id)
 
-    def get_civ_id(self) -> typing.Union[int, None]:
+    def get_civ_id(self) -> int | None:
         """
         Returns the enabling civ obj_id if the unit is unique,
         otherwise return None.
@@ -649,7 +647,7 @@ class GenieBuildingLineGroup(GenieGameEntityGroup):
     be patches to that GameEntity applied by Techs.
     """
 
-    __slots__ = ('gatherer_ids', 'trades_with')
+    __slots__ = ("gatherer_ids", "trades_with")
 
     def __init__(
         self,
@@ -662,7 +660,7 @@ class GenieBuildingLineGroup(GenieGameEntityGroup):
         self.gatherer_ids: set[int] = set()
 
         # Unit lines that this building trades with
-        self.trades_with: set[GenieGameEntityGroup] = []
+        self.trades_with: list[GenieGameEntityGroup] = []
 
     def add_gatherer_id(self, unit_id: int) -> None:
         """
@@ -745,7 +743,7 @@ class GenieStackBuildingGroup(GenieBuildingLineGroup):
     during construction.
     """
 
-    __slots__ = ('head', 'stack')
+    __slots__ = ("head", "stack")
 
     def __init__(
         self,
@@ -815,7 +813,7 @@ class GenieStackBuildingGroup(GenieBuildingLineGroup):
         """
         return self.stack["id0"].value
 
-    def get_train_location_id(self) -> int:
+    def get_train_location_id(self) -> int | None:
         """
         Stack buildings are creatable when their head building is creatable.
 
@@ -839,7 +837,7 @@ class GenieUnitTransformGroup(GenieUnitLineGroup):
     Example: Trebuchet
     """
 
-    __slots__ = ('head_unit', 'transform_unit')
+    __slots__ = ("head_unit", "transform_unit")
 
     def __init__(
         self,
@@ -864,7 +862,7 @@ class GenieUnitTransformGroup(GenieUnitLineGroup):
         transform_id = self.head_unit["transform_unit_id"].value
         self.transform_unit = self.data.genie_units[transform_id]
 
-    def is_projectile_shooter(self, civ_id: int = -1) -> int:
+    def is_projectile_shooter(self, civ_id: int = -1) -> bool:
         """
         Transform groups are projectile shooters if their head or transform units
         have assigned a projectile ID.
@@ -877,8 +875,7 @@ class GenieUnitTransformGroup(GenieUnitLineGroup):
         projectile_id_3 = self.transform_unit["projectile_id1"].value
 
         # -1 -> no projectile
-        return (projectile_id_0 > -1 or projectile_id_1 > -1
-                or projectile_id_2 > -1 or projectile_id_3 > -1)
+        return projectile_id_0 > -1 or projectile_id_1 > -1 or projectile_id_2 > -1 or projectile_id_3 > -1
 
     def get_head_unit_id(self) -> int:
         """
@@ -918,7 +915,7 @@ class GenieMonkGroup(GenieUnitLineGroup):
     will become a Container ability with CarryProgress.
     """
 
-    __slots__ = ('head_unit', 'switch_unit')
+    __slots__ = ("head_unit", "switch_unit")
 
     def __init__(
         self,
@@ -1039,10 +1036,10 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
     the other are used to create more abilities with AnimationOverride.
     """
 
-    __slots__ = ('task_group_id',)
+    __slots__ = ("task_group_id",)
 
     # From unit connection
-    male_line_id = 83   # male villager (with combat task)
+    male_line_id = 83  # male villager (with combat task)
 
     # Female villagers have no line obj_id, so we use the combat unit
     female_line_id = 293  # female villager (with combat task)
@@ -1067,15 +1064,9 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
 
         self.task_group_id = task_group_id
 
-    def add_unit(
-        self,
-        genie_unit: GenieUnitObject,
-        position: int = -1,
-        after: GenieUnitObject = None
-    ) -> None:
+    def add_unit(self, genie_unit: GenieUnitObject, position: int = -1, after: int | None = None) -> None:
         # Force the idle/combat units at the beginning of the line
-        if genie_unit["id0"].value in (GenieUnitTaskGroup.male_line_id,
-                                       GenieUnitTaskGroup.female_line_id):
+        if genie_unit["id0"].value in (GenieUnitTaskGroup.male_line_id, GenieUnitTaskGroup.female_line_id):
             super().add_unit(genie_unit, 0, after)
 
         else:
@@ -1095,7 +1086,7 @@ class GenieUnitTaskGroup(GenieUnitLineGroup):
 
         return False
 
-    def get_train_location_id(self) -> int:
+    def get_train_location_id(self) -> int | None:
         """
         Returns the group_id for building line if the task group is
         creatable, otherwise return None.
@@ -1120,14 +1111,14 @@ class GenieVillagerGroup(GenieUnitLineGroup):
     variants of the common villager game entity.
     """
 
-    __slots__ = ('variants', )
+    __slots__ = ("variants",)
 
-    valid_switch_tasks_lookup = {
-        5: "GATHER",    # Gather from resource spots
-        7: "COMBAT",    # Attack
-        101: "BUILD",   # Build buildings
+    valid_switch_tasks_lookup: typing.ClassVar[dict[int, str]] = {
+        5: "GATHER",  # Gather from resource spots
+        7: "COMBAT",  # Attack
+        101: "BUILD",  # Build buildings
         106: "REPAIR",  # Repair buildings, ships, rams
-        110: "HUNT",    # Kill first, then gather
+        110: "HUNT",  # Kill first, then gather
     }
 
     def __init__(
@@ -1211,7 +1202,7 @@ class GenieVillagerGroup(GenieUnitLineGroup):
     def is_projectile_shooter(self, civ_id: int = -1) -> bool:
         return False
 
-    def get_garrison_mode(self, civ_id: int = -1) -> bool:
+    def get_garrison_mode(self, civ_id: int = -1) -> GenieGarrisonMode | None:
         return None
 
     def get_head_unit_id(self) -> int:
@@ -1226,7 +1217,7 @@ class GenieVillagerGroup(GenieUnitLineGroup):
         """
         return self.variants[0].line[0]
 
-    def get_units_with_command(self, command_id: int) -> GenieUnitObject:
+    def get_units_with_command(self, command_id: int) -> list[GenieUnitObject]:
         """
         Returns all genie units which have the specified command.
         """
@@ -1244,7 +1235,7 @@ class GenieVillagerGroup(GenieUnitLineGroup):
 
         return matching_units
 
-    def get_train_location_id(self) -> int:
+    def get_train_location_id(self) -> int | None:
         """
         Returns the group_id for building line if the task group is
         creatable, otherwise return None.
@@ -1265,15 +1256,19 @@ class GenieGarrisonMode(Enum):
     the "garrison_type" from the .dat file. These garrison modes reflect
     how the garrison will be handled in the openage API.
     """
+
     # pylint: disable=line-too-long
 
     # Keys = all possible creatable types; may be specified further by other factors
     # The negative integers at the start of the tupe prevent Python from creating
     # aliases for the enums.
-    NATURAL       = (-1, 1, 2, 3, 5, 6)  # enter/exit/remove; rally point
+    NATURAL = (-1, 1, 2, 3, 5, 6)  # enter/exit/remove; rally point
     # enter/exit/remove; no cavalry/monks; speedboost for infantry; no rally point
     UNIT_GARRISON = (-2, 1, 2, 5)
-    TRANSPORT     = (-3, 1, 2, 3, 5, 6)  # enter/exit/remove; no rally point
+    TRANSPORT = (-3, 1, 2, 3, 5, 6)  # enter/exit/remove; no rally point
     # enter only with OwnStorage; exit/remove; only produced units; rally point
     SELF_PRODUCED = (-4, 1, 2, 3, 5, 6)
-    MONK          = (-5, 4,)             # remove/collect/transfer; only relics; no rally point
+    MONK = (
+        -5,
+        4,
+    )  # remove/collect/transfer; only relics; no rally point

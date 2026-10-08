@@ -1,9 +1,8 @@
-// Copyright 2013-2024 the openage authors. See copying.md for legal info.
+// Copyright 2013-2026 the openage authors. See copying.md for legal info.
 
 #pragma once
 
 #include <cstdarg>
-#include <functional>
 #include <iomanip>
 #include <memory>
 #include <sstream>

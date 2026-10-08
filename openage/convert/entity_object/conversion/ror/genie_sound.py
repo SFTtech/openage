@@ -5,8 +5,8 @@ Contains structures and API-like objects for sounds from RoR.
 
 Based on the classes from the AoC converter.
 """
-from __future__ import annotations
 
+from __future__ import annotations
 
 from ..aoc.genie_sound import GenieSound
 

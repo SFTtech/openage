@@ -4,15 +4,15 @@ Tests for the filesystem-like abstraction.
 """
 
 import os
-
 from io import UnsupportedOperation
-from tempfile import gettempdir, NamedTemporaryFile
+from tempfile import NamedTemporaryFile, gettempdir
 
-from openage.testing.testing import assert_value, assert_raises, result
+from openage.testing.testing import assert_raises, assert_value, result
 
-from .directory import Directory, CaseIgnoringDirectory
+from .directory import CaseIgnoringDirectory, Directory
+from .filecollection import FileCollection, FileEntry
 from .union import Union
-from .wrapper import WriteBlocker, DirectoryCreator
+from .wrapper import DirectoryCreator, WriteBlocker
 
 
 def test_path(root_path, root_dir):
@@ -25,8 +25,7 @@ def test_path(root_path, root_dir):
     assert_value(deeper.parent, root_path["let's go"])
     deeper.mkdirs()
     assert_value(deeper.is_dir(), True)
-    assert_value(deeper.resolve_native_path().decode(),
-                 os.path.join(root_dir, "let's go", "deeper"))
+    assert_value(deeper.resolve_native_path().decode(), os.path.join(root_dir, "let's go", "deeper"))
 
     insert = deeper["insertion.stuff.test"]
     insert.touch()
@@ -58,9 +57,7 @@ def test_union(root_path, root_dir):
     test_dir_r = os.path.join(root_dir, "r")
 
     # automated directory creation:
-    path_w = DirectoryCreator(
-        Directory(test_dir_w, create_if_missing=True).root
-    ).root
+    path_w = DirectoryCreator(Directory(test_dir_w, create_if_missing=True).root).root
     path_r = Directory(test_dir_r, create_if_missing=True).root
 
     assert_value(path_r["some_file"].is_file(), False)
@@ -82,7 +79,7 @@ def test_union(root_path, root_dir):
     assert_value(path_protected.writable(), False)
 
     with assert_raises(UnsupportedOperation):
-        result(path_protected.open('wb'))
+        result(path_protected.open("wb"))
 
     # mount the above into one virtual file system
     target = Union().root
@@ -219,6 +216,20 @@ def test_append(root_path):
         assert_value(fil.read(), b"overwrittenest")
 
 
+def test_filecollection():
+    """
+    A FileCollection is read-only and must reject every write mode.
+    """
+    collection = FileCollection()
+    collection.add_fileentry([b"file"], FileEntry())
+    path = collection.root["file"]
+    assert_value(path.writable(), False)
+
+    for mode in ("wb", "ab", "arb", "rwb"):
+        with assert_raises(UnsupportedOperation):
+            path.open(mode)
+
+
 def test():
     """
     Perform functionality tests for the filesystem abstraction interface.
@@ -240,6 +251,9 @@ def test():
 
     # test appending content
     test_append(root_path)
+
+    # test the read-only file collection
+    test_filecollection()
 
     # and remove all the things we just created
     assert_value(root_path.is_dir(), True)

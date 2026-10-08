@@ -12,9 +12,20 @@ which satisifies that requirement.
 
 if __name__ == '__main__@SOME_UNDEFINED_VARIABLE_CMAKE_WILL_REMOVE@':
     # This is stupid but without it, Cython/Python cannot find the openage module.
+    import multiprocessing
     import os
+    import site
     import sys
     sys.path.append(os.getcwd())
+
+    # This binary embeds the base Python interpreter, which doesn't know about
+    # the virtual environment openage may have been configured with.
+    # Make the packages of the configured interpreter importable:
+    site.addsitedir("@Python3_SITELIB@")
+
+    # multiprocessing can't start worker processes by launching this binary,
+    # so let it launch the configured interpreter instead:
+    multiprocessing.set_executable("@Python3_EXECUTABLE@")
 
     from openage.__main__ import main
     main()

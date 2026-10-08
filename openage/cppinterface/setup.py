@@ -4,11 +4,9 @@
 Contains the function that initializes the C++ interface.
 """
 
-from ..util.decorators import run_once
-
 from ..log import dbg
-
 from ..log.log_cpp import enable_log_translation
+from ..util.decorators import run_once
 
 
 @run_once
@@ -30,25 +28,32 @@ def setup(args):
 
     # this is where calls to the setup methods of all other modules belong.
     from .exctranslate import setup as exctranslate_setup
+
     exctranslate_setup(args)
 
     from .exctranslate_tests import setup as exctranslate_tests_setup
+
     exctranslate_tests_setup()
 
     from .pyobject import setup as pyobject_setup
+
     pyobject_setup()
 
     from ..util.filelike.cpp import setup as filelike_setup
+
     filelike_setup()
 
     from ..util.fslike.cpp import setup as fslike_setup
+
     fslike_setup()
 
     from ..cvar.cvar import setup as cvar_setup
+
     cvar_setup()
 
     # verify that everything has been properly initialized.
     from .setup_checker import check
+
     check()
 
     enable_log_translation()

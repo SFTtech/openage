@@ -1,4 +1,4 @@
-// Copyright 2014-2024 the openage authors. See copying.md for legal info.
+// Copyright 2014-2026 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -9,7 +9,7 @@
  * May contain some platform-dependent code.
  */
 
-#include <ciso646>
+#include <iso646.h> // alternative operator spellings
 // pxd: from libcpp.string cimport string
 #include <string>
 #include <typeinfo>

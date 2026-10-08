@@ -284,7 +284,7 @@ std::shared_ptr<RenderPass> pass2 = renderer->add_render_pass({ obj2 }, renderer
 
 A color texture is not the only type of texture that can be assigned to a texture
 target. We can also add depth textures or additional (color) textures that the shader
-can write arbritrary values into.
+can write arbitrary values into.
 
 ```c++
 std::shared_ptr<Texture2d> depth_texture = renderer->add_texture(
@@ -414,7 +414,7 @@ resources::VertexInputInfo info{
 As seen above, we have to define 3 parameters.
 
 1. **Vertex Input Layout**: Defines how the vertex data of each vertex is split up in the vertex shader. In this case, a vertex consists of a `vec2` for the position and a `vec2` for the texture coordinates.
-1. **Vertex Buffer Layout**: Defines how the vertex data of all vertices is layed out in the whole buffer. `AOS` is *array of structs* which means that vertex data is interleaved.
+1. **Vertex Buffer Layout**: Defines how the vertex data of all vertices is laid out in the whole buffer. `AOS` is *array of structs* which means that vertex data is interleaved.
 1. **Vertex Primitive**: Type of primitive used for drawing the vertices.
 
 Afterwards, vertices can be copied into a byte array which is then passed
@@ -569,7 +569,7 @@ void main() {
 Placeholders are inserted as comments into the GLSL source. Every placeholder has an ID for
 referencing. For these IDs, *snippets* can be defined to insert code in place of the placeholder
 comment. Placeholders can be placed at any position in the template, so they can be used to insert
-other statements than the control code, including unforms, input/output variables, functions and more.
+other statements than the control code, including uniforms, input/output variables, functions and more.
 
 The snippets for the above example may look like this:
 

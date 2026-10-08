@@ -10,7 +10,7 @@ from sys import platform
 from .math import INF
 
 
-def free_memory() -> int:
+def free_memory() -> float:
     """
     Returns the amount of free bytes of memory.
     On failure, returns +inf.
@@ -20,9 +20,9 @@ def free_memory() -> int:
     """
     memory = INF
 
-    if platform.startswith('linux'):
-        pattern = re.compile('^MemAvailable: +([0-9]+) kB\n$')
-        with open('/proc/meminfo', encoding='utf8') as meminfo:
+    if platform.startswith("linux"):
+        pattern = re.compile("^MemAvailable: +([0-9]+) kB\n$")
+        with open("/proc/meminfo", encoding="utf8") as meminfo:
             for line in meminfo:
                 match = pattern.match(line)
                 if match:

@@ -1,4 +1,4 @@
-// Copyright 2024-2024 the openage authors. See copying.md for legal info.
+// Copyright 2024-2026 the openage authors. See copying.md for legal info.
 
 #include "integration_field.h"
 
@@ -66,7 +66,7 @@ std::vector<size_t> IntegrationField::integrate_los(const std::shared_ptr<CostFi
 		// Do a preliminary LOS integration wave for targets that have cost > min cost
 		// This avoids the bresenham's line algorithm calculations
 		// (which wouldn't return accurate results for blocker == target)
-		// and makes sure that sorrounding cells that are min cost are considered
+		// and makes sure that surrounding cells that are min cost are considered
 		// in line-of-sight.
 
 		this->cells[target_idx].flags |= INTEGRATE_FOUND_MASK;

@@ -5,7 +5,9 @@
 """
 Module for reading palette files.
 """
+
 from __future__ import annotations
+
 import typing
 
 from ...value_object.read.media.colortable import ColorTable
@@ -13,14 +15,10 @@ from ...value_object.read.media_types import MediaType
 
 if typing.TYPE_CHECKING:
     from openage.convert.value_object.init.game_version import GameVersion
-    from openage.util.fslike.directory import Directory
+    from openage.util.fslike.path import Path
 
 
-def get_palettes(
-    srcdir: Directory,
-    game_version: GameVersion,
-    index: int = None
-) -> dict[int, ColorTable]:
+def get_palettes(srcdir: Path, game_version: GameVersion, index: int | None = None) -> dict[int, ColorTable]:
     """
     Read and create the color palettes.
     """
@@ -30,7 +28,7 @@ def get_palettes(
 
     if game_edition.game_id in ("ROR", "AOC", "SWGB", "HDEDITION"):
         if index:
-            palette_path = f"{MediaType.PALETTES.value}/{str(index)}.bina"
+            palette_path = f"{MediaType.PALETTES.value}/{index!s}.bina"
             palette_file = srcdir[palette_path]
             palette = ColorTable(palette_file.open("rb").read())
             palette_id = int(palette_file.stem)
@@ -54,17 +52,17 @@ def get_palettes(
     elif game_edition.game_id in ("AOE1DE", "AOE2DE"):
         # Parse palettes.conf file and save the ids/paths
         conf_filepath = f"{MediaType.PALETTES.value}/palettes.conf"
-        conf_file = srcdir[conf_filepath].open('rb')
+        conf_file = srcdir[conf_filepath].open("rb")
         palette_paths = {}
 
-        for line in conf_file.read().decode('utf-8').split('\n'):
+        for line in conf_file.read().decode("utf-8").split("\n"):
             line = line.strip()
 
             # skip comments and empty lines
-            if not line or line.startswith('//'):
+            if not line or line.startswith("//"):
                 continue
 
-            palette_id, filepath = line.split(',')
+            palette_id, filepath = line.split(",")
             palette_id = int(palette_id)
             palette_paths[palette_id] = filepath
 
@@ -83,7 +81,6 @@ def get_palettes(
                 palettes[palette_id] = palette
 
     else:
-        raise RuntimeError("no valid palette converter found for game edition"
-                           f"{game_edition.edition_name}")
+        raise RuntimeError(f"no valid palette converter found for game edition{game_edition.edition_name}")
 
     return palettes

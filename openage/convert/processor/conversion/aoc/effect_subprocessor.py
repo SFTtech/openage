@@ -9,17 +9,19 @@
 Creates effects and resistances for the Apply*Effect and Resistance
 abilities.
 """
+
 from __future__ import annotations
+
 import typing
 
-from ....entity_object.conversion.aoc.genie_unit import GenieUnitLineGroup, \
-    GenieBuildingLineGroup
+from ....entity_object.conversion.aoc.genie_unit import GenieBuildingLineGroup, GenieUnitLineGroup
 from ....entity_object.conversion.converter_object import RawAPIObject
 from ....service.conversion import internal_name_lookups
 from ....value_object.conversion.forward_ref import ForwardRef
 
 if typing.TYPE_CHECKING:
     from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup
+    from openage.nyan.nyan_structs import NyanObject
 
 
 class AoCEffectSubprocessor:
@@ -29,10 +31,8 @@ class AoCEffectSubprocessor:
 
     @staticmethod
     def get_attack_effects(
-        line: GenieGameEntityGroup,
-        location_ref: str,
-        projectile: int = -1
-    ) -> list[ForwardRef]:
+        line: GenieGameEntityGroup, location_ref: str, projectile: int = -1
+    ) -> list[ForwardRef | NyanObject]:
         """
         Creates effects that are used for attacking (unit command: 7)
 
@@ -52,7 +52,7 @@ class AoCEffectSubprocessor:
             projectile_id = line.get_head_unit()["projectile_id1"].value
             current_unit = dataset.genie_units[projectile_id]
 
-        effects = []
+        effects: list[ForwardRef | NyanObject] = []
 
         armor_lookup_dict = internal_name_lookups.get_armor_class_lookups(dataset.game_version)
 
@@ -68,9 +68,7 @@ class AoCEffectSubprocessor:
             class_name = armor_lookup_dict[armor_class]
 
             attack_ref = f"{location_ref}.{class_name}"
-            attack_raw_api_object = RawAPIObject(attack_ref,
-                                                 class_name,
-                                                 dataset.nyan_api_objects)
+            attack_raw_api_object = RawAPIObject(attack_ref, class_name, dataset.nyan_api_objects)
             attack_raw_api_object.add_raw_parent(attack_parent)
             attack_location = ForwardRef(line, location_ref)
             attack_raw_api_object.set_location(attack_location)
@@ -78,64 +76,52 @@ class AoCEffectSubprocessor:
             # Type
             type_ref = f"util.attribute_change_type.types.{class_name}"
             change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
-            attack_raw_api_object.add_raw_member("type",
-                                                 change_type,
-                                                 effect_parent)
+            attack_raw_api_object.add_raw_member("type", change_type, effect_parent)
 
             # Min value (optional)
-            min_value = dataset.pregen_nyan_objects[("effect.discrete.flat_attribute_change."
-                                                     "min_damage.AoE2MinChangeAmount")].get_nyan_object()
-            attack_raw_api_object.add_raw_member("min_change_value",
-                                                 min_value,
-                                                 effect_parent)
+            min_value = dataset.pregen_nyan_objects[
+                ("effect.discrete.flat_attribute_change.min_damage.AoE2MinChangeAmount")
+            ].get_nyan_object()
+            attack_raw_api_object.add_raw_member("min_change_value", min_value, effect_parent)
 
             # Max value (optional; not added because there is none in AoE2)
 
             # Change value
             # =================================================================================
             amount_name = f"{location_ref}.{class_name}.ChangeAmount"
-            amount_raw_api_object = RawAPIObject(
-                amount_name, "ChangeAmount", dataset.nyan_api_objects)
+            amount_raw_api_object = RawAPIObject(amount_name, "ChangeAmount", dataset.nyan_api_objects)
             amount_raw_api_object.add_raw_parent("engine.util.attribute.AttributeAmount")
             amount_location = ForwardRef(line, attack_ref)
             amount_raw_api_object.set_location(amount_location)
 
             attribute = dataset.pregen_nyan_objects["util.attribute.types.Health"].get_nyan_object()
-            amount_raw_api_object.add_raw_member("type",
-                                                 attribute,
-                                                 "engine.util.attribute.AttributeAmount")
-            amount_raw_api_object.add_raw_member("amount",
-                                                 attack_amount,
-                                                 "engine.util.attribute.AttributeAmount")
+            amount_raw_api_object.add_raw_member("type", attribute, "engine.util.attribute.AttributeAmount")
+            amount_raw_api_object.add_raw_member(
+                "amount", attack_amount, "engine.util.attribute.AttributeAmount"
+            )
 
             line.add_raw_api_object(amount_raw_api_object)
             # =================================================================================
             amount_forward_ref = ForwardRef(line, amount_name)
-            attack_raw_api_object.add_raw_member("change_value",
-                                                 amount_forward_ref,
-                                                 effect_parent)
+            attack_raw_api_object.add_raw_member("change_value", amount_forward_ref, effect_parent)
 
             # Ignore protection
-            attack_raw_api_object.add_raw_member("ignore_protection",
-                                                 [],
-                                                 effect_parent)
+            attack_raw_api_object.add_raw_member("ignore_protection", [], effect_parent)
 
             line.add_raw_api_object(attack_raw_api_object)
             attack_forward_ref = ForwardRef(line, attack_ref)
             effects.append(attack_forward_ref)
 
         # Fallback effect
-        fallback_effect = dataset.pregen_nyan_objects[("effect.discrete.flat_attribute_change."
-                                                       "fallback.AoE2AttackFallback")].get_nyan_object()
+        fallback_effect = dataset.pregen_nyan_objects[
+            ("effect.discrete.flat_attribute_change.fallback.AoE2AttackFallback")
+        ].get_nyan_object()
         effects.append(fallback_effect)
 
         return effects
 
     @staticmethod
-    def get_convert_effects(
-        line: GenieGameEntityGroup,
-        location_ref: str
-    ) -> list[ForwardRef]:
+    def get_convert_effects(line: GenieGameEntityGroup, location_ref: str) -> list[ForwardRef]:
         """
         Creates effects that are used for conversion (unit command: 104)
 
@@ -149,7 +135,7 @@ class AoCEffectSubprocessor:
         current_unit = line.get_head_unit()
         dataset = line.data
 
-        effects = []
+        effects: list[ForwardRef] = []
 
         effect_parent = "engine.effect.discrete.convert.Convert"
         convert_parent = "engine.effect.discrete.convert.type.AoE2Convert"
@@ -170,9 +156,7 @@ class AoCEffectSubprocessor:
 
         # Unit conversion
         convert_ref = f"{location_ref}.ConvertUnitEffect"
-        convert_raw_api_object = RawAPIObject(convert_ref,
-                                              "ConvertUnitEffect",
-                                              dataset.nyan_api_objects)
+        convert_raw_api_object = RawAPIObject(convert_ref, "ConvertUnitEffect", dataset.nyan_api_objects)
         convert_raw_api_object.add_raw_parent(convert_parent)
         convert_location = ForwardRef(line, location_ref)
         convert_raw_api_object.set_location(convert_location)
@@ -180,9 +164,7 @@ class AoCEffectSubprocessor:
         # Type
         type_ref = "util.convert_type.types.UnitConvert"
         change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
-        convert_raw_api_object.add_raw_member("type",
-                                              change_type,
-                                              effect_parent)
+        convert_raw_api_object.add_raw_member("type", change_type, effect_parent)
 
         # Min success (optional; not added because there is none in AoE2)
         # Max success (optional; not added because there is none in AoE2)
@@ -190,21 +172,17 @@ class AoCEffectSubprocessor:
         # Chance
         # hardcoded resource
         chance_success = dataset.genie_civs[0]["resources"][182].value / 100
-        convert_raw_api_object.add_raw_member("chance_success",
-                                              chance_success,
-                                              effect_parent)
+        convert_raw_api_object.add_raw_member("chance_success", chance_success, effect_parent)
 
         # Fail cost (optional; not added because there is none in AoE2)
 
         # Guaranteed rounds skip
-        convert_raw_api_object.add_raw_member("skip_guaranteed_rounds",
-                                              skip_guaranteed_rounds,
-                                              convert_parent)
+        convert_raw_api_object.add_raw_member(
+            "skip_guaranteed_rounds", skip_guaranteed_rounds, convert_parent
+        )
 
         # Protected rounds skip
-        convert_raw_api_object.add_raw_member("skip_protected_rounds",
-                                              skip_protected_rounds,
-                                              convert_parent)
+        convert_raw_api_object.add_raw_member("skip_protected_rounds", skip_protected_rounds, convert_parent)
 
         line.add_raw_api_object(convert_raw_api_object)
         attack_forward_ref = ForwardRef(line, convert_ref)
@@ -212,9 +190,9 @@ class AoCEffectSubprocessor:
 
         # Building conversion
         convert_ref = f"{location_ref}.ConvertBuildingEffect"
-        convert_raw_api_object = RawAPIObject(convert_ref,
-                                              "ConvertBuildingUnitEffect",
-                                              dataset.nyan_api_objects)
+        convert_raw_api_object = RawAPIObject(
+            convert_ref, "ConvertBuildingUnitEffect", dataset.nyan_api_objects
+        )
         convert_raw_api_object.add_raw_parent(convert_parent)
         convert_location = ForwardRef(line, location_ref)
         convert_raw_api_object.set_location(convert_location)
@@ -222,9 +200,7 @@ class AoCEffectSubprocessor:
         # Type
         type_ref = "util.convert_type.types.BuildingConvert"
         change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
-        convert_raw_api_object.add_raw_member("type",
-                                              change_type,
-                                              effect_parent)
+        convert_raw_api_object.add_raw_member("type", change_type, effect_parent)
 
         # Min success (optional; not added because there is none in AoE2)
         # Max success (optional; not added because there is none in AoE2)
@@ -232,21 +208,15 @@ class AoCEffectSubprocessor:
         # Chance
         # hardcoded resource
         chance_success = dataset.genie_civs[0]["resources"][182].value / 100
-        convert_raw_api_object.add_raw_member("chance_success",
-                                              chance_success,
-                                              effect_parent)
+        convert_raw_api_object.add_raw_member("chance_success", chance_success, effect_parent)
 
         # Fail cost (optional; not added because there is none in AoE2)
 
         # Guaranteed rounds skip
-        convert_raw_api_object.add_raw_member("skip_guaranteed_rounds",
-                                              0,
-                                              convert_parent)
+        convert_raw_api_object.add_raw_member("skip_guaranteed_rounds", 0, convert_parent)
 
         # Protected rounds skip
-        convert_raw_api_object.add_raw_member("skip_protected_rounds",
-                                              0,
-                                              convert_parent)
+        convert_raw_api_object.add_raw_member("skip_protected_rounds", 0, convert_parent)
 
         line.add_raw_api_object(convert_raw_api_object)
         attack_forward_ref = ForwardRef(line, convert_ref)
@@ -255,10 +225,7 @@ class AoCEffectSubprocessor:
         return effects
 
     @staticmethod
-    def get_heal_effects(
-        line: GenieGameEntityGroup,
-        location_ref: str
-    ) -> list[ForwardRef]:
+    def get_heal_effects(line: GenieGameEntityGroup, location_ref: str) -> list[ForwardRef]:
         """
         Creates effects that are used for healing (unit command: 105)
 
@@ -295,9 +262,7 @@ class AoCEffectSubprocessor:
         heal_rate = heal_command["work_value1"].value
 
         heal_ref = f"{location_ref}.HealEffect"
-        heal_raw_api_object = RawAPIObject(heal_ref,
-                                           "HealEffect",
-                                           dataset.nyan_api_objects)
+        heal_raw_api_object = RawAPIObject(heal_ref, "HealEffect", dataset.nyan_api_objects)
         heal_raw_api_object.add_raw_parent(heal_parent)
         heal_location = ForwardRef(line, location_ref)
         heal_raw_api_object.set_location(heal_location)
@@ -305,16 +270,13 @@ class AoCEffectSubprocessor:
         # Type
         type_ref = "util.attribute_change_type.types.Heal"
         change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
-        heal_raw_api_object.add_raw_member("type",
-                                           change_type,
-                                           effect_parent)
+        heal_raw_api_object.add_raw_member("type", change_type, effect_parent)
 
         # Min value (optional)
-        min_value = dataset.pregen_nyan_objects[("effect.discrete.flat_attribute_change."
-                                                 "min_heal.AoE2MinChangeAmount")].get_nyan_object()
-        heal_raw_api_object.add_raw_member("min_change_rate",
-                                           min_value,
-                                           effect_parent)
+        min_value = dataset.pregen_nyan_objects[
+            ("effect.discrete.flat_attribute_change.min_heal.AoE2MinChangeAmount")
+        ].get_nyan_object()
+        heal_raw_api_object.add_raw_member("min_change_rate", min_value, effect_parent)
 
         # Max value (optional; not added because there is none in AoE2)
 
@@ -327,24 +289,16 @@ class AoCEffectSubprocessor:
         rate_raw_api_object.set_location(rate_location)
 
         attribute = dataset.pregen_nyan_objects["util.attribute.types.Health"].get_nyan_object()
-        rate_raw_api_object.add_raw_member("type",
-                                           attribute,
-                                           "engine.util.attribute.AttributeRate")
-        rate_raw_api_object.add_raw_member("rate",
-                                           heal_rate,
-                                           "engine.util.attribute.AttributeRate")
+        rate_raw_api_object.add_raw_member("type", attribute, "engine.util.attribute.AttributeRate")
+        rate_raw_api_object.add_raw_member("rate", heal_rate, "engine.util.attribute.AttributeRate")
 
         line.add_raw_api_object(rate_raw_api_object)
         # =================================================================================
         rate_forward_ref = ForwardRef(line, rate_name)
-        heal_raw_api_object.add_raw_member("change_rate",
-                                           rate_forward_ref,
-                                           effect_parent)
+        heal_raw_api_object.add_raw_member("change_rate", rate_forward_ref, effect_parent)
 
         # Ignore protection
-        heal_raw_api_object.add_raw_member("ignore_protection",
-                                           [],
-                                           effect_parent)
+        heal_raw_api_object.add_raw_member("ignore_protection", [], effect_parent)
 
         line.add_raw_api_object(heal_raw_api_object)
         heal_forward_ref = ForwardRef(line, heal_ref)
@@ -353,10 +307,7 @@ class AoCEffectSubprocessor:
         return effects
 
     @staticmethod
-    def get_repair_effects(
-        line: GenieGameEntityGroup,
-        location_ref: str
-    ) -> list[ForwardRef]:
+    def get_repair_effects(line: GenieGameEntityGroup, location_ref: str) -> list[ForwardRef]:
         """
         Creates effects that are used for repairing (unit command: 106)
 
@@ -388,9 +339,7 @@ class AoCEffectSubprocessor:
 
             repair_name = f"{game_entity_name}RepairEffect"
             repair_ref = f"{location_ref}.{repair_name}"
-            repair_raw_api_object = RawAPIObject(repair_ref,
-                                                 repair_name,
-                                                 dataset.nyan_api_objects)
+            repair_raw_api_object = RawAPIObject(repair_ref, repair_name, dataset.nyan_api_objects)
             repair_raw_api_object.add_raw_parent(repair_parent)
             repair_location = ForwardRef(line, location_ref)
             repair_raw_api_object.set_location(repair_location)
@@ -400,9 +349,7 @@ class AoCEffectSubprocessor:
             # Type
             type_ref = f"util.attribute_change_type.types.{game_entity_name}Repair"
             change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
-            repair_raw_api_object.add_raw_member("type",
-                                                 change_type,
-                                                 effect_parent)
+            repair_raw_api_object.add_raw_member("type", change_type, effect_parent)
 
             # Min value (optional; not added because buildings don't block repairing)
 
@@ -417,9 +364,7 @@ class AoCEffectSubprocessor:
             rate_raw_api_object.set_location(rate_location)
 
             attribute = dataset.pregen_nyan_objects["util.attribute.types.Health"].get_nyan_object()
-            rate_raw_api_object.add_raw_member("type",
-                                               attribute,
-                                               "engine.util.attribute.AttributeRate")
+            rate_raw_api_object.add_raw_member("type", attribute, "engine.util.attribute.AttributeRate")
 
             # Hardcoded repair rate:
             # - Buildings: 750 HP/min = 12.5 HP/s
@@ -430,27 +375,19 @@ class AoCEffectSubprocessor:
             else:
                 repair_rate = 3.125
 
-            rate_raw_api_object.add_raw_member("rate",
-                                               repair_rate,
-                                               "engine.util.attribute.AttributeRate")
+            rate_raw_api_object.add_raw_member("rate", repair_rate, "engine.util.attribute.AttributeRate")
 
             line.add_raw_api_object(rate_raw_api_object)
             # =================================================================================
             rate_forward_ref = ForwardRef(line, rate_name)
-            repair_raw_api_object.add_raw_member("change_rate",
-                                                 rate_forward_ref,
-                                                 effect_parent)
+            repair_raw_api_object.add_raw_member("change_rate", rate_forward_ref, effect_parent)
 
             # Ignore protection
-            repair_raw_api_object.add_raw_member("ignore_protection",
-                                                 [],
-                                                 effect_parent)
+            repair_raw_api_object.add_raw_member("ignore_protection", [], effect_parent)
 
             # Repair cost
             property_ref = f"{repair_ref}.Cost"
-            property_raw_api_object = RawAPIObject(property_ref,
-                                                   "Cost",
-                                                   dataset.nyan_api_objects)
+            property_raw_api_object = RawAPIObject(property_ref, "Cost", dataset.nyan_api_objects)
             property_raw_api_object.add_raw_parent("engine.effect.property.type.Cost")
             property_location = ForwardRef(line, repair_ref)
             property_raw_api_object.set_location(property_location)
@@ -459,18 +396,14 @@ class AoCEffectSubprocessor:
 
             cost_ref = f"{game_entity_name}.CreatableGameEntity.{game_entity_name}RepairCost"
             cost_forward_ref = ForwardRef(repairable_line, cost_ref)
-            property_raw_api_object.add_raw_member("cost",
-                                                   cost_forward_ref,
-                                                   "engine.effect.property.type.Cost")
+            property_raw_api_object.add_raw_member(
+                "cost", cost_forward_ref, "engine.effect.property.type.Cost"
+            )
 
             property_forward_ref = ForwardRef(line, property_ref)
-            properties = {
-                api_objects["engine.effect.property.type.Cost"]: property_forward_ref
-            }
+            properties = {api_objects["engine.effect.property.type.Cost"]: property_forward_ref}
 
-            repair_raw_api_object.add_raw_member("properties",
-                                                 properties,
-                                                 "engine.effect.Effect")
+            repair_raw_api_object.add_raw_member("properties", properties, "engine.effect.Effect")
 
             repair_forward_ref = ForwardRef(line, repair_ref)
             effects.append(repair_forward_ref)
@@ -478,10 +411,7 @@ class AoCEffectSubprocessor:
         return effects
 
     @staticmethod
-    def get_construct_effects(
-        line: GenieGameEntityGroup,
-        location_ref: str
-    ) -> list[ForwardRef]:
+    def get_construct_effects(line: GenieGameEntityGroup, location_ref: str) -> list[ForwardRef]:
         """
         Creates effects that are used for construction (unit command: 101)
 
@@ -499,9 +429,13 @@ class AoCEffectSubprocessor:
         effects = []
 
         progress_effect_parent = "engine.effect.continuous.time_relative_progress.TimeRelativeProgressChange"
-        progress_construct_parent = "engine.effect.continuous.time_relative_progress.type.TimeRelativeProgressIncrease"
+        progress_construct_parent = (
+            "engine.effect.continuous.time_relative_progress.type.TimeRelativeProgressIncrease"
+        )
         attr_effect_parent = "engine.effect.continuous.time_relative_attribute.TimeRelativeAttributeChange"
-        attr_construct_parent = "engine.effect.continuous.time_relative_attribute.type.TimeRelativeAttributeIncrease"
+        attr_construct_parent = (
+            "engine.effect.continuous.time_relative_attribute.type.TimeRelativeAttributeIncrease"
+        )
 
         constructable_lines = []
         constructable_lines.extend(dataset.building_lines.values())
@@ -512,9 +446,9 @@ class AoCEffectSubprocessor:
             # Construction progress
             contruct_progress_name = f"{game_entity_name}ConstructProgressEffect"
             contruct_progress_ref = f"{location_ref}.{contruct_progress_name}"
-            contruct_progress_raw_api_object = RawAPIObject(contruct_progress_ref,
-                                                            contruct_progress_name,
-                                                            dataset.nyan_api_objects)
+            contruct_progress_raw_api_object = RawAPIObject(
+                contruct_progress_ref, contruct_progress_name, dataset.nyan_api_objects
+            )
             contruct_progress_raw_api_object.add_raw_parent(progress_construct_parent)
             contruct_progress_location = ForwardRef(line, location_ref)
             contruct_progress_raw_api_object.set_location(contruct_progress_location)
@@ -522,15 +456,13 @@ class AoCEffectSubprocessor:
             # Type
             type_ref = f"util.construct_type.types.{game_entity_name}Construct"
             change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
-            contruct_progress_raw_api_object.add_raw_member("type",
-                                                            change_type,
-                                                            progress_effect_parent)
+            contruct_progress_raw_api_object.add_raw_member("type", change_type, progress_effect_parent)
 
             # Total change time
             change_time = constructable_line.get_head_unit()["creation_time"].value
-            contruct_progress_raw_api_object.add_raw_member("total_change_time",
-                                                            change_time,
-                                                            progress_effect_parent)
+            contruct_progress_raw_api_object.add_raw_member(
+                "total_change_time", change_time, progress_effect_parent
+            )
 
             line.add_raw_api_object(contruct_progress_raw_api_object)
             contruct_progress_forward_ref = ForwardRef(line, contruct_progress_ref)
@@ -539,9 +471,9 @@ class AoCEffectSubprocessor:
             # HP increase during construction
             contruct_hp_name = f"{game_entity_name}ConstructHPEffect"
             contruct_hp_ref = f"{location_ref}.{contruct_hp_name}"
-            contruct_hp_raw_api_object = RawAPIObject(contruct_hp_ref,
-                                                      contruct_hp_name,
-                                                      dataset.nyan_api_objects)
+            contruct_hp_raw_api_object = RawAPIObject(
+                contruct_hp_ref, contruct_hp_name, dataset.nyan_api_objects
+            )
             contruct_hp_raw_api_object.add_raw_parent(attr_construct_parent)
             contruct_hp_location = ForwardRef(line, location_ref)
             contruct_hp_raw_api_object.set_location(contruct_hp_location)
@@ -549,20 +481,14 @@ class AoCEffectSubprocessor:
             # Type
             type_ref = f"util.attribute_change_type.types.{game_entity_name}Construct"
             change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
-            contruct_hp_raw_api_object.add_raw_member("type",
-                                                      change_type,
-                                                      attr_effect_parent)
+            contruct_hp_raw_api_object.add_raw_member("type", change_type, attr_effect_parent)
 
             # Total change time
             change_time = constructable_line.get_head_unit()["creation_time"].value
-            contruct_hp_raw_api_object.add_raw_member("total_change_time",
-                                                      change_time,
-                                                      attr_effect_parent)
+            contruct_hp_raw_api_object.add_raw_member("total_change_time", change_time, attr_effect_parent)
 
             # Ignore protection
-            contruct_hp_raw_api_object.add_raw_member("ignore_protection",
-                                                      [],
-                                                      attr_effect_parent)
+            contruct_hp_raw_api_object.add_raw_member("ignore_protection", [], attr_effect_parent)
 
             line.add_raw_api_object(contruct_hp_raw_api_object)
             contruct_hp_forward_ref = ForwardRef(line, contruct_hp_ref)
@@ -571,10 +497,7 @@ class AoCEffectSubprocessor:
         return effects
 
     @staticmethod
-    def get_attack_resistances(
-        line: GenieGameEntityGroup,
-        ability_ref: str
-    ) -> list[ForwardRef]:
+    def get_attack_resistances(line: GenieGameEntityGroup, ability_ref: str) -> list[ForwardRef | NyanObject]:
         """
         Creates resistances that are used for attacking (unit command: 7)
 
@@ -590,7 +513,7 @@ class AoCEffectSubprocessor:
 
         armor_lookup_dict = internal_name_lookups.get_armor_class_lookups(dataset.game_version)
 
-        resistances = []
+        resistances: list[ForwardRef | NyanObject] = []
 
         # FlatAttributeChangeDecrease
         resistance_parent = "engine.resistance.discrete.flat_attribute_change.FlatAttributeChange"
@@ -617,50 +540,41 @@ class AoCEffectSubprocessor:
             # Type
             type_ref = f"util.attribute_change_type.types.{class_name}"
             change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
-            armor_raw_api_object.add_raw_member("type",
-                                                change_type,
-                                                resistance_parent)
+            armor_raw_api_object.add_raw_member("type", change_type, resistance_parent)
 
             # Block value
             # =================================================================================
             amount_name = f"{ability_ref}.{class_name}.BlockAmount"
-            amount_raw_api_object = RawAPIObject(
-                amount_name, "BlockAmount", dataset.nyan_api_objects)
+            amount_raw_api_object = RawAPIObject(amount_name, "BlockAmount", dataset.nyan_api_objects)
             amount_raw_api_object.add_raw_parent("engine.util.attribute.AttributeAmount")
             amount_location = ForwardRef(line, armor_ref)
             amount_raw_api_object.set_location(amount_location)
 
             attribute = dataset.pregen_nyan_objects["util.attribute.types.Health"].get_nyan_object()
-            amount_raw_api_object.add_raw_member("type",
-                                                 attribute,
-                                                 "engine.util.attribute.AttributeAmount")
-            amount_raw_api_object.add_raw_member("amount",
-                                                 armor_amount,
-                                                 "engine.util.attribute.AttributeAmount")
+            amount_raw_api_object.add_raw_member("type", attribute, "engine.util.attribute.AttributeAmount")
+            amount_raw_api_object.add_raw_member(
+                "amount", armor_amount, "engine.util.attribute.AttributeAmount"
+            )
 
             line.add_raw_api_object(amount_raw_api_object)
             # =================================================================================
             amount_forward_ref = ForwardRef(line, amount_name)
-            armor_raw_api_object.add_raw_member("block_value",
-                                                amount_forward_ref,
-                                                resistance_parent)
+            armor_raw_api_object.add_raw_member("block_value", amount_forward_ref, resistance_parent)
 
             line.add_raw_api_object(armor_raw_api_object)
             armor_forward_ref = ForwardRef(line, armor_ref)
             resistances.append(armor_forward_ref)
 
         # Fallback effect
-        fallback_effect = dataset.pregen_nyan_objects[("resistance.discrete.flat_attribute_change."
-                                                       "fallback.AoE2AttackFallback")].get_nyan_object()
+        fallback_effect = dataset.pregen_nyan_objects[
+            ("resistance.discrete.flat_attribute_change.fallback.AoE2AttackFallback")
+        ].get_nyan_object()
         resistances.append(fallback_effect)
 
         return resistances
 
     @staticmethod
-    def get_convert_resistances(
-        line: GenieGameEntityGroup,
-        ability_ref: str
-    ) -> list[ForwardRef]:
+    def get_convert_resistances(line: GenieGameEntityGroup, ability_ref: str) -> list[ForwardRef]:
         """
         Creates resistances that are used for conversion (unit command: 104)
 
@@ -680,8 +594,7 @@ class AoCEffectSubprocessor:
         convert_parent = "engine.resistance.discrete.convert.type.AoE2Convert"
 
         resistance_ref = f"{ability_ref}.Convert"
-        resistance_raw_api_object = RawAPIObject(
-            resistance_ref, "Convert", dataset.nyan_api_objects)
+        resistance_raw_api_object = RawAPIObject(resistance_ref, "Convert", dataset.nyan_api_objects)
         resistance_raw_api_object.add_raw_parent(convert_parent)
         resistance_location = ForwardRef(line, ability_ref)
         resistance_raw_api_object.set_location(resistance_location)
@@ -694,16 +607,12 @@ class AoCEffectSubprocessor:
             type_ref = "util.convert_type.types.BuildingConvert"
 
         convert_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
-        resistance_raw_api_object.add_raw_member("type",
-                                                 convert_type,
-                                                 resistance_parent)
+        resistance_raw_api_object.add_raw_member("type", convert_type, resistance_parent)
 
         # Chance resist
         # hardcoded resource
         chance_resist = dataset.genie_civs[0]["resources"][77].value / 100
-        resistance_raw_api_object.add_raw_member("chance_resist",
-                                                 chance_resist,
-                                                 resistance_parent)
+        resistance_raw_api_object.add_raw_member("chance_resist", chance_resist, resistance_parent)
 
         if isinstance(line, GenieUnitLineGroup):
             guaranteed_rounds = dataset.genie_civs[0]["resources"][178].value
@@ -714,19 +623,15 @@ class AoCEffectSubprocessor:
             protected_rounds = dataset.genie_civs[0]["resources"][181].value
 
         # Guaranteed rounds
-        resistance_raw_api_object.add_raw_member("guaranteed_resist_rounds",
-                                                 guaranteed_rounds,
-                                                 convert_parent)
+        resistance_raw_api_object.add_raw_member(
+            "guaranteed_resist_rounds", guaranteed_rounds, convert_parent
+        )
 
         # Protected rounds
-        resistance_raw_api_object.add_raw_member("protected_rounds",
-                                                 protected_rounds,
-                                                 convert_parent)
+        resistance_raw_api_object.add_raw_member("protected_rounds", protected_rounds, convert_parent)
 
         # Protection recharge
-        resistance_raw_api_object.add_raw_member("protection_round_recharge_time",
-                                                 0.0,
-                                                 convert_parent)
+        resistance_raw_api_object.add_raw_member("protection_round_recharge_time", 0.0, convert_parent)
 
         line.add_raw_api_object(resistance_raw_api_object)
         resistance_forward_ref = ForwardRef(line, resistance_ref)
@@ -735,10 +640,7 @@ class AoCEffectSubprocessor:
         return resistances
 
     @staticmethod
-    def get_heal_resistances(
-        line: GenieGameEntityGroup,
-        ability_ref: str
-    ) -> list[ForwardRef]:
+    def get_heal_resistances(line: GenieGameEntityGroup, ability_ref: str) -> list[ForwardRef]:
         """
         Creates resistances that are used for healing (unit command: 105)
 
@@ -757,9 +659,7 @@ class AoCEffectSubprocessor:
         heal_parent = "engine.resistance.continuous.flat_attribute_change.type.FlatAttributeChangeIncrease"
 
         resistance_ref = f"{ability_ref}.Heal"
-        resistance_raw_api_object = RawAPIObject(resistance_ref,
-                                                 "Heal",
-                                                 dataset.nyan_api_objects)
+        resistance_raw_api_object = RawAPIObject(resistance_ref, "Heal", dataset.nyan_api_objects)
         resistance_raw_api_object.add_raw_parent(heal_parent)
         resistance_location = ForwardRef(line, ability_ref)
         resistance_raw_api_object.set_location(resistance_location)
@@ -767,9 +667,7 @@ class AoCEffectSubprocessor:
         # Type
         type_ref = "util.attribute_change_type.types.Heal"
         change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
-        resistance_raw_api_object.add_raw_member("type",
-                                                 change_type,
-                                                 resistance_parent)
+        resistance_raw_api_object.add_raw_member("type", change_type, resistance_parent)
 
         # Block rate
         # =================================================================================
@@ -780,19 +678,13 @@ class AoCEffectSubprocessor:
         rate_raw_api_object.set_location(rate_location)
 
         attribute = dataset.pregen_nyan_objects["util.attribute.types.Health"].get_nyan_object()
-        rate_raw_api_object.add_raw_member("type",
-                                           attribute,
-                                           "engine.util.attribute.AttributeRate")
-        rate_raw_api_object.add_raw_member("rate",
-                                           0.0,
-                                           "engine.util.attribute.AttributeRate")
+        rate_raw_api_object.add_raw_member("type", attribute, "engine.util.attribute.AttributeRate")
+        rate_raw_api_object.add_raw_member("rate", 0.0, "engine.util.attribute.AttributeRate")
 
         line.add_raw_api_object(rate_raw_api_object)
         # =================================================================================
         rate_forward_ref = ForwardRef(line, rate_name)
-        resistance_raw_api_object.add_raw_member("block_rate",
-                                                 rate_forward_ref,
-                                                 resistance_parent)
+        resistance_raw_api_object.add_raw_member("block_rate", rate_forward_ref, resistance_parent)
 
         line.add_raw_api_object(resistance_raw_api_object)
         resistance_forward_ref = ForwardRef(line, resistance_ref)
@@ -801,10 +693,7 @@ class AoCEffectSubprocessor:
         return resistances
 
     @staticmethod
-    def get_repair_resistances(
-        line: GenieGameEntityGroup,
-        ability_ref: str
-    ) -> list[ForwardRef]:
+    def get_repair_resistances(line: GenieGameEntityGroup, ability_ref: str) -> list[ForwardRef]:
         """
         Creates resistances that are used for repairing (unit command: 106)
 
@@ -829,9 +718,7 @@ class AoCEffectSubprocessor:
         repair_parent = "engine.resistance.continuous.flat_attribute_change.type.FlatAttributeChangeIncrease"
 
         resistance_ref = f"{ability_ref}.Repair"
-        resistance_raw_api_object = RawAPIObject(resistance_ref,
-                                                 "Repair",
-                                                 dataset.nyan_api_objects)
+        resistance_raw_api_object = RawAPIObject(resistance_ref, "Repair", dataset.nyan_api_objects)
         resistance_raw_api_object.add_raw_parent(repair_parent)
         resistance_location = ForwardRef(line, ability_ref)
         resistance_raw_api_object.set_location(resistance_location)
@@ -839,9 +726,7 @@ class AoCEffectSubprocessor:
         # Type
         type_ref = f"util.attribute_change_type.types.{game_entity_name}Repair"
         change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
-        resistance_raw_api_object.add_raw_member("type",
-                                                 change_type,
-                                                 resistance_parent)
+        resistance_raw_api_object.add_raw_member("type", change_type, resistance_parent)
 
         # Block rate
         # =================================================================================
@@ -852,31 +737,22 @@ class AoCEffectSubprocessor:
         rate_raw_api_object.set_location(rate_location)
 
         attribute = dataset.pregen_nyan_objects["util.attribute.types.Health"].get_nyan_object()
-        rate_raw_api_object.add_raw_member("type",
-                                           attribute,
-                                           "engine.util.attribute.AttributeRate")
-        rate_raw_api_object.add_raw_member("rate",
-                                           0.0,
-                                           "engine.util.attribute.AttributeRate")
+        rate_raw_api_object.add_raw_member("type", attribute, "engine.util.attribute.AttributeRate")
+        rate_raw_api_object.add_raw_member("rate", 0.0, "engine.util.attribute.AttributeRate")
 
         line.add_raw_api_object(rate_raw_api_object)
         # =================================================================================
         rate_forward_ref = ForwardRef(line, rate_name)
-        resistance_raw_api_object.add_raw_member("block_rate",
-                                                 rate_forward_ref,
-                                                 resistance_parent)
+        resistance_raw_api_object.add_raw_member("block_rate", rate_forward_ref, resistance_parent)
 
         # Stacking of villager repair HP increase
-        construct_property = dataset.pregen_nyan_objects["resistance.property.types.BuildingRepair"].get_nyan_object(
-        )
-        properties = {
-            api_objects["engine.resistance.property.type.Stacked"]: construct_property
-        }
+        construct_property = dataset.pregen_nyan_objects[
+            "resistance.property.types.BuildingRepair"
+        ].get_nyan_object()
+        properties = {api_objects["engine.resistance.property.type.Stacked"]: construct_property}
 
         # Add the predefined property
-        resistance_raw_api_object.add_raw_member("properties",
-                                                 properties,
-                                                 "engine.resistance.Resistance")
+        resistance_raw_api_object.add_raw_member("properties", properties, "engine.resistance.Resistance")
 
         line.add_raw_api_object(resistance_raw_api_object)
         resistance_forward_ref = ForwardRef(line, resistance_ref)
@@ -885,10 +761,7 @@ class AoCEffectSubprocessor:
         return resistances
 
     @staticmethod
-    def get_construct_resistances(
-        line: GenieGameEntityGroup,
-        ability_ref: str
-    ) -> list[ForwardRef]:
+    def get_construct_resistances(line: GenieGameEntityGroup, ability_ref: str) -> list[ForwardRef]:
         """
         Creates resistances that are used for constructing (unit command: 101)
 
@@ -909,16 +782,24 @@ class AoCEffectSubprocessor:
 
         game_entity_name = name_lookup_dict[current_unit_id][0]
 
-        progress_resistance_parent = "engine.resistance.continuous.time_relative_progress.TimeRelativeProgressChange"
-        progress_construct_parent = "engine.resistance.continuous.time_relative_progress.type.TimeRelativeProgressIncrease"
-        attr_resistance_parent = "engine.resistance.continuous.time_relative_attribute.TimeRelativeAttributeChange"
-        attr_construct_parent = "engine.resistance.continuous.time_relative_attribute.type.TimeRelativeAttributeIncrease"
+        progress_resistance_parent = (
+            "engine.resistance.continuous.time_relative_progress.TimeRelativeProgressChange"
+        )
+        progress_construct_parent = (
+            "engine.resistance.continuous.time_relative_progress.type.TimeRelativeProgressIncrease"
+        )
+        attr_resistance_parent = (
+            "engine.resistance.continuous.time_relative_attribute.TimeRelativeAttributeChange"
+        )
+        attr_construct_parent = (
+            "engine.resistance.continuous.time_relative_attribute.type.TimeRelativeAttributeIncrease"
+        )
 
         # Progress
         resistance_ref = f"{ability_ref}.ConstructProgress"
-        resistance_raw_api_object = RawAPIObject(resistance_ref,
-                                                 "ConstructProgress",
-                                                 dataset.nyan_api_objects)
+        resistance_raw_api_object = RawAPIObject(
+            resistance_ref, "ConstructProgress", dataset.nyan_api_objects
+        )
         resistance_raw_api_object.add_raw_parent(progress_construct_parent)
         resistance_location = ForwardRef(line, ability_ref)
         resistance_raw_api_object.set_location(resistance_location)
@@ -926,31 +807,24 @@ class AoCEffectSubprocessor:
         # Type
         type_ref = f"util.construct_type.types.{game_entity_name}Construct"
         change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
-        resistance_raw_api_object.add_raw_member("type",
-                                                 change_type,
-                                                 progress_resistance_parent)
+        resistance_raw_api_object.add_raw_member("type", change_type, progress_resistance_parent)
 
         line.add_raw_api_object(resistance_raw_api_object)
         resistance_forward_ref = ForwardRef(line, resistance_ref)
         resistances.append(resistance_forward_ref)
 
         # Stacking of villager construction times
-        construct_property = dataset.pregen_nyan_objects["resistance.property.types.BuildingConstruct"].get_nyan_object(
-        )
-        properties = {
-            api_objects["engine.resistance.property.type.Stacked"]: construct_property
-        }
+        construct_property = dataset.pregen_nyan_objects[
+            "resistance.property.types.BuildingConstruct"
+        ].get_nyan_object()
+        properties = {api_objects["engine.resistance.property.type.Stacked"]: construct_property}
 
         # Add the predefined property
-        resistance_raw_api_object.add_raw_member("properties",
-                                                 properties,
-                                                 "engine.resistance.Resistance")
+        resistance_raw_api_object.add_raw_member("properties", properties, "engine.resistance.Resistance")
 
         # Health
         resistance_ref = f"{ability_ref}.ConstructHP"
-        resistance_raw_api_object = RawAPIObject(resistance_ref,
-                                                 "ConstructHP",
-                                                 dataset.nyan_api_objects)
+        resistance_raw_api_object = RawAPIObject(resistance_ref, "ConstructHP", dataset.nyan_api_objects)
         resistance_raw_api_object.add_raw_parent(attr_construct_parent)
         resistance_location = ForwardRef(line, ability_ref)
         resistance_raw_api_object.set_location(resistance_location)
@@ -958,21 +832,16 @@ class AoCEffectSubprocessor:
         # Type
         type_ref = f"util.attribute_change_type.types.{game_entity_name}Construct"
         change_type = dataset.pregen_nyan_objects[type_ref].get_nyan_object()
-        resistance_raw_api_object.add_raw_member("type",
-                                                 change_type,
-                                                 attr_resistance_parent)
+        resistance_raw_api_object.add_raw_member("type", change_type, attr_resistance_parent)
 
         # Stacking of villager construction HP increase
-        construct_property = dataset.pregen_nyan_objects["resistance.property.types.BuildingConstruct"].get_nyan_object(
-        )
-        properties = {
-            api_objects["engine.resistance.property.type.Stacked"]: construct_property
-        }
+        construct_property = dataset.pregen_nyan_objects[
+            "resistance.property.types.BuildingConstruct"
+        ].get_nyan_object()
+        properties = {api_objects["engine.resistance.property.type.Stacked"]: construct_property}
 
         # Add the predefined property
-        resistance_raw_api_object.add_raw_member("properties",
-                                                 properties,
-                                                 "engine.resistance.Resistance")
+        resistance_raw_api_object.add_raw_member("properties", properties, "engine.resistance.Resistance")
 
         line.add_raw_api_object(resistance_raw_api_object)
         resistance_forward_ref = ForwardRef(line, resistance_ref)

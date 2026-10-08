@@ -3,17 +3,16 @@
 """
 Check for updates in the openage converter modpacks.
 """
-from __future__ import annotations
-import typing
 
+from __future__ import annotations
+
+import typing
 from itertools import chain
 
 from openage.util.version import SemanticVersion
 
 from ....log import info
-
 from ..init.version_detect import create_version_objects
-
 
 if typing.TYPE_CHECKING:
     from openage.util.fslike.union import UnionPath
@@ -41,9 +40,12 @@ def check_updates(available_modpacks: dict[str, str], game_info_dir: UnionPath):
                     modpack_version = SemanticVersion("0.0.0")
 
                 if converter_version > modpack_version:
-                    info(("Modpack %s v%s is outdated: "
-                          "newer version v%s is available"),
-                         targetmod_name, modpack_version, converter_version)
+                    info(
+                        ("Modpack %s v%s is outdated: newer version v%s is available"),
+                        targetmod_name,
+                        modpack_version,
+                        converter_version,
+                    )
 
                 else:
                     info("Modpack %s v%s is up-to-date", targetmod_name, modpack_version)

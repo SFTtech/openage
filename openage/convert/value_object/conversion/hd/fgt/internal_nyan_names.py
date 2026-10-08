@@ -33,13 +33,11 @@ BUILDING_LINE_LOOKUPS = {
 
 # key: (head) unit id; value: (nyan object name, filename prefix)
 # contains only new/changed ambience of Forgotten
-AMBIENT_GROUP_LOOKUPS = {
-}
+AMBIENT_GROUP_LOOKUPS = {}
 
 # key: index; value: (nyan object name, filename prefix, units belonging to group, variant type)
 # contains only new/changed variants of Forgotten
-VARIANT_GROUP_LOOKUPS = {
-}
+VARIANT_GROUP_LOOKUPS = {}
 
 # key: head unit id; value: (nyan object name, filename prefix)
 # contains only new techs of Forgotten
@@ -77,7 +75,7 @@ TECH_GROUP_LOOKUPS = {
     514: ("CorvinianArmy", "corvinian_army"),
     515: ("RecurveBow", "recurve_bow"),
     516: ("AndeanSling", "andean_sling"),
-    517: ("FabricShields", "fabric_shields"),           # previously called Couriers
+    517: ("FabricShields", "fabric_shields"),  # previously called Couriers
     521: ("ImperialCamelRider", "imperial_camel_rider"),
 }
 
@@ -102,14 +100,12 @@ GRAPHICS_SET_LOOKUPS = {
 # key: terrain index; value: (unit terrain restrictions (manual), nyan object name, filename prefix)
 # TODO: Use terrain restrictions from .dat
 # contains only new/changed terrains of DE2
-TERRAIN_GROUP_LOOKUPS = {
-}
+TERRAIN_GROUP_LOOKUPS = {}
 
 # key: not relevant; value: (terrain indices, unit terrain restrictions (manual), nyan object name)
 # TODO: Use terrain restrictions from .dat
 # contains only new/changed terrain types of DE2
-TERRAIN_TYPE_LOOKUPS = {
-}
+TERRAIN_TYPE_LOOKUPS = {}
 
 # key: armor class; value: Gather ability name
 # contains only new armors of Forgotten

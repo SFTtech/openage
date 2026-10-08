@@ -37,7 +37,7 @@ Those who already have the latest stable versions of these programs can skip thi
 Open a command prompt at `<Python 3 installation directory>/Scripts`
 
 ```ps
-pip install cython numpy lz4 toml pillow pygments pyreadline3 mako
+pip install cython setuptools numpy lz4 toml pillow pygments pyreadline3 mako
 ```
 _Note:_ Make sure the Python 3 instance you're installing these scripts for is the one you call `python` in CMD
 

@@ -10,28 +10,23 @@ Attemts to use OS facilities such as hardlinking, and falls back to copying.
 
 import argparse
 import os
-from pathlib import Path
 import shutil
+from pathlib import Path
 
 
 def main():
-    """ CLI entry point """
+    """CLI entry point"""
     cli = argparse.ArgumentParser()
-    cli.add_argument("module_list_file", help=(
-        "semicolon-separated list of all modules that shall be installed "
-        "in-place."
-    ))
-    cli.add_argument("configuration", help=(
-        "the build configuration like Debug or Release"
-    ))
-    cli.add_argument("--clean", action="store_true", help=(
-        "remove instead of creating"
-    ))
+    cli.add_argument(
+        "module_list_file", help=("semicolon-separated list of all modules that shall be installed in-place.")
+    )
+    cli.add_argument("configuration", help=("the build configuration like Debug or Release"))
+    cli.add_argument("--clean", action="store_true", help=("remove instead of creating"))
     args = cli.parse_args()
 
-    with open(args.module_list_file, encoding='utf8') as fileobj:
-        modules = fileobj.read().strip().split(';')
-        if modules == ['']:
+    with open(args.module_list_file, encoding="utf8") as fileobj:
+        modules = fileobj.read().strip().split(";")
+        if modules == [""]:
             modules = []
 
     for module in modules:
@@ -73,5 +68,5 @@ def main():
         shutil.copy(sourcefile, targetfile)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

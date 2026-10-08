@@ -1,0 +1,107 @@
+# Python project metadata, used by the development tools (uv, ruff, ty, ...).
+#
+# The openage python modules are built and installed by the CMake buildsystem,
+# so this project is not installable and declares no build backend.
+# Dependencies used in the CMake build system are then picked up from the venv.
+
+[project]
+name = "openage"
+version = "0.6.0"
+description = "free (as in freedom) open source reimplementation of the Genie engine"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "GPL-3.0-or-later"
+maintainers = [
+    { name = "SFTtech", email = "openage@sft.lol" },
+]
+
+dependencies = [
+    "cython",
+    "lz4",
+    "mako",
+    "numpy",
+    "pillow",
+    "pygments",
+    "setuptools",
+    "tomli-w",
+]
+
+[project.urls]
+homepage = "https://github.com/SFTtech/openage"
+source = "https://github.com/SFTtech/openage"
+issues = "https://github.com/SFTtech/openage/issues"
+releasenotes = "https://github.com/SFTtech/openage/releases"
+
+[dependency-groups]
+dev = [
+    "cython",
+    "ruff",
+    "ty",
+]
+
+[tool.uv]
+# the python modules live in the source tree, CMake compiles the C++ and Cython
+# parts; there is nothing to build into a wheel here
+package = false
+
+[tool.ty.analysis]
+# Cython extension modules and the generated config module only exist in a
+# build tree, so they cannot be resolved from the sources.
+allowed-unresolved-imports = [
+    "**.cabchecksum",
+    "**.config",
+    "**.cpp",
+    "**.cpp_testing",
+    "**.cvar",
+    "**.cython_check",
+    "**.exctranslate",
+    "**.exctranslate_tests",
+    "**.log_cpp",
+    "**.lzxd",
+    "**.main_cpp",
+    "**.opusenc",
+    "**.png_create",
+    "**.pyobject",
+    "**.setup_checker",
+    "**.sld",
+    "**.slp",
+    "**.smp",
+    "**.smx",
+    "**.terrain_merge",
+    "**.texture_merge",
+    "**.versions",
+    "**.visgrep",
+]
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+extend-exclude = [
+    ".idea",
+    ".mypy_cache",
+    ".venv*",
+    "docs",
+    "debian",
+    "__pycache__",
+    "*.egg_info",
+]
+
+[tool.ruff.lint]
+select = ["E", "W", "B", "F", "I", "C", "N", "PL", "RUF", "PYI", "I001"]
+ignore = [
+    "E722",
+    "PLR2004",
+    "PLR0912",
+    "PLR5501",
+    "PLC0415",
+    "PLR0911",
+    "C408",
+    "PLR0915",
+    "PLW2901",
+    "C901",
+]
+pylint.max-args = 10
+
+[tool.ruff.lint.per-file-ignores]
+# CAB struct fields are named after the MS-CAB specification
+"openage/cabextract/cab.py" = ["N815"]

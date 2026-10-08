@@ -2,18 +2,17 @@
 """
 Downloads the SFT test cab archive and uses it to test the cabextract code.
 """
+
 from __future__ import annotations
-import typing
 
 import os
-from tempfile import gettempdir
 from hashlib import md5
+from tempfile import gettempdir
 from urllib.request import urlopen
 
+from ..util.filelike.abstract import FileLikeObject
+from ..util.fslike.directory import Directory
 from .cab import CABFile
-
-if typing.TYPE_CHECKING:
-    from io import BufferedReader
 
 # the test archive file has been generated using ./gen_test_arc.sh
 
@@ -29,24 +28,24 @@ TEST_FILES = {
     "testfileb": ("7f614da9329cd3aebf59b91aadc30bf0", 67108864),
     "testfilec": ("d41d8cd98f00b204e9800998ecf8427e", 0),
     "testdir/testfiled": ("6f75302850b485421030f034fe67380b", 10),
-    "testdir/testfilee": ("65116b303f205837d280d3c08b1e0419", 1033720)
+    "testdir/testfilee": ("65116b303f205837d280d3c08b1e0419", 1033720),
 }
 
 # local cache filename
 TEST_ARCHIVE_FILENAME = os.path.join(gettempdir(), "openage_testarc.cab")
 
 
-def open_cached_test_archive():
+def open_cached_test_archive() -> FileLikeObject:
     """
     Opens the cached test archive file.
     """
     if os.path.getsize(TEST_ARCHIVE_FILENAME) != TEST_ARCHIVE_SIZE:
         raise OSError("test archive has wrong size")
 
-    return open(TEST_ARCHIVE_FILENAME, 'rb')
+    return Directory(gettempdir()).root[os.path.basename(TEST_ARCHIVE_FILENAME)].open("rb")
 
 
-def open_test_archive() -> BufferedReader:
+def open_test_archive() -> FileLikeObject:
     """
     Opens the cached test archive file, or downloads it if necessary.
     """
@@ -55,7 +54,7 @@ def open_test_archive() -> BufferedReader:
     except OSError:
         pass
 
-    with open(TEST_ARCHIVE_FILENAME, 'wb') as test_arc:
+    with open(TEST_ARCHIVE_FILENAME, "wb") as test_arc:
         with urlopen(TEST_ARCHIVE_URL) as url:
             test_arc.write(url.read())
 
@@ -66,7 +65,7 @@ def test():
     """
     The actual test function; registered in openage.testing.testlist.
     """
-    from ..testing.testing import assert_value, assert_raises, result
+    from ..testing.testing import assert_raises, assert_value, result
 
     # acquire the actual test archive file and create the CABFile Path object
     cab = CABFile(open_test_archive()).root
@@ -77,16 +76,10 @@ def test():
     testfilea = cab["testfilea"]
 
     # list dir
-    assert_value(
-        list(cab.list()),
-        [b"testdir", b"testfilea", b"testfileb", b"testfilec"]
-    )
+    assert_value(list(cab.list()), [b"testdir", b"testfilea", b"testfileb", b"testfilec"])
 
     # list subdir
-    assert_value(
-        list(testdir.list()),
-        [b"testfiled", b"testfilee"]
-    )
+    assert_value(list(testdir.list()), [b"testfiled", b"testfilee"])
 
     # list nonexisting dir
     with assert_raises(FileNotFoundError):
@@ -113,10 +106,10 @@ def test():
 
     # open nonexisting file
     with assert_raises(FileNotFoundError):
-        result(nonexistingfile.open('rb'))
+        result(nonexistingfile.open("rb"))
 
     # open existing file
-    testfiled = cab.joinpath('///testdir//.//testfiled').open('rb')
+    testfiled = cab.joinpath("///testdir//.//testfiled").open("rb")
     assert_value(testfiled, validator=bool)
 
     # seek around and read a bit
@@ -136,5 +129,5 @@ def test():
     for filename, (md5sum, size) in TEST_FILES.items():
         path = cab[filename]
 
-        assert_value(md5(path.open('rb').read()).hexdigest(), md5sum)
+        assert_value(md5(path.open("rb").read()).hexdigest(), md5sum)
         assert_value(path.filesize, size)

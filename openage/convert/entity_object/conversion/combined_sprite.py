@@ -8,11 +8,13 @@ from __future__ import annotations
 
 import typing
 
-
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.converter_object import ConverterObjectContainer
-    from openage.convert.entity_object.conversion.converter_object import ConverterObject
     from openage.convert.entity_object.conversion.aoc.genie_graphic import GenieGraphic
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
+    from openage.convert.entity_object.conversion.converter_object import (
+        ConverterObject,
+        RawAPIObject,
+    )
 
 
 class CombinedSprite:
@@ -22,14 +24,9 @@ class CombinedSprite:
     This will become a spritesheet texture with a sprite file.
     """
 
-    __slots__ = ('head_sprite_id', 'filename', 'data', 'metadata', '_refs')
+    __slots__ = ("_refs", "data", "filename", "head_sprite_id", "metadata")
 
-    def __init__(
-        self,
-        head_sprite_id: int,
-        filename: str,
-        full_data_set: ConverterObjectContainer
-    ):
+    def __init__(self, head_sprite_id: int, filename: str, full_data_set: GenieObjectContainer):
         """
         Creates a new CombinedSprite instance.
 
@@ -55,7 +52,7 @@ class CombinedSprite:
         # >1 = store in 'shared' resources;
         self._refs = []
 
-    def add_reference(self, referer: ConverterObject) -> None:
+    def add_reference(self, referer: RawAPIObject) -> None:
         """
         Add an object that is referencing this sprite.
         """
@@ -88,7 +85,7 @@ class CombinedSprite:
         """
         return self.head_sprite_id
 
-    def get_relative_sprite_location(self) -> str:
+    def get_relative_sprite_location(self) -> str | None:
         """
         Return the sprite file location relative to where the file
         is expected to be in the modpack.
@@ -107,12 +104,12 @@ class CombinedSprite:
         """
         self._refs.remove(referer)
 
-    def resolve_graphics_location(self) -> str:
+    def resolve_graphics_location(self) -> dict[int, str]:
         """
         Returns the planned location in the modpack of all image files
         referenced by the sprite.
         """
-        location_dict = {}
+        location_dict: dict[int, str] = {}
 
         for graphic in self.get_graphics():
             if graphic.is_shared():
@@ -133,7 +130,7 @@ class CombinedSprite:
         if len(self._refs) == 1:
             return f"{self._refs[0].get_file_location()[0]}{'graphics/'}"
 
-        return None
+        raise ValueError(f"{self!r}: sprite has no referencing objects")
 
     def __repr__(self):
         return f"CombinedSprite<{self.head_sprite_id}>"

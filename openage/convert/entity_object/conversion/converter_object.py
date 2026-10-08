@@ -14,26 +14,43 @@ import typing
 
 from openage.convert.value_object.read.dynamic_loader import DynamicLoader
 
-from ....nyan.nyan_structs import NyanObject, NyanPatch, NyanPatchMember, MemberOperator
+from ....nyan.nyan_structs import MemberOperator, MemberSpecialValue, NyanObject, NyanPatch, NyanPatchMember
+from ....util.ordered_set import OrderedSet
 from ...value_object.conversion.forward_ref import ForwardRef
 from ...value_object.read.value_members import NoDiffMember, ValueMember
 from .combined_sound import CombinedSound
 from .combined_sprite import CombinedSprite
 from .combined_terrain import CombinedTerrain
 
+if typing.TYPE_CHECKING:
+    from .aoc.genie_object_container import GenieObjectContainer
 
-class ConverterObject:
+# Values that get resolved to nyan values when the raw API object is converted.
+RawMemberValue = (
+    float
+    | bool
+    | str
+    | list
+    | dict
+    | MemberSpecialValue
+    | NyanObject
+    | ForwardRef
+    | CombinedSprite
+    | CombinedTerrain
+    | CombinedSound
+)
+
+
+class ConverterObject[IdT: (int, str)]:
     """
     Storage object for data objects in the to-be-converted games.
+
+    Objects read from game data have int IDs, diffs between two objects have str IDs.
     """
 
-    __slots__ = ('obj_id', 'members')
+    __slots__ = ("members", "obj_id")
 
-    def __init__(
-        self,
-        obj_id: typing.Union[str, int],
-        members: dict[str, ValueMember] = None
-    ):
+    def __init__(self, obj_id: IdT, members: dict[str, ValueMember] | None = None):
         """
         Creates a new ConverterObject.
 
@@ -56,7 +73,7 @@ class ConverterObject:
             else:
                 raise TypeError("members must be an instance of ValueMember")
 
-    def get_id(self) -> typing.Union[str, int]:
+    def get_id(self) -> IdT:
         """
         Returns the object's ID.
         """
@@ -96,7 +113,7 @@ class ConverterObject:
         """
         self.members.pop(member_id, None)
 
-    def short_diff(self, other: ConverterObject) -> ConverterObject:
+    def short_diff(self, other: ConverterObject[IdT]) -> ConverterObject[str]:
         """
         Returns the obj_diff between two objects as another ConverterObject.
 
@@ -116,7 +133,7 @@ class ConverterObject:
 
         return ConverterObject(f"{self.obj_id}-{other.get_id()}-sdiff", members=obj_diff)
 
-    def diff(self, other: ConverterObject) -> ConverterObject:
+    def diff(self, other: ConverterObject[IdT]) -> ConverterObject[str]:
         """
         Returns the obj_diff between two objects as another ConverterObject.
         """
@@ -137,8 +154,7 @@ class ConverterObject:
         return self.get_member(key)
 
     def __repr__(self):
-        raise NotImplementedError(
-            f"return short description of the object {type(self)}")
+        raise NotImplementedError(f"return short description of the object {type(self)}")
 
 
 class ConverterObjectGroup:
@@ -148,13 +164,12 @@ class ConverterObjectGroup:
     instances are converted to the nyan API.
     """
 
-    __slots__ = ('group_id', 'raw_api_objects', 'raw_member_pushs')
+    __slots__ = ("group_id", "raw_api_objects", "raw_member_pushs")
 
-    def __init__(
-        self,
-        group_id: typing.Union[str, int],
-        raw_api_objects: list[RawAPIObject] = None
-    ):
+    # Provided by the groups built from game data; the plain pregen group has none.
+    data: GenieObjectContainer
+
+    def __init__(self, group_id: int, raw_api_objects: list[RawAPIObject] | None = None):
         """
         Creates a new ConverterObjectGroup.
 
@@ -174,7 +189,7 @@ class ConverterObjectGroup:
         if raw_api_objects:
             self._create_raw_api_object_dict(raw_api_objects)
 
-    def get_id(self) -> typing.Union[str, int]:
+    def get_id(self) -> int:
         """
         Returns the object group's ID.
         """
@@ -228,13 +243,16 @@ class ConverterObjectGroup:
         for raw_api_object in self.raw_api_objects.values():
             if not raw_api_object.is_ready():
                 if not raw_api_object.nyan_object:
-                    raise ValueError(f"{raw_api_object}: object is not ready for export: "
-                                     "Nyan object not initialized.")
+                    raise ValueError(
+                        f"{raw_api_object}: object is not ready for export: Nyan object not initialized."
+                    )
 
                 uninit_members = raw_api_object.get_nyan_object().get_uninitialized_members()
                 concat_names = ", ".join(f"'{member.get_name()}'" for member in uninit_members)
-                raise ValueError(f"{raw_api_object}: object is not ready for export: "
-                                 f"Member(s) {concat_names} not initialized.")
+                raise ValueError(
+                    f"{raw_api_object}: object is not ready for export: "
+                    f"Member(s) {concat_names} not initialized."
+                )
 
     def execute_raw_member_pushs(self) -> None:
         """
@@ -243,9 +261,9 @@ class ConverterObjectGroup:
         for push_object in self.raw_member_pushs:
             forward_ref = push_object.get_object_target()
             raw_api_object = forward_ref.resolve_raw()
-            raw_api_object.extend_raw_member(push_object.get_member_name(),
-                                             push_object.get_push_value(),
-                                             push_object.get_member_origin())
+            raw_api_object.extend_raw_member(
+                push_object.get_member_name(), push_object.get_push_value(), push_object.get_member_origin()
+            )
 
     def get_raw_api_object(self, obj_id: str) -> RawAPIObject:
         """
@@ -255,8 +273,9 @@ class ConverterObjectGroup:
             return self.raw_api_objects[obj_id]
 
         except KeyError as missing_raw_api_obj:
-            raise KeyError(f"{repr(self)}: Could not find raw API object "
-                           f"with obj_id {obj_id}") from missing_raw_api_obj
+            raise KeyError(
+                f"{self!r}: Could not find raw API object with obj_id {obj_id}"
+            ) from missing_raw_api_obj
 
     def get_raw_api_objects(self) -> dict[str, RawAPIObject]:
         """
@@ -264,13 +283,13 @@ class ConverterObjectGroup:
         """
         return self.raw_api_objects
 
-    def has_raw_api_object(self, obj_id: typing.Union[str, int]) -> bool:
+    def has_raw_api_object(self, obj_id: str | int) -> bool:
         """
         Returns True if the object has a subobject with the specified ID.
         """
         return obj_id in self.raw_api_objects
 
-    def remove_raw_api_object(self, obj_id: typing.Union[str, int]) -> None:
+    def remove_raw_api_object(self, obj_id: str | int) -> None:
         """
         Removes a subobject from the object.
         """
@@ -296,16 +315,25 @@ class RawAPIObject:
     The 'expected' values two have to be resolved in an additional step.
     """
 
-    __slots__ = ('obj_id', 'name', 'api_ref', 'raw_members', 'raw_parents',
-                 '_location', '_filename', 'nyan_object', '_patch_target',
-                 'raw_patch_parents')
+    __slots__ = (
+        "_filename",
+        "_location",
+        "_patch_target",
+        "api_ref",
+        "name",
+        "nyan_object",
+        "obj_id",
+        "raw_members",
+        "raw_parents",
+        "raw_patch_parents",
+    )
 
     def __init__(
         self,
-        obj_id: typing.Union[str, int],
+        obj_id: str,
         name: str,
         api_ref: dict[str, NyanObject],
-        location: typing.Union[str, ForwardRef] = ""
+        location: str | ForwardRef = "",
     ):
         """
         Creates a raw API object.
@@ -338,8 +366,8 @@ class RawAPIObject:
     def add_raw_member(
         self,
         name: str,
-        value: typing.Union[int, float, bool, str, list, dict, ForwardRef],
-        origin: str
+        value: RawMemberValue,
+        origin: str,
     ) -> None:
         """
         Adds a raw member to the object.
@@ -356,9 +384,9 @@ class RawAPIObject:
     def add_raw_patch_member(
         self,
         name: str,
-        value: typing.Union[int, float, bool, str, list, dict, ForwardRef],
+        value: RawMemberValue,
         origin: str,
-        operator: MemberOperator
+        operator: MemberOperator,
     ) -> None:
         """
         Adds a raw patch member to the object.
@@ -392,12 +420,7 @@ class RawAPIObject:
         """
         self.raw_patch_parents.append(parent_id)
 
-    def extend_raw_member(
-        self,
-        name: str,
-        push_value: list,
-        origin: str
-    ) -> None:
+    def extend_raw_member(self, name: str, push_value: list, origin: str) -> None:
         """
         Extends a raw member value if the value is a list.
 
@@ -418,16 +441,17 @@ class RawAPIObject:
                 break
 
         else:
-            raise ValueError(f"{repr(self)}: Cannot extend raw member {name} "
-                             f"with origin {origin}: member not found")
+            raise ValueError(
+                f"{self!r}: Cannot extend raw member {name} with origin {origin}: member not found"
+            )
 
     def create_nyan_object(self) -> None:
         """
         Create the nyan object for this raw API object. Members have to be created separately.
         """
-        parents = []
+        parents = OrderedSet()
         for raw_parent in self.raw_parents:
-            parents.append(self.api_ref[raw_parent])
+            parents.add(self.api_ref[raw_parent])
 
         if self.is_patch():
             self.nyan_object = NyanPatch(self.name, parents)
@@ -442,24 +466,29 @@ class RawAPIObject:
         The nyan object has to be created before this function can be called.
         """
         if self.nyan_object is None:
-            raise RuntimeError(f"{repr(self)}: nyan object needs to be created before "
-                               "member values can be assigned")
+            raise RuntimeError(
+                f"{self!r}: nyan object needs to be created before member values can be assigned"
+            )
 
         for raw_member in self.raw_members:
             member_name = raw_member[0]
             member_value = raw_member[1]
             member_origin = self.api_ref[raw_member[2]]
-            member_operator = None
-            if self.is_patch():
-                member_operator = raw_member[3]
 
             # Resolve forward references to objects/assets and trim floats
             member_value = self._resolve_raw_values(member_value)
 
             if self.is_patch():
-                nyan_member = NyanPatchMember(member_name, self.nyan_object.get_target(),
-                                              member_origin, member_value, member_operator)
-                self.nyan_object.add_member(nyan_member)
+                member_operator = raw_member[3]
+                assert isinstance(member_operator, MemberOperator)
+
+                nyan_object = self.nyan_object
+                assert isinstance(nyan_object, NyanPatch)
+
+                nyan_member = NyanPatchMember(
+                    member_name, nyan_object.get_target(), member_origin, member_value, member_operator
+                )
+                nyan_object.add_member(nyan_member)
 
             else:
                 nyan_member = self.nyan_object.get_member_by_name(member_name, member_origin)
@@ -476,17 +505,21 @@ class RawAPIObject:
             target = self._patch_target.resolve()
 
         else:
+            assert self._patch_target is not None
             target = self._patch_target
 
-        self.nyan_object.set_target(target)
+        nyan_object = self.nyan_object
+        assert isinstance(nyan_object, NyanPatch)
+        nyan_object.set_target(target)
 
     def get_filename(self) -> str:
         """
         Returns the filename of the raw API object.
         """
+        assert self._filename is not None
         return self._filename
 
-    def get_file_location(self) -> str:
+    def get_file_location(self) -> tuple[str, str]:
         """
         Returns a tuple with
             1. the relative path to the directory
@@ -505,17 +538,22 @@ class RawAPIObject:
                 nesting_raw_api_object = nesting_location.resolve_raw()
                 nesting_location = nesting_raw_api_object.get_location()
 
+            assert isinstance(nesting_location, str)
+
             return (nesting_location, nesting_raw_api_object.get_filename())
+
+        assert isinstance(self._location, str)
+        assert self._filename is not None
 
         return (self._location, self._filename)
 
-    def get_id(self) -> typing.Union[str, int]:
+    def get_id(self) -> str:
         """
         Returns the ID of the raw API object.
         """
         return self.obj_id
 
-    def get_location(self) -> typing.Union[str, ForwardRef]:
+    def get_location(self) -> str | ForwardRef:
         """
         Returns the relative path to a directory or an ForwardRef
         to another RawAPIObject.
@@ -554,7 +592,7 @@ class RawAPIObject:
         """
         self._filename = f"{filename}.{suffix}"
 
-    def set_location(self, location: typing.Union[str, ForwardRef]) -> None:
+    def set_location(self, location: str | ForwardRef) -> None:
         """
         Set the relative location of the object in a modpack. This must
         be a path to a nyan file or an ForwardRef to a nyan object.
@@ -565,7 +603,7 @@ class RawAPIObject:
         """
         self._location = location
 
-    def set_patch_target(self, target: typing.Union[ForwardRef, NyanObject]):
+    def set_patch_target(self, target: ForwardRef | NyanObject):
         """
         Set an ForwardRef as a target for this object. If this
         is done, the RawAPIObject will be converted to a patch.
@@ -576,7 +614,7 @@ class RawAPIObject:
         self._patch_target = target
 
     @staticmethod
-    def _resolve_raw_value(value) -> typing.Union[NyanObject, str, float]:
+    def _resolve_raw_value(value) -> NyanObject | str | float:
         """
         Check if a raw member value contains a reference to a resource (nyan
         objects or asset files), resolve the reference to a nyan-compatible value
@@ -627,9 +665,7 @@ class RawAPIObject:
             # Dicts
             temp_values = {}
             for key, val in values.items():
-                temp_values.update({
-                    self._resolve_raw_value(key): self._resolve_raw_value(val)
-                })
+                temp_values.update({self._resolve_raw_value(key): self._resolve_raw_value(val)})
 
             return temp_values
 
@@ -647,15 +683,9 @@ class RawMemberPush:
     pushed to the raw API objects before their nyan members are created.
     """
 
-    __slots__ = ('forward_ref', 'member_name', 'member_origin', 'push_value')
+    __slots__ = ("forward_ref", "member_name", "member_origin", "push_value")
 
-    def __init__(
-        self,
-        forward_ref: ForwardRef,
-        member_name: str,
-        member_origin: str,
-        push_value: list
-    ):
+    def __init__(self, forward_ref: ForwardRef, member_name: str, member_origin: str, push_value: list):
         """
         Creates a new member push.
 

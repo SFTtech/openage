@@ -6,20 +6,23 @@
 Convert media information to metadata definitions and export
 requests. Subroutine of the main HD processor.
 """
+
 from __future__ import annotations
+
 import typing
 
 from ....entity_object.export.formats.sprite_metadata import LayerMode as SpriteLayerMode
 from ....entity_object.export.formats.terrain_metadata import LayerMode as TerrainLayerMode
 from ....entity_object.export.media_export_request import MediaExportRequest
-from ....entity_object.export.metadata_export import SpriteMetadataExport
-from ....entity_object.export.metadata_export import TextureMetadataExport
-from ....entity_object.export.metadata_export import TerrainMetadataExport
+from ....entity_object.export.metadata_export import (
+    SpriteMetadataExport,
+    TerrainMetadataExport,
+    TextureMetadataExport,
+)
 from ....value_object.read.media_types import MediaType
 
 if typing.TYPE_CHECKING:
-    from openage.convert.entity_object.conversion.aoc.genie_object_container\
-        import GenieObjectContainer
+    from openage.convert.entity_object.conversion.aoc.genie_object_container import GenieObjectContainer
 
 
 class HDMediaSubprocessor:
@@ -48,8 +51,7 @@ class HDMediaSubprocessor:
             graphic_targetdirs = sprite.resolve_graphics_location()
 
             metadata_filename = f"{sprite.get_filename()}.{'sprite'}"
-            sprite_meta_export = SpriteMetadataExport(sprite.resolve_sprite_location(),
-                                                      metadata_filename)
+            sprite_meta_export = SpriteMetadataExport(sprite.resolve_sprite_location(), metadata_filename)
             full_data_set.metadata_exports.append(sprite_meta_export)
 
             for graphic in ref_graphics:
@@ -58,20 +60,18 @@ class HDMediaSubprocessor:
                     continue
 
                 targetdir = graphic_targetdirs[graphic_id]
-                source_filename = f"{str(graphic['slp_id'].value)}.slp"
-                target_filename = f"{sprite.get_filename()}_{str(graphic['slp_id'].value)}.png"
+                source_filename = f"{graphic['slp_id'].value!s}.slp"
+                target_filename = f"{sprite.get_filename()}_{graphic['slp_id'].value!s}.png"
 
-                export_request = MediaExportRequest(MediaType.GRAPHICS,
-                                                    targetdir,
-                                                    source_filename,
-                                                    target_filename)
+                export_request = MediaExportRequest(
+                    MediaType.GRAPHICS, targetdir, source_filename, target_filename
+                )
                 full_data_set.graphics_exports.update({graphic_id: export_request})
 
                 # Texture metadata file definiton
                 # Same file stem as the image file and same targetdir
                 texture_meta_filename = f"{target_filename[:-4]}.texture"
-                texture_meta_export = TextureMetadataExport(targetdir,
-                                                            texture_meta_filename)
+                texture_meta_export = TextureMetadataExport(targetdir, texture_meta_filename)
                 full_data_set.metadata_exports.append(texture_meta_export)
 
                 # Add texture image filename to texture metadata
@@ -100,15 +100,17 @@ class HDMediaSubprocessor:
                 frame_count = graphic["frame_count"].value
                 angle_count = graphic["angle_count"].value
                 mirror_mode = graphic["mirroring_mode"].value
-                sprite_meta_export.add_graphics_metadata(target_filename,
-                                                         texture_meta_filename,
-                                                         layer_mode,
-                                                         layer_pos,
-                                                         frame_rate,
-                                                         replay_delay,
-                                                         frame_count,
-                                                         angle_count,
-                                                         mirror_mode)
+                sprite_meta_export.add_graphics_metadata(
+                    target_filename,
+                    texture_meta_filename,
+                    layer_mode,
+                    layer_pos,
+                    frame_rate,
+                    replay_delay,
+                    frame_count,
+                    angle_count,
+                    mirror_mode,
+                )
 
                 # Notify metadata export about SLP metadata when the file is exported
                 export_request.add_observer(texture_meta_export)
@@ -122,18 +124,16 @@ class HDMediaSubprocessor:
             srcfile_prefix = texture.get_terrain()["filename"].value
 
             targetdir = texture.resolve_graphics_location()
-            source_filename = f"{str(srcfile_prefix)}_00_color.png"
+            source_filename = f"{srcfile_prefix!s}_00_color.png"
             target_filename = f"{texture.get_filename()}.png"
 
-            export_request = MediaExportRequest(MediaType.TERRAIN,
-                                                targetdir,
-                                                source_filename,
-                                                target_filename)
+            export_request = MediaExportRequest(
+                MediaType.TERRAIN, targetdir, source_filename, target_filename
+            )
             full_data_set.graphics_exports.update({slp_id: export_request})
 
             texture_meta_filename = f"{texture.get_filename()}.texture"
-            texture_meta_export = TextureMetadataExport(targetdir,
-                                                        texture_meta_filename)
+            texture_meta_export = TextureMetadataExport(targetdir, texture_meta_filename)
             full_data_set.metadata_exports.append(texture_meta_export)
 
             # Add texture image filename to texture metadata
@@ -145,29 +145,25 @@ class HDMediaSubprocessor:
                         "size": (512, 512),
                         "subtex_metadata": [
                             {
-                                "x":  0,
-                                "y":  0,
-                                "w":  512,
-                                "h":  512,
+                                "x": 0,
+                                "y": 0,
+                                "w": 512,
+                                "h": 512,
                                 "cx": 0,
                                 "cy": 0,
                             }
-                        ]
-                    }}
+                        ],
+                    }
+                },
             )
 
             terrain_meta_filename = f"{texture.get_filename()}.terrain"
-            terrain_meta_export = TerrainMetadataExport(targetdir,
-                                                        terrain_meta_filename)
+            terrain_meta_export = TerrainMetadataExport(targetdir, terrain_meta_filename)
             full_data_set.metadata_exports.append(terrain_meta_export)
 
-            terrain_meta_export.add_graphics_metadata(target_filename,
-                                                      texture_meta_filename,
-                                                      TerrainLayerMode.OFF,
-                                                      0,
-                                                      0.0,
-                                                      0.0,
-                                                      1)
+            terrain_meta_export.add_graphics_metadata(
+                target_filename, texture_meta_filename, TerrainLayerMode.OFF, 0, 0.0, 0.0, 1
+            )
 
     @staticmethod
     def create_sound_requests(full_data_set: GenieObjectContainer) -> None:
@@ -180,12 +176,9 @@ class HDMediaSubprocessor:
             sound_id = sound.get_file_id()
 
             targetdir = sound.resolve_sound_location()
-            source_filename = f"{str(sound_id)}.wav"
+            source_filename = f"{sound_id!s}.wav"
             target_filename = f"{sound.get_filename()}.opus"
 
-            export_request = MediaExportRequest(MediaType.SOUNDS,
-                                                targetdir,
-                                                source_filename,
-                                                target_filename)
+            export_request = MediaExportRequest(MediaType.SOUNDS, targetdir, source_filename, target_filename)
 
             full_data_set.sound_exports.update({sound_id: export_request})

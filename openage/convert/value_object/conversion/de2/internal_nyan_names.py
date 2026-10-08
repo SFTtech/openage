@@ -12,52 +12,46 @@ figure out the names for a nyan object.
 # contains only new units of DE2
 UNIT_LINE_LOOKUPS = {
     705: ("Cow", "cow"),
-    1225: ("KonnikCastle", "konnik"),                 # Castle unit
+    1225: ("KonnikCastle", "konnik"),  # Castle unit
     1228: ("Keshik", "keshik"),
     1231: ("Kipchak", "kipchak"),
     1234: ("Leitis", "leitis"),
     1239: ("Ibex", "ibex"),
     1243: ("Goose", "goose"),
     1245: ("Pig", "pig"),
-    1254: ("KonnikKrepost", "konnik"),                 # Krepost unit
-    1258: ("Ram", "ram"),                       # replacement for ID 35?
+    1254: ("KonnikKrepost", "konnik"),  # Krepost unit
+    1258: ("Ram", "ram"),  # replacement for ID 35?
     1263: ("FlamingCamel", "flaming_camel"),
-
     # LOTW
     1370: ("SteppeLancer", "steppe_lancer"),
     1655: ("Coustillier", "coustillier"),
     1658: ("Serjeant", "serjeant"),
-    1660: ("DSerjeant", "dserjeant"),           # Donjon Serjeant
+    1660: ("DSerjeant", "dserjeant"),  # Donjon Serjeant
     # 1663: ("FlemishMilitia", "flemish_militia"),
     1699: ("FlemishMilitia", "flemish_militia"),
-
     # DOTD
     1701: ("Obuch", "obuch"),
     1704: ("HussiteWagon", "hussite_wagon"),
     1709: ("Houfnice", "houfnice"),
-
     # DOI
     1735: ("UrumiSwordsman", "urumi_swordsman"),
-    1738: ("MRatha", "mratha"),                 # Melee Rhata
+    1738: ("MRatha", "mratha"),  # Melee Rhata
     1741: ("ChakramThrower", "chakram_thrower"),
     1744: ("ArmoredElephant", "armored_elephant"),
     1747: ("Ghulam", "ghulam"),
     1750: ("Thirisadai", "thirisadai"),
     1751: ("ShrivamshaRider", "shrivamsha_rider"),
-    1755: ("CamelScout", "camel_scout"),        # technically in line with Camel rider
-    1759: ("RRatha", "rratha"),                 # Ranged Rhata
-
+    1755: ("CamelScout", "camel_scout"),  # technically in line with Camel rider
+    1759: ("RRatha", "rratha"),  # Ranged Rhata
     # ROR
     1790: ("Centurion", "centurion"),
     1795: ("Dromon", "dromon"),
-
     # TMR
     1800: ("CompositeBowman", "composite_bowman"),
     1803: ("Monaspa", "monaspa"),
     1811: ("WarriorPriest", "warrior_priest"),
     1813: ("Savar", "savar"),
     1817: ("QizilbashWarrior", "qizilbash_warrior"),
-
     # TODO: These are upgrades
     1737: ("EliteUrumiSwordsman", "elite_urumi_swordsman"),
     1743: ("EliteChakramThrower", "elite_chakram_thrower"),
@@ -67,10 +61,8 @@ UNIT_LINE_LOOKUPS = {
     1761: ("EliteRRatha", "elite_rratha"),
     1792: ("EliteCenturion", "elite_centurion"),
     1793: ("Legionary", "legionary"),
-
     1802: ("EliteCompositeBowman", "elite_composite_bowman"),
     1805: ("EliteMonaspa", "elite_monaspa"),
-
     # BfG
     2101: ("BfGUnkown_2101", "bfg_unkown_2101"),
     2102: ("BfGUnkown_2102", "bfg_unkown_2102"),
@@ -107,19 +99,14 @@ UNIT_LINE_LOOKUPS = {
 # contains only new buildings of DE2
 BUILDING_LINE_LOOKUPS = {
     1251: ("Krepost", "krepost"),
-
     # LOTW
     1665: ("Donjon", "donjon"),
-
     # DOTD
     1734: ("Folwark", "folwark"),
-
     # DOI
     1754: ("Caravanserai", "caravanserai"),
-
     # TMR
     1808: ("MuleCart", "mule_cart"),
-
     # BfG
     2119: ("BfGUnkown_2119", "bfg_unkown_2119"),
     2172: ("BfGUnkown_2172", "bfg_unkown_2172"),
@@ -127,8 +114,7 @@ BUILDING_LINE_LOOKUPS = {
 
 # key: (head) unit id; value: (nyan object name, filename prefix)
 # contains only new/changed ambience of DE2
-AMBIENT_GROUP_LOOKUPS = {
-}
+AMBIENT_GROUP_LOOKUPS = {}
 
 # key: index; value: (nyan object name, filename prefix, units belonging to group, variant type)
 # contains only new/changed variants of DE2
@@ -140,7 +126,6 @@ VARIANT_GROUP_LOOKUPS = {
 # contains only new techs of DE2
 TECH_GROUP_LOOKUPS = {
     46: ("Devotion", "devotion"),
-
     488: ("Kamandaran", "kamandaran"),
     678: ("EliteKonnik", "elite_konnik"),
     680: ("EliteKeshik", "elite_keshik"),
@@ -156,7 +141,6 @@ TECH_GROUP_LOOKUPS = {
     692: ("TowerShields", "tower_shields"),
     715: ("EliteSteppeLancer", "elite_steppe_lancer"),
     716: ("Supplies", "supplies"),
-
     # LOTW
     751: ("EliteCoustillier", "elite_coustillier"),
     753: ("EliteSerjeant", "elite_serjeant"),
@@ -164,7 +148,6 @@ TECH_GROUP_LOOKUPS = {
     755: ("FlemishRevolution", "flemish_revolution"),
     756: ("FirstCrusade", "first_crusade"),
     757: ("Scutage", "scutage"),
-
     # DOTD
     779: ("EliteObuch", "elite_obuch"),
     781: ("EliteHussiteWagon", "elite_hussite_wagon"),
@@ -175,7 +158,6 @@ TECH_GROUP_LOOKUPS = {
     786: ("WingedHussar", "winged_hussar"),
     787: ("Houfnice", "houfnice"),
     793: ("Folwark", "folwark"),
-
     # DOI
     828: ("EliteRatha", "elite_ratha"),
     830: ("EliteChakramThrower", "elite_chakram_thrower"),
@@ -188,15 +170,12 @@ TECH_GROUP_LOOKUPS = {
     838: ("SiegeElephant", "siege_elephant"),
     840: ("EliteGhulam", "elite_ghulam"),
     843: ("EliteSHrivamshaRider", "elite_shrivamsha_rider"),
-
     875: ("Gambesons", "gambesons"),
-
     # ROR
     882: ("EliteCenturion", "elite_centurion"),
     883: ("Ballistas", "ballistas"),
     884: ("Comitatensis", "comitatensis"),
     885: ("Legionary", "legionary"),
-
     # TMR
     918: ("EliteCompositeBowman", "elite_composite_bowman"),
     920: ("EliteMonaspa", "elite_monaspa"),
@@ -206,7 +185,6 @@ TECH_GROUP_LOOKUPS = {
     924: ("AsnuariCavalry", "asnuari_cavalry"),
     929: ("FortifiedChurch", "fortified_church"),
     967: ("EliteQizilbashWarrior", "elite_qizilbash_warrior"),
-
     # BfG
     1110: ("BfGUnkown_1110", "bfg_unkown_1110"),
     1111: ("BfGUnkown_1111", "bfg_unkown_1111"),
@@ -242,28 +220,22 @@ CIV_GROUP_LOOKUPS = {
     33: ("Tatars", "tatars"),
     34: ("Cumans", "cumans"),
     35: ("Lithuanians", "lithuanians"),
-
     # LOTW
     36: ("Burgundians", "burgundians"),
     37: ("Sicilians", "sicilians"),
-
     # DOTD
     38: ("Poles", "poles"),
     39: ("Bohemians", "bohemians"),
-
     # DOI
-    20: ("Hindustanis", "hindustanis"),     # Indians in HD
+    20: ("Hindustanis", "hindustanis"),  # Indians in HD
     40: ("Dravidians", "dravidians"),
     41: ("Bengalis", "bengalis"),
     42: ("Gurjaras", "gurjaras"),
-
     # ROR
     43: ("Romans", "romans"),
-
     # TMR
     44: ("Armenians", "armenians"),
     45: ("Georgians", "georgians"),
-
     # BfG
     46: ("BfGUnkown_46", "bfg_unkown_46"),
     47: ("BfGUnkown_47", "bfg_unkown_47"),
@@ -284,14 +256,12 @@ GRAPHICS_SET_LOOKUPS = {
 # key: terrain index; value: (unit terrain restrictions (manual), nyan object name, filename prefix)
 # TODO: Use terrain restrictions from .dat
 # contains only new/changed terrains of DE2
-TERRAIN_GROUP_LOOKUPS = {
-}
+TERRAIN_GROUP_LOOKUPS = {}
 
 # key: not relevant; value: (terrain indices, unit terrain restrictions (manual), nyan object name)
 # TODO: Use terrain restrictions from .dat
 # contains only new/changed terrain types of DE2
-TERRAIN_TYPE_LOOKUPS = {
-}
+TERRAIN_TYPE_LOOKUPS = {}
 
 # key: armor class; value: Gather ability name
 # contains only new armors of DE2

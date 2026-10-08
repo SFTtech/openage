@@ -1,4 +1,4 @@
-// Copyright 2024-2024 the openage authors. See copying.md for legal info.
+// Copyright 2024-2026 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -176,7 +176,7 @@ public:
 
 private:
 	/**
-	 * Update a neigbor cell during the cost integration process.
+	 * Update a neighbor cell during the cost integration process.
 	 *
 	 * @param idx Index of the neighbor cell that is updated.
 	 * @param cell_cost Cost of the neighbor cell from the cost field.

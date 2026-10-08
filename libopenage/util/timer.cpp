@@ -1,8 +1,8 @@
-// Copyright 2013-2017 the openage authors. See copying.md for legal info.
+// Copyright 2013-2026 the openage authors. See copying.md for legal info.
 
 #include "timer.h"
 
-#include <ciso646>
+#include <iso646.h>
 
 namespace openage {
 namespace util {

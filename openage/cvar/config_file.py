@@ -5,16 +5,16 @@ Load and save the configuration : file <-> console var system
 """
 
 from __future__ import annotations
+
 import typing
 
 from ..log import info, spam
-
 
 if typing.TYPE_CHECKING:
     from openage.util.fslike.path import Path
 
 
-def load_config_file(path: Path, set_cvar_func: typing.Callable, loaded_files: set = None) -> None:
+def load_config_file(path: Path, set_cvar_func: typing.Callable, loaded_files: set | None = None) -> None:
     """
     Load a config file, with possible subfile, into the cvar system.
 

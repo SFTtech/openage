@@ -5,7 +5,9 @@
 """
 Creates patches and modifiers for civs.
 """
+
 from __future__ import annotations
+
 import typing
 
 from ....entity_object.conversion.converter_object import RawAPIObject
@@ -16,7 +18,6 @@ from .tech_subprocessor import SWGBCCTechSubprocessor
 
 if typing.TYPE_CHECKING:
     from openage.convert.entity_object.conversion.aoc.genie_civ import GenieCivilizationGroup
-    from openage.convert.entity_object.conversion.aoc.genie_unit import GenieGameEntityGroup
 
 
 class SWGBCCCivSubprocessor:
@@ -38,6 +39,7 @@ class SWGBCCCivSubprocessor:
         patches.extend(AoCCivSubprocessor.setup_civ_bonus(civ_group))
 
         if len(civ_group.get_team_bonus_effects()) > 0:
+            assert civ_group.team_bonus is not None
             patches.extend(SWGBCCTechSubprocessor.get_patches(civ_group.team_bonus))
 
         return patches
@@ -99,77 +101,57 @@ class SWGBCCCivSubprocessor:
                 ore_amount += amount
 
         food_ref = f"{civ_name}.FoodStartingAmount"
-        food_raw_api_object = RawAPIObject(food_ref, "FoodStartingAmount",
-                                           dataset.nyan_api_objects)
+        food_raw_api_object = RawAPIObject(food_ref, "FoodStartingAmount", dataset.nyan_api_objects)
         food_raw_api_object.add_raw_parent("engine.util.resource.ResourceAmount")
         civ_location = ForwardRef(civ_group, civ_lookup_dict[civ_group.get_id()][0])
         food_raw_api_object.set_location(civ_location)
 
         resource = dataset.pregen_nyan_objects["util.resource.types.Food"].get_nyan_object()
-        food_raw_api_object.add_raw_member("type",
-                                           resource,
-                                           "engine.util.resource.ResourceAmount")
+        food_raw_api_object.add_raw_member("type", resource, "engine.util.resource.ResourceAmount")
 
-        food_raw_api_object.add_raw_member("amount",
-                                           food_amount,
-                                           "engine.util.resource.ResourceAmount")
+        food_raw_api_object.add_raw_member("amount", food_amount, "engine.util.resource.ResourceAmount")
 
         food_forward_ref = ForwardRef(civ_group, food_ref)
         resource_amounts.append(food_forward_ref)
 
         carbon_ref = f"{civ_name}.CarbonStartingAmount"
-        carbon_raw_api_object = RawAPIObject(carbon_ref, "CarbonStartingAmount",
-                                             dataset.nyan_api_objects)
+        carbon_raw_api_object = RawAPIObject(carbon_ref, "CarbonStartingAmount", dataset.nyan_api_objects)
         carbon_raw_api_object.add_raw_parent("engine.util.resource.ResourceAmount")
         civ_location = ForwardRef(civ_group, civ_lookup_dict[civ_group.get_id()][0])
         carbon_raw_api_object.set_location(civ_location)
 
         resource = dataset.pregen_nyan_objects["util.resource.types.Carbon"].get_nyan_object()
-        carbon_raw_api_object.add_raw_member("type",
-                                             resource,
-                                             "engine.util.resource.ResourceAmount")
+        carbon_raw_api_object.add_raw_member("type", resource, "engine.util.resource.ResourceAmount")
 
-        carbon_raw_api_object.add_raw_member("amount",
-                                             carbon_amount,
-                                             "engine.util.resource.ResourceAmount")
+        carbon_raw_api_object.add_raw_member("amount", carbon_amount, "engine.util.resource.ResourceAmount")
 
         carbon_forward_ref = ForwardRef(civ_group, carbon_ref)
         resource_amounts.append(carbon_forward_ref)
 
         nova_ref = f"{civ_name}.NovaStartingAmount"
-        nova_raw_api_object = RawAPIObject(nova_ref, "NovaStartingAmount",
-                                           dataset.nyan_api_objects)
+        nova_raw_api_object = RawAPIObject(nova_ref, "NovaStartingAmount", dataset.nyan_api_objects)
         nova_raw_api_object.add_raw_parent("engine.util.resource.ResourceAmount")
         civ_location = ForwardRef(civ_group, civ_lookup_dict[civ_group.get_id()][0])
         nova_raw_api_object.set_location(civ_location)
 
         resource = dataset.pregen_nyan_objects["util.resource.types.Nova"].get_nyan_object()
-        nova_raw_api_object.add_raw_member("type",
-                                           resource,
-                                           "engine.util.resource.ResourceAmount")
+        nova_raw_api_object.add_raw_member("type", resource, "engine.util.resource.ResourceAmount")
 
-        nova_raw_api_object.add_raw_member("amount",
-                                           nova_amount,
-                                           "engine.util.resource.ResourceAmount")
+        nova_raw_api_object.add_raw_member("amount", nova_amount, "engine.util.resource.ResourceAmount")
 
         nova_forward_ref = ForwardRef(civ_group, nova_ref)
         resource_amounts.append(nova_forward_ref)
 
         ore_ref = f"{civ_name}.OreStartingAmount"
-        ore_raw_api_object = RawAPIObject(ore_ref, "OreStartingAmount",
-                                          dataset.nyan_api_objects)
+        ore_raw_api_object = RawAPIObject(ore_ref, "OreStartingAmount", dataset.nyan_api_objects)
         ore_raw_api_object.add_raw_parent("engine.util.resource.ResourceAmount")
         civ_location = ForwardRef(civ_group, civ_lookup_dict[civ_group.get_id()][0])
         ore_raw_api_object.set_location(civ_location)
 
         resource = dataset.pregen_nyan_objects["util.resource.types.Ore"].get_nyan_object()
-        ore_raw_api_object.add_raw_member("type",
-                                          resource,
-                                          "engine.util.resource.ResourceAmount")
+        ore_raw_api_object.add_raw_member("type", resource, "engine.util.resource.ResourceAmount")
 
-        ore_raw_api_object.add_raw_member("amount",
-                                          ore_amount,
-                                          "engine.util.resource.ResourceAmount")
+        ore_raw_api_object.add_raw_member("amount", ore_amount, "engine.util.resource.ResourceAmount")
 
         ore_forward_ref = ForwardRef(civ_group, ore_ref)
         resource_amounts.append(ore_forward_ref)

@@ -4,9 +4,10 @@
 Provides Filecollection, a utility class for combining multiple file-like
 objects to a FSLikeObject.
 """
-from __future__ import annotations
-import typing
 
+from __future__ import annotations
+
+import typing
 from collections import OrderedDict
 from io import UnsupportedOperation
 from typing import NoReturn
@@ -53,12 +54,12 @@ class FileCollection(FSLikeObject):
             if subdir not in entries[1]:
                 if create:
                     if subdir in entries[0]:
-                        raise FileExistsError(b"/".join(parts[:idx + 1]))
+                        raise FileExistsError(b"/".join(parts[: idx + 1]))
                     entries[1][subdir] = OrderedDict(), OrderedDict()
                 else:
                     raise FileNotFoundError(
-                        "No such directory: " +
-                        b"/".join(parts[:idx + 1]).decode(errors='replace'))
+                        "No such directory: " + b"/".join(parts[: idx + 1]).decode(errors="replace")
+                    )
 
             entries = entries[1][subdir]
 
@@ -67,9 +68,6 @@ class FileCollection(FSLikeObject):
     def add_fileentry(self, parts, fileentry: FileEntry):
         """
         Adds a file entry (and parent directory entries, if needed).
-
-        This method should not be called directly; instead, use the
-        add_file method of Path objects that were obtained from this.
         """
         if not parts:
             raise IsADirectoryError("FileCollection.root is a directory")
@@ -87,8 +85,7 @@ class FileCollection(FSLikeObject):
         Gets a file entry. Helper method for internal use.
         """
         if not parts:
-            raise IsADirectoryError(
-                "FileCollection.root is a directory")
+            raise IsADirectoryError("FileCollection.root is a directory")
 
         entries = self.get_direntries(parts[:-1])
 
@@ -102,29 +99,34 @@ class FileCollection(FSLikeObject):
 
         return entries[0][name]
 
-    def open_r(self, parts: list[bytes]) -> StreamFragment:
+    def open_r(self, parts) -> StreamFragment:
         entry = self.get_fileentry(parts)
 
         open_r = entry.open_r()
 
         if open_r is None:
-            raise UnsupportedOperation(
-                "not readable: " +
-                b"/".join(parts).decode(errors='replace'))
+            raise UnsupportedOperation("not readable: " + b"/".join(parts).decode(errors="replace"))
 
         return open_r
 
-    def open_w(self, parts: list[bytes]):
+    def open_w(self, parts):
         entry = self.get_fileentry(parts)
 
         open_w = entry.open_w()
 
         if open_w is None:
-            raise UnsupportedOperation(
-                "not writable: " +
-                b"/".join(parts).decode(errors='replace'))
+            raise UnsupportedOperation("not writable: " + b"/".join(parts).decode(errors="replace"))
 
         return open_w
+
+    def open_rw(self, parts) -> NoReturn:
+        raise UnsupportedOperation("FileCollection.open_rw")
+
+    def open_a(self, parts) -> NoReturn:
+        raise UnsupportedOperation("FileCollection.open_a")
+
+    def open_ar(self, parts) -> NoReturn:
+        raise UnsupportedOperation("FileCollection.open_ar")
 
     def list(self, parts):
         fileentries, subdirs = self.get_direntries(parts)
@@ -153,16 +155,15 @@ class FileCollection(FSLikeObject):
         name = parts[-1]
 
         if name in parent_files:
-            raise NotADirectoryError(b'/'.join(parts))
+            raise NotADirectoryError(b"/".join(parts))
 
         try:
             files, subdirs = parent_dirs[name]
         except KeyError:
-            raise FileNotFoundError(b'/'.join(parts)) from None
+            raise FileNotFoundError(b"/".join(parts)) from None
 
         if files or subdirs:
-            raise IOError("Directory not empty: " +
-                          b'/'.join(parts).decode(errors='replace'))
+            raise IOError("Directory not empty: " + b"/".join(parts).decode(errors="replace"))
 
         del parent_dirs[name]
 
@@ -174,12 +175,12 @@ class FileCollection(FSLikeObject):
         name = parts[-1]
 
         if name in parent_dirs:
-            raise IsADirectoryError(b'/'.join(parts))
+            raise IsADirectoryError(b"/".join(parts))
 
         try:
             del parent_files[name]
         except KeyError:
-            raise FileNotFoundError(b'/'.join(parts)) from None
+            raise FileNotFoundError(b"/".join(parts)) from None
 
     def touch(self, parts) -> NoReturn:
         raise UnsupportedOperation("FileCollection.touch")
@@ -203,8 +204,8 @@ class FileCollection(FSLikeObject):
 
     def writable(self, parts) -> bool:
         try:
-            _, open_w, _, _ = self.get_fileentry(parts)
-            return open_w is not None
+            entry = self.get_fileentry(parts)
+            return type(entry).open_w is not FileEntry.open_w
         except IOError:
             # generally, directories are not writable,
             # though some of the existing files inside might be.
@@ -220,41 +221,15 @@ class FileCollection(FSLikeObject):
 
 class FileCollectionPath(Path):
     """
-    Provides an additional method for adding a file at this path.
+    Path into a FileCollection.
     """
-
-    def add_file(
-        self,
-        open_r=None,
-        open_w=None,
-        filesize: int = None,
-        mtime: float = None
-    ) -> bool:
-        """
-        All parent directories are 'created', if needed.
-
-        Any arguments may be None, and shall be callable otherwise.
-        If open_r/open_w are None, the file will write-/read-only.
-        """
-        return self.fsobj.add_fileentry(
-            self.parts, (open_r, open_w, filesize, mtime))
-
-    def add_file_from_path(self, path: Path) -> None:
-        """
-        Like add_file, but uses a Path object instead of callables.
-        """
-        if path.writable():
-            open_w = path.open_w
-        else:
-            open_w = None
-
-        self.add_file(path.open_r, open_w, path.filesize, path.mtime)
 
 
 class FileEntry:
     """
     Entry in a file collection archive.
     """
+
     # pylint: disable=no-self-use
 
     def open_r(self) -> StreamFragment:
@@ -271,7 +246,7 @@ class FileEntry:
 
     def size(self) -> int:
         """
-        Returns the size of the entr<.
+        Returns the size of the entry.
         """
         raise UnsupportedOperation("FileEntry.size")
 
