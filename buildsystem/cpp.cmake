@@ -23,15 +23,14 @@ function(declare_binary target_name output_name type)
 			endif()
 
 			if(NOT "${CMAKE_CXX_FLAGS}" MATCHES "-fsanitize" AND NOT MSVC)
-				if(APPLE)
-					set(link_flag "-undefined,error")
-				else()
-					set(link_flag "--no-undefined")
-				endif()
 				set_target_properties("${target_name}" PROPERTIES
 					COMPILE_FLAGS "${EXTRA_FLAGS}"
-					LINK_FLAGS "-Wl,${link_flag}"
 				)
+				if(APPLE)
+					set_target_properties("${target_name}" PROPERTIES LINK_FLAGS "-Wl,-undefined,error")
+				elseif(NOT CMAKE_SYSTEM_NAME STREQUAL "OpenBSD")
+					set_target_properties("${target_name}" PROPERTIES LINK_FLAGS "-Wl,--no-undefined")
+				endif()
 			endif()
 		else()
 			message(FATAL_ERROR "declare_binary encountered unknown flag: ${flag}")
