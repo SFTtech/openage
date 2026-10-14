@@ -173,6 +173,7 @@ _the openage authors_ are:
 | Luca Pizzagalli             | lucapizzagalli              | web à lucapizzagalli dawt com                     |
 | Erwan Billard               | iacker                      | 82095453+iacker à users dawt noreply dawt github dawt com |
 | Deniz Kökden                | denizkoekden                | koekdendeniz à gmail dawt com                     |
+| Sergey Bronnikov            | ligurio                     | estetus à gmail dawt com                          |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
