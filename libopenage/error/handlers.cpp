@@ -44,7 +44,7 @@ namespace {
 bool exit_ok;
 
 std::terminate_handler old_terminate_handler;
-#ifdef __FreeBSD__
+#if defined(__FreeBSD__) || defined(__OpenBSD__)
 typedef sig_t sighandler_t;
 #endif
 sighandler_t old_sigsegv_handler;

@@ -4,6 +4,11 @@
 
 #ifdef __APPLE__
 	#include <util.h>
+#elif defined(__OpenBSD__)
+	#include <sys/ioctl.h>
+	#include <sys/types.h>
+	#include <termios.h>
+	#include <util.h>
 #elif defined(__FreeBSD__)
 	#include <libutil.h>
 	#include <sys/ioctl.h>
