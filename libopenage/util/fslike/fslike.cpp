@@ -10,13 +10,13 @@ namespace openage::util::fslike {
 FSLike::FSLike() = default;
 
 Path FSLike::root() {
-	return Path{this->shared_from_this(), {}};
+	return Path{{}, this->shared_from_this()};
 }
 
 
-std::pair<bool, Path> FSLike::resolve_r(const Path::parts_t &parts) {
-	if (this->is_file(parts) or this->is_dir(parts)) {
-		return std::make_pair(true, Path{this->shared_from_this(), parts});
+std::pair<bool, Path> FSLike::resolve_r(const Path::subpath_t &subpath) {
+	if (this->is_file(subpath) or this->is_dir(subpath)) {
+		return std::make_pair(true, Path{subpath, this->shared_from_this()});
 	}
 	else {
 		return std::make_pair(false, Path{});
@@ -24,9 +24,9 @@ std::pair<bool, Path> FSLike::resolve_r(const Path::parts_t &parts) {
 }
 
 
-std::pair<bool, Path> FSLike::resolve_w(const Path::parts_t &parts) {
-	if (this->writable(parts)) {
-		return std::make_pair(true, Path{this->shared_from_this(), parts});
+std::pair<bool, Path> FSLike::resolve_w(const Path::subpath_t &subpath) {
+	if (this->writable(subpath)) {
+		return std::make_pair(true, Path{subpath, this->shared_from_this()});
 	}
 	else {
 		return std::make_pair(false, Path{});

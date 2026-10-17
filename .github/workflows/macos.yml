@@ -1,0 +1,75 @@
+name: macOS-CI
+on: [push, pull_request]
+
+jobs:
+  # https://docs.github.com/en/actions/reference/software-installed-on-github-hosted-runners
+  # we install stuff not already there
+  macos-build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v7
+
+      # ccache is incremental, so restore the newest entry and save an updated one per commit
+      - name: Restore ccache dir
+        uses: actions/cache/restore@v6
+        id: cache-ccache
+        with:
+          path: ~/Library/Caches/ccache
+          key: macos-ccache-${{ github.sha }}
+          restore-keys: macos-ccache-
+      # exact key on the workflow file: changes when the package list changes,
+      # prefix fallback keeps the old downloads until then
+      - name: Restore dependencies cache
+        uses: actions/cache/restore@v6
+        id: cache-deps
+        with:
+          path: |
+            ~/Library/Caches/pip
+            ~/Library/Caches/Homebrew
+          key: macos-deps-${{ hashFiles('.github/workflows/macos.yml') }}
+          restore-keys: macos-deps-
+      - name: Brew update-reset
+        run: brew update-reset
+      - name: Brew update
+        run: brew update
+      - name: Brew install DeJaVu fonts
+        run: brew install --cask font-dejavu
+      - name: Install environment helpers
+        run: brew install ccache
+      - name: Install openage dependencies
+        run: brew install cmake python3 just libepoxy ninja freetype fontconfig harfbuzz opus opusfile qt6 libogg libpng toml11 eigen
+      - name: Install nyan dependencies
+        run: brew install flex make
+      - name: Install LLVM
+        # AppleClang is installed by default, but lacks C++ module support, see doc/build_instructions/macos.md
+        run: brew install llvm
+      - name: Install python3 packages
+        # cython, numpy and pygments are in homebrew,
+        # but "cython is keg-only, which means it was not symlinked into /usr/local"
+        # numpy pulls gcc as dep? and pygments doesn't work.
+        run: pip3 install --upgrade --break-system-packages cython numpy mako lz4 pillow pygments setuptools toml tomli-w
+      - name: Configure
+        # switch back to AppleClang once it supports C++ modules:
+        # run: ./configure --compiler=clang --mode=release --ccache --download-nyan
+        run: ./configure --compiler="$(brew --prefix llvm)/bin/clang++" --mode=release --ccache --download-nyan
+      - name: Build
+        run: just build
+      - name: Test
+        run: just test
+      # keep the caches even when the build or tests fail: the work done so far
+      # is exactly what the next run wants to reuse
+      - name: Save ccache dir
+        if: always()
+        uses: actions/cache/save@v6
+        with:
+          path: ~/Library/Caches/ccache
+          key: ${{ steps.cache-ccache.outputs.cache-primary-key }}
+      - name: Save dependencies cache
+        if: always()
+        uses: actions/cache/save@v6
+        with:
+          path: |
+            ~/Library/Caches/pip
+            ~/Library/Caches/Homebrew
+          key: ${{ steps.cache-deps.outputs.cache-primary-key }}

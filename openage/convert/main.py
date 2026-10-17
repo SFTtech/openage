@@ -125,7 +125,7 @@ def convert_assets(assets: UnionPath, args: Namespace, srcdir: Path | None = Non
         asset_locations_path.touch()
         prev_srcdirs = set()
 
-    used_asset_path = data_dir.resolve_native_path().decode("utf-8")
+    used_asset_path = data_dir.resolve_native_path()
     if used_asset_path not in prev_srcdirs:
         try:
             with asset_locations_path.open("a") as file_obj:

@@ -6,10 +6,17 @@ jobs:
   build:
     runs-on: ubuntu-26.04
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
+    - name: Restore ccache
+      id: ccache-cache
+      uses: actions/cache/restore@v6
+      with:
+        path: /tmp/ccache
+        key: ccache-ubuntu-${{ github.sha }}
+        restore-keys: ccache-ubuntu-
     - name: Restore devenv image
       id: devenv-cache
-      uses: actions/cache@v4
+      uses: actions/cache@v6
       with:
         path: /tmp/staging/devenv.tar.zst
         # rebuild the image only when its recipe changes
@@ -29,9 +36,12 @@ jobs:
       run: sudo docker load --input /tmp/staging/devenv.tar.zst
       shell: bash
     - name: Build openage
+      shell: bash
       run: |
-        # the image may come from cache, so refresh its packages before building
-        sudo docker run --rm -v "$(pwd)":/mnt/openage -w /mnt/openage openage-devenv:latest bash <<'EOF'
+        # the image may come from cache, so refresh its packages before building;
+        # /tmp/ccache is mounted in so compilations are cached across runs;
+        # -i feeds the heredoc to the container's bash (without it, stdin is not attached)
+        sudo docker run --rm -i -v "$(pwd)":/mnt/openage -v /tmp/ccache:/ccache -e CCACHE_DIR=/ccache -w /mnt/openage openage-devenv:latest bash <<'EOF'
         set -e
 
         apt-get update
@@ -44,6 +54,8 @@ jobs:
           -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_C_COMPILER=$(which gcc) \
           -DCMAKE_CXX_COMPILER=$(which g++) \
+          -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
           -DCMAKE_CXX_FLAGS='' \
           -DCMAKE_EXE_LINKER_FLAGS='' \
           -DCMAKE_INSTALL_PREFIX=/usr/local \
@@ -67,3 +79,11 @@ jobs:
 
         ./run test -a
         EOF
+    - name: Save ccache
+      # keep the cache even when the build or tests fail: the objects
+      # compiled so far are exactly what the next run wants to reuse
+      if: always()
+      uses: actions/cache/save@v6
+      with:
+        path: /tmp/ccache
+        key: ${{ steps.ccache-cache.outputs.cache-primary-key }}

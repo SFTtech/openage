@@ -19,10 +19,10 @@ namespace openage::util {
 /**
  * Strip out ../ etc
  */
-void path_normalizer(Path::parts_t &output, const Path::parts_t &input) {
+void path_normalizer(Path::subpath_t &output, const Path::subpath_t &input) {
 	output.reserve(input.size());
 
-	// normalize the path parts
+	// normalize the path subpath
 	for (auto &part : input) {
 		if (part == "." or part == "") {
 			continue;
@@ -42,9 +42,11 @@ void path_normalizer(Path::parts_t &output, const Path::parts_t &input) {
 Path::Path() = default;
 
 
-Path::Path(const py::Obj &fsobj_in,
-           const std::vector<std::string> &parts) {
-	path_normalizer(this->parts, parts);
+Path::Path(
+	const std::vector<std::string> &subpath,
+	const py::Obj &fsobj_in
+) {
+	path_normalizer(this->subpath, subpath);
 
 	// optimization: the fsobj from python may be convertible to
 	//               a native c++ implementation.
@@ -63,10 +65,12 @@ Path::Path(const py::Obj &fsobj_in,
 }
 
 
-Path::Path(std::shared_ptr<fslike::FSLike> fsobj,
-           const parts_t &parts) :
+Path::Path(
+	const subpath_t &subpath,
+	std::shared_ptr<fslike::FSLike> fsobj
+) :
 	fsobj{std::move(fsobj)} {
-	path_normalizer(this->parts, parts);
+	path_normalizer(this->subpath, subpath);
 }
 
 
@@ -75,26 +79,26 @@ bool Path::exists() const {
 }
 
 bool Path::is_file() const {
-	return this->fsobj->is_file(this->parts);
+	return this->fsobj->is_file(this->subpath);
 }
 
 bool Path::is_dir() const {
-	return this->fsobj->is_dir(this->parts);
+	return this->fsobj->is_dir(this->subpath);
 }
 
 bool Path::writable() const {
-	return this->fsobj->writable(this->parts);
+	return this->fsobj->writable(this->subpath);
 }
 
-std::vector<Path::part_t> Path::list() {
-	return this->fsobj->list(this->parts);
+std::vector<Path::path_elem_t> Path::list() {
+	return this->fsobj->list(this->subpath);
 }
 
 std::vector<Path> Path::iterdir() {
 	std::vector<Path> ret;
 
 	// return a new path object for each element in that directory
-	for (auto &entry : this->fsobj->list(this->parts)) {
+	for (auto &entry : this->fsobj->list(this->subpath)) {
 		ret.push_back(this->joinpath(entry));
 	}
 
@@ -102,7 +106,7 @@ std::vector<Path> Path::iterdir() {
 }
 
 bool Path::mkdirs() {
-	return this->fsobj->mkdirs(this->parts);
+	return this->fsobj->mkdirs(this->subpath);
 }
 
 File Path::open(const std::string &mode) const {
@@ -128,32 +132,32 @@ File Path::open(const std::string &mode) const {
 
 
 File Path::open_r() const {
-	return this->fsobj->open_r(this->parts);
+	return this->fsobj->open_r(this->subpath);
 }
 
 
 File Path::open_w() const {
-	return this->fsobj->open_w(this->parts);
+	return this->fsobj->open_w(this->subpath);
 }
 
 
 File Path::open_rw() const {
-	return this->fsobj->open_rw(this->parts);
+	return this->fsobj->open_rw(this->subpath);
 }
 
 
 File Path::open_a() const {
-	return this->fsobj->open_a(this->parts);
+	return this->fsobj->open_a(this->subpath);
 }
 
 
 File Path::open_ar() const {
-	return this->fsobj->open_ar(this->parts);
+	return this->fsobj->open_ar(this->subpath);
 }
 
 
 std::string Path::get_native_path() const {
-	return this->fsobj->get_native_path(this->parts);
+	return this->fsobj->get_native_path(this->subpath);
 }
 
 
@@ -176,7 +180,7 @@ std::string Path::resolve_native_path(const std::string &mode) const {
 
 
 std::string Path::resolve_native_path_r() const {
-	auto resolved_path = this->fsobj->resolve_r(this->parts);
+	auto resolved_path = this->fsobj->resolve_r(this->subpath);
 
 	if (resolved_path.first) {
 		return resolved_path.second.get_native_path();
@@ -188,7 +192,7 @@ std::string Path::resolve_native_path_r() const {
 
 
 std::string Path::resolve_native_path_w() const {
-	auto resolved_path = this->fsobj->resolve_w(this->parts);
+	auto resolved_path = this->fsobj->resolve_w(this->subpath);
 
 	if (resolved_path.first) {
 		return resolved_path.second.get_native_path();
@@ -206,19 +210,19 @@ bool Path::rename(const Path &target_path) {
 		throw Error{
 			ERR << "can't rename across two different filesystem like objects"};
 	}
-	return this->fsobj->rename(this->parts, target_path.parts);
+	return this->fsobj->rename(this->subpath, target_path.subpath);
 }
 
 bool Path::rmdir() {
-	return this->fsobj->rmdir(this->parts);
+	return this->fsobj->rmdir(this->subpath);
 }
 
 bool Path::touch() {
-	return this->fsobj->touch(this->parts);
+	return this->fsobj->touch(this->subpath);
 }
 
 bool Path::unlink() {
-	return this->fsobj->unlink(this->parts);
+	return this->fsobj->unlink(this->subpath);
 }
 
 void Path::removerecursive() {
@@ -235,11 +239,11 @@ void Path::removerecursive() {
 
 
 int Path::get_mtime() const {
-	return this->fsobj->get_mtime(this->parts);
+	return this->fsobj->get_mtime(this->subpath);
 }
 
 uint64_t Path::get_filesize() const {
-	return this->fsobj->get_filesize(this->parts);
+	return this->fsobj->get_filesize(this->subpath);
 }
 
 // int Path::watch();
@@ -251,8 +255,8 @@ Path Path::get_parent() const {
 
 
 const std::string &Path::get_name() const {
-	if (this->parts.size() > 0) {
-		return this->parts.back();
+	if (this->subpath.size() > 0) {
+		return this->subpath.back();
 	}
 	else {
 		return util::empty_string;
@@ -291,42 +295,42 @@ std::string Path::get_stem() const {
 }
 
 
-Path Path::joinpath(const parts_t &subpaths) const {
-	parts_t new_parts = this->parts;
+Path Path::joinpath(const subpath_t &subpaths) const {
+	subpath_t new_subpath = this->subpath;
 	for (auto &part : subpaths) {
 		if (part.size() > 0) [[likely]] {
-			new_parts.push_back(part);
+			new_subpath.push_back(part);
 		}
 	}
-	return Path{this->fsobj, new_parts};
+	return Path{new_subpath, this->fsobj};
 }
 
-Path Path::joinpath(const part_t &subpath) const {
+Path Path::joinpath(const path_elem_t &subpath) const {
 	return this->joinpath(util::split(subpath, '/'));
 }
 
-Path Path::operator[](const parts_t &subpaths) const {
+Path Path::operator[](const subpath_t &subpaths) const {
 	return this->joinpath(subpaths);
 }
 
-Path Path::operator[](const part_t &subpath) const {
+Path Path::operator[](const path_elem_t &subpath) const {
 	return this->joinpath(subpath);
 }
 
-Path Path::operator/(const part_t &subpath) const {
+Path Path::operator/(const path_elem_t &subpath) const {
 	return this->joinpath(subpath);
 }
 
-Path Path::with_name(const part_t &name) const {
+Path Path::with_name(const path_elem_t &name) const {
 	return this->get_parent().joinpath(name);
 }
 
-Path Path::with_suffix(const part_t &suffix) const {
+Path Path::with_suffix(const path_elem_t &suffix) const {
 	return this->with_name(this->get_stem() + suffix);
 }
 
 bool Path::operator==(const Path &other) const {
-	return this->fsobj == other.fsobj and this->parts == other.parts;
+	return this->fsobj == other.fsobj and this->subpath == other.subpath;
 }
 
 bool Path::operator!=(const Path &other) const {
@@ -339,8 +343,8 @@ fslike::FSLike *Path::get_fsobj() const {
 }
 
 
-const Path::parts_t &Path::get_parts() const {
-	return this->parts;
+const Path::subpath_t &Path::get_subpath() const {
+	return this->subpath;
 }
 
 size_t Path::get_hash() const {
@@ -361,7 +365,7 @@ std::ostream &operator<<(std::ostream &stream, const Path &path) {
 	path.fsobj->repr(stream);
 	stream << ":";
 
-	for (auto &part : path.parts) {
+	for (auto &part : path.subpath) {
 		stream << "/" << part;
 	}
 

@@ -31,7 +31,7 @@ Technical foundation
 
 | Technology   | Component                                                     |
 | ------------ | ------------------------------------------------------------- |
-| **C++20**    | Engine core                                                   |
+| **C++26**    | Engine core                                                   |
 | **Python3**  | Scripting, media conversion, in-game console, code generation |
 | [**Cython**] | Python/C++ Glue code                                          |
 | [**Qt6**]    | Graphical user interface                                      |

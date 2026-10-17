@@ -214,7 +214,7 @@ def download_trial() -> str:
     Does not work yet. TODO: Find an exe unpack solution that works on all platforms
     """
     print(f"Downloading AoC trial version from {TRIAL_URL}")
-    # pylint: disable=consider-using-with
+
     tempdir = tempfile.mkdtemp()
     with urlopen(TRIAL_URL) as response:
         with tempfile.NamedTemporaryFile(delete=False) as tmp_file:
@@ -235,7 +235,7 @@ def download_trial() -> str:
                 cur_src_dir = dirs[0]
                 cur_tgt_dir = sourcedir
 
-                for part in cur_src_dir.parts:
+                for part in cur_src_dir.subpath:
                     cur_tgt_dir = cur_tgt_dir[part]
                 cur_tgt_dir.mkdirs()
 

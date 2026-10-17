@@ -23,6 +23,10 @@ class FileLikeObject(ABC):
     def __init__(self):
         self.closed = False
 
+    @property
+    def name(self) -> str:
+        raise NotImplementedError()
+
     @abstractmethod
     def read(self, size: int = -1) -> bytes:
         """
@@ -38,7 +42,7 @@ class FileLikeObject(ABC):
         """
 
     @abstractmethod
-    def write(self, data) -> None:
+    def write(self, data: bytes | bytearray) -> None:
         """
         Writes all of data to the file.
 
@@ -104,6 +108,15 @@ class FileLikeObject(ABC):
         Note: Actual file objects don't have this method;
               it exists mostly for internal usage.
         """
+
+    def truncate(self, size: int) -> int:
+        raise UnsupportedOperation("truncate() not supported")
+
+    def fileno(self) -> int:
+        raise UnsupportedOperation("fileno() not supported")
+
+    def isatty(self) -> bool:
+        return False
 
     # allow usage with 'with'
     def __enter__(self):

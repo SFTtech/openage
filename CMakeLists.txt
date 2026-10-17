@@ -1,7 +1,7 @@
 # Copyright 2013-2023 the openage authors. See copying.md for legal info.
 
-# >=3.16 finding numpy with the findpython3 module
-cmake_minimum_required(VERSION 3.16)
+# >=3.28 for c++ module support
+cmake_minimum_required(VERSION 3.28)
 
 
 # main build configuration file
@@ -34,7 +34,7 @@ If it doesn't, consider reporting the issue, or ask for help:
 project(openage CXX)
 
 # C++ standard requirement
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 26)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Python and Cython requirements
@@ -51,6 +51,7 @@ foreach(pol
         CMP0094  # take the first satisfying Python version
         CMP0082  # run add_subdirectory() in the declaration order
         CMP0102  # Don't create empty cache entries
+        CMP0177  # normalize install() destination paths
        )
 	if (POLICY ${pol})
 		cmake_policy(SET ${pol} NEW)
@@ -133,8 +134,7 @@ if(ENABLE_CCACHE)
 	find_program(CCACHE_FOUND "ccache")
 
 	if(CCACHE_FOUND)
-		set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
-		set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK ccache)
+		set(CMAKE_CXX_COMPILER_LAUNCHER "${CCACHE_FOUND}")
 	else()
 		message(FATAL_ERROR "ccache not found, but you requested it")
 	endif(CCACHE_FOUND)

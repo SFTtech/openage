@@ -6,8 +6,9 @@
 
 #include "../coord/pixel.h"
 #include "../renderer/font/font.h"
-#include "../util/color.h"
 #include "buf.h"
+
+import openage.util.color;
 
 namespace openage {
 

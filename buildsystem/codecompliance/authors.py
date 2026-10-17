@@ -79,7 +79,7 @@ def find_issues():
 
     prints all discrepancies, and returns False if one is detected.
     """
-    relevant_exts = (".cpp", ".h", ".py", ".pyi", ".pyx", ".cmake", ".qml")
+    relevant_exts = (".cpp", ".cppm", ".h", ".py", ".pyi", ".pyx", ".cmake", ".qml")
 
     copying_md_emails = set(get_author_emails_copying_md())
     logging.debug(

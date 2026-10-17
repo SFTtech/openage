@@ -10,9 +10,8 @@ uv.lock; otherwise the system-installed tools are used.
 
 import shutil
 import subprocess
-from collections.abc import Callable, Generator, Iterable, Iterator
-
-from .util import findfiles
+from collections.abc import Callable, Generator
+from pathlib import Path
 
 
 def find_tool(name: str) -> str | None:
@@ -22,38 +21,15 @@ def find_tool(name: str) -> str | None:
     return shutil.which(name)
 
 
-def filter_file_list(check_files: Iterable[str], dirnames: tuple[str, ...]) -> Iterator[str]:
-    """
-    Yields all those files in check_files that are in one of the directories
-    and end in '.py'.
-    """
-    for filename in check_files:
-        if not filename.endswith(".py"):
-            continue
-
-        if any(filename.startswith(dirname) for dirname in dirnames):
-            yield filename
-
-
-def _python_files(check_files: Iterable[str] | None, dirnames: tuple[str, ...]) -> list[str]:
-    """
-    Returns the list of python files to check.
-    """
-    if check_files is None:
-        return list(filter_file_list(findfiles(dirnames), dirnames))
-
-    return list(filter_file_list(check_files, dirnames))
-
-
 def _run_tool(
     tool: str,
     args: list[str],
-    filenames: list[str],
+    paths: list[Path],
     title: str,
     fix_args: list[str] | None = None,
 ) -> Generator[tuple[str, str, Callable[[], str] | None]]:
     """
-    Invokes a tool on the given files.
+    Invokes a tool on the given locations (files or directories).
 
     Every diagnostic is reported as its own issue, parsed from the tool's
     'github' output format:
@@ -62,11 +38,11 @@ def _run_tool(
     If fix_args is given, they are used to run the tool's fix mode; the
     yielded issues then carry a fix callback that applies it.
     """
-    if not filenames:
+    if not paths:
         return
 
     result = subprocess.run(
-        [tool, *args, *filenames],
+        [tool, *args, *paths],
         capture_output=True,
         text=True,
         check=False,
@@ -83,7 +59,7 @@ def _run_tool(
 
         fix = None
         if fix_args is not None:
-            fix = _create_fix(tool, fix_args, [filename])
+            fix = _create_fix(tool, fix_args, [Path(filename)])
 
         yield (title, f"{filename}\n\tline: {lineno}\n\t{message}", fix)
 
@@ -96,7 +72,7 @@ def _run_tool(
         )
 
 
-def _create_fix(tool: str, fix_args: list[str], filenames: list[str]) -> Callable[[], str]:
+def _create_fix(tool: str, fix_args: list[str], filenames: list[Path]) -> Callable[[], str]:
     """
     Create a function that, when called, runs the tool's fix mode on the
     files and returns a report.
@@ -119,7 +95,7 @@ def _create_fix(tool: str, fix_args: list[str], filenames: list[str]) -> Callabl
 
 
 def find_issues(
-    check_files: Iterable[str] | None, dirnames: tuple[str, ...]
+    locations: list[Path],
 ) -> Generator[tuple[str, str, Callable[[], str] | None]]:
     """Invokes the external utilities."""
 
@@ -128,19 +104,17 @@ def find_issues(
         yield ("ruff missing", "no ruff found in PATH; run 'uv run <command>' or install ruff", None)
         return
 
-    filenames = _python_files(check_files, dirnames)
-
     yield from _run_tool(
         ruff,
         ["check", "--output-format=github"],
-        filenames,
+        locations,
         "python lint issue",
         fix_args=["check", "--fix", "--quiet"],
     )
     yield from _run_tool(
         ruff,
         ["format", "--check", "--output-format=github"],
-        filenames,
+        locations,
         "python format issue",
         fix_args=["format"],
     )

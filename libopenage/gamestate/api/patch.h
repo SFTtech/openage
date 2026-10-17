@@ -2,9 +2,9 @@
 
 #pragma once
 
-#include <nyan/nyan.h>
-
 #include "gamestate/api/types.h"
+
+import nyan;
 
 
 namespace openage::gamestate::api {

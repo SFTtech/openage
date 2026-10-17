@@ -48,7 +48,7 @@ Dynamic documentation can be auto-generated from source documentation using **do
 
 after calling `./configure`, you can invoke
 
-	make doc
+	just doc
 
 to create doxygen html and LaTeX files.
 

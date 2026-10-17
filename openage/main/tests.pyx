@@ -43,8 +43,7 @@ def engine_demo(list argv):
 
     cdef int engine_test_id = args.test_id
 
-    cdef Path_cpp root_cpp = Path_cpp(PyObj(<PyObject*>root.fsobj),
-                                      root.parts)
+    cdef Path_cpp root_cpp = Path_cpp(root.subpath, PyObj(<PyObject*>root.fsobj))
 
     with nogil:
         engine_demo_c(engine_test_id, root_cpp)
