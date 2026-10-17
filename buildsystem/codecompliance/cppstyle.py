@@ -51,9 +51,9 @@ INDENT_FAIL_LINE_RE = re.compile(
 def filter_file_list(check_files, dirnames):
     """
     Yields all those files in check_files that are in one of the directories
-    and end in '.cpp' or '.h' and some other conditions.
+    and end in '.cpp', '.cppm' or '.h' and some other conditions.
     """
-    for filename in select_files(check_files, dirnames, (".cpp", ".h")):
+    for filename in select_files(check_files, dirnames, (".cpp", ".cppm", ".h")):
         if filename.name.endswith((".gen.h", ".gen.cpp")):
             # TODO all this for now, until someone fixes the codegen.
             continue
