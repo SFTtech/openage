@@ -8,12 +8,14 @@
 // New code is written as C++ modules (example for old style headers in `cat.h`).
 //
 // Usually one .cpp file is the whole module, like `libopenage/util/color.cpp`:
-// the module declaration, the exported interface, then the implementation.
-// Split off a .cppm interface unit only if you have to, e.g. to keep heavy
-// implementation includes away from importers: every change to an interface
-// unit recompiles all of its importers (just like the "usual" split of .h and .cpp).
-// The cat is heavy, so she is split:
-//  * `cat.cppm`: the interface unit, exported and documented
+// module declaration & the exported interface & implementation.
+//
+// Heavy implementation should be split off in a .cppm interface unit
+// so changes of the implementation doesn't recompile all importers.
+// (just like the "usual" split of .h and .cpp).
+//
+// Our cat is heavy, so she is split:
+//  * `cat.cppm`: the interface unit, exported and documented (this file)
 //  * `cat.cpp`: the implementation unit
 //
 // To make the code look nice and be readable:

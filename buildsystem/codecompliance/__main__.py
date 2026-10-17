@@ -280,6 +280,7 @@ def find_all_issues(args, check_files=None):
                 ".py",
                 ".h",
                 ".cpp",
+                ".cppm",
                 ".template",
                 "",
                 ".txt",

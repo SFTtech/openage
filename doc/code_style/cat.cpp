@@ -4,9 +4,10 @@
 // [SFT]tech coding guidelines
 // ---------------------------
 //
-// See `cat.cppm` for the module interface.
-//
 // This is our attempt to creating a good-looking C++ style.
+//
+// See `cat.cppm` for the module interface
+// (and cat.h as old-style header example).
 //
 // For enhanced beauty: Use your brain!
 //   * Alphabetic sorting

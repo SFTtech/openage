@@ -15,6 +15,7 @@ SHEBANG_RE = re.compile("^" + SHEBANG)
 EXTENSIONS_NO_X_BIT = {
     ".h",
     ".cpp",
+    ".cppm",
     ".py",
     ".pyx",
     ".pxi",
