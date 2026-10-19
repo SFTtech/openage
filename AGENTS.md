@@ -51,7 +51,7 @@ Non-obvious traps; add new ones here, verified and in one line
 - In-source builds are forbidden and poison the tree; `just cleaninsourcebuild` removes the traces
 - Run Python only via `bin/run ...` or `just run`, never `python3 -m openage` in the source tree: compiled Cython modules and `openage/config.py` live in `bin/`
 - Never edit files in `bin/`, they are generated: `config.*` from `*.in`, `*.gen.{h,cpp}` from `openage/codegen/` and `*.template`, `libopenage` `.pxd` files from `pxd:` annotations in C++ headers; codegen trouble: `just cleancodegen`
-- Write `import nyan;` after the last `#include` of a `.cpp` and never in a header: GCC redefines std declarations when a std header is included after an import; headers forward-declare nyan classes (`std::string` for `nyan::fqon_t`) and only one needing complete nyan types includes `<nyan/nyan_import.h>`, which includes the std headers first (see there)
+- Put `import`s after the last `#include` of a file (the `cppstyle` check enforces it): GCC rejects textual definitions after an import of the same entities; standard headers are exempt because GCC builds translate them into the `<bits/stdc++.h>` header unit of [StdHeaderUnit.cmake](buildsystem/StdHeaderUnit.cmake)
 - C++26, but the minimum compilers are gcc 16 and clang 21 (`buildsystem/CheckCompilerFeatures.cmake`): check support before using newer library features like `std::format`
 
 ## Working

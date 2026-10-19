@@ -174,10 +174,29 @@ Rules for module units:
 
  - `#include`s go only in the global module fragment between `module;` and the module declaration; an include after it would attach the header to the module
  - `import`s follow the module declaration
- - legacy headers may `import` modules after their `#include`s
  - `main()` can't be part of a named module
 
 ninja scans the sources for module dependencies, so the build order between modules needs no manual setup.
+
+#### Imports and includes
+
+Headers and `.cpp` files may `import` modules too, which lets legacy code use converted modules and nyan.
+GCC, unlike clang, rejects a textual definition after an import that brought the same entity ("redefinition of ..."), hence:
+
+ - `import`s go after the `#include`s of each file (the `cppstyle` check enforces it)
+ - never include headers of a library after importing a module that exposes them
+
+Use `<nyan/config.h>` for nyan's type aliases, e.g. `nyan::fqon_t`, and forward declarations when complete classes aren't needed.
+Headers that `import nyan;` also include `<nyan/config.h>` before the import so later includes of the config header cannot redefine its constants on GCC.
+Use the module for the remaining nyan API, not its other headers.
+
+Standard headers are exempt:
+GCC builds compile `<bits/stdc++.h>` into a header unit ([StdHeaderUnit.cmake](/buildsystem/StdHeaderUnit.cmake)), and GCC translates every standard `#include` into an import of it.
+CMake can't build header units, so a custom command puts it where GCC looks for them, below the build directory: `bin/usr/.../bits/stdc++.h.gcm`.
+With `-flang-info-include-translate`, GCC reports each translated include.
+
+ - importers get the header unit's macros: set macros that change the standard library (`NDEBUG`, `_GLIBCXX_ASSERTIONS`, ...) in the global flags, not per target
+ - C++ targets must depend on the header unit with `use_std_header_unit()`; `declare_binary` and `add_cython_modules` do that
 
 python
 ------

@@ -38,6 +38,12 @@ INDENT_FAIL_RE = re.compile(
     r")"
 )
 
+# C++ module import and include placement
+IMPORT_RE = re.compile(r"^\s*(?:export\s+)?import\s+[\w.:<>\"/]+\s*;")
+MODULE_DECL_RE = re.compile(r"^\s*(?:export\s+)?module\s+[\w.:]+\s*;")
+INCLUDE_RE = re.compile(r"^\s*#\s*include\b")
+COMMENT_RE = re.compile(r"/\*.*?\*/|//[^\n]*", re.DOTALL)
+
 # we need both because we look at the file first.
 # indentation fails when looking at a line
 INDENT_FAIL_LINE_RE = re.compile(
@@ -78,6 +84,37 @@ def find_issues(check_files, dirnames):
         # if there are possible issues perform a per line analysis
         if analyse_each_line:
             yield from find_issues_with_lines(data, filename)
+
+        yield from find_module_issues(data, filename)
+
+
+def find_module_issues(data, filename):
+    """
+    Checks that imports come after all includes.
+
+    An include after the module declaration would attach the header to the
+    module. GCC rejects textual definitions after an import of the same
+    entities; the build exempts only the standard headers by translating
+    them into a header unit, see buildsystem/StdHeaderUnit.cmake.
+    """
+    # blank out the comments but keep the line numbers
+    code = COMMENT_RE.sub(lambda match: re.sub(r"[^\n]", " ", match.group()), data)
+    seen = None
+
+    for num, line in enumerate(code.splitlines(True), start=1):
+        match = IMPORT_RE.match(line)
+        if match:
+            seen = seen or "import"
+            continue
+
+        match = MODULE_DECL_RE.match(line)
+        if match:
+            seen = seen or "module declaration"
+            continue
+
+        match = INCLUDE_RE.match(line)
+        if match and seen:
+            yield issue_str_line(f"Include after {seen}", filename, line, num, match.span())
 
 
 def find_issues_with_lines(data, filename):
