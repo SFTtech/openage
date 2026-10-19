@@ -54,6 +54,7 @@ const std::shared_ptr<GameState> &Game::get_state() const {
 
 void Game::attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory) {
 	this->universe->attach_renderer(render_factory);
+	this->state->get_map()->set_camera_render_entity(render_factory->add_camera_render_entity());
 	this->state->get_map()->get_terrain()->attach_renderer(render_factory);
 }
 
