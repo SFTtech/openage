@@ -51,6 +51,7 @@ Non-obvious traps; add new ones here, verified and in one line
 - In-source builds are forbidden and poison the tree; `just cleaninsourcebuild` removes the traces
 - Run Python only via `bin/run ...` or `just run`, never `python3 -m openage` in the source tree: compiled Cython modules and `openage/config.py` live in `bin/`
 - Never edit files in `bin/`, they are generated: `config.*` from `*.in`, `*.gen.{h,cpp}` from `openage/codegen/` and `*.template`, `libopenage` `.pxd` files from `pxd:` annotations in C++ headers; codegen trouble: `just cleancodegen`
+- Reconfigure with `./configure` or `cmake -B .bin/<config>`, never through the symlink (`cmake bin`): the changed build dir path rebuilds everything
 - Put `import`s after the last `#include` of a file (the `cppstyle` check enforces it): GCC rejects textual definitions after an import of the same entities; standard headers are exempt because GCC builds translate them into the `<bits/stdc++.h>` header unit of [StdHeaderUnit.cmake](buildsystem/StdHeaderUnit.cmake)
 - C++26, but the minimum compilers are gcc 16 and clang 21 (`buildsystem/CheckCompilerFeatures.cmake`): check support before using newer library features like `std::format`
 
