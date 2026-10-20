@@ -1,4 +1,4 @@
-name: Ubuntu 26.04 CI
+name: Ubuntu 26.10 CI
 
 on: [push, workflow_dispatch, pull_request]
 
@@ -20,10 +20,10 @@ jobs:
       with:
         path: /tmp/staging/devenv.tar.zst
         # rebuild the image only when its recipe changes
-        key: devenv-image-${{ hashFiles('packaging/docker/devenv/Dockerfile.ubuntu.2604') }}
+        key: devenv-image-${{ hashFiles('packaging/docker/devenv/ubuntu.dockerfile') }}
     - name: Build the Docker image
       if: steps.devenv-cache.outputs.cache-hit != 'true'
-      run: sudo DOCKER_BUILDKIT=1 docker build ./packaging/docker/devenv --file ./packaging/docker/devenv/Dockerfile.ubuntu.2604 --tag openage-devenv:latest
+      run: sudo DOCKER_BUILDKIT=1 docker build ./packaging/docker/devenv --file ./packaging/docker/devenv/ubuntu.dockerfile --tag openage-devenv:latest
       shell: bash
     - name: Save the Docker image
       if: steps.devenv-cache.outputs.cache-hit != 'true'
@@ -52,8 +52,8 @@ jobs:
 
         cmake \
           -DCMAKE_BUILD_TYPE=Release \
-          -DCMAKE_C_COMPILER=$(which gcc) \
-          -DCMAKE_CXX_COMPILER=$(which g++) \
+          -DCMAKE_C_COMPILER=$(which gcc-16) \
+          -DCMAKE_CXX_COMPILER=$(which g++-16) \
           -DCMAKE_C_COMPILER_LAUNCHER=ccache \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
           -DCMAKE_CXX_FLAGS='' \

@@ -1,4 +1,4 @@
-FROM ubuntu:26.04
+FROM ubuntu:26.10
 
 RUN apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get install -y sudo \
     && sudo apt-get update \
@@ -10,8 +10,8 @@ RUN apt-get update && DEBIAN_FRONTEND="noninteractive" apt-get install -y sudo \
     curl \
     cython3 \
     flex \
-    gcc \
-    g++ \
+    gcc-16 \
+    g++-16 \
     git \
     just \
     libeigen3-dev \
