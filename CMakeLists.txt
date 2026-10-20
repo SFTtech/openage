@@ -177,6 +177,7 @@ include(HandlePythonOptions)
 include(CheckRuntimeDependencies)
 include(DetectProjectVersion)
 include(DependencyFetch)
+include(StdHeaderUnit)
 include(FindPackageHandleStandardArgs)
 
 # include build configuration modules

@@ -173,6 +173,7 @@ function(add_cython_modules)
 			endif()
 
 			add_dependencies("${TARGETNAME}" cythonize)
+			use_std_header_unit("${TARGETNAME}")
 
 			set_property(GLOBAL APPEND PROPERTY SFT_CYTHON_MODULE_TARGETS "${TARGETNAME}")
 

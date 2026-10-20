@@ -15,6 +15,8 @@ function(declare_binary target_name output_name type)
 	# the file set must exist before the first module source is added.
 	target_sources("${target_name}" PRIVATE FILE_SET CXX_MODULES FILES)
 
+	use_std_header_unit("${target_name}")
+
 	set_target_properties("${target_name}" PROPERTIES OUTPUT_NAME "${output_name}")
 
 	set_property(GLOBAL APPEND PROPERTY SFT_BINARIES "${target_name}")
