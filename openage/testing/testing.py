@@ -3,7 +3,6 @@
 """Testing utilities, such as TestError, assert_value, assert_raises."""
 
 from contextlib import contextmanager
-from typing import NoReturn
 
 
 class TestError(Exception):
@@ -36,7 +35,7 @@ def assert_value(value, expected=None, validator=None):
     raise TestError("unexpected result: " + repr(value))
 
 
-def result(value) -> NoReturn:
+def result(value) -> None:
     """
     Shall be called when a result is unexpectedly returned in an assert_raises
     block.
@@ -45,7 +44,7 @@ def result(value) -> NoReturn:
 
 
 @contextmanager
-def assert_raises(expectedexception):
+def assert_raises(expectedexception: type[BaseException]):
     """
     Context guard that asserts that a certain exception is raised inside.
 
@@ -58,7 +57,6 @@ def assert_raises(expectedexception):
     with assert_raises(ValueError):
         result(fibonacci(-3))
     """
-    # pylint: disable=try-except-raise
     try:
         yield
     except expectedexception:

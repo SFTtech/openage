@@ -5,9 +5,11 @@
 #include <cstddef>
 #include <optional>
 
-#include <nyan/nyan.h>
+#include <nyan/config.h>
 
 #include "util/fixed_point.h"
+
+import nyan;
 
 
 namespace openage::gamestate {

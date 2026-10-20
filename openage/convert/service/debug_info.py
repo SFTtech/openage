@@ -1,6 +1,5 @@
-# Copyright 2020-2023 the openage authors. See copying.md for legal info.
+# Copyright 2020+ the openage authors. See copying.md for legal info.
 
-# TODO pylint: disable=C,R
 """
 Creates debug output from data in a conversion run.
 """
@@ -680,8 +679,7 @@ def debug_not_found_sounds(debugdir: Path, loglevel: int, sound: Path) -> None:
 
     logfile = debugdir.joinpath("export/not_found_sounds")[sound.stem]
 
-    path = [part.decode() for part in sound.parts]
-    logtext = f"name: {sound.name}\npath: {'/'.join(path)}"
+    logtext = f"name: {sound.name}\npath: {'/'.join(sound.subpath)}"
 
     with logfile.open("w") as log:
         log.write(logtext)

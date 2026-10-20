@@ -11,11 +11,12 @@ from enum import Enum
 from io import UnsupportedOperation
 from itertools import chain
 from sys import modules
-from typing import Generator
+from typing import Generator, Sequence
 
 from ..log import err
 from ..util.filelike.fifo import FIFO
 from ..util.fslike.directory import Directory
+from ..util.fslike.path import Path, Subpath
 from ..util.fslike.wrapper import Wrapper
 from .listing import generate_all
 
@@ -24,9 +25,6 @@ class CodegenMode(Enum):
     """
     Modus operandi
     """
-
-    # pylint doesn't understand that this Enum doesn't require member methods.
-    # pylint: disable=too-few-public-methods
 
     # source files are created regularily
     CODEGEN = "codegen"
@@ -53,7 +51,7 @@ class WriteCatcher(FIFO):
         return super().read(size)
 
 
-class CodegenDirWrapper(Wrapper):
+class CodegenPathWrapper(Wrapper):
     """
     Only allows pure-read and pure-write operations;
 
@@ -62,25 +60,25 @@ class CodegenDirWrapper(Wrapper):
     The constructor takes the to-be-wrapped fslike object.
     """
 
-    def __init__(self, obj):
-        super().__init__(obj)
+    def __init__(self, path: Path):
+        super().__init__(path)
 
-        # stores tuples (parts, intercept_obj), where intercept_obj is a FIFO.
-        self.writes = []
+        # stores tuples (subpath, intercept_obj), where intercept_obj is a FIFO.
+        self.writes: list[tuple[Subpath, WriteCatcher]] = []
 
-        # stores a list of parts.
-        self.reads = []
+        # stores a list of subpath.
+        self.reads: list[Subpath] = []
 
-    def open_r(self, parts):
-        self.reads.append(parts)
-        return super().open_r(parts)
+    def open_r(self, subpath: Subpath):
+        self.reads.append(subpath)
+        return super().open_r(subpath)
 
-    def open_w(self, parts):
+    def open_w(self, subpath: Subpath):
         intercept_obj = WriteCatcher()
-        self.writes.append((parts, intercept_obj))
+        self.writes.append((subpath, intercept_obj))
         return intercept_obj
 
-    def get_reads(self) -> Generator[tuple[bytes, ...], None, None]:
+    def get_reads(self) -> Generator[Sequence[str], None, None]:
         """
         Returns an iterable of all path component tuples for files that have
         been read.
@@ -89,51 +87,53 @@ class CodegenDirWrapper(Wrapper):
 
         self.reads.clear()
 
-    def get_writes(self) -> Generator[tuple[tuple[bytes, ...], bytes], None, None]:
+    def get_writes(self) -> Generator[tuple[Sequence[str], bytes], None, None]:
         """
         Returns an iterable of all (path components, data_written) tuples for
         files that have been written.
         """
-        for parts, intercept_obj in self.writes:
-            yield parts, intercept_obj.read()
+        for subpath, intercept_obj in self.writes:
+            yield subpath, intercept_obj.read()
 
         self.writes.clear()
 
     def __repr__(self):
-        return f"CodegenDirWrapper({self.obj!r})"
+        return f"CodegenPathWrapper({self.obj!r})"
 
 
-def codegen(mode: CodegenMode, input_dir: str, output_dir: str) -> tuple[set[str], set[str]]:
+def codegen(mode: CodegenMode, input_dir: Directory, output_dir: Directory) -> tuple[set[str], set[str]]:
     """
     Calls .listing.generate_all(), and post-processes the generated
     data, checking them and adding a header.
     Reads the input templates relative to input_dir.
-    Writes them to output_dir according to mode. output_dir is a path or str.
+    Writes them to output_dir according to mode. output_dir is a Directory.
 
     Returns ({generated}, {depends}), where
     generated is a list of (absolute) filenames of generated files, and
     depends is a list of (absolute) filenames of dependency files.
     """
-    input_dir = Directory(input_dir).root
-    output_dir = Directory(output_dir).root
+    input_path = input_dir.root
+    output_path = output_dir.root
 
     # this wrapper intercepts all writes and logs all reads.
-    wrapper = CodegenDirWrapper(input_dir)
+    wrapper = CodegenPathWrapper(input_path)
     generate_all(wrapper.root)
 
     # set of all generated filenames
     generated: set[str] = set()
 
-    for parts, data in wrapper.get_writes():
-        # TODO: this assumes output_dir is a fslike.Directory!
-        # resolve returns bytes; the generated list is written as text
-        generated.add(output_dir.fsobj.resolve(parts).decode())
+    for subpath, data in wrapper.get_writes():
+        # the generated list is written as text
+        native_path = (output_path / subpath).resolve_native_path_w()
+        if native_path is None:
+            raise ValueError(f"could not resolve native path for {output_path}")
+        generated.add(native_path)
 
         # now, actually perform the generation.
         # first, assemble the path for the current file
-        wpath = output_dir[parts]
+        wpath = output_path[subpath]
 
-        data = postprocess_write(parts, data)
+        data = postprocess_write(subpath, data)
 
         if mode == CodegenMode.CODEGEN:
             # skip writing if the file already has that exact content
@@ -147,7 +147,7 @@ def codegen(mode: CodegenMode, input_dir: str, output_dir: str) -> tuple[set[str
             # write new content to file
             wpath.parent.mkdirs()
             with wpath.open("wb") as outfile:
-                print(f"\x1b[36mcodegen: {b'/'.join(parts).decode(errors='replace')}\x1b[0m")
+                print(f"\x1b[36mcodegen: {'/'.join(subpath)}\x1b[0m")
                 outfile.write(data)
 
         elif mode == CodegenMode.DRYRUN:
@@ -156,14 +156,18 @@ def codegen(mode: CodegenMode, input_dir: str, output_dir: str) -> tuple[set[str
 
         elif mode == CodegenMode.CLEAN:
             if wpath.is_file():
-                print(b"/".join(parts).decode(errors="replace"))
+                print("/".join(subpath))
                 wpath.unlink()
         else:
             err("unknown codegen mode: %s", mode)
             sys.exit(1)
 
-    generated = {os.path.realpath(path) for path in generated}
-    depends = {os.path.realpath(path) for path in get_codegen_depends(wrapper)}
+    depends: set[str] = set()
+    for path in get_codegen_depends(wrapper):
+        native_path = path.resolve_native_path()
+        if native_path is None:
+            raise ValueError(f"could not resolve native path for codegen depend {path}")
+        depends.add(native_path)
 
     return generated, depends
 
@@ -192,7 +196,7 @@ def depend_module_blacklist():
         pass
 
 
-def get_codegen_depends(outputwrapper: CodegenDirWrapper) -> Generator[str, None, None]:
+def get_codegen_depends(outputwrapper: CodegenPathWrapper) -> Generator[Path, None, None]:
     """
     Yields all codegen dependencies.
 
@@ -202,10 +206,9 @@ def get_codegen_depends(outputwrapper: CodegenDirWrapper) -> Generator[str, None
     In addition, all imported python modules are yielded.
     """
     # add all files that have been read as depends
-    for parts in outputwrapper.get_reads():
-        # TODO: this assumes that the wrap.obj.fsobj is a fslike.Directory
+    for subpath in outputwrapper.get_reads():
         # this just resolves paths to the output directory
-        yield outputwrapper.obj.fsobj.resolve(parts).decode()
+        yield Path((outputwrapper.obj / subpath).resolve_native_path_r())
 
     module_blacklist = set(depend_module_blacklist())
 
@@ -237,7 +240,7 @@ def get_codegen_depends(outputwrapper: CodegenDirWrapper) -> Generator[str, None
                 print("codegeneration depends on non-.py module " + filename)
                 sys.exit(1)
 
-        yield filename
+        yield Path(filename)
 
 
 def get_header_lines() -> Generator[str, None, None]:
@@ -253,16 +256,16 @@ def get_header_lines() -> Generator[str, None, None]:
     yield ""
 
 
-def postprocess_write(parts, data: bytes) -> bytes:
+def postprocess_write(subpath: Sequence[str], data: bytes) -> bytes:
     """
     Post-processes a single write operation, as intercepted during codegen.
     """
     # test whether filename starts with 'libopenage/'
-    if parts[0] != b"libopenage":
+    if subpath[0] != "libopenage":
         raise ValueError("Not in libopenage source directory")
 
     # test whether filename matches the pattern *.gen.*
-    name, extension = os.path.splitext(parts[-1].decode())
+    name, extension = os.path.splitext(subpath[-1])
     if not name.endswith(".gen"):
         raise ValueError("Doesn't match required filename format .gen.SUFFIX")
 

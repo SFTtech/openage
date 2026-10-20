@@ -2,10 +2,12 @@
 
 #pragma once
 
-#include <nyan/nyan.h>
-
 #include "gamestate/api/types.h"
 
+
+namespace nyan {
+class Object;
+} // namespace nyan
 
 namespace openage::gamestate::api {
 

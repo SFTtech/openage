@@ -2,6 +2,8 @@
 
 #include "api_component.h"
 
+import nyan;
+
 
 namespace openage::gamestate::component {
 

@@ -25,7 +25,7 @@ def test_path(root_path, root_dir):
     assert_value(deeper.parent, root_path["let's go"])
     deeper.mkdirs()
     assert_value(deeper.is_dir(), True)
-    assert_value(deeper.resolve_native_path().decode(), os.path.join(root_dir, "let's go", "deeper"))
+    assert_value(deeper.resolve_native_path(), os.path.join(root_dir, "let's go", "deeper"))
 
     insert = deeper["insertion.stuff.test"]
     insert.touch()
@@ -105,8 +105,8 @@ def test_union(root_path, root_dir):
     assert_value(test_data != changed_test_data, True)
     assert_value(changed_test_data, b"we changed it")
 
-    # ther should be nothing else here.
-    assert_value(set(root_path.list()), {b"r", b"w"})
+    # there should be nothing else here.
+    assert_value(set(root_path.list()), {"r", "w"})
 
     # unmount the change-overlay
     target.unmount(path_w)
@@ -221,7 +221,7 @@ def test_filecollection():
     A FileCollection is read-only and must reject every write mode.
     """
     collection = FileCollection()
-    collection.add_fileentry([b"file"], FileEntry())
+    collection.add_fileentry(["file"], FileEntry())
     path = collection.root["file"]
     assert_value(path.writable(), False)
 

@@ -4,11 +4,17 @@
 
 #include <memory>
 #include <shared_mutex>
+#include <unordered_map>
 
-#include <nyan/nyan.h>
+#include <nyan/config.h>
 
 #include "gamestate/types.h"
 
+
+namespace nyan {
+class Object;
+class View;
+} // namespace nyan
 
 namespace openage {
 

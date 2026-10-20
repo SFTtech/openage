@@ -4,7 +4,6 @@
 
 #include <memory>
 
-#include "cvar/cvar.h"
 #include "engine/engine.h"
 #include "util/timer.h"
 
@@ -20,10 +19,6 @@ int run_game(const main_arguments &args) {
 
 	util::Timer timer;
 	timer.start();
-
-	// read and apply the configuration files
-	auto cvar_manager = std::make_shared<cvar::CVarManager>(args.root_path["cfg"]);
-	cvar_manager->load_all();
 
 	// set engine run_mode
 	openage::engine::Engine::mode run_mode = openage::engine::Engine::mode::FULL;

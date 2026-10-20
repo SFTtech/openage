@@ -66,32 +66,32 @@ cdef class FSLikeCPPWrapper:
         wrp.fsobj = c_fsobj
         return wrp
 
-    def open_r(self, parts):
-        cdef File_cpp file = self.fsobj.get().open_r(parts)
+    def open_r(self, subpath):
+        cdef File_cpp file = self.fsobj.get().open_r(subpath)
         return None
 
-    def open_w(self, parts):
-        cdef File_cpp file = self.fsobj.get().open_w(parts)
+    def open_w(self, subpath):
+        cdef File_cpp file = self.fsobj.get().open_w(subpath)
         return None
 
-    def resolve_r(self, parts):
-        cdef pair[bool, Path] result = self.fsobj.get().resolve_r(parts)
+    def resolve_r(self, subpath):
+        cdef pair[bool, Path] result = self.fsobj.get().resolve_r(subpath)
 
         if not result.first:
             return None
         else:
             return cpppath_to_pypath(result.second)
 
-    def resolve_w(self, parts):
-        cdef pair[bool, Path] result = self.fsobj.get().resolve_w(parts)
+    def resolve_w(self, subpath):
+        cdef pair[bool, Path] result = self.fsobj.get().resolve_w(subpath)
 
         if not result.first:
             return None
         else:
             return cpppath_to_pypath(result.second)
 
-    def get_native_path(self, parts):
-        cdef string native_path = self.fsobj.get().get_native_path(parts)
+    def get_native_path(self, subpath):
+        cdef string native_path = self.fsobj.get().get_native_path(subpath)
         txt = bytes(native_path)
 
         if txt:
@@ -99,41 +99,41 @@ cdef class FSLikeCPPWrapper:
         else:
             return None
 
-    def list(self, parts):
-        cdef Path.parts_t result = self.fsobj.get().list(parts)
+    def list(self, subpath):
+        cdef Path.subpath_t result = self.fsobj.get().list(subpath)
 
         for entry in result:
             yield from str(entry)
 
-    def filesize(self, parts):
-        return self.fsobj.get().get_filesize(parts)
+    def filesize(self, subpath):
+        return self.fsobj.get().get_filesize(subpath)
 
-    def mtime(self, parts):
-        return self.fsobj.get().get_mtime(parts)
+    def mtime(self, subpath):
+        return self.fsobj.get().get_mtime(subpath)
 
-    def mkdirs(self, parts):
-        return self.fsobj.get().mkdirs(parts)
+    def mkdirs(self, subpath):
+        return self.fsobj.get().mkdirs(subpath)
 
-    def rmdir(self, parts):
-        return self.fsobj.get().rmdir(parts)
+    def rmdir(self, subpath):
+        return self.fsobj.get().rmdir(subpath)
 
-    def unlink(self, parts):
-        return self.fsobj.get().unlink(parts)
+    def unlink(self, subpath):
+        return self.fsobj.get().unlink(subpath)
 
-    def touch(self, parts):
-        self.fsobj.get().touch(parts)
+    def touch(self, subpath):
+        self.fsobj.get().touch(subpath)
 
-    def rename(self, srcparts, tgtparts):
-        self.fsobj.get().rename(srcparts, tgtparts)
+    def rename(self, srcsubpath, tgtsubpath):
+        self.fsobj.get().rename(srcsubpath, tgtsubpath)
 
-    def is_file(self, parts):
-        return self.fsobj.get().is_file(parts)
+    def is_file(self, subpath):
+        return self.fsobj.get().is_file(subpath)
 
-    def is_dir(self, parts):
-        return self.fsobj.get().is_dir(parts)
+    def is_dir(self, subpath):
+        return self.fsobj.get().is_dir(subpath)
 
-    def writable(self, parts):
-        return self.fsobj.get().writable(parts)
+    def writable(self, subpath):
+        return self.fsobj.get().writable(subpath)
 
 
 class FSLikeCPP(FSLikeObject):
@@ -146,53 +146,53 @@ class FSLikeCPP(FSLikeObject):
     def __init__(self, cpp_wrapper):
         self.fsobj = cpp_wrapper
 
-    def open_r(self, parts):
-        return self.fsobj.open_r(parts)
+    def open_r(self, subpath):
+        return self.fsobj.open_r(subpath)
 
-    def open_w(self, parts):
-        return self.fsobj.open_w(parts)
+    def open_w(self, subpath):
+        return self.fsobj.open_w(subpath)
 
-    def resolve_r(self, parts):
-        return self.fsobj.resolve_r(parts)
+    def resolve_r(self, subpath):
+        return self.fsobj.resolve_r(subpath)
 
-    def resolve_w(self, parts):
-        return self.fsobj.resolve_w(parts)
+    def resolve_w(self, subpath):
+        return self.fsobj.resolve_w(subpath)
 
-    def get_native_path(self, parts):
+    def get_native_path(self, subpath):
         return self.fsobj.get_native_path()
 
-    def list(self, parts):
-        yield from self.fsobj.list(parts)
+    def list(self, subpath):
+        yield from self.fsobj.list(subpath)
 
-    def filesize(self, parts):
-        return self.fsobj.get_filesize(parts)
+    def filesize(self, subpath):
+        return self.fsobj.get_filesize(subpath)
 
-    def mtime(self, parts):
-        return self.fsobj.get_mtime(parts)
+    def mtime(self, subpath):
+        return self.fsobj.get_mtime(subpath)
 
-    def mkdirs(self, parts):
-        return self.fsobj.mkdirs(parts)
+    def mkdirs(self, subpath):
+        return self.fsobj.mkdirs(subpath)
 
-    def rmdir(self, parts):
-        return self.fsobj.rmdir(parts)
+    def rmdir(self, subpath):
+        return self.fsobj.rmdir(subpath)
 
-    def unlink(self, parts):
-        return self.fsobj.unlink(parts)
+    def unlink(self, subpath):
+        return self.fsobj.unlink(subpath)
 
-    def touch(self, parts):
-        self.fsobj.touch(parts)
+    def touch(self, subpath):
+        self.fsobj.touch(subpath)
 
-    def rename(self, srcparts, tgtparts):
-        self.fsobj.rename(srcparts, tgtparts)
+    def rename(self, srcsubpath, tgtsubpath):
+        self.fsobj.rename(srcsubpath, tgtsubpath)
 
-    def is_file(self, parts):
-        return self.fsobj.is_file(parts)
+    def is_file(self, subpath):
+        return self.fsobj.is_file(subpath)
 
-    def is_dir(self, parts):
-        return self.fsobj.is_dir(parts)
+    def is_dir(self, subpath):
+        return self.fsobj.is_dir(subpath)
 
-    def writable(self, parts):
-        return self.fsobj.is_writable(parts)
+    def writable(self, subpath):
+        return self.fsobj.is_writable(subpath)
 
 
 cdef cpppath_to_pypath(const Path_cpp &path):
@@ -207,41 +207,43 @@ cdef cpppath_to_pypath(const Path_cpp &path):
         # extract the python fslike object and transfer it
         # to the python path
         py_fslike = <FSLikePython *> fsobj
-        return Path_py(<object>py_fslike.get_py_fsobj().get_ref(),
-                       path.get_parts())
+        return Path_py(
+            path.get_subpath(),
+            <object>py_fslike.get_py_fsobj().get_ref(),
+        )
 
     else:
         # wrap cpp fslike to relay calls
         # then pack it into the python path
         return Path_py(
+            [],
             FSLikeCPP(
                 FSLikeCPPWrapper.wrap(fsobj.shared_from_this()),
-                path.get_parts()
             )
         )
 
 
 cdef bool fs_is_file(PyObject *fslike,
-                     const vector[string]& parts) except * with gil:
-    return (<object> fslike).is_file(parts)
+                     const vector[string]& subpath) except * with gil:
+    return (<object> fslike).is_file(subpath)
 
 
 cdef bool fs_is_dir(PyObject *fslike,
-                    const vector[string]& parts) except * with gil:
-    return (<object> fslike).is_dir(parts)
+                    const vector[string]& subpath) except * with gil:
+    return (<object> fslike).is_dir(subpath)
 
 
 cdef bool fs_writable(PyObject *fslike,
-                      const vector[string]& parts) except * with gil:
-    return (<object> fslike).writable(parts)
+                      const vector[string]& subpath) except * with gil:
+    return (<object> fslike).writable(subpath)
 
 
-cdef vector[string] fs_list(PyObject *fslike, const vector[string]& parts) except * with gil:
-    return (<object> fslike).list(parts)
+cdef vector[string] fs_list(PyObject *fslike, const vector[string]& subpath) except * with gil:
+    return (<object> fslike).list(subpath)
 
 
-cdef bool fs_mkdirs(PyObject *fslike, const vector[string]& parts) except * with gil:
-    return (<object> fslike).mkdirs(parts)
+cdef bool fs_mkdirs(PyObject *fslike, const vector[string]& subpath) except * with gil:
+    return (<object> fslike).mkdirs(subpath)
 
 
 cdef File_cpp fs_open(object path, int mode) except *:
@@ -277,93 +279,93 @@ cdef File_cpp fs_open(object path, int mode) except *:
         return File_cpp(ref)
 
 
-cdef check_file_exists(object path, object fslike, const vector[string]& parts):
+cdef check_file_exists(object path, object fslike, const vector[string]& subpath):
     if path is None:
         raise FileNotFoundError("file could not be found in filesystem %s "
                                 "for path '%s'" % (
                                     fslike,
-                                    b"/".join(parts).decode(errors='ignore')
+                                    b"/".join(subpath).decode(errors='ignore')
                                 ))
 
 
-cdef File_cpp fs_open_r(PyObject *fslike, const vector[string]& parts) except * with gil:
-    open_path = (<object> fslike).resolve_r(parts)
-    check_file_exists(open_path, <object> fslike, parts)
+cdef File_cpp fs_open_r(PyObject *fslike, const vector[string]& subpath) except * with gil:
+    open_path = (<object> fslike).resolve_r(subpath)
+    check_file_exists(open_path, <object> fslike, subpath)
     return fs_open(open_path, 0)
 
 
-cdef File_cpp fs_open_w(PyObject *fslike, const vector[string]& parts) except * with gil:
-    open_path = (<object> fslike).resolve_w(parts)
-    check_file_exists(open_path, <object> fslike, parts)
+cdef File_cpp fs_open_w(PyObject *fslike, const vector[string]& subpath) except * with gil:
+    open_path = (<object> fslike).resolve_w(subpath)
+    check_file_exists(open_path, <object> fslike, subpath)
     return fs_open(open_path, 1)
 
 
-cdef File_cpp fs_open_rw(PyObject *fslike, const vector[string]& parts) except * with gil:
-    open_path = (<object> fslike).resolve_w(parts)
-    check_file_exists(open_path, <object> fslike, parts)
+cdef File_cpp fs_open_rw(PyObject *fslike, const vector[string]& subpath) except * with gil:
+    open_path = (<object> fslike).resolve_w(subpath)
+    check_file_exists(open_path, <object> fslike, subpath)
     return fs_open(open_path, 2)
 
 
-cdef File_cpp fs_open_a(PyObject *fslike, const vector[string]& parts) except * with gil:
-    open_path = (<object> fslike).resolve_w(parts)
-    check_file_exists(open_path, <object> fslike, parts)
+cdef File_cpp fs_open_a(PyObject *fslike, const vector[string]& subpath) except * with gil:
+    open_path = (<object> fslike).resolve_w(subpath)
+    check_file_exists(open_path, <object> fslike, subpath)
     return fs_open(open_path, 3)
 
 
-cdef File_cpp fs_open_ar(PyObject *fslike, const vector[string]& parts) except * with gil:
-    open_path = (<object> fslike).resolve_w(parts)
-    check_file_exists(open_path, <object> fslike, parts)
+cdef File_cpp fs_open_ar(PyObject *fslike, const vector[string]& subpath) except * with gil:
+    open_path = (<object> fslike).resolve_w(subpath)
+    check_file_exists(open_path, <object> fslike, subpath)
     return fs_open(open_path, 4)
 
 
-cdef Path_cpp fs_resolve_r(PyObject *fslike, const vector[string]& parts) except * with gil:
-    path = (<object> fslike).resolve_r(parts)
+cdef Path_cpp fs_resolve_r(PyObject *fslike, const vector[string]& subpath) except * with gil:
+    path = (<object> fslike).resolve_r(subpath)
     if path is not None:
-        return Path_cpp(PyObj(<PyObject*>path.fsobj), path.parts)
+        return Path_cpp(path.subpath, PyObj(<PyObject*>path.fsobj))
     else:
         return Path_cpp()
 
 
-cdef Path_cpp fs_resolve_w(PyObject *fslike, const vector[string]& parts) except * with gil:
-    path = (<object> fslike).resolve_w(parts)
+cdef Path_cpp fs_resolve_w(PyObject *fslike, const vector[string]& subpath) except * with gil:
+    path = (<object> fslike).resolve_w(subpath)
     if path is not None:
-        return Path_cpp(PyObj(<PyObject*>path.fsobj), path.parts)
+        return Path_cpp(path.subpath, PyObj(<PyObject*>path.fsobj))
     else:
         return Path_cpp()
 
 
 cdef PyObj fs_get_native_path(PyObject *fslike,
-                              const vector[string]& parts) except * with gil:
+                              const vector[string]& subpath) except * with gil:
 
-    path = (<object> fslike).get_native_path(parts)
+    path = (<object> fslike).get_native_path(subpath)
     return PyObj(<PyObject*>path)
 
 
 cdef bool fs_rename(PyObject *fslike,
-                    const vector[string]& parts,
-                    const vector[string]& target_parts) except * with gil:
+                    const vector[string]& subpath,
+                    const vector[string]& target_subpath) except * with gil:
 
-    return (<object> fslike).rename(parts, target_parts)
-
-
-cdef bool fs_rmdir(PyObject *fslike, const vector[string]& parts) except * with gil:
-    return (<object> fslike).rmdir(parts)
+    return (<object> fslike).rename(subpath, target_subpath)
 
 
-cdef bool fs_touch(PyObject *fslike, const vector[string]& parts) except * with gil:
-    return (<object> fslike).touch(parts)
+cdef bool fs_rmdir(PyObject *fslike, const vector[string]& subpath) except * with gil:
+    return (<object> fslike).rmdir(subpath)
 
 
-cdef bool fs_unlink(PyObject *fslike, const vector[string]& parts) except * with gil:
-    return (<object> fslike).unlink(parts)
+cdef bool fs_touch(PyObject *fslike, const vector[string]& subpath) except * with gil:
+    return (<object> fslike).touch(subpath)
 
 
-cdef int fs_get_mtime(PyObject *fslike, const vector[string]& parts) except * with gil:
-    return (<object> fslike).mtime(parts)
+cdef bool fs_unlink(PyObject *fslike, const vector[string]& subpath) except * with gil:
+    return (<object> fslike).unlink(subpath)
 
 
-cdef uint64_t fs_get_filesize(PyObject *fslike, const vector[string]& parts) except * with gil:
-    return (<object> fslike).filesize(parts)
+cdef int fs_get_mtime(PyObject *fslike, const vector[string]& subpath) except * with gil:
+    return (<object> fslike).mtime(subpath)
+
+
+cdef uint64_t fs_get_filesize(PyObject *fslike, const vector[string]& subpath) except * with gil:
+    return (<object> fslike).filesize(subpath)
 
 
 cdef bool fs_is_fslike_directory(PyObject *fslike) except * with gil:

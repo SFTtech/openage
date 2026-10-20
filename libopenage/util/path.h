@@ -17,7 +17,6 @@
 // pxd: from libopenage.pyinterface.pyobject cimport PyObj
 #include "../pyinterface/pyobject.h"
 #include "file.h"
-#include "fslike/native.h"
 
 // pxd: from libopenage.util.fslike.fslike cimport FSLike
 
@@ -31,18 +30,18 @@ class FSLike;
 /**
  * C++ pendant to the python util.fslike.path.Path
  *
- * Contains a filesystem-like object and path-parts.
+ * Contains a filesystem-like object and path-subpath.
  *
  * pxd:
  * cppclass Path:
- *     ctypedef string part_t
- *     ctypedef vector[string] parts_t
+ *     ctypedef string path_elem_t
+ *     ctypedef vector[string] subpath_t
  *
  *     Path() noexcept
- *     Path(PyObj, const vector[string]&) except +
+ *     Path(const vector[string]&, PyObj) except +
  *
  *     FSLike *get_fsobj() except +
- *     const vector[string] &get_parts() except +
+ *     const vector[string] &get_subpath() except +
  */
 class OAAPI Path {
 public:
@@ -50,13 +49,13 @@ public:
 	 * Storage type for a part of a path access.
 	 * Basically this is the name of a file or directory.
 	 */
-	using part_t = std::string;
+	using path_elem_t = std::string;
 
 	/**
-	 * Storage type for the filesystem access parts
+	 * Storage type for the filesystem access subpath
 	 * this is basically a list/of/elements/in/a/path.
 	 */
-	using parts_t = std::vector<part_t>;
+	using subpath_t = std::vector<path_elem_t>;
 
 	/**
 	 * Nullary constructor, pls don't use.
@@ -71,14 +70,18 @@ public:
 	 *
 	 * You will probably never call that manually.
 	 */
-	Path(const py::Obj &fslike,
-	     const parts_t &parts = {});
+	Path(
+		const subpath_t &subpath,
+		const py::Obj &fslike
+	);
 
 	/**
 	 * Construct a path from a fslike pointer.
 	 */
-	Path(std::shared_ptr<fslike::FSLike> fslike,
-	     const parts_t &parts = {});
+	Path(
+		const subpath_t &subpath,
+		std::shared_ptr<fslike::FSLike> fslike
+	);
 
 	virtual ~Path() = default;
 
@@ -87,7 +90,7 @@ public:
 	bool is_file() const;
 	bool is_dir() const;
 	bool writable() const;
-	std::vector<part_t> list();
+	std::vector<path_elem_t> list();
 	std::vector<Path> iterdir();
 	bool mkdirs();
 	File open(const std::string &mode = "r") const;
@@ -132,20 +135,20 @@ public:
 	std::vector<std::string> get_suffixes() const;
 	std::string get_stem() const;
 
-	Path joinpath(const parts_t &subpaths) const;
-	Path joinpath(const part_t &subpath) const;
-	Path operator[](const parts_t &subpaths) const;
-	Path operator[](const part_t &subpath) const;
-	Path operator/(const part_t &subpath) const;
+	Path joinpath(const subpath_t &subpaths) const;
+	Path joinpath(const path_elem_t &subpath) const;
+	Path operator[](const subpath_t &subpaths) const;
+	Path operator[](const path_elem_t &subpath) const;
+	Path operator/(const path_elem_t &subpath) const;
 
-	Path with_name(const part_t &name) const;
-	Path with_suffix(const part_t &suffix) const;
+	Path with_name(const path_elem_t &name) const;
+	Path with_suffix(const path_elem_t &suffix) const;
 
 	bool operator==(const Path &other) const;
 	bool operator!=(const Path &other) const;
 
 	fslike::FSLike *get_fsobj() const;
-	const parts_t &get_parts() const;
+	const subpath_t &get_subpath() const;
 
 	// compute hash from the resolved native path
 	// the hash value is cashed after first access to avoid
@@ -174,13 +177,13 @@ private:
 protected:
 	std::shared_ptr<fslike::FSLike> fsobj;
 
-	parts_t parts;
+	subpath_t subpath;
 
 	friend std::ostream &operator<<(std::ostream &stream, const Path &path);
 };
 
 
-// helper functions, needed for some parts of convert/
+// helper functions, needed for some subpath of convert/
 
 /**
  * get the filename (last part) of a given path

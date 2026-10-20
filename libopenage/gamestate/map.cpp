@@ -2,8 +2,6 @@
 
 #include "map.h"
 
-#include <nyan/nyan.h>
-
 #include "gamestate/api/terrain.h"
 #include "gamestate/game_state.h"
 #include "gamestate/terrain.h"
@@ -12,6 +10,8 @@
 #include "pathfinding/grid.h"
 #include "pathfinding/pathfinder.h"
 #include "pathfinding/sector.h"
+
+import nyan;
 
 
 namespace openage::gamestate {

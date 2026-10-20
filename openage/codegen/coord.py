@@ -6,8 +6,10 @@ Generates libopenage/coord/coord_{xy, xyz, ne_se, ne_se_up}.{h, cpp}
 
 from mako.template import Template
 
+from ..util.fslike.path import Path
 
-def generate_coord_basetypes(projectdir):
+
+def generate_coord_basetypes(projectdir: Path):
     """
     Generates the test/demo method symbol lookup file from tests_cpp.
 

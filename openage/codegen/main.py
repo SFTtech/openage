@@ -53,6 +53,7 @@ import os
 import sys
 import typing
 
+from ..util.fslike.directory import Directory
 from .codegen import CodegenMode, codegen
 
 if typing.TYPE_CHECKING:
@@ -166,7 +167,7 @@ def main(args, error):
     # arguments are OK.
 
     # generate sources
-    generated, depends = codegen(mode, args.input_dir, args.output_dir)
+    generated, depends = codegen(mode, Directory(args.input_dir), Directory(args.output_dir))
 
     def print_set_differences(old, new, name):
         """Prints the difference between old and new."""

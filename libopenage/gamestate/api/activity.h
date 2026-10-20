@@ -4,13 +4,15 @@
 
 #include <memory>
 
-#include <nyan/nyan.h>
-
 #include "gamestate/activity/types.h"
 #include "gamestate/activity/xor_event_gate.h"
 #include "gamestate/activity/xor_gate.h"
 #include "gamestate/system/types.h"
 
+
+namespace nyan {
+class Object;
+} // namespace nyan
 
 namespace openage::gamestate {
 

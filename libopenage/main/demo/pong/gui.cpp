@@ -19,6 +19,8 @@
 #include "renderer/texture.h"
 #include "renderer/util.h"
 
+import nyan;
+
 
 namespace openage::main::tests::pong {
 

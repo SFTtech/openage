@@ -1,0 +1,68 @@
+name: macOS-CI
+on: [push, pull_request]
+
+jobs:
+  # https://docs.github.com/en/actions/reference/software-installed-on-github-hosted-runners
+  # we install stuff not already there
+  macos-build:
+    runs-on: macos-latest
+    env:
+      UV_CACHE_DIR: ${{ github.workspace }}/../uv-cache
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v7
+
+      # ccache is incremental, so restore the newest entry and save an updated one per commit
+      - name: Restore ccache dir
+        uses: actions/cache/restore@v6
+        id: cache-ccache
+        with:
+          path: ~/Library/Caches/ccache
+          key: macos-ccache-${{ github.sha }}
+          restore-keys: macos-ccache-
+      # exact key on the workflow file: changes when the package list changes,
+      # prefix fallback keeps the old downloads until then
+      - name: Restore dependencies cache
+        uses: actions/cache/restore@v6
+        id: cache-deps
+        with:
+          path: |
+            ${{ env.UV_CACHE_DIR }}
+            ~/Library/Caches/Homebrew
+          key: macos-deps-${{ hashFiles('.github/workflows/macos.yml', 'uv.lock') }}
+          restore-keys: macos-deps-
+      - name: Brew update-reset
+        run: brew update-reset
+      - name: Brew update
+        run: brew update
+      - name: Install dependencies
+        # AppleClang is installed by default, but lacks C++ module support, see doc/build_instructions/macos.md
+        run: |
+          brew install --cask font-dejavu
+          brew install ccache cmake eigen flex fontconfig freetype harfbuzz just libepoxy libogg libpng llvm make ninja opus opusfile python3 qt6 toml11 uv
+      - name: Install Python dependencies
+        run: uv sync --locked --python "$(brew --prefix)/bin/python3"
+      - name: Configure
+        # switch back to AppleClang once it supports C++ modules:
+        # run: ./configure --compiler=clang --mode=release --ccache --download-nyan
+        run: ./configure --compiler="$(brew --prefix llvm)/bin/clang++" --mode=release --ccache --download-nyan -- -DCMAKE_OSX_SYSROOT=macosx -DPython3_EXECUTABLE="$PWD/.venv/bin/python"
+      - name: Build
+        run: just build
+      - name: Test
+        run: just test
+      # keep the caches even when the build or tests fail: the work done so far
+      # is exactly what the next run wants to reuse
+      - name: Save ccache dir
+        if: always()
+        uses: actions/cache/save@v6
+        with:
+          path: ~/Library/Caches/ccache
+          key: ${{ steps.cache-ccache.outputs.cache-primary-key }}
+      - name: Save dependencies cache
+        if: always()
+        uses: actions/cache/save@v6
+        with:
+          path: |
+            ${{ env.UV_CACHE_DIR }}
+            ~/Library/Caches/Homebrew
+          key: ${{ steps.cache-deps.outputs.cache-primary-key }}
