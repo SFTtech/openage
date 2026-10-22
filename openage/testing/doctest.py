@@ -17,5 +17,5 @@ def test():
     """
     for modname in doctest_modules():
         mod = importlib.import_module(modname)
-        if testmod(mod, report=False).failed:
+        if testmod(mod).failed:
             raise TestError("Errors have been detected during doctest")
