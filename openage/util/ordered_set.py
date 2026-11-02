@@ -84,12 +84,15 @@ class OrderedSet(Generic[OrderedSetItem]):
         """
         Only keep elements that are both in self and other.
         """
-        keys_self = set(self.ordered_set.keys())
-        keys_other = set(other.keys())
-        intersection = keys_self & keys_other
+        if isinstance(other, OrderedSet):
+            other_set = set(other.ordered_set.keys())
+        elif isinstance(other, dict):
+            other_set = set(other.keys())
+        else:
+            other_set = set(other)
 
-        for elem in self:
-            if elem not in intersection:
+        for elem in list(self.ordered_set.keys()):
+            if elem not in other_set:
                 self.discard(elem)
 
     def union(self, other):
