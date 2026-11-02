@@ -84,12 +84,13 @@ class OrderedSet(Generic[OrderedSetItem]):
         """
         Only keep elements that are both in self and other.
         """
-        if isinstance(other, OrderedSet):
-            other_set = set(other.ordered_set.keys())
-        elif isinstance(other, dict):
-            other_set = set(other.keys())
-        else:
-            other_set = set(other)
+        match other:
+            case OrderedSet():
+                other_set = set(other.ordered_set.keys())
+            case dict():
+                other_set = set(other.keys())
+            case _:
+                other_set = set(other)
 
         for elem in list(self.ordered_set.keys()):
             if elem not in other_set:
