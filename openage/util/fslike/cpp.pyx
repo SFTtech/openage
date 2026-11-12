@@ -1,4 +1,5 @@
 # Copyright 2017-2021 the openage authors. See copying.md for legal info.
+# cython: c_string_type=unicode, c_string_encoding=utf8
 
 """
 Functions called from C++ to perform method calls on
@@ -92,10 +93,8 @@ cdef class FSLikeCPPWrapper:
 
     def get_native_path(self, subpath):
         cdef string native_path = self.fsobj.get().get_native_path(subpath)
-        txt = bytes(native_path)
-
-        if txt:
-            return txt
+        if not native_path.empty():
+            return native_path
         else:
             return None
 
@@ -284,7 +283,7 @@ cdef check_file_exists(object path, object fslike, const vector[string]& subpath
         raise FileNotFoundError("file could not be found in filesystem %s "
                                 "for path '%s'" % (
                                     fslike,
-                                    b"/".join(subpath).decode(errors='ignore')
+                                    "/".join(subpath)
                                 ))
 
 

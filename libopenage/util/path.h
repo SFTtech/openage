@@ -7,6 +7,7 @@
  */
 
 
+// pxd: from libcpp cimport bool
 // pxd: from libcpp.string cimport string
 #include <string>
 // pxd: from libcpp.vector cimport vector
@@ -42,6 +43,11 @@ class FSLike;
  *
  *     FSLike *get_fsobj() except +
  *     const vector[string] &get_subpath() except +
+ *
+ *     bool is_file() except +
+ *     bool is_dir() except +
+ *     vector[string] list() except +
+ *     string resolve_native_path(const string &mode) except +
  */
 class OAAPI Path {
 public:

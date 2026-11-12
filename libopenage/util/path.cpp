@@ -55,7 +55,7 @@ Path::Path(
 	// test if fsobj is fslike.Directory
 	if (fslike::pyx_fs_is_fslike_directory.call(fsobj_in.get_ref())) {
 		this->fsobj = std::make_shared<fslike::Directory>(
-			fsobj_in.getattr("path").bytes());
+			fsobj_in.getattr("path").str());
 	}
 	else {
 		// we can't create a c++-variant of the path,
