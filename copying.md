@@ -174,6 +174,7 @@ _the openage authors_ are:
 | Erwan Billard               | iacker                      | 82095453+iacker à users dawt noreply dawt github dawt com |
 | Deniz Kökden                | denizkoekden                | koekdendeniz à gmail dawt com                     |
 | Sergey Bronnikov            | ligurio                     | estetus à gmail dawt com                          |
+| Nicolas Inostroza           | JotaJazz                    | 181486793+jotajazz à users dawt noreply dawt github dawt com |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.

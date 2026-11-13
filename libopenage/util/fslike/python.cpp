@@ -67,7 +67,7 @@ std::string Python::get_native_path(const Path::subpath_t &subpath) {
 		return "";
 	}
 	else {
-		return ret.bytes();
+		return ret.str();
 	}
 }
 
