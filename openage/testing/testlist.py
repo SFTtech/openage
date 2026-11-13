@@ -80,6 +80,7 @@ def tests_cpp():
     yield "openage::job::tests::test_job_manager"
     yield "openage::path::tests::path_node", "pathfinding"
     yield "openage::path::tests::flow_field", "pathfinding"
+    yield "openage::path::tests::grid_from_sectors", "pathfinding"
     yield "openage::pyinterface::tests::pyobject"
     yield "openage::pyinterface::tests::err_py_to_cpp"
     yield "openage::renderer::tests::font"
