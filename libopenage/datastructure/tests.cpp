@@ -3,8 +3,10 @@
 #include "tests.h"
 
 #include <algorithm>
+#include <chrono>
 #include <memory>
 #include <mutex>
+#include <thread>
 #include <utility>
 
 #include "testing/testing.h"
@@ -354,11 +356,27 @@ void concurrent_queue_copy_move_elements_compilation() {
 	res.reset_accumulated_construction_counter();
 }
 
+void concurrent_queue_pop_waits_for_push() {
+	openage::datastructure::ConcurrentQueue<int> queue;
+
+	int popped = 0;
+	std::thread consumer{[&] { popped = queue.pop(); }};
+
+	// the test passes either way, the delay just lets the consumer
+	// wait in pop() on the empty queue before the push
+	std::this_thread::sleep_for(std::chrono::milliseconds{10});
+	queue.push(157);
+	consumer.join();
+
+	TESTEQUALS(popped, 157);
+}
+
 // exported test
 void concurrent_queue() {
 	concurrent_queue_copy_only_elements_compilation();
 	concurrent_queue_move_only_elements_compilation();
 	concurrent_queue_copy_move_elements_compilation();
+	concurrent_queue_pop_waits_for_push();
 }
 
 } // namespace openage::datastructure::tests
