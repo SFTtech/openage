@@ -4,6 +4,7 @@
 
 #include <cstddef>
 #include <vector>
+#include <optional>
 
 #include "pathfinding/types.h"
 #include "time/time.h"
@@ -107,6 +108,27 @@ public:
 	void set_costs(std::vector<cost_t> &&cells, const time::time_t &changed);
 
 	/**
+	 * Stamp a cost field cell at a given time.
+	 *
+	 * @param idx Index of the cell.
+	 * @param cost Cost to set.
+	 * @param stamped_at Time at which the cost cell is to be stamped.
+	 *
+	 * @return True if the cell was successfully stamped, false if the cell was already stamped.
+	 */
+	bool stamp(size_t idx, cost_t cost, const time::time_t &stamped_at);
+
+	/**
+	 * Unstamp a cost field cell at a given time.
+	 *
+	 * @param idx Index of the cell.
+	 * @param unstamped_at Time at which the cost cell is to be unstamped.
+	 *
+	 * @return True if the cell was successfully unstamped, false if the cell was already not stamped.
+	 */
+	bool unstamp(size_t idx, const time::time_t &unstamped_at);
+
+	/**
 	 * Check if the cost field is dirty at the specified time.
 	 *
 	 * @param time Time of access to the cost field.
@@ -135,6 +157,11 @@ private:
 	 * Cost field values.
 	 */
 	std::vector<cost_t> cells;
+
+	/**
+	 * Cost stamp vector.
+	 */
+	std::vector<std::optional<cost_stamp_t>> cost_stamps;
 };
 
 } // namespace path
