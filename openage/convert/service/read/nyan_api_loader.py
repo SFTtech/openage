@@ -3015,7 +3015,7 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     # engine.ability.type.Projectile
     api_object = api_objects["engine.ability.type.Projectile"]
 
-    member = NyanMember("arc", N_INT, None, None, 0)
+    member = NyanMember("arc", N_FLOAT, None, None, 0)
     api_object.add_member(member)
     elem_type = NyanMemberType(api_objects["engine.util.accuracy.Accuracy"])
     member_type = NyanMemberType(MemberType.SET, (elem_type,))
@@ -3045,17 +3045,17 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     # engine.ability.type.RangedContinuousEffect
     api_object = api_objects["engine.ability.type.RangedContinuousEffect"]
 
-    member = NyanMember("min_range", N_INT, None, None, 0)
+    member = NyanMember("min_range", N_FLOAT, None, None, 0)
     api_object.add_member(member)
-    member = NyanMember("max_range", N_INT, None, None, 0)
+    member = NyanMember("max_range", N_FLOAT, None, None, 0)
     api_object.add_member(member)
 
     # engine.ability.type.RangedDiscreteEffect
     api_object = api_objects["engine.ability.type.RangedDiscreteEffect"]
 
-    member = NyanMember("min_range", N_INT, None, None, 0)
+    member = NyanMember("min_range", N_FLOAT, None, None, 0)
     api_object.add_member(member)
-    member = NyanMember("max_range", N_INT, None, None, 0)
+    member = NyanMember("max_range", N_FLOAT, None, None, 0)
     api_object.add_member(member)
 
     # engine.ability.type.RegenerateAttribute
@@ -3160,9 +3160,9 @@ def _insert_members(api_objects: dict[str, NyanObject]) -> None:
     api_object.add_member(member)
     member = NyanMember("max_projectiles", N_INT, None, None, 0)
     api_object.add_member(member)
-    member = NyanMember("min_range", N_INT, None, None, 0)
+    member = NyanMember("min_range", N_FLOAT, None, None, 0)
     api_object.add_member(member)
-    member = NyanMember("max_range", N_INT, None, None, 0)
+    member = NyanMember("max_range", N_FLOAT, None, None, 0)
     api_object.add_member(member)
     member = NyanMember("reload_time", N_FLOAT, None, None, 0)
     api_object.add_member(member)
