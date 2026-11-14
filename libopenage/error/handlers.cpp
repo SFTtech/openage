@@ -12,6 +12,7 @@
 
 #include "handlers.h"
 
+#include <cstdlib>
 #include <cstring>
 #include <exception>
 #include <iostream>
@@ -27,6 +28,7 @@
 #include "util/signal.h"
 
 #include "error/error.h"
+#include "error/objc_exception.h"
 #include "error/stackanalyzer.h"
 
 
@@ -52,12 +54,16 @@ sighandler_t old_sigsegv_handler;
 util::OnInit install_handlers([]() {
 	old_sigsegv_handler = signal(SIGSEGV, sigsegv_handler);
 	old_terminate_handler = std::set_terminate(terminate_handler);
+	// Install the ObjC exception tracker so the terminate handler can report
+	// NSExceptions that cross the C++ boundary (Apple only; no-op elsewhere).
+	install_objc_exception_tracker();
 	exit_ok = true;
 	atexit(exit_handler);
 });
 
 
 util::OnDeInit restore_handlers([]() {
+	uninstall_objc_exception_tracker();
 	std::set_terminate(old_terminate_handler);
 	signal(SIGSEGV, old_sigsegv_handler);
 });
@@ -88,6 +94,15 @@ util::OnDeInit restore_handlers([]() {
 		}
 		catch (...) {
 			std::cout << "non-standard exception object" << std::endl;
+
+			// On Apple platforms, an Objective-C NSException thrown across a
+			// C++ boundary is not derived from std::exception and lands here
+			// with its details otherwise lost. Dump the name/reason/callStack
+			// of the current in-flight NSException (if any).
+			std::string objc_dump = dump_objc_exception();
+			if (!objc_dump.empty()) {
+				std::cout << objc_dump << std::endl;
+			}
 		}
 	}
 
@@ -98,12 +113,19 @@ util::OnDeInit restore_handlers([]() {
 	backtrace.analyze();
 	std::cout << backtrace << std::endl;
 
-	// die again to enable debugger functionality.
-	// that maybe print some additional useful info that we forgot about.
+	// die again to enable debugger functionality (SIGABRT is catchable by a
+	// debugger) and to guarantee a non-zero exit status.
+	//
+	// We call std::abort() directly rather than std::terminate(): on macOS the
+	// default terminate handler is libobjc's _objc_terminate(), which calls
+	// __cxa_rethrow on the still-in-flight exception. The rethrow_exception +
+	// catch above does NOT clear the exception's __cxa "uncaught" state, so
+	// _objc_terminate would rethrow -> std::terminate -> _objc_terminate ...,
+	// looping forever instead of aborting. std::abort() terminates unconditionally.
 	// TODO: we maybe want to prevent that for end-users.
 	std::cout << "\x1b[33mhanding over to the system...\x1b[m\n"
 			  << std::endl;
-	std::terminate();
+	std::abort();
 }
 
 
