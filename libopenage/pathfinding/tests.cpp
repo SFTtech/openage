@@ -7,8 +7,10 @@
 #include "pathfinding/cost_field.h"
 #include "pathfinding/definitions.h"
 #include "pathfinding/flow_field.h"
+#include "pathfinding/grid.h"
 #include "pathfinding/integration_field.h"
 #include "pathfinding/integrator.h"
+#include "pathfinding/sector.h"
 #include "pathfinding/types.h"
 #include "time/time.h"
 
@@ -111,6 +113,19 @@ void flow_field() {
 			TESTEQUALS(ff_cells[i], ff_expected[i]);
 		}
 	}
+}
+
+void grid_from_sectors() {
+	std::vector<std::shared_ptr<Sector>> sectors;
+	for (size_t y = 0; y < 2; y++) {
+		for (size_t x = 0; x < 3; x++) {
+			sectors.push_back(std::make_shared<Sector>(sectors.size(), coord::chunk(x, y), 5));
+		}
+	}
+
+	Grid grid{0, util::Vector2s{3, 2}, std::move(sectors)};
+	TESTEQUALS(grid.get_sector_size(), 5);
+	TESTEQUALS(grid.get_sectors().size(), 6);
 }
 
 
