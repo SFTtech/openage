@@ -34,6 +34,7 @@ def tests_py():
         "openage.cppinterface.exctranslate_tests.cpp_to_py_bounce",
         "translates the exception back and forth a few times",
     )
+    yield ("openage.nyan.tests.number_typing", "strict int/float typing of nyan members")
     yield ("openage.testing.misc_cpp.enum", "tests the interface for C++'s util::Enum class")
     yield ("openage.util.fslike.test.test", "test the filesystem abstraction subsystem")
     yield ("openage.util.fslike.cpp_tests.test", "access Python fslikes through C++ paths")
