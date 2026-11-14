@@ -40,9 +40,7 @@ public:
 	/** Returns the front item of the queue without removing it. */
 	T &front() {
 		std::unique_lock<mutex_t> lock{this->mutex};
-		while (this->queue.empty()) {
-			this->elements_available.wait(lock);
-		}
+		this->wait_for_elements(lock);
 		return this->queue.front();
 	}
 
@@ -50,8 +48,9 @@ public:
 	template <typename... None, typename U = T>
 	T pop([[maybe_unused]] typename std::enable_if_t<!std::is_move_constructible_v<U> and std::is_copy_constructible_v<U>> *t = nullptr) {
 		static_assert(sizeof...(None) == 0, "User-specified template arguments are prohibited.");
-		std::scoped_lock lock{this->mutex};
-		T ret = this->front();
+		std::unique_lock<mutex_t> lock{this->mutex};
+		this->wait_for_elements(lock);
+		T ret = this->queue.front();
 		this->queue.pop();
 
 		// Explicitly call the copy constructor since T cannot be move-constructed
@@ -63,8 +62,9 @@ public:
 	template <typename... None, typename U = T>
 	T pop([[maybe_unused]] typename std::enable_if_t<std::is_move_constructible_v<U>> *t = nullptr) {
 		static_assert(sizeof...(None) == 0, "User-specified template arguments are prohibited.");
-		std::scoped_lock lock{this->mutex};
-		T ret = std::move(this->front());
+		std::unique_lock<mutex_t> lock{this->mutex};
+		this->wait_for_elements(lock);
+		T ret = std::move(this->queue.front());
 		this->queue.pop();
 		return ret;
 	}
@@ -98,6 +98,17 @@ public:
 	}
 
 private:
+	/**
+	 * Wait until the queue has elements.
+	 *
+	 * The wait only releases \p lock, so it must be the only lock
+	 * this thread holds on the recursive mutex, otherwise producers
+	 * can't push and the wait never ends.
+	 */
+	void wait_for_elements(std::unique_lock<mutex_t> &lock) {
+		this->elements_available.wait(lock, [this] { return not this->queue.empty(); });
+	}
+
 	/** The internally used queue. */
 	std::queue<T> queue;
 
