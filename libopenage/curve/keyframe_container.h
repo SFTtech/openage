@@ -399,14 +399,14 @@ KeyframeContainer<T>::last_before(const time::time_t &time,
 	const elem_ptr end = this->container.size();
 
 	if (at != end and this->container.at(at).time() < time) {
-		// walk to the right until the time is larget than the searched
-		while (at != end and this->container.at(at).time() <= time) {
+		// walk to the right until the time is at least the searched one
+		while (at != end and this->container.at(at).time() < time) {
 			++at;
 		}
-		// go one back, because we want the last element that is <= time
+		// go one back, because we want the last element that is < time
 		--at;
 	}
-	else { // idx == end or idx->time > time
+	else { // idx == end or idx->time >= time
 		// walk to the left until the element time is smaller than the searched time
 		while (at > 0 and (at == end or this->container.at(at).time() >= time)) {
 			--at;
