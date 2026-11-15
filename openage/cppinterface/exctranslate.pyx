@@ -29,29 +29,46 @@ from libopenage.pyinterface.exctranslate cimport (
     set_exc_translation_funcs
 )
 
+import ast
+from types import TracebackType
+
 from ..testing.testing import TestError
 from ..log import info
 
 cdef extern from "Python.h":
     int PyException_SetTraceback(PyObject *ex, PyObject *tb)
 
-# _PyTraceback_Add has been made private in Python 3.13
-# see https://github.com/python/cpython/pull/108453
-# TODO: Find another solution to add tracebacks
-# cdef extern from "traceback.h":
-#     void _PyTraceback_Add(const char *funcname, const char *filename, int lineno)
-
-
-cdef void PyTraceback_Add(const char *functionname, const char *filename, int lineno) noexcept with gil:
+def make_traceback(str functionname, str filename, int lineno, object tb_next):
     """
-    Add a new traceback stack frame.
-
-    Note: Currently does nothing, because _PyTraceback_Add is no longer
-          accessible since Python 3.13.
-
-    TODO: Find another solution to add tracebacks.
+    Create a traceback entry that points to filename:lineno in functionname,
+    for C++ stack frames that Python can't create itself.
     """
-    # _PyTraceback_Add(functionname, filename, lineno)
+    tree = ast.Module(body=[ast.Raise(exc=ast.Name("_exc", ast.Load()), cause=None)], type_ignores=[])
+    for node in ast.walk(tree):
+        node.lineno = node.end_lineno = lineno
+        # without column info, tracebacks don't mark a range in the C++ line
+        node.col_offset = node.end_col_offset = -1
+
+    code = compile(tree, filename, "exec").replace(co_name=functionname)
+    try:
+        exec(code, {"_exc": RuntimeError})
+    except RuntimeError as exc:
+        # the first entry is this function, the second the fake frame
+        frame_tb = exc.__traceback__.tb_next
+
+    return TracebackType(tb_next, frame_tb.tb_frame, frame_tb.tb_lasti, frame_tb.tb_lineno)
+
+
+# C++ frames of the exception currently being translated, innermost first
+cdef list cpp_frames = []
+
+
+cdef void add_cpp_frame(const char *functionname, const char *filename, int lineno) noexcept with gil:
+    cpp_frames.append((
+        functionname.decode(errors='replace'),
+        filename.decode(errors='replace'),
+        lineno,
+    ))
 
 
 cdef class CPPMessageObject:
@@ -72,7 +89,7 @@ cdef void py_add_backtrace_frame_from_symbol(const backtrace_symbol *symbol) noe
     For use as a callback with Error->backtrace->get_symbols(), from within
     raise_exception.
     """
-    PyTraceback_Add(
+    add_cpp_frame(
         <char *> symbol.functionname.c_str(),
         <char *> symbol.filename.c_str(),
         <int> symbol.lineno)
@@ -132,22 +149,27 @@ cdef void raise_cpp_error(Error *cpp_error_obj) except * with gil:
     else:
         exc = CPPException(typename, <bytes> cpp_error_obj.what())
 
-    raise_cpp_error_common(cpp_error_obj, exc)
-    # A Python exception is active from this point on.
-    # Don't use any Python functionality.
+    # a translation that failed midway may have left frames behind
+    cpp_frames.clear()
 
+    # collect the C++ frames: the throw location, then the backtrace
+    add_cpp_frame(cpp_error_obj.msg.functionname,
+                  cpp_error_obj.msg.filename,
+                  <int> cpp_error_obj.msg.lineno)
 
-    # add traceback lines for cpp message obj metadata
-    PyTraceback_Add(cpp_error_obj.msg.functionname,
-                    cpp_error_obj.msg.filename,
-                    <int> cpp_error_obj.msg.lineno)
-
-    # add traceback lines for cpp_error_obj.backtrace
     if cpp_error_obj.backtrace != NULL:
         # Fix the C++ exception object's backtrace (remove unneeded entries)
         # Let's just hope that none of these throws...
         cpp_error_obj.trim_backtrace()
         cpp_error_obj.backtrace.get_symbols(py_backtrace_adder, False)
+
+    tb = None
+    for functionname, filename, lineno in cpp_frames:
+        tb = make_traceback(functionname, filename, lineno, tb)
+
+    raise_cpp_error_common(cpp_error_obj, exc.with_traceback(tb))
+    # A Python exception is active from this point on.
+    # Don't use any Python functionality.
 
 
 cdef void raise_cpp_pyexception(PyException *cpp_pyexception_obj) except * with gil:

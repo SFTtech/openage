@@ -80,6 +80,16 @@ def cpp_to_py(int bounce_count = 0):
     assert_value(excobj.args[0], "foo")
     assert_value(excobj.typename, None, is_openage_error)
 
+    # the C++ throw location is part of the Python traceback
+    assert_value(
+        traceback.extract_tb(excobj.__traceback__),
+        None,
+        lambda frames: any(
+            frame.filename.endswith("exctranslate_tests.cpp") and "throw_foo" in frame.name
+            for frame in frames
+        ),
+    )
+
     cause = getattr(excobj, "__cause__", None)
 
     assert_value(type(cause), None, lambda value: value in {CPPException, TestError})
