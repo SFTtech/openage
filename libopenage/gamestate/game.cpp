@@ -45,7 +45,7 @@ Game::Game(const std::shared_ptr<openage::event::EventLoop> &event_loop,
 	//       hardcoded entity types.
 	this->state->set_mod_manager(mod_manager);
 
-	this->generate_terrain(terrain_factory);
+	this->generate_terrain(event_loop, terrain_factory);
 }
 
 const std::shared_ptr<GameState> &Game::get_state() const {
@@ -127,7 +127,8 @@ void Game::load_path(const util::Path &base_dir,
 	}
 }
 
-void Game::generate_terrain(const std::shared_ptr<TerrainFactory> &terrain_factory) {
+void Game::generate_terrain(const std::shared_ptr<openage::event::EventLoop> &event_loop,
+                            const std::shared_ptr<TerrainFactory> &terrain_factory) {
 	auto chunk0 = terrain_factory->add_chunk(this->state,
 	                                         util::Vector2s{10, 10},
 	                                         coord::tile_delta{0, 0});
@@ -143,7 +144,7 @@ void Game::generate_terrain(const std::shared_ptr<TerrainFactory> &terrain_facto
 
 	auto terrain = terrain_factory->add_terrain({20, 20}, {chunk0, chunk1, chunk2, chunk3});
 
-	auto map = std::make_shared<Map>(this->state, terrain);
+	auto map = std::make_shared<Map>(event_loop, this->state, terrain);
 	this->state->set_map(map);
 }
 

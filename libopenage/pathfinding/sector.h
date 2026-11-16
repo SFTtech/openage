@@ -11,7 +11,12 @@
 #include "pathfinding/types.h"
 
 
-namespace openage::path {
+namespace openage {
+namespace event {
+class EventLoop;
+} // namespace event
+
+namespace path {
 class CostField;
 class Portal;
 
@@ -26,11 +31,13 @@ public:
 	/**
 	 * Create a new sector with a specified ID and an uninitialized cost field.
 	 *
+	 * @param loop Event loop that the cost field curves are registered on.
 	 * @param id ID of the sector. Should be unique per grid.
 	 * @param position Position of the sector in the grid.
 	 * @param field_size Size of the cost field.
 	 */
-	Sector(sector_id_t id,
+	Sector(const std::shared_ptr<event::EventLoop> &loop,
+	       sector_id_t id,
 	       const coord::chunk &position,
 	       size_t field_size);
 
@@ -126,4 +133,5 @@ private:
 };
 
 
-} // namespace openage::path
+} // namespace path
+} // namespace openage

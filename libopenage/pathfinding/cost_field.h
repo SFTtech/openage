@@ -3,8 +3,10 @@
 #pragma once
 
 #include <cstddef>
+#include <memory>
 #include <vector>
 
+#include "curve/container/vector.h"
 #include "pathfinding/types.h"
 #include "time/time.h"
 
@@ -13,6 +15,10 @@ namespace openage {
 namespace coord {
 struct tile_delta;
 } // namespace coord
+
+namespace event {
+class EventLoop;
+} // namespace event
 
 namespace path {
 
@@ -24,9 +30,11 @@ public:
 	/**
 	 * Create a square cost field with a specified size.
 	 *
+	 * @param loop Event loop that the cost history curve is registered on.
 	 * @param size Side length of the field.
 	 */
-	CostField(size_t size);
+	CostField(const std::shared_ptr<event::EventLoop> &loop,
+	          size_t size);
 
 	/**
 	 * Get the size of the cost field.
@@ -87,6 +95,8 @@ public:
 	 * @param valid_until Time at which the cost value expires.
 	 */
 	inline void set_cost(size_t idx, cost_t cost, const time::time_t &valid_until) {
+		// the curve checks the index, so it has to be updated first
+		this->cost_history.set_last(valid_until, idx, cost);
 		this->cells[idx] = cost;
 		this->valid_until = valid_until;
 	}
@@ -105,6 +115,17 @@ public:
 	 * @param valid_until Time at which the cost value expires.
 	 */
 	void set_costs(std::vector<cost_t> &&cells, const time::time_t &changed);
+
+	/**
+	 * Get the history of the cost field values.
+	 *
+	 * Every change of a cell cost is recorded at the time passed to the modifying
+	 * operation. A change erases all recorded changes of that cell after its time,
+	 * so the latest recorded values always equal the current cost field values.
+	 *
+	 * @return Cost history of the cells.
+	 */
+	const curve::Vector<cost_t> &get_cost_history() const;
 
 	/**
 	 * Check if the cost field is dirty at the specified time.
@@ -135,6 +156,13 @@ private:
 	 * Cost field values.
 	 */
 	std::vector<cost_t> cells;
+
+	/**
+	 * Cost field values over time.
+	 *
+	 * Stored separately from the current values in \p cells to keep cost lookups fast.
+	 */
+	curve::Vector<cost_t> cost_history;
 };
 
 } // namespace path

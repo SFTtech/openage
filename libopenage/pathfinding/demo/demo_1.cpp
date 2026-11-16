@@ -4,6 +4,7 @@
 
 #include <QMouseEvent>
 
+#include "event/event_loop.h"
 #include "pathfinding/cost_field.h"
 #include "pathfinding/grid.h"
 #include "pathfinding/path.h"
@@ -25,7 +26,8 @@
 namespace openage::path::tests {
 
 void path_demo_1(const util::Path &path) {
-	auto grid = std::make_shared<Grid>(0, util::Vector2s{4, 3}, 10);
+	auto loop = std::make_shared<event::EventLoop>();
+	auto grid = std::make_shared<Grid>(loop, 0, util::Vector2s{4, 3}, 10);
 
 	// Initialize the cost field for each sector.
 	for (auto &sector : grid->get_sectors()) {

@@ -14,10 +14,13 @@
 
 namespace openage::path {
 
-Sector::Sector(sector_id_t id, const coord::chunk &position, size_t field_size) :
+Sector::Sector(const std::shared_ptr<event::EventLoop> &loop,
+               sector_id_t id,
+               const coord::chunk &position,
+               size_t field_size) :
 	id{id},
 	position{position},
-	cost_field{std::make_shared<CostField>(field_size)} {
+	cost_field{std::make_shared<CostField>(loop, field_size)} {
 }
 
 Sector::Sector(sector_id_t id, const coord::chunk &position, const std::shared_ptr<CostField> &cost_field) :

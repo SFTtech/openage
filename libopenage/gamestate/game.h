@@ -100,9 +100,11 @@ private:
 	 *
 	 * TODO: Use a real map generator.
 	 *
+	 * @param event_loop Event simulation loop for the gamestate.
 	 * @param terrain_factory Factory for creating terrain objects.
 	 */
-	void generate_terrain(const std::shared_ptr<TerrainFactory> &terrain_factory);
+	void generate_terrain(const std::shared_ptr<openage::event::EventLoop> &event_loop,
+	                      const std::shared_ptr<TerrainFactory> &terrain_factory);
 
 	/**
 	 * Nyan game data database.

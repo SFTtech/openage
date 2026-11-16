@@ -16,6 +16,10 @@ Cost values are represented as `uint8_t` (0-255) values. The range of usable cos
 is `1` to `254`. `255` is a special value that represents an impassable cell. `0` is reserved
 for initialization and should not be used for flow field calculations.
 
+Every cost change is also recorded at its time in a [`curve::Vector`](/doc/code/curves.md#vector), separate from the current values.
+This cost history allows looking up the costs at earlier points in time, e.g. as a basis for rolling back changes.
+A change erases the recorded later changes of the same cell, so the latest recorded costs always match the current ones.
+
 ![Cost Field](images/cost_field.png)
 
 - **green**: minimum cost

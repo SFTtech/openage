@@ -12,7 +12,12 @@
 #include "util/vector.h"
 
 
-namespace openage::path {
+namespace openage {
+namespace event {
+class EventLoop;
+} // namespace event
+
+namespace path {
 class Sector;
 
 /**
@@ -23,11 +28,13 @@ public:
 	/**
 	 * Create a new empty grid of width x height sectors with a specified size.
 	 *
+	 * @param loop Event loop that the sector curves are registered on.
 	 * @param id ID of the grid.
 	 * @param size Size of the grid in sectors (width x height).
 	 * @param sector_size Side length of each sector.
 	 */
-	Grid(grid_id_t id,
+	Grid(const std::shared_ptr<event::EventLoop> &loop,
+	     grid_id_t id,
 	     const util::Vector2s &size,
 	     size_t sector_size);
 
@@ -136,4 +143,5 @@ private:
 };
 
 
-} // namespace openage::path
+} // namespace path
+} // namespace openage

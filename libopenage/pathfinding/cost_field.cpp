@@ -11,10 +11,12 @@
 
 namespace openage::path {
 
-CostField::CostField(size_t size) :
+CostField::CostField(const std::shared_ptr<event::EventLoop> &loop,
+                     size_t size) :
 	size{size},
 	valid_until{time::TIME_MIN},
-	cells(this->size * this->size, COST_MIN) {
+	cells(this->size * this->size, COST_MIN),
+	cost_history{loop, 0, this->cells} {
 	log::log(DBG << "Created cost field with size " << this->size << "x" << this->size);
 }
 
@@ -53,7 +55,14 @@ void CostField::set_costs(std::vector<cost_t> &&cells, const time::time_t &valid
 	                                       << this->cells.size());
 
 	this->cells = std::move(cells);
+	for (size_t idx = 0; idx < this->cells.size(); ++idx) {
+		this->cost_history.set_last(valid_until, idx, this->cells[idx]);
+	}
 	this->valid_until = valid_until;
+}
+
+const curve::Vector<cost_t> &CostField::get_cost_history() const {
+	return this->cost_history;
 }
 
 bool CostField::is_dirty(const time::time_t &time) const {

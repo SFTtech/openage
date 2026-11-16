@@ -12,6 +12,10 @@
 
 
 namespace openage {
+namespace event {
+class EventLoop;
+} // namespace event
+
 namespace path {
 class Pathfinder;
 } // namespace path
@@ -27,10 +31,12 @@ public:
 	 *
 	 * Initializes the pathfinder with the terrain path costs.
 	 *
+	 * @param loop Event loop that the pathfinder curves are registered on.
 	 * @param state Game state.
 	 * @param terrain Terrain object.
 	 */
-	Map(const std::shared_ptr<GameState> &state,
+	Map(const std::shared_ptr<openage::event::EventLoop> &loop,
+	    const std::shared_ptr<GameState> &state,
 	    const std::shared_ptr<Terrain> &terrain);
 
 	~Map() = default;

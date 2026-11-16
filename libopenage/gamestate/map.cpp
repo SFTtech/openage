@@ -15,7 +15,8 @@ import nyan;
 
 
 namespace openage::gamestate {
-Map::Map(const std::shared_ptr<GameState> &state,
+Map::Map(const std::shared_ptr<openage::event::EventLoop> &loop,
+         const std::shared_ptr<GameState> &state,
          const std::shared_ptr<Terrain> &terrain) :
 	terrain{terrain},
 	pathfinder{std::make_shared<path::Pathfinder>()},
@@ -29,7 +30,7 @@ Map::Map(const std::shared_ptr<GameState> &state,
 	auto side_length = std::max(chunk_size[0], chunk_size[1]);
 	auto grid_size = this->terrain->get_chunks_size();
 	for (const auto &path_type : path_types) {
-		auto grid = std::make_shared<path::Grid>(grid_idx, grid_size, side_length);
+		auto grid = std::make_shared<path::Grid>(loop, grid_idx, grid_size, side_length);
 		this->pathfinder->add_grid(grid);
 
 		this->grid_lookup.emplace(path_type, grid_idx);

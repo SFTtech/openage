@@ -6,6 +6,7 @@
 #include <QMouseEvent>
 
 #include "coord/tile.h"
+#include "event/event_loop.h"
 #include "pathfinding/cost_field.h"
 #include "pathfinding/flow_field.h"
 #include "pathfinding/integration_field.h"
@@ -32,7 +33,8 @@ void path_demo_0(const util::Path &path) {
 	auto field_length = 10;
 
 	// Cost field with some obstacles
-	auto cost_field = std::make_shared<CostField>(field_length);
+	auto loop = std::make_shared<event::EventLoop>();
+	auto cost_field = std::make_shared<CostField>(loop, field_length);
 
 	const time::time_t time = time::TIME_ZERO;
 	cost_field->set_cost(coord::tile_delta{0, 0}, COST_IMPASSABLE, time);

@@ -11,7 +11,8 @@
 
 namespace openage::path {
 
-Grid::Grid(grid_id_t id,
+Grid::Grid(const std::shared_ptr<event::EventLoop> &loop,
+           grid_id_t id,
            const util::Vector2s &size,
            size_t sector_size) :
 	id{id},
@@ -20,7 +21,8 @@ Grid::Grid(grid_id_t id,
 	for (size_t y = 0; y < size[1]; y++) {
 		for (size_t x = 0; x < size[0]; x++) {
 			this->sectors.push_back(
-				std::make_shared<Sector>(x + y * this->size[0],
+				std::make_shared<Sector>(loop,
+			                             x + y * this->size[0],
 			                             coord::chunk(x, y),
 			                             sector_size));
 		}
