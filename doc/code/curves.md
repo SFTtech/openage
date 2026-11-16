@@ -18,6 +18,7 @@ Curves are an integral part of openage's event-based game simulation.
       1. [Queue](#queue)
       2. [Unordered Map](#unordered-map)
       3. [Array](#array)
+      4. [Vector](#vector)
 
 
 ## Motivation
@@ -199,7 +200,7 @@ e.g. angles between 0 and 360 degrees.
 ### Container
 
 Container curves are intended for storing changes to collections and containers.
-The currently supported containers are `Queue`, `UnorderedMap` and `Array`.
+The currently supported containers are `Queue`, `UnorderedMap`, `Array` and `Vector`.
 
 The most important distinction between regular C++ containers and curve containers
 is that curve containers track the *lifespan* of each element, i.e. their insertion time,
@@ -286,6 +287,37 @@ Modify operations insert values for a specific point in time.
 | `set_insert(t, i, value)`  | Insert a new keyframe(`t`, `value`) at index `i`                                           |
 | `set_last(t, i, value)`    | Insert a new keyframe(`t`, `value`) at index `i`; delete all keyframes after time `t`      |
 | `set_replace(t, i, value)` | Insert a new keyframe(`t`, `value`) at index `i`; remove all other keyframes with time `t` |
+
+**Copy**
+
+| Method           | Description                                                                                      |
+| ---------------- | ------------------------------------------------------------------------------------------------ |
+| `sync(Curve, t)` | Replace all keyframes from self after time `t` with keyframes from source `Curve` after time `t` |
+
+
+#### Vector
+
+Vector curve containers store a number of elements that is set at runtime on construction and stays fixed afterwards.
+Apart from that, they behave like `Array` curves: each element is tracked individually over time by its own `KeyframeContainer`.
+Its constructor takes the default values of the elements, which also determine their number.
+
+**Read**
+
+| Method             | Description                                                              |
+| ------------------ | ------------------------------------------------------------------------ |
+| `at(t, i)`         | Get value of element at index `i` at time <= `t`                         |
+| `get(t)`           | Get vector of values at time <= `t`                                      |
+| `size()`           | Get the number of elements in the vector                                 |
+| `frame(t, i)`      | Get the previous keyframe (time and value) at index `i` before or at `t` |
+| `next_frame(t, i)` | Get the next keyframe (time and value) at index `i` after `t`            |
+
+**Modify**
+
+| Method                     | Description                                                                                            |
+| -------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `set_insert(t, i, value)`  | Insert a new keyframe(`t`, `value`) at index `i`                                                       |
+| `set_last(t, i, value)`    | Insert a new keyframe(`t`, `value`) at index `i`; delete all keyframes after time `t`                  |
+| `set_replace(t, i, value)` | Insert a new keyframe(`t`, `value`) at index `i`; replace the last keyframe with time `t` at index `i` |
 
 **Copy**
 

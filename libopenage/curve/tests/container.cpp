@@ -15,6 +15,7 @@
 #include "curve/container/map_filter_iterator.h"
 #include "curve/container/queue.h"
 #include "curve/container/queue_filter_iterator.h"
+#include "curve/container/vector.h"
 #include "event/event_loop.h"
 #include "testing/testing.h"
 
@@ -346,12 +347,96 @@ void test_array() {
 	TESTEQUALS(*it, 7);
 }
 
+void test_vector() {
+	auto loop = std::make_shared<event::EventLoop>();
+
+	Vector<int> v(loop, 0, {10, 20, 30});
+	TESTEQUALS(v.size(), 3);
+
+	// default values apply at all times until the first keyframe
+	TESTEQUALS(v.get(time::TIME_MIN) == std::vector<int>({10, 20, 30}), true);
+	TESTEQUALS(v.get(time::TIME_MAX) == std::vector<int>({10, 20, 30}), true);
+
+	// queries before, at and after a keyframe
+	v.set_insert(5, 1, 21);
+	TESTEQUALS(v.at(4, 1), 20);
+	TESTEQUALS(v.at(5, 1), 21);
+	TESTEQUALS(v.at(6, 1), 21);
+
+	// other elements are unaffected
+	TESTEQUALS(v.at(5, 0), 10);
+	TESTEQUALS(v.at(5, 2), 30);
+	TESTEQUALS(v.get(5) == std::vector<int>({10, 21, 30}), true);
+
+	// keyframes inserted out of order are sorted by time
+	v.set_insert(2, 1, 22);
+	TESTEQUALS(v.at(3, 1), 22);
+	TESTEQUALS(v.at(5, 1), 21);
+
+	// equal timestamps: set_insert appends after existing keyframes
+	v.set_insert(5, 1, 23);
+	TESTEQUALS(v.at(5, 1), 23);
+
+	// set_replace overwrites the last keyframe at t
+	v.set_replace(5, 1, 24);
+	TESTEQUALS(v.at(5, 1), 24);
+	// v[1] = [-inf:20, 2:22, 5:21, 5:24]
+
+	// frame and next_frame
+	auto frame = v.frame(3, 1);
+	TESTEQUALS(frame.first, 2);
+	TESTEQUALS(frame.second, 22);
+	auto next_frame = v.next_frame(3, 1);
+	TESTEQUALS(next_frame.first, 5);
+	TESTEQUALS(next_frame.second, 21);
+	TESTTHROWS(v.next_frame(5, 1));
+
+	// set_last erases later keyframes and the last same-time keyframe
+	v.set_insert(8, 1, 25);
+	v.set_last(5, 1, 26);
+	TESTEQUALS(v.at(4, 1), 22);
+	TESTEQUALS(v.at(5, 1), 26);
+	TESTEQUALS(v.at(8, 1), 26);
+	// v[1] = [-inf:20, 2:22, 5:21, 5:26]
+
+	// set_last before all keyframes keeps only the default value before it
+	v.set_last(1, 1, 27);
+	TESTEQUALS(v.at(0, 1), 20);
+	TESTEQUALS(v.at(1, 1), 27);
+	TESTEQUALS(v.at(time::TIME_MAX, 1), 27);
+
+	// set_last at -inf overrides the default value
+	v.set_last(time::TIME_MIN, 2, 31);
+	TESTEQUALS(v.at(time::TIME_MIN, 2), 31);
+	TESTEQUALS(v.at(time::TIME_MAX, 2), 31);
+
+	// sync replaces keyframes with time >= start
+	Vector<int> other(loop, 1, {0, 0, 0});
+	other.set_insert(3, 0, 100);
+	other.set_insert(6, 0, 200);
+	v.set_insert(4, 0, 11);
+	v.sync(other, 5);
+	TESTEQUALS(v.at(4, 0), 11);
+	TESTEQUALS(v.at(6, 0), 200);
+	TESTEQUALS(v.at(6, 1), 27);
+
+	// sync requires equal sizes
+	Vector<int> smaller(loop, 2, {0});
+	TESTTHROWS(v.sync(smaller, 0));
+
+	// empty vector
+	Vector<int> empty(loop, 3, {});
+	TESTEQUALS(empty.size(), 0);
+	TESTEQUALS(empty.get(0).empty(), true);
+}
+
 
 void container() {
 	test_map();
 	test_list();
 	test_queue();
 	test_array();
+	test_vector();
 }
 
 

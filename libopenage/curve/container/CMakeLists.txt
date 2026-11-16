@@ -6,4 +6,5 @@ add_sources(libopenage
 	map_filter_iterator.cpp
 	queue.cpp
 	queue_filter_iterator.cpp
+	vector.cpp
 )
