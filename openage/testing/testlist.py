@@ -82,6 +82,8 @@ def tests_cpp():
     yield "openage::path::tests::flow_field", "pathfinding"
     yield "openage::path::tests::grid_from_sectors", "pathfinding"
     yield "openage::path::tests::cost_history", "pathfinding"
+    yield "openage::path::tests::portals", "pathfinding"
+    yield "openage::path::tests::pathfinder", "pathfinding"
     yield "openage::pyinterface::tests::pyobject"
     yield "openage::pyinterface::tests::err_py_to_cpp"
     yield "openage::renderer::tests::font"

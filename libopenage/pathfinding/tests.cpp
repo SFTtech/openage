@@ -1,8 +1,14 @@
 // Copyright 2015-2024 the openage authors. See copying.md for legal info.
 
+#include <algorithm>
+#include <deque>
+#include <string>
+#include <vector>
+
 #include "log/log.h"
 #include "testing/testing.h"
 
+#include "coord/chunk.h"
 #include "coord/tile.h"
 #include "event/event_loop.h"
 #include "pathfinding/cost_field.h"
@@ -11,6 +17,9 @@
 #include "pathfinding/grid.h"
 #include "pathfinding/integration_field.h"
 #include "pathfinding/integrator.h"
+#include "pathfinding/path.h"
+#include "pathfinding/pathfinder.h"
+#include "pathfinding/portal.h"
 #include "pathfinding/sector.h"
 #include "pathfinding/types.h"
 #include "time/time.h"
@@ -19,6 +28,81 @@
 namespace openage {
 namespace path {
 namespace tests {
+
+namespace {
+
+/**
+ * Map of cells for creating test grids; '#' marks impassable cells.
+ */
+using test_map_t = std::vector<std::string>;
+
+/**
+ * Map of 3x2 sectors with a side length of 4 cells.
+ *
+ * - sector 0 is walled off from sector 3
+ * - sector 1 is split into two regions that are only connected through sector 4
+ * - sector 2 is connected to sector 1 by a single cell
+ * - cell (11, 7) is enclosed by walls
+ */
+const test_map_t REGIONS_MAP = {
+	".....#..#...",
+	".....#..#...",
+	".....#......",
+	"####.#..#...",
+	"............",
+	"............",
+	"..........##",
+	"..........#.",
+};
+
+/**
+ * Map of 2x1 sectors with a side length of 4 cells.
+ *
+ * In both sectors, the two portals are only connected by a winding corridor,
+ * so connecting them requires moving in all four directions.
+ */
+const test_map_t CORRIDOR_MAP = {
+	"........",
+	"...####.",
+	"...#....",
+	".....###",
+};
+
+constexpr size_t TEST_SECTOR_SIZE = 4;
+
+bool is_test_map_passable(const test_map_t &map, coord::tile_t x, coord::tile_t y) {
+	return map.at(y).at(x) != '#';
+}
+
+/**
+ * Create a grid from a test map with initialized portals.
+ */
+std::shared_ptr<Grid> create_test_grid(const std::shared_ptr<event::EventLoop> &loop,
+                                       const test_map_t &map) {
+	util::Vector2s size{map.at(0).size() / TEST_SECTOR_SIZE, map.size() / TEST_SECTOR_SIZE};
+	auto grid = std::make_shared<Grid>(loop, 0, size, TEST_SECTOR_SIZE);
+
+	for (const auto &sector : grid->get_sectors()) {
+		auto origin = sector->get_position().to_tile(TEST_SECTOR_SIZE);
+
+		std::vector<cost_t> costs;
+		costs.reserve(TEST_SECTOR_SIZE * TEST_SECTOR_SIZE);
+		for (coord::tile_t y = 0; y < static_cast<coord::tile_t>(TEST_SECTOR_SIZE); ++y) {
+			for (coord::tile_t x = 0; x < static_cast<coord::tile_t>(TEST_SECTOR_SIZE); ++x) {
+				bool passable = is_test_map_passable(map, origin.ne + x, origin.se + y);
+				costs.push_back(passable ? COST_MIN : COST_IMPASSABLE);
+			}
+		}
+		sector->get_cost_field()->set_costs(std::move(costs), time::TIME_ZERO);
+	}
+
+	grid->init_portals();
+	grid->init_portal_nodes();
+
+	return grid;
+}
+
+} // namespace
 
 void flow_field() {
 	auto loop = std::make_shared<event::EventLoop>();
@@ -189,6 +273,182 @@ void cost_history() {
 	TESTEQUALS(history.at(8, 1), COST_IMPASSABLE);
 	TESTEQUALS(history.at(8, 0), 5);
 	TESTEQUALS(history_is_current(), true);
+}
+
+namespace {
+
+/**
+ * Expected portal of a sector; entries are relative to the sector.
+ */
+struct expected_portal {
+	sector_id_t sector;
+	portal_id_t id;
+	sector_id_t exit_sector;
+	coord::tile_delta entry_start;
+	coord::tile_delta entry_end;
+	std::vector<portal_id_t> connected;
+};
+
+void check_portals(const test_map_t &map, const std::vector<expected_portal> &expected) {
+	auto loop = std::make_shared<event::EventLoop>();
+	auto grid = create_test_grid(loop, map);
+
+	size_t portal_count = 0;
+	for (const auto &sector : grid->get_sectors()) {
+		portal_count += sector->get_portals().size();
+	}
+	TESTEQUALS(portal_count, expected.size());
+
+	for (const auto &exp : expected) {
+		const auto &portals = grid->get_sector(exp.sector)->get_portals();
+		auto portal = std::ranges::find_if(portals, [&](const auto &p) {
+			return p->get_id() == exp.id;
+		});
+		if (portal == portals.end()) {
+			TESTFAILMSG("portal " << exp.id << " missing in sector " << exp.sector);
+		}
+
+		TESTEQUALS((*portal)->get_exit_sector(exp.sector), exp.exit_sector);
+		TESTEQUALS((*portal)->get_entry_start(exp.sector), exp.entry_start);
+		TESTEQUALS((*portal)->get_entry_end(exp.sector), exp.entry_end);
+
+		std::vector<portal_id_t> connected;
+		for (const auto &other : (*portal)->get_connected(exp.sector)) {
+			connected.push_back(other->get_id());
+		}
+		std::ranges::sort(connected);
+		if (connected != exp.connected) {
+			TESTFAILMSG("portal " << exp.id << " in sector " << exp.sector
+			                      << " has wrong connected portals");
+		}
+	}
+}
+
+/**
+ * Check the paths from each start to every cell of a test map against
+ * the connected regions of its passable cells.
+ */
+void check_paths(const test_map_t &map, const std::vector<coord::tile> &starts) {
+	auto loop = std::make_shared<event::EventLoop>();
+	auto grid = create_test_grid(loop, map);
+	Pathfinder pathfinder{};
+	pathfinder.add_grid(grid);
+
+	const auto width = static_cast<coord::tile_t>(map.at(0).size());
+	const auto height = static_cast<coord::tile_t>(map.size());
+
+	// reference solution: label the connected regions of passable cells
+	std::vector<int> region(width * height, -1);
+	int region_count = 0;
+	for (coord::tile_t i = 0; i < width * height; ++i) {
+		if (region[i] != -1 or not is_test_map_passable(map, i % width, i / width)) {
+			continue;
+		}
+
+		std::deque<coord::tile_t> open_list{i};
+		region[i] = region_count;
+		while (not open_list.empty()) {
+			auto current = open_list.front();
+			open_list.pop_front();
+			coord::tile_t x = current % width;
+			coord::tile_t y = current / width;
+			for (auto [nx, ny] : {std::pair{x, y - 1}, {x - 1, y}, {x, y + 1}, {x + 1, y}}) {
+				if (nx < 0 or ny < 0 or nx >= width or ny >= height) {
+					continue;
+				}
+				auto neighbor = nx + ny * width;
+				if (region[neighbor] == -1 and is_test_map_passable(map, nx, ny)) {
+					region[neighbor] = region_count;
+					open_list.push_back(neighbor);
+				}
+			}
+		}
+		++region_count;
+	}
+	auto region_of = [&](const coord::tile &tile) {
+		return region.at(tile.ne + tile.se * width);
+	};
+
+	for (const auto &start : starts) {
+		if (not is_test_map_passable(map, start.ne, start.se)) {
+			TESTFAILMSG("test start " << start << " is impassable");
+		}
+
+		for (coord::tile_t y = 0; y < height; ++y) {
+			for (coord::tile_t x = 0; x < width; ++x) {
+				coord::tile target{x, y};
+				auto path = pathfinder.get_path(PathRequest{grid->get_id(), start, target, time::TIME_ZERO});
+
+				bool reachable = is_test_map_passable(map, x, y) and region_of(target) == region_of(start);
+				if (not reachable) {
+					if (path.status != PathResult::NOT_FOUND or not path.waypoints.empty()) {
+						TESTFAILMSG("path from " << start << " to unreachable " << target << " was found");
+					}
+					continue;
+				}
+
+				if (path.status != PathResult::FOUND or path.waypoints.empty()) {
+					TESTFAILMSG("path from " << start << " to " << target << " was not found");
+				}
+				if (path.waypoints.front() != start or path.waypoints.back() != target) {
+					TESTFAILMSG("path from " << start << " to " << target
+					                         << " does not begin at the start and end at the target");
+				}
+				for (const auto &waypoint : path.waypoints) {
+					if (waypoint.ne < 0 or waypoint.se < 0 or waypoint.ne >= width or waypoint.se >= height
+					    or not is_test_map_passable(map, waypoint.ne, waypoint.se)
+					    or region_of(waypoint) != region_of(start)) {
+						TESTFAILMSG("path from " << start << " to " << target
+						                         << " has invalid waypoint " << waypoint);
+					}
+				}
+			}
+		}
+
+		for (const auto &target : {coord::tile{-1, 0}, coord::tile{0, -1}, coord::tile{width, 0}, coord::tile{0, height}}) {
+			auto path = pathfinder.get_path(PathRequest{grid->get_id(), start, target, time::TIME_ZERO});
+			if (path.status != PathResult::OUT_OF_BOUNDS) {
+				TESTFAILMSG("path from " << start << " to " << target << " is not out of bounds");
+			}
+		}
+	}
+}
+
+} // namespace
+
+void portals() {
+	check_portals(REGIONS_MAP,
+	              {
+					  {0, 0, 1, {3, 0}, {3, 2}, {}},
+					  {1, 0, 0, {0, 0}, {0, 2}, {2}},
+					  {1, 1, 2, {3, 2}, {3, 2}, {3}},
+					  {1, 2, 4, {0, 3}, {0, 3}, {0}},
+					  {1, 3, 4, {2, 3}, {3, 3}, {1}},
+					  {2, 1, 1, {0, 2}, {0, 2}, {4}},
+					  {2, 4, 5, {1, 3}, {3, 3}, {1}},
+					  {3, 5, 4, {3, 0}, {3, 3}, {}},
+					  {4, 2, 1, {0, 0}, {0, 0}, {3, 5, 6}},
+					  {4, 3, 1, {2, 0}, {3, 0}, {2, 5, 6}},
+					  {4, 5, 3, {0, 0}, {0, 3}, {2, 3, 6}},
+					  {4, 6, 5, {3, 0}, {3, 3}, {2, 3, 5}},
+					  {5, 4, 2, {1, 0}, {3, 0}, {6}},
+					  {5, 6, 4, {0, 0}, {0, 3}, {4}},
+				  });
+
+	check_portals(CORRIDOR_MAP,
+	              {
+					  {0, 0, 1, {3, 0}, {3, 0}, {1}},
+					  {0, 1, 1, {3, 3}, {3, 3}, {0}},
+					  {1, 0, 0, {0, 0}, {0, 0}, {1}},
+					  {1, 1, 0, {0, 3}, {0, 3}, {0}},
+				  });
+}
+
+void pathfinder() {
+	// (4, 0) and (7, 0) are in the same sector but only connected through sector 4
+	check_paths(REGIONS_MAP, {{0, 0}, {4, 0}, {7, 0}, {9, 1}, {0, 7}, {6, 6}});
+
+	check_paths(CORRIDOR_MAP, {{0, 0}, {7, 0}, {5, 2}, {0, 3}});
 }
 
 } // namespace tests
