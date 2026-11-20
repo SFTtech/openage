@@ -691,7 +691,15 @@ class NyanMemberType:
         if self.is_modifier():
             return self._element_types[0].accepts_op(operator)
 
-        if self._member_type in (MemberType.INT, MemberType.FLOAT) and operator not in (
+        if self._member_type is MemberType.INT and operator not in (
+            MemberOperator.ASSIGN,
+            MemberOperator.ADD,
+            MemberOperator.SUBTRACT,
+            MemberOperator.MULTIPLY,
+        ):
+            return False
+
+        if self._member_type is MemberType.FLOAT and operator not in (
             MemberOperator.ASSIGN,
             MemberOperator.ADD,
             MemberOperator.SUBTRACT,
@@ -1026,16 +1034,20 @@ class NyanMember:
 
         This lets us convert data fields without worrying about the
         correct types too much, e.g. if a boolean is stored as uint8.
+        Numbers are converted only without loss, because nyan
+        strictly separates int and float operands.
         """
-        operator = self._checked_operator()
-        if self._member_type.get_real_type() is MemberType.INT and operator not in (
-            MemberOperator.DIVIDE,
-            MemberOperator.MULTIPLY,
-        ):
+        if self._member_type.get_real_type() is MemberType.INT:
+            if self.value != int(self.value):
+                raise TypeError(f"{self!r}: int member can't take non-integral value '{self.value}'")
+
             self.value = int(self.value)
 
         elif self._member_type.get_real_type() is MemberType.FLOAT:
             self.value = float(self.value)
+
+            if self._checked_operator() is MemberOperator.DIVIDE and self.value == 0:
+                raise ValueError(f"{self!r}: division by zero")
 
         elif self._member_type.get_real_type() is MemberType.TEXT:
             self.value = str(self.value)

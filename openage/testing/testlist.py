@@ -25,11 +25,16 @@ def tests_py():
     yield ("openage.testing.doctest.test", "doctest on all modules from DOCTEST_MODULES")
     yield "openage.assets.test"
     yield ("openage.cabextract.test.test", "test CAB archive extraction", lambda env: env["has_assets"])
+    yield (
+        "openage.convert.processor.conversion.aoc.tests.hp_float_patches",
+        "HP upgrades patch the float attribute settings",
+    )
     yield "openage.cppinterface.exctranslate_tests.cpp_to_py"
     yield (
         "openage.cppinterface.exctranslate_tests.cpp_to_py_bounce",
         "translates the exception back and forth a few times",
     )
+    yield ("openage.nyan.tests.number_typing", "strict int/float typing of nyan members")
     yield ("openage.testing.misc_cpp.enum", "tests the interface for C++'s util::Enum class")
     yield ("openage.util.fslike.test.test", "test the filesystem abstraction subsystem")
     yield ("openage.util.fslike.cpp_tests.test", "access Python fslikes through C++ paths")

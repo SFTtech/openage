@@ -2,6 +2,7 @@
 
 #include "entity_factory.h"
 
+#include <cmath>
 #include <cstdint>
 #include <deque>
 #include <mutex>
@@ -192,7 +193,8 @@ void EntityFactory::init_components(const std::shared_ptr<openage::event::EventL
 				auto setting_obj_val = std::dynamic_pointer_cast<nyan::ObjectValue>(setting.get_ptr());
 				auto setting_obj = owner_db_view->get_object(setting_obj_val->get_name());
 				auto attribute = setting_obj.get_object("AttributeSetting.attribute");
-				auto start_value = setting_obj.get_int("AttributeSetting.starting_value");
+				// attribute settings are floats so tech multipliers stay exact
+				auto start_value = std::llround(setting_obj.get_float("AttributeSetting.starting_value"));
 
 				live->add_attribute(time::TIME_MIN,
 				                    attribute.get_name(),
