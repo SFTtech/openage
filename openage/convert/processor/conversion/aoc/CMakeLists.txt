@@ -11,6 +11,7 @@ add_py_modules(
 	pregen_processor.py
 	processor.py
 	tech_subprocessor.py
+	tests.py
 	upgrade_ability_subprocessor.py
 	upgrade_attribute_subprocessor.py
 	upgrade_effect_subprocessor.py
