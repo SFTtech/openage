@@ -37,7 +37,7 @@ Grid::Grid(grid_id_t id,
 	       "Grid has size " << size[0] << "x" << size[1] << " (" << size[0] * size[1] << " sectors), "
 	                        << "but only " << this->sectors.size() << " sectors were provided");
 
-	this->sector_size = sectors.at(0)->get_cost_field()->get_size();
+	this->sector_size = this->sectors.at(0)->get_cost_field()->get_size();
 }
 
 grid_id_t Grid::get_id() const {

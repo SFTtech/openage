@@ -6,6 +6,7 @@ Provides some classes designed to expand the functionality of struct.struct
 
 from collections import OrderedDict
 from struct import Struct
+from typing import Self
 
 from ..util.files import read_guaranteed
 
@@ -131,21 +132,21 @@ class NamedStruct(metaclass=NamedStructMeta):
             setattr(self, name, value)
 
     @classmethod
-    def unpack(cls, data):
+    def unpack(cls, data) -> Self:
         """
         Unpacks data and returns a NamedStruct object that holds the fields.
         """
         return cls(data)
 
     @classmethod
-    def size(cls):
+    def size(cls) -> int:
         """
         Returns the size of the struct, in bytes.
         """
         return cls._struct.size
 
     @classmethod
-    def read(cls, fileobj):
+    def read(cls, fileobj) -> Self:
         """
         Reads the appropriate amount of data from fileobj, and unpacks it.
         """
@@ -153,7 +154,7 @@ class NamedStruct(metaclass=NamedStructMeta):
         return cls.unpack(data)
 
     @classmethod
-    def from_nullbytes(cls):
+    def from_nullbytes(cls) -> Self:
         """
         Decodes nullbytes (sort of a 'default' value).
         """

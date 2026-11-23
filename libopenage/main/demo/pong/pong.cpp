@@ -8,8 +8,6 @@
 #include <thread>
 #include <unordered_map>
 
-#include <nyan/nyan.h>
-
 #include "error/error.h"
 #include "event/event_loop.h"
 #include "log/log.h"
@@ -19,6 +17,8 @@
 #include "renderer/gui/integration/public/gui_application_with_logger.h"
 #include "util/math_constants.h"
 #include "util/path.h"
+
+import nyan;
 
 
 namespace openage::main::tests::pong {

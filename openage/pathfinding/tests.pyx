@@ -42,8 +42,7 @@ def path_demo(list argv):
 
     cdef int demo_id = args.test_id
 
-    cdef Path_cpp root_cpp = Path_cpp(PyObj(<PyObject*>root.fsobj),
-                                  root.parts)
+    cdef Path_cpp root_cpp = Path_cpp(root.subpath, PyObj(<PyObject*>root.fsobj))
 
     with nogil:
         path_demo_c(demo_id, root_cpp)

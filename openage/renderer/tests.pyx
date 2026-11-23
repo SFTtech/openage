@@ -43,8 +43,10 @@ def renderer_demo(list argv):
 
     cdef int renderer_test_id = args.test_id
 
-    cdef Path_cpp root_cpp = Path_cpp(PyObj(<PyObject*>root.fsobj),
-                                  root.parts)
+    cdef Path_cpp root_cpp = Path_cpp(
+        root.subpath,
+        PyObj(<PyObject*>root.fsobj),
+    )
 
     with nogil:
         renderer_demo_c(renderer_test_id, root_cpp)
@@ -81,8 +83,10 @@ def renderer_stresstest(list argv):
 
     cdef int renderer_test_id = args.test_id
 
-    cdef Path_cpp root_cpp = Path_cpp(PyObj(<PyObject*>root.fsobj),
-                                  root.parts)
+    cdef Path_cpp root_cpp = Path_cpp(
+        root.subpath,
+        PyObj(<PyObject*>root.fsobj),
+    )
 
     with nogil:
         renderer_stresstest_c(renderer_test_id, root_cpp)

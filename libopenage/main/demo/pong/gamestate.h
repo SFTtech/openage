@@ -4,7 +4,7 @@
 
 #include <functional>
 
-#include <nyan/nyan.h>
+#include <nyan/config.h>
 
 #include "config.h"
 #include "curve/continuous.h"
@@ -14,6 +14,8 @@
 #include "event/evententity.h"
 #include "event/state.h"
 #include "util/vector.h"
+
+import nyan;
 
 
 namespace openage::main::tests::pong {

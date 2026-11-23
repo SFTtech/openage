@@ -42,28 +42,28 @@ class Python : public FSLike {
 public:
 	Python(const py::Obj &fsobj);
 
-	bool is_file(const Path::parts_t &parts) override;
-	bool is_dir(const Path::parts_t &parts) override;
-	bool writable(const Path::parts_t &parts) override;
-	std::vector<Path::part_t> list(const Path::parts_t &parts) override;
-	bool mkdirs(const Path::parts_t &parts) override;
-	File open_r(const Path::parts_t &parts) override;
-	File open_w(const Path::parts_t &parts) override;
-	File open_rw(const Path::parts_t &parts) override;
-	File open_a(const Path::parts_t &parts) override;
-	File open_ar(const Path::parts_t &parts) override;
+	bool is_file(const Path::subpath_t &subpath) override;
+	bool is_dir(const Path::subpath_t &subpath) override;
+	bool writable(const Path::subpath_t &subpath) override;
+	std::vector<Path::path_elem_t> list(const Path::subpath_t &subpath) override;
+	bool mkdirs(const Path::subpath_t &subpath) override;
+	File open_r(const Path::subpath_t &subpath) override;
+	File open_w(const Path::subpath_t &subpath) override;
+	File open_rw(const Path::subpath_t &subpath) override;
+	File open_a(const Path::subpath_t &subpath) override;
+	File open_ar(const Path::subpath_t &subpath) override;
 	// specialize the resolve functions to relay them to python.
-	std::pair<bool, Path> resolve_r(const Path::parts_t &parts) override;
-	std::pair<bool, Path> resolve_w(const Path::parts_t &parts) override;
-	std::string get_native_path(const Path::parts_t &parts) override;
-	bool rename(const Path::parts_t &parts,
-	            const Path::parts_t &target_parts) override;
-	bool rmdir(const Path::parts_t &parts) override;
-	bool touch(const Path::parts_t &parts) override;
-	bool unlink(const Path::parts_t &parts) override;
+	std::pair<bool, Path> resolve_r(const Path::subpath_t &subpath) override;
+	std::pair<bool, Path> resolve_w(const Path::subpath_t &subpath) override;
+	std::string get_native_path(const Path::subpath_t &subpath) override;
+	bool rename(const Path::subpath_t &subpath,
+	            const Path::subpath_t &target_subpath) override;
+	bool rmdir(const Path::subpath_t &subpath) override;
+	bool touch(const Path::subpath_t &subpath) override;
+	bool unlink(const Path::subpath_t &subpath) override;
 
-	int get_mtime(const Path::parts_t &parts) override;
-	uint64_t get_filesize(const Path::parts_t &parts) override;
+	int get_mtime(const Path::subpath_t &subpath) override;
+	uint64_t get_filesize(const Path::subpath_t &subpath) override;
 
 	bool is_python_native() const noexcept override;
 	OAAPI py::Obj &get_py_fsobj() const;

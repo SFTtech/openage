@@ -6,8 +6,6 @@
 #include <functional>
 #include <vector>
 
-#include <nyan/nyan.h>
-
 #include "coord/phys.h"
 #include "gamestate/component/internal/activity.h"
 #include "gamestate/component/internal/command_queue.h"
@@ -24,6 +22,8 @@
 
 // TODO: Testing
 #include "assets/mod_manager.h"
+
+import nyan;
 
 namespace openage::gamestate::event {
 

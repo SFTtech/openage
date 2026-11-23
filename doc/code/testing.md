@@ -15,7 +15,7 @@ Tests run without user interaction to check for errors automatically.
 All tests are run automatically by [Kevin](https://github.com/SFTtech/kevin/) for pullrequests.
 
 
-You can invoke them with `bin/run test -a` or `make test`
+You can invoke them with `bin/run test -a` or `just test`
 
 Have a look at `bin/run test --help` for further options.
 

@@ -22,8 +22,10 @@ def run_game(args, root_path):
     set_exit_ok(False)
     try:
         # root_path is a util.fslike.Path object from python
-        args_cpp.root_path = Path_cpp(PyObj(<PyObject*>root_path.fsobj),
-                                    root_path.parts)
+        args_cpp.root_path = Path_cpp(
+            root_path.subpath,
+            PyObj(<PyObject*>root_path.fsobj),
+        )
 
         # opengl debugging
         args_cpp.gl_debug = args.gl_debug

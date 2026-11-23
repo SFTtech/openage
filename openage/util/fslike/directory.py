@@ -11,12 +11,9 @@ from __future__ import annotations
 
 import os
 import pathlib
-import typing
+from typing import IO, Generator, Sequence
 
-from .abstract import FSLikeObject
-
-if typing.TYPE_CHECKING:
-    pass
+from .abstract import FSLikeObject, Subpath
 
 
 class Directory(FSLikeObject):
@@ -26,13 +23,13 @@ class Directory(FSLikeObject):
     Initialized from some real path that is mounted already by your system.
     """
 
-    def __init__(self, path_, create_if_missing=False):
+    def __init__(self, path_: pathlib.Path | str | bytes, create_if_missing=False):
         if isinstance(path_, pathlib.Path):
-            path = bytes(path_)
+            path = str(path_)
         elif isinstance(path_, str):
-            path = path_.encode()
-        elif isinstance(path_, bytes):
             path = path_
+        elif isinstance(path_, bytes):
+            path = path_.decode()
         else:
             raise TypeError(f"incompatible type for path: {type(path_)}")
 
@@ -45,81 +42,80 @@ class Directory(FSLikeObject):
         self.path = path
 
     def __repr__(self):
-        return f"Directory({self.path.decode(errors='replace')})"
+        return f"Directory({self.path})"
 
-    def resolve(self, parts) -> bytes:
-        """resolves parts to an actual path name."""
-        return os.path.join(self.path, *parts)
+    def resolve(self, subpath: Subpath) -> str:
+        """resolves subpath to an actual path name."""
+        return os.path.join(self.path, *subpath)
 
-    def open_r(self, parts) -> typing.IO[bytes]:
-        return open(self.resolve(parts), "rb")
+    def open_r(self, subpath: Subpath) -> IO[bytes]:
+        return open(self.resolve(subpath), "rb")
 
-    def open_w(self, parts) -> typing.IO[bytes]:
-        return open(self.resolve(parts), "wb")
+    def open_w(self, subpath: Subpath) -> IO[bytes]:
+        return open(self.resolve(subpath), "wb")
 
-    def open_rw(self, parts) -> typing.IO[bytes]:
-        return open(self.resolve(parts), "r+b")
+    def open_rw(self, subpath: Subpath) -> IO[bytes]:
+        return open(self.resolve(subpath), "r+b")
 
-    def open_a(self, parts) -> typing.IO[bytes]:
-        return open(self.resolve(parts), "ab")
+    def open_a(self, subpath: Subpath) -> IO[bytes]:
+        return open(self.resolve(subpath), "ab")
 
-    def open_ar(self, parts) -> typing.IO[bytes]:
-        return open(self.resolve(parts), "a+b")
+    def open_ar(self, subpath: Subpath) -> IO[bytes]:
+        return open(self.resolve(subpath), "a+b")
 
-    def get_native_path(self, parts) -> bytes:
-        return self.resolve(parts)
+    def get_native_path(self, subpath: Subpath) -> str:
+        return self.resolve(subpath)
 
-    def list(self, parts) -> typing.Generator[bytes, None, None]:
-        # TODO migrate to scandir, once we're on py 3.5.
-        yield from os.listdir(self.resolve(parts))
+    def list(self, subpath: Subpath) -> Generator[str, None, None]:
+        yield from (entry.name for entry in os.scandir(self.resolve(subpath)))
 
-    def filesize(self, parts) -> int:
-        return os.path.getsize(self.resolve(parts))
+    def filesize(self, subpath: Subpath) -> int:
+        return os.path.getsize(self.resolve(subpath))
 
-    def mtime(self, parts) -> float:
-        return os.path.getmtime(self.resolve(parts))
+    def mtime(self, subpath: Subpath) -> float:
+        return os.path.getmtime(self.resolve(subpath))
 
-    def mkdirs(self, parts) -> None:
-        return os.makedirs(self.resolve(parts), exist_ok=True)
+    def mkdirs(self, subpath: Subpath) -> None:
+        return os.makedirs(self.resolve(subpath), exist_ok=True)
 
-    def rmdir(self, parts) -> None:
-        return os.rmdir(self.resolve(parts))
+    def rmdir(self, subpath: Subpath) -> None:
+        return os.rmdir(self.resolve(subpath))
 
-    def unlink(self, parts) -> None:
-        return os.unlink(self.resolve(parts))
+    def unlink(self, subpath: Subpath) -> None:
+        return os.unlink(self.resolve(subpath))
 
-    def touch(self, parts) -> None:
+    def touch(self, subpath: Subpath) -> None:
         try:
-            os.utime(self.resolve(parts))
+            os.utime(self.resolve(subpath))
         except FileNotFoundError:
-            with open(self.resolve(parts), "ab") as directory:
+            with open(self.resolve(subpath), "ab") as directory:
                 directory.close()
 
-    def rename(self, srcparts, tgtparts) -> None:
-        return os.rename(self.resolve(srcparts), self.resolve(tgtparts))
+    def rename(self, srcsubpath: Subpath, tgtsubpath: Subpath) -> None:
+        return os.rename(self.resolve(srcsubpath), self.resolve(tgtsubpath))
 
-    def is_file(self, parts) -> bool:
-        return os.path.isfile(self.resolve(parts))
+    def is_file(self, subpath: Subpath) -> bool:
+        return os.path.isfile(self.resolve(subpath))
 
-    def is_dir(self, parts) -> bool:
-        return os.path.isdir(self.resolve(parts))
+    def is_dir(self, subpath: Subpath) -> bool:
+        return os.path.isdir(self.resolve(subpath))
 
-    def writable(self, parts) -> bool:
-        parts = list(parts)
-        path = self.resolve(parts)
+    def writable(self, subpath: Subpath) -> bool:
+        subpath = list(subpath)
+        path = self.resolve(subpath)
 
         while not os.path.exists(path):
-            if not parts:
+            if not subpath:
                 raise FileNotFoundError(self.path)
 
-            parts.pop()
-            path = self.resolve(parts)
+            subpath.pop()
+            path = self.resolve(subpath)
 
         return os.access(path, os.W_OK)
 
-    def watch(self, parts, callback) -> bool:
+    def watch(self, subpath: Subpath, callback) -> bool:
         # TODO
-        del parts, callback
+        del subpath, callback
         return False
 
     def poll_watches(self) -> None:
@@ -136,15 +132,15 @@ class CaseIgnoringDirectory(Directory):
     It _must_ be in the correct case.
     """
 
-    def __init__(self, path, create_if_missing=False):
+    def __init__(self, path: pathlib.Path | str | bytes, create_if_missing=False):
         super().__init__(path, create_if_missing)
-        self.cache: dict[tuple[bytes, ...], tuple[bytes, ...]] = {(): ()}
-        self.listings: dict[tuple[bytes, ...], dict[bytes, bytes]] = {}
+        self.cache: dict[tuple[str, ...], tuple[str, ...]] = {(): ()}
+        self.listings: dict[tuple[str, ...], dict[str, str]] = {}
 
     def __repr__(self):
-        return f"Directory({self.path.decode(errors='replace')})"
+        return f"Directory({self.path})"
 
-    def actual_name(self, stem: typing.Sequence[bytes], name: bytes) -> bytes:
+    def actual_name(self, stem: Sequence[str], name: str) -> str:
         """
         If the (lower-case) path that's given in stem exists,
         fetches the actual name for the given lower-case name.
@@ -169,30 +165,33 @@ class CaseIgnoringDirectory(Directory):
         except KeyError:
             return name
 
-    def resolve(self, parts) -> bytes:
-        parts = [part.lower() for part in parts]
+    def resolve(self, subpath: Subpath) -> str:
+        subpath = [part.lower() for part in subpath]
 
         i = 0
-        for i in range(len(parts), -1, -1):
+        for i in range(len(subpath), -1, -1):
             try:
-                result = list(self.cache[tuple(parts[:i])])
+                result = list(self.cache[tuple(subpath[:i])])
                 break
             except KeyError:
                 pass
         else:
             raise RuntimeError("code flow error")
 
-        # result now contains the case-corrected path for parts[:i].
-        # we need to append the path for parts[i:].
-        for part in parts[i:]:
+        # result now contains the case-corrected path for subpath[:i].
+        # we need to append the path for subpath[i:].
+        for part in subpath[i:]:
             result.append(self.actual_name(result, part))
-            self.cache[tuple(parts[: len(result)])] = tuple(result)
+            self.cache[tuple(subpath[: len(result)])] = tuple(result)
 
         return os.path.join(self.path, *result)
 
-    def list(self, parts) -> typing.Generator[bytes, None, None]:
-        for name in super().list(parts):
+    def list(self, subpath: Subpath) -> Generator[str, None, None]:
+        for name in super().list(subpath):
             yield name.lower()
+
+
+filesystem_root = Directory("/")
 
 
 # TODO add CaseEnforcingDirectory, with resolve() similar to that of

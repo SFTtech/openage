@@ -5,11 +5,10 @@
 
 Up to date builds are found in our [sft overlay](https://github.com/SFTtech/gentoo-overlay/tree/master/games-strategy/openage).
 
-For automatic updates, install the overlay with [layman](https://wiki.gentoo.org/wiki/Layman)!
+For automatic updates, install the overlay [eselect repository](https://wiki.gentoo.org/wiki/Eselect/Repository)
 
 ``` shell
-# add the sft-overlay
-layman -a sft
+eselect repository add sft
 ```
 
 ## Installation

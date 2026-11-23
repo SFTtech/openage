@@ -71,6 +71,8 @@ stdenv.mkDerivation {
     clang
     cmake
     gnumake
+    ninja
+    just
     qt6.full
 
     eigen

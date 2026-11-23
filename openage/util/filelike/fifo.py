@@ -35,6 +35,15 @@ class FIFO(FileLikeObject):
         self.queue = ByteQueue()
         self.pos = 0
 
+    def name(self) -> str:
+        return "FIFO"
+
+    def fileno(self) -> int:
+        raise UnsupportedOperation("FIFO does not have a file descriptor")
+
+    def truncate(self, size: int) -> int:
+        raise UnsupportedOperation("FIFO does not support truncate")
+
     def tell(self) -> int:
         """
         Warning: Returns the position for reading.
@@ -75,12 +84,15 @@ class FIFO(FileLikeObject):
         """
         self.eof = True
 
-    def write(self, data: bytes) -> None:
+    def write(self, data: bytes | bytearray) -> None:
         """
         Works until seteof() has been called; accepts bytes objects.
         """
         if self.eof:
             raise ValueError("EOF has been set; can't write more data")
+
+        if isinstance(data, bytearray):
+            data = bytes(data)
 
         self.queue.append(data)
 

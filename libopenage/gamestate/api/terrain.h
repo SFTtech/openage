@@ -3,9 +3,13 @@
 #pragma once
 
 #include <string>
+#include <unordered_map>
 
-#include <nyan/nyan.h>
+#include <nyan/config.h>
 
+namespace nyan {
+class Object;
+} // namespace nyan
 
 namespace openage::gamestate::api {
 

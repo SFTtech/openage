@@ -14,7 +14,7 @@
 	#include <mach-o/dyld.h>
 #endif
 
-#ifdef __FreeBSD__
+#if defined(__FreeBSD__) || defined(__OpenBSD__)
 	#include <sys/sysctl.h>
 	#include <sys/types.h>
 #endif
@@ -88,6 +88,24 @@ std::string self_exec_filename() {
 
 		return std::string{buf.get()};
 	}
+
+#elif defined(__OpenBSD__)
+	// OpenBSD provides neither /proc/self/exe nor KERN_PROC_PATHNAME;
+	// fall back to the argv[0] used to start this process.
+	int mib[4] = {CTL_KERN, KERN_PROC_ARGS, getpid(), KERN_PROC_ARGV};
+	size_t bufsize = 0;
+
+	if (sysctl(mib, 4, nullptr, &bufsize, nullptr, 0) < 0) {
+		return std::string{};
+	}
+
+	std::unique_ptr<char[]> buf{new char[bufsize]};
+
+	if (sysctl(mib, 4, buf.get(), &bufsize, nullptr, 0) < 0) {
+		return std::string{};
+	}
+
+	return std::string{buf.get()};
 
 #elif _WIN32
 	// TODO not yet implemented

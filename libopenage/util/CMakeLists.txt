@@ -1,5 +1,4 @@
 add_sources(libopenage
-	color.cpp
 	compiler.cpp
 	constinit_vector.cpp
 	enum.cpp
@@ -33,6 +32,11 @@ add_sources(libopenage
 	unicode.cpp
 	vector.cpp
 	vector_test.cpp
+)
+
+# C++ module unit
+add_sources(libopenage MODULE
+	color.cpp
 )
 
 pxdgen(

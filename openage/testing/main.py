@@ -127,7 +127,7 @@ def main(args, error):
         for idx, name in enumerate(args.test):
             _, lang, _, testfun = test_list[name, "test"]
 
-            print(f"\x1b[32m[{format_progress(idx, len(args.test))}]\x1b[m {lang:3} {name}")
+            print(f"\x1b[32m[{format_progress(idx + 1, len(args.test))}]\x1b[m {lang:3} {name}")
 
             try:
                 testfun()

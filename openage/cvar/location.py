@@ -9,11 +9,12 @@ import pathlib
 
 from .. import config, default_dirs
 from ..util.fslike.directory import Directory
+from ..util.fslike.path import Path
 from ..util.fslike.union import Union
 from ..util.fslike.wrapper import WriteBlocker
 
 
-def get_config_path(custom_cfg_dir: str | None = None) -> Directory:
+def get_config_path(custom_cfg_dir: str | None = None) -> Path:
     """
     Locates the main configuration file by name in some searchpaths.
     Optionally, mount a custom directory with highest priority.

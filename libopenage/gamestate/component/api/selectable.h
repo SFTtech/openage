@@ -2,8 +2,6 @@
 
 #pragma once
 
-#include <nyan/nyan.h>
-
 #include "gamestate/component/api_component.h"
 #include "gamestate/component/types.h"
 

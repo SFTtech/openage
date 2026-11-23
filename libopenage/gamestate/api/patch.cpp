@@ -7,10 +7,10 @@
 #include <string>
 #include <unordered_map>
 
-#include <nyan/nyan.h>
-
 #include "datastructure/constexpr_map.h"
 #include "gamestate/api/definitions.h"
+
+import nyan;
 
 
 namespace openage::gamestate::api {

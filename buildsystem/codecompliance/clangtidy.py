@@ -7,7 +7,6 @@ Checks clang-tidy errors on cpp files
 import subprocess
 
 from .cppstyle import filter_file_list
-from .util import findfiles
 
 
 def find_issues(check_files, dirnames):
@@ -25,10 +24,7 @@ def find_issues(check_files, dirnames):
     invocation = ["clang-tidy", f"-checks=-*,{checks}"]
 
     # Use utility functions from util.py and cppstyle.py
-    if check_files is not None:
-        filenames = list(filter_file_list(check_files, dirnames))
-    else:
-        filenames = list(filter_file_list(findfiles(dirnames), dirnames))
+    filenames = list(filter_file_list(check_files, dirnames))
 
     if not filenames:
         print("No files to check.")

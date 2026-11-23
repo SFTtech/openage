@@ -7,7 +7,7 @@
 #include <string>
 #include <unordered_set>
 
-#include <nyan/nyan.h>
+import nyan;
 
 
 namespace openage::gamestate::api {

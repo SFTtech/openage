@@ -1,70 +1,74 @@
-### Running with Docker
+# Building with Docker
 
-Docker simplifies the setup process by providing a consistent development environment. It allows you to build and run the project without manually installing dependencies. Currently provided [Dockerfile.ubuntu.2404](../../packaging/docker/devenv/Dockerfile.ubuntu.2404) supports Ubuntu 24.04 as the base operating system.
+The [development images](../../packaging/docker/devenv/) contain openage's build dependencies.
+From the repository root, build an image and open a shell with the checkout mounted:
 
-#### Prerequisites
+```bash
+docker build -t openage-devenv -f packaging/docker/devenv/ubuntu.dockerfile .
 
-- **Docker**: Ensure Docker is installed on your machine. Follow the [official documentation](https://docs.docker.com/) for installation instructions.
-- **Display Server**: This guide supports both **X11** and **Wayland** display servers for GUI applications.
-- **Tested Configuration**: These instructions were tested on Ubuntu 24.04 running on WSL2 on Windows 11.
+docker run --rm -it \
+  --user "$(id -u):$(id -g)" \
+  --device /dev/dri \
+  --group-add "$(getent group video | cut -d: -f3)" \
+  --group-add "$(getent group render | cut -d: -f3)" \
+  --env HOME=/tmp \
+  --mount "type=bind,src=$PWD,dst=/openage" \
+  --workdir /openage \
+  openage-devenv bash
+```
 
-#### Steps to Build and Run
+Running as your host UID and GID keeps build output owned by you.
+The group lookups pass the host's numeric `video` and `render` GIDs, regardless of the image's group definitions.
+If your GPU devices use different groups, substitute the GIDs shown by `ls -ln /dev/dri`.
+Inside the container:
 
-1. **Enable GUI Support**
+```bash
+./configure --compiler=g++-16 --download-nyan
+just build
+just tests
+```
 
-   Depending on your display server, follow the appropriate steps:
+Use a separate checkout for container builds: host build directories and Python environments aren't portable into the image.
+See [building](../building.md) for build options and [running](../running.md) for game assets and launch commands.
 
-   - **For X11**:
-     Allow the Docker container to access your X server:
-     ```bash
-     xhost +local:root
-     ```
+## Display access
 
-   - **For Wayland**:
-     Allow the Docker container to access your Wayland socket:
-     ```bash
-     sudo chmod a+rw /run/user/$(id -u)/wayland-0
-     ```
+The following options are for a local Linux desktop using Docker without user-namespace remapping.
+Add the options for your display server to `docker run`, before `openage-devenv bash`.
+Neither case requires changing host socket permissions or granting access with `xhost`.
 
-2. **Build the Docker Image**
+### X11 or Xwayland
 
-   Build the Docker image using the provided Dockerfile:
-   ```bash
-   sudo docker build -t openage -f packaging/docker/devenv/Dockerfile.ubuntu.2404 .
-   ```
+Pass the display socket and your existing authentication cookie:
 
-3. **Run the Docker Container**
+```bash
+--env DISPLAY \
+--env QT_QPA_PLATFORM=xcb \
+--env XAUTHORITY=/tmp/openage-xauthority \
+--hostname "$(hostname)" \
+--mount type=bind,src=/tmp/.X11-unix,dst=/tmp/.X11-unix,readonly \
+--mount "type=bind,src=${XAUTHORITY:-$HOME/.Xauthority},dst=/tmp/openage-xauthority,readonly"
+```
 
-   Start the Docker container with the appropriate configuration for your display server:
+The authority file must exist and contain the cookie for `$DISPLAY`.
+Matching the host name lets X11 find local-display cookies inside the container.
 
-   - **For X11**:
-     ```bash
-     docker run -it \
-       -e DISPLAY=$DISPLAY \
-       -v /tmp/.X11-unix:/tmp/.X11-unix \
-       -v $HOME/.Xauthority:/root/.Xauthority \
-       --network host openage
-     ```
+### Wayland
 
-   - **For Wayland**:
-     ```bash
-     docker run -it \
-       -e XDG_RUNTIME_DIR=/tmp \
-       -e QT_QPA_PLATFORM=wayland \
-       -e WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
-       -v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/$WAYLAND_DISPLAY \
-       --user=$(id -u):$(id -g) \
-       --network host openage
-     ```
+Mount only the compositor socket into a private runtime directory:
 
-4. **Follow the Regular Setup**
+```bash
+--env XDG_RUNTIME_DIR=/run/openage \
+--env WAYLAND_DISPLAY=wayland-0 \
+--env QT_QPA_PLATFORM=wayland \
+--tmpfs "/run/openage:uid=$(id -u),gid=$(id -g),mode=0700" \
+--mount "type=bind,src=${XDG_RUNTIME_DIR:?}/${WAYLAND_DISPLAY:-wayland-0},dst=/run/openage/wayland-0,readonly"
+```
 
-Once inside the container, follow the regular setup described in the [Development](../building.md#development) chapter. You can skip dependency installation since the Docker image already includes all required dependencies.
+Native Wayland also needs Qt's Wayland platform plugin in the image (`qt6-wayland` on Ubuntu).
+Alternatively, use Xwayland with the X11 options above.
 
-#### Notes
+### GPU access
 
-- **X11 vs. Wayland**: Ensure you know which display server your system is using. Most modern Linux distributions default to Wayland, but X11 is still widely used.
-- **Permissions**: For Wayland, you may need to adjust permissions for the Wayland socket (`/run/user/$(id -u)/wayland-0`) to allow Docker access.
-- **GUI Applications**: These configurations enable GUI applications to run inside the Docker container.
-
-By following these steps, you can build and run the `openage` project in a Dockerized environment with support X11 or Wayland display servers.
+The container command passes `/dev/dri` for GPU access.
+NVIDIA setups also need the NVIDIA Container Toolkit.

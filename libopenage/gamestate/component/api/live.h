@@ -5,7 +5,7 @@
 #include <cstdint>
 #include <memory>
 
-#include <nyan/nyan.h>
+#include <nyan/config.h>
 
 #include "curve/container/map.h"
 #include "gamestate/component/api_component.h"

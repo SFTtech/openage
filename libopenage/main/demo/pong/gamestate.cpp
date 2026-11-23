@@ -8,6 +8,8 @@
 #include "log/log.h"
 #include "util/strings.h"
 
+import nyan;
+
 namespace openage::main::tests::pong {
 
 

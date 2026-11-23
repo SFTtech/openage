@@ -11,6 +11,7 @@ Note the [troubleshooting](#troubleshooting) and [FAQ](#faq) sections.
 
 We use `CMake` for all our building needs.
 We wrap `CMake` with an optional `configure` wrapper script.
+The `justfile` in the project root forwards the common build commands to the `./configure` build directory.
 You can build the project like a regular `CMake` project.
 
 For more build system internals, see [doc/buildsystem.md](/doc/buildsystem.md).
@@ -22,16 +23,18 @@ Dependencies are needed for:
 * C = compiling
 * R = running
 * A = asset conversion
-* S = sanity checks (make checkall)
+* S = sanity checks (just checkall)
 * O = optional, we can continue without it
 
 Dependency list:
 
-    C     gcc >=10 or clang >=10
+    C     gcc >=16 or clang >=21
     CRA   python >=3.12
     C     cython >=3.1
     C     setuptools
-    C     cmake >=3.16
+    C     cmake >=3.28
+    C     ninja
+    C   O just
       A   numpy
       A   lz4
       A   python imaging library (PIL) -> pillow
@@ -115,7 +118,7 @@ engine configuration language.
 
 
 * For development, `nyan` can be built and used **without installation**
-  (-> no "`make install`", since it can be found using [`cmake` user package registry](https://cmake.org/cmake/help/latest/manual/cmake-packages.7.html#user-package-registry)).
+  (-> no installation needed, since it can be found using [`cmake` user package registry](https://cmake.org/cmake/help/latest/manual/cmake-packages.7.html#user-package-registry)).
   Just clone the repo somewhere and [follow the `nyan` build instructions](https://github.com/SFTtech/nyan/blob/master/doc/building.md)).
   Then `./configure ... -- -Dnyan_DIR=/directory/where/nyanConfig/is/in/`.
 
@@ -143,9 +146,9 @@ Make sure you have all the dependencies installed.
 - Select the compiler and mode: see `./configure --help`
   - Linux etc: `./configure`
   - macOS: see the [macOS instructions](build_instructions/macos.md)
-- `make` generates and builds everything
-- `make run` or `bin/run` launches the game. Try `bin/run --help`!
-- `make test` runs the built-in tests.
+- `just build` generates and builds everything
+- `just run` or `bin/run` launches the game. Try `bin/run --help`!
+- `just test` runs the built-in tests.
 
 
 ### Release
@@ -153,11 +156,11 @@ Make sure you have all the dependencies installed.
 Disclaimer: Use your distribution package of `openage` instead!
 Your distro package maintainers do all the nasty work for you,
 and will provide you with updates!
-Also, you don't need to `make install`, you can run `openage` within its git repo.
+Also, you don't need to install it; you can run `openage` within its git repo.
 
  - Set build mode: `./configure --mode=release --compiler=clang --prefix=/usr/local`
- - `make`
- - `make install` install the game to `/usr/local`
+ - `just build`
+ - `just install` install the game to `/usr/local`
    - beware, this will add *untracked* files to your drive
    - please use your distribution package instead!
  - launch `openage`, it's in `/usr/local/bin/openage`
@@ -172,13 +175,13 @@ The reference package is [created for Gentoo](https://github.com/SFTtech/gentoo-
   invocation.
 - To specify the to-be-used python version (or rather, executable),
   pass `-DPython3_EXECUTABLE=...` or `-DPython3_ROOT_DIR=...` to `cmake`
-- Use `make install DESTDIR=/tmp/your_temporary_packaging_dir`,
+- Use `DESTDIR=/tmp/your_temporary_packaging_dir just install`,
   which will then be packed/installed by your package manager.
 
 ### Troubleshooting
 
 - I wanna see compiler invocations
-  - `make VERBOSE=1`
+  - `ninja -C bin -v`
 - My `Qt`/`Python`/whatever is installed somewhere, but `cmake` can't find it!
   - Run `ccmake` or `cmake-gui` in the build directory to see and change config variables.
   - You can manually tell `cmake` where to look. Try something along the lines of

@@ -1,8 +1,25 @@
-// Copyright 2013-2023 the openage authors. See copying.md for legal info.
+// Copyright 2013+ the openage authors. See copying.md for legal info.
 
-#include "color.h"
+
+module;
 
 #include <epoxy/gl.h>
+
+export module openage.util.color;
+
+export namespace openage::util {
+
+struct col {
+	col(unsigned r, unsigned g, unsigned b, unsigned a) :
+		r{r}, g{g}, b{b}, a{a} {}
+
+	unsigned r, g, b, a;
+
+	void use();
+	void use(float alpha);
+};
+
+} // namespace openage::util
 
 namespace openage::util {
 

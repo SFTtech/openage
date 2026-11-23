@@ -84,6 +84,37 @@ void curve_types() {
 		TESTEQUALS(c.get(c.last(10, ie)).val(), 2);
 		TESTEQUALS(c.get(c.last(47, ie)).val(), 2);
 
+		// last_before() must not depend on the hint
+		TESTEQUALS(c.get(c.last_before(0, ib)).time(), time::TIME_MIN);
+		TESTEQUALS(c.get(c.last_before(1, ib)).time(), 0);
+		TESTEQUALS(c.get(c.last_before(5, ib)).time(), 1);
+		TESTEQUALS(c.get(c.last_before(10, ib)).time(), 1);
+		TESTEQUALS(c.get(c.last_before(47, ib)).time(), 10);
+
+		TESTEQUALS(c.get(c.last_before(0, p0)).time(), time::TIME_MIN);
+		TESTEQUALS(c.get(c.last_before(1, p0)).time(), 0);
+		TESTEQUALS(c.get(c.last_before(5, p0)).time(), 1);
+		TESTEQUALS(c.get(c.last_before(10, p0)).time(), 1);
+		TESTEQUALS(c.get(c.last_before(47, p0)).time(), 10);
+
+		TESTEQUALS(c.get(c.last_before(0, p1)).time(), time::TIME_MIN);
+		TESTEQUALS(c.get(c.last_before(1, p1)).time(), 0);
+		TESTEQUALS(c.get(c.last_before(5, p1)).time(), 1);
+		TESTEQUALS(c.get(c.last_before(10, p1)).time(), 1);
+		TESTEQUALS(c.get(c.last_before(47, p1)).time(), 10);
+
+		TESTEQUALS(c.get(c.last_before(0, p2)).time(), time::TIME_MIN);
+		TESTEQUALS(c.get(c.last_before(1, p2)).time(), 0);
+		TESTEQUALS(c.get(c.last_before(5, p2)).time(), 1);
+		TESTEQUALS(c.get(c.last_before(10, p2)).time(), 1);
+		TESTEQUALS(c.get(c.last_before(47, p2)).time(), 10);
+
+		TESTEQUALS(c.get(c.last_before(0, ie)).time(), time::TIME_MIN);
+		TESTEQUALS(c.get(c.last_before(1, ie)).time(), 0);
+		TESTEQUALS(c.get(c.last_before(5, ie)).time(), 1);
+		TESTEQUALS(c.get(c.last_before(10, ie)).time(), 1);
+		TESTEQUALS(c.get(c.last_before(47, ie)).time(), 10);
+
 		// Now test the basic erase() function
 		// Delete the 1-element, new values should be [-inf:0, 0:0, 10:2]
 		c.erase(c.last(1));
@@ -164,6 +195,12 @@ void curve_types() {
 			TESTEQUALS((++it)->time(), 3);
 			TESTEQUALS(it->val(), 25);
 		}
+
+		// the last of several keyframes before the time, from both sides
+		TESTEQUALS(c.get(c.last_before(1, 1)).val(), 12);
+		TESTEQUALS(c.get(c.last_before(1, c.size())).val(), 12);
+		TESTEQUALS(c.get(c.last_before(2, 1)).val(), 15);
+		TESTEQUALS(c.get(c.last_before(2, c.size())).val(), 15);
 
 		// TODO: test c.insert_overwrite and c.insert_after
 

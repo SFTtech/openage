@@ -5,8 +5,6 @@
 #include <compare>
 #include <vector>
 
-#include <nyan/nyan.h>
-
 #include "log/log.h"
 #include "log/message.h"
 
@@ -29,6 +27,8 @@
 #include "pathfinding/path.h"
 #include "pathfinding/pathfinder.h"
 #include "util/fixed_point.h"
+
+import nyan;
 
 
 namespace openage::gamestate::system {

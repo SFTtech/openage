@@ -13,10 +13,11 @@ Provides
 
 import os
 from threading import Lock
+from typing import IO
 
 from ..context import DummyGuard
 from ..filelike.abstract import FileLikeObject
-from .abstract import FSLikeObject, ReadOnlyFSLikeObject
+from .abstract import FSLikeObject, ReadOnlyFSLikeObject, Subpath
 from .path import Path
 
 
@@ -28,11 +29,11 @@ class Wrapper(FSLikeObject):
     Pass a context guard to protect calls.
     """
 
-    def __init__(self, obj: Path, contextguard=None):
-        if not isinstance(obj, Path):
-            raise TypeError(f"Path expected as obj, got '{type(obj)}'")
+    def __init__(self, path: Path, contextguard=None):
+        if not isinstance(path, Path):
+            raise TypeError(f"Path expected as obj, got '{type(path)}'")
 
-        self.obj = obj
+        self.obj = path
         if contextguard is None:
             self.contextguard = DummyGuard()
         else:
@@ -44,88 +45,88 @@ class Wrapper(FSLikeObject):
 
         return f"{type(self).__name__}({self.obj!r}, {self.contextguard!r})"
 
-    def _open(self, parts, mode: str):
+    def _open(self, subpath: Subpath, mode: str) -> IO[bytes] | FileLikeObject:
         with self.contextguard:
-            fileobj = self.obj.joinpath(parts).open(mode)
+            fileobj = self.obj.joinpath(subpath).open(mode)
 
         if isinstance(self.contextguard, DummyGuard):
             return fileobj
 
         return GuardedFile(fileobj, self.contextguard)
 
-    def open_r(self, parts):
-        return self._open(parts, "rb")
+    def open_r(self, subpath: Subpath) -> IO[bytes] | FileLikeObject:
+        return self._open(subpath, "rb")
 
-    def open_w(self, parts):
-        return self._open(parts, "wb")
+    def open_w(self, subpath: Subpath) -> IO[bytes] | FileLikeObject:
+        return self._open(subpath, "wb")
 
-    def open_rw(self, parts):
-        return self._open(parts, "r+b")
+    def open_rw(self, subpath: Subpath) -> IO[bytes] | FileLikeObject:
+        return self._open(subpath, "r+b")
 
-    def open_a(self, parts):
-        return self._open(parts, "ab")
+    def open_a(self, subpath: Subpath) -> IO[bytes] | FileLikeObject:
+        return self._open(subpath, "ab")
 
-    def open_ar(self, parts):
-        return self._open(parts, "a+b")
+    def open_ar(self, subpath: Subpath) -> IO[bytes] | FileLikeObject:
+        return self._open(subpath, "a+b")
 
-    def resolve_r(self, parts):
-        return self.obj.joinpath(parts) if self.exists(parts) else None
+    def resolve_r(self, subpath: Subpath):
+        return self.obj.joinpath(subpath) if self.exists(subpath) else None
 
-    def resolve_w(self, parts):
-        return self.obj.joinpath(parts) if self.writable(parts) else None
+    def resolve_w(self, subpath: Subpath):
+        return self.obj.joinpath(subpath) if self.writable(subpath) else None
 
-    def get_native_path(self, parts):
-        return self.obj.joinpath(parts).resolve_native_path() if self.exists(parts) else None
+    def get_native_path(self, subpath: Subpath):
+        return self.obj.joinpath(subpath).resolve_native_path() if self.exists(subpath) else None
 
-    def list(self, parts):
+    def list(self, subpath: Subpath):
         with self.contextguard:
-            return list(self.obj.joinpath(parts).list())
+            return list(self.obj.joinpath(subpath).list())
 
-    def filesize(self, parts) -> int:
+    def filesize(self, subpath: Subpath) -> int:
         with self.contextguard:
-            return self.obj.joinpath(parts).filesize
+            return self.obj.joinpath(subpath).filesize
 
-    def mtime(self, parts) -> float:
+    def mtime(self, subpath: Subpath) -> float | None:
         with self.contextguard:
-            return self.obj.joinpath(parts).mtime
+            return self.obj.joinpath(subpath).mtime
 
-    def mkdirs(self, parts) -> None:
+    def mkdirs(self, subpath: Subpath) -> None:
         with self.contextguard:
-            return self.obj.joinpath(parts).mkdirs()
+            return self.obj.joinpath(subpath).mkdirs()
 
-    def rmdir(self, parts) -> None:
+    def rmdir(self, subpath: Subpath) -> None:
         with self.contextguard:
-            return self.obj.joinpath(parts).rmdir()
+            return self.obj.joinpath(subpath).rmdir()
 
-    def unlink(self, parts) -> None:
+    def unlink(self, subpath: Subpath) -> None:
         with self.contextguard:
-            return self.obj.joinpath(parts).unlink()
+            return self.obj.joinpath(subpath).unlink()
 
-    def touch(self, parts) -> None:
+    def touch(self, subpath: Subpath) -> None:
         with self.contextguard:
-            return self.obj.joinpath(parts).touch()
+            return self.obj.joinpath(subpath).touch()
 
-    def rename(self, srcparts, tgtparts) -> None:
+    def rename(self, srcsubpath: Subpath, tgtsubpath: Subpath) -> None:
         with self.contextguard:
-            return self.obj.joinpath(srcparts).rename(self.obj.joinpath(tgtparts))
+            return self.obj.joinpath(srcsubpath).rename(self.obj.joinpath(tgtsubpath))
 
-    def is_file(self, parts) -> bool:
+    def is_file(self, subpath: Subpath) -> bool:
         with self.contextguard:
-            return self.obj.joinpath(parts).is_file()
+            return self.obj.joinpath(subpath).is_file()
 
-    def is_dir(self, parts) -> bool:
+    def is_dir(self, subpath: Subpath) -> bool:
         with self.contextguard:
-            return self.obj.joinpath(parts).is_dir()
+            return self.obj.joinpath(subpath).is_dir()
 
-    def writable(self, parts) -> bool:
+    def writable(self, subpath: Subpath) -> bool:
         with self.contextguard:
-            return self.obj.joinpath(parts).writable()
+            return self.obj.joinpath(subpath).writable()
 
-    def watch(self, parts, callback) -> bool:
+    def watch(self, subpath: Subpath, callback) -> bool:
         with self.contextguard:
-            return self.obj.joinpath(parts).watch(callback)
+            return self.obj.joinpath(subpath).watch(callback)
 
-    def poll_watches(self):
+    def poll_watches(self) -> None:
         with self.contextguard:
             return self.obj.poll_fs_watches()
 
@@ -167,6 +168,11 @@ class GuardedFile(FileLikeObject):
         self.obj = obj
         self.guard = guard
 
+    @property
+    def name(self):
+        with self.guard:
+            return self.obj.name
+
     def read(self, size: int = -1):
         with self.guard:
             return self.obj.read(size)
@@ -207,6 +213,14 @@ class GuardedFile(FileLikeObject):
         with self.guard:
             return self.obj.get_size()
 
+    def truncate(self, size: int) -> int:
+        with self.guard:
+            return self.obj.truncate(size)
+
+    def fileno(self) -> int:
+        with self.guard:
+            return self.obj.fileno()
+
     def __repr__(self):
         with self.guard:
             return f"GuardedFile({self.obj!r}, {self.guard!r})"
@@ -218,9 +232,9 @@ class DirectoryCreator(Wrapper):
     directories when attempting to create a file.
     """
 
-    def open_w(self, parts):
-        self.mkdirs(parts[:-1])
-        return super().open_w(parts)
+    def open_w(self, subpath):
+        self.mkdirs(subpath[:-1])
+        return super().open_w(subpath)
 
     def __repr__(self):
         return f"DirectoryCreator({self.obj})"

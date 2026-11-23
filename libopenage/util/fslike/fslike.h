@@ -74,30 +74,30 @@ public:
 
 	virtual Path root();
 
-	virtual bool is_file(const Path::parts_t &parts) = 0;
-	virtual bool is_dir(const Path::parts_t &parts) = 0;
-	virtual bool writable(const Path::parts_t &parts) = 0;
-	virtual Path::parts_t list(const Path::parts_t &parts) = 0;
-	virtual bool mkdirs(const Path::parts_t &parts) = 0;
-	virtual File open_r(const Path::parts_t &parts) = 0;
-	virtual File open_w(const Path::parts_t &parts) = 0;
-	virtual File open_rw(const Path::parts_t &parts) = 0;
-	virtual File open_a(const Path::parts_t &parts) = 0;
-	virtual File open_ar(const Path::parts_t &parts) = 0;
+	virtual bool is_file(const Path::subpath_t &parts) = 0;
+	virtual bool is_dir(const Path::subpath_t &parts) = 0;
+	virtual bool writable(const Path::subpath_t &parts) = 0;
+	virtual Path::subpath_t list(const Path::subpath_t &parts) = 0;
+	virtual bool mkdirs(const Path::subpath_t &parts) = 0;
+	virtual File open_r(const Path::subpath_t &parts) = 0;
+	virtual File open_w(const Path::subpath_t &parts) = 0;
+	virtual File open_rw(const Path::subpath_t &parts) = 0;
+	virtual File open_a(const Path::subpath_t &parts) = 0;
+	virtual File open_ar(const Path::subpath_t &parts) = 0;
 
 	// provide a default implementation that resolves the path
 	// by checking if it is readable/writable:
-	virtual std::pair<bool, Path> resolve_r(const Path::parts_t &parts);
-	virtual std::pair<bool, Path> resolve_w(const Path::parts_t &parts);
-	virtual std::string get_native_path(const Path::parts_t &parts) = 0;
-	virtual bool rename(const Path::parts_t &parts,
-	                    const Path::parts_t &target_parts) = 0;
-	virtual bool rmdir(const Path::parts_t &parts) = 0;
-	virtual bool touch(const Path::parts_t &parts) = 0;
-	virtual bool unlink(const Path::parts_t &parts) = 0;
+	virtual std::pair<bool, Path> resolve_r(const Path::subpath_t &parts);
+	virtual std::pair<bool, Path> resolve_w(const Path::subpath_t &parts);
+	virtual std::string get_native_path(const Path::subpath_t &parts) = 0;
+	virtual bool rename(const Path::subpath_t &parts,
+	                    const Path::subpath_t &target_parts) = 0;
+	virtual bool rmdir(const Path::subpath_t &parts) = 0;
+	virtual bool touch(const Path::subpath_t &parts) = 0;
+	virtual bool unlink(const Path::subpath_t &parts) = 0;
 
-	virtual int get_mtime(const Path::parts_t &parts) = 0;
-	virtual uint64_t get_filesize(const Path::parts_t &parts) = 0;
+	virtual int get_mtime(const Path::subpath_t &parts) = 0;
+	virtual uint64_t get_filesize(const Path::subpath_t &parts) = 0;
 
 	virtual bool is_python_native() const noexcept;
 

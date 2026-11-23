@@ -4,9 +4,9 @@
 
 #include <deque>
 
-#include <nyan/nyan.h>
-
 #include "gamestate/api/util.h"
+
+import nyan;
 
 
 namespace openage::gamestate::api {

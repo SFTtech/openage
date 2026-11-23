@@ -754,7 +754,7 @@ Defines the production items which can be added to the queue.
 
 ```python
 Projectile(Ability):
-    arc               : int
+    arc               : float
     accuracy          : set(Accuracy)
     target_mode       : TargetMode
     ignored_types     : set(children(GameEntityType))

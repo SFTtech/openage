@@ -22,7 +22,7 @@ Engine::Engine(mode mode,
 	root_dir{root_dir},
 	threads{} {
 	log::log(INFO
-	         << "launching engine with root directory"
+	         << "launching engine with root directory: "
 	         << root_dir);
 
 	// read and apply the configuration files

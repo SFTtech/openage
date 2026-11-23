@@ -7,6 +7,8 @@ names.
 
 import collections
 
+from ..util.fslike.path import Path
+
 
 class Namespace:
     """
@@ -59,7 +61,7 @@ class Namespace:
                 yield namespacename + "::" + name
 
 
-def generate_testlist(projectdir):
+def generate_testlist(projectdir: Path):
     """
     Generates the test/demo method symbol lookup file from tests_cpp.
 

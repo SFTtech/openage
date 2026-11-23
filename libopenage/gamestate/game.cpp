@@ -4,8 +4,6 @@
 
 #include <vector>
 
-#include <nyan/nyan.h>
-
 #include "log/log.h"
 #include "log/message.h"
 
@@ -21,6 +19,8 @@
 #include "util/strings.h"
 
 #include "coord/tile.h"
+
+import nyan;
 
 namespace openage::gamestate {
 

@@ -15,4 +15,5 @@ add_pxds(
 
 add_cython_modules(
 	cpp.pyx
+	cpp_tests.pyx
 )

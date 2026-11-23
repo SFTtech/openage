@@ -342,6 +342,8 @@ EFFECT_APPLY_TYPE = {
     200: "UNKNOWN",
     201: "UNKNOWN",
     # unknown
+    31: "UNKNOWN",
+    36: "UNKNOWN",
     40: "UNKNOWN",
     202: "UNKNOWN",
     204: "UNKNOWN",

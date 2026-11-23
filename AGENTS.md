@@ -1,6 +1,6 @@
 # AGENTS.md
 
-openage is a free-software RTS engine recreating Age of Empires II: `libopenage/` is the C++20 engine, `openage/` the Python package (converter, codegen, nyan integration), glued together by Cython
+openage is a free-software RTS engine recreating Age of Empires II: `libopenage/` is the C++26 engine, `openage/` the Python package (converter, codegen, nyan integration), glued together by Cython
 
 ## Reference docs
 
@@ -11,25 +11,25 @@ Read the docs of the subsystem you touch; link to them instead of duplicating th
 - [doc/buildsystem.md](doc/buildsystem.md) — codegen → pxdgen → cythonize pipeline
 - [doc/code/architecture.md](doc/code/architecture.md) — subsystems and data flow, details in its sibling dirs (`event/`, `game_simulation/`, `input/`, `renderer/`, `pathfinding/`, `converter/`)
 - [doc/code/](doc/code/) — [curves](doc/code/curves.md), [exceptions](doc/code/exceptions.md), [logger](doc/code/logger.md), [pyinterface](doc/code/pyinterface.md), [testing](doc/code/testing.md)
-- [doc/code_style/](doc/code_style/) — C++ by example in [mom.h](doc/code_style/mom.h) and [mom.cpp](doc/code_style/mom.cpp), tabs indent and spaces align; Python is a PEP8 subset
+- [doc/code_style/](doc/code_style/) — C++ by example in [cat.cppm](doc/code_style/cat.cppm) and [cat.cpp](doc/code_style/cat.cpp), tabs indent and spaces align; Python is a PEP8 subset
 - [doc/nyan/](doc/nyan/), [doc/convert/](doc/convert/), [doc/media_convert.md](doc/media_convert.md) — game data and converter
 - [doc/development.md](doc/development.md) — code philosophy; [doc/contributing.md](doc/contributing.md) — PR workflow
 
 ## Build and verify
 
-`./configure` creates the build dir in `.bin/`, symlinked as `bin/`; the root `Makefile` forwards there
+`./configure` creates the build dir in `.bin/`, symlinked as `bin/`; the root `justfile` forwards there
 
 ```sh
 ./configure # e.g. --compiler=clang --mode=release --ccache --download-nyan
-make -j$(nproc) # build
-make run # run the game
-make tests # all C++/Python tests and doctests, as CI runs them
-make checkmerge # compliance checks, as CI runs them
-make doc # doxygen → bin/doc/html/index.html
+just build # build everything
+just run # run the game
+just tests # all C++/Python tests and doctests, as CI runs them
+just checkmerge # compliance checks, as CI runs them
+just doc # doxygen → bin/doc/html/index.html
 ```
 
 - Single test: `bin/run test NAME`, e.g. `openage::curve::tests::container`; `-l` lists all, `-d NAME ARGS` runs a demo, `-b NAME` a benchmark, `-a --have-assets` includes tests needing game assets
-- Checks on changed files only: `make checkuncommited` (sic; vs `HEAD`, new files count once `git add`ed) or `make checkchanged` (vs `origin/master`)
+- Checks on changed files only: `just checkuncommited` (sic; vs `HEAD`, new files count once `git add`ed) or `just checkchanged` (vs `origin/master`)
 - `checkfast`: authors, cppstyle, cython, headerguards, legal, filemodes, textfiles; `checkmerge` adds ruff (lint + format) and ty (type check), run through `uv run` (venv from pyproject.toml/uv.lock); `checkall` adds clang-tidy
 - Memory or threading changes: also run the tests in a build configured with `--sanitize=yes` (ASan+UBSan) or `--sanitize=thread`
 - CI also builds on macOS and Windows ([.github/workflows/](.github/workflows/)): keep code portable
@@ -48,11 +48,12 @@ make doc # doxygen → bin/doc/html/index.html
 
 Non-obvious traps; add new ones here, verified and in one line
 
-- In-source builds are forbidden and poison the tree; `make cleaninsourcebuild` removes the traces
-- Run Python only via `bin/run ...` or `make run`, never `python3 -m openage` in the source tree: compiled Cython modules and `openage/config.py` live in `bin/`
-- Never edit files in `bin/`, they are generated: `config.*` from `*.in`, `*.gen.{h,cpp}` from `openage/codegen/` and `*.template`, `libopenage` `.pxd` files from `pxd:` annotations in C++ headers; codegen trouble: `make cleancodegen`
-- nyan is a separate project: build it and point to it with `-Dnyan_DIR=`, or `./configure --download-nyan`
-- C++20, but the minimum compilers are gcc/clang 10 and MSVC 16.8 (`buildsystem/CheckCompilerFeatures.cmake`): check support before using newer library features like `std::format`
+- In-source builds are forbidden and poison the tree; `just cleaninsourcebuild` removes the traces
+- Run Python only via `bin/run ...` or `just run`, never `python3 -m openage` in the source tree: compiled Cython modules and `openage/config.py` live in `bin/`
+- Never edit files in `bin/`, they are generated: `config.*` from `*.in`, `*.gen.{h,cpp}` from `openage/codegen/` and `*.template`, `libopenage` `.pxd` files from `pxd:` annotations in C++ headers; codegen trouble: `just cleancodegen`
+- Reconfigure with `./configure` or `cmake -B .bin/<config>`, never through the symlink (`cmake bin`): the changed build dir path rebuilds everything
+- Put `import`s after the last `#include` of a file (the `cppstyle` check enforces it): GCC rejects textual definitions after an import of the same entities; standard headers are exempt because GCC builds translate them into the `<bits/stdc++.h>` header unit of [StdHeaderUnit.cmake](buildsystem/StdHeaderUnit.cmake)
+- C++26, but the minimum compilers are gcc 16 and clang 21 (`buildsystem/CheckCompilerFeatures.cmake`): check support before using newer library features like `std::format`
 
 ## Working
 
@@ -65,8 +66,8 @@ Non-obvious traps; add new ones here, verified and in one line
 - Keep diffs focused: no drive-by refactors, reformatting, renames or "improvements" outside the task
 - Fail hard: throw/raise on unexpected state instead of skipping, logging and continuing, or returning a default
 - Trust the code over comments and docs; fix stale comments in code you touch
-- Done means it builds, the relevant tests pass and `make checkmerge` is clean; state what you could not verify, e.g. without game assets or GPU
-- Scratch files go to `/tmp`, never into the tree
+- Done means it builds, the relevant tests pass and `just checkmerge` is clean; state what you could not verify, e.g. without game assets or GPU
+- Scratch files go to `/tmp/openage-agent`, never into the tree
 
 ## Code
 
@@ -83,9 +84,10 @@ Non-obvious traps; add new ones here, verified and in one line
 
 ## C++
 
-- Style by example ([mom.h](doc/code_style/mom.h), [mom.cpp](doc/code_style/mom.cpp)): `this->` for members, `{}` initialization, braces on every block, Doxygen API docs in the header, forward declarations in headers, sorted include groups
-- Every `.h` has a `.cpp` that includes it first, even if otherwise empty; header guard `#pragma once`
-- Register new `.cpp` files and directories in the local `CMakeLists.txt` (`add_sources(libopenage ...)`, `add_subdirectory`)
+- Style by example ([cat.cppm](doc/code_style/cat.cppm), [cat.cpp](doc/code_style/cat.cpp)): `this->` for members, `{}` initialization, braces on every block, Doxygen API docs on the exported interface, sorted include groups
+- New code is a C++ module: usually one `.cpp` holding `export module openage.dir.name;` with interface and implementation (like `libopenage/util/color.cpp`); split off a `.cppm` interface unit only when needed; `#include`s go in the global module fragment, `import`s after the module declaration
+- Legacy headers: every `.h` has a `.cpp` that includes it first, even if otherwise empty; header guard `#pragma once`
+- Register new `.cpp` files and directories in the local `CMakeLists.txt` (`add_sources(libopenage ...)`, module units after `MODULE`, `add_subdirectory`)
 - Integer types per [inttypes.md](doc/code_style/inttypes.md)
 - RAII and smart pointers, no owning raw `new`/`delete`
 - Log with `log::log(INFO << ...)`, throw `Error{MSG(err) << ...}` ([exceptions.md](doc/code/exceptions.md)); no `std::cout`/`printf`, no bare `std::` exceptions
@@ -106,7 +108,7 @@ Write tests where they catch real bugs; the right kind depends on the subject:
 - Data structures, algorithms, math, curves, events, pathfinding: unit tests of invariants and edge cases (empty, boundaries, overflow, equal timestamps, queries exactly at, before and after keyframes)
 - Parsers and converter logic: small hand-made inputs; gate tests needing game assets on `has_assets` in the test list
 - Small pure Python functions: doctests, which double as documentation
-- Rendering, GUI, input wiring and other interactive code: usually no automated test; verify with a demo or `make run` and say so
+- Rendering, GUI, input wiring and other interactive code: usually no automated test; verify with a demo or `just run` and say so
 - Performance claims: measure with a benchmark (`bin/run test -b NAME`)
 - Bug fixes: a regression test that fails without the fix, where the subject is testable as above
 - Test observable behavior and contracts, not implementation details; no tests that restate the code or depend on timing, network or user interaction
@@ -121,6 +123,7 @@ Mechanics ([testing.md](doc/code/testing.md)):
 ## Writing docs
 
 - Update `doc/` when behavior, interfaces or file formats change
+- Write token-lean docs => write concisely and avoid verbosity
 - Write for the reader, not as a record of decisions or attempts
 - Markdown: one sentence per line
 
@@ -128,7 +131,7 @@ Mechanics ([testing.md](doc/code/testing.md)):
 
 - Message `subsystem: summary`, e.g. `convert: ...`, `renderer: ...`; the body explains what and why, concisely
 - One logical change per commit; squash fixups before review ([contributing.md](doc/contributing.md#rebasing))
-- New source files start with `// Copyright <year> the openage authors. See copying.md for legal info.` (`#` in Python and CMake) and have mode 0644; don't bump years in existing headers
+- New source files start with `// Copyright <year>+ the openage authors. See copying.md for legal info.` (`#` in Python and CMake) and have mode 0644; don't bump years in existing headers
 - Commit authors must be listed in [copying.md](copying.md) (authors check)
 - Never commit generated files, build output, converted assets or scratch files
 - Never push, force-push, open or comment on PRs without explicit consent

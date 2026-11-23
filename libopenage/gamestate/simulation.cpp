@@ -63,6 +63,11 @@ void GameSimulation::start() {
 	                                               this->entity_factory,
 	                                               this->terrain_factory);
 
+	// the presenter may have attached its renderer while the game was not created yet
+	if (this->render_factory) {
+		this->game->attach_renderer(this->render_factory);
+	}
+
 	this->running = true;
 
 	log::log(MSG(info) << "Game simulation started");
@@ -117,7 +122,10 @@ const std::shared_ptr<gamestate::event::Commander> GameSimulation::get_commander
 void GameSimulation::attach_renderer(const std::shared_ptr<renderer::RenderFactory> &render_factory) {
 	std::unique_lock lock{this->mutex};
 
-	this->game->attach_renderer(render_factory);
+	this->render_factory = render_factory;
+	if (this->game) {
+		this->game->attach_renderer(render_factory);
+	}
 	this->entity_factory->attach_renderer(render_factory);
 	this->terrain_factory->attach_renderer(render_factory);
 }
