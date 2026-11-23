@@ -25,14 +25,18 @@ ClockState Clock::get_state() {
 }
 
 void Clock::update_time() {
-	if (this->state == ClockState::RUNNING) {
+	bool wait_for_update{false};
+	{
 		std::unique_lock lock{this->mutex};
+
+		if (this->state != ClockState::RUNNING) {
+			return;
+		}
 
 		auto now = simclock_t::now();
 		auto passed = std::chrono::duration_cast<std::chrono::milliseconds>(now - this->last_check);
 		if (passed.count() == 0) {
-			// prevent the clock from stalling the thread forever
-			std::this_thread::sleep_for(std::chrono::milliseconds(1));
+			wait_for_update = true;
 		}
 		else if (passed.count() > this->max_tick_time) {
 			// if too much real time passes between two time updates, we only advance time by a small amount
@@ -47,6 +51,11 @@ void Clock::update_time() {
 		}
 		this->last_check = now;
 		// TODO: Stop clock if it reaches 0.0s with negative speed?
+	}
+
+	if (wait_for_update) {
+		// Let simulation and rendering read the clock while waiting for the next millisecond.
+		std::this_thread::sleep_for(std::chrono::milliseconds(1));
 	}
 }
 
