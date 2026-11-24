@@ -1,4 +1,4 @@
-// Copyright 2023-2025 the openage authors. See copying.md for legal info.
+// Copyright 2023-2026 the openage authors. See copying.md for legal info.
 
 #include "engine.h"
 
@@ -20,6 +20,7 @@ Engine::Engine(mode mode,
 	running{true},
 	run_mode{mode},
 	root_dir{root_dir},
+	window_settings{window_settings},
 	threads{} {
 	log::log(INFO
 	         << "launching engine with root directory: "
@@ -42,8 +43,7 @@ Engine::Engine(mode mode,
 	if (this->run_mode == mode::FULL) {
 		this->presenter = std::make_shared<presenter::Presenter>(this->root_dir,
 		                                                         this->simulation,
-		                                                         this->time_loop,
-		                                                         window_settings);
+		                                                         this->time_loop);
 	}
 }
 
@@ -69,7 +69,7 @@ void Engine::loop() {
 		// an API misuse that the platform plugin rejects). This is also why the
 		// simulation cannot stay on the main thread in FULL mode: the main
 		// thread must be free to drive the presenter.
-		this->presenter->run();
+		this->presenter->run(this->window_settings);
 		log::log(MSG(info) << "presenter exited");
 		// Make sure that the presenter gets destructed in the same thread,
 		// otherwise OpenGL complains about missing contexts.

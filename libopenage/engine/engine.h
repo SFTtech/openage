@@ -1,4 +1,4 @@
-// Copyright 2023-2025 the openage authors. See copying.md for legal info.
+// Copyright 2023-2026 the openage authors. See copying.md for legal info.
 
 #pragma once
 
@@ -121,6 +121,11 @@ private:
 	 * openage root directory.
 	 */
 	util::Path root_dir;
+
+	/**
+	 * Window settings passed to the presenter when the engine loop starts.
+	 */
+	const renderer::window_settings window_settings;
 
 	/**
 	 * The threads used by the engine.

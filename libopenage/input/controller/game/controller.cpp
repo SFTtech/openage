@@ -1,4 +1,4 @@
-// Copyright 2021-2023 the openage authors. See copying.md for legal info.
+// Copyright 2021-2026 the openage authors. See copying.md for legal info.
 
 #include "controller.h"
 
@@ -58,7 +58,7 @@ void Controller::set_selected(const std::vector<gamestate::entity_id_t> ids) {
 }
 
 bool Controller::process(const event_arguments &ev_args, const std::shared_ptr<BindingContext> &ctx) {
-	// BindingContext is filled at setup time and only read here; no lock needed.
+	// Bindings are configured before input processing and only read here.
 	if (not ctx->is_bound(ev_args.e)) {
 		return false;
 	}
@@ -67,36 +67,26 @@ bool Controller::process(const event_arguments &ev_args, const std::shared_ptr<B
 	auto bind = ctx->lookup(ev_args.e);
 	auto controller = this->shared_from_this();
 
-	// NOTE: bind.transform() may call back into this Controller (get_controlled,
-	// get_selected, ...) and into EventLoop::create_event (via the input
-	// bindings). It must run WITHOUT holding this->mutex: the simulation thread
-	// takes the locks in the order EventLoop -> Controller, so taking them here
-	// in the order Controller -> EventLoop would deadlock (AB-BA).
+	// Run callbacks without the controller lock to avoid reentrant locking
+	// and lock-order inversions with the simulation event loop.
 	auto game_event = bind.transform(ev_args, controller);
+
+	std::unique_lock lock{this->mutex};
 
 	switch (bind.action_type) {
 	case forward_action_t::SEND:
-	{
-		std::unique_lock lock{this->mutex};
 		this->outqueue.push_back(game_event);
 		for (auto event : this->outqueue) {
 			// TODO: Send gamestate event
 		}
-	}
 		break;
 
 	case forward_action_t::QUEUE:
-	{
-		std::unique_lock lock{this->mutex};
 		this->outqueue.push_back(game_event);
-	}
 		break;
 
 	case forward_action_t::CLEAR:
-	{
-		std::unique_lock lock{this->mutex};
 		this->outqueue.clear();
-	}
 		break;
 
 	default:
