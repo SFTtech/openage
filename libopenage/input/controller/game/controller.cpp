@@ -1,4 +1,4 @@
-// Copyright 2021-2023 the openage authors. See copying.md for legal info.
+// Copyright 2021-2026 the openage authors. See copying.md for legal info.
 
 #include "controller.h"
 
@@ -58,8 +58,7 @@ void Controller::set_selected(const std::vector<gamestate::entity_id_t> ids) {
 }
 
 bool Controller::process(const event_arguments &ev_args, const std::shared_ptr<BindingContext> &ctx) {
-	std::unique_lock lock{this->mutex};
-
+	// Bindings are configured before input processing and only read here.
 	if (not ctx->is_bound(ev_args.e)) {
 		return false;
 	}
@@ -67,7 +66,12 @@ bool Controller::process(const event_arguments &ev_args, const std::shared_ptr<B
 	// TODO: check if action is allowed
 	auto bind = ctx->lookup(ev_args.e);
 	auto controller = this->shared_from_this();
+
+	// Run callbacks without the controller lock to avoid reentrant locking
+	// and lock-order inversions with the simulation event loop.
 	auto game_event = bind.transform(ev_args, controller);
+
+	std::unique_lock lock{this->mutex};
 
 	switch (bind.action_type) {
 	case forward_action_t::SEND:
