@@ -99,6 +99,7 @@ def find_issues():
 
         yield (
             "author inconsistency",
-            f"{email}\n\temail appears in git log, but not in copying.md or .mailmap",
+            None,
+            f"{email}\nemail appears in git log, but not in copying.md or .mailmap",
             None,
         )

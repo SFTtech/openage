@@ -13,6 +13,8 @@ import subprocess
 from collections.abc import Callable, Generator
 from pathlib import Path
 
+from .util import Issue
+
 
 def find_tool(name: str) -> str | None:
     """
@@ -27,7 +29,7 @@ def _run_tool(
     paths: list[Path],
     title: str,
     fix_args: list[str] | None = None,
-) -> Generator[tuple[str, str, Callable[[], str] | None]]:
+) -> Generator[Issue]:
     """
     Invokes a tool on the given locations (files or directories).
 
@@ -53,21 +55,23 @@ def _run_tool(
             continue
 
         fields = dict(field.split("=", 1) for field in line[len("::error ") :].split("::")[0].split(","))
-        filename = fields.get("file", "unknown file")
+        # the other checkers report paths relative to the project root
+        filename = Path(fields["file"]).absolute().relative_to(Path.cwd()) if "file" in fields else None
         lineno = fields.get("line", "?")
-        message = line.split("::", 2)[-1].replace("%0A", "\n\t")
+        message = line.split("::", 2)[-1].replace("%0A", "\n")
 
         fix = None
-        if fix_args is not None:
-            fix = _create_fix(tool, fix_args, [Path(filename)])
+        if fix_args is not None and filename is not None:
+            fix = _create_fix(tool, fix_args, [filename])
 
-        yield (title, f"{filename}\n\tline: {lineno}\n\t{message}", fix)
+        yield (title, filename, f"line: {lineno}\n{message}", fix)
 
     if result.returncode not in (0, 1):
         # the tool itself failed, e.g. on invalid configuration
         yield (
             title,
-            f"{tool} failed with exit code {result.returncode}\n\t" + "\n\t".join(result.stderr.splitlines()),
+            None,
+            f"{tool} failed with exit code {result.returncode}\n{result.stderr.rstrip()}",
             None,
         )
 
@@ -96,12 +100,12 @@ def _create_fix(tool: str, fix_args: list[str], filenames: list[Path]) -> Callab
 
 def find_issues(
     locations: list[Path],
-) -> Generator[tuple[str, str, Callable[[], str] | None]]:
+) -> Generator[Issue]:
     """Invokes the external utilities."""
 
     ruff = find_tool("ruff")
     if ruff is None:
-        yield ("ruff missing", "no ruff found in PATH; run 'uv run <command>' or install ruff", None)
+        yield ("ruff missing", None, "no ruff found in PATH; run 'uv run <command>' or install ruff", None)
         return
 
     yield from _run_tool(

@@ -81,7 +81,8 @@ def test_headers(paths, third_party_files):
         except ValueError:
             yield (
                 "Legal header missing or invalid",
-                (f"{filename}\nSee copying.md for a template"),
+                filename,
+                "See copying.md for a template",
                 None,
             )
             continue
@@ -113,7 +114,8 @@ def find_issues(paths):
         if has_ext(Path(filename), EXTENSIONS_REQUIRING_LEGAL_HEADERS):
             yield (
                 "third-party file listing issue",
-                (f"{filename}\n\tlisted in copying.md, but has no third-party license header."),
+                filename,
+                "listed in copying.md, but has no third-party license header.",
                 None,
             )
 
@@ -121,6 +123,7 @@ def find_issues(paths):
     for filename in sorted(third_party_files - listed_files):
         yield (
             "third-party file listing issue",
-            (f"{filename}\n\thas a third-party license header, but isn't listed in copying.md"),
+            filename,
+            "has a third-party license header, but isn't listed in copying.md",
             None,
         )

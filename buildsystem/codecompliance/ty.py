@@ -8,20 +8,21 @@ The tool is looked up in PATH. When the checker is run through
 uv.lock; otherwise the system-installed tool is used.
 """
 
-from collections.abc import Callable, Generator
+from collections.abc import Generator
 from pathlib import Path
 
 from .ruff import _run_tool, find_tool
+from .util import Issue
 
 
 def find_issues(
     dirnames: list[Path],
-) -> Generator[tuple[str, str, Callable[[], str] | None]]:
+) -> Generator[Issue]:
     """Invokes the external utility."""
 
     ty = find_tool("ty")
     if ty is None:
-        yield ("ty missing", "no ty found in PATH; run 'uv run <command>' or install ty", None)
+        yield ("ty missing", None, "no ty found in PATH; run 'uv run <command>' or install ty", None)
         return
 
     yield from _run_tool(
