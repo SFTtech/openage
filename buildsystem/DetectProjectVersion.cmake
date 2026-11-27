@@ -21,6 +21,15 @@ if(IS_DIRECTORY "${CMAKE_SOURCE_DIR}/.git")
 
 	if(_RES EQUAL 0)
 		set(USED_GIT_VERSION 1)
+
+		# reconfigure when HEAD moves so the generated version string stays current.
+		# the HEAD reflog is appended on every commit, checkout, reset and rebase.
+		foreach(_GIT_FILE "HEAD" "logs/HEAD")
+			if(EXISTS "${CMAKE_SOURCE_DIR}/.git/${_GIT_FILE}")
+				set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS "${CMAKE_SOURCE_DIR}/.git/${_GIT_FILE}")
+			endif()
+		endforeach()
+
 		return()
 	endif()
 endif()
