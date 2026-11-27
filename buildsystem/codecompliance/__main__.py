@@ -5,6 +5,7 @@ Entry point for the code compliance checker.
 """
 
 import argparse
+import itertools
 import os
 import shutil
 import subprocess
@@ -181,21 +182,29 @@ def main(args):
     auto_fixes = []
     fixes_possible = False
 
-    issues_count = 0
-    for title, text, apply_fix in find_all_issues(args, check_files):
-        issues_count += 1
-        print(f"\x1b[33;1mWARNING\x1b[m {title}: {text}")
+    # stable sort: issues stay in checker order within a file, those without a file come last
+    issues = sorted(find_all_issues(args, check_files), key=lambda issue: (issue[1] is None, str(issue[1])))
+    issues_count = len(issues)
 
-        if apply_fix:
-            fixes_possible = True
+    for filename, file_issues in itertools.groupby(issues, key=lambda issue: issue[1]):
+        if filename is not None:
+            print(f"\x1b[1m{filename}\x1b[m")
 
-            if args.fix:
-                print("        This will be fixed automatically.")
-                auto_fixes.append(apply_fix)
-            else:
-                print("        This can be fixed automatically.")
+        for title, _, text, apply_fix in file_issues:
+            print(f"\x1b[33;1mWARNING\x1b[m {title}")
+            for line in text.splitlines():
+                print(f"\t{line}")
 
-        # nicely seperate warnings
+            if apply_fix:
+                fixes_possible = True
+
+                if args.fix:
+                    print("\tThis will be fixed automatically.")
+                    auto_fixes.append(apply_fix)
+                else:
+                    print("\tThis can be fixed automatically.")
+
+        # nicely separate files
         print()
 
     if args.fix and auto_fixes:
@@ -232,7 +241,7 @@ def find_all_issues(args, check_files=None):
     more resource-intense checks.
     That is, check_files is the set of files to verify.
 
-    Yields tuples of (title, text) that are displayed as warnings.
+    Yields an Issue (see util.py) for each problem found.
     """
 
     python_locations = [Path("openage"), Path("buildsystem"), Path("etc/gdb_pretty"), Path("configure")]

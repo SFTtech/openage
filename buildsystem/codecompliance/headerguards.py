@@ -51,4 +51,4 @@ def find_issues(dirname):
                 raise HeaderError("No valid header guard found (e.g. #pragma once)")
 
         except HeaderError as exc:
-            yield (f"header guard issue in {fname}", exc.args[0], None)
+            yield ("header guard issue", fname, exc.args[0], None)

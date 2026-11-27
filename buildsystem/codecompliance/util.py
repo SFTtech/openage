@@ -5,8 +5,11 @@ Some utilities.
 """
 
 import logging
-from collections.abc import Iterable, Iterator
+from collections.abc import Callable, Iterable, Iterator
 from pathlib import Path
+
+# (title, file the issue is in or None, details, callback applying a fix or None)
+Issue = tuple[str, Path | None, str, Callable[[], str] | None]
 
 SHEBANG = "#!/.*\n(#?\n)?"
 
@@ -155,16 +158,6 @@ def select_files(
                 yield path
 
 
-def issue_str(title: str, filename: Path, fix=None) -> tuple[str, Path, None]:
-    """
-    Creates a formated (title, text) desciption of an issue.
-
-    TODO use this function and issue_str_line for all issues, so the format
-    can be easily changed (exta text, colors, etc)
-    """
-    return (title, filename, fix)
-
-
 # gread hint, pylint. thank you so much.
 def issue_str_line(
     title: str,
@@ -173,10 +166,9 @@ def issue_str_line(
     line_number: int,
     highlight: tuple[int, int],
     fix=None,
-) -> tuple[str, str, None]:
+) -> Issue:
     """
-    Creates a formated (title, text) desciption of an issue with information
-    about the location in the file.
+    Creates an issue with information about the location in the file.
     line:        line content
     line_number: line id in the file
     highlight:   a tuple of (start, end), where
@@ -190,11 +182,11 @@ def issue_str_line(
 
     return (
         title,
+        filename,
         (
-            f"{filename}\n"
-            "\tline: " + str(line_number) + "\n"  # line number
-            "\tat:   '" + line + "'\n"  # line content
-            "\t      "
+            "line: " + str(line_number) + "\n"  # line number
+            "at:   '" + line + "'\n"  # line content
+            "      "
             + (" " * start)  # mark position with ^
             + "\x1b[32;1m^"
             + ("~" * (end - start))

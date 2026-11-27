@@ -44,18 +44,19 @@ def find_issues(check_files, dirnames):
                 while True:
                     output = process.stdout.readline()
                     if output:
-                        yield ("clang-tidy output", output.strip(), None)
+                        yield ("clang-tidy output", filename, output.strip(), None)
                     elif process.poll() is not None:
                         break
 
                 # Capture remaining errors (if any)
                 for error_line in process.stderr:
-                    yield ("clang-tidy error", error_line.strip(), None)
+                    yield ("clang-tidy error", filename, error_line.strip(), None)
 
         # Handle exception
         except subprocess.SubprocessError as exc:
             yield (
                 "clang-tidy error",
-                f"An error occurred while running clang-tidy on {filename}: {exc!s}",
+                filename,
+                f"An error occurred while running clang-tidy: {exc!s}",
                 None,
             )

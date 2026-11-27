@@ -53,7 +53,7 @@ def check_mode(filename: Path) -> None:
                     x_ok = True
 
         if not x_ok:
-            raise ValueError(f"file {filename} is executable")
+            raise ValueError("file is executable")
 
 
 def find_issues(check_files, paths):
@@ -65,5 +65,5 @@ def find_issues(check_files, paths):
         try:
             check_mode(filename)
         except ValueError as exc:
-            yield ("wrong file access bits", str(exc), None)
+            yield ("wrong file access bits", filename, str(exc), None)
             continue

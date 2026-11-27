@@ -42,17 +42,17 @@ def find_issues(dirnames, exts):
             continue
 
         if "\r\n" in data:
-            yield "Windows EOL format", filename, None
+            yield "Windows EOL format", filename, "", None
 
         if data.endswith("\n\n"):
-            yield "Trailing newline at file end", filename, None
+            yield "Trailing newline at file end", filename, "", None
 
         if data and not data.endswith("\n"):
-            yield "File does not end in '\\n'", filename, None
+            yield "File does not end in '\\n'", filename, "", None
 
         if has_ext(filename, (".py", ".pyx", ".pxd")):
             if "\t" in data:
-                yield "File contains tabs", filename, None
+                yield "File contains tabs", filename, "", None
 
         if TRAIL_WHITESPACE_RE.search(data) or IMMEDIATE_TODO_RE.search(data):
             analyse_each_line = True
@@ -62,7 +62,7 @@ def find_issues(dirnames, exts):
             yield from find_issues_with_lines(filename)
 
     for filename in BADUTF8FILES:
-        yield "Not valid UTF-8", filename
+        yield "Not valid UTF-8", filename, "", None
 
 
 def find_issues_with_lines(filename):
